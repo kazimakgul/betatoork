@@ -31,5 +31,70 @@ App::uses('Controller', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
+// app/Controller/AppController.php
 class AppController extends Controller {
+    //...
+
+
+    public $components = array(
+        'Session',
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'games', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
+            'authorize' => array('Controller')
+        )
+    );
+
+    var $paginate = array(
+        'User' => array(
+            'limit' => 20,
+            'order' => array(
+                'User.id' => 'asc',
+            ),
+        ),
+        'Game' => array(
+            //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
+            'limit' => 20,
+            'order' => array(
+                'Game.recommend' => 'desc',
+            ),
+        ),
+        'Favorite' => array(
+            //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
+            'limit' => 12,
+            'order' => array(
+                'Game.starsize' => 'desc',
+            ),
+        ),       
+    );
+
+
+    public function beforeFilter() {
+        $this->Auth->allow('index','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now');
+    }
+    
+    public function isAuthorized($user) {
+        if (isset($user['role']) && $user['role'] === '1') {
+            return true; //Admin can access every action
+        }
+        return false; // The rest don't
+    }
+
+
+
+public function http_check($str)
+{
+
+if(substr($str, 0, 7)!="http://")
+			{
+		$str="http://".$str;
+		return $str;
+			}
+			else
+			{
+			return $str;
+			}
+}
+
+
 }

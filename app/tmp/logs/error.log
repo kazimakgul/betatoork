@@ -1,0 +1,1283 @@
+2012-04-02 23:13:35 Error: [MissingPluginException] Plugin UploadPack could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(364): CakePlugin::path('UploadPack')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(225): App::pluginPath('UploadPack')
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(542): App::path('Model/Behavior', 'UploadPack')
+#3 [internal function]: App::load('UploadBehavior')
+#4 [internal function]: spl_autoload_call('UploadBehavior')
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(121): class_exists('UploadBehavior')
+#6 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(68): BehaviorCollection->load('UploadPack.Uplo...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(725): BehaviorCollection->init('Game', Array)
+#8 [internal function]: Model->__construct(Array)
+#9 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Utility/ClassRegistry.php(156): ReflectionClass->newInstance(Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(734): ClassRegistry::init(Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(366): Controller->loadModel('Game')
+#12 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(404): Controller->__isset('Game')
+#13 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/GamesController.php(38): Controller->__get('Game')
+#14 [internal function]: GamesController->index()
+#15 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(GamesController), Array)
+#16 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#17 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#18 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#19 {main}
+2012-04-02 23:13:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:36 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:36 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:36 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:36 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:36 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:36 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:36 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:36 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:13:36 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingPluginException] Plugin UploadPack could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(364): CakePlugin::path('UploadPack')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(225): App::pluginPath('UploadPack')
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(542): App::path('Model/Behavior', 'UploadPack')
+#3 [internal function]: App::load('UploadBehavior')
+#4 [internal function]: spl_autoload_call('UploadBehavior')
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(121): class_exists('UploadBehavior')
+#6 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(68): BehaviorCollection->load('UploadPack.Uplo...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(725): BehaviorCollection->init('Game', Array)
+#8 [internal function]: Model->__construct(Array)
+#9 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Utility/ClassRegistry.php(156): ReflectionClass->newInstance(Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(734): ClassRegistry::init(Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(366): Controller->loadModel('Game')
+#12 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(404): Controller->__isset('Game')
+#13 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/GamesController.php(38): Controller->__get('Game')
+#14 [internal function]: GamesController->index()
+#15 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(GamesController), Array)
+#16 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#17 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#18 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#19 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:42 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingPluginException] Plugin UploadPack could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(364): CakePlugin::path('UploadPack')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(225): App::pluginPath('UploadPack')
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(542): App::path('Model/Behavior', 'UploadPack')
+#3 [internal function]: App::load('UploadBehavior')
+#4 [internal function]: spl_autoload_call('UploadBehavior')
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(121): class_exists('UploadBehavior')
+#6 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(68): BehaviorCollection->load('UploadPack.Uplo...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(725): BehaviorCollection->init('Game', Array)
+#8 [internal function]: Model->__construct(Array)
+#9 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Utility/ClassRegistry.php(156): ReflectionClass->newInstance(Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(734): ClassRegistry::init(Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(366): Controller->loadModel('Game')
+#12 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(404): Controller->__isset('Game')
+#13 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/GamesController.php(38): Controller->__get('Game')
+#14 [internal function]: GamesController->index()
+#15 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(GamesController), Array)
+#16 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#17 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#18 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#19 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:46 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:15:47 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:06 Error: [MissingPluginException] Plugin UploadPack could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(364): CakePlugin::path('UploadPack')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(225): App::pluginPath('UploadPack')
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(542): App::path('Model/Behavior', 'UploadPack')
+#3 [internal function]: App::load('UploadBehavior')
+#4 [internal function]: spl_autoload_call('UploadBehavior')
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(121): class_exists('UploadBehavior')
+#6 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(68): BehaviorCollection->load('UploadPack.Uplo...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(725): BehaviorCollection->init('Game', Array)
+#8 [internal function]: Model->__construct(Array)
+#9 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Utility/ClassRegistry.php(156): ReflectionClass->newInstance(Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(734): ClassRegistry::init(Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(366): Controller->loadModel('Game')
+#12 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(404): Controller->__isset('Game')
+#13 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/GamesController.php(38): Controller->__get('Game')
+#14 [internal function]: GamesController->index()
+#15 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(GamesController), Array)
+#16 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#17 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#18 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#19 {main}
+2012-04-02 23:16:06 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:16:07 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingHelperException] Helper class UploadHelper could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(850): HelperCollection->load('Upload', Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#3 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#4 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:17:27 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingHelperException] Helper class UploadHelper could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(850): HelperCollection->load('Upload', Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#3 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#4 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:34 Error: [MissingHelperException] Helper class UploadPackHelper could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(850): HelperCollection->load('UploadPack', Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#3 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#4 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2012-04-02 23:18:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:35 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:35 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:18:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingHelperException] Helper class UploadHelper could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(850): HelperCollection->load('Upload', Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#3 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#4 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:10 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:19:11 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingHelperException] Helper class UploadHelper could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(850): HelperCollection->load('Upload', Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#3 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#4 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:23 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:21:24 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:13 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:13 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:13 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:13 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:13 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:13 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:13 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:31 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:31 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:31 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:31 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:31 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:31 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:32 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:32 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:22:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:25 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:25 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:25 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:25 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:25 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:25 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:25 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:26 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:29 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:29 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:29 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:29 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:29 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:29 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:29 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:29 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:50 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:50 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:50 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:50 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:50 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:50 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:50 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:50 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:55 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:23:56 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:11 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:12 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:24:14 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:14 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:14 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:14 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:14 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:14 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:14 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:24:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:26:37 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:26:48 Error: [NotFoundException] Invalid game
+#0 [internal function]: GamesController->play('favicon.ico')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(GamesController), Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-02 23:26:54 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:27:00 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:27:26 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:27:35 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:27:50 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:28:26 Error: [NotFoundException] Invalid game
+#0 [internal function]: GamesController->play('favicon.ico')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(GamesController), Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-02 23:28:37 Error: [MissingPluginException] Plugin UploadPack could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(364): CakePlugin::path('UploadPack')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(225): App::pluginPath('UploadPack')
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(542): App::path('Model/Behavior', 'UploadPack')
+#3 [internal function]: App::load('UploadBehavior')
+#4 [internal function]: spl_autoload_call('UploadBehavior')
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(121): class_exists('UploadBehavior')
+#6 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(68): BehaviorCollection->load('UploadPack.Uplo...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(725): BehaviorCollection->init('Game', Array)
+#8 [internal function]: Model->__construct(Array)
+#9 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Utility/ClassRegistry.php(156): ReflectionClass->newInstance(Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(1007): ClassRegistry::init(Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(833): Model->_constructLinkedModel('Game', 'Game', NULL)
+#12 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(863): Model->__isset('Game')
+#13 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Datasource/DboSource.php(1041): Model->__get('Game')
+#14 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Rate), Array)
+#15 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/RatesController.php(74): Model->find('first', Array)
+#16 [internal function]: RatesController->add('120', '5')
+#17 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(RatesController), Array)
+#18 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#19 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(RatesController), Object(CakeRequest), Object(CakeResponse))
+#20 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#21 {main}
+2012-04-02 23:28:41 Error: [MissingPluginException] Plugin UploadPack could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(364): CakePlugin::path('UploadPack')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(225): App::pluginPath('UploadPack')
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(542): App::path('Model/Behavior', 'UploadPack')
+#3 [internal function]: App::load('UploadBehavior')
+#4 [internal function]: spl_autoload_call('UploadBehavior')
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(121): class_exists('UploadBehavior')
+#6 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(68): BehaviorCollection->load('UploadPack.Uplo...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(725): BehaviorCollection->init('Game', Array)
+#8 [internal function]: Model->__construct(Array)
+#9 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Utility/ClassRegistry.php(156): ReflectionClass->newInstance(Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(1007): ClassRegistry::init(Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(833): Model->_constructLinkedModel('Game', 'Game', NULL)
+#12 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(863): Model->__isset('Game')
+#13 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Datasource/DboSource.php(1041): Model->__get('Game')
+#14 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Rate), Array)
+#15 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/RatesController.php(74): Model->find('first', Array)
+#16 [internal function]: RatesController->add('120', '5')
+#17 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(RatesController), Array)
+#18 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#19 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(RatesController), Object(CakeRequest), Object(CakeResponse))
+#20 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#21 {main}
+2012-04-02 23:28:43 Error: [MissingPluginException] Plugin UploadPack could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(364): CakePlugin::path('UploadPack')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(225): App::pluginPath('UploadPack')
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(542): App::path('Model/Behavior', 'UploadPack')
+#3 [internal function]: App::load('UploadBehavior')
+#4 [internal function]: spl_autoload_call('UploadBehavior')
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(121): class_exists('UploadBehavior')
+#6 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(68): BehaviorCollection->load('UploadPack.Uplo...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(725): BehaviorCollection->init('Game', Array)
+#8 [internal function]: Model->__construct(Array)
+#9 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Utility/ClassRegistry.php(156): ReflectionClass->newInstance(Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(1007): ClassRegistry::init(Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(833): Model->_constructLinkedModel('Game', 'Game', NULL)
+#12 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(863): Model->__isset('Game')
+#13 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Datasource/DboSource.php(1041): Model->__get('Game')
+#14 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Rate), Array)
+#15 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/RatesController.php(74): Model->find('first', Array)
+#16 [internal function]: RatesController->add('120', '3')
+#17 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(RatesController), Array)
+#18 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#19 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(RatesController), Object(CakeRequest), Object(CakeResponse))
+#20 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#21 {main}
+2012-04-02 23:28:52 Error: [NotFoundException] Invalid game
+#0 [internal function]: GamesController->play('favicon.ico')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(GamesController), Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-02 23:28:53 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:28:59 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:29:05 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:29:09 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:29:13 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:29:19 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:29:24 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:29:31 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:29:37 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:29:39 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:29:45 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:29:53 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:29:56 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:29:58 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:30:01 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:30:03 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:30:04 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:30:06 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:30:07 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:30:49 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:30:54 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:30:57 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:34:00 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:34:07 Error: [NotFoundException] Invalid game
+#0 [internal function]: GamesController->play('favicon.ico')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(GamesController), Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(GamesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-02 23:34:08 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:34:10 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:34:25 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:34:36 Error: [MissingViewException] View file "/Applications/XAMPP/xamppfiles/htdocs/betatoork/app/View/Pages/favicon.ico.ctp" is missing.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/View/View.php(460): View->_getViewFileName('favicon.ico')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(959): View->render('favicon.ico', NULL)
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/PagesController.php(80): Controller->render('favicon.ico')
+#3 [internal function]: PagesController->display('favicon.ico')
+#4 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#6 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#7 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#8 {main}
+2012-04-02 23:34:43 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:34:47 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:36:58 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:36:58 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:36:58 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:36:58 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:36:58 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:36:58 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:36:58 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:36:58 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:37 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:37 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:37 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:37 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:37 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:37 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:37 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:37 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:39 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:39 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:39 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:39 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:39 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:39 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:39 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:39 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:40 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:37:47 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:47 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:47 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:47 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:47 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:47 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:47 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:47 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:37:48 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:38:00 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:00 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:00 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:00 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:00 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:00 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:00 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:00 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:00 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:38:05 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:05 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:05 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:05 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:05 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:05 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:05 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:05 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:06 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:38:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:11 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:11 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:38:18 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:18 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:18 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:18 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:18 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:18 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:18 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:18 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:18 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:38:32 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:32 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:32 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:32 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:32 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:32 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:32 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:32 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:35 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:35 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:38:36 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:39:03 Error: [MissingPluginException] Plugin UploadPack could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(364): CakePlugin::path('UploadPack')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(225): App::pluginPath('UploadPack')
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(542): App::path('Model/Behavior', 'UploadPack')
+#3 [internal function]: App::load('UploadBehavior')
+#4 [internal function]: spl_autoload_call('UploadBehavior')
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(121): class_exists('UploadBehavior')
+#6 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(68): BehaviorCollection->load('UploadPack.Uplo...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(725): BehaviorCollection->init('Game', Array)
+#8 [internal function]: Model->__construct(Array)
+#9 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Utility/ClassRegistry.php(156): ReflectionClass->newInstance(Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(1007): ClassRegistry::init(Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(833): Model->_constructLinkedModel('Game', 'Game', NULL)
+#12 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(863): Model->__isset('Game')
+#13 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Datasource/DboSource.php(1041): Model->__get('Game')
+#14 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(2653): DboSource->read(Object(User), Array)
+#15 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/UsersController.php(129): Model->find('first', Array)
+#16 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/UsersController.php(236): UsersController->__sendActivationEmail('55')
+#17 [internal function]: UsersController->register()
+#18 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#19 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#20 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#21 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#22 {main}
+2012-04-02 23:39:03 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:39:03 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:39:03 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:39:03 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:39:03 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:39:03 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:39:03 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:39:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:39:04 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-02 23:40:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:40:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:40:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:40:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:40:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:40:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:40:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:40:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:41:43 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
