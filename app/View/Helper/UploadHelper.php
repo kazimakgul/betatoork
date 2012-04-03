@@ -37,7 +37,7 @@ class UploadHelper extends AppHelper {
                 if(isset($data[$model]['id']))
                 {
                     $id = $data[$model]['id'];
-                    $filename = $data[$model][$field];
+                    $filename = $data[$model][$field.'_file_name'];
                 }
             }
             elseif(isset($data['id']))

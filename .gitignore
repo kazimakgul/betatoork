@@ -1,6 +1,0 @@
-/app/tmp/*
-/tmp/*
-app/webroot/upload/games/*
-.DS_Store
-/app/Config/database.php
-app/webroot/upload/games
