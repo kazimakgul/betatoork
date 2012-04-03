@@ -6301,3 +6301,49 @@ n}
 2012-04-03 22:13:42 Error: [MissingControllerException] Controller class ImagesController could not be found.
 #0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2012-04-03 22:15:47 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:15:47 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:15:51 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:15:51 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-03 22:16:10 Error: [MissingPluginException] Plugin UploadPack could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(364): CakePlugin::path('UploadPack')
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(225): App::pluginPath('UploadPack')
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Core/App.php(542): App::path('Model/Behavior', 'UploadPack')
+#3 [internal function]: App::load('UploadBehavior')
+#4 [internal function]: spl_autoload_call('UploadBehavior')
+#5 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(121): class_exists('UploadBehavior')
+#6 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/BehaviorCollection.php(68): BehaviorCollection->load('UploadPack.Uplo...', Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(725): BehaviorCollection->init('Game', Array)
+#8 [internal function]: Model->__construct(Array)
+#9 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Utility/ClassRegistry.php(156): ReflectionClass->newInstance(Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(1007): ClassRegistry::init(Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(833): Model->_constructLinkedModel('Game', 'Game', NULL)
+#12 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(863): Model->__isset('Game')
+#13 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Datasource/DboSource.php(1041): Model->__get('Game')
+#14 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Model/Model.php(2653): DboSource->read(Object(User), Array)
+#15 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/UsersController.php(129): Model->find('first', Array)
+#16 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/Controller/UsersController.php(236): UsersController->__sendActivationEmail('58')
+#17 [internal function]: UsersController->register()
+#18 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#19 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#20 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#21 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#22 {main}
+2012-04-03 22:16:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:16:12 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
