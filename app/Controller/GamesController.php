@@ -1,6 +1,5 @@
 <?php
 App::uses('AppController', 'Controller');
-CakePlugin::load('UploadPack');
 /**
  * Games Controller
  *
