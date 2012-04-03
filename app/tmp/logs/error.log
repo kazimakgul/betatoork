@@ -1705,3 +1705,288 @@
 #1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
 #2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2012-04-03 22:48:59 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:48:59 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:48:59 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:48:59 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:48:59 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:48:59 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:48:59 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:48:59 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:01:34 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:11 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:24 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:02:25 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 23:23:45 Error: [MissingControllerException] Controller class UploadController could not be found.
+#0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
