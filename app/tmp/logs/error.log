@@ -6295,3 +6295,9 @@ n}
 2012-04-04 00:04:14 Error: [MissingControllerException] Controller class UploadController could not be found.
 #0 C:\Program Files (x86)\EasyPHP-5.3.9\www\betatoork\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2012-04-03 22:13:42 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-03 22:13:42 Error: [MissingControllerException] Controller class ImagesController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
