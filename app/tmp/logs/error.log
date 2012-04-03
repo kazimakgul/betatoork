@@ -1281,3 +1281,32 @@
 2012-04-02 23:41:43 Error: [MissingControllerException] Controller class ImgController could not be found.
 #0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2012-04-02 23:56:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:56:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:56:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:56:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:56:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:56:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:56:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:56:46 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-02 23:56:47 Error: [MissingActionException] Action UsersController::favicon.ico() could not be found.
+#0 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/betatoork/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/betatoork/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
