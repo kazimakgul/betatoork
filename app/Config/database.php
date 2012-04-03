@@ -65,7 +65,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'benimdb',
+		'database' => 'NewDB',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
