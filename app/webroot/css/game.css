@@ -1,0 +1,23 @@
+iframe,html,body{
+    margin:0;
+    padding:0;
+    height:100%; 
+}
+
+
+
+iframe {
+    display:block;
+    width:100%;
+    border:none;
+}
+
+#middletop{
+    padding: 50px 0px 0px 0px;
+
+}
+
+#middlebottom{
+    padding: 0px 0px 50px 0px;
+
+}

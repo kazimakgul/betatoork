@@ -1,0 +1,26 @@
+
+
+/* Global ------------------------------------------------------ */
+
+@import url(http://fonts.googleapis.com/css?family=Slackey);
+
+/* Header ------------------------------------------------------ */
+
+header {
+	text-align: center;
+	padding-top: 10px;
+}
+header h1 {
+	display: inline-block;
+	text-transform: uppercase;
+	text-shadow: rgba(255,255,255,0.6) 0 1px 0, rgba(0,0,0,0.2) 0 .15em .25em;
+	font: 3.5em/1.3em "Slackey", "Droid Sans", sans-serif;
+}
+header h1 span {
+	display: block;
+	font-size: 1.25em;
+}
+
+
+
+
