@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
 
-<title>Toork - Default</title>
+<title><?php echo $title_for_layout?></title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
 
 <meta property="og:title" content="Toork"/>
 <meta property="og:type" content="game"/>

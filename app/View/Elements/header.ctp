@@ -2,11 +2,15 @@
 	<div class="hd_container">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	    <tr>
-  	    <td><div class="logo" align="center"><a href="/"><?php echo $this->Html->image('t_lg.png')?></a></div></td>
+  	    <td>
+          <div class="logo" align="center">
+          <?php echo $this->Html->link( $this->Html->image("t_lg.png", array("alt" => "toork logo")),"/", array('escape' => false));?>
+          </div>
+        </td>
   	    <td width="420" style="padding-left:10px;">
   	      <div class="search clearfix">
       			<form action="/game/search/" method="get">
-      				<input id="txt_search" class="search_text" type="text" value="Keywords..." name="search_keyword" />
+      				<input id="txt_search" class="search_text" type="text" placeholder="search a game ..." name="search_keyword" />
       				<input class="search_button" type="image" value="" name="search" src="/betatoork/img/t_search_btn.png" />
       			</form>
       		</div>
@@ -20,18 +24,27 @@
       				<a href="/game/most_played/"></a>
       				<a href="/game/top_rated/"></a>
       				<a href="#" onclick="return false;"></a>
-      				<!--if user loged in-->
-      				<a href="userchannellink"></a>
-      				<!--else-->
-      				<a class="unauth" href="#" data-bind="click: function() { $('#register').lightbox_me(); }"></a>
-      				<!--end if-->
+
+              <?php if($this->Session->check('Auth.User')){?>
+                  <a href="userchannellink"></a>
+               <?php }else{?>
+                   <a class="unauth" href="#" data-bind="click: function() { $('#register').lightbox_me(); }"></a>
+               <?php } ?>
+
       			</div>
       		</div>
   	    </td>
   	    <!--if user authenticated -->
-  	    <td width="59" style="padding-left:15px;">
-      		<a class="logout_btn" href="user/logout"></a>
-  	    </td>
+
+              <?php  if($this->Session->check('Auth.User')){ ?>
+                  <td width="59" style="padding-left:15px;">
+                  <?php
+                  $logouturl=$this->Html->url(array("controller" => "users","action" =>"logout"));
+                  ?>
+                    <a class="logout_btn" href="<?php echo $logouturl?>"></a>
+                  </td>
+               <?php } ?>
+  	  
   	    <!--end if-->
   	  </tr>
 	  </table>
