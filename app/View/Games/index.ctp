@@ -1,65 +1,59 @@
-
-
-<div class="wrapper" >
 <div class="content">
-<br><br><br>
-<?php echo $this->element('sorting');?>
+  <div id="up">
+	<?php  echo $this->element('slider'); ?>
 
-<?php foreach ($games as $game): ?>
-
-<div class='boxy'>
-	       			
-<?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>		                
-						
-						<a href='<?php echo $playurl; ?>'>
-		                <div class="view view-first board" >
-		                    <?php echo $this->Upload->image($game,'Game.picture'); ?>
-		                    <div class="mask">
-		                        <h2><?php echo h($game['Game']['name']); ?></h2>
-		                         <p>by <?php echo h($game['User']['username']); ?></p>
-		                        <a href="<?php echo $playurl; ?>" class="info">Play Game</a>
-		                    </div>
-		                </div>
-	                </a>
-						
+	<?php
+  	if($this->Session->check('Auth.User'))
+    	{  echo $this->element('channel_user_panel'); }
+  	 else 
+  	  {
+	  ?>
+	  <div data-bind="ifnot: user.logged_in()">
+    	
+		<?php  echo $this->element('unlogged_user_panel');  }?>
+    	</div>
+  	
+	
+	
+  </div>
+  <div class="down clearfix">
+    <div class="left_panel">
+		<?php echo $this->element('categories_left_menu'); ?>
+		<?php echo $this->element('best_channels_left_menu'); ?>
+    </div>
+    <div class="right_panel">
+      <div id="toprated">
+        <div class="clearfix">
+          <div class="toprated"></div>
+          <a class="seeall" href="{% url toprated-games %}">(See All)</a>
+        </div>
 				
-	                	<div class='centerstars'>
-						<div class="nostars">
-							<div class="rating" style="width:<?php echo h($game['Game']['starsize']); ?>%"></div>
-							<div class="star">
-							<div class="star">
-							<div class="star">
-							<div class="star">
-							<div class="star">
-							</div></div></div></div></div>
-							<div class="ratecount" style="width:120px;text-align:center;"><a>(<?php echo h($game['Game']['rate_count']); ?>)</a></div>
-						</div></div>
-                </div>
-
-<?php endforeach; ?>
-
-
-	<div align='center' class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>
-</p>
-
-	</div>
-
-<?php
-echo $this->element('footnote');
-?>
-
-<!- end wrapper and content-!>
-<br><br><br>
-</div>
+        <div class="sep"></div>
+        <ul>
+				<!--Foreach for topgames-->
+          <li class="clearfix">
+					<?php echo $this->element('game_box'); ?>
+         </li>
+				<!--Foreach for topgames ends-->
+        </ul>
+				
+      </div>
+      <div id="mostplayed">
+        <div class="clearfix">
+          <div class="mostplayed"></div>
+          <a class="seeall" href="{% url most-played-games %}">(See All)</a>
+        </div>
+				{% with most_games as games %}
+        <div class="sep"></div>
+          <ul>
+					{% for game in games %}
+            {% cycle '<li class="clearfix">' '' '' '' %}
+						{% include "game/game_box.html" %}
+            {% cycle '' '' '' '</li>' %}
+					{% endfor %}
+          </ul>
+				{% endwith %}
+      </div>
+    </div>
+  </div>
 </div>
