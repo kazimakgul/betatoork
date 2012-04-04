@@ -1,0 +1,31 @@
+﻿.down {margin-top:10px; width:100%; height:100%;}
+
+.left_panel{width:250px; float:left; margin-left:20px;}
+.left_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:10px;}
+.left_panel ul li{height:21px; padding-left:40px; padding-top:4px;}
+.left_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png);}
+.left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none;} 
+.left_panel ul li a:hover{text-decoration:underline;} 
+.categories{background-image:url(../img/t_category_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
+.best{background-image:url(../img/t_best_channel_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
+
+.right_panel{width:980px; float:right; margin-left:10px;}
+.right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px;}
+.right_panel ul li{height:100%; padding-left:20px; margin-top:10px;}
+.right_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png); padding-top:5px;}
+.toprated{background-image:url(../img/t_top_rated_games.png); width:298px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
+.seeall{display:block; font-family:Arial; margin:2px; font-size:11px; text-decoration:none; float:left; margin-top:25px; margin-left:10px;}
+.seeall:hover {text-decoration:underline;}
+
+.mostplayed{background-image:url(../img/t_most_played_games_back.png); width:332px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
+
+.rating {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position:-93px 0px;}
+.ratingresult {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat;}
+.rating1 {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position: -74px 0px;}
+.rating2 {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position: -55px 0px;}
+.rating3 {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position: -36px 0px;}
+.rating4 {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position: -17px 0px;}
+.rating5 {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position: 2px 0px;}
+
+.rating a{float:left; display:block; width:15px; height:17px; margin:1px 2px;}
+.rating a:hover{cursor:pointer;}

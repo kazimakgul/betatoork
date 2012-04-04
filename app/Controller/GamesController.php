@@ -34,7 +34,7 @@ class GamesController extends AppController {
 
 	
 	public function index() {
-		$this->layout='index';
+		$this->layout='base';
 		$this->Game->recursive = 0;
 		$cond= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond));

@@ -1,23 +1,54 @@
-iframe,html,body{
-    margin:0;
-    padding:0;
-    height:100%; 
-}
+﻿.content{padding-top:60px; width:1265px; margin-bottom:60px;}
 
+.left_panel{width:250px; float:left;}
+.left_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:10px;}
+.left_panel ul li{height:21px; padding-left:40px; padding-top:4px;}
+.left_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png);}
+.left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none; display:block;} 
+.left_panel ul li a:hover{text-decoration:underline;} 
+.categories{background-image:url(../img/t_category_back.png); margin-top:40px; padding-top:60px; background-repeat:no-repeat;}
+.best{background-image:url(../img/t_best_channel_back.png); margin-top:45px; padding-top:60px; background-repeat:no-repeat;}
 
+.right_panel{width:1000px; float:right; margin-left:15px; overflow:visible;}
+.right_panel span{display:block; float:left;}
+.right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin:5px 0px;} 
+.right_panel .greyback{background-color:#dfe0e0; width:980px; padding:10px;}           
+.right_panel .whiteback{background-color:White; width:100%; height:100%; overflow:hidden; }
+.right_panel .adsense{margin:20px 75px; width:728px; height:90px;}
+.right_panel .gamedesc{margin:0px 75px; height:150px;}
+.right_panel .gamedesc p{color:#0b81c5; font-family:Arial; font-size:25px; font-weight:bold;}
+.right_panel .gamedesc span{color:#0b81c5; font-family:Arial; font-size:13px;}
+.right_panel .game{margin:20px 75px;}
+.right_panel .gameinfo{margin:40px 120px; height:80px;}
+.right_panel .gameinfo .gametitle{float:left;}
+.right_panel .gameinfo .rate{float:right;}
+.right_panel .gameinfo .ratepanel p{float:left; color:#0b81c5; font-family:Arial; font-size:25px; font-weight:bold; margin-right:20px; margin-top:5px;}
+.right_panel .gameinfo .title{color:#0b81c5; font-family:Arial; font-size:15px; font-weight:bold; float:left; width:100px;}
+.right_panel .gameinfo .semicolon{color:#0b81c5; font-family:Arial; font-size:15px; font-weight:bold; float:left; margin-right:10px;}
+.right_panel .gameinfo .info{color:#0b81c5; font-family:Arial; font-size:13px; float:left; width:180px;}
+.right_panel .gameinfo .butonset{margin-top:20px;}
+.right_panel .gameinfo .share{float:left; width:152px; height:38px; background-image:url(../img/t_gamepage_share_btn.png); background-position:0 0; }
+.right_panel .gameinfo .favorite{float:left; width:46px; height:38px; background-image:url(../img/t_gamepage_favorite_btn.png); background-position:0 0; }
+.right_panel .gameinfo .favorited{float:left; width:46px; height:38px; background-image:url(../img/t_gamepage_favorite_btn.png); background-position:0 38px; }
+.right_panel .gameinfo .fullscreen{float:left; width:46px; height:38px; background-image:url(../img/t_gamepage_fullscreen_btn.png); background-position:0 0; }
+.right_panel .gameinfo .flag{float:left; width:46px; height:38px; background-image:url(../img/t_gamepage_flag_btn.png); background-position:0 0; }
+.right_panel .gameinfo .flaged{float:left; width:46px; height:38px; background-image:url(../img/t_gamepage_flag_btn.png); background-position:0 38px; }
 
-iframe {
-    display:block;
-    width:100%;
-    border:none;
-}
-
-#middletop{
-    padding: 50px 0px 0px 0px;
-
-}
-
-#middlebottom{
-    padding: 0px 0px 50px 0px;
-
-}
+.right_panel .fbcomment{padding-bottom:40px;overflow:visible;}
+.ratecontainer { float:right; }
+.rating {width:205px; height:33px; background-image:url(../img/t_gamepage_rate.png); background-repeat:no-repeat;  background-position:-205px 0px;}
+.ratingresult {float:right; width:205px; height:33px; background-image:url(../img/t_gamepage_rate.png); background-repeat:no-repeat; }
+.rating a{float:left; display:block; width:35px; height:33px; margin:0px 3px;}
+.rating a:hover{cursor:pointer;}
+.rating a:active, .rating a:visited, .rating a:hover { outline:0 !important; }
+.rating_1 div.rating { background-position:-164px 0 !important; }
+.rating_2 div.rating { background-position:-123px 0 !important; }
+.rating_3 div.rating { background-position:-82px 0 !important; }
+.rating_4 div.rating { background-position:-41px 0 !important; }
+.rating_5 div.rating { background-position:-0 0 !important; }
+.rating_1 { background-position:-164px 0; }
+.rating_2 { background-position:-123px 0; }
+.rating_3 { background-position:-82px 0; }
+.rating_4 { background-position:-41px 0; }
+.rating_5 { background-position:0 0; }
+.addthis_button{margin-right:12px;}

@@ -1,23 +1,56 @@
-<div id="bottomBar_wrap" class="fixedWrap" style="position: fixed; ">
-<div id="bottomBar">
-
-<div class="socialwrap" style="width:100%; height:35px;vertical-align:middle; text-align:center; ">
-
-<ul class="like-buttons">
-<li class="g-plus-one">
-    <g:plusone count="false"></g:plusone>
-</li>
-<li class="twitter-like">
-    <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://game.toork.com" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-</li>   
-
-<li class="fb-like">
-    <iframe src="http://www.facebook.com/plugins/like.php?href=http://game.toork.com&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;font=arial&amp;colorscheme=dark&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:350px; height:30px; color:#fff!important;" allowTransparency="true"></iframe>
-</li>
-</ul>
-
-
+<div class="footer">
+  <div class="ftop clearfix">
+    <div class="fmenu clearfix">
+      <div class="fgames">
+        <p>Games</p>
+        <ul>
+          <li><a href="/game/recently_added/">Last Added Games</a></li>
+          <li><a href="/game/top_rated/">Top Rated Games</a></li>
+          <li><a href="/game/most_played/">Most Played Games</a></li>
+        </ul>
+      </div>
+      <div class="fterms">
+        <p>Terms & Conditions</p>
+        <ul>
+          <li><a href="">Terms & Conditions</a></li>
+          <li><a href="">Privacy Policy</a></li>
+          <li><a href="">FAQ</a></li>
+          <li><a href="">Documents</a></li>
+          <li><a href="">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="flogo">
+      <div class="logofooter"></div>
+    </div>
+  </div>
+  <div class="fmid">
+    <div class="fotosep"></div>
+  </div>
+  <div class="fdown">
+    <ul>
+      <li><a class="facebook" href="http://www.facebook.com/thetoork"></a></li>
+      <li><a class="twitter" href="https://twitter.com/thetoork"></a></li>
+      <li><a class="google" href="https://plus.google.com/u/0/117184471094869274585"></a></li>
+    </ul>
+    <span>Copyright 2011 © Toork Games All Rights Reserved</span>
+  </div>
 </div>
-</div>	
+<script type='text/javascript'>
+$(function() {
 
-</div>
+
+  if($("#register_form").length) {
+    viewModel.registerForm = new RegisterForm("#register_form");
+  }
+  if($("#login_form").length) {
+    viewModel.loginForm = new LoginForm("#login_form");
+  }
+
+  if($("#panel_login_form").length) {
+    viewModel.panelLoginForm = new LoginForm("#panel_login_form");
+  }
+
+  ko.applyBindings(viewModel);
+});
+</script>

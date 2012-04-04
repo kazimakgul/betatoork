@@ -1,0 +1,33 @@
+﻿.left_panel{width:250px; float:left;}
+.left_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:10px;}
+.left_panel ul li{height:21px; padding-left:40px; padding-top:4px;}
+.left_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png);}
+.left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none;} 
+.left_panel ul li a:hover{text-decoration:underline;} 
+.categories{background-image:url(../img/t_category_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
+.best{background-image:url(../img/t_best_channel_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
+
+.right_panel{width:1000px; float:right;}
+.right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:20px;}     
+.right_panel .rowheight{height:170px;}
+.subscriberhd{background-image:url(../img/t_subscribers_back.png); width:219px; padding-top:60px; background-repeat:no-repeat; float:left;}
+.subscriptionhd{background-image:url(../img/t_subscriptions_back.png); width:230px; padding-top:60px; background-repeat:no-repeat; float:left;}
+.subcount{ display:block;float:left; font-family:Arial; color:#0b81c5; margin:2px; font-size:12pt; margin-top:20px; margin-left:10px;}
+.subcard {float:left; width:265px; height:120px; margin-right:10px; margin-left:20px;} 
+.subcard a{float:left; display:block;}
+
+.subcard .viewchannel{width:17px; height:15px; background:url(../img/t_subscribecard_channel_ico.png) no-repeat 0 0; margin-top:7px; margin-right:5px;}
+.subcard .viewchannel:hover{background-position:0 -15px;}
+.subcard .block{width:13px; height:13px; background:url(../img/t_subscribecard_block_ico.png) no-repeat 0 0; margin-top:7px; margin-right:5px;}
+.subcard .block:hover{background-position:0 -13px;}        
+.subcard .subup{width:265px; height:25px; background:url(../img/t_subscribecard_up_back.png) no-repeat 0 0; padding-bottom:5px;} 
+.subcard .subup .channelname{font-family:Arial; font-size:10pt; color:#0b81c5; text-decoration:none; font-weight:600; margin:7px 15px; width:180px;}
+.subcard .subup .channelname:hover{text-decoration:underline}
+.subcard .submid{width:235px; height:100%; background:url(../img/t_subscribecard_mid_back.png) repeat-y 0 0; padding:0 15px;}
+.subcard .submid .cardsep{height:3px; width:100%; background:url(../img/t_subscribecard_sep.png) repeat-x; margin-bottom:10px; } 
+.subcard .submid .channelavatar{float:left; background:url(../img/t_subscribecard_userback.png) no-repeat; padding:4px; height:95px; width:71px;} 
+.subcard .submid .channelavatar img{height:95px; width:71px;} 
+.subcard .submid ul{float:left; margin-left:10px; margin-top:10px;} 
+.subcard .submid ul a{font-family:Arial; font-size:10pt; color:#979797; text-decoration:none;}     
+.subcard .submid ul a:hover{text-decoration:underline;}  
+.subcard .subdown{width:265px; height:13px; background:url(../img/t_subscribecard_down_back.png) no-repeat 0 0;}

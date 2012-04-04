@@ -1,0 +1,45 @@
+﻿.down {margin-top:10px;}
+
+.left_panel{width:250px; float:left;}
+.left_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:10px;}
+.left_panel ul li{height:21px; padding-left:40px; padding-top:4px;}
+.left_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png);}
+.left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none;} 
+.left_panel ul li a:hover{text-decoration:underline;} 
+.categories{background-image:url(../img/t_category_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
+.best{background-image:url(../img/t_best_channel_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
+
+.right_panel{width:985px; float:right; margin-left:20px;}
+.right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px;}
+.register{background-image:url(../img/t_register_ico.png); padding-top:60px; background-repeat:no-repeat;}
+.rformback{background-color:#dfe0e0; width:875px; height:700px; padding:10px; margin-top:15px;}
+.rwhiteback{background-color:White; width:100%; height:100%; overflow:auto;}
+.rwhiteback ul{margin-top:50px;}
+.rwhiteback ul li{margin-bottom:5px;}
+.rwhiteback p{font-family:Verdana; font-size:11pt; color:#0b81c5; margin:5px; margin-right:10px; float:left; font-weight:100;}
+.rwhiteback .firstcol{width:200px; margin-left:50px;}
+.rwhiteback .thirdcol{float:left; margin-right:3px;}
+
+.rwhiteback .inputleft{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_left.png); }
+.rwhiteback .inputmid{float:left; height:30px; background-image:url(../img/t_inputtext_mid.png); }
+.rwhiteback .inputmid input{background-color:transparent; width:520px; border:none; margin-top:7px; color:#0b81c5;}
+.rwhiteback .daymid{float:left; width:60px; height:27px; background-image:url(../img/t_inputtext_mid.png); padding-top:3px; padding-left:3px;}
+.rwhiteback .monthmid{float:left; width:90px; height:27px; background-image:url(../img/t_inputtext_mid.png); padding-top:3px; padding-left:3px;}
+.rwhiteback .yearmid{float:left; width:70px; height:27px; background-image:url(../img/t_inputtext_mid.png); padding-top:3px; padding-left:3px;}
+.rwhiteback .inputright{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_right.png); }
+
+.rwhiteback .textareaup{width:541px; height:12px; background-image:url(../img/t_textarea_up.png); margin-top:5px;}
+.rwhiteback .textareamid{width:541px; background-image:url(../img/t_textarea_mid.png); background-repeat:repeat-y;}
+.rwhiteback .textareadown{width:541px; height:12px; background-image:url(../img/t_textarea_down.png);}
+
+.rwhiteback .rselect{float:left; display:block; color:#0b81c5; padding-left:25px; font-family:Verdana; font-size:10pt; text-decoration:none; height:18px; width:75px; margin-top:5px; background-image:url(../img/t_radio.png); background-repeat:no-repeat; background-position:0px -18px;}
+.rwhiteback .rdeselect{float:left; display:block; color:#0b81c5; padding-left:25px; font-family:Verdana; font-size:10pt; text-decoration:none; height:18px; width:75px; margin-top:5px; background-image:url(../img/t_radio.png); background-repeat:no-repeat; background-position:0px 0px;}
+
+.rwhiteback .dropselect {width:511px; height:27px; background-image:url(../img/t_inputtext_mid.png); padding-top:3px; padding-left:3px; float:left;}
+.rwhiteback .imgverify {padding-top:8px;}
+.rwhiteback .scroll-pane{width: 530px; height: 130px; margin-left:10px; overflow: auto;}
+
+.rwhiteback .licence{display:block; height:16px; width:200px; margin-left:280px; padding-left:20px; margin-top:10px; font-family:Verdana; font-size:10pt; color:#1581c4; text-decoration:none; background-image:url(../img/t_licence_check.png); background-position:0 0; background-repeat:no-repeat;}
+.rwhiteback .licencecheck{display:block; height:16px; width:200px; margin-left:280px; padding-left:20px; margin-top:10px;  font-family:Verdana; font-size:10pt; color:#1581c4; text-decoration:none; background-image:url(../img/t_licence_check.png); background-position:0 -16px; background-repeat:no-repeat;}
+
+.rwhiteback .register{display:block; height:28px; width:182px; margin-left:640px; background-image:url(../img/t_register_btn.png);}

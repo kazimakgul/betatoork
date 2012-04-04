@@ -1,0 +1,161 @@
+﻿/* User Login Panel */
+.userpanel{width:249px; height:361px; background-image:url(../img/t_login_pnl_back.png);}
+.home .userpanel { float:right; }
+.userpanel p{color:White; font-family:Arial; font-size:10pt; font-weight:600; padding:0px 40px; text-align:center; padding-top:15px;}
+.userpanel input {border:none; background-color:transparent; color:#0b81c5; font-size:15px;}
+.userpanel input{margin-left:25px;}
+.userpanel .email{width:201px; height: 51px; background-image:url(../img/t_login_email_back.png); margin-left:25px; margin-top:15px;}
+.userpanel #txt_email{margin-top: 23px; margin-left:40px; width:150px;}
+.userpanel .pass{width:201px; height: 50px; background-image:url(../img/t_login_pass_back.png); margin-left:25px; margin-top:10px;}
+.userpanel #txt_password{margin-top: 23px; margin-left:40px; width:150px;}
+.userpanel a {display:block; height:15px; font-family:Arial; color:White; text-decoration:none;}
+.userpanel a.rememberme{display:inline;font-size:13px;}
+.userpanel a:hover{text-decoration:underline;}
+.remember{font-size:13px; font-weight:500; margin:20px 25px; padding-left:20px; background-image:url(../img/t_remember_me.png); background-position:0 0; background-repeat:no-repeat;}
+.remembertick{font-size:13px; font-weight:500; margin:20px 25px; padding-left:20px; background-image:url(../img/t_remember_me.png); background-position:0 -15px; background-repeat:no-repeat;}
+.loginbtn{display:block; width:147px; height:38px; margin-left:20px; background-image:url(../img/t_login_btn.png);}
+.loginbtn:hover{cursor:pointer;}
+.forget{margin-top:15px; margin-left:25px; margin-right:25px; font-size:13px; font-weight:500;}
+.bemember{margin-top:10px; margin-left:25px; margin-right:25px; font-size:13px; font-weight:500;}
+
+/* User Control Panel */
+.userpanel .useravatar{background-color:White;width:100px;height:130px;margin:20px auto 0 auto;}
+.userpanel .useravatar img{width:90px; height: 120px; margin:5px;}
+.userpanel .wall{font-size:9pt; background-image:url(../img/t_userpanel_wall_ico.png); background-repeat:no-repeat; padding-left:25px; margin-left:30px; margin-top:10px;}
+.userpanel .panelsep{height:2px; background-image:url(../img/t_login_sep_back.png); margin:5px 20px; }
+.userpanel .info{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_userpanel_info_ico.png); background-repeat:no-repeat;}
+.userpanel .added{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_userpanel_add_ico.png); background-repeat:no-repeat;}
+.userpanel .slide{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_userpanel_slide_ico.png); background-repeat:no-repeat;}
+.userpanel .adsense{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_userpanel_google_ico.png); background-repeat:no-repeat;}
+.userpanel .subscriber{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_subscriber_ico.png); background-repeat:no-repeat;}
+.userpanel .subscription{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_subscription_ico.png); background-repeat:no-repeat;}
+.userpanel .change_password{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_subscription_ico.png); background-repeat:no-repeat;}
+
+/* User Statistics Panel */
+.userpanel .activity{ background-image:url(../img/t_activity_ico.png); background-repeat:no-repeat; padding-left:25px; margin-left:30px; margin-top:10px; font-family:Arial; font-size:12pt; color:White; font-weight:600;}
+.userpanel .added{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_added_ico.png); background-repeat:no-repeat;}
+.userpanel .favorite{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_favorite_ico.png); background-repeat:no-repeat;}
+.userpanel .played{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_played_ico.png); background-repeat:no-repeat;}
+.userpanel .subscriber{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_subscriber_ico.png); background-repeat:no-repeat;}
+.userpanel .subscription{padding-left:25px; margin:5px 30px; font-size:9pt; background-image:url(../img/t_subscription_ico.png); background-repeat:no-repeat;}
+
+
+#panel_login_form{
+	padding-top:15px;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 12px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  filter: alpha(opacity=20);
+  -moz-opacity: 0.2;
+  opacity: 0.2;
+}
+.close:hover {
+  color: #000000;
+  text-decoration: none;
+  filter: alpha(opacity=40);
+  -moz-opacity: 0.4;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+
+.alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #f3edd2;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.alert, .alert-heading {
+  color: #c09853;
+}
+.alert .close {
+  *margin-top: 3px;
+  /* IE7 spacing */
+
+  position: relative;
+  right: -21px;
+}
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #cfe8c4;
+}
+.alert-success, .alert-success .alert-heading {
+  color: #468847;
+}
+.alert-danger, .alert-error {
+  background-color: #f2dede;
+  border-color: #e9c7c7;
+}
+.alert-danger,
+.alert-error,
+.alert-danger .alert-heading,
+.alert-error .alert-heading {
+  color: #B94A48;
+}
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bfe1f2;
+}
+.alert-info, .alert-info .alert-heading {
+  color: #3a87ad;
+}
+.alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.alert-block > p, .alert-block > ul {
+  margin-bottom: 0;
+}
+.alert-block p + p {
+  margin-top: 5px;
+}
+
+.userpanel .alert{
+margin: 0 10px;
+text-align:center;
+padding: 8px 14px;
+}
+
+.placeholder { color: #aaa; }
+input::-webkit-input-placeholder {
+    color:    #aaa;
+}
+input:-moz-placeholder {
+    color:    #aaa;
+}
+
+
+.lightbox_overlay input::-webkit-input-placeholder{
+  color:    #aaa;
+  font-style: normal;
+} 
+
+.lightbox_overlay input:-moz-placeholder{
+  color:    #aaa;
+  font-style: normal;
+}
+
+input:-webkit-autofill {
+    color: #fff !important;
+}
+
+.clear{
+  clear: both;
+}
+
+.alert.channel{
+margin: 20px 15px;
+text-align:center;
+font-weight:bold;
+text-shadow: white 0 1px 0;
+}

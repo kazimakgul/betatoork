@@ -1,0 +1,170 @@
+/*------------------ selectDark -----------------*/
+		
+.selectDark .styleSelect_item_start{
+		height:10px;
+		border-left:1px solid #00aeef;
+		border-right:1px solid #00aeef;
+		border-top:1px solid #00aeef;
+		background-color:#fff;
+		}
+		
+.selectDark .styleSelect_item_content{
+		height:140px;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		background:#fff;
+		border-left:1px solid #00aeef;
+		border-right:1px solid #00aeef;
+		}
+		
+.selectDark .styleSelect_item_end{
+		height:9px;
+		border-left:1px solid #00aeef;
+		border-right:1px solid #00aeef;
+		border-bottom:1px solid #00aeef;
+		background-color:#fff;
+		}
+
+.selectDark{
+		font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:12px;
+		}
+
+.selectDark .passiveSelect,.selectDark .activeSelect{
+		height:25px;
+		line-height:2em;
+		display:block;
+		cursor:pointer;	
+		margin-right:10px;
+		}
+		
+.selectDark .passiveSelect{
+		color:#fff;
+		}
+		
+.selectDark .activeSelect{
+		background:url("../img/darkActive.jpg") no-repeat top right;
+		color:#00aeef;
+		padding-left:10px;
+		margin-top:1px;
+		}
+		
+.selectDark ul{
+		padding:0;
+		margin:0;
+		list-style:none;
+		cursor:pointer;	
+		}
+		
+.selectDark li{
+		padding:0;
+		margin:0 10px;
+		font-weight:normal;
+		padding:2px 0 2px 12px;
+		color:#aeaeae;
+		}
+		
+.selectDark li:hover{
+		color:#fff;
+		background-color:#00aeef;
+		}
+		
+.selectDark .selected{
+		color:#0b81c5;
+		font-weight:bold;
+		}
+		
+.selectDark .selected:hover{
+        color:#fff;
+        font-weight:bold;
+        }
+		
+/*------------------ otherStyles -----------------*/
+
+.select{
+		padding:20px;
+		float:left;
+		}
+
+.clear{
+	clear:both;
+	}
+/*------------------ selectGen -----------------*/	
+.selectGen .styleSelect_item_start{
+		height:10px;
+		border-left:1px solid #00aeef;
+		border-right:1px solid #00aeef;
+		border-top:1px solid #00aeef;
+		background-color:#fff;
+		}
+		
+.selectGen .styleSelect_item_content{
+		height:100%;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		background:#fff;
+		border-left:1px solid #00aeef;
+		border-right:1px solid #00aeef;
+		}
+		
+.selectGen .styleSelect_item_end{
+		height:9px;
+		border-left:1px solid #00aeef;
+		border-right:1px solid #00aeef;
+		border-bottom:1px solid #00aeef;
+		background-color:#fff;
+		}
+
+.selectGen{
+		font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:12px;
+		}
+
+.selectGen .passiveSelect,.selectGen .activeSelect{
+		height:25px;
+		line-height:2em;
+		display:block;
+		cursor:pointer;	
+		margin-right:10px;
+		}
+		
+.selectGen .passiveSelect{
+		color:#fff;
+		}
+		
+.selectGen .activeSelect{
+		background:url("../img/darkActive.jpg") no-repeat top right;
+		color:#00aeef;
+		padding-left:10px;
+		margin-top:1px;
+		}
+		
+.selectGen ul{
+		padding:0;
+		margin:0;
+		list-style:none;
+		cursor:pointer;	
+		}
+		
+.selectGen li{
+		padding:0;
+		margin:0 10px;
+		font-weight:normal;
+		padding:2px 0 2px 12px;
+		color:#aeaeae;
+		}
+		
+.selectGen li:hover{
+		color:#fff;
+		background-color:#00aeef;
+		}
+		
+.selectGen .selected{
+		color:#0b81c5;
+		font-weight:bold;
+		}
+		
+.selectGen .selected:hover{
+        color:#fff;
+        font-weight:bold;
+        }

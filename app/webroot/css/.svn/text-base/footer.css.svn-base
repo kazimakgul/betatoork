@@ -1,0 +1,18 @@
+﻿.footer{width:100%; height:218px; background-image:url(../img/t_footer_back.jpg); background-color:#022e47; background-repeat:repeat-x;}
+.footer p{font-family:Verdana; font-size:16pt; color:White; font-weight:600;}
+.footer .ftop {margin-left:120px;}
+.footer .ftop .fmenu{float:left; margin-top:30px; width:450px;}
+.footer .ftop .fmenu a{font-family:Verdana; font-size:13px; color:White; text-decoration:none; margin-left:2px;}
+.footer .ftop .fmenu a:hover{ text-decoration:underline;}
+.footer .ftop .fmenu .fgames{float:left; margin-right:30px;}
+.footer .ftop .fmenu .fterms{float:right;}
+.footer .flogo{float:right; margin-top:30px; margin-right:80px;}
+.footer .logofooter{background-image:url(../img/t_footer_logo.png); width:313px; height:116px;}
+.footer .fotosep{margin-left:120px; margin-right:80px; margin-top:20px; height:1px; background-image:url(../img/t_footer_sep.png);}
+.footer .fdown {margin-left:120px; margin-top:10px;}
+.footer .fdown ul li{float:left; margin-right:10px;}
+.footer .fdown a{display:block; width:32px; height:33px;}
+.footer .fdown span{display:block; float:right; margin-right:80px; margin-top:10px; font-family:Verdana; font-size:10px; color:White;}
+.footer .fdown .facebook{background-image:url(../img/t_footer_facebook_ico.png); }
+.footer .fdown .twitter{background-image:url(../img/t_footer_twitter_ico.png); }
+.footer .fdown .google{background-image:url(../img/t_footer_google_ico.png); }
