@@ -11,12 +11,12 @@
 
 
 <div class="userpanel">
-  <p>socialesman</p>
+  <p><?php echo $username ?></p>
   <div class="useravatar">
     <!-- if facebook logedin 
       <fb:profile-pic uid="" size="small" width="100" height="200" linked="false"/> -->
     <!-- else -->
-      <img alt="" src="{{ user_for_userpanel.get_profile.channel_avatar.content.url }}" />
+      <img alt="" src="/betatoork/img/avatar1.jpg" />
    <!-- end -->
   </div>
   <div class="activity">Activity</div>
