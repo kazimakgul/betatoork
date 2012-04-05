@@ -36,7 +36,7 @@ class GamesController extends AppController {
 	public function index() {
 		$this->layout='base';
 		$this->Game->recursive = 0;
-		
+		$this->channel_user_panel();
 		$cond= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond));
 		
@@ -50,6 +50,20 @@ class GamesController extends AppController {
 
     	$this->set('categories', $this->paginate('Category'));
 		$this->set('title_for_layout', 'Toork - is a gamelist share platform - create your playlist of games and share your list');
+	}
+
+	public function channel_user_panel() {
+		$this->layout='base';
+	    $userid = $this->Session->read('Auth.User.id');
+	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
+	   // $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+	   // $subscribeto = $this->Game->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+	    $this->set('gamenumber', $gamenumber);
+	    $this->set('favoritenumber', $favoritenumber);
+	   // $this->set('subscribe', $subscribe);
+	   // $this->set('subscribeto', $subscribeto);
+
 	}
 
 	public function mygames() {
