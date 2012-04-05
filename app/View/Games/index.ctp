@@ -47,16 +47,15 @@
           <div class="mostplayed"></div>
           <a class="seeall" href="{% url most-played-games %}">(See All)</a>
         </div>
-				{% with most_games as games %}
         <div class="sep"></div>
           <ul>
-					{% for game in games %}
-            {% cycle '<li class="clearfix">' '' '' '' %}
-						{% include "game/game_box.html" %}
-            {% cycle '' '' '' '</li>' %}
-					{% endfor %}
+
+	           <li class="clearfix">
+            <?php echo $this->element('game_box'); ?>
+            </li>
+            
           </ul>
-				{% endwith %}
+
       </div>
     </div>
   </div>
