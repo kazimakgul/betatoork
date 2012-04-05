@@ -30,6 +30,7 @@
 				
         <div class="sep"></div>
         <ul>
+		<?php $games=$top_rated_games; ?>
 				<!--Foreach for topgames-->
         
           <li class="clearfix">
@@ -49,11 +50,12 @@
         </div>
         <div class="sep"></div>
           <ul>
-
+		  <?php $games=$most_played_games; ?>
+           <!--foreach begin-->
 	           <li class="clearfix">
             <?php echo $this->element('game_box'); ?>
             </li>
-            
+            <!--foreach ends-->
           </ul>
 
       </div>

@@ -36,8 +36,18 @@ class GamesController extends AppController {
 	public function index() {
 		$this->layout='base';
 		$this->Game->recursive = 0;
+		
 		$cond= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond));
+		
+    	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
+        'order' => array('Game.starsize' => 'desc')
+    )));
+	
+	
+	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
+        'order' => array('Game.starsize' => 'desc')
+    )));//playcounta göre ayarlanacak
 
     	$this->set('categories', $this->paginate('Category'));
 		$this->set('title_for_layout', 'Toork - is a gamelist share platform - create your playlist of games and share your list');
