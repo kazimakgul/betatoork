@@ -9,6 +9,28 @@
 // }(document, 'script', 'facebook-jssdk'));
 </script>-->
 
+
+<div class="userpanel">
+  <p>socialesman</p>
+  <div class="useravatar">
+    <!-- if facebook logedin 
+      <fb:profile-pic uid="" size="small" width="100" height="200" linked="false"/> -->
+    <!-- else -->
+      <img alt="" src="{{ user_for_userpanel.get_profile.channel_avatar.content.url }}" />
+   <!-- end -->
+  </div>
+  <div class="activity">Activity</div>
+  <div class="panelsep"></div>
+  <a class="added" href="{% url channel-games user_for_userpanel.username %}"><!-- number of games --> games added</a>
+  <a class="favorite" href="{% url favorite-games user_for_userpanel.username %}"><!-- number of favorites --> games favorite</a>
+  <a class="played" href="{% url played-games user_for_userpanel.username %}"><!-- number of played games --> games played</a>
+  <a class="subscriber" href="{% url subscribers user_for_userpanel.username %}"><!-- number of subscribers --> Subscribers</a>
+  <a class="subscription" href="{% url subscriptions user_for_userpanel.username %}"> <!-- number of subscriptions -->Subscriptions</a>
+</div>
+<a href="javascript:void();" class="subscribe" id="subscribe"></a>
+
+
+
 <div id="fb-root"></div>
 
 <script>

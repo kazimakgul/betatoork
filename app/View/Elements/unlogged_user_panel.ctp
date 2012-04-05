@@ -1,15 +1,19 @@
 <div class="userpanel">
   <p>Member Login</p>
-  <form name="panelLoginForm" id="panel_login_form" method="post" >
+                  <?php
+                  $loginurl=$this->Html->url(array("controller" => "users","action" =>"login"));
+                  ?>
+  <form name="panelLoginForm" id="panel_login_form" method="post" action="<?php echo $loginurl ?>">
     
 
 <div style="display:none;" class="alert alert-error"></div>
 
   	<div class="email">
-      <input id="txt_email" type="text" name="email" placeholder="Email Address" />
+      <?php echo $this->Form->error('username'); ?>
+      <input id="txt_email" type="text" name="data[User][username]" placeholder="Email Address" required/>
   	</div>
   	<div class="pass">
-	    <input id="txt_password" type="password" name="password" placeholder="Password" />
+	    <input id="txt_password" type="password" name="data[User][password]" placeholder="Password" />
   	</div>
 
     <input type="checkbox" class="checkbox" name="rememberme" />

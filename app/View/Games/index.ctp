@@ -18,8 +18,8 @@
   </div>
   <div class="down clearfix">
     <div class="left_panel">
+    <?php echo $this->element('best_channels_left_menu'); ?>
 		<?php echo $this->element('categories_left_menu'); ?>
-		<?php echo $this->element('best_channels_left_menu'); ?>
     </div>
     <div class="right_panel">
       <div id="toprated">

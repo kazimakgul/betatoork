@@ -2,7 +2,22 @@
   <div class="sep"></div>
   <ul>
   <!--usual foreach starts-->
-    <li class="even"><a href="linktocategoris">kategori adi</a></li><!-- even olayi her satirda degismeli satir renk degisimi saglicak-->
+
+  	<?php 
+	  	$switch = 'odd';
+	  	foreach ($categories as $category): 
+			if($switch == 'odd'){
+				$switch = 'even';
+			} else{
+				$switch = 'odd';
+			} 
+	?>
+
+		<li class="<?php echo $switch ?>"><a href="#"><?php echo h($category['Category']['name']); ?></a></li>
+
+	<?php endforeach; ?>
+
+
   <!--usual foreach ends-->
   </ul>
 </div>
