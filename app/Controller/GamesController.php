@@ -38,7 +38,7 @@ class GamesController extends AppController {
 		$this->Game->recursive = 0;
 		$cond= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond));
-    	$this->set('users', $this->paginate('User'));
+
     	$this->set('categories', $this->paginate('Category'));
 		$this->set('title_for_layout', 'Toork - is a gamelist share platform - create your playlist of games and share your list');
 	}

@@ -5,7 +5,7 @@
   
   	<?php 
 	  	$switch = 'odd';
-	  	foreach ($users as $user): 
+	  	foreach ($games as $game): 
 			if($switch == 'odd'){
 				$switch = 'even';
 			} else{
@@ -13,9 +13,9 @@
 			} 
 	?>
 	<?php
-	  $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$user['User']['id']));
+	  $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id']));
 	?>
-		<li class="<?php echo $switch ?>"><a href="<?php echo $channelurl ?>"><?php echo h($user['User']['username']); ?></a></li>
+		<li class="<?php echo $switch ?>"><a href="<?php echo $channelurl ?>"><?php echo h($game['User']['username']); ?></a></li>
 
 	<?php endforeach; ?>
 

@@ -31,11 +31,15 @@
         <div class="sep"></div>
         <ul>
 				<!--Foreach for topgames-->
+        
           <li class="clearfix">
 					<?php echo $this->element('game_box'); ?>
          </li>
+         
 				<!--Foreach for topgames ends-->
+
         </ul>
+        
 				
       </div>
       <div id="mostplayed">
