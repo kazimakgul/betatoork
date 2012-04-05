@@ -34,7 +34,7 @@
 				<!--Foreach for topgames-->
         
           <li class="clearfix">
-					<?php echo $this->element('game_box'); ?>
+					<?php echo $this->element('top_rated_game_box'); ?>
          </li>
          
 				<!--Foreach for topgames ends-->
@@ -53,7 +53,7 @@
 		  <?php $games=$most_played_games; ?>
            <!--foreach begin-->
 	           <li class="clearfix">
-            <?php echo $this->element('game_box'); ?>
+            <?php echo $this->element('most_played_game_box'); ?>
             </li>
             <!--foreach ends-->
           </ul>

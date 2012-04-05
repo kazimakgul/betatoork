@@ -40,13 +40,12 @@ class GamesController extends AppController {
 		$cond= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond));
 		
-    	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
-        'order' => array('Game.starsize' => 'desc')
-    )));
+    	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => 12,'order' => array('Game.starsize' => 'asc'
+    ))));
 	
 	
 	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
-        'order' => array('Game.starsize' => 'desc')
+        'order' => array('Game.starsize' => 'asc')
     )));//playcounta göre ayarlanacak
 
     	$this->set('categories', $this->paginate('Category'));
