@@ -25,19 +25,19 @@
       <div id="toprated">
         <div class="clearfix">
           <div class="toprated"></div>
-          <a class="seeall" href="{% url toprated-games %}">(See All)</a>
+          <?php echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); ?>
         </div>
 				
         <div class="sep"></div>
         <ul>
 		<?php $games=$top_rated_games; ?>
-				<!--Foreach for topgames-->
+				
         
           <li class="clearfix">
 					<?php echo $this->element('top_rated_game_box'); ?>
          </li>
          
-				<!--Foreach for topgames ends-->
+				
 
         </ul>
         
@@ -46,16 +46,16 @@
       <div id="mostplayed">
         <div class="clearfix">
           <div class="mostplayed"></div>
-          <a class="seeall" href="{% url most-played-games %}">(See All)</a>
+          <?php echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'mostplayed'),array('class'=>'seeall')); ?>
         </div>
         <div class="sep"></div>
           <ul>
 		  <?php $games=$most_played_games; ?>
-           <!--foreach begin-->
+           
 	           <li class="clearfix">
             <?php echo $this->element('most_played_game_box'); ?>
             </li>
-            <!--foreach ends-->
+            
           </ul>
 
       </div>

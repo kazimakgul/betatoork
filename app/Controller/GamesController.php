@@ -51,6 +51,43 @@ class GamesController extends AppController {
     	$this->set('categories', $this->paginate('Category'));
 		$this->set('title_for_layout', 'Toork - is a gamelist share platform - create your playlist of games and share your list');
 	}
+	
+	
+	
+	
+	public function mostplayed() {
+		$this->layout='base';
+		$this->Game->recursive = 0;
+		$this->logedin_user_panel();
+
+        $this->set('categories', $this->paginate('Category'));
+		$cond= array('Game.active'=>'1');
+    	$this->set('games', $this->paginate('Game',$cond));
+
+	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
+        'order' => array('Game.starsize' => 'asc')
+    )));//playcounta göre ayarlanacak
+
+$this->set('title_for_layout', 'Toork - Most Played Games');
+	}
+	
+	
+	public function toprated() {
+		$this->layout='base';
+		$this->Game->recursive = 0;
+		$this->logedin_user_panel();
+
+         $this->set('categories', $this->paginate('Category'));
+		$cond= array('Game.active'=>'1');
+    	$this->set('games', $this->paginate('Game',$cond));
+
+
+	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
+        'order' => array('Game.starsize' => 'asc')
+    )));//playcounta göre ayarlanacak
+
+$this->set('title_for_layout', 'Toork - Top Rated Games');
+	}
 
 	public function logedin_user_panel() {
 		$this->layout='base';
