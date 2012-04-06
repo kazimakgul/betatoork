@@ -21,8 +21,11 @@
       				<div class="pointer">
       					<div class="menu_up"></div>
       				</div>
-      				<a href="/game/most_played/"></a>
-      				<a href="/game/top_rated/"></a>
+              <?php $mostplayed=$this->Html->url(array("controller" => "games","action" =>"mostplayed")); ?>
+              <?php $toprated=$this->Html->url(array("controller" => "games","action" =>"toprated")); ?>
+
+      				<a href="<?php echo $mostplayed ?>"></a>
+      				<a href="<?php echo $toprated ?>"></a>
       				<a href="#" onclick="return false;"></a>
 
               <?php if($this->Session->check('Auth.User')){?>
@@ -38,9 +41,7 @@
 
               <?php  if($this->Session->check('Auth.User')){ ?>
                   <td width="59" style="padding-left:15px;">
-                  <?php
-                  $logouturl=$this->Html->url(array("controller" => "users","action" =>"logout"));
-                  ?>
+                  <?php $logouturl=$this->Html->url(array("controller" => "users","action" =>"logout")); ?>
                     <a class="logout_btn" href="<?php echo $logouturl?>"></a>
                   </td>
                <?php } ?>
