@@ -71,6 +71,23 @@ class GamesController extends AppController {
 $this->set('title_for_layout', 'Toork - Most Played Games');
 	}
 	
+
+	public function channel() {
+		$this->layout='channel';
+		$this->Game->recursive = 0;
+		$this->logedin_user_panel();
+
+        $this->set('categories', $this->paginate('Category'));
+		$cond= array('Game.active'=>'1');
+    	$this->set('games', $this->paginate('Game',$cond));
+
+	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
+        'order' => array('Game.starsize' => 'asc')
+    )));//playcounta göre ayarlanacak
+
+$this->set('title_for_layout', 'Toork - Most Played Games');
+	}
+	
 	
 	public function toprated() {
 		$this->layout='base';

@@ -23,13 +23,13 @@
       				</div>
               <?php $mostplayed=$this->Html->url(array("controller" => "games","action" =>"mostplayed")); ?>
               <?php $toprated=$this->Html->url(array("controller" => "games","action" =>"toprated")); ?>
-
+              <?php $channel=$this->Html->url(array("controller" => "games","action" =>"channel")); ?>
       				<a href="<?php echo $mostplayed ?>"></a>
       				<a href="<?php echo $toprated ?>"></a>
       				<a href="#" onclick="return false;"></a>
 
               <?php if($this->Session->check('Auth.User')){?>
-                  <a href="userchannellink"></a>
+                  <a href="<?php echo $channel ?>"></a>
                <?php }else{?>
                    <a class="unauth" href="#" data-bind="click: function() { $('#register').lightbox_me(); }"></a>
                <?php } ?>
