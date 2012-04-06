@@ -1,21 +1,9 @@
 <div class="content">
   <div id="up">
 	<?php  echo $this->element('slider'); ?>
-
-	<?php
-  	if($this->Session->check('Auth.User'))
-    	{  echo $this->element('channel_user_panel'); }
-  	 else 
-  	  {
-	  ?>
-	  <div data-bind="ifnot: user.logged_in()">
-    	
-		<?php  echo $this->element('unlogged_user_panel');  }?>
-    	</div>
-  	
-	
-	
+  <?php  echo $this->element('userpanel'); ?>
   </div>
+
   <div class="down clearfix">
     <div class="left_panel">
     <?php echo $this->element('best_channels_left_menu'); ?>
@@ -30,7 +18,6 @@
 				
         <div class="sep"></div>
         <ul>
-		<?php $games=$top_rated_games; ?>
 				
         
           <li class="clearfix">
@@ -50,7 +37,6 @@
         </div>
         <div class="sep"></div>
           <ul>
-		  <?php $games=$most_played_games; ?>
            
 	           <li class="clearfix">
             <?php echo $this->element('most_played_game_box'); ?>
