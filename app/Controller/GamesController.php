@@ -99,9 +99,8 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
     	$this->set('games', $this->paginate('Game',$cond));
 
 
-	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
-        'order' => array('Game.starsize' => 'asc')
-    )));//playcounta göre ayarlanacak
+	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => 12,'order' => array('Game.starsize' => 'asc'
+    ))));
 
 $this->set('title_for_layout', 'Toork - Top Rated Games');
 	}
