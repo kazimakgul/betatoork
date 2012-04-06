@@ -40,12 +40,12 @@ class GamesController extends AppController {
 		$cond= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond));
 		
-    	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => 12,'order' => array('Game.starsize' => 'asc'
+    	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => 12,'order' => array('Game.starsize' => 'desc'
     ))));
 	
 	
 	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
-        'order' => array('Game.starsize' => 'asc')
+        'order' => array('Game.starsize' => 'desc')
     )));//playcounta göre ayarlanacak
 
     	$this->set('categories', $this->paginate('Category'));
@@ -65,7 +65,7 @@ class GamesController extends AppController {
     	$this->set('games', $this->paginate('Game',$cond));
 
 	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
-        'order' => array('Game.starsize' => 'asc')
+        'order' => array('Game.starsize' => 'desc')
     )));//playcounta göre ayarlanacak
 
 $this->set('title_for_layout', 'Toork - Most Played Games');
@@ -82,7 +82,7 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
     	$this->set('games', $this->paginate('Game',$cond));
 
 	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
-        'order' => array('Game.starsize' => 'asc')
+        'order' => array('Game.starsize' => 'desc')
     )));//playcounta göre ayarlanacak
 
 $this->set('title_for_layout', 'Toork - Most Played Games');
@@ -99,7 +99,7 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
     	$this->set('games', $this->paginate('Game',$cond));
 
 
-	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => 12,'order' => array('Game.starsize' => 'asc'
+	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => 12,'order' => array('Game.starsize' => 'desc'
     ))));
 
 $this->set('title_for_layout', 'Toork - Top Rated Games');
