@@ -1,16 +1,16 @@
-﻿.left_panel{width:250px; float:left;}
-.left_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:10px;}
-.left_panel ul li{height:21px; padding-left:40px; padding-top:4px;}
-.left_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png);}
-.left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none; text-shadow: white 0 1px 0; display:block;} 
-.left_panel ul li a:hover{text-decoration:underline;} 
+﻿.channel_left_panel{width:250px; float:left;}
+.channel_left_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:10px;}
+.channel_left_panel ul li{height:21px; padding-left:40px; padding-top:4px;}
+.channel_left_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png);}
+.channel_left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none; text-shadow: white 0 1px 0; display:block;} 
+.channel_left_panel ul li a:hover{text-decoration:underline;} 
 .categories{background-image:url(../img/t_category_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
 .best{background-image:url(../img/t_best_channel_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
 
-.right_panel{width:1005px; float:right; margin-left:10px;}
-.right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px;}
-.right_panel ul .odd{height:100px; padding-left:20px; margin-top:10px;}
-.right_panel ul .even{height:100px; padding-left:20px; margin-top:10px; background-image:url(../img/t_ul_odd_li_back.png); padding-top:5px;}
+.channel_right_panel{width:1005px; float:right; margin-left:10px;}
+.channel_right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px;}
+.channel_right_panel ul .odd{height:100px; padding-left:20px; margin-top:10px;}
+.channel_right_panel ul .even{height:100px; padding-left:20px; margin-top:10px; background-image:url(../img/t_ul_odd_li_back.png); padding-top:5px;}
 .channelgame{background-image:url(../img/t_channelgames_back.png); width:272px; height:53px; margin-top:20px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
 .seeall{display:block; font-family:Arial; margin:2px; font-size:11px; text-decoration:none; float:left; margin-top:45px; margin-left:10px;}
 .seeall:hover {text-decoration:underline;}
