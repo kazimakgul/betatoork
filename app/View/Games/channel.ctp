@@ -21,7 +21,7 @@
                     <ul>
            
              <li class="clearfix">
-            <?php echo $this->element('most_played_game_box'); ?>
+            <?php echo $this->element('mygames_game_box'); ?>
             </li>
             
                     </ul>
@@ -38,7 +38,7 @@
                     <ul>
                      
                        <li class="clearfix">
-                      <?php echo $this->element('most_played_game_box'); ?>
+                      <?php echo $this->element('favorites_game_box'); ?>
                       </li>
                       
                     </ul>

@@ -76,16 +76,18 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 		$this->layout='channel';
 		$this->Game->recursive = 0;
 		$this->logedin_user_panel();
-
-        $this->set('categories', $this->paginate('Category'));
-		$cond= array('Game.active'=>'1');
-    	$this->set('games', $this->paginate('Game',$cond));
-
-	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
-        'order' => array('Game.starsize' => 'desc')
-    )));//playcounta göre ayarlanacak
-
-$this->set('title_for_layout', 'Toork - Most Played Games');
+		$this->set('categories', $this->paginate('Category'));
+		$cond3= array('Game.active'=>'1');
+    	$this->set('games', $this->paginate('Game',$cond3));
+		$userid = $this->Session->read('Auth.User.id');
+		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => 12,'order' => array('Game.starsize' => 'desc'
+    )));
+    	$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => 12,'order' => array('Game.starsize' => 'desc'
+    )));
+    	
+    	$this->set('mygames', $cond);
+    	$this->set('favorites', $cond2);
+		$this->set('title_for_layout', 'Toork - Most Played Games');
 	}
 	
 	
@@ -122,6 +124,7 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 	}
 
 	public function mygames() {
+		$this->layout='base';
     $userid = $this->Session->read('Auth.User.id');
     //$allMyGames = $this->Game->find('all', array('conditions' => array('Game.user_id' => $userid)));
     //$this->set('mygames', $allMyGames,$this->paginate());
