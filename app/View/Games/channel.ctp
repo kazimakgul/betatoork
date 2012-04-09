@@ -9,22 +9,29 @@
       <?php  echo $this->element('slider'); ?>
 
 
-
-
-                <div id="channelgames">
+               <div id="channelgames">
                     <div class="clearfix">
                         <div class="channelgame"></div>
+              
                <?php echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); ?>
                </div>
 
                     <div class="sep"></div>
+
+                    <?php if(count($mygames) >= 1){ ?>
                     <ul>
            
-             <li class="clearfix">
-            <?php echo $this->element('mygames_game_box'); ?>
-            </li>
+                     <li class="clearfix">
+                    <?php echo $this->element('mygames_game_box'); ?>
+                    </li>
             
                     </ul>
+
+                    <?php } 
+                    else { ?>
+
+                <div class="alert alert-info channel">You didn't add any games, add some games using left panel</div>
+                <?php }?>
 
                 </div>
 
@@ -35,6 +42,8 @@
                     <?php echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); ?>
                     </div>
                     <div class="sep"></div>
+
+                    <?php if(count($favorites) >= 1){ ?>
                     <ul>
                      
                        <li class="clearfix">
@@ -42,11 +51,16 @@
                       </li>
                       
                     </ul>
+
+                    <?php } 
+                    else { ?>
+                  <div class="alert alert-info channel">You dont have any favorite game, add a game to your favorites by clicking on the heart button while playing a game.</div>
+                  <?php }?>
+
                 </div>
 
           <div class="clear"></div>
-          <div class="alert alert-info channel">You didn't add any game to your favorites and you didn't create a game that belongs to you.</div>
-
+        
 
 
             </div>

@@ -18,7 +18,7 @@
   <div class="panelsep"></div>
   <a class="info" href="#">Channel Info</a>
   <a class="change_password" href="#">Change Password</a>
-  <a class="added" href="#">Adding Game</a>
+  <?php echo $this->Html->link('Add Game',array('controller'=>'games','action'=>'add'),array('class'=>'added')); ?>
   <a class="slide" href="#">Edit Slider</a>
   <a class="adsense" href="#">Google Adsense</a>
   <a class="subscriber" href="#">Subscribers (2)</a>
