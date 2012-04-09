@@ -1,8 +1,13 @@
-<div class="wrapper" >
-<div class="content">
-<?php
-echo $this->element('logedinButtons');
-?>
+<div class="content clearfix">
+  <div class="channel_left_panel">
+    <?php  echo $this->element('channel_user_panel'); ?>
+    <?php  echo $this->element('social'); ?>
+    <?php echo $this->element('best_channels_left_menu'); ?>
+    <?php echo $this->element('categories_left_menu'); ?>
+  </div>
+  <div class="channel_right_panel">
+
+<!-- Add Game UI is here-->        
 	<div class="games form">
 	<?php echo $this->Form->create('Game', array('type' => 'file'));?>
 		<fieldset>
@@ -17,12 +22,39 @@ echo $this->element('logedinButtons');
 		</fieldset>
 	<?php echo $this->Form->end(__('Submit'));?>
 	</div>
-	<div class="actions">
-		<h3><?php echo __('Actions'); ?></h3>
-		<ul>
-			<li><?php echo $this->Html->link(__('Home'), array('action' => 'index'));?></li>
-		</ul>
-	</div>
-	
-</div>
+
+<!-- Add Game UI is here-->     
+
+               <div id="channelgames">
+                    <div class="clearfix">
+                        <div class="channelgame"></div>
+              
+              <?php 
+              if(count($mygames) <= $limit){}
+              else{
+                echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); 
+              } ?>
+               </div>
+
+                    <div class="sep"></div>
+
+                    <?php if(count($mygames) >= 1){ ?>
+                    <ul>
+           
+                     <li class="clearfix">
+                    <?php echo $this->element('mygames_game_box'); ?>
+                    </li>
+            
+                    </ul>
+
+                    <?php } 
+                    else { ?>
+
+                <div class="alert alert-info channel">You don't have any games yet, your games will show up here</div>
+                <?php }?>
+
+                </div>
+
+
+    </div>
 </div>

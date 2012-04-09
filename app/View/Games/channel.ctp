@@ -13,7 +13,11 @@
                     <div class="clearfix">
                         <div class="channelgame"></div>
               
-               <?php echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); ?>
+              <?php 
+              if(count($mygames) <= $limit){}
+              else{
+                echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); 
+              } ?>
                </div>
 
                     <div class="sep"></div>
@@ -39,7 +43,13 @@
                 <div id="favoritegames">
                     <div class="clearfix">
                         <div class="favoritegames"></div>
-                    <?php echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); ?>
+
+                    <?php 
+                    if(count($mygames) <= $limit){}
+                    else{
+                      echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); 
+                    } ?>
+
                     </div>
                     <div class="sep"></div>
 

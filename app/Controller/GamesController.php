@@ -80,13 +80,15 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 		$cond3= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond3));
 		$userid = $this->Session->read('Auth.User.id');
-		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => 12,'order' => array('Game.starsize' => 'desc'
+		$limit=12;
+		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     )));
-    	$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => 12,'order' => array('Game.starsize' => 'desc'
+    	$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     )));
     	
     	$this->set('mygames', $cond);
     	$this->set('favorites', $cond2);
+    	$this->set('limit', $limit);
 		$this->set('title_for_layout', 'Toork - Most Played Games');
 	}
 	
@@ -220,6 +222,16 @@ if(empty($favbefore))
 
 
 	public function add() {
+		$this->layout='base';
+		$this->logedin_user_panel();
+		$userid = $this->Session->read('Auth.User.id');
+		$cond= array('Game.active'=>'1');
+    	$this->set('games', $this->paginate('Game',$cond));
+    	$this->set('categories', $this->paginate('Category'));
+    	$limit=12;
+		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+    )));
+
 		if ($this->request->is('post')) {
 
 			$this->request->data['Game']['user_id'] = $this->Auth->user('id');
@@ -237,9 +249,12 @@ if(empty($favbefore))
 			
 			
 		}
+
+		$this->set('mygames', $cond);
+    	$this->set('limit', $limit);
 		$users = $this->Game->User->find('list');
-		$categories = $this->Game->Category->find('list');
-		$this->set(compact('users', 'categories'));
+		$category = $this->Game->Category->find('list');
+		$this->set(compact('users', 'category'));
 	}
 
 /**
