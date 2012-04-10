@@ -39,12 +39,12 @@ class GamesController extends AppController {
 		$this->logedin_user_panel();
 		$cond= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond));
-		
-    	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => 12,'order' => array('Game.starsize' => 'desc'
+		$limit=12;
+    	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     ))));
 	
 	
-	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
+	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => $limit),array(
         'order' => array('Game.starsize' => 'desc')
     )));//playcounta göre ayarlanacak
 
@@ -72,13 +72,18 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 	}
 	
 
-	public function channel() {
-		$this->layout='channel';
+	public function leftpanel(){
 		$this->Game->recursive = 0;
-		$this->logedin_user_panel();
 		$this->set('categories', $this->paginate('Category'));
 		$cond3= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond3));
+
+	}
+
+	public function channel() {
+		$this->layout='channel';
+		$this->leftpanel();
+		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 		$limit=12;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
@@ -89,19 +94,13 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
     	$this->set('mygames', $cond);
     	$this->set('favorites', $cond2);
     	$this->set('limit', $limit);
-		$this->set('title_for_layout', 'Toork - Most Played Games');
+		$this->set('title_for_layout', 'Toork - Create your own game channel');
 	}
 	
 	
 	public function toprated() {
 		$this->layout='base';
-		$this->Game->recursive = 0;
-		$this->logedin_user_panel();
-
-         $this->set('categories', $this->paginate('Category'));
-		$cond= array('Game.active'=>'1');
-    	$this->set('games', $this->paginate('Game',$cond));
-
+		$this->leftpanel();
 
 	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => 12,'order' => array('Game.starsize' => 'desc'
     ))));
@@ -118,6 +117,20 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 	   // $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	   // $subscribeto = $this->Game->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 	   	$this->set('username', $username);
+	    $this->set('gamenumber', $gamenumber);
+	    $this->set('favoritenumber', $favoritenumber);
+	   // $this->set('subscribe', $subscribe);
+	   // $this->set('subscribeto', $subscribeto);
+
+	}
+
+		public function usergame_user_panel() {
+		$this->layout='base';
+		$userid = $this->request->params['pass'][0];
+	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
+	   // $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+	   // $subscribeto = $this->Game->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 	    $this->set('gamenumber', $gamenumber);
 	    $this->set('favoritenumber', $favoritenumber);
 	   // $this->set('subscribe', $subscribe);
@@ -143,12 +156,20 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 }
 
 	public function usergames() {
-	$this->layout='index';
+	$this->layout='base';
+	$this->leftpanel();
+    $this->usergame_user_panel();
     $userid = $this->request->params['pass'][0];
     $user = $this->Game->find('first', array('conditions' => array('Game.User_id' => $userid)));
-    $cond= array('Game.user_id'=>$userid,'Game.active'=>'1');
-    $this->set('mygames', $this->paginate('Game',$cond));
     $userName = $user['User']['username'];
+	$limit=12;
+	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+    )));
+    $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+    )));
+   	$this->set('limit', $limit);
+    $this->set('favorites', $cond2);
+    $this->set('mygames', $cond);
     $this->set('username', $userName);
 }
 
