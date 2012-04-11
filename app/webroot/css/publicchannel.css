@@ -4,8 +4,8 @@
 .left_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png);}
 .left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none;} 
 .left_panel ul li a:hover{text-decoration:underline;} 
-.left_panel .subscribe{display:block; width:248px; height:39px; margin-top:10px; background:url(../img/t_subcribe_btn.png) no-repeat 0 0;}
-.left_panel .unsubscribe{display:block; width:248px; height:39px; margin-top:10px; background:url(../img/t_subcribe_btn.png) no-repeat 0 -39px;}
+.subscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_subcribe_btn.png) no-repeat 0 0;}
+.unsubscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_subcribe_btn.png) no-repeat 0 -39px;}
 .categories{background-image:url(../img/t_category_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
 .best{background-image:url(../img/t_best_channel_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
 
