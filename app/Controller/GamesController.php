@@ -104,6 +104,17 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 $this->set('title_for_layout', 'Toork - Top Rated Games');
 	}
 
+	public function categorygames() {
+		$this->layout='base';
+		$this->leftpanel();
+		$this->logedin_user_panel();
+		$catid = $this->request->params['pass'][0];
+		$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.category_id'=>$catid),'limit' => 20,'order' => array('Game.starsize' => 'desc'
+    ))));
+
+		$this->set('title_for_layout', 'Toork - Top Rated Category Games');
+	}
+
 	public function logedin_user_panel() {
 		$this->layout='base';
 	    $userid = $this->Session->read('Auth.User.id');

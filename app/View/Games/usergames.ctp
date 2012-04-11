@@ -34,7 +34,7 @@
                     <?php } 
                     else { ?>
 
-                <div class="alert alert-info channel">You didn't add any games, add some games using left panel</div>
+                <div class="alert alert-info channel"><?php echo $username ?> didn't add any games yet, Subscribe to his channel to get notified when new games added</div>
                 <?php }?>
 
                 </div>
@@ -64,7 +64,7 @@
 
                     <?php } 
                     else { ?>
-                  <div class="alert alert-info channel">You dont have any favorite game, add a game to your favorites by clicking on the heart button while playing a game.</div>
+                  <div class="alert alert-info channel"><?php echo $username ?> doesn't have any favorite games yet</div>
                   <?php }?>
 
                 </div>

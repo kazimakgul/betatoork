@@ -13,7 +13,16 @@
 			} 
 	?>
 
-		<li class="<?php echo $switch ?>"><a href="#"><?php echo h($category['Category']['name']); ?></a></li>
+		<li class="<?php echo $switch ?>">
+		<?php 
+		$catName = h($category['Category']['name']);
+		$catId = $category['Category']['id'];
+		echo $this->Html->link($catName, array('controller'=>'games','action'=>'categorygames',$catId)); 
+
+		?>
+
+
+		</li>
 
 	<?php endforeach; ?>
 

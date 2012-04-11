@@ -13,7 +13,7 @@
       <input id="txt_email" type="text" name="data[User][username]" placeholder="Email Address" required/>
   	</div>
   	<div class="pass">
-	    <input id="txt_password" type="password" name="data[User][password]" placeholder="Password" />
+	    <input id="txt_password" type="password" name="data[User][password]" placeholder="Password" required/>
   	</div>
 
     <input type="checkbox" class="checkbox" name="rememberme" />
