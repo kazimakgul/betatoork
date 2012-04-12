@@ -10,7 +10,7 @@
      <div id="subscriber">
         <div class="clearfix">
             <div class="subscriberhd"></div>
-            <span class="subcount">(542)</span>
+           
         </div>
 
     <div class="sep"></div>

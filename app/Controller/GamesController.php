@@ -86,7 +86,7 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
     )));
     	$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     )));
-    	
+    	$this->set('userid', $userid);
     	$this->set('mygames', $cond);
     	$this->set('favorites', $cond2);
     	$this->set('limit', $limit);
@@ -124,6 +124,7 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+	    $this->set('userid', $userid);
 	   	$this->set('username', $username);
 	    $this->set('gamenumber', $gamenumber);
 	    $this->set('favoritenumber', $favoritenumber);
@@ -140,6 +141,7 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+	    $this->set('userid', $userid);
 	    $this->set('gamenumber', $gamenumber);
 	    $this->set('favoritenumber', $favoritenumber);
 	    $this->set('subscribe', $subscribe);
