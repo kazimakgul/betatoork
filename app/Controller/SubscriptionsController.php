@@ -52,6 +52,43 @@ class SubscriptionsController extends AppController {
 		$this->set(compact('subscribers', 'subscriberTos'));
 	}
 	
+	public function sub_check()
+	{
+	
+	$this->layout = "ajax";
+	
+	
+	if ($this->request->is('get')) {
+		
+		 $subscriber_id=$this->Auth->user('id');
+		  $subscriber_to_id=$this->request["pass"][0];
+		
+		
+		$subscribebefore=$this->Subscription->find("first",array("conditions"=>array("Subscription.subscriber_id"=>$subscriber_id,"Subscription.subscriber_to_id"=>$subscriber_to_id)));
+		
+		if(empty($subscribebefore))
+		
+		{
+		
+		$this->set('SubMessage',0);
+		
+		
+			
+			}
+			else
+			{
+			
+		$this->set('SubMessage',1);
+		
+		}
+	
+	
+	
+	}}
+	
+	
+	
+	
 	
 	public function add_subscription() {
 	$this->layout = "ajax";

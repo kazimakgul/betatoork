@@ -178,6 +178,7 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
     $this->set('favorites', $cond2);
     $this->set('mygames', $cond);
     $this->set('username', $userName);
+	$this->set('user_id', $userid);
 }
 
 public function search($param) {
