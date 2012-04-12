@@ -51,6 +51,52 @@ class SubscriptionsController extends AppController {
 		$subscriberTos = $this->Subscription->SubscriberTo->find('list');
 		$this->set(compact('subscribers', 'subscriberTos'));
 	}
+	
+	
+	public function add_subscription() {
+	$this->layout = "ajax";
+if ($this->request->is('get')) {
+		
+		 $subscriber_id=$this->Auth->user('id');
+		  $subscriber_to_id=$this->request["pass"][0];
+		
+		
+		$subscribebefore=$this->Subscription->find("first",array("conditions"=>array("Subscription.subscriber_id"=>$subscriber_id,"Subscription.subscriber_to_id"=>$subscriber_to_id)));
+		
+		if(empty($subscribebefore))
+		
+		{
+		
+			$this->Subscription->create();
+			
+			$this->request->data["Subscription"]["subscriber_id"]=$subscriber_id;
+				$this->request->data["Subscription"]["subscriber_to_id"]=$subscriber_to_id;
+				
+				
+			if ($this->Subscription->save($this->request->data)) {
+				$this->set('SubMessage','Subscription saved.');
+				
+			} else {
+			$this->set('SubMessage','The subscription could not be saved. Please, try again.');
+				
+			}
+			
+			
+			}
+			else
+			{
+			$this->Subscription->id = $subscribebefore["Subscription"]["id"];
+			if ($this->Subscription->delete()) {
+			$this->set('SubMessage','Subscription deleted');
+			
+			
+		}
+			}
+			
+			
+		}
+		
+	}
 
 /**
  * edit method

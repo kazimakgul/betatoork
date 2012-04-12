@@ -49,16 +49,9 @@ class Subscription extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Subscriber' => array(
-			'className' => 'Subscriber',
-			'foreignKey' => 'subscriber_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'SubscriberTo' => array(
-			'className' => 'SubscriberTo',
-			'foreignKey' => 'subscriber_to_id',
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
