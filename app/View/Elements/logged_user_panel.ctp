@@ -15,4 +15,3 @@
   <a class="subscriber" href="{% url subscribers user_for_userpanel.username %}"><!-- number of subscribers --> Subscribers</a>
   <a class="subscription" href="{% url subscriptions user_for_userpanel.username %}"> <!-- number of subscriptions -->Subscriptions</a>
 </div>
-<a href="javascript:void();" class="subscribe" id="subscribe"></a>

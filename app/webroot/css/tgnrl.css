@@ -9,6 +9,9 @@
 .categories{background-image:url(../img/t_category_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
 .best{background-image:url(../img/t_best_channel_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
 
+.subscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_subcribe_btn.png) no-repeat 0 0;}
+.unsubscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_subcribe_btn.png) no-repeat 0 -39px;}
+
 .right_panel{width:980px; float:right; margin-left:10px;}
 .right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px;}
 .right_panel ul li{height:100%; padding-left:20px; margin-top:10px;}
