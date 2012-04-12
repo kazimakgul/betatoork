@@ -8,11 +8,11 @@ function sub_status(a)
 {
 if(a==1)
 {
-$('#subscribe').removeClass('unsubscribe').addClass('subscribe');
+$('#subscribe').removeClass('subscribe').addClass('unsubscribe');
 }
 else
 {
- $('#subscribe').removeClass('subscribe').addClass('unsubscribe');
+//alert("üyedegil");
 }
 
 }
