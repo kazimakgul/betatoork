@@ -189,6 +189,16 @@ public function __sendActivationEmail($user_id) {
 		
 	}
 
+	public function bestChannels(){
+		$this->loadModel('Game');
+		$limit=15;
+
+		$users = $this->User->find('all', array('limit' => $limit, 'order' => array('User.id' => 'asc')));
+
+    	return $users;
+
+	}
+
 
 /**
  * view method
