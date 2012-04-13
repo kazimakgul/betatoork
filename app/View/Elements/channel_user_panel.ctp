@@ -9,6 +9,10 @@
 // }(document, 'script', 'facebook-jssdk'));
 </script>-->
 
+<?php $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$userid)); ?>
+<?php $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$userid)); ?>
+
+
 <div class="userpanel">
   <p><?php echo $username ?></p>
   <div class="useravatar">
@@ -21,8 +25,8 @@
   <?php echo $this->Html->link('Add Game',array('controller'=>'games','action'=>'add'),array('class'=>'added')); ?>
   <a class="slide" href="#">Edit Slider</a>
   <a class="adsense" href="#">Google Adsense</a>
-  <a class="subscriber" href="#">Subscribers (2)</a>
-  <a class="subscription" href="#">Subscriptions (3)</a>
+  <a class="subscriber" href="<?php echo $folurl ?>">Followers (<?php echo $subscribeto ?>)</a>
+  <a class="subscription" href="<?php echo $suburl ?>">Subscriptions (<?php echo $subscribe ?>)</a>
 </div>
 
 

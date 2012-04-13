@@ -86,6 +86,10 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
     )));
     	$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     )));
+	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+	    $this->set('subscribe', $subscribe);
+	    $this->set('subscribeto', $subscribeto);
     	$this->set('userid', $userid);
     	$this->set('mygames', $cond);
     	$this->set('favorites', $cond2);

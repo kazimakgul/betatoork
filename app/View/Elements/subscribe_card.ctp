@@ -10,7 +10,16 @@ $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames
             <div class="subup clearfix">
                 <a class="channelname" href="<?php echo $channelurl ?>"><?php echo $card[0] ?></a>
                 <a class="viewchannel" href="<?php echo $channelurl ?>"></a>
-                <a class="block" href="javascript:void();"></a>
+
+                <?php 
+                    if($this->Session->read('Auth.User.id') == $userid){ ?>
+                       <a class="block" href="javascript:void();"></a>
+
+                <?php    }
+                ?>
+                
+
+
             </div>
             <div class="submid clearfix">
                 <div class="cardsep"></div>
