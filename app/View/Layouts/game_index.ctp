@@ -20,10 +20,20 @@ echo $this->Html->css(array('myStyle','rating'));
 <?php
 $rateurl=$this->Html->url(array( "controller" => "rates","action" =>"add",h($game['Game']['id'])));
 $favurl=$this->Html->url(array( "controller" => "favorites","action" =>"add",h($game['Game']['id'])));
+$playurl=$this->Html->url(array( "controller" => "playcounts","action" =>"add_play",h($game['Game']['id'])));
 ?>
 
 
 <script>
+
+window.setTimeout('countonetime()',10000);
+function countonetime()
+{
+$.get("<?php echo $playurl ?>");
+}
+
+
+
 function rate_a_game(rating){
 	$.post("<?php echo $rateurl; ?>/"+rating,function(data) {alert(data);});
 	
