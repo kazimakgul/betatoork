@@ -1,4 +1,5 @@
-<?php $suburl=$this->Html->url(array("controller" => "games","action" =>"followers",$userid)); ?>
+<?php $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$userid)); ?>
+<?php $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$userid)); ?>
 
 <div class="userpanel">
   <p><?php echo $username ?></p>
@@ -14,6 +15,6 @@
   <a class="added" href="{% url channel-games user_for_userpanel.username %}"><?php echo $gamenumber ?> games added</a>
   <a class="favorite" href="{% url favorite-games user_for_userpanel.username %}"><?php echo $favoritenumber ?> games favorite</a>
   <a class="played" href="{% url played-games user_for_userpanel.username %}"><!-- number of played games --> games played</a>
-  <a class="subscriber" href="<?php echo $suburl ?>"><?php echo $subscribeto ?> Followers</a>
-  <a class="subscription" href="{% url subscriptions user_for_userpanel.username %}"><?php echo $subscribe ?> Subscriptions</a>
+  <a class="subscriber" href="<?php echo $folurl ?>"><?php echo $subscribeto ?> Followers</a>
+  <a class="subscription" href="<?php echo $suburl ?>"><?php echo $subscribe ?> Subscriptions</a>
 </div>

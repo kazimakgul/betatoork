@@ -196,8 +196,24 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
     	$userName = $user['User']['username'];
     	$followers = $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 
-
+    	$this->set('user_id', $userid);
 		$this->set('title_for_layout', 'Toork - Followers');
+		$this->set('username', $userName);
+		$this->set('followers', $followers);
+	}
+
+	public function subscriptions() {
+		$this->loadModel('Subscription');
+		$this->layout='base';
+		$this->leftpanel();
+		$this->usergame_user_panel();
+		$userid = $this->request->params['pass'][0];
+		$user = $this->Game->find('first', array('conditions' => array('Game.User_id' => $userid)));
+    	$userName = $user['User']['username'];
+    	$followers = $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+
+    	$this->set('user_id', $userid);
+		$this->set('title_for_layout', 'Toork - Subscriptions');
 		$this->set('username', $userName);
 		$this->set('followers', $followers);
 	}

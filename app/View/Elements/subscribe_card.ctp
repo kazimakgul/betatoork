@@ -1,13 +1,11 @@
 
 
 <?php foreach ($followers as $follower): ?>
-
 <?php 
-$followid = $follower['Subscription']['subscriber_id'];
+$followid = $follower['Subscription']['subscriber_to_id'];
 $card = $this->requestAction( array('controller' => 'games', 'action' => 'follow_card', $followid));
 $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$followid));
 ?>
-
         <div id="card1" class="subcard">
             <div class="subup clearfix">
                 <a class="channelname" href="<?php echo $channelurl ?>"><?php echo $card[0] ?></a>
