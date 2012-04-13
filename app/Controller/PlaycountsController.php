@@ -51,6 +51,66 @@ class PlaycountsController extends AppController {
 		$games = $this->Playcount->Game->find('list');
 		$this->set(compact('users', 'games'));
 	}
+	
+	
+	public function add_play()
+	{
+	
+	
+	$this->layout = "ajax";
+	$user_id=$this->Auth->user('id');
+	$game_id=$this->request["pass"][0];
+	
+	if($user_id=="")
+	{$user_id=-1; }
+	
+	$playbefore=$this->Playcount->find("first",array("conditions"=>array("Playcount.user_id"=>$user_id,"Playcount.game_id"=>$game_id),"fields"=>array("Playcount.user_id","Playcount.game_id","Playcount.id","count")));
+	
+	if(empty($playbefore))
+	{
+	
+	
+	
+	$this->Playcount->create();
+	$this->request->data["Playcount"]["user_id"]=$user_id;
+	$this->request->data["Playcount"]["game_id"]=$game_id;
+	$this->request->data["Playcount"]["count"]=1;
+	     
+		 if($this->Playcount->save($this->request->data))
+	     {
+		 $this->set("playMessage","Your play has been saved.");
+		 }
+		 else
+		 {
+		 $this->set("playMessage","The play could not be saved.");
+		 }
+	
+	
+	}
+	//play before ends
+	else
+	{
+	$this->Playcount->id =$playbefore["Playcount"]["id"];
+	$this->request->data["Playcount"]["user_id"]=$user_id;
+	$this->request->data["Playcount"]["game_id"]=$game_id;
+	$this->request->data["Playcount"]["count"]=$playbefore["Playcount"]["count"]+1;
+	
+	          if($this->Playcount->save($this->request->data))
+	           {
+		      $this->set("playMessage","Your play has been updated.");
+		      }
+		      else
+		      {
+		      $this->set("playMessage","The play could not be updated.");
+		      }
+			  
+			  
+	
+	}
+	
+				
+	
+	}
 
 /**
  * edit method
