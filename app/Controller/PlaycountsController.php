@@ -94,7 +94,8 @@ class PlaycountsController extends AppController {
 	$this->request->data["Playcount"]["user_id"]=$user_id;
 	$this->request->data["Playcount"]["game_id"]=$game_id;
 	$this->request->data["Playcount"]["count"]=$playbefore["Playcount"]["count"]+1;
-	
+	              if($this->Cookie->read($game_id)!=$game_id)
+				  {
 	          if($this->Playcount->save($this->request->data))
 	           {
 		      $this->set("playMessage","Your play has been updated.");
@@ -103,12 +104,12 @@ class PlaycountsController extends AppController {
 		      {
 		      $this->set("playMessage","The play could not be updated.");
 		      }
-			  
+			       }
 			  
 	
 	}
 	
-				
+			$this->Cookie->write($game_id,$game_id,false,60);	
 	
 	}
 
