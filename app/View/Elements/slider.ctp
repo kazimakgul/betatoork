@@ -44,13 +44,11 @@
 		<div class="slider_rightpanel_slide">
 		<div class="slider_rightpanel_slidepointerarr"></div>
 			<div class="ul">
+				
 				<?php rsort($top_rated_games); ?>
-				<?php $counter=0;  ?>
-				<?php foreach ($top_rated_games as $game): ?>
-				<?php 
 				
-				if($counter>6){
-				?>
+				<?php foreach ($top_rated_games as $game): ?>
+				
 <?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
 				
 				<div>
@@ -60,54 +58,11 @@
 					</span>
 				</div>
 				
-				<?php 
-				$counter++;
-				}
-				else
-				{
-				$counter++;
-				}
-				?>
+			
 				
 				<?php endforeach; ?>
 				
-				
-				
-				
-				
-				<?php $counter=0;  ?>
-				<?php foreach ($top_rated_games as $game): ?>
-				<?php 
-				
-				if($counter<7){
-				?>
-<?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
-				
-				<div>
-					<img class="jail" alt="" data-href="<?php echo $this->Upload->url($game,'Game.picture',array('style' => 'showcase')); ?>" src="<?php echo $playurl ?>" />
-					<span  class="slider_rightpanel_desc">
-					<?php echo $game['Game']['description']?>
-					</span>
-				</div>
-				
-				<?php 
-				$counter++;
-				}
-				else
-				{
-				$counter++;
-				}
-				?>
-				
-				<?php endforeach; ?>
-				
-				
-				
-				
-				
-				
-				
-				
+	
 				
 			</div>
 		</div>

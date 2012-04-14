@@ -46,6 +46,8 @@
 		<div class="slider_rightpanel_slidepointerarr"></div>
 			<div class="ul">
 				
+				<?php rsort($slider); ?>
+				
 				<?php foreach ($slider as $game): ?>
 				
 <?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
