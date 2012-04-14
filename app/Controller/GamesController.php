@@ -56,13 +56,21 @@ class GamesController extends AppController {
 
 	
 	public function mostplayed() {
+		//$this->loadModel('Playcount');
 		$this->layout='base';
 		$this->leftpanel();
 		$this->logedin_user_panel();
+	/*	$games = $this->Game->find('all', array('conditions' => array('Game.active'=>'1')));
+		$result =array();
+		foreach ($games as $game) {
+			$id=$game['Game']['id'];
+			$number=$this->Playcount->find('count', array('condition'=> array('Playcount.game_id'=>$id)));
+			$result[$id][] = $number;
+		}*/
+		
 
-	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => 12),array(
-        'order' => array('Game.starsize' => 'desc')
-    )));//playcounta göre ayarlanacak
+	$this->set('most_played_games', $this->Game->find('all',array('limit' => 12),array(
+        'order' => array('Game.active'=>'1','Game.starsize' => 'desc'))));
 
 $this->set('title_for_layout', 'Toork - Most Played Games');
 	}
