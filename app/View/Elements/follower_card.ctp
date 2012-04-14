@@ -21,7 +21,7 @@ $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames
                 <ul>
                     <li class="clearfix"><a class="" href="javascript:void();"><?php echo $card[1] ?> Added Games</a></li>
                     <li class="clearfix"><a class="" href="javascript:void();"><?php echo $card[2] ?> Favorite Games</a></li>
-                    <li class="clearfix"><a class="" href="javascript:void();">- Played Games</a></li>
+                    <li class="clearfix"><a class="" href="javascript:void();"><?php echo $card[5] ?> Played Games</a></li>
                     <li class="clearfix"><a class="" href="javascript:void();"><?php echo $card[4] ?> Followers</a></li>
                     <li class="clearfix"><a class="" href="javascript:void();"><?php echo $card[3] ?> Subscriptions</a></li>
                 </ul>

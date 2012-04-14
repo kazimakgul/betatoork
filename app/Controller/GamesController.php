@@ -53,7 +53,7 @@ class GamesController extends AppController {
 	}
 	
 	
-	
+
 	
 	public function mostplayed() {
 		$this->layout='base';
@@ -121,6 +121,7 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 
 	public function logedin_user_panel() {
 		$this->loadModel('Subscription');
+		$this->loadModel('Playcount');
 		$this->layout='base';
 	    $userid = $this->Session->read('Auth.User.id');
 	    $username = $this->Session->read('Auth.User.username');
@@ -128,28 +129,35 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+
 	    $this->set('userid', $userid);
 	   	$this->set('username', $username);
 	    $this->set('gamenumber', $gamenumber);
 	    $this->set('favoritenumber', $favoritenumber);
 	   	$this->set('subscribe', $subscribe);
 	    $this->set('subscribeto', $subscribeto);
+	    $this->set('playcount', $playcount);
 
 	}
 
 		public function usergame_user_panel() {
 		$this->loadModel('Subscription');
+		$this->loadModel('Playcount');
 		$this->layout='base';
 		$userid = $this->request->params['pass'][0];
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+
 	    $this->set('userid', $userid);
 	    $this->set('gamenumber', $gamenumber);
 	    $this->set('favoritenumber', $favoritenumber);
 	    $this->set('subscribe', $subscribe);
 	    $this->set('subscribeto', $subscribeto);
+	    $this->set('playcount', $playcount);
 
 	}
 
@@ -173,10 +181,11 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 
 	public function usergames() {
 	$this->layout='base';
+	$this->loadModel('User');
 	$this->leftpanel();
     $this->usergame_user_panel();
     $userid = $this->request->params['pass'][0];
-    $user = $this->Game->find('first', array('conditions' => array('Game.User_id' => $userid)));
+    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
 	$limit=12;
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
@@ -225,14 +234,17 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 
 		public function follow_card($userid) {
 		$this->loadModel('Subscription');
+		$this->loadModel('Playcount');
+		$this->loadModel('User');
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-	    $user = $this->Game->find('first', array('conditions' => array('Game.User_id' => $userid)));
+	    $playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+	    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
     	
-    	return array($userName,$gamenumber, $favoritenumber, $subscribe, $subscribeto);
+    	return array($userName,$gamenumber, $favoritenumber, $subscribe, $subscribeto, $playcount);
 	}
 
 
