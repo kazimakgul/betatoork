@@ -102,7 +102,7 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 	    }else{
 	    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'))));
 	    }
-	    
+
 	    $this->set('subscribe', $subscribe);
 	    $this->set('subscribeto', $subscribeto);
     	$this->set('userid', $userid);
@@ -121,6 +121,25 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
     ))));
 
 $this->set('title_for_layout', 'Toork - Top Rated Games');
+	}
+
+	public function playedgames() {
+	$this->layout='base';
+	$this->loadModel('User');
+	$this->loadModel('Playcount');
+	$this->leftpanel();
+    $this->usergame_user_panel();
+    $userid = $this->request->params['pass'][0];
+    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    $userName = $user['User']['username'];
+	$limit=12;
+
+    $this->set('top_rated_games', $this->Playcount->find('all', array('conditions' => array('Playcount.user_id'=>$userid),'limit' => $limit )));
+
+    
+
+    $this->set('username', $userName);
+	$this->set('userid', $userid);
 	}
 
 	public function categorygames() {
@@ -227,11 +246,12 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 
 	public function followers() {
 		$this->loadModel('Subscription');
+		$this->loadModel('User');
 		$this->layout='base';
 		$this->leftpanel();
 		$this->usergame_user_panel();
 		$userid = $this->request->params['pass'][0];
-		$user = $this->Game->find('first', array('conditions' => array('Game.User_id' => $userid)));
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
     	$followers = $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 
@@ -243,11 +263,12 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 
 	public function subscriptions() {
 		$this->loadModel('Subscription');
+		$this->loadModel('User');
 		$this->layout='base';
 		$this->leftpanel();
 		$this->usergame_user_panel();
 		$userid = $this->request->params['pass'][0];
-		$user = $this->Game->find('first', array('conditions' => array('Game.User_id' => $userid)));
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
     	$followers = $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 

@@ -70,7 +70,7 @@ class AppController extends Controller {
 
 
     public function beforeFilter() {
-        $this->Auth->allow('index','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','channel','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels');
+        $this->Auth->allow('index','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','channel','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames');
     }
     
     public function isAuthorized($user) {
