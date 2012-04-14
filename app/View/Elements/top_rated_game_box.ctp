@@ -4,7 +4,7 @@
 <div class="gamebox clearfix">
 	<div class="greyback">
 		<div class="whiteback">
-			<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb')); ?></a>
+			<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$game['Game']['name'])); ?></a>
 		</div>
 	</div>
 	
