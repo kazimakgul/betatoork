@@ -8,8 +8,9 @@
 				<div class="slider_sep"></div>
 				<div class="slider_leftpanel_slide">
 					<div class="ul">
+
 						
-						<?php foreach ($top_rated_games as $game): ?>
+						<?php foreach ($slider as $game): ?>
 
 <?php $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id'])); ?>
 <?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
@@ -45,7 +46,7 @@
 		<div class="slider_rightpanel_slidepointerarr"></div>
 			<div class="ul">
 				
-				<?php foreach ($top_rated_games as $game): ?>
+				<?php foreach ($slider as $game): ?>
 				
 <?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
 				

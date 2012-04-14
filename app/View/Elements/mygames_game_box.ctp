@@ -3,7 +3,7 @@
 <div class="gamebox clearfix">
 	<div class="greyback">
 		<div class="whiteback">
-			<a href="<?php echo $playurl ?>"><img class="gamethumb" alt="" src="/betatoork/upload/games/4/angry200_original.png" /></a>
+			<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$game['Game']['name'])); ?></a>
 		</div>
 	</div>
 	
@@ -11,6 +11,7 @@
 		<div class="rating{{rating}}"></div>
 		<div class="rateresult"><?php echo $game['Game']['starsize']; ?>%</div>
 	</div>
+	
 	<?php $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id'])); ?>
 	<a class="gb_channelname" href="<?php echo $channelurl ?>"><?php echo $game['User']['username']; ?></a>
 	<a class="gb_gamename" href="<?php echo $playurl ?>"><?php echo $game['Game']['name']; ?></a>

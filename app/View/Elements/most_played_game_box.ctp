@@ -1,4 +1,3 @@
-								
 <?php foreach ($most_played_games as $game): ?>
 <?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>	
 <div class="gamebox clearfix">
@@ -12,7 +11,7 @@
 		<div class="rating{{rating}}"></div>
 		<div class="rateresult"><?php echo $game['Game']['starsize']; ?>%</div>
 	</div>
-
+	
 	<?php $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id'])); ?>
 	<a class="gb_channelname" href="<?php echo $channelurl ?>"><?php echo $game['User']['username']; ?></a>
 	<a class="gb_gamename" href="<?php echo $playurl ?>"><?php echo $game['Game']['name']; ?></a>

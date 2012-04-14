@@ -6,7 +6,7 @@
     <?php echo $this->element('categories_left_menu'); ?>
   </div>
   <div class="channel_right_panel">
-      <?php  echo $this->element('slider'); ?>
+      <?php  echo $this->element('usergames_slider'); ?>
 
 
                <div id="channelgames">

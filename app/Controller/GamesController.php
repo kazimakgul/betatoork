@@ -96,6 +96,13 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
     )));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+	    if($gamenumber >= 3){
+	    	    $this->set('slider', $cond);
+	    }else{
+	    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'))));
+	    }
+	    
 	    $this->set('subscribe', $subscribe);
 	    $this->set('subscribeto', $subscribeto);
     	$this->set('userid', $userid);
@@ -200,12 +207,23 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
     )));
     $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     )));
+    $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'))));
+    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+    
+    if($gamenumber >= 3){
+    	    $this->set('slider', $cond);
+    }else{
+    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'))));
+    }
+
    	$this->set('limit', $limit);
     $this->set('favorites', $cond2);
     $this->set('mygames', $cond);
     $this->set('username', $userName);
 	$this->set('user_id', $userid);
 }
+
+	
 
 	public function followers() {
 		$this->loadModel('Subscription');
