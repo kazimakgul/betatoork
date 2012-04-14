@@ -44,7 +44,7 @@
 		<div class="slider_rightpanel_slide">
 		<div class="slider_rightpanel_slidepointerarr"></div>
 			<div class="ul">
-				
+				<?php rsort($top_rated_games); ?>
 				<?php foreach ($top_rated_games as $game): ?>
 				
 <?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
