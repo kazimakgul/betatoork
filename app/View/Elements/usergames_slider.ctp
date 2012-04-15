@@ -46,7 +46,7 @@
 		<div class="slider_rightpanel_slidepointerarr"></div>
 			<div class="ul">
 				
-				<?php rsort($slider); ?>
+				<?php krsort($slider); ?>
 				
 				<?php foreach ($slider as $game): ?>
 				
