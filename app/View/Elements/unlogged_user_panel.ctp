@@ -27,6 +27,6 @@
 
 
   <a class="forget" href="forgot">Forget Password?</a>
-  <?php echo $this->Html->link('Not a member? Register now',array('controller'=>'users','action'=>'register'),array('class'=>'bemember')); ?>
+  <a class="bemember" href="#" data-bind="click: function() { $('#register').lightbox_me(); }">Not a member? Register now.</a>
   </form>
 </div>

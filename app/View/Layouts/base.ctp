@@ -55,30 +55,7 @@ $(function () {
 <?php  echo $this->element('test'); ?>
 
 
-<script type="text/javascript">
-$(document).ready(function() {
 
-  $('.menu a').mouseenter(function () {
-    var positions = $(this).position();
-    $('.pointer').animate({ left: positions.left }, 200);
-    $('.menu_up').animate({ left: -positions.left }, 200);
-  });
-});
-var show_hide = function (left_status, right_status) {
-  if (left_status === 1 && right_status === 0) {
-  	$('#left_tab_content').removeClass('lightbox_display_none');
-  	$('#right_tab_content').addClass('lightbox_display_none');
-  	$('.lightbox_lineright').removeClass('lightbox_lineright').addClass('lightbox_lineleft');
-  }
-  else if (left_status === 0 &&  right_status === 1) {
-  	$('#left_tab_content').addClass('lightbox_display_none');
-  	$('#right_tab_content').removeClass('lightbox_display_none');
-  	$('.lightbox_lineleft').removeClass('lightbox_lineleft').addClass('lightbox_lineright');
-  }
-
-  $('input, textarea').placeholder();
-}
-</script>
 
 </head>
 <body class="home">

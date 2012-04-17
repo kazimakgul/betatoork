@@ -71,13 +71,12 @@ UserModel.prototype = {
     this.logged_in(logged_in);
   }
 }
-var user = new UserModel({% if request.user.is_authenticated %}"{{request.user.username}}", true{% endif %});
+var user = new UserModel();
 
 var Field = function(form, name, default_text, checkbox, dontValidate) {
   this.form = $(form);
   this.elm = $(form).find("[name="+ name +"]");
   this.value = ko.observable();
-  this.placeholder = this.elm.attr('placeholder')||''
   this.errorMessage = ko.observable();
   this.name = name;
   this.lastValue = ko.observable();
@@ -127,7 +126,6 @@ Field.prototype = {
     }
     else {
       if(self.value() == self.text) {
-        self.elm.attr('placeholder', self.placeholder)
         self.value("");
       }
     }
@@ -137,7 +135,7 @@ Field.prototype = {
       return true;
     }
     if(this.value() == "" || this.value() == this.text) {
-      this.error("This field is required.");
+      this.error("Bu alan zorunludur.");
       return false;
     }
     return true;
@@ -148,7 +146,6 @@ Field.prototype = {
     this.value("");
     $(this.errorCopy).html(msg);
     if(!this.checkbox) {
-      $(this.elm).attr('placeholder', '')
       $(this.elm).after($(this.errorCopy));
       $(this.errorCopy).position({
         of: $(this.elm),
@@ -167,11 +164,11 @@ Field.prototype = {
 }
 
 var LoginForm = function(form) {
-  this.form = form;
-  this.url = "{% url login %}";
+  this.form = $(form);
+  this.url = "account/login/index.html";
   this.fields =  {
-    email: new Field(this.form, "email"),
-    password: new Field(this.form, "password"),
+    email: new Field(this.form, "email", "Type your email"),
+    password: new Field(this.form, "password", "Type your channel name"),
     rememberme: new Field(this.form, "rememberme", "", true, true)
   }
   this.success = ko.observable();
@@ -187,17 +184,12 @@ LoginForm.prototype = {
     });
     if(!hasError.length) {
       (function(self){
-        $('.alert', $(this.form)).hide();
         $.ajax({
           type: 'post',
           url: self.url,
           data: $(self.form).serialize(),
           success: function(o) {
             if(o.errors) {
-              console.log(o.errors[0])
-              $('.alert', this.form).html( o.errors)
-            
-                          
               var general_error = o.errors["__all__"];
               delete(o.errors["__all__"]);
               _.each(o.errors, function(error, fieldName) {
@@ -221,19 +213,18 @@ LoginForm.prototype = {
     }
   },
   show_general_errors: function(errors) {
-    // alert(errors.join("\n"));
-    $('.alert', $(this.form)).text(errors.join("\n")).show();
+    alert(errors.join("\n"));
   }
 }
 
 var RegisterForm = function(form) {
   this.form = $(form);
-  this.url = "{% url register-start %}";
+  this.url = "account/register/start/index.html";
   this.fields = {
-    channel_name: new Field(this.form, "channel_name"),
-    email: new Field(this.form, "email"),
-    password: new Field(this.form, "password"),
-    password1: new Field(this.form, "password1"),
+    channel_name: new Field(this.form, "channel_name", "Type your channel name"),
+    email: new Field(this.form, "email", "Type your email"),
+    password: new Field(this.form, "password", "Type your password"),
+    password1: new Field(this.form, "password1", "Type your password"),
     subscription_emails: new Field(this.form, "subscription_emails", "", true),
     tos: new Field(this.form, "tos", "", true)
   }
@@ -282,5 +273,38 @@ RegisterForm.prototype = {
   }
 }
 
-var viewModel = {}
+var viewModel = {}  
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#txt_search').focus(function () {
+    if ($(this).val() == 'Keywords...') {
+      $('#txt_search').val('');
+    }
+  });
+  $('#txt_search').blur(function () {
+    if ($(this).val() == '') {
+      $('#txt_search').val('Keywords...');
+    }
+  });
+
+  $('.menu a').mouseenter(function () {
+    var positions = $(this).position();
+    $('.pointer').animate({ left: positions.left }, 200);
+    $('.menu_up').animate({ left: -positions.left }, 200);
+  });
+});
+var show_hide = function (left_status, right_status) {
+  if (left_status === 1 && right_status === 0) {
+  	$('#left_tab_content').removeClass('lightbox_display_none');
+  	$('#right_tab_content').addClass('lightbox_display_none');
+  	$('.lightbox_lineright').removeClass('lightbox_lineright').addClass('lightbox_lineleft');
+  }
+  else if (left_status === 0 &&  right_status === 1) {
+  	$('#left_tab_content').addClass('lightbox_display_none');
+  	$('#right_tab_content').removeClass('lightbox_display_none');
+  	$('.lightbox_lineleft').removeClass('lightbox_lineleft').addClass('lightbox_lineright');
+  }
+}
 </script>
