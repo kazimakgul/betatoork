@@ -165,7 +165,7 @@ Field.prototype = {
 
 var LoginForm = function(form) {
   this.form = $(form);
-  this.url = "account/login/index.html";
+  this.url = "/account/login/";
   this.fields =  {
     email: new Field(this.form, "email", "Type your email"),
     password: new Field(this.form, "password", "Type your channel name"),
@@ -219,7 +219,7 @@ LoginForm.prototype = {
 
 var RegisterForm = function(form) {
   this.form = $(form);
-  this.url = "account/register/start/index.html";
+  this.url = "/account/register/start/";
   this.fields = {
     channel_name: new Field(this.form, "channel_name", "Type your channel name"),
     email: new Field(this.form, "email", "Type your email"),
@@ -273,7 +273,7 @@ RegisterForm.prototype = {
   }
 }
 
-var viewModel = {}  
+var viewModel = {}
 </script>
 
 <script type="text/javascript">

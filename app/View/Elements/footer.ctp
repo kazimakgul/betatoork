@@ -36,21 +36,14 @@
     <span>Copyright 2011 © Toork Games All Rights Reserved</span>
   </div>
 </div>
-<script type='text/javascript'>
+<script>
 $(function() {
-
-
   if($("#register_form").length) {
     viewModel.registerForm = new RegisterForm("#register_form");
   }
   if($("#login_form").length) {
     viewModel.loginForm = new LoginForm("#login_form");
   }
-
-  if($("#panel_login_form").length) {
-    viewModel.panelLoginForm = new LoginForm("#panel_login_form");
-  }
-
   ko.applyBindings(viewModel);
 });
 </script>

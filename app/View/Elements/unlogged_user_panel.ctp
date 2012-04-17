@@ -1,3 +1,4 @@
+<div data-bind="ifnot: user.logged_in()">
 <div class="userpanel">
   <p>Member Login</p>
                   <?php
@@ -29,4 +30,4 @@
   <a class="forget" href="forgot">Forget Password?</a>
   <a class="bemember" href="#" data-bind="click: function() { $('#register').lightbox_me(); }">Not a member? Register now.</a>
   </form>
-</div>
+</div></div>
