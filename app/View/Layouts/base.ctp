@@ -87,26 +87,33 @@ $(function () {
   		</div>
   		<div class="lightbox_tabs_content">
   			<div id="left_tab_content">
-          <form name="registerForm" id="register_form" method="post">
-  					<input class="lightbox_txt_name" id="id_channel_name" name="channel_name" type="text" />
-  					<input class="lightbox_txt_email" id="id_email" name="email" type="text" />
-  					<input class="lightbox_txt_pass" id="id_password" name="password" type="password" />
-  					<input class="lightbox_txt_pass" id="id_password1" name="password1" type="password" />
+			
+<?php
+ $regurl=$this->Html->url(array("controller" => "users","action" =>"register"));
+?>
+			
+          <form name="registerForm" id="register_form" method="post" action="<?php echo $regurl ?>">
+  					<input class="lightbox_txt_name" id="id_channel_name" name="data[User][username]" type="text" value="Type your username" />
+  					<input class="lightbox_txt_email" id="id_email" name="data[User][email]" type="text" value="Type your email address" />
+  					<input class="lightbox_txt_pass" id="id_password" name="data[User][password]" type="password" value="Type your password" />
+  					<input class="lightbox_txt_pass" id="id_password1" name="data[User][confirm_password]" type="password" value="Type your password again" />
   					<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='cb57a50b31cc117803835ecd11324908' /></div>
     				<div class="clearfix">
     				  <input style="display:none" type="checkbox" name="subscription_emails" id="id_subscription_emails" />
     					<a id="readterms" class="lightbox_licence mirror_subscription_emails" href="#" data-bind="click: function() { viewModel.registerForm.fields.subscription_emails.value(!viewModel.registerForm.fields.subscription_emails.value()); $('#readterms').removeClass('error');}, css: { lightbox_licencecheck: viewModel.registerForm.fields.subscription_emails.value() }">Yes, i accept to send me useful news about Toork</a>
     					<input style="display:none" type="checkbox" name="tos" id="id_tos" />
     					<a id="iread" class="lightbox_read mirror_tos" href="#" data-bind="click: function() { viewModel.registerForm.fields.tos.value(!viewModel.registerForm.fields.tos.value()); $('#iread').removeClass('error');}, css: { lightbox_readcheck: viewModel.registerForm.fields.tos.value() }">I agree to the Terms of Use and Privacy Policy</a>
-    					<div class="lightbox_regs"><a class="lightbox_regbtn" href="#" data-bind="click: function() { viewModel.registerForm.submit(); }"></a></div>
+    					<div class="lightbox_regs"><input class="lightbox_regbtn" type="submit" /></div>
     				</div>
     			</form>
   			</div>
-
+<?php
+ $loginurl=$this->Html->url(array("controller" => "users","action" =>"login"));
+?>
   			<div id="right_tab_content" class="lightbox_display_none">
-  				<form name="loginForm" id="login_form" method="post">
-  					<input class="lightbox_tx_name" id="id_username2" name="email" type="text" value="Type your email address" />
-  					<input class="lightbox_tx_pass" id="id_password2" name="password" type="password" value="Password" />
+  				<form name="loginForm" id="login_form" method="post" action="<?php echo $loginurl ?>">
+  					<input class="lightbox_tx_name" id="id_username2" name="data[User][username]" type="text" value="Type your email address" />
+  					<input class="lightbox_tx_pass" id="id_password2" name="data[User][password]" type="password" value="Password" />
   					<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='cb57a50b31cc117803835ecd11324908' /></div>
     				<div class="clearfix">
     				  <input type="checkbox" name="rememberme" style="display:none" />
@@ -114,7 +121,8 @@ $(function () {
     					<a id="member" class="lightbox_member" href="#">Forgot Password?</a>
     				</div>
     				<div class="lightbox_logs">
-    					<a class="lightbox_logbtn" href="#" data-bind="click: function() { viewModel.loginForm.submit(); }"></a>
+    					
+						<input class="lightbox_logbtn" type="submit" />
     					<a class="lightbox_cncbtn" href="#"></a>
     				</div>
     		  </form>
