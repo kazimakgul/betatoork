@@ -68,7 +68,7 @@ $(function () {
 <?php  echo $this->element('footer'); ?>
 <?php 
 echo $this->Session->flash('flash', array('element' => 'info'));
-echo $this->Session->flash('auth');
+echo $this->Session->flash('auth', array('element' => 'info'));
 ?>
 <div id="register" style="position:absolute;width:364px;display:none;">
   <div class="lightbox_overlay">

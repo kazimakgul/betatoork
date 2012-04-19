@@ -23,8 +23,8 @@ echo $this->element('analytics');
 <?php echo $this->element('header');?>
 <br>
 <?php 
-echo $this->Session->flash();
-echo $this->Session->flash('auth');
+echo $this->Session->flash('flash', array('element' => 'info'));
+echo $this->Session->flash('auth', array('element' => 'info'));
 ?>
 <?php echo $content_for_layout?>
 

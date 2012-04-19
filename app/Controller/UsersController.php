@@ -72,7 +72,7 @@ public function reset_request()
 		
 		if($this->Email->send())
 		{
-		$this->Session->setFlash('A reset link has been sent, please check your email to reset your password', 'default', array('class' => 'success'));
+		$this->Session->setFlash('A reset link has been sent, please check your email to reset your password');
 		}
 		else
 		{
@@ -147,7 +147,7 @@ public function __sendActivationEmail($user_id) {
 
 
     public function login() {
-
+    	$this->layout = 'base';
     	if($this->request->is('post')){
     		if(empty($this->data['User']['username'])){
     			$this->User->validationErrors['username'] = "Please enter your username";
