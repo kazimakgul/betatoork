@@ -259,6 +259,7 @@ public function __sendActivationEmail($user_id) {
 				$this->redirect(array('controller' => 'games', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->redirect(array('controller' => 'games', 'action' => 'index'));
 			}
 		}
 	}

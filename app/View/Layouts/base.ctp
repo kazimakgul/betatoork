@@ -107,7 +107,7 @@ echo $this->Session->flash('auth');
     					<a id="readterms" class="lightbox_licence mirror_subscription_emails" href="#" data-bind="click: function() { viewModel.registerForm.fields.subscription_emails.value(!viewModel.registerForm.fields.subscription_emails.value()); $('#readterms').removeClass('error');}, css: { lightbox_licencecheck: viewModel.registerForm.fields.subscription_emails.value() }">Yes, i accept to send me useful news about Toork</a>
     					<input style="display:none" type="checkbox" name="tos" id="id_tos" />
     					<a id="iread" class="lightbox_read mirror_tos" href="#" data-bind="click: function() { viewModel.registerForm.fields.tos.value(!viewModel.registerForm.fields.tos.value()); $('#iread').removeClass('error');}, css: { lightbox_readcheck: viewModel.registerForm.fields.tos.value() }">I agree to the Terms of Use and Privacy Policy</a>
-    					<div class="lightbox_regs"><input class="lightbox_regbtn" type="submit" /></div>
+    					<div class="lightbox_regs"><input class="lightbox_regbtn" type="submit" value='' /></div>
     				</div>
     			</form>
   			</div>
@@ -126,7 +126,7 @@ echo $this->Session->flash('auth');
     				</div>
     				<div class="lightbox_logs">
     					
-						<input class="lightbox_logbtn" type="submit" />
+						<input class="lightbox_logbtn" type="submit" value=''/>
     					<a class="lightbox_cncbtn" href="#"></a>
     				</div>
     		  </form>

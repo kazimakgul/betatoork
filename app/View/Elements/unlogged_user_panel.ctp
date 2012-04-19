@@ -21,7 +21,7 @@
 
     <a class="rememberme" id="panel_forgot"  href="#" data-bind="click: function() { viewModel.panelLoginForm.fields.rememberme.value(!viewModel.panelLoginForm.fields.rememberme.value()); }"><label for="panel_forgot">Remember Me</label></a>
 
-  <input class="loginbtn" type="submit" />
+  <input class="loginbtn" type="submit" value="" />
   <div class="panelsep"></div>
 
   <div style="padding:30px;font-size:13px;line-height:20px;font-weight:bold;" data-bind="visible: viewModel.registerForm.success(), text: viewModel.registerForm.message()"></div>
