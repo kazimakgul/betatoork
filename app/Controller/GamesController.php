@@ -407,6 +407,17 @@ if(empty($favbefore))
  * @return void
  */
 	public function edit($id = null) {
+		$this->layout='base';
+		$this->logedin_user_panel();
+		$userid = $this->Session->read('Auth.User.id');
+		$cond= array('Game.active'=>'1');
+    	$this->set('games', $this->paginate('Game',$cond));
+    	$this->set('categories', $this->paginate('Category'));
+    	$limit=12;
+		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+    )));
+
+
 		$this->Game->id = $id;
     	$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
     	$this->set("game",$game);
@@ -427,17 +438,20 @@ if(empty($favbefore))
 			
 			
 			if ($this->Game->save($this->request->data)) {
-				$this->Session->setFlash(__('The game has been updated'));
-				//$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash('The game has been updated');
+				$this->redirect(array('action' => 'channel'));
 			} else {
 				$this->Session->setFlash(__('The game could not be saved. Please, try again.'));
 			}
 		} else {
 			$this->request->data = $this->Game->read(null, $id);
 		}
+
+		$this->set('mygames', $cond);
+    	$this->set('limit', $limit);
 		$users = $this->Game->User->find('list');
-		$categories = $this->Game->Category->find('list');
-		$this->set(compact('users', 'categories'));
+		$category = $this->Game->Category->find('list');
+		$this->set(compact('users', 'category'));
 	}
 
 /**

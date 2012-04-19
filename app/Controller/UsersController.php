@@ -44,8 +44,8 @@ function activate($user_id = null, $in_hash = null) {
 		$this->User->saveField('active', 1);
  
 		// Let the user know they can now log in!
-		$this->Session->setFlash('Your account has been activated, please log in below', 'default', array('class' => 'success'));
-		$this->redirect('login');
+		$this->Session->setFlash('Your account has been activated, please log in using your cridentials');
+		$this->redirect('/');
 	}
  
 	// Activation failed, render '/views/user/activate.ctp' which should tell the user.
@@ -102,7 +102,7 @@ public function reset_now($user_id = null, $in_hash = null)
 	}
 		
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('Your password has been reset, Please login with your new password', 'default', array('class' => 'success'));
+				$this->Session->setFlash('Your password has been reset, Please login with your new password');
 				//$this->redirect(array('action' => 'password',$this->Session->read('Auth.User.id')));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
@@ -162,7 +162,7 @@ public function __sendActivationEmail($user_id) {
 					// Uh Oh!
 					$this->Session->setFlash('Your account has not been activated yet!');
 					$this->Auth->logout();
-					$this->redirect('/users/login');
+					$this->redirect('/');
 				}
 				else
 				{
@@ -171,7 +171,8 @@ public function __sendActivationEmail($user_id) {
 			
 		        
 		    } else {
-		        $this->Session->setFlash(__('Please enter a valid username and password'));
+		        $this->Session->setFlash('Please enter a valid username and password');
+		        $this->redirect('/');
 		    }
 		}
 	}
@@ -254,7 +255,7 @@ public function __sendActivationEmail($user_id) {
 				$this->Email->send('Hello message body!');
 				*/
 				$this->__sendActivationEmail($this->User->getLastInsertID());
-				$this->Session->setFlash('You are successfully Registered. Please check your email to verify your account', 'default', array('class' => 'success'));
+				$this->Session->setFlash('You are successfully registered. Please check your email to verify your account');
 				$this->redirect(array('controller' => 'games', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));

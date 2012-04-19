@@ -1,5 +1,6 @@
 <?php foreach ($mygames as $game): ?>
-<?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>	
+<?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
+<?php $editurl=$this->Html->url(array( "controller" => "games","action" =>"edit",h($game['Game']['id']))); ?>	
 <div class="gamebox clearfix">
 	<div class="greyback">
 		<div class="whiteback">
@@ -10,6 +11,7 @@
 	<div class="gb_rate">
 		<div class="rating{{rating}}"></div>
 		<div class="rateresult"><?php echo $game['Game']['starsize']; ?>%</div>
+		<div class="gameboxmove"><a class="gb_gameboxmove" href="<?php echo $editurl ?>">Edit</a></div>
 	</div>
 	
 	<?php $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id'])); ?>
