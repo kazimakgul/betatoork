@@ -27,7 +27,7 @@
                     <ul>
            
                      <li class="clearfix">
-                    <?php echo $this->element('mygames_game_box'); ?>
+                    <?php echo $this->element('usergames_game_box'); ?>
                     </li>
             
                     </ul>
