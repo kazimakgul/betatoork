@@ -37,18 +37,15 @@ class GamesController extends AppController {
 		$this->layout='base';
 		$this->Game->recursive = 0;
 		$this->logedin_user_panel();
-		$cond= array('Game.active'=>'1');
-    	$this->set('games', $this->paginate('Game',$cond));
+		$this->leftpanel();
 		$limit=12;
     	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     ))));
-	
-	
+		
 	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => $limit),array(
         'order' => array('Game.starsize' => 'desc')
     )));//playcounta göre ayarlanacak
 
-    	$this->set('categories', $this->paginate('Category'));
 		$this->set('title_for_layout', 'Toork - is a gamelist share platform - create your playlist of games and share your list');
 	}
 	
@@ -78,7 +75,7 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 
 	public function leftpanel(){
 		$this->Game->recursive = 0;
-		$this->set('categories', $this->paginate('Category'));
+		$this->set('category', $this->paginate('Category'));
 		$cond3= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond3));
 
@@ -368,9 +365,7 @@ if(empty($favbefore))
 		$this->layout='base';
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
-		$cond= array('Game.active'=>'1');
-    	$this->set('games', $this->paginate('Game',$cond));
-    	$this->set('categories', $this->paginate('Category'));
+    	$this->leftpanel();
     	$limit=12;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     )));
@@ -396,8 +391,8 @@ if(empty($favbefore))
 		$this->set('mygames', $cond);
     	$this->set('limit', $limit);
 		$users = $this->Game->User->find('list');
-		$category = $this->Game->Category->find('list');
-		$this->set(compact('users', 'category'));
+		$categories = $this->Game->Category->find('list');
+		$this->set(compact('users', 'categories'));
 	}
 
 /**
@@ -410,9 +405,7 @@ if(empty($favbefore))
 		$this->layout='base';
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
-		$cond= array('Game.active'=>'1');
-    	$this->set('games', $this->paginate('Game',$cond));
-    	$this->set('categories', $this->paginate('Category'));
+		$this->leftpanel();
     	$limit=12;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     )));
@@ -450,8 +443,8 @@ if(empty($favbefore))
 		$this->set('mygames', $cond);
     	$this->set('limit', $limit);
 		$users = $this->Game->User->find('list');
-		$category = $this->Game->Category->find('list');
-		$this->set(compact('users', 'category'));
+		$categories = $this->Game->Category->find('list');
+		$this->set(compact('users', 'categories'));
 	}
 
 /**

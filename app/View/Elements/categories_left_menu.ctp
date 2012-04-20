@@ -5,7 +5,7 @@
 
   	<?php 
 	  	$switch = 'odd';
-	  	foreach ($categories as $category): 
+	  	foreach ($category as $cat): 
 			if($switch == 'odd'){
 				$switch = 'even';
 			} else{
@@ -15,8 +15,8 @@
 
 		<li class="<?php echo $switch ?>">
 		<?php 
-		$catName = h($category['Category']['name']);
-		$catId = $category['Category']['id'];
+		$catName = h($cat['Category']['name']);
+		$catId = $cat['Category']['id'];
 		echo $this->Html->link($catName, array('controller'=>'games','action'=>'categorygames',$catId)); 
 
 		?>
