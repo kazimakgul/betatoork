@@ -280,7 +280,7 @@ public function __sendActivationEmail($user_id) {
  	}
 
 	public function edit($id = null) {
-	//$this->User->validate = array();
+		$this->layout = 'base';
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));

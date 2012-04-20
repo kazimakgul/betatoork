@@ -1,29 +1,99 @@
-<div class="wrapper" >
-<div class="content">
-<?php
-echo $this->element('logedinButtons');
-?>
-<div class="users form">
-<?php echo $this->Form->create('User');?>
-	<fieldset>
-		<legend><?php echo __('Edit User'); ?></legend>
-	<?php
-	
-		echo $this->Form->input('username',array('required','placeholder' => 'Ex: GameMonster'));
-		
-	?>
-	<a>Your Email: <?php echo $this->Session->read('Auth.User.email');?></a>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-	<li><?php echo $this->Html->link(__('Profile Edit'), array('action' => 'edit',$this->Session->read('Auth.User.id'))); ?></li>
-	<li><?php echo $this->Html->link(__('Password Edit'), array('action' => 'password',$this->Session->read('Auth.User.id'))); ?></li>
-	</ul>
-</div>
+<link type="text/css" rel="stylesheet" href="/css/Addgame.css" />
+
+<div class="content clearfix">
+  <div class="channel_left_panel">
+    <?php  echo $this->element('channel_user_panel'); ?>
+    <?php  echo $this->element('social'); ?>
+    <?php echo $this->element('best_channels_left_menu'); ?>
+    <?php echo $this->element('categories_left_menu'); ?>
+  </div>
+  <div class="right_panel">
+
+  <!-- Add Game UI is here-->  
 
 
-</div>
+<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form addgame' ,'type' => 'file'));?>
+
+        <div class="sep"></div>
+<span class="required_notification">* Denotes Required Field</span>
+    <ul>
+  
+        <li>
+            <label for="name">Username:</label>
+<?php echo $this->Form->input('username',array('label'=>false ,'required','placeholder' => 'Ex: GameMonster')); ?>
+         </li>
+        <li>
+            <label for="website">Email:</label>
+
+<?php echo $this->Form->input('email',array('label'=>false ,'required', 'type' => 'email', 'length' => 100)); ?>
+
+            <span class="form_hint">Proper format "http://someaddress.com/gamepage"</span>
+        </li>
+
+        <li>
+
+ <?php echo $this->Form->input('birth_date',array('label'=>'Birth Date:' )); ?>
+        </li>
+
+        <li>
+
+ <?php echo $this->Form->input('gender',array('label'=>'Gender:' )); ?>
+        </li>
+
+        <li>
+
+ <?php echo $this->Form->input('country_id',array('label'=>'Country:' )); ?>
+        </li>
+
+
+        <li>
+        <label for="picture">Channel Avatar:</label>
+
+         <input placeholder="not yet" type="file" name="data[User][picture]" accept="image/jpg,image/png,image/jpeg"  size="60">
+        </li>
+        <li>
+            <button class="submit" type="submit">Update Channel</button>
+        </li>
+    </ul>
+
+</form>
+
+
+
+
+<!-- Add Game UI is up till here -->     
+
+               <div id="channelgames">
+                    <div class="clearfix">
+                        <div class="channelgame"></div>
+              
+              <?php 
+              if(count($mygames) <= $limit){}
+              else{
+                echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); 
+              } ?>
+               </div>
+
+                    <div class="sep"></div>
+
+                    <?php if(count($mygames) >= 1){ ?>
+                    <ul>
+           
+                     <li class="clearfix">
+                    <?php echo $this->element('mygames_game_box'); ?>
+                                                     
+                    </li>
+            
+                    </ul>
+
+                    <?php } 
+                    else { ?>
+
+                <div class="alert alert-info channel">You don't have any games yet, your games will show up here</div>
+                <?php }?>
+
+                </div>
+
+
+    </div>
 </div>
