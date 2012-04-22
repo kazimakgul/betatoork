@@ -297,6 +297,9 @@ public function __sendActivationEmail($user_id) {
 			$this->request->data = $this->User->read(null, $id);
 			$this->request->data["User"]["password"]="";
 		}
+		$countries = $this->User->Country->find('list');
+		$this->set(compact('countries'));
+
 	}
 
 		public function password($id = null) {
