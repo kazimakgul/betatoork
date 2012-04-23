@@ -97,10 +97,10 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 ?>
 			
           <form name="registerForm" id="register_form" method="post" action="<?php echo $regurl ?>">
-  					<input class="lightbox_txt_name" id="id_channel_name" name="data[User][username]" type="text" placeholder="Type your username" />
-  					<input class="lightbox_txt_email" id="id_email" name="data[User][email]" type="text" placeholder="Type your email address" />
-  					<input class="lightbox_txt_pass" id="id_password" name="data[User][password]" type="password" placeholder="Type your password" />
-  					<input class="lightbox_txt_pass" id="id_password1" name="data[User][confirm_password]" type="password" placeholder="Type your password again" />
+  					<input class="lightbox_txt_name" id="id_channel_name" name="data[User][username]" type="text" placeholder="Type your username" required />
+  					<input class="lightbox_txt_email" id="id_email" name="data[User][email]" type="text" placeholder="Type your email address" required />
+  					<input class="lightbox_txt_pass" id="id_password" name="data[User][password]" type="password" placeholder="Type your password" required />
+  					<input class="lightbox_txt_pass" id="id_password1" name="data[User][confirm_password]" type="password" placeholder="Type your password again" required />
   					<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='cb57a50b31cc117803835ecd11324908' /></div>
     				<div class="clearfix">
     				  <input style="display:none" type="checkbox" name="subscription_emails" id="id_subscription_emails" />
@@ -116,8 +116,8 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 ?>
   			<div id="right_tab_content" class="lightbox_display_none">
   				<form name="loginForm" id="login_form" method="post" action="<?php echo $loginurl ?>">
-  					<input class="lightbox_tx_name" id="id_username2" name="data[User][username]" type="text" placeholder="Type your email address" />
-  					<input class="lightbox_tx_pass" id="id_password2" name="data[User][password]" type="password" placeholder="Password" />
+  					<input class="lightbox_tx_name" id="id_username2" name="data[User][username]" type="text" placeholder="Type your email address" required />
+  					<input class="lightbox_tx_pass" id="id_password2" name="data[User][password]" type="password" placeholder="Password" required />
   					<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='cb57a50b31cc117803835ecd11324908' /></div>
     				<div class="clearfix">
     				  <input type="checkbox" name="rememberme" style="display:none" />
