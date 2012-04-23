@@ -1,4 +1,8 @@
-<a id="subscribe" class="subscribe" href="javascript:void();"></a>
+<?php if($this->Session->check('Auth.User')){?>
+<a id="subscribe" class="subscribe" href="javascript:void();"></a> 
+<?php }else {?>
+<a id="subscribeout" class="subscribe" onclick="$('#register').lightbox_me();"></a> 
+ <?php }?>
 <script>
 
 <?php $suburl=$this->Html->url(array("controller" => "subscriptions","action" =>"sub_check",$user_id)); ?>
