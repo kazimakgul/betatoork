@@ -46,11 +46,7 @@
         </li>
 
 
-        <li>
-        <label for="picture">Channel Avatar:</label>
 
-         <input placeholder="not yet" type="file" name="data[User][picture]" accept="image/jpg,image/png,image/jpeg"  size="60">
-        </li>
         <li>
             <button class="submit" type="submit">Update Channel</button>
         </li>
