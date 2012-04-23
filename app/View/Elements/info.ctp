@@ -25,6 +25,13 @@
      note = document.getElementById("note");
      note.style.display = 'none';
    }, false);
+   
+   setTimeout("closenote()",4000);
+   function closenote()
+   {
+   note.style.display = 'none'
+   }
+   
   </script>
 		
 </body>
