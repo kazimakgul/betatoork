@@ -391,12 +391,14 @@ if(empty($favbefore))
 
 
 	public function play2($id = null) {
-		$this->layout='game_index';
+		
+		$this->sharedby();
+		$this->random();
 		$this->loadModel('User');
 		$this->leftpanel();
     	$this->play2_user_panel();
-		$this->random();
 		$this->fav_check($id);
+		$this->layout='game_index';
 		$this->Game->id = $id;
 		$game=$this->Game->read(null, $id);
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id'])));

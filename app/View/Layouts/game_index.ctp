@@ -1,25 +1,32 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
+
 <title><?php echo $title_for_layout?></title>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<!-- Include external files and scripts here (See HTML helper for more info.) -->
 
 
+<meta property="og:title" content="Toork"/>
+<meta property="og:type" content="game"/>
+<meta property="og:url" content="http://beta.toork.com/"/>
+<meta property="og:image" content=""/>
+<meta property="og:site_name" content="IMDb"/>
+<meta property="fb:admins" content="USER_ID"/>
+<meta property="og:description"
+      content="Create your own game channel."/>
 
 
-<?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','myStyle','rating','game')); ?>
+<?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel','myStyle','rating','game')); ?>
 
 
 <?php echo $this->Html->script(array('jquery.min','jquery-ui-1.8.17.custom.min','jquery.cookie','jquery.fancybox-1.3.4.pack','jquery.lightbox_me','knockout-2.0.0','underscore','jquery.placeholder.min','jail','t_slider')); ?>
+
 
 <?php
 $rateurl=$this->Html->url(array( "controller" => "rates","action" =>"add",h($game['Game']['id'])));
 $favurl=$this->Html->url(array( "controller" => "favorites","action" =>"add",h($game['Game']['id'])));
 $playurl=$this->Html->url(array( "controller" => "playcounts","action" =>"add_play",h($game['Game']['id'])));
 ?>
-
 
 <script>
 
@@ -32,10 +39,10 @@ $.get("<?php echo $playurl ?>");
 
 
 function rate_a_game(rating){
-	$.post("<?php echo $rateurl; ?>/"+rating,function(data) {alert(data);});
-	
-	
-	if (rating==1)
+  $.post("<?php echo $rateurl; ?>/"+rating,function(data) {alert(data);});
+  
+  
+  if (rating==1)
   {
   $('.rating').css({width: '20%'});
   }
@@ -55,14 +62,14 @@ else if (rating==2)
   {
   $('.rating').css({width: '100%'});
   }
-	
-	
+  
+  
 }
 
 var heartflag=0;
 
 
-	if (heartwidth==100)
+  if (heartwidth==100)
   {
   $('.adding').css({width: '0%'});
   }
@@ -73,34 +80,34 @@ var heartflag=0;
 
 
 function add_to_fav(heartwidth){
-	$.post("<?php echo $favurl;?>",function(data) {alert(data);});
-	
+  $.post("<?php echo $favurl;?>",function(data) {alert(data);});
+  
     if(heartflag==0)
-	{
-	current_heart=heartwidth;
-	heartflag=1;
-	}
-	
-	
+  {
+  current_heart=heartwidth;
+  heartflag=1;
+  }
+  
+  
 }
 
 function switcher(){
-	
-	if(current_heart==100)
-	{
-	current_heart=0;
-	$('.adding').css({width: '0%'});
-	}
-	else if(current_heart==0)
-	{
-	current_heart=100;
-	$('.adding').css({width: '100%'});
-	}
-	
-	
-	
+  
+  if(current_heart==100)
+  {
+  current_heart=0;
+  $('.adding').css({width: '0%'});
+  }
+  else if(current_heart==0)
+  {
+  current_heart=100;
+  $('.adding').css({width: '100%'});
+  }
+  
+  
+  
 }
-	
+  
 </script>
 
 
@@ -119,10 +126,10 @@ $(function () {
   $('.share').click(function () {
     var posshare = $(this).position();
   });
-	$('.bemember').click(function () {
-	  $('#register').load('/account/register/start/');
-	  $('body').css({ 'overflow' : 'hidden'});
-	});
+  $('.bemember').click(function () {
+    $('#register').load('/account/register/start/');
+    $('body').css({ 'overflow' : 'hidden'});
+  });
 });
 </script>
 
@@ -158,3 +165,8 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 
 </body>
 </html>
+
+
+
+
+
