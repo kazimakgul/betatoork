@@ -115,7 +115,7 @@
 font-family:Georgia, Times, "Times New Roman", serif;
 }
 
-.form_hint, .required_notification {font-size: 11px;}
+.form_hint, .required_notification {font-size: 13px;}
 
 /* === List Styles === */
 .contact_form ul {

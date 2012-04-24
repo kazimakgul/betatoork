@@ -22,6 +22,9 @@
             <label for="name">Game Name:</label>
 <?php echo $this->Form->input('name',array('label'=>false ,'required','placeholder' => 'Metal Slug Brutal 3')); ?>
          </li>
+
+<?php if ($this->Session->read('Auth.User.role') == 0){?>
+
         <li>
             <label for="website">Game Link:</label>
 
@@ -29,12 +32,25 @@
 
             <span class="form_hint">Proper format "http://someaddress.com/gamepage"</span>
         </li>
+<?php } else { ?>
+
+        <li>
+            <label for="website">Game Embed:</label>
+
+          <?php echo $this->Form->input('embed',array('label'=>false ,'div'=>false,'required' , 'pattern'=>'(<iframe|<embed|<object).+.(</iframe>|</embed>|</object>)' ,'placeholder' => 'Paste your game code here please','length' => 1000, 'title'=>'Only <embed> , <iframe> and <object> tags are available and the game code must be starting from one of the tags and ending with the same tag. Ex: <embed> some code </embed>')); ?>
+
+
+            <span class="form_hint">Must be one of the forms -> iframe, embed, object. Only embed , iframe and object tags are available and the game code must be starting from one of the tags and ending with the same tag."</span>
+        </li>
+
+<?php } ?>
+
         <li>
             <label for="message">Game Description:</label>
 
-<?php  echo $this->Form->input('description',array('label'=>false,'required','placeholder' => 'Describe the game you share please','type' => 'textarea','cols'=>'40','rows'=>'5' )); ?>
+<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'required','placeholder' => 'Describe the game you share please','type' => 'textarea','cols'=>'40','rows'=>'5' )); ?>
 
-            <span class="form_hint">Proper format "Less than 120 chars please"</span>
+            <span class="form_hint">recommendation : "your description must be between 50-300 chars please"</span>
         </li>
         <li>
 
