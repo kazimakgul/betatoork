@@ -192,6 +192,28 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 
 	}
 
+	public function play2_user_panel() {
+		$this->loadModel('Subscription');
+		$this->loadModel('Playcount');
+		$this->layout='base';
+		$gameid = $this->request->params['pass'][0];
+		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid)));
+		$userid = $game['Game']['user_id'];
+	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
+	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+
+	    $this->set('userid', $userid);
+	    $this->set('gamenumber', $gamenumber);
+	    $this->set('favoritenumber', $favoritenumber);
+	    $this->set('subscribe', $subscribe);
+	    $this->set('subscribeto', $subscribeto);
+	    $this->set('playcount', $playcount);
+
+	}
+
 
 	public function mygames() {
 		$this->layout='base';
@@ -351,6 +373,42 @@ if(empty($favbefore))
 		}
 		$this->set('game', $this->Game->read(null, $id));
 		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
+		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
+
+		//start size calculation for play page
+		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
+		$starsize=(100*$current["Rate"]["current"])/5;
+		$this->set("starsize",$starsize);
+
+		if($game['Game']['embed']==null){
+			$this->render('/games/play/');
+		}else{
+			$this->redirect(array('controller'=>'games', 'action'=>'play2',$id));
+		}
+
+
+	}
+
+
+	public function play2($id = null) {
+		$this->layout='game_index';
+		$this->loadModel('User');
+		$this->leftpanel();
+    	$this->play2_user_panel();
+		$this->random();
+		$this->fav_check($id);
+		$this->Game->id = $id;
+		$game=$this->Game->read(null, $id);
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id'])));
+		$user_id = $user['User']['id'];
+		$this->set('user', $user);
+		$this->set('username', $user['User']['username']);
+		$this->set('user_id', $user_id);
+		
+		if (!$this->Game->exists()) {
+			throw new NotFoundException(__('Invalid game'));
+		}
+		$this->set('game', $game);
 		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
 
 		//start size calculation for play page
