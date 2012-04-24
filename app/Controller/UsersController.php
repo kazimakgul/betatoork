@@ -258,7 +258,10 @@ public function __sendActivationEmail($user_id) {
 				$this->Session->setFlash('You are successfully registered. Please check your email to verify your account');
 				$this->redirect(array('controller' => 'games', 'action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				//$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$validationErrors = $this->User->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
 				$this->redirect(array('controller' => 'games', 'action' => 'index'));
 			}
 		}

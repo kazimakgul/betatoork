@@ -440,7 +440,9 @@ if(empty($favbefore))
 				$this->Session->setFlash(__('The game has been saved'));
 				$this->redirect(array('action' => 'channel'));
 			} else {
-				$this->Session->setFlash(__('The game could not be saved. Please, try again.'));
+				$validationErrors = $this->User->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
 			}
 			
 			
@@ -492,7 +494,9 @@ if(empty($favbefore))
 				$this->Session->setFlash('The game has been updated');
 				$this->redirect(array('action' => 'channel'));
 			} else {
-				$this->Session->setFlash(__('The game could not be saved. Please, try again.'));
+				$validationErrors = $this->Game->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
 			}
 		} else {
 			$this->request->data = $this->Game->read(null, $id);
