@@ -42,9 +42,8 @@ class GamesController extends AppController {
     	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     ))));
 		
-	$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1')),array('limit' => $limit),array(
-        'order' => array('Game.starsize' => 'desc')
-    )));//playcounta göre ayarlanacak
+		$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.id' => 'desc'
+    )))); //playcounta göre ayarlanacak
 
 		$this->set('title_for_layout', 'Toork - is a gamelist share platform - create your playlist of games and share your list');
 	}
