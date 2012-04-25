@@ -57,6 +57,7 @@ class GamesController extends AppController {
 		$this->layout='base';
 		$this->leftpanel();
 		$this->logedin_user_panel();
+		$limit=28;
 	/*	$games = $this->Game->find('all', array('conditions' => array('Game.active'=>'1')));
 		$result =array();
 		foreach ($games as $game) {
@@ -66,7 +67,7 @@ class GamesController extends AppController {
 		}*/
 		
 
-	$this->set('most_played_games', $this->Game->find('all',array('limit' => 12),array(
+	$this->set('most_played_games', $this->Game->find('all',array('limit' => $limit),array(
         'order' => array('Game.active'=>'1','Game.starsize' => 'desc'))));
 
 $this->set('title_for_layout', 'Toork - Most Played Games');
@@ -114,7 +115,8 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 		$this->layout='base';
 		$this->leftpanel();
 		$this->logedin_user_panel();
-	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => 12,'order' => array('Game.starsize' => 'desc'
+		$limit=28;
+	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     ))));
 
 $this->set('title_for_layout', 'Toork - Top Rated Games');
