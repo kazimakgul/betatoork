@@ -436,13 +436,13 @@ if(empty($favbefore))
 			
 			$this->Game->create();
 			
-			$this->request->data['Game']['link']=$this->http_check($this->request->data['Game']['link']);
+			//$this->request->data['Game']['link']=$this->http_check($this->request->data['Game']['link']);
 			
 			if ($this->Game->save($this->request->data)) {
 				$this->Session->setFlash(__('The game has been saved'));
 				$this->redirect(array('action' => 'channel'));
 			} else {
-				$validationErrors = $this->User->invalidFields();
+				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
     			$this->Session->setFlash($validationErrors[$value][0]);
 			}
