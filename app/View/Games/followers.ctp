@@ -14,15 +14,27 @@
         </div>
 
     <div class="sep"></div>
-    
-  <ul>
-    
-    <li class=" rowheight clearfix">
-    <?php echo $this->element('follower_card'); ?>
-    </li>
-  
-  </ul>
-    
+
+
+
+                    <?php if(count($followers) >= 1){ ?>
+                    <ul>
+           
+                    <li class=" rowheight clearfix">
+                    <?php echo $this->element('follower_card'); ?>
+                    </li>
+            
+                    </ul>
+
+                    <?php } 
+                    else { ?>
+
+                <div class="alert alert-info channel"> No body is following <?php echo $username ?> yet, be the first to follow and get notified when new games published by them.</div>
+                <?php }?>
+
+                </div>
+
+
     </div>
   </div>
 </div>

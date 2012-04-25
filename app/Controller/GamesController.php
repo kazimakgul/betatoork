@@ -14,7 +14,6 @@ class GamesController extends AppController {
 
 
 
-
  	public function isAuthorized($user) {
 	    if (parent::isAuthorized($user)) {
 	        return true;
@@ -39,7 +38,7 @@ class GamesController extends AppController {
 		$this->logedin_user_panel();
 		$this->leftpanel();
 		$limit=12;
-    	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+    	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     ))));
 		
 		$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.id' => 'desc'
@@ -75,7 +74,8 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 
 	public function leftpanel(){
 		$this->Game->recursive = 0;
-		$this->set('category', $this->paginate('Category'));
+		$cat=$this->Game->Category->find('all');
+		$this->set('category', $cat);
 		$cond3= array('Game.active'=>'1');
     	$this->set('games', $this->paginate('Game',$cond3));
 
@@ -114,11 +114,10 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 		$this->layout='base';
 		$this->leftpanel();
 		$this->logedin_user_panel();
-		$limit=28;
-	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
-    ))));
 
-$this->set('title_for_layout', 'Toork - Top Rated Games');
+		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1')));
+
+		$this->set('title_for_layout', 'Toork - Top Rated Games');
 	}
 
 	public function playedgames() {
@@ -145,8 +144,9 @@ $this->set('title_for_layout', 'Toork - Top Rated Games');
 		$this->leftpanel();
 		$this->logedin_user_panel();
 		$catid = $this->request->params['pass'][0];
-		$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.category_id'=>$catid),'limit' => 20,'order' => array('Game.starsize' => 'desc'
-    ))));
+		$singleCat = $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.category_id'=>$catid),'limit' => 20,'order' => array('Game.starsize' => 'desc'
+    )));
+		$this->set('top_rated_games', $singleCat);
 
 		$this->set('title_for_layout', 'Toork - Top Rated Category Games');
 	}

@@ -89,8 +89,8 @@ public $virtualFields = array(
 			),
 
 			'between' => array(
-				'rule' => array('between', 10, 500),
-				'message' => 'Please write at least 5 words about your game',
+				'rule' => array('between', 10, 400),
+				'message' => 'The description length must be betwen 50-400 chars',
 				),
 		),
 		'user_id' => array(

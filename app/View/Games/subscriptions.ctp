@@ -15,13 +15,24 @@
 
     <div class="sep"></div>
     
-  <ul>
-    
-    <li class=" rowheight clearfix">
-    <?php echo $this->element('subscribe_card'); ?>
-    </li>
-  
-  </ul>
+
+
+                    <?php if(count($followers) >= 1){ ?>
+                    <ul>
+           
+                    <li class=" rowheight clearfix">
+                    <?php echo $this->element('subscribe_card'); ?>
+                    </li>
+            
+                    </ul>
+
+                    <?php } 
+                    else { ?>
+
+                <div class="alert alert-info channel"> <?php echo $username ?> didn't subscribed any channels yet </div>
+                <?php }?>
+
+                </div>
     
     </div>
   </div>
