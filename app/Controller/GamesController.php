@@ -55,20 +55,10 @@ class GamesController extends AppController {
 		$this->layout='base';
 		$this->leftpanel();
 		$this->logedin_user_panel();
-		$limit=28;
-	/*	$games = $this->Game->find('all', array('conditions' => array('Game.active'=>'1')));
-		$result =array();
-		foreach ($games as $game) {
-			$id=$game['Game']['id'];
-			$number=$this->Playcount->find('count', array('condition'=> array('Playcount.game_id'=>$id)));
-			$result[$id][] = $number;
-		}*/
 		
+		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
 
-	$this->set('most_played_games', $this->Game->find('all',array('limit' => $limit),array(
-        'order' => array('Game.active'=>'1','Game.starsize' => 'desc'))));
-
-$this->set('title_for_layout', 'Toork - Most Played Games');
+		$this->set('title_for_layout', 'Toork - Most Played Games');
 	}
 	
 
@@ -132,7 +122,7 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 	$limit=12;
 
     $this->set('top_rated_games', $this->Playcount->find('all', array('conditions' => array('Playcount.user_id'=>$userid),'limit' => $limit )));
-
+    
     
 
     $this->set('username', $userName);
@@ -144,9 +134,8 @@ $this->set('title_for_layout', 'Toork - Most Played Games');
 		$this->leftpanel();
 		$this->logedin_user_panel();
 		$catid = $this->request->params['pass'][0];
-		$singleCat = $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.category_id'=>$catid),'limit' => 20,'order' => array('Game.starsize' => 'desc'
-    )));
-		$this->set('top_rated_games', $singleCat);
+
+		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1','Game.category_id'=>$catid)));
 
 		$this->set('title_for_layout', 'Toork - Top Rated Category Games');
 	}
