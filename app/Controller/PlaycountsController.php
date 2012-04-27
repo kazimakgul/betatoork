@@ -8,6 +8,15 @@ App::uses('AppController', 'Controller');
 class PlaycountsController extends AppController {
 
 
+    var $paginate = array(
+        'Playcount' => array(
+            'limit' => 2,
+            'order' => array(
+                'Playcount.count' => 'desc',
+            ),
+        ),     
+    );
+
 /**
  * index method
  *

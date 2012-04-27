@@ -279,7 +279,7 @@ button.submit:active {
 
 /** Paging **/
 .paging {
-	background:#fff;
+
 	color: #ccc;
 	margin-top: 1em;
 	clear:both;
@@ -297,7 +297,7 @@ button.submit:active {
 	border-left: 0;
 }
 .paging > span:hover {
-	background: #efefef;
+	background: #B8DCFF;
 }
 .paging .prev {
 	border-left: 1px solid #ccc;
@@ -317,7 +317,7 @@ button.submit:active {
 	background: transparent;
 }
 .paging .current {
-	background: #efefef;
-	color: #c73e14;
+	background: #A6C6E6;
+	color: black;
 }
 
