@@ -284,11 +284,23 @@ public function __sendActivationEmail($user_id) {
 
 	public function edit($id = null) {
 		$this->layout = 'base';
+		$userid=$id;
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+		
+		$myval=$this->request->data["User"]["edit_picture"]["name"];
+		
+		if($myval!="")
+			{
+			
+			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
+			
+			}
+		
+		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been updated'));
 				$this->redirect(array('action' => 'edit',$this->Session->read('Auth.User.id')));
@@ -302,7 +314,17 @@ public function __sendActivationEmail($user_id) {
 		}
 		$countries = $this->User->Country->find('list');
 		$this->set(compact('countries'));
-
+		
+		
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    $userName = $user['User']['username'];
+		
+		$this->set('userid', $userid);
+        $this->set('username', $userName);
+		
+		
+		
+		
 	}
 
 		public function password($id = null) {

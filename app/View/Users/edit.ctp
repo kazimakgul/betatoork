@@ -3,9 +3,7 @@
 <div class="content clearfix">
   <div class="channel_left_panel">
     <?php  echo $this->element('channel_user_panel'); ?>
-    <?php  echo $this->element('social'); ?>
-    <?php echo $this->element('best_channels_left_menu'); ?>
-    <?php echo $this->element('categories_left_menu'); ?>
+    
   </div>
   <div class="right_panel">
 
@@ -46,6 +44,12 @@
         </li>
 
 
+         <li>
+        <label for="picture">Avatar:</label>
+
+         <input placeholder="not yet" type="file" name="data[User][edit_picture]" accept="image/jpg,image/png,image/jpeg"  size="60">
+        </li>
+
 
         <li>
             <button class="submit" type="submit">Update Channel</button>
@@ -59,36 +63,13 @@
 
 <!-- Add Game UI is up till here -->     
 
-               <div id="channelgames">
-                    <div class="clearfix">
-                        <div class="channelgame"></div>
-              
-              <?php 
-              if(count($mygames) <= $limit){}
-              else{
-                echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); 
-              } ?>
-               </div>
+               
 
-                    <div class="sep"></div>
+                   
 
-                    <?php if(count($mygames) >= 1){ ?>
-                    <ul>
-           
-                     <li class="clearfix">
-                    <?php echo $this->element('mygames_game_box'); ?>
-                                                     
-                    </li>
-            
-                    </ul>
+                 
 
-                    <?php } 
-                    else { ?>
-
-                <div class="alert alert-info channel">You don't have any games yet, your games will show up here</div>
-                <?php }?>
-
-                </div>
+               
 
 
     </div>

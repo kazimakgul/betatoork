@@ -17,6 +17,17 @@ class User extends AppModel {
  * @var array
  */
 
+
+
+		var $actsAs = array(
+	'UploadPack.Upload' => array(
+		'picture' => array(
+			'path' => ':webroot/upload/:model/:id/:basename_:style.:extension','styles' => array('useravatar' => '90x120')
+		)
+	)
+);
+
+
 public function beforeSave() {
     if (isset($this->data[$this->alias]['password'])) {
         $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);

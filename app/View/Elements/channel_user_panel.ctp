@@ -25,8 +25,8 @@
   <?php echo $this->Html->link('Add Game',array('controller'=>'games','action'=>'add'),array('class'=>'added')); ?>
   <a class="slide" href="#">Edit Slider</a>
   <a class="adsense" href="#">Google Adsense</a>
-  <a class="subscriber" href="<?php echo $folurl ?>">Followers (<?php echo $subscribeto ?>)</a>
-  <a class="subscription" href="<?php echo $suburl ?>">Subscriptions (<?php echo $subscribe ?>)</a>
+  <a class="subscriber" href="<?php echo $folurl ?>">Followers</a>
+  <a class="subscription" href="<?php echo $suburl ?>">Subscriptions</a>
 </div>
 
 
