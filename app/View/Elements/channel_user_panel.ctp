@@ -16,7 +16,7 @@
 <div class="userpanel">
   <p><?php echo $username ?></p>
   <div class="useravatar">
-      <img alt="" src="/betatoork/img/avatar1.jpg" />
+      <?php echo $this->Upload->image($user,'User.picture');?>
   </div>
   <a class="wall" href="javascript:void();">Wall</a>
   <div class="panelsep"></div>

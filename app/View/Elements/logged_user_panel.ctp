@@ -11,7 +11,7 @@ $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedg
     <!-- if facebook logedin 
       <fb:profile-pic uid="" size="small" width="100" height="200" linked="false"/> -->
     <!-- else -->
-      <img alt="" src="/betatoork/img/avatar1.jpg" />
+      <?php echo $this->Upload->image($user,'User.picture');?>
    <!-- end -->
   </div>
   <div class="activity">Activity</div>

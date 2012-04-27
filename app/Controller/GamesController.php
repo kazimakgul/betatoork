@@ -72,6 +72,7 @@ class GamesController extends AppController {
 	}
 
 	public function channel() {
+		$this->loadModel('User');
 		$this->layout='channel';
 		$this->leftpanel();
 		$this->logedin_user_panel();
@@ -89,6 +90,8 @@ class GamesController extends AppController {
 	    }else{
 	    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'))));
 	    }
+	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	    $this->set('user',$user);
 
 	    $this->set('subscribe', $subscribe);
 	    $this->set('subscribeto', $subscribeto);
@@ -122,7 +125,7 @@ class GamesController extends AppController {
 	$limit=12;
 
     $this->set('top_rated_games', $this->Playcount->find('all', array('conditions' => array('Playcount.user_id'=>$userid),'limit' => $limit )));
-    
+
     
 
     $this->set('username', $userName);
@@ -141,6 +144,7 @@ class GamesController extends AppController {
 	}
 
 	public function logedin_user_panel() {
+		$this->loadModel('User');
 		$this->loadModel('Subscription');
 		$this->loadModel('Playcount');
 		$this->layout='base';
@@ -151,6 +155,8 @@ class GamesController extends AppController {
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	    $this->set('user',$user);
 
 	    $this->set('userid', $userid);
 	   	$this->set('username', $username);
@@ -163,6 +169,7 @@ class GamesController extends AppController {
 	}
 
 		public function usergame_user_panel() {
+		$this->loadModel('User');
 		$this->loadModel('Subscription');
 		$this->loadModel('Playcount');
 		$this->layout='base';
@@ -172,6 +179,8 @@ class GamesController extends AppController {
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	    $this->set('user',$user);
 
 	    $this->set('userid', $userid);
 	    $this->set('gamenumber', $gamenumber);

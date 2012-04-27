@@ -9,6 +9,7 @@ class UsersController extends AppController {
 
 
 public $components = array('AutoLogin','Email');
+public $helpers = array('Html', 'Form','Upload');
 
 
     
@@ -317,8 +318,8 @@ public function __sendActivationEmail($user_id) {
 		
 		
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-    $userName = $user['User']['username'];
-		
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
 		$this->set('userid', $userid);
         $this->set('username', $userName);
 		
