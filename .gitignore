@@ -3,4 +3,4 @@
 app/webroot/upload/games/*
 .DS_Store
 /app/Config/database.php
-app/webroot/upload/games
+app/webroot/upload/*
