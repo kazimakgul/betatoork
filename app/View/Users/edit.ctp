@@ -23,9 +23,9 @@
         <li>
             <label for="website">Email:</label>
 
-<?php echo $this->Form->input('email',array('label'=>false ,'required', 'type' => 'email', 'length' => 100)); ?>
+<?php echo $this->Form->input('email',array('label'=>false ,'div'=>false, 'required', 'readonly', 'length' => 100)); ?>
 
-            <span class="form_hint">Proper format "http://someaddress.com/gamepage"</span>
+            <span class="form_hint">You are not allowed to change your email."</span>
         </li>
 
         <li>

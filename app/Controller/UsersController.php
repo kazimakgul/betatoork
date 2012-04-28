@@ -55,6 +55,7 @@ function activate($user_id = null, $in_hash = null) {
 
 public function reset_request()
 {
+	$this->layout='base';
 
     if($this->request->is('post'))
     {

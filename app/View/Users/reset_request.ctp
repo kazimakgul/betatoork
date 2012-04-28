@@ -1,23 +1,44 @@
-<div class="wrapper" >
-<div class="content">
+<link type="text/css" rel="stylesheet" href="/css/Addgame.css" />
 
-<div class="users form">
-<?php echo $this->Form->create('User');?>
-    <fieldset>
-        <legend><?php echo __('Please enter your email address'); ?></legend>
-    <?php
-        echo $this->Form->input('email');
-    ?>
-    </fieldset>
-<?php echo $this->Form->end(__('Send Reset Code'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Register'), array('controller' => 'users', 'action' => 'register')); ?> </li>
-		<li><?php echo $this->Html->link(__('Play Games'), array('controller'=>'games','action' => 'index'));?></li>		
-	</ul>
-</div>
+<div class="content clearfix">
+  <div class="channel_left_panel">
+    <?php  echo $this->element('unlogged_user_panel'); ?>
+    
+  </div>
+  <div class="right_panel">
 
-</div>
+  <!-- Add Game UI is here-->  
+
+
+<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form addgame' ,'type' => 'file'));?>
+
+        <div class="sep"></div>
+<span class="required_notification">* Denotes Required Field</span>
+    <ul>
+  
+        <li>
+            <label for="website">Email:</label>
+
+<?php echo $this->Form->input('email',array('label'=>false ,'div'=>false, 'required pattern'=>
+'[aA-zZ0-9._%+-]+@[aA-zZ0-9.-]+\.[aA-zZ]{2,4}'
+,'placeholder'=>'me@example.com', 'type' => 'email', 'length' => 100)); ?>
+
+            <span class="form_hint">Write your registered email address"</span>
+        </li>
+
+
+        <li>
+            <button class="submit" type="submit">Send Me Reset Link</button>
+        </li>
+    </ul>
+
+</form>
+
+
+
+
+<!-- Add Game UI is up till here -->     
+
+
+    </div>
 </div>
