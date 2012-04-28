@@ -21,7 +21,7 @@
   <a class="wall" href="javascript:void();">Wall</a>
   <div class="panelsep"></div>
   <?php echo $this->Html->link('Channel Info',array('controller'=>'users','action'=>'edit',$userid),array('class'=>'info')); ?>
-  <a class="change_password" href="#">Change Password</a>
+  <?php echo $this->Html->link('Change Password',array('controller'=>'users','action'=>'password',$userid),array('class'=>'change_password')); ?>
   <?php echo $this->Html->link('Add Game',array('controller'=>'games','action'=>'add'),array('class'=>'added')); ?>
   <a class="slide" href="#">Edit Slider</a>
   <a class="adsense" href="#">Google Adsense</a>

@@ -31,7 +31,7 @@
         <li>
 
  <?php echo $this->Form->input('birth_date', array('type' => 'date', 
-'label' => 'Birthday', 'empty' => false, 'minYear' => date('Y')-60, 
+'label' => 'Birthday:', 'empty' => false, 'minYear' => date('Y')-60, 
 'maxYear' => date('Y')-10)); ?> 
 
 
@@ -43,7 +43,7 @@
  echo $this->Form->input('gender', array(  
                                 'type'=>'select',  
                                 'options'=>array($item_list),  
-          'label'=>'Gender',  
+          'label'=>'Gender:',  
           'empty'=>'Choose Gender...',)  
              ); 
 

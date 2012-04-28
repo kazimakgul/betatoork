@@ -329,7 +329,8 @@ public function __sendActivationEmail($user_id) {
 	}
 
 		public function password($id = null) {
-	//$this->User->validate = array();
+		$this->layout = 'base';
+		$userid=$id;
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
@@ -346,7 +347,7 @@ public function __sendActivationEmail($user_id) {
 		else
 		{
 		$this->Session->setFlash("Old password is wrong");
-		$this->redirect('/users/edit/'.$id);
+		$this->redirect('/users/password/'.$id);
 		}
 	
 	
@@ -357,6 +358,10 @@ public function __sendActivationEmail($user_id) {
 				//$this->redirect(array('action' => 'password',$this->Session->read('Auth.User.id')));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$validationErrors = $this->User->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
+				$this->redirect(array('controller' => 'user', 'action' => 'password',$id));
 			}
 			
 			
@@ -367,6 +372,12 @@ public function __sendActivationEmail($user_id) {
 			$this->request->data = $this->User->read(null, $id);
 			$this->request->data["User"]["password"]="";
 		}
+
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('userid', $userid);
+        $this->set('username', $userName);
 	}
 
 /**

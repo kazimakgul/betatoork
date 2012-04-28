@@ -117,6 +117,8 @@ font-family:Georgia, Times, "Times New Roman", serif;
 
 .form_hint, .required_notification {font-size: 13px;}
 
+.error-message{color:red;}
+
 /* === List Styles === */
 .contact_form ul {
     width:750px;
