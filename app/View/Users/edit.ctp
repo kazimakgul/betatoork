@@ -30,12 +30,25 @@
 
         <li>
 
- <?php echo $this->Form->input('birth_date',array('label'=>'Birth Date:' )); ?>
+ <?php echo $this->Form->input('birth_date', array('type' => 'date', 
+'label' => 'Birthday', 'empty' => false, 'minYear' => date('Y')-60, 
+'maxYear' => date('Y')-10)); ?> 
+
+
         </li>
 
         <li>
 
- <?php echo $this->Form->input('gender',array('label'=>'Gender:' )); ?>
+ <?php $item_list = array('f'=>'Female','m'=>'Male'); 
+ echo $this->Form->input('gender', array(  
+                                'type'=>'select',  
+                                'options'=>array($item_list),  
+          'label'=>'Gender',  
+          'empty'=>'Choose Gender...',)  
+             ); 
+
+
+ ?>
         </li>
 
         <li>

@@ -27,13 +27,13 @@
           <form name="registerForm" id="register_form" method="post" action="<?php echo $regurl ?>">
   					<input type="text" name="data[User][username]" pattern="[\w]{6,20}" title="Please use 6 to 20 characters, only letters and numbers, do not use any space" placeholder="choose a username" required>
   					<input class="lightbox_txt_email" id="id_email" name="data[User][email]" type="email" placeholder="type your email" required />
-  					<input class="lightbox_txt_pass" id="id_password" name="data[User][password]" type="password" placeholder="choose a password" pattern="[^\f\n\r\t\v\u00A0\u2028\u2029]{4,}" title="Please use at least 4 characters, only letters,numbers and specials, do not use any space"  required />
-  					<input class="lightbox_txt_pass" id="id_password1" name="data[User][confirm_password]" type="password" placeholder="password again" pattern="[^\f\n\r\t\v\u00A0\u2028\u2029]{4,}" title="Please use at least 4 characters, only letters,numbers and specials, do not use any space" , required />
+  					<input class="lightbox_txt_pass" id="id_password" name="data[User][password]" type="password" placeholder="choose a password" pattern="[^\f\n\r\t\v\u00A0\u2028\u2029]{6,}" title="Please use at least 6 characters, only letters,numbers and specials, do not use any space"  required />
+  					<input class="lightbox_txt_pass" id="id_password1" name="data[User][confirm_password]" type="password" placeholder="password again" pattern="[^\f\n\r\t\v\u00A0\u2028\u2029]{6,}" title="Please use at least 6 characters, only letters,numbers and specials, do not use any space" , required />
   					<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='cb57a50b31cc117803835ecd11324908' /></div>
     				<div class="clearfix">
-    				  <input style="display:none" type="checkbox" name="subscription_emails" id="id_subscription_emails" />
+    				  
     					<a id="readterms" class="lightbox_licence mirror_subscription_emails" href="#" data-bind="click: function() { viewModel.registerForm.fields.subscription_emails.value(!viewModel.registerForm.fields.subscription_emails.value()); $('#readterms').removeClass('error');}, css: { lightbox_licencecheck: viewModel.registerForm.fields.subscription_emails.value() }">Yes, i accept to send me useful news about Toork</a>
-    					<input style="display:none" type="checkbox" name="tos" id="id_tos" />
+    					
     					<a id="iread" class="lightbox_read mirror_tos" href="#" data-bind="click: function() { viewModel.registerForm.fields.tos.value(!viewModel.registerForm.fields.tos.value()); $('#iread').removeClass('error');}, css: { lightbox_readcheck: viewModel.registerForm.fields.tos.value() }">I agree to the Terms of Use and Privacy Policy</a>
     					<div class="lightbox_regs"><input class="lightbox_regbtn" type="submit" value='' /></div>
     				</div>
