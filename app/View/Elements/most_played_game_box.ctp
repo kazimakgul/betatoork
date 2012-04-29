@@ -14,21 +14,25 @@
 		
 		if(80<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
 		{
-		$starvalue=-15;
+		$starvalue=0;
 		}
 		elseif(60<=$game['Game']['starsize'] && $game['Game']['starsize']<80)
 		{
-		$starvalue=-30;
+		$starvalue=-15;
 		}
 		elseif(40<=$game['Game']['starsize'] && $game['Game']['starsize']<60)
 		{
-		$starvalue=-45;
+		$starvalue=-30;
 		}
 		elseif(20<=$game['Game']['starsize'] && $game['Game']['starsize']<40)
 		{
+		$starvalue=-45;
+		}
+		elseif(0<$game['Game']['starsize'] && $game['Game']['starsize']<20)
+		{
 		$starvalue=-57;
 		}
-		elseif(0<=$game['Game']['starsize'] && $game['Game']['starsize']<20)
+		elseif($game['Game']['starsize']==0)
 		{
 		$starvalue=-70;
 		}
