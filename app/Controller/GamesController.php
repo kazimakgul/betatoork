@@ -308,8 +308,7 @@ class GamesController extends AppController {
 	    $playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
 	    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
-    	
-    	return array($userName,$gamenumber, $favoritenumber, $subscribe, $subscribeto, $playcount);
+    	return array($userName,$gamenumber, $favoritenumber, $subscribe, $subscribeto, $playcount,$user);
 	}
 
 

@@ -27,7 +27,7 @@ $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedg
             <div class="submid clearfix">
                 <div class="cardsep"></div>
                 <div class="channelavatar">
-                    <img alt="" src="/betatoork/img/avatar1.jpg" />
+                    <?php echo $this->Upload->image($card[6],'User.picture');?>
                 </div>
                 <ul>
                     <li class="clearfix"><a class="" href="<?php echo $channelurl ?>"><?php echo $card[1] ?> Added Games</a></li>
