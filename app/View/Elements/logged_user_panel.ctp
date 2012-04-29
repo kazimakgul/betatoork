@@ -6,7 +6,7 @@ $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedg
 ?>
 
 <div class="userpanel">
-  <p><?php echo $username ?></p>
+  <p><a href="<?php echo $channelurl ?>"><?php echo $username ?></a></p>
   <div class="useravatar">
     <!-- if facebook logedin 
       <fb:profile-pic uid="" size="small" width="100" height="200" linked="false"/> -->

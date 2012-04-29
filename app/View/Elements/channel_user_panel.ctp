@@ -11,10 +11,11 @@
 
 <?php $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$userid)); ?>
 <?php $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$userid)); ?>
+<?php $channel=$this->Html->url(array("controller" => "games","action" =>"channel")); ?>
 
 
 <div class="userpanel">
-  <p><?php echo $username ?></p>
+  <p><a href="<?php echo $channel ?>"><?php echo $username ?></a></p>
   <div class="useravatar">
       <?php echo $this->Upload->image($user,'User.picture');?>
   </div>

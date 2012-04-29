@@ -8,11 +8,44 @@
 		</div>
 	</div>
 	
-	<div class="gb_rate">
-		<div class="rating{{rating}}"></div>
+	<div class="gb_rate">	
+	
+		<?php 
+		
+		if(80<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
+		{
+		$starvalue=-15;
+		}
+		elseif(60<=$game['Game']['starsize'] && $game['Game']['starsize']<80)
+		{
+		$starvalue=-30;
+		}
+		elseif(40<=$game['Game']['starsize'] && $game['Game']['starsize']<60)
+		{
+		$starvalue=-45;
+		}
+		elseif(20<=$game['Game']['starsize'] && $game['Game']['starsize']<40)
+		{
+		$starvalue=-57;
+		}
+		elseif(0<=$game['Game']['starsize'] && $game['Game']['starsize']<20)
+		{
+		$starvalue=-70;
+		}
+		
+		?>
+		
+		
+		<div id="rate" class="ratingcontainer">
+		<div class="rating" style="background-position: <?php echo $starvalue;?>px 0px;">
+
+
+		</div>
+		</div>
 		<div class="rateresult"><?php echo $game['Game']['starsize']; ?>%</div>
 		<div class="gameboxmove"><a class="gb_gameboxmove" href="<?php echo $editurl ?>">Edit</a></div>
 	</div>
+
 	
 	<?php $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id'])); ?>
 	<a class="gb_channelname" href="<?php echo $channelurl ?>"><?php echo $game['User']['username']; ?></a>
