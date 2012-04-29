@@ -5,13 +5,14 @@
   	    <td>
           <div class="logo" align="center">
           <?php echo $this->Html->link( $this->Html->image("t_lg.png", array("alt" => "toork logo")),"/", array('escape' => false));?>
+		   <?php $actionlink=$this->Html->url(array( "controller" => "games","action" =>"search"));?>
           </div>
         </td>
   	    <td width="420" style="padding-left:10px;">
   	      <div class="search clearfix">
-      			<form action="/game/search/" method="get">
+      			<form action="<?php echo $actionlink; ?>/" method="get">
       				<input id="txt_search" class="search_text" type="text" placeholder="search a game ..." name="search_keyword" />
-      				<input class="search_button" type="image" value="" name="search" src="/betatoork/img/t_search_btn.png" />
+      				<input class="search_button" type="image" value="" src="/betatoork/img/t_search_btn.png" />
       			</form>
       		</div>
   	    </td>

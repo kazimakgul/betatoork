@@ -312,13 +312,30 @@ class GamesController extends AppController {
 	}
 
 
-public function search($param) {
-	$this->layout='index';
+public function search() {
+	$this->layout='base';
+	
+	$param = $this->request->params['search_keyword'];
+	
+	$this->loadModel('User');
 	$key=$param;
 	$this->set('myParam',$key);
     $userid = $this->Session->read('Auth.User.id');
     $cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.description LIKE'=>'%'.$param.'%','User.username LIKE'=>'%'.$param.'%'),'Game.active'=>'1'));
-    $this->set('mygames', $this->paginate('Game',$cond));
+    $this->set('search', $this->paginate('Game',$cond));
+	
+	$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    $userName = $user['User']['username'];
+	
+	$this->leftpanel();
+    $this->usergame_user_panel();
+	$limit=120;
+	$this->set('limit', $limit);
+    $this->set('mygames', $cond);
+    $this->set('username', $userName);
+	$this->set('user_id', $userid);
+	
+	
 }
 
 	public function random() {
