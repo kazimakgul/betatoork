@@ -3,7 +3,7 @@
     var pos;
 
     $('img.jail').jail({ event: 'load' });
-    $('.slider_leftpanel_slide > .ul').css({ 'top': 300 - ($('.slider_leftpanel_slide > .ul > .slider_leftpanel_game').length * 96) });
+    $('.slider_leftpanel_slide > .ul').css({ 'bottom': 300 - ($('.slider_leftpanel_slide > .ul > .slider_leftpanel_game').length * 96) });
     setInterval(function () {
         $('.uparr').click();
     }, 5000);

@@ -23,8 +23,42 @@
 									<a href="<?php echo $playurl ?>" class="slider_game_name"><?php echo $game['Game']['name']?></a>
 									<a href="<?php echo $channelurl ?>"><?php echo $game['User']['username']?></a>
 									<a href="<?php echo $caturl ?>" class="slider_game_category"><?php echo $game['Category']['name']?></a>
+									<?php 
+		
+		if(90<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
+		{
+		$starvalue=0;
+		}
+		elseif(60<=$game['Game']['starsize'] && $game['Game']['starsize']<80)
+		{
+		$starvalue=-20;
+		}
+		elseif(40<=$game['Game']['starsize'] && $game['Game']['starsize']<60)
+		{
+		$starvalue=-40;
+		}
+		elseif(20<=$game['Game']['starsize'] && $game['Game']['starsize']<40)
+		{
+		$starvalue=-60;
+		}
+		elseif(0<=$game['Game']['starsize'] && $game['Game']['starsize']<20)
+		{
+		$starvalue=-78;
+		}
+		elseif($game['Game']['starsize']==0)
+		{
+		$starvalue=-95;
+		}
+		
+		?>
 									
-									<div class="rating"></div>
+									
+									<div id="rate" class="ratingcontainer">
+		<div class="rating" style="background-position: <?php echo $starvalue;?>px 0px;">
+
+
+		</div>
+		</div>
 								</div>
 							</div>
 							<div class="slider_sep"></div>
@@ -46,7 +80,6 @@
 		<div class="slider_rightpanel_slidepointerarr"></div>
 			<div class="ul">
 				
-				<?php krsort($slider); ?>
 				
 				<?php foreach ($slider as $game): ?>
 				

@@ -81,7 +81,7 @@
 		<div class="slider_rightpanel_slidepointerarr"></div>
 			<div class="ul">
 				
-				<?php krsort($top_rated_games); ?>
+				
 				
 				<?php foreach ($top_rated_games as $game): ?>
 				

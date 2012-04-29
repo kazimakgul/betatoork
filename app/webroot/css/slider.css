@@ -7,7 +7,7 @@
 .slider .slider_leftpanel .slider_leftpanel_slideitem{float:left; margin-right:5px;}
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_sep{width:290px; height:2px; background-image:url(../img/t_slide_sep.png); background-repeat:repeat-x; margin-top:5px; margin-bottom:7px;}
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_slide{overflow:hidden; position:relative; height:283px; width:290px;} 
-.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_slide .ul{position:absolute;}         
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_slide .ul{position:absolute; top:0px;}         
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game{height:93px; }
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_gamebox{height:90px}
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game .slider_game_avatarback{float:left; margin-top:15px; width:100px; height:55px; background-image:url(../img/t_game_avatar_back.png); padding:6px 6px;}
