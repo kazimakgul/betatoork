@@ -286,6 +286,7 @@ public function __sendActivationEmail($user_id) {
 
 	public function edit($id = null) {
 		$this->layout = 'base';
+		$this->loadModel('Subscription');
 		$userid=$id;
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
@@ -323,6 +324,10 @@ public function __sendActivationEmail($user_id) {
 	    $this->set('user',$user);
 		$this->set('userid', $userid);
         $this->set('username', $userName);
+    	$subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+		$subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+		$this->set('subscribe', $subscribe);
+		$this->set('subscribeto', $subscribeto);
 		
 		
 		
@@ -331,6 +336,7 @@ public function __sendActivationEmail($user_id) {
 
 		public function password($id = null) {
 		$this->layout = 'base';
+		$this->loadModel('Subscription');
 		$userid=$id;
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
@@ -379,6 +385,10 @@ public function __sendActivationEmail($user_id) {
 	    $this->set('user',$user);
 		$this->set('userid', $userid);
         $this->set('username', $userName);
+    	$subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+		$subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+		$this->set('subscribe', $subscribe);
+		$this->set('subscribeto', $subscribeto);
 	}
 
 /**
