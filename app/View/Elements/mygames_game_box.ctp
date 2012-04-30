@@ -14,7 +14,7 @@
 		
 		if(80<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
 		{
-		$starvalue=-15;
+		$starvalue=0;
 		}
 		elseif(60<=$game['Game']['starsize'] && $game['Game']['starsize']<80)
 		{
