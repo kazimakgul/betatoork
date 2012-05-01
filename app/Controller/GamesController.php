@@ -320,6 +320,8 @@ if(!isset($param))
 $this->redirect(array("controller"=>"games","action"=>"index"));
 }
 
+	$this->leftpanel();
+	$this->logedin_user_panel();
 	$this->layout='base';
     $this->loadModel('User');
 	$key=$param;
@@ -330,9 +332,6 @@ $this->redirect(array("controller"=>"games","action"=>"index"));
 	
 	$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
-	
-	$this->leftpanel();
-    $this->usergame_user_panel();
 	$limit=120;
 	$this->set('limit', $limit);
     $this->set('mygames', $cond);

@@ -1,29 +1,17 @@
 <div class="content clearfix">
-  <div class="channel_left_panel">
-    <?php  echo $this->element('logged_user_panel'); ?>
-    <?php  echo $this->element('subscribe'); ?>
-    <?php  echo $this->element('social'); ?>
-    <?php echo $this->element('best_channels_left_menu'); ?>
-    <?php echo $this->element('categories_left_menu'); ?>
+  <div class="left_panel">
+      <?php  echo $this->element('userpanel'); ?>
+      <?php  echo $this->element('social'); ?>
+      <?php  echo $this->element('best_channels_left_menu'); ?>
+      <?php  echo $this->element('categories_left_menu'); ?>
   </div>
-  <div class="channel_right_panel">
-      
-
-
-               <div id="channelgames">
-                    <div class="clearfix">
-                        <div class="channelgame"></div>
+  <div class="right_panel">
+    <div class="searchresult"></div>
+        <div class="clearfix"></div>
               
-              <?php 
-              if(count($mygames) <= $limit){}
-              else{
-                echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); 
-              } ?>
-               </div>
+              <div class="sep"></div>
 
-                    <div class="sep"></div>
-
-                    <?php if(count($mygames) >= 1){ ?>
+                    <?php if(count($search) >= 1){ ?>
                     <ul>
            
                      <li class="clearfix">
@@ -32,10 +20,27 @@
             
                     </ul>
 
+
+                        <div align='center' class="paging">
+  <?php
+    echo $this->Paginator->prev('< ' . __('back'), array(), null, array('class' => 'prev disabled'));
+    echo $this->Paginator->numbers(array('separator' => ''));
+    echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+  ?>
+  <p>
+  <?php
+  echo $this->Paginator->counter(array(
+  'format' => __('Page {:page} of {:pages}, showing {:current} games out of {:count} total')
+  ));
+  ?>
+</p>
+
+  </div>
+
                     <?php } 
                     else { ?>
 
-                <div class="alert alert-info channel"><?php echo $username ?> didn't add any games yet, Subscribe to his channel to get notified when new games added</div>
+                <div class="alert alert-info channel">The game you are searching is not added yet, you can add this game after you become a member.</div>
                 <?php }?>
 
                 </div>
@@ -45,9 +50,6 @@
 
           <div class="clear"></div>
         
-
-
-            </div>
         </div>
 
 
