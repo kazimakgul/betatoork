@@ -8,7 +8,6 @@
 				<div class="slider_sep"></div>
 				<div class="slider_leftpanel_slide">
 					<div class="ul">
-
 						
 						<?php foreach ($slider as $game): ?>
 
@@ -93,8 +92,7 @@
 				</div>
 				
 				<?php endforeach; ?>
-				
-				
+					
 				
 			</div>
 		</div>

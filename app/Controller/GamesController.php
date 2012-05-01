@@ -271,12 +271,12 @@ class GamesController extends AppController {
 		$userid = $this->request->params['pass'][0];
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
-    	$followers = $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-
     	$this->set('user_id', $userid);
 		$this->set('title_for_layout', 'Toork - Followers');
 		$this->set('username', $userName);
-		$this->set('followers', $followers);
+
+		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_to_id' => $userid)));
+
 	}
 
 	public function subscriptions() {

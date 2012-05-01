@@ -21,8 +21,7 @@
 								<div class="slider_game_info">
 									<a href="<?php echo $playurl ?>" class="slider_game_name"><?php echo $game['Game']['name']?></a>
 									<a href="<?php echo $channelurl ?>"><?php echo $game['User']['username']?></a>
-									<a href="<?php echo $caturl ?>" class="slider_game_category"><?php echo $game['Category']['name']?></a>
-									
+									<a href="<?php echo $caturl ?>" class="slider_game_category"><?php echo $game['Category']['name']?></a>									
 									<?php 
 		
 		if(90<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
@@ -81,8 +80,7 @@
 		<div class="slider_rightpanel_slidepointerarr"></div>
 			<div class="ul">
 				
-				
-				
+								
 				<?php foreach ($top_rated_games as $game): ?>
 				
 <?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
@@ -93,8 +91,6 @@
 					<?php echo $game['Game']['description']?>
 					</span>
 				</div>
-				
-			
 				
 				<?php endforeach; ?>
 				
