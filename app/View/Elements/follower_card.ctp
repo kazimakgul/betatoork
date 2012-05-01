@@ -9,6 +9,7 @@ $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames
 $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$followid));
 $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$followid));
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$followid));
+$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 ?>
 
         <div id="card1" class="subcard">
@@ -19,7 +20,8 @@ $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedg
             <div class="submid clearfix">
                 <div class="cardsep"></div>
                 <div class="channelavatar">
-                    <?php echo $this->Upload->image($card[6],'User.picture');?>
+                <img src="/betatoork/img/avatars/<?php echo $avatarImage?>.jpg" alt="default avatar"/>
+                   <!--  <?php echo $this->Upload->image($card[6],'User.picture');?> -->
                 </div>
                 <ul>
                     <li class="clearfix"><a class="" href="<?php echo $channelurl ?>"><?php echo $card[1] ?> Added Games</a></li>

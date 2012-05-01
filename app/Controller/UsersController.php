@@ -192,6 +192,12 @@ public function __sendActivationEmail($user_id) {
 		
 	}
 
+	public function randomAvatar() {
+ 		$pic_number = rand(1,12);
+ 		return $pic_number;
+        //$this->set('randomAvatar' , $random['Game']['id']);
+}
+
 	public function bestChannels(){
 		$this->loadModel('Game');
 		$limit=15;
