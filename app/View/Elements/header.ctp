@@ -10,10 +10,10 @@
         </td>
   	    <td width="420" style="padding-left:10px;">
   	      <div class="search clearfix">
-      			<form action="<?php echo $actionlink; ?>/" method="get">
+      			
       				<input id="txt_search" class="search_text" type="text" placeholder="search a game ..." name="search_keyword" />
       				<input class="search_button" type="button" value=""   />
-      			</form>
+      			
       		</div>
   	    </td>
   	    <td width="441" style="padding-left:18px;">
