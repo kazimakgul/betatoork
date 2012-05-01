@@ -312,12 +312,16 @@ class GamesController extends AppController {
 	}
 
 
-public function search() {
+public function search($param) {
+
+//search için veri girilmemisse ana sayfaya yönlendir.
+if(!isset($param))
+{
+$this->redirect(array("controller"=>"games","action"=>"index"));
+}
+
 	$this->layout='base';
-	
-	$param = $this->request->params['search_keyword'];
-	
-	$this->loadModel('User');
+    $this->loadModel('User');
 	$key=$param;
 	$this->set('myParam',$key);
     $userid = $this->Session->read('Auth.User.id');

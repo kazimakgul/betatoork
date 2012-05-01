@@ -43,9 +43,20 @@ $(function () {
 });
 </script>
 
+<?php $searchurl=$this->Html->url(array("controller"=>"games","action"=>"search")); ?>
 
+<script type="text/javascript">
 
+$(function () {
 
+$('.search_button').click(function() {
+
+window.location='<?php echo $searchurl; ?>/'+$('.search_text').val();
+
+});
+
+});
+</script>
 
 
 

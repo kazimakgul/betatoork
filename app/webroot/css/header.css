@@ -21,7 +21,7 @@ ul{list-style-type:none;}
 .logo{height:31px;min-width:249px;width:auto !important;width:249px;}
 .search{background-image:url(../img/t_search_bar.png); height:35px; width:419px;}
 .search_text {border:none; background-color:transparent; width:270px; font-size:16px; float:left; color:#b8d6e7; font-style:italic; margin:7px 0 0 20px;}
-.search_button {display:block; background-image:url(../img/t_search_btn.png); float:right; width:112px; height:31px; margin:2px 2px 0 0;}
+.search_button {display:block; background:url(../img/t_search_btn.png); float:right; width:112px; height:31px; margin:2px 2px 0 0;}
 .menu{background-image:url(../img/t_hd_menu_back.png); height:32px; width:441px; padding:2px 2px 2px 2px;}
 .menu_container{position:relative;height:36px; z-index:10;}
 .pointer{background-image:url(../img/t_menu_pointer.png); z-index:-1; position:absolute; overflow:hidden; left:0px; height:25px; width:96px; padding:6px 0 0 16px;}

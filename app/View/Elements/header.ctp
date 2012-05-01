@@ -12,7 +12,7 @@
   	      <div class="search clearfix">
       			<form action="<?php echo $actionlink; ?>/" method="get">
       				<input id="txt_search" class="search_text" type="text" placeholder="search a game ..." name="search_keyword" />
-      				<input class="search_button" type="image" value="" src="/betatoork/img/t_search_btn.png" />
+      				<input class="search_button" type="button" value=""   />
       			</form>
       		</div>
   	    </td>
