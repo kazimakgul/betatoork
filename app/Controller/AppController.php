@@ -65,7 +65,14 @@ class AppController extends Controller {
             'order' => array(
                 'Game.starsize' => 'desc',
             ),
-        ),       
+        ), 
+        'Subscription' => array(
+            //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
+            'limit' => 12,
+            'order' => array(
+                'subscription.created' => 'desc',
+            ),
+        ),        
     );
 
 
