@@ -11,13 +11,22 @@
 
 <?php $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$userid)); ?>
 <?php $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$userid)); ?>
-<?php $channel=$this->Html->url(array("controller" => "games","action" =>"channel")); ?>
+<?php 
+$channel=$this->Html->url(array("controller" => "games","action" =>"channel"));
+$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+ ?>
 
 
 <div class="userpanel">
   <p><a href="<?php echo $channel ?>"><?php echo $username ?></a></p>
   <div class="useravatar">
-      <?php echo $this->Upload->image($user,'User.picture');?>
+  <?php 
+  if($user['User']['picture']==null) { 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    } else {
+      echo $this->Upload->image($user,'User.picture'); }
+  ?>
+
   </div>
   <a class="wall" href="javascript:void();">Wall</a>
   <div class="panelsep"></div>

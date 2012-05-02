@@ -3,6 +3,7 @@ $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$u
 $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$userid)); 
 $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$userid)); 
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$userid));
+$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 ?>
 
 <div class="userpanel">
@@ -11,7 +12,12 @@ $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedg
     <!-- if facebook logedin 
       <fb:profile-pic uid="" size="small" width="100" height="200" linked="false"/> -->
     <!-- else -->
-      <?php echo $this->Upload->image($user,'User.picture');?>
+        <?php 
+  if($user['User']['picture']==null) { 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    } else {
+      echo $this->Upload->image($user,'User.picture'); }
+  ?>
    <!-- end -->
   </div>
   <div class="activity">Activity</div>
