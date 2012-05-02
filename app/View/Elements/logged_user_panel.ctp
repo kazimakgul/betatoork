@@ -12,7 +12,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
     <!-- if facebook logedin 
       <fb:profile-pic uid="" size="small" width="100" height="200" linked="false"/> -->
     <!-- else -->
-        <?php 
+  <?php 
   if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
     } else {
