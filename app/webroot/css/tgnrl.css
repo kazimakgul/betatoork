@@ -16,6 +16,21 @@
 .right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px;}
 .right_panel ul li{height:100%; padding-left:20px; margin-top:10px;}
 .right_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png); padding-top:5px;}
+
+.right_panel .wallframe{width:89px; background-image:url(../img/t_avatar_frame.png);height:52px; margin-bottom:20px;}
+.right_panel .walllinks{ float:left; margin-left:55px; margin-top:-35px;}
+.right_panel .walllinks a{font-family:Verdana, Geneva, sans-serif;	color:#0d7ac2;	font-size:11px;	font-weight: bold;}
+.right_panel .channelname{  margin-left: 55px;    margin-top: -35px;}
+.right_panel .wallinfo{  margin-left: 150px;    margin-top: -12px;}
+.right_panel .letsbtn{ margin-left: 413px;   margin-top: 0;}
+
+.addadsense{background-image:url(../img/t_wall.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+
+.addadsense ul{margin-top:20px;}
+.addadsense ul li{margin-bottom:5px;}
+.addadsense p{font-family:Verdana; font-size:8pt; color:#666; margin: -42px 10px 16px 180px	float:left;	font-weight:100;}
+
+
 .toprated{background-image:url(../img/t_top_rated_games.png); width:298px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
 .searchresult {
 background-image: url(../img/t_search_back.png);
