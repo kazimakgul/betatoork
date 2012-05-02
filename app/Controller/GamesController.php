@@ -314,7 +314,7 @@ class GamesController extends AppController {
 
 public function search() {
 
-if($this->request->is("GET"))
+if($this->request->is("GET") && isset($this->request->params['pass'][0]))
 {
 $param = $this->request->params['pass'][0];
 }
