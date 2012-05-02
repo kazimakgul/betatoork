@@ -24,7 +24,6 @@
                        </li>
 
            <?php endforeach; ?>
-           
                        <li>
               <div class="wallframe"><img src="_inc/img/t_wall_avatar.png" width="84" height="46" style="margin-left:2px; margin-top:3px;" /></div>
                             <div class="walllinks">

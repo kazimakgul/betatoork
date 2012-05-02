@@ -58,6 +58,7 @@ class WallentriesController extends AppController {
 	public function wall() {
 		$this->loadModel('User');
 		$this->loadModel('Game');
+		$this->loadModel('Subscription');
 		$this->layout='channel';
 		$this->leftpanel();
 		$this->logedin_user_panel();
