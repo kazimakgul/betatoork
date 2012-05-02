@@ -69,11 +69,7 @@ class WallentriesController extends AppController {
 		$this->Wallentry->recursive = 0;
 
 
-	
-		$games = $this->Wallentry->Game->find('list');
-		$this->set(compact('users', 'games'));
-
-		$this->set('wallentries', $this->paginate());
+		$this->set('entries', $this->paginate('Wallentry',array('Wallentry.user_id' => $userid)));
 	}
 
 
