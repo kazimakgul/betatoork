@@ -96,7 +96,7 @@ margin-bottom: 10px;
 .addedgames ul .even{background-image:url(../img/t_ul_odd_li_back.png); padding-top:5px;}
 
 
-.gamebox .gameboxmove{background-image: url("../img/t_move_gamebox.png"); float: right; height: 20px; margin-right: 1px; margin-top: 30px; width: 50px;}
+.gamebox .gameboxmove{background-image: url("../img/t_move_gamebox.png"); float: right; height: 20px; margin-right: 1px; margin-top: 16px; width: 50px;}
 
 .gamebox .gameboxdelete{background-image: url("../img/t_delete_gamebox.png"); float: right; height: 20px; margin-right: 5px; margin-top: 45px; width: 50px;}
 .gamebox .gb_gameboxmove{display:block; text-decoration:none; font-family:Arial; font-size:8pt; color:#004473; margin:4px 20px;}
