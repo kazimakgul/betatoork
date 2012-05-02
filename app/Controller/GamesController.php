@@ -314,11 +314,12 @@ class GamesController extends AppController {
 
 public function search() {
 
-$param = $this->request->params['pass'][0];
+
 
 //search için veri girilmemisse ana sayfaya yönlendir.
 if(!isset($param) || $param=="" )
 {
+$param = $this->request->params['pass'][0];
 $this->redirect(array("controller"=>"games","action"=>"index"));
 }
 
