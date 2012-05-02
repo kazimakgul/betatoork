@@ -314,14 +314,20 @@ class GamesController extends AppController {
 
 public function search() {
 
-
+$param = $this->request->params['pass'][0];
 
 //search için veri girilmemisse ana sayfaya yönlendir.
 if(!isset($param) || $param=="" )
 {
-$param = $this->request->params['pass'][0];
 $this->redirect(array("controller"=>"games","action"=>"index"));
 }
+else
+{
+$cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.description LIKE'=>'%'.$param.'%','User.username LIKE'=>'%'.$param.'%'),'Game.active'=>'1'));
+$this->set('search', $this->paginate('Game',$cond));
+$this->set('mygames', $cond);
+}
+
 
 	$this->leftpanel();
 	$this->logedin_user_panel();
@@ -330,14 +336,13 @@ $this->redirect(array("controller"=>"games","action"=>"index"));
 	$key=$param;
 	$this->set('myParam',$key);
     $userid = $this->Session->read('Auth.User.id');
-    $cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.description LIKE'=>'%'.$param.'%','User.username LIKE'=>'%'.$param.'%'),'Game.active'=>'1'));
-    $this->set('search', $this->paginate('Game',$cond));
+    
 	
 	$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
 	$limit=120;
 	$this->set('limit', $limit);
-    $this->set('mygames', $cond);
+    
     $this->set('username', $userName);
 	$this->set('user_id', $userid);
 	
