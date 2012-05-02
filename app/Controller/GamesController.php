@@ -315,7 +315,7 @@ class GamesController extends AppController {
 public function search($param) {
 
 //search için veri girilmemisse ana sayfaya yönlendir.
-if(!isset($param))
+if(!isset($param) || $param=="" )
 {
 $this->redirect(array("controller"=>"games","action"=>"index"));
 }
