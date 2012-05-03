@@ -64,13 +64,22 @@ class WallentriesController extends AppController {
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 		
-	    $subscriber_ids = $this->Subscription->find('first');
+	    $subscriber_ids = $this->Subscription->find('all',array('conditions'=>array('subscriber_id'=>$userid)));
+		
+		$i=0;
+		foreach ($subscriber_ids as $allids)
+		{
+		
+		$ids[$i]=$allids['Subscription']['subscriber_to_id'];
+		$i++;
+		}
+		
 	    //$subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-	    $games = $this->Game->find('all', array('conditions' => array('Game.user_id' => 3)));	
+	    $games = $this->Game->find('all', array('conditions' => array('Game.user_id' => $ids)));	
 		$this->Wallentry->recursive = 0;
 
         $this->set('entries',$games);
-        $this->set('subbo',$subscriber_ids);
+        
 		//$this->set('entries', $this->paginate('Wallentry',array('Wallentry.user_id' => $userid)));
 	}
 

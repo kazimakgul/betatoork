@@ -6,7 +6,6 @@
     <?php echo $this->element('categories_left_menu'); ?>
   </div>
         
-	<?php $subbo['Subscription']['subscriber_to_id']; ?>fuu
 		
             <div class="right_panel">
                 <div id="adsense" class="addadsense">
