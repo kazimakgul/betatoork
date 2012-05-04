@@ -70,7 +70,7 @@ class AppController extends Controller {
             //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
             'limit' => 12,
             'order' => array(
-                'subscription.created' => 'desc',
+                'Subscription.created' => 'desc',
             ),
         ),        
     );
