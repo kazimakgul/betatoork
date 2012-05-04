@@ -410,7 +410,7 @@ if(empty($favbefore))
 		$this->set("starsize",$starsize);
 
 		if($game['Game']['embed']==null){
-			$this->render('/games/play/');
+
 		}else{
 			$this->redirect(array('controller'=>'games', 'action'=>'play2',$id));
 		}
