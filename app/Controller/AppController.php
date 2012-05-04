@@ -54,7 +54,7 @@ class AppController extends Controller {
         ),
         'Game' => array(
             //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
-            'limit' => 4,
+            'limit' => 28,
             'order' => array(
                 'Game.recommend' => 'desc',
             ),
