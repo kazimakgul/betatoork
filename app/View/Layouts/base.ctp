@@ -24,22 +24,23 @@
 
 <script type="text/javascript">
 $(function () {
-  $('#remember').click(function () {
-    if($(this).hasClass('remember')) {
-      $('#remember').removeClass('remember').addClass('remembertick');
-    }
-    else {
-      $('#remember').removeClass('remembertick').addClass('remember');
-    }
-  });
-  //$('.share').click(function () { var posshare = $(this).position(); console.log('genislik: ' + $(this).width() + ' -- top: ' + posshare.top + ' -- left: ' + posshare.left); });
-  $('.share').click(function () {
-    var posshare = $(this).position();
-  });
-	$('.bemember').click(function () {
-	  $('#register').load('/account/register/start/');
-	  $('body').css({ 'overflow' : 'hidden'});
-	});
+    $('#remember').click(function () {
+        if ($(this).hasClass('remember')) {
+            $('#remember').removeClass('remember').addClass('remembertick');
+        } else {
+            $('#remember').removeClass('remembertick').addClass('remember');
+        }
+    });
+    //$('.share').click(function () { var posshare = $(this).position(); console.log('genislik: ' + $(this).width() + ' -- top: ' + posshare.top + ' -- left: ' + posshare.left); });
+    $('.share').click(function () {
+        var posshare = $(this).position();
+    });
+    $('.bemember').click(function () {
+        $('#register').load('/account/register/start/');
+        $('body').css({
+            'overflow': 'hidden'
+        });
+    });
 });
 
 <?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription")); ?>
@@ -61,20 +62,21 @@ $.get("<?php echo $suburl2; ?>/"+userid,function(data) {alert(data);location.rel
 
 $(function () {
 
-$('.search_button').click(function() {
+    $('.search_button').click(function () {
 
-window.location='<?php echo $searchurl; ?>/'+$('.search_text').val();
+        window.location = '<?php echo $searchurl; ?>/' + $('.search_text').val();
 
-});
+    });
 
-$('.search_text').keypress(function(e) {
-        if(e.which == 13) {
-            window.location='<?php echo $searchurl; ?>/'+$('.search_text').val();
+    $('.search_text').keypress(function (e) {
+        if (e.which == 13) {
+            window.location = '<?php echo $searchurl; ?>/' + $('.search_text').val();
         }
     });
 
 
 });
+
 </script>
 
 

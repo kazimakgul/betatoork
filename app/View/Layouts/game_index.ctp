@@ -30,112 +30,109 @@ $playurl=$this->Html->url(array( "controller" => "playcounts","action" =>"add_pl
 
 <script>
 
-window.setTimeout('countonetime()', 10000);
-
-function countonetime() {
-    $.get("<?php echo $playurl ?>");
+window.setTimeout('countonetime()',10000);
+function countonetime()
+{
+$.get("<?php echo $playurl ?>");
 }
 
-<?php
-if ($this->Session->check('Auth.User')) {
-    echo 'useronline=1;';
-} else {
-    echo 'useronline=0;';
-} ?>
+<?php if($this->Session->check('Auth.User')){
+echo 'useronline=1;';
+}else{
+echo 'useronline=0;';
+}
+?>
 
 
-function rate_a_game(rating) {
+function rate_a_game(rating){
 
 
-    if (useronline == 1) {
+ if(useronline==1)
+ {
 
-        $.post("<?php echo $rateurl; ?>/" + rating, function (data) {
-            alert(data);
-        });
-
-
-        if (rating == 1) {
-            $('.rating').css({
-                width: '20%'
-            });
-        } else if (rating == 2) {
-            $('.rating').css({
-                width: '40%'
-            });
-        } else if (rating == 3) {
-            $('.rating').css({
-                width: '60%'
-            });
-        } else if (rating == 4) {
-            $('.rating').css({
-                width: '80%'
-            });
-        } else if (rating == 5) {
-            $('.rating').css({
-                width: '100%'
-            });
-        }
-
-    } else {
-
-        $('#register').lightbox_me();
-
+    $.post("<?php echo $rateurl; ?>/"+rating,function(data) {alert(data);});
+  
+  
+    if (rating==1)
+    {
+    $('.rating').css({width: '20%'});
     }
-
-}
-
-var heartflag = 0;
-
-
-if (heartwidth == 100) {
-    $('.adding').css({
-        width: '0%'
-    });
-} else if (heartwidth == 0) {
-    $('.adding').css({
-        width: '100%'
-    });
-}
-
-
-function add_to_fav(heartwidth) {
-
-    if (useronline == 1) {
-
-        $.post("<?php echo $favurl;?>", function (data) {
-            alert(data);
-        });
-
-        if (heartflag == 0) {
-            current_heart = heartwidth;
-            heartflag = 1;
-        }
-
-    } else {
-
-        $('#register').lightbox_me();
-
+    else if (rating==2)
+    {
+    $('.rating').css({width: '40%'});
     }
-
-}
-
-function switcher() {
-
-    if (current_heart == 100) {
-        current_heart = 0;
-        $('.adding').css({
-            width: '0%'
-        });
-    } else if (current_heart == 0) {
-        current_heart = 100;
-        $('.adding').css({
-            width: '100%'
-        });
+    else if (rating==3)
+    {
+    $('.rating').css({width: '60%'});
     }
-
-
-
+    else if (rating==4)
+    {
+    $('.rating').css({width: '80%'});
+    }
+    else if (rating==5)
+    {
+    $('.rating').css({width: '100%'});
+    }
+  
+   }else{
+  
+    $('#register').lightbox_me();
+  
+   }  
+  
 }
+
+var heartflag=0;
+
+
+  if (heartwidth==100)
+  {
+  $('.adding').css({width: '0%'});
+  }
+  else if (heartwidth==0)
+  {
+  $('.adding').css({width: '100%'});
+  }
+
+
+function add_to_fav(heartwidth){
+
+     if(useronline==1)
+     {
+
+        $.post("<?php echo $favurl;?>",function(data) {alert(data);});
+  
+         if(heartflag==0)
+         {
+         current_heart=heartwidth;
+         heartflag=1;
+         }
+      
+	  }else{
+	  
+	  $('#register').lightbox_me();
+	  
+	  }
+  
+}
+
+function switcher(){
+  
+  if(current_heart==100)
+  {
+  current_heart=0;
+  $('.adding').css({width: '0%'});
+  }
+  else if(current_heart==0)
+  {
+  current_heart=100;
+  $('.adding').css({width: '100%'});
+  }
+  
+  
+  
+}
+  
 </script>
 
 
