@@ -63,7 +63,7 @@ public function reset_request()
         $email=$this->request->data["User"]["email"];
         $user = $this->User->find('first',array('conditions' => array('User.email'=>$email)));
         $this->set('username', $user["User"]["username"]);
-        $this->set('reset_url', 'http://game.toork.com/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
+        $this->set('reset_url', 'http://ec2-23-22-10-91.compute-1.amazonaws.com/betatoork/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
         $this->Email->from  = 'Toork <no-reply@toork.com>';
 		$this->Email->to = $email;
@@ -136,7 +136,7 @@ public function __sendActivationEmail($user_id) {
 		}
  
 		// Set data for the "view" of the Email
-		$this->set('activate_url', 'http://game.toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
+		$this->set('activate_url', 'http://ec2-23-22-10-91.compute-1.amazonaws.com/betatoork/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
  
  		$this->Email->from  = 'Toork <no-reply@toork.com>';
