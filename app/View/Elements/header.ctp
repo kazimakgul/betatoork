@@ -31,13 +31,13 @@
       				<?php if($this->Session->check('Auth.User')){?>
               <a href="<?php echo $wall ?>"></a>
                <?php }else{?>
-                   <a class="unauth" href="#" data-bind="click: function() { $('#register').lightbox_me(); }"></a>
+                   <a class="unauth" href="#" onclick="$('#register').lightbox_me();"></a>
                <?php } ?>
 
               <?php if($this->Session->check('Auth.User')){?>
                   <a href="<?php echo $channel ?>"></a>
                <?php }else{?>
-                   <a class="unauth" href="#" data-bind="click: function() { $('#register').lightbox_me(); }"></a>
+                   <a class="unauth" href="#" onclick="$('#register').lightbox_me();"></a>
                <?php } ?>
 
       			</div>
