@@ -19,7 +19,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
                     if($this->Session->read('Auth.User.id') == $userid){ ?>
 <?php $remove=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription",$card[6]['User']['id'])); ?>
 
-                       <a class="block" href="<?php echo $remove?>"></a>
+                       <a class="block" href="#" onclick="changesubscribe(<?php echo $card[6]['User']['id']; ?>)"></a>
 
                 <?php    }
                 ?>

@@ -41,6 +41,18 @@ $(function () {
 	  $('body').css({ 'overflow' : 'hidden'});
 	});
 });
+
+<?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription")); ?>
+
+function changesubscribe(userid)
+{
+
+$.get("<?php echo $suburl2; ?>/"+userid,function(data) {alert(data);location.reload();});
+
+
+}
+
+
 </script>
 
 <?php $searchurl=$this->Html->url(array("controller"=>"games","action"=>"search")); ?>
