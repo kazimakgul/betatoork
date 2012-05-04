@@ -12,7 +12,7 @@ class Playcount extends AppModel {
  *
  * @var mixed False or table name
  */
-	public $useTable = 'Playcounts';
+
 /**
  * Validation rules
  *

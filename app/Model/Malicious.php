@@ -12,7 +12,7 @@ class Malicious extends AppModel {
  *
  * @var mixed False or table name
  */
-	public $useTable = 'Malicious';
+
 /**
  * Display field
  *

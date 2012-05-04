@@ -12,7 +12,7 @@ class Subscription extends AppModel {
  *
  * @var mixed False or table name
  */
-	public $useTable = 'Subscriptions';
+
 /**
  * Validation rules
  *

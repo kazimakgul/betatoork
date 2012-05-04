@@ -12,7 +12,7 @@ class Wallentry extends AppModel {
  *
  * @var mixed False or table name
  */
-	public $useTable = 'Wallentries';
+
 /**
  * Validation rules
  *
