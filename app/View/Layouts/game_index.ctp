@@ -36,33 +36,49 @@ function countonetime()
 $.get("<?php echo $playurl ?>");
 }
 
+<?php if($this->Session->check('Auth.User')){
+echo 'useronline=1;';
+}else{
+echo 'useronline=0;';
+}
+?>
 
 
 function rate_a_game(rating){
-  $.post("<?php echo $rateurl; ?>/"+rating,function(data) {alert(data);});
+
+
+ if(useronline==1)
+ {
+
+    $.post("<?php echo $rateurl; ?>/"+rating,function(data) {alert(data);});
   
   
-  if (rating==1)
-  {
-  $('.rating').css({width: '20%'});
-  }
-else if (rating==2)
-  {
-  $('.rating').css({width: '40%'});
-  }
-  else if (rating==3)
-  {
-  $('.rating').css({width: '60%'});
-  }
-  else if (rating==4)
-  {
-  $('.rating').css({width: '80%'});
-  }
-  else if (rating==5)
-  {
-  $('.rating').css({width: '100%'});
-  }
+    if (rating==1)
+    {
+    $('.rating').css({width: '20%'});
+    }
+    else if (rating==2)
+    {
+    $('.rating').css({width: '40%'});
+    }
+    else if (rating==3)
+    {
+    $('.rating').css({width: '60%'});
+    }
+    else if (rating==4)
+    {
+    $('.rating').css({width: '80%'});
+    }
+    else if (rating==5)
+    {
+    $('.rating').css({width: '100%'});
+    }
   
+   }else{
+  
+    $('#register').lightbox_me();
+  
+   }  
   
 }
 
@@ -80,14 +96,23 @@ var heartflag=0;
 
 
 function add_to_fav(heartwidth){
-  $.post("<?php echo $favurl;?>",function(data) {alert(data);});
+
+     if(useronline==1)
+     {
+
+        $.post("<?php echo $favurl;?>",function(data) {alert(data);});
   
-    if(heartflag==0)
-  {
-  current_heart=heartwidth;
-  heartflag=1;
-  }
-  
+         if(heartflag==0)
+         {
+         current_heart=heartwidth;
+         heartflag=1;
+         }
+      
+	  }else{
+	  
+	  $('#register').lightbox_me();
+	  
+	  }
   
 }
 
