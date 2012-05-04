@@ -68,6 +68,7 @@ class DATABASE_CONFIG {
 		'database' => 'NewDB',
 		'prefix' => '',
 		//'encoding' => 'utf8',
+		
 	);
 
 	public $test = array(
