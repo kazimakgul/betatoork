@@ -152,14 +152,14 @@ function getActivationHash()
 
 
 		
-		'confirm_password' => array(
+		'confirm_new_password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'message' => 'Please dont leave this field empty',
 				),
 				
 			'identicalFieldValues' => array( 
-		        'rule' => array('identicalFieldValues', 'password' ), 
+		        'rule' => array('identicalFieldValues', 'new_password' ), 
 		        'message' => 'Please re-enter your password twice so that the values match'), 
 
 				'between' => array(
