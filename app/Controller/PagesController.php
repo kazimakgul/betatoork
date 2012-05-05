@@ -77,7 +77,6 @@ public function leftpanel(){
 		$this->loadModel('Subscription');
 		$this->loadModel('Playcount');
 		$this->loadModel('Game');
-		$this->layout='base';
 	    $userid = $this->Session->read('Auth.User.id');
 	    $username = $this->Session->read('Auth.User.username');
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
