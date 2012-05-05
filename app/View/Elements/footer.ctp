@@ -1,3 +1,4 @@
+ <?php $terms=$this->Html->url(array( "controller" => "pages","action" =>"terms"));?>
 <div class="footer">
   <div class="ftop clearfix">
     <div class="fmenu clearfix">
@@ -12,7 +13,7 @@
       <div class="fterms">
         <p>Terms & Conditions</p>
         <ul>
-          <li><a href="">Terms & Conditions</a></li>
+          <li><a href="<?php echo $terms ?>">Terms & Conditions</a></li>
           <li><a href="">Privacy Policy</a></li>
           <li><a href="">FAQ</a></li>
           <li><a href="">Documents</a></li>

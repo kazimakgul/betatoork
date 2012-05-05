@@ -87,37 +87,6 @@ class WallentriesController extends AppController {
 	}
 
 
-	public function channel() {
-		$this->loadModel('User');
-		$this->layout='channel';
-		$this->leftpanel();
-		$this->logedin_user_panel();
-		$userid = $this->Session->read('Auth.User.id');
-		$limit=12;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
-    )));
-    	$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
-    )));
-	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
-	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	    if($gamenumber >= 3){
-	    	    $this->set('slider', $cond);
-	    }else{
-	    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'))));
-	    }
-	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-	    $this->set('user',$user);
-
-	    $this->set('subscribe', $subscribe);
-	    $this->set('subscribeto', $subscribeto);
-    	$this->set('userid', $userid);
-    	$this->set('mygames', $cond);
-    	$this->set('favorites', $cond2);
-    	$this->set('limit', $limit);
-		$this->set('title_for_layout', 'Toork - Create your own game channel');
-	}
-
 /**
  * view method
  *

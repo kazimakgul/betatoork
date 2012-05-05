@@ -31,6 +31,8 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController {
 
+
+
 /**
  * Controller name
  *
@@ -43,7 +45,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $helpers = array('Html', 'Session');
+	    public $helpers = array('Html', 'Form','Upload','Session');
 
 /**
  * This controller does not use a model
@@ -58,8 +60,50 @@ class PagesController extends AppController {
  * @param mixed What page to display
  * @return void
  */
+
+public function leftpanel(){
+		$this->loadModel('Category');
+		$this->loadModel('Game');
+		$this->Game->recursive = 0;
+		$cat=$this->Game->Category->find('all');
+		$this->set('category', $cat);
+		$cond3= array('Game.active'=>'1');
+    	$this->set('games', $this->paginate('Game',$cond3));
+
+	}
+
+	public function logedin_user_panel() {
+		$this->loadModel('User');
+		$this->loadModel('Subscription');
+		$this->loadModel('Playcount');
+		$this->loadModel('Game');
+		$this->layout='base';
+	    $userid = $this->Session->read('Auth.User.id');
+	    $username = $this->Session->read('Auth.User.username');
+	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
+	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	    $this->set('user',$user);
+
+	    $this->set('userid', $userid);
+	   	$this->set('username', $username);
+	    $this->set('gamenumber', $gamenumber);
+	    $this->set('favoritenumber', $favoritenumber);
+	   	$this->set('subscribe', $subscribe);
+	    $this->set('subscribeto', $subscribeto);
+	    $this->set('playcount', $playcount);
+
+	}
+
+
+
 	public function display() {
 		$path = func_get_args();
+		$this->leftpanel();
+		$this->logedin_user_panel();
 
 		$count = count($path);
 		if (!$count) {
