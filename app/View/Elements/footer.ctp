@@ -1,4 +1,8 @@
- <?php $terms=$this->Html->url(array( "controller" => "pages","action" =>"terms"));?>
+ <?php 
+$terms=$this->Html->url(array( "controller" => "pages","action" =>"terms"));
+$privacy=$this->Html->url(array( "controller" => "pages","action" =>"privacy"));
+$help=$this->Html->url(array( "controller" => "pages","action" =>"help"));
+ ?>
 <div class="footer">
   <div class="ftop clearfix">
     <div class="fmenu clearfix">
@@ -14,10 +18,10 @@
         <p>Terms & Conditions</p>
         <ul>
           <li><a href="<?php echo $terms ?>">Terms & Conditions</a></li>
-          <li><a href="">Privacy Policy</a></li>
+          <li><a href="<?php echo $privacy ?>">Privacy Policy</a></li>
           <li><a href="">FAQ</a></li>
           <li><a href="">Documents</a></li>
-          <li><a href="">Help</a></li>
+          <li><a href="<?php echo $help ?>">Help</a></li>
         </ul>
       </div>
     </div>
