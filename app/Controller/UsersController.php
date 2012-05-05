@@ -374,7 +374,7 @@ public function __sendActivationEmail($user_id) {
 				$validationErrors = $this->User->invalidFields();
 				$value = key($validationErrors);
     			$this->Session->setFlash($validationErrors[$value][0]);
-				$this->redirect(array('controller' => 'user', 'action' => 'password',$id));
+				$this->redirect(array('controller' => 'users', 'action' => 'password',$id));
 			}
 			
 			
