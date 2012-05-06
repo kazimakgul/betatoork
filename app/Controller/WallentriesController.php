@@ -13,6 +13,19 @@ class WallentriesController extends AppController {
  *
  * @return void
  */
+
+
+	public function isAuthorized() {
+	 if($this->action=='wall') {
+	 	return true;
+	 }
+	 //Redirect to error notification page
+	 $this->Session->setFlash('Sorry, you don\'t have permission to access that page.');
+	 $this->redirect('/');
+	 return false;
+}
+
+
 	public function index() {
 		$this->Wallentry->recursive = 0;
 		$this->set('wallentries', $this->paginate());
