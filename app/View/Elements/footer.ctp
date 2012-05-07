@@ -2,6 +2,9 @@
 $terms=$this->Html->url(array( "controller" => "pages","action" =>"terms"));
 $privacy=$this->Html->url(array( "controller" => "pages","action" =>"privacy"));
 $help=$this->Html->url(array( "controller" => "pages","action" =>"help"));
+$lastadded=$this->Html->url(array( "controller" => "games","action" =>"lastadded"));
+$toprated=$this->Html->url(array( "controller" => "games","action" =>"toprated"));
+$mostplayed=$this->Html->url(array( "controller" => "games","action" =>"mostplayed"));
  ?>
 <div class="footer">
   <div class="ftop clearfix">
@@ -9,9 +12,9 @@ $help=$this->Html->url(array( "controller" => "pages","action" =>"help"));
       <div class="fgames">
         <p>Games</p>
         <ul>
-          <li><a href="/game/recently_added/">Last Added Games</a></li>
-          <li><a href="/game/top_rated/">Top Rated Games</a></li>
-          <li><a href="/game/most_played/">Most Played Games</a></li>
+          <li><a href="<?php echo $lastadded ?>">Last Added Games</a></li>
+          <li><a href="<?php echo $toprated ?>">Top Rated Games</a></li>
+          <li><a href="<?php echo $mostplayed ?>">Most Played Games</a></li>
         </ul>
       </div>
       <div class="fterms">

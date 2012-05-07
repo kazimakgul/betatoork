@@ -61,6 +61,16 @@ class GamesController extends AppController {
 		$this->set('title_for_layout', 'Toork - Most Played Games');
 	}
 	
+	public function lastadded() {
+		$this->layout='base';
+		$this->leftpanel();
+		$this->logedin_user_panel();
+		
+		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
+
+		$this->set('title_for_layout', 'Toork - Last Added Games');
+	}
+
 
 	public function leftpanel(){
 		$this->Game->recursive = 0;
