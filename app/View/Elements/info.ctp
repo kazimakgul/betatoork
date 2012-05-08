@@ -26,7 +26,7 @@
      note.style.display = 'none';
    }, false);
    
-   setTimeout("closenote()",4000);
+   setTimeout("closenote()",8000);
    function closenote()
    {
    note.style.display = 'none'
