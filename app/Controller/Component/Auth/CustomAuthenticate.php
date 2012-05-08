@@ -20,8 +20,7 @@ class CustomAuthenticate extends BaseAuthenticate
             'username' => array('email','username'),
             'password' => 'password'
         ),
-        'userModel' => 'User',
-        'scope' => array('User.active' => 1),
+        'userModel' => 'User'
     );
     
     

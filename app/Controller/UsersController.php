@@ -163,7 +163,17 @@ public function __sendActivationEmail($user_id) {
 		    else if ($this->Auth->login()) {
 			
 	
-				$this->redirect($this->Auth->redirect());
+				$results = $this->User->find('first',array('conditions'=>array('OR'=>array('User.email'=>$this->data['User']['username'],'User.username'=>$this->data['User']['username'])),array('fields'=>array('User.active'))));
+	  	        if ($results['User']['active'] == 0) {
+	  	        $this->Session->setFlash('Your account has not been activated yet!');
+	  	        $this->Auth->logout();
+	  	        $this->redirect('/');
+	  	
+                } else {
+ 	 	
+                $this->redirect($this->Auth->redirect());
+	  	
+                }
 				
 			
 		        
