@@ -170,6 +170,9 @@ $(function () {
 <?php  echo $this->element('test'); ?>
 
 
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "945fc838-b0de-48a9-be2d-8e71a7e4835a"}); </script>
 
 
 </head>
