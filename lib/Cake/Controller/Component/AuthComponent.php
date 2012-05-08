@@ -200,7 +200,7 @@ class AuthComponent extends Component {
  * @see AuthComponent::$loginAction
  * @see AuthComponent::logout()
  */
-	public $logoutRedirect = null;
+	public $logoutRedirect = '/';
 
 /**
  * Error to display when user attempts to access an object or action to which they do not have
@@ -209,7 +209,7 @@ class AuthComponent extends Component {
  * @var string
  * @link http://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#AuthComponent::$authError
  */
-	public $authError = null;
+	public $authError = 'You are not authorized to access that location, please login';
 
 /**
  * Controller actions for which user validation is not required.

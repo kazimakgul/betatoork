@@ -7,8 +7,8 @@
     <ul>
   
         <li>
-            <label for="name">Username:</label>
-<?php echo $this->Form->input('username',array('label'=>false ,'required','placeholder' => 'username')); ?>
+            <label for="name">Username/Email:</label>
+<?php echo $this->Form->input('username',array('label'=>false ,'required','placeholder' => 'username or email')); ?>
          </li>
         <li>
             <label for="website">password:</label>

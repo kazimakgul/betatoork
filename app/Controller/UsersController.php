@@ -8,11 +8,14 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
 
-public $components = array('AutoLogin','Email');
+public $components = array('AutoLogin','Email','Auth');
 public $helpers = array('Html', 'Form','Upload');
 
 
-    
+	public function beforeFilter() {
+		parent::beforeFilter();
+  	  	$this->Auth->authenticate = array('Custom');
+  }
 
 
     public function isAuthorized($user) {
@@ -159,17 +162,9 @@ public function __sendActivationEmail($user_id) {
     		}
 		    else if ($this->Auth->login()) {
 			
-			$results = $this->User->find('first',array('conditions'=>array('User.username'=>$this->data['User']['username']),array('fields'=>array('User.active'))));
-			if ($results['User']['active'] == 0) {
-					// Uh Oh!
-					$this->Session->setFlash('Your account has not been activated yet!');
-					$this->Auth->logout();
-					$this->redirect('/');
-				}
-				else
-				{
+	
 				$this->redirect($this->Auth->redirect());
-				}
+				
 			
 		        
 		    } else {

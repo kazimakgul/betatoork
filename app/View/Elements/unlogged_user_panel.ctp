@@ -12,7 +12,7 @@
 
   	<div class="email">
       <?php echo $this->Form->error('username'); ?>
-      <input id="txt_email" type="text" name="data[User][username]" placeholder="Email Address" required/>
+      <input id="txt_email" type="text" name="data[User][username]" placeholder="Username or Email" required/>
   	</div>
   	<div class="pass">
 	    <input id="txt_password" type="password" name="data[User][password]" placeholder="Password" required/>
