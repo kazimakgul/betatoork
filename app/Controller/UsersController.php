@@ -67,6 +67,12 @@ public function reset_request()
 		if(isset($email) && $email!="")
 		{
 		$user = $this->User->find('first',array('conditions' => array('User.email'=>$email)));
+
+		if ($user === false) {
+			$this->Session->setFlash('This email is not registered to toork yet.');
+			return false;
+		}
+
 		$this->__sendResetEmail($user["User"]["id"]);
 		}else{
 		$this->Session->setFlash('Please Enter A Valid Email!');
@@ -126,11 +132,6 @@ public function __sendActivationEmail($user_id) {
 
 		$user = $this->User->find('first',array('conditions' => array('User.id'=>$user_id)));
 		
-		if ($user === false) {
-			debug(__METHOD__." failed to retrieve User data for user.id: {$user_id}");
-			return false;
-		}
- 
 		// Set data for the "view" of the Email
 		$this->set('activate_url', 'http://ec2-23-22-10-91.compute-1.amazonaws.com/betatoork/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
@@ -151,6 +152,7 @@ public function __sendResetEmail($user_id) {
 		$user = $this->User->find('first',array('conditions' => array('User.id'=>$user_id)));
 		
 		if ($user === false) {
+			$this->Session->setFlash('This mail is not registered.');
 			debug(__METHOD__." failed to retrieve User data for user.id: {$user_id}");
 			return false;
 		}
