@@ -151,10 +151,8 @@ public function __sendResetEmail($user_id) {
 		$user = $this->User->find('first',array('conditions' => array('User.id'=>$user_id)));
 		
 		if ($user === false) {
-			//debug(__METHOD__." failed to retrieve User data for user.id: {$user_id}");
-			//return false;
-			$this->Session->setFlash('This mail is not registered.');
-			
+			debug(__METHOD__." failed to retrieve User data for user.id: {$user_id}");
+			return false;
 		}
  
 		// Set data for the "view" of the Email
