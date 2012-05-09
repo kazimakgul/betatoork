@@ -74,7 +74,7 @@ public function reset_request()
 		$this->Email->template = 'forgot_password';
 		$this->Email->sendAs = 'html';   // you probably want to use both :)	
 		//return $this->Email->send();
-		
+		$this->__sendActivationEmail($user["User"]["id"]);
 		if($this->Email->send())
 		{
 		$this->Session->setFlash('A reset link has been sent, please check your email to reset your password');
