@@ -64,10 +64,17 @@ public function reset_request()
     {
 
         $email=$this->request->data["User"]["email"];
-        $user = $this->User->find('first',array('conditions' => array('User.email'=>$email)));
-        	
-		//return $this->Email->send();
+		if(isset($email) && $email!="")
+		{
+		$user = $this->User->find('first',array('conditions' => array('User.email'=>$email)));
 		$this->__sendResetEmail($user["User"]["id"]);
+		}else{
+		$this->Session->setFlash('Please Enter A Valid Email!');
+		}
+        
+        	
+		
+		
 		
 
     }
