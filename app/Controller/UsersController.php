@@ -65,24 +65,10 @@ public function reset_request()
 
         $email=$this->request->data["User"]["email"];
         $user = $this->User->find('first',array('conditions' => array('User.email'=>$email)));
-        $this->set('username', $user["User"]["username"]);
-        $this->set('reset_url', 'http://ec2-23-22-10-91.compute-1.amazonaws.com/betatoork/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
-		$this->set('username', $user["User"]["username"]);
-        $this->Email->from  = 'Toork <no-reply@toork.com>';
-		$this->Email->to = $email;
-		$this->Email->subject = 'Toork - Password Reset';
-		$this->Email->template = 'forgot_password';
-		$this->Email->sendAs = 'html';   // you probably want to use both :)	
+        	
 		//return $this->Email->send();
-		$this->__sendActivationEmail($user["User"]["id"]);
-		if($this->Email->send())
-		{
-		$this->Session->setFlash('A reset link has been sent, please check your email to reset your password');
-		}
-		else
-		{
-		$this->Session->setFlash("Reset email has not been sent.");
-		}
+		$this->__sendResetEmail($user["User"]["id"]);
+		
 
     }
 
@@ -146,6 +132,29 @@ public function __sendActivationEmail($user_id) {
 		$this->Email->to = $user['User']['email'];
 		$this->Email->subject = 'Toork - Please confirm your email address';
 		$this->Email->template = 'simple_mail';
+		$this->Email->sendAs = 'html';   // you probably want to use both :)	
+		return $this->Email->send();
+	}
+
+
+
+public function __sendResetEmail($user_id) {
+
+		$user = $this->User->find('first',array('conditions' => array('User.id'=>$user_id)));
+		
+		if ($user === false) {
+			debug(__METHOD__." failed to retrieve User data for user.id: {$user_id}");
+			return false;
+		}
+ 
+		// Set data for the "view" of the Email
+		$this->set('reset_url', 'http://ec2-23-22-10-91.compute-1.amazonaws.com/betatoork/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
+		$this->set('username', $user["User"]["username"]);
+        $this->Email->from  = 'Toork <no-reply@toork.com>';
+		$this->Email->to = $email;
+		$this->Email->subject = 'Toork - Password Reset';
+		$this->Email->template = 'forgot_password';
+		
 		$this->Email->sendAs = 'html';   // you probably want to use both :)	
 		return $this->Email->send();
 	}
