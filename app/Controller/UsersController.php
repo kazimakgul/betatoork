@@ -151,7 +151,7 @@ public function __sendResetEmail($user_id) {
 		$this->set('reset_url', 'http://ec2-23-22-10-91.compute-1.amazonaws.com/betatoork/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
         $this->Email->from  = 'Toork <no-reply@toork.com>';
-		$this->Email->to = $email;
+		$this->Email->to = $user["User"]["email"];
 		$this->Email->subject = 'Toork - Password Reset';
 		$this->Email->template = 'forgot_password';
 		
