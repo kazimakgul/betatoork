@@ -156,7 +156,17 @@ public function __sendResetEmail($user_id) {
 		$this->Email->template = 'forgot_password';
 		
 		$this->Email->sendAs = 'html';   // you probably want to use both :)	
-		return $this->Email->send();
+		
+		
+		
+		if($this->Email->send())
+	  	{
+		$this->Session->setFlash('A reset link has been sent, please check your email to reset your password');
+		}else{
+		$this->Session->setFlash("Reset email has not been sent.");
+		}
+		
+		
 	}
 
 
