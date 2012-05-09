@@ -174,7 +174,7 @@ public function __sendResetEmail($user_id) {
 	
 				$results = $this->User->find('first',array('conditions'=>array('OR'=>array('User.email'=>$this->data['User']['username'],'User.username'=>$this->data['User']['username'])),array('fields'=>array('User.active'))));
 	  	        if ($results['User']['active'] == 0) {
-	  	        $this->Session->setFlash('Your account has not been activated yet!');
+	  	        $this->Session->setFlash('Your account has not been activated yet! Please check your email to activate your account');
 	  	        $this->Auth->logout();
 	  	        $this->redirect('/');
 	  	
