@@ -15,4 +15,90 @@
 .seeall{display:block; font-family:Arial; margin:2px; font-size:11px; text-decoration:none; float:left; margin-top:45px; margin-left:10px;}
 .seeall:hover {text-decoration:underline;}
 
-.favoritegames{background-image:url(../img/t_favoritegames_back.png); width:273px; height:53px; margin-top:20px; margin-bottom:8px; background-repeat:no-repeat; float:left;}        
+.favoritegames{background-image:url(../img/t_favoritegames_back.png); width:273px; height:53px; margin-top:20px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
+
+
+
+/*Button Css*/
+
+#addButton{
+    float:middle;
+    padding-top:30px;
+
+
+}
+#addButton a{
+	text-decoration:none;
+
+}
+
+#addButton input {
+      background: #f1f1f1;
+      padding: 6px 5px;
+      margin: 0 0 5px 0;
+      width: 238px;
+      border: 1px solid #ccc;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      -moz-box-shadow: 0 1px 1px #ccc inset;
+      -webkit-box-shadow: 0 1px 1px #ccc inset;
+      box-shadow: 0 1px 1px #ccc inset;
+    }
+
+#addButton input:focus {
+      background-color: #fff;
+      border-color: #e8c291;
+      outline: none;
+      -moz-box-shadow: 0 0 0 1px #e8c291 inset;
+      -webkit-box-shadow: 0 0 0 1px #e8c291 inset;
+      box-shadow: 0 0 0 1px #e8c291 inset;
+    }
+
+#addButton input:focus,textarea:focus {
+      outline: none;
+    }
+
+
+ #addButton #submit  {    
+      background-color: #d14545;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#e97171), to(#d14545));
+      background-image: -webkit-linear-gradient(top, #e97171, #d14545);
+      background-image: -moz-linear-gradient(top, #e97171, #d14545);
+      background-image: -ms-linear-gradient(top, #e97171, #d14545);
+      background-image: -o-linear-gradient(top, #e97171, #d14545);
+      background-image: linear-gradient(top, #e97171, #d14545);
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      text-shadow: 0 1px 0 rgba(0,0,0,.5);
+      -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+      -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
+      border: 1px solid #7e1515;
+
+      height: 30px;
+      padding: 0;
+      width: 100px;
+      cursor: pointer;
+      font: bold 14px Arial, Helvetica;
+      color: #fff;
+    }
+
+#addButton #submit:hover,
+#addButton #submit:focus {    
+      background-color: #e97171;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#d14545), to(#e97171));
+      background-image: -webkit-linear-gradient(top, #d14545, #e97171);
+      background-image: -moz-linear-gradient(top, #d14545, #e97171);
+      background-image: -ms-linear-gradient(top, #d14545, #e97171);
+      background-image: -o-linear-gradient(top, #d14545, #e97171);
+      background-image: linear-gradient(top, #d14545, #e97171);
+    } 
+
+#addButton #submit:active {   
+      outline: none;
+      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+      -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;   
+    }

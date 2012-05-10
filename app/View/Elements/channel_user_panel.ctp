@@ -34,7 +34,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
   <?php echo $this->Html->link('Channel Info',array('controller'=>'users','action'=>'edit',$userid),array('class'=>'info')); ?>
   <?php echo $this->Html->link('Change Password',array('controller'=>'users','action'=>'password',$userid),array('class'=>'change_password')); ?>
   <?php echo $this->Html->link('Add Game',array('controller'=>'games','action'=>'add'),array('class'=>'added')); ?>
-  <a class="slide" href="#">Edit Slider</a>
+<!--   <a class="slide" href="#">Edit Slider</a> -->
   <?php if ($this->Session->read('Auth.User.role') == 0){
     }else{
     echo $this->Html->link('Google Adsense',array('controller'=>'users','action'=>'edit',$userid),array('class'=>'adsense'));

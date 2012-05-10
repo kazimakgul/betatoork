@@ -1,3 +1,9 @@
+<?php
+$addgame=$this->Html->url(array( "controller" => "games","action" =>"add"));
+$top=$this->Html->url(array( "controller" => "games","action" =>"toprated"));
+$most=$this->Html->url(array( "controller" => "games","action" =>"mostplayed"));
+?>
+
 <div class="content clearfix">
   <div class="channel_left_panel">
     <?php  echo $this->element('channel_user_panel'); ?>
@@ -34,8 +40,14 @@
                     <?php } 
                     else { ?>
 
-                <div class="alert alert-info channel">You didn't add any games, add some games using left panel</div>
+                <div class="alert alert-info channel">You didn't add any games, add some games now
+
+<div id="addButton">
+<a href="<?php echo $addgame ?>"><input type="submit" id="submit" value="+ Add Game"></a>
+</div>
+                </div>
                 <?php }?>
+
 
                 </div>
 
@@ -64,7 +76,13 @@
 
                     <?php } 
                     else { ?>
-                  <div class="alert alert-info channel">You dont have any favorite game, add a game to your favorites by clicking on the heart button while playing a game.</div>
+                  <div class="alert alert-info channel">You dont have any favorite game, add a game to your favorites by clicking the heart button while playing a game. Check our top rated games and most played games sections to find your favorite games.
+<div id="addButton">
+<a href="<?php echo $top ?>"><input type="submit" id="submit" value="Top Rated"></a>
+<a href="<?php echo $most ?>"><input type="submit" id="submit" value="Most Played"></a>
+</div>
+
+                  </div>
                   <?php }?>
 
                 </div>

@@ -189,7 +189,7 @@ class AuthComponent extends Component {
  * @var mixed
  * @link http://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#AuthComponent::$loginRedirect
  */
-	public $loginRedirect = null;
+	public $loginRedirect = 'games/channel';
 
 /**
  * The default action to redirect to after the user is logged out.  While AuthComponent does
