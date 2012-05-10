@@ -9,6 +9,7 @@ $advertise=$this->Html->url(array( "controller" => "pages","action" =>"advertise
 $lastadded=$this->Html->url(array( "controller" => "games","action" =>"lastadded"));
 $toprated=$this->Html->url(array( "controller" => "games","action" =>"toprated"));
 $mostplayed=$this->Html->url(array( "controller" => "games","action" =>"mostplayed"));
+$index=$this->Html->url(array( "controller" => "games","action" =>"index"));
 ?>
 <div class="footer">
   <div class="ftop clearfix">
@@ -35,7 +36,7 @@ $mostplayed=$this->Html->url(array( "controller" => "games","action" =>"mostplay
       </div>
     </div>
     <div class="flogo">
-      <div class="logofooter"></div>
+      <a href="<?php echo $index ?>"><div class="logofooter"></div></a>
     </div>
   </div>
   <div class="fmid">
