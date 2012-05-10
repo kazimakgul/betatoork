@@ -2,10 +2,14 @@
 $terms=$this->Html->url(array( "controller" => "pages","action" =>"terms"));
 $privacy=$this->Html->url(array( "controller" => "pages","action" =>"privacy"));
 $help=$this->Html->url(array( "controller" => "pages","action" =>"help"));
+$about=$this->Html->url(array( "controller" => "pages","action" =>"about"));
+$developer=$this->Html->url(array( "controller" => "pages","action" =>"developers"));
+$advertise=$this->Html->url(array( "controller" => "pages","action" =>"advertise"));
+
 $lastadded=$this->Html->url(array( "controller" => "games","action" =>"lastadded"));
 $toprated=$this->Html->url(array( "controller" => "games","action" =>"toprated"));
 $mostplayed=$this->Html->url(array( "controller" => "games","action" =>"mostplayed"));
- ?>
+?>
 <div class="footer">
   <div class="ftop clearfix">
     <div class="fmenu clearfix">
@@ -20,11 +24,13 @@ $mostplayed=$this->Html->url(array( "controller" => "games","action" =>"mostplay
       <div class="fterms">
         <p>Terms & Conditions</p>
         <ul>
+          <li><a href="<?php echo $about ?>">About Us</a></li>
           <li><a href="<?php echo $terms ?>">Terms & Conditions</a></li>
           <li><a href="<?php echo $privacy ?>">Privacy Policy</a></li>
-          <li><a href="">FAQ</a></li>
-          <li><a href="">Documents</a></li>
-          <li><a href="<?php echo $help ?>">Help</a></li>
+          <li><a href="<?php echo $help ?>">Support</a></li>
+          <li><a href="<?php echo $developer ?>">Developers</a></li>
+          <li><a href="<?php echo $advertise ?>">Advertise With Us</a></li>
+          
         </ul>
       </div>
     </div>
