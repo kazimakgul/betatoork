@@ -19,7 +19,7 @@ class GamesController extends AppController {
 	        return true;
 	    }
 
-	    if (($this->action === 'add') || ($this->action === 'mygames')) {
+	    if (($this->action === 'add') || ($this->action === 'mygames') || ($this->action === 'channel')) {
 	       // All registered users can add posts
 	        return true;
 	    }
