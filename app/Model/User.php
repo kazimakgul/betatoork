@@ -18,6 +18,7 @@ class User extends AppModel {
  */
 
 
+      
 
 		var $actsAs = array(
 	'UploadPack.Upload' => array(
@@ -205,5 +206,7 @@ function getActivationHash()
 		)
 	);
 
+//uploadcount and totalrate can be use as order of channels
+var $virtualFields = array('uploadcount' => 'SELECT COUNT(id) FROM games where Games.user_id=User.id','totalrate'=>'(SELECT SUM(current) FROM rates where Rates.game_id IN (SELECT id FROM games where Games.user_id=User.id))');
 
 }
