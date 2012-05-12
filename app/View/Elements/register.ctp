@@ -13,8 +13,8 @@
   		<div class="lightbox_term">By signing in you accept our terms of use.</div>
   		<div class="lightbox_tabs clearfix">
   			<div class="lightbox_lineleft">
-  				<a class="lightbox_leftclick" href="#" data-bind="click: function(){ show_hide(1, 0); }"></a>
-  				<a class="lightbox_rightclick" href="#" data-bind="click: function(){ show_hide(0, 1); }"></a>
+  				<a class="lightbox_leftclick" href="#" onclick="show_hide(1, 0)"></a>
+  				<a class="lightbox_rightclick" href="#" onclick="show_hide(0, 1)"></a>
   			</div>
   		</div>
   		<div class="lightbox_tabs_content">
