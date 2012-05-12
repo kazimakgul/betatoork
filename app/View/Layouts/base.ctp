@@ -7,10 +7,10 @@
 
 
 <meta property="og:title" content="Toork"/>
-<meta property="og:type" content="game"/>
-<meta property="og:url" content="http://beta.toork.com/"/>
+<meta property="og:type" content="Game"/>
+<meta property="og:url" content="http://toork.com/"/>
 <meta property="og:image" content=""/>
-<meta property="og:site_name" content="IMDb"/>
+<meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="USER_ID"/>
 <meta property="og:description"
       content="Create your own game channel."/>
@@ -88,7 +88,7 @@ $(function () {
 
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "945fc838-b0de-48a9-be2d-8e71a7e4835a"}); </script>
+<script type="text/javascript">stLight.options({publisher: "2985e6d2-18ec-411c-bdd2-3f2ec2a0c832"}); </script>
 
 
 </head>
