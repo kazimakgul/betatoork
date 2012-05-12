@@ -246,7 +246,7 @@ public function __sendResetEmail($user_id) {
 		$res = $this->set('result', $result);*/
 
 
-		$users = $this->User->find('all', array('limit' => $limit, 'order' => array('User.created' => 'asc')));
+		$users = $this->User->find('all', array('limit' => $limit, 'order' => array('User.totalrate' => 'desc')));
 
     	return $users;
 
