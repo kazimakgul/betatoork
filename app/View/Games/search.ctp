@@ -1,3 +1,7 @@
+<?php
+$addgame=$this->Html->url(array( "controller" => "games","action" =>"add"));
+?>
+
 <div class="content clearfix">
   <div class="left_panel">
       <?php  echo $this->element('userpanel'); ?>
@@ -40,7 +44,21 @@
                     <?php } 
                     else { ?>
 
-                <div class="alert alert-info channel">The game you are searching is not added yet, you can add this game after you become a member or Search our custom toork search engine powered by google to find your loved games...</div>
+                <div class="alert alert-info channel">The game you are searching is not added yet, you can add this game after you become a member or Search our custom toork search engine powered by google to find your loved games...
+
+
+              <?php if($this->Session->check('Auth.User')){?>
+<div id="addButton">
+<a href="<?php echo $addgame?>"><input type="submit" id="submit" value="+ Add Game"></a>
+</div>
+               <?php }else{?>
+<div id="addButton">
+<a href="#" onclick="$('#register').lightbox_me();"><input type="submit" id="submit" value="+ Add Game"></a>
+</div>
+               <?php } ?>
+
+
+                </div>
                 <?php }?>
 
 
