@@ -22,25 +22,25 @@
 									<a href="<?php echo $playurl ?>" class="slider_game_name"><?php echo $game['Game']['name']?></a>
 									<a href="<?php echo $channelurl ?>"><?php echo $game['User']['username']?></a>
 									<a href="<?php echo $caturl ?>" class="slider_game_category"><?php echo $game['Category']['name']?></a>
-									<?php 
+		<?php 
 		
-		if(90<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
+		if(81<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
 		{
 		$starvalue=0;
 		}
-		elseif(60<=$game['Game']['starsize'] && $game['Game']['starsize']<80)
+		elseif(61<=$game['Game']['starsize'] && $game['Game']['starsize']<81)
 		{
 		$starvalue=-20;
 		}
-		elseif(40<=$game['Game']['starsize'] && $game['Game']['starsize']<60)
+		elseif(41<=$game['Game']['starsize'] && $game['Game']['starsize']<61)
 		{
 		$starvalue=-40;
 		}
-		elseif(20<=$game['Game']['starsize'] && $game['Game']['starsize']<40)
+		elseif(21<=$game['Game']['starsize'] && $game['Game']['starsize']<41)
 		{
 		$starvalue=-60;
 		}
-		elseif(0<=$game['Game']['starsize'] && $game['Game']['starsize']<20)
+		elseif(0<=$game['Game']['starsize'] && $game['Game']['starsize']<21)
 		{
 		$starvalue=-78;
 		}
