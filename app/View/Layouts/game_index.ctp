@@ -16,7 +16,7 @@
       content="Create your own game channel."/>
 
 
-<?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel','myStyle','rating','game')); ?>
+<?php echo $this->Html->css(array('header','footer','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel','myStyle','rating','game')); ?>
 
 
 <?php echo $this->Html->script(array('jquery.min','jquery-ui-1.8.17.custom.min','jquery.cookie','jquery.fancybox-1.3.4.pack','jquery.lightbox_me','knockout-2.0.0','underscore','jquery.placeholder.min','jail','t_slider')); ?>
@@ -184,11 +184,13 @@ $(function () {
 <?php echo $content_for_layout?>
 
 <?php  echo $this->element('game_footer'); ?>
+
 <?php 
 echo $this->Session->flash('flash', array('element' => 'info'));
 echo $this->Session->flash('auth', array('element' => 'info'));
 ?>
 <?php  echo $this->element('register'); ?>
+<?php  echo $this->element('analytics'); ?>
 
 <!-- facebook comment icin gerekli -->
 <div id="fb-root"></div>

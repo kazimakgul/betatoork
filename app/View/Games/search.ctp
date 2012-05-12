@@ -40,13 +40,18 @@
                     <?php } 
                     else { ?>
 
-                <div class="alert alert-info channel">The game you are searching is not added yet, you can add this game after you become a member.</div>
+                <div class="alert alert-info channel">The game you are searching is not added yet, you can add this game after you become a member or Search our custom toork search engine powered by google to find your loved games...</div>
                 <?php }?>
+
+
+                    <?php echo $this->element('googleSearch'); ?>
+
+
 
                 </div>
 
 
-              
+
 
           <div class="clear"></div>
         
