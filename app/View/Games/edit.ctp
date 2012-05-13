@@ -59,8 +59,8 @@
 
         <li>
         <label for="picture">Game Picture:</label>
-
          <input placeholder="not yet" type="file" name="data[Game][edit_picture]" accept="image/jpg,image/png,image/jpeg">
+         <a> Picture must be 640x350 pixel high quality</a>
         </li>
         <li>
             <button class="submit" type="submit">Submit Game</button>

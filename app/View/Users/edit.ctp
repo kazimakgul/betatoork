@@ -71,6 +71,7 @@
         <label for="picture">Avatar:</label>
 
          <input placeholder="not yet" type="file" name="data[User][edit_picture]" accept="image/jpg,image/png,image/jpeg"  size="60">
+        <a> Picture must be 90x120 pixel</a>
         </li>
 
 
