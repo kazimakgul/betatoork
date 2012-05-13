@@ -100,7 +100,7 @@
                     <?php } 
                     else { ?>
 
-                <div class="alert alert-info channel">You don't have any games yet, your games will show up here</div>
+                <div class="alert alert-info channel">You don't have any published games yet, your published games will show up here</div>
                 <?php }?>
 
                 </div>

@@ -88,7 +88,7 @@ class GamesController extends AppController {
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 		$limit=12;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     )));
     	$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
     )));
@@ -327,8 +327,6 @@ public function search() {
 if($this->request->is("GET") && isset($this->request->params['pass'][0]))
 {
 $param = $this->request->params['pass'][0];
-
-
 }
 
 //search için veri girilmemisse ana sayfaya yönlendir.
@@ -341,6 +339,9 @@ else
 $cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.description LIKE'=>'%'.$param.'%','User.username LIKE'=>'%'.$param.'%'),'Game.active'=>'1'));
 $this->set('search', $this->paginate('Game',$cond));
 $this->set('mygames', $cond);
+
+$this->set('title_for_layout', 'Toork - Game Search Engine powered by Google. Toork is specially designed for searching games');
+
 }
 
 
@@ -477,10 +478,11 @@ if(empty($favbefore))
 			
 			$this->Game->create();
 			
-			//$this->request->data['Game']['link']=$this->http_check($this->request->data['Game']['link']);
-			
+			if($this->Auth->user('role')==0){
+				$this->request->data['Game']['active']=0;
+			}
 			if ($this->Game->save($this->request->data)) {
-				$this->Session->setFlash(__('The game has been saved'));
+				$this->Session->setFlash(__('You have successfully added a game to your channel. The game is not published yet...'));
 				$this->redirect(array('action' => 'channel'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
@@ -534,7 +536,7 @@ if(empty($favbefore))
 			
 			
 			if ($this->Game->save($this->request->data)) {
-				$this->Session->setFlash('The game has been updated');
+				$this->Session->setFlash('You have successfully updated your game.');
 				$this->redirect(array('action' => 'channel'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
