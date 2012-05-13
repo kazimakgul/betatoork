@@ -87,9 +87,12 @@ public function reset_request()
 
 }
 
-public function reset_now($user_id = null, $in_hash = null)
-{
-      $this->User->id = $user_id;
+public function reset_now($user_id = null, $in_hash = null){
+
+		$this->layout = 'base';
+		$userid=$user_id;
+      	$this->User->id = $user_id;
+
       if ($this->User->exists() && ($in_hash == $this->User->getActivationHash()))
 	  {
 	//password reset begin
@@ -124,6 +127,11 @@ public function reset_now($user_id = null, $in_hash = null)
 	
 	//password reset ends
 	  }//user exist and hash
+	  	$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('userid', $userid);
+        $this->set('username', $userName);
 
 
 }
