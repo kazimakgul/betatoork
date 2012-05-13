@@ -56,7 +56,10 @@ $.get("<?php echo $suburl2; ?>/"+userid,function(data) {alert(data);location.rel
 
 </script>
 
-<?php $searchurl=$this->Html->url(array("controller"=>"games","action"=>"search")); ?>
+
+<?php
+$par= urlencode("search?&q=");
+ $searchurl=$this->Html->url(array("controller"=>"games","action"=>"search")); ?>
 
 <script type="text/javascript">
 
@@ -64,13 +67,13 @@ $(function () {
 
     $('.search_button').click(function () {
 
-        window.location = '<?php echo $searchurl; ?>/' + $('.search_text').val();
+        window.location = "<?php echo $searchurl; ?>/" + $('.search_text').val()+"/"+"search?&q="+$('.search_text').val();
 
     });
 
     $('.search_text').keypress(function (e) {
         if (e.which == 13) {
-            window.location = '<?php echo $searchurl; ?>/' + $('.search_text').val();
+            window.location = "<?php echo $searchurl; ?>/"+ $('.search_text').val()+"/"+"search?&q="+$('.search_text').val();
         }
     });
 

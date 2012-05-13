@@ -44,7 +44,7 @@ $addgame=$this->Html->url(array( "controller" => "games","action" =>"add"));
                     <?php } 
                     else { ?>
 
-                <div class="alert alert-info channel">The game you are searching is not added yet, you can add this game after you become a member or Search our custom toork search engine powered by google to find your loved games...
+                <div class="alert alert-info channel">The game you are searching is not added yet, you can add this game after you become a member or Search our custom Toork search engine powered by Google to find your loved games...
 
 
               <?php if($this->Session->check('Auth.User')){?>

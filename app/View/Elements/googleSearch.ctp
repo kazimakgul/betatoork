@@ -18,27 +18,38 @@
     customSearchOptions['googleAnalyticsOptions'] = googleAnalyticsOptions;  var customSearchControl = new google.search.CustomSearchControl(
       '001087233991543672248:ywbep5pjr4q', customSearchOptions);
     customSearchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
-    customSearchControl.draw('cse');
+    var options = new google.search.DrawOptions();
+    options.enableSearchResultsOnly(); 
+    customSearchControl.draw('cse', options);
+    function parseParamsFromUrl() {
+      var params = {};
+      var parts = window.location.search.substr(1).split('\x26');
+      for (var i = 0; i < parts.length; i++) {
+        var keyValuePair = parts[i].split('=');
+        var key = decodeURIComponent(keyValuePair[0]);
+        params[key] = keyValuePair[1] ?
+            decodeURIComponent(keyValuePair[1].replace(/\+/g, ' ')) :
+            keyValuePair[1];
+      }
+      return params;
+    }
+
+    var urlParams = parseParamsFromUrl();
+    var queryParamName = "q";
+    if (urlParams[queryParamName]) {
+      customSearchControl.execute(urlParams[queryParamName]);
+    }
   }, true);
 </script>
 
 <style type="text/css">
   .gsc-control-cse {
     font-family: Arial, sans-serif;
-    border-color: #FFFFFF;
-    background-color: #FFFFFF;
+    border-color: transparent;
+    background-color: transparent;
   }
   .gsc-control-cse .gsc-table-result {
     font-family: Arial, sans-serif;
-  }
-  input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
-    border-color: #D9D9D9;
-  }
-  input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
-    border-color: #2F5BB7;
-    background-color: #357AE8;
-    background-image: none;
-    filter: none;
   }
   .gsc-tabHeader.gsc-tabhInactive {
     border-color: #CCCCCC;
@@ -167,4 +178,4 @@
   .gs-promotion .gs-visibleUrl,
   .gs-promotion .gs-visibleUrl-short {
     color: #009933;
-  }</style>
+  }</style> 

@@ -327,6 +327,8 @@ public function search() {
 if($this->request->is("GET") && isset($this->request->params['pass'][0]))
 {
 $param = $this->request->params['pass'][0];
+
+
 }
 
 //search için veri girilmemisse ana sayfaya yönlendir.
