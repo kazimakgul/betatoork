@@ -45,7 +45,35 @@ class AppController extends Controller {
         )
     );
 
-   
+    var $paginate = array(
+        'User' => array(
+            'limit' => 20,
+            'order' => array(
+                'User.id' => 'asc',
+            ),
+        ),
+        'Game' => array(
+            //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
+            'limit' => 28,
+            'order' => array(
+                'Game.recommend' => 'desc',
+            ),
+        ),
+        'Favorite' => array(
+            //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
+            'limit' => 12,
+            'order' => array(
+                'Game.starsize' => 'desc',
+            ),
+        ), 
+        'Subscription' => array(
+            //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
+            'limit' => 12,
+            'order' => array(
+                'Subscription.created' => 'desc',
+            ),
+        ),        
+    );
 
 
     public function beforeFilter() {

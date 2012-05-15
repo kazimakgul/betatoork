@@ -56,18 +56,6 @@ class GamesController extends AppController {
 		$this->leftpanel();
 		$this->logedin_user_panel();
 		
-		
-		$this->paginate = array(
-        'Game' => array(
-            //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
-            'limit' => 2,
-            'order' => array(
-                'Game.playcount' => 'desc',
-            )
-        )
-     );
-		
-		
 		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
 
 		$this->set('title_for_layout', 'Toork - Most Played Games');
