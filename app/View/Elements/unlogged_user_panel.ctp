@@ -20,6 +20,8 @@
 
     <a class="remember" id="remember"  href="#" ><label for="panel_forgot">Remember Me</label></a>
 
+    <input id="remembervalue" type="hidden" name="data[User][remember]" value="0" />
+
   <input class="loginbtn" type="submit" value="" />
   </form>
   <div class="panelsep"></div>

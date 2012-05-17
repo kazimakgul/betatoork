@@ -15,6 +15,26 @@ public $helpers = array('Html', 'Form','Upload');
 	public function beforeFilter() {
 		parent::beforeFilter();
   	  	$this->Auth->authenticate = array('Custom');
+
+           
+		   
+		   
+
+     // cookie autologin 
+      if(!$this->Auth->user('id')) 
+       { 
+              $cookie = $this->Cookie->read('User'); 
+              
+               if($cookie) 
+               { 
+
+                   $this->Auth->login($cookie); 
+               } 
+
+       } 
+		   
+		   //auto login
+		
   }
 
 
@@ -190,6 +210,9 @@ public function __sendResetEmail($user_id) {
 
     public function login() {
     	$this->layout = 'base';
+		
+		
+
     	if($this->request->is('post')){
     		if(empty($this->data['User']['username'])){
     			$this->User->validationErrors['username'] = "Please enter your username";
@@ -207,6 +230,16 @@ public function __sendResetEmail($user_id) {
 	  	        $this->redirect('/');
 	  	
                 } else {
+				
+				     if($this->data['User']['remember']==1)
+					 {
+					 
+					  $cookie = array();
+                      $cookie['username'] = $this->request->data['User']['username'];
+                      $cookie['password'] = $this->request->data['User']['password'];
+                      $this->Cookie->write('User', $cookie, true, '+2 weeks');
+					 
+					 }
  	 	
                 $this->redirect($this->Auth->redirect());
 	  	
