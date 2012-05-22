@@ -26,8 +26,10 @@
 $(function () {
     $('#remember').click(function () {
         if ($(this).hasClass('remember')) {
+            $('#remembervalue').val(1);
             $('#remember').removeClass('remember').addClass('remembertick');
         } else {
+            $('#remembervalue').val(0);
             $('#remember').removeClass('remembertick').addClass('remember');
         }
     });
