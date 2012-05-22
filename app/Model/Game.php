@@ -56,28 +56,28 @@ public $virtualFields = array(
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'link' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => 'Please dont leave this field empty',
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'url' => array(
-				'rule' => array('url'),
-				'message' => 'Please submit a valid game url',
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+		// 'link' => array(
+		// 	'notempty' => array(
+		// 		'rule' => array('notempty'),
+		// 		'message' => 'Please dont leave this field empty',
+		// 		//'message' => 'Your custom message here',
+		// 		//'allowEmpty' => false,
+		// 		//'required' => false,
+		// 		//'last' => false, // Stop validation after this rule
+		// 		//'on' => 'create', // Limit validation to 'create' or 'update' operations
+		// 	),
+		// 	'url' => array(
+		// 		'rule' => array('url'),
+		// 		'message' => 'Please submit a valid game url',
+		// 		//'message' => 'Your custom message here',
+		// 		//'allowEmpty' => false,
+		// 		//'required' => false,
+		// 		//'last' => false, // Stop validation after this rule
+		// 		//'on' => 'create', // Limit validation to 'create' or 'update' operations
+		// 	),
 
 			
-		),
+		// ),
 		'description' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),

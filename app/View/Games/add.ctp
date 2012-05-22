@@ -34,11 +34,19 @@
         </li>
 
     <?php  } else{?>
+
+          <li>
+            <label for="website">Game Link:</label>
+
+<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url', 'maxlength'=>200)); ?>
+
+            <span class="form_hint">Proper format "http://someaddress.com/gamepage"</span>
+        </li>
       
         <li>
             <label for="website">Game Embed:</label>
 
-          <?php echo $this->Form->input('embed',array('label'=>false ,'div'=>false,'required' , 'pattern'=>'(<iframe|<embed|<object).+.(</iframe>|</embed>|</object>)' ,'placeholder' => 'Paste your game code here please','maxlength'=>1000, 'title'=>'Only <embed> , <iframe> and <object> tags are available and the game code must be starting from one of the tags and ending with the same tag. Ex: <embed> some code </embed>')); ?>
+          <?php echo $this->Form->input('embed',array('label'=>false ,'div'=>false, 'pattern'=>'(<iframe|<embed|<object).+.(</iframe>|</embed>|</object>)' ,'placeholder' => 'Paste your game code here please','maxlength'=>1000, 'title'=>'Only <embed> , <iframe> and <object> tags are available and the game code must be starting from one of the tags and ending with the same tag. Ex: <embed> some code </embed>')); ?>
 
 
             <span class="form_hint">Must be one of the forms -> iframe, embed, object. Only embed , iframe and object tags are available and the game code must be starting from one of the tags and ending with the same tag."</span>
@@ -67,7 +75,7 @@
         <label for="picture">Game Picture:</label>
 
          <input placeholder="not yet" required type="file" name="data[Game][picture]" accept="image/jpg,image/png,image/jpeg"  size="100">
-         <a> Picture must be 640x350 pixel high quality</a>
+         <a> 640x350 pixel high quality</a>
         </li>
         <li>
             <button class="submit" type="submit">Submit Game</button>
