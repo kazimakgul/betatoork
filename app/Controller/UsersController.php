@@ -27,8 +27,9 @@ public $helpers = array('Html', 'Form','Upload');
               
                if($cookie) 
                { 
-
-                   $this->Auth->login($cookie); 
+                   $this->request->data['User']['username']=$cookie['username'];
+			       $this->request->data['User']['password']=$cookie['password'];
+                   $this->Auth->login(); 
                } 
 
        } 
@@ -255,6 +256,7 @@ public function __sendResetEmail($user_id) {
 	}
 
 	public function logout() {
+	    $this->Cookie->delete('User');
 	    $this->redirect($this->Auth->logout());
 	}
 
