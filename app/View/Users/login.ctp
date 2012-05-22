@@ -8,19 +8,21 @@
   
         <li>
             <label for="name">Username/Email:</label>
-<?php echo $this->Form->input('username',array('label'=>false ,'required','placeholder' => 'username or email')); ?>
+<?php echo $this->Form->input('username',array('label'=>false ,'div'=>false,'required','placeholder' => 'Username or Email')); ?>
+<span class="form_hint">You can login with your channel name or email address.</span>
          </li>
         <li>
-            <label for="website">password:</label>
+            <label for="website">Password:</label>
 
-<?php echo $this->Form->input('password',array('label'=>false ,'required' ,'placeholder' => 'password','type' => 'password')); ?>
+<?php echo $this->Form->input('password',array('label'=>false ,'div'=>false,'required' ,'placeholder' => 'Password','type' => 'password')); ?>
 
-            <span class="form_hint">Proper format "http://someaddress.com/gamepage"</span>
+            <span class="form_hint">Do not share your password on a public place.</span>
         </li>
         <li>
             <label for="message">Auto Login:</label>
 
-            <?php echo $this->Form->input('auto_login', array('type' => 'checkbox', 'label' => 'Log me in automatically?')); ?>
+
+            <?php echo $this->Form->input('remember', array('type' => 'checkbox','value'=>0, 'label' => false)); ?>
         </li>
 
 
