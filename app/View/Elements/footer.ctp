@@ -5,6 +5,7 @@ $help=$this->Html->url(array( "controller" => "pages","action" =>"help"));
 $about=$this->Html->url(array( "controller" => "pages","action" =>"about"));
 $developer=$this->Html->url(array( "controller" => "pages","action" =>"developers"));
 $advertise=$this->Html->url(array( "controller" => "pages","action" =>"advertise"));
+$faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
 
 $lastadded=$this->Html->url(array( "controller" => "games","action" =>"lastadded"));
 $toprated=$this->Html->url(array( "controller" => "games","action" =>"toprated"));
@@ -31,6 +32,7 @@ $index=$this->Html->url(array( "controller" => "games","action" =>"index"));
           <li><a href="<?php echo $help ?>">Support</a></li>
           <li><a href="<?php echo $developer ?>">Developers</a></li>
           <li><a href="<?php echo $advertise ?>">Advertise With Us</a></li>
+          <li><a href="<?php echo $faq ?>">FAQs & Discussions</a></li>
           
         </ul>
       </div>
