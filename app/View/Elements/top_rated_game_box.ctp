@@ -45,7 +45,7 @@
 		</div>
 		</div>
 		
-		<div class="rateresult"><?php echo $game['Game']['starsize']; ?>%</div>
+		<div class="rateresult"><?php echo $game['Game']['starsize']; ?> %</div>
 	</div>
 	
 	<?php $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id'])); ?>

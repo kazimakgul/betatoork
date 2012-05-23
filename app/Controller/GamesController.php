@@ -52,9 +52,14 @@ class GamesController extends AppController {
 	
 	public function mostplayed() {
 		//$this->loadModel('Playcount');
+   		$this->paginate = array(
+	   		'Game' => array('order' => array('playcount' => 'desc')));
+
 		$this->layout='base';
 		$this->leftpanel();
 		$this->logedin_user_panel();
+
+
 		
 		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
 

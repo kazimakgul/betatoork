@@ -46,7 +46,7 @@
 
 		</div>
 		</div>
-		<div class="rateresult"><?php echo $game['Game']['starsize']; ?>%</div>
+		<div class="rateresult"><?php echo $game['Game']['starsize']; ?> %</div>
 		<div class="gameboxmove"><a class="gb_gameboxmove" href="<?php echo $editurl ?>">Edit</a></div>
 	</div>
 
