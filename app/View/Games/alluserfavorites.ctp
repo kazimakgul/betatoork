@@ -8,7 +8,7 @@
   </div>
 
   <div class="right_panel">
-    <div class="channelgame"></div>
+    <div class="favoritegames"></div>
         <div class="clearfix"></div>
 
     <div class="sep"></div>
@@ -16,7 +16,7 @@
   <ul>
   
   <li class="clearfix">
-    <?php  echo $this->element('usergames_game_box'); ?>
+    <?php  echo $this->element('favorites_game_box'); ?>
   </li>
   
   </ul>

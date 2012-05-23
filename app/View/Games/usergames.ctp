@@ -46,9 +46,9 @@
                         <div class="favoritegames"></div>
 
                     <?php 
-                    if(count($mygames) <= $limit){}
+                    if(count($favorites) <= $limit){}
                     else{
-                      echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); 
+                      echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'alluserfavorites',$userid),array('class'=>'seeall')); 
                     } ?>
 
                     </div>
