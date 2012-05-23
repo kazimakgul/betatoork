@@ -17,7 +17,7 @@
               <?php 
               if(count($mygames) <= $limit){}
               else{
-                echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); 
+                echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'allusergames',$userid),array('class'=>'seeall')); 
               } ?>
                </div>
 

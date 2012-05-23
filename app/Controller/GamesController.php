@@ -275,6 +275,30 @@ class GamesController extends AppController {
 	$this->set('user_id', $userid);
 }
 
+
+	public function allusergames() {
+	$this->layout='base';
+	$this->loadModel('User');
+	$this->leftpanel();
+    $this->usergame_user_panel();
+    $userid = $this->request->params['pass'][0];
+    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    $userName = $user['User']['username'];
+	$limit=12;
+    $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+    )));
+
+    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+
+
+   	$this->set('limit', $limit);
+    $this->set('favorites', $cond2);
+    $this->set('mygames', $this->paginate('Game',array('Game.active' => '1','Game.user_id'=>$userid)));
+    $this->set('username', $userName);
+	$this->set('user_id', $userid);
+}
+
+
 	
 
 	public function followers() {
@@ -345,7 +369,7 @@ $cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.des
 $this->set('search', $this->paginate('Game',$cond));
 $this->set('mygames', $cond);
 
-$this->set('title_for_layout', 'Toork - Game Search Engine powered by Google. Toork is specially designed for searching games');
+$this->set('title_for_layout', 'Toork - Game Search Engine powered by Google. Toork Search is specially designed for searching games');
 
 }
 
