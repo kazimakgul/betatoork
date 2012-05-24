@@ -20,7 +20,7 @@
   
         <li>
             <label for="name">Game Name:</label>
-<?php echo $this->Form->input('name',array('label'=>false ,'required','placeholder' => 'Metal Slug Brutal 3')); ?>
+<?php echo $this->Form->input('name',array('label'=>false,'maxlength'=>28,'required','placeholder' => 'Metal Slug Brutal 3')); ?>
          </li>
 
 <?php if ($this->Session->read('Auth.User.role') == 0){?>
@@ -28,7 +28,7 @@
         <li>
             <label for="website">Game Link:</label>
 
-<?php echo $this->Form->input('link',array('label'=>false ,'required pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url', 'maxlength'=>200)); ?>
+<?php echo $this->Form->input('link',array('label'=>false,'div'=>false ,'required pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url', 'maxlength'=>200)); ?>
 
             <span class="form_hint">Proper format "http://someaddress.com/gamepage"</span>
         </li>
@@ -67,7 +67,7 @@
 
         <li>
         <label for="picture">Game Picture:</label>
-         <input placeholder="not yet" type="file" name="data[Game][edit_picture]" accept="image/jpg,image/png,image/jpeg">
+         <input placeholder="not yet" type="file" name="data[Game][edit_picture]" accept="image/jpg,image/png,image/jpeg" size="100">
          <a> 640x350 pixel high quality</a>
         </li>
         <li>

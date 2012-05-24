@@ -20,7 +20,7 @@
   
         <li>
             <label for="name">Game Name:</label>
-<?php echo $this->Form->input('name',array('label'=>false ,'required' ,'placeholder' => 'Metal Slug Brutal 3')); ?>
+<?php echo $this->Form->input('name',array('label'=>false ,'maxlength'=>28,'required' ,'placeholder' => 'Metal Slug Brutal 3')); ?>
          </li>
 
 <?php if ($this->Session->read('Auth.User.role') == 0){?>
