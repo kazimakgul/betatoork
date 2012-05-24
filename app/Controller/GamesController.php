@@ -542,6 +542,9 @@ if(empty($favbefore))
 
 		if ($this->request->is('post')) {
 
+           $this->request->data['Game']['name']=htmlentities($this->request->data['Game']['name']);
+		   $this->request->data['Game']['description']=htmlentities($this->request->data['Game']['description']);
+
 			$this->request->data['Game']['user_id'] = $this->Auth->user('id');
 			
 			$this->Game->create();

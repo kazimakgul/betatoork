@@ -317,6 +317,10 @@ public function __sendResetEmail($user_id) {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+		
+		$this->request->data['User']['username']=htmlentities($this->request->data['User']['username']);
+		
+		
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved'));
@@ -376,6 +380,8 @@ public function __sendResetEmail($user_id) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+		
+		$this->request->data['User']['username']=htmlentities($this->request->data['User']['username']);
 		
 		$myval=$this->request->data["User"]["edit_picture"]["name"];
 		
