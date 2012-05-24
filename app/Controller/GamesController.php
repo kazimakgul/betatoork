@@ -10,7 +10,6 @@ class GamesController extends AppController {
 	public $name = 'Games';
 	var $uses = array('Game');
     public $helpers = array('Html', 'Form','Upload');
-	
 
 
 
@@ -53,7 +52,7 @@ class GamesController extends AppController {
 	public function mostplayed() {
 		//$this->loadModel('Playcount');
    		$this->paginate = array(
-	   		'Game' => array('order' => array('playcount' => 'desc')));
+	   		'Game' => array('limit'=>28,'order' => array('playcount' => 'desc')));
 
 		$this->layout='base';
 		$this->leftpanel();
@@ -93,9 +92,9 @@ class GamesController extends AppController {
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 		$limit=12;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-    	$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+    	$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
@@ -103,7 +102,7 @@ class GamesController extends AppController {
 	    if($gamenumber >= 3){
 	    	    $this->set('slider', $cond);
 	    }else{
-	    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'))));
+	    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
 	    }
 	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	    $this->set('user',$user);
@@ -114,6 +113,36 @@ class GamesController extends AppController {
     	$this->set('mygames', $cond);
     	$this->set('favorites', $cond2);
     	$this->set('limit', $limit);
+		$this->set('title_for_layout', 'Toork - Create your own game channel');
+	}
+
+
+	public function allchannelgames() {
+		$this->loadModel('User');
+		$this->layout='channel';
+		$this->leftpanel();
+		$this->logedin_user_panel();
+		$userid = $this->Session->read('Auth.User.id');
+	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	    $this->set('user',$user);
+    	$this->set('userid', $userid);
+    	$this->set('mygames', $this->paginate('Game',array('Game.active'=>'1', 'Game.user_id'=>$userid)));
+		$this->set('title_for_layout', 'Toork - Create your own game channel');
+	}
+
+		public function allchannelfavorites() {
+		$this->loadModel('User');
+		$this->layout='channel';
+		$this->leftpanel();
+		$this->logedin_user_panel();
+		$userid = $this->Session->read('Auth.User.id');
+	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	    $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'order' => array('Game.recommend' => 'desc'
+    )));
+
+	    $this->set('user',$user);
+    	$this->set('userid', $userid);
+    	$this->set('favorites', $cond2);
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
 	}
 	
@@ -255,17 +284,17 @@ class GamesController extends AppController {
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
 	$limit=12;
-	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-    $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+    $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-    $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'))));
+    $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
     
     if($gamenumber >= 3){
     	    $this->set('slider', $cond);
     }else{
-    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.starsize' => 'desc'))));
+    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     }
 
    	$this->set('limit', $limit);
@@ -295,12 +324,12 @@ class GamesController extends AppController {
 	$this->loadModel('User');
 	$this->leftpanel();
     $this->usergame_user_panel();
-	$limit=28;
+	$limit=50;
     $userid = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
     $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-    $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+    $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 
     $this->set('favorites', $cond2);
@@ -508,7 +537,7 @@ if(empty($favbefore))
 		$userid = $this->Session->read('Auth.User.id');
     	$this->leftpanel();
     	$limit=12;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 
 		if ($this->request->is('post')) {
@@ -551,7 +580,7 @@ if(empty($favbefore))
 		$userid = $this->Session->read('Auth.User.id');
 		$this->leftpanel();
     	$limit=12;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.starsize' => 'desc'
+		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 
 

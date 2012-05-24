@@ -22,7 +22,7 @@ $most=$this->Html->url(array( "controller" => "games","action" =>"mostplayed"));
               <?php 
               if(count($mygames) <= $limit){}
               else{
-                echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); 
+                echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'allchannelgames'),array('class'=>'seeall')); 
               } ?>
                </div>
 
@@ -59,7 +59,7 @@ $most=$this->Html->url(array( "controller" => "games","action" =>"mostplayed"));
                     <?php 
                     if(count($mygames) <= $limit){}
                     else{
-                      echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'toprated'),array('class'=>'seeall')); 
+                      echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'allchannelfavorites'),array('class'=>'seeall')); 
                     } ?>
 
                     </div>
