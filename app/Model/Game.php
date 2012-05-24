@@ -120,6 +120,25 @@ public $virtualFields = array(
 				'rule' => array('extension', array('gif', 'jpeg', 'png', 'jpg')),
 				'message' => 'Please supply a valid image.',
 			),
+			
+			'minWidth' => array(
+			'rule' => array('minWidth', '640'),
+			'message' => 'Photo size must be 640X350'
+		),
+		'maxWidth' => array(
+			'rule' => array('maxWidth', '640'),
+			'message' => 'Photo size must be 640X350'
+		),
+		'minHeight' => array(
+			'rule' => array('minHeight', '350'),
+			'message' => 'Photo size must be 640X350'
+		),
+		'maxHeight' => array(
+			'rule' => array('maxHeight', '350'),
+			'message' => 'Photo size must be 640X350'
+		)
+			
+			
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,

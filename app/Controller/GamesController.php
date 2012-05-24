@@ -594,6 +594,10 @@ if(empty($favbefore))
 			throw new NotFoundException(__('Invalid game'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+		
+		   $this->request->data['Game']['name']=htmlentities($this->request->data['Game']['name']);
+		   $this->request->data['Game']['description']=htmlentities($this->request->data['Game']['description']);
+		   
 			//$this->request->data['Game']['link']=$this->http_check($this->request->data['Game']['link']);
 			
 			$myval=$this->request->data["Game"]["edit_picture"]["name"];
