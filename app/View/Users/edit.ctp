@@ -70,7 +70,7 @@
          <li>
         <label for="picture">Avatar:</label>
 
-         <input placeholder="not yet" type="file" name="data[User][edit_picture]" accept="image/jpg,image/png,image/jpeg"  size="60">
+         <input placeholder="not yet" type="file" name="data[User][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg"  size="100">
         <a> 90x120 pixel high quality</a>
         </li>
 

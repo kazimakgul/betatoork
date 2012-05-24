@@ -67,7 +67,7 @@
 
         <li>
         <label for="picture">Game Picture:</label>
-         <input placeholder="not yet" type="file" name="data[Game][edit_picture]" accept="image/jpg,image/png,image/jpeg" size="100">
+         <input placeholder="not yet" type="file" name="data[Game][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100">
          <a> 640x350 pixel high quality</a>
         </li>
         <li>
