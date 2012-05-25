@@ -310,6 +310,20 @@ public function __sendResetEmail($user_id) {
 		$this->set('user', $this->User->read(null, $id));
 	}
 
+
+
+
+function secureSuperGlobalPOST($value)
+    {
+        $string = htmlspecialchars(stripslashes($value));
+        $string = str_ireplace("script", "blocked", $string);
+        $string = mysql_escape_string($string);
+		$string = htmlentities($string);
+        return $string;
+    }
+
+
+
 /**
  * add method
  *
@@ -318,7 +332,7 @@ public function __sendResetEmail($user_id) {
 	public function add() {
 		if ($this->request->is('post')) {
 		
-		$this->request->data['User']['username']=htmlentities($this->request->data['User']['username']);
+		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
 		
 		
 			$this->User->create();
@@ -381,7 +395,7 @@ public function __sendResetEmail($user_id) {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 		
-		$this->request->data['User']['username']=htmlentities($this->request->data['User']['username']);
+		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
 		
 		$myval=$this->request->data["User"]["edit_picture"]["name"];
 		
