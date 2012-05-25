@@ -531,6 +531,18 @@ if(empty($favbefore))
 	}
 
 
+function secureSuperGlobalPOST($value)
+    {
+        $string = htmlspecialchars(stripslashes($value));
+        $string = str_ireplace("script", "blocked", $string);
+        $string = mysql_escape_string($string);
+		$string = htmlentities($string);
+        return $string;
+    }
+       
+
+
+
 	public function add() {
 		$this->layout='base';
 		$this->logedin_user_panel();
@@ -542,8 +554,8 @@ if(empty($favbefore))
 
 		if ($this->request->is('post')) {
 
-           $this->request->data['Game']['name']=htmlentities($this->request->data['Game']['name']);
-		   $this->request->data['Game']['description']=htmlentities($this->request->data['Game']['description']);
+           $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($this->request->data['Game']['name']);
+		   $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($this->request->data['Game']['description']);
 
 			$this->request->data['Game']['user_id'] = $this->Auth->user('id');
 			
