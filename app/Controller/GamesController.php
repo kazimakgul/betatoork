@@ -636,6 +636,7 @@ function secureSuperGlobalPOST($value)
 
 		$this->set('mygames', $cond);
     	$this->set('limit', $limit);
+    	$this->set('id', $id);
 		$users = $this->Game->User->find('list');
 		$categories = $this->Game->Category->find('list');
 		$this->set(compact('users', 'categories'));
@@ -648,7 +649,7 @@ function secureSuperGlobalPOST($value)
  * @return void
  */
 	public function delete($id = null) {
-		if (!$this->request->is('post')) {
+		if (!$this->request->is('get')) {
 			throw new MethodNotAllowedException();
 		}
 		$this->Game->id = $id;
@@ -656,11 +657,11 @@ function secureSuperGlobalPOST($value)
 			throw new NotFoundException(__('Invalid game'));
 		}
 		if ($this->Game->delete()) {
-			$this->Session->setFlash(__('Game deleted'));
-			$this->redirect(array('action' => 'index'));
+			$this->Session->setFlash(__('You have deleted your game successfully, That game will no longer be visible'));
+			$this->redirect(array('action' => 'channel'));
 		}
-		$this->Session->setFlash(__('Game was not deleted'));
-		$this->redirect(array('action' => 'index'));
+		$this->Session->setFlash(__('Your game was not deleted'));
+		$this->redirect(array('action' => 'channel'));
 	}
 /**
  * admin_index method

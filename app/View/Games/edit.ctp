@@ -10,7 +10,9 @@
   <div class="right_panel">
 
   <!-- Add Game UI is here-->  
-
+<?php
+$delete=$this->Html->url(array( "controller" => "games","action" =>"delete",$id));
+?>
 
 <?php echo $this->Form->create('Game', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form addgame' ,'type' => 'file'));?>
 
@@ -73,10 +75,10 @@
         <li>
             <button class="submit" type="submit">Submit Game</button>
         </li>
+        <a onClick="return confirm('Are you sure you want to delete this game ?')" href="<?php echo $delete ?>"><span class="required_notification">Delete This Game!</span></a>
     </ul>
 
 </form>
-
 
 
 
