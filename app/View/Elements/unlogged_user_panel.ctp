@@ -30,6 +30,6 @@
 
 
   <a class="forget" href="<?php echo $reseturl ?>">Forget Password?</a>
-  <a class="bemember" href="#" data-bind="click: function() { $('#register').lightbox_me(); }">Not a member? Register now.</a>
+  <a class="forget" href="#" onclick="$('#register').lightbox_me();">Not a member? Register now</a>
 
 </div>
