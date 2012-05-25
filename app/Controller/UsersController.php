@@ -347,6 +347,9 @@ function secureSuperGlobalPOST($value)
 
 	public function register() {
 		if ($this->request->is('post')) {
+		
+		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
+		
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 
