@@ -544,6 +544,10 @@ function secureSuperGlobalPOST($value)
 
 
 	public function add() {
+	
+	App::uses('Folder', 'Utility');
+    App::uses('File', 'Utility');
+	
 		$this->layout='base';
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
@@ -553,6 +557,10 @@ function secureSuperGlobalPOST($value)
     )));
 
 		if ($this->request->is('post')) {
+		
+		  $ext = substr($this->request->data["Game"]["picture"]["name"], -4, 4);
+		
+		   $this->request->data["Game"]["picture"]["name"]=$this->request->data['Game']['name'].$ext;
 
            $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($this->request->data['Game']['name']);
 		   $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($this->request->data['Game']['description']);
@@ -590,6 +598,9 @@ function secureSuperGlobalPOST($value)
  * @return void
  */
 	public function edit($id = null) {
+	App::uses('Folder', 'Utility');
+    App::uses('File', 'Utility');
+	
 		$this->layout='base';
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
@@ -600,6 +611,10 @@ function secureSuperGlobalPOST($value)
 
 
 		$this->Game->id = $id;
+		
+		$folder = new Folder(WWW_ROOT ."/upload/games/".$id);
+		$folder->delete();
+		
     	$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
     	$this->set("game",$game);
 		if (!$this->Game->exists()) {

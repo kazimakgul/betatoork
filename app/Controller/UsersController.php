@@ -389,6 +389,10 @@ function secureSuperGlobalPOST($value)
  	}
 
 	public function edit($id = null) {
+	
+	App::uses('Folder', 'Utility');
+    App::uses('File', 'Utility');
+	
 		$this->layout = 'base';
 		$this->loadModel('Subscription');
 		$userid=$id;
