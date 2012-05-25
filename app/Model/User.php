@@ -185,6 +185,38 @@ function getActivationHash()
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+
+		'picture'=> array(	
+			'image' => array(
+				'rule' => array('extension', array('gif', 'jpeg', 'png', 'jpg')),
+				'message' => 'Please supply a valid image.',
+			),
+			
+			'minWidth' => array(
+			'rule' => array('minWidth', '90'),
+			'message' => 'Your avatar size must be 90x120'
+		),
+		'maxWidth' => array(
+			'rule' => array('maxWidth', '90'),
+			'message' => 'Your avatar size must be 90x120'
+		),
+		'minHeight' => array(
+			'rule' => array('minHeight', '120'),
+			'message' => 'Your avatar size must be 90x120'
+		),
+		'maxHeight' => array(
+			'rule' => array('maxHeight', '120'),
+			'message' => 'Your avatar size must be 90x120'
+		)
+			
+			
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+		),
+
 	);
 	
 	public $hasMany = array(

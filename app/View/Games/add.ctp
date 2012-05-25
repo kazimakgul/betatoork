@@ -20,7 +20,7 @@
   
         <li>
             <label for="name">Game Name:</label>
-<?php echo $this->Form->input('name',array('label'=>false ,'required' ,'placeholder' => 'Metal Slug Brutal 3')); ?>
+<?php echo $this->Form->input('name',array('label'=>false ,'maxlength'=>28,'required' ,'placeholder' => 'Metal Slug Brutal 3')); ?>
          </li>
 
 <?php if ($this->Session->read('Auth.User.role') == 0){?>
@@ -74,7 +74,7 @@
         <li>
         <label for="picture">Game Picture:</label>
 
-         <input placeholder="not yet" required type="file" name="data[Game][picture]" accept="image/jpg,image/png,image/jpeg"  size="100">
+         <input placeholder="not yet" required type="file" name="data[Game][picture]" accept="image/gif,image/jpg,image/png,image/jpeg"  size="100">
          <a> 640x350 pixel high quality</a>
         </li>
         <li>

@@ -394,10 +394,13 @@ public function __sendResetEmail($user_id) {
 		
 		
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been updated'));
+				$this->Session->setFlash(__('You successfully updated your channel'));
 				$this->redirect(array('action' => 'edit',$this->Session->read('Auth.User.id')));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$validationErrors = $this->User->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
+				$this->redirect(array('controller' => 'users', 'action' => 'edit',$userid));
 			}	
 		} else {
 		
