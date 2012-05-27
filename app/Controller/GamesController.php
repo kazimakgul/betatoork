@@ -10,6 +10,7 @@ class GamesController extends AppController {
 	public $name = 'Games';
 	var $uses = array('Game');
     public $helpers = array('Html', 'Form','Upload');
+    public $components = array('Amazonsdk.Amazon');
 
 
 
