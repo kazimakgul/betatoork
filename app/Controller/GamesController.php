@@ -67,7 +67,7 @@ class GamesController extends AppController {
 	
 	public function lastadded() {
    		$this->paginate = array(
-	   		'Game' => array('limit'=>2,'order' => array('created' => 'desc')));
+	   		'Game' => array('limit'=>28,'order' => array('created' => 'desc')));
 
 		$this->layout='base';
 		$this->leftpanel();
