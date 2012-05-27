@@ -48,8 +48,13 @@
               <?php  if($this->Session->check('Auth.User')){ ?>
                   <td width="59" style="padding-left:15px;">
                   <?php $logouturl=$this->Html->url(array("controller" => "users","action" =>"logout")); ?>
-                    <a class="logout_btn" href="<?php echo $logouturl?>"></a>
+                    <a class="login_btn" href="<?php echo $logouturl?>"></a>
                   </td>
+               <?php } else {?>
+                  <td width="59" style="padding-left:15px;">
+                    <a class="logout_btn" href="#" onclick="$('#register').lightbox_me();"></a>
+                  </td>
+
                <?php } ?>
   	  
   	    <!--end if-->

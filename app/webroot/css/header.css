@@ -28,6 +28,7 @@ ul{list-style-type:none;}
 .menu_up{background-image:url(../img/t_menu_up.png); height:20px; width:398px; position:relative;}
 .menu a{display:block; float:left; width:90px; height:31px;margin:0 9px 0 9px;}
 .logout_btn{display:block; width:59px; height:35px; background-image:url(../img/t_logout_btn.png);}
+.login_btn{display:block; width:59px; height:35px; background-image:url(../img/t_loginlock_btn.png);}
 .content{padding-top:60px; width:1265px; margin:0 auto 60px auto;}
 input.error{border:1px solid red;}
 .error_copy { position:absolute;font-size:13px;height:17px;line-height:17px;color:red;overflow:hidden;width:305px; }

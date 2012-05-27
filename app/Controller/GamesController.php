@@ -66,6 +66,9 @@ class GamesController extends AppController {
 	}
 	
 	public function lastadded() {
+   		$this->paginate = array(
+	   		'Game' => array('limit'=>2,'order' => array('created' => 'desc')));
+
 		$this->layout='base';
 		$this->leftpanel();
 		$this->logedin_user_panel();

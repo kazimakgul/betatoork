@@ -75,6 +75,12 @@ $delete=$this->Html->url(array( "controller" => "games","action" =>"delete",$id)
         <li>
             <button class="submit" type="submit">Submit Game</button>
         </li>
+        <style type="text/css">
+span:link {text-decoration: none}
+span:visited {text-decoration: none}
+span:active {text-decoration: none }
+span:hover {text-decoration: underline; color: red;}
+</style>
         <a onClick="return confirm('Are you sure you want to delete this game ?')" href="<?php echo $delete ?>"><span class="required_notification">Delete This Game!</span></a>
     </ul>
 
