@@ -57,7 +57,7 @@ $most=$this->Html->url(array( "controller" => "games","action" =>"mostplayed"));
                         <div class="favoritegames"></div>
 
                     <?php 
-                    if(count($mygames) <= $limit){}
+                    if(count($favorites) <= $limit){}
                     else{
                       echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'allchannelfavorites'),array('class'=>'seeall')); 
                     } ?>
