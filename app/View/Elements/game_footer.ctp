@@ -18,7 +18,7 @@ $usergamesurl=$this->Html->url(array( "controller" => "games","action" =>"userga
 
 <div id="myButton" style='float:left; padding-left:20px;' >
 <ul>
-	<li class="profile"><a href="<?php echo $usergamesurl;?>">by <?php echo $sharedby;?></a></li>
+	<li class="profile"><a style='color:white;' href="<?php echo $usergamesurl;?>">by <?php echo $sharedby;?></a></li>
 </ul>
 
 </div>
