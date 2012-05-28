@@ -84,8 +84,7 @@ class GamesController extends AppController {
 		$this->Game->recursive = 0;
 		$cat=$this->Game->Category->find('all');
 		$this->set('category', $cat);
-		$cond3= array('Game.active'=>'1');
-    	$this->set('games', $this->paginate('Game',$cond3));
+
 
 	}
 
@@ -141,12 +140,9 @@ class GamesController extends AppController {
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-	    $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'order' => array('Game.recommend' => 'desc'
-    )));
-
 	    $this->set('user',$user);
     	$this->set('userid', $userid);
-    	$this->set('favorites', $cond2);
+    	$this->set('favorites',$this->paginate('Favorite',array('Game.active'=>'1','Favorite.user_id'=>$userid)));
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
 	}
 	
@@ -170,11 +166,8 @@ class GamesController extends AppController {
     $userid = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
-	$limit=12;
 
-    $this->set('top_rated_games', $this->Playcount->find('all', array('conditions' => array('Playcount.user_id'=>$userid),'limit' => $limit )));
-
-    
+    $this->set('top_rated_games', $this->paginate('Playcount',array('Playcount.user_id'=>$userid)));
 
     $this->set('username', $userName);
 	$this->set('userid', $userid);
@@ -336,7 +329,7 @@ class GamesController extends AppController {
     $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 
-    $this->set('favorites', $cond2);
+    $this->set('favorites',$this->paginate('Favorite',array('Favorite.user_id'=>$userid)));
     $this->set('username', $userName);
 	$this->set('user_id', $userid);
 }
@@ -370,12 +363,12 @@ class GamesController extends AppController {
 		$userid = $this->request->params['pass'][0];
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
-    	$followers = $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid)));
-
     	$this->set('user_id', $userid);
 		$this->set('title_for_layout', 'Toork - Subscriptions');
 		$this->set('username', $userName);
-		$this->set('followers', $followers);
+
+		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
+
 	}
 
 

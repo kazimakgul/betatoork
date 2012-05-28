@@ -47,7 +47,7 @@ class AppController extends Controller {
 
     var $paginate = array(
         'User' => array(
-            'limit' => 20,
+            'limit' => 28,
             'order' => array(
                 'User.id' => 'asc',
             ),
@@ -59,20 +59,18 @@ class AppController extends Controller {
                 'Game.recommend' => 'desc',
             ),
         ),
-        'Favorite' => array(
-            //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
-            'limit' => 12,
-            'order' => array(
-                'Game.starsize' => 'desc',
-            ),
-        ), 
         'Subscription' => array(
-            //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
-            'limit' => 12,
+            'limit' => 28,
             'order' => array(
                 'Subscription.created' => 'desc',
             ),
-        ),        
+        ),
+        'Favorite' => array(
+            'limit' => 28,
+            'order' => array(
+                'Game.recommend' => 'desc',
+            ),
+        ),         
     );
 
 
