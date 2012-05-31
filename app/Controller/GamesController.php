@@ -566,9 +566,6 @@ function secureSuperGlobalPOST($value)
 			
 			$this->Game->create();
 			
-			if($this->Auth->user('role')==0){
-				$this->request->data['Game']['active']=0;
-			}
 			if ($this->Game->save($this->request->data)) {
 				$this->Session->setFlash(__('You have successfully added a game to your channel. The game is not published yet...'));
 				$this->redirect(array('action' => 'channel'));
