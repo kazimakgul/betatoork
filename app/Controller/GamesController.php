@@ -606,8 +606,10 @@ function secureSuperGlobalPOST($value)
 
 		$this->Game->id = $id;
 		
-		$folder = new Folder(WWW_ROOT ."/upload/games/".$id);
-		$folder->delete();
+		
+		
+		
+		
 		
     	$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
     	$this->set("game",$game);
@@ -625,6 +627,17 @@ function secureSuperGlobalPOST($value)
 			
 			if($myval!="")
 			{
+			
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
+			
 			
 			$this->request->data["Game"]["picture"]=$this->request->data["Game"]["edit_picture"];
 			
