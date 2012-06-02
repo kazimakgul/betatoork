@@ -603,7 +603,7 @@ function secureSuperGlobalPOST($value)
 			//echo $file;
 			 $this->Amazon->S3->create_object(
             'betatoorkpics',
-            'upload/games/'.$basename,
+            'upload/games/'.$id."/".$basename,
              array(
             'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$basename,
             'acl' => AmazonS3::ACL_PUBLIC
