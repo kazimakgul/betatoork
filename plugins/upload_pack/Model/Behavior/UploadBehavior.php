@@ -24,7 +24,7 @@ class UploadBehavior extends ModelBehavior {
 
     public function setup(&$model, $settings = array()) {
         $defaults = array(
-            'path' => ':webroot/upload/:model/:id/:basename_:style.:extension',
+            'path' => 'https://s3.amazonaws.com/betatoorkpics/upload/:model/:id/:basename_:style.:extension',
             'styles' => array('showcase' => '640x350','toorksize' => '200x110','thumb' => '100x55'),
             'resizeToMaxWidth' => false,
             'quality' => 75
