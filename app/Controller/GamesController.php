@@ -597,16 +597,19 @@ function secureSuperGlobalPOST($value)
 		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
-            
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
 			 $this->Amazon->S3->create_object(
             'betatoorkpics',
-            'upload/games/'.$file->name(),
+            'upload/games/'.$basename,
              array(
-            'fileUpload' => $file,
+            'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$basename,
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
-			print_f($file);
+			
             }
 			//Upload to aws ends
 				
@@ -614,7 +617,7 @@ function secureSuperGlobalPOST($value)
 				
 				
 				
-				$this->redirect(array('action' => 'channel'));
+				//$this->redirect(array('action' => 'channel'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
