@@ -617,7 +617,7 @@ function secureSuperGlobalPOST($value)
 				
 				
 				
-				//$this->redirect(array('action' => 'channel'));
+				$this->redirect(array('action' => 'channel'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
@@ -695,6 +695,31 @@ function secureSuperGlobalPOST($value)
 			
 			if ($this->Game->save($this->request->data)) {
 				$this->Session->setFlash('You have successfully updated your game.');
+				
+				
+				
+				//Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            'betatoorkpics',
+            'upload/games/'.$id."/".$basename,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$basename,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+				
+				
 				$this->redirect(array('action' => 'channel'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
