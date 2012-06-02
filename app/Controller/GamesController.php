@@ -36,15 +36,15 @@ class GamesController extends AppController {
 	
 	//$this->Amazon->SNS->publish('arn:aws:sns:us-east-1:567053558973:foo', 'This is the message to publish');
 	//$response = $this->Amazon->EC2->describe_instances();
-	$dir = WWW_ROOT ."/upload/games/7/cutropeBuyuk_toorksize.jpg";
-	$this->Amazon->S3->create_object(
-        'betatoorkpics',
-        'oguz.jpg',
-        array(
-            'fileUpload' => $dir,
-            'acl' => AmazonS3::ACL_PUBLIC
-        )
-    );
+	//$dir = WWW_ROOT ."/upload/games/7/cutropeBuyuk_toorksize.jpg";
+	//$this->Amazon->S3->create_object(
+      //  'betatoorkpics',
+        //'oguz.jpg',
+        //array(
+          //  'fileUpload' => $dir,
+            //'acl' => AmazonS3::ACL_PUBLIC
+        //)
+    //);
 	
 	
 	
@@ -589,6 +589,31 @@ function secureSuperGlobalPOST($value)
 			
 			if ($this->Game->save($this->request->data)) {
 				$this->Session->setFlash(__('You have successfully added a game to your channel. The game is not published yet...'));
+			
+			$id=$this->Game->getLastInsertId();
+				
+			//Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            
+			 $this->Amazon->S3->create_object(
+            'betatoorkpics',
+            'upload/games/'.$file,
+             array(
+            'fileUpload' => $file,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+				
+				
+				
+				
+				
 				$this->redirect(array('action' => 'channel'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
