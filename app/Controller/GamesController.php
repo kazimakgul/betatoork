@@ -33,6 +33,25 @@ class GamesController extends AppController {
 
 	
 	public function index() {
+	
+	//$this->Amazon->SNS->publish('arn:aws:sns:us-east-1:567053558973:foo', 'This is the message to publish');
+	//$response = $this->Amazon->EC2->describe_instances();
+	
+	//$this->Amazon->S3->create_object(
+      //  'betatoorkpics',
+        //'oguz.jpg',
+        //array(
+          //  'fileUpload' => '/tmp/oguz.jpg',
+            //'acl' => AmazonS3::ACL_PUBLIC
+        //)
+    //);
+	
+	$this->Amazon->S3->create_object('betatoorkpics', 'xml_file.xml', array(
+                                        'body' => '<xml>Valid xml content</xml>',
+                                        'contentType' => 'text/xml'
+                                    ));
+									
+	
 		$this->layout='base';
 		$this->Game->recursive = 0;
 		$this->logedin_user_panel();
