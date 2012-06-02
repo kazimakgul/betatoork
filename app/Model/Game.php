@@ -27,7 +27,7 @@ public $name = 'Game';
 		var $actsAs = array(
 	'UploadPack.Upload' => array(
 		'picture' => array(
-			'path' => 'https://s3.amazonaws.com/betatoorkpics/upload/:model/:id/:basename_:style.:extension'
+			'path' => ':webroot/upload/:model/:id/:basename_:style.:extension'
 		)
 	)
 );
