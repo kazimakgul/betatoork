@@ -46,7 +46,7 @@ class GamesController extends AppController {
         //)
     //);
 	
-	$this->Amazon->S3->create_object('betatoorkpics', 'xml_file.xml', array(
+	$this->Amazon->S3->create_object('betatoorkpics/upload', 'xml_file.xml', array(
                                         'body' => '<xml>Valid xml content</xml>',
                                         'contentType' => 'text/xml'
                                     ));
