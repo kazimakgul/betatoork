@@ -600,13 +600,13 @@ function secureSuperGlobalPOST($value)
             
 			 $this->Amazon->S3->create_object(
             'betatoorkpics',
-            'upload/games/'.$file,
+            'upload/games/'.$file->name(),
              array(
             'fileUpload' => $file,
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
-			
+			print_f($file);
             }
 			//Upload to aws ends
 				
