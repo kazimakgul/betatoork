@@ -17,7 +17,8 @@ class UploadHelper extends AppHelper {
     public function image($data, $path, $options = array(), $htmlOptions = array())
     {
         $options += array('urlize' => false);
-        return $this->output($this->Html->image($this->url($data, $path, $options), $htmlOptions));
+		$a="https://s3.amazonaws.com/betatoorkpics".$this->url($data, $path, $options);
+        return $this->output($this->Html->image($a, $htmlOptions));
     }
 
     public function link($title, $data, $field, $urlOptions = array(), $htmlOptions = array())
