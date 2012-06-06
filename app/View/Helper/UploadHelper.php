@@ -17,8 +17,9 @@ class UploadHelper extends AppHelper {
     public function image($data, $path, $options = array(), $htmlOptions = array())
     {
         $options += array('urlize' => false);
-		$a="https://s3.amazonaws.com/betatoorkpics".$this->url($data, $path, $options);
-        return $this->output($this->Html->image($a, $htmlOptions));
+		//Generating special toork-aws link
+		$toork_aws_link="https://s3.amazonaws.com/betatoorkpics".$this->url($data, $path, $options);
+        return $this->output($this->Html->image($toork_aws_link, $htmlOptions));
     }
 
     public function link($title, $data, $field, $urlOptions = array(), $htmlOptions = array())
