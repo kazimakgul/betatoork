@@ -32,6 +32,24 @@ class GamesController extends AppController {
 	}
 
 	
+	public function beforeFilter() {
+	parent::beforeFilter();
+	App::uses('Folder', 'Utility');
+    App::uses('File', 'Utility');
+	
+	//Delete upload dir
+ 	 	
+        $upload_dir = new Folder(WWW_ROOT ."/upload");
+ 	    $updir=$upload_dir->pwd();
+		if($updir!=NULL)
+		$upload_dir->delete();
+      
+ 	 	
+    //Delete upload dir  
+	
+	
+	}
+	
 	public function index() {
 	
 	//$this->Amazon->SNS->publish('arn:aws:sns:us-east-1:567053558973:foo', 'This is the message to publish');
@@ -612,11 +630,7 @@ function secureSuperGlobalPOST($value)
 			
             }
 			//Upload to aws ends
-			
-			//Delete upload dir
-			$upload_dir = new Folder(WWW_ROOT ."/upload");
-		    $upload_dir->delete();
-		    //Delete upload dir	
+				
 				
 				
 				
@@ -719,13 +733,6 @@ function secureSuperGlobalPOST($value)
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
-			
-			
-			//Delete upload dir
-			$upload_dir = new Folder(WWW_ROOT ."/upload");
-		    $upload_dir->delete();
-		    //Delete upload dir
-			
 			
             }
 			//Upload to aws ends
