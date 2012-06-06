@@ -677,15 +677,13 @@ function secureSuperGlobalPOST($value)
 			if($myval!="")
 			{
 			
-			//Folder Formatting begins
-			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
-		    $files = $dir->find('.*');
-		    foreach ($files as $file) {
-            $file = new File($dir->pwd() . DS . $file);
-            $file->delete();
-            $file->close(); 
-            }
-			//Folder Formatting ends
+			$response=$this->Amazon->S3->get_object_list(
+            'betatoorkpics'
+			,array('pcre'=>'upload/games/'.$id."/")
+             );
+			 print_r($response);
+			
+			
 			
 			
 			$this->request->data["Game"]["picture"]=$this->request->data["Game"]["edit_picture"];
