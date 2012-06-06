@@ -612,7 +612,11 @@ function secureSuperGlobalPOST($value)
 			
             }
 			//Upload to aws ends
-				
+			
+			//Delete upload dir
+			$upload_dir = new Folder(WWW_ROOT ."/upload");
+		    $upload_dir->delete();
+		    //Delete upload dir	
 				
 				
 				
@@ -677,13 +681,15 @@ function secureSuperGlobalPOST($value)
 			if($myval!="")
 			{
 			
-			$response=$this->Amazon->S3->get_object_list(
-            'betatoorkpics'
-			,array('pcre'=>'upload/games/'.$id."/")
-             );
-			 print_r($response);
-			
-			
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
 			
 			
 			$this->request->data["Game"]["picture"]=$this->request->data["Game"]["edit_picture"];
@@ -713,6 +719,13 @@ function secureSuperGlobalPOST($value)
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
+			
+			
+			//Delete upload dir
+			$upload_dir = new Folder(WWW_ROOT ."/upload");
+		    $upload_dir->delete();
+		    //Delete upload dir
+			
 			
             }
 			//Upload to aws ends
