@@ -42,8 +42,8 @@ class GamesController extends AppController {
         $upload_dir = new Folder(WWW_ROOT ."/upload");
  	    $updir=$upload_dir->pwd();
 		if($updir!=NULL)
-		$errormessage=$upload_dir->delete();
-      print_r($errormessage);
+		$upload_dir->delete();
+      
  	 	
     //Delete upload dir  
 	
