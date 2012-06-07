@@ -58,7 +58,7 @@ class GamesController extends AppController {
 	
 	        //remove objects from S3
 			
-			$prefix = '/upload/games/';
+			$prefix = '';
            
   
              $opt = array(
