@@ -38,11 +38,12 @@ class GamesController extends AppController {
     App::uses('File', 'Utility');
 	
 	//Delete upload dir
- 	 	$folder="upload";
-        $upload_dir = new Folder($folder,true,0755);
+ 	 	
+        $upload_dir = new Folder(WWW_ROOT ."upload");
  	    $updir=$upload_dir->pwd();
 		if($updir!=NULL)
 		{
+		$upload_dir->chmod('upload', 0755, true);
 		$upload_dir->delete();
 		print_r($upload_dir->errors());
 		}
