@@ -43,7 +43,6 @@ class GamesController extends AppController {
  	    $updir=$upload_dir->pwd();
 		if($updir!=NULL)
 		{
-		$upload_dir->chmod('upload', 0755, true);
 		$upload_dir->delete();
 		print_r($upload_dir->errors());
 		}
