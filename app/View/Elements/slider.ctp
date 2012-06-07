@@ -86,7 +86,7 @@
 <?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
 				
 				<div>
-					<a href="<?php echo $playurl ?>"><img class="jail" alt="" data-href="<?php echo $this->Upload->url($game,'Game.picture',array('style' => 'showcase')); ?>"/></a>
+					<a href="<?php echo $playurl ?>"><img class="jail" alt="" data-href="<?php echo $this->Upload->url2($game,'Game.picture',array('style' => 'showcase')); ?>"/></a>
 <!-- 					<span  class="slider_rightpanel_desc">
 					<?php //echo $game['Game']['description']?>
 					</span> -->
