@@ -52,7 +52,7 @@ class GamesController extends AppController {
             $file->delete();
             $file->close(); 
             }
-		
+		    $dir->delete(); 
 		
 		print_r($upload_dir->errors());
 		}
