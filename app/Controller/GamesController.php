@@ -209,7 +209,7 @@ class GamesController extends AppController {
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
 
-    $this->set('top_rated_games', $this->paginate('Playcount',array('Playcount.user_id'=>$userid)));
+    $this->set('top_rated_games', $this->paginate('Playcount',array('Playcount.user_id'=>$userid,'Game.active'=>1)));
 
     $this->set('username', $userName);
 	$this->set('userid', $userid);
@@ -261,7 +261,7 @@ class GamesController extends AppController {
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid,'Game.active'=>1)));
 		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	    $this->set('user',$user);
 
