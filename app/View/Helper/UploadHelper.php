@@ -60,10 +60,7 @@ class UploadHelper extends AppHelper {
             $url = isset($settings['default_url']) ? $settings['default_url'] : null;
         }
 
-//Generating special toork-aws link
-		$toork_aws_link="https://s3.amazonaws.com/betatoorkpics".$url;
-     
-        return $options['urlize'] ? $this->Html->url($toork_aws_link) : $toork_aws_link;
+        return $options['urlize'] ? $this->Html->url($url) : $url;
     }
 
     /**
