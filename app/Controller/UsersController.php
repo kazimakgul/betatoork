@@ -349,7 +349,7 @@ function secureSuperGlobalPOST($value)
 		if ($this->request->is('post')) {
 		
 		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
-		
+		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 
@@ -403,7 +403,7 @@ function secureSuperGlobalPOST($value)
 		if ($this->request->is('post') || $this->request->is('put')) {
 		
 		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
-		
+		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
 		$myval=$this->request->data["User"]["edit_picture"]["name"];
 		
 		if($myval!="")
