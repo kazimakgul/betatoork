@@ -698,6 +698,21 @@ function secureSuperGlobalPOST($value)
 			if($myval!="")
 			{
 			
+			
+			//remove from S3
+			
+			$prefix = '/upload/games/';
+           
+  
+             $opt = array(
+             'prefix' => $prefix,
+             );
+			 $bucket="betatoorkpics";
+			 $objs = $this->s3->get_object_list($bucket, $opt);
+			 print_r($objs);
+			
+			//remove from S3
+			
 			//Folder Formatting begins
 			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
 		    $files = $dir->find('.*');
