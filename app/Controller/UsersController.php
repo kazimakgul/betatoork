@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
 
-public $components = array('AutoLogin','Email','Auth');
+public $components = array('AutoLogin','Email','Auth','Amazonsdk.Amazon');
 public $helpers = array('Html', 'Form','Upload');
 
 
