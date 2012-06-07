@@ -65,8 +65,7 @@ class GamesController extends AppController {
              'prefix' => $prefix,
              );
 			 $bucket="betatoorkpics";
-			 $s3 = new AmazonS3();
-			 $objs = $this->s3->get_object_list($bucket, $opt);
+			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			 print_r($objs);
 			
 			//remove objects from S3
