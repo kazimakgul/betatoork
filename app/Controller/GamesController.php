@@ -702,8 +702,8 @@ function secureSuperGlobalPOST($value)
 			{
 			
 			
-			//remove objects from S3
 			
+			//remove objects from S3
 			$prefix = 'upload/games/'.$id;
            
   
@@ -717,8 +717,8 @@ function secureSuperGlobalPOST($value)
 			 $response=$this->Amazon->S3->delete_object('betatoorkpics', $obj);
 			 //print_r($response);
 			 }
-			
 			//remove objects from S3
+			
 			
 			
 			//Folder Formatting begins

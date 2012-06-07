@@ -409,6 +409,24 @@ function secureSuperGlobalPOST($value)
 		if($myval!="")
 			{
 			
+			//remove objects from S3
+			$prefix = 'upload/users/'.$id;
+           
+  
+             $opt = array(
+             'prefix' => $prefix,
+             );
+			 $bucket="betatoorkpics";
+			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			 foreach($objs as $obj)
+			 {
+			 $response=$this->Amazon->S3->delete_object('betatoorkpics', $obj);
+			 //print_r($response);
+			 }
+			//remove objects from S3
+			
+			
+			
 			//Folder Formatting begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
 		    $files = $dir->find('.*');
