@@ -44,7 +44,7 @@ class GamesController extends AppController {
 		if($updir!=NULL)
 		{
 		$upload_dir->delete();
-		print_r($upload_dir->errors());
+		//print_r($upload_dir->errors());
 		}
       
  	 	
