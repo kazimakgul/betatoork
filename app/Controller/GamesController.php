@@ -56,19 +56,7 @@ class GamesController extends AppController {
 	public function index() {
 	
 	
-	        //remove objects from S3
-			
-			$prefix = 'upload/games/';
-           
-  
-             $opt = array(
-             'prefix' => $prefix,
-             );
-			 $bucket="betatoorkpics";
-			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
-			 print_r($objs);
-			
-			//remove objects from S3
+	        
 	
 	//$this->Amazon->SNS->publish('arn:aws:sns:us-east-1:567053558973:foo', 'This is the message to publish');
 	//$response = $this->Amazon->EC2->describe_instances();
@@ -712,6 +700,21 @@ function secureSuperGlobalPOST($value)
 			
 			if($myval!="")
 			{
+			
+			
+			//remove objects from S3
+			
+			$prefix = 'upload/games/'.$id;
+           
+  
+             $opt = array(
+             'prefix' => $prefix,
+             );
+			 $bucket="betatoorkpics";
+			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			 print_r($objs);
+			
+			//remove objects from S3
 			
 			
 			//Folder Formatting begins
