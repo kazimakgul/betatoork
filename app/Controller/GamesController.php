@@ -764,7 +764,7 @@ function secureSuperGlobalPOST($value)
 			//Upload to aws ends
 				
 				
-				//$this->redirect(array('action' => 'channel'));
+				$this->redirect(array('action' => 'channel'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
