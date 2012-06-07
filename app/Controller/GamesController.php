@@ -714,7 +714,8 @@ function secureSuperGlobalPOST($value)
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
-			 echo $obj;
+			 $response=$this->Amazon->S3->delete_object('betatoorkpics', $obj);
+			 print_r($response);
 			 }
 			
 			//remove objects from S3
