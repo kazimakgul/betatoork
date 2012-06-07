@@ -426,6 +426,30 @@ function secureSuperGlobalPOST($value)
 		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
+				
+				
+				//Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            'betatoorkpics',
+            'upload/users/'.$id."/".$basename,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/users/".$id."/".$basename,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+				
+				
 				$this->redirect(array('action' => 'edit',$this->Session->read('Auth.User.id')));
 			} else {
 				$validationErrors = $this->User->invalidFields();
