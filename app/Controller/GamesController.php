@@ -39,7 +39,7 @@ class GamesController extends AppController {
 	
 	//Delete upload dir
  	 	
-        $upload_dir = new Folder(WWW_ROOT ."/upload");
+        $upload_dir = new Folder(WWW_ROOT ."upload");
  	    $updir=$upload_dir->pwd();
 		if($updir!=NULL)
 		{
