@@ -583,6 +583,13 @@ function secureSuperGlobalPOST($value)
     }
        
 
+function getExtension($str) {
+     $i = strrpos($str,".");
+     if (!$i) { return ""; }
+     $l = strlen($str) - $i;
+     $ext = substr($str,$i+1,$l);
+     return $ext;
+}
 
 
 	public function add() {
@@ -599,11 +606,13 @@ function secureSuperGlobalPOST($value)
     )));
 
 		if ($this->request->is('post')) {
-		
-		  $ext = substr($this->request->data["Game"]["picture"]["name"], -4, 4);
-		
-		   $this->request->data["Game"]["picture"]["name"]=$this->request->data['Game']['name'].$ext;
-
+		 
+		 
+		  //Replace Name of Picture Begins
+		   $ext = ".".$this->getExtension($this->request->data["Game"]["picture"]["name"]);
+		   $this->request->data["Game"]["picture"]["name"]="toork_".$this->request->data['Game']['name'].$ext;
+          //Replace Name of Picture Ends
+		 
            $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($this->request->data['Game']['name']);
 		   $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($this->request->data['Game']['description']);
 
@@ -641,7 +650,7 @@ function secureSuperGlobalPOST($value)
 				
 				
 				
-				$this->redirect(array('action' => 'channel'));
+				//$this->redirect(array('action' => 'channel'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
@@ -734,6 +743,10 @@ function secureSuperGlobalPOST($value)
 			
 			$this->request->data["Game"]["picture"]=$this->request->data["Game"]["edit_picture"];
 			
+			//Replace Name of Picture Begins
+			$ext = ".".$this->getExtension($this->request->data["Game"]["picture"]["name"]);
+		    $this->request->data["Game"]["picture"]["name"]="toork_".$this->request->data['Game']['name'].$ext;
+			//Replace Name of Picture Ends
 			}
 			
 			
