@@ -54,30 +54,7 @@ class GamesController extends AppController {
 	}
 	
 	public function index() {
-	
-	
-	        
-	
-	//$this->Amazon->SNS->publish('arn:aws:sns:us-east-1:567053558973:foo', 'This is the message to publish');
-	//$response = $this->Amazon->EC2->describe_instances();
-	//$dir = WWW_ROOT ."/upload/games/7/cutropeBuyuk_toorksize.jpg";
-	//$this->Amazon->S3->create_object(
-      //  'betatoorkpics',
-        //'oguz.jpg',
-        //array(
-          //  'fileUpload' => $dir,
-            //'acl' => AmazonS3::ACL_PUBLIC
-        //)
-    //);
-	
-	
-	
-	//$this->Amazon->S3->create_object('betatoorkpics', 'upload/xml_file.xml', array(
-      //                                  'body' => '<xml>Valid xml content</xml>',
-        //                                'contentType' => 'text/xml'
-          //                          ));
-									
-	
+		$this->loadModel('Favorite');
 		$this->layout='base';
 		$this->Game->recursive = 0;
 		$this->logedin_user_panel();
@@ -89,7 +66,10 @@ class GamesController extends AppController {
 		$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.playcount' => 'desc'
     )))); //playcounta göre ayarlanacak
 
-		$this->set('title_for_layout', 'Toork - is a gamelist share platform - create your playlist of games and share your list');
+		// $sliderGames=$this->Game->query("SELECT * from games where id IN (SELECT game_id FROM favorites where user_id=2);");
+		// $this->set('slider', $sliderGames);
+
+		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel - create your gamelist - create your playlist of games and share your list - Play free online games');
 	}
 	
 	
