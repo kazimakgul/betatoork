@@ -15,7 +15,7 @@
                         <div class="channelgame"></div>
               
               <?php 
-              if(count($mygames) <= $limit){}
+              if(count($mygames) <= $limit-1){}
               else{
                 echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'allusergames',$userid),array('class'=>'seeall')); 
               } ?>
@@ -46,7 +46,7 @@
                         <div class="favoritegames"></div>
 
                     <?php 
-                    if(count($favorites) <= $limit){}
+                    if(count($favorites) <= $limit-1){}
                     else{
                       echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'alluserfavorites',$userid),array('class'=>'seeall')); 
                     } ?>
