@@ -743,6 +743,7 @@ function getExtension($str) {
 			
 			$this->request->data["Game"]["picture"]=$this->request->data["Game"]["edit_picture"];
 			
+			
 			//Replace Name of Picture Begins
 			$ext = ".".$this->getExtension($this->request->data["Game"]["picture"]["name"]);
 		    $this->request->data["Game"]["picture"]["name"]="toork_".$this->request->data['Game']['name'].$ext;
