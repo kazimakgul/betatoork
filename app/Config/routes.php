@@ -1,4 +1,7 @@
 <?php
+ App::import('Model', 'User');
+ $User = new User();
+
 /**
  * Routes configuration
  *
@@ -29,14 +32,27 @@
 	
 	Router::connect('/', array('controller' => 'games', 'action' => 'index'));
 
-Router::connect(
+/*Router::connect(
     '/:id',
     array('controller' => 'games', 'action' => 'usergames'),
     array(
         'pass' => array('id'),
 	'id' => '[a-zA-Z0-9]+'
     )
-);
+);*/
+
+
+ $data = $User ->find('all'); 
+    if(!empty ($data)){
+        //pr($events);
+        foreach ($data as $item) {
+        	$name=$item['User']['username'];
+            if($name!=""){
+                Router::connect(('/'.$name), array('controller' => 'games', 'action' => 'usergames',$item['User']['id']));
+            }
+        }
+    }
+
 
 
 /**
