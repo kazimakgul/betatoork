@@ -29,6 +29,16 @@
 	
 	Router::connect('/', array('controller' => 'games', 'action' => 'index'));
 
+Router::connect(
+    '/:id',
+    array('controller' => 'games', 'action' => 'usergames'),
+    array(
+        'pass' => array('id'),
+	'id' => '[a-zA-Z0-9]+'
+    )
+);
+
+
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
