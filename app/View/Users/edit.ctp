@@ -25,7 +25,7 @@
 
 <?php echo $this->Form->input('email',array('label'=>false ,'div'=>false, 'required', 'readonly', 'length' => 100)); ?>
 
-            <span class="form_hint">You are not allowed to change your email."</span>
+            <span class="form_hint">You are not allowed to change your email.</span>
         </li>
 <?php if ($this->Session->read('Auth.User.role') == 0){
       }else{
@@ -35,8 +35,18 @@
 
 <?php echo $this->Form->input('adcode',array('label'=>false ,'div'=>false,'placeholder'=>'The size must be 728x90' , 'required','type'=>'textarea','length' => 1000)); ?>
 
-            <span class="form_hint">just copy your adcode here. The ad banner size must be 728x90. If you already have a code here, do not change it."</span>
-        </li> <?php }?>
+            <span class="form_hint">just copy your adcode here. The ad banner size must be 728x90. If you already have a code here, do not change it.</span>
+        </li>
+
+        <li>
+            <label for="website">Google Verify:</label>
+
+<?php echo $this->Form->input('verify',array('label'=>false ,'div'=>false,'pattern'=>'(<meta).+.(/>)' ,'placeholder'=>'<meta name="google-site-verification" content="kjashfagASFAas"/>' ,'length' => 255)); ?>
+
+            <span class="form_hint"> Paste your meta tag which is given from your google webmaster tool</span>
+        </li>
+
+        <?php }?>
 
         <li>
 
