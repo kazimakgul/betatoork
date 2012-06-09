@@ -302,9 +302,9 @@ class GamesController extends AppController {
 	$this->leftpanel();
     $this->usergame_user_panel();
     $this->layout='usergames';
-    $userid = $this->request->params['pass'][0];
-    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-    $userName = $user['User']['username'];
+    $userName = $this->request->params['pass'][0];
+    $user = $this->User->find('first', array('conditions' => array('User.username' => $userName)));
+    $userid = $user['User']['id'];
 	$limit=12;
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
