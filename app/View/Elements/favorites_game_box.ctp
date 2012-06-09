@@ -1,10 +1,5 @@
 <?php foreach ($favorites as $game): ?>
-<?php 
-if($game['Game']['seo_url']!=NULL)
-$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));
-else
-$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));
- ?>	
+<?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>	
 <div class="gamebox clearfix">
 	<div class="greyback">
 		<div class="whiteback">

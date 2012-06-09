@@ -1,11 +1,6 @@
 <?php $result = Set::sort($most_played_games, '{n}.Game.created', 'desc'); ?>
 <?php foreach ($result as $game): ?>
-<?php 
-if($game['Game']['seo_url']!=NULL)
-$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
-else
-$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));	
- ?>		
+<?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>	
 <div class="gamebox clearfix">
 	<div class="greyback">
 		<div class="whiteback">

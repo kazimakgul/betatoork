@@ -557,89 +557,6 @@ if(empty($favbefore))
 	}
 
 
-
-public function seoplay($channel=NULL,$seo_url=NULL) {
-		$this->loadModel('User');
-		$this->sharedby();
-		$this->random();
-		$this->layout='game_index';
-		
-		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id')));
-		//print_r($channel_id);
-		
-		$id_data=$this->Game->find('first',array('conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('Game.id')));
-		if($id_data!=NULL)
-		$id=$id_data['Game']['id'];
-		
-
-		$this->Game->id = $id;
-		$this->fav_check($id);
-		$user_id=$this->Auth->user('id');
-		if (!$this->Game->exists()) {
-			throw new NotFoundException(__('Invalid game'));
-		}
-		$this->set('game', $this->Game->read(null, $id));
-		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
-		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
-
-		//start size calculation for play page
-		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
-		$starsize=(100*$current["Rate"]["current"])/5;
-		$this->set("starsize",$starsize);
-
-		if($game['Game']['embed']==null){
-
-		}else{
-			$this->redirect(array('controller'=>$channel,'action'=>$seo_url,'play2'));
-		}
-
-
-	}
-
-
-	public function seoplay2($channel=NULL,$seo_url=NULL) {
-		$this->loadModel('User');
-		$this->sharedby();
-		$this->random();
-		$this->loadModel('User');
-		$this->leftpanel();
-    	$this->play2_user_panel();
-		$this->fav_check($id);
-		$this->layout='game_index';
-		
-		
-		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id')));
-		//print_r($channel_id);
-		
-		$id_data=$this->Game->find('first',array('conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('Game.id')));
-		if($id_data!=NULL)
-		$id=$id_data['Game']['id'];
-		
-		
-		$this->Game->id = $id;
-		$game=$this->Game->read(null, $id);
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id'])));
-		$user_id = $user['User']['id'];
-		$this->set('user', $user);
-		$this->set('username', $user['User']['username']);
-		$this->set('user_id', $user_id);
-		
-		if (!$this->Game->exists()) {
-			throw new NotFoundException(__('Invalid game'));
-		}
-		$this->set('game', $game);
-		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
-
-		//start size calculation for play page
-		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
-		$starsize=(100*$current["Rate"]["current"])/5;
-		$this->set("starsize",$starsize);
-
-	}
-
-
-
-
 function secureSuperGlobalPOST($value)
     {
         $string = htmlspecialchars(stripslashes($value));
@@ -684,11 +601,6 @@ function getExtension($str) {
 		   $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($this->request->data['Game']['description']);
 
 			$this->request->data['Game']['user_id'] = $this->Auth->user('id');
-			
-			
-			//seourl begins
-		 $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
-		 //seourl ends
 			
 			$this->Game->create();
 			
@@ -822,10 +734,6 @@ function getExtension($str) {
 			//Replace Name of Picture Ends
 			}
 			
-			
-			//seourl begins
-		     $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
-		    //seourl ends
 			
 			if ($this->Game->save($this->request->data)) {
 				$this->Session->setFlash('You have successfully updated your game.');
