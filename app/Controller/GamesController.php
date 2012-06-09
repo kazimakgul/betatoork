@@ -318,7 +318,11 @@ class GamesController extends AppController {
     }else{
     		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     }
-
+    if($user['User']['verify']!=null){
+    	$this->set('googleVerify',$user['User']['verify']);
+	}else{
+		$this->set('googleVerify','');
+	}
    	$this->set('limit', $limit);
     $this->set('favorites', $cond2);
     $this->set('mygames', $cond);
