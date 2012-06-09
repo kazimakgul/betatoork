@@ -1,6 +1,8 @@
 <?php
  App::import('Model', 'User');
+  App::import('Model', 'Game');
  $User = new User();
+ $Game = new Game();
 
 /**
  * Routes configuration
@@ -42,13 +44,19 @@
 );*/
 
 
- $data = $User ->find('all'); 
+ $data = $User ->find('all');
+ $data2 = $Game ->find('all'); 
     if(!empty ($data)){
         //pr($events);
         foreach ($data as $item) {
-        	$name=$item['User']['username'];
-            if($name!=""){
-                Router::connect(('/'.$name), array('controller' => 'games', 'action' => 'usergames',$item['User']['id']));
+        	foreach ($data2 as $item2){
+	        	$name=$item['User']['username'];
+	        	$game=$item2['Game']['name'];
+	            if($name!=""){
+	                Router::connect(('/'.$name), array('controller' => 'games', 'action' => 'usergames',$item['User']['id']));
+	                Router::connect(('/'.$name.'/'.$game), array('controller' => 'games', 'action' => 'play',$item2['Game']['id']));
+
+	            }
             }
         }
     }
