@@ -304,6 +304,10 @@ class GamesController extends AppController {
     $this->usergame_user_panel();
     $userid = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+	
+	if($user==NULL)
+	$this->redirect('/');
+	
     $userName = $user['User']['username'];
 	$limit=12;
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
@@ -336,6 +340,10 @@ public function channelgames() {
     $this->usergame_user_panel();
     $seo_username = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
+	
+	if($user==NULL)
+	$this->redirect('/');
+	
 	$userid=$user['User']['id'];
     $userName = $user['User']['username'];
 	$limit=12;
