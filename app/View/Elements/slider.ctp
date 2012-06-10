@@ -11,7 +11,7 @@
 						
 						<?php foreach ($top_rated_games as $game): ?>
 
-<?php $channelurl=$this->Html->url(array("controller" => $user['User']['seo_username'],"action" =>""));?>
+<?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>""));?>
 <?php $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play')); ?>
 <?php $caturl=$this->Html->url(array( "controller" => "games","action" =>"categorygames",h($game['Category']['id']))); ?>
 						
