@@ -1,5 +1,13 @@
 <?php foreach ($search as $game): ?>
-<?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
+
+<?php 
+if($game['Game']['seo_url']!=NULL)
+$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
+else
+$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));
+ ?>	
+
+
 <?php $editurl=$this->Html->url(array( "controller" => "games","action" =>"edit",h($game['Game']['id']))); ?>	
 <div class="gamebox clearfix">
 	<div class="greyback">

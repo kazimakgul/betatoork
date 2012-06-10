@@ -667,7 +667,6 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->loadModel('User');
 		$this->leftpanel();
     	$this->play2_user_panel();
-		$this->fav_check($id);
 		$this->layout='game_index';
 		
 		
@@ -677,6 +676,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$id_data=$this->Game->find('first',array('conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('Game.id')));
 		if($id_data!=NULL)
 		$id=$id_data['Game']['id'];
+		$this->fav_check($id);
 		
 		
 		$this->Game->id = $id;

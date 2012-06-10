@@ -1,8 +1,14 @@
           <?php foreach ($entries as $entry): ?>
           <?php 
-          $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($entry['Game']['id'])));
           $channelurl=$this->Html->url(array("controller" => $entry['User']['seo_username'],"action" =>"")); 
           ?> 
+<?php 
+if($entry['Game']['seo_url']!=NULL)
+$playurl=$this->Html->url(array( "controller" => h($entry['User']['seo_username']),"action" =>h($entry['Game']['seo_url']),'play'));
+else
+$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($entry['Game']['id'])));
+ ?> 
+
                     <li>
                           <div class="wallframe"><a href="<?php echo $playurl ?>" >
 <?php echo $this->Upload->image($entry,'Game.picture',array('style' => 'toorksize'),array('width'=>'100','alt'=>$entry['Game']['name'])); ?></a>
