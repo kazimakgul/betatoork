@@ -661,7 +661,6 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 
 	public function seoplay2($channel=NULL,$seo_url=NULL) {
-		$this->loadModel('User');
 		$this->sharedby();
 		$this->random();
 		$this->loadModel('User');
