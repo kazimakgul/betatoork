@@ -37,6 +37,18 @@
     					<a id="readterms" class="lightbox_licence mirror_subscription_emails" href="<?php echo $privacyurl?>">Yes, i read and accept the privacy notice</a>
     					
     					<a id="iread" class="lightbox_read mirror_tos" href="<?php echo $termsurl?>">I agree to the Terms and Conditions</a>
+
+  <?php
+
+      echo $this->Recaptcha->show(array(
+        'theme' => 'white',
+        'lang' => 'en',
+      ));
+  
+      echo $this->Recaptcha->error();
+
+  ?>
+
     					<div class="lightbox_regs"><input class="lightbox_regbtn" type="submit" value='' /></div>
     				</div>
     			</form>

@@ -9,8 +9,8 @@ class GamesController extends AppController {
 
 	public $name = 'Games';
 	var $uses = array('Game');
-    public $helpers = array('Html', 'Form','Upload');
-    public $components = array('Amazonsdk.Amazon');
+    public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
+    public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
 
 
 
