@@ -17,7 +17,7 @@ $users = $this->requestAction( array('controller' => 'users', 'action' => 'bestC
 			} 
 	?>
 	<?php
-	  $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$user['User']['id']));
+	  $channelurl=$this->Html->url(array("controller" => $user['User']['seo_username'],"action" =>""));
 	?>
 		<li class="<?php echo $switch ?>"><a href="<?php echo $channelurl ?>"><?php echo h($user['User']['username']); ?></a></li>
 
