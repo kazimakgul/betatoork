@@ -387,19 +387,17 @@ public function get_user_dict($cond2=NULL)
 }
 
 public function channelgames() {
-	$this->layout='usergames';
 	$this->loadModel('User');
 	$this->loadModel('Favorite');
 	$this->leftpanel();
-    
     $seo_username = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
 	$userid=$user['User']['id'];
 	$this->usergame_user_panel2($userid);
+	$this->layout='usergames';
 	if($user==NULL)
 	$this->redirect('/');
-	
-	
+
     $userName = $user['User']['username'];
 	$limit=12;
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
@@ -415,6 +413,12 @@ public function channelgames() {
     }else{
     		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     }
+
+	if($user['User']['verify']!=null){
+		$this->set('googleVerify',$user['User']['verify']);
+	}else{
+		$this->set('googleVerify','');	
+	}
 
    	$this->set('limit', $limit);
     $this->set('favorites', $cond2);
