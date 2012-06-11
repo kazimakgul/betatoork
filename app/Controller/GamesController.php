@@ -322,10 +322,10 @@ class GamesController extends AppController {
 }
 
 	public function usergames() {
-	$this->layout='base';
 	$this->loadModel('User');
 	$this->leftpanel();
     $this->usergame_user_panel();
+    $this->layout='usergames';
     $userid = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
 	
@@ -346,6 +346,12 @@ class GamesController extends AppController {
     }else{
     		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     }
+
+	if($user['User']['verify']!=null){
+		$this->set('googleVerify',$user['User']['verify']);
+	}else{
+		$this->set('googleVerify','');	
+	}
 
    	$this->set('limit', $limit);
     $this->set('favorites', $cond2);
@@ -475,7 +481,8 @@ public function channelgames() {
 	    $playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
 	    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
-    	return array($userName,$gamenumber, $favoritenumber, $subscribe, $subscribeto, $playcount,$user);
+    	$userUrl = $user['User']['seo_username'];
+    	return array($userName,$gamenumber, $favoritenumber, $subscribe, $subscribeto, $playcount,$user,$userUrl);
 	}
 
 
@@ -633,10 +640,8 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$id_data=$this->Game->find('first',array('conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('Game.id')));
 		if($id_data!=NULL)
 		$id=$id_data['Game']['id'];
-		
-
-		$this->Game->id = $id;
 		$this->fav_check($id);
+		$this->Game->id = $id;
 		$user_id=$this->Auth->user('id');
 		if (!$this->Game->exists()) {
 			throw new NotFoundException(__('Invalid game'));
@@ -661,13 +666,11 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 
 	public function seoplay2($channel=NULL,$seo_url=NULL) {
-		$this->loadModel('User');
 		$this->sharedby();
 		$this->random();
 		$this->loadModel('User');
 		$this->leftpanel();
     	$this->play2_user_panel();
-		$this->fav_check($id);
 		$this->layout='game_index';
 		
 		
@@ -677,6 +680,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$id_data=$this->Game->find('first',array('conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('Game.id')));
 		if($id_data!=NULL)
 		$id=$id_data['Game']['id'];
+		$this->fav_check($id);
 		
 		
 		$this->Game->id = $id;

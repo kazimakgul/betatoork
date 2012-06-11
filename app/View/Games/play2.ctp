@@ -1,5 +1,3 @@
-
-
 <div class="content clearfix">
   <div class="channel_left_panel">
       <?php  echo $this->element('logged_user_panel'); ?>

@@ -278,21 +278,8 @@ public function __sendResetEmail($user_id) {
 	public function bestChannels(){
 		$this->loadModel('Game');
 		$limit=15;
-
-		/*$userslar = $this->User->find('all');
-
-		$result = array(); 
-		foreach ($userslar as $user):
-			$count = $this->Game->find('count', array('conditions' => array('Game.user_id' => $user['User']['id'])));
-			$result[] =$count; 
-		endforeach;
-		$res = $this->set('result', $result);*/
-
-
 		$users = $this->User->find('all', array('limit' => $limit, 'order' => array('User.totalrate' => 'desc')));
-
     	return $users;
-
 	}
 
 
