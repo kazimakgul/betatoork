@@ -315,8 +315,8 @@ class GamesController extends AppController {
 }
 
 	public function sharedby() {
-    $gameid = $this->request->params['pass'][0];
-    $game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid)));
+    $seo_url = $this->request->params['pass'][1];
+    $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $seo_url)));
     $user = $game['User']['username'];
     $this->set('sharedby', $user);
 }
