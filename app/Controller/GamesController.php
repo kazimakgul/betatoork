@@ -358,7 +358,7 @@ class GamesController extends AppController {
 
 
 public function channelgames() {
-	$this->layout='base';
+	$this->layout='usergames';
 	$this->loadModel('User');
 	$this->leftpanel();
     
