@@ -1,7 +1,7 @@
 <?php foreach ($favorites as $game): ?>
 <?php 
 if($game['Game']['seo_url']!=NULL)
-$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
+$playurl=$this->Html->url(array( "controller" => h(strtolower(str_replace(' ','-',$user_name_dict[$game['Game']['user_id']]))),"action" =>h($game['Game']['seo_url']),'play'));
 else
 $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));	
  ?>	
@@ -56,7 +56,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 
 
 	<?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>""));  ?>
-	<a class="gb_channelname" href="<?php echo $channelurl ?>"><?php echo $game['User']['username']; ?></a>
+	<a class="gb_channelname" href="<?php echo $channelurl ?>"><?php echo $user_name_dict[$game['Game']['user_id']]; ?></a>
 	<a class="gb_gamename" href="<?php echo $playurl ?>"><?php echo $game['Game']['name']; ?></a>
 </div>						
  <?php endforeach; ?>
