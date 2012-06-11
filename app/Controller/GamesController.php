@@ -322,10 +322,10 @@ class GamesController extends AppController {
 }
 
 	public function usergames() {
-	$this->layout='base';
 	$this->loadModel('User');
 	$this->leftpanel();
     $this->usergame_user_panel();
+    $this->layout='usergames';
     $userid = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
 	
