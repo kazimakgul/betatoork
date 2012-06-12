@@ -234,12 +234,11 @@ class GamesController extends AppController {
 
 	}
 
-		public function usergame_user_panel() {
+		public function usergame_user_panel($userid=NULL) {
 		$this->loadModel('User');
 		$this->loadModel('Subscription');
 		$this->loadModel('Playcount');
 		$this->layout='base';
-		$userid = $this->request->params['pass'][0];
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
@@ -247,8 +246,7 @@ class GamesController extends AppController {
 		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid,'Game.active'=>1)));
 		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	    $this->set('user',$user);
-
-	    $this->set('userid', $userid);
+        $this->set('userid', $userid);
 	    $this->set('gamenumber', $gamenumber);
 	    $this->set('favoritenumber', $favoritenumber);
 	    $this->set('subscribe', $subscribe);
@@ -258,34 +256,12 @@ class GamesController extends AppController {
 	}
 	
 	
-	public function usergame_user_panel2($userid=NULL) {
-		$this->loadModel('User');
+	
+
+	public function play2_user_panel($gameid) {
 		$this->loadModel('Subscription');
 		$this->loadModel('Playcount');
 		$this->layout='base';
-		
-	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
-	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
-	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid,'Game.active'=>1)));
-		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-	    $this->set('user',$user);
-
-	    $this->set('userid', $userid);
-	    $this->set('gamenumber', $gamenumber);
-	    $this->set('favoritenumber', $favoritenumber);
-	    $this->set('subscribe', $subscribe);
-	    $this->set('subscribeto', $subscribeto);
-	    $this->set('playcount', $playcount);
-
-	}
-
-	public function play2_user_panel() {
-		$this->loadModel('Subscription');
-		$this->loadModel('Playcount');
-		$this->layout='base';
-		$gameid = $this->request->params['pass'][0];
 		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid)));
 		$userid = $game['Game']['user_id'];
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
@@ -324,11 +300,10 @@ class GamesController extends AppController {
 	public function usergames() {
 	$this->loadModel('User');
 	$this->leftpanel();
-    $this->usergame_user_panel();
     $this->layout='usergames';
     $userid = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-	
+	$this->usergame_user_panel($userid);
 	if($user==NULL)
 	$this->redirect('/');
 	
@@ -393,7 +368,7 @@ public function channelgames() {
     $seo_username = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
 	$userid=$user['User']['id'];
-	$this->usergame_user_panel2($userid);
+	$this->usergame_user_panel($userid);
 	$this->layout='usergames';
 	if($user==NULL)
 	$this->redirect('/');
@@ -448,6 +423,7 @@ public function channelgames() {
 	public function alluserfavorites() {
 	$this->layout='base';
 	$this->loadModel('User');
+	$this->loadModel('Favorite');
 	$this->leftpanel();
     $this->usergame_user_panel();
 	$limit=50;
@@ -455,12 +431,17 @@ public function channelgames() {
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
     $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-    $cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
+    
+	$cond2= $this->Favorite->find('all',array('conditions' => array('Favorite.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
+	
+	
+print_r($this->get_user_dict($cond2));
 
     $this->set('favorites',$this->paginate('Favorite',array('Favorite.user_id'=>$userid)));
     $this->set('username', $userName);
 	$this->set('user_id', $userid);
+	$this->set('user_name_dict', $this->get_user_dict($cond2));
 }
 
 
@@ -700,8 +681,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->random();
 		$this->loadModel('User');
 		$this->leftpanel();
-    	$this->play2_user_panel();
-		$this->layout='game_index';
+    	$this->layout='game_index';
 		
 		
 		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id')));
@@ -718,6 +698,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$game=$this->Game->read(null, $id);
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id'])));
 		$user_id = $user['User']['id'];
+		$this->play2_user_panel($id);
 		$this->set('user', $user);
 		$this->set('username', $user['User']['username']);
 		$this->set('user_id', $user_id);
