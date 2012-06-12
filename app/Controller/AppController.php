@@ -70,7 +70,13 @@ class AppController extends Controller {
             'order' => array(
                 'Game.recommend' => 'desc',
             ),
-        ),         
+        ),
+        'Playcount' => array(
+            'limit' => 28,
+            'order' => array(
+                'Game.recommend' => 'desc',
+            ),
+        ), 
     );
 
 
