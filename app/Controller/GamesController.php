@@ -425,18 +425,15 @@ public function channelgames() {
 	$this->loadModel('User');
 	$this->loadModel('Favorite');
 	$this->leftpanel();
-    $this->usergame_user_panel();
-	$limit=50;
+    $limit=50;
     $userid = $this->request->params['pass'][0];
+	$this->usergame_user_panel($userid);
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
     $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
     
 	$cond2= $this->Favorite->find('all',array('conditions' => array('Favorite.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-	
-	
-print_r($this->get_user_dict($cond2));
 
     $this->set('favorites',$this->paginate('Favorite',array('Favorite.user_id'=>$userid)));
     $this->set('username', $userName);
