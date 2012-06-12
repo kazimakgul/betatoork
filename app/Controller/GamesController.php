@@ -187,8 +187,8 @@ class GamesController extends AppController {
 	$this->loadModel('User');
 	$this->loadModel('Playcount');
 	$this->leftpanel();
-    $this->usergame_user_panel();
     $userid = $this->request->params['pass'][0];
+	$this->usergame_user_panel($userid);
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
 
@@ -410,8 +410,8 @@ public function channelgames() {
 	$this->layout='base';
 	$this->loadModel('User');
 	$this->leftpanel();
-    $this->usergame_user_panel();
     $userid = $this->request->params['pass'][0];
+	$this->usergame_user_panel($userid);
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
     $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
@@ -449,8 +449,8 @@ public function channelgames() {
 		$this->loadModel('User');
 		$this->layout='base';
 		$this->leftpanel();
-		$this->usergame_user_panel();
 		$userid = $this->request->params['pass'][0];
+		$this->usergame_user_panel($userid);
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
     	$this->set('user_id', $userid);
@@ -466,8 +466,8 @@ public function channelgames() {
 		$this->loadModel('User');
 		$this->layout='base';
 		$this->leftpanel();
-		$this->usergame_user_panel();
 		$userid = $this->request->params['pass'][0];
+		$this->usergame_user_panel($userid);
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
     	$this->set('user_id', $userid);
