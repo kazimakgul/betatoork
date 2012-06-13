@@ -68,8 +68,8 @@ class AppController extends Controller {
         'Favorite' => array(
             'limit' => 28,
             'order' => array(
-                'Game.recommend' => 'desc',
-            ),
+                'Favorite.recommend' => 'desc',
+            ), 'recursive'=>'2'
         ),
         'Playcount' => array(
             'limit' => 28,
