@@ -1,4 +1,4 @@
-<?php foreach ($favorites as $game): ?>
+<?php foreach ($top_rated_games as $game): ?>
 <?php 
 if($game['Game']['seo_url']!=NULL)
 $playurl=$this->Html->url(array( "controller" => h($game['Game']['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
@@ -11,10 +11,9 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 			<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$game['Game']['name'])); ?></a>
 		</div>
 	</div>
-
-
-	<div class="gb_rate">	
 	
+	<div class="gb_rate">
+		
 		<?php 
 		
 		if(81<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
@@ -44,18 +43,17 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 		
 		?>
 		
-		
 		<div id="rate" class="ratingcontainer">
 		<div class="rating" style="background-position: <?php echo $starvalue;?>px 0px;">
 
 
 		</div>
 		</div>
-		<div class="rateresult"><?php echo $game['Game']['starsize']; ?>%</div>
+		
+		<div class="rateresult"><?php echo $game['Game']['starsize']; ?> %</div>
 	</div>
-
-
-	<?php $channelurl=$this->Html->url(array("controller" => $game['Game']['User']['seo_username'],"action" =>""));  ?>
+	
+	<?php $channelurl=$this->Html->url(array("controller" => $game['Game']['User']['seo_username'],"action" =>"")); ?>
 	<a class="gb_channelname" href="<?php echo $channelurl ?>"><?php echo $game['Game']['User']['username']; ?></a>
 	<a class="gb_gamename" href="<?php echo $playurl ?>"><?php echo $game['Game']['name']; ?></a>
 </div>						

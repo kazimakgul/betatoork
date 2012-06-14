@@ -191,7 +191,7 @@ class GamesController extends AppController {
 	$this->usergame_user_panel($userid);
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
-
+    //print_r($this->paginate('Playcount',array('Playcount.user_id'=>$userid,'Game.active'=>1)));
     $this->set('top_rated_games', $this->paginate('Playcount',array('Playcount.user_id'=>$userid,'Game.active'=>1)));
 
     $this->set('username', $userName);
