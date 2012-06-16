@@ -378,7 +378,7 @@ public function channelgames() {
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 	
-	
+	$this->set('title_for_layout', $userName.' - Welcome to '.$userName."'s game channel published by Toork");
     
 	//$cond2= $this->Favorite->find('all',array('conditions' => array('Favorite.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     //)));
