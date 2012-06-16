@@ -265,7 +265,7 @@ class GamesController extends AppController {
 	public function play2_user_panel($gameid) {
 		$this->loadModel('Subscription');
 		$this->loadModel('Playcount');
-		$this->layout='base';
+		//$this->layout='base';
 		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid)));
 		$userid = $game['Game']['user_id'];
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
@@ -689,10 +689,13 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 	public function seoplay2($channel=NULL,$seo_url=NULL) {
 		
+		
+		$this->layout='game_index';
 		$this->random();
 		$this->loadModel('User');
 		$this->leftpanel();
-    	$this->layout='game_index';
+    	
+		
 		
 		
 		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id')));
