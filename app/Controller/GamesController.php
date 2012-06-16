@@ -115,6 +115,7 @@ class GamesController extends AppController {
 
 	public function channel() {
 		$this->loadModel('User');
+		$this->loadModel('Favorite');
 		$this->layout='channel';
 		$this->leftpanel();
 		$this->logedin_user_panel();
@@ -122,8 +123,11 @@ class GamesController extends AppController {
 		$limit=12;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-    	$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
-    )));
+    	//$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
+    //)));
+	
+	$cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => $userid),'limit' => $limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 2));
+	
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
