@@ -88,7 +88,7 @@ class GamesController extends AppController {
 		
 		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
 
-		$this->set('title_for_layout', 'Toork - Most Played Games');
+		$this->set('title_for_layout', 'Toork - Most Played Games - find the most played online games and play trend topic games using Toork');
 	}
 	
 	public function lastadded() {
@@ -183,7 +183,7 @@ class GamesController extends AppController {
 
 		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1')));
 
-		$this->set('title_for_layout', 'Toork - Top Rated Games');
+		$this->set('title_for_layout', 'Toork - Top Rated Games - find the best online games and play the most popular games using Toork');
 	}
 
 	public function playedgames() {
@@ -382,7 +382,7 @@ public function channelgames() {
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 	
-	
+	$this->set('title_for_layout', $userName.' - Welcome to '.$userName."'s game channel published by Toork");
     
 	//$cond2= $this->Favorite->find('all',array('conditions' => array('Favorite.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     //)));
