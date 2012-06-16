@@ -37,23 +37,23 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 		}
 		elseif(61<=$game['Game']['starsize'] && $game['Game']['starsize']<81)
 		{
-		$starvalue=-15;
+		$starvalue=-20;
 		}
 		elseif(41<=$game['Game']['starsize'] && $game['Game']['starsize']<61)
 		{
-		$starvalue=-30;
+		$starvalue=-40;
 		}
 		elseif(21<=$game['Game']['starsize'] && $game['Game']['starsize']<41)
 		{
-		$starvalue=-45;
+		$starvalue=-60;
 		}
 		elseif(0<$game['Game']['starsize'] && $game['Game']['starsize']<21)
 		{
-		$starvalue=-57;
+		$starvalue=-78;
 		}
 		elseif($game['Game']['starsize']==0)
 		{
-		$starvalue=-70;
+		$starvalue=-97;
 		}
 		
 		?>
