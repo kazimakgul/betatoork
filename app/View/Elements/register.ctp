@@ -3,14 +3,14 @@
   	<div class="lightbox_container">
   		<div class="lightbox_sign"></div>
   	<div data-bind="visible: !viewModel.registerForm.success()">
-  		<div class="clearfix">
+<!--   		<div class="clearfix">
 
       	<a class="lightbox_face" href="javascript:FB_login()"></a>
   			<a class="lightbox_twt" href="javascript:;"></a>
   		
 
       </div>
-  		<div class="lightbox_term">By signing in you accept our terms of use.</div>
+  		<div class="lightbox_term">By signing in you accept our terms of use.</div> -->
   		<div class="lightbox_tabs clearfix">
   			<div class="lightbox_lineleft">
   				<a class="lightbox_leftclick" href="#" onclick="show_hide(1, 0)"></a>
