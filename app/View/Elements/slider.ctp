@@ -47,13 +47,17 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 		{
 		$starvalue=-60;
 		}
-		elseif(0<$game['Game']['starsize'] && $game['Game']['starsize']<21)
+		elseif(0<=$game['Game']['starsize'] && $game['Game']['starsize']<21)
 		{
 		$starvalue=-78;
 		}
 		elseif($game['Game']['starsize']==0)
 		{
+<<<<<<< HEAD
 		$starvalue=-97;
+=======
+		$starvalue=-95;
+>>>>>>> parent of 54c2249... Slider rating fix
 		}
 		
 		?>
