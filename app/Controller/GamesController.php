@@ -735,7 +735,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 function secureSuperGlobalPOST($value)
     {
-	    $string = preg_replace('/[^\w\d_ -]/si', '', $value);;
+	    $string = preg_replace('/[^\w\d_ -]/si', '', $value);
         $string = htmlspecialchars(stripslashes($string));
         $string = str_ireplace("script", "blocked", $string);
         $string = mysql_escape_string($string);

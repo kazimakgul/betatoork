@@ -302,7 +302,8 @@ public function __sendResetEmail($user_id) {
 
 function secureSuperGlobalPOST($value)
     {
-        $string = htmlspecialchars(stripslashes($value));
+	    $string = preg_replace('/[^\w\d_ -]/si', '', $value);
+        $string = htmlspecialchars(stripslashes($string));
         $string = str_ireplace("script", "blocked", $string);
         $string = mysql_escape_string($string);
 		$string = htmlentities($string);
