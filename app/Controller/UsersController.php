@@ -162,7 +162,7 @@ public function __sendActivationEmail($user_id) {
 		$user = $this->User->find('first',array('conditions' => array('User.id'=>$user_id)));
 		
 		// Set data for the "view" of the Email
-		$this->set('activate_url', 'http://miracle.toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
+		$this->set('activate_url', 'http://ec2-23-22-10-91.compute-1.amazonaws.com/betatoork/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
  
  		$this->Email->from  = 'Toork <no-reply@toork.com>';
@@ -187,7 +187,7 @@ public function __sendResetEmail($user_id) {
 		}
  
 		// Set data for the "view" of the Email
-		$this->set('reset_url', 'http://miracle.toork.com/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
+		$this->set('reset_url', 'http://ec2-23-22-10-91.compute-1.amazonaws.com/betatoork/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
         $this->Email->from  = 'Toork <no-reply@toork.com>';
 		$this->Email->to = $user["User"]["email"];
