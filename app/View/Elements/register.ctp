@@ -38,7 +38,7 @@
     					
     					<a id="iread" class="lightbox_read mirror_tos" href="<?php echo $termsurl?>">I agree to the Terms and Conditions</a>
 
-  <?php
+<!--   <?php
 
       echo $this->Recaptcha->show(array(
         'theme' => 'white',
@@ -47,7 +47,7 @@
   
       echo $this->Recaptcha->error();
 
-  ?>
+  ?> -->
 
     					<div class="lightbox_regs"><input class="lightbox_regbtn" type="submit" value='' /></div>
     				</div>

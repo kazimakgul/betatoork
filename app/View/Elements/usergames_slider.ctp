@@ -53,7 +53,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 		}
 		elseif($game['Game']['starsize']==0)
 		{
-		$starvalue=-97;
+		$starvalue=-95;
 		}
 		
 		?>
