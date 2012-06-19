@@ -82,7 +82,7 @@
   <?php
 
       echo $this->Recaptcha->show(array(
-        'theme' => 'red',
+        'theme' => 'white',
         'lang' => 'en',
       ));
   

@@ -788,6 +788,7 @@ function getExtension($str) {
 			
 			if ($this->Game->save($this->request->data)) {
 				$this->Session->setFlash(__('You have successfully added a game to your channel. The game is not published yet...'));
+
 			
 			$id=$this->Game->getLastInsertId();
 				
@@ -816,7 +817,7 @@ function getExtension($str) {
 				
 				
 				
-				//$this->redirect(array('action' => 'channel'));
+				$this->redirect(array('action' => 'channel'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
