@@ -787,7 +787,7 @@ function getExtension($str) {
 			$this->Game->create();
 			
 			if ($this->Game->save($this->request->data)) {
-				$this->Session->setFlash(__('You have successfully added a game to your channel. The game is not published yet...'));
+				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
 
 			
 			$id=$this->Game->getLastInsertId();
