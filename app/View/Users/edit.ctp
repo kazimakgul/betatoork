@@ -1,4 +1,4 @@
-<link type="text/css" rel="stylesheet" href="/css/Addgame.css" />
+<?php $this->Html->css('channelinfo', null, array('inline' => false));?>
 
 <div class="content clearfix">
   <div class="channel_left_panel">
@@ -10,7 +10,7 @@
   <!-- Add Game UI is here-->  
 
 
-<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form addgame' ,'type' => 'file'));?>
+<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form channelinfo' ,'type' => 'file'));?>
 
         <div class="sep"></div>
 <span class="required_notification">* Denotes Required Field</span>

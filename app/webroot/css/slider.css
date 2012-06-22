@@ -9,7 +9,7 @@
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_slide{overflow:hidden; position:relative; height:283px; width:290px;} 
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_slide .ul{position:absolute; top:0px;}         
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game{height:93px; }
-.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_gamebox{height:90px}
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_gamebox{height:91px}
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game .slider_game_avatarback{float:left; margin-top:15px; width:100px; height:55px; background-image:url(../img/t_game_avatar_back.png); padding:6px 6px;}
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game .slider_game_info{float:right; margin-top:15px;}
 .slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game .slider_game_info a{display:block; width:160px; color:White; font-size:7pt; font-family:Arial; text-decoration:none;} 

@@ -10,7 +10,7 @@
 .right_panel{width:985px; float:right; margin-left:20px;}
 .right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:20px;}
 
-.channelinfo{background-image:url(../img/t_channelinfo_back.png); width:875px; background-repeat:no-repeat; padding-top:15px;}
+.channelinfo{background-image:url(../img/t_channelinfo_back.png); width:875px; background-repeat:no-repeat; padding-top:65px;;}
 .channelinfo ul{margin-top:20px;}
 .channelinfo ul li{margin-bottom:5px;}
 .channelinfo p{font-family:Verdana; font-size:10pt; color:#0b81c5; margin:7px; margin-right:10px; float:left; font-weight:100;}

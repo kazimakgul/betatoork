@@ -1,5 +1,3 @@
-<link type="text/css" rel="stylesheet" href="/css/Addgame.css" />
-
 <div class="content clearfix">
   <div class="channel_left_panel">
     <?php  echo $this->element('unlogged_user_panel'); ?>
@@ -10,7 +8,7 @@
   <!-- Add Game UI is here-->  
 
 
-<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form addgame' ,'type' => 'file'));?>
+<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form forgetpass' ,'type' => 'file'));?>
 
         <div class="sep"></div>
 <span class="required_notification">* Denotes Required Field</span>

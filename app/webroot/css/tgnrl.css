@@ -81,6 +81,7 @@ margin-bottom: 10px;
 
 
 .addgame{background-image:url(../img/t_addingame_back.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+.forgetpass{background-image:url(../img/t_forget_password.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
 
 .addgame ul{margin-top:20px;}
 .addgame ul li{margin-bottom:5px;}

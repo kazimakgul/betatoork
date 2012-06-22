@@ -33,43 +33,48 @@
         .right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:20px;}
         .right_panel p{font-family:Verdana; font-size:9pt; color:#0b81c5; margin:7px; margin-right:10px; float:left; font-weight:100;}
         
-        .addadsense{background-image:url(../img/t_termsandconditions_back.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+        .terms{background-image:url(../img/t_termsandconditions_back.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+		.advertise{background-image:url(../img/t_advertise_with_us_back.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+		.developers{background-image:url(../img/t_developer_back.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+		.support{background-image:url(../img/t_support.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+		.privacy{background-image:url(../img/t_privacy_notice_back.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+		.aboutus{background-image:url(../img/t_about_us.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
         
-        .addadsense ul{margin-top:20px;}
-        .addadsense ul li{margin-bottom:5px;}
-        .addadsense p{
-	font-family:Verdana;
-	font-size:8pt;
-	color:#666;
-	margin:7px;
-	margin-right:10px;
-	float:left;
-	font-weight:100;
-}
-	.addadsense h1{font-family:Verdana;	font-size:10pt;	color:#01479c;	margin:7px;	margin-right:10px;	float:left;	font-weight:bold;}
-	.addadsense h2{font-family:Verdana;	font-size:10pt;	color:#898a8a;	margin:7px;	margin-right:10px;	float:left;	font-weight:bold;}
-        .addadsense .firstcol{width:200px; margin-left:20px;}
-        .addadsense .thirdcol{float:left; position:relative; margin-right:3px;}
+        #helpspage ul{margin-top:20px;}
+        #helpspage ul li{margin-bottom:5px;}
+        #helpspage p{
+			font-family:Verdana;
+			font-size:8pt;
+			color:#666;
+			margin:7px;
+			margin-right:10px;
+			float:left;
+			font-weight:100;
+		}
+		#helpspage h1{font-family:Verdana;	font-size:10pt;	color:#01479c;	margin:7px;	margin-right:10px;	float:left;	font-weight:bold;}
+		#helpspage h2{font-family:Verdana;	font-size:10pt;	color:#898a8a;	margin:7px;	margin-right:10px;	float:left;	font-weight:bold;}
+        #helpspage .firstcol{width:200px; margin-left:20px;}
+        #helpspage .thirdcol{float:left; position:relative; margin-right:3px;}
         
         
-        .addadsense .inputleft{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_left.png); }
-        .addadsense .inputmid{float:left; height:30px; background-image:url(../img/t_inputtext_mid.png); }
-        .addadsense .inputmid input{background-color:transparent; width:515px; border:none; margin-top:7px; color:#0b81c5;}
-        .addadsense .inputmid .txtfakefile{float:left; width:425px;}
+        #helpspage .inputleft{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_left.png); }
+        #helpspage .inputmid{float:left; height:30px; background-image:url(../img/t_inputtext_mid.png); }
+        #helpspage .inputmid input{background-color:transparent; width:515px; border:none; margin-top:7px; color:#0b81c5;}
+        #helpspage .inputmid .txtfakefile{float:left; width:425px;}
 
-        .addadsense .inputright{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_right.png); }
-        .addadsense .browse{display:block; float:left; background-image:url(../img/t_browse_btn.png); width:85px; height:28px; margin-left:5px;}
-        .addadsense .file{width:544px; position:absolute; border:none; text-align: right; -moz-opacity:0; filter:alpha(opacity: 0); opacity: 0; height:28px; top:0px; left:0px; }
+        #helpspage .inputright{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_right.png); }
+        #helpspage .browse{display:block; float:left; background-image:url(../img/t_browse_btn.png); width:85px; height:28px; margin-left:5px;}
+        #helpspage .file{width:544px; position:absolute; border:none; text-align: right; -moz-opacity:0; filter:alpha(opacity: 0); opacity: 0; height:28px; top:0px; left:0px; }
         
-        .addadsense .textareaup{width:541px; height:12px; background-image:url(../img/t_textarea_up.png); margin-top:5px;}
-        .addadsense .textareamid{width:541px; background-image:url(../img/t_textarea_mid.png); background-repeat:repeat-y;}
-        .addadsense .textareamid textarea{background-color:transparent; font-family:Verdana; width:515px; height:150px; overflow:auto; border:none; margin-left:15px; color:#0b81c5;}
-        .addadsense .textareadown{width:541px; height:12px; background-image:url(../img/t_textarea_down.png);}
+        #helpspage .textareaup{width:541px; height:12px; background-image:url(../img/t_textarea_up.png); margin-top:5px;}
+        #helpspage .textareamid{width:541px; background-image:url(../img/t_textarea_mid.png); background-repeat:repeat-y;}
+        #helpspage .textareamid textarea{background-color:transparent; font-family:Verdana; width:515px; height:150px; overflow:auto; border:none; margin-left:15px; color:#0b81c5;}
+        #helpspage .textareadown{width:541px; height:12px; background-image:url(../img/t_textarea_down.png);}
         
-        .addadsense .dropselect {width:511px; height:27px; background-image:url(../img/t_inputtext_mid.png); padding-top:3px; padding-left:3px; float:left;}
-        .addadsense .imgverify {padding-top:8px;}       
+        #helpspage .dropselect {width:511px; height:27px; background-image:url(../img/t_inputtext_mid.png); padding-top:3px; padding-left:3px; float:left;}
+        #helpspage .imgverify {padding-top:8px;}       
         
-        .addadsense .save{display:block; height:28px; width:182px; margin-left:610px; background-image:url(../img/t_save_btn.png);}
+        #helpspage .save{display:block; height:28px; width:182px; margin-left:610px; background-image:url(../img/t_save_btn.png);}
         
         
         .information{background-image:url(../img/t_info_back.png); width:224px; height:53px; margin-bottom:8px; background-repeat:no-repeat;}        

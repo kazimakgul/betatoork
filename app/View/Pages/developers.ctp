@@ -8,7 +8,7 @@
       <?php  echo $this->element('categories_left_menu'); ?> 
   </div>
             <div class="right_panel">
-                <div id="adsense" class="addadsense">
+                <div id="helpspage" class="developers">
                     <div class="sep"></div>
                     <div class="scroll-pane">
                     <div> 

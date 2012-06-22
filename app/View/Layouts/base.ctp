@@ -6,10 +6,6 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 
-
-
-
-
 <meta property="og:title" content="Toork"/>
 <meta property="og:type" content="Game"/>
 <meta property="og:url" content="http://toork.com/"/>
@@ -19,7 +15,7 @@
 <meta property="og:description"
       content="Create your own game channel."/>
 
-
+<?php echo $this->fetch('css'); ?>
 <?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel')); ?>
 
 
