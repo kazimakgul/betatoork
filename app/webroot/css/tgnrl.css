@@ -1,0 +1,349 @@
+﻿.down {margin-top:10px; width:100%; height:100%;}
+
+.left_panel{width:250px; float:left; margin-left:20px;}
+.left_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:10px;}
+.left_panel ul li{height:21px; padding-left:40px; padding-top:4px;}
+.left_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png);}
+.left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none;} 
+.left_panel ul li a:hover{text-decoration:underline;} 
+.categories{background-image:url(../img/t_category_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
+.best{background-image:url(../img/t_best_channel_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
+
+.subscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_subcribe_btn.png) no-repeat 0 0;}
+.unsubscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_subcribe_btn.png) no-repeat 0 -39px;}
+
+.right_panel{width:980px; float:right; margin-left:10px;}
+.right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px;}
+.right_panel ul li{height:100%; padding-left:20px; margin-top:10px;}
+.right_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png); padding-top:5px;}
+
+.right_panel .wallframe{width:89px; background-image:url(../img/t_avatar_frame.png);height:52px; margin-bottom:20px;}
+.right_panel .walllinks{ float:left; margin-left:55px; margin-top:-35px;}
+.right_panel .walllinks a{font-family:Verdana, Geneva, sans-serif;	color:#0d7ac2;	font-size:11px;	font-weight: bold;}
+.right_panel .channelname{  margin-left: 55px;    margin-top: -35px;}
+.right_panel .wallinfo{  margin-left: 150px;    margin-top: -12px;}
+.right_panel .letsbtn{ margin-left: 413px;   margin-top: 0;}
+
+.addadsense{background-image:url(../img/t_wall.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+
+.addadsense ul{margin-top:20px;}
+.addadsense ul li{margin-bottom:5px;}
+.addadsense p{font-family:Verdana; font-size:8pt; color:#666; margin: -42px 10px 16px 180px	float:left;	font-weight:100;}
+
+
+.toprated{background-image:url(../img/t_top_rated_games.png); width:298px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
+.searchresult {
+background-image: url(../img/t_search_back.png);
+background-repeat: no-repeat;
+width: 100%;
+height: 53px;
+margin-bottom: 10px;
+}
+
+.right_panel .seeall{display:block; font-family:Arial; margin:2px; font-size:11px; text-decoration:none; float:left; margin-top:25px; margin-left:10px; color: #0066CC;}
+.right_panel .seeall:hover {text-decoration:underline;}
+
+.mostplayed{background-image:url(../img/t_most_played_games_back.png); width:332px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
+
+.rating {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position:-93px 0px;}
+.ratingresult {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat;}
+.rating1 {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position: -74px 0px;}
+.rating2 {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position: -55px 0px;}
+.rating3 {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position: -36px 0px;}
+.rating4 {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position: -17px 0px;}
+.rating5 {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position: 2px 0px;}
+
+.rating a{float:left; display:block; width:15px; height:17px; margin:1px 2px;}
+.rating a:hover{cursor:pointer;}
+
+/* Subscribe Cards */
+.subscriberhd{background-image:url(../img/t_subscribers_back.png); width:219px; padding-top:60px; background-repeat:no-repeat; float:left;}
+.subscriptionhd{background-image:url(../img/t_subscriptions_back.png); width:230px; padding-top:60px; background-repeat:no-repeat; float:left;}
+.subcount{ display:block;float:left; font-family:Arial; color:#0b81c5; margin:2px; font-size:12pt; margin-top:20px; margin-left:10px;}
+.subcard {float:left; width:265px; height:120px; margin-top:20px; margin-right:10px; margin-bottom:30px; margin-left:20px;} 
+.subcard a{float:left; display:block;}
+
+.subcard .viewchannel{width:17px; height:15px; background:url(../img/t_subscribecard_channel_ico.png) no-repeat 0 0; margin-top:7px; margin-right:5px;}
+.subcard .viewchannel:hover{background-position:0 -15px;}
+.subcard .block{width:13px; height:13px; background:url(../img/t_subscribecard_block_ico.png) no-repeat 0 0; margin-top:7px; margin-right:5px;}
+.subcard .block:hover{background-position:0 -13px;}        
+.subcard .subup{width:265px; height:25px; background:url(../img/t_subscribecard_up_back.png) no-repeat 0 0; padding-bottom:5px;} 
+.subcard .subup .channelname{font-family:Arial; font-size:10pt; color:#0b81c5; text-decoration:none; font-weight:600; margin:7px 15px; width:180px;}
+.subcard .subup .channelname:hover{text-decoration:underline}
+.subcard .submid{width:235px; height:100%; background:url(../img/t_subscribecard_mid_back.png) repeat-y 0 0; padding:0 15px;}
+.subcard .submid .cardsep{height:3px; width:100%; background:url(../img/t_subscribecard_sep.png) repeat-x; margin-bottom:10px; } 
+.subcard .submid .channelavatar{float:left; background:url(../img/t_subscribecard_userback.png) no-repeat; padding:4px; height:95px; width:71px;} 
+.subcard .submid .channelavatar img{height:95px; width:71px;} 
+.subcard .submid ul{float:left; margin-left:10px; margin-top:10px;} 
+.subcard .submid ul a{font-family:Arial; font-size:10pt; color:#979797; text-decoration:none;}     
+.subcard .submid ul a:hover{text-decoration:underline;}  
+.subcard .subdown{width:265px; height:13px; background:url(../img/t_subscribecard_down_back.png) no-repeat 0 0;}
+
+
+.addgame{background-image:url(../img/t_addingame_back.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+.forgetpass{background-image:url(../img/t_forget_password.png); width:875px; padding-top:65px; background-repeat:no-repeat;}
+
+.addgame ul{margin-top:20px;}
+.addgame ul li{margin-bottom:5px;}
+.addgame p{font-family:Verdana; font-size:9pt; color:#0b81c5; margin:7px; margin-right:10px; float:left; font-weight:100;}
+.addgame .firstcol{width:200px; margin-left:20px;}
+.addgame .thirdcol{float:left; position:relative; margin-right:3px;}
+
+.addgame .inputleft{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_left.png); }
+.addgame .inputmid{float:left; height:30px; background-image:url(../img/t_inputtext_mid.png); }
+.addgame .inputmid input{background-color:transparent; width:515px; border:none; margin-top:7px; color:#0b81c5;}
+.addgame .inputmid .txtfakefile{float:left; width:425px;}
+
+.addgame .inputright{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_right.png); }
+.addgame .browse{display:block; float:left; background-image:url(../img/t_browse_btn.png); width:85px; height:28px; margin-left:5px;}
+.addgame .file{width:544px; position:absolute; border:none; text-align: right; -moz-opacity:0; filter:alpha(opacity: 0); opacity: 0; height:28px; top:0px; left:0px; }
+
+.addgame .textareaup{width:541px; height:12px; background-image:url(../img/t_textarea_up.png); margin-top:5px;}
+.addgame .textareamid{width:541px; background-image:url(../img/t_textarea_mid.png); background-repeat:repeat-y;}
+.addgame .textareamid textarea{background-color:transparent; font-family:Verdana; width:515px; height:150px; overflow:auto; border:none; margin-left:15px; color:#0b81c5;}
+.addgame .textareadown{width:541px; height:12px; background-image:url(../img/t_textarea_down.png);}
+
+.addgame .dropselect {width:511px; height:27px; background-image:url(../img/t_inputtext_mid.png); padding-top:3px; padding-left:3px; float:left;}
+.addgame .imgverify {padding-top:8px;}       
+
+.addgame .add{display:block; height:28px; width:182px; margin-left:610px; margin-top:20px; background-image:url(../img/t_add_btn.png);}
+
+.addedgames ul li{height:100px; padding-left:20px; margin-top:10px;}
+.addedgames ul .even{background-image:url(../img/t_ul_odd_li_back.png); padding-top:5px;}
+
+
+.gamebox .gameboxmove{background-image: url("../img/t_move_gamebox.png"); float: right; height: 20px; margin-right: 1px; margin-top: 16px; width: 50px;}
+
+.gamebox .gameboxdelete{background-image: url("../img/t_delete_gamebox.png"); float: right; height: 20px; margin-right: 5px; margin-top: 45px; width: 50px;}
+.gamebox .gb_gameboxmove{display:block; text-decoration:none; font-family:Arial; font-size:8pt; color:#004473; margin:4px 20px;}
+.gamebox .gb_gameboxmove:hover{font-size:9pt; color:white;}
+
+.gamebox .gb_gameboxdelete{display:block; text-decoration:none; font-family:Arial; font-size:7pt; color:#004473; margin:4px 4px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Form Input HTML5*/
+
+
+.contact_form h2, .contact_form label {
+font-family:Georgia, Times, "Times New Roman", serif;
+}
+
+.form_hint, .required_notification {font-size: 13px;}
+
+.error-message{color:red;}
+
+/* === List Styles === */
+.contact_form ul {
+    width:750px;
+    list-style-type:none;
+	list-style-position:outside;
+	margin:0px;
+	padding:0px;
+}
+.contact_form li{
+	padding:12px; 
+	border-bottom:1px solid #eee;
+	position:relative;
+} 
+.contact_form li:first-child, .contact_form li:last-child {
+	border-bottom:0px solid #777;
+}
+
+/* === Form Header === */
+.contact_form h2 {
+	margin:0;
+	display: inline;
+}
+.required_notification {
+	color:#d45252; 
+	margin:5px 0 0 0; 
+	display:inline;
+	float:right;
+}
+
+/* === Form Elements === */
+.contact_form label {
+	width:150px;
+	margin-top: 3px;
+	display:inline-block;
+	float:left;
+	padding:3px;
+}
+.contact_form input {
+	height:20px; 
+	width:220px; 
+	padding:5px 8px;
+}
+
+.contact_form select {
+	height:30px; 
+	width:150px; 
+	padding:5px 8px;
+}
+
+
+
+.contact_form textarea {padding:8px; width:300px;}
+.contact_form button {margin-left:156px;}
+
+	/* form element visual styles */
+	.contact_form input, .contact_form textarea, .contact_form select{ 
+		border:1px solid #aaa;
+		box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+		border-radius:2px;
+		padding-right:30px;
+		-moz-transition: padding .25s; 
+		-webkit-transition: padding .25s; 
+		-o-transition: padding .25s;
+		transition: padding .25s;
+	}
+	.contact_form input:focus, .contact_form textarea:focus{
+		background: #fff; 
+		border:1px solid #555; 
+		box-shadow: 0 0 3px #aaa; 
+		padding-right:70px;
+	}
+
+/* === HTML5 validation styles === */	
+.contact_form input:required, .contact_form textarea:required {
+	background: #fff url(./red_asterisk.png) no-repeat 98% center;
+}
+.contact_form input:required:valid, .contact_form textarea:required:valid {
+	background: #fff url(./valid.png) no-repeat 98% center;
+	box-shadow: 0 0 5px #5cd053;
+	border-color: #28921f;
+}
+.contact_form input:focus:invalid, .contact_form textarea:focus:invalid {
+	background: #fff url(./invalid.png) no-repeat 98% center;
+	box-shadow: 0 0 5px #d45252;
+	border-color: #b03535
+}
+
+/* === Form hints === */
+.form_hint {
+	background: #d45252;
+	border-radius: 3px 3px 3px 3px;
+	color: white;
+	margin-left:8px;
+	padding: 1px 6px;
+	z-index: 999; /* hints stay above all other elements */
+	position: absolute; /* allows proper formatting if hint is two lines */
+	display: none;
+}
+.form_hint::before {
+	content: "\25C0";
+	color:#d45252;
+	position: absolute;
+	top:1px;
+	left:-6px;
+}
+.contact_form input:focus + .form_hint {display: inline;}
+.contact_form input:required:valid + .form_hint {background: #28921f;}
+.contact_form input:required:valid + .form_hint::before {color:#28921f;}
+.contact_form textarea:focus + .form_hint {display: inline;}
+.contact_form textarea:required:valid + .form_hint {background: #28921f;}
+.contact_form textarea:required:valid + .form_hint::before {color:#28921f;}
+.contact_form select:focus + .form_hint {display: inline;}
+.contact_form select:required:valid + .form_hint {background: #28921f;}
+.contact_form select:required:valid + .form_hint::before {color:#28921f;}
+	
+/* === Button Style === */
+button.submit {
+	background-color: #68b12f;
+	background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
+	background: -webkit-linear-gradient(top, #68b12f, #50911e);
+	background: -moz-linear-gradient(top, #68b12f, #50911e);
+	background: -ms-linear-gradient(top, #68b12f, #50911e);
+	background: -o-linear-gradient(top, #68b12f, #50911e);
+	background: linear-gradient(top, #68b12f, #50911e);
+	border: 1px solid #509111;
+	border-bottom: 1px solid #5b992b;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	box-shadow: inset 0 1px 0 0 #9fd574;
+	-webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
+	-moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+	-ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+	-o-box-shadow: 0 1px 0 0 #9fd574 inset;
+	color: white;
+	font-weight: bold;
+	padding: 6px 20px;
+	text-align: center;
+	text-shadow: 0 -1px 0 #396715;
+}
+
+
+
+button.submit:hover {
+	opacity:.85;
+	cursor: pointer; 
+}
+button.submit:active {
+	border: 1px solid #20911e;
+	box-shadow: 0 0 10px 5px #356b0b inset; 
+	-webkit-box-shadow:0 0 10px 5px #356b0b inset ;
+	-moz-box-shadow: 0 0 10px 5px #356b0b inset;
+	-ms-box-shadow: 0 0 10px 5px #356b0b inset;
+	-o-box-shadow: 0 0 10px 5px #356b0b inset;
+	
+}
+
+
+/** Paging **/
+.paging {
+
+	color: #ccc;
+	margin-top: 1em;
+	clear:both;
+}
+.paging .current,
+.paging .disabled,
+.paging a {
+	text-decoration: none;
+	padding: 5px 8px;
+	display: inline-block
+}
+.paging > span {
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-left: 0;
+}
+.paging > span:hover {
+	background: #B8DCFF;
+}
+.paging .prev {
+	border-left: 1px solid #ccc;
+	-moz-border-radius: 4px 0 0 4px;
+	-webkit-border-radius: 4px 0 0 4px;
+	border-radius: 4px 0 0 4px;
+}
+.paging .next {
+	-moz-border-radius: 0 4px 4px 0;
+	-webkit-border-radius: 0 4px 4px 0;
+	border-radius: 0 4px 4px 0;
+}
+.paging .disabled {
+	color: #ddd;
+}
+.paging .disabled:hover {
+	background: transparent;
+}
+.paging .current {
+	background: #A6C6E6;
+	color: black;
+}
+

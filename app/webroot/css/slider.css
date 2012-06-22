@@ -1,0 +1,34 @@
+﻿.slider{height:350px; margin-top:5px; float:left;}
+.slider .slider_shadowleft{width:16px; height:352px; background-image:url(../img/t_slider_left_shadow.png); float:left;}        
+.slider .slider_leftpanel{float:left; position:relative; background-image:url(../img/t_slide_left_back.jpg); background-repeat:repeat; height:350px; padding-left:20px;}
+.slider .slider_leftpanel .uparr{display:block; background-image:url(../img/t_slide_up_arr.png); height:13px; width:49px; margin-top:12px; margin-left:130px;}
+.slider .slider_leftpanel .slider_leftpanel_slidepointer{width:335px; height:103px; position:absolute; left:-5px; top:224px; background-image:url(../img/t_slide_pointer_new.png);}
+.slider .slider_leftpanel .slider_leftcontent{width:310px;}
+.slider .slider_leftpanel .slider_leftpanel_slideitem{float:left; margin-right:5px;}
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_sep{width:290px; height:2px; background-image:url(../img/t_slide_sep.png); background-repeat:repeat-x; margin-top:5px; margin-bottom:7px;}
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_slide{overflow:hidden; position:relative; height:283px; width:290px;} 
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_slide .ul{position:absolute; top:0px;}         
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game{height:93px; }
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_gamebox{height:91px}
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game .slider_game_avatarback{float:left; margin-top:15px; width:100px; height:55px; background-image:url(../img/t_game_avatar_back.png); padding:6px 6px;}
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game .slider_game_info{float:right; margin-top:15px;}
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game .slider_game_info a{display:block; width:160px; color:White; font-size:7pt; font-family:Arial; text-decoration:none;} 
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game .slider_game_info a:hover{text-decoration:underline;} 
+.slider .slider_leftpanel .slider_leftpanel_slideitem .slider_leftpanel_game .slider_game_info .slider_game_name{font-size:8pt; font-weight:bold; height:28px;} 
+.slider .slider_leftpanel .slider_leftpanel_innershadow{float:right; height:276px; width:15px; background-image:url(../img/t_slide_left_shdw.png);}
+.slider .slider_leftpanel .downarr{display:block; background-image:url(../img/t_slide_down_arr.png); height:13px; width:49px; margin-bottom:10px; margin-left:130px;}
+        
+.slider .slider_rightpanel {float:left; width:640px; height:350px;}
+.slider .slider_rightpanel .slider_rightpanel_slide{position:relative; overflow:hidden; width:640px; height:350px;}        
+.slider .slider_rightpanel .slider_rightpanel_slide .ul{position:absolute;}
+.slider .slider_rightpanel .slider_rightpanel_slide .ul div{position:relative;}
+.slider .slider_rightpanel .slider_rightpanel_slide .ul div .slider_rightpanel_desc{position:absolute; left:0px; top:230px; width:570px; height:62px; padding-left:40px; padding-top:10px; padding-right:30px; padding-bottom:10px; color:White; font-family:Arial; font-size:12px; background-image:url(../img/t_slide_right_descback.png);}
+.slider .slider_rightpanel .slider_rightpanel_slidepointerarr{position:absolute; z-index:1; width:34px; height:98px; top:225px; background-image:url(../img/t_slide_pointer_newarr.png);}
+.slider .slider_shadowright{width:16px; height:352px; float:left; background-image:url(../img/t_slide_right_shadow.png);}
+
+.rating{width:71px; height:12px; background-image:url("../img/t_ratestars.png"); background-position:-71px 0;}
+.rating1{width:71px; height:12px; background-image:url("../img/t_ratestars.png"); background-position:-57px 0;}
+.rating2{width:71px; height:12px; background-image:url("../img/t_ratestars.png"); background-position:-42px 0;}
+.rating3{width:71px; height:12px; background-image:url("../img/t_ratestars.png"); background-position:-28px 0;}
+.rating4{width:71px; height:12px; background-image:url("../img/t_ratestars.png"); background-position:-15px 0;} 
+.rating5{width:71px; height:12px; background-image:url("../img/t_ratestars.png"); background-position:0px 0;}
