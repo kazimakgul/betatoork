@@ -11,8 +11,13 @@
 						
 						<?php foreach ($top_rated_games as $game): ?>
 
-<?php $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id'])); ?>
-<?php $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play')); ?>
+<?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>""));?>
+<?php 	  	
+	if($game['Game']['seo_url']!=NULL)	  	
+		$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
+	else
+  		$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));  
+?>  
 <?php $caturl=$this->Html->url(array( "controller" => "games","action" =>"categorygames",h($game['Category']['id']))); ?>
 						
 						<div class="slider_leftpanel_game">
@@ -30,23 +35,23 @@
 		}
 		elseif(61<=$game['Game']['starsize'] && $game['Game']['starsize']<81)
 		{
-		$starvalue=-17;
+		$starvalue=-20;
 		}
 		elseif(41<=$game['Game']['starsize'] && $game['Game']['starsize']<61)
 		{
-		$starvalue=-30;
+		$starvalue=-40;
 		}
 		elseif(21<=$game['Game']['starsize'] && $game['Game']['starsize']<41)
 		{
-		$starvalue=-45;
+		$starvalue=-60;
 		}
 		elseif(0<$game['Game']['starsize'] && $game['Game']['starsize']<21)
 		{
-		$starvalue=-57;
+		$starvalue=-78;
 		}
 		elseif($game['Game']['starsize']==0)
 		{
-		$starvalue=-74;
+		$starvalue=-95;
 		}
 		
 		?>
@@ -83,7 +88,13 @@
 								
 				<?php foreach ($top_rated_games as $game): ?>
 				
-<?php $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play')); ?>
+	
+<?php 
+	if($game['Game']['seo_url']!=NULL)
+		$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
+	else
+		$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));  
+?> 
 				
 				<div>
 					<a href="<?php echo $playurl ?>"><img class="jail" alt="" data-href="<?php echo $this->Upload->url2($game,'Game.picture',array('style' => 'showcase')); ?>"/></a>
