@@ -53,7 +53,7 @@
                 </div>
                 <div align="center"><?php echo $user['User']['adcode'] ?></div>
                 <div class="fbcomment" align="center"></br>
-                    <div class="fb-comments" data-href="http://toork.com/" data-num-posts="5" data-width="750"></div>
+                    <?php echo $this->Facebook->comments(array('width'=>750)); ?>
                 </div>
             </div>
         </div>

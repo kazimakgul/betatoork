@@ -38,6 +38,7 @@ class AppController extends Controller {
 
     public $components = array(
         'Session','Cookie',
+		'Facebook.Connect'=>array('model' => 'User'),
         'Auth' => array(
             'loginRedirect' => array('controller' => 'games', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),

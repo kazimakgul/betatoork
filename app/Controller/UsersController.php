@@ -9,7 +9,7 @@ class UsersController extends AppController {
 
 
 public $components = array('AutoLogin','Email','Auth','Amazonsdk.Amazon','Recaptcha.Recaptcha');
-public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
+public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
 
 
 	public function beforeFilter() {
