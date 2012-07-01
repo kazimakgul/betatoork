@@ -77,6 +77,20 @@
          <input placeholder="not yet" required type="file" name="data[Game][picture]" accept="image/gif,image/jpg,image/png,image/jpeg"  size="100">
          <a> 640x350 pixel high quality</a>
         </li>
+
+<li>
+  <?php
+
+      echo $this->Recaptcha->show(array(
+        'theme' => 'white',
+        'lang' => 'en',
+      ));
+  
+      echo $this->Recaptcha->error();
+
+  ?>
+</li>
+
         <li>
             <button class="submit" type="submit">Submit Game</button>
         </li>

@@ -8,8 +8,8 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
 
-public $components = array('AutoLogin','Email','Auth','Amazonsdk.Amazon');
-public $helpers = array('Html','Form','Upload');
+public $components = array('AutoLogin','Email','Auth','Amazonsdk.Amazon','Recaptcha.Recaptcha');
+public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
 
 
 	public function beforeFilter() {
@@ -162,7 +162,7 @@ public function __sendActivationEmail($user_id) {
 		$user = $this->User->find('first',array('conditions' => array('User.id'=>$user_id)));
 		
 		// Set data for the "view" of the Email
-		$this->set('activate_url', 'http://ec2-23-22-10-91.compute-1.amazonaws.com/betatoork/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
+		$this->set('activate_url', 'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
  
  		$this->Email->from  = 'Toork <no-reply@toork.com>';
@@ -187,7 +187,7 @@ public function __sendResetEmail($user_id) {
 		}
  
 		// Set data for the "view" of the Email
-		$this->set('reset_url', 'http://ec2-23-22-10-91.compute-1.amazonaws.com/betatoork/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
+		$this->set('reset_url', 'http://toork.com/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
         $this->Email->from  = 'Toork <no-reply@toork.com>';
 		$this->Email->to = $user["User"]["email"];
@@ -278,21 +278,8 @@ public function __sendResetEmail($user_id) {
 	public function bestChannels(){
 		$this->loadModel('Game');
 		$limit=15;
-
-		/*$userslar = $this->User->find('all');
-
-		$result = array(); 
-		foreach ($userslar as $user):
-			$count = $this->Game->find('count', array('conditions' => array('Game.user_id' => $user['User']['id'])));
-			$result[] =$count; 
-		endforeach;
-		$res = $this->set('result', $result);*/
-
-
 		$users = $this->User->find('all', array('limit' => $limit, 'order' => array('User.totalrate' => 'desc')));
-
     	return $users;
-
 	}
 
 
@@ -315,7 +302,8 @@ public function __sendResetEmail($user_id) {
 
 function secureSuperGlobalPOST($value)
     {
-        $string = htmlspecialchars(stripslashes($value));
+	    $string = preg_replace('/[^\w\d_ -]/si', '', $value);
+        $string = htmlspecialchars(stripslashes($string));
         $string = str_ireplace("script", "blocked", $string);
         $string = mysql_escape_string($string);
 		$string = htmlentities($string);
@@ -633,7 +621,8 @@ function secureSuperGlobalPOST($value)
  * @param string $id
  * @return void
  */
- public function affected($id,$value) {
+ public function affected($id,$value)
+ {
  $this->User->Game->updateAll(array('active'=>$value),array('user_id'=>$id));
  $this->Session->setFlash(__('The user has been updated all games of this user has been affected'));
  }
@@ -699,19 +688,5 @@ function secureSuperGlobalPOST($value)
 		}
 		$this->Session->setFlash(__('User was not deleted'));
 		$this->redirect(array('action' => 'index'));
-	}
-
-	
-	public function checkUsername(){
-		//$username = $this->request->data['Post']['ps'];
-		$arr = array ("response"=>"0");
-		//echo json_encode($arr);
-
-		//$this->RequestHandler->setContent('json', 'application/json');
-		//$message=json_encode($arr);
-		
-		//return new CakeResponse(array('body' => json_encode($arr)));
-		return json_encode(array('results' => json_decode($arr)));
-
 	}
 }

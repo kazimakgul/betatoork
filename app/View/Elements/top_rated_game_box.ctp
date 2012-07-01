@@ -53,7 +53,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 		<div class="rateresult"><?php echo $game['Game']['starsize']; ?> %</div>
 	</div>
 	
-	<?php $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id'])); ?>
+	<?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>"")); ?>
 	<a class="gb_channelname" href="<?php echo $channelurl ?>"><?php echo $game['User']['username']; ?></a>
 	<a class="gb_gamename" href="<?php echo $playurl ?>"><?php echo $game['Game']['name']; ?></a>
 </div>						

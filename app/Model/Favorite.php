@@ -19,6 +19,15 @@ class Favorite extends AppModel {
  * @var string
  */
 	public $displayField = 'user_id';
+	
+	
+	
+	public $virtualFields = array(
+     'active' => 'SELECT active FROM games where games.id=Favorite.game_id'
+	,'recommend' => 'SELECT starsize * rate_count FROM games where games.id=Favorite.game_id'
+);
+	
+	
 /**
  * Validation rules
  *
