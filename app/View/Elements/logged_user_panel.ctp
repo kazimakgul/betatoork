@@ -1,7 +1,7 @@
 <?php 
 $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$userid));
 $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$userid)); 
-$channelurl=$this->Html->url(array("controller" => $user['User']['seo_username'],"action" =>""));
+$channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$userid)); 
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$userid));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 ?>

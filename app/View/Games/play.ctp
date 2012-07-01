@@ -1,7 +1,4 @@
-<?php
-
-$channel=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>"")); 
-?>
+<?php $channel=$this->Html->url(array( "controller" => "games","action" =>"usergames",$game['Game']['user_id'] )); ?>
 <br><br><br>
 <?php if($game['Game']['active']=='1'){?>
 

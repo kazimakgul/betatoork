@@ -38,7 +38,6 @@ class AppController extends Controller {
 
     public $components = array(
         'Session','Cookie',
-		'Facebook.Connect'=>array('model' => 'User'),
         'Auth' => array(
             'loginRedirect' => array('controller' => 'games', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
@@ -69,20 +68,14 @@ class AppController extends Controller {
         'Favorite' => array(
             'limit' => 28,
             'order' => array(
-                'Favorite.recommend' => 'desc',
-            ), 'recursive'=>'2'
-        ),
-        'Playcount' => array(
-            'limit' => 28,
-            'order' => array(
                 'Game.recommend' => 'desc',
-            ),'recursive'=>'2'
-        ), 
+            ),
+        ),         
     );
 
 
     public function beforeFilter() {
-    $this->Auth->allow('index','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames');
+    $this->Auth->allow('index','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2');
 
     }
     

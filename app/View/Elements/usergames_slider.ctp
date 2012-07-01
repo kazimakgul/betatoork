@@ -11,13 +11,8 @@
 						
 						<?php foreach ($slider as $game): ?>
 
-<?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>""));?>
-<?php 	  	
-	if($game['Game']['seo_url']!=NULL)	  	
-		$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
-	else
-  		$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));  
-?>  
+<?php $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id'])); ?>
+<?php $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play')); ?>
 <?php $caturl=$this->Html->url(array( "controller" => "games","action" =>"categorygames",h($game['Category']['id']))); ?>
 						
 						<div class="slider_leftpanel_game">
@@ -27,7 +22,7 @@
 									<a href="<?php echo $playurl ?>" class="slider_game_name"><?php echo $game['Game']['name']?></a>
 									<a href="<?php echo $channelurl ?>"><?php echo $game['User']['username']?></a>
 									<a href="<?php echo $caturl ?>" class="slider_game_category"><?php echo $game['Category']['name']?></a>
-<?php 
+		<?php 
 		
 		if(81<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
 		{
@@ -35,23 +30,23 @@
 		}
 		elseif(61<=$game['Game']['starsize'] && $game['Game']['starsize']<81)
 		{
-		$starvalue=-20;
+		$starvalue=-17;
 		}
 		elseif(41<=$game['Game']['starsize'] && $game['Game']['starsize']<61)
 		{
-		$starvalue=-40;
+		$starvalue=-30;
 		}
 		elseif(21<=$game['Game']['starsize'] && $game['Game']['starsize']<41)
 		{
-		$starvalue=-60;
+		$starvalue=-45;
 		}
 		elseif(0<$game['Game']['starsize'] && $game['Game']['starsize']<21)
 		{
-		$starvalue=-78;
+		$starvalue=-57;
 		}
 		elseif($game['Game']['starsize']==0)
 		{
-		$starvalue=-95;
+		$starvalue=-74;
 		}
 		
 		?>
@@ -87,12 +82,8 @@
 				
 				<?php foreach ($slider as $game): ?>
 				
-<?php 
-	if($game['Game']['seo_url']!=NULL)
-		$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
-	else
-		$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));  
-?> 			
+<?php $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play')); ?>
+				
 				<div>
 					<a href="<?php echo $playurl ?>"><img class="jail" alt="" data-href="<?php echo $this->Upload->url2($game,'Game.picture',array('style' => 'showcase')); ?>"/></a>
 <!-- 					<span  class="slider_rightpanel_desc">

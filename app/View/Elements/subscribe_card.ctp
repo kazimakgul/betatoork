@@ -4,7 +4,7 @@
 <?php 
 $followid = $follower['Subscription']['subscriber_to_id'];
 $card = $this->requestAction( array('controller' => 'games', 'action' => 'follow_card', $followid));
-$channelurl=$this->Html->url(array("controller" => $card[7],"action" =>"")); 
+$channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$followid));
 $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$followid));
 $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$followid));
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$followid));

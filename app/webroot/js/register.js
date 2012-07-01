@@ -1,71 +1,245 @@
-	$(function() {
-					//the form wrapper (includes all forms)
-				var $form_wrapper	= $('#form_wrapper'),
-					//the current form is the one with class active
-					$currentForm	= $form_wrapper.children('form.active'),
-					//the change form links
-					$linkform		= $form_wrapper.find('.linkform');
-						
-				//get width and height of each form and store them for later						
-				$form_wrapper.children('form').each(function(i){
-					var $theForm	= $(this);
-					//solve the inline display none problem when using fadeIn fadeOut
-					if(!$theForm.hasClass('active'))
-						$theForm.hide();
-					$theForm.data({
-						width	: $theForm.width(),
-						height	: $theForm.height()
-					});
-				});
-				
-				//set width and height of wrapper (same of current form)
-				setWrapperWidth();
-				
-				/*
-				clicking a link (change form event) in the form
-				makes the current form hide.
-				The wrapper animates its width and height to the 
-				width and height of the new current form.
-				After the animation, the new form is shown
-				*/
-				$linkform.bind('click',function(e){
-					var $link	= $(this);
-					var target	= $link.attr('rel');
-					$currentForm.fadeOut(400,function(){
-						//remove class active from current form
-						$currentForm.removeClass('active');
-						//new current form
-						$currentForm= $form_wrapper.children('form.'+target);
-						//animate the wrapper
-						$form_wrapper.stop()
-									 .animate({
-										width	: $currentForm.data('width') + 'px',
-										height	: $currentForm.data('height') + 'px'
-									 },500,function(){
-										//new form gets class active
-										$currentForm.addClass('active');
-										//show the new form
-										$currentForm.fadeIn(400);
-									 });
-					});
-					e.preventDefault();
-				});
-				
-				function setWrapperWidth(){
-					$form_wrapper.css({
-						width	: $currentForm.data('width') + 'px',
-						height	: $currentForm.data('height') + 'px'
-					});
-				}
-				
-				/*
-				for the demo we disabled the submit buttons
-				if you submit the form, you need to check the 
-				which form was submited, and give the class active 
-				to the form you want to show
-				*/
-				$form_wrapper.find('input[type="submit"]')
-							 .click(function(e){
-								e.preventDefault();
-							 });	
-			});
+$(function () {
+    //var err;
+    var err = true;
+    var mailRegex = /[aA-zZ0-9._%+-]+@[aA-zZ0-9.-]+\.[aA-zZ]{2,4}/;
+
+
+    //-----------------//
+    /* Regbox position */
+    $('.t_regbox_overlay').height($(window).height()).width($(window).width());
+    $('.t_regbox').offset({ top: ($(window).height() - $('.t_regbox').height()) / 2, left: ($(window).width() - $('.t_regbox').width()) / 2 });
+    /* Regbox position */
+    //-----------------//
+
+
+    //---------------//
+    /* Tab's action */
+    $('.t_regbox_regtab').click(function () {
+        $('.t_regbox_tabs').css('backgroundPosition', '-4px 0px');
+        $('.t_regbox_logmask').hide();
+        $('.t_regbox_signmask').show();
+        if ($('.t_regbox_errbox_container').is(':visible')) {
+            $('.t_regbox_errbox_container').hide();
+        }
+    });
+    $('.t_regbox_logtab').click(function () {
+        $('.t_regbox_tabs').css('backgroundPosition', '-4px -38px');
+        $('.t_regbox_signmask').hide();
+        $('.t_regbox_logmask').show();
+        if ($('.t_regbox_errbox_container').is(':visible')) {
+            $('.t_regbox_errbox_container').hide();
+        }
+    });
+    /* Tab's action */
+    //---------------//
+
+    //---------------------//
+    /* Validation's action */
+    function errbox(obj) {
+        obj.parent().css('backgroundPosition', '0px -116px');
+        err = true;
+        if (obj.attr('id') == 'txt_signusername') {
+            $('.errbox_title').html('Choose a Username');
+            $('.errbox_msg').html('Please use 6 to 20 characters, only letters and numbers, do not use any space');
+            $('.t_regbox_errbox_container').css({ 'top': '0px', 'left': '330px' });
+        }
+        else if (obj.attr('id') == 'txt_signemail') {
+            $('.errbox_title').html('Type your e-mail');
+            $('.errbox_msg').html('Email must be format: example@example.com');
+            $('.t_regbox_errbox_container').css({ 'top': '37px', 'left': '330px' });
+        }
+        else if (obj.attr('id') == 'txt_signpass') {
+            $('.errbox_title').html('Choose a Password');
+            $('.errbox_msg').html('Please use at least 6 characters, only letters, numbers and specials, do not use any space');
+            $('.t_regbox_errbox_container').css({ 'top': '76px', 'left': '330px' });
+        }
+        else if (obj.attr('id') == 'txt_signpassagain') {
+            $('.errbox_title').html('Password Again');
+            $('.errbox_msg').html('Please use at least 6 characters, only letters, numbers and specials, do not use any space');
+            $('.t_regbox_errbox_container').css({ 'top': '115px', 'left': '330px' });
+        }
+        else if (obj.attr('id') == 'txt_logusername') {
+            $('.errbox_title').html('Email or Username');
+            $('.errbox_msg').html('Please use at least 6 characters, only letters, numbers and specials, do not use any space');
+            $('.t_regbox_errbox_container').css({ 'top': '0px', 'left': '331px' });
+        }
+        else if (obj.attr('id') == 'txt_logpassword') {
+            $('.errbox_title').html('Type your Password');
+            $('.errbox_msg').html('Please use at least 6 characters, only letters, numbers and specials, do not use any space');
+            $('.t_regbox_errbox_container').css({ 'top': '37px', 'left': '331px' });
+        }
+        else if (obj.attr('id') == 't_regbox_logemail') {
+            $('.errbox_title').html('Type your e-mail');
+            $('.errbox_msg').html('Email must be format: example@example.com');
+            $('.t_regbox_errbox_container').css({ 'top': '39px', 'left': '333px' });
+        }
+        else { }
+        $('.t_regbox_errbox_container').show();
+
+    }
+
+    $('#recaptcha_response_field').click(function () {
+        if ($('.t_regbox_errbox_container').is(':visible')) {
+            $('.t_regbox_errbox_container').hide();
+            $('.recaptcha_response_field').css('backgroundPosition', '0px -22px');
+        }
+    });
+
+    $('#t_regbox_regform input').focus(function () {
+        $(this).parent().css('backgroundPosition', '0px -58px');
+        if ($('.t_regbox_errbox_container').is(':visible')) { $('.t_regbox_errbox_container').hide(); }
+    }).blur(function () {
+        if ($(this).val() == '') {
+            $(this).parent().css('backgroundPosition', '0px -29px'); errbox($(this));
+        }
+        else if ($(this).attr('id') != 'txt_signemail' && ($(this).val().length < 6 || $(this).val().length > 20)) {
+            errbox($(this));
+        }
+        else { }
+    }).keyup(function () {
+        var _this = $(this);
+        if (_this.attr('id') != 'txt_signemail' && ($(this).val().length < 6 || $(this).val().length > 20)) {
+            errbox($(this));
+        }
+        else {
+            if (_this.attr('id') == 'txt_signusername' || _this.attr('id') == 'txt_signemail') {
+                if (_this.attr('id') == 'txt_signemail' && !mailRegex.test($(this).val())) {
+                    errbox($(this));
+                } else {
+                    $.post('/betatoork/users/checkUsername', { ps: $(this).val() }, function (data) {
+						//alert(data);
+                        if (data.ps == null) {
+						alert('if');
+                            _this.parent().css('backgroundPosition', '0px -87px');
+                            $('.t_regbox_errbox_container').hide();
+                            err = false;
+                            if (_this.parent().next().children('input').is(':disabled')) {
+                                _this.parent().next().children('input').removeAttr('disabled');
+                                _this.parent().next().css('backgroundPosition', '0px -29px');
+                            }
+                        }
+                        else {
+							alert('else');
+                            //data.ps = 1;
+                            err = true;
+                            $('.errbox_msg').html('Please use at least 6 characters, only letters,numbers and specials, do not use any space');
+                        }
+                    }, 'json');
+                }
+            } else {
+                if (_this.attr('id') == 'txt_signpassagain' && _this.val() != $('#txt_signpass').val()) {
+                    err = true;
+                    $('.t_regbox_signpassagain').css('backgroundPosition', '0px -116px');
+                    $('.errbox_title').html('Password Again');
+                    $('.errbox_msg').html('Please re-enter your password twice so that the values match');
+                    $('.t_regbox_errbox_container').css({ 'top': '115px' });
+                    $('.t_regbox_errbox_container').show();
+                }
+                else if (_this.attr('id') == 'txt_signpass' && $('#txt_signpassagain').val() != '' && _this.val() != $('#txt_signpassagain').val()) {
+                    err = true;
+                    $('.t_regbox_signpass').css('backgroundPosition', '0px -116px');
+                    $('.errbox_title').html('Password Again');
+                    $('.errbox_msg').html('Please re-enter your password twice so that the values match');
+                    $('.t_regbox_errbox_container').css({ 'top': '76px' });
+                    $('.t_regbox_errbox_container').show();
+                }
+                else {
+                    $('.t_regbox_signpass').css('backgroundPosition', '0px -87px');
+                    $('.t_regbox_signpassagain').css('backgroundPosition', '0px -87px');
+                    $('.t_regbox_errbox_container').hide();
+                    err = false;
+                    if (_this.parent().next().children('input').is(':disabled')) {
+                        _this.parent().next().children('input').removeAttr('disabled');
+                        _this.parent().next().css('backgroundPosition', '0px -29px');
+                    }
+                }
+            }
+        }
+    });
+
+    $('#t_regbox_logform input').focus(function () {
+        $(this).parent().css('backgroundPosition', '0px -58px');
+        if ($('.t_regbox_errbox_container').is(':visible')) { $('.t_regbox_errbox_container').hide(); }
+    }).blur(function () {
+        if ($(this).val() == '') {
+            $(this).parent().css('backgroundPosition', '0px -29px');
+            errbox($(this));
+        }
+        else if ($(this).val().length < 6 || $(this).val().length > 20) {
+            errbox($(this));
+        }
+        else { }
+    }).keyup(function () {
+        var _this = $(this);
+        if ($(this).val().length < 6 || $(this).val().length > 20) {
+            errbox($(this));
+        }
+        else {
+            _this.parent().css('backgroundPosition', '0px -87px');
+            $('.t_regbox_errbox_container').hide();
+            if (_this.parent().next().children('input').is(':disabled')) {
+                _this.parent().next().children('input').removeAttr('disabled');
+                _this.parent().next().css('backgroundPosition', '0px -29px');
+            }
+        }
+    });
+    /* Validation's action */
+    //---------------------//
+
+
+    //-----------------//
+    /* Button's action */
+    $('#t_regbox_registerbtn').click(function () {
+        if (!err) {
+            $('.t_regbox_signform').animate({ left: '-=350' }, 300);
+        }
+    });
+
+    $('#t_regbox_signdonebtn').click(function () {
+        $.post('captcha.ashx', { c: $('#recaptcha_challenge_field').val(), r: $('#recaptcha_response_field').val() }, function (data) {
+            if (data.cap == 'true') {
+                $('.t_regbox_signform').animate({ left: '-=350' }, 300);
+            }
+            else {
+                Recaptcha.reload();
+                $('.errbox_title').html('Recaptcha Code');
+                $('.errbox_msg').html('Recaptcha Code is incorrect. Please try again.');
+                $('.t_regbox_errbox_container').css({ 'top': '138px', 'left': '196px' });
+                $('.t_regbox_errbox_container').show();
+                $('.recaptcha_response_field').css('backgroundPosition', '0px 0px');
+            }
+        }, 'json');
+    });
+
+    $('.t_regbox_forgetbtn').click(function () {
+        $('.t_regbox_errbox_container').hide();
+        $('.t_regbox_logform').animate({ left: '-=350' }, 300);
+    });
+
+    $('#t_regbox_logcancelbtn').click(function () {
+        $('.t_regbox_errbox_container').hide();
+        $('.t_regbox_logform').animate({ left: '+=350' }, 300);
+    });
+
+    $('#t_regbox_logdonebtn').click(function () {
+        $.post('captcha.ashx', { c: $('#recaptcha_challenge_field').val(), r: $('#recaptcha_response_field').val() }, function (data) {
+            if (data.cap == 'true') {
+                $('.t_regbox_signform').animate({ left: '-=350' }, 300);
+            }
+            else { }
+        }, 'json');
+    });
+
+    $('#t_regbox_loginbtn').click(function () {
+        $.post('login.ashx', { un: $('#recaptcha_challenge_field').val(), ps: $('#recaptcha_response_field').val() }, function (data) {
+            if (data.cap == 'true') {
+
+            }
+            else {
+
+            }
+        }, 'json');
+    });
+    /* Button's action */
+    //-----------------//
+});

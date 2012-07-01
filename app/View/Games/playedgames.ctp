@@ -17,7 +17,7 @@
   <ul>
 	
 	<li class="clearfix">
-		<?php  echo $this->element('user_played_game_box'); ?>
+		<?php  echo $this->element('top_rated_game_box'); ?>
 	</li>
   
   </ul>

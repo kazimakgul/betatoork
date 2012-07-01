@@ -1,0 +1,50 @@
+﻿.left_panel{width:250px; float:left;}
+.left_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:10px;}
+.left_panel ul li{height:21px; padding-left:40px; padding-top:4px;}
+.left_panel ul .even{background-image:url(../img/t_ul_odd_li_back.png);}
+.left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none;} 
+.left_panel ul li a:hover{text-decoration:underline;} 
+.categories{background-image:url(../img/t_category_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
+.best{background-image:url(../img/t_best_channel_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
+
+.right_panel{width:985px; float:right; margin-left:20px;}
+.right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:20px;}
+
+.channelinfo{background-image:url(../img/t_channelinfo_back.png); width:875px; background-repeat:no-repeat; padding-top:65px;;}
+.channelinfo ul{margin-top:20px;}
+.channelinfo ul li{margin-bottom:5px;}
+.channelinfo p{font-family:Verdana; font-size:10pt; color:#0b81c5; margin:7px; margin-right:10px; float:left; font-weight:100;}
+.channelinfo .passive{display:block; font-family:Verdana; font-size:10pt; width:500px; color:#818181; margin:7px; font-weight:100;}
+.channelinfo .firstcol{width:200px; margin-left:20px;}
+.channelinfo .thirdcol{float:left; position:relative; margin-right:3px;}
+		
+.channelinfo .inputleft{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_left.png); }
+.channelinfo .inputmid{float:left; height:30px; background-image:url(../img/t_inputtext_mid.png); background-repeat:repeat-x; }
+.channelinfo .inputmid input{background-color:transparent; width:515px; border:none; margin-top:7px; color:#0b81c5;}
+.channelinfo .inputleftpas{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_left_passive.png); }
+.channelinfo .inputmidpas{float:left; height:30px; background-image:url(../img/t_inputtext_mid_passive.png); }
+
+.channelinfo .inputmid .txtfakefile{float:left; width:425px;}
+
+.channelinfo .inputright{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_right.png); }
+.channelinfo .inputrightpas{float:left; width:15px; height:30px; background-image:url(../img/t_inputtext_right_passive.png); }
+.channelinfo .browse{display:block; float:left; background-image:url(../img/t_browse_btn.png); width:85px; height:28px; margin-left:5px;}
+.channelinfo .file{width:544px; position:absolute; border:none; text-align: right; -moz-opacity:0; filter:alpha(opacity: 0); opacity: 0; height:28px; top:0px; left:0px; }
+
+.channelinfo .textareaup{width:541px; height:12px; background-image:url(../img/t_textarea_up.png); margin-top:5px;}
+.channelinfo .textareamid{width:541px; background-image:url(../img/t_textarea_mid.png); background-repeat:repeat-y;}
+.channelinfo .textareamid textarea{background-color:transparent; font-family:Verdana; width:515px; height:150px; border:none; margin-left:15px; color:#0b81c5;}
+.channelinfo .textareadown{width:541px; height:12px; background-image:url(../img/t_textarea_down.png);}
+
+.channelinfo .rselectpas{float:left; display:block; color:#818181; padding-left:25px; font-family:Verdana; font-size:10pt; text-decoration:none; height:18px; width:75px; margin-top:5px; background-image:url(../img/t_radio_passive.png); background-repeat:no-repeat; background-position:0px -18px;}
+.channelinfo .rdeselectpas{float:left; display:block; color:#818181; padding-left:25px; font-family:Verdana; font-size:10pt; text-decoration:none; height:18px; width:75px; margin-top:5px; background-image:url(../img/t_radio_passive.png); background-repeat:no-repeat; background-position:0px 0px;}     
+
+.channelinfo .change{display:block; height:28px; width:182px; margin-left:615px; margin-top:20px; background-image:url(../img/t_change_btn.png);}
+
+.addedgames ul li{height:100px; padding-left:20px; margin-top:10px;}
+.addedgames ul .even{background-image:url(../img/t_ul_odd_li_back.png); padding-top:5px;}
+.preview{display:block; width:182px; height:28px; margin-left:610px; margin-bottom:20px; background-image:url(../img/t_previewchannel_btn.png);}
+.seeall{display:block; font-family:Arial; margin:2px; font-size:11px; text-decoration:none; float:left; margin-top:25px; margin-left:10px;}
+.seeall:hover {text-decoration:underline;}
+
+.mygames{background-image:url(../img/t_myaddingame_back.png); width:249px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}        

@@ -1,13 +1,5 @@
 <?php foreach ($search as $game): ?>
-
-<?php 
-if($game['Game']['seo_url']!=NULL)
-$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
-else
-$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));
- ?>	
-
-
+<?php $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id']))); ?>
 <?php $editurl=$this->Html->url(array( "controller" => "games","action" =>"edit",h($game['Game']['id']))); ?>	
 <div class="gamebox clearfix">
 	<div class="greyback">
@@ -57,7 +49,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 		<div class="rateresult"><?php echo $game['Game']['starsize']; ?> %</div>
 	</div>
 	
-	<?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>""));  ?>
+	<?php $channelurl=$this->Html->url(array("controller" => "games","action" =>"usergames",$game['User']['id'])); ?>
 	<a class="gb_channelname" href="<?php echo $channelurl ?>"><?php echo $game['User']['username']; ?></a>
 	<a class="gb_gamename" href="<?php echo $playurl ?>"><?php echo $game['Game']['name']; ?></a>
 </div>						

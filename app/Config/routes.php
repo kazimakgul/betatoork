@@ -34,7 +34,6 @@
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
-    Router::connect('/games', array('controller' => 'games', 'action' => 'index'));
 
 	/**
  * ...Generatin seo url
@@ -42,17 +41,6 @@
 	Router::connect('/:channel/:seo_url/play', array('controller' => 'games', 'action' => 'seoplay'),array('channel' => '[-a-z0-9]+','seo_url' => '[-a-z0-9]+','pass' => array('channel','seo_url')));
 	
 	Router::connect('/:channel/:seo_url/play2', array('controller' => 'games', 'action' => 'seoplay2'),array('channel' => '[-a-z0-9]+','seo_url' => '[-a-z0-9]+','pass' => array('channel','seo_url')));
-	
-	
-	
-	Router::connect('/:channel', array('controller' => 'games', 'action' => 'channelgames'),array('channel' => '[-a-z0-9]+','pass' => array('channel')));
-	
-	
-	
-	
-	
-	
-	
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
