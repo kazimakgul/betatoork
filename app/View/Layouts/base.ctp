@@ -1,5 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<?php echo $this->Facebook->html(); ?>
 <head>
 
 <title><?php echo $title_for_layout?></title>
@@ -19,7 +18,7 @@
 <?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel')); ?>
 
 
-<?php echo $this->Html->script(array('jquery.min','jquery-ui-1.8.17.custom.min','jquery.cookie','jquery.fancybox-1.3.4.pack','jquery.lightbox_me','knockout-2.0.0','underscore','jquery.placeholder.min','jail','t_slider')); ?>
+<?php echo $this->Html->script(array('jquery.min','register','jquery-ui-1.8.17.custom.min','jquery.cookie','jquery.fancybox-1.3.4.pack','jquery.lightbox_me','knockout-2.0.0','underscore','jquery.placeholder.min','jail','t_slider')); ?>
 
 
 <script type="text/javascript">
@@ -113,6 +112,5 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 <?php  echo $this->element('register'); ?>
 <?php  echo $this->element('analytics'); ?>
 
-<?php echo $this->Facebook->init(); ?>
 </body>
 </html>
