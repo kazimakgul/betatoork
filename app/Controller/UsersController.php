@@ -689,21 +689,4 @@ function secureSuperGlobalPOST($value)
 		$this->Session->setFlash(__('User was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
-	
-	public function checkUser(){
-		 //$username=$this->request->data['ps'];
-		 
-		 if($this->User->find('first', array('conditions'=> array('User.username'=>$this->request->data['ps']))))
-		 {
-			$this->set('ps', '1');
-		 }
-		 else
-		 {
-			$this->set('ps', '0');
-		 }
-		 //$this->set('ps', '0');
-		 //$this->set('ps',$username);
-		 //$this->set('ps',$user);
-		 $this->set('_serialize', array('ps'));
-	}
 }

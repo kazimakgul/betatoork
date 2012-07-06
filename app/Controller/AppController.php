@@ -37,13 +37,12 @@ class AppController extends Controller {
 
 
     public $components = array(
-        'Session','Cookie','RequestHandler',
-		//'Facebook.Connect'=>array('model' => 'User'),
+        'Session','Cookie',
+		'Facebook.Connect'=>array('model' => 'User'),
         'Auth' => array(
             'loginRedirect' => array('controller' => 'games', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
-            'authorize' => array('Controller'),
-			
+            'authorize' => array('Controller')
         )
     );
 
@@ -83,7 +82,7 @@ class AppController extends Controller {
 
 
     public function beforeFilter() {
-    $this->Auth->allow('index','checkUser','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames');
+    $this->Auth->allow('index','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames');
 
     }
     
