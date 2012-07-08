@@ -496,6 +496,9 @@ class FacebookHelper extends AppHelper {
 			$options = array();
 		}
 		if ($appId = FacebookInfo::getConfig('appId')) {
+			
+			$options['perms']=NULL;
+			
 			if ($options['perms'] == null)
 				$options['perms'] = 'email';
 			
