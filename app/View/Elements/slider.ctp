@@ -18,7 +18,7 @@
 	else
   		$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));  
 ?>  
-<?php $caturl=$this->Html->url(array( "controller" => "games","action" =>"categorygames",h($game['Category']['id']))); ?>
+<?php $caturl=$this->Html->url(array( "controller" => "games","action" =>"categorygames",h($game['Game']['Category']['id']))); ?>
 						
 						<div class="slider_leftpanel_game">
 							<div class="slider_leftpanel_gamebox clearfix">
@@ -26,7 +26,8 @@
 								<div class="slider_game_info">
 									<a href="<?php echo $playurl ?>" class="slider_game_name"><?php echo $game['Game']['name']?></a>
 									<a href="<?php echo $channelurl ?>"><?php echo $game['Game']['User']['username']; ?></a>
-									<a href="<?php echo $caturl ?>" class="slider_game_category"><?php echo $game['Category']['name']?></a>									
+									<a href="<?php echo $caturl ?>" class="slider_game_category"><?php echo $game['Game']['Category']['name']?></a>		
+																
 		<?php 
 		
 		if(81<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
