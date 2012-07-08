@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.9
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
--- Anamakine: 127.0.0.1
--- Üretim Zamanı: 09 Haz 2012, 02:12:46
--- Sunucu sürümü: 5.5.20
--- PHP Sürümü: 5.3.9
+-- Host: localhost
+-- Generation Time: Jul 08, 2012 at 08:26 PM
+-- Server version: 5.1.44
+-- PHP Version: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,13 +16,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Veritabanı: `newdb`
+-- Database: `testDB`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
@@ -33,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
--- Tablo döküm verisi `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
@@ -56,7 +55,7 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `countries`
+-- Table structure for table `countries`
 --
 
 CREATE TABLE IF NOT EXISTS `countries` (
@@ -66,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `countries` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=244 ;
 
 --
--- Tablo döküm verisi `countries`
+-- Dumping data for table `countries`
 --
 
 INSERT INTO `countries` (`id`, `name`) VALUES
@@ -317,7 +316,7 @@ INSERT INTO `countries` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `favorites`
+-- Table structure for table `favorites`
 --
 
 CREATE TABLE IF NOT EXISTS `favorites` (
@@ -327,10 +326,10 @@ CREATE TABLE IF NOT EXISTS `favorites` (
   PRIMARY KEY (`id`),
   KEY `fk_User_has_Game_User1` (`user_id`),
   KEY `fk_User_has_Game_Game1` (`game_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=69 ;
 
 --
--- Tablo döküm verisi `favorites`
+-- Dumping data for table `favorites`
 --
 
 INSERT INTO `favorites` (`user_id`, `game_id`, `id`) VALUES
@@ -386,14 +385,17 @@ INSERT INTO `favorites` (`user_id`, `game_id`, `id`) VALUES
 (2, 15, 57),
 (2, 67, 58),
 (40, 7, 59),
-(40, 15, 60),
-(40, 32, 61),
-(40, 3, 62);
+(40, 4, 63),
+(40, 9, 64),
+(40, 12, 65),
+(5, 7, 66),
+(5, 28, 67),
+(5, 13, 68);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `games`
+-- Table structure for table `games`
 --
 
 CREATE TABLE IF NOT EXISTS `games` (
@@ -413,10 +415,10 @@ CREATE TABLE IF NOT EXISTS `games` (
   PRIMARY KEY (`id`),
   KEY `fk_Game_User` (`user_id`),
   KEY `fk_Game_Category1` (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=75 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=71 ;
 
 --
--- Tablo döküm verisi `games`
+-- Dumping data for table `games`
 --
 
 INSERT INTO `games` (`id`, `name`, `link`, `description`, `active`, `user_id`, `category_id`, `picture`, `starsize`, `rate_count`, `created`, `embed`, `seo_url`) VALUES
@@ -464,8 +466,8 @@ INSERT INTO `games` (`id`, `name`, `link`, `description`, `active`, `user_id`, `
 (49, 'Red Ball 2', '', 'Bigger, better, stronger, cuter...and more lost than ever. Red Ball 2 is here, and he has lost his beloved crown. Help him play through puzzles, cannons, water, pins, toxic waste, invisible platforms, boats and much, much more on his quest to find the crown. Features 20 action-packed levels, one golden crown, and a Red Ball on a mission to find it.', '1', 15, 2, '640.jpg', 100, 1, '2012-05-31 07:40:00', '<object width="640" height="480"> <param name="movie" value="http://www.physicsgames.net/swf/redball2.swf"> <embed src="http://www.physicsgames.net/swf/redball2.swf" width="640" height="480"> </embed> </object>', ''),
 (50, 'Avanger vs Gamma Monsters', 'http://marvel.com/games/play/82/avengers_vs_gamma_monsters', 'The Helicarrier is under attack by a Gamma Monster invasion. Fury needs to assemble the Avengers to protect the ship.', '1', 31, 2, 'avangers.jpg', 100, 1, '2012-05-31 22:06:04', NULL, ''),
 (51, 'Ourworld', '', 'Welcome to ourWorld! Choose from over 100 puzzle, strategy or action games, watch YouTube with your friends, or hang out in a nightclub', '1', 22, 9, 'ow_slider.jpg', 100, 4, '2012-06-01 08:05:37', '<iframe id="frame" src="http://www.ourworld.com/ow/tracking?source=games4chrome&network=games4chrome&env=affiliate" width="872px" height="580px" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"> </iframe> ', 'ourworld'),
-(57, 'Cactus McCoy 2', '', 'Cactus McCoy returns for a brand-new epic adventure! After a struggle with rival treasure hunter Ella Windstorm, McCoy learns of the ruins of Calavera and the riches it holds in the distant lands to the south.', '1', 2, 2, 'toork_cactusMC.jpg', NULL, NULL, '2012-06-02 20:34:59', '<object width="608" height="480"> <param name="movie" value="http://armorgames.com/files/games/cactus-mccoy-2-12456.swf"> <embed src="http://armorgames.com/files/games/cactus-mccoy-2-12456.swf" width="608" height="480"> </embed> </object>', ''),
-(58, 'Wings Of Genesis', '', 'Set in the same universe with the Original Ge.ne.sis game, Wings of Genesis is a side-scrolling shooting game with a heavy touch of RPG influence. Players can pick one of the 3 main characters to begin the adventure and blast through waves of bosses and enemies! ', '1', 2, 4, 'toork_wingsOG.jpg', NULL, NULL, '2012-06-02 20:49:37', '<object width="700" height="500"> <param name="movie" value="http://external.kongregate-games.com/gamez/0009/4075/live/embeddable_94075.swf"> <embed src="http://external.kongregate-games.com/gamez/0009/4075/live/embeddable_94075.swf" width="700" height="500"> </embed> </object>', ''),
+(57, 'Cactus McCoy 2', '', 'Cactus McCoy returns for a brand-new epic adventure! After a struggle with rival treasure hunter Ella Windstorm, McCoy learns of the ruins of Calavera and the riches it holds in the distant lands to the south.', '1', 2, 2, 'toork_cactusMC.jpg', 80, 1, '2012-06-02 20:34:59', '<object width="608" height="480"> <param name="movie" value="http://armorgames.com/files/games/cactus-mccoy-2-12456.swf"> <embed src="http://armorgames.com/files/games/cactus-mccoy-2-12456.swf" width="608" height="480"> </embed> </object>', ''),
+(58, 'Wings Of Genesis', '', 'Set in the same universe with the Original Ge.ne.sis game, Wings of Genesis is a side-scrolling shooting game with a heavy touch of RPG influence. Players can pick one of the 3 main characters to begin the adventure and blast through waves of bosses and enemies! ', '1', 2, 4, 'toork_wingsOG.jpg', 20, 1, '2012-06-02 20:49:37', '<object width="700" height="500"> <param name="movie" value="http://external.kongregate-games.com/gamez/0009/4075/live/embeddable_94075.swf"> <embed src="http://external.kongregate-games.com/gamez/0009/4075/live/embeddable_94075.swf" width="700" height="500"> </embed> </object>', ''),
 (59, 'Colorful ZUMA', '', 'Zuma classic recreation. quicker Oh! problem is here! Left mouse click on launches the ball, scroll to the track on the end of the marbles sooner than they get rid of the opening with the ball Could get rid of the three colours. The black ball is a different ball, which he hit the ball should disappear.controls: - shoot na - bounce na - movement na', '1', 38, 7, 'toork_colorful_zuma.jpg', 100, 1, '2012-06-05 11:25:38', '<embed src="http://www.freegaming.de/components/flash/6026587832.swf?affiliate_id=941efa0f97e566c4" quality="high" bgcolor="#e8ffff" width="600" height="450" name="6026587832.swf" menu="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>', ''),
 (60, 'Making Monkeys', '', 'Use your special gone to make monkeys and use your monkey friends to co-operate to claim your caffeine prize, in this quirky puzzle platformer.', '1', 2, 7, 'makingmonkey.jpg', 100, 1, '2012-06-06 12:01:21', '<iframe type=''text/html'' width=''756'' height=''600'' src=''http://www.stencyl.com/game/embed/10632'' frameborder=''0'' scrolling=''no''></iframe>', ''),
 (61, 'CycloManiacs', '', 'Flash bike racing. \\r\\n20 riders and bikes to unlock, 26 tracks, 70 achievements, and 20 bike horns.\\r\\nArrow keys or AWSD to control the bike, X or SPACE to bunny hop, B to use your horn (if you have one)', '1', 38, 3, 'CycloManiacs.JPG', 100, 1, '2012-06-07 19:00:27', '<embed width="640" height="480" base="http://external.kongregate-games.com/gamez/0005/3442/live/" src="http://external.kongregate-games.com/gamez/0005/3442/live/embeddable_53442.swf" type="application/x-shockwave-flash"></embed>', ''),
@@ -481,7 +483,7 @@ INSERT INTO `games` (`id`, `name`, `link`, `description`, `active`, `user_id`, `
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `malicious`
+-- Table structure for table `malicious`
 --
 
 CREATE TABLE IF NOT EXISTS `malicious` (
@@ -494,10 +496,15 @@ CREATE TABLE IF NOT EXISTS `malicious` (
   KEY `fk_Users_has_Games_Games30` (`game_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `malicious`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `playcounts`
+-- Table structure for table `playcounts`
 --
 
 CREATE TABLE IF NOT EXISTS `playcounts` (
@@ -509,10 +516,10 @@ CREATE TABLE IF NOT EXISTS `playcounts` (
   PRIMARY KEY (`id`),
   KEY `fk_Users_has_Games_Users2` (`user_id`),
   KEY `fk_Users_has_Games_Games2` (`game_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=223 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=224 ;
 
 --
--- Tablo döküm verisi `playcounts`
+-- Dumping data for table `playcounts`
 --
 
 INSERT INTO `playcounts` (`user_id`, `game_id`, `id`, `count`, `created`) VALUES
@@ -523,23 +530,23 @@ INSERT INTO `playcounts` (`user_id`, `game_id`, `id`, `count`, `created`) VALUES
 (2, 2, 21, 5, '2012-04-13 23:45:11'),
 (2, 6, 22, 2, '2012-04-13 23:45:35'),
 (5, 2, 23, 1, '2012-04-14 00:22:18'),
-(2, 3, 24, 10, '2012-04-14 01:34:00'),
-(2, 7, 25, 5, '2012-04-14 14:51:24'),
-(-1, 7, 26, 32, '2012-04-14 14:52:34'),
+(2, 3, 24, 18, '2012-04-14 01:34:00'),
+(2, 7, 25, 6, '2012-04-14 14:51:24'),
+(-1, 7, 26, 34, '2012-04-14 14:52:34'),
 (4, 7, 27, 1, '2012-04-14 15:19:09'),
 (6, 10, 28, 1, '2012-04-14 23:42:01'),
 (2, 8, 29, 2, '2012-04-15 17:03:23'),
 (2, 10, 30, 2, '2012-04-15 18:31:36'),
 (7, 11, 31, 8, '2012-04-16 23:55:50'),
-(-1, 9, 32, 30, '2012-04-17 23:35:14'),
+(-1, 9, 32, 36, '2012-04-17 23:35:14'),
 (6, 9, 33, 1, '2012-04-20 19:03:31'),
 (6, 8, 34, 1, '2012-04-23 23:26:41'),
-(-1, 8, 35, 20, '2012-04-23 23:27:15'),
+(-1, 8, 35, 25, '2012-04-23 23:27:15'),
 (-1, 10, 36, 7, '2012-04-23 23:32:31'),
 (-1, 13, 37, 4, '2012-04-23 23:43:17'),
 (-1, 6, 38, 3, '2012-04-24 00:02:03'),
 (6, 7, 39, 1, '2012-04-24 22:23:49'),
-(-1, 12, 40, 6, '2012-04-24 23:40:41'),
+(-1, 12, 40, 7, '2012-04-24 23:40:41'),
 (11, 10, 41, 1, '2012-04-24 23:53:42'),
 (11, 9, 42, 1, '2012-04-24 23:54:27'),
 (8, 14, 43, 6, '2012-04-25 00:08:19'),
@@ -555,23 +562,23 @@ INSERT INTO `playcounts` (`user_id`, `game_id`, `id`, `count`, `created`) VALUES
 (15, 8, 53, 1, '2012-05-01 06:19:51'),
 (15, 12, 54, 1, '2012-05-01 06:20:18'),
 (-1, 15, 55, 10, '2012-05-01 06:30:58'),
-(2, 9, 56, 8, '2012-05-01 13:12:17'),
+(2, 9, 56, 11, '2012-05-01 13:12:17'),
 (2, 11, 57, 1, '2012-05-01 13:12:38'),
 (2, 14, 58, 1, '2012-05-01 13:13:18'),
-(2, 16, 59, 8, '2012-05-01 13:17:14'),
+(2, 16, 59, 9, '2012-05-01 13:17:14'),
 (4, 16, 60, 1, '2012-05-01 13:20:28'),
 (7, 9, 61, 2, '2012-05-02 09:40:42'),
-(-1, 11, 62, 14, '2012-05-02 10:44:31'),
-(-1, 3, 63, 16, '2012-05-02 10:58:47'),
+(-1, 11, 62, 15, '2012-05-02 10:44:31'),
+(-1, 3, 63, 23, '2012-05-02 10:58:47'),
 (3, 13, 64, 1, '2012-05-04 19:22:16'),
 (7, 3, 65, 2, '2012-05-04 19:28:48'),
 (18, 2, 66, 1, '2012-05-04 20:07:31'),
-(-1, 16, 67, 8, '2012-05-04 21:10:18'),
+(-1, 16, 67, 9, '2012-05-04 21:10:18'),
 (21, 11, 68, 2, '2012-05-05 07:28:46'),
 (21, 17, 69, 9, '2012-05-05 09:43:03'),
 (21, 7, 70, 3, '2012-05-05 09:51:44'),
 (2, 17, 71, 6, '2012-05-05 11:36:32'),
-(-1, 17, 72, 11, '2012-05-05 11:41:56'),
+(-1, 17, 72, 12, '2012-05-05 11:41:56'),
 (23, 18, 73, 6, '2012-05-05 16:00:09'),
 (-1, 19, 74, 2, '2012-05-05 18:39:44'),
 (-1, 18, 75, 5, '2012-05-05 20:42:40'),
@@ -599,7 +606,7 @@ INSERT INTO `playcounts` (`user_id`, `game_id`, `id`, `count`, `created`) VALUES
 (23, 28, 97, 5, '2012-05-07 14:11:28'),
 (23, 29, 98, 4, '2012-05-07 14:13:25'),
 (23, 8, 99, 1, '2012-05-07 15:00:43'),
-(-1, 28, 100, 5, '2012-05-07 15:23:17'),
+(-1, 28, 100, 7, '2012-05-07 15:23:17'),
 (-1, 21, 101, 3, '2012-05-08 09:10:01'),
 (-1, 27, 102, 1, '2012-05-09 20:56:04'),
 (2, 19, 103, 2, '2012-05-09 21:25:05'),
@@ -638,7 +645,7 @@ INSERT INTO `playcounts` (`user_id`, `game_id`, `id`, `count`, `created`) VALUES
 (-1, 34, 136, 1, '2012-05-27 05:46:06'),
 (15, 36, 137, 2, '2012-05-27 11:01:32'),
 (15, 37, 138, 5, '2012-05-27 11:22:08'),
-(-1, 37, 139, 5, '2012-05-27 11:24:28'),
+(-1, 37, 139, 6, '2012-05-27 11:24:28'),
 (15, 38, 140, 2, '2012-05-27 11:47:04'),
 (15, 39, 141, 5, '2012-05-27 11:53:38'),
 (-1, 38, 142, 1, '2012-05-27 20:47:53'),
@@ -692,8 +699,8 @@ INSERT INTO `playcounts` (`user_id`, `game_id`, `id`, `count`, `created`) VALUES
 (33, 51, 190, 1, '2012-06-05 11:50:26'),
 (-1, 59, 191, 1, '2012-06-06 09:39:59'),
 (-1, 57, 192, 1, '2012-06-06 09:41:49'),
-(2, 60, 193, 2, '2012-06-06 12:01:40'),
-(2, 51, 194, 1, '2012-06-07 00:23:48'),
+(2, 60, 193, 3, '2012-06-06 12:01:40'),
+(2, 51, 194, 3, '2012-06-07 00:23:48'),
 (2, 33, 195, 1, '2012-06-07 02:09:36'),
 (-1, 60, 196, 2, '2012-06-07 09:30:41'),
 (4, 3, 197, 1, '2012-06-07 14:10:36'),
@@ -721,12 +728,13 @@ INSERT INTO `playcounts` (`user_id`, `game_id`, `id`, `count`, `created`) VALUES
 (3, 61, 219, 1, '2012-06-08 01:08:58'),
 (40, 15, 220, 1, '2012-06-08 10:16:19'),
 (3, 7, 221, 2, '2012-06-09 01:23:44'),
-(3, 51, 222, 1, '2012-06-09 02:11:37');
+(3, 51, 222, 1, '2012-06-09 02:11:37'),
+(40, 32, 223, 1, '2012-07-08 16:00:28');
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `rates`
+-- Table structure for table `rates`
 --
 
 CREATE TABLE IF NOT EXISTS `rates` (
@@ -737,10 +745,10 @@ CREATE TABLE IF NOT EXISTS `rates` (
   PRIMARY KEY (`id`),
   KEY `fk_Game_has_User_Game1` (`game_id`),
   KEY `fk_Game_has_User_User1` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=81 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=83 ;
 
 --
--- Tablo döküm verisi `rates`
+-- Dumping data for table `rates`
 --
 
 INSERT INTO `rates` (`game_id`, `user_id`, `id`, `current`) VALUES
@@ -823,12 +831,14 @@ INSERT INTO `rates` (`game_id`, `user_id`, `id`, `current`) VALUES
 (64, 38, 77, 5),
 (66, 38, 78, 5),
 (68, 38, 79, 5),
-(70, 38, 80, 5);
+(70, 38, 80, 5),
+(57, 2, 81, 4),
+(58, 2, 82, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `sliders`
+-- Table structure for table `sliders`
 --
 
 CREATE TABLE IF NOT EXISTS `sliders` (
@@ -840,10 +850,15 @@ CREATE TABLE IF NOT EXISTS `sliders` (
   KEY `fk_Users_has_Games_Games1` (`game_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `sliders`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `subscriptions`
+-- Table structure for table `subscriptions`
 --
 
 CREATE TABLE IF NOT EXISTS `subscriptions` (
@@ -855,7 +870,7 @@ CREATE TABLE IF NOT EXISTS `subscriptions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=109 ;
 
 --
--- Tablo döküm verisi `subscriptions`
+-- Dumping data for table `subscriptions`
 --
 
 INSERT INTO `subscriptions` (`id`, `subscriber_id`, `subscriber_to_id`, `created`) VALUES
@@ -925,7 +940,7 @@ INSERT INTO `subscriptions` (`id`, `subscriber_id`, `subscriber_to_id`, `created
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -947,10 +962,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `Username_UNIQUE` (`username`),
   UNIQUE KEY `Email_UNIQUE` (`email`),
   KEY `fk_Users_Country1` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
--- Tablo döküm verisi `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `active`, `created`, `country_id`, `birth_date`, `gender`, `adcode`, `picture`, `verify`, `seo_username`) VALUES
@@ -989,12 +1004,13 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `active`, `c
 (37, 'gamejection', 'gamejection@gmail.com', 'bdcfc34dc67af86d30fde1af5f4c9fd63b10ad30', 0, '0', '2012-06-04 09:29:55', NULL, NULL, NULL, NULL, NULL, NULL, 'gamejection'),
 (38, 'GameRoom', 'gamejection2@gmail.com', 'bdcfc34dc67af86d30fde1af5f4c9fd63b10ad30', 2, '1', '2012-06-04 10:45:29', 222, '1983-11-10', 'm', '.', 'Gameroom3ColrNeon.jpg', NULL, 'gameroom'),
 (39, 'Bigpoint', 'fuatakgulchrome@gmail.com', '607bbdcec4ce762f0eee12ebfc60b6b44335e3ae', 0, '0', '2012-06-08 08:38:08', NULL, NULL, NULL, NULL, NULL, NULL, 'bigpoint'),
-(40, 'Slider', 'slider@amazebuy.com', 'cd356305c53dd1d0c37cb8c25523e749e8a7b48b', 0, '1', '2012-06-08 10:14:28', NULL, NULL, NULL, NULL, NULL, NULL, 'slider');
+(40, 'Slider', 'slider@amazebuy.com', 'cd356305c53dd1d0c37cb8c25523e749e8a7b48b', 0, '1', '2012-06-08 10:14:28', NULL, NULL, NULL, NULL, NULL, NULL, 'slider'),
+(41, 'spiderman', 'spiderman@amazebuy.com', 'cd356305c53dd1d0c37cb8c25523e749e8a7b48b', 0, '0', '2012-06-10 01:36:38', NULL, NULL, NULL, NULL, NULL, NULL, 'spiderman');
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `wallentries`
+-- Table structure for table `wallentries`
 --
 
 CREATE TABLE IF NOT EXISTS `wallentries` (
@@ -1008,13 +1024,9 @@ CREATE TABLE IF NOT EXISTS `wallentries` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Tablo döküm verisi `wallentries`
+-- Dumping data for table `wallentries`
 --
 
 INSERT INTO `wallentries` (`user_id`, `game_id`, `id`, `created`) VALUES
 (7, 2, 1, '2012-05-02 23:51:49'),
 (7, 3, 2, '2012-05-02 23:51:28');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
