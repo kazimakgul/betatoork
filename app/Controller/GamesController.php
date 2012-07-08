@@ -64,10 +64,13 @@ class GamesController extends AppController {
     ))));
 		
 		$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.playcount' => 'desc'
-    )))); //playcounta göre ayarlanacak
+    ))));
 
-		// $sliderGames=$this->Game->query("SELECT * from games where id IN (SELECT game_id FROM favorites where user_id=2);");
-		// $this->set('slider', $sliderGames);
+$cond = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => '40'),'limit' => $limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 2));
+$cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => '5'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 2));
+
+		$this->set('slider', $cond);
+		$this->set('featured', $cond2);
 
 		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel - create your gamelist - create your playlist of games and share your list - Play free online games');
 	}
@@ -489,6 +492,17 @@ public function channelgames() {
 		$this->set('username', $userName);
 
 		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
+
+	}
+
+		public function bestchannels() {
+		$this->loadModel('User');
+		$this->layout='base';
+		$this->leftpanel();
+		$this->logedin_user_panel();
+		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
+
+		$this->set('users', $this->paginate('User',array('User.active' => '1')));
 
 	}
 

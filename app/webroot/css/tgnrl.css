@@ -32,6 +32,7 @@
 
 
 .toprated{background-image:url(../img/t_top_rated_games.png); width:298px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
+.featured{background-image:url(../img/t_featured_games_title.png); width:298px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
 .searchresult {
 background-image: url(../img/t_search_back.png);
 background-repeat: no-repeat;

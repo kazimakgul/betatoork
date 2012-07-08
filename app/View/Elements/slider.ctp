@@ -9,7 +9,7 @@
 				<div class="slider_leftpanel_slide">
 					<div class="ul">
 						
-						<?php foreach ($top_rated_games as $game): ?>
+						<?php foreach ($slider as $game): ?>
 
 <?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>""));?>
 <?php 	  	
@@ -25,7 +25,7 @@
 								<div class="slider_game_avatarback"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'thumb')); ?></div>
 								<div class="slider_game_info">
 									<a href="<?php echo $playurl ?>" class="slider_game_name"><?php echo $game['Game']['name']?></a>
-									<a href="<?php echo $channelurl ?>"><?php echo $game['User']['username']?></a>
+									<a href="<?php echo $channelurl ?>"><?php echo $game['Game']['User']['username']; ?></a>
 									<a href="<?php echo $caturl ?>" class="slider_game_category"><?php echo $game['Category']['name']?></a>									
 		<?php 
 		
@@ -86,7 +86,7 @@
 			<div class="ul">
 				
 								
-				<?php foreach ($top_rated_games as $game): ?>
+				<?php foreach ($slider as $game): ?>
 				
 	
 <?php 

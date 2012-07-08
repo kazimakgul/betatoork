@@ -10,6 +10,19 @@
 		<?php echo $this->element('categories_left_menu'); ?>
     </div>
     <div class="right_panel">
+
+      <div id="featured">
+        <div class="clearfix">
+          <div class="featured"></div>
+        </div>
+        <div class="sep"></div>
+        <ul>
+          <li class="clearfix">
+          <?php echo $this->element('featured_game_box'); ?>
+         </li>
+        </ul>
+      </div>
+
       <div id="toprated">
         <div class="clearfix">
           <div class="toprated"></div>

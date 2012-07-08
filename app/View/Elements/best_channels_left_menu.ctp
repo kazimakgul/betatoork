@@ -1,7 +1,7 @@
 <?php 
 $users = $this->requestAction( array('controller' => 'users', 'action' => 'bestChannels'));
 ?>
-
+<?php echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'bestchannels'),array('class'=>'seeall')); ?>
 <div class="best">
   <div class="sep"></div>
   <ul>
