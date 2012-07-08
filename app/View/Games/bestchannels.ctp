@@ -8,7 +8,7 @@
   <div class="channel_right_panel">
      <div id="subscriber">
         <div class="clearfix">
-            <div class="subscriptionhd"></div>
+            <div class="best"></div>
            
         </div>
 
