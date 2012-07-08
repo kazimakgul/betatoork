@@ -11,10 +11,10 @@
 						
 						<?php foreach ($slider as $game): ?>
 
-<?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>""));?>
+<?php $channelurl=$this->Html->url(array("controller" => $game['Game']['User']['seo_username'],"action" =>""));?>
 <?php 	  	
 	if($game['Game']['seo_url']!=NULL)	  	
-		$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
+		$playurl=$this->Html->url(array( "controller" => h($game['Game']['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
 	else
   		$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));  
 ?>  
