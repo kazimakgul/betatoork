@@ -5,8 +5,6 @@
 .channel_left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none; text-shadow: white 0 1px 0; display:block;} 
 .channel_left_panel ul li a:hover{text-decoration:underline;} 
 .categories{background-image:url(../img/t_category_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
-.best{background-image:url(../img/t_best_channel_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
-
 .channel_right_panel{width:1005px; float:right; margin-left:10px;}
 .channel_right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px;}
 .channel_right_panel ul .odd{height:100px; padding-left:20px; margin-top:10px;}
