@@ -48,7 +48,7 @@ class AppController extends Controller {
 
     var $paginate = array(
         'User' => array(
-            'limit' => 28,
+            'limit' => 30,
             'order' => array(
                 'User.totalrate' => 'desc',
             ),
@@ -61,7 +61,7 @@ class AppController extends Controller {
             ),
         ),
         'Subscription' => array(
-            'limit' => 28,
+            'limit' => 30,
             'order' => array(
                 'Subscription.created' => 'desc',
             ),
