@@ -10,6 +10,7 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
 $lastadded=$this->Html->url(array( "controller" => "games","action" =>"lastadded"));
 $toprated=$this->Html->url(array( "controller" => "games","action" =>"toprated"));
 $mostplayed=$this->Html->url(array( "controller" => "games","action" =>"mostplayed"));
+$bestchannels=$this->Html->url(array( "controller" => "games","action" =>"bestchannels"));
 $index=$this->Html->url(array( "controller" => "games","action" =>"index"));
 ?>
 <div class="footer">
@@ -19,6 +20,7 @@ $index=$this->Html->url(array( "controller" => "games","action" =>"index"));
         <p>Games</p>
         <ul>
           <li><a href="<?php echo $lastadded ?>">Last Added Games</a></li>
+          <li><a href="<?php echo $bestchannels ?>">Best Channels</a></li>
           <li><a href="<?php echo $toprated ?>">Top Rated Games</a></li>
           <li><a href="<?php echo $mostplayed ?>">Most Played Games</a></li>
         </ul>
