@@ -1,11 +1,9 @@
 <div class="wrapper" >
 <div class="content">
-<?php
-echo $this->element('logedinButtons');
-?>
+
 <?php 
 
- $options=array('1'=>'Admin','0'=>'User');
+ $options=array('1'=>'Admin','0'=>'User','2'=>'Editor');
 $options2=array('1'=>'Active','0'=>'Passive');
 $optionscheck=array('1'=>'Yes','0'=>'No');
 

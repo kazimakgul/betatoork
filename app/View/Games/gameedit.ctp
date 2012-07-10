@@ -1,8 +1,5 @@
 <div class="wrapper" >
 <div class="content">
-<?php
-echo $this->element('logedinButtons');
-?>
 
 <?php 
 $options2=array('1'=>'Active','0'=>'Passive');

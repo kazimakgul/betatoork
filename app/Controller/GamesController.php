@@ -1013,7 +1013,7 @@ function getExtension($str) {
 	}
 
 	public function gameedit() {
-	
+	$this->layout='adminTry';
 	if($this->request->isPost())
 	{	
 	//iç

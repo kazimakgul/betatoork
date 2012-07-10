@@ -629,7 +629,7 @@ function secureSuperGlobalPOST($value)
  
  
 	public function useredit() {
-	
+	$this->layout='adminTry';
 	if($this->request->isPost())
 	{	
 	//iç
