@@ -15,7 +15,7 @@
     var googleAnalyticsOptions = {};
     googleAnalyticsOptions['queryParameter'] = 'search\x2F';
     googleAnalyticsOptions['categoryParameter'] = 'categories\x2F';
-    customSearchOptions['googleAnalyticsOptions'] = googleAnalyticsOptions;  var customSearchControl = new google.search.CustomSearchControl(
+    customSearchOptions[google.search.Search.RESTRICT_SAFESEARCH] = google.search.Search.SAFESEARCH_STRICT;  var customSearchControl = new google.search.CustomSearchControl(
       '001087233991543672248:ywbep5pjr4q', customSearchOptions);
     customSearchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
     var options = new google.search.DrawOptions();
