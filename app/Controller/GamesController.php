@@ -371,6 +371,7 @@ public function get_user_dict($cond2=NULL)
 public function channelgames() {
 	$this->loadModel('User');
 	$this->loadModel('Favorite');
+	$this->loadModel('Subscription');
 	$this->leftpanel();
     $seo_username = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
@@ -391,10 +392,10 @@ public function channelgames() {
     //)));
 	
 	$cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => $userid),'limit' => $limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 2));
-
+	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => 3));
 //print_r($cond2);
 	
-	
+	$this->set('users', $subCond);
 	
     $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));

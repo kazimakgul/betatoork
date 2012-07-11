@@ -70,12 +70,47 @@
 
                 </div>
 
+
+
+                 <div id="subscriber">
+                    <div class="clearfix">
+                        <div class="subscriptionhd"></div>
+
+                    <?php 
+                    if(count($users) <= $limit-1){}
+                    else{
+                      echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'alluserfavorites',$userid),array('class'=>'seeall')); 
+                    } ?>
+
+                    </div>
+                    <div class="sep"></div>
+
+                    <?php if(count($users) >= 1){ ?>
+                    <ul>
+                     
+                       <li class="clearfix">
+                      <?php echo $this->element('channelgames_sub_card'); ?>
+                      </li>
+                      
+                    </ul>
+
+                    <?php } 
+                    else { ?>
+                  <div class="alert alert-info channel"><?php echo $username ?> doesn't have any Chains yet</div>
+                  <?php }?>
+
+                </div>
+
           <div class="clear"></div>
-        
+      
+
+
+
+
+                </div>
 
 
             </div>
-        </div>
 
 
 
