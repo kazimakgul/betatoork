@@ -77,9 +77,9 @@
                         <div class="subscriptionhd"></div>
 
                     <?php 
-                    if(count($users) <= $limit-1){}
+                    if(count($users) <= $limit2-1){}
                     else{
-                      echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'alluserfavorites',$userid),array('class'=>'seeall')); 
+                      echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'subscriptions',$userid),array('class'=>'seeall_channel')); 
                     } ?>
 
                     </div>

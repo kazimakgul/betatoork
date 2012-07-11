@@ -383,6 +383,7 @@ public function channelgames() {
 
     $userName = $user['User']['username'];
 	$limit=12;
+	$limit2=6;
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 	
@@ -392,7 +393,7 @@ public function channelgames() {
     //)));
 	
 	$cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => $userid),'limit' => $limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 2));
-	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => 3));
+	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
 //print_r($cond2);
 	
 	$this->set('users', $subCond);
@@ -413,6 +414,7 @@ public function channelgames() {
 	}
 
    	$this->set('limit', $limit);
+   	$this->set('limit2', $limit2);
     $this->set('favorites', $cond2);
     $this->set('mygames', $cond);
     $this->set('username', $userName);
