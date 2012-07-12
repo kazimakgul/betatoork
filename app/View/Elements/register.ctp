@@ -3,14 +3,36 @@
   	<div class="lightbox_container">
   		<div class="lightbox_sign"></div>
   	<div data-bind="visible: !viewModel.registerForm.success()">
-<!--   		<div class="clearfix">
 
-      	<a class="lightbox_face" href="javascript:FB_login()"></a>
-  			<a class="lightbox_twt" href="javascript:;"></a>
-  		
+<?php 
+			
+			$opt=array(
+				'label' => 'Login',
+				'custom' => false,
+				'redirect' => false,
+				'img' => false,
+				'alt' => '',
+				'id' => '',
+				'show-faces' => false,	// fb button only
+				'width' => 400,			// fb button only
+				'max-rows' => 1,			// fb button only
+				'perms' => 'email,publish_stream'
+			);
+			
+		
+			?>
+
+
+<!-- -->  		<div class="clearfix">
+
+      	
+			<?php echo $this->Facebook->login($opt); ?>
+  		<?php debug($facebook_user); ?>
 
       </div>
-  		<div class="lightbox_term">By signing in you accept our terms of use.</div> -->
+  		<div class="lightbox_term">By signing in you accept our terms of use.</div> <!-- --> 
+		
+		
   		<div class="lightbox_tabs clearfix">
   			<div class="lightbox_lineleft">
   				<a class="lightbox_leftclick" href="#" onclick="show_hide(1, 0)"></a>
