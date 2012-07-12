@@ -242,7 +242,7 @@ public function __sendResetEmail($user_id) {
 					 
 					 }
  	 	
-                $this->redirect($this->Auth->redirect());
+                $this->redirect($this->Auth->redirect(array('controller' => 'games', 'action' => 'channel')));
 	  	
                 }
 				
