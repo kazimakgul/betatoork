@@ -86,7 +86,10 @@ class AppController extends Controller {
 
 $this->set('user',$this->Auth->user());
 $this->set('facebook_user',$this->Connect->user());
-echo 'specialemail'.$this->Connect->user('email');
+echo 'specialid'.$this->Connect->user('id');
+
+    
+
 
     }
     
