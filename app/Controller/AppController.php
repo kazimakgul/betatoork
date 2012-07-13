@@ -118,7 +118,7 @@ $this->set('facebook_user',$this->Connect->user());
 			   
 			      //if only the facebook_id exists but not email
 			      $check_face_id=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id)));
-			      if(check_face_id!=NULL)
+			      if($check_face_id!=NULL)
 	              {
 				  //echo 'id with mail not exist but id exists';
 			      $unmodified_id=$check_face_id['User']['id'];
