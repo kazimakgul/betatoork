@@ -100,7 +100,8 @@ $this->set('facebook_user',$this->Connect->user());
 	$this->loadModel('User');
 	$facebook_id=$this->Connect->user('id');
     $facebook_email=$this->Connect->user('email');
-	$check_face_user=$this->User->find('first',array('condition'=>array('User.facebook_id'=>$facebook_id,'User.email'=>$facebook_email)));
+	$check_face_user=$this->User->find('first',array('condition'=>array('User.facebook_id'=>$facebook_id,'User.email'=>$facebook_email)));<br />
+    print_r($check_face_user);
 	   if($check_face_user==NULL)
 	   {       
 	           echo 'id with email row not found';
