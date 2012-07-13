@@ -26,8 +26,17 @@
 <!-- -->  		<div class="clearfix">
 
       	
-			<?php echo $this->Facebook->login($opt); ?>
-  		<?php debug($facebook_user); ?>
+			<?php 
+			if($facebook_user)
+			{
+			echo $this->Facebook->logout();
+			debug($facebook_user);
+			debug($user);
+			}else{
+			echo $this->Facebook->login($opt); 
+			}
+			?>
+  		
 
       </div>
   		<div class="lightbox_term">By signing in you accept our terms of use.</div> <!-- --> 
