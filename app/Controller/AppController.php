@@ -86,10 +86,16 @@ class AppController extends Controller {
 
 $this->set('user',$this->Auth->user());
 $this->set('facebook_user',$this->Connect->user());
-
+echo 'specialemail'.$this->Connect->user('email');
 
     }
     
+	
+	function beforeFacebookLogin($user){
+    
+}
+	
+	
     public function isAuthorized($user) {
         if (isset($user['role']) && $user['role'] === '1') {
             return true; //Admin can access every action

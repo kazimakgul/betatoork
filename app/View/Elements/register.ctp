@@ -29,7 +29,7 @@
 			<?php 
 			if($facebook_user)
 			{
-			echo $this->Facebook->logout();
+			echo $this->Facebook->logout(array('redirect'=>array('controller'=>'users','action'=>'logout')));
 			debug($facebook_user);
 			echo 'finish';
 			debug($user);
