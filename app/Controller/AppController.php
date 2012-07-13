@@ -126,6 +126,11 @@ $this->set('facebook_user',$this->Connect->user());
 				  echo 'Unmodified Id'.$unmodified_id;
 				  print_r($check_face_id);
 			      $this->User->id=$unmodified_id;
+				  
+				  $this->request->data['User']['username']= 'fromfacebook';
+			      $this->request->data['User']['email']= 'faceuser@hotmail.com';
+				  
+				  
 				  if($this->User->save($this->request->data))
 				  echo 'saved';
 			   
