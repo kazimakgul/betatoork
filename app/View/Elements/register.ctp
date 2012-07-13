@@ -31,6 +31,7 @@
 			{
 			echo $this->Facebook->logout();
 			debug($facebook_user);
+			echo 'finish';
 			debug($user);
 			}else{
 			echo $this->Facebook->login($opt); 
