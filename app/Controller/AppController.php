@@ -86,13 +86,51 @@ class AppController extends Controller {
 
 $this->set('user',$this->Auth->user());
 $this->set('facebook_user',$this->Connect->user());
-echo 'specialid'.$this->Connect->user('id');
 
-    
-
+   if($this->Connect->user())
+   {
+   $this->check_facebook_user();
+   }
 
     }
     
+	function check_facebook_user()
+	{
+	$this->loadModel('User');
+	$facebook_id=$this->Connect->user('id');
+    $facebook_email=$this->Connect->user('email');
+	$check_face_user=$this->User->find('first',array('condition'=>array('User.facebook_id'=>$facebook_id,'User.email'=>$facebook_email)));
+	   if($check_face_user==NULL)
+	   {       
+	           //init starts
+	           if($this->Connect->user('username')!=NULL)
+        	   $this->request->data['User']['username']= $this->Connect->user('username');
+			   else
+			   $this->request->data['User']['username']= $this->Connect->user('first_name').$this->Connect->user('last_name');
+			
+	           $this->request->data['User']['email']= $this->Connect->user('email');
+			   //init ends
+			   
+			      //if only the facebook_id exists but not email
+			      $check_face_id=$this->User->find('first',array('condition'=>array('User.facebook_id'=>$facebook_id)));
+			      if(check_face_id!=NULL)
+	              {
+			      $unmodified_id=$check_face_id['User']['id'];
+			      $this->User->id=$unmodified_id;
+				  $this->User->save($this->request->data);
+			   
+			   
+			      }
+			   
+			     
+			   
+			   
+			   
+	   }
+	
+	
+	}
+	
 	
 	function beforeFacebookLogin($user){
     
