@@ -96,12 +96,14 @@ $this->set('facebook_user',$this->Connect->user());
     
 	function check_facebook_user()
 	{
+	echo 'check facebook run';
 	$this->loadModel('User');
 	$facebook_id=$this->Connect->user('id');
     $facebook_email=$this->Connect->user('email');
 	$check_face_user=$this->User->find('first',array('condition'=>array('User.facebook_id'=>$facebook_id,'User.email'=>$facebook_email)));
 	   if($check_face_user==NULL)
 	   {       
+	           echo 'id with email row not found';
 	           //init starts
 	           if($this->Connect->user('username')!=NULL)
         	   $this->request->data['User']['username']= $this->Connect->user('username');
@@ -115,9 +117,11 @@ $this->set('facebook_user',$this->Connect->user());
 			      $check_face_id=$this->User->find('first',array('condition'=>array('User.facebook_id'=>$facebook_id)));
 			      if(check_face_id!=NULL)
 	              {
+				  echo 'id with mail not exist but id exists';
 			      $unmodified_id=$check_face_id['User']['id'];
 			      $this->User->id=$unmodified_id;
-				  $this->User->save($this->request->data);
+				  if($this->User->save($this->request->data))
+				  echo 'saved';
 			   
 			   
 			      }
