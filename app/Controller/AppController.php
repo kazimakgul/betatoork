@@ -95,6 +95,10 @@ $this->set('facebook_user',$this->Connect->user());
 			   echo 'NullUser:';
 			   print_r($null_user);
 			   //sil
+			   
+			   $this->User->id=2;
+			   $this->request->data['User']['facebook_id']=1;
+			   $this->User->save($this->request->data);
 
 
    if($this->Connect->user())
