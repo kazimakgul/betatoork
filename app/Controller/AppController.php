@@ -82,10 +82,20 @@ class AppController extends Controller {
 
 
     public function beforeFilter() {
+	$this->loadModel('User');
     $this->Auth->allow('index','checkUser','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames');
 
 $this->set('user',$this->Auth->user());
 $this->set('facebook_user',$this->Connect->user());
+
+
+               //sil
+			   $null_user=$this->User->find('all');
+			   if($null_user!=NULL)
+			   echo 'NullUser:';
+			   print_r($null_user);
+			   //sil
+
 
    if($this->Connect->user())
    {
@@ -108,9 +118,9 @@ $this->set('facebook_user',$this->Connect->user());
 	   {       
 	           //echo 'id with email row not found';
 	           //init starts
-	           if($this->Connect->user('username')!=NULL)
-        	   $this->request->data['User']['username']= $this->Connect->user('username');
-			   else
+	          // if($this->Connect->user('username')!=NULL)
+        	   //$this->request->data['User']['username']= $this->Connect->user('username');
+			   //else
 			   $this->request->data['User']['username']= $this->Connect->user('first_name').$this->Connect->user('last_name');
 			
 	           $this->request->data['User']['email']= $this->Connect->user('email');
