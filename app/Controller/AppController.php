@@ -96,18 +96,18 @@ $this->set('facebook_user',$this->Connect->user());
 			   print_r($null_user);
 			   //sil
 			   
-			  /* 
+			  
 			   foreach($null_user as $nulles)
 			   {
 			   $this->User->id=$nulles['User']['id'];
 			   $this->User->delete();
 			   }
-			  */
+			 
 
 
    if($this->Connect->user())
    {
-   $this->check_facebook_user();
+   //$this->check_facebook_user();
    }
 
     }
@@ -130,6 +130,9 @@ $this->set('facebook_user',$this->Connect->user());
         	   //$this->request->data['User']['username']= $this->Connect->user('username');
 			   //else
 			   
+			   //$this->request->data['User']['username']= $this->Connect->user('first_name').$this->Connect->user('last_name');
+	           //$this->request->data['User']['email']= $this->Connect->user('email');
+			   
 			   //init ends
 			   
 			      //if only the facebook_id exists but not email
@@ -142,11 +145,9 @@ $this->set('facebook_user',$this->Connect->user());
 				  echo 'Unmodified Id'.$unmodified_id;
 				  print_r($check_face_id);
 			      $this->User->id=$unmodified_id;
-				  
-				  $this->request->data['User']['username']= $this->Connect->user('first_name').$this->Connect->user('last_name');
+				  echo 'buuuuuuuuuuuuuuu'.$this->Connect->user('username');
+				  $this->request->data['User']['username']= $this->Connect->user('username');
 			      $this->request->data['User']['email']= $this->Connect->user('email');
-				  //$this->request->data['User']['username']= $this->Connect->user('username');
-			      //$this->request->data['User']['email']= $this->Connect->user('email');
 				  
 				  //handle error messages later
 				  
