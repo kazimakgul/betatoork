@@ -99,7 +99,7 @@ $this->set('facebook_user',$this->Connect->user());
 
    if($this->Connect->user())
    {
-   $this->check_facebook_user();
+   //$this->check_facebook_user();
    }
 
     }
