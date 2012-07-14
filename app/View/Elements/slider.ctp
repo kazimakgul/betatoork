@@ -8,74 +8,57 @@
 				<div class="slider_sep"></div>
 				<div class="slider_leftpanel_slide">
 					<div class="ul">
-						
-						<?php foreach ($slider as $game): ?>
-
-<?php $channelurl=$this->Html->url(array("controller" => $game['Game']['User']['seo_username'],"action" =>""));?>
-<?php 	  	
-	if($game['Game']['seo_url']!=NULL)	  	
-		$playurl=$this->Html->url(array( "controller" => h($game['Game']['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
-	else
-  		$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));  
-?>  
-<?php $caturl=$this->Html->url(array( "controller" => "games","action" =>"categorygames",h($game['Game']['Category']['id']))); ?>
-						
+						<?php for($i=0; $i < count($slider); $i++){ 
+							$channelurl=$this->Html->url(array("controller" => $slider[$i]['Game']['User']['seo_username'],"action" =>""));
+							if($slider[$i]['Game']['seo_url']!=NULL){	  	
+								$playurl=$this->Html->url(array( "controller" => h($slider[$i]['User']['seo_username']),"action" =>h($slider[$i]['Game']['seo_url']),'play'));
+							}else{
+								$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($slider[$i]['Game']['id'])));  
+							}	
+							$caturl=$this->Html->url(array( "controller" => "games","action" =>"categorygames",h($slider['Game']['Category']['id'])));
+						?>
 						<div class="slider_leftpanel_game">
 							<div class="slider_leftpanel_gamebox clearfix">
-								<div class="slider_game_avatarback"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'thumb')); ?></div>
+								<div class="slider_game_avatarback"><img alt="" width="100" height="55" src="<?php echo $this->Upload->url2($slider[$i],'Game.picture',array('style' => 'thumb')); ?>" /></div>
 								<div class="slider_game_info">
-									<a href="<?php echo $playurl ?>" class="slider_game_name"><?php echo $game['Game']['name']?></a>
-									<a href="<?php echo $channelurl ?>"><?php echo $game['Game']['User']['username']; ?></a>
-									<a href="<?php echo $caturl ?>" class="slider_game_category"><?php echo $game['Game']['Category']['name']?></a>		
-																
-		<?php 
-		
-		if(81<=$game['Game']['starsize'] && $game['Game']['starsize']<=100)
-		{
-		$starvalue=0;
-		}
-		elseif(61<=$game['Game']['starsize'] && $game['Game']['starsize']<81)
-		{
-		$starvalue=-20;
-		}
-		elseif(41<=$game['Game']['starsize'] && $game['Game']['starsize']<61)
-		{
-		$starvalue=-40;
-		}
-		elseif(21<=$game['Game']['starsize'] && $game['Game']['starsize']<41)
-		{
-		$starvalue=-60;
-		}
-		elseif(0<$game['Game']['starsize'] && $game['Game']['starsize']<21)
-		{
-		$starvalue=-78;
-		}
-		elseif($game['Game']['starsize']==0)
-		{
-		$starvalue=-95;
-		}
-		
-		?>
-									
-									
-									<div id="rate" class="ratingcontainer">
-		<div class="rating" style="background-position: <?php echo $starvalue;?>px 0px;">
-
-
-		</div>
-		</div>
-									
+									<a href="<?php echo $playurl ?>" class="slider_game_name"><?php echo $slider[$i]['Game']['name']?></a>
+									<a href="<?php echo $channelurl ?>"><?php echo $slider[$i]['Game']['User']['username']; ?></a>
+									<a href="<?php echo $caturl ?>" class="slider_game_category"><?php echo $slider[$i]['Game']['Category']['name']?></a>
+									<?php 
+									if(81<=$slider[$i]['Game']['starsize'] && $slider[$i]['Game']['starsize']<=100)
+									{
+										$starvalue=5;
+									}
+									elseif(61<=$slider[$i]['Game']['starsize'] && $slider[$i]['Game']['starsize']<81)
+									{
+										$starvalue=4;
+									}
+									elseif(41<=$slider[$i]['Game']['starsize'] && $slider[$i]['Game']['starsize']<61)
+									{
+										$starvalue=3;
+									}
+									elseif(21<=$slider[$i]['Game']['starsize'] && $slider[$i]['Game']['starsize']<41)
+									{
+										$starvalue=2;
+									}
+									elseif(0<$slider[$i]['Game']['starsize'] && $slider[$i]['Game']['starsize']<21)
+									{
+										$starvalue=1;
+									}
+									elseif($slider[$i]['Game']['starsize']==0)
+									{
+										$starvalue=0;
+									}
+									?>									
+									<div class="rating<?php echo $starvalue;?>"></div>
 								</div>
 							</div>
 							<div class="slider_sep"></div>
 						</div>
-						
-						<?php endforeach; ?>
-						
-						
+						<?php } ?>
 					</div>
 				</div>
-				<div class="slider_sep" style="margin-top:0px; margin-bottom:5px;"></div>
+				<div class="slider_sep" style="margin-bottom:5px;"></div>
 			</div>
 			<div class="slider_leftpanel_innershadow"></div>
 		</div>
@@ -83,32 +66,20 @@
 	</div>
 	<div class="slider_rightpanel">
 		<div class="slider_rightpanel_slide">
-		<div class="slider_rightpanel_slidepointerarr"></div>
+			<div class="slider_rightpanel_slidepointerarr"></div>
 			<div class="ul">
-				
-								
-				<?php foreach ($slider as $game): ?>
-				
-	
-<?php 
-	if($game['Game']['seo_url']!=NULL)
-		$playurl=$this->Html->url(array( "controller" => h($game['Game']['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
-	else
-		$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));  
-?> 
-				
-				<div>
-					<a href="<?php echo $playurl ?>"><img class="jail" alt="" data-href="<?php echo $this->Upload->url2($game,'Game.picture',array('style' => 'showcase')); ?>"/></a>
-<!-- 					<span  class="slider_rightpanel_desc">
-					<?php //echo $game['Game']['description']?>
-					</span> -->
-				</div>
-				
-				<?php endforeach; ?>
-				
-
+				<?php for($i=count($slider) - 1; $i>=0; $i--){ 
+					if($slider[$i]['Game']['seo_url']!=NULL)
+						$playurl=$this->Html->url(array( "controller" => h($slider[$i]['User']['seo_username']),"action" =>h($slider[$i]['Game']['seo_url']),'play'));
+					else
+						$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($slider[$i]['Game']['id'])));  
+				?>
+					<div>
+						<a href="<?php echo $playurl ?>"><img class="jail" alt="" data-href="<?php echo $this->Upload->url2($slider[$i],'Game.picture',array('style' => 'showcase')); ?>" src="_inc/img/blank.gif" /></a>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 	</div>
 	<div class="slider_shadowright"></div>
-</div>	
+</div>

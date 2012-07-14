@@ -3,7 +3,10 @@
     var pos;
 
     $('img.jail').jail({ event: 'load' });
-    $('.slider_leftpanel_slide > .ul').css({ 'bottom': 300 - ($('.slider_leftpanel_slide > .ul > .slider_leftpanel_game').length * 96) });
+    $('.slider_leftpanel_slide > .ul').css({ 'top': 290 - ($('.slider_leftpanel_slide > .ul > .slider_leftpanel_game').length * 97) });
+	//$('.slider_leftpanel_slide > .ul').css({ 'top': 300 - ($('.slider_leftpanel_slide > .ul').height()) });
+	//$('.slider_leftpanel_slide > .ul').css({ 'top': 0 });
+	
     setInterval(function () {
         $('.uparr').click();
     }, 5000);
@@ -31,7 +34,6 @@
     $('.downarr').click(function () {
         if (ok) {
             ok = false;
-
             $('.slider_leftpanel_slide > .ul').append($('.slider_leftpanel_slide > .ul > div').eq(0).clone());
             $('.slider_leftpanel_slide > .ul').animate({ top: '-=100' }, 300, function () {
                 pos = $('.slider_leftpanel_slide > .ul').position();
