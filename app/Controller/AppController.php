@@ -97,6 +97,11 @@ $this->set('facebook_user',$this->Connect->user());
 			   //sil
 			   
 			   
+			   foreach($null_user as $nulles)
+			   {
+			   $this->User->id=$nulles['User']['id'];
+			   $this->User->delete();
+			   }
 			  
 
 
