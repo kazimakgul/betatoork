@@ -90,7 +90,7 @@ $this->set('facebook_user',$this->Connect->user());
 
 
                //sil
-			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id'=>2147483647)));
+			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id'=>711440119)));
 			   if($null_user!=NULL)
 			   echo 'NullUser:';
 			   print_r($null_user);
