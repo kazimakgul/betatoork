@@ -90,7 +90,7 @@ $this->set('facebook_user',$this->Connect->user());
 
 
                //sil
-			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>1,'User.facebook_id !='=>'')));
+			   $null_user=$this->User->find('all');
 			   if($null_user!=NULL)
 			   echo 'NullUser:';
 			   print_r($null_user);
@@ -102,7 +102,7 @@ $this->set('facebook_user',$this->Connect->user());
 
    if($this->Connect->user())
    {
-   $this->check_facebook_user();
+   //$this->check_facebook_user();
    }
 
     }
