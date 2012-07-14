@@ -26,10 +26,10 @@
   </form>
   <div class="panelsep"></div>
 
-  <div style="padding:30px;font-size:13px;line-height:20px;font-weight:bold;" data-bind="visible: viewModel.registerForm.success(), text: viewModel.registerForm.message()"></div>
 
 
-  <a class="forget" href="<?php echo $reseturl ?>">Forget Password?</a>
-  <a class="forget" href="#" onclick="$('#register').lightbox_me();">Not a member? Register now</a>
+
+  <a class="forget" id="up_btn_forget" href="#">Forget Password?</a>
+  <a class="forget" id="up_btn_register" href="#">Not a member? Register now</a>
 
 </div>
