@@ -90,24 +90,19 @@ $this->set('facebook_user',$this->Connect->user());
 
 
                //sil
-			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id'=>711440119)));
+			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>1,'User.facebook_id !='=>'')));
 			   if($null_user!=NULL)
 			   echo 'NullUser:';
 			   print_r($null_user);
 			   //sil
 			   
 			   
-			   foreach($null_user as $nulles)
-			   {
-			   $this->User->id=$nulles['User']['id'];
-			   $this->User->delete();
-			   }
 			  
 
 
    if($this->Connect->user())
    {
-   //$this->check_facebook_user();
+   $this->check_facebook_user();
    }
 
     }
