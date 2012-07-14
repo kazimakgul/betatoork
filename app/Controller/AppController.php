@@ -139,8 +139,9 @@ $this->set('facebook_user',$this->Connect->user());
 			      }
 			   
 			     
-			   
-			   
+			   $null_user=$this->User->find('first',array('conditions'=>array('User.username'=>'')));
+			   if($null_user!=NULL)
+			   echo 'NullUser:'.$null_user['User']['id'];
 			   
 	   }
 	
