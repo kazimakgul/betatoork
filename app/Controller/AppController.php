@@ -82,20 +82,10 @@ class AppController extends Controller {
 
 
     public function beforeFilter() {
-	$this->loadModel('User');
     $this->Auth->allow('index','checkUser','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames');
 
 $this->set('user',$this->Auth->user());
 $this->set('facebook_user',$this->Connect->user());
-
-
-               //sil
-			   $null_user=$this->User->find('all');
-			   if($null_user!=NULL)
-			   echo 'NullUser:';
-			   print_r($null_user);
-			   //sil
-
 
    if($this->Connect->user())
    {
