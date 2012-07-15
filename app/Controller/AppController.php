@@ -157,7 +157,7 @@ $this->set('facebook_user',$this->Connect->user());
 				  }else{
 				  
 				           $this->request->data['User']['username']=$this->Connect->user('username');
-			               $this->request->data['User']['email']= .rand(1,200).$this->Connect->user('email');
+			               $this->request->data['User']['email']=rand(1,200).$this->Connect->user('email');
 				           if($this->User->save($this->request->data))
 						   {
 						   //second try successfull
