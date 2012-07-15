@@ -89,10 +89,6 @@ $this->set('user',$this->Auth->user());
 $this->set('facebook_user',$this->Connect->user());
 
 
-if($this->User->query('ALTER TABLE `users` CHANGE `facebook_id` `facebook_id` INT( 20 ) NULL DEFAULT NULL'))
-echo 'dooooonne';
-
-
                //sil
 			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
 			   if($null_user!=NULL)
