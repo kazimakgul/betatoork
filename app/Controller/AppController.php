@@ -142,10 +142,10 @@ $this->set('facebook_user',$this->Connect->user());
 				  //echo 'id with mail not exist but id exists';
 			      $unmodified_id=$check_face_id['User']['id'];
 				  echo 'Unmodified Id'.$unmodified_id;
-				  print_r($check_face_id);
+				  //print_r($check_face_id);
 			      $this->User->id=$unmodified_id;
-				  echo 'fbusername:'.$this->Connect->user('username');
-				  echo 'fbmail:'.$this->Connect->user('email');
+				  //echo 'fbusername:'.$this->Connect->user('username');
+				  //echo 'fbmail:'.$this->Connect->user('email');
 				  $this->request->data['User']['username']=$this->Connect->user('username');
 			      $this->request->data['User']['email']= $this->Connect->user('email');
 				  
