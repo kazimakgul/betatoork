@@ -147,7 +147,7 @@ $this->set('facebook_user',$this->Connect->user());
 			      $this->User->id=$unmodified_id;
 				  echo 'buuuuuuuuuuuuuuu'.$this->Connect->user('username');
 				  
-				  $this->request->data['User']['username']=$this->Connect->user('first_name').rand(10,200);
+				  $this->request->data['User']['username']=$this->Connect->user('first_name');
 			      $this->request->data['User']['email']= $this->Connect->user('email');
 				  
 				  //handle error messages later
