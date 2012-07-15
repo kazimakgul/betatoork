@@ -147,12 +147,30 @@ $this->set('facebook_user',$this->Connect->user());
 				  //echo 'fbusername:'.$this->Connect->user('username');
 				  //echo 'fbmail:'.$this->Connect->user('email');
 				  $this->request->data['User']['username']=$this->Connect->user('username');
-			      $this->request->data['User']['email']= '';
+			      $this->request->data['User']['email']= $this->Connect->user('email');
 				  
 				  //handle error messages later
 				  
 				  if($this->User->save($this->request->data))
-				  echo 'saved';
+				  {
+				  //first try successfull
+				  }else{
+				  
+				           $this->request->data['User']['username']=$this->Connect->user('username');
+			               $this->request->data['User']['email']= .rand(1,200).$this->Connect->user('email');
+				           if($this->User->save($this->request->data))
+						   {
+						   //second try successfull
+						   }else{
+						
+						   $this->User->delete();
+						   $this->redirect('/');
+						   
+						   }
+						
+						
+				  }
+				  
 			   
 			   
 			      }
