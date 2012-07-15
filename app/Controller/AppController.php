@@ -146,7 +146,7 @@ $this->set('facebook_user',$this->Connect->user());
 			      $this->User->id=$unmodified_id;
 				  
 				  $this->request->data['User']['username']='tentacrullffb';
-			      $this->request->data['User']['email']= $this->Connect->user('email');
+			      $this->request->data['User']['email']= 'tentacrullffb@hotmail.com';
 				  
 				  //handle error messages later
 				  
