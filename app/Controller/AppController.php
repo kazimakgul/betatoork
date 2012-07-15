@@ -96,18 +96,18 @@ $this->set('facebook_user',$this->Connect->user());
 			   print_r($null_user);
 			   //sil
 			   
-			  
+			  /*
 			   foreach($null_user as $nulles)
 			   {
 			   $this->User->id=$nulles['User']['id'];
 			   $this->User->delete();
 			   }
-			  
+			  */
 
 
    if($this->Connect->user())
    {
-   //$this->check_facebook_user();
+   $this->check_facebook_user();
    }
 
     }
@@ -147,7 +147,7 @@ $this->set('facebook_user',$this->Connect->user());
 			      $this->User->id=$unmodified_id;
 				  echo 'buuuuuuuuuuuuuuu'.$this->Connect->user('username');
 				  
-				  $this->request->data['User']['username']=ereg_replace("[0-9]","",$this->Connect->user('username'));
+				  $this->request->data['User']['username']='tentacrulFb'.rand(100,200);
 			      $this->request->data['User']['email']= $this->Connect->user('email');
 				  
 				  //handle error messages later
