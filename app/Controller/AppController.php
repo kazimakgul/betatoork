@@ -144,7 +144,8 @@ $this->set('facebook_user',$this->Connect->user());
 				  echo 'Unmodified Id'.$unmodified_id;
 				  print_r($check_face_id);
 			      $this->User->id=$unmodified_id;
-				  
+				  echo $this->Connect->user('username').'<br>';
+				  echo $this->Connect->user('email');
 				  $this->request->data['User']['username']='tentacrullffb';
 			      $this->request->data['User']['email']= 'tentacrullffb@hotmail.com';
 				  
