@@ -96,18 +96,18 @@ $this->set('facebook_user',$this->Connect->user());
 			   print_r($null_user);
 			   //sil
 			   
-			 
+			 /*
 			   foreach($null_user as $nulles)
 			   {
 			   $this->User->id=$nulles['User']['id'];
 			   $this->User->delete();
 			   }
-			  
+			  */
 
 
    if($this->Connect->user())
    {
-   //$this->check_facebook_user();
+   $this->check_facebook_user();
    }
 
     }
@@ -147,7 +147,7 @@ $this->set('facebook_user',$this->Connect->user());
 				  //echo 'fbusername:'.$this->Connect->user('username');
 				  //echo 'fbmail:'.$this->Connect->user('email');
 				  $this->request->data['User']['username']=$this->Connect->user('username');
-			      $this->request->data['User']['email']= $this->Connect->user('email');
+			      //$this->request->data['User']['email']= $this->Connect->user('email');
 				  
 				  //handle error messages later
 				  
