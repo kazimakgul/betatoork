@@ -120,8 +120,7 @@ $this->set('facebook_user',$this->Connect->user());
     $facebook_email=$this->Connect->user('email');
 	//echo 'Special Facebook Id:'.$facebook_id;
 	//echo 'Special Facebook Email:'.$facebook_email;
-	$check_face_user=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id,'User.email'=>$facebook_email)));
-    print_r($check_face_user);
+	   $check_face_user=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id,'User.email'=>$facebook_email)));
 	   if($check_face_user==NULL)
 	   {       
 	           //echo 'id with email row not found';
@@ -145,9 +144,8 @@ $this->set('facebook_user',$this->Connect->user());
 				  echo 'Unmodified Id'.$unmodified_id;
 				  print_r($check_face_id);
 			      $this->User->id=$unmodified_id;
-				  echo 'buuuuuuuuuuuuuuu'.$this->Connect->user('username');
 				  
-				  $this->request->data['User']['username']=$this->Connect->user('first_name');
+				  $this->request->data['User']['username']='tentacrullffb';
 			      $this->request->data['User']['email']= $this->Connect->user('email');
 				  
 				  //handle error messages later
