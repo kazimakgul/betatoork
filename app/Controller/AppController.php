@@ -96,18 +96,18 @@ $this->set('facebook_user',$this->Connect->user());
 			   print_r($null_user);
 			   //sil
 			   
-			 /*
+			 
 			   foreach($null_user as $nulles)
 			   {
 			   $this->User->id=$nulles['User']['id'];
 			   $this->User->delete();
 			   }
-			  */
+			  
 
 
    if($this->Connect->user())
    {
-   $this->check_facebook_user();
+   //$this->check_facebook_user();
    }
 
     }
@@ -154,6 +154,9 @@ $this->set('facebook_user',$this->Connect->user());
 				  if($this->User->save($this->request->data))
 				  {
 				  //first try successfull
+				  $user = $this->User->find('first', array('conditions' => array('User.id' => $unmodified_id)));
+    	          $userName = $user['User']['username'];
+				  $this->set('username', $userName);
 				  }else{
 				  
 				           $this->request->data['User']['username']=$this->Connect->user('username');
@@ -161,6 +164,9 @@ $this->set('facebook_user',$this->Connect->user());
 				           if($this->User->save($this->request->data))
 						   {
 						   //second try successfull
+						   $user = $this->User->find('first', array('conditions' => array('User.id' => $unmodified_id)));
+    	                   $userName = $user['User']['username'];
+				           $this->set('username', $userName);
 						   }else{
 						
 						   $this->User->delete();
