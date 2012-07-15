@@ -96,13 +96,13 @@ $this->set('facebook_user',$this->Connect->user());
 			   print_r($null_user);
 			   //sil
 			   
-			  /* 
+			  
 			   foreach($null_user as $nulles)
 			   {
 			   $this->User->id=$nulles['User']['id'];
 			   $this->User->delete();
 			   }
-			  */
+			  
 
 
    if($this->Connect->user())
