@@ -107,6 +107,7 @@ $this->set('facebook_user',$this->Connect->user());
 
    if($this->Connect->user())
    {
+   print_r($this->Connect->user());
    //$this->check_facebook_user();
    }
 
