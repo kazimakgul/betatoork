@@ -15,7 +15,7 @@
 							}else{
 								$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($slider[$i]['Game']['id'])));  
 							}	
-							$caturl=$this->Html->url(array( "controller" => "games","action" =>"categorygames",h($slider['Game']['Category']['id'])));
+							$caturl=$this->Html->url(array( "controller" => "games","action" =>"categorygames",h($slider[0]['Game']['Category']['id'])));
 						?>
 						<div class="slider_leftpanel_game">
 							<div class="slider_leftpanel_gamebox clearfix">
