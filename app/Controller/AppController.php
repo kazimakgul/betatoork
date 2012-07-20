@@ -89,16 +89,16 @@ $this->set('user',$this->Auth->user());
 $this->set('facebook_user',$this->Connect->user());
 
                //edit specific id
-			   $this->User->id=2;
-			   $this->request->data['User']['facebook_id']='';
-			   $this->User->save($this->request->data);
+			   //$this->User->id=2;
+			   //$this->request->data['User']['facebook_id']='';
+			   //$this->User->save($this->request->data);
                //edit specific id
 
                //sil
 			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
 			   if($null_user!=NULL)
-			   echo 'NullUser:';
-			   print_r($null_user);
+			   //echo 'NullUser:';
+			   //print_r($null_user);
 			   //sil
 			   
 			 /*
