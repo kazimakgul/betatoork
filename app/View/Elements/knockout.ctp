@@ -307,4 +307,10 @@ var show_hide = function (left_status, right_status) {
   	$('.lightbox_lineleft').removeClass('lightbox_lineleft').addClass('lightbox_lineright');
   }
 }
+
+function logout_FB(){
+FB.logout();
+var cookies = document.cookie.split(";");for (var i = 0; i < cookies.length; i++) {var cookie = cookies[i];var eqPos = cookie.indexOf("=");var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";}
+}
+
 </script>
