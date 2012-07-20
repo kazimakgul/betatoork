@@ -109,8 +109,7 @@ $this->set('facebook_user',$this->Connect->user());
 			   }
 			  */
 			  
-               echo '<button type="button" onclick="logoutFB();">Click Me!</button>';
-
+               
    if($this->Connect->user())
    {
    $this->check_facebook_user();
