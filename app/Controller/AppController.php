@@ -108,7 +108,7 @@ $this->set('facebook_user',$this->Connect->user());
 			   $this->User->delete();
 			   }
 			  */
-			  echo '<script>function message(){FB.logout(function(response){alert("you logged out");});}</script>';
+			  echo '<script>function message(){FB.logout();var cookies = document.cookie.split(";");for (var i = 0; i < cookies.length; i++) {var cookie = cookies[i];var eqPos = cookie.indexOf("=");var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";}}</script>';
                echo '<button type="button" onclick="message();">Click Me!</button>';
 
    if($this->Connect->user())
