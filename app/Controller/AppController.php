@@ -108,7 +108,8 @@ $this->set('facebook_user',$this->Connect->user());
 			   $this->User->delete();
 			   }
 			  */
-
+			  echo '<script>function message(){FB.logout();}</script>';
+               echo '<button type="button" onclick="message();">Click Me!</button>';
 
    if($this->Connect->user())
    {
