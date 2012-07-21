@@ -693,6 +693,9 @@ function secureSuperGlobalPOST($value)
 	public function checkUser(){
 		 $dt=$this->request->data['dt'];
 		 $attr=$this->request->data['attr'];
+		 if ( $this->RequestHandler->isAjax() ) {
+          Configure::write ( 'debug', 0 );
+		 } 
 		 
 		 if($attr == "txt_signusername"){
 			if($this->User->find('first', array('conditions'=> array('User.username'=>$dt))))
