@@ -12,8 +12,7 @@
 <meta property="og:image" content="<?php echo $this->Upload->url($game,'Game.picture'); ?>"/>
 <meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="USER_ID"/>
-<meta property="og:description"
-      content="Create your own game channel."/>
+<meta property="og:description" content="<?php echo $game['Game']['description']; ?>"/>
 
 
 <?php echo $this->Html->css(array('header','footer','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel','myStyle','rating','game')); ?>
