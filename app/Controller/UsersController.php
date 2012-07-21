@@ -693,23 +693,31 @@ function secureSuperGlobalPOST($value)
 	public function checkUser(){
 		 $dt=$this->request->data['dt'];
 		 $attr=$this->request->data['attr'];
-		 if ( $this->RequestHandler->isAjax() ) {
-          Configure::write ( 'debug', 0 );
-		 } 
 		 
 		 if($attr == "txt_signusername"){
+			if ( $this->RequestHandler->isAjax() ) {
+				Configure::write ( 'debug', 0 );
+			}
+			
 			if($this->User->find('first', array('conditions'=> array('User.username'=>$dt))))
 			{
 				$this->set('rtdata', 'This Username is alredy been taken. Please try another one.');
 			}
 		 }
 		 else if($attr == "txt_signemail") {
+		 	if ( $this->RequestHandler->isAjax() ) {
+				Configure::write ( 'debug', 0 );
+			}
 		 	if($this->User->find('first', array('conditions'=> array('User.email'=>$dt))))
 			{
 				$this->set('rtdata', 'This email is already registered. Please try another one.');
 			}
 		 }
 		 else if($attr == "recaptcha_response_field"){
+			if ( $this->RequestHandler->isAjax() ) {
+				Configure::write ( 'debug', 0 );
+			}
+			
 			$privatekey = "6LfxlskSAAAAAIGamNwZyHG5HOi0jWoKFHqb2t4N";
 			$userip= $_SERVER["REMOTE_ADDR"];
 			$challenge=$this->request->data['c'];
@@ -740,6 +748,10 @@ function secureSuperGlobalPOST($value)
 			}
 		 }
 		 else if($attr == "txt_logusername"){
+			if ( $this->RequestHandler->isAjax() ) {
+				Configure::write ( 'debug', 0 );
+			}		 
+		 
 			$this->request->data['User']['username'] = $this->request->data['un'];
 			$this->request->data['User']['password'] = $this->request->data['ps'];
 			if ($this->Auth->login() == true) {
@@ -762,6 +774,9 @@ function secureSuperGlobalPOST($value)
 			}
 		 }
 		 else if($attr == "t_regbox_logemail"){
+			if ( $this->RequestHandler->isAjax() ) {
+				Configure::write ( 'debug', 0 );
+			}		 
 			if(isset($dt) && $dt!= ''){
 				$user = $this->User->find('first',array('conditions' => array('User.email'=>$dt)));
 				if($user === false){
