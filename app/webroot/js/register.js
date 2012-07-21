@@ -83,10 +83,13 @@ $(function () {
     });
 
     $('#t_regbox_regform input').focus(function () {
-        $(this).parent().css('backgroundPosition', '0px -58px');
+        //$(this).parent().css('backgroundPosition', '0px -58px');
         if ($('.t_regbox_errbox_container').is(':visible')) { $('.t_regbox_errbox_container').hide(); }
     }).blur(function () {
-		if ($(this).attr('id') != 'txt_signemail' && ($(this).val().length < 6 || $(this).val().length > 20)) {
+        if ($(this).val() == '') {
+            $(this).parent().css('backgroundPosition', '0px -29px'); errbox($(this));
+        }
+        else if ($(this).attr('id') != 'txt_signemail' && ($(this).val().length < 6 || $(this).val().length > 20)) {
             errbox($(this));
         }
         else { }
@@ -159,10 +162,14 @@ $(function () {
     });
 
     $('#t_regbox_logform input').focus(function () {
-        $(this).parent().css('backgroundPosition', '0px -58px');
+        //$(this).parent().css('backgroundPosition', '0px -58px');
         if ($('.t_regbox_errbox_container').is(':visible')) { $('.t_regbox_errbox_container').hide(); }
     }).blur(function () {
-		if (_this.attr('id') != 't_regbox_logemail' && $(this).val().length < 6 || $(this).val().length > 20) {
+        if (_this.attr('id') != 't_regbox_logemail' && $(this).val() == '') {
+            $(this).parent().css('backgroundPosition', '0px -29px');
+            errbox($(this));
+        }
+        else if (_this.attr('id') != 't_regbox_logemail' && $(this).val().length < 6 || $(this).val().length > 20) {
             errbox($(this));
         }
         else { }
