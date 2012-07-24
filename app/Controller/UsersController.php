@@ -691,6 +691,9 @@ function secureSuperGlobalPOST($value)
 	}
 	
 	public function checkUser(){
+		 
+		 Configure::write ( 'debug', 0 );
+		 
 		 $dt=$this->request->data['dt'];
 		 $attr=$this->request->data['attr'];
 		 
@@ -758,7 +761,7 @@ function secureSuperGlobalPOST($value)
 				$this->set('rtdata', $msg);
 			}
 		 }
-		 else if($attr == "t_regbox_logemail"){
+		 else if($attr == "t_regbox_logemail"){	 
 			if(isset($dt) && $dt!= ''){
 				$user = $this->User->find('first',array('conditions' => array('User.email'=>$dt)));
 				if($user === false){
