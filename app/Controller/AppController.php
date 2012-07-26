@@ -82,6 +82,7 @@ class AppController extends Controller {
 
 
    public function beforeRender() {
+   echo $this->params['controller'].$this->params['action'];
    $this->set('facebook_user',$this->Connect->user('id'));
    }
 
