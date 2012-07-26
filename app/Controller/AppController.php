@@ -80,12 +80,12 @@ class AppController extends Controller {
         ), 
     );
 
-
+/*
    public function beforeRender() {
-   //if($this->params['controller']=='games' && $this->params['action']=='index')
-   //$this->set('facebook_user',$this->Connect->user('id'));
+   if($this->params['controller']=='games' && $this->params['action']=='index')
+   $this->set('facebook_user',$this->Connect->user('id'));
    }
-
+*/
 
     public function beforeFilter() {
 		$this->loadModel('User');
