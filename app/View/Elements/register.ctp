@@ -22,13 +22,13 @@
 			<div id="t_regbox_social" class="t_regbox_social">
 				<!-- <a id="t_regbox_face" class="t_regbox_face" href="#"><img style="border:0" alt="" src="img/new_reg/face.png" /></a> -->
 					<?php 
-						if($facebook_user)
+						/*if($facebook_user)
 						{
 							echo $this->Facebook->logout(array('redirect'=>array('controller'=>'users','action'=>'logout')));
 							
 						}else{
 							echo $this->Facebook->login($opt); 
-						}
+						}*/
 					?>
 				<a id="t_regbox_twt" class="t_regbox_twt" href="#"><img style="border:0" alt="" src="img/new_reg/twt.png" /></a>
 				<span style="font-size:7pt; color:#666;">By signing in you accept our terms of use.</span>            
