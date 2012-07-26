@@ -82,7 +82,7 @@ class AppController extends Controller {
 
 
    public function beforeRender() {
-   $this->set('facebook_user',NULL);
+   $this->set('facebook_user',$this->Connect->user('id'));
    }
 
 
