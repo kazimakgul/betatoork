@@ -112,6 +112,7 @@ class AppController extends Controller {
                
 	   if($this->Connect->user())
 	   {
+	   print_r($this->Connect->user());
 	   $this->check_facebook_user();
 	   }
 
