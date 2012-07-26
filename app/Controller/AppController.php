@@ -81,7 +81,7 @@ class AppController extends Controller {
     );
 
 
-   public function beforeFilter() {
+   public function beforeRender() {
    echo 'beforerendertest';
    }
 
