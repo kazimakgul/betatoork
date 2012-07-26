@@ -112,7 +112,6 @@ class AppController extends Controller {
                
 	   if($this->Connect->user())
 	   {
-	   print_r($this->Connect->user());
 	   $this->check_facebook_user();
 	   }
 
@@ -120,7 +119,7 @@ class AppController extends Controller {
     
 	function check_facebook_user()
 	{
-	//echo 'check facebook run';
+	echo 'check facebook run';
 	$this->loadModel('User');
 	$facebook_id=$this->Connect->user('id');
     $facebook_email=$this->Connect->user('email');
