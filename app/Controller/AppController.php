@@ -81,13 +81,18 @@ class AppController extends Controller {
     );
 
 
+   public function beforeFilter() {
+   echo 'beforerendertest';
+   }
+
+
     public function beforeFilter() {
 		$this->loadModel('User');
 		$this->Auth->allow('index','checkUser','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames');
 
 		$this->set('user',$this->Auth->user());
 		$this->set('facebook_user',$this->Connect->user('id'));
-        echo 'beforefiltertest';
+        
                //edit specific id
 			   //$this->User->id=2;
 			   //$this->request->data['User']['facebook_id']='';
