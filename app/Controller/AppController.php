@@ -81,10 +81,6 @@ class AppController extends Controller {
     );
 
 
-   function beforeFacebookLogin($user){
-    $this->set('facebook_user',$this->Connect->user());
-}
-
 
     public function beforeFilter() {
 		$this->loadModel('User');
@@ -203,6 +199,8 @@ class AppController extends Controller {
 	
 	function beforeFacebookLogin($user){
     
+	$this->set('facebook_user',$this->Connect->user());
+	
 }
 	
 	
