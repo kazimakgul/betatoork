@@ -22,7 +22,7 @@
 			<div id="t_regbox_social" class="t_regbox_social">
 				<!-- <a id="t_regbox_face" class="t_regbox_face" href="#"><img style="border:0" alt="" src="img/new_reg/face.png" /></a> -->
 					<?php 
-						if($facebook_user && isset($facebook_user))
+						if(isset($facebook_user) && $facebook_user)
 						{
 							echo $this->Facebook->logout(array('redirect'=>array('controller'=>'users','action'=>'logout')));
 							
