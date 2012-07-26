@@ -87,7 +87,7 @@ class AppController extends Controller {
 
 		$this->set('user',$this->Auth->user());
 		$this->set('facebook_user',$this->Connect->user('id'));
-
+        echo 'beforefiltertest';
                //edit specific id
 			   //$this->User->id=2;
 			   //$this->request->data['User']['facebook_id']='';
