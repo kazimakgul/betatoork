@@ -81,12 +81,17 @@ class AppController extends Controller {
     );
 
 
+   function beforeFacebookLogin($user){
+    $this->set('facebook_user',$this->Connect->user());
+}
+
+
     public function beforeFilter() {
 		$this->loadModel('User');
 		$this->Auth->allow('index','checkUser','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames');
 
 		$this->set('user',$this->Auth->user());
-		$this->set('facebook_user',$this->Connect->user());
+		//$this->set('facebook_user',$this->Connect->user());
 
                //edit specific id
 			   //$this->User->id=2;
