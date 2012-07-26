@@ -37,7 +37,7 @@ class AppController extends Controller {
 
 
     public $components = array(
-        'Session','Cookie',
+        'Session','Cookie','RequestHandler',
 		'Facebook.Connect'=>array('model' => 'User'),
         'Auth' => array(
             'loginRedirect' => array('controller' => 'games', 'action' => 'index'),
@@ -86,7 +86,7 @@ class AppController extends Controller {
 		$this->Auth->allow('index','checkUser','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames');
 
 		$this->set('user',$this->Auth->user());
-		$this->set('facebook_user',$this->Connect->user());
+		//$this->set('facebook_user',$this->Connect->user());
 
                //edit specific id
 			   //$this->User->id=2;
@@ -110,16 +110,16 @@ class AppController extends Controller {
 			  */
 			  
                
-	   if($this->Connect->user())
+	   /*if($this->Connect->user())
 	   {
 	   $this->check_facebook_user();
-	   }
+	   }*/
 
     }
     
 	function check_facebook_user()
 	{
-	echo 'check facebook run';
+	//echo 'check facebook run';
 	$this->loadModel('User');
 	$facebook_id=$this->Connect->user('id');
     $facebook_email=$this->Connect->user('email');
