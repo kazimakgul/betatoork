@@ -8,9 +8,9 @@
 
 <meta property="og:title" content="Toork"/>
 <meta property="og:type" content="Game"/>
-<meta property="og:url" content="http://ec2-107-22-53-193.compute-1.amazonaws.com/"/>
-<meta property="og:image" content="http://ec2-107-22-53-193.compute-1.amazonaws.com/img/t_lg.png"/>
-<meta property="og:site_name" content="Toork Test"/>
+<meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
+<meta property="og:image" content="https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash3/552572_178477148939434_926991804_n.jpg"/>
+<meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="711440119"/>
 <meta property="og:description" content="Create your own game channel."/>
 
