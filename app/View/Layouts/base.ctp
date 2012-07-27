@@ -8,12 +8,11 @@
 
 <meta property="og:title" content="Toork"/>
 <meta property="og:type" content="Game"/>
-<meta property="og:url" content="http://toork.com/"/>
+<meta property="og:url" content="http://ec2-107-22-53-193.compute-1.amazonaws.com/"/>
 <meta property="og:image" content="http://ec2-107-22-53-193.compute-1.amazonaws.com/img/t_lg.png"/>
-<meta property="og:site_name" content="Toork"/>
+<meta property="og:site_name" content="Toork Test"/>
 <meta property="fb:admins" content="USER_ID"/>
-<meta property="og:description"
-      content="Create your own game channel."/>
+<meta property="og:description" content="Create your own game channel."/>
 
 <?php echo $this->fetch('css'); ?>
 <?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel')); ?>
