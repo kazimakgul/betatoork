@@ -8,7 +8,7 @@
 
 <meta property="og:title" content="Toork"/>
 <meta property="og:type" content="Game"/>
-<meta property="og:url" content="<?php echo $this->here; ?>"/>
+<meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
 <meta property="og:image" content="https://s3.amazonaws.com/betatoorkpics<?php echo $this->Upload->url($game,'Game.picture'); ?>"/>
 <meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="711440119"/>
