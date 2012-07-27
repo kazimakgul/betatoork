@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://ec2-107-22-53-193.compute-1.amazonaws.com/"/>
 <meta property="og:image" content="http://ec2-107-22-53-193.compute-1.amazonaws.com/img/t_lg.png"/>
 <meta property="og:site_name" content="Toork Test"/>
-<meta property="fb:admins" content="USER_ID"/>
+<meta property="fb:admins" content="711440119"/>
 <meta property="og:description" content="Create your own game channel."/>
 
 <?php echo $this->fetch('css'); ?>
