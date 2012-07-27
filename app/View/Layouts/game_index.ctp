@@ -9,7 +9,7 @@
 <meta property="og:title" content="Toork"/>
 <meta property="og:type" content="Game"/>
 <meta property="og:url" content="http://toork.com/"/>
-<meta property="og:image" content="https://s3.amazonaws.com/betatoorkpics/<?php echo $this->Upload->url($game,'Game.picture'); ?>"/>
+<meta property="og:image" content="https://s3.amazonaws.com/betatoorkpics<?php echo $this->Upload->url($game,'Game.picture'); ?>"/>
 <meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="USER_ID"/>
 <meta property="og:description" content="<?php echo $game['Game']['description']; ?>"/>
