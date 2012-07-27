@@ -9,7 +9,7 @@
 <meta property="og:title" content="Toork"/>
 <meta property="og:type" content="Game"/>
 <meta property="og:url" content="http://ec2-107-22-53-193.compute-1.amazonaws.com/"/>
-<meta property="og:image" content="https://s3.amazonaws.com/betatoorkpics/upload/games/7/cutropeBuyuk_toorksize.jpg"/>
+<meta property="og:image" content="http://s3.amazonaws.com/betatoorkpics/upload/games/7/cutropeBuyuk_toorksize.jpg"/>
 <meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="711440119"/>
 <meta property="og:description" content="<?php echo $game['Game']['description']; ?>"/>
