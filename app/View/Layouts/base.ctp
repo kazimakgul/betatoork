@@ -6,6 +6,11 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 
+<?php 
+echo $html->meta('keywords','enter any meta keyword here');
+echo $html->meta('description','enter any meta description here');
+?>
+
 <meta property="og:title" content="Toork"/>
 <meta property="og:type" content="Game"/>
 <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
