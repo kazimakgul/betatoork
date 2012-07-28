@@ -231,6 +231,8 @@
  */
 	//date_default_timezone_set('UTC');
 
+Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpics');
+
 /**
  * Pick the caching engine to use.  If APC is enabled use it.
  * If running via cli - apc is disabled by default. ensure it's available and enabled in this case

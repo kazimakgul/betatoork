@@ -7,8 +7,8 @@
 
 
 <?php 
-echo $html->meta('keywords','enter any meta keyword here');
-echo $html->meta('description','enter any meta description here');
+echo $this->Html->meta('keywords','enter any meta keyword here');
+echo $this->Html->meta('description','enter any meta description here');
 ?>
 
 <meta property="og:title" content="Toork"/>
