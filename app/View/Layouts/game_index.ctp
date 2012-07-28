@@ -14,7 +14,7 @@ echo $this->Html->meta('description','enter any meta description here');
 <meta property="og:title" content="Toork"/>
 <meta property="og:type" content="Game"/>
 <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
-<meta property="og:image" content="<?php echo Configure::read('S3.url').$this->Upload->url($game,'Game.picture'); ?>"/>
+<meta property="og:image" content="<?php echo $this->Upload->url2($game,'Game.picture'); ?>"/>
 <meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="711440119"/>
 <meta property="og:description" content="<?php echo $game['Game']['description']; ?>"/>

@@ -18,7 +18,7 @@ class UploadHelper extends AppHelper {
     {
         $options += array('urlize' => false);
 		//Generating special toork-aws link
-		$toork_aws_link="https://s3.amazonaws.com/betatoorkpics".$this->url($data, $path, $options);
+		$toork_aws_link=Configure::read('S3.url').$this->url($data, $path, $options);
         return $this->output($this->Html->image($toork_aws_link, $htmlOptions));
     }
 
@@ -97,7 +97,7 @@ class UploadHelper extends AppHelper {
         }
 
 //Generating special toork-aws link
-		$toork_aws_link="https://s3.amazonaws.com/betatoorkpics".$url;
+		$toork_aws_link=Configure::read('S3.url').$url;
      
         return $options['urlize'] ? $this->Html->url($toork_aws_link) : $toork_aws_link;
     }
