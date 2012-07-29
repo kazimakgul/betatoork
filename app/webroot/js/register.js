@@ -285,6 +285,8 @@ $(function () {
 		$('.t_regbox').animate({ top: - $('.t_regbox').height()}, 150);
 		$('.t_regbox_overlay').fadeOut(400,function(){$('.t_regbox_overlay').hide();});
 	});
+	
+	$('#t_regbox_remembtn').click(function () { if ($(this).hasClass('rememberbtn')) { $('#t_regbox_remembtn').removeClass('rememberbtn').addClass('rememberbtntick'); } else { $('#t_regbox_remembtn').removeClass('rememberbtntick').addClass('rememberbtn'); } });
     /* Button's action */
     //-----------------//
 });
