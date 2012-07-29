@@ -7,14 +7,19 @@
 
 
 <?php  echo $googleVerify ?>
-<meta property="og:title" content="Toork"/>
+
+<?php 
+echo $this->Html->meta('keywords','enter any meta keyword here');
+echo $this->Html->meta('description','enter any meta description here');
+?>
+
+<meta property="og:title" content="<?php echo title_for_layout; ?>"/>
 <meta property="og:type" content="Game"/>
-<meta property="og:url" content="http://toork.com/"/>
-<meta property="og:image" content=""/>
+<meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
+<meta property="og:image" content="https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash3/552572_178477148939434_926991804_n.jpg"/>
 <meta property="og:site_name" content="Toork"/>
-<meta property="fb:admins" content="USER_ID"/>
-<meta property="og:description"
-      content="Create your own game channel."/>
+<meta property="fb:admins" content="711440119"/>
+<meta property="og:description" content="Create your own game channel."/>
 
 
 <?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel')); ?>
