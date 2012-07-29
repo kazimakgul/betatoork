@@ -60,6 +60,8 @@
 .t_regbox_cancelbtn:hover{width:119px; height:37px; display:block; float:left; margin-left:60px; background-image:url(../img/new_reg/t_regbox_cancel.png); background-position:0px -37px}
 .t_regbox_logdonebtn{width:119px; height:37px; float:left; display:block; background-image:url(../img/new_reg/t_regbox_done.png); margin-left:10px; margin-top:28px; background-position:0px 0px}
 .t_regbox_logdonebtn:hover{display:block; float:left; background-image:url(../img/new_reg/t_regbox_done.png); margin-left:10px; margin-top:28px; background-position:0px -37px}
+.rememberbtn{float:left; background-image: url("../img/t_licence_check.png"); background-position: 0 0; background-repeat: no-repeat; display: block; height: 16px; padding-left: 20px; text-decoration: none; width: 140px; font-family:Verdana; font-size:8pt; text-decoration:none;}
+.rememberbtntick{float:left; background-image: url("../img/t_licence_check.png"); background-position: 0 -16px; background-repeat: no-repeat; display: block; height: 16px; padding-left: 20px; text-decoration: none; width: 140px; font-family:Verdana; font-size:8pt; text-decoration:none;}
 #t_regbox_loginbtn{display:block; float:right; background-image:url(../img/new_reg/t_regbox_login.png); background-position:0px 0px}
 #t_regbox_loginbtn:hover{display:block; float:right; background-image:url(../img/new_reg/t_regbox_login.png); background-position:0px -37px}
         

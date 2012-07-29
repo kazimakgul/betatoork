@@ -80,7 +80,7 @@ function rate_a_game(rating){
   
    }else{
   
-    $('#register').lightbox_me();
+    $('#up_btn_register').click();
   
    }  
   
@@ -114,7 +114,7 @@ function add_to_fav(heartwidth){
       
 	  }else{
 	  
-	  $('#register').lightbox_me();
+	  $('#up_btn_register').click();
 	  
 	  }
   

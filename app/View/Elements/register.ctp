@@ -11,6 +11,9 @@
 		'max-rows' => 3,			// fb button only
 		'perms' => 'email,publish_stream'
 	);
+	
+	$terms=$this->Html->url(array( "controller" => "pages","action" =>"terms"));
+	$privacy=$this->Html->url(array( "controller" => "pages","action" =>"privacy"));
 ?>
 
 <div class="t_regbox_overlay"></div>
@@ -30,7 +33,7 @@
 							echo $this->Facebook->login($opt); 
 						//}
 					?>
-				<a id="t_regbox_twt" class="t_regbox_twt" href="#"><img style="border:0" alt="" src="img/new_reg/twt.png" /></a>
+				<!-- <a id="t_regbox_twt" class="t_regbox_twt" href="#"><img style="border:0" alt="" src="img/new_reg/twt.png" /></a> -->
 				<span style="font-size:7pt; color:#666;">By signing in you accept our terms of use.</span>            
 			</div>
 			<div id="t_regbox_tabs" class="t_regbox_tabs">
@@ -47,8 +50,8 @@
 						<div class="t_regbox_signemail"><input id="txt_signemail" type="text" disabled="disabled" /></div>
 						<div class="t_regbox_signpass"><input id="txt_signpass" type="password" disabled="disabled" /></div>
 						<div class="t_regbox_signpassagain"><input id="txt_signpassagain" type="password" disabled="disabled" /></div>
-						<span>Yes, i read and accept the <a href="#">Privacy Notice</a></span>
-						<span>I agree to the <a href="#">Terms and Conditions</a></span>
+						<span>Yes, i read and accept the <a href="<?php echo $privacy ?>" target="_blank">Privacy Notice</a></span>
+						<span>I agree to the <a href="<?php echo $terms ?>" target="_blank">Terms and Conditions</a></span>
 						<a class="t_regbox_btn" id="t_regbox_registerbtn" href="#"></a>                   
 					</div>
 					<div id="t_regbox_regcapthcaform" class="t_regbox_regcapthcaform">
@@ -94,7 +97,7 @@
 						<div class="t_regbox_logusername"><input id="txt_logusername" type="text" /></div>
 						<div class="t_regbox_logpassword"><input id="txt_logpassword" type="password" disabled="disabled" /></div>                
 						<div class="clearfix" style="width:307px; padding-top:20px;">
-							<a class="t_regbox_remembtn" style="display:block; float:left; font-family:Verdana; font-size:8pt; text-decoration:none;" href="#">Remember Me</a>
+							<a id="t_regbox_remembtn" class="rememberbtn" href="#">Remember Me</a>
 							<a class="t_regbox_forgetbtn" style="display:block; float:right; font-family:Verdana; font-size:8pt; text-decoration:none;" href="#">Forgot Password?</a>
 						</div>
 						<div class="clearfix" style="width:309px; margin-top:95px;">
