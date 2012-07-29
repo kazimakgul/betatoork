@@ -21,7 +21,10 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($en
                             <div class="socials" style = "margin-left:50px; margin-top:10px">
                             
                             <span class='st_sharethis_hcount' displayText='ShareThis'></span>
-                            <span class='st_facebook_hcount' displayText='Facebook'></span>
+                            
+							<a href='http://rest.sharethis.com/share/sharer.php?destination=facebook&url=http://ec2-107-22-53-193.compute-1.amazonaws.com/gameringa&pub_key=a3cce920-3a6b-47a8-a890-d27d55cbc9e8&access_key=512db7bf2cce2acb63fad31b31067e27' class="st_facebook_hcount" displaytext="Facebook" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span><span class="stMainServices st-facebook-counter" style="background-image: url(http://w.sharethis.com/images/facebook_counter.png); ">&nbsp;<img src="http://w.sharethis.com/images/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none; "></span><span class="stArrow"><span class="stButton_gradient stHBubble" style="display: inline-block; "><span class="stBubble_hcount">3</span></span></span></span></span></a>
+							
+							
                             <span class='st_twitter_hcount' displayText='Tweet'></span>
                             <span class='st_linkedin_hcount' displayText='LinkedIn'></span>
                             <span class='st_email_hcount' displayText='Email'></span>
