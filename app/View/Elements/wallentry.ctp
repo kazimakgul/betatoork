@@ -21,7 +21,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($en
                             <div class="socials" style = "margin-left:50px; margin-top:10px">
                             
                             <span class='st_sharethis_hcount' displayText='ShareThis'></span>
-                            <a href='http://rest.sharethis.com/share/sharer.php?destination=facebook&url=http://www.hotmail.com' class='facebook' displayText='Facebook'></a>
+                            <a href='http://rest.sharethis.com/share/sharer.php?destination=facebook&url=http://www.hotmail.com' class='facebook_hcount' displayText='Facebook'></a>
                             <span class='st_twitter_hcount' displayText='Tweet'></span>
                             <span class='st_linkedin_hcount' displayText='LinkedIn'></span>
                             <span class='st_email_hcount' displayText='Email'></span>
