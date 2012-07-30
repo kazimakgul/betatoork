@@ -6,12 +6,12 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 <?php 
-echo $this->Html->meta('keywords','enter any meta keyword here');
-echo $this->Html->meta('description','enter any meta description here');
+echo $this->Html->meta('keywords','online games, browser games, flash games, share games, social network for gamers, game channels, social for game bloggers,share your games, share gamelist, games list');
 ?>
+<meta name="description" content="<?php echo $game['Game']['description']; ?>"/>
 
 
-<meta property="og:title" content="Toork"/>
+<meta property="og:title" content="<?php echo $game['Game']['name']; echo ' - '; echo $game['User']['username']; ?>"/>
 <meta property="og:type" content="Game"/>
 <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
 <meta property="og:image" content="<?php echo $this->Upload->url2($game,'Game.picture'); ?>"/>

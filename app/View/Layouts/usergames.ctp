@@ -9,8 +9,8 @@
 <?php  echo $googleVerify ?>
 
 <?php 
-echo $this->Html->meta('keywords','enter any meta keyword here');
-echo $this->Html->meta('description','enter any meta description here');
+echo $this->Html->meta('keywords','online games, browser games, flash games, share games, social network for gamers, game channels, social for game bloggers,share your games, share gamelist, games list');
+echo $this->Html->meta('description','Toork is a social network for online gamers. With Toork, you will be able to create your own game channel by collecting any game around the web and share it with your friends. Create your game lists, customize your channel and earn money by using toork.');
 ?>
 
 <meta property="og:title" content="<?php echo $title_for_layout; ?>"/>
@@ -19,7 +19,7 @@ echo $this->Html->meta('description','enter any meta description here');
 <meta property="og:image" content="https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash3/552572_178477148939434_926991804_n.jpg"/>
 <meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="711440119"/>
-<meta property="og:description" content="Create your own game channel."/>
+<meta property="og:description" content="<?php echo $user['User']['username']; echo ' - Create your own game channel - Toork'; ?>"/>
 
 
 <?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel')); ?>

@@ -6,11 +6,11 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 <?php 
-echo $this->Html->meta('keywords','enter any meta keyword here');
-echo $this->Html->meta('description','enter any meta description here');
+echo $this->Html->meta('keywords','online games, browser games, flash games, share games, social network for gamers, game channels, social for game bloggers,share your games, share gamelist, games list');
+echo $this->Html->meta('description','Toork is a social network for online gamers. With Toork, you will be able to create your own game channel by collecting any game around the web and share it with your friends. Create your game lists, customize your channel and earn money by using toork.');
 ?>
 
-<meta property="og:title" content="Toork"/>
+<meta property="og:title" content="<?php echo $game['User']['username']; echo ' - Toork';  ?>"/>
 <meta property="og:type" content="Game"/>
 <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
 <meta property="og:image" content="https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash3/552572_178477148939434_926991804_n.jpg"/>

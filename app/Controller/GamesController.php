@@ -72,7 +72,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 		$this->set('slider', $cond);
 		$this->set('featured', $cond2);
 
-		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel - create your gamelist - create your playlist of games and share your list - Play free online games');
+		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel');
 	}
 	
 	
@@ -474,7 +474,7 @@ public function channelgames() {
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
     	$this->set('user_id', $userid);
-		$this->set('title_for_layout', 'Toork - Followers');
+		$this->set('title_for_layout', $userName.' - Followers');
 		$this->set('username', $userName);
 
 		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_to_id' => $userid)));
@@ -491,7 +491,7 @@ public function channelgames() {
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
     	$this->set('user_id', $userid);
-		$this->set('title_for_layout', 'Toork - Subscriptions');
+		$this->set('title_for_layout', $userName.' - Subscribtions');
 		$this->set('username', $userName);
 
 		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
@@ -687,7 +687,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 		$this->set('game', $this->Game->read(null, $id));
 		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
-		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
+		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
 		//start size calculation for play page
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
@@ -738,7 +738,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
 		$this->set('game', $game);
-		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
+		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
 		//start size calculation for play page
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
