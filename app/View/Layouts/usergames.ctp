@@ -16,7 +16,7 @@ echo $this->Html->meta('description','Toork is a social network for online gamer
 <meta property="og:title" content="<?php echo $title_for_layout; ?>"/>
 <meta property="og:type" content="Game"/>
 <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
-<meta property="og:image" content="https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash3/552572_178477148939434_926991804_n.jpg"/>
+<meta property="og:image" content="<?php echo $this->Upload->url2($user,'User.picture'); ?>"/>
 <meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="711440119"/>
 <meta property="og:description" content="<?php echo $user['User']['username']; echo ' - Create your own game channel - Toork'; ?>"/>
