@@ -31,13 +31,13 @@
       				<?php if($this->Session->check('Auth.User')){?>
               <a href="<?php echo $wall ?>"></a>
                <?php }else{?>
-                   <a class="unauth" href="#" onclick="$('#up_btn_register').click();"></a>
+                   <a class="unauth" href="#" onclick="Register();"></a>
                <?php } ?>
 
               <?php if($this->Session->check('Auth.User')){?>
                   <a href="<?php echo $channel ?>"></a>
                <?php }else{?>
-                   <a class="unauth" href="#" onclick="$('#up_btn_register').click();"></a>
+                   <a class="unauth" href="#" onclick="Register();"></a>
                <?php } ?>
 
       			</div>
@@ -62,3 +62,12 @@
 	  </table>
 	</div>
 </div>
+
+<script>
+function Register(){
+		$('.t_regbox_overlay').fadeIn(400);
+		$('.t_regbox').animate({ top: ($('.t_regbox_overlay').height() - $('.t_regbox').height()) / 2 }, 150, function(){
+			$('.t_regbox_regtab').click();
+		});
+		}	
+</script>
