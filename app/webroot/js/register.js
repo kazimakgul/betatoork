@@ -3,12 +3,15 @@ $(function () {
     var errpas, errun, errmail,errfor = true;
     var mailRegex = /[aA-zZ0-9._%+-]+@[aA-zZ0-9.-]+\.[aA-zZ]{2,4}/;
 	
-	$('.t_regbox').css({'left': ($('.t_regbox_overlay').width() - $('.t_regbox').width()) / 2 });
-	$('#up_btn_register').click(function () {
+	function Register(){
 		$('.t_regbox_overlay').fadeIn(400);
 		$('.t_regbox').animate({ top: ($('.t_regbox_overlay').height() - $('.t_regbox').height()) / 2 }, 150, function(){
 			$('.t_regbox_regtab').click();
-		});
+		});	
+	}
+	$('.t_regbox').css({'left': ($('.t_regbox_overlay').width() - $('.t_regbox').width()) / 2 });
+	$('#up_btn_register').click(function () {
+		Register();
 	});
 	
 	$('#up_btn_forget').click(function () {

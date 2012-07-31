@@ -1,7 +1,7 @@
 <?php if($this->Session->check('Auth.User')){?>
 <a id="subscribe" class="subscribe" href="javascript:void();"></a> 
 <?php }else {?>
-<a id="subscribeout" class="subscribe" onclick="$('#up_btn_register').click();"></a> 
+<a id="subscribeout" class="subscribe" onclick="Register();"></a> 
  <?php }?>
 <script>
 

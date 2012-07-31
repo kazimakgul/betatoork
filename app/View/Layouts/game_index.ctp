@@ -80,7 +80,7 @@ function rate_a_game(rating){
   
    }else{
   
-    $('#up_btn_register').click();
+    Register();
   
    }  
   
@@ -114,7 +114,7 @@ function add_to_fav(heartwidth){
       
 	  }else{
 	  
-	  $('#up_btn_register').click();
+	  Register();
 	  
 	  }
   
