@@ -131,7 +131,7 @@ public function reset_now($user_id = null, $in_hash = null){
 		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash('Your password has been reset, Please login with your new password');
-				//$this->redirect(array('action' => 'password',$this->Session->read('Auth.User.id')));
+				$this->redirect('/');
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
@@ -409,11 +409,11 @@ function secureSuperGlobalPOST($value)
              $opt = array(
              'prefix' => $prefix,
              );
-			 $bucket="betatoorkpics";
+			 $bucket="betatoorkpicstest";
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
-			 $response=$this->Amazon->S3->delete_object('betatoorkpics', $obj);
+			 $response=$this->Amazon->S3->delete_object('betatoorkpicstest', $obj);
 			 //print_r($response);
 			 }
 			//remove objects from S3
@@ -453,7 +453,7 @@ function secureSuperGlobalPOST($value)
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
-            'betatoorkpics',
+            'betatoorkpicstest',
             'upload/users/'.$id."/".$basename,
              array(
             'fileUpload' => WWW_ROOT ."/upload/users/".$id."/".$basename,

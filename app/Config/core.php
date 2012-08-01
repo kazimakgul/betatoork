@@ -231,7 +231,12 @@
  */
 	//date_default_timezone_set('UTC');
 
-Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpics');
+Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpicstest');
+
+# test S3 path  -> https://s3.amazonaws.com/betatoorkpicstest
+# toork S3 path -> https://s3.amazonaws.com/betatoorkpics
+
+
 
 /**
  * Pick the caching engine to use.  If APC is enabled use it.
