@@ -107,13 +107,13 @@ class AppController extends Controller {
 			   //print_r($null_user);
 			   //sil
 			   
-			 /*
+			 
 			   foreach($null_user as $nulles)
 			   {
 			   $this->User->id=$nulles['User']['id'];
 			   $this->User->delete();
 			   }
-			  */
+			  
 			  
                
 	   if($this->Connect->user())
@@ -157,11 +157,32 @@ class AppController extends Controller {
 			      $this->User->id=$unmodified_id;
 				  //echo 'fbusername:'.$this->Connect->user('username');
 				  //echo 'fbmail:'.$this->Connect->user('email');
-				  $this->request->data['User']['username']=$this->Connect->user('username');
-			      $this->request->data['User']['email']= $this->Connect->user('email');
+				  $faceSurname = $this->Connect->user('surname'). $this->Connect->user('name');;
+				  $faceUserName = $this->Connect->user('username');
+				  $faceEmail =$this->Connect->user('email');
+				  $this->request->data['User']['username']=$faceUserName;
+			      $this->request->data['User']['email']= $faceEmail;
 				  
 				  //handle error messages later
-				  
+				  $usernamecheck=$this->User->find('first',array('condition'=> array('User.username'=>$faceUserName),'field'=>array('User.username')));
+                  if($usernamecheck != NULL){
+                  		$usernamecheck2=$this->User->find('first',array('condition'=> array('User.username'=>$faceSurname),'field'=>array('User.username')));
+                  		if($usernamecheck2 != NULL){
+                  			$randomName = $faceUserName.rand(300,999);
+ 	                  		$usernamecheck3=$this->User->find('first',array('condition'=> array('User.username'=>$randomName),'field'=>array('User.username')));
+                  			if($usernamecheck3 != NULL){
+
+                  			}else{
+                  				$this->request->data['User']['username']=$randomName;
+                  			}
+                  		}else{
+                  			$this->request->data['User']['username']=$faceSurame;
+                  		}
+                  }else{
+                    $this->request->data['User']['username']=$faceUserName;
+                  }
+
+
 				  if($this->User->save($this->request->data))
 				  {
 				  //first try successfull
