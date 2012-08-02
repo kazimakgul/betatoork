@@ -157,7 +157,7 @@ class AppController extends Controller {
 			      $this->User->id=$unmodified_id;
 				  //echo 'fbusername:'.$this->Connect->user('username');
 				  //echo 'fbmail:'.$this->Connect->user('email');
-				  $faceSurname = $this->Connect->user('surname'). $this->Connect->user('name');;
+				  $faceSurname = $this->Connect->user('last_name'). $this->Connect->user('first_name');;
 				  $faceUserName = $this->Connect->user('username');
 				  $faceEmail =$this->Connect->user('email');
 				  $this->request->data['User']['username']=$faceUserName;
