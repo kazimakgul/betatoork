@@ -107,13 +107,13 @@ class AppController extends Controller {
 			   //print_r($null_user);
 			   //sil
 			   
-			 /*
+			 
 			   foreach($null_user as $nulles)
 			   {
 			   $this->User->id=$nulles['User']['id'];
 			   $this->User->delete();
 			   }
-			  */
+			  
 			  
                
 	   if($this->Connect->user())
@@ -170,7 +170,7 @@ class AppController extends Controller {
 				  $this->set('username', $userName);
 				  }else{
 				  
-				           $this->request->data['User']['username']=$this->Connect->user('username').'abc';
+				           $this->request->data['User']['username']=$this->Connect->user('username');
 			               $this->request->data['User']['email']=rand(1,200).$this->Connect->user('email');
 				           if($this->User->save($this->request->data))
 						   {
