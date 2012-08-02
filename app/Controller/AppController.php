@@ -102,9 +102,9 @@ class AppController extends Controller {
 
                //sil
 			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
-			   if($null_user!=NULL)
-			   echo 'NullUser:';
-			   print_r($null_user);
+			   //if($null_user!=NULL)
+			   //echo 'NullUser:';
+			   //print_r($null_user);
 			   //sil
 			   
 			 /*
@@ -157,32 +157,11 @@ class AppController extends Controller {
 			      $this->User->id=$unmodified_id;
 				  //echo 'fbusername:'.$this->Connect->user('username');
 				  //echo 'fbmail:'.$this->Connect->user('email');
-				  $faceSurname = $this->Connect->user('last_name'). $this->Connect->user('first_name');;
-				  $faceUserName = $this->Connect->user('username');
-				  $faceEmail =$this->Connect->user('email');
-				  $this->request->data['User']['username']=$faceUserName;
-			      $this->request->data['User']['email']= $faceEmail;
+				  $this->request->data['User']['username']=$this->Connect->user('username');
+			      $this->request->data['User']['email']= $this->Connect->user('email');
 				  
 				  //handle error messages later
-				  $usernamecheck=$this->User->find('first',array('condition'=> array('User.username'=>$faceUserName),'field'=>array('User.username')));
-                  if($usernamecheck != NULL){
-                  		$usernamecheck2=$this->User->find('first',array('condition'=> array('User.username'=>$faceSurname),'field'=>array('User.username')));
-                  		if($usernamecheck2 != NULL){
-                  			$randomName = $faceUserName.rand(300,999);
- 	                  		$usernamecheck3=$this->User->find('first',array('condition'=> array('User.username'=>$randomName),'field'=>array('User.username')));
-                  			if($usernamecheck3 != NULL){
-
-                  			}else{
-                  				$this->request->data['User']['username']=$randomName;
-                  			}
-                  		}else{
-                  			$this->request->data['User']['username']=$faceSurame;
-                  		}
-                  }else{
-                    $this->request->data['User']['username']=$faceUserName;
-                  }
-
-
+				  
 				  if($this->User->save($this->request->data))
 				  {
 				  //first try successfull
@@ -191,7 +170,7 @@ class AppController extends Controller {
 				  $this->set('username', $userName);
 				  }else{
 				  
-				           $this->request->data['User']['username']=$this->Connect->user('username');
+				           $this->request->data['User']['username']=$this->Connect->user('username').'abc';
 			               $this->request->data['User']['email']=rand(1,200).$this->Connect->user('email');
 				           if($this->User->save($this->request->data))
 						   {
