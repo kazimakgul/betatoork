@@ -313,15 +313,4 @@ FB.logout();
 var cookies = document.cookie.split(";");for (var i = 0; i < cookies.length; i++) {var cookie = cookies[i];var eqPos = cookie.indexOf("=");var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";}
 }
 
-
-FB.login(function(response) {
-   if (response.authResponse) {
-     FB.api('/me', function(response) {
-       alert('Good to see you, ' + response.name + '.');
-     });
-   } else {
-     console.log('User cancelled login or did not fully authorize.');
-   }
- });
-
 </script>
