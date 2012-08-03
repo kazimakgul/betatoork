@@ -6,11 +6,27 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 
-<?php  echo $googleVerify ?>
+<?php  echo $googleVerify;
+$userDesc = $user['User']['description'];
+$userName = $user['User']['username'];
+if($userDesc == NULL){
+    $descriptions = $this->Html->meta('description','Toork is a social network for online gamers. With Toork, you will be able to create your own game channel by collecting any game around the web and share it with your friends. Create your game lists, customize your channel and earn money by using toork.');
+    $fbDescriptions = "<meta property='og:description' content= $userName - Create your own game channel - Toork />";
 
-<?php 
+}else{
+    $descriptions = "<meta name='description' content= $userDesc />";
+    $fbDescriptions = "<meta property='og:description' content= '$userDesc' />";
+}
+
+?>
+
+
+
+<?php
+
 echo $this->Html->meta('keywords','online games, browser games, flash games, share games, social network for gamers, game channels, social for game bloggers,share your games, share gamelist, games list');
-echo $this->Html->meta('description','Toork is a social network for online gamers. With Toork, you will be able to create your own game channel by collecting any game around the web and share it with your friends. Create your game lists, customize your channel and earn money by using toork.');
+echo $descriptions;
+    
 ?>
 
 <meta property="og:title" content="<?php echo $title_for_layout; ?>"/>
@@ -19,8 +35,7 @@ echo $this->Html->meta('description','Toork is a social network for online gamer
 <meta property="og:image" content="<?php echo $this->Upload->url2($user,'User.picture'); ?>"/>
 <meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="711440119"/>
-<meta property="og:description" content="<?php echo $user['User']['username']; echo ' - Create your own game channel - Toork'; ?>"/>
-
+<?php echo $fbDescriptions ?>
 
 <?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel')); ?>
 

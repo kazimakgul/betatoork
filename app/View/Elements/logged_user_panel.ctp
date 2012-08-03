@@ -24,7 +24,11 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
   <div class="panelsep"></div>
   <a class="added" href="<?php echo $channelurl ?>"><?php echo $gamenumber ?> games added</a>
   <a class="favorite" href="<?php echo $channelurl ?>"><?php echo $favoritenumber ?> games favorite</a>
-  <a class="played" href="<?php echo $playcounturl ?>"><?php echo $playcount ?> games played</a>
+  <a class="played" href="<?php echo $user['User']['fb_link']?>" target="_blank" rel="nofollow">Facebook Profile</a>
+  <a class="played" href="<?php echo $user['User']['twitter_link']?>" target="_blank" rel="nofollow">Twitter Page</a>
+  <a class="played" href="<?php echo $user['User']['gplus_link']?>" target="_blank" rel="nofollow">Google+ Page</a>
+  <a class="played" href="<?php echo $user['User']['website']?>" target="_blank" rel="nofollow">My Website</a>
   <a class="subscriber" href="<?php echo $folurl ?>"><?php echo $subscribeto ?> Followers</a>
   <a class="subscription" href="<?php echo $suburl ?>"><?php echo $subscribe ?> Subscriptions</a>
+  <a class="played" href="<?php echo $playcounturl ?>"><?php echo $playcount ?> games played</a>
 </div>
