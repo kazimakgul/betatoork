@@ -20,6 +20,15 @@
             <label for="name">Username:</label>
 <?php echo $this->Form->input('username',array('label'=>false ,'required','placeholder' => 'Ex: GameMonster')); ?>
          </li>
+
+        <li>
+            <label for="message">Channel Description:</label>
+
+<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>500,'required','placeholder' => 'Describe your channel please','type' => 'textarea','cols'=>'40','rows'=>'5' )); ?>
+
+            <span class="form_hint">recommendation : "your description better be between 50-500 chars please"</span>
+        </li>
+
         <li>
             <label for="website">Email:</label>
 
@@ -27,6 +36,40 @@
 
             <span class="form_hint">You are not allowed to change your email.</span>
         </li>
+
+          <li>
+            <label for="website">Your Website Link:</label>
+
+<?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com','type' => 'url', 'maxlength'=>100)); ?>
+
+            <span class="form_hint">Proper format "http://yourwebsite.com"</span>
+        </li>
+
+          <li>
+            <label for="website">Facebook Fan Page:</label>
+
+<?php echo $this->Form->input('fb_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://facebook.com/.+' ,'placeholder' => 'http://facebook.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
+
+            <span class="form_hint">Proper format "http://facebook.com/yourprofile"</span>
+        </li>
+
+          <li>
+            <label for="website">Twitter Page:</label>
+
+<?php echo $this->Form->input('twitter_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://twitter.com/.+' ,'placeholder' => 'http://twitter.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
+
+            <span class="form_hint">Proper format "http://twitter.com/yourprofile"</span>
+        </li>
+
+          <li>
+            <label for="website">Google+ Page:</label>
+
+<?php echo $this->Form->input('gplus_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://plus.google.com/.+' ,'placeholder' => 'http://plus.google.com/117184471094869274585','type' => 'url', 'maxlength'=>100)); ?>
+
+            <span class="form_hint">Proper format "http://plus.google.com/yourprofileID"</span>
+        </li>
+
+
 <?php if ($this->Session->read('Auth.User.role') == 0){
       }else{
 ?>
