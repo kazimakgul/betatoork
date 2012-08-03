@@ -14,6 +14,14 @@ $(function () {
 		Register();
 	});
 	
+	$('.unauth').click(function () {
+		Register();
+	});
+	
+	$('#subscribeout').click(function () {
+		Register();
+	});
+	
 	$('#up_btn_forget').click(function () {
 		$('.t_regbox_overlay').fadeIn(400);
 		$('.t_regbox').animate({ top: ($('.t_regbox_overlay').height() - $('.t_regbox').height()) / 2 }, 150, function(){
@@ -107,7 +115,7 @@ $(function () {
 				errbox($(this));
 			}
 			else if (_this.attr('id') == 'txt_signusername' || _this.attr('id') == 'txt_signemail'){
-				$.post('users/checkUser', { dt: $(this).val(), attr: _this.attr('id') }, function (data) {
+				$.post(remotecheck, { dt: $(this).val(), attr: _this.attr('id') }, function (data) {
 					if (data.rtdata == null) {
 						if(_this.attr('id') == 'txt_signusername'){errun = false;}else{errmail = false;}
 						_this.parent().css('backgroundPosition', '0px -87px');
@@ -212,7 +220,7 @@ $(function () {
     });
 
     $('#t_regbox_signdonebtn').click(function () {
-		$.post('users/checkUser', { dt: $('#recaptcha_response_field').val(), c: $('#recaptcha_challenge_field').val(), attr: 'recaptcha_response_field', un: $('#txt_signusername').val(), um: $('#txt_signemail').val(), up: $('#txt_signpass').val() }, function (data) {
+		$.post(remotecheck, { dt: $('#recaptcha_response_field').val(), c: $('#recaptcha_challenge_field').val(), attr: 'recaptcha_response_field', un: $('#txt_signusername').val(), um: $('#txt_signemail').val(), up: $('#txt_signpass').val() }, function (data) {
 			if (data.rtdata == 'true') {
 				$('.t_regbox_signform').animate({ left: '-=350' }, 300);
 			}
@@ -244,7 +252,7 @@ $(function () {
     });
 
     $('#t_regbox_logdonebtn').click(function () {
-         $.post('users/checkUser', { dt: $('#t_regbox_logemail').val(), attr: 't_regbox_logemail' }, function (data) {
+         $.post(remotecheck, { dt: $('#t_regbox_logemail').val(), attr: 't_regbox_logemail' }, function (data) {
             if (data.rtdata != null) {
 				$('.t_regbox_errbox_container').show();
 				$('#t_regbox_logemail').parent().css('backgroundPosition', '0px -116px');
@@ -259,7 +267,7 @@ $(function () {
     });
 
     $('#t_regbox_loginbtn').click(function () {
-        $.post('users/checkUser', { un: $('#txt_logusername').val(), ps: $('#txt_logpassword').val(), attr: 'txt_logusername' }, function (data) {
+        $.post(remotecheck, { un: $('#txt_logusername').val(), ps: $('#txt_logpassword').val(), attr: 'txt_logusername' }, function (data) {
 			if(data.rtdata.msgid=='0'){
 				$('#txt_logusername').parent().css('backgroundPosition', '0px -116px');
 				$('#txt_logpassword').parent().css('backgroundPosition', '0px -116px');
