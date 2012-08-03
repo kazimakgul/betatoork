@@ -520,7 +520,7 @@ class FacebookHelper extends AppHelper {
 		FB.getLoginStatus(function(response) {
 			if (response.authResponse) {
 				// logged in and connected user, someone you know
-				// alert('You are connected');
+				alert('You are connected');
 			} else {
 				// no user session available, someone you dont know
 				// alert('You are disconnected');
@@ -530,7 +530,7 @@ class FacebookHelper extends AppHelper {
 		FB.Event.subscribe('auth.authResponseChange', function(response) {
 			if (response.authResponse) {
 				// the user has just logged in
-				// alert('You just logged in facebook from somewhere');
+				alert('You just logged in facebook from somewhere');
 			} else {
 				// the user has just logged out
 				// alert('You just logged out from faceboook');
