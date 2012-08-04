@@ -47,6 +47,11 @@ echo 'useronline=0;';
 }
 ?>
 
+<?php if($this->Session->check('Auth.User')){?>
+
+echo 'logiiiiiiiiiiiiiiiiiiiiiiiiiiiiinn';
+
+<?php }else {echo 'noooo';}?>
 
 function rate_a_game(rating){
 
