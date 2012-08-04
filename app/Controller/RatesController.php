@@ -140,6 +140,7 @@ if (!$this->Rate->Game->exists()) {
 	$this->layout = "ajax";
 	$rate_id=$this->request["pass"][0];
 	$rating=$this->request["pass"][1];
+	echo 'moooooooooo'.$rate_id;
 	$this->set("myid",$rate_id);
 	$this->set("rating",$rating);
 	$this->request->data["Rate"]["current"]=$rating;
