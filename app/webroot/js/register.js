@@ -18,11 +18,6 @@ $(function () {
 		Register();
 	});
 	
-	
-	$('#unauthrate').click(function () {
-		Register();
-	});
-	
 	$('#subscribeout').click(function () {
 		Register();
 	});

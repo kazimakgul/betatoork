@@ -23,8 +23,6 @@ $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username']
 
 </div>
 
-
-<?php if($this->Session->check('Auth.User')){?>
 <div class= 'centerrate'>
 <div class="stars">
 <div class="rating" style="width: <?php echo $starsize; ?>%;"></div>
@@ -35,20 +33,8 @@ $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username']
 <div class="star" onClick="event.cancelBubble=true; rate_a_game(5); return false;">
 </div></div></div></div></div>
 </div>
+
 </div>  
-<?php }else{?>
-<div class= 'centerrate'>
-<div class="stars">
-<div class="rating" style="width: <?php echo $starsize; ?>%;"></div>
-<div class="star" id="unauthrate">
-<div class="star" id="unauthrate">
-<div class="star" id="unauthrate">
-<div class="star" id="unauthrate">
-<div class="star" id="unauthrate">
-</div></div></div></div></div>
-</div>
-</div>  
-<?php } ?>
 
 
 </div>
