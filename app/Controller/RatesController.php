@@ -147,8 +147,7 @@ if (!$this->Rate->Game->exists()) {
 		if (!$this->Rate->exists()) {
 			throw new NotFoundException(__('Invalid rate'));
 		}
-		if ($this->request->is('get') || $this->request->is('put')) {
-		echo 'yehuuooooooooooou';
+		if ($rate_id!=NULL && $rating!=NULL) {
 			if ($this->Rate->save($this->request->data)) {
 			
 			    $this->starsize($this->Rate->field('game_id'),0);
