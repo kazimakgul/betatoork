@@ -148,8 +148,9 @@ if (!$this->Rate->Game->exists()) {
 			throw new NotFoundException(__('Invalid rate'));
 		}
 		if ($this->request->is('get') || $this->request->is('put')) {
+		echo 'yehuuooooooooooou';
 			if ($this->Rate->save($this->request->data)) {
-			echo 'mooooooooooRateid:'.$rate_id.'rating:'.$rating;
+			
 			    $this->starsize($this->Rate->field('game_id'),0);
 				$this->set("mess","The rate has been updated.");
 				
