@@ -80,7 +80,7 @@ function rate_a_game(rating){
   
    }else{
   
-    Register();
+    $('.unauth').click();
   
    }  
   
