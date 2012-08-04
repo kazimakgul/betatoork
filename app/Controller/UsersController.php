@@ -270,7 +270,7 @@ public function __sendResetEmail($user_id) {
 	}
 
 	public function randomAvatar() {
- 		$pic_number = rand(1,12);
+ 		$pic_number = rand(1,77);
  		return $pic_number;
         //$this->set('randomAvatar' , $random['Game']['id']);
 }
