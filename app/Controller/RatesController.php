@@ -140,7 +140,6 @@ if (!$this->Rate->Game->exists()) {
 	$this->layout = "ajax";
 	$rate_id=$this->request["pass"][0];
 	$rating=$this->request["pass"][1];
-	echo 'mooooooooooRateid:'.$rate_id.'rating:'.$rating;
 	$this->set("myid",$rate_id);
 	$this->set("rating",$rating);
 	$this->request->data["Rate"]["current"]=$rating;
@@ -150,7 +149,7 @@ if (!$this->Rate->Game->exists()) {
 		}
 		if ($this->request->is('get') || $this->request->is('put')) {
 			if ($this->Rate->save($this->request->data)) {
-			
+			echo 'mooooooooooRateid:'.$rate_id.'rating:'.$rating;
 			    $this->starsize($this->Rate->field('game_id'),0);
 				$this->set("mess","The rate has been updated.");
 				
