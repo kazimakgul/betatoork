@@ -151,7 +151,7 @@ class FacebookHelper extends AppHelper {
 	}
 	
 	
-	/**
+	/*
 	* Logout Button
 	* $this->Facebook->init() is required for this
 	* @param array of options
