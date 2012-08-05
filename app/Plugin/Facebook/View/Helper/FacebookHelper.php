@@ -532,7 +532,8 @@ class FacebookHelper extends AppHelper {
 				// the user has just logged in
 				//alert('You just logged in facebook from somewhere');
 				$('.t_regbox').animate({ top: - $('.t_regbox').height()}, 150);
-				$('.t_regbox_overlay').fadeOut(400);$('.t_regbox_overlay').hide();
+				$('.t_regbox_overlay').fadeOut(400);$('.t_regbox_overlay').hide();<br />
+                location.reload();
                 
 			} else {
 				// the user has just logged out
