@@ -1,5 +1,6 @@
 .gamebox{float:left; position:relative; width:223px; height:180px; padding-left:1px; margin:5px;}
-.gamebox .greyback{width:210px; height:118px; background-image:url("../img/t_game_box_greyback.png"); padding:5px 6px;}
+.gamebox .greyback{width:210px; height:118px; background-image:url("../img/t_game_box_greyback.png"); padding:5px 6px; background-position:0 0;}
+.gamebox .greyback:hover{width:210px; height:118px; background-image:url("../img/t_game_box_greyback.png"); padding:5px 6px; background-position:0 -128px;}
 .gamebox .greyback .whiteback{width:210px; height:118px; background-image:url("../img/t_game_box_whiteback.png");}
 .gamebox .greyback .whiteback .gamethumb{margin:4px 5px;}
 .gamebox .gb_rate{position:absolute; width:108px; height:36px; background-image:url("../img/t_game_box_rateback.png"); top:110px; left:105px;}
