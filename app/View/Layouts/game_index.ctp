@@ -114,7 +114,7 @@ function add_to_fav(heartwidth){
       
 	  }else{
 	  
-	  Register();
+	  $('.unauth').click();
 	  
 	  }
   
