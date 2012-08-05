@@ -28,7 +28,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
   <a class="subscription" href="<?php echo $suburl ?>"><?php echo $subscribe ?> Subscriptions</a>
   <a class="played" href="<?php echo $playcounturl ?>"><?php echo $playcount ?> games played</a>
   <div class="panelsep"></div>
-  <div class="clearfix">
+  <div class="clearfix" style="padding-left:25px;">
 		<a class="fb_link" href="<?php echo $user['User']['fb_link']?>" target="_blank" rel="nofollow"></a>
 		<a class="twitter_link" href="<?php echo $user['User']['twitter_link']?>" target="_blank" rel="nofollow"></a>
 		<a class="gplus_link" href="<?php echo $user['User']['gplus_link']?>" target="_blank" rel="nofollow"></a>
