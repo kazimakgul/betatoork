@@ -11,7 +11,9 @@ $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$followid));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 $facebook = $card[6]['User']['fb_link'];
-$facebook2 = "<a class='fb_link' href='$facebook' target='_blank' rel='nofollow'></a>";
+$twitter = $card[6]['User']['twitter_link'];
+$gplus = $card[6]['User']['gplus_link'];
+$website = $card[6]['User']['website'];
 ?>
 
         <div id="card1" class="subcard">
@@ -37,7 +39,12 @@ $facebook2 = "<a class='fb_link' href='$facebook' target='_blank' rel='nofollow'
                     <li class="clearfix"><a class="" href="<?php echo $folurl ?>"><?php echo $card[4] ?> Followers</a></li>
                     <li class="clearfix"><a class="" href="<?php echo $suburl ?>"><?php echo $card[3] ?> Subscriptions</a></li>
 					<li class="clearfix"><div class="cardsep" style="margin-bottom:5px; margin-top:5px;"></div></li>
-					<li class="clearfix"><?php echo $facebook2 ?></li>
+					<li class="clearfix">
+						<a class='fb_link' href='<?php echo $facebook ?>' target='_blank' rel='nofollow'></a>
+						<a class='twitter_link' href='<?php echo $twitter ?>' target='_blank' rel='nofollow'></a>
+						<a class='gplus_link' href='<?php echo $gplus ?>' target='_blank' rel='nofollow'></a>
+						<a class='website_link' href='<?php echo $website ?>' target='_blank' rel='nofollow'></a>
+					</li>
                 </ul>
 				
             </div>
