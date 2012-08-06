@@ -10,11 +10,35 @@ $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$f
 $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$followid));
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$followid));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
-$facebook = $card[6]['User']['fb_link'];
-$twitter = $card[6]['User']['twitter_link'];
-$gplus = $card[6]['User']['gplus_link'];
-$website = $card[6]['User']['website'];
 ?>
+
+<?php
+$facebook=$card[6]['User']['fb_link'];
+$twitter=$card[6]['User']['twitter_link'];
+$gplus=$card[6]['User']['gplus_link'];
+$website=$card[6]['User']['website'];
+if($facebook==NULL){
+  
+}else{
+  $facebook = "<a class='fb_link' href='$facebook' target='_blank' rel='nofollow'></a>";
+}
+if($twitter==NULL){
+  
+}else{
+  $twitter = "<a class='twitter_link' href='$twitter' target='_blank' rel='nofollow'></a>";
+}
+if($gplus==NULL){
+  
+}else{
+  $gplus = "<a class='gplus_link' href='$gplus' target='_blank' rel='nofollow'></a>";
+}
+if($website==NULL){
+  
+}else{
+  $website = "<a class='website_link' href='$website' target='_blank' rel='nofollow'></a>";
+}
+?>
+
 
         <div id="card1" class="subcard">
             <div class="subup clearfix">
@@ -40,10 +64,12 @@ $website = $card[6]['User']['website'];
                     <li class="clearfix"><a class="" href="<?php echo $suburl ?>"><?php echo $card[3] ?> Subscriptions</a></li>
 					<li class="clearfix"><div class="cardsep" style="margin-bottom:5px; margin-top:5px;"></div></li>
 					<li class="clearfix">
-						<a class='fb_link' href='<?php echo $facebook ?>' target='_blank' rel='nofollow'></a>
-						<a class='twitter_link' href='<?php echo $twitter ?>' target='_blank' rel='nofollow'></a>
-						<a class='gplus_link' href='<?php echo $gplus ?>' target='_blank' rel='nofollow'></a>
-						<a class='website_link' href='<?php echo $website ?>' target='_blank' rel='nofollow'></a>
+                    <?php
+                    echo $facebook;
+                    echo $twitter;
+                    echo $gplus;
+                    echo $website;
+                    ?>
 					</li>
                 </ul>
 				
