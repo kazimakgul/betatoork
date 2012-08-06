@@ -75,7 +75,7 @@ margin-bottom: 10px;
 .subcard .submid .cardsep{height:3px; width:100%; background:url(../img/t_subscribecard_sep.png) repeat-x; margin-bottom:10px; } 
 .subcard .submid .channelavatar{float:left; background:url(../img/t_subscribecard_userback.png) no-repeat; padding:4px; height:95px; width:71px;} 
 .subcard .submid .channelavatar img{height:95px; width:71px;} 
-.subcard .submid ul{float:left; margin-left:10px; margin-top:10px;} 
+.subcard .submid ul{float:left; margin-left:10px;} 
 .subcard .submid ul a{font-family:Arial; font-size:10pt; color:#979797; text-decoration:none;}     
 .subcard .submid ul a:hover{text-decoration:underline;}  
 .subcard .subdown{width:265px; height:13px; background:url(../img/t_subscribecard_down_back.png) no-repeat 0 0;}
@@ -347,4 +347,11 @@ button.submit:active {
 	background: #A6C6E6;
 	color: black;
 }
+
+
+
+.fb_link{float:left; padding-left:15px; margin-right:5px; height:15px; font-size:9pt; background-image:url(../img/t_fblink_ico.png); background-repeat:no-repeat;}
+.twitter_link{float:left; padding-left:15px; margin-right:5px; height:15px; font-size:9pt; background-image:url(../img/t_twlink_ico.png); background-repeat:no-repeat;}
+.gplus_link{float:left; padding-left:15px; margin-right:5px; height:15px; font-size:9pt; background-image:url(../img/t_gpluslink_ico.png); background-repeat:no-repeat;}
+.website_link{float:left; padding-left:15px; margin-right:5px; height:15px; font-size:9pt; background-image:url(../img/t_websitelink_ico.png); background-repeat:no-repeat;}
 

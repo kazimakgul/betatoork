@@ -36,8 +36,10 @@ $facebook2 = "<a class='fb_link' href='$facebook' target='_blank' rel='nofollow'
                     <li class="clearfix"><a class="" href="<?php echo $playcounturl ?>"><?php echo $card[5] ?> Played Games</a></li>
                     <li class="clearfix"><a class="" href="<?php echo $folurl ?>"><?php echo $card[4] ?> Followers</a></li>
                     <li class="clearfix"><a class="" href="<?php echo $suburl ?>"><?php echo $card[3] ?> Subscriptions</a></li>
+					<li class="clearfix"><div class="cardsep" style="margin-bottom:5px; margin-top:5px;"></div></li>
+					<li class="clearfix"><?php echo $facebook2 ?></li>
                 </ul>
-                <?php echo $facebook2 ?>
+				
             </div>
             <div class="subdown"></div>
         </div>
