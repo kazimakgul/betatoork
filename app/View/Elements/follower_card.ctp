@@ -10,6 +10,8 @@ $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$f
 $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$followid));
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$followid));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+$facebook = $card[6]['User']['fb_link'];
+$facebook2 = "<a class='fb_link' href='$facebook' target='_blank' rel='nofollow'></a>";
 ?>
 
         <div id="card1" class="subcard">
@@ -35,7 +37,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
                     <li class="clearfix"><a class="" href="<?php echo $folurl ?>"><?php echo $card[4] ?> Followers</a></li>
                     <li class="clearfix"><a class="" href="<?php echo $suburl ?>"><?php echo $card[3] ?> Subscriptions</a></li>
                 </ul>
-
+                <?php echo $facebook2 ?>
             </div>
             <div class="subdown"></div>
         </div>
