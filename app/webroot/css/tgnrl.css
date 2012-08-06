@@ -9,8 +9,8 @@
 .categories{background-image:url(../img/t_category_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
 .best{background-image:url(../img/t_best_channel_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
 
-.subscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -38px;}
-.subscribe:hover{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -77px; cursor:pointer;}
+.subscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -39px;}
+.subscribe:hover{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -78px; cursor:pointer;}
 .unsubscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 0;}
 
 .right_panel{width:980px; float:right; margin-left:10px;}
