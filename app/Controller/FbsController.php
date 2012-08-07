@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 // app/Controller/AppController.php
-class AppController extends Controller {
+class FbsController extends AppController {
     //...
 
 
@@ -46,39 +46,7 @@ class AppController extends Controller {
         )
     );
 
-    var $paginate = array(
-        'User' => array(
-            'limit' => 30,
-            'order' => array(
-                'User.totalrate' => 'desc',
-            ),
-        ),
-        'Game' => array(
-            //'conditions' => array('(Game.starsize * Game.rate_count) >' => '50'),
-            'limit' => 28,
-            'order' => array(
-                'Game.recommend' => 'desc',
-            ),
-        ),
-        'Subscription' => array(
-            'limit' => 30,
-            'order' => array(
-                'Subscription.created' => 'desc',
-            ),
-        ),
-        'Favorite' => array(
-            'limit' => 28,
-            'order' => array(
-                'Favorite.recommend' => 'desc',
-            ), 'recursive'=>'2'
-        ),
-        'Playcount' => array(
-            'limit' => 28,
-            'order' => array(
-                'Game.recommend' => 'desc',
-            ),'recursive'=>'2'
-        ), 
-    );
+    
 
 /*
    public function beforeRender() {
@@ -87,11 +55,12 @@ class AppController extends Controller {
    }
 */
 
-    public function beforeFilter() {
-		$this->loadModel('User');
-		$this->Auth->allow('index','checkUser','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames','connect');
+public function beforeFilter() {
 
-		$this->set('user',$this->Auth->user());
+		parent::beforeFilter();
+		
+		$this->loadModel('User');
+        $this->set('user',$this->Auth->user());
 		
         
                //edit specific id
@@ -101,7 +70,7 @@ class AppController extends Controller {
                //edit specific id
 
                //sil
-			   //$null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
+			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
 			   //if($null_user!=NULL)
 			   //echo 'NullUser:';
 			   //print_r($null_user);
@@ -116,10 +85,10 @@ class AppController extends Controller {
 			  */
 			  
                
-	   //if($this->Connect->user())
-	   //{
-	   //$this->check_facebook_user();
-	   //}
+	   if($this->Connect->user())
+	   {
+	   $this->check_facebook_user();
+	   }
 
     }
     
@@ -216,18 +185,10 @@ class AppController extends Controller {
 
 
 
-public function http_check($str)
+public function connect()
 {
+$this->set('connect',NULL);
 
-if(substr($str, 0, 7)!="http://")
-			{
-		$str="http://".$str;
-		return $str;
-			}
-			else
-			{
-			return $str;
-			}
 }
 
 
