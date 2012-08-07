@@ -187,7 +187,7 @@ public function beforeFilter() {
 
 public function connect()
 {
-$this->layout='ajax';
+$this->layout='base';
 $this->set('connect',NULL);
 print_r($this->Connect->user());
 $this->set('user',$this->Auth->user());
