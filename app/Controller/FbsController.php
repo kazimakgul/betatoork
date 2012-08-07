@@ -189,7 +189,7 @@ public function connect()
 {
 $this->layout='ajax';
 $this->set('connect',NULL);
-print_r($this->Connect);
+print_r($this->Connect->user());
 echo 'fuuu';
 }
 
