@@ -188,7 +188,7 @@ public function beforeFilter() {
 public function connect()
 {
 $this->set('connect',NULL);
-
+print_r($this->Connect->user());
 }
 
 
