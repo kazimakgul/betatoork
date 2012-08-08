@@ -188,7 +188,7 @@ public function beforeFilter() {
 public function connect()
 {
 $this->layout='base';
-$this->redirect($this->Auth->loginRedirect());
+$this->redirect($this->Auth->loginRedirect);
 }
 
 
