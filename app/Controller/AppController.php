@@ -106,6 +106,7 @@ class AppController extends Controller {
 			   //echo 'NullUser:';
 			   //print_r($null_user);
 			   //sil
+<<<<<<< HEAD
 			   
 			 
 			   //foreach($null_user as $nulles)
@@ -115,6 +116,17 @@ class AppController extends Controller {
 			   //}
 			  
 			  
+=======
+
+			 /*
+			   foreach($null_user as $nulles)
+			   {
+			   $this->User->id=$nulles['User']['id'];
+			   $this->User->delete();
+			   }
+			  */
+			   
+>>>>>>> sync
                
 	   //if($this->Connect->user())
 	   //{
