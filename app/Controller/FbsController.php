@@ -188,12 +188,7 @@ public function beforeFilter() {
 public function connect()
 {
 $this->layout='base';
-$this->set('connect',NULL);
-print_r($this->Connect->user());
-$this->set('user',$this->Auth->user());
-echo 'seperator';
-print_r($this->Auth->user());
-echo 'fuuu';
+$this->redirect($this->auth->loginRedirect());
 }
 
 
