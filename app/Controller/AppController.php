@@ -116,10 +116,10 @@ class AppController extends Controller {
 			  
 			  
                
-	   if($this->Connect->user())
-	   {
-	   $this->check_facebook_user();
-	   }
+	   //if($this->Connect->user())
+	   //{
+	   //$this->check_facebook_user();
+	   //}
 
     }
     
