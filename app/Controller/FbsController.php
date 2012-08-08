@@ -85,10 +85,10 @@ public function beforeFilter() {
 			  */
 			  
                
-	   if($this->Connect->user())
-	   {
-	   $this->check_facebook_user();
-	   }
+	   //if($this->Connect->user())
+	   //{
+	   //$this->check_facebook_user();
+	   //}
 
     }
     
@@ -188,6 +188,78 @@ public function beforeFilter() {
 public function connect()
 {
 $this->layout='base';
+//echo 'check facebook run';
+	$this->loadModel('User');
+	$facebook_id=$this->Connect->user('id');
+    $facebook_email=$this->Connect->user('email');
+	//echo 'Special Facebook Id:'.$facebook_id;
+	//echo 'Special Facebook Email:'.$facebook_email;
+	   $check_face_user=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id,'User.email'=>$facebook_email)));
+	   if($check_face_user==NULL)
+	   {       
+	           //echo 'id with email row not found';
+	           //init starts
+	          // if($this->Connect->user('username')!=NULL)
+        	   //$this->request->data['User']['username']= $this->Connect->user('username');
+			   //else
+			   
+			   //$this->request->data['User']['username']= $this->Connect->user('first_name').$this->Connect->user('last_name');
+	           //$this->request->data['User']['email']= $this->Connect->user('email');
+			   
+			   //init ends
+			   
+			      //if only the facebook_id exists but not email
+			      $check_face_id=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id)));
+			      
+				  if($check_face_id!=NULL)
+	              {
+				  //echo 'id with mail not exist but id exists';
+			      $unmodified_id=$check_face_id['User']['id'];
+				  //echo 'Unmodified Id'.$unmodified_id;
+				  //print_r($check_face_id);
+			      $this->User->id=$unmodified_id;
+				  //echo 'fbusername:'.$this->Connect->user('username');
+				  //echo 'fbmail:'.$this->Connect->user('email');
+				  $this->request->data['User']['username']=$this->Connect->user('username');
+			      $this->request->data['User']['email']= $this->Connect->user('email');
+				  
+				  //handle error messages later
+				  
+				  if($this->User->save($this->request->data))
+				  {
+				  //first try successfull
+				  $user = $this->User->find('first', array('conditions' => array('User.id' => $unmodified_id),'fields'=>array('User.username')));
+    	          $userName = $user['User']['username'];
+				  $this->set('username', $userName);
+				  }else{
+				  
+				           $this->request->data['User']['username']=$this->Connect->user('username');
+			               $this->request->data['User']['email']=rand(1,200).$this->Connect->user('email');
+				           if($this->User->save($this->request->data))
+						   {
+						   //second try successfull
+						   $user = $this->User->find('first', array('conditions' => array('User.id' => $unmodified_id),'fields'=>array('User.username')));
+    	                   $userName = $user['User']['username'];
+				           $this->set('username', $userName);
+						   }else{
+						
+						   $this->User->delete();
+						   $this->redirect('/');
+						   
+						   }
+						
+						
+				  }
+				  
+			   
+			   
+			      }
+			   
+			     
+			   
+			   
+			   
+	   }
 //$this->Session->write('Auth.User.username',$this->Connect->user('username'));
 //$this->Session->write('Auth.User.email',$this->Connect->user('email'));
 $this->redirect($this->Auth->loginRedirect);
