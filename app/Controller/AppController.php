@@ -38,6 +38,7 @@ class AppController extends Controller {
 
     public $components = array(
         'Session','Cookie','RequestHandler',
+		'Facebook.Connect'=>array('model' => 'User'),
         'Auth' => array(
             'loginRedirect' => array('controller' => 'games', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
@@ -115,10 +116,10 @@ class AppController extends Controller {
 			  */
 			  
                
-	   //if($this->Connect->user())
-	   //{
-	   //$this->check_facebook_user();
-	   //}
+	   if($this->Connect->user())
+	   {
+	   $this->check_facebook_user();
+	   }
 
     }
     
