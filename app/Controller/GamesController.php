@@ -119,15 +119,19 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 	public function channel() {
 		$this->loadModel('User');
 		$this->loadModel('Favorite');
+		$this->loadModel('Subscription');
 		$this->layout='channel';
 		$this->leftpanel();
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 		$limit=12;
+		$limit2=6;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-    	//$cond2= $this->Game->Favorite->find('all', array('conditions' => array('Game.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
-    //)));
+
+	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
+	
+	$this->set('users', $subCond);
 	
 	$cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => $userid),'limit' => $limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 2));
 	
@@ -148,6 +152,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
     	$this->set('mygames', $cond);
     	$this->set('favorites', $cond2);
     	$this->set('limit', $limit);
+    	$this->set('limit2', $limit2);
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
 	}
 
