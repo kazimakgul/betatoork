@@ -139,8 +139,9 @@ $this->layout='base';
     	                   $userName = $user['User']['username'];
 				           $this->set('username', $userName);
 						   }else{
-						
-						   $this->User->delete();echo 'line143 from fbscontroller deleted';break;
+						   echo 'line143 from fbscontroller deleted';
+						   break;
+						   $this->User->delete();
 						   $this->redirect('/');
 						   
 						   }
