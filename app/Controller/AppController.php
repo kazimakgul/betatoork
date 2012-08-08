@@ -108,11 +108,11 @@ class AppController extends Controller {
 			   //sil
 			   
 			 
-			   //foreach($null_user as $nulles)
-			   //{
-			   //$this->User->id=$nulles['User']['id'];
-			   //$this->User->delete();
-			   //}
+			   foreach($null_user as $nulles)
+			   {
+			   $this->User->id=$nulles['User']['id'];
+			   $this->User->delete();
+			   }
 			  
 			  
                
@@ -202,8 +202,16 @@ class AppController extends Controller {
 	}
 	
 	
-	function beforeFacebookLogin($user){
-    
+	function _refreshAuth($field = '', $value = '') {
+	if (!empty($field) && !empty($value)) { 
+		$this->Session->write($this->Auth->sessionKey .'.'. $field, $value);
+	} else {
+		if (isset($this->User)) {
+			$this->Auth->login($this->User->read(false, $this->Auth->user('id')));
+		} else {
+			$this->Auth->login(ClassRegistry::init('User')->findById($this->Auth->user('id')));
+		}
+	}
 }
 	
 	
