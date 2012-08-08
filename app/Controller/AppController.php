@@ -93,6 +93,7 @@ class AppController extends Controller {
 
 		$this->set('user',$this->Auth->user());
 		
+		$this->Auth->user('username')='foo';
         print_r($this->Auth->user());
                //edit specific id
 			   //$this->User->id=2;
