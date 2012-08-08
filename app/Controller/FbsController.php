@@ -189,6 +189,7 @@ public function connect()
 {
 $this->layout='base';
 $this->redirect($this->Auth->loginRedirect);
+print_r($this->Session->read('Auth.User.username'));
 }
 
 
