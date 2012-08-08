@@ -111,7 +111,7 @@ class AppController extends Controller {
 			   foreach($null_user as $nulles)
 			   {
 			   $this->User->id=$nulles['User']['id'];
-			  /$this->User->delete();
+			   $this->User->delete();
 			   }
 			  
 			  
