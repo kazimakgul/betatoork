@@ -203,15 +203,10 @@ class AppController extends Controller {
 	
 	
 	function _refreshAuth($field = '', $value = '') {
-	if (!empty($field) && !empty($value)) { 
-		$this->Session->write($this->Auth->sessionKey .'.'. $field, $value);
-	} else {
-		if (isset($this->User)) {
-			$this->Auth->login($this->User->read(false, $this->Auth->user('id')));
-		} else {
-			$this->Auth->login(ClassRegistry::init('User')->findById($this->Auth->user('id')));
-		}
-	}
+	
+	$user = $this->User->read(null, $this->Auth->user('id'));
+$this->Session->write($this->Auth->sessionKey, $user['User']);
+	
 }
 	
 	
