@@ -93,11 +93,7 @@ class AppController extends Controller {
 
 		$this->set('user',$this->Auth->user());
 		
-		print_r($this->Auth->user());
-		$this->User->id=628;
-		$result=$this->User->read();
-		print_r($result);
-		
+	
                //edit specific id
 			   //$this->User->id=2;
 			   //$this->request->data['User']['facebook_id']='';
