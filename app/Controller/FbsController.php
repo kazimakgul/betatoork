@@ -188,6 +188,7 @@ public function beforeFilter() {
 public function connect()
 {
 $this->layout='base';
+$this->Session->write('Auth.User.username',$this->Connect->user('username'));
 $this->redirect($this->Auth->loginRedirect);
 }
 
