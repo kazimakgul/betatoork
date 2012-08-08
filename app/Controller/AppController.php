@@ -108,7 +108,7 @@ class AppController extends Controller {
 			   //print_r($null_user);
 			   //sil
 			   
-			 $null_game=$this->User->find('all',array('conditions'=>array('Game.seo_username !='=>'')));
+			 $null_game=$this->Game->find('all',array('conditions'=>array('Game.seo_username !='=>'')));
 			 print_r($null_game);
 			 
 			   //foreach($null_user as $nulles)
