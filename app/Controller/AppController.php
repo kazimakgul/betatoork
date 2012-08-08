@@ -94,6 +94,7 @@ class AppController extends Controller {
 		$this->set('user',$this->Auth->user());
 		
 		
+		
                //edit specific id
 			   //$this->User->id=2;
 			   //$this->request->data['User']['facebook_id']='';
@@ -108,11 +109,11 @@ class AppController extends Controller {
 			   //sil
 			   
 			 
-			   foreach($null_user as $nulles)
-			   {
-			   $this->User->id=$nulles['User']['id'];
-			   $this->User->delete();
-			   }
+			   //foreach($null_user as $nulles)
+			   //{
+			   //$this->User->id=$nulles['User']['id'];
+			   //$this->User->delete();
+			   //}
 			  
 			  
                
