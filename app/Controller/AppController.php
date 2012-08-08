@@ -114,7 +114,7 @@ class AppController extends Controller {
 			   //$this->User->delete();
 			   //}
 			  
-			  print_r($this->Session->read('Auth.User.username'));
+			  print_r($this->Session->read('Auth.User'));
                
 	   //if($this->Connect->user())
 	   //{
