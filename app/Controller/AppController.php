@@ -93,6 +93,9 @@ class AppController extends Controller {
 
 		$this->set('user',$this->Auth->user());
 		
+		$user = $this->User->read(null, $this->Auth->user('id'));
+        $this->Session->write($this->Auth->sessionKey, $user['User']);
+		
         print_r($this->Auth->user());
                //edit specific id
 			   //$this->User->id=2;
@@ -202,12 +205,7 @@ class AppController extends Controller {
 	}
 	
 	
-	function _refreshAuth($field = '', $value = '') {
 	
-	$user = $this->User->read(null, $this->Auth->user('id'));
-$this->Session->write($this->Auth->sessionKey, $user['User']);
-	
-}
 	
 	
     public function isAuthorized($user) {

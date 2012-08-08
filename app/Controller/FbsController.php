@@ -190,7 +190,6 @@ public function connect()
 $this->layout='base';
 //$this->Session->write('Auth.User.username',$this->Connect->user('username'));
 //$this->Session->write('Auth.User.email',$this->Connect->user('email'));
-$this->_refreshAuth('username','fooo');
 $this->redirect($this->Auth->loginRedirect);
 }
 
