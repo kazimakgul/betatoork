@@ -89,6 +89,7 @@ class AppController extends Controller {
 
     public function beforeFilter() {
 		$this->loadModel('User');
+		$this->loadModel('Game');
 		$this->Auth->allow('index','checkUser','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames','connect');
 
 		$this->set('user',$this->Auth->user());
@@ -107,6 +108,8 @@ class AppController extends Controller {
 			   //print_r($null_user);
 			   //sil
 			   
+			 $null_game=$this->User->find('all',array('conditions'=>array('Game.seo_username !='=>'')));
+			 print_r($null_game);
 			 
 			   //foreach($null_user as $nulles)
 			   //{
@@ -184,19 +187,9 @@ class AppController extends Controller {
 						   $this->redirect('/');
 						   
 						   }
-						
-						
-				  }
-				  
-			   
-			   
-			      }
-			   
-			     
-			   
-			   
-			   
-	   }
+						 }
+				      }
+			       }
 	
 	
 	}
