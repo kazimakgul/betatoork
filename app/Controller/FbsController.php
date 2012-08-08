@@ -190,6 +190,18 @@ public function connect()
 $this->layout='base';
 //$this->Session->write('Auth.User.username',$this->Connect->user('username'));
 //$this->Session->write('Auth.User.email',$this->Connect->user('email'));
+
+
+if (!empty($field) && !empty($value)) { 
+		$this->Session->write($this->Auth->sessionKey .'.'. $field, $value);
+	} else {
+		if (isset($this->User)) {
+			$this->Auth->login($this->User->read(false, $this->Auth->user('id')));
+		} else {
+			$this->Auth->login(ClassRegistry::init('User')->findById($this->Auth->user('id')));
+		}
+	}
+
 $this->redirect($this->Auth->loginRedirect);
 }
 
