@@ -93,10 +93,7 @@ class AppController extends Controller {
 
 		$this->set('user',$this->Auth->user());
 		
-		$user = $this->User->read(null, $this->Auth->user('id'));
-        $this->Session->write($this->Auth->sessionKey, $user['User']);
 		
-        print_r($user);
                //edit specific id
 			   //$this->User->id=2;
 			   //$this->request->data['User']['facebook_id']='';
