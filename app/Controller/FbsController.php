@@ -140,7 +140,7 @@ $this->layout='base';
 				           $this->set('username', $userName);
 						   }else{
 						
-						   $this->User->delete();echo 'line143 from fbscontroller deleted';
+						   $this->User->delete();echo 'line143 from fbscontroller deleted';break;
 						   $this->redirect('/');
 						   
 						   }
