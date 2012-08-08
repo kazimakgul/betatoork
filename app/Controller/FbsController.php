@@ -149,7 +149,7 @@ $this->layout='base';
 		            }
 			    }
 
-$this->redirect($this->referer);
+$this->redirect($this->Auth->loginRedirect);
 }
 
 
