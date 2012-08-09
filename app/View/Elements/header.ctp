@@ -1,3 +1,16 @@
+<?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription")); ?>
+<script type="text/javascript">
+function changechain(userid,obj)
+{
+	if (obj.hasClass('subcardchain')) {
+		obj.removeClass('subcardchain').addClass('subcardchained');
+		$.get("<?php echo $suburl2; ?>/"+userid,function(data) {});
+	}else {
+		obj.removeClass('subcardchained').addClass('subcardchain');
+		$.get("<?php echo $suburl2; ?>/"+userid,function(data) {});
+	}
+}
+</script>
 <div class="header">
 	<div class="hd_container">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">

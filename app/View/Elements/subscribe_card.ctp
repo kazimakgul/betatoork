@@ -1,5 +1,4 @@
 
-
 <?php foreach ($followers as $follower): ?>
 <?php 
 $followid = $follower['Subscription']['subscriber_to_id'];
@@ -42,19 +41,11 @@ if($website==NULL){
         <div id="card1" class="subcard">
             <div class="subup clearfix">
                 <a class="channelname" href="<?php echo $channelurl ?>"><?php echo $card[0] ?></a>
-                <a class="viewchannel" href="<?php echo $channelurl ?>"></a>
-
-                <?php 
-                    if($this->Session->read('Auth.User.id') == $userid){ ?>
-<?php $remove=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription",$card[6]['User']['id'])); ?>
-
-                       <a class="block" href="#" onclick="changesubscribe(<?php echo $card[6]['User']['id']; ?>)"></a>
-
-                <?php    }
-                ?>
-                
-
-
+				<?php if($this->Session->check('Auth.User')){?>
+					<a class="subcardchained" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
+				<?php }else {?>
+					<a class="subcardchained" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
+				 <?php }?>				
             </div>
             <div class="submid clearfix">
                 <div class="cardsep"></div>
