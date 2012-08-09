@@ -247,7 +247,7 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 <!-- end fb comment icin gerekli -->
 
 
-<?php //echo $this->Facebook->init(); ?>
+<?php echo $this->Facebook->init(); ?>
 </body>
 </html>
 
