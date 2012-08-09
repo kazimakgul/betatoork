@@ -235,7 +235,7 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 <?php  echo $this->element('register'); ?>
 <?php  echo $this->element('analytics'); ?>
 
-<!-- facebook comment icin gerekli -->
+<!-- facebook comment icin gerekli 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -244,7 +244,7 @@ echo $this->Session->flash('auth', array('element' => 'info'));
   js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=298516580200969";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<!-- end fb comment icin gerekli -->
+end fb comment icin gerekli -->
 
 
 <?php echo $this->Facebook->init(); ?>
