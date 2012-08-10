@@ -45,7 +45,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	    public $helpers = array('Html', 'Form','Upload','Session');
+		public $helpers = array('Html', 'Form','Upload','Session','Recaptcha.Recaptcha','Facebook.Facebook');
 
 /**
  * This controller does not use a model

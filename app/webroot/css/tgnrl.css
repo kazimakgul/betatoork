@@ -7,7 +7,7 @@
 .left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none;} 
 .left_panel ul li a:hover{text-decoration:underline;} 
 .categories{background-image:url(../img/t_category_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
-.best{background-image:url(../img/t_best_channel_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
+.best{background-image:url(../img/t_best_channel_back.png); margin-top:8px; margin-bottom:10px; background-repeat:no-repeat; float:left; width:195px; height:50px;}
 
 .subscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -39px;}
 .subscribe:hover{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -78px; cursor:pointer;}
@@ -120,7 +120,6 @@
 .gamebox .gb_gameboxmove:hover{font-size:9pt; color:white;}
 
 .gamebox .gb_gameboxdelete{display:block; text-decoration:none; font-family:Arial; font-size:7pt; color:#004473; margin:4px 4px;}
-
 
 
 
