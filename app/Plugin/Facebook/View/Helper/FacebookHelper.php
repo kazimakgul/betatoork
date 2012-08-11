@@ -539,7 +539,7 @@ class FacebookHelper extends AppHelper {
 				$('.t_regbox').animate({ top: - $('.t_regbox').height()}, 150);
 				$('.t_regbox_overlay').fadeOut(400);$('.t_regbox_overlay').hide();
 				//location.reload();
-				alert('subscribed');
+				//alert('subscribed');
 				if(authinfo==0)
 				{
 				window.location ='http://ec2-107-22-53-193.compute-1.amazonaws.com/fbs/connect';
@@ -547,7 +547,11 @@ class FacebookHelper extends AppHelper {
                 
 			} else {
 				// the user has just logged out
-				alert('You just logged out from faceboook');
+				//alert('You just logged out from faceboook');
+				if(authinfo==1)
+				{
+				window.location ='http://ec2-107-22-53-193.compute-1.amazonaws.com/users/logout';
+				}
 			}
 		});
 		
