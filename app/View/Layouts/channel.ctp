@@ -50,7 +50,6 @@ $(function () {
 
 <?php  echo $this->element('knockout'); ?>
 <!-- fb -->
-<?php  echo $this->element('test'); ?>
 
 
 </head>
