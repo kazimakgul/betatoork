@@ -35,4 +35,12 @@ input.error{border:1px solid red;}
 a.error { color:red !important; }
 
 .seeall_best{display:block; font-family:Arial; margin-top:28px; margin-right:9px; font-size:11px; text-decoration:none; float:right; color: #06C;}
-.seeall_best:hover {text-decoration:underline;}		
+.seeall_best:hover {text-decoration:underline;}	
+
+
+.toork_social ul{
+    margin: 0; padding: 0;
+    float: left;}
+ 
+.toork_social ul li{
+    display: inline;}	
