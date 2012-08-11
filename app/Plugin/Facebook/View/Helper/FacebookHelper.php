@@ -526,7 +526,6 @@ class FacebookHelper extends AppHelper {
 			if (response.authResponse) {
 				// logged in and connected user, someone you know
 				//alert('You are connected');
-				FB.logout();
 			} else {
 				// no user session available, someone you dont know
 				// alert('You are disconnected');
@@ -540,6 +539,7 @@ class FacebookHelper extends AppHelper {
 				$('.t_regbox').animate({ top: - $('.t_regbox').height()}, 150);
 				$('.t_regbox_overlay').fadeOut(400);$('.t_regbox_overlay').hide();
 				//location.reload();
+				alert('subscribed');
 				if(authinfo==0)
 				{
 				window.location ='http://ec2-107-22-53-193.compute-1.amazonaws.com/fbs/connect';
