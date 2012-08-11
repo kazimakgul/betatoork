@@ -257,7 +257,7 @@ public function __sendResetEmail($user_id) {
 
 	public function logout() {
 	    $this->Cookie->delete('User');
-	    $this->redirect($this->Auth->logout());
+	    $this->redirect(array('controller'=>'games','action'=>'channel'));
 	}
 
 	public function profile() {
