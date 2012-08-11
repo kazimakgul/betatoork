@@ -526,6 +526,9 @@ class FacebookHelper extends AppHelper {
 			if (response.authResponse) {
 				// logged in and connected user, someone you know
 				//alert('You are connected');
+				FB.api('/me', function(response) {
+       alert(response.name);
+     });
 			} else {
 				// no user session available, someone you dont know
 				// alert('You are disconnected');
