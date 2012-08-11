@@ -548,6 +548,7 @@ class FacebookHelper extends AppHelper {
 			} else {
 				// the user has just logged out
 				// alert('You just logged out from faceboook');
+				window.location ='http://ec2-107-22-53-193.compute-1.amazonaws.com/users/logout';
 			}
 		});
 		
