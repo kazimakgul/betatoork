@@ -65,7 +65,7 @@ function changechain(userid,obj)
                   </td>
                <?php } else {?>
                   <td width="59" style="padding-left:15px;">
-                    <a class="logout_btn" href="#" onclick="$('#up_btn_register').click();"></a>
+                    <a class="logout_btn" href="#"></a>
                   </td>
 
                <?php } ?>
