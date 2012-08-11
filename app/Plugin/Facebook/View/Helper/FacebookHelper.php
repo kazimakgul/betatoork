@@ -532,7 +532,7 @@ class FacebookHelper extends AppHelper {
 			}
 		});
 			   
-		FB.Event.subscribe('auth.logout', function(response) {
+		FB.Event.subscribe('auth.statusChange', function(response) {
 			if (response.authResponse) {
 				// the user has just logged in
 				//alert('You just logged in facebook from somewhere');
@@ -547,8 +547,7 @@ class FacebookHelper extends AppHelper {
                 
 			} else {
 				// the user has just logged out
-				// alert('You just logged out from faceboook');
-				window.location ='http://ec2-107-22-53-193.compute-1.amazonaws.com/users/logout';
+				alert('You just logged out from faceboook');
 			}
 		});
 		
