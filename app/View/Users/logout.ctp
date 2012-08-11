@@ -1,0 +1,1 @@
+<script>logoutFB();</script>
