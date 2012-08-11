@@ -1,5 +1,1 @@
-<div style="padding-top:10px;" align="center">
- 
-  <!--<span  class='st_facebook_vcount' displayText='Facebook'></span><span  class='st_twitter_vcount' displayText='Tweet'></span><span  class='st_plusone_vcount' ></span>-->
-  <span  class='st_fblike_vcount' ></span><span  class='st_plusone_vcount' ></span><span  class='st_twitter_vcount' displayText='Tweet'></span>
-</div>
+<div class="fb-like" data-send="false" data-layout="box_count" data-width="55" data-show-faces="false"></div>
