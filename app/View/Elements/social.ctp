@@ -1,1 +1,1 @@
-<div class="fb-like" data-send="false" data-layout="box_count" data-width="55" data-show-faces="false"></div>
+<div class="fb-like" data-href="http://ec2-107-22-53-193.compute-1.amazonaws.com/games/mostplayed" data-send="false" data-layout="box_count" data-width="55" data-show-faces="false"></div>
