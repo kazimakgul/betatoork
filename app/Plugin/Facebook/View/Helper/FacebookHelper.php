@@ -532,7 +532,7 @@ class FacebookHelper extends AppHelper {
 			}
 		});
 			   
-		FB.Event.subscribe('auth.login', function(response) {
+		FB.Event.subscribe('auth.logout', function(response) {
 			if (response.authResponse) {
 				// the user has just logged in
 				//alert('You just logged in facebook from somewhere');
