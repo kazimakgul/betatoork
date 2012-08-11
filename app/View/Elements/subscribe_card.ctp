@@ -1,4 +1,3 @@
-
 <?php foreach ($followers as $follower): ?>
 <?php 
 $followid = $follower['Subscription']['subscriber_to_id'];
@@ -36,15 +35,13 @@ if($website==NULL){
   $website = "<a class='website_link' href='$website' target='_blank' rel='nofollow'></a>";
 }
 ?>
-
-
         <div id="card1" class="subcard">
             <div class="subup clearfix">
                 <a class="channelname" href="<?php echo $channelurl ?>"><?php echo $card[0] ?></a>
 				<?php if($this->Session->check('Auth.User')){?>
 					<a class="subcardchained" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
 				<?php }else {?>
-					<a class="subcardchained" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
+					<a class="subcardchain" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
 				 <?php }?>				
             </div>
             <div class="submid clearfix">
@@ -63,22 +60,17 @@ if($website==NULL){
                     <li class="clearfix"><a class="" href="<?php echo $playcounturl ?>"><?php echo $card[5] ?> Played Games</a></li>
                     <li class="clearfix"><a class="" href="<?php echo $folurl ?>"><?php echo $card[4] ?> Followers</a></li>
                     <li class="clearfix"><a class="" href="<?php echo $suburl ?>"><?php echo $card[3] ?> Subscriptions</a></li>
-                
-                <li class="clearfix"><div class="cardsep" style="margin-bottom:5px; margin-top:5px;"></div></li>
+					<li class="clearfix"><div class="cardsep" style="margin-bottom:5px; margin-top:5px;"></div></li>
                     <li class="clearfix">
                     <?php
-                    echo $facebook;
-                    echo $twitter;
-                    echo $gplus;
-                    echo $website;
+						echo $facebook;
+						echo $twitter;
+						echo $gplus;
+						echo $website;
                     ?>
                     </li>
-
-
                 </ul>
-
             </div>
             <div class="subdown"></div>
-        </div>
-					
+        </div>				
  <?php endforeach; ?>
