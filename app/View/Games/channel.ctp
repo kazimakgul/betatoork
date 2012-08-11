@@ -8,8 +8,9 @@ $best=$this->Html->url(array( "controller" => "games","action" =>"bestchannels")
 <div class="content clearfix">
   <div class="channel_left_panel">
     <?php  echo $this->element('channel_user_panel'); ?>
-    <?php  echo $this->element('social'); ?>
-    
+   
+    <?php echo $this->element('best_channels_left_menu'); ?>
+    <?php echo $this->element('categories_left_menu'); ?>
   </div>
   <div class="channel_right_panel">
       <?php  echo $this->element('usergames_slider'); ?>
