@@ -257,7 +257,7 @@ public function __sendResetEmail($user_id) {
 
 	public function logout() {
 	    $this->Cookie->delete('User');
-	    //$this->redirect($this->Auth->logout());
+	    $this->redirect($this->Auth->logout());
 	}
 
 	public function profile() {
