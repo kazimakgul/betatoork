@@ -5,7 +5,7 @@
 .left_panel ul li a{color:#0b81c5; font-family:Arial; font-size:15px; text-decoration:none;} 
 .left_panel ul li a:hover{text-decoration:underline;} 
 .categories{background-image:url(../img/t_category_back.png); margin-top:6px; padding-top:60px; background-repeat:no-repeat;}
-.best{background-image:url(../img/t_best_channel_back.png); margin-top:30px; padding-top:60px; background-repeat:no-repeat;}
+.best{background-image:url(../img/t_best_channel_back.png); margin-top:8px; margin-bottom:10px; background-repeat:no-repeat; float:left; width:195px; height:50px;}
 
 .right_panel{width:985px; float:right; margin-left:20px;}
 .right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin-bottom:20px;}

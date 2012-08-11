@@ -1,8 +1,12 @@
 <?php 
 $users = $this->requestAction( array('controller' => 'users', 'action' => 'bestChannels'));
 ?>
-<?php echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'bestchannels'),array('class'=>'seeall_best')); ?>
-<div class="best">
+
+<div id="best">
+  <div class="clearfix">
+	  <div class="best"></div>
+	  <?php echo $this->Html->link('(See All)',array('controller'=>'games','action'=>'bestchannels'),array('class'=>'seeall_best')); ?>
+  </div>
   <div class="sep"></div>
   <ul>
   <!--usual foreach starts-->

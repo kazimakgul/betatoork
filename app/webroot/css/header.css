@@ -33,3 +33,6 @@ ul{list-style-type:none;}
 input.error{border:1px solid red;}
 .error_copy { position:absolute;font-size:13px;height:17px;line-height:17px;color:red;overflow:hidden;width:305px; }
 a.error { color:red !important; }
+
+.seeall_best{display:block; font-family:Arial; margin-top:28px; margin-right:9px; font-size:11px; text-decoration:none; float:right; color: #06C;}
+.seeall_best:hover {text-decoration:underline;}		

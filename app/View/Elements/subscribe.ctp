@@ -27,7 +27,7 @@ $('#subscribe').click(function () {
 
                 if ($(this).hasClass('subscribe')) {
 <?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription",$user_id)); ?>
- $.get("<?php echo $suburl2?>",function(data) {alert(data);});
+ $.get("<?php echo $suburl2?>",function(data) {});
 
                     $(this).removeClass('subscribe').addClass('unsubscribe');
 
@@ -35,7 +35,7 @@ $('#subscribe').click(function () {
 
                 else {
 <?php $suburl3=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription",$user_id)); ?>
-				 $.get("<?php echo $suburl3 ?>",function(data) {alert(data);});
+				 $.get("<?php echo $suburl3 ?>",function(data) {});
 
                     $(this).removeClass('unsubscribe').addClass('subscribe');
 

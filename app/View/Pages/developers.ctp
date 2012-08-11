@@ -5,7 +5,7 @@
       <?php  echo $this->element('userpanel'); ?>
       <?php  echo $this->element('social'); ?>
       <?php  echo $this->element('best_channels_left_menu'); ?>
-      <?php  echo $this->element('categories_left_menu'); ?> 
+      <?php  echo $this->element('categories_left_menu'); ?>  
   </div>
             <div class="right_panel">
                 <div id="helpspage" class="developers">

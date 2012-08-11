@@ -22,6 +22,10 @@ $(function () {
 		Register();
 	});
 	
+	$('.logout_btn').click(function () {
+		Register();
+	});
+	
 	$('#up_btn_forget').click(function () {
 		$('.t_regbox_overlay').fadeIn(400);
 		$('.t_regbox').animate({ top: ($('.t_regbox_overlay').height() - $('.t_regbox').height()) / 2 }, 150, function(){
