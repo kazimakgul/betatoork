@@ -46,7 +46,7 @@
         <li>
             <label for="website">Game Embed:</label>
 
-          <?php echo $this->Form->input('embed',array('label'=>false ,'div'=>false, 'pattern'=>'(<iframe|<embed|<object).+.(</iframe>|</embed>|</object>)' ,'placeholder' => 'Paste your game code here please','maxlength'=>1000, 'title'=>'Only <embed> , <iframe> and <object> tags are available and the game code must be starting from one of the tags and ending with the same tag. Ex: <embed> some code </embed>')); ?>
+          <?php echo $this->Form->input('embed',array('label'=>false ,'div'=>false, 'pattern'=>'(<iframe|<embed|<object).+.(</iframe>|</embed>|</object>)' ,'type' => 'textarea','cols'=>'40','rows'=>'5' ,'placeholder' => 'Paste your game code here please','maxlength'=>1000, 'title'=>'Only <embed> , <iframe> and <object> tags are available and the game code must be starting from one of the tags and ending with the same tag. Ex: <embed> some code </embed>')); ?>
 
 
             <span class="form_hint">Must be one of the forms -> iframe, embed, object. Only embed , iframe and object tags are available and the game code must be starting from one of the tags and ending with the same tag."</span>
