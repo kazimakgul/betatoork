@@ -91,21 +91,24 @@ $this->layout='base';
     $facebook_email=$this->Connect->user('email');
 	//echo 'Special Facebook Id:'.$facebook_id;
 	//echo 'Special Facebook Email:'.$facebook_email;
-	   $check_face_user=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id,'User.email'=>$facebook_email)));
-	   if($check_face_user==NULL)
-	   {       
-	           //echo 'id with email row not found';
-	           //init starts
-	          // if($this->Connect->user('username')!=NULL)
-        	   //$this->request->data['User']['username']= $this->Connect->user('username');
-			   //else
+	
+  if($facebook_id!=NULL)//start of fbid check
+  {	
+	     $check_face_user=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id,'User.email'=>$facebook_email)));
+	     if($check_face_user==NULL)
+	     {       
+	             //echo 'id with email row not found';
+	             //init starts
+	            // if($this->Connect->user('username')!=NULL)
+        	    //$this->request->data['User']['username']= $this->Connect->user('username');
+			    //else
 			   
-			   //$this->request->data['User']['username']= $this->Connect->user('first_name').$this->Connect->user('last_name');
-	           //$this->request->data['User']['email']= $this->Connect->user('email');
+			    //$this->request->data['User']['username']= $this->Connect->user('first_name').$this->Connect->user('last_name');
+	            //$this->request->data['User']['email']= $this->Connect->user('email');
 			   
-			   //init ends
+			    //init ends
 			   
-			      //if only the facebook_id exists but not email
+			       //if only the facebook_id exists but not email
 			      $check_face_id=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id)));
 			      
 				  if($check_face_id!=NULL)
@@ -148,6 +151,7 @@ $this->layout='base';
 						}
 		            }
 			    }
+    }//close of fbid check
 
 $this->redirect($this->Auth->loginRedirect);
 }
