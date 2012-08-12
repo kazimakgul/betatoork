@@ -64,6 +64,9 @@
 .subcard .viewchannel:hover{background-position:0 -15px;}
 
 .subcardchain{display:block; float:right; width:92px; height:19px; background:url(../img/t_subcardchain_btn.png) no-repeat 0 0; margin-top:7px; margin-right:12px; cursor:pointer;}
+
+.subcardchain1{display:block; float:right; width:92px; height:19px; background:url(../img/t_subcardchain_btn.png) no-repeat 0 0; margin-top:7px; margin-right:12px; cursor:pointer;}
+
 .subcardchained{display:block; float:right; width:92px; height:19px; background:url(../img/t_subcardchain_btn.png) no-repeat 0 -19px; margin-top:7px; margin-right:12px; cursor:pointer;}
 
 .subcard .block{width:13px; height:13px; background:url(../img/t_subscribecard_block_ico.png) no-repeat 0 0; margin-top:7px; margin-right:5px;}
