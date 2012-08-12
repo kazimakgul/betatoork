@@ -492,7 +492,7 @@ public function channelgames() {
 		$this->layout='base';
 		$this->leftpanel();
 		$authid = $this->Session->read('Auth.User.id');
-		echo $authid;
+		echo 'idaaaaaa:':$authid;
 		$userid = $this->request->params['pass'][0];
 		$this->usergame_user_panel($userid);
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
