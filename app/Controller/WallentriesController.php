@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class WallentriesController extends AppController {
 
-    public $helpers = array('Html', 'Form','Upload');
+    public $helpers = array('Html', 'Form','Upload','Facebook.Facebook');
 /**
  * index method
  *
@@ -78,25 +78,25 @@ class WallentriesController extends AppController {
 		$userid = $this->Session->read('Auth.User.id');
 		
 	    $subscriber_ids = $this->Subscription->find('all',array('conditions'=>array('subscriber_id'=>$userid)));
-		
-		$i=0;
-		foreach ($subscriber_ids as $allids)
+		if($subscriber_ids!=NULL)
 		{
+		    $i=0;
+		    foreach ($subscriber_ids as $allids)
+		    {
+		    $ids[$i]=$allids['Subscription']['subscriber_to_id'];
+		    $i++;
+		    }
 		
-		$ids[$i]=$allids['Subscription']['subscriber_to_id'];
-		$i++;
-		}
-		
-	    //$subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-	    $games = $this->Game->find('all', array('conditions' => array('Game.user_id' => $ids)));	
-		$this->Wallentry->recursive = 0;
+	        //$subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+	        $games = $this->Game->find('all', array('conditions' => array('Game.user_id' => $ids)));	
+		    $this->Wallentry->recursive = 0;
 
-		$cond= array('Game.user_id' => $ids);
-    	$this->set('entries', $this->paginate('Game',$cond));
-
-       // $this->set('entries',$games);
-        
-		//$this->set('entries', $this->paginate('Wallentry',array('Wallentry.user_id' => $userid)));
+		    $cond= array('Game.user_id' => $ids);
+    	    $this->set('entries', $this->paginate('Game',$cond));
+        }else{
+		$this->set('entries', NULL);
+	    }
+       
 	}
 
 
