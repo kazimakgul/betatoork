@@ -92,7 +92,7 @@ $this->layout='base';
 	//echo 'Special Facebook Id:'.$facebook_id;
 	//echo 'Special Facebook Email:'.$facebook_email;
 	
-  if($facebook_id!=NULL)//start of fbid check
+  if($facebook_id!=NULL)//check fb_id exist begins 
   {	
 	     $check_face_user=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id,'User.email'=>$facebook_email)));
 	     if($check_face_user==NULL)
@@ -151,7 +151,7 @@ $this->layout='base';
 						}
 		            }
 			    }
-    }//close of fbid check
+  }//check fb_id exist ends 
 
 $this->redirect($this->Auth->loginRedirect);
 }
