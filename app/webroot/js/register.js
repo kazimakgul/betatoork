@@ -1,15 +1,42 @@
+function Register(){
+	$('.t_regbox_overlay').fadeIn(400);
+	$('.t_regbox').animate({ top: ($('.t_regbox_overlay').height() - $('.t_regbox').height()) / 2 }, 150, function(){
+		$('.t_regbox_regtab').click();
+	});	
+}
+
+
 $(function () {
     //variable
     var errpas, errun, errmail,errfor = true;
     var mailRegex = /[aA-zZ0-9._%+-]+@[aA-zZ0-9.-]+\.[aA-zZ]{2,4}/;
 	
-	function Register(){
-		$('.t_regbox_overlay').fadeIn(400);
-		$('.t_regbox').animate({ top: ($('.t_regbox_overlay').height() - $('.t_regbox').height()) / 2 }, 150, function(){
-			$('.t_regbox_regtab').click();
-		});	
-	}
+	$('.t_regbox_regform input').keypress(function (e) {
+	    if (!errpass && !errun && !errmail && e.which == 13) {
+            $('.t_regbox_signform').animate({ left: '-=350' }, 300);
+        }
+	}); 
+	
+	$('.t_regbox_regcapthcaform input').keypress(function (e) {
+	    if (e.which == 13) {
+			trecaptcha();
+        }
+	});
+	
+	$('.t_regbox_loginform input').keypress(function (e) {
+	    if (e.which == 13) {
+			tlogin();
+        }
+	});	
+	
+	$('.t_regbox_rememberform input').keypress(function (e) {
+	    if (e.which == 13) {
+			tforget();
+        }
+	});
+	
 	$('.t_regbox').css({'left': ($('.t_regbox_overlay').width() - $('.t_regbox').width()) / 2 });
+	
 	$('#up_btn_register').click(function () {
 		Register();
 	});
@@ -34,6 +61,7 @@ $(function () {
 		});
 	});
 	
+	
     //---------------//
     /* Tab's action */
     $('.t_regbox_regtab').click(function () {
@@ -57,6 +85,70 @@ $(function () {
 
     //---------------------//
     /* Validation's action */
+	
+	function trecaptcha(){
+		$.post(remotecheck, { dt: $('#recaptcha_response_field').val(), c: $('#recaptcha_challenge_field').val(), attr: 'recaptcha_response_field', un: $('#txt_signusername').val(), um: $('#txt_signemail').val(), up: $('#txt_signpass').val() }, function (data) {
+			if (data.rtdata == 'true') {
+				$('.t_regbox_signform').animate({ left: '-=350' }, 300);
+			}
+			else if(data.rtdata == 'false'){
+                Recaptcha.reload();
+                $('.errbox_title').html('Recaptcha Code');
+                $('.errbox_msg').html('Recaptcha Code is incorrect. Please try again.');
+				$('.t_regbox_errbox_container').css({ 'top': $('#recaptcha_response_field').position().top - $('#recaptcha_response_field').height() , 'left': '196px'});
+                $('.t_regbox_errbox_container').show();
+                $('.recaptcha_response_field').css('backgroundPosition', '0px 0px');
+			}
+			else
+			{
+				Recaptcha.reload();
+				$('.t_regbox_signform').animate({ left: '+=350' }, 300);
+				errbox($('#txt_signusername'));
+				$('.errbox_msg').html(data.rtdata);
+			}
+		}, 'json');	
+	}
+	
+	function tlogin(){
+        $.post(remotecheck, { un: $('#txt_logusername').val(), ps: $('#txt_logpassword').val(), attr: 'txt_logusername' }, function (data) {
+			if(data.rtdata.msgid=='0'){
+				$('#txt_logusername').parent().css('backgroundPosition', '0px -116px');
+				$('#txt_logpassword').parent().css('backgroundPosition', '0px -116px');
+				$('.errbox_title').html('Invalid Username or Password');
+				$('.errbox_msg').html(data.rtdata.msg);
+				$('.t_regbox_errbox_container').css({ 'top': $('#txt_logusername').parent().position().top });
+				$('.t_regbox_errbox_container').show();
+			}
+			else if(data.rtdata.msgid=='1'){
+				$('.t_regbox').animate({ top: - $('.t_regbox').height()}, 150);
+				$('.t_regbox_overlay').fadeOut(400,function(){$('.t_regbox_overlay').hide(); window.location = data.rtdata.msg;});
+			}
+			else{
+				$('#txt_logusername').parent().css('backgroundPosition', '0px -116px');
+				$('#txt_logpassword').parent().css('backgroundPosition', '0px -116px');
+				$('.errbox_title').html('Invalid Username or Password');
+				$('.errbox_msg').html(data.rtdata.msg);
+				$('.t_regbox_errbox_container').css({ 'top': $('#txt_logusername').parent().position().top });
+				$('.t_regbox_errbox_container').show();			
+			}
+        }, 'json');	
+	}
+	
+	function tforget(){
+         $.post(remotecheck, { dt: $('#t_regbox_logemail').val(), attr: 't_regbox_logemail' }, function (data) {
+            if (data.rtdata != null) {
+				$('.t_regbox_errbox_container').show();
+				$('#t_regbox_logemail').parent().css('backgroundPosition', '0px -116px');
+				$('.errbox_title').html('Invalid Email');
+				$('.errbox_msg').html(data.rtdata);
+				$('.t_regbox_errbox_container').css({ 'top': $(this).parent().position().top, 'left': '331px' });
+            }
+            else { 
+				$('.t_regbox_logform').animate({ left: '-=350' }, 300);
+			}
+        }, 'json');	
+	}
+	
     function errbox(obj) {
         obj.parent().css('backgroundPosition', '0px -116px');
 		var topPos = obj.parent().position().top;
@@ -224,25 +316,7 @@ $(function () {
     });
 
     $('#t_regbox_signdonebtn').click(function () {
-		$.post(remotecheck, { dt: $('#recaptcha_response_field').val(), c: $('#recaptcha_challenge_field').val(), attr: 'recaptcha_response_field', un: $('#txt_signusername').val(), um: $('#txt_signemail').val(), up: $('#txt_signpass').val() }, function (data) {
-			if (data.rtdata == 'true') {
-				$('.t_regbox_signform').animate({ left: '-=350' }, 300);
-			}
-			else if(data.rtdata == 'false'){
-                Recaptcha.reload();
-                $('.errbox_title').html('Recaptcha Code');
-                $('.errbox_msg').html('Recaptcha Code is incorrect. Please try again.');
-				$('.t_regbox_errbox_container').css({ 'top': $('#recaptcha_response_field').position().top - $('#recaptcha_response_field').height() , 'left': '196px'});
-                $('.t_regbox_errbox_container').show();
-                $('.recaptcha_response_field').css('backgroundPosition', '0px 0px');
-			}
-			else
-			{
-				$('.t_regbox_signform').animate({ left: '-=350' }, 300);
-				errbox($('#txt_signusername'));
-				$('.errbox_msg').html(data.rtdata);
-			}
-		}, 'json');
+		trecaptcha();
     });
 
     $('.t_regbox_forgetbtn').click(function () {
@@ -256,43 +330,11 @@ $(function () {
     });
 
     $('#t_regbox_logdonebtn').click(function () {
-         $.post(remotecheck, { dt: $('#t_regbox_logemail').val(), attr: 't_regbox_logemail' }, function (data) {
-            if (data.rtdata != null) {
-				$('.t_regbox_errbox_container').show();
-				$('#t_regbox_logemail').parent().css('backgroundPosition', '0px -116px');
-				$('.errbox_title').html('Invalid Email');
-				$('.errbox_msg').html(data.rtdata);
-				$('.t_regbox_errbox_container').css({ 'top': $(this).parent().position().top, 'left': '331px' });
-            }
-            else { 
-				$('.t_regbox_logform').animate({ left: '-=350' }, 300);
-			}
-        }, 'json');
+		tforget();
     });
 
     $('#t_regbox_loginbtn').click(function () {
-        $.post(remotecheck, { un: $('#txt_logusername').val(), ps: $('#txt_logpassword').val(), attr: 'txt_logusername' }, function (data) {
-			if(data.rtdata.msgid=='0'){
-				$('#txt_logusername').parent().css('backgroundPosition', '0px -116px');
-				$('#txt_logpassword').parent().css('backgroundPosition', '0px -116px');
-				$('.errbox_title').html('Invalid Username or Password');
-				$('.errbox_msg').html(data.rtdata.msg);
-				$('.t_regbox_errbox_container').css({ 'top': $('#txt_logusername').parent().position().top });
-				$('.t_regbox_errbox_container').show();
-			}
-			else if(data.rtdata.msgid=='1'){
-				$('.t_regbox').animate({ top: - $('.t_regbox').height()}, 150);
-				$('.t_regbox_overlay').fadeOut(400,function(){$('.t_regbox_overlay').hide(); window.location = data.rtdata.msg;});
-			}
-			else{
-				$('#txt_logusername').parent().css('backgroundPosition', '0px -116px');
-				$('#txt_logpassword').parent().css('backgroundPosition', '0px -116px');
-				$('.errbox_title').html('Invalid Username or Password');
-				$('.errbox_msg').html(data.rtdata.msg);
-				$('.t_regbox_errbox_container').css({ 'top': $('#txt_logusername').parent().position().top });
-				$('.t_regbox_errbox_container').show();			
-			}
-        }, 'json');
+		tlogin();
     });
 	
 	
@@ -304,4 +346,6 @@ $(function () {
 	$('#t_regbox_remembtn').click(function () { if ($(this).hasClass('rememberbtn')) { $('#t_regbox_remembtn').removeClass('rememberbtn').addClass('rememberbtntick'); } else { $('#t_regbox_remembtn').removeClass('rememberbtntick').addClass('rememberbtn'); } });
     /* Button's action */
     //-----------------//
+	
+
 });
