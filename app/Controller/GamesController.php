@@ -508,7 +508,7 @@ public function channelgames() {
 		$this->set('title_for_layout', $userName.' - Subscribtions');
 		$this->set('username', $userName);
 
-		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
+		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $listofmine)));
 
 	}
 
