@@ -142,8 +142,7 @@ $this->layout='base';
     	                   $userName = $user['User']['username'];
 				           $this->set('username', $userName);
 						   }else{
-						   //echo 'line143 from fbscontroller deleted,id:'.$unmodified_id;
-						   //break;
+						   //if there is no facebook id,system removes the first non fb_id row
 						   $this->User->delete();
 						   $this->redirect('/');
 						   
