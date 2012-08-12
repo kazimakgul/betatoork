@@ -499,8 +499,6 @@ public function channelgames() {
 		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
 		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
 		   $mutuals=array_intersect($listofmine,$listofuser);
-		   
-		   echo 'mutuals:'; print_r($mutuals);
 		   }
 		   
 		$this->set('mutuals',$mutuals);
