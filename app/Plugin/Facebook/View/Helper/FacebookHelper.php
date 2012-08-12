@@ -538,9 +538,12 @@ class FacebookHelper extends AppHelper {
 				//alert('You just logged in facebook from somewhere');
 				
 				$(function(){
-$('.t_regbox').animate({ top: - $('.t_regbox').height()}, 150);
-$('.t_regbox_overlay').fadeOut(400,function(){$('.t_regbox_overlay').hide();});
-});
+				$('.t_regbox').animate({ top: - $('.t_regbox').height()}, 150);
+				$('.t_regbox_overlay').fadeOut(400);$('.t_regbox_overlay').hide();
+				});
+				
+
+				
 				//location.reload();
 				//alert('subscribed');
 				if(authinfo==0)
