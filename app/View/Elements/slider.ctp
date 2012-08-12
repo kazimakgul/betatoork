@@ -11,7 +11,7 @@
 						<?php for($i=0; $i < count($slider); $i++){ 
 							$channelurl=$this->Html->url(array("controller" => $slider[$i]['Game']['User']['seo_username'],"action" =>""));
 							if($slider[$i]['Game']['seo_url']!=NULL){	  	
-								$playurl=$this->Html->url(array( "controller" => h($slider[$i]['User']['seo_username']),"action" =>h($slider[$i]['Game']['seo_url']),'play'));
+								$playurl=$this->Html->url(array( "controller" => h($slider[$i]['Game']['User']['seo_username']),"action" =>h($slider[$i]['Game']['seo_url']),'play'));
 							}else{
 								$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($slider[$i]['Game']['id'])));  
 							}	
@@ -70,7 +70,7 @@
 			<div class="ul">
 				<?php for($i=count($slider) - 1; $i>=0; $i--){ 
 					if($slider[$i]['Game']['seo_url']!=NULL)
-						$playurl=$this->Html->url(array( "controller" => h($slider[$i]['User']['seo_username']),"action" =>h($slider[$i]['Game']['seo_url']),'play'));
+						$playurl=$this->Html->url(array( "controller" => h($slider[$i]['Game']['User']['seo_username']),"action" =>h($slider[$i]['Game']['seo_url']),'play'));
 					else
 						$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($slider[$i]['Game']['id'])));  
 				?>
