@@ -5,7 +5,9 @@ function changechain(userid,obj)
 	if (obj.hasClass('subcardchain')) {
 		/*obj.removeClass('subcardchain').addClass('subcardchained');
 		$.get("<?php echo $suburl2; ?>/"+userid,function(data) {});*/
+		<?php if(!$this->Session->check('Auth.User')){?>
 		Register();
+		<?php }?>
 	}else {
 		obj.removeClass('subcardchained').addClass('subcardchain');
 		$.get("<?php echo $suburl2; ?>/"+userid,function(data) {});
