@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
 
-public $components = array('AutoLogin','Email','Auth','Amazonsdk.Amazon','Recaptcha.Recaptcha');
+public $components = array('AutoLogin','Email','Amazonsdk.Amazon','Recaptcha.Recaptcha');
 public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
 
 
