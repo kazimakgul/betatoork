@@ -493,7 +493,7 @@ public function channelgames() {
 		$this->leftpanel();
 		$userid = $this->request->params['pass'][0];
 		$authid = $this->Session->read('Auth.User.id');
-		//get the list of subscriptions of auth user.
+		//Get the list of subscriptions of auth user.
 		   if($authid!=NULL)
 		   {
 		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
