@@ -42,7 +42,7 @@ if($website==NULL){
 				         <?php if(in_array($followid,$mutuals)){?>
 					     <a class="subcardchained" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
 					     <?php }else {?>
-					     <a class="subcardchain1" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a>
+					     <a class="subcardchain" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a>
 					     <?php }?>
 				<?php }else {?>
 					<a class="subcardchain" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
