@@ -491,16 +491,18 @@ public function channelgames() {
 		$this->loadModel('User');
 		$this->layout='base';
 		$this->leftpanel();
-		
+		$userid = $this->request->params['pass'][0];
 		$authid = $this->Session->read('Auth.User.id');
 		//get the list of subscriptions of auth user.
 		   if($authid!=NULL)
 		   {
 		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
-		   print_r($listofmine);
+		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $mutuals=array_intersect($listofmine,$listofmine);
+		   print_r($mutuals);
 		   }
 		   
-		$userid = $this->request->params['pass'][0];
+		
 		$this->usergame_user_panel($userid);
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
@@ -508,7 +510,7 @@ public function channelgames() {
 		$this->set('title_for_layout', $userName.' - Subscribtions');
 		$this->set('username', $userName);
 
-		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $listofmine)));
+		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
 
 	}
 
