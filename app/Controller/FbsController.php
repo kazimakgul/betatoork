@@ -107,7 +107,7 @@ $this->layout='base';
 			   
 			      //if only the facebook_id exists but not email
 			      $check_face_id=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id)));
-			      echo 'This is our fb id:'.$facebook_id;
+			      
 				  if($check_face_id!=NULL)
 	              {
 				  //echo 'id with mail not exist but id exists';
