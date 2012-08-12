@@ -496,9 +496,11 @@ public function channelgames() {
 		//get the list of subscriptions of auth user.
 		   if($authid!=NULL)
 		   {
-		   $listofmine=$this->Subscription->find('all',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $listofuser=$this->Subscription->find('all',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $mutuals=array_intersect($listofmine,$listofmine);
+		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $mutuals=array_intersect($listofmine,$listofuser);
+		   
+		   
 		   echo 'mines:';print_r($listofmine['subscriber_to_id']);
 		   echo 'users:'; print_r($listofuser);
 		   echo 'mutuals:'; print_r($mutuals);
