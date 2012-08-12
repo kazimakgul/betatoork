@@ -501,7 +501,7 @@ public function channelgames() {
 		   $mutuals=array_intersect($listofmine,$listofuser);
 		   
 		   
-		   echo 'mines:';print_r($listofmine['subscriber_to_id']);
+		   echo 'mines:';print_r($listofmine);
 		   echo 'users:'; print_r($listofuser);
 		   echo 'mutuals:'; print_r($mutuals);
 		   }
