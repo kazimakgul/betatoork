@@ -13,6 +13,11 @@
 .subscribe:hover{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -78px; cursor:pointer;}
 .unsubscribe{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 0;}
 
+.chain {display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 0px;}
+.chain:hover{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -39px;}
+.chained{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -78px;}
+.chained:hover{display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -117px;}
+.unchain {display:block; width:248px; height:39px; margin-top:10px; float:left; background:url(../img/t_chain_btn.png) no-repeat 0 -117px;}
 
 .right_panel{width:980px; float:right; margin-left:10px;}
 .right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px;}
@@ -197,23 +202,23 @@ font-family:Georgia, Times, "Times New Roman", serif;
 .contact_form textarea {padding:8px; width:300px;}
 .contact_form button {margin-left:156px;}
 
-	/* form element visual styles */
-	.contact_form input, .contact_form textarea, .contact_form select{ 
-		border:1px solid #aaa;
-		box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
-		border-radius:2px;
-		padding-right:30px;
-		-moz-transition: padding .25s; 
-		-webkit-transition: padding .25s; 
-		-o-transition: padding .25s;
-		transition: padding .25s;
-	}
-	.contact_form input:focus, .contact_form textarea:focus{
-		background: #fff; 
-		border:1px solid #555; 
-		box-shadow: 0 0 3px #aaa; 
-		padding-right:70px;
-	}
+/* form element visual styles */
+.contact_form input, .contact_form textarea, .contact_form select{ 
+	border:1px solid #aaa;
+	box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+	border-radius:2px;
+	padding-right:30px;
+	-moz-transition: padding .25s; 
+	-webkit-transition: padding .25s; 
+	-o-transition: padding .25s;
+	transition: padding .25s;
+}
+.contact_form input:focus, .contact_form textarea:focus{
+	background: #fff; 
+	border:1px solid #555; 
+	box-shadow: 0 0 3px #aaa; 
+	padding-right:70px;
+}
 
 /* === HTML5 validation styles === */	
 .contact_form input:required, .contact_form textarea:required {
