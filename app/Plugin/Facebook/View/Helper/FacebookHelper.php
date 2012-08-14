@@ -547,6 +547,7 @@ class FacebookHelper extends AppHelper {
                 
 			}else if (response.status === 'not_authorized') {
               //not auth
+			  alert('notauthfuu');
             }else{
 				// the user has just logged out
 				//alert('You just logged out from faceboook');
