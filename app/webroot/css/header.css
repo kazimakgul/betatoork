@@ -40,14 +40,16 @@ a.error { color:red !important; }
 
 #fbLogin{
 display: block;
-background:url(../img/fbLogin.png);
+background:url(../img/loginwithFb.png);
+background-position: 0 0; width: 206px; height: 40px; 
 width:206px;
 height:40px;
 }	
 
 #fbLogin:hover{
 display: block;
-background:url(../img/fbLoginHover.png);
+background:url(../img/loginwithFb.png);
+background-position: 0 -45px;
 width:206px;
 height:40px;
 }	
