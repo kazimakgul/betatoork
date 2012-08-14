@@ -11,11 +11,11 @@
 .userpanel a {display:block; height:15px; font-family:Arial; color:White; text-decoration:none;}
 .userpanel a.rememberme{display:inline;font-size:13px;}
 .userpanel a:hover{text-decoration:underline;}
-.remember{font-size:13px; font-weight:500; margin:20px 25px; padding-left:20px; background-image:url(../img/t_remember_me.png); background-position:0 0; background-repeat:no-repeat;}
+.remember{font-size:13px; font-weight:500; margin:10px 25px; padding-left:20px; background-image:url(../img/t_remember_me.png); background-position:0 0; background-repeat:no-repeat;}
 .remembertick{font-size:13px; font-weight:500; margin:20px 25px; padding-left:20px; background-image:url(../img/t_remember_me.png); background-position:0 -15px; background-repeat:no-repeat;}
 .loginbtn{display:block; width:147px; height:38px; margin-left:20px; background-image:url(../img/t_login_btn.png);}
 .loginbtn:hover{cursor:pointer;}
-.forget{margin-top:15px; margin-left:25px; margin-right:25px; font-size:13px; font-weight:500;}
+.forget{margin-top:5px; margin-left:25px; margin-right:25px; font-size:13px; font-weight:500;}
 .bemember{margin-top:10px; margin-left:25px; margin-right:25px; font-size:13px; font-weight:500;}
 
 /* User Control Panel */
