@@ -9,7 +9,7 @@
 
   <!-- Add Game UI is here-->  
 
-
+<div class="editchannel"></div>
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form channelinfo' ,'type' => 'file'));?>
 
         <div class="sep"></div>
