@@ -752,7 +752,7 @@ function secureSuperGlobalPOST($value)
 				}
 				else
 				{
-					$msg = array("msgid" => '1', "msg" => $this->webroot.$this->Auth->loginRedirect);
+					$msg = array("msgid" => '1', "msg" => $this->webroot.$this->Auth->loginRedirect['controller'].'/'.$this->Auth->loginRedirect['action']);
 					$this->set('rtdata', $msg);
 				}
 			}
