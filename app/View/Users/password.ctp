@@ -9,11 +9,11 @@
 
   <!-- Add Game UI is here-->  
 
-
+<div class="editpassword"></div>
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form changepass' ,'type' => 'file'));?>
 
         <div class="sep"></div>
-<span class="required_notification">* Denotes Required Field</span>
+		<span class="required_notification">* Denotes Required Field</span>
     <ul>
   
         <li>

@@ -124,6 +124,7 @@
 .gamebox .gb_gameboxdelete{display:block; text-decoration:none; font-family:Arial; font-size:7pt; color:#004473; margin:4px 4px;}
 
 .editchannel{width:402px; height:53px; background-image: url("../img/t_channelinfo_back.png"); margin-bottom:10px;}
+.editpassword{width:402px; height:53px; background-image: url("../img/t_change_password_back.png"); margin-bottom:10px;}
 
 
 
