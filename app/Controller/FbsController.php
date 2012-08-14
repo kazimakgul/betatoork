@@ -80,7 +80,31 @@ public function beforeFilter() {
         return false; // The rest don't
     }
 
+public function addrandom($username)
+{
+$random=rand(100,999);
+return $username.$random;
+}
 
+
+public function checkUsername($username)
+{
+$this->loadModel('User');
+       $flag=0;
+	   
+	  do
+	  { 
+	      $userExists=$this->User->find('first',array('conditions'=>array('User.username'=>$username)));
+          if($userExists!=NULL)
+          {
+	      $username=$this->addrandom($username);
+	      }else{
+		  $flag=1;
+		  }
+		  
+	  }	while($flag==0)  
+   return $username;
+}
 
 public function connect()
 {
@@ -120,7 +144,7 @@ $this->layout='base';
 			      $this->User->id=$unmodified_id;
 				  //echo 'fbusername:'.$this->Connect->user('username');
 				  //echo 'fbmail:'.$this->Connect->user('email');
-				  $this->request->data['User']['username']=$this->Connect->user('username');
+				  $this->request->data['User']['username']=$this->checkUsername($this->Connect->user('username'));
 			      $this->request->data['User']['email']= $this->Connect->user('email');
 				  
 				  //handle error messages later
@@ -133,7 +157,7 @@ $this->layout='base';
 				  $this->set('username', $userName);
 				  }else{
 				  
-				           $this->request->data['User']['username']=$this->Connect->user('username');
+				           $this->request->data['User']['username']=$this->checkUsername($this->Connect->user('username'));
 			               $this->request->data['User']['email']=rand(1,200).$this->Connect->user('email');
 				           if($this->User->save($this->request->data))
 						   {
