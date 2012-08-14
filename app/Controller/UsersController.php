@@ -241,8 +241,8 @@ public function __sendResetEmail($user_id) {
                       $this->Cookie->write('User', $cookie, true, '+2 weeks');
 					 
 					 }
- 	 	
-                $this->redirect($this->Auth->redirect(array('controller' => 'games', 'action' => 'channel')));
+ 	 			$this->redirect($this->Auth->loginRedirect);
+                //$this->redirect($this->Auth->redirect(array('controller' => 'games', 'action' => 'channel')));
 	  	
                 }
 				
