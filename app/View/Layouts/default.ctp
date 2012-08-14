@@ -114,6 +114,5 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 <?php  echo $this->element('register'); ?>
 <?php  echo $this->element('analytics'); ?>
 
-<?php echo $this->Facebook->init(); ?>
 </body>
 </html>
