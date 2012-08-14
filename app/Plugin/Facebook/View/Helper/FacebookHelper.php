@@ -542,7 +542,7 @@ class FacebookHelper extends AppHelper {
 				//alert('subscribed');
 				if(authinfo==0)
 				{
-				window.location ='http://ec2-107-22-53-193.compute-1.amazonaws.com/fbs/connect';
+				window.location =fbslink;
 				}
                 
 			}else if (response.status === 'not_authorized') {
@@ -553,7 +553,7 @@ class FacebookHelper extends AppHelper {
 				//alert('You just logged out from faceboook');
 				if(authinfo==1)
 				{
-				window.location ='http://ec2-107-22-53-193.compute-1.amazonaws.com/users/logout';
+				window.location =logoutlink;
 				}
 			}
 		});

@@ -81,4 +81,6 @@ function changechain(userid,obj)
 
 <script>
 remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
+fbslink='<?php echo $this->Html->url(array('controller'=>'fbs','action'=>'connect')); ?>';
+logoutlink='<?php echo $this->Html->url(array('controller'=>'users','action'=>'logout')); ?>';
 </script>
