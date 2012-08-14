@@ -475,6 +475,19 @@ public function channelgames() {
 		$this->layout='base';
 		$this->leftpanel();
 		$userid = $this->request->params['pass'][0];
+
+		$authid = $this->Session->read('Auth.User.id');
+		//Get the list of subscriptions of auth user.
+		   if($authid!=NULL)
+		   {
+		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $mutuals=array_intersect($listofmine,$listofuser);
+		   $this->set('mutuals',$mutuals);
+		   }else{
+		   $this->set('mutuals',NULL);
+		   }
+
 		$this->usergame_user_panel($userid);
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
@@ -518,12 +531,29 @@ public function channelgames() {
 
 		public function bestchannels() {
 		$this->loadModel('User');
+		$this->loadModel('Subscription');
 		$this->layout='base';
 		$this->leftpanel();
 		$this->logedin_user_panel();
-		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
+		$userid = $this->Session->read('Auth.User.id');
+		$authid = $this->Session->read('Auth.User.id');
+		//Get the list of subscriptions of auth user.
+		   if($authid!=NULL)
+		   {
+		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $mutuals=array_intersect($listofmine,$listofuser);
+		   $this->set('mutuals',$mutuals);
+		   }else{
+		   $this->set('mutuals',NULL);
+		   }
 
+		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
+		$this->set('user_id', $userid);
 		$this->set('users', $this->paginate('User',array('User.active' => '1')));
+
+
+
 
 	}
 

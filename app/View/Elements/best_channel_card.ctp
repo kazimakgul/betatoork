@@ -41,7 +41,21 @@ if($website==NULL){
         <div id="card1" class="subcard">
             <div class="subup clearfix">
                 <a class="channelname" href="<?php echo $channelurl ?>"><?php echo $card[0] ?></a>
-                <a class="viewchannel" href="<?php echo $channelurl ?>"></a>
+
+
+
+        <?php if($this->Session->check('Auth.User')){?>
+                 <?php if(in_array($followid,$mutuals)){?>
+               <a class="subcardchained" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
+               <?php }else {?>
+               <a class="subcardchain" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a>
+               <?php }?>
+        <?php }else {?>
+          <a class="subcardchain" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
+         <?php }?>  
+
+
+
 
             </div>
             <div class="submid clearfix">
