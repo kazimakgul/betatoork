@@ -64,7 +64,7 @@ $(function () {
 	
 	
 	$('#fbLogin').click(function(event) {
-        login();
+        FB.login();
     });
 	
 	
