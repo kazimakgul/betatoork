@@ -65,13 +65,7 @@ $(function () {
 	
 	$('#fbLogin').click(function(event) {
 		alert('boo');
-        FB.login(function(response) {
-            if (response.session) {
-                // user successfully logged in
-            } else {
-                // user cancelled login
-            }
-       });
+        FB.login();
     });
 	
 	
