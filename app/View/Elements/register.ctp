@@ -30,10 +30,12 @@
 							echo $this->Facebook->logout(array('redirect'=>array('controller'=>'users','action'=>'logout')));
 							
 						}else{*/
-							echo $this->Facebook->login($opt); 
+							echo '<a href="#"><div id="fbLogin"/></div></a>'; 
 						//}
 					?>
-					<a id="fbLogin" href="#">ddd</a>
+					
+					
+					
 				<!-- <a id="t_regbox_twt" class="t_regbox_twt" href="#"><img style="border:0" alt="" src="img/new_reg/twt.png" /></a> -->
 				<span style="font-size:7pt; color:#666;">By signing in you accept our terms of use.</span>            
 			</div>

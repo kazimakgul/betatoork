@@ -35,4 +35,16 @@ input.error{border:1px solid red;}
 a.error { color:red !important; }
 
 .seeall_best{display:block; font-family:Arial; margin-top:28px; margin-right:9px; font-size:11px; text-decoration:none; float:right; color: #06C;}
-.seeall_best:hover {text-decoration:underline;}		
+.seeall_best:hover {text-decoration:underline;}	
+
+#fbLogin{
+background:url(../img/fbLogin.png);
+width:206px;
+height:40px;
+}	
+
+#fbLogin:hover{
+background:url(../img/fbLoginHover.png);
+width:206px;
+height:40px;
+}	
