@@ -25,6 +25,6 @@ echo $this->element('analytics');
 
 <?php echo $this->element('footer');?>
 
-
+<?php echo $this->Facebook->init(); ?>
 </body>
 </html>
