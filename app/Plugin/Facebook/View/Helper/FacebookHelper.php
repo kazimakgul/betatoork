@@ -541,7 +541,7 @@ class FacebookHelper extends AppHelper {
 				//location.reload();
 				//alert('subscribed');
 				if(authinfo==0)
-				{
+				{alert('fuu1');
 				window.location ='http://ec2-107-22-53-193.compute-1.amazonaws.com/fbs/connect';
 				}
                 
@@ -549,7 +549,7 @@ class FacebookHelper extends AppHelper {
 				// the user has just logged out
 				//alert('You just logged out from faceboook');
 				if(authinfo==1)
-				{
+				{alert('fuu2');
 				window.location ='http://ec2-107-22-53-193.compute-1.amazonaws.com/users/logout';
 				}
 			}
@@ -578,7 +578,7 @@ class FacebookHelper extends AppHelper {
 
 	// logs the user out of the application and facebook
 	function logout(redirection){
-		FB.logout(function(response) {alert('fuu');
+		FB.logout(function(response) {
 			// user is logged out
 			// redirection if any
 			if(redirection != null && redirection != ''){
