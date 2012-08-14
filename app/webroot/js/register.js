@@ -67,6 +67,9 @@ $(function () {
         login();
     });
 	
+	$('#fbLoginun').click(function(event) {
+        login();
+    });
 	
     //---------------//
     /* Tab's action */
