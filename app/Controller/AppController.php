@@ -101,18 +101,18 @@ class AppController extends Controller {
                //edit specific id
 
                //sil
-			   $null_user=$this->User->find('all',array('conditions'=>array('User.username'=>'hakanyavuzturk34')));
+			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
 			   //if($null_user!=NULL)
 			   //echo 'NullUser:';
-			   print_r($null_user);
+			   //print_r($null_user);
 			   //sil
 			   
 			 
-			   //foreach($null_user as $nulles)
-			   //{
-			   //$this->User->id=$nulles['User']['id'];
-			   //$this->User->delete();
-			   //}
+			   foreach($null_user as $nulles)
+			   {
+			   $this->User->id=$nulles['User']['id'];
+			   $this->User->delete();
+			   }
 			  
 			  
                
