@@ -29,9 +29,10 @@
 						{
 							echo $this->Facebook->logout(array('redirect'=>array('controller'=>'users','action'=>'logout')));
 							
-						}else{*/
-							echo '<a id="fbLogin" href="#"/></a>'; 
-						//}
+						}else{
+						    echo $this->Facebook->login($opt); 
+							//echo '<a id="fbLogin" href="#"/></a>'; 
+						}
 					?>
 					
 					
