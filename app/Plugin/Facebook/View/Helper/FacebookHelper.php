@@ -533,7 +533,7 @@ class FacebookHelper extends AppHelper {
 		});
 			   
 		FB.Event.subscribe('auth.statusChange', function(response) {
-			if (response.authResponse) {
+			if (response.status === 'connected') {
 				// the user has just logged in
 				//alert('You just logged in facebook from somewhere');
 				$('.t_regbox').animate({ top: -700}, 150);
