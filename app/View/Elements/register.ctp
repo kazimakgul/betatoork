@@ -30,7 +30,7 @@
 							echo $this->Facebook->logout(array('redirect'=>array('controller'=>'users','action'=>'logout')));
 							
 						}else{*/
-							echo '<a href="#"><div id="fbLogin"/></div></a>'; 
+							echo '<a id="fbLogin" href="#"/></a>'; 
 						//}
 					?>
 					
