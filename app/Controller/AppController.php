@@ -112,7 +112,7 @@ class AppController extends Controller {
 			   //{
 			   //$this->User->id=$nulles['User']['id'];
 			   //$this->User->delete();
-			   /}
+			   //}
 			  
 			  
                
