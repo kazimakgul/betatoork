@@ -10,7 +10,7 @@
   <!-- Add Game UI is here-->  
 
 <div class="editchannel"></div>
-<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form channelinfo' ,'type' => 'file'));?>
+<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form' ,'type' => 'file'));?>
 
         <div class="sep"></div>
 <span class="required_notification">* Denotes Required Field</span>
