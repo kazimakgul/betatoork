@@ -102,7 +102,7 @@ $this->loadModel('User');
 		  $flag=1;
 		  }
 		  
-	  }	while($flag==0)  
+	  }	while($flag==0);  
    return $username;
 }
 
