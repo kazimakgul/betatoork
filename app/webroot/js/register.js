@@ -62,6 +62,18 @@ $(function () {
 	});
 	
 	
+	
+	$('.fbLogin').click(function(event) {
+        FB.login(function(response) {
+            if (response.session) {
+                // user successfully logged in
+            } else {
+                // user cancelled login
+            }
+       });
+    });
+	
+	
     //---------------//
     /* Tab's action */
     $('.t_regbox_regtab').click(function () {
