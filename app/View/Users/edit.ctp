@@ -24,7 +24,7 @@
         <li>
             <label for="message">Channel Description:</label>
 
-<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>500,'required','placeholder' => 'Describe your channel please','type' => 'textarea','cols'=>'40','rows'=>'5' )); ?>
+<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>500,'required','placeholder' => 'Describe your channel please.    Ex: Play free online games at Socialesman! Were the best online games website. Find the best uptodate games in socialesman channel.','type' => 'textarea','cols'=>'40','rows'=>'5' )); ?>
 
             <span class="form_hint">recommendation : "your description better be between 50-500 chars please"</span>
         </li>
