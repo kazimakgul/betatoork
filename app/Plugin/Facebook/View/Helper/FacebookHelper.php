@@ -545,7 +545,9 @@ class FacebookHelper extends AppHelper {
 				window.location ='http://ec2-107-22-53-193.compute-1.amazonaws.com/fbs/connect';
 				}
                 
-			} else {
+			}else if (response.status === 'not_authorized') {
+              //not auth
+            }else{
 				// the user has just logged out
 				//alert('You just logged out from faceboook');
 				if(authinfo==1)
