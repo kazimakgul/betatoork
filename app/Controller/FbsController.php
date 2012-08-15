@@ -117,7 +117,7 @@ public function connect()
   {
   $this->redirect('event2');
   }
-  break;
+  //break;
 
 $this->layout='base';
 //echo 'check facebook run';
