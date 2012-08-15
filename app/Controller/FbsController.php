@@ -36,16 +36,6 @@ class FbsController extends AppController {
     //...
 
 
-    public $components = array(
-        'Session','Cookie','RequestHandler',
-		'Facebook.Connect'=>array('model' => 'User'),
-        'Auth' => array(
-            'loginRedirect' => array('controller' => 'games', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
-            'authorize' => array('Controller')
-        )
-    );
-
     
 
 /*
@@ -110,14 +100,14 @@ public function connect()
 {
 
   if($this->Auth->user('facebook_id')==NULL){
-  $this->redirect('event1');
+  $this->redirect($this->referer());
   }
   
   if($this->Auth->user('email')!=NULL)
   {
-  $this->redirect('event2');
+  $this->redirect($this->referer());
   }
-  //break;
+  break;
 
 $this->layout='base';
 //echo 'check facebook run';
