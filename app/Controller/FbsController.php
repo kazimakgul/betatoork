@@ -98,21 +98,10 @@ $this->loadModel('User');
 
 public function connect()
 {
-  $this->loadModel('User');
-     $facebook_testid=$this->Connect->user('id');
-     if($this->Auth->user('facebook_id')==NULL && $facebook_testid!=NULL){
-     $this->request->data['User']['username']=$generated_name;
-     $this->request->data['User']['email']= $this->Connect->user('email');
-        if($this->User->save($this->request->data))
-		{
-			$this->redirect($this->referer());	  
-		}
-  
+
+  if($this->Auth->user('facebook_id')==NULL){
+  $this->redirect($this->referer());
   }
-  
-  //if($this->Auth->user('facebook_id')==NULL){
-  //$this->redirect($this->referer());
-  //}
   
   if($this->Auth->user('email')!=NULL)
   {
@@ -122,7 +111,7 @@ public function connect()
 
 $this->layout='base';
 //echo 'check facebook run';
-	
+	$this->loadModel('User');
 	$facebook_id=$this->Connect->user('id');
     $facebook_email=$this->Connect->user('email');
 	$generated_name=$this->checkUsername($this->Connect->user('username'));
