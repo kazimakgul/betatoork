@@ -99,20 +99,20 @@ class AppController extends Controller {
 			   //$this->request->data['User']['facebook_id']='';
 			   //$this->User->save($this->request->data);
                //edit specific id
-//$this->User->query('Update users SET facebook_id=111111111 WHERE id=7');
+               //$this->User->query('Update users SET facebook_id=111111111 WHERE id=7');
                //sil
-			   $null_user=$this->User->find('all',array('conditions'=>array('User.id'=>7)));
+			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
 			   //if($null_user!=NULL)
 			   //echo 'NullUser:';
-			   print_r($null_user);
+			   //print_r($null_user);
 			   //sil
 			   
 			 
-			   //foreach($null_user as $nulles)
-			   //{
-			   //$this->User->id=$nulles['User']['id'];
-			   //$this->User->delete();
-			   //}
+			   foreach($null_user as $nulles)
+			   {
+			   $this->User->id=$nulles['User']['id'];
+			   $this->User->delete();
+			   }
 			  
 			  
                
