@@ -109,9 +109,15 @@ $this->loadModel('User');
 public function connect()
 {
 
-  if($this->Auth->user('facebook_id')==NULL){
-  $this->redirect($this->referer());
+  if($this->Auth->user('facebook_id')==''){
+  $this->redirect('fbidnull');
   }
+  
+  if($this->Auth->user('email')!='')
+  {
+  $this->redirect('emailnulegil');
+  }
+  
 
 $this->layout='base';
 //echo 'check facebook run';
