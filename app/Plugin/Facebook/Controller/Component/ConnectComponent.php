@@ -49,7 +49,7 @@ class ConnectComponent extends Component {
 	* account by introspection on the Auth component.  If false, you can use $this->hasAccount
 	* as a reference to decide what to do with that user. (default true)
 	*/
-	public $createUser = false;
+	public $createUser = true;
 	
 	/**
 	* name of the authentication model, false by default,
