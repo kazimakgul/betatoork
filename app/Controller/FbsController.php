@@ -108,9 +108,11 @@ $this->loadModel('User');
 
 public function connect()
 {
-    //This line protects the information of normal auth not Facebook
-    print_r($this->Auth->user);
-    break;
+
+  if($this->Auth->user('facebook_id')==NULL){
+  $this->redirect('boo');
+  }
+
 $this->layout='base';
 //echo 'check facebook run';
 	$this->loadModel('User');
