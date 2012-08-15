@@ -35,29 +35,16 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
     //...
 
-if($this->Auth->user('facebook_id')==NULL){
 
-public $components = array(
-        'Session','Cookie','RequestHandler',
-		
-        'Auth' => array(
-            'loginRedirect' => array('controller' => 'games', 'action' => 'channel'),
-            'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
-            'authorize' => array('Controller')
-        )
-    );
-
-}else{
     public $components = array(
         'Session','Cookie','RequestHandler',
-		'Facebook.Connect'=>array('model' => 'User'),
+		'Facebook.Connect'=>array('model' => 'FbUser'),
         'Auth' => array(
             'loginRedirect' => array('controller' => 'games', 'action' => 'channel'),
             'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
             'authorize' => array('Controller')
         )
     );
-	}
 
     var $paginate = array(
         'User' => array(
