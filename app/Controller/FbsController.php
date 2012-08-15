@@ -110,14 +110,14 @@ public function connect()
 {
 
   if($this->Auth->user('facebook_id')==NULL){
-  $this->redirect('fbidnull');
+  $this->redirect($this->referer());
   }
   
   if($this->Auth->user('email')!=NULL)
   {
-  $this->redirect('emailnulegil');
+  $this->redirect($this->referer());
   }
-  
+  break;
 
 $this->layout='base';
 //echo 'check facebook run';
