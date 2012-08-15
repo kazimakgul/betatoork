@@ -104,7 +104,7 @@ class AppController extends Controller {
 			   $null_user=$this->User->find('all',array('conditions'=>array('User.id'=>20)));
 			   //if($null_user!=NULL)
 			   //echo 'NullUser:';
-			   //print_r($null_user);
+			   print_r($null_user);
 			   //sil
 			   
 			 
