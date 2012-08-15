@@ -52,6 +52,15 @@ public function beforeFilter() {
 		$this->loadModel('User');
         $this->set('user',$this->Auth->user());
 		
+		
+      if($this->Auth->user('facebook_id')==NULL){
+      $this->redirect($this->referer());
+      }
+  
+      if($this->Auth->user('email')!=NULL)
+      {
+      $this->redirect($this->referer());
+      }
   
     }
     
@@ -99,15 +108,7 @@ $this->loadModel('User');
 public function connect()
 {
 
-  if($this->Auth->user('facebook_id')==NULL){
-  $this->redirect($this->referer());
-  }
   
-  if($this->Auth->user('email')!=NULL)
-  {
-  $this->redirect($this->referer());
-  }
-  break;
 
 $this->layout='base';
 //echo 'check facebook run';
