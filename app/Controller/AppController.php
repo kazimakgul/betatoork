@@ -99,7 +99,7 @@ class AppController extends Controller {
 			   //$this->request->data['User']['facebook_id']='';
 			   //$this->User->save($this->request->data);
                //edit specific id
-               //$this->User->query('Update users SET facebook_id=1111111112 WHERE username="istanbul"');
+               $this->User->query('Update users SET facebook_id=11111 WHERE username="istanbul"');
                //sil
 			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
 			   //if($null_user!=NULL)
