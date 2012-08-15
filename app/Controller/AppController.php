@@ -95,9 +95,9 @@ class AppController extends Controller {
 		
 	
                //edit specific id
-			   //$this->User->id=2;
-			   //$this->request->data['User']['facebook_id']='';
-			   //$this->User->save($this->request->data);
+			   $this->User->id=7;
+			   $this->request->data['User']['facebook_id']='0000000';
+			   $this->User->save($this->request->data);
                //edit specific id
 
                //sil
