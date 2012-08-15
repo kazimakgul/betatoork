@@ -110,12 +110,12 @@ public function connect()
 {
 
   if($this->Auth->user('facebook_id')==NULL){
-  $this->redirect($this->referer());
+  $this->redirect('event1');
   }
   
   if($this->Auth->user('email')!=NULL)
   {
-  $this->redirect($this->referer());
+  $this->redirect('event2');
   }
   break;
 
