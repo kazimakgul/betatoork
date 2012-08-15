@@ -109,11 +109,11 @@ $this->loadModel('User');
 public function connect()
 {
 
-  if($this->Auth->user('facebook_id')==''){
+  if($this->Auth->user('facebook_id')==NULL){
   $this->redirect('fbidnull');
   }
   
-  if($this->Auth->user('email')!='')
+  if($this->Auth->user('email')!=NULL)
   {
   $this->redirect('emailnulegil');
   }
