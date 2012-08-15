@@ -101,10 +101,10 @@ class AppController extends Controller {
                //edit specific id
                //$this->User->query('Update users SET facebook_id=11111 WHERE username="hakanyavuzturk34"');
                //sil
-			   $null_user=$this->User->find('all',array('conditions'=>array('User.id'=>19)));
+			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
 			   //if($null_user!=NULL)
 			   //echo 'NullUser:';
-			   //print_r($null_user);
+			   print_r($null_user);
 			   //sil
 			   
 			 
