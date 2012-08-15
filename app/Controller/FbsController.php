@@ -110,7 +110,7 @@ public function connect()
 {
 
   if($this->Auth->user('facebook_id')==NULL){
-  $this->redirect('boo');
+  $this->redirect($this->referer());
   }
 
 $this->layout='base';
