@@ -108,7 +108,7 @@ $this->loadModel('User');
 
 public function connect()
 {
-
+    //This line protects the information of normal auth not Facebook
     if($this->Session->check('Auth.User')){
     $this->redirect('boo');
     }

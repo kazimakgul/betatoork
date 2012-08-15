@@ -64,7 +64,7 @@ $(function () {
 	
 	
 	$('#fbLogin').click(function(event) {
-        login();
+        login('www.hotmail.com');
     });
 	
 	$('#fbLoginun').click(function(event) {
