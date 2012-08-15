@@ -101,7 +101,7 @@ class AppController extends Controller {
                //edit specific id
 
                //sil
-			   $null_user=$this->User->find('all',array('conditions'=>array('User.id'=>20)));
+			   $null_user=$this->User->find('all',array('conditions'=>array('User.id'=>19)));
 			   //if($null_user!=NULL)
 			   //echo 'NullUser:';
 			   print_r($null_user);
