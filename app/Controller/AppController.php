@@ -108,11 +108,11 @@ class AppController extends Controller {
 			   //sil
 			   
 			 
-			   //foreach($null_user as $nulles)
-			   // {
-			   //$this->User->id=$nulles['User']['id'];
-			   //$this->User->delete();
-			   // }
+			   foreach($null_user as $nulles)
+			    {
+			   $this->User->id=$nulles['User']['id'];
+			   $this->User->delete();
+			    }
 			  
 			  
                
