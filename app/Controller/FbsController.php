@@ -108,6 +108,11 @@ $this->loadModel('User');
 
 public function connect()
 {
+
+    if($this->Session->check('Auth.User')){
+    $this->redirect('boo');
+    }
+
 $this->layout='base';
 //echo 'check facebook run';
 	$this->loadModel('User');
