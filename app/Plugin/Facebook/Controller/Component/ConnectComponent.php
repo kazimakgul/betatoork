@@ -195,7 +195,7 @@ class ConnectComponent extends Component {
 	      
 	      $this->User->id=$userExists['User']['id'];
 	      if($this->User->delete())
-		  $this->redirect('sildim');
+		  $this->Controller->redirect('sildim');
 	      
 	   }
 	}
