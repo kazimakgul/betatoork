@@ -117,15 +117,13 @@ public function connect()
     {	
 	     $getUser=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id)));
 		 $this->User->id=$getUser['User']['id'];
-		  if($gender=='Male')
+		  if($gender=='male')
 		  $this->request->data['User']['gender']='m';
-		  if($gender=='Female')
-		  $this->request->data['User']['gender']='f';
-		  
+		  if($gender=='female')
 		  $this->request->data['User']['gender']='f';
 		  if($this->User->save($this->request->data))
 		  {
-		  echo 'okey lets go'.$this->Connect->user('gender');
+		  echo 'okey lets go';
 		  print_r($getUser);
 		  break;
 		  }
