@@ -188,9 +188,13 @@ class ConnectComponent extends Component {
 	
 	public function AllocateInfo()
 	{
+	
+	if(!$this->Controller->Auth->user('username') && !$this->Controller->Auth->user('email')){
 	$this->authUser[$this->User->alias]['username'] = $this->checkUsername($this->Controller->Connect->user('username'));
 	$this->authUser[$this->User->alias]['email'] = $this->checkEmail($this->Controller->Connect->user('email'));
 	$this->User->save($this->authUser, array('validate' => false));
+	}
+	
 	}
 	
 	
