@@ -98,7 +98,7 @@ $this->loadModel('User');
 
 public function connect()
 {
-break;
+
   if($this->Auth->user('facebook_id')==NULL){
   $this->redirect($this->referer());
   }
