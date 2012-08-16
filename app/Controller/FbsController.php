@@ -125,7 +125,7 @@ public function connect()
 		  $this->request->data['User']['gender']='f';
 		  if($this->User->save($this->request->data))
 		  {
-		  echo 'okey lets go';
+		  echo 'okey lets go'.$this->Connect->user('gender');
 		  print_r($getUser);
 		  break;
 		  }
