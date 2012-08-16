@@ -121,6 +121,8 @@ public function connect()
 		  $this->request->data['User']['gender']='m';
 		  if($gender=='Female')
 		  $this->request->data['User']['gender']='f';
+		  
+		  $this->request->data['User']['gender']='f';
 		  if($this->User->save($this->request->data))
 		  {
 		  echo 'okey lets go';
