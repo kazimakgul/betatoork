@@ -124,6 +124,7 @@ public function connect()
 		  if($this->User->save($this->request->data))
 		  {
 		  echo 'okey lets go';
+		  print_r($getUser);
 		  break;
 		  }
     }
