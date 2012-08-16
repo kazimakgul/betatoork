@@ -114,7 +114,7 @@ public function connect()
 	
     if($facebook_id!=NULL)//check fb_id exist begins 
     {	
-	     print_f($this->Connect->user());
+	     print_r($this->Connect->user());
 		 break;
     }
 
