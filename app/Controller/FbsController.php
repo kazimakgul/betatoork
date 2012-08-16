@@ -98,87 +98,34 @@ $this->loadModel('User');
 
 public function connect()
 {
-break;
+  
   if($this->Auth->user('facebook_id')==NULL){
   $this->redirect($this->referer());
   }
   
-  if($this->Auth->user('email')!=NULL)
-  {
-  $this->redirect($this->referer());
-  }
- 
+   $this->layout='base';
 
-$this->layout='base';
-//echo 'check facebook run';
 	$this->loadModel('User');
 	$facebook_id=$this->Connect->user('id');
     $facebook_email=$this->Connect->user('email');
 	$generated_name=$this->checkUsername($this->Connect->user('username'));
+	$gender=$this->Connect->user('gender');
 	//echo 'Special Facebook Id:'.$facebook_id;
 	//echo 'Special Facebook Email:'.$facebook_email;
 	
-  if($facebook_id!=NULL)//check fb_id exist begins 
-  {	
-	     $check_face_user=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id,'User.email !='=>'')));
-	     if($check_face_user==NULL)
-	     {       
-	             //echo 'id with email row not found';
-	             //init starts
-	            // if($this->Connect->user('username')!=NULL)
-        	    //$this->request->data['User']['username']= $this->Connect->user('username');
-			    //else
-			   
-			    //$this->request->data['User']['username']= $this->Connect->user('first_name').$this->Connect->user('last_name');
-	            //$this->request->data['User']['email']= $this->Connect->user('email');
-			   
-			    //init ends
-			   
-			       //if only the facebook_id exists but not email
-			      $check_face_id=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id)));
-			      
-				  if($check_face_id!=NULL)
-	              {
-				  //echo 'id with mail not exist but id exists';
-			      $unmodified_id=$check_face_id['User']['id'];
-				  //echo 'Unmodified Id'.$unmodified_id;
-				  //print_r($check_face_id);
-			      $this->User->id=$unmodified_id;
-				  //echo 'fbusername:'.$this->Connect->user('username');
-				  //echo 'fbmail:'.$this->Connect->user('email');
-				  $this->request->data['User']['username']=$generated_name;
-			      $this->request->data['User']['email']= $this->Connect->user('email');
-				  
-				  //handle error messages later
-				  
-				  if($this->User->save($this->request->data))
-				  {
-				  //first try successfull
-				  $user = $this->User->find('first', array('conditions' => array('User.id' => $unmodified_id),'fields'=>array('User.username')));
-    	          $userName = $user['User']['username'];
-				  $this->set('username', $userName);
-				  }else{
-				  
-				           $this->request->data['User']['username']=$generated_name;
-			               $this->request->data['User']['email']=rand(1,200).$this->Connect->user('email');
-				           if($this->User->save($this->request->data))
-						   {
-						   //second try successfull
-						   $user = $this->User->find('first', array('conditions' => array('User.id' => $unmodified_id),'fields'=>array('User.username')));
-    	                   $userName = $user['User']['username'];
-				           $this->set('username', $userName);
-						   }else{
-						   //if there is no facebook id,system removes the first non fb_id row
-						   $this->User->delete();
-						   $this->redirect('/');
-						   
-						   }
-						}
-		            }
-			    }
-  }//check fb_id exist ends 
+    if($facebook_id!=NULL)//check fb_id exist begins 
+    {	
+	     $getUser=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id)));
+		 $this->User->id=$getUser['User']['id'];
+		  if($gender=='male')
+		  $this->request->data['User']['gender']='m';
+		  if($gender=='female')
+		  $this->request->data['User']['gender']='f';
+		  $this->User->save($this->request->data);
+		  
+    }
 
-$this->redirect($this->Auth->loginRedirect);
+    $this->redirect($this->Auth->loginRedirect);
 }
 
 
