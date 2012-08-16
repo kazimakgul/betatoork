@@ -121,7 +121,11 @@ public function connect()
 		  $this->request->data['User']['gender']='m';
 		  if($gender=='Female')
 		  $this->request->data['User']['gender']='f';
-		  $this->User->save($this->request->data);
+		  if($this->User->save($this->request->data))
+		  {
+		  echo 'okey lets go';
+		  break;
+		  }
     }
 
     $this->redirect($this->Auth->loginRedirect);
