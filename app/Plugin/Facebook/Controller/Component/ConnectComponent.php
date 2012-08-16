@@ -94,7 +94,7 @@ class ConnectComponent extends Component {
 		if (!$this->noAuth && !empty($this->uid)) {
 			
 			
-			if(!$Auth->user('email')){
+			if(!this->Controller->Auth->user('email')){
 		    $this->__syncFacebookUser();
 			}
 			
