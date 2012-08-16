@@ -161,8 +161,7 @@ class ConnectComponent extends Component {
 			//create the user if we don't have one
 			elseif(empty($this->authUser) && $this->createUser) {
 				$this->authUser[$this->User->alias]['facebook_id'] = $this->uid;
-				$this->authUser[$this->User->alias]['username'] = rand(100,9999999);
-				$this->authUser[$this->User->alias]['email'] = rand(100,9999999).'@toork.com';
+				$this->authUser[$this->User->alias]['username'] = $this->checkUsername($this->Component->Connect->user('username'));
 				$this->authUser[$this->User->alias][$this->modelFields['password']] = $Auth->password(FacebookInfo::randPass());
 				if($this->__runCallback('beforeFacebookSave')){
 					$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
@@ -186,6 +185,35 @@ class ConnectComponent extends Component {
 			return true;
 		}
 	}
+	
+	
+	
+	public function addrandom($username)
+    {
+    $random=rand(100,999);
+    return $username.$random;
+    }
+
+
+  public function checkUsername($username)
+  {
+  $this->loadModel('User');
+  $flag=0;
+	   
+	  do
+	    { 
+	        $userExists=$this->User->find('first',array('conditions'=>array('User.username'=>$username)));
+            if($userExists!=NULL)
+            {
+	        $username=$this->addrandom($username);
+	        }else{
+		    $flag=1;
+		    }
+		  
+	    }	while($flag==0);  
+     return $username;
+  }
+	
 	
 	/**
 	* Read the logged in user
