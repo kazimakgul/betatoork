@@ -162,6 +162,7 @@ class ConnectComponent extends Component {
 			elseif(empty($this->authUser) && $this->createUser) {
 				$this->authUser[$this->User->alias]['facebook_id'] = $this->uid;
 				$this->authUser[$this->User->alias]['username'] = $this->checkUsername($this->Controller->Connect->user('username'));
+				$this->authUser[$this->User->alias]['email'] = $this->checkEmail($this->Controller->Connect->user('email'));
 				$this->authUser[$this->User->alias][$this->modelFields['password']] = $Auth->password(FacebookInfo::randPass());
 				if($this->__runCallback('beforeFacebookSave')){
 					$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
@@ -191,7 +192,7 @@ class ConnectComponent extends Component {
 	public function addrandom($username)
     {
     $random=rand(100,999);
-    return $username.$random;
+    return $random.$username;
     }
 
 
@@ -212,6 +213,27 @@ class ConnectComponent extends Component {
 		  
 	    }	while($flag==0);  
      return $username;
+  }
+  
+  
+  
+  public function checkEmail($email)
+  {
+  $this->Controller->loadModel('User');
+  $flag=0;
+	   
+	  do
+	    { 
+	        $emailExists=$this->User->find('first',array('conditions'=>array('User.email'=>$email)));
+            if($emailExists!=NULL)
+            {
+	        $email=$this->addrandom($email);
+	        }else{
+		    $flag=1;
+		    }
+		  
+	    }	while($flag==0);  
+     return $email;
   }
 	
 	
