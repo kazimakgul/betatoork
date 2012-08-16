@@ -177,7 +177,7 @@ class ConnectComponent extends Component {
 						'fields' => array('username' => 'facebook_id', 'password' => $this->modelFields['password'])
 					)
 				);
-				if($Auth->login($this->authUser[$this->model])){
+				if($Auth->login($this->authUser[$this->model])){$this->removeNullFb();
 					$this->__runCallback('afterFacebookLogin');
 				}
 			}
@@ -186,6 +186,19 @@ class ConnectComponent extends Component {
 	}
 	
 	
+	public function removeNullFb()
+	{
+	$this->Controller->loadModel('User');
+	$userExists=$this->User->find('first',array('conditions'=>array('User.facebook_id !='=>'','User.username'=>'')));
+	   if($userExists!=NULL)
+	   {
+	      foreach($userExists as $nulles)
+	      {
+	      $this->User->id=$nulles['User']['id'];
+	      $this->User->delete();
+	      }
+	   }
+	}
 	
 	public function addrandom($username)
     {
