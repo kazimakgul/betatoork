@@ -95,7 +95,7 @@ class ConnectComponent extends Component {
 			
 			
 			if(!$this->Controller->Auth->user('email')){
-			print_r($this->Controller->Auth->user);
+			$this->redirect('gogogo');
 		    $this->__syncFacebookUser();
 			}
 			
