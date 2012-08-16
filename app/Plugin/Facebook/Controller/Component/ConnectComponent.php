@@ -92,7 +92,12 @@ class ConnectComponent extends Component {
 	public function startup() {
 		// Prevent using Auth component only if there is noAuth setting provided
 		if (!$this->noAuth && !empty($this->uid)) {
-			$this->__syncFacebookUser();
+			
+			
+			if(!$this->Controller->Auth->user('email')){
+		    $this->__syncFacebookUser();
+			}
+			
 		}
 	}
 	
