@@ -100,7 +100,7 @@ public function connect()
 {
 
   if($this->Auth->user('facebook_id')==NULL){
-  $this->redirect($this->referer());
+  $this->Controller->redirect($this->referer());
   }
   
   if($this->Auth->user('email')!=NULL)
