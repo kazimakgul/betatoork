@@ -185,10 +185,9 @@ class ConnectComponent extends Component {
 		}
 	}
 	
-	
+	//This piece of code was added on modification progress.
 	public function AllocateInfo()
 	{
-	
 	if(!$this->Controller->Auth->user('username') && !$this->Controller->Auth->user('email')){
 	$this->authUser[$this->User->alias]['username'] = $this->checkUsername($this->Controller->Connect->user('username'));
 	$this->authUser[$this->User->alias]['email'] = $this->checkEmail($this->Controller->Connect->user('email'));
@@ -197,7 +196,7 @@ class ConnectComponent extends Component {
 	
 	}
 	
-	
+	//This piece of code was added on modification progress.
 	public function removeNullFb()
 	{
 	$this->Controller->loadModel('User');
@@ -211,14 +210,14 @@ class ConnectComponent extends Component {
 	      
 	   }
 	}
-	
+	//This piece of code was added on modification progress.
 	public function addrandom($username)
     {
     $random=rand(100,999);
     return $random.$username;
     }
 
-
+  //This piece of code was added on modification progress.
   public function checkUsername($username)
   {
   $this->Controller->loadModel('User');
@@ -239,7 +238,7 @@ class ConnectComponent extends Component {
   }
   
   
-  
+  //This piece of code was added on modification progress.
   public function checkEmail($email)
   {
   $this->Controller->loadModel('User');
