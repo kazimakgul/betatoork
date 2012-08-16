@@ -197,7 +197,7 @@ class ConnectComponent extends Component {
 
   public function checkUsername($username)
   {
-  $this->loadModel('User');
+  $this->Controller->loadModel('User');
   $flag=0;
 	   
 	  do
