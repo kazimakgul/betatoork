@@ -192,11 +192,10 @@ class ConnectComponent extends Component {
 	$userExists=$this->User->find('first',array('conditions'=>array('User.facebook_id !='=>'','User.username'=>'')));
 	   if($userExists!=NULL)
 	   {
-	      foreach($userExists as $nulles)
-	      {
-	      $this->User->id=$nulles['User']['id'];
+	      
+	      $this->User->id=$userExists['User']['id'];
 	      $this->User->delete();
-	      }
+	      
 	   }
 	}
 	
