@@ -121,7 +121,7 @@ $this->layout='base';
   if($facebook_id!=NULL)//check fb_id exist begins 
   {	
 	     $check_face_user=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id,'User.email !='=>'')));
-	     if($check_face_user==NULL)
+	     if($check_face_user!=NULL)
 	     {       
 	             //echo 'id with email row not found';
 	             //init starts
