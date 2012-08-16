@@ -115,7 +115,7 @@ public function connect()
 	
     if($facebook_id!=NULL)//check fb_id exist begins 
     {	
-	     $getUser=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id),'fields'=>array('User.id')));
+	     $getUser=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id)));
 		 $this->User->id=$getUser['User']['id'];
 		  if($gender=='Male')
 		  $this->request->data['User']['gender']='m';
