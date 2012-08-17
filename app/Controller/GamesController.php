@@ -784,14 +784,11 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 	public function seoplay2($channel=NULL,$seo_url=NULL) {
 		
-		
 		$this->layout='game_index';
 		$this->random();
 		$this->loadModel('User');
 		$this->leftpanel();
     	
-		
-		
 		
 		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id')));
 		//print_r($channel_id);
@@ -807,6 +804,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$game=$this->Game->read(null, $id);
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id'])));
 		$user_id = $user['User']['id'];
+		$auth_id = $this->Auth->user('id');
 		$this->play2_user_panel($id);
 		$this->set('user', $user);
 		$this->set('username', $user['User']['username']);
@@ -819,8 +817,11 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
 		//start size calculation for play page
-		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
+		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$auth_id,"Rate.game_id"=>$id)));
 		$starsize=(100*$current["Rate"]["current"])/5;
+		if($starsize==NULL)
+		$this->set("starsize",$game['Game']['starsize']);
+		else
 		$this->set("starsize",$starsize);
 
 	}
