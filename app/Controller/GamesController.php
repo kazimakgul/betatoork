@@ -735,7 +735,7 @@ if(empty($favbefore))
 
 		//start size calculation for play page
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
-		$starsize=(100*$current["Rate"]["current"])/5;
+		$starsize=(100*$current["Rate"]["current"])/5;echo 'user_id:'.$user_id;
 		$this->set("starsize",$starsize);
 
 	}
@@ -761,13 +761,14 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
 		$this->set('game', $this->Game->read(null, $id));
-		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
+		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));//This line is not necessary,we are connecting 3 times.O.A
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
 		//start size calculation for play page
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
 		$starsize=(100*$current["Rate"]["current"])/5;
 		$this->set("starsize",$starsize);
+		print_r($current);
 
 		if($game['Game']['embed']==null){
 
