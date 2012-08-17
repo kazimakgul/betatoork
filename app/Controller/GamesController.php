@@ -735,7 +735,7 @@ if(empty($favbefore))
 
 		//start size calculation for play page
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
-		$starsize=(100*$current["Rate"]["current"])/5;echo 'user_id:'.$user_id;
+		$starsize=(100*$current["Rate"]["current"])/5;
 		$this->set("starsize",$starsize);
 
 	}
@@ -768,7 +768,6 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
 		$starsize=(100*$current["Rate"]["current"])/5;
 		$this->set("starsize",$starsize);
-		print_r($current);
 
 		if($game['Game']['embed']==null){
 
@@ -820,7 +819,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
 		$starsize=(100*$current["Rate"]["current"])/5;
 		$this->set("starsize",$starsize);
-
+        print_r($current);
 	}
 
 
