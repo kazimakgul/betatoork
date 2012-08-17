@@ -822,6 +822,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set("starsize",$game['Game']['starsize']);
 		else
 		$this->set("starsize",$starsize);
+		echo $starsize;
 
 	}
 
