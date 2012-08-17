@@ -818,11 +818,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		//start size calculation for play page
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
 		$starsize=(100*$current["Rate"]["current"])/5;
-		if($starsize=='')
-		$this->set("starsize",$game['Game']['starsize']);
-		else
 		$this->set("starsize",$starsize);
-		echo $starsize;
 
 	}
 
