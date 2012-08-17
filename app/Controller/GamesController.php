@@ -699,6 +699,9 @@ if(empty($favbefore))
 		//start size calculation for play page
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
 		$starsize=(100*$current["Rate"]["current"])/5;
+		if($starsize==NULL)
+		$this->set("starsize",$game['Game']['starsize']);
+		else
 		$this->set("starsize",$starsize);
 
 		if($game['Game']['embed']==null){
@@ -723,6 +726,7 @@ if(empty($favbefore))
 		$game=$this->Game->read(null, $id);
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id'])));
 		$user_id = $user['User']['id'];
+		$auth_id=$this->Auth->user('id');
 		$this->set('user', $user);
 		$this->set('username', $user['User']['username']);
 		$this->set('user_id', $user_id);
@@ -734,8 +738,11 @@ if(empty($favbefore))
 		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
 
 		//start size calculation for play page
-		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
+		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$auth_id,"Rate.game_id"=>$id)));
 		$starsize=(100*$current["Rate"]["current"])/5;
+		if($starsize==NULL)
+		$this->set("starsize",$game['Game']['starsize']);
+		else
 		$this->set("starsize",$starsize);
 
 	}
