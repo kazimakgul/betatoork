@@ -121,6 +121,10 @@ public function connect()
 		  $this->request->data['User']['gender']='m';
 		  if($gender=='female')
 		  $this->request->data['User']['gender']='f';
+		  if($getUser['User']['active']!=1)
+		  {
+		  $this->request->data['User']['active']=1;
+		  }
 		  $this->User->save($this->request->data);
 		  
     }
