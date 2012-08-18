@@ -14,7 +14,7 @@ echo $this->Html->meta('description','Toork is a social network for online gamer
 <meta property="og:title" content="Toork - Create Your Own Game Channel"/>
 <meta property="og:type" content="Game"/>
 <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
-<meta property="og:image" content="https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-ash3/552572_178477148939434_926991804_n.jpg"/>
+<meta property="og:image" content="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash4/428808_254949491292199_1660409950_n.jpg"/>
 <meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="711440119"/>
 <meta property="og:description" content="Toork is a social network for online gamers. With Toork, you will be able to create your own game channel by collecting any game around the web and share it with your friends. Create your game lists, customize your channel and earn money by using toork."/>
