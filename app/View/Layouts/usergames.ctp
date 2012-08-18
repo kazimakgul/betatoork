@@ -11,7 +11,7 @@ $userDesc = $user['User']['description'];
 $userName = $user['User']['username'];
 if($userDesc == NULL){
     $descriptions = $this->Html->meta('description','Toork is a social network for online gamers. With Toork, you will be able to create your own game channel by collecting any game around the web and share it with your friends. Create your game lists, customize your channel and earn money by using toork.');
-    $fbDescriptions = "<meta property='og:description' content= $userName - Create your own game channel - Toork />";
+    $fbDescriptions = "<meta property='og:description' content= '$userName - Create your own game channel - Toork' />";
 
 }else{
     $descriptions = "<meta name='description' content= $userDesc />";
