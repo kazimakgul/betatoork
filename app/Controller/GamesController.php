@@ -925,7 +925,7 @@ function getExtension($str) {
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
-            'betatoorkpics',
+            'betatoorkpicstest',
             'upload/games/'.$id."/".$basename,
              array(
             'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$basename,
@@ -1009,11 +1009,11 @@ function getExtension($str) {
              $opt = array(
              'prefix' => $prefix,
              );
-			 $bucket="betatoorkpics";
+			 $bucket="betatoorkpicstest";
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
-			 $response=$this->Amazon->S3->delete_object('betatoorkpics', $obj);
+			 $response=$this->Amazon->S3->delete_object('betatoorkpicstest', $obj);
 			 //print_r($response);
 			 }
 			//remove objects from S3
@@ -1060,7 +1060,7 @@ function getExtension($str) {
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
-            'betatoorkpics',
+            'betatoorkpicstest',
             'upload/games/'.$id."/".$basename,
              array(
             'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$basename,
