@@ -410,11 +410,11 @@ function secureSuperGlobalPOST($value)
              $opt = array(
              'prefix' => $prefix,
              );
-			 $bucket="betatoorkpics";
+			 $bucket=Configure::read('S3.name');
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
-			 $response=$this->Amazon->S3->delete_object('betatoorkpics', $obj);
+			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
 			 //print_r($response);
 			 }
 			//remove objects from S3
@@ -454,7 +454,7 @@ function secureSuperGlobalPOST($value)
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
-            'betatoorkpics',
+            Configure::read('S3.name'),
             'upload/users/'.$id."/".$basename,
              array(
             'fileUpload' => WWW_ROOT ."/upload/users/".$id."/".$basename,
