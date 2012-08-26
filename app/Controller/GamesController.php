@@ -141,7 +141,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 
 		$limit=12;
 		$limit2=6;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
+		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.created' => 'desc'
     )));
 
 	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
