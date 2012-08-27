@@ -15,6 +15,8 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('username');?></th>
 			<th><?php echo $this->Paginator->sort('email');?></th>
+			<th><?php echo $this->Paginator->sort('facebook_id');?></th>
+			<th><?php echo $this->Paginator->sort('seo_username');?></th>
 			<th><?php echo $this->Paginator->sort('role');?></th>
 			<th><?php echo $this->Paginator->sort('active');?></th>
 			<th><?php echo $this->Paginator->sort('active -> Effect Game?');?></th>
@@ -33,6 +35,8 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['facebook_id']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['seo_username']); ?>&nbsp;</td>
 		
 		<?php echo $this->Form->create(null,array('url'=>'/users/useredit'));?>
 		<td><?php  echo $this->Form->radio('role',$options,array('value'=>$user['User']['role']))?></td>
