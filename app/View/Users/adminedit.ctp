@@ -22,7 +22,7 @@
          </li>
         <li>
             <label for="name">SEO Username:</label>
-<?php echo $this->Form->input('seo_username',array('label'=>false ,'placeholder' => 'Ex: GameMonster')); ?>
+<?php echo $this->Form->input('seo_username',array('label'=>false ,'required','placeholder' => 'Ex: GameMonster')); ?>
          </li>
 
         <li>
