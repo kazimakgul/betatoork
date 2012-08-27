@@ -96,22 +96,8 @@ $this->loadModel('User');
    return $username;
 }
 
-//AppController'a tasiyarak ortak kullanim için merkezilestir.
-public function addrandom($username)
-    {
-    $random=rand(100,999);
-    return $random.$username;
-    }
-//AppController'a tasiyarak ortak kullanim için merkezilestir.
-function secureSuperGlobalPOST($value)
-    {
-	    $string = preg_replace('/[^\w\d_ -]/si', '', $value);
-        $string = htmlspecialchars(stripslashes($string));
-        $string = str_ireplace("script", "blocked", $string);
-        $string = mysql_escape_string($string);
-		$string = htmlentities($string);
-        return $string;
-    }
+
+
 
 
 public function connect()
@@ -143,16 +129,8 @@ public function connect()
 		  {
 		  $this->request->data['User']['active']=1;
 		  }
-		  //Karma kontroller dizini plugin içinde merkezilestir.
 		  if($getUser['User']['email']==NULL)
-		  $this->request->data['User']['email']=$this->addrandom('toorkmail@toork.com');
-		  if($getUser['User']['username']==NULL)
-		  $this->request->data['User']['username']=$this->addrandom('toorkuser');
-		  if($getUser['User']['seo_username']==NULL && $getUser['User']['username']!=NULL)
-		  $this->request->data['User']['seo_username']=$this->secureSuperGlobalPOST($getUser['User']['username']);
-		  if($getUser['User']['seo_username']==NULL && $getUser['User']['username']==NULL)
-		  $this->request->data['User']['seo_username']=$this->addrandom('toorkuser');
-		  //Karma kontroller dizini plugin içinde merkezilestir.
+		  
 		  $this->User->save($this->request->data);
 		  
     }

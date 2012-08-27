@@ -189,12 +189,23 @@ class ConnectComponent extends Component {
 	public function AllocateInfo()
 	{
 	if(!$this->Controller->Auth->user('username') && !$this->Controller->Auth->user('email')){
-	$this->authUser[$this->User->alias]['username'] = $this->checkUsername($this->Controller->Connect->user('username'));
+	$this->authUser[$this->User->alias]['username'] = $this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
+	$this->authUser[$this->User->alias]['seo_username'] = $this->checkSeoUser($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
 	$this->authUser[$this->User->alias]['email'] = $this->checkEmail($this->Controller->Connect->user('email'));
 	$this->User->save($this->authUser, array('validate' => false));
 	}
 	
 	}
+	
+	function secureSuperGlobalPOST($value)
+    {
+	    $string = preg_replace('/[^\w\d_ -]/si', '', $value);
+        $string = htmlspecialchars(stripslashes($string));
+        $string = str_ireplace("script", "blocked", $string);
+        $string = mysql_escape_string($string);
+		$string = htmlentities($string);
+        return $string;
+    }
 	
 	//This piece of code was added on modification progress.
 	public function removeNullFb()
@@ -256,6 +267,26 @@ class ConnectComponent extends Component {
 		  
 	    }	while($flag==0);  
      return $email;
+  }
+	
+	//This piece of code was added on modification progress.
+  public function checkSeoUser($seouser)
+  {
+  $this->Controller->loadModel('User');
+  $flag=0;
+	   
+	  do
+	    { 
+	        $seoUserExists=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$seouser)));
+            if($seoUserExists!=NULL)
+            {
+	        $seouser=$this->addrandom($seouser);
+	        }else{
+		    $flag=1;
+		    }
+		  
+	    }	while($flag==0);  
+     return $seouser;
   }
 	
 	
