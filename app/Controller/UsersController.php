@@ -551,7 +551,7 @@ public function adminedit($id = null) {
 			}
 		
 		     //seousername begins
-		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
+		     //$this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
 		
