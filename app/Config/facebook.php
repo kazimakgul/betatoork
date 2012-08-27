@@ -5,9 +5,9 @@
   */
   $config = array(
   	'Facebook' => array(
-  		'appId' => '298516580200969',
-  		'apiKey' => '298516580200969',
-  		'secret' => 'b0ea9a707e53e4bb84e0cc13dd624977',
+  		'appId' => '406720676044342',
+  		'apiKey' => '406720676044342',
+  		'secret' => 'bd9c60220f915e71cb8aac89323ef0bd',
   		'cookie' => true,
   		'locale' => 'en_US',
   		)
