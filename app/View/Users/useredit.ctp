@@ -8,10 +8,11 @@ $options2=array('1'=>'Active','0'=>'Passive');
 $optionscheck=array('1'=>'Yes','0'=>'No');
 
 ?>
-<div class="users index">
+<div >
 	<h2><?php echo __('Users');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('username');?></th>
 			<th><?php echo $this->Paginator->sort('email');?></th>
@@ -31,7 +32,7 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 	$attrole=array('value'=>1); 
 	$attactive=array('value'=>1);
 	?>
-	
+		<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
@@ -47,7 +48,7 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 	
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'adminedit', $user['User']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), null, __('Are you sure you want to delete # %s?', $user['User']['id'])); ?>
 		</td>
 	</tr>
@@ -68,15 +69,6 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 	?>
 	</div>
 	<br><br><br>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-	<li><?php echo $this->Html->link(__('Users List'), array('controller'=>'users','action' => 'useredit',$this->Session->read('Auth.User.id'))); ?></li>
-	<li><?php echo $this->Html->link(__('Games List'), array('controller'=>'games', 'action' => 'gameedit')); ?></li>
-	<li><?php echo $this->Html->link(__('Profile Edit'), array('controller'=>'users','action' => 'edit',$this->Session->read('Auth.User.id'))); ?></li>
-	<li><?php echo $this->Html->link(__('Password Edit'), array('controller'=>'users','action' => 'password',$this->Session->read('Auth.User.id'))); ?></li>
-	</ul>
 </div>
 
 </div>
