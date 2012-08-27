@@ -341,7 +341,7 @@ function secureSuperGlobalPOST($value)
 		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
 		
 		     //seousername begins
-		     $this->request->data['User']['seo_username']=strtolower($this->request->data['User']['username']);
+		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
 			$this->User->create();
@@ -436,7 +436,7 @@ function secureSuperGlobalPOST($value)
 			}
 		
 		     //seousername begins
-		     $this->request->data['User']['seo_username']=strtolower($this->request->data['User']['username']);
+		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
 		
