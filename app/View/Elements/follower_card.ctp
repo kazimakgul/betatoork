@@ -64,7 +64,7 @@ if($website==NULL){
                 <div class="channelavatar">
               <?php 
               if($card[6]['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $followid))); 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'90','height'=>'120','url' => array('controller' => 'games', 'action' => 'usergames', $followid))); 
                 } else {
                   echo $this->Upload->image($card[6],'User.picture'); }
               ?>

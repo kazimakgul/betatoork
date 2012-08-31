@@ -20,7 +20,7 @@ function changechain(userid,obj)
 	    <tr>
   	    <td>
           <div class="logo" align="center">
-          <?php echo $this->Html->link( $this->Html->image("t_lg.png", array("alt" => "toork logo")),"/", array('escape' => false));?>
+          <?php echo $this->Html->link( $this->Html->image("t_lg.png", array("alt" => "toork logo",'width'=>'165','height'=>'31')),"/", array('escape' => false));?>
 		   <?php $actionlink=$this->Html->url(array( "controller" => "games","action" =>"search"));?>
           </div>
         </td>
