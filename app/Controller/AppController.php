@@ -85,7 +85,7 @@ class AppController extends Controller {
 		$this->set('user',$this->Auth->user());
 		
 
-			   $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
+			  // $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
 
     }
     

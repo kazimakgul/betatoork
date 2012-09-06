@@ -66,9 +66,9 @@ class GamesController extends AppController {
 		$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.playcount' => 'desc'
     ))));
 
-$cond = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => '40'),'limit' => $limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 2));
-$cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => '5'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 2));
-
+$cond = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => '40'),'limit' => $limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 0));
+$cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => '5'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 0));
+//print_r($cond);
 		$this->set('slider', $cond);
 		$this->set('featured', $cond2);
 
