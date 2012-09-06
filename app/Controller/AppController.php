@@ -67,13 +67,13 @@ class AppController extends Controller {
             'limit' => 28,
             'order' => array(
                 'Favorite.recommend' => 'desc',
-            ), 'recursive'=>'2'
+            ), 
         ),
         'Playcount' => array(
             'limit' => 28,
             'order' => array(
                 'Game.recommend' => 'desc',
-            ),'recursive'=>'2'
+            ),
         ), 
     );
 
