@@ -8,7 +8,7 @@
 class GamesController extends AppController {
 
 	public $name = 'Games';
-	var $uses = array('Game');
+	var $uses = array('Game','User','Favorite','Subscription','Playcount');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
 
@@ -54,7 +54,7 @@ class GamesController extends AppController {
 	}
 	
 	public function index() {
-		$this->loadModel('Favorite');
+
 		$this->layout='base';
 		$this->Game->recursive = 0;
 		$this->logedin_user_panel();
@@ -79,7 +79,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 
 	
 	public function mostplayed() {
-		//$this->loadModel('Playcount');
+
    		$this->paginate = array(
 	   		'Game' => array('limit'=>28,'order' => array('playcount' => 'desc')));
 
@@ -117,9 +117,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 	}
 
 	public function channel() {
-		$this->loadModel('User');
-		$this->loadModel('Favorite');
-		$this->loadModel('Subscription');
+
 		$this->layout='channel';
 		$this->leftpanel();
 		$this->logedin_user_panel();
@@ -173,7 +171,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 
 
 	public function allchannelgames() {
-		$this->loadModel('User');
+
 		$this->layout='channel';
 		$this->leftpanel();
 		$this->logedin_user_panel();
@@ -186,7 +184,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 	}
 
 		public function allchannelfavorites() {
-		$this->loadModel('User');
+
 		$this->layout='channel';
 		$this->leftpanel();
 		$this->logedin_user_panel();
@@ -211,8 +209,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 
 	public function playedgames() {
 	$this->layout='base';
-	$this->loadModel('User');
-	$this->loadModel('Playcount');
+
 	$this->leftpanel();
     $userid = $this->request->params['pass'][0];
 	$this->usergame_user_panel($userid);
@@ -237,9 +234,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 	}
 
 	public function logedin_user_panel() {
-		$this->loadModel('User');
-		$this->loadModel('Subscription');
-		$this->loadModel('Playcount');
+
 		$this->layout='base';
 	    $userid = $this->Session->read('Auth.User.id');
 	    $username = $this->Session->read('Auth.User.username');
@@ -262,9 +257,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 	}
 
 		public function usergame_user_panel($userid=NULL) {
-		$this->loadModel('User');
-		$this->loadModel('Subscription');
-		$this->loadModel('Playcount');
+
 		$this->layout='base';
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
@@ -286,9 +279,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 	
 
 	public function play2_user_panel($gameid) {
-		$this->loadModel('Subscription');
-		$this->loadModel('Playcount');
-		//$this->layout='base';
+
 		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid)));
 		$userid = $game['Game']['user_id'];
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
@@ -325,8 +316,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 }
 
 	public function usergames() {
-	$this->loadModel('User');
-	$this->loadModel('Favorite');
+
 	$this->leftpanel();
     $this->layout='usergames';
     $userid = $this->request->params['pass'][0];
@@ -365,7 +355,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 
 public function get_user_dict($cond2=NULL)
 {
-    $this->loadmodel('User');
+
     $j=0;
 	$alluserids=array();
 	foreach($cond2 as $cond1)
@@ -389,9 +379,7 @@ public function get_user_dict($cond2=NULL)
 }
 
 public function channelgames() {
-	$this->loadModel('User');
-	$this->loadModel('Favorite');
-	$this->loadModel('Subscription');
+
 	$this->leftpanel();
     $seo_username = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
@@ -459,7 +447,7 @@ public function channelgames() {
 
 	public function allusergames() {
 	$this->layout='base';
-	$this->loadModel('User');
+
 	$this->leftpanel();
     $userid = $this->request->params['pass'][0];
 	$this->usergame_user_panel($userid);
@@ -473,8 +461,7 @@ public function channelgames() {
 
 	public function alluserfavorites() {
 	$this->layout='base';
-	$this->loadModel('User');
-	$this->loadModel('Favorite');
+
 	$this->leftpanel();
     $limit=50;
     $userid = $this->request->params['pass'][0];
@@ -497,8 +484,7 @@ public function channelgames() {
 	
 
 	public function followers() {
-		$this->loadModel('Subscription');
-		$this->loadModel('User');
+
 		$this->layout='base';
 		$this->leftpanel();
 		$userid = $this->request->params['pass'][0];
@@ -527,8 +513,7 @@ public function channelgames() {
 	}
 
 	public function subscriptions() {
-		$this->loadModel('Subscription');
-		$this->loadModel('User');
+
 		$this->layout='base';
 		$this->leftpanel();
 		$userid = $this->request->params['pass'][0];
@@ -557,8 +542,7 @@ public function channelgames() {
 	}
 
 		public function bestchannels() {
-		$this->loadModel('User');
-		$this->loadModel('Subscription');
+
 		$this->layout='base';
 		$this->leftpanel();
 		$this->logedin_user_panel();
@@ -586,9 +570,7 @@ public function channelgames() {
 
 
 		public function follow_card($userid) {
-		$this->loadModel('Subscription');
-		$this->loadModel('Playcount');
-		$this->loadModel('User');
+
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
@@ -627,7 +609,7 @@ $this->set('title_for_layout', 'Toork - Game Search Engine powered by Google. To
 	$this->leftpanel();
 	$this->logedin_user_panel();
 	$this->layout='base';
-    $this->loadModel('User');
+
 	$key=$param;
 	$this->set('myParam',$key);
     $userid = $this->Session->read('Auth.User.id');
@@ -721,7 +703,7 @@ if(empty($favbefore))
 
 	public function play2($id = null) {
 		$this->random();
-		$this->loadModel('User');
+
 		$this->leftpanel();
     	$this->fav_check($id);
 		$this->layout='game_index';
@@ -760,7 +742,7 @@ if(empty($favbefore))
 
 
 public function seoplay($channel=NULL,$seo_url=NULL) {
-		$this->loadModel('User');
+
 		$this->random();
 		$this->layout='game_index';
 		
@@ -808,7 +790,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		$this->layout='game_index';
 		$this->random();
-		$this->loadModel('User');
+
 		$this->leftpanel();
     	
 		
