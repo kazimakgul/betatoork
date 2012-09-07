@@ -257,6 +257,9 @@ class ConnectComponent extends Component {
   $this->Controller->loadModel('User');
   $flag=0;
 	   
+	   if($email==NULL || $email=='')
+	   $email='blankmail@toork.com';
+	   
 	  do
 	    { 
 	        $emailExists=$this->User->find('first',array('conditions'=>array('User.email'=>$email)));
