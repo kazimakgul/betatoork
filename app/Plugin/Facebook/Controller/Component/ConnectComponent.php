@@ -204,6 +204,8 @@ class ConnectComponent extends Component {
         $string = str_ireplace("script", "blocked", $string);
         $string = mysql_escape_string($string);
 		$string = htmlentities($string);
+		$string = str_replace(' ','',$string);
+		$string = str_replace('.','',$string);
         return $string;
     }
 	
