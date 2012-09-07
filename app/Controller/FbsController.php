@@ -129,8 +129,6 @@ public function connect()
 		  {
 		  $this->request->data['User']['active']=1;
 		  }
-		  if($getUser['User']['email']==NULL)
-		  
 		  $this->User->save($this->request->data);
 		  
     }
