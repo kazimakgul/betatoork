@@ -72,7 +72,7 @@ $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.acti
 $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '5'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('User'=>array('fields'=>array('User.username','User.seo_username'))))));
 //print_r($cond3);
 		$this->set('slider', $cond);
-		$this->set('featured', $cond3);
+		$this->set('featured', $cond2);
 
 		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel');
 	}
