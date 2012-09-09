@@ -67,9 +67,9 @@ class GamesController extends AppController {
     ))));
 
 
-$cond = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '40'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('User'=>array('fields'=>array('User.username','User.seo_username'))))));
+$cond = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '40'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('Category','User'=>array('fields'=>array('User.username','User.seo_username'))))));
 $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '5'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('User'=>array('fields'=>array('User.username','User.seo_username'))))));
-//print_r($cond3);
+//print_r($cond);
 		$this->set('slider', $cond);
 		$this->set('featured', $cond2);
 
