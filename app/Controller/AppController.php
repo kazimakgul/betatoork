@@ -64,7 +64,7 @@ class AppController extends Controller {
             ),
         ),
         'Favorite' => array(
-		'contain'=>array('Game'),
+		'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username')))),
             'limit' => 28,
             'order' => array(
                 'Favorite.recommend' => 'desc',
