@@ -481,7 +481,7 @@ public function channelgames() {
 	
 	//$pagin=$this->paginate('Favorite',array('Favorite.user_id'=>$userid));
     //print_r($pagin);
-    $this->set('favorites',$this->paginate('Favorite',array('Favorite.user_id'=>$userid,'contain'=>array('Game'))));
+    $this->set('favorites',$this->paginate('Favorite',array('Favorite.user_id'=>$userid)));
     $this->set('username', $userName);
 	$this->set('user_id', $userid);
 	//$this->set('user_name_dict', $this->get_user_dict($cond2));
