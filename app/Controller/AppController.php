@@ -63,7 +63,7 @@ class AppController extends Controller {
                 'Subscription.created' => 'desc',
             ),
         ),
-        'Favorite' => array('contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))),
+        'Favorite' => array(
             'limit' => 28,
             'order' => array(
                 'Favorite.recommend' => 'desc',
