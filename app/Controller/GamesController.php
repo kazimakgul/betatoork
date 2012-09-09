@@ -147,7 +147,9 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	
 	$this->set('users', $subCond);
 	
-	$cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => $userid),'limit' => $limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 0));
+	//ReCoded
+  $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+	
 	
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
@@ -330,7 +332,8 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	$limit=12;
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-    $cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => $userid),'limit' => $limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 0));
+	//ReCoded
+    $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
     $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
     
@@ -473,7 +476,8 @@ public function channelgames() {
     $userName = $user['User']['username'];
     $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
     
-	$cond2 = $this->Favorite->find('all', array('conditions' => array('Favorite.active'=>'1','Favorite.user_id' => $userid),'limit' => $limit,'order' => array('Favorite.recommend' => 'desc'),'recursive' => 0));
+	//ReCoded
+	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
 	
 	//$pagin=$this->paginate('Favorite',array('Favorite.user_id'=>$userid));
     //print_r($pagin);
