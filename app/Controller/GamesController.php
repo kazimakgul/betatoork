@@ -774,7 +774,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
 		//start size calculation for play page
-		$current=$this->Rate->find("first",array('contain'=>false,'conditions'=>array('Rate.user_id'=>$user_id,'Rate.game_id'=>$id)));
+		$current=$this->Rate->find("first",array('contain'=>false,'fields'=>array('Rate.current'),'conditions'=>array('Rate.user_id'=>$user_id,'Rate.game_id'=>$id)));
 		print_r($current);
 		$starsize=(100*$current["Rate"]["current"])/5;
 		if($starsize==NULL)
