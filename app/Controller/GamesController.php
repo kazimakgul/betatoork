@@ -314,6 +314,7 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	public function sharedby($id=NULL) {
     //$seo_url = $this->request->params['pass'][1];
     $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
+	print_r($game);
     $user = $game['User']['username'];
     $this->set('sharedby', $user);
 }
@@ -774,8 +775,8 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
 		//start size calculation for play page
+		//ReCoded
 		$current=$this->Rate->find("first",array('contain'=>false,'fields'=>array('Rate.current'),'conditions'=>array('Rate.user_id'=>$user_id,'Rate.game_id'=>$id)));
-		print_r($current);
 		$starsize=(100*$current["Rate"]["current"])/5;
 		if($starsize==NULL)
 		{   
