@@ -815,7 +815,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		
 		
-		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username')))));
+		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.user_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username')))));
 		if ($game==NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
