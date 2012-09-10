@@ -20,15 +20,7 @@
                 </div>
                 <div class="game" align="center"><?php echo $game['Game']['embed'] ?></div>
                 <div class="gameinfo clearfix">
-<!--                     <ul class="gametitle">
-                        <li class="clearfix"><span class="title">Author</span><span class="semicolon">:</span><span class="info"><?php echo $user['User']['username'] ?></span></li>
-                        <li class="clearfix"><span class="title">Add Date</span><span class="semicolon">:</span><span class="info"><?php echo $game['Game']['created'] ?></span></li>
-                        <li class="clearfix"><span class="title">Category</span><span class="semicolon">:</span><span class="info"><?php echo $game['Game']['category_id'] ?></span></li>
-                        <li class="clearfix"><span class="title">Played</span><span class="semicolon">:</span><span class="info"><?php echo $game['Game']['rate_count'] ?></span></li>
-        
-                        <li class="clearfix"><span class="title">Favorite</span><span class="semicolon">:</span><div class="info"></div></li>
-       
-                    </ul> -->
+
   
                       <div class="butonset">
 
