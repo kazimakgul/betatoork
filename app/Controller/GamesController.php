@@ -762,12 +762,13 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$id=$id_data['Game']['id'];
 		$this->sharedby($id);
 		$this->fav_check($id);
+		$this->Game->id = $id;
 		$user_id=$this->Auth->user('id');
 		if (!$this->Game->exists()) {
 			throw new NotFoundException(__('Invalid game'));
 		}
+		$this->set('game', $this->Game->read(null, $id));
 		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));//This line is not necessary,we are connecting 3 times.O.A
-		$this->set('game',$game);
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
 		//start size calculation for play page
