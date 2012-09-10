@@ -762,14 +762,15 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$id=$id_data['Game']['id'];
 		$this->sharedby($id);
 		$this->fav_check($id);
-		$this->Game->id = $id;
+		//$this->Game->id = $id;
 		$user_id=$this->Auth->user('id');
-		if (!$this->Game->exists()) {
+		
+		//ReCoded
+		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username')))));
+		if ($game==NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
 		
-		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username')))));
-		print_r($game);
 		$this->set('game',$game);
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
