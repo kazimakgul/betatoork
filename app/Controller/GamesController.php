@@ -761,7 +761,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		if($id_data!=NULL)
 		$id=$id_data['Game']['id'];
-		$this->sharedby($id);
+		//$this->sharedby($id);
 		$this->fav_check($id);
 		$user_id=$this->Auth->user('id');
 		
@@ -770,7 +770,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		if ($game==NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
-		
+		$this->set('sharedby',$game['User']['username']);
 		$this->set('game',$game);
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
