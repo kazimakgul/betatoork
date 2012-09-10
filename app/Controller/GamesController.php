@@ -768,7 +768,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
 		
-		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));//This line is not necessary,we are connecting 3 times.O.A
+		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id),'contain'=>array('User'=>'fields'=>array('User.username'))));
 		print_r($game);
 		$this->set('game',$game);
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
