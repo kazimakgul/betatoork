@@ -753,7 +753,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->random();
 		$this->layout='game_index';
 		
-		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>array('false')));
+		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
 		print_r($channel_id);
 		
 		$id_data=$this->Game->find('first',array('conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('Game.id')));
