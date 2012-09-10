@@ -764,7 +764,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		if ($game==NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
-		$this->set('sharedby',$game['User']['username']);
+		$this->set('sharedby',$game['User']['username']);//Recoded
 		$this->set('game',$game);
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
@@ -820,7 +820,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$user_id = $user['User']['id'];
 		$auth_id = $this->Auth->user('id');
 		$this->play2_user_panel($id);
-		$this->set('sharedby',$game['User']['username']);
+		$this->set('sharedby',$game['User']['username']);//Recoded
 		$this->set('user', $user);
 		$this->set('username', $user['User']['username']);
 		$this->set('user_id', $user_id);
