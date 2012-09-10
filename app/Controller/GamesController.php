@@ -313,7 +313,7 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 	public function sharedby($id=NULL) {
     //$seo_url = $this->request->params['pass'][1];
-    $game = $this->Game->find('first', array('contain'=>false,'conditions' => array('Game.id' => $id)));
+    $game = $this->Game->find('first', array('contain'=>array('User.username'),'fields'=>array('User.username'),'conditions' => array('Game.id' => $id)));
 	print_r($game);
     $user = $game['User']['username'];
     $this->set('sharedby', $user);
