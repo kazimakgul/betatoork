@@ -672,7 +672,7 @@ if(empty($favbefore))
 	public function play($id = null) {
 		$this->random();
 		$this->layout='game_index';
-		$this->sharedby($id);
+		//$this->sharedby($id);
 		$this->fav_check($id);
 		$user_id=$this->Auth->user('id');
 		
