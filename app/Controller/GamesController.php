@@ -634,6 +634,7 @@ $this->set('title_for_layout', 'Toork - Game Search Engine powered by Google. To
                         'Game.active'=>1,
                 ),
                 'order' => 'rand()',
+				'contain'=>false
         ));
         $this->set('randomgame' , $random['Game']['id']);
 		print_r($random);
