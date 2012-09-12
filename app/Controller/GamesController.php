@@ -655,7 +655,6 @@ public function fav_check($game_id)
 {
 $user_id=$this->Auth->user('id');
 $favbefore=$this->Game->Favorite->find("first",array("conditions"=>array("Favorite.user_id"=>$user_id,"Favorite.game_id"=>$game_id),"fields"=>array("Favorite.user_id","Favorite.game_id","Favorite.id")));
-print_r($favbefore);
 if(empty($favbefore))
 			{
 			$this->set("heartwidth",0);
@@ -845,8 +844,31 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 	}
 
+    public function addrandom($username)
+    {
+    $random=rand(100,999);
+    return $random.$username;
+    }
 
 
+  public function checkSeoUser($seouser)
+  {
+  $this->Controller->loadModel('User');
+  $flag=0;
+	   
+	  do
+	    { 
+	        $seoUserExists=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$seouser)));
+            if($seoUserExists!=NULL)
+            {
+	        $seouser=$this->addrandom($seouser);
+	        }else{
+		    $flag=1;
+		    }
+		  
+	    }	while($flag==0);  
+     return $seouser;
+  }
 
 function secureSuperGlobalPOST($value)
     {
@@ -896,7 +918,7 @@ function getExtension($str) {
 			
 			
 			//seourl begins
-		 $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
+		 $this->request->data['Game']['seo_url']=$this->checkSeoUser(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])));
 		 //seourl ends
 			
 			$this->Game->create();
@@ -1034,7 +1056,7 @@ function getExtension($str) {
 			
 			
 			//seourl begins
-		     $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
+		     $this->request->data['Game']['seo_url']=$this->checkSeoUser(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])));
 		    //seourl ends
 			
 			if ($this->Game->save($this->request->data)) {
