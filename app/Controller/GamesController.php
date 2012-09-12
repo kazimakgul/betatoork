@@ -816,7 +816,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 		
 		
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']),'contain'=>false,'fields'=>'User.username'));
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']),'contain'=>false,'fields'=>'User.username,User.id,User.seo_username,User.fb_link,User.Code'));
 		print_r($user);
 		$user_id = $user['User']['id'];
 		$auth_id = $this->Auth->user('id');
