@@ -817,6 +817,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id'])));
+		print_r($user);
 		$user_id = $user['User']['id'];
 		$auth_id = $this->Auth->user('id');
 		$this->play2_user_panel($id);
