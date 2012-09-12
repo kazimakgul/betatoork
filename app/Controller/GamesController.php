@@ -800,11 +800,11 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->leftpanel();
     	
 		
-		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
+		//$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
 		//print_r($channel_id);
 		
 		//ReCoded
-		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username')))));
+		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username'),'conditions'=>array('User.seo_username'=>$channel)))));
 		
 		if($game!=NULL)
 		$id=$game['Game']['id'];
