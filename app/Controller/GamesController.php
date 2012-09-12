@@ -815,9 +815,8 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
 		
-		
+		//ReCoded
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']),'contain'=>false,'fields'=>'User.username,User.id,User.seo_username,User.fb_link,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'));
-		print_r($user);
 		$user_id = $user['User']['id'];
 		$auth_id = $this->Auth->user('id');
 		$this->play2_user_panel($id);
@@ -832,6 +831,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 		//start size calculation for play page
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$auth_id,"Rate.game_id"=>$id)));
+		print_r($current);
 		$starsize=(100*$current["Rate"]["current"])/5;
 		if($starsize==NULL)
 		{   
