@@ -755,7 +755,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		//ReCoded
 		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username')))));
 		
-		if($id_data!=NULL)
+		if($game!=NULL)
 		$id=$game['Game']['id'];
 		$this->fav_check($id);
 		$user_id=$this->Auth->user('id');
