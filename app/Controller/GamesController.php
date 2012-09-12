@@ -655,6 +655,7 @@ public function fav_check($game_id)
 {
 $user_id=$this->Auth->user('id');
 $favbefore=$this->Game->Favorite->find("first",array("conditions"=>array("Favorite.user_id"=>$user_id,"Favorite.game_id"=>$game_id),"fields"=>array("Favorite.user_id","Favorite.game_id","Favorite.id")));
+print_r($favbefore);
 if(empty($favbefore))
 			{
 			$this->set("heartwidth",0);
@@ -747,7 +748,7 @@ if(empty($favbefore))
 
 public function seoplay($channel=NULL,$seo_url=NULL) {
 
-		$this->random();
+		$this->random();//ReCoded
 		$this->layout='game_index';
 		//ReCoded
 		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
