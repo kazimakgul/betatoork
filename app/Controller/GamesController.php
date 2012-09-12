@@ -747,7 +747,7 @@ if(empty($favbefore))
 
 public function seoplay($channel=NULL,$seo_url=NULL) {
 
-		$this->random();//ReCoded
+		$this->random();
 		$this->layout='game_index';
 		//ReCoded
 		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
@@ -844,31 +844,8 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 	}
 
-    public function addrandom($username)
-    {
-    $random=rand(100,999);
-    return $random.$username;
-    }
 
 
-  public function checkSeoUser($seouser)
-  {
-  $this->Controller->loadModel('User');
-  $flag=0;
-	   
-	  do
-	    { 
-	        $seoUserExists=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$seouser)));
-            if($seoUserExists!=NULL)
-            {
-	        $seouser=$this->addrandom($seouser);
-	        }else{
-		    $flag=1;
-		    }
-		  
-	    }	while($flag==0);  
-     return $seouser;
-  }
 
 function secureSuperGlobalPOST($value)
     {
@@ -918,7 +895,7 @@ function getExtension($str) {
 			
 			
 			//seourl begins
-		 $this->request->data['Game']['seo_url']=$this->checkSeoUser(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])));
+		 $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
 		 //seourl ends
 			
 			$this->Game->create();
@@ -1056,7 +1033,7 @@ function getExtension($str) {
 			
 			
 			//seourl begins
-		     $this->request->data['Game']['seo_url']=$this->checkSeoUser(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])));
+		     $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
 		    //seourl ends
 			
 			if ($this->Game->save($this->request->data)) {
