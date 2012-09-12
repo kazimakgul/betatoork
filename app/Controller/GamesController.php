@@ -676,12 +676,12 @@ if(empty($favbefore))
 		$this->fav_check($id);
 		$user_id=$this->Auth->user('id');
 		
-		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username')))));
+		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username')))));//Recoded
 		
 		if ($game==NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
-		
+		$this->set('sharedby',$game['User']['username']);//Recoded
 		$this->set('game',$game);
 		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
 
