@@ -111,8 +111,7 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 	public function leftpanel(){
 		$this->Game->recursive = 0;
-		$cat=$this->Category->find('all');
-		print_r($cat);
+		$cat=$this->Game->Category->find('all');
 		$this->set('category', $cat);
 
 
