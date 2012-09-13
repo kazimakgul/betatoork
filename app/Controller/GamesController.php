@@ -861,8 +861,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$auth_id = $this->Auth->user('id');
 		$this->play2_user_panel($id);
 		$this->set('sharedby',$game['User']['username']);//Recoded
-		$this->set('user', $user);
-		$this->set('username', $user['User']['username']);
+        $this->set('username', $game['User']['username']);
 		$this->set('user_id', $user_id);
 		
 		
