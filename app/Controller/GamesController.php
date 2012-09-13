@@ -112,7 +112,7 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	public function leftpanel(){
 		$this->Game->recursive = 0;
 		if($this->Session->read('LeftPanel.data')==NULL)
-		$this->Session->write('LeftPanel.data',$this->Game->Category->find('all'))
+		$this->Session->write('LeftPanel.data',$this->Game->Category->find('all'));
 		
 		$this->set('category',$this->Session->read('LeftPanel.data'));
 	}
