@@ -670,7 +670,15 @@ if(empty($favbefore))
 
 
 	public function play($id = null) {
-		$this->random();
+		
+		if($this->Session->read('Random.flag')!=1)
+		{
+    	$this->random();
+		$this->set('randomgame',$this->Session->read('Random.game'));
+		}else{
+		$this->set('randomgame',$this->Session->read('Random.game'));
+		}
+		
 		$this->layout='game_index';
 		$this->fav_check($id);
 		$user_id=$this->Auth->user('id');
@@ -703,6 +711,9 @@ if(empty($favbefore))
 			$this->redirect(array('controller'=>'games', 'action'=>'play2',$id));
 		}
 
+    $this->render();
+	if($this->Session->read('Random.flag')==1)
+    $this->random();
 
 	}
 
@@ -760,7 +771,14 @@ if(empty($favbefore))
 
 public function seoplay($channel=NULL,$seo_url=NULL) {
 
-		$this->random();
+		if($this->Session->read('Random.flag')!=1)
+		{
+    	$this->random();
+		$this->set('randomgame',$this->Session->read('Random.game'));
+		}else{
+		$this->set('randomgame',$this->Session->read('Random.game'));
+		}
+		
 		$this->layout='game_index';
 		//ReCoded
 		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
@@ -800,7 +818,10 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}else{
 			$this->redirect(array('controller'=>$channel,'action'=>$seo_url,'play2'));
 		}
-
+		
+    $this->render();
+	if($this->Session->read('Random.flag')==1)
+    $this->random();
 
 	}
 
