@@ -798,7 +798,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->layout='game_index';
 		
 		$this->leftpanel();
-		
+		print_r($this->Session->read('Random.flag'));
 		if($this->Session->read('Random.flag')!=1)
 		{
     	$this->random();
