@@ -111,10 +111,10 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 	public function leftpanel(){
 		$this->Game->recursive = 0;
-		$cat=$this->Game->Category->find('all');
-		$this->set('category', $cat);
-
-
+		if($this->Session->read('LeftPanel.data')==NULL)
+		$this->Session->write('LeftPanel.data',$this->Game->Category->find('all'))
+		
+		$this->set('category',$this->Session->read('LeftPanel.data'));
 	}
 
 	public function channel() {
@@ -775,8 +775,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		{
     	$this->random();
 		$this->set('randomgame',$this->Session->read('Random.game'));
-		echo 'im in';
-		}else{echo 'im out';
+		}else{
 		$this->set('randomgame',$this->Session->read('Random.game'));
 		}
 		
