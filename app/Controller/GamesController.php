@@ -775,7 +775,8 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		{
     	$this->random();
 		$this->set('randomgame',$this->Session->read('Random.game'));
-		}else{
+		echo 'im in';
+		}else{echo 'im out';
 		$this->set('randomgame',$this->Session->read('Random.game'));
 		}
 		
