@@ -1,16 +1,16 @@
 <?php 
 $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$userid));
 $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$userid)); 
-$channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>""));
+$channelurl=$this->Html->url(array("controller" => $user['User']['seo_username'],"action" =>""));
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$userid));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 ?>
 
 <?php
-$facebook=$game['User']['fb_link'];
-$twitter=$game['User']['twitter_link'];
-$gplus=$game['User']['gplus_link'];
-$website=$game['User']['website'];
+$facebook=$user['User']['fb_link'];
+$twitter=$user['User']['twitter_link'];
+$gplus=$user['User']['gplus_link'];
+$website=$user['User']['website'];
 if($facebook==NULL){
   
 }else{
@@ -40,7 +40,7 @@ if($website==NULL){
       <fb:profile-pic uid="" size="small" width="100" height="200" linked="false"/> -->
     <!-- else -->
   <?php 
-  if($game['User']['picture']==null) { 
+  if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
     } else {
       echo $this->Upload->image($user,'User.picture'); }
