@@ -708,9 +708,17 @@ if(empty($favbefore))
 
 
 	public function play2($id = null) {
-		$this->random();
-
+	
 		$this->leftpanel();
+		
+		if($this->Session->read('Random.flag')!=1)
+		{
+    	$this->random();
+		$this->set('randomgame',$this->Session->read('Random.game'));
+		}else{
+		$this->set('randomgame',$this->Session->read('Random.game'));
+		}
+		
     	$this->fav_check($id);
 		$this->layout='game_index';
 		$this->play2_user_panel($id);
@@ -742,6 +750,10 @@ if(empty($favbefore))
 		else
 		$this->set("starsize",$starsize);
 
+    $this->render();
+	if($this->Session->read('Random.flag')==1)
+    $this->random();
+   
 	}
 
 
@@ -798,8 +810,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->layout='game_index';
 		
 		$this->leftpanel();
-		print_r($this->Session->read('Random.flag').'wooo');
-		echo 'nooo';
+		
 		if($this->Session->read('Random.flag')!=1)
 		{
     	$this->random();
