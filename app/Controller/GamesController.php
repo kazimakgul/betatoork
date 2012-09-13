@@ -859,7 +859,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$auth_id = $this->Auth->user('id');
 		$this->play2_user_panel($id);
 		$this->set('sharedby',$game['User']['username']);//Recoded
-        //$this->set('username', $game['User']['username']);
+        $this->set('username', $game['User']['username']);
 		$this->set('user_id', $user_id);
 		$this->set('game', $game);
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
