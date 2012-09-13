@@ -112,8 +112,7 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	public function leftpanel(){
 		$this->Game->recursive = 0;
 		$cat=$this->Game->Category->find('all');
-		$this->Session->write('LeftPanel.flag',1);
-		$this->Session->write('LeftPanel.data',$random['Game']['id']);
+		$this->set('category', $cat);
 
 
 	}
