@@ -842,9 +842,9 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		//$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
 		//print_r($channel_id);
-		
+		$auth_id = $this->Auth->user('id');
 		//ReCoded
-		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('Rate','User'=>array('fields'=>array('User.username,User.seo_username,User.adcode'),'conditions'=>array('User.seo_username'=>$channel)))));
+		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('Rate'=>array('conditions'=>array('Rate.user_id'=>$auth_id)),'User'=>array('fields'=>array('User.username,User.seo_username,User.adcode'),'conditions'=>array('User.seo_username'=>$channel)))));
 		print_r($game);
 		if($game!=NULL)
 		$id=$game['Game']['id'];
@@ -856,7 +856,6 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 		
 		$user_id = $game['User']['id'];
-		$auth_id = $this->Auth->user('id');
 		$this->play2_user_panel($id);
 		$this->set('sharedby',$game['User']['username']);//Recoded
         $this->set('username', $game['User']['username']);
