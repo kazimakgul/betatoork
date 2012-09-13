@@ -85,7 +85,16 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	   		'Game' => array('limit'=>28,'order' => array('playcount' => 'desc')));
 
 		$this->layout='base';
+		
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
+		
 		$this->logedin_user_panel();
 
 
@@ -112,9 +121,8 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	public function leftpanel(){
 		$this->Game->recursive = 0;
 		$cat=$this->Game->Category->find('all');
-		$this->set('category', $cat);
-
-
+		$this->Session->write('LeftPanel.flag',1);
+		$this->Session->write('LeftPanel.data',$cat);
 	}
 
 	public function channel() {
@@ -720,8 +728,15 @@ if(empty($favbefore))
 
 	public function play2($id = null) {
 	
+	    //Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
-		
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
+		//Modificated
 		if($this->Session->read('Random.flag')!=1)
 		{
     	$this->random();
@@ -829,9 +844,15 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 	public function seoplay2($channel=NULL,$seo_url=NULL) {
 		
 		$this->layout='game_index';
-		
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
-		
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
+		//Modificated
 		if($this->Session->read('Random.flag')!=1)
 		{
     	$this->random();
