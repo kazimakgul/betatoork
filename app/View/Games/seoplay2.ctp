@@ -12,7 +12,7 @@
 
         <div class="greyback">
             <div class="whiteback">
-                <div align="center"><?php echo $user['User']['adcode'] ?></div>
+                <div align="center"><?php echo $game['User']['adcode'] ?></div>
                 <div class="gamedesc">
                     <p><?php echo $game['Game']['name'] ?></p>
                     <div class="sep"></div>
@@ -45,7 +45,7 @@
                       </div>
                    
                 </div>
-                <div align="center"><?php echo $user['User']['adcode'] ?></div>
+                <div align="center"><?php echo $game['User']['adcode'] ?></div>
                 <div class="fbcomment" align="center"></br>
                     <?php echo $this->Facebook->comments(array('width'=>750)); ?>
                 </div>

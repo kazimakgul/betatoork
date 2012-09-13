@@ -856,8 +856,8 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 		
 		//ReCoded
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']),'contain'=>false,'fields'=>'User.username,User.id,User.seo_username,User.fb_link,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'));
-		$user_id = $user['User']['id'];
+		//$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']),'contain'=>false,'fields'=>'User.username,User.id,User.seo_username,User.fb_link,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'));
+		$user_id = $game['User']['id'];
 		$auth_id = $this->Auth->user('id');
 		$this->play2_user_panel($id);
 		$this->set('sharedby',$game['User']['username']);//Recoded
