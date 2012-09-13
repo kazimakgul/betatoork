@@ -855,16 +855,12 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
 		
-		//ReCoded
-		//$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']),'contain'=>false,'fields'=>'User.username,User.id,User.seo_username,User.fb_link,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'));
 		$user_id = $game['User']['id'];
 		$auth_id = $this->Auth->user('id');
 		$this->play2_user_panel($id);
 		$this->set('sharedby',$game['User']['username']);//Recoded
-        $this->set('username', $game['User']['username']);
+        //$this->set('username', $game['User']['username']);
 		$this->set('user_id', $user_id);
-		
-		
 		$this->set('game', $game);
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
         
