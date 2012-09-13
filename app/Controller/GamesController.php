@@ -636,8 +636,9 @@ $this->set('title_for_layout', 'Toork - Game Search Engine powered by Google. To
                 'order' => 'rand()',
 				'contain'=>false,
 				'fields'=>array('Game.id,Game.seo_url')
-        ));
-        $this->set('randomgame' , $random['Game']['id']);
+        ));//Recoded
+		$this->Session->write('Random.flag',1);
+		$this->Session->write('Random.game',$random['Game']['id']);
 }
 
 
@@ -795,10 +796,16 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 	public function seoplay2($channel=NULL,$seo_url=NULL) {
 		
 		$this->layout='game_index';
-		$this->random();
-
+		
 		$this->leftpanel();
-    	
+		
+		if($this->Session->read('Random.flag')!=1)
+		{
+    	$this->random();
+		$this->set('randomgame',$this->Session->read('Random.game'));
+		}else{
+		$this->set('randomgame',$this->Session->read('Random.game'));
+		}
 		
 		//$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
 		//print_r($channel_id);
@@ -828,7 +835,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		$this->set('game', $game);
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
-$this->render();
+        
 		//start size calculation for play page-Recoded
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$auth_id,"Rate.game_id"=>$id),'contain'=>false,'fields'=>'Rate.current'));
 		$starsize=(100*$current["Rate"]["current"])/5;
@@ -842,7 +849,11 @@ $this->render();
 		else
 		$this->set("starsize",$starsize);
 
-	}
+
+    $this->render();
+	if($this->Session->read('Random.flag')==1)
+    $this->random();
+   }
 
 
 
