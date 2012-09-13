@@ -862,6 +862,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
         $this->set('username', $game['User']['username']);
 		$this->set('user_id', $user_id);
 		$this->set('game', $game);
+		$this->set('user', $game);
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
         
 		//start size calculation for play page-Recoded
