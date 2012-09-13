@@ -58,7 +58,14 @@ class GamesController extends AppController {
 		$this->layout='base';
 		$this->Game->recursive = 0;
 		$this->logedin_user_panel();
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 		$limit=12;
     	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     ))));
@@ -109,7 +116,14 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	   		'Game' => array('limit'=>28,'order' => array('created' => 'desc')));
 
 		$this->layout='base';
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 		$this->logedin_user_panel();
 		
 		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
@@ -128,7 +142,14 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	public function channel() {
 
 		$this->layout='channel';
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 
@@ -184,7 +205,14 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	public function allchannelgames() {
 
 		$this->layout='channel';
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
@@ -197,7 +225,14 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		public function allchannelfavorites() {
 
 		$this->layout='channel';
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
@@ -210,7 +245,15 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	
 	public function toprated() {
 		$this->layout='base';
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		echo 'come on in';
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{echo 'come on out';
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 		$this->logedin_user_panel();
 
 		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1')));
@@ -221,7 +264,14 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	public function playedgames() {
 	$this->layout='base';
 
-	$this->leftpanel();
+	//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
+		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
     $userid = $this->request->params['pass'][0];
 	$this->usergame_user_panel($userid);
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
@@ -235,7 +285,14 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 	public function categorygames() {
 		$this->layout='base';
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 		$this->logedin_user_panel();
 		$catid = $this->request->params['pass'][0];
 
@@ -323,7 +380,14 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 	public function usergames() {
 
-	$this->leftpanel();
+	//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
+		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
     $this->layout='usergames';
     $userid = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
@@ -387,7 +451,14 @@ public function get_user_dict($cond2=NULL)
 
 public function channelgames() {
 
-	$this->leftpanel();
+	//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
+		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
     $seo_username = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
 	$userid=$user['User']['id'];
@@ -457,7 +528,14 @@ public function channelgames() {
 	public function allusergames() {
 	$this->layout='base';
 
-	$this->leftpanel();
+	//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
+		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
     $userid = $this->request->params['pass'][0];
 	$this->usergame_user_panel($userid);
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
@@ -471,7 +549,14 @@ public function channelgames() {
 	public function alluserfavorites() {
 	$this->layout='base';
 
-	$this->leftpanel();
+	//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
+		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
     $limit=50;
     $userid = $this->request->params['pass'][0];
 	$this->usergame_user_panel($userid);
@@ -496,7 +581,14 @@ public function channelgames() {
 	public function followers() {
 
 		$this->layout='base';
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 		$userid = $this->request->params['pass'][0];
 
 		$authid = $this->Session->read('Auth.User.id');
@@ -525,7 +617,14 @@ public function channelgames() {
 	public function subscriptions() {
 
 		$this->layout='base';
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 		$userid = $this->request->params['pass'][0];
 		$authid = $this->Session->read('Auth.User.id');
 		//Get the list of subscriptions of auth user.
@@ -554,7 +653,14 @@ public function channelgames() {
 		public function bestchannels() {
 
 		$this->layout='base';
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 		$authid = $this->Session->read('Auth.User.id');
@@ -616,7 +722,14 @@ $this->set('title_for_layout', 'Toork - Game Search Engine powered by Google. To
 }
 
 
-	$this->leftpanel();
+	//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
+		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
 	$this->logedin_user_panel();
 	$this->layout='base';
 
@@ -940,7 +1053,14 @@ function getExtension($str) {
 		$this->layout='base';
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
-    	$this->leftpanel();
+    	//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
+		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
     	$limit=12;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
@@ -1026,7 +1146,14 @@ function getExtension($str) {
 		$this->layout='base';
 		$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
+		//Modificated
+		if($this->Session->read('LeftPanel.flag')!=1)
+		{
 		$this->leftpanel();
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}else{
+		$this->set('category',$this->Session->read('LeftPanel.data'));
+		}
     	$limit=12;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
