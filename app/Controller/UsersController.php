@@ -829,7 +829,7 @@ public function adminedit($id = null) {
 			}
 		 }
 		 else if($attr == "recaptcha_response_field"){
-			$privatekey = "6LfxlskSAAAAAIGamNwZyHG5HOi0jWoKFHqb2t4N";
+			$privatekey = "6LebitISAAAAAEY3ntRWxcpvMtPyNxRkvpFrRO8h";
 			$userip= $_SERVER["REMOTE_ADDR"];
 			$challenge=$this->request->data['c'];
 

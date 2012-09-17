@@ -82,7 +82,7 @@
 									</div>
 								</div>
 							</div>
-							<script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LfxlskSAAAAAEz7PiFd9ajsfynq_40FvcSx0JuK"></script>                        
+							<script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LebitISAAAAABySKYGrPbSNb2vTzSqIQTqUyHvz"></script>                        
 						</div>
 						<a tabindex="-5" class="t_regbox_donebtn" id="t_regbox_signdonebtn" href="#"></a>                      
 					</div>                                      
