@@ -284,19 +284,19 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	public function play2_user_panel($userid) {
 
 		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid)));
-		echo $channelstat['User']['subscribeto']; 
+	    /*
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
-
+        */
 	    $this->set('userid', $userid);
-	    $this->set('gamenumber', $gamenumber);
-	    $this->set('favoritenumber', $favoritenumber);
-	    $this->set('subscribe', $subscribe);
-	    $this->set('subscribeto', $subscribeto);
-	    $this->set('playcount', $playcount);
+	    $this->set('gamenumber', $channelstat['User']['uploadcount']);
+	    $this->set('favoritenumber', $channelstat['User']['favoritenumber']);
+	    $this->set('subscribe', $channelstat['User']['subscribe']);
+	    $this->set('subscribeto', $channelstat['User']['subscribeto']);
+	    $this->set('playcount', $channelstat['User']['playcount']);
 
 	}
 
