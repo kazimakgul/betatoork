@@ -283,7 +283,7 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 	public function play2_user_panel($userid) {
 
-		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid),'contain'=>false,'fields'=>array('User.uploadcount,User.favoritenumber,User.subscribe,User.subscribeto,User.playcount')));
+		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid),'contain'=>false));
 	    /*
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
