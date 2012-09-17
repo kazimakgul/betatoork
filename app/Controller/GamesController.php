@@ -281,10 +281,9 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	
 	
 
-	public function play2_user_panel($gameid) {
+	public function play2_user_panel($userid) {
 
-		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid)));
-		$userid = $game['Game']['user_id'];
+		
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
@@ -844,7 +843,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		//ReCoded
 		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
-print_r($game);
+
 		if($game!=NULL)
 		$id=$game['Game']['id'];
 		$this->fav_check($id);
@@ -856,7 +855,7 @@ print_r($game);
 		
 		$user_id = $game['User']['id'];
 		$auth_id = $this->Auth->user('id');
-		$this->play2_user_panel($id);
+		$this->play2_user_panel($user_id);
 		$this->set('sharedby',$game['User']['username']);//Recoded
         $this->set('username', $game['User']['username']);
 		$this->set('user_id', $user_id);
