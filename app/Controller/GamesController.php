@@ -291,8 +291,8 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
         */
-	    $this->set('userid', $game['user']['id']);
-	    $this->set('gamenumber', $game['User']['uploadcount']);
+	    $this->set('userid', $game['User']['id']);
+	    $this->set('gamenumber', $game['User']['id']);
 	    $this->set('favoritenumber', $game['User']['favoritenumber']);
 	    $this->set('subscribe', $game['User']['subscribe']);
 	    $this->set('subscribeto', $game['User']['subscribeto']);
@@ -843,7 +843,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		//print_r($channel_id);
 		
 		//ReCoded
-		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture,User.id,User.uploadcount,User.favoritenumber,User.subscribe,User.subscribeto,User.playcount'),'conditions'=>array('User.seo_username'=>$channel)))));
+		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture,User.id,User.favoritenumber,User.subscribe,User.subscribeto,User.playcount'),'conditions'=>array('User.seo_username'=>$channel)))));
         print_r($game);
 		if($game!=NULL)
 		$id=$game['Game']['id'];
