@@ -287,6 +287,7 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+		print_r($subscribe);
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
 
