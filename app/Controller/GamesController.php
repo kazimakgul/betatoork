@@ -284,12 +284,12 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	public function play2_user_panel($userid) {
 
 		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid)));
-		print_r($channelstat);
-	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));print_r($gamenumber);
-	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));print_r($favoritenumber);
-	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));print_r($subscribe);
-	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));print_r($subscribeto);
-		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));print_r($playcount);
+		print_r($channelstat);echo '<br>';echo '<br>';
+	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));print_r($gamenumber);echo '<br>';
+	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));print_r($favoritenumber);echo '<br>';
+	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));print_r($subscribe);echo '<br>';
+	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));print_r($subscribeto);echo '<br>';
+		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));print_r($playcount);echo '<br>';
 
 	    $this->set('userid', $userid);
 	    $this->set('gamenumber', $gamenumber);
