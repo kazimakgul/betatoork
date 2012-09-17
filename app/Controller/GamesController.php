@@ -841,7 +841,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		//$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
 		//print_r($channel_id);
-		$gametest=$this->Game->find('all','conditions' => array('Game.seo_url'=>$seo_url),array('contain'=>array('User'=>array('fields'=>array('User.username')))));
+		$gametest=$this->Game->find('all',array('conditions' => array('Game.seo_url'=>$seo_url),'contain'=>array('User'=>array('fields'=>array('User.username')))));
 		print_r($gametest);
 		//ReCoded
 		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
