@@ -238,6 +238,6 @@ function getActivationHash()
 	);
 
 //uploadcount and totalrate can be use as order of channels
-var $virtualFields = array('uploadcount' => 'SELECT COUNT(id) FROM games where games.user_id=User.id','totalrate'=>'(SELECT SUM(current) FROM rates where rates.game_id IN (SELECT id FROM games where games.user_id=User.id))','favoritenumber'=>'SELECT COUNT(id) FROM favorites where favorites.user_id=User.id','subscribe'=>'SELECT COUNT(id) FROM subscriptions where subscriptions.subscriber_id=User.id','subscribeto'=>'SELECT COUNT(id) FROM subscriptions where subscriptions.subscriber_to_id=User.id','playcount'=>'SELECT COUNT(id) FROM playcounts where playcounts.user_id=User.id');
+var $virtualFields = array('uploadcount' => 10,'totalrate'=>10,'favoritenumber'=>1,'subscribe'=>1,'subscribeto'=>1,'playcount'=>1);
 
 }
