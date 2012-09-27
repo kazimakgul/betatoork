@@ -59,7 +59,7 @@ class GamesController extends AppController {
 		$this->Game->recursive = 0;
 		$this->logedin_user_panel();
 		$this->leftpanel();
-		$limit=12;
+		$limit=8;
     	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     ))));
 		
@@ -68,7 +68,7 @@ class GamesController extends AppController {
 
 //ReCoded
 $cond = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '40'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'Category','User'=>array('fields'=>array('User.username','User.seo_username'))))));
-$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '5'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '5'),'limit' =>12,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
 //print_r($cond);
 		$this->set('slider', $cond);
 		$this->set('featured', $cond2);

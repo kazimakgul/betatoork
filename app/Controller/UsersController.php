@@ -279,7 +279,7 @@ public function __sendResetEmail($user_id) {
 	public function bestChannels(){
 		$this->loadModel('Game');
 		$limit=20;
-		$users = $this->User->find('all', array('limit' => $limit, 'order' => array('User.totalrate' => 'desc')));
+		$users = $this->User->find('all', array('limit' => $limit, 'order' => array('User.id' => 'asc')));
     	return $users;
 	}
 
