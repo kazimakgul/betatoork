@@ -8,7 +8,7 @@
 class GamesController extends AppController {
 
 	public $name = 'Games';
-	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate');
+	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
 
@@ -942,6 +942,19 @@ function getExtension($str) {
 			if ($this->Game->save($this->request->data)) {
 				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
 
+               //Increase Game Count for Userstat Begins
+				$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$userid),'contain'=>false,'fields'=>array('Userstat.id','Userstat.uploadcount')));
+		if($userstatrow!=NULL)
+		{
+		$this->Userstat->id=$userstatrow['Userstat']['id'];
+		$this->request->data['Userstat']['uploadcount']=$userstatrow['Userstat']['uploadcount']+1;
+	    }else{
+		$this->Userstat->id=NULL;
+		$this->request->data['Userstat']['user_id']=$userid;
+		$this->request->data['Userstat']['uploadcount']=1;
+        }
+	    $this->Userstat->save($this->request->data);
+				//Increase Game Count for Userstat Ends
 			
 			$id=$this->Game->getLastInsertId();
 				
@@ -965,7 +978,6 @@ function getExtension($str) {
 			
             }
 			//Upload to aws ends
-				
 				
 				
 				

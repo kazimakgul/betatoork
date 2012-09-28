@@ -69,7 +69,7 @@ public $helpers = array('Html', 'Form','Upload');
 	$this->layout = "ajax";
 	
 	$user_id=$this->Auth->user('id');
-				$game_id=$this->request["pass"][0];
+	$game_id=$this->request["pass"][0];
 				
 				$favbefore=$this->Favorite->find("first",array("conditions"=>array("Favorite.user_id"=>$user_id,"Favorite.game_id"=>$game_id),"fields"=>array("Favorite.user_id","Favorite.game_id","Favorite.id")));
 	

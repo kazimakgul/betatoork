@@ -28,8 +28,11 @@ echo $this->Html->meta('keywords','online games, browser games, flash games, sha
 
 <?php
 $rateurl=$this->Html->url(array( "controller" => "rates","action" =>"add",h($game['Game']['id'])));
+$totalrate=$this->Html->url(array( "controller" => "userstats","action" =>"totalrate",h($game['Game']['id'])));
 $favurl=$this->Html->url(array( "controller" => "favorites","action" =>"add",h($game['Game']['id'])));
+$togglefav=$this->Html->url(array( "controller" => "userstats","action" =>"togglefav",h($game['Game']['id'])));
 $playurl=$this->Html->url(array( "controller" => "playcounts","action" =>"add_play",h($game['Game']['id'])));
+$updatestat=$this->Html->url(array( "controller" => "userstats","action" =>"incgameplay"));
 ?>
 
 <script>
@@ -38,6 +41,7 @@ window.setTimeout('countonetime()',10000);
 function countonetime()
 {
 $.get("<?php echo $playurl ?>");
+$.get("<?php echo $updatestat ?>");
 }
 
 <?php if($this->Session->check('Auth.User')){
@@ -53,9 +57,10 @@ function rate_a_game(rating){
 
  if(useronline==1)
  {
-
-    $.post("<?php echo $rateurl; ?>/"+rating,function(data) {alert(data);});
-  
+    $.post("<?php echo $totalrate; ?>/"+rating,function(data){$.post("<?php echo $rateurl; ?>/"+rating,function(data) {alert(data);});alert(data);});
+	
+    
+    
   
     if (rating==1)
     {
@@ -105,6 +110,7 @@ function add_to_fav(heartwidth){
      {
 
         $.post("<?php echo $favurl;?>",function(data) {alert(data);});
+		$.post("<?php echo $togglefav;?>");
   
          if(heartflag==0)
          {
