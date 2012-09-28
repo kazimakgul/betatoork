@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 
 class UserstatsController extends AppController {
 
-var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat');
+var $uses = array('Userstat','Game','User','Favorite','Subscription','Playcount','Rate');
 public $helpers = array('Html', 'Form');
 
 
