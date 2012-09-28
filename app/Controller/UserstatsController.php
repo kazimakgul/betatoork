@@ -229,21 +229,8 @@ public $helpers = array('Html', 'Form');
 	}
 	
 	public function syncallusers() {
-	    /*
-		$allusers=$this->User->find('all',array('fields'=>array('User.id'),'conditions'=>array('User.id <'=>500)));
-	    foreach($allusers as $users)
-	    {
-		$this->sync($users['User']['id']);
-	    }
-		*/
-		/*
-		$allusers=$this->User->find('all',array('fields'=>array('User.id'),'conditions'=>array('User.id >='=>500,'User.id <'=>1000)));
-	    foreach($allusers as $users)
-	    {
-		$this->sync($users['User']['id']);
-	    }
-		*/
-		$allusers=$this->User->find('all',array('fields'=>array('User.id'),'conditions'=>array('User.id >='=>1000,'User.id <'=>1500)));
+	    set_time_limit(0); 
+		$allusers=$this->User->find('all',array('fields'=>array('User.id')));
 	    foreach($allusers as $users)
 	    {
 		$this->sync($users['User']['id']);
