@@ -245,7 +245,7 @@ $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid,'Game.active'=>1)));
 		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	    $this->set('user',$user);
 
@@ -942,19 +942,20 @@ function getExtension($str) {
 			if ($this->Game->save($this->request->data)) {
 				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
 
-               //Increase Game Count for Userstat Begins
-				$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$userid),'contain'=>false,'fields'=>array('Userstat.id','Userstat.uploadcount')));
+         //recoded begins
+		$user_id=$this->Auth->user('id');
+		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)
 		{
 		$this->Userstat->id=$userstatrow['Userstat']['id'];
-		$this->request->data['Userstat']['uploadcount']=$userstatrow['Userstat']['uploadcount']+1;
 	    }else{
 		$this->Userstat->id=NULL;
-		$this->request->data['Userstat']['user_id']=$userid;
-		$this->request->data['Userstat']['uploadcount']=1;
-        }
-	    $this->Userstat->save($this->request->data);
-				//Increase Game Count for Userstat Ends
+		}
+		$uploadcount=$this->Game->find('count',array('conditions'=>array('Game.user_id'=>$user_id)));
+		$this->request->data['Userstat']['user_id']=$user_id;
+		$this->request->data['Userstat']['uploadcount']=$uploadcount;
+		$this->Userstat->save($this->request->data);
+		//recoded ends
 			
 			$id=$this->Game->getLastInsertId();
 				

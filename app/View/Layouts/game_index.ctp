@@ -57,7 +57,7 @@ function rate_a_game(rating){
 
  if(useronline==1)
  {
-    $.post("<?php echo $totalrate; ?>/"+rating,function(data){$.post("<?php echo $rateurl; ?>/"+rating,function(data) {alert(data);});alert(data);});
+	$.post("<?php echo $rateurl; ?>/"+rating,function(data) {alert(data);$.post("<?php echo $totalrate; ?>/"+rating);});
 	
     
     

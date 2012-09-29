@@ -24,14 +24,13 @@ function sub_status(a)
 $('#subscribe').click(function () {
 		if ($(this).hasClass('chain')) {
 			<?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription",$user_id)); ?>
-			 $.get("<?php echo $suburl2?>",function(data) {});
-			 $.get("<?php echo $incscribe?>",function(data) {});
+			 $.get("<?php echo $suburl2?>",function(data) {$.get("<?php echo $incscribe?>");});
+			 
 			$(this).removeClass('chain').addClass('chained');
 		}
 		else {
 			<?php $suburl3=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription",$user_id)); ?>
-			$.get("<?php echo $suburl3 ?>",function(data) {});
-			$.get("<?php echo $decscribe?>",function(data) {});
+			$.get("<?php echo $suburl3 ?>",function(data) {$.get("<?php echo $decscribe?>");});
 			$(this).removeClass('chained').addClass('chain');
 		}
 });
