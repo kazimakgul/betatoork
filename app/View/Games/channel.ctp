@@ -90,7 +90,7 @@ $best=$this->Html->url(array( "controller" => "games","action" =>"bestchannels")
 
 
                     <div class="clearfix">
-                        <div class="subscriptionhd"></div>
+                        <div class="chainstitle"></div>
 
                     <?php 
                     if(count($users) <= $limit2-1){}

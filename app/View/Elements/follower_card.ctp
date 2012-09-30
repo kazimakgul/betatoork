@@ -75,7 +75,7 @@ if($website==NULL){
                     <li class="clearfix"><a class="" href="<?php echo $channelurl ?>"><?php echo $card[2] ?> Favorite Games</a></li>
                     <li class="clearfix"><a class="" href="<?php echo $playcounturl ?>"><?php echo $card[5] ?> Played Games</a></li>
                     <li class="clearfix"><a class="" href="<?php echo $folurl ?>"><?php echo $card[4] ?> Followers</a></li>
-                    <li class="clearfix"><a class="" href="<?php echo $suburl ?>"><?php echo $card[3] ?> Subscriptions</a></li>
+                    <li class="clearfix"><a class="" href="<?php echo $suburl ?>"><?php echo $card[3] ?> Chains</a></li>
 					<li class="clearfix"><div class="cardsep" style="margin-bottom:5px; margin-top:5px;"></div></li>
 					<li class="clearfix">
                     <?php

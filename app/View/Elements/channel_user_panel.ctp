@@ -46,7 +46,7 @@ else{
     echo $this->Html->link('Google Adsense',array('controller'=>'users','action'=>'edit',$userid),array('class'=>'adsense'));
     }?>
   <a class="subscriber" href="<?php echo $folurl ?>">Followers (<?php echo $subscribeto?>)</a>
-  <a class="subscription" href="<?php echo $suburl ?>">Subscriptions (<?php echo $subscribe?>)</a>
+  <a class="subscription" href="<?php echo $suburl ?>">Chains (<?php echo $subscribe?>)</a>
 </div>
 
 

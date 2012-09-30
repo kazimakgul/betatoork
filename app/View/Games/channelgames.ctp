@@ -74,7 +74,7 @@
 
                  <div id="subscriber">
                     <div class="clearfix">
-                        <div class="subscriptionhd"></div>
+                        <div class="chainstitle"></div>
 
                     <?php 
                     if(count($users) <= $limit2-1){}
