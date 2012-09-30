@@ -246,7 +246,7 @@ public $helpers = array('Html', 'Form');
         }
 	    $this->Userstat->save($this->request->data,array('fieldList'=>array('id','user_id','totalrate','subscribe')));
 		*/
-		//recoded begins
+		//recoded begins for subscribes of user_id
 		$user_id=$this->Auth->user('id');
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)
@@ -256,12 +256,24 @@ public $helpers = array('Html', 'Form');
 		$this->Userstat->id=NULL;
 		}
 		$subscribe=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_id'=>$user_id)));
-		$subscribeto=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_to_id'=>$user_id)));
 		$this->request->data['Userstat']['user_id']=$user_id;
 		$this->request->data['Userstat']['subscribe']=$subscribe;
+		$this->Userstat->save($this->request->data);
+		//recoded ends	
+		//recoded begins for subscribeto of channel
+		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$subscribe_to),'contain'=>false,'fields'=>array('Userstat.id')));
+		if($userstatrow!=NULL)
+		{
+		$this->Userstat->id=$userstatrow['Userstat']['id'];
+	    }else{
+		$this->Userstat->id=NULL;
+		}
+		$subscribeto=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_to_id'=>$subscribe_to)));
+		$this->request->data['Userstat']['user_id']=$subscribe_to;
 		$this->request->data['Userstat']['subscribeto']=$subscribeto;
 		$this->Userstat->save($this->request->data);
 		//recoded ends	
+		
 	}
 	
 	public function decscribe($subscribe_to) {
@@ -295,7 +307,7 @@ public $helpers = array('Html', 'Form');
         }
 	    $this->Userstat->save($this->request->data,array('fieldList'=>array('id','user_id','totalrate','subscribe')));
 		*/
-		//recoded begins
+		//recoded begins for subscribes of user_id
 		$user_id=$this->Auth->user('id');
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)
@@ -305,12 +317,23 @@ public $helpers = array('Html', 'Form');
 		$this->Userstat->id=NULL;
 		}
 		$subscribe=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_id'=>$user_id)));
-		$subscribeto=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_to_id'=>$user_id)));
 		$this->request->data['Userstat']['user_id']=$user_id;
 		$this->request->data['Userstat']['subscribe']=$subscribe;
+		$this->Userstat->save($this->request->data);
+		//recoded ends	
+		//recoded begins for subscribeto of channel
+		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$subscribe_to),'contain'=>false,'fields'=>array('Userstat.id')));
+		if($userstatrow!=NULL)
+		{
+		$this->Userstat->id=$userstatrow['Userstat']['id'];
+	    }else{
+		$this->Userstat->id=NULL;
+		}
+		$subscribeto=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_to_id'=>$subscribe_to)));
+		$this->request->data['Userstat']['user_id']=$subscribe_to;
 		$this->request->data['Userstat']['subscribeto']=$subscribeto;
 		$this->Userstat->save($this->request->data);
-		//recoded ends
+		//recoded ends	
 	}
 	
 	public function syncallusers() {
