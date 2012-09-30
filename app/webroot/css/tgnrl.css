@@ -55,8 +55,8 @@
 .rating a:hover{cursor:pointer;}
 
 /* Subscribe Cards */
-.subscriberhd{background-image:url(../img/t_subscribers_back.png); width:219px; padding-top:60px; background-repeat:no-repeat; float:left;}
-.subscriptionhd{background-image:url(../img/t_subscriptions_back.png); width:230px; padding-top:60px; background-repeat:no-repeat; float:left;}
+.followertitle{background-image:url(../img/t_follower_title.png); width:193px; padding-top:60px; background-repeat:no-repeat; float:left;}
+.chainstitle{background-image:url(../img/t_chains_title.png); width:153px; padding-top:60px; background-repeat:no-repeat; float:left;}
 .subcount{ display:block;float:left; font-family:Arial; color:#0b81c5; margin:2px; font-size:12pt; margin-top:20px; margin-left:10px;}
 .subcard {float:left; width:265px; height:120px; margin-top:20px; margin-right:10px; margin-bottom:30px; margin-left:20px;} 
 .subcard a{float:left; display:block;}
