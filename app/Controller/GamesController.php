@@ -730,7 +730,7 @@ if(empty($favbefore))
 		}
 		
     	$this->fav_check($id);
-		$this->layout='game_index';
+		$this->layout='game_index2';
 		$this->play2_user_panel($id);
 		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username')))));//Recoded
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id'])));
@@ -827,7 +827,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 	public function seoplay2($channel=NULL,$seo_url=NULL) {
 		
-		$this->layout='game_index';
+		$this->layout='game_index2';
 		
 		$this->leftpanel();
 		
