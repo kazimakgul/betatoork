@@ -52,7 +52,7 @@ if($website==NULL){
   <a class="added" href="<?php echo $channelurl ?>"><?php echo $gamenumber ?> games added</a>
   <a class="favorite" href="<?php echo $channelurl ?>"><?php echo $favoritenumber ?> games favorite</a>
   <a class="subscriber" href="<?php echo $folurl ?>"><?php echo $subscribeto ?> Followers</a>
-  <a class="subscription" href="<?php echo $suburl ?>"><?php echo $subscribe ?> Subscriptions</a>
+  <a class="subscription" href="<?php echo $suburl ?>"><?php echo $subscribe ?> Chains</a>
   <a class="played" href="<?php echo $playcounturl ?>"><?php echo $playcount ?> games played</a>
   <div class="panelsep"></div>
   <div class="clearfix" style="padding-left:25px;">

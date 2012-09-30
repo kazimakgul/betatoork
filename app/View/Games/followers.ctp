@@ -9,7 +9,7 @@
   <div class="channel_right_panel">
      <div id="subscriber">
         <div class="clearfix">
-            <div class="subscriberhd"></div>
+            <div class="followertitle"></div>
            
         </div>
 
