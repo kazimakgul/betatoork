@@ -8,7 +8,7 @@
       <?php  echo $this->element('categories_left_menu'); ?>
     </div>
     <div class="right_panel">
-        <div class="mostplayed"></div>
+        <div class="lastaddedgames"></div>
           <div class="clearfix"></div>
 
         <div class="sep"></div>

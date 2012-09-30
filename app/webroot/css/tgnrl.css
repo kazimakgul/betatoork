@@ -42,6 +42,8 @@
 .right_panel .seeall:hover {text-decoration:underline;}
 
 .mostplayed{background-image:url(../img/t_most_played_games_back.png); width:332px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
+.lastaddedgames{background-image:url(../img/t_lastadded_games_title.png); width:332px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
+.newgames{background-image:url(../img/t_new_games_title.png); width:332px; height:53px; margin-bottom:8px; background-repeat:no-repeat; float:left;}
 
 .rating {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat; background-position:-93px 0px;}
 .ratingresult {width:95px; height:17px; background-image:url(../img/t_stars.png); background-repeat:no-repeat;}
