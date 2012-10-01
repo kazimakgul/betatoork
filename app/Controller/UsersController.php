@@ -810,7 +810,7 @@ public function adminedit($id = null) {
 	}
 	
 	public function checkUser(){
-		 
+		 $this->loadModel('Userstat');
 		 Configure::write ( 'debug', 0 );
 		 
 		 $dt=$this->request->data['dt'];
@@ -854,7 +854,6 @@ public function adminedit($id = null) {
 				if ($this->User->save($this->request->data)) {
 					$this->__sendActivationEmail($this->User->getLastInsertID());
 					//recoded begins
-					/*
 		$user_id=$this->Auth->user('id');
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)
@@ -866,7 +865,6 @@ public function adminedit($id = null) {
 		$uploadcount=$this->Game->find('count',array('conditions'=>array('Game.user_id'=>$user_id)));
 		$this->request->data['Userstat']['user_id']=$user_id;
 		$this->Userstat->save($this->request->data);
-		*/
 		//recoded ends
 				} else {
 					$this->set('rtdata', 'Can not register. Please try again.');
