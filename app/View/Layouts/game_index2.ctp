@@ -23,7 +23,7 @@ echo $this->Html->meta('keywords','online games, browser games, flash games, sha
 <?php echo $this->Html->css(array('header','footer','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel','myStyle','rating','game')); ?>
 
 
-<?php echo $this->Html->script(array('jquery.min','register','jquery-ui-1.8.17.custom.min','jquery.cookie','jquery.fancybox-1.3.4.pack','jquery.lightbox_me','knockout-2.0.0','underscore','jquery.placeholder.min','jail','t_slider')); ?>
+<?php echo $this->Html->script(array('jquery.min','register','jquery-ui-1.8.17.custom.min','jquery.cookie','jquery.lightbox_me','underscore','jquery.placeholder.min','jail','t_slider')); ?>
 
 
 <?php
@@ -183,13 +183,6 @@ $.get("<?php echo $suburl2; ?>/"+userid,function(data) {alert(data);location.rel
 
 </script>
 
-
-
-
-
-
-</script>
-
 <?php $searchurl=$this->Html->url(array("controller"=>"games","action"=>"search")); ?>
 
 <script type="text/javascript">
@@ -214,12 +207,10 @@ $(function () {
 </script>
 
 
-<?php  echo $this->element('knockout'); ?>
-
 
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "2985e6d2-18ec-411c-bdd2-3f2ec2a0c832"}); </script>
+
 
 
 </head>
@@ -229,8 +220,10 @@ $(function () {
 <?php  echo $this->element('header'); ?>
 
 <?php echo $content_for_layout?>
-<?php  echo $this->element('footer'); ?>
+
 <?php  echo $this->element('game_footer'); ?>
+
+<?php  echo $this->element('footer'); ?>
 
 <?php 
 echo $this->Session->flash('flash', array('element' => 'info'));
@@ -249,7 +242,6 @@ echo $this->Session->flash('auth', array('element' => 'info'));
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 end fb comment icin gerekli -->
-
 
 <?php echo $this->Facebook->init(); ?>
 </body>
