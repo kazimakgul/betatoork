@@ -44,7 +44,7 @@
 
 
   <a class="forget" id="up_btn_forget" href="#">Forget Password?</a>
-  <a class="forget" id="up_btn_register" href="#">Not a member? Register now</a>
+  <a class="forget" style="color:yellow;" id="up_btn_register" href="#">Create a Game Channel</a>
   <div class="panelsep"></div>
   					<?php 
 						/*if($facebook_user)
