@@ -853,7 +853,7 @@ public function adminedit($id = null) {
 				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
 				if ($this->User->save($this->request->data)) {
 					$this->__sendActivationEmail($this->User->getLastInsertID());
-					/*//recoded begins
+					//recoded begins
 		$user_id=$this->Auth->user('id');
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)
@@ -866,7 +866,7 @@ public function adminedit($id = null) {
 		$this->request->data['Userstat']['user_id']=$user_id;
 		$this->Userstat->save($this->request->data);
 		//recoded ends
-		*/
+		
 				} else {
 					$this->set('rtdata', 'Can not register. Please try again.');
 				}
