@@ -66,12 +66,15 @@ class GamesController extends AppController {
 		$this->set('most_played_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.playcount' => 'desc'
     ))));
 
-//ReCoded
+
 $cond = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '40'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'Category','User'=>array('fields'=>array('User.username','User.seo_username'))))));
 $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '5'),'limit' =>12,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
-//print_r($cond);
+$cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '4'),'limit' =>8,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+
+
 		$this->set('slider', $cond);
 		$this->set('featured', $cond2);
+		$this->set('newgames', $cond3);
 
 		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel');
 	}
