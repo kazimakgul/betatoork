@@ -43,73 +43,15 @@
 		
 		<!-- Game Slider -->
 		<div style="margin-bottom:10px;">
-			<ul>
-				<li class="clearfix">			
-					<div class="gamebox clearfix">
-						<div class="greyback">
-							<div class="whiteback">
-								<a href="/betatoork/games/play/9"><img width="200" height="110" alt="Monster Island" class="gamethumb" src="https://s3.amazonaws.com/betatoorkpics/upload/games/9/mzl_rtgqyxmy_1024x1024_65_toorksize.jpg"></a>
-							</div>
-						</div>
-						<div class="gb_rate">	
-							<div class="ratingcontainer" id="rate">
-								<div style="background-position: 0px 0px;" class="rating"></div>
-							</div>
-							<div class="rateresult">100 %</div>
-						</div>
-						<a href="/betatoork/miniclip" class="gb_channelname">Miniclip</a>
-						<a href="/betatoork/games/play/9" class="gb_gamename">Monster Island</a>
-					</div>						
-						
-					<div class="gamebox clearfix">
-						<div class="greyback">
-							<div class="whiteback">
-								<a href="/betatoork/games/play/9"><img width="200" height="110" alt="Monster Island" class="gamethumb" src="https://s3.amazonaws.com/betatoorkpics/upload/games/9/mzl_rtgqyxmy_1024x1024_65_toorksize.jpg"></a>
-							</div>
-						</div>
-						<div class="gb_rate">	
-							<div class="ratingcontainer" id="rate">
-								<div style="background-position: 0px 0px;" class="rating"></div>
-							</div>
-							<div class="rateresult">100 %</div>
-						</div>
-						<a href="/betatoork/miniclip" class="gb_channelname">Miniclip</a>
-						<a href="/betatoork/games/play/9" class="gb_gamename">Monster Island</a>
-					</div>							
-						
-					<div class="gamebox clearfix">
-						<div class="greyback">
-							<div class="whiteback">
-								<a href="/betatoork/games/play/9"><img width="200" height="110" alt="Monster Island" class="gamethumb" src="https://s3.amazonaws.com/betatoorkpics/upload/games/9/mzl_rtgqyxmy_1024x1024_65_toorksize.jpg"></a>
-							</div>
-						</div>
-						<div class="gb_rate">	
-							<div class="ratingcontainer" id="rate">
-								<div style="background-position: 0px 0px;" class="rating"></div>
-							</div>
-							<div class="rateresult">100 %</div>
-						</div>
-						<a href="/betatoork/miniclip" class="gb_channelname">Miniclip</a>
-						<a href="/betatoork/games/play/9" class="gb_gamename">Monster Island</a>
-					</div>							
-						
-					<div class="gamebox clearfix">
-						<div class="greyback">
-							<div class="whiteback">
-								<a href="/betatoork/games/play/9"><img width="200" height="110" alt="Monster Island" class="gamethumb" src="https://s3.amazonaws.com/betatoorkpics/upload/games/9/mzl_rtgqyxmy_1024x1024_65_toorksize.jpg"></a>
-							</div>
-						</div>
-						<div class="gb_rate">	
-							<div class="ratingcontainer" id="rate">
-								<div style="background-position: 0px 0px;" class="rating"></div>
-							</div>
-							<div class="rateresult">100 %</div>
-						</div>
-						<a href="/betatoork/miniclip" class="gb_channelname">Miniclip</a>
-						<a href="/betatoork/games/play/9" class="gb_gamename">Monster Island</a>
-					</div>							
-				</li>
-			</ul>
+
+                    <ul>
+                     
+                       <li class="clearfix">
+                      <?php echo $this->element('gamepage_game_box'); ?>
+                      </li>
+                      
+                    </ul>
+
 		</div>
 		<!-- Game Slider-->			
 			

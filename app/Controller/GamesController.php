@@ -739,9 +739,12 @@ if(empty($favbefore))
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id'])));
 		$user_id = $user['User']['id'];
 		$auth_id=$this->Auth->user('id');
+		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$user_id),'limit' => 4,'order' => array('Game.recommend' => 'desc')));
+
 		$this->set('user', $user);
 		$this->set('username', $user['User']['username']);
 		$this->set('user_id', $user_id);
+		$this->set('mygames', $cond);
 		
 		if ($game==NULL) {
 			throw new NotFoundException(__('Invalid game'));
@@ -843,9 +846,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 		
 		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
-		//print_r($channel_id);
-		
-		//ReCoded
+
 		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
 
 		if($game!=NULL)
@@ -859,10 +860,12 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		$user_id = $game['User']['id'];
 		$auth_id = $this->Auth->user('id');
+		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$user_id),'limit' => 4,'order' => array('Game.recommend' => 'desc')));
 		$this->play2_user_panel($user_id);
 		$this->set('sharedby',$game['User']['username']);//Recoded
         $this->set('username', $game['User']['username']);
 		$this->set('user_id', $user_id);
+		$this->set('mygames', $cond);
 		$this->set('game', $game);
 		$this->set('user', $game);
 		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
