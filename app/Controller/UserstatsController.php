@@ -43,68 +43,7 @@ public $helpers = array('Html', 'Form');
 	
 	public function totalrate() {
 	$this->layout='ajax';
-	/*
-	$user_id=$this->Auth->user('id');
-	$game_id=$this->request["pass"][0];
-	$rating=$this->request["pass"][1];
-	$gameinfo=$this->Game->find('first',array('conditions'=>array('Game.id'=>$game_id),'contain'=>false,'fields'=>array('Game.user_id')));
-	$owner=$gameinfo['Game']['user_id'];
-	$ratebefore=$this->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$game_id),"fields"=>array("Rate.user_id","Rate.game_id","Rate.current","Rate.id")));
-	     if(empty($ratebefore))
-		 {
-			//Only summation begins
-			$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$owner),'contain'=>false,'fields'=>array('Userstat.id','Userstat.totalrate')));
-		if($userstatrow!=NULL)
-		{
-		$this->Userstat->id=$userstatrow['Userstat']['id'];
-		$this->request->data['Userstat']['totalrate']=$userstatrow['Userstat']['totalrate']+$rating;
-	    }else{
-		$this->Userstat->id=NULL;
-		$this->request->data['Userstat']['user_id']=$owner;
-		$this->request->data['Userstat']['totalrate']=$rating;
-        }
-	    $this->Userstat->save($this->request->data);
-			
-			//Only summation ends
-			
-		 }else{
-		 //Rated Before Process Begins
-		$previousrate=$ratebefore['Rate']['current'];
-		echo 'previous rate'.$previousrate;
-		echo 'current rate'.$rating;
-		if($previousrate>=$rating)
-		$diffrate=bcsub($previousrate,$rating);
-		if($previousrate<$rating)
-		$diffrate=bcsub($rating,$previousrate);
-		echo 'difference rate'.$diffrate;
-		if($previousrate>=$rating)
-		$plus=1;
-		 else
-		$plus=0;
-		echo '<br>'.$plus;
-		$user_id=$this->Auth->user('id');
-	    $userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$owner),'contain'=>false,'fields'=>array('Userstat.id','Userstat.totalrate')));
-		if($userstatrow!=NULL)
-		{
-		$this->Userstat->id=$userstatrow['Userstat']['id'];
-		  if($plus!=1)
-		  {
-		$this->request->data['Userstat']['totalrate']=$userstatrow['Userstat']['totalrate']+$diffrate;
-		  }else{
-		  if($userstatrow['Userstat']['totalrate']>=$diffrate)
-		  $this->request->data['Userstat']['totalrate']=$userstatrow['Userstat']['totalrate']-$diffrate;
-		  }
-	    }else{
-		$this->Userstat->id=NULL;
-		$this->request->data['Userstat']['user_id']=$owner;
-		$this->request->data['Userstat']['totalrate']=0;
-        }
-	    $this->Userstat->save($this->request->data);
-		 
-		 //Rated Before Process Ends
-		 }
-		 
-	*/
+	
 	
 	//recoded begins
 		$user_id=$this->Auth->user('id');
@@ -128,46 +67,7 @@ public $helpers = array('Html', 'Form');
 	
 	
 	public function togglefav() {
-	/*
-	$user_id=$this->Auth->user('id');
-	$game_id=$this->request["pass"][0];
-	$favbefore=$this->Favorite->find("first",array("conditions"=>array("Favorite.user_id"=>$user_id,"Favorite.game_id"=>$game_id),"fields"=>array("Favorite.user_id","Favorite.game_id","Favorite.id")));
-	        if(empty($favbefore))
-			{
-			//This is begin of increase method
-			$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id','Userstat.favoritecount')));
-		if($userstatrow!=NULL)
-		{
-		$this->Userstat->id=$userstatrow['Userstat']['id'];
-		$this->request->data['Userstat']['favoritecount']=$userstatrow['Userstat']['favoritecount']+1;
-	    }else{
-		$this->Userstat->id=NULL;
-		$this->request->data['Userstat']['user_id']=$user_id;
-		$this->request->data['Userstat']['favoritecount']=1;
-        }
-	    $this->Userstat->save($this->request->data);
-			//This is end of increase method
-			
-			}else{
-			//This is begin of decrease method
-		$user_id=$this->Auth->user('id');
-	    $userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id','Userstat.favoritecount')));
-		if($userstatrow!=NULL)
-		{
-		$this->Userstat->id=$userstatrow['Userstat']['id'];
-		if($userstatrow['Userstat']['favoritecount']>=1)
-		$this->request->data['Userstat']['favoritecount']=$userstatrow['Userstat']['favoritecount']-1;
-	    }else{
-		$this->Userstat->id=NULL;
-		$this->request->data['Userstat']['user_id']=$user_id;
-		$this->request->data['Userstat']['favoritecount']=0;
-        }
-	    $this->Userstat->save($this->request->data);
-			
-			//This is end of decrease method
-			}
 	
-	*/
 	//recoded begins
 		$user_id=$this->Auth->user('id');
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
@@ -186,20 +86,7 @@ public $helpers = array('Html', 'Form');
 	
 	
 	public function incgameplay() {
-	/*
-	    $user_id=$this->Auth->user('id');
-	    $userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id','Userstat.playcount')));
-		if($userstatrow!=NULL)
-		{
-		$this->Userstat->id=$userstatrow['Userstat']['id'];
-		$this->request->data['Userstat']['playcount']=$userstatrow['Userstat']['playcount']+1;
-	    }else{
-		$this->Userstat->id=NULL;
-		$this->request->data['Userstat']['user_id']=$user_id;
-		$this->request->data['Userstat']['playcount']=1;
-        }
-	    $this->Userstat->save($this->request->data);
-	*/
+	
 	//recoded begins
 	    $user_id=$this->Auth->user('id');
 	    $userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
@@ -218,34 +105,7 @@ public $helpers = array('Html', 'Form');
 	}
 	
 	public function incscribe($subscribe_to) {
-	    //for subscribe to
-	    /*
-		$user_id=$this->Auth->user('id');
-	    $userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$subscribe_to),'contain'=>false,'fields'=>array('Userstat.id','Userstat.subscribeto')));
-		if($userstatrow!=NULL)
-		{
-		$this->Userstat->id=$userstatrow['Userstat']['id'];
-		$this->request->data['Userstat']['subscribeto']=$userstatrow['Userstat']['subscribeto']+1;
-	    }else{
-		$this->Userstat->id=NULL;
-		$this->request->data['Userstat']['user_id']=$subscribe_to;
-		$this->request->data['Userstat']['subscribeto']=1;
-        }
-	    $this->Userstat->save($this->request->data);
-	//for subscribe
-	$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id','Userstat.subscribe')));
-		if($userstatrow!=NULL)
-		{
-		$this->Userstat->id=$userstatrow['Userstat']['id'];
-		$this->request->data['Userstat']['user_id']=$user_id;
-		$this->request->data['Userstat']['subscribe']=$userstatrow['Userstat']['subscribe']+1;
-	    }else{
-		$this->Userstat->id=NULL;
-		$this->request->data['Userstat']['user_id']=$user_id;
-		$this->request->data['Userstat']['subscribe']=1;echo 'new';
-        }
-	    $this->Userstat->save($this->request->data,array('fieldList'=>array('id','user_id','totalrate','subscribe')));
-		*/
+	    
 		//recoded begins for subscribes of user_id
 		$user_id=$this->Auth->user('id');
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
@@ -277,36 +137,7 @@ public $helpers = array('Html', 'Form');
 	}
 	
 	public function decscribe($subscribe_to) {
-	//for subscribe to
-	/*
-	    $user_id=$this->Auth->user('id');
-	    $userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$subscribe_to),'contain'=>false,'fields'=>array('Userstat.id','Userstat.subscribeto')));
-		if($userstatrow!=NULL)
-		{
-		$this->Userstat->id=$userstatrow['Userstat']['id'];
-		if($userstatrow['Userstat']['subscribeto']>=1)
-		$this->request->data['Userstat']['subscribeto']=$userstatrow['Userstat']['subscribeto']-1;
-	    }else{
-		$this->Userstat->id=NULL;
-		$this->request->data['Userstat']['user_id']=$subscribe_to;
-		$this->request->data['Userstat']['subscribeto']=0;
-        }
-	    $this->Userstat->save($this->request->data);
-	//for subscribe
-	$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id','Userstat.subscribe')));
-		if($userstatrow!=NULL)
-		{
-		$this->Userstat->id=$userstatrow['Userstat']['id'];
-		if($userstatrow['Userstat']['subscribe']>=1)
-		$this->request->data['Userstat']['subscribe']=$userstatrow['Userstat']['subscribe']-1;
-		$this->request->data['Userstat']['user_id']=$user_id;
-	    }else{
-		$this->Userstat->id=NULL;
-		$this->request->data['Userstat']['user_id']=$user_id;
-		$this->request->data['Userstat']['subscribe']=0;
-        }
-	    $this->Userstat->save($this->request->data,array('fieldList'=>array('id','user_id','totalrate','subscribe')));
-		*/
+	
 		//recoded begins for subscribes of user_id
 		$user_id=$this->Auth->user('id');
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
@@ -344,6 +175,25 @@ public $helpers = array('Html', 'Form');
 		$this->sync($users['User']['id']);
 	    }
 	    set_time_limit(30); 
+	}
+	
+	public function new_user($user_id) {
+	    
+		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
+		if($userstatrow==NULL)
+		{
+		
+		$this->request->data['Userstat']['user_id']=$user_id;
+		$this->request->data['Userstat']['uploadcount']=0;
+		$this->request->data['Userstat']['totalrate']=0;
+		$this->request->data['Userstat']['favoritecount']=0;
+		$this->request->data['Userstat']['subscribe']=0;
+		$this->request->data['Userstat']['subscribeto']=0;
+		$this->request->data['Userstat']['playcount']=0;
+		$this->Userstat->save($this->request->data);
+		
+	    }
+	
 	}
 	
 	public function sync($user_id) {
