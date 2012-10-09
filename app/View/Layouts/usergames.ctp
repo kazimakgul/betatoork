@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+<!DOCTYPE html>
+<html>
 <head>
 
 <title><?php echo $title_for_layout?></title>
-<link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon" />
 
 
 <?php  echo $googleVerify;
@@ -14,7 +14,7 @@ if($userDesc == NULL){
     $fbDescriptions = "<meta property='og:description' content= '$userName - Create your own game channel - Toork' />";
 
 }else{
-    $descriptions = "<meta name='description' content= $userDesc />";
+    $descriptions = "<meta name='description' content= '$userDesc' />";
     $fbDescriptions = "<meta property='og:description' content= '$userDesc' />";
 }
 

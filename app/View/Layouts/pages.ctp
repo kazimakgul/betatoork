@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title><?php echo $title_for_layout?></title>
-<link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon" />
 <!-- Include external files and scripts here (See HTML helper for more info.) -->
 
 <?php echo $scripts_for_layout?>
