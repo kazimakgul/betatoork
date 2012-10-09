@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
 
 <title><?php echo $title_for_layout?></title>
-<link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon">
 
 
 <?php 
@@ -49,7 +49,15 @@ $(function () {
     });
 });
 
+<?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription")); ?>
 
+function changesubscribe(userid)
+{
+
+$.get("<?php echo $suburl2; ?>/"+userid,function(data) {alert(data);location.reload();});
+
+
+}
 
 
 </script>
