@@ -87,7 +87,7 @@
 						<a tabindex="-5" class="t_regbox_donebtn" id="t_regbox_signdonebtn" href="#"></a>                      
 					</div>                                      
 					<div id="t_regbox_regcongrats" class="t_regbox_regcongrats">
-						<span>Congratulatios!</span>
+						<span>Congratulations!</span>
 						<span>Now, you're a part of Toork's world.</span> 
 						<!-- <span>A verification mail send to your e-mail addres. Please check your inbox to verificate your Toork profile.</span> -->
 						<span>Enjoy</span>                    
