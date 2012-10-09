@@ -1,6 +1,6 @@
 <?php if($this->Session->check('Auth.User')){?>
 
-<?php  echo $this->element('logged_user_panel'); ?>
+<?php  echo $this->element('channel_user_panel'); ?>
 
 <?php } else {?>
 
