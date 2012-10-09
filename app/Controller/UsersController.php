@@ -167,7 +167,8 @@ public function __sendActivationEmail($user_id) {
  
  		$this->Email->from  = 'Toork <no-reply@toork.com>';
 		$this->Email->to = $user['User']['email'];
-		$this->Email->subject = 'Toork - Please confirm your email address';
+		//$this->Email->subject = 'Toork - Please confirm your email address';
+		$this->Email->subject = 'Welcome to Toork';
 		$this->Email->template = 'simple_mail';
 		$this->Email->sendAs = 'html';   // you probably want to use both :)	
 		return $this->Email->send();
@@ -355,8 +356,7 @@ function secureSuperGlobalPOST($value)
 				$this->Email->send('Hello message body!');
 				*/
 				$this->__sendActivationEmail($this->User->getLastInsertID());
-				//$this->Session->setFlash('You are successfully registered. Please check your email to verify your account');
-				$this->Session->setFlash('You are successfully registered.');
+				$this->Session->setFlash('You are successfully registered. Please check your email to verify your account');
 				$this->redirect(array('controller' => 'games', 'action' => 'index'));
 			} else {
 				//$this->Session->setFlash(__('The user could not be saved. Please, try again.'));

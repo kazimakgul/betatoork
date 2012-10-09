@@ -14,13 +14,13 @@
       <table style="font:normal 15px Arial">
         <tbody><tr>
                       <td style="font-size:18px;color:#000">
-                    <b><span style="color:black"><a style="color:black">Hi <?= $username ?>, You're 1 step away from completing your Toork signup: Just confirm your email address, then you will able to share your gamelist with your friends.
+                    <b><span style="color:black"><a style="color:black">Hi <?= $username ?>, Welcome to Toork.
   </a></span></b><br>
                     </td>
         </tr>
                 <tr>
           <td style="border-bottom:1px solid #bbb">
-            <span style="color:black"><a style="color:black"> Don't want to intrude, but for your privacy/protection, we need to confirm that you are the proud owner of this email account.
+            <span style="color:black"><a style="color:black"> Now you have your own channel on Toork.You can edit your channel informations and add your games to your channel from all categories which you want.If you need any further assistance,please feel free to contact by using hello@toork.com.
 </a></span><br>
           </td>
         </tr>
