@@ -3,7 +3,7 @@
 <head>
 
 <title><?php echo $title_for_layout?></title>
-<link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon" />
 
 
 <?php 
@@ -49,7 +49,15 @@ $(function () {
     });
 });
 
+<?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription")); ?>
 
+function changesubscribe(userid)
+{
+
+$.get("<?php echo $suburl2; ?>/"+userid,function(data) {alert(data);location.reload();});
+
+
+}
 
 
 </script>
