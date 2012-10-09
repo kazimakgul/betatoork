@@ -878,16 +878,12 @@ public function adminedit($id = null) {
 			$this->request->data['User']['password'] = $this->request->data['ps'];
 			if ($this->Auth->login() == true) {
 				$results = $this->User->find('first',array('conditions'=>array('OR'=>array('User.email'=>$this->request->data['User']['username'],'User.username'=>$this->request->data['User']['username'])),array('fields'=>array('User.active'))));
-	  	       /* if ($results['User']['active'] == 0) {
+	  	        if ($results['User']['active'] == 0) {
 					$this->Auth->logout();
 					$msg = array("msgid" => '0', "msg" => 'Your account has not been activated yet! Please check your email to activate your account');
 					$this->set('rtdata', $msg);
-				}*/
-				if ($results['User']['active'] == 1) {
-					$this->Auth->logout();
-					$msg = array("msgid" => '0', "msg" => 'Your account has been activated!');
-					$this->set('rtdata', $msg);
 				}
+				
 				else
 				{
 					$msg = array("msgid" => '1', "msg" => $this->webroot.$this->Auth->loginRedirect['controller'].'/'.$this->Auth->loginRedirect['action']);
