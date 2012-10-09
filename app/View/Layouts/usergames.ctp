@@ -3,7 +3,7 @@
 <head>
 
 <title><?php echo $title_for_layout?></title>
-<link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon" />
 
 
 <?php  echo $googleVerify;
@@ -14,7 +14,7 @@ if($userDesc == NULL){
     $fbDescriptions = "<meta property='og:description' content= '$userName - Create your own game channel - Toork' />";
 
 }else{
-    $descriptions = "<meta name='description' content= $userDesc />";
+    $descriptions = "<meta name='description' content= '$userDesc' />";
     $fbDescriptions = "<meta property='og:description' content= '$userDesc' />";
 }
 
