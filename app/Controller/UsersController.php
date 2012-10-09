@@ -355,7 +355,8 @@ function secureSuperGlobalPOST($value)
 				$this->Email->send('Hello message body!');
 				*/
 				$this->__sendActivationEmail($this->User->getLastInsertID());
-				$this->Session->setFlash('You are successfully registered. Please check your email to verify your account');
+				//$this->Session->setFlash('You are successfully registered. Please check your email to verify your account');
+				$this->Session->setFlash('You are successfully registered.');
 				$this->redirect(array('controller' => 'games', 'action' => 'index'));
 			} else {
 				//$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
