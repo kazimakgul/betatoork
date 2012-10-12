@@ -1045,7 +1045,7 @@ function getExtension($str) {
 			if($myval!="")
 			{
 			
-			
+			/*
 			//remove objects from S3
 			 $prefix = 'upload/games/'.$id;
              $opt = array(
@@ -1053,15 +1053,13 @@ function getExtension($str) {
              );
 			 $bucket=Configure::read('S3.name');
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
-			 print_r($objs);
-			 break;
 			 foreach($objs as $obj)
 			 {
 			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
 			 //print_r($response);
 			 }
 			//remove objects from S3
-			
+			*/
 			
 			
 			//Folder Formatting begins
