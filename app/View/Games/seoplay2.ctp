@@ -66,7 +66,7 @@
 		<!-- Facebook Comments -->
         <div class="panelgreyback" style="margin-bottom:45px;">
             <div class="panelwhiteback">
-				<div align="center"><?php echo $this->Facebook->comments(array('width'=>960)); ?></div>
+				<div align="center"><?php echo $this->Facebook->comments(array('width'=>960,'data-href'=>Router::url( $this->here, true ))); ?></div>
 			</div>
 		</div>
 		<!-- Facebook Comments -->		
