@@ -1028,10 +1028,6 @@ function getExtension($str) {
 		$this->Game->id = $id;
 		
 		
-		
-		
-		
-		
     	$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
     	$this->set("game",$game);
 		if (!$this->Game->exists()) {
@@ -1050,7 +1046,6 @@ function getExtension($str) {
 			{
 			
 			
-			
 			//remove objects from S3
 			$prefix = 'upload/games/'.$id;
            
@@ -1060,6 +1055,7 @@ function getExtension($str) {
              );
 			 $bucket=Configure::read('S3.name');
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			 print_r($objs);
 			 foreach($objs as $obj)
 			 {
 			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
