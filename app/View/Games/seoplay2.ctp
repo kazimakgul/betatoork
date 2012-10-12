@@ -66,7 +66,7 @@
 		<!-- Facebook Comments -->
         <div class="panelgreyback" style="margin-bottom:45px;">
             <div class="panelwhiteback">
-				<div align="center"><?php echo $this->Facebook->comments(array('width'=>960,'data-href'=>'http://ec2-107-22-53-193.compute-1.amazonaws.com/socialesman/kamikaze-pigs/play2')); ?></div>
+				<div align="center"><?php echo $this->Facebook->comments(array('width'=>960)); ?></div>
 			</div>
 		</div>
 		<!-- Facebook Comments -->		
