@@ -636,11 +636,12 @@ $this->set('title_for_layout', 'Toork - Game Search Engine powered by Google. To
                         'Game.active'=>1,
                 ),
                 'order' => 'rand()',
-				'contain'=>false,
+				'contain'=>array('User'=>array('fields'=>array('User.seo_username'))),
 				'fields'=>array('Game.id,Game.seo_url')
         ));//Recoded
 		$this->Session->write('Random.flag',1);
-		$this->Session->write('Random.game',$random['Game']['id']);
+		$this->Session->write('Random.game',$random['Game']['seo_url']);
+		$this->Session->write('Random.user',$random['User']['seo_username']);
 }
 
 
@@ -677,8 +678,10 @@ if(empty($favbefore))
 		{
     	$this->random();
 		$this->set('randomgame',$this->Session->read('Random.game'));
+		$this->set('randomuser',$this->Session->read('Random.user'));
 		}else{
 		$this->set('randomgame',$this->Session->read('Random.game'));
+		$this->set('randomuser',$this->Session->read('Random.user'));
 		}
 		
 		$this->layout='game_index';
@@ -728,8 +731,10 @@ if(empty($favbefore))
 		{
     	$this->random();
 		$this->set('randomgame',$this->Session->read('Random.game'));
+		$this->set('randomuser',$this->Session->read('Random.user'));
 		}else{
 		$this->set('randomgame',$this->Session->read('Random.game'));
+		$this->set('randomuser',$this->Session->read('Random.user'));
 		}
 		
     	$this->fav_check($id);
@@ -780,8 +785,10 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		{
     	$this->random();
 		$this->set('randomgame',$this->Session->read('Random.game'));
+		$this->set('randomuser',$this->Session->read('Random.user'));
 		}else{
 		$this->set('randomgame',$this->Session->read('Random.game'));
+		$this->set('randomuser',$this->Session->read('Random.user'));
 		}
 		
 		$this->layout='game_index';
@@ -841,8 +848,10 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		{
     	$this->random();
 		$this->set('randomgame',$this->Session->read('Random.game'));
+		$this->set('randomuser',$this->Session->read('Random.user'));
 		}else{
 		$this->set('randomgame',$this->Session->read('Random.game'));
+		$this->set('randomuser',$this->Session->read('Random.user'));
 		}
 		
 		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));

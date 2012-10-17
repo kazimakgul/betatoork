@@ -2,13 +2,13 @@
 <div id="bottomBar">
 
 <?php
-$randomurl=$this->Html->url(array( "controller" => "games","action" =>"play"));
+$randomurl=$this->Html->url(array( "controller" => $randomuser,"action" =>$randomgame,'play'));
 $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>"")); 
 
 ?>
 
 <div id="myButton">
-<a href="<?php echo $randomurl;?>/<?php echo $randomgame;?>"><input type="submit" id="submit" value="NEXT"></a>
+<a href="<?php echo $randomurl;?>"><input type="submit" id="submit" value="NEXT"></a>
 </div>
 
 <div class="hearts">
