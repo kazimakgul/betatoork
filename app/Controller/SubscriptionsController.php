@@ -183,7 +183,7 @@ if ($this->request->is('get')) {
 			
 			
 		}
-		
+		$this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
 	}
 
 /**

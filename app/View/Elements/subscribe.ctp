@@ -19,18 +19,16 @@ function sub_status(a)
 		//alert("üyedegil");
 	}
 }
-<?php $incscribe=$this->Html->url(array("controller" => "userstats","action" =>"incscribe",$user_id)); ?>
-<?php $decscribe=$this->Html->url(array("controller" => "userstats","action" =>"decscribe",$user_id)); ?>
+
 $('#subscribe').click(function () {
 		if ($(this).hasClass('chain')) {
 			<?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription",$user_id)); ?>
-			 $.get("<?php echo $suburl2?>",function(data) {$.get("<?php echo $incscribe?>");});
-			 
+			 $.get("<?php echo $suburl2?>",function(data) {}); 
 			$(this).removeClass('chain').addClass('chained');
 		}
 		else {
 			<?php $suburl3=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription",$user_id)); ?>
-			$.get("<?php echo $suburl3 ?>",function(data) {$.get("<?php echo $decscribe?>");});
+			$.get("<?php echo $suburl3 ?>",function(data) {});
 			$(this).removeClass('chained').addClass('chain');
 		}
 });

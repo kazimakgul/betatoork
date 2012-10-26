@@ -1,17 +1,16 @@
 <?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription")); ?>
-<?php $incscribe=$this->Html->url(array("controller" => "userstats","action" =>"incscribe")); ?>
 <script type="text/javascript">
 function changechain(userid,obj)
 {
 	if (obj.hasClass('subcardchain')) {
+	    $.get("<?php echo $suburl2; ?>/"+userid,function(data) {});
 		obj.removeClass('subcardchain').addClass('subcardchained');
-		$.get("<?php echo $suburl2; ?>/"+userid,function(data) {$.get("<?php echo $incscribe?>/"+userid);});
 		<?php if(!$this->Session->check('Auth.User')){?>
 		Register();
 		<?php }?>
 	}else {
+		$.get("<?php echo $suburl2; ?>/"+userid,function(data) {});
 		obj.removeClass('subcardchained').addClass('subcardchain');
-		$.get("<?php echo $suburl2; ?>/"+userid,function(data) {$.get("<?php echo $incscribe?>/"+userid);});
 	}
 }
 </script>
