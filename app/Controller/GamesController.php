@@ -248,7 +248,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid,'Game.active'=>1)));
+		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
 		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	    $this->set('user',$user);
 
@@ -955,22 +955,8 @@ function getExtension($str) {
 			$this->Game->create();
 			
 			if ($this->Game->save($this->request->data)) {
+			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
 				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
-
-         //recoded begins
-		$user_id=$this->Auth->user('id');
-		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
-		if($userstatrow!=NULL)
-		{
-		$this->Userstat->id=$userstatrow['Userstat']['id'];
-	    }else{
-		$this->Userstat->id=NULL;
-		}
-		$uploadcount=$this->Game->find('count',array('conditions'=>array('Game.user_id'=>$user_id)));
-		$this->request->data['Userstat']['user_id']=$user_id;
-		$this->request->data['Userstat']['uploadcount']=$uploadcount;
-		$this->Userstat->save($this->request->data);
-		//recoded ends
 			
 			$id=$this->Game->getLastInsertId();
 				
@@ -1013,6 +999,7 @@ function getExtension($str) {
 		$users = $this->Game->User->find('list');
 		$categories = $this->Game->Category->find('list');
 		$this->set(compact('users', 'categories'));
+		
 	}
 
 /**
@@ -1152,11 +1139,13 @@ function getExtension($str) {
 			throw new MethodNotAllowedException();
 		}
 		$this->Game->id = $id;
+		$userid=$this->Game->field('user_id');
 		if (!$this->Game->exists()) {
 			throw new NotFoundException(__('Invalid game'));
 		}
 		if ($this->Game->delete()) {
 			$this->Session->setFlash(__('You have deleted your game successfully, That game will no longer be visible'));
+			$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
 			$this->redirect(array('action' => 'channel'));
 		}
 		$this->Session->setFlash(__('Your game was not deleted'));
