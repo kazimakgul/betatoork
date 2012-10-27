@@ -60,23 +60,23 @@ function rate_a_game(rating){
   
     if (rating==1)
     {
-    $('.rating').css({width: '20%'});
+		$('.ratingbar').css({width: '20%'});
     }
     else if (rating==2)
     {
-    $('.rating').css({width: '40%'});
+    $('.ratingbar').css({width: '40%'});
     }
     else if (rating==3)
     {
-    $('.rating').css({width: '60%'});
+    $('.ratingbar').css({width: '60%'});
     }
     else if (rating==4)
     {
-    $('.rating').css({width: '80%'});
+    $('.ratingbar').css({width: '80%'});
     }
     else if (rating==5)
     {
-    $('.rating').css({width: '100%'});
+    $('.ratingbar').css({width: '100%'});
     }
   
    }else{
