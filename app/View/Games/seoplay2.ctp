@@ -43,15 +43,11 @@
 		
 		<!-- Game Slider -->
 		<div style="margin-bottom:10px;">
-
-                    <ul>
-                     
-                       <li class="clearfix">
-                      <?php echo $this->element('gamepage_game_box'); ?>
-                      </li>
-                      
-                    </ul>
-
+			<ul>
+				<li class="clearfix">
+					<?php echo $this->element('gamepage_game_box'); ?>
+				</li>
+			</ul>
 		</div>
 		<!-- Game Slider-->			
 			
