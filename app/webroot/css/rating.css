@@ -20,7 +20,7 @@
 .stars:hover .star:hover {
   background-image: url('star_o.png'); 
 }
-.stars .ratingbarbar { 
+.stars .ratingbar { 
   position: absolute; 
   height: 100%; 
   background: url('star_d.png') repeat-x left top; 
@@ -43,7 +43,7 @@
   background: transparent none repeat-x left top; 
   cursor: default; 
 }
-.nostars .ratingbar { 
+.nostars .rating { 
   position: absolute; 
   height: 100%; 
   background: url('star_d24.png') repeat-x left top; 
