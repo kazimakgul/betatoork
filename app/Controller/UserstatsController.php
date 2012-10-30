@@ -158,7 +158,6 @@ public $helpers = array('Html', 'Form');
 	
 	public function potential($user_id=NULL)
 	{
-	/*
 	$statdata=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false));
 	$playcount=$statdata['Userstat']['playcount'];
 	$subscription=$statdata['Userstat']['subscribe'];
@@ -186,7 +185,6 @@ public $helpers = array('Html', 'Form');
 		$this->request->data['Userstat']['user_id']=$user_id;
 		$this->request->data['Userstat']['potential']=$formula;
 		$this->Userstat->save($this->request->data);
-		*/
 		
 	}
 	
