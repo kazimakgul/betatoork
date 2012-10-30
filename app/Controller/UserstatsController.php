@@ -158,14 +158,13 @@ public $helpers = array('Html', 'Form');
 	
 	public function potential($user_id=NULL)
 	{
-	$statdata=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'fields'=>array('Userstat.id'),'contain'=>false));
-	$this->Userstat->id=$statdata['Userstat']['id'];
-	$playcount=$this->Userstat->field('playcount');
-	$subscription=$this->Userstat->field('subscribe');
-	$subscribeto=$this->Userstat->field('subscribeto');
-	$favoritecount=$this->Userstat->field('favoritecount');
-	$uploadcount=$this->Userstat->field('uploadcount');
-	$totalrate=$this->Userstat->field('totalrate');
+	$statdata=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false));
+	$playcount=$statdata['Userstat']['playcount'];
+	$subscription=$statdata['Userstat']['subscribe'];
+	$subscribeto=$statdata['Userstat']['subscribeto'];
+	$favoritecount=$statdata['Userstat']['favoritecount'];
+	$uploadcount=$statdata['Userstat']['uploadcount'];
+	$totalrate=$statdata['Userstat']['totalrate'];
 	$ownrate=$this->ownrates($user_id);
 	
 	if($totalrate>$ownrate)
