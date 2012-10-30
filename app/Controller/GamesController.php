@@ -537,7 +537,7 @@ public function channelgames() {
 
 		$this->layout='base';
 		$this->leftpanel();
-		$this->logedin_user_panel();
+		//$this->logedin_user_panel();
 		$userid = $this->Session->read('Auth.User.id');
 		$authid = $this->Session->read('Auth.User.id');
 		//Get the list of subscriptions of auth user.
