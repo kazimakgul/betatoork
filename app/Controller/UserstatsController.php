@@ -147,11 +147,11 @@ public $helpers = array('Html', 'Form');
 	public function getFactor($unit)
 	{
 	
-	if($unit<20)
+	if($unit<=20)
 	return 15;
 	elseif(50>$unit && $unit>20)
 	return 5;
-	elseif($unit>30)
+	elseif($unit>=50)
 	return 2;
 	
 	}

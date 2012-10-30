@@ -20,14 +20,14 @@
 .stars:hover .star:hover {
   background-image: url('star_o.png'); 
 }
-.stars .rating { 
+.stars .ratingbar { 
   position: absolute; 
   height: 100%; 
   background: url('star_d.png') repeat-x left top; 
 }
 
 
-.stars:hover .rating { 
+.stars:hover .ratingbar { 
   display: none;
 }
 
