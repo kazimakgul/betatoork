@@ -48,7 +48,7 @@ class AppController extends Controller {
         'User' => array(
             'limit' => 30,
             'order' => array(
-                'User.potential' => 'desc',
+                'User.totalrate' => 'desc',
             ),
         ),
         'Game' => array(
