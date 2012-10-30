@@ -282,8 +282,7 @@ public function __sendResetEmail($user_id) {
 		$this->loadModel('Game');
 		$limit=20;
 		$users = $this->User->find('all', array('fields'=>array('User.username','User.seo_username'),'limit' => $limit, 'order' => array('User.potential' => 'desc'),'contain'=>false));
-		
-    	return $users;
+		return $users;
 	}
 
 
