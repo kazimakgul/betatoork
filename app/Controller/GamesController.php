@@ -957,12 +957,13 @@ function getExtension($str) {
 			if ($this->Game->save($this->request->data)) {
 			    //$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
 				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
-			echo 'added';
+			
 			$id=$this->Game->getLastInsertId();
 				
 			//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
 		    $files = $dir->find('.*');
+			print_r($files);
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
