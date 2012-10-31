@@ -95,13 +95,13 @@ function getActivationHash()
 				'rule' => array('between', 6, 20),
 				'message' => 'Username must be between 6-20 characters long',
 				),
-				
+
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			
+
 		),
 		'email' => array(
 
@@ -114,7 +114,7 @@ function getActivationHash()
 				'rule' => 'isUnique',
 				'message' => 'This email is already registered'
 				),
-				
+
 			'email' => array(
 				'rule' => array('email', true),
 				'message' => 'Please supply a valid email address.',
@@ -124,16 +124,16 @@ function getActivationHash()
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			
+
 		),
-		
-		
+
+
 'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'message' => 'Please dont leave this field empty',
 				),
-				
+
 			'identicalFieldValues' => array( 
 		        'rule' => array('identicalFieldValues', 'confirm_password' ), 
 		        'message' => 'Please re-enter your password twice so that the values match'), 
@@ -148,16 +148,16 @@ function getActivationHash()
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 		),
-		
 
 
-		
+
+
 		'confirm_new_password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'message' => 'Please dont leave this field empty',
 				),
-				
+
 			'identicalFieldValues' => array( 
 		        'rule' => array('identicalFieldValues', 'new_password' ), 
 		        'message' => 'Please re-enter your password twice so that the values match'), 
@@ -172,8 +172,8 @@ function getActivationHash()
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 		),
-		
-		
+
+
 		'active' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -190,7 +190,7 @@ function getActivationHash()
 				'rule' => array('extension', array('gif', 'jpeg', 'png', 'jpg')),
 				'message' => 'Please supply a valid image.',
 			),
-			
+
 			'minWidth' => array(
 			'rule' => array('minWidth', '90'),
 			'message' => 'Your avatar size must be 90x120'
@@ -207,8 +207,8 @@ function getActivationHash()
 			'rule' => array('maxHeight', '120'),
 			'message' => 'Your avatar size must be 90x120'
 		)
-			
-			
+
+
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -217,7 +217,7 @@ function getActivationHash()
 		),
 
 	);
-	
+
 	public $hasMany = array(
 		'Game' => array(
 			'className' => 'Game',
@@ -226,7 +226,7 @@ function getActivationHash()
 			'fields' => '',
 			'order' => ''
 		));
-	
+
 	public $belongsTo = array(
 		'Country' => array(
 			'className' => 'Country',
@@ -239,7 +239,7 @@ function getActivationHash()
 
 //uploadcount and totalrate can be use as order of channels
 
-var $virtualFields = array('uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id=User.id','totalrate'=>'SELECT totalrate FROM userstats where userstats.user_id=User.id','favoritenumber'=>'SELECT favoritecount FROM userstats where userstats.user_id=User.id','subscribe'=>'SELECT subscribe FROM userstats where userstats.user_id=User.id','subscribeto'=>'SELECT subscribeto FROM userstats where userstats.user_id=User.id','playcount'=>'SELECT playcount FROM userstats where userstats.user_id=User.id','potential'=>'SELECT potential FROM userstats where userstats.user_id=User.id');
+var $virtualFields = array('uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id=User.id','totalrate'=>'SELECT totalrate FROM userstats where userstats.user_id=User.id','favoritenumber'=>'SELECT favoritecount FROM userstats where userstats.user_id=User.id','subscribe'=>'SELECT subscribe FROM userstats where userstats.user_id=User.id','subscribeto'=>'SELECT subscribeto FROM userstats where userstats.user_id=User.id','playcount'=>'SELECT playcount FROM userstats where userstats.user_id=User.id');
 
 #var $virtualFields = array('uploadcount' => 'SELECT COUNT(id) FROM games where games.user_id=User.id','totalrate'=>'(SELECT SUM(current) FROM rates where rates.game_id IN (SELECT id FROM games where games.user_id=User.id))','favoritenumber'=>1,'subscribe'=>1,'subscribeto'=>1,'playcount'=>1);
 
