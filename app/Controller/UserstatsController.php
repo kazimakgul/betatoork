@@ -127,6 +127,7 @@ public $helpers = array('Html', 'Form');
 	    }else{
 		$this->Userstat->id=NULL;
 		}
+		$this->request->data=NULL;
 		$subscribeto=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_to_id'=>$subscribe_to)));
 		$this->request->data['Userstat']['user_id']=$subscribe_to;
 		$this->request->data['Userstat']['subscribeto']=$subscribeto;
