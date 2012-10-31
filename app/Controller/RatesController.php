@@ -83,7 +83,7 @@ class RatesController extends AppController {
 				if($this->Rate->save($this->request->data))
 				{
 				    $this->starsize($game_id,1);
-					$this->requestAction( array('controller' => 'userstats', 'action' => 'totalrate',$game_id));
+					//$this->requestAction( array('controller' => 'userstats', 'action' => 'totalrate',$game_id));
 					$this->set("rateMessage","Your rating has been saved.");
 
 				}else{
@@ -145,14 +145,14 @@ if (!$this->Rate->Game->exists()) {
 	$this->set("rating",$rating);
 	$this->request->data["Rate"]["current"]=$rating;
 		$this->Rate->id = $rate_id;
-		$game_id=$this->Rate->field('game_id');
+		//$game_id=$this->Rate->field('game_id');
 		if (!$this->Rate->exists()) {
 			throw new NotFoundException(__('Invalid rate'));
 		}
 		if ($rate_id!=NULL && $rating!=NULL) {
 			if ($this->Rate->save($this->request->data)) {
 			    $this->starsize($this->Rate->field('game_id'),0);
-				$this->requestAction( array('controller' => 'userstats', 'action' => 'totalrate',$game_id));
+				//$this->requestAction( array('controller' => 'userstats', 'action' => 'totalrate',$game_id));
 				$this->set("mess","The rate has been updated.");
 				
 			} else {
