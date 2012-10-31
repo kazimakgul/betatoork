@@ -955,7 +955,7 @@ function getExtension($str) {
 			$this->Game->create();
 			
 			if ($this->Game->save($this->request->data)) {
-			    //$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
+			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
 				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
 			
 			$id=$this->Game->getLastInsertId();
@@ -1145,7 +1145,7 @@ function getExtension($str) {
 		}
 		if ($this->Game->delete()) {
 			$this->Session->setFlash(__('You have deleted your game successfully, That game will no longer be visible'));
-			//$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
+			$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
 			$this->redirect(array('action' => 'channel'));
 		}
 		$this->Session->setFlash(__('Your game was not deleted'));
