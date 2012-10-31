@@ -980,7 +980,7 @@ function getExtension($str) {
 			
             }
 			//Upload to aws ends
-				print_r($message);
+				print_r($message);break;
 				
 				
 				
