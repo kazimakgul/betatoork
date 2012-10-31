@@ -87,7 +87,7 @@ class PlaycountsController extends AppController {
 	     
 		 if($this->Playcount->save($this->request->data))
 	     {
-		 $this->requestAction( array('controller' => 'userstats', 'action' => 'incgameplay'));
+		 //$this->requestAction( array('controller' => 'userstats', 'action' => 'incgameplay'));
 		 $this->set("playMessage","Your play has been saved.");
 		 }
 		 else
