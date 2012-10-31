@@ -99,7 +99,7 @@ public $helpers = array('Html', 'Form');
 		$this->request->data['Userstat']['user_id']=$user_id;
 	    $this->request->data['Userstat']['playcount']=$playcount;
 		$this->Userstat->save($this->request->data);
-		echo $playcount;
+		//echo $playcount;
 		//recoded ends
 	}
 	

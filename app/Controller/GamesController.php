@@ -969,7 +969,7 @@ function getExtension($str) {
 			$basename=$info["basename"];
 			$dirname=$info["dirname"];
 			//echo $file;
-			 $this->Amazon->S3->create_object(
+			 $message=$this->Amazon->S3->create_object(
             Configure::read('S3.name'),
             'upload/games/'.$id."/".$basename,
              array(
@@ -980,7 +980,7 @@ function getExtension($str) {
 			
             }
 			//Upload to aws ends
-				
+				print_r($message);
 				
 				
 				
