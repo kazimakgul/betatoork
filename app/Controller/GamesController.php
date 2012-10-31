@@ -963,7 +963,6 @@ function getExtension($str) {
 			//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
 		    $files = $dir->find('.*');
-			print_r($files);
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
@@ -981,7 +980,7 @@ function getExtension($str) {
 			
             }
 			//Upload to aws ends
-				print_r($message);break;
+				
 				
 				
 				
