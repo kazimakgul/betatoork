@@ -61,23 +61,23 @@ function rate_a_game(rating){
   
     if (rating==1)
     {
-    $('.ratingbar').css({width: '20%'});
+    $('.rating').css({width: '20%'});
     }
     else if (rating==2)
     {
-    $('.ratingbar').css({width: '40%'});
+    $('.rating').css({width: '40%'});
     }
     else if (rating==3)
     {
-    $('.ratingbar').css({width: '60%'});
+    $('.rating').css({width: '60%'});
     }
     else if (rating==4)
     {
-    $('.ratingbar').css({width: '80%'});
+    $('.rating').css({width: '80%'});
     }
     else if (rating==5)
     {
-    $('.ratingbar').css({width: '100%'});
+    $('.rating').css({width: '100%'});
     }
   
    }else{
@@ -242,7 +242,6 @@ end fb comment icin gerekli -->
 <?php echo $this->Facebook->init(); ?>
 </body>
 </html>
-
 
 
 
