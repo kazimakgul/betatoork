@@ -30,6 +30,7 @@ echo $this->Html->meta('keywords','online games, browser games, flash games, sha
 $rateurl=$this->Html->url(array( "controller" => "rates","action" =>"add",h($game['Game']['id'])));
 $favurl=$this->Html->url(array( "controller" => "favorites","action" =>"add",h($game['Game']['id'])));
 $playurl=$this->Html->url(array( "controller" => "playcounts","action" =>"add_play",h($game['Game']['id'])));
+
 ?>
 
 <script>
@@ -241,6 +242,7 @@ end fb comment icin gerekli -->
 <?php echo $this->Facebook->init(); ?>
 </body>
 </html>
+
 
 
 
