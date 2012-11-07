@@ -13,13 +13,7 @@ public $helpers = array('Html', 'Form');
 		}
 
 
-	public function index() {
-	echo 'hoooo';
-	
-
-		$a=$this->Userstat->find('first');
-		print_r($a);
-		
+	public function index() {	
 	}
 	
 	public function getgamecount($owner) {
@@ -37,7 +31,8 @@ public $helpers = array('Html', 'Form');
 		$this->request->data['Userstat']['user_id']=$owner;
 		$this->request->data['Userstat']['uploadcount']=$key;
         }
-	    $this->Userstat->save($this->request->data);
+	    if($this->Userstat->save($this->request->data)){$this->potential($owner);}
+		
 	}
 	
 	public function totalrate($game_id=NULL) {
@@ -45,7 +40,7 @@ public $helpers = array('Html', 'Form');
 	
 	    $this->Game->id=$game_id;
 	
-	//recoded begins
+	    //recoded begins
 		$user_id=$this->Game->field('user_id');
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)
@@ -59,8 +54,19 @@ public $helpers = array('Html', 'Form');
 		$totalrate[0][0]['SUM(current)']=0;
 		$this->request->data['Userstat']['user_id']=$user_id;
 		$this->request->data['Userstat']['totalrate']=$totalrate[0][0]['SUM(current)'];
-		$this->Userstat->save($this->request->data);
+		if($this->Userstat->save($this->request->data)){$this->potential($user_id);}
 		//recoded ends
+	   
+	}
+	
+	
+	public function ownrates($user_id=NULL) {
+	    $this->layout='ajax';
+		
+		$totalrate=$this->Rate->query('SELECT SUM(current) FROM rates where rates.user_id='.$user_id.' AND rates.game_id IN (SELECT id FROM games where games.user_id='.$user_id.')');
+		if($totalrate[0][0]['SUM(current)']==NULL)
+		$totalrate[0][0]['SUM(current)']=0;
+		return $totalrate[0][0]['SUM(current)'];
 	
 	}
 	
@@ -79,14 +85,15 @@ public $helpers = array('Html', 'Form');
 		$favoritenumber=$this->Favorite->find('count',array('conditions'=>array('Favorite.user_id'=>$user_id)));
 		$this->request->data['Userstat']['user_id']=$user_id;
 		$this->request->data['Userstat']['favoritecount']=$favoritenumber;
-		$this->Userstat->save($this->request->data);
+		if($this->Userstat->save($this->request->data)){$this->potential($user_id);}
 		//recoded ends	
+		
 	}
 	
 	
 	public function incgameplay() {
 	
-	//recoded begins
+	    //recoded begins
 	    $user_id=$this->Auth->user('id');
 	    $userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)
@@ -99,8 +106,9 @@ public $helpers = array('Html', 'Form');
 		$this->request->data['Userstat']['user_id']=$user_id;
 	    $this->request->data['Userstat']['playcount']=$playcount;
 		$this->Userstat->save($this->request->data);
-		//echo $playcount;
+		echo $playcount;
 		//recoded ends
+		$this->potential($user_id);
 	}
 	
 	public function incscribe($subscribe_to) {
@@ -117,7 +125,7 @@ public $helpers = array('Html', 'Form');
 		$subscribe=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_id'=>$user_id)));
 		$this->request->data['Userstat']['user_id']=$user_id;
 		$this->request->data['Userstat']['subscribe']=$subscribe;
-		$this->Userstat->save($this->request->data);
+		if($this->Userstat->save($this->request->data)){$this->potential($user_id);}
 		//recoded ends	
 		//recoded begins for subscribeto of channel
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$subscribe_to),'contain'=>false,'fields'=>array('Userstat.id')));
@@ -131,8 +139,52 @@ public $helpers = array('Html', 'Form');
 		$subscribeto=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_to_id'=>$subscribe_to)));
 		$this->request->data['Userstat']['user_id']=$subscribe_to;
 		$this->request->data['Userstat']['subscribeto']=$subscribeto;
-		$this->Userstat->save($this->request->data);
+		if($this->Userstat->save($this->request->data)){$this->potential($subscribe_to);}
 		//recoded ends	
+	}
+	
+	
+	public function getFactor($unit)
+	{
+	
+	if($unit<=20)
+	return 15;
+	elseif(50>$unit && $unit>20)
+	return 5;
+	elseif($unit>=50)
+	return 2;
+	
+	}
+	
+	public function potential($user_id=NULL)
+	{
+	$statdata=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false));
+	$playcount=$statdata['Userstat']['playcount'];
+	$subscription=$statdata['Userstat']['subscribe'];
+	$subscribeto=$statdata['Userstat']['subscribeto'];
+	$favoritecount=$statdata['Userstat']['favoritecount'];
+	$uploadcount=$statdata['Userstat']['uploadcount'];
+	$totalrate=$statdata['Userstat']['totalrate'];
+	$ownrate=$this->ownrates($user_id);
+	
+	if($totalrate>$ownrate)
+	$plainrates=$totalrate-$ownrate;
+	else
+	$plainrates=0;
+	
+	$m=Configure::read('multiples');
+	$formula=($playcount*$m['playcount'])+($subscription*$m['subscribe'])+($favoritecount*$m['favorite'])+($subscribeto*$m['subscribeto'])+($uploadcount*$this->getFactor(     $uploadcount))+($plainrates*$m['plainrates']);
+	
+	    $userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
+		if($userstatrow!=NULL)
+		{
+		$this->Userstat->id=$userstatrow['Userstat']['id'];
+	    }else{
+		$this->Userstat->id=NULL;
+		}
+		$this->request->data['Userstat']['user_id']=$user_id;
+		$this->request->data['Userstat']['potential']=$formula;
+		$this->Userstat->save($this->request->data);
 		
 	}
 	
@@ -177,21 +229,31 @@ public $helpers = array('Html', 'Form');
 		}
 		$uploadcount=$this->Game->find('count',array('conditions'=>array('Game.user_id'=>$user_id)));
 		$totalrate=$this->Rate->query('SELECT SUM(current) FROM rates where rates.game_id IN (SELECT id FROM games where games.user_id='.$user_id.')');
-		$favoritenumber=$this->Favorite->find('count',array('conditions'=>array('Favorite.user_id'=>$user_id)));
-		$subscribe=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_id'=>$user_id)));
+		$favoritecount=$this->Favorite->find('count',array('conditions'=>array('Favorite.user_id'=>$user_id)));
+		$subscription=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_id'=>$user_id)));
 		$subscribeto=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_to_id'=>$user_id)));
 		$playcount=$this->Playcount->find('count',array('conditions'=>array('Playcount.user_id'=>$user_id)));
 		
 		if($totalrate[0][0]['SUM(current)']==NULL)
 		$totalrate[0][0]['SUM(current)']=0;
 		
+		$ownrate=$this->ownrates($user_id);
+		if($totalrate[0][0]['SUM(current)']>$ownrate)
+	    $plainrates=$totalrate[0][0]['SUM(current)']-$ownrate;
+	    else
+	    $plainrates=0;
+		
+		$m=Configure::read('multiples');
+		$formula=($playcount*$m['playcount'])+($subscription*$m['subscribe'])+($favoritecount*$m['favorite'])+($subscribeto*$m['subscribeto'])+($uploadcount*$this->getFactor($uploadcount))+($plainrates*$m['plainrates']);
+		
 		$this->request->data['Userstat']['user_id']=$user_id;
 		$this->request->data['Userstat']['uploadcount']=$uploadcount;
 		$this->request->data['Userstat']['totalrate']=$totalrate[0][0]['SUM(current)'];
-		$this->request->data['Userstat']['favoritecount']=$favoritenumber;
-		$this->request->data['Userstat']['subscribe']=$subscribe;
+		$this->request->data['Userstat']['favoritecount']=$favoritecount;
+		$this->request->data['Userstat']['subscribe']=$subscription;
 		$this->request->data['Userstat']['subscribeto']=$subscribeto;
 		$this->request->data['Userstat']['playcount']=$playcount;
+		$this->request->data['Userstat']['potential']=$formula;
 		$this->Userstat->save($this->request->data);
 	
 	}
