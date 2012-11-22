@@ -24,52 +24,10 @@
                     <span><?php echo $game['Game']['description'] ?></span>
                 </div>
 				<div align="center" class="clearfix">
-					<div class="face_send">
-						<div id="fb-root"></div>
-						<script>
-							(function(d, s, id) {
-							  var js, fjs = d.getElementsByTagName(s)[0];
-							  if (d.getElementById(id)) return;
-							  js = d.createElement(s); js.id = id;
-							  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=422837701111087";
-							  fjs.parentNode.insertBefore(js, fjs);
-							}(document, 'script', 'facebook-jssdk'));
-						</script>	
-						<div class="fb-send" data-href="http://example.com"></div>
-					</div>
-					<div class="twitter_twit">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
-						<script>
-							!function(d,s,id){
-								var js,fjs=d.getElementsByTagName(s)[0];
-								if(!d.getElementById(id)){
-									js=d.createElement(s);
-									js.id=id;
-									js.src="//platform.twitter.com/widgets.js";
-									fjs.parentNode.insertBefore(js,fjs);
-								}
-							}(document,"script","twitter-wjs");
-						</script>					
-					</div>
-					<div class="google_plus">
-						<!-- Place this tag where you want the share button to render. -->
-						<div class="g-plus" data-action="share" data-annotation="none"></div>
-
-						<!-- Place this tag after the last share tag. -->
-						<script type="text/javascript">
-						  (function() {
-							var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-							po.src = 'https://apis.google.com/js/plusone.js';
-							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-						  })();
-						</script>					
-					</div>
-					<div class="pin_pinit">
-						<a data-pin-config="none" data-pin-do="buttonPin" href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.flickr.com%2Fphotos%2Fkentbrew%2F6851755809%2F&media=http%3A%2F%2Ffarm8.staticflickr.com%2F7027%2F6851755809_df5b2051c9_z.jpg&description=Next%20stop%3A%20Pinterest!">
-							<img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" />
-						</a>
-						<script src="//assets.pinterest.com/js/pinit.js"></script>
-					</div>
+					<div class="face_send"></div>
+					<div class="twitter_twit"></div>
+					<div class="google_plus"></div>
+					<div class="pin_pinit"></div>
 				</div>
 			</div>
 		</div>
