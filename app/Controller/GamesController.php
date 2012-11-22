@@ -221,6 +221,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	$this->usergame_user_panel($userid);
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     $userName = $user['User']['username'];
+    //print_r($this->paginate('Playcount',array('Playcount.user_id'=>$userid,'Game.active'=>1)));
     $this->set('top_rated_games', $this->paginate('Playcount',array('Playcount.user_id'=>$userid,'Game.active'=>1)));
 
     $this->set('username', $userName);
@@ -286,7 +287,13 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	public function play2_user_panel($userid) {
 
 		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid)));
-	    
+	    /*
+	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
+	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+         */
 	    $this->set('userid', $userid);
 	    $this->set('gamenumber', $channelstat['User']['uploadcount']);
 	    $this->set('favoritenumber', $channelstat['User']['favoritenumber']);
@@ -802,7 +809,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 		$this->set('sharedby',$game['User']['username']);//Recoded
 		$this->set('game',$game);
-		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
+		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
 
 		//start size calculation for play page
 		//ReCoded
@@ -870,7 +877,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('mygames', $cond);
 		$this->set('game', $game);
 		$this->set('user', $game);
-		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
+		$this->set('title_for_layout', $game['Game']['name'].' - Toork');
         
 		//start size calculation for play page-Recoded
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$auth_id,"Rate.game_id"=>$id),'contain'=>false,'fields'=>'Rate.current'));
@@ -962,7 +969,7 @@ function getExtension($str) {
 			$basename=$info["basename"];
 			$dirname=$info["dirname"];
 			//echo $file;
-			 $this->Amazon->S3->create_object(
+			 $message=$this->Amazon->S3->create_object(
             Configure::read('S3.name'),
             'upload/games/'.$id."/".$basename,
              array(
@@ -1132,7 +1139,7 @@ function getExtension($str) {
 			throw new MethodNotAllowedException();
 		}
 		$this->Game->id = $id;
-		$userid=$this->Game->field('user_id');
+		//$userid=$this->Game->field('user_id');
 		if (!$this->Game->exists()) {
 			throw new NotFoundException(__('Invalid game'));
 		}
