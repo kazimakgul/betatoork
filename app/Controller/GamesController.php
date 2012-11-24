@@ -835,60 +835,24 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		$this->layout='game_index2';
 		
-		$this->leftpanel();
 		
-		if($this->Session->read('Random.flag')!=1)
-		{
-    	$this->random();
-		$this->set('randomgame',$this->Session->read('Random.game'));
-		$this->set('randomuser',$this->Session->read('Random.user'));
-		}else{
-		$this->set('randomgame',$this->Session->read('Random.game'));
-		$this->set('randomuser',$this->Session->read('Random.user'));
-		}
 		
 		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
 
 		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
 
-		if($game!=NULL)
-		$id=$game['Game']['id'];
-		$this->fav_check($id);
+		
 		
 	
 		if ($game==NULL) {
 			throw new NotFoundException(__('Invalid game'));
 		}
 		
-		$user_id = $game['User']['id'];
-		$auth_id = $this->Auth->user('id');
-		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$user_id),'limit' => 4,'order' => array('Game.recommend' => 'desc')));
-		$this->play2_user_panel($user_id);
-		$this->set('sharedby',$game['User']['username']);//Recoded
-        $this->set('username', $game['User']['username']);
-		$this->set('user_id', $user_id);
-		$this->set('mygames', $cond);
-		$this->set('game', $game);
-		$this->set('user', $game);
-		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
+		
         
-		//start size calculation for play page-Recoded
-		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$auth_id,"Rate.game_id"=>$id),'contain'=>false,'fields'=>'Rate.current'));
-		$starsize=(100*$current["Rate"]["current"])/5;
-		if($starsize==NULL)
-		{   
-		    if($game['Game']['starsize']!='')
-		    $this->set("starsize",$game['Game']['starsize']);
-			else
-			$this->set("starsize",0);
-		}
-		else
-		$this->set("starsize",$starsize);
+		
 
 
-    $this->render();
-	if($this->Session->read('Random.flag')==1)
-    $this->random();
    }
 
 

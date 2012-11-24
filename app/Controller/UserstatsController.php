@@ -158,7 +158,33 @@ public $helpers = array('Html', 'Form');
 	
 	public function potential($user_id=NULL)
 	{
+	$statdata=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false));
+	$playcount=$statdata['Userstat']['playcount'];
+	$subscription=$statdata['Userstat']['subscribe'];
+	$subscribeto=$statdata['Userstat']['subscribeto'];
+	$favoritecount=$statdata['Userstat']['favoritecount'];
+	$uploadcount=$statdata['Userstat']['uploadcount'];
+	$totalrate=$statdata['Userstat']['totalrate'];
+	$ownrate=$this->ownrates($user_id);
 	
+	if($totalrate>$ownrate)
+	$plainrates=$totalrate-$ownrate;
+	else
+	$plainrates=0;
+	
+	$m=Configure::read('multiples');
+	$formula=($playcount*$m['playcount'])+($subscription*$m['subscribe'])+($favoritecount*$m['favorite'])+($subscribeto*$m['subscribeto'])+($uploadcount*$this->getFactor(     $uploadcount))+($plainrates*$m['plainrates']);
+	
+	    $userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
+		if($userstatrow!=NULL)
+		{
+		$this->Userstat->id=$userstatrow['Userstat']['id'];
+	    }else{
+		$this->Userstat->id=NULL;
+		}
+		$this->request->data['Userstat']['user_id']=$user_id;
+		$this->request->data['Userstat']['potential']=$formula;
+		$this->Userstat->save($this->request->data);
 		
 	}
 	
