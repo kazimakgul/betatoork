@@ -833,7 +833,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 	public function seoplay2($channel=NULL,$seo_url=NULL) {
 		
-		$this->layout='game_index2';
+		$this->layout='ajax';
 		
 		
 		
