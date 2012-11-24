@@ -239,16 +239,6 @@ Configure::write('S3.name','betatoorkpics');
 # test S3 path  -> https://s3.amazonaws.com/betatoorkpicstest
 # toork S3 path -> https://s3.amazonaws.com/betatoorkpics
 
-# Best Channel Settings
-$multiple=array(
-'playcount'=>3,
-'subscribe'=>1,
-'subscribeto'=>10,
-'favorite'=>2,
-'plainrates'=>1
-);
-Configure::write('multiples',$multiple);
-
 
 /**
  * Pick the caching engine to use.  If APC is enabled use it.
