@@ -13,7 +13,7 @@
 .right_panel span{display:block; float:left;}
 .right_panel .sep{width:100%; background-image:url(../img/t_sep_back.png); height:3px; margin:5px 0px;} 
 .right_panel .panelgreyback{background-color:#dfe0e0; width:980px; padding:7px; margin-bottom:5px;}           
-.right_panel .panelwhiteback{background-color:White; width:100%; height:100%; overflow:hidden; padding-bottom:10px; padding-top:10px; }
+.right_panel .panelwhiteback{background-color:White; width:100%; height:100%; padding-bottom:10px; padding-top:10px; }
 .right_panel .adsense{margin:20px 75px; width:728px; height:90px;}
 .right_panel .gamedesc{margin:0px 20px; overflow:hidden; max-height:150px;}
 .right_panel .gamedesc p{color:#0b81c5; font-family:Arial; font-size:25px; font-weight:bold;}
@@ -53,7 +53,7 @@
 .rating_5 { background-position:0 0; }
 .addthis_button{margin-right:12px;}
 
-.face_send{float:left; margin:10px; margin-left:40px; width:209px; height:72px; background-image:url(../img/t_gamepage_facebooksend.png); background-repeat:no-repeat;}
-.twitter_twit{float:left; margin:10px; width:209px; height:72px; background-image:url(../img/t_gamepage_twit.png); background-repeat:no-repeat;}
-.google_plus {float:left; margin:10px; width:209px; height:72px; background-image:url(../img/t_gamepage_gplus.png); background-repeat:no-repeat;}
-.pin_pinit{float:left; margin:10px; width:209px; height:72px; background-image:url(../img/t_gamepage_pinit.png); background-repeat:no-repeat;}
+.face_send{float:left; margin:10px; margin-left:40px; width:209px; height:39px; background-image:url(../img/t_gamepage_facebooksend.png); background-repeat:no-repeat; padding-top:33px;}
+.twitter_twit{float:left; margin:10px; width:209px; height:39px; background-image:url(../img/t_gamepage_twit.png); background-repeat:no-repeat; padding-top:33px;}
+.google_plus {float:left; margin:10px; width:209px; height:39px; background-image:url(../img/t_gamepage_gplus.png); background-repeat:no-repeat; padding-top:33px;}
+.pin_pinit{float:left; margin:10px; width:209px; height:39px; background-image:url(../img/t_gamepage_pinit.png); background-repeat:no-repeat; padding-top:33px;}

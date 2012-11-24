@@ -1,5 +1,24 @@
 <?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription")); ?>
 <script type="text/javascript">
+$(document).ready(function() {
+	$('#txt_search').focus(function () {
+		if ($(this).val() == 'Keywords...') {
+		  $('#txt_search').val('');
+		}
+	});
+	$('#txt_search').blur(function () {
+		if ($(this).val() == '') {
+		  $('#txt_search').val('Keywords...');
+		}
+	});
+
+	$('.menu a').mouseenter(function () {
+		var positions = $(this).position();
+		$('.pointer').animate({ left: positions.left }, 200);
+		$('.menu_up').animate({ left: -positions.left }, 200);
+	});
+});
+
 function changechain(userid,obj)
 {
 	if (obj.hasClass('subcardchain')) {
