@@ -35,7 +35,7 @@ public $name = 'Game';
 
 public $virtualFields = array(
     'recommend' => 'Game.starsize * Game.rate_count',
-	'playcount' => 5
+	'playcount' => 'SELECT SUM(count) FROM playcounts where playcounts.game_id=Game.id'
 );
 
 
