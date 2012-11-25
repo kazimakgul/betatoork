@@ -288,11 +288,11 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid)));
 	    
 	    $this->set('userid', $userid);
-	    $this->set('gamenumber', $channelstat['User']['uploadcount']);
-	    $this->set('favoritenumber', $channelstat['User']['favoritenumber']);
-	    $this->set('subscribe', $channelstat['User']['subscribe']);
-	    $this->set('subscribeto', $channelstat['User']['subscribeto']);
-	    $this->set('playcount', $channelstat['User']['playcount']);
+	    $this->set('gamenumber', $channelstat['Userstat']['uploadcount']);
+	    $this->set('favoritenumber', $channelstat['Userstat']['favoritecount']);
+	    $this->set('subscribe', $channelstat['Userstat']['subscribe']);
+	    $this->set('subscribeto', $channelstat['Userstat']['subscribeto']);
+	    $this->set('playcount', $channelstat['Userstat']['playcount']);
 
 	}
 

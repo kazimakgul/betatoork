@@ -26,5 +26,6 @@ echo $this->element('analytics');
 <?php echo $this->element('footer');?>
 
 <?php echo $this->Facebook->init(); ?>
+<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

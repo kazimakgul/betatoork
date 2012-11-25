@@ -276,11 +276,21 @@ public function __sendResetEmail($user_id) {
  		return $pic_number;
         //$this->set('randomAvatar' , $random['Game']['id']);
 }
-
+    //List of Bestchannel Names 
 	public function bestChannels(){
+	
+	$options['joins'] = array(
+    array('table' => 'userstats',
+        'alias' => 'Stats',
+        'type' => 'INNER',
+        'conditions' => array(
+            'user.id = Stats.user_id'
+        )
+    ));
+	
 		$this->loadModel('Game');
 		$limit=20;
-		$users = $this->User->find('all', array('limit' => $limit, 'order' => array('User.potential' => 'desc')));
+		$users = $this->User->find('all',array('limit' => $limit, 'order' => array('userstat.potential' => 'desc')));
     	return $users;
 	}
 

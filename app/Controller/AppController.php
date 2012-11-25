@@ -45,10 +45,10 @@ class AppController extends Controller {
     );
 
     var $paginate = array(
-        'User' => array(
+        'User' => array(//List of Bestchannels on Bestchannels Page 
             'limit' => 30,
             'order' => array(
-                'User.potential' => 'desc',
+                'Userstat.potential' => 'desc',
             ),
         ),
         'Game' => array(
