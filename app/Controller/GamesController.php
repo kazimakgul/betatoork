@@ -568,15 +568,19 @@ public function channelgames() {
 
 		public function follow_card($userid) {
 
-	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
-	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
-	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-	    $playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
-	    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-    	$userName = $user['User']['username'];
-    	$userUrl = $user['User']['seo_username'];
-    	return array($userName,$gamenumber, $favoritenumber, $subscribe, $subscribeto, $playcount,$user,$userUrl);
+        $channelstat = $this->User->find('first',array('contain'=>'Userstat','conditions' => array('User.id' => $userid)));
+
+	    $gamenumber = $channelstat['Userstat']['uploadcount'];
+	    $favoritenumber = $channelstat['Userstat']['favoritecount'];
+	    $subscribe = $channelstat['Userstat']['subscribe'];
+	    $subscribeto = $channelstat['Userstat']['subscribeto'];
+	    $playcount = $channelstat['Userstat']['playcount'];
+    	$userName = $channelstat['User']['username'];
+    	$userUrl = $channelstat['User']['seo_username'];
+    	return array($userName,$gamenumber, $favoritenumber, $subscribe, $subscribeto, $playcount,$channelstat,$userUrl);
+		
+	
+		
 	}
 
 
