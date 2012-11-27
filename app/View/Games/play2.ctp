@@ -25,17 +25,8 @@
                 </div>
 				<div align="center" class="clearfix">
 					<div class="face_send">
-						<div id="fb-root"></div>
-						<script>
-							(function(d, s, id) {
-							  var js, fjs = d.getElementsByTagName(s)[0];
-							  if (d.getElementById(id)) return;
-							  js = d.createElement(s); js.id = id;
-							  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=422837701111087";
-							  fjs.parentNode.insertBefore(js, fjs);
-							}(document, 'script', 'facebook-jssdk'));
-						</script>	
-						<div class="fb-send" data-href="http://example.com"></div>
+						
+						<div class="fb-send" data-href="<?php echo Router::url( $this->here, true ); ?>"></div>
 					</div>
 					<div class="twitter_twit">
 						<a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
@@ -65,7 +56,7 @@
 						</script>					
 					</div>
 					<div class="pin_pinit">
-						<a data-pin-config="none" data-pin-do="buttonPin" href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.flickr.com%2Fphotos%2Fkentbrew%2F6851755809%2F&media=http%3A%2F%2Ffarm8.staticflickr.com%2F7027%2F6851755809_df5b2051c9_z.jpg&description=Next%20stop%3A%20Pinterest!">
+						<a data-pin-config="none" data-pin-do="buttonPin" href="//pinterest.com/pin/create/button/?url=<?php echo Router::url( $this->here, true ); ?>">
 							<img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" />
 						</a>
 						<script src="//assets.pinterest.com/js/pinit.js"></script>
