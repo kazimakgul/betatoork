@@ -242,8 +242,8 @@ Configure::write('S3.name','betatoorkpics');
 # Best Channel Settings
 $multiple=array(
 'playcount'=>3,
-'subscribe'=>1,
-'subscribeto'=>10,
+'subscribe'=>10,
+'subscribeto'=>1,
 'favorite'=>2,
 'plainrates'=>1
 );
