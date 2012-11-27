@@ -173,6 +173,7 @@ public $virtualFields = array(
 	);
 	
 	
+	
 	public $hasMany = array(
 		'Rate' => array(
 			'className' => 'Rate',
