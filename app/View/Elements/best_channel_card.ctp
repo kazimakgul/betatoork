@@ -75,7 +75,7 @@ if($website==NULL){
                     <li class="clearfix"><a class="" href="<?php echo $playcounturl ?>"><?php echo $follower['Userstat']['playcount']; ?> Played Games</a></li>
                     <li class="clearfix"><a class="" href="<?php echo $folurl ?>"><?php echo $follower['Userstat']['subscribeto']; ?> Followers</a></li>
                     <li class="clearfix"><a class="" href="<?php echo $suburl ?>"><?php echo $follower['Userstat']['subscribe']; ?> Chains</a></li>
-
+                    <!-- <?php echo $follower['Userstat']['potential']; ?> -->
                 <li class="clearfix"><div class="cardsep" style="margin-bottom:5px; margin-top:5px;"></div></li>
                     <li class="clearfix">
                     <?php
