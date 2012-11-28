@@ -190,6 +190,10 @@ public $helpers = array('Html', 'Form');
 	
 	
 	public function syncallusers() {
+	    //if varswitch equal to 0 function will be stopped.
+		$varswitch=0;
+		if($varswitch==0)
+		break;
 	    set_time_limit(0); 
 		$allusers=$this->User->find('all',array('fields'=>array('User.id')));
 	    foreach($allusers as $users)
@@ -219,7 +223,10 @@ public $helpers = array('Html', 'Form');
 	}
 	
 	public function sync($user_id) {
-	    
+	    //if varswitch equal to 0 function will be stopped.
+	    $varswitch=0;
+		if($varswitch==0)
+		break;
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)
 		{
