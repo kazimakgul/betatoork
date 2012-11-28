@@ -193,7 +193,7 @@ public $helpers = array('Html', 'Form');
 	    //if varswitch equal to 0 function will be stopped.
 		$varswitch=0;
 		if($varswitch==0)
-		break;
+		$this->redirect('/');
 	    set_time_limit(0); 
 		$allusers=$this->User->find('all',array('fields'=>array('User.id')));
 	    foreach($allusers as $users)
@@ -226,7 +226,7 @@ public $helpers = array('Html', 'Form');
 	    //if varswitch equal to 0 function will be stopped.
 	    $varswitch=0;
 		if($varswitch==0)
-		break;
+		$this->redirect('/');
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)
 		{
