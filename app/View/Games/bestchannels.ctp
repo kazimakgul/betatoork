@@ -9,8 +9,9 @@
      <div id="subscriber">
         <div class="clearfix">
             <div class="best"></div>
-           
         </div>
+
+<?php echo $this->element('sorting');?>
 
     <div class="sep"></div>
     
