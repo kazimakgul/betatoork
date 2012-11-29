@@ -854,10 +854,13 @@ public function adminedit($id = null) {
 				$this->request->data['User']['seo_username'] = strtolower($this->request->data['un']);
 				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
 				$this->request->data['User']['active'] = 1;
+				//$this->request->data['User']['userstat'] = 0; //buraya bakılacak yeni alan için
+				
 				if ($this->User->save($this->request->data)) {
 				    $this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();
 				    $this->Userstat->save($this->request->data);
 					$this->__sendActivationEmail($this->User->getLastInsertID());
+					$this->set('rtdata', 'true');
 					
 				} else {
 					$this->set('rtdata', 'Can not register. Please try again.');
