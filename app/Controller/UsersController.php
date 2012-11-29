@@ -855,6 +855,8 @@ public function adminedit($id = null) {
 				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
 				$this->request->data['User']['active'] = 1;
 				if ($this->User->save($this->request->data)) {
+				    $this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();
+				    $this->Userstat->save($this->request->data);
 					$this->__sendActivationEmail($this->User->getLastInsertID());
 					
 				} else {

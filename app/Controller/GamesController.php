@@ -900,7 +900,8 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 function secureSuperGlobalPOST($value)
     {
-	    //$string = preg_replace('/[^\w\d_ -]/si', '', $value);Nokta ve virgülü de engelleyen kod iptal edildi.
+	    //$string = preg_replace('/[^\w\d_ -]/si', '', $value);<br />
+        //Nokta ve virgülü de engelleyen kod iptal edildi.
         $string = htmlspecialchars(stripslashes($value));
         $string = str_ireplace("script", "blocked", $string);
         $string = mysql_escape_string($string);
