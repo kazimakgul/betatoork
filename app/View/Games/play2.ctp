@@ -59,7 +59,6 @@
 						<a data-pin-config="none" data-pin-do="buttonPin" href="//pinterest.com/pin/create/button/?url=<?php echo Router::url( $this->here, true ); ?>%2F&media=<?php echo $this->Upload->url2($game,'Game.picture'); ?>&description=<?php echo $game['Game']['description']; ?>">
 							<img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" />
 						</a>
-						<script src="//assets.pinterest.com/js/pinit.js"></script>
 					</div>
 				</div>
 			</div>
