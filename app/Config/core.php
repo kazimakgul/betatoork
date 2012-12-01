@@ -250,6 +250,14 @@ $multiple=array(
 Configure::write('multiples',$multiple);
 
 
+# Broken Image Settings
+$broken=array(
+'toorksize'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg',
+'thumb'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg',
+'slider'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg'
+);
+Configure::write('broken',$broken);
+
 /**
  * Pick the caching engine to use.  If APC is enabled use it.
  * If running via cli - apc is disabled by default. ensure it's available and enabled in this case

@@ -32,6 +32,22 @@ function changechain(userid,obj)
 		obj.removeClass('subcardchained').addClass('subcardchain');
 	}
 }
+
+function imgError(image,style){
+    image.onerror = "";
+	
+	if(style=="toorksize")
+	image.src = "<?php echo Configure::read('broken.toorksize'); ?>";
+	else if(style=="thumb")
+    image.src = "<?php echo Configure::read('broken.thumb'); ?>";
+	else if(style=="slider")
+    image.src = "<?php echo Configure::read('broken.slider'); ?>";
+	
+    return true;
+}
+
+
+
 </script>
 <div class="header">
 	<div class="hd_container">

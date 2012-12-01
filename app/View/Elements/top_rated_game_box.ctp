@@ -8,7 +8,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 <div class="gamebox clearfix">
 	<div class="greyback">
 		<div class="whiteback">
-			<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$game['Game']['name'],'width'=>'200','height'=>'110')); ?></a>
+			<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$game['Game']['name'],'width'=>'200','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></a>
 		</div>
 	</div>
 	

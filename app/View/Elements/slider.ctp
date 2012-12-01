@@ -19,7 +19,7 @@
 						?>
 						<div class="slider_leftpanel_game">
 							<div class="slider_leftpanel_gamebox clearfix">
-								<div class="slider_game_avatarback"><img alt="" width="100" height="55" src="<?php echo $this->Upload->url2($slider[$i],'Game.picture',array('style' => 'thumb')); ?>" /></div>
+								<div class="slider_game_avatarback"><img onerror="imgError(this,'toorksize');" alt="<?php echo $slider[$i]['Game']['name']?>" width="100" height="55" src="<?php echo $this->Upload->url2($slider[$i],'Game.picture',array('style' => 'thumb')); ?>" /></div>
 								<div class="slider_game_info">
 									<a href="<?php echo $playurl ?>" class="slider_game_name"><?php echo $slider[$i]['Game']['name']?></a>
 									<a href="<?php echo $channelurl ?>"><?php echo $slider[$i]['Game']['User']['username']; ?></a>
@@ -75,7 +75,7 @@
 						$playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($slider[$i]['Game']['id'])));  
 				?>
 					<div>
-						<a href="<?php echo $playurl ?>"><img class="jail" alt="" width="640" height="350" data-href="<?php echo $this->Upload->url2($slider[$i],'Game.picture',array('style' => 'showcase')); ?>" /></a>
+						<a href="<?php echo $playurl ?>"><img onerror="imgError(this,'slider');" class="jail" alt="<?php echo h($slider[$i]['Game']['name']);?>" width="640" height="350" data-href="<?php echo $this->Upload->url2($slider[$i],'Game.picture',array('style' => 'showcase')); ?>" /></a>
 					</div>
 				<?php } ?>
 			</div>
