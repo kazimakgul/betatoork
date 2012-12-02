@@ -43,7 +43,7 @@ if($website==NULL){
   if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
     } else {
-      echo $this->Upload->image($user,'User.picture'); }
+      echo $this->Upload->image($user,'User.picture',array(),array('onerror'=>'imgError(this,"avatar");')); }
   ?>
    <!-- end -->
   </div>

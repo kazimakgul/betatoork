@@ -254,7 +254,8 @@ Configure::write('multiples',$multiple);
 $broken=array(
 'toorksize'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg',
 'thumb'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg',
-'slider'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg'
+'slider'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg',
+'avatar'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg'
 );
 Configure::write('broken',$broken);
 
