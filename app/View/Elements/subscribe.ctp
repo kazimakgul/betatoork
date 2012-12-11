@@ -21,6 +21,7 @@ function sub_status(a)
 }
 
 $('#subscribe').click(function () {
+	if(<?php echo $this->Session->check('Auth.User')?> == 1){
 		if ($(this).hasClass('chain')) {
 			<?php $suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription",$user_id)); ?>
 			 $.get("<?php echo $suburl2?>",function(data) {}); 
@@ -31,5 +32,6 @@ $('#subscribe').click(function () {
 			$.get("<?php echo $suburl3 ?>",function(data) {});
 			$(this).removeClass('chained').addClass('chain');
 		}
+	}
 });
 </script>
