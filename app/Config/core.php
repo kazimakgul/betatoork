@@ -252,10 +252,10 @@ Configure::write('multiples',$multiple);
 
 # Broken Image Settings
 $broken=array(
-'toorksize'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg',
-'thumb'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg',
-'slider'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg',
-'avatar'=>'http://behance.vo.llnwd.net/profiles8/1518537/projects/4937823/30028c7f07366643f15548e60dab2c95.jpg'
+'toorksize'=>'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png',
+'thumb'=>'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameslideavatar_default.png',
+'slider'=>'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_slider_default.png',
+'avatar'=>'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_manchannelavatar_default.png'
 );
 Configure::write('broken',$broken);
 
