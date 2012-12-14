@@ -31,10 +31,12 @@
 		  })();
 		</script>			
 	</div>
+<!-- Pinterest not working 
 	<div style="float:left; padding-top:30px; padding-left:10px;">
 		<a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.toork.com&media=http%3A%2F%2Fwww.toork.com&description=Create%20your%20own%20game%20channel" class="pin-it-button" count-layout="vertical">
 			<img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" />
 		</a>
 		<script src="//assets.pinterest.com/js/pinit.js"></script>
 	</div>
+-->
 </div>
