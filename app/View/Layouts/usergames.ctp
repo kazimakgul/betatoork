@@ -19,6 +19,20 @@ if($userDesc == NULL){
 }
 
 ?>
+<?php $avatar = $this->Upload->url2($user,'User.picture'); ?>
+<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="<?php echo $userName ?>">
+<meta itemprop="description" content="Play games on <?php echo $userName ?> : <?php echo $userDesc ?> ">
+<link itemprop="url" href="<?php echo Router::url( $this->here, true ); ?>">
+<link itemprop="image" href="<?php echo $avatar ?>">
+</span>
+<link itemprop="thumbnailUrl" href="<?php echo $avatar ?>">
+<span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">
+<link itemprop="url" href="<?php echo $avatar ?>">
+<meta itemprop="width" content="90">
+<meta itemprop="height" content="120">
+</span>
+<meta itemprop="isFamilyFriendly" content="true">
 
 
 
