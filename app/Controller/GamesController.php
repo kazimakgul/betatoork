@@ -286,7 +286,13 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 	public function play2_user_panel($userid) {
 
+      if(!($channelstat=Cache::read('play2_user_panel-channelstat'.$userid)))
+	    {
 		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid)));
+		Cache::write('play2_user_panel-channelstat'.$userid,$channelstat);
+		}
+
+		
 	    
 	    $this->set('userid', $userid);
 	    $this->set('gamenumber', $channelstat['Userstat']['uploadcount']);
@@ -397,16 +403,16 @@ public function channelgames() {
 		   if($authid!=NULL)
 		   {
 		   
-		   if(!($listofmine=Cache::read('channelgames-listofmine'.$seo_username)))
+		   if(!($listofmine=Cache::read('channelgames-listofmine'.$authid)))
 		   {
 		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
-		   Cache::write('channelgames-listofmine'.$seo_username,$listofmine);
+		   Cache::write('channelgames-listofmine'.$authid,$listofmine);
 		   }
 		   
-		   if(!($listofuser=Cache::read('channelgames-listofuser'.$seo_username)))
+		   if(!($listofuser=Cache::read('channelgames-listofuser'.$userid)))
 		   {
 		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
-		   Cache::write('channelgames-listofuser'.$seo_username,$listofuser);
+		   Cache::write('channelgames-listofuser'.$userid,$listofuser);
 		   }
 		   
 		   $mutuals=array_intersect($listofmine,$listofuser);
@@ -420,11 +426,11 @@ public function channelgames() {
 	$limit2=6;
 	
 	
-	if(!($cond=Cache::read('channelgames-allchannelgames'.$seo_username)))
+	if(!($cond=Cache::read('channelgames-allchannelgames'.$userid)))
 	{
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-	Cache::write('channelgames-allchannelgames'.$seo_username,$cond);
+	Cache::write('channelgames-allchannelgames'.$userid,$cond);
 	}
 	
 	
@@ -435,16 +441,16 @@ public function channelgames() {
     //)));
 	
 	//ReCoded
-	if(!($cond2=Cache::read('channelgames-channelfavoritegames'.$seo_username)))
+	if(!($cond2=Cache::read('channelgames-channelfavoritegames'.$userid)))
 	{
 	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
-	Cache::write('channelgames-channelfavoritegames'.$seo_username,$cond2);
+	Cache::write('channelgames-channelfavoritegames'.$userid,$cond2);
 	}
 	
-	if(!($subCond=Cache::read('channelgames-channelsubscribes'.$seo_username)))
+	if(!($subCond=Cache::read('channelgames-channelsubscribes'.$userid)))
 	{
 	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
-	Cache::write('channelgames-channelsubscribes'.$seo_username,$subCond);
+	Cache::write('channelgames-channelsubscribes'.$userid,$subCond);
 	}
 	
 	$this->set('users', $subCond);
@@ -458,10 +464,10 @@ public function channelgames() {
     $this->set('top_rated_games',$top_rated_games);
 	*/
 	
-	if(!($gamenumber=Cache::read('channelgames-gamenumber'.$seo_username)))
+	if(!($gamenumber=Cache::read('channelgames-gamenumber'.$userid)))
 	{
     $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	Cache::write('channelgames-gamenumber'.$seo_username,$gamenumber);
+	Cache::write('channelgames-gamenumber'.$userid,$gamenumber);
     }
 	
 	
@@ -903,9 +909,19 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('randomuser',$this->Session->read('Random.user'));
 		}
 		
-		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
-
+		
+	if(!($channel_id=Cache::read('seoplay2-channel_id'.$channel)))
+	{
+	$channel_id = $this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
+	Cache::write('seoplay2-channel_id'.$channel,$channel_id);
+	}
+		
+		
+		if(!($game=Cache::read('seoplay2-game'.$seo_url.$channel_id['User']['id'])))
+	{
 		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
+		Cache::write('seoplay2-game'.$seo_url.$channel_id['User']['id'],$game);
+	}
 
 		if($game!=NULL)
 		$id=$game['Game']['id'];
@@ -918,7 +934,13 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		$user_id = $game['User']['id'];
 		$auth_id = $this->Auth->user('id');
+		
+		if(!($cond=Cache::read('seoplay2-cond'.$user_id)))
+	    {
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$user_id),'limit' => 4,'order' => array('Game.recommend' => 'desc')));
+		Cache::write('seoplay2-cond'.$user_id,$cond);
+		}
+		
 		$this->play2_user_panel($user_id);
 		$this->set('sharedby',$game['User']['username']);//Recoded
         $this->set('username', $game['User']['username']);
@@ -929,7 +951,14 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
         
 		//start size calculation for play page-Recoded
+		
+		
+		if(!($current=Cache::read('seoplay2-current'.$auth_id.$id)))
+	    {
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$auth_id,"Rate.game_id"=>$id),'contain'=>false,'fields'=>'Rate.current'));
+		Cache::write('seoplay2-current'.$auth_id.$id,$current);
+		}
+		
 		$starsize=(100*$current["Rate"]["current"])/5;
 		if($starsize==NULL)
 		{   
