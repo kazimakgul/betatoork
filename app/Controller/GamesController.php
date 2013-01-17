@@ -264,19 +264,20 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		public function usergame_user_panel($userid=NULL) {
 
 		$this->layout='base';
-	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
-	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
-	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
-		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-	    $this->set('user',$user);
+		
+		if(!($channelstat=Cache::read('usergame_user_panel-channelstat'.$userid)))
+	    {
+		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid)));
+		Cache::write('usergame_user_panel-channelstat'.$userid,$channelstat);
+	    }
+		
+	    $this->set('user',$channelstat);
         $this->set('userid', $userid);
-	    $this->set('gamenumber', $gamenumber);
-	    $this->set('favoritenumber', $favoritenumber);
-	    $this->set('subscribe', $subscribe);
-	    $this->set('subscribeto', $subscribeto);
-	    $this->set('playcount', $playcount);
+	    $this->set('gamenumber', $channelstat['Userstat']['uploadcount']);
+	    $this->set('favoritenumber', $channelstat['Userstat']['favoritecount']);
+	    $this->set('subscribe', $channelstat['Userstat']['subscribe']);
+	    $this->set('subscribeto', $channelstat['Userstat']['subscribeto']);
+	    $this->set('playcount', $channelstat['Userstat']['playcount']);
 
 	}
 	
@@ -377,7 +378,14 @@ public function channelgames() {
 
 	$this->leftpanel();
     $seo_username = $this->request->params['pass'][0];
-    $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
+	
+	
+	if(!($user=Cache::read('channelgames-user'.$seo_username)))
+	{
+	$user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
+	Cache::write('channelgames-user'.$seo_username,$user);
+	}
+	
 	$userid=$user['User']['id'];
 	$this->usergame_user_panel($userid);
 	$this->layout='usergames';
@@ -388,8 +396,19 @@ public function channelgames() {
 		//Get the list of subscriptions of auth user.
 		   if($authid!=NULL)
 		   {
+		   
+		   if(!($listofmine=Cache::read('channelgames-listofmine'.$seo_username)))
+		   {
 		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   Cache::write('channelgames-listofmine'.$seo_username,$listofmine);
+		   }
+		   
+		   if(!($listofuser=Cache::read('channelgames-listofuser'.$seo_username)))
+		   {
 		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   Cache::write('channelgames-listofuser'.$seo_username,$listofuser);
+		   }
+		   
 		   $mutuals=array_intersect($listofmine,$listofuser);
 		   $this->set('mutuals',$mutuals);
 		   }else{
@@ -399,8 +418,16 @@ public function channelgames() {
     $userName = $user['User']['username'];
 	$limit=12;
 	$limit2=6;
+	
+	
+	if(!($cond=Cache::read('channelgames-allchannelgames'.$seo_username)))
+	{
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
+	Cache::write('channelgames-allchannelgames'.$seo_username,$cond);
+	}
+	
+	
 	
 	$this->set('title_for_layout', $userName.' - Welcome to '.$userName."'s game channel published by Toork");
     
@@ -408,20 +435,45 @@ public function channelgames() {
     //)));
 	
 	//ReCoded
+	if(!($cond2=Cache::read('channelgames-channelfavoritegames'.$seo_username)))
+	{
 	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+	Cache::write('channelgames-channelfavoritegames'.$seo_username,$cond2);
+	}
 	
+	if(!($subCond=Cache::read('channelgames-channelsubscribes'.$seo_username)))
+	{
 	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
-//print_r($cond2);
+	Cache::write('channelgames-channelsubscribes'.$seo_username,$subCond);
+	}
 	
 	$this->set('users', $subCond);
+	/*
+	comment out alanda bulunan kodlar büyük ihtimalle silinecek!!!
+	if(!($top_rated_games=Cache::read('channelgames-topratedgames')))
+	{
+	$top_rated_games=$this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
+	Cache::write('channelgames-topratedgames',$top_rated_games);
+	}
+    $this->set('top_rated_games',$top_rated_games);
+	*/
 	
-    $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
+	if(!($gamenumber=Cache::read('channelgames-gamenumber'.$seo_username)))
+	{
     $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-    
+	Cache::write('channelgames-gamenumber'.$seo_username,$gamenumber);
+    }
+	
+	
     if($gamenumber >= 3){
     	    $this->set('slider', $cond);
     }else{
-    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
+	        if(!($slider=Cache::read('channelgames-slider')))
+	        {
+    		$slider=$this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
+			Cache::write('channelgames-slider',$slider);
+			}
+			$this->set('slider',$slider);
     }
 
 	if($user['User']['verify']!=null){
