@@ -265,12 +265,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 		$this->layout='base';
 		
-		if(!($channelstat=Cache::read('usergame_user_panel-channelstat'.$userid)))
-	    {
 		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid)));
-		Cache::write('usergame_user_panel-channelstat'.$userid,$channelstat);
-	    }
-		
+	    
 	    $this->set('user',$channelstat);
         $this->set('userid', $userid);
 	    $this->set('gamenumber', $channelstat['Userstat']['uploadcount']);
@@ -286,14 +282,9 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 	public function play2_user_panel($userid) {
 
-      if(!($channelstat=Cache::read('play2_user_panel-channelstat'.$userid)))
-	    {
+     
 		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid)));
-		Cache::write('play2_user_panel-channelstat'.$userid,$channelstat);
-		}
-
 		
-	    
 	    $this->set('userid', $userid);
 	    $this->set('gamenumber', $channelstat['Userstat']['uploadcount']);
 	    $this->set('favoritenumber', $channelstat['Userstat']['favoritecount']);
