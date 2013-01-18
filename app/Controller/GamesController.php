@@ -407,14 +407,8 @@ public function channelgames() {
 	$limit=12;
 	$limit2=6;
 	
-	
-	if(!($cond=Cache::read('channelgames-allchannelgames'.$userid)))
-	{
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-	Cache::write('channelgames-allchannelgames'.$userid,$cond);
-	}
-	
 	
 	
 	$this->set('title_for_layout', $userName.' - Welcome to '.$userName."'s game channel published by Toork");
