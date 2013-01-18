@@ -394,17 +394,8 @@ public function channelgames() {
 		   if($authid!=NULL)
 		   {
 		   
-		   if(!($listofmine=Cache::read('channelgames-listofmine'.$authid)))
-		   {
 		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
-		   Cache::write('channelgames-listofmine'.$authid,$listofmine);
-		   }
-		   
-		   if(!($listofuser=Cache::read('channelgames-listofuser'.$userid)))
-		   {
 		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
-		   Cache::write('channelgames-listofuser'.$userid,$listofuser);
-		   }
 		   
 		   $mutuals=array_intersect($listofmine,$listofuser);
 		   $this->set('mutuals',$mutuals);
@@ -432,17 +423,9 @@ public function channelgames() {
     //)));
 	
 	//ReCoded
-	if(!($cond2=Cache::read('channelgames-channelfavoritegames'.$userid)))
-	{
 	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
-	Cache::write('channelgames-channelfavoritegames'.$userid,$cond2);
-	}
 	
-	if(!($subCond=Cache::read('channelgames-channelsubscribes'.$userid)))
-	{
 	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
-	Cache::write('channelgames-channelsubscribes'.$userid,$subCond);
-	}
 	
 	$this->set('users', $subCond);
 	/*
