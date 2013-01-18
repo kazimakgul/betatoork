@@ -438,11 +438,7 @@ public function channelgames() {
     $this->set('top_rated_games',$top_rated_games);
 	*/
 	
-	if(!($gamenumber=Cache::read('channelgames-gamenumber'.$userid)))
-	{
-    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	Cache::write('channelgames-gamenumber'.$userid,$gamenumber);
-    }
+	$gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
 	
 	
     if($gamenumber >= 3){
