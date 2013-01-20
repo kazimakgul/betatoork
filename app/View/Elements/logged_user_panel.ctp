@@ -4,6 +4,7 @@ $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions
 $channelurl=$this->Html->url(array("controller" => $user['User']['seo_username'],"action" =>""));
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$userid));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+$newsurl=$this->Html->url(array("controller" => $user['User']['seo_username'],"action" =>"news"));
 ?>
 
 <?php
@@ -47,7 +48,7 @@ if($website==NULL){
   ?>
    <!-- end -->
   </div>
-  <div class="activity">Activity</div>
+  <a href="<?php echo $newsurl; ?>"><div class="activity">News Feed</div></a>
   <div class="panelsep"></div>
   <a class="added" href="<?php echo $channelurl ?>"><?php echo $gamenumber ?> games added</a>
   <a class="favorite" href="<?php echo $channelurl ?>"><?php echo $favoritenumber ?> games favorite</a>

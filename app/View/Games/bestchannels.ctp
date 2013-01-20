@@ -32,7 +32,7 @@
   <p>
   <?php
   echo $this->Paginator->counter(array(
-  'format' => __('Page {:page} of {:pages}, showing {:current} games out of {:count} total')
+  'format' => __('Page {:page} of {:pages}, showing {:current} channels out of {:count} total')
   ));
   ?>
 </p>

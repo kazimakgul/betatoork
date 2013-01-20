@@ -20,22 +20,56 @@
 
 <?php 
 echo $this->Html->meta('keywords','online games, browser games, flash games, share games, social network for gamers, game channels, social for game bloggers,share your games, share gamelist, games list');
-echo $this->Html->meta('description','Toork is a social network for online gamers. With Toork, you will be able to create your own game channel by collecting any game around the web and share it with your friends. Create your game lists, customize your channel and earn money by using toork.');
 ?>
+<meta name="description" content= "<?php echo $description_for_layout?>" />
 
-<meta property="og:title" content="Toork - Create Your Own Game Channel"/>
+<meta property="og:title" content= "<?php echo $title_for_layout?>" />
 <meta property="og:type" content="Game"/>
 <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
 <meta property="og:image" content="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash4/428808_254949491292199_1660409950_n.jpg"/>
 <meta property="og:site_name" content="Toork"/>
 <meta property="fb:admins" content="711440119"/>
-<meta property="og:description" content="Toork is a social network for online gamers. With Toork, you will be able to create your own game channel by collecting any game around the web and share it with your friends. Create your game lists, customize your channel and earn money by using toork."/>
+<meta property="og:description" content= "<?php echo $description_for_layout?>" />
 
 <?php echo $this->fetch('css'); ?>
-<?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel')); ?>
-
+<?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','tgnrl','mychannel','wall/facebox','wall/timeline','wall/tipsy','wall/wall','channelwall')); ?>
 
 <?php echo $this->Html->script(array('jquery.min','register','jquery-ui-1.8.17.custom.min','jquery.cookie','jquery.fancybox-1.3.4.pack','jquery.lightbox_me','knockout-2.0.0','underscore','jquery.placeholder.min','jail','t_slider')); ?>
+
+<?php
+if(strtolower($this->params['controller'])=='wallentries')
+{
+echo $this->Html->script(array('wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall')); 
+}
+?>
+
+
+
+<!-- Js variable for wallscript-->
+<script>
+wallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'message_ajax')); ?>';
+
+
+morevar='<?php if(isset($profile_uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax',$profile_uid,$type)); }
+else 
+{
+    if(isset($type))
+    {
+    echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_filter_ajax',$type));
+    }
+    else
+    {
+    echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax'));
+    }
+} ?>';
+
+
+commentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'comment_ajax')); ?>';
+delmessagevar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_message_ajax')); ?>';
+delcommentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_comment_ajax')); ?>';
+seeallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'view_ajax')); ?>';
+quick='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'quick_subscription')); ?>';
+</script>
 
 
 <script type="text/javascript">

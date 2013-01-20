@@ -18,17 +18,15 @@ if(isset($type))
 $this->Html->css('feedfeed', null, array('inline' => false));
 }
 
-
-$editlink=$this->Html->url(array('controller'=>'users','action'=>'edit',$channeldata['User']['id']));
-$feedlink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall'));
-$gamelink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','games'));
-$videolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','videos'));
-$photolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','photos'));
+$feedlink=$this->Html->url(array('controller'=>$channeldata['User']['seo_username'],'action'=>'news'));
+$gamelink=$this->Html->url(array('controller'=>$channeldata['User']['seo_username'],'action'=>'news','games'));
+$videolink=$this->Html->url(array('controller'=>$channeldata['User']['seo_username'],'action'=>'news','videos'));
+$photolink=$this->Html->url(array('controller'=>$channeldata['User']['seo_username'],'action'=>'news','photos'));
 ?>
 <div class="content clearfix">
 	<div class="channel_left_panel">
-	<?php  echo $this->element('channel_user_panel'); ?>
-	<?php  echo $this->element('social'); ?>
+	<?php  echo $this->element('logged_user_panel'); ?>
+	<?php echo $this->element('social'); ?>
 	<?php echo $this->element('best_channels_left_menu'); ?>
 	<?php echo $this->element('categories_left_menu'); ?>
 	</div>
@@ -40,7 +38,7 @@ $photolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','
 					<div class="midcover">
 						<img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_wallcover.jpg" />
 						<div class="channelfeeddesc">
-							<div class="channeldescinfo"><?php echo $channeldata['User']['description']; ?> <a style='color:#FFFFFF;' href="<?php echo $editlink; ?>">(Edit)</a> </div>
+							<div class="channeldescinfo"><?php echo $channeldata['User']['description'];?></div>
 						</div>
 					</div>
 					<div class="botcover"></div>
@@ -54,86 +52,6 @@ $photolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','
 					</ul>
 					<div class="boardmenupointer"></div>
 				</div>
-				<div class="profilestatus">
-					<div class="upstatus"></div>
-					<div class="midstatus clearfix" id="wallstatus">
-						<textarea placeholder="Share your idea about games or your channel... to add a video just copy paste a YouTube or Vimeo link" name="update" id="update" cols="70" rows="3"></textarea>
-						<div id="webcam_container" class='border'>
-							<div id="webcam" ></div>
-							<div id="webcam_preview"></div>
-							<div id='webcam_status'></div>
-							<div id='webcam_takesnap'>
-								<input type="button" value=" Take Snap " onclick="return takeSnap();" class="camclick button"/>
-								<input type="hidden" id="webcam_count" />
-							</div>
-						</div>
-						<div id="imageupload" class="border">
-							<?php $image_ajax_url= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax'));?>
-							<form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
-								<div id='preview'></div>
-								<span id='addphoto'>Add Photo:</span> <input type="file" name="photoimg" id="photoimg" />
-								<input type='hidden' id='uploadvalues' />
-							</form>
-						</div>
-						<div id="addgame_container" class='border'>
-							<form id="gameaddform" name="gameaddform">
-								<table>
-									<tr>
-										<td>Game Name</td><td>:</td><td><input class="inputborder" type="gamename" id="gamename" name="gamename" /></td>
-									</tr>
-									<tr>
-										<td>Game Link</td><td>:</td><td><input class="inputborder" type="gamelink" id="gamelink" name="gamelink" /></td>
-									</tr>
-									<tr>
-										<td>Game Embed Code</td><td>:</td><td><input class="inputborder" type="text" id="gameembedcode" name="gameembedcode" /></td>
-									</tr>
-									<tr>
-										<td>Game Description</td><td>:</td><td><textarea class="walladdgamedesc" id="gamedesc" name="gamedesc"></textarea></td>
-									</tr>	
-									<tr>
-										<td>Game Category</td><td>:</td>
-										<td>
-											<select class="selectinputborder" id="GameCategoryId" name="gamecategory">
-												<option value="1">Action</option>
-												<option value="2">Adventure</option>
-												<option value="3">Race</option>
-												<option value="4">Shooting</option>
-												<option value="5">Board</option>
-												<option value="6">Multiplayer</option>
-												<option value="7">Puzzle</option>
-												<option value="8">Card</option>
-												<option value="9">Social</option>
-												<option value="10">3D</option>
-												<option value="11">Kids</option>
-												<option value="12">Girls</option>
-												<option value="13">Word</option>
-												<option value="14">Role-Playing</option>
-												<option value="15">Fighting</option>
-												<option value="16">MMORPG</option>
-												<option value="17">Sports</option>
-											</select>
-										</td>
-									</tr>	
-									<tr>
-										<td>Game Image</td><td>:</td><td><input class="inputborder" type="file" name="gameimg" id="gameimg" /></td>
-									</tr>								
-								</table>
-							</form>
-						</div>						
-						<div style="width:100%;clear:both">
-							<div id='flashmessage'>
-								<div id="flash" align="left"></div>
-							</div>							
-							<div type="submit" class="update_button" id="update_button" value="">Share</div>
-							<span style="float:right">
-								<a href="javascript:void(0);" id="camera" title="Upload Image"><!--<img src="<?php echo $this->webroot;?>app/webroot/img/wall/icons/camera.png" border="0" />--></a> 
-								<!--<a href="javascript:void(0);" id="webcam_button" title="Webcam Snap"><img src="<?php echo $this->webroot;?>app/webroot/img/wall/icons/web-cam.png"  border="0" style='margin-top:5px'/></a>-->
-								<!--<a href="javascript:void(0);" id="addgame_button" title="Add Game" style="margin-right:10px;"><img src="<?php echo $this->webroot;?>app/webroot/img/wall/icons/game_pad.png"  border="0" style='margin-top:5px;'/></a>-->
-							</span>
-						</div>	
-					</div>
-					<div class="botstatus"></div>                    
-				</div>			
 				<div id="content" class="profilefeed">
 					<?php echo $this->element('wall/load_messages');?>
 				</div>
@@ -177,13 +95,13 @@ $photolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','
 					<div class="subcard">
 						<div class="subup clearfix">
 							<a href="<?php echo $channelurl ?>" class="channelname"><?php echo $follower['User']['username']; ?></a>
-							<?php if($this->Session->check('Auth.User')){?>
-								<?php if(in_array($followid,$mutuals)){?>
-									<a class="subcardchained" style="float:right" onclick="javascript:changechain(<?php echo $follower['User']['id']; ?>,$(this));"></a> 
-								<?php }else {?>
+							<?php //if($this->Session->check('Auth.User')){?>
+								<?php //if(in_array($followid,$mutuals)){?>
+									<!--<a class="subcardchained" style="float:right" onclick="javascript:changechain(<?php echo $follower['User']['id']; ?>,$(this));"></a> -->
+								<?php //}else {?>
 									<a class="subcardchain" style="float:right" onclick="javascript:changechain(<?php echo $follower['User']['id']; ?>,$(this));"></a>
-								<?php }?>
-							<?php }?> 
+								<?php //}?> 
+							<?php //}?>
 						</div>
 						<div class="submid clearfix">
 							<div class="cardsep"></div>
@@ -239,8 +157,6 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
  ?>					
 				
 				
-				
-				
 					<div class="gamebox clearfix">
 						<div class="greyback">
 		<div class="whiteback">
@@ -292,9 +208,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 	<a class="gb_channelname" href="<?php echo $channelurl ?>"><?php echo $game['User']['username']; ?></a>
 	<a class="gb_gamename" href="<?php echo $playurl ?>"><?php echo $game['Game']['name']; ?></a>
 </div>	
-					<?php endforeach; ?>
-					
-					                                                                                                            
+					<?php endforeach; ?>                                                                                                         
 				</div>                      
 			</div>
 		</div>		

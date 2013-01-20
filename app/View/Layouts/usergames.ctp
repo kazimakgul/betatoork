@@ -19,20 +19,6 @@ if($userDesc == NULL){
 }
 
 ?>
-<?php $avatar = $this->Upload->url2($user,'User.picture'); ?>
-<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="<?php echo $userName ?>">
-<meta itemprop="description" content="Play games on <?php echo $userName ?> : <?php echo $userDesc ?> ">
-<link itemprop="url" href="<?php echo Router::url( $this->here, true ); ?>">
-<link itemprop="image" href="<?php echo $avatar ?>">
-</span>
-<link itemprop="thumbnailUrl" href="<?php echo $avatar ?>">
-<span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">
-<link itemprop="url" href="<?php echo $avatar ?>">
-<meta itemprop="width" content="90">
-<meta itemprop="height" content="120">
-</span>
-<meta itemprop="isFamilyFriendly" content="true">
 
 
 
@@ -124,9 +110,7 @@ $(function () {
 
 <?php  echo $this->element('knockout'); ?>
 
-<script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "2985e6d2-18ec-411c-bdd2-3f2ec2a0c832"}); </script>
+
 
 
 </head>

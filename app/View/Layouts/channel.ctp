@@ -18,9 +18,7 @@ echo $this->Html->meta('description','Toork is a social network for online gamer
 <meta property="fb:admins" content="711440119"/>
 <meta property="og:description" content="Create your own game channel."/>
 
-<?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','mychannel')); ?>
-
-
+<?php echo $this->Html->css(array('header','userpanel','gamebox','footer','jquery.fancybox-1.3.4','light_box_register','ui-lightness/jquery-ui-1.8.17.custom','slider','mychannel','channelwall')); ?>
 <?php echo $this->Html->script(array('jquery.min','jquery-ui-1.8.17.custom.min','jquery.cookie','jquery.fancybox-1.3.4.pack','jquery.lightbox_me','knockout-2.0.0','underscore','jquery.placeholder.min','jail','t_slider')); ?>
 
 <script type="text/javascript">
@@ -45,17 +43,9 @@ $(function () {
     }
   });
 });
-</script>
-
-
-<?php  echo $this->element('knockout'); ?>
-<!-- fb -->
-
-
+</script><!-- fb -->
 </head>
 <body class="home">
-
-
 <?php  echo $this->element('header'); ?>
 
 <?php echo $content_for_layout?>
