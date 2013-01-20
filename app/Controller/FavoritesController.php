@@ -83,6 +83,7 @@ public $helpers = array('Html', 'Form','Upload');
 	if($this->Favorite->save($this->request->data))
 				{
 				    $this->requestAction( array('controller' => 'userstats', 'action' => 'togglefav'));
+					$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$user_id,6,1));	
 					$this->set("favMessage","The favorite has been saved.");
 
 				}else{
@@ -95,6 +96,7 @@ public $helpers = array('Html', 'Form','Upload');
 			if($this->Favorite->Delete($favbefore["Favorite"]["id"]))
 			   {
 			     $this->requestAction( array('controller' => 'userstats', 'action' => 'togglefav'));
+				 $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$user_id,6,0));
 			     $this->set("favMessage","You removed this game from favorites.");
 			   }
 			   else

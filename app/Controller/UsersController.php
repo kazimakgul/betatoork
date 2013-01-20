@@ -213,7 +213,8 @@ public function __sendResetEmail($user_id) {
     public function login() {
     	$this->layout = 'base';
 		
-		
+		$this->set('title_for_layout', 'Toork - Login');
+		$this->set('description_for_layout', 'Login to Toork');	
 
     	if($this->request->is('post')){
     		if(empty($this->data['User']['username'])){
@@ -495,7 +496,8 @@ function secureSuperGlobalPOST($value)
 		$this->set('subscribeto', $subscribeto);
 		
 		
-		
+		$this->set('title_for_layout', 'Edit Channel');
+		$this->set('description_for_layout', 'Edit Your Channel');	
 		
 	}
 
@@ -672,6 +674,10 @@ public function adminedit($id = null) {
 		$subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 		$this->set('subscribe', $subscribe);
 		$this->set('subscribeto', $subscribeto);
+
+		$this->set('title_for_layout', 'Change Password');
+		$this->set('description_for_layout', 'Change your password');	
+
 	}
 
 /**

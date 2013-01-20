@@ -38,7 +38,7 @@ class AppController extends Controller {
         'Session','Cookie','RequestHandler',
 		'Facebook.Connect'=>array('model' => 'User'),
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'games', 'action' => 'channel'),
+            'loginRedirect' => array('controller' => 'wallentries', 'action' => 'wall'),
             'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
             'authorize' => array('Controller')
         )
@@ -82,7 +82,7 @@ class AppController extends Controller {
 
     public function beforeFilter() {
 		$this->loadModel('User');
-		$this->Auth->allow('index','checkUser','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames','connect','sync','syncallusers','incgameplay','incscribe','togglefav','totalrate','getgamecount','potential');
+		$this->Auth->allow('index','checkUser','view','register','login','logout','play','profile','usergames','playlist','search','display','activate','reset_request','reset_now','mostplayed','toprated','categorygames','followers','subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2','randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay','seoplay2','channelgames','connect','sync','syncallusers','incgameplay','incscribe','togglefav','totalrate','getgamecount','potential','message_ajax','moreupdates_ajax','comment_ajax','image_ajax','get_userdata','delete_message_ajax','delete_comment_ajax','action_ajax','get_gamedata','moreupdates_filter_ajax','gamefeed_ajax','view_ajax','mass_subscription','quick_subscription');
 
 		$this->set('user',$this->Auth->user());
 		

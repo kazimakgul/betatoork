@@ -138,7 +138,71 @@ class SubscriptionsController extends AppController {
 	}}
 	
 	
+	public function quick_subscription()
+	{
+	$this->loadModel('User');
+	$this->layout = "ajax";
+	$recommended=Configure::read('recommended.id');
 	
+	
+if($auth=$this->Auth->user('id'))
+{ 
+	
+    $check_it=$this->Subscription->find('first',array('contain'=>false,'fields'=>array('Subscription.subscriber_id'),'conditions'=>array('subscriber_id'=>$auth,'subscriber_to_id'=>$recommended)));
+	
+	if($check_it==NULL)
+	{
+		
+		
+		$this->Subscription->create();
+		$this->request->data['Subscription']['subscriber_id']=$auth;
+		$this->request->data['Subscription']['subscriber_to_id']=$recommended;
+		  if($this->Subscription->save($this->request->data))
+		  {
+		  //echo 'written';
+		  }
+	}	
+	
+}	
+	
+	}
+	
+	public function mass_subscription()
+	{
+	$this->layout = "ajax";
+	$recommended=Configure::read('recommended.id');
+	//Detect user ids' which has not chained to recommended.
+	$checked=$this->Subscription->find('all',array('contain'=>false,'fields'=>array('Subscription.subscriber_id'),'conditions'=>array('subscriber_to_id'=>$recommended)));
+	  
+        $i=0;
+		$checkedids=array();	  
+	    if($checked!=NULL)
+	    {
+	         foreach($checked as $checkeditems)
+		     {  
+		      $checkedids[$i]=$checkeditems['Subscription']['subscriber_id'];
+			  $i++;
+		     }
+	    }
+		
+		print_r($checkedids);
+		$targetids=$this->User->find('all',array('contain'=>false,'fields'=>array('User.id'),'conditions'=>array('NOT' => array('User.id' => $checkedids))));
+		
+		foreach($targetids as $targets)
+		{
+		echo $targets['User']['id'];
+		$this->Subscription->create();
+		$this->request->data['Subscription']['subscriber_id']=$targets['User']['id'];
+		$this->request->data['Subscription']['subscriber_to_id']=$recommended;
+		  if($this->Subscription->save($this->request->data))
+		  {
+		  echo 'written';
+		  }
+		
+		}
+		
+	
+	}
 	
 	
 	public function add_subscription() {
@@ -163,7 +227,7 @@ if ($this->request->is('get')) {
 				
 			if ($this->Subscription->save($this->request->data)) {
 				$this->set('SubMessage','Subscription saved.');
-				
+				$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$subscriber_to_id,$subscriber_id,5,1));	
 			} else {
 			$this->set('SubMessage','The subscription could not be saved. Please, try again.');
 				
@@ -176,7 +240,7 @@ if ($this->request->is('get')) {
 			$this->Subscription->id = $subscribebefore["Subscription"]["id"];
 			if ($this->Subscription->delete()) {
 			$this->set('SubMessage','Subscription deleted');
-			
+			$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$subscriber_to_id,$subscriber_id,5,0));	
 			
 		}
 			}
@@ -184,6 +248,7 @@ if ($this->request->is('get')) {
 			
 		}
 		$this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
+		
 	}
 
 /**

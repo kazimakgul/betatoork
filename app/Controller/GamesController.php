@@ -8,8 +8,8 @@
 class GamesController extends AppController {
 
 	public $name = 'Games';
-	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat');
-    public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook','Cache');
+	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category');
+    public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
 
 
@@ -77,6 +77,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('newgames', $cond3);
 
 		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel');
+		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
 	}
 	
 	
@@ -95,7 +96,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		
 		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
 
-		$this->set('title_for_layout', 'Toork - Most Played Games - find the most played online games and play trend topic games using Toork');
+		$this->set('title_for_layout', 'Toork - Most Played Games');
+		$this->set('description_for_layout', 'Toork - find the most played online games and channels and play trend topic games');
 	}
 	
 	public function lastadded() {
@@ -108,7 +110,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		
 		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
 
-		$this->set('title_for_layout', 'Toork - Last Added Games');
+		$this->set('title_for_layout', 'Toork - New Games');
+		$this->set('description_for_layout', 'Toork - Find the latest and popular online games so fresh and new games. Enjoy');
 	}
 
 
@@ -141,7 +144,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 
 
-		$limit=12;
+		$limit=4;
 		$limit2=6;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.created' => 'desc'
     )));
@@ -173,6 +176,10 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
     	$this->set('limit', $limit);
     	$this->set('limit2', $limit2);
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
+		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+		
+	//Add recommended channel as chain
+	$this->requestAction( array('controller' => 'subscriptions', 'action' => 'quick_subscription'));
 	}
 
 
@@ -187,6 +194,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
     	$this->set('userid', $userid);
     	$this->set('mygames', $this->paginate('Game',array('Game.active'=>'1', 'Game.user_id'=>$userid)));
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
+		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
 	}
 
 		public function allchannelfavorites() {
@@ -200,6 +208,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
     	$this->set('userid', $userid);
     	$this->set('favorites',$this->paginate('Favorite',array('Game.active'=>'1','Favorite.user_id'=>$userid)));
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
+		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
 	}
 	
 	
@@ -210,7 +219,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1')));
 
-		$this->set('title_for_layout', 'Toork - Top Rated Games - find the best online games and play the most popular games using Toork');
+		$this->set('title_for_layout', 'Toork - Top Rated Games');
+		$this->set('description_for_layout', 'Find the best and toprated online games and play and rate popular games online');	
 	}
 
 	public function playedgames() {
@@ -225,6 +235,9 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
     $this->set('username', $userName);
 	$this->set('userid', $userid);
+	$this->set('title_for_layout',  $userName.' - Played Games - Toork');
+	$this->set('description_for_layout', 'Find all the games that'.$userName.' played recently');
+
 	}
 
 	public function categorygames() {
@@ -232,10 +245,48 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->leftpanel();
 		$this->logedin_user_panel();
 		$catid = $this->request->params['pass'][0];
-
+		$category = $this->Category->find('first', array('conditions' => array('Category.id' => $catid)));
+		$catName = $category['Category']['name'];
 		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1','Game.category_id'=>$catid)));
 
-		$this->set('title_for_layout', 'Toork - Top Rated Category Games');
+		$this->set('title_for_layout',  $catName.' - Top Rated '.$catName.' Games - Toork');
+		if($catName == 'Action'){
+			$this->set('description_for_layout', 'An action game requires players to use quick reflexes, accuracy, and timing to overcome obstacles.');
+		}elseif($catName == 'Adventure'){
+			$this->set('description_for_layout', 'Adventure games put little pressure on the player in the form of action-based challenges or time constraints, adventure games have had the unique ability to appeal to people who do not normally play video games');
+		}elseif($catName == 'Race'){
+			$this->set('description_for_layout', 'Racing games typically place the player in the drivers seat of a high-performance vehicle and require the player to race against other drivers or sometimes just time.');
+		}elseif($catName == 'Shooting'){
+			$this->set('description_for_layout', 'First-person shooter video games, commonly known as FPSs, emphasize shooting and combat from the perspective of the character controlled by the player.');
+		}elseif($catName == 'Board'){
+			$this->set('description_for_layout', 'Many popular board games have computer versions. AI opponents can help improve ones skill at traditional games. Chess, Checkers, Othello and Backgammon have world class computer programs.');
+		}elseif($catName == 'Multiplayer'){
+			$this->set('description_for_layout', 'Party games are video games developed specifically for multiplayer games between many players. Normally, party games have a variety of mini-games that range between collecting more of a certain item than other players or having the fastest time at something.');
+		}elseif($catName == 'Puzzle'){
+			$this->set('description_for_layout', 'Puzzle games require the player to solve logic puzzles or navigate complex locations such as mazes. They are well suited to casual play, and tile-matching puzzle games are among the most popular casual games.');
+		}elseif($catName == 'Card'){
+			$this->set('description_for_layout', 'All popular card games have computer versions. AI opponents can help improve ones skill at traditional games. ');
+		}elseif($catName == '3D'){
+			$this->set('description_for_layout', 'Play real time 3d games which are choosen by experienced players');
+		}elseif($catName == 'Kids'){
+			$this->set('description_for_layout', 'Kids games are safe for kids under 13. Enjoy these kids games');
+		}elseif($catName == 'Girls'){
+			$this->set('description_for_layout', 'Games especially designed for girls');
+		}elseif($catName == 'Word'){
+			$this->set('description_for_layout', 'Play most popular word games');
+		}elseif($catName == 'Role-Playing'){
+			$this->set('description_for_layout', 'Role-playing video games draw their gameplay from traditional role-playing games. Most cast the player in the role of one or more adventurers who specialize in specific skill sets while progressing through a predetermined storyline.');
+		}elseif($catName == 'Fighting'){
+			$this->set('description_for_layout', 'Fighting games emphasize one-on-one combat between two characters, one of which may be computer controlled. These games are usually played by linking together long chains of button presses on the controller to use physical attacks to fight.');
+		}elseif($catName == 'MMORPG'){
+			$this->set('description_for_layout', 'Massively multiplayer online role-playing games, or MMORPGs, emerged in the mid to late 1990s as a commercial, graphical variant of text-based MUDs, which had existed since 1978.');
+		}elseif($catName == 'Sports'){
+			$this->set('description_for_layout', 'Sports games emulate the playing of traditional physical sports. Some emphasize actually playing the sport, while others emphasize the strategy behind the sport.');
+		}elseif($catName == 'Social'){
+			$this->set('description_for_layout', 'Social simulation games base their gameplay on the social interaction between multiple artificial lives.');
+		}else{
+			$this->set('description_for_layout',  $catName.' - Best games in this category');
+		}
 	}
 
 	public function logedin_user_panel() {
@@ -264,16 +315,19 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		public function usergame_user_panel($userid=NULL) {
 
 		$this->layout='base';
-		
-		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid)));
-	    
-	    $this->set('user',$channelstat);
+	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
+	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
+		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	    $this->set('user',$user);
         $this->set('userid', $userid);
-	    $this->set('gamenumber', $channelstat['Userstat']['uploadcount']);
-	    $this->set('favoritenumber', $channelstat['Userstat']['favoritecount']);
-	    $this->set('subscribe', $channelstat['Userstat']['subscribe']);
-	    $this->set('subscribeto', $channelstat['Userstat']['subscribeto']);
-	    $this->set('playcount', $channelstat['Userstat']['playcount']);
+	    $this->set('gamenumber', $gamenumber);
+	    $this->set('favoritenumber', $favoritenumber);
+	    $this->set('subscribe', $subscribe);
+	    $this->set('subscribeto', $subscribeto);
+	    $this->set('playcount', $playcount);
 
 	}
 	
@@ -282,9 +336,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 	public function play2_user_panel($userid) {
 
-     
 		$channelstat = $this->User->find('first',array('conditions' => array('User.id' => $userid)));
-		
+	    
 	    $this->set('userid', $userid);
 	    $this->set('gamenumber', $channelstat['Userstat']['uploadcount']);
 	    $this->set('favoritenumber', $channelstat['Userstat']['favoritecount']);
@@ -375,14 +428,7 @@ public function channelgames() {
 
 	$this->leftpanel();
     $seo_username = $this->request->params['pass'][0];
-	
-	
-	if(!($user=Cache::read('channelgames-user'.$seo_username)))
-	{
-	$user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
-	Cache::write('channelgames-user'.$seo_username,$user);
-	}
-	
+    $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
 	$userid=$user['User']['id'];
 	$this->usergame_user_panel($userid);
 	$this->layout='usergames';
@@ -393,10 +439,8 @@ public function channelgames() {
 		//Get the list of subscriptions of auth user.
 		   if($authid!=NULL)
 		   {
-		   
 		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
 		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
-		   
 		   $mutuals=array_intersect($listofmine,$listofuser);
 		   $this->set('mutuals',$mutuals);
 		   }else{
@@ -404,15 +448,13 @@ public function channelgames() {
 		   }
 
     $userName = $user['User']['username'];
-	$limit=12;
+	$limit=4;
 	$limit2=6;
-	
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 	
-	
 	$this->set('title_for_layout', $userName.' - Welcome to '.$userName."'s game channel published by Toork");
-    
+	$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
 	//$cond2= $this->Favorite->find('all',array('conditions' => array('Favorite.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     //)));
 	
@@ -420,30 +462,17 @@ public function channelgames() {
 	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
 	
 	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
+//print_r($cond2);
 	
 	$this->set('users', $subCond);
-	/*
-	comment out alanda bulunan kodlar büyük ihtimalle silinecek!!!
-	if(!($top_rated_games=Cache::read('channelgames-topratedgames')))
-	{
-	$top_rated_games=$this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
-	Cache::write('channelgames-topratedgames',$top_rated_games);
-	}
-    $this->set('top_rated_games',$top_rated_games);
-	*/
 	
-	$gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	
-	
+    $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
+    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+    
     if($gamenumber >= 3){
     	    $this->set('slider', $cond);
     }else{
-	        if(!($slider=Cache::read('channelgames-slider')))
-	        {
-    		$slider=$this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
-			Cache::write('channelgames-slider',$slider);
-			}
-			$this->set('slider',$slider);
+    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     }
 
 	if($user['User']['verify']!=null){
@@ -476,6 +505,10 @@ public function channelgames() {
     $this->set('mygames', $this->paginate('Game',array('Game.active' => '1','Game.user_id'=>$userid)));
     $this->set('username', $userName);
 	$this->set('user_id', $userid);
+
+	$this->set('title_for_layout',$userName.' - All Channel Games');
+	$this->set('description_for_layout', 'Find all the games that are published by '.$userName);
+	
 }
 
 	public function alluserfavorites() {
@@ -496,7 +529,10 @@ public function channelgames() {
     $this->set('favorites',$this->paginate('Favorite',array('Favorite.user_id'=>$userid)));
     $this->set('username', $userName);
 	$this->set('user_id', $userid);
-	//$this->set('user_name_dict', $this->get_user_dict($cond2));
+
+	$this->set('title_for_layout',$userName.'- All Favorite Games');
+	$this->set('description_for_layout', 'Find all the games that are favorited by '.$userName);	
+
 }
 
 
@@ -525,6 +561,7 @@ public function channelgames() {
     	$userName = $user['User']['username'];
     	$this->set('user_id', $userid);
 		$this->set('title_for_layout', $userName.' - Followers');
+		$this->set('description_for_layout', $userName.' - All the followers of '.$userName);
 		$this->set('username', $userName);
 
 		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_to_id' => $userid)));
@@ -553,7 +590,8 @@ public function channelgames() {
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
     	$this->set('user_id', $userid);
-		$this->set('title_for_layout', $userName.' - Subscribtions');
+		$this->set('title_for_layout', $userName.' - Chains');
+		$this->set('description_for_layout', $userName.' - All the chains of '.$userName);
 		$this->set('username', $userName);
 
 		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
@@ -579,6 +617,7 @@ public function channelgames() {
 		   }
 
 		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
+		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
 		$this->set('user_id', $userid);
 		$this->set('users', $this->paginate('User',array('User.active' => '1')));
 
@@ -624,8 +663,8 @@ $cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.des
 $this->set('search', $this->paginate('Game',$cond));
 $this->set('mygames', $cond);
 
-$this->set('title_for_layout', 'Toork - Game Search Engine powered by Google. Toork Search is specially designed for searching games');
-
+$this->set('title_for_layout', 'Toork - Game Search Engine');
+$this->set('description_for_layout', 'Toork - Game Search Engine powered by Google. Toork Search is specially designed for searching games');
 }
 
 
@@ -873,19 +912,9 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('randomuser',$this->Session->read('Random.user'));
 		}
 		
-		
-	if(!($channel_id=Cache::read('seoplay2-channel_id'.$channel)))
-	{
-	$channel_id = $this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
-	Cache::write('seoplay2-channel_id'.$channel,$channel_id);
-	}
-		
-		
-		if(!($game=Cache::read('seoplay2-game'.$seo_url.$channel_id['User']['id'])))
-	{
+		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
+
 		$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
-		Cache::write('seoplay2-game'.$seo_url.$channel_id['User']['id'],$game);
-	}
 
 		if($game!=NULL)
 		$id=$game['Game']['id'];
@@ -898,13 +927,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		$user_id = $game['User']['id'];
 		$auth_id = $this->Auth->user('id');
-		
-		if(!($cond=Cache::read('seoplay2-cond'.$user_id)))
-	    {
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$user_id),'limit' => 4,'order' => array('Game.recommend' => 'desc')));
-		Cache::write('seoplay2-cond'.$user_id,$cond);
-		}
-		
 		$this->play2_user_panel($user_id);
 		$this->set('sharedby',$game['User']['username']);//Recoded
         $this->set('username', $game['User']['username']);
@@ -915,14 +938,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
         
 		//start size calculation for play page-Recoded
-		
-		
-		if(!($current=Cache::read('seoplay2-current'.$auth_id.$id)))
-	    {
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$auth_id,"Rate.game_id"=>$id),'contain'=>false,'fields'=>'Rate.current'));
-		Cache::write('seoplay2-current'.$auth_id.$id,$current);
-		}
-		
 		$starsize=(100*$current["Rate"]["current"])/5;
 		if($starsize==NULL)
 		{   
@@ -1002,6 +1018,7 @@ function getExtension($str) {
 				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
 			
 			$id=$this->Game->getLastInsertId();
+			$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));	
 				
 			//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
@@ -1042,6 +1059,9 @@ function getExtension($str) {
 		$users = $this->Game->User->find('list');
 		$categories = $this->Game->Category->find('list');
 		$this->set(compact('users', 'categories'));
+
+	$this->set('title_for_layout','Add New Game');
+	$this->set('description_for_layout', 'You are able to add a new game');		
 		
 	}
 
@@ -1169,6 +1189,9 @@ function getExtension($str) {
 		$users = $this->Game->User->find('list');
 		$categories = $this->Game->Category->find('list');
 		$this->set(compact('users', 'categories'));
+
+	$this->set('title_for_layout','Edit Your Game');
+	$this->set('description_for_layout', 'You are able to edit your game');			
 	}
 
 /**
