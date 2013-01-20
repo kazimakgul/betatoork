@@ -79,9 +79,9 @@ public $perpage = 10; // Uploads perpage
         // More Button End
 	   if($type==NULL)	
        {
-	$query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type,U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M LEFT JOIN Games G on M.game_id=G.id, users U   WHERE M.uid_fk=U.id and M.uid_fk='$uid' $morequery order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
+	$query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type,U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M LEFT JOIN games G on M.game_id=G.id, users U   WHERE M.uid_fk=U.id and M.uid_fk='$uid' $morequery order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
 	   }else{
-	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type,U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M LEFT JOIN Games G on M.game_id=G.id, users U   WHERE M.type='$type' AND M.uid_fk=U.id and M.uid_fk='$uid' $morequery order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
+	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type,U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M LEFT JOIN games G on M.game_id=G.id, users U   WHERE M.type='$type' AND M.uid_fk=U.id and M.uid_fk='$uid' $morequery order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
 	   }
 	
         while($row=mysql_fetch_array($query))
@@ -114,10 +114,10 @@ public $perpage = 10; // Uploads perpage
 	   
 	   if($type==NULL)
 	   {
-	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM Messages M INNER JOIN Users U on M.uid_fk=U.id LEFT JOIN Games G on M.game_id=G.id  WHERE (M.uid_fk IN(SELECT `subscriber_to_id` FROM `subscriptions` WHERE `subscriber_id`='$uid') $morequery) OR (M.uid_fk='$uid' $morequery) order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
+	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM Messages M INNER JOIN Users U on M.uid_fk=U.id LEFT JOIN games G on M.game_id=G.id  WHERE (M.uid_fk IN(SELECT `subscriber_to_id` FROM `subscriptions` WHERE `subscriber_id`='$uid') $morequery) OR (M.uid_fk='$uid' $morequery) order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
 	   }else{
 	   //if type parameter is not null,get specific type of datas.
-	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM Messages M INNER JOIN Users U on M.uid_fk=U.id LEFT JOIN Games G on M.game_id=G.id  WHERE (M.uid_fk IN(SELECT `subscriber_to_id` FROM `subscriptions` WHERE `subscriber_id`='$uid') AND M.type='$type' $morequery) OR (M.uid_fk='$uid' $morequery) AND (M.type='$type' $morequery)  order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
+	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM Messages M INNER JOIN Users U on M.uid_fk=U.id LEFT JOIN games G on M.game_id=G.id  WHERE (M.uid_fk IN(SELECT `subscriber_to_id` FROM `subscriptions` WHERE `subscriber_id`='$uid') AND M.type='$type' $morequery) OR (M.uid_fk='$uid' $morequery) AND (M.type='$type' $morequery)  order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
 	   
 	   }
 
