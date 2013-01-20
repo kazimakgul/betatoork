@@ -88,12 +88,6 @@ CakePlugin::loadAll();
 Configure::load('Recaptcha.key');
 CakePlugin::load('Facebook');
 
-
-
-Configure::write('Dispatcher.filters', array(
-    'CacheDispatcher'
-));
-
 /**
  * The settings below can be used to set additional paths to models, views and controllers.
  *
