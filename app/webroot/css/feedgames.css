@@ -1,0 +1,6 @@
+﻿.content{width:1230px !important}
+.boardfeed{display:block; width:40px; margin-right:40px; background-image:url(../img/t_wall_feed_btns.png); background-position:0px 0px;}   
+.boardgames{display:block; width:60px; margin-right:45px; background-image:url(../img/t_wall_feed_btns.png); background-position:-80px -17px;}
+.boardphoto{display:block; width:50px; margin-right:40px; background-image:url(../img/t_wall_feed_btns.png); background-position:-185px 0px;}
+.boardvideo{display:block; width:50px; background-image:url(../img/t_wall_feed_btns.png); background-position:-275px 0px;}       
+.boardmenupointer{width:26px; height:16px; position:relative; background-image:url(../img/t_wall_feed_pointer.png); top:17px; left:431px;}/**/
