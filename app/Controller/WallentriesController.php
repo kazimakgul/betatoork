@@ -840,8 +840,8 @@ public function image_ajax() {
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
-			
-            }break;
+			break;
+            }
 			//Upload to aws ends
 
 error_reporting(0);
