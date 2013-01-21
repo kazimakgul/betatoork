@@ -822,41 +822,7 @@ public function image_ajax() {
       App::uses('Folder', 'Utility');
       App::uses('File', 'Utility');
 
-            
-
-            //Upload to aws begins
-			$dir = new Folder(WWW_ROOT ."/wall");
-		    $files = $dir->find('.*');
-		    foreach ($files as $file) {
-            $file = new File($dir->pwd() . DS . $file);
-            $info=$file->info();
-			$basename=$info["basename"];
-			$dirname=$info["dirname"];
-			//echo $file;
-			 $this->Amazon->S3->create_object(
-            Configure::read('S3.name'),
-            'wall/'.$basename,
-             array(
-            'fileUpload' => WWW_ROOT ."wall/".$basename,
-            'acl' => AmazonS3::ACL_PUBLIC
-            )
-            );
-			
-            }
-			//Upload to aws ends
-			
-			
-			//Folder Formatting begins
-			$dir = new Folder(WWW_ROOT ."wall/");
-		    $files = $dir->find('.*');
-		    foreach ($files as $file) {
-            $file = new File($dir->pwd() . DS . $file);
-            $file->delete();
-            $file->close(); 
-            }
-			//Folder Formatting ends
-			
-
+  
 error_reporting(0);
 App::import('Vendor', 'wallscript/config');
 $path='wall/';
@@ -903,6 +869,39 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
 				
 				
                 if (move_uploaded_file($tmp, $path.$actual_image_name)) {
+				
+		    //Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/wall");
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'wall/'.$basename,
+             array(
+            'fileUpload' => WWW_ROOT ."wall/".$basename,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+			
+			
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."wall/");
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
+				   
 			
                     $data = $Wall -> Image_Upload($uid, $actual_image_name);
                     $newdata = $Wall -> Get_Upload_Image($uid, $actual_image_name);
