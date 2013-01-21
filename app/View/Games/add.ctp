@@ -62,7 +62,7 @@
         <li>
             <label for="message">Game Description:</label>
 
-<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>280,'required','placeholder' => 'Describe the game you share please','type' => 'textarea','cols'=>'40','rows'=>'5' )); ?>
+<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>400,'required','placeholder' => 'Describe the game you share please','type' => 'textarea','cols'=>'40','rows'=>'5' )); ?>
 
             <span class="form_hint">recommendation : "your description must be between 50-300 chars please"</span>
         </li>
