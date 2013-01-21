@@ -834,7 +834,7 @@ public function image_ajax() {
 			//echo $file;
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
-            'upload/wall/'.$id."/".$basename,
+            'upload/wall/'.$basename,
              array(
             'fileUpload' => WWW_ROOT ."/wall/",
             'acl' => AmazonS3::ACL_PUBLIC
