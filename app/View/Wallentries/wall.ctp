@@ -127,7 +127,8 @@ $photolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','
 								<div type="submit" class="update_button" id="update_button" value="">Share</div>
 								<a href="javascript:void(0);" id="camera" title="Upload Image"><!--<img src="<?php echo $this->webroot;?>app/webroot/img/wall/icons/camera.png" border="0" />--></a> 
 								<!--<a href="javascript:void(0);" id="webcam_button" title="Webcam Snap"><img src="<?php echo $this->webroot;?>app/webroot/img/wall/icons/web-cam.png"  border="0" style='margin-top:5px'/></a>-->
-								<a href="javascript:void(0);" id="addgame_button" title="Add Game"></a>
+								<!--<a href="javascript:void(0);" id="addgame_button" title="Add Game"></a>-->
+								<a href="javascript:void(0);" id="addgame_btn" title="Add Game"></a>
 								<a href="javascript:void(0);" id="my_channel" title="My Channel">My Channel</a>
 								
 							</span>

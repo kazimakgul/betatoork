@@ -13,6 +13,7 @@ $(document).ready(function()
 	$("#camera").livequery(function () { $(this).tipsy({gravity: 'n'}); });
 	$("#webcam_button").livequery(function () { $(this).tipsy({gravity: 'n'}); });
 	$("#addgame_button").livequery(function () { $(this).tipsy({gravity: 'n'}); });
+	$("#addgame_btn").livequery(function () { $(this).tipsy({gravity: 'n'}); });
 	$("#update").focus();
 	$('a[rel*=facebox]').livequery(
 		function () { 

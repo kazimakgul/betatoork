@@ -91,5 +91,6 @@ overflow:auto; padding:10px;width:622px; font-size:11px;display:none;
 .selectinputborder{border:1px solid #BDC7D8;}
 #camera{background-image:url(../img/wall/icons/camera.png); width:30px; height:28px; display:block; margin-right:5px; margin-top:10px; border: 1px solid #0C6296; float:right;}
 #addgame_button{background-image:url(../img/wall/icons/game_pad_new.png); width:30px; height:28px; display:block; margin-right:5px; margin-top:10px; border: 1px solid #0C6296; float:right;}
+#addgame_btn{background-image:url(../img/wall/icons/game_pad_new.png); width:30px; height:28px; display:block; margin-right:5px; margin-top:10px; border: 1px solid #0C6296; float:right;}
 #my_channel{color:#FFF; font-weight:bold; border:solid 1px #0c6296; margin-top:10px; cursor:pointer; width:98px; padding-left:25px; padding-top:5px; height:23px; float:right; margin-right:5px; margin-top:10px; background-color:#0a75b6; float:right;}
 #my_channel:hover{color:#FFF; font-weight:bold; border:solid 1px #0c6296; margin-top:10px; cursor:pointer; width:98px; padding-left:25px; padding-top:5px; height:23px; float:right; margin-right:5px; margin-top:10px; background-color:#1e8acb; float:right; text-decoration:none;}
