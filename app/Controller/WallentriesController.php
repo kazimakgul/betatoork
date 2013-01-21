@@ -831,14 +831,17 @@ public function image_ajax() {
 			$basename=$info["basename"];
 			$dirname=$info["dirname"];
 			//echo $file;
-			 $this->Amazon->S3->create_object(
+			 if($this->Amazon->S3->create_object(
             Configure::read('S3.name'),
             'upload/wall/865'.$basename,
              array(
             'fileUpload' => WWW_ROOT ."/upload/wall/865/".$basename,
             'acl' => AmazonS3::ACL_PUBLIC
-            )
-            );
+            ))
+			{
+			echo 'posted';
+            }
+			);
 			
             }
 			//Upload to aws ends
