@@ -9,6 +9,7 @@ class WallentriesController extends AppController {
     
 	
     public $helpers = array('Html', 'Form','Upload','Facebook.Facebook');
+	public $components = array('Amazonsdk.Amazon');
 /**
  * index method
  *
@@ -822,7 +823,7 @@ public function image_ajax() {
       App::uses('File', 'Utility');
 
 //Upload to aws begins
-/*
+
 			$dir = new Folder(WWW_ROOT ."/wall/");
 		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
@@ -840,7 +841,7 @@ public function image_ajax() {
             )
             );
 			
-            }*/
+            }
 			//Upload to aws ends
 
 error_reporting(0);
