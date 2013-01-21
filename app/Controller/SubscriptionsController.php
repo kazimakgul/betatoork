@@ -173,6 +173,11 @@ if($auth=$this->Auth->user('id'))
 	public function mass_subscription()
 	{
 	$this->layout = "ajax";
+	  //if varswitch equal to 0 function will be stopped.
+	  $varswitch=0;
+	  if($varswitch==0)
+	  $this->redirect('/');
+	
 	$recommended=Configure::read('recommended.id');
 	//Detect user ids' which has not chained to recommended.
 	$checked=$this->Subscription->find('all',array('contain'=>false,'fields'=>array('Subscription.subscriber_id'),'conditions'=>array('subscriber_to_id'=>$recommended)));
