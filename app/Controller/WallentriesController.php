@@ -824,7 +824,7 @@ public function image_ajax() {
 
 //Upload to aws begins
 
-			$dir = new Folder(WWW_ROOT ."/wall/");
+			$dir = new Folder(WWW_ROOT ."wall");
 		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
@@ -836,7 +836,7 @@ public function image_ajax() {
             Configure::read('S3.name'),
             'upload/wall/'.$basename,
              array(
-            'fileUpload' => WWW_ROOT ."/wall/",
+            'fileUpload' => WWW_ROOT ."wall",
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
