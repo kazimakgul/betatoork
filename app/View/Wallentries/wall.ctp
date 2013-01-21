@@ -23,6 +23,8 @@ $feedlink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall'));
 $gamelink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','games'));
 $videolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','videos'));
 $photolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','photos'));
+$mychannel=$this->Html->url(array("controller" => 'games',"action" =>"channel"));
+$add_game=$this->Html->url(array("controller" => 'games',"action" =>"add"));
 ?>
 <div class="content clearfix">
 	<div class="channel_left_panel">
@@ -128,8 +130,8 @@ $photolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','
 								<a href="javascript:void(0);" id="camera" title="Upload Image"><!--<img src="<?php echo $this->webroot;?>app/webroot/img/wall/icons/camera.png" border="0" />--></a> 
 								<!--<a href="javascript:void(0);" id="webcam_button" title="Webcam Snap"><img src="<?php echo $this->webroot;?>app/webroot/img/wall/icons/web-cam.png"  border="0" style='margin-top:5px'/></a>-->
 								<!--<a href="javascript:void(0);" id="addgame_button" title="Add Game"></a>-->
-								<a href="javascript:void(0);" id="addgame_btn" title="Add Game"></a>
-								<a href="<?php echo $channelurl; ?>" id="my_channel" title="My Channel">My Channel</a>
+								<a href="<?php echo $add_game; ?>" id="addgame_btn" title="Add Game"></a>
+								<a href="<?php echo $mychannel; ?>" id="my_channel" title="My Channel">My Channel</a>
 								
 							</span>
 						</div>	
