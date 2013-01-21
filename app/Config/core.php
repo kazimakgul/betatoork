@@ -250,7 +250,7 @@ $multiple=array(
 Configure::write('multiples',$multiple);
 
 # Channel Id of recommended channel
-Configure::write('recommended.id',45);
+Configure::write('recommended.id',24);
 
 # Broken Image Settings
 $broken=array(
