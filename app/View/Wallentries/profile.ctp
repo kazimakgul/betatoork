@@ -25,10 +25,12 @@ $photolink=$this->Html->url(array('controller'=>$channeldata['User']['seo_userna
 ?>
 <div class="content clearfix">
 	<div class="channel_left_panel">
-	<?php  echo $this->element('logged_user_panel'); ?>
-	<?php echo $this->element('social'); ?>
-	<?php echo $this->element('best_channels_left_menu'); ?>
-	<?php echo $this->element('categories_left_menu'); ?>
+		<?php echo $this->element('logged_user_panel'); ?>
+		<?php echo $this->element('subscribe'); ?>
+		<?php echo $this->element('social'); ?>
+		<?php echo $this->element('best_channels_left_menu'); ?>
+		<?php echo $this->element('categories_left_menu'); ?>
+		
 	</div>
 	<div class="right_panel clearfix">
 		<div class="wall_leftside">

@@ -1,13 +1,13 @@
 <?php
-$addgame=$this->Html->url(array( "controller" => "games","action" =>"add"));
-$top=$this->Html->url(array( "controller" => "games","action" =>"toprated"));
-$most=$this->Html->url(array( "controller" => "games","action" =>"mostplayed"));
-$best=$this->Html->url(array( "controller" => "games","action" =>"bestchannels"));
+	$addgame=$this->Html->url(array( "controller" => "games","action" =>"add"));
+	$top=$this->Html->url(array( "controller" => "games","action" =>"toprated"));
+	$most=$this->Html->url(array( "controller" => "games","action" =>"mostplayed"));
+	$best=$this->Html->url(array( "controller" => "games","action" =>"bestchannels"));
 ?>
 
 <div class="content clearfix">
 	<div class="channel_left_panel">
-		<?php  echo $this->element('channel_user_panel'); ?>
+		<?php echo $this->element('channel_user_panel'); ?>
 		<?php echo $this->element('best_channels_left_menu'); ?>
 		<?php echo $this->element('categories_left_menu'); ?>
 	</div>
