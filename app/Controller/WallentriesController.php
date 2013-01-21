@@ -822,9 +822,8 @@ public function image_ajax() {
       App::uses('Folder', 'Utility');
       App::uses('File', 'Utility');
 
-//Upload to aws begins
-
-			$dir = new Folder(WWW_ROOT ."wall");
+            //Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/upload/games/100");
 		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
@@ -834,13 +833,13 @@ public function image_ajax() {
 			//echo $file;
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
-            'upload/wall/'.$basename,
+            'upload/games/'.$id."/".$basename,
              array(
-            'fileUpload' => WWW_ROOT ."wall",
+            'fileUpload' => WWW_ROOT ."/upload/games/100/".$basename,
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
-			break;
+			
             }
 			//Upload to aws ends
 
