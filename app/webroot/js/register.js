@@ -11,6 +11,14 @@ $(function () {
     var errpas, errun, errmail,errfor = true;
     var mailRegex = /[aA-zZ0-9._%+-]+@[aA-zZ0-9.-]+\.[aA-zZ]{2,4}/;
 	
+	//header menu
+	$('.menu a').mouseenter(function () {
+		var positions = $(this).position();
+		$('.pointer').animate({ left: positions.left }, 200);
+		$('.menu_up').animate({ left: -positions.left }, 200);
+	});
+	//header menu
+	
 	$('.t_regbox_regform input').keypress(function (e) {
 	    if (!errpass && !errun && !errmail && e.which == 13) {
             $('.t_regbox_signform').animate({ left: '-=350' }, 300);
