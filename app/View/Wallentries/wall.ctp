@@ -3,19 +3,18 @@ if(isset($type))
 {
     switch($type)
 	{
-	case 1:
-	$this->Html->css('feedgames', null, array('inline' => false));
-	break;
-	case 4:
-	$this->Html->css('feedvideo', null, array('inline' => false));
-	break;
-	case 3:
-	$this->Html->css('feedphoto', null, array('inline' => false));
-	break;
-	}
-	
+		case 1:
+		$this->Html->css('feedgames', null, array('inline' => false));
+		break;
+		case 4:
+		$this->Html->css('feedvideo', null, array('inline' => false));
+		break;
+		case 3:
+		$this->Html->css('feedphoto', null, array('inline' => false));
+		break;
+	}	
 }else{
-$this->Html->css('feedfeed', null, array('inline' => false));
+	$this->Html->css('feedfeed', null, array('inline' => false));
 }
 
 
@@ -124,11 +123,13 @@ $photolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','
 							<div id='flashmessage'>
 								<div id="flash" align="left"></div>
 							</div>							
-							<div type="submit" class="update_button" id="update_button" value="">Share</div>
 							<span style="float:right">
+								<div type="submit" class="update_button" id="update_button" value="">Share</div>
 								<a href="javascript:void(0);" id="camera" title="Upload Image"><!--<img src="<?php echo $this->webroot;?>app/webroot/img/wall/icons/camera.png" border="0" />--></a> 
 								<!--<a href="javascript:void(0);" id="webcam_button" title="Webcam Snap"><img src="<?php echo $this->webroot;?>app/webroot/img/wall/icons/web-cam.png"  border="0" style='margin-top:5px'/></a>-->
-								<!--<a href="javascript:void(0);" id="addgame_button" title="Add Game" style="margin-right:10px;"><img src="<?php echo $this->webroot;?>app/webroot/img/wall/icons/game_pad.png"  border="0" style='margin-top:5px;'/></a>-->
+								<a href="javascript:void(0);" id="addgame_button" title="Add Game"></a>
+								<a href="javascript:void(0);" id="my_channel" title="My Channel">My Channel</a>
+								
 							</span>
 						</div>	
 					</div>
