@@ -41,7 +41,7 @@ foreach($s as $a)
   if($newdata)
   {
   $uploadimageurl=$this->webroot.'wall/'.$newdata['image_path'];
-  echo "<a href='".$uploadimageurl."' rel='facebox'>".$this->Html->image("/wall/".$newdata['image_path'],array('rel'=>'facebox','class'=>'imgpreview'))."</a>";
+  echo "<a href='".$uploadimageurl."' rel='facebox'>".$this->Html->image(Configure::read('S3.url')."/wall/".$newdata['image_path'],array('rel'=>'facebox','class'=>'imgpreview'))."</a>";
   }
 }
 echo "</div>";
