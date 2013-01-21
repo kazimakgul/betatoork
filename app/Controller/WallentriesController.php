@@ -822,6 +822,8 @@ public function image_ajax() {
       App::uses('Folder', 'Utility');
       App::uses('File', 'Utility');
 
+$auth_id=$this->Auth->user('id');
+
             //Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/wall");
 		    $files = $dir->find('.*');
@@ -833,9 +835,9 @@ public function image_ajax() {
 			//echo $file;
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
-            'wall/'.$basename,
+            'wall/'.$auth_id."/".$basename,
              array(
-            'fileUpload' => WWW_ROOT ."wall/".$basename,
+            'fileUpload' => WWW_ROOT ."wall/".$auth_id."/".$basename,
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
