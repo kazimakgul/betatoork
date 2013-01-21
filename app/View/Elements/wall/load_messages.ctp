@@ -96,7 +96,7 @@ $newdata=$Wall->Get_Upload_Image_Id($a);
   if($newdata)
   {
   $uploadimageurl=$this->webroot.'wall/'.$newdata['image_path'];
-  echo "<a href='".$uploadimageurl."' rel='facebox'>".$this->Html->image("/wall/".$newdata['image_path'],array('rel'=>'facebox','class'=>'imgpreview'))."</a>";
+  echo "<a href='".$uploadimageurl."' rel='facebox'>".$this->Html->image("https://s3.amazonaws.com/betatoorkpicstest/upload/".$newdata['image_path'],array('rel'=>'facebox','class'=>'imgpreview'))."</a>";
   }
 }
 echo "</div>";
