@@ -859,7 +859,32 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
             if ($size < (1024 * 1024)) {
                 $actual_image_name = time().$uid.".".$ext;
                 $tmp = $_FILES['photoimg']['tmp_name'];
+				
+				
+				
                 if (move_uploaded_file($tmp, $path.$actual_image_name)) {
+				
+				//Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/wall/");
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/wall/'.$id."/".$basename,
+             array(
+            'fileUpload' => WWW_ROOT ."/wall/",
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+				
                     $data = $Wall -> Image_Upload($uid, $actual_image_name);
                     $newdata = $Wall -> Get_Upload_Image($uid, $actual_image_name);
                     if ($newdata) {
