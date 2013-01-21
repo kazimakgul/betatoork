@@ -165,6 +165,9 @@ if($auth=$this->Auth->user('id'))
 	
 }	
 	
+	//Update Userstat for recommended channel	
+	$this->requestAction( array('controller' => 'userstats', 'action' => 'sync_recommended','fdsfsdf23123123@ff'));
+	
 	}
 	
 	public function mass_subscription()
@@ -200,7 +203,9 @@ if($auth=$this->Auth->user('id'))
 		  }
 		
 		}
-		
+	//Update Userstat for recommended channel	
+	$this->requestAction( array('controller' => 'userstats', 'action' => 'sync_recommended','fdsfsdf23123123@ff'));
+	
 	
 	}
 	

@@ -264,6 +264,53 @@ public $helpers = array('Html', 'Form');
 		$this->Userstat->save($this->request->data);
 	
 	}
+	
+	
+	public function sync_recommended($pass=NULL) {
+	    if($pass!='fdsfsdf23123123@ff')
+		break;
+	    $user_id=Configure::read('recommended.id');
+	    //if varswitch equal to 0 function will be stopped.
+	    $varswitch=1;
+		if($varswitch==0)
+		$this->redirect('/');
+		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
+		if($userstatrow!=NULL)
+		{
+		$this->Userstat->id=$userstatrow['Userstat']['id'];
+	    }else{
+		$this->Userstat->id=NULL;
+		}
+		$uploadcount=$this->Game->find('count',array('conditions'=>array('Game.user_id'=>$user_id)));
+		$totalrate=$this->Rate->query('SELECT SUM(current) FROM rates where rates.game_id IN (SELECT id FROM games where games.user_id='.$user_id.')');
+		$favoritecount=$this->Favorite->find('count',array('conditions'=>array('Favorite.user_id'=>$user_id)));
+		$subscription=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_id'=>$user_id)));
+		$subscribeto=$this->Subscription->find('count',array('conditions'=>array('Subscription.subscriber_to_id'=>$user_id)));
+		$playcount=$this->Playcount->find('count',array('conditions'=>array('Playcount.user_id'=>$user_id)));
+		
+		if($totalrate[0][0]['SUM(current)']==NULL)
+		$totalrate[0][0]['SUM(current)']=0;
+		
+		$ownrate=$this->ownrates($user_id);
+		if($totalrate[0][0]['SUM(current)']>$ownrate)
+	    $plainrates=$totalrate[0][0]['SUM(current)']-$ownrate;
+	    else
+	    $plainrates=0;
+		
+		$m=Configure::read('multiples');
+		$formula=($playcount*$m['playcount'])+($subscription*$m['subscribe'])+($favoritecount*$m['favorite'])+($subscribeto*$m['subscribeto'])+($uploadcount*$this->getFactor($uploadcount))+($plainrates*$m['plainrates']);
+		
+		$this->request->data['Userstat']['user_id']=$user_id;
+		$this->request->data['Userstat']['uploadcount']=$uploadcount;
+		$this->request->data['Userstat']['totalrate']=$totalrate[0][0]['SUM(current)'];
+		$this->request->data['Userstat']['favoritecount']=$favoritecount;
+		$this->request->data['Userstat']['subscribe']=$subscription;
+		$this->request->data['Userstat']['subscribeto']=$subscribeto;
+		$this->request->data['Userstat']['playcount']=$playcount;
+		$this->request->data['Userstat']['potential']=$formula;
+		$this->Userstat->save($this->request->data);
+	
+	}
 
 
 }
