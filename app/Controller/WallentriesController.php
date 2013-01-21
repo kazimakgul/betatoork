@@ -822,7 +822,7 @@ public function image_ajax() {
       App::uses('Folder', 'Utility');
       App::uses('File', 'Utility');
 
-$auth_id=$this->Auth->user('id');
+            
 
             //Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/wall");
@@ -835,15 +835,27 @@ $auth_id=$this->Auth->user('id');
 			//echo $file;
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
-            'wall/'.$auth_id."/".$basename,
+            'wall/'.$basename,
              array(
-            'fileUpload' => WWW_ROOT ."wall/".$auth_id."/".$basename,
+            'fileUpload' => WWW_ROOT ."wall/".$basename,
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
 			
             }
 			//Upload to aws ends
+			
+			
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."wall/");
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
+			
 
 error_reporting(0);
 App::import('Vendor', 'wallscript/config');
