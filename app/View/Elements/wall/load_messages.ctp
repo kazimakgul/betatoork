@@ -298,5 +298,5 @@ echo "</div>";
   }
   }
 else
-echo '<h3 id="noupdates">No Updates</h3>';
+echo '<div class="feed_status"><div class="upfeed"></div><div class="midfeed clearfix"><h3 id="noupdates" style="margin-top:0px !important">No Updates</h3></div><div class="botfeed"></div></div>';
 ?>
