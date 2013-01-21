@@ -841,7 +841,7 @@ public function image_ajax() {
             )
             );
 			
-            }
+            }break;
 			//Upload to aws ends
 
 error_reporting(0);
