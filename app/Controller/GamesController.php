@@ -144,7 +144,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 
 
-		$limit=4;
+		$limit=8;
 		$limit2=6;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.created' => 'desc'
     )));
@@ -448,7 +448,7 @@ public function channelgames() {
 		   }
 
     $userName = $user['User']['username'];
-	$limit=4;
+	$limit=8;
 	$limit2=6;
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
