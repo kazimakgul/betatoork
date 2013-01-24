@@ -52,7 +52,7 @@ $index=$this->Html->url(array( "controller" => "games","action" =>"index"));
       <li><a class="twitter" href="https://twitter.com/thetoork" target="_blank" rel="nofollow"></a></li>
       <li><a class="google" href="https://plus.google.com/113772168414173948855" target="_blank" rel="nofollow"></a></li>
     </ul>
-    <span>Copyright 2012 - Toork - Create Your Own Game Channel. All Rights Reserved</span>
+    <span>Copyright 2013 - Toork - Create Your Own Game Channel - All Rights Reserved</span>
   </div>
 </div>
 <script>
