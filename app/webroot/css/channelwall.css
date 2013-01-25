@@ -7,9 +7,9 @@
 .midcover{width:663px; padding-left:18px; background-image:url(../img/t_cover_midback.png); background-repeat:repeat-y}
 .botcover{width:681px; height:20px; background-image:url(../img/t_cover_botback.png); background-repeat:no-repeat;}
 .channeldescviewport{position:absolute; top:80px; width:645px; height:170px; overflow:hidden;}
-.channelfeeddescback{width:645px; position: absolute; top:110px; color:white;}
-.channelfeeddesc {padding:5px 20px; background-image:url(../img/channelfeeddescback.png); background-repeat:repeat;}
-.showdesc{display:block; width:102px; padding:5px; margin-left:15px; background-image:url(../img/channelfeeddescback.png); background-repeat:repeat; font-size:8pt;}
+.channelfeeddescback{width:645px; position: absolute; top:150px; color:white;}
+.channelfeeddesc {padding:5px 20px; background-image:url(../img/channelfeeddescback.png); background-repeat:repeat; min-height:25px;}
+.showdesc{display:block; width:25px; height:15px; margin-left:15px; background-image:url(../img/descarr.png); background-position:0 0;}
 .channeldescinfo{height:100%; font-size:8pt;}
 .profilemenu{width:661px; height:17px; margin-top:20px; margin-bottom:10px; padding-right:20px;}
 .wall_menu{width:326px; height:17px; float:right;}

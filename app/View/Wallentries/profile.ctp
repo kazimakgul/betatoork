@@ -23,6 +23,24 @@ $gamelink=$this->Html->url(array('controller'=>$channeldata['User']['seo_usernam
 $videolink=$this->Html->url(array('controller'=>$channeldata['User']['seo_username'],'action'=>'news','videos'));
 $photolink=$this->Html->url(array('controller'=>$channeldata['User']['seo_username'],'action'=>'news','photos'));
 ?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.showdesc').data('enter','0');
+		$('.showdesc').mouseenter(function(){
+			if($('.showdesc').data('enter') == '0')
+			{
+				$('.channelfeeddescback').animate({ top: '-=' + ($('.channelfeeddesc').height() + 5) +'px' },function(){$('.showdesc').css('backgroundPosition', '0 16px');});
+				$('.showdesc').data('enter','1');
+			}
+			else
+			{
+				$('.channelfeeddescback').animate({ top: '+=' + ($('.channelfeeddesc').height() + 5) + 'px' },function(){$('.showdesc').css('backgroundPosition', '0 0');});	
+				$('.showdesc').data('enter','0');
+			}
+		});		
+	});
+</script>
 <div class="content clearfix">
 	<div class="channel_left_panel">
 		<?php echo $this->element('logged_user_panel'); ?>
@@ -39,8 +57,13 @@ $photolink=$this->Html->url(array('controller'=>$channeldata['User']['seo_userna
 					<div class="upcover"></div>
 					<div class="midcover">
 						<img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_wallcover.jpg" />
-						<div class="channelfeeddesc">
-							<div class="channeldescinfo"><?php echo $channeldata['User']['description'];?></div>
+						<div class="channeldescviewport">
+							<div class="channelfeeddescback">
+								<a href="javascript:void(0);" class="showdesc"></a>
+								<div class="channelfeeddesc">
+									<div class="channeldescinfo"><?php echo $channeldata['User']['description']; ?></div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="botcover"></div>

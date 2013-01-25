@@ -28,20 +28,19 @@ $add_game=$this->Html->url(array("controller" => 'games',"action" =>"add"));
 ?>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.showdesc').data('click','0');
-		$('.showdesc').click(function(){
-			if($('.showdesc').data('click') == '0')
+		$('.showdesc').data('enter','0');
+		$('.showdesc').mouseenter(function(){
+			if($('.showdesc').data('enter') == '0')
 			{
-				$('.showdesc').data('click','1');
-				$('.channelfeeddescback').animate({ top: $('.channelfeeddesc').height() +'px' },function(){ $('.showdesc').html('Hide All Description'); $('.showdesc').css('width', '94px' );  });
+				$('.channelfeeddescback').animate({ top: '-=' + ($('.channelfeeddesc').height() + 5) +'px' },function(){$('.showdesc').css('backgroundPosition', '0 16px');});
+				$('.showdesc').data('enter','1');
 			}
 			else
 			{
-				$('.showdesc').data('click','0');
-				$('.channelfeeddescback').animate({ top: '+=' + $('.channelfeeddesc').height() + 'px' },function(){ $('.showdesc').html('Show All Description'); $('.showdesc').css('width', '102px' );});			
+				$('.channelfeeddescback').animate({ top: '+=' + ($('.channelfeeddesc').height() + 5) + 'px' },function(){$('.showdesc').css('backgroundPosition', '0 0');});	
+				$('.showdesc').data('enter','0');
 			}
-		});
-		
+		});		
 	});
 </script>
 <div class="content clearfix">
@@ -60,7 +59,7 @@ $add_game=$this->Html->url(array("controller" => 'games',"action" =>"add"));
 						<img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_wallcover.jpg" />
 						<div class="channeldescviewport">
 							<div class="channelfeeddescback">
-								<a href="javascript:void(0);" class="showdesc" style="color:white;">Show All Description</a>
+								<a href="javascript:void(0);" class="showdesc"></a>
 								<div class="channelfeeddesc">
 									
 									<div class="channeldescinfo"><?php echo $channeldata['User']['description']; ?> <a style='color:#FFFFFF;' href="<?php echo $editlink; ?>">(Edit)</a></div>
