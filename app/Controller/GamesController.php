@@ -60,11 +60,9 @@ class GamesController extends AppController {
 		$this->logedin_user_panel();
 		$this->leftpanel();
 		$limit=8;
-    	$this->set('top_rated_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
-    ))));
+    	$this->set('top_rated_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions()),'limit' => $limit,'order' => 'rand()')));
 		
-		$this->set('most_played_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.playcount' => 'desc'
-    ))));
+		$this->set('most_played_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions()),'limit' => $limit,'order' => 'rand()')));
 
 
 $cond = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '40'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'Category','User'=>array('fields'=>array('User.username','User.seo_username'))))));
@@ -956,6 +954,22 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
     $this->random();
    }
 
+
+    //this gets game suggestions
+	public function get_game_suggestions()
+	{
+	$top50=$this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1'),'limit' => 50,'order' => array('Game.playcount' => 'desc'
+    )));
+	
+		$list50=array();
+		$i=0;
+		foreach($top50 as $oneof50)
+		{
+		$list50[$i]=$oneof50['Game']['id'];
+		$i++;
+		}
+		return $list50;
+	}
 
 
 
