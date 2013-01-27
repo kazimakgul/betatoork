@@ -372,6 +372,9 @@ return $a;
 		if($channel)
 		{
 			$profile_uid=$Wall->User_ID($channel);
+			//If channel does not exist
+			if(empty($profile_uid))
+			$this->redirect('/');
 			$UserDetails=$Wall->User_Details($profile_uid);
 			$this->usergame_user_panel($profile_uid);
 
