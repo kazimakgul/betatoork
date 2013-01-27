@@ -175,9 +175,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
     	$this->set('limit2', $limit2);
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
 		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
-		
-	//Add recommended channel as chain
-	$this->requestAction( array('controller' => 'subscriptions', 'action' => 'quick_subscription'));
+	
 	}
 
 
