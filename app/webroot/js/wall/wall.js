@@ -3,6 +3,20 @@
 
 $(document).ready(function() 
 {
+	$('.showdesc').data('enter','0');
+	$('.showdesc').mouseenter(function(){
+		if($('.showdesc').data('enter') == '0')
+		{
+			$('.channelfeeddescback').animate({ top: '-=' + ($('.channelfeeddesc').height() + 5) +'px' },function(){$('.showdesc').css('backgroundPosition', '0 16px');});
+			$('.showdesc').data('enter','1');
+		}
+		else
+		{
+			$('.channelfeeddescback').animate({ top: '+=' + ($('.channelfeeddesc').height() + 5) + 'px' },function(){$('.showdesc').css('backgroundPosition', '0 0');});	
+			$('.showdesc').data('enter','0');
+		}
+	});	
+
 	var webcamtotal=2;
 	$('#wallstatus').data('form','default');
 	$("a.timeago").livequery(function () { $(this).timeago(); });

@@ -26,23 +26,6 @@ $photolink=$this->Html->url(array('controller'=>'wallentries','action'=>'wall','
 $mychannel=$this->Html->url(array("controller" => 'games',"action" =>"channel"));
 $add_game=$this->Html->url(array("controller" => 'games',"action" =>"add"));
 ?>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.showdesc').data('enter','0');
-		$('.showdesc').mouseenter(function(){
-			if($('.showdesc').data('enter') == '0')
-			{
-				$('.channelfeeddescback').animate({ top: '-=' + ($('.channelfeeddesc').height() + 5) +'px' },function(){$('.showdesc').css('backgroundPosition', '0 16px');});
-				$('.showdesc').data('enter','1');
-			}
-			else
-			{
-				$('.channelfeeddescback').animate({ top: '+=' + ($('.channelfeeddesc').height() + 5) + 'px' },function(){$('.showdesc').css('backgroundPosition', '0 0');});	
-				$('.showdesc').data('enter','0');
-			}
-		});		
-	});
-</script>
 <div class="content clearfix">
 	<div class="channel_left_panel">
 	<?php  echo $this->element('channel_user_panel'); ?>
