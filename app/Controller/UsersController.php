@@ -199,13 +199,13 @@ public function __sendResetEmail($user_id) {
 		
 		
 		
-		if($this->Email->send())
+		/*if($this->Email->send())
 	  	{
 		$this->Session->setFlash('A reset link has been sent, please check your email to reset your password');
 		}else{
 		$this->Session->setFlash("Reset email has not been sent.");
 		}
-		
+		*/
 		
 	}
 
