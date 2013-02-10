@@ -378,7 +378,7 @@ type: "POST",
 url: morevar,
 data: "lastid="+ ID, 
 cache: false,
-beforeSend: function(){ $("#more"+ID).html('<img src="icons/ajaxloader.gif" />'); },
+beforeSend: function(){ $("#more"+ID).html('<img src="http://appvidyo.com/images/ajax-preloader.gif" />'); },
 success: function(html){
 $("div#content").append(html);
 $("#more"+ID).remove();
