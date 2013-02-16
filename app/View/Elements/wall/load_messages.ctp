@@ -55,13 +55,13 @@ if($updatesarray)
 		if($gravatar)
 		   {
 		    
-			$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
+			//$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
 			$cface=$this->Upload->image($userdata,'User.picture',array(),array('onerror'=>'imgError(this,"avatar");'));
 			
 		   }
 		else
 		{
-			$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
+			//$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
 			$cface=$this->Upload->image($userdata,'User.picture',array(),array('onerror'=>'imgError(this,"avatar");'));
 		
 		}
@@ -213,7 +213,7 @@ echo "</div>";
                                                 <li><?php echo $channeldata['Userstat']['favoritecount']; ?> Games Favorite</li>
 												<li><?php echo $channeldata['Userstat']['subscribeto']; ?> Followers</li>
 												<li><?php echo $channeldata['Userstat']['subscribe']; ?> Chains</li>
-                                                <li><?php echo $userdata['Userstat']['playcount']; ?> Games Played</li>
+                                                <li><?php echo $channeldata['Userstat']['playcount']; ?> Games Played</li>
                                                 
                                             </ul>
 
