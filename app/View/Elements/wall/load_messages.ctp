@@ -10,12 +10,12 @@ $type=NULL;
 
 if(isset($profile_uid))
 {
-	//$updatesarray=$Wall->Updates($profile_uid,$lastid,$type);
-	//$total=$Wall->Total_Updates($profile_uid);
+	$updatesarray=$Wall->Updates($profile_uid,$lastid,$type);
+	$total=$Wall->Total_Updates($profile_uid);
 }
 else
 {
-	//$updatesarray=$Wall->Friends_Updates($uid,$lastid,$type);
+	$updatesarray=$Wall->Updates($uid,$lastid,$type);
 	//$total=$Wall->Total_Friends_Updates($uid);
 }
 if(isset($uid))
@@ -137,7 +137,7 @@ echo "</div>";
 				
 				<?php if($type==5) 
 				{
-				//$channeldata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$gameid));
+				$channeldata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$gameid));
 				
 			
 			if($channeldata['User']['seo_username']!=NULL)
