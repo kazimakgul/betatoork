@@ -10,13 +10,13 @@ $type=NULL;
 
 if(isset($profile_uid))
 {
-	$updatesarray=$Wall->Updates($profile_uid,$lastid,$type);
-	$total=$Wall->Total_Updates($profile_uid);
+	//$updatesarray=$Wall->Updates($profile_uid,$lastid,$type);
+	//$total=$Wall->Total_Updates($profile_uid);
 }
 else
 {
-	$updatesarray=$Wall->Friends_Updates($uid,$lastid,$type);
-	$total=$Wall->Total_Friends_Updates($uid);
+	//$updatesarray=$Wall->Friends_Updates($uid,$lastid,$type);
+	//$total=$Wall->Total_Friends_Updates($uid);
 }
 if(isset($uid))
 {
