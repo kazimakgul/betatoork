@@ -16,27 +16,8 @@ if(isset($profile_uid))
 else
 {
 	$updatesarray=$Wall->Friends_Updates($uid,$lastid,$type);
-	//$total=$Wall->Total_Friends_Updates($uid);
-	
-	
-	if(strtolower($this->params['action'])=='wall')
-	{
 	$total=$Wall->Total_Friends_Updates($uid);
-	}
-	
-	
-	/*
-	if(strtolower($this->params['action'])=='wall')
-	{
-	$total=$Wall->Total_Friends_Updates($uid);
-	setcookie("total", $total);
-	}else{
-	   if(isset($_COOKIE['total']))
-	   $total=$_COOKIE['total'];
-	}
-    */
-	
-	
+
 }
 if(isset($uid))
 {
