@@ -16,6 +16,7 @@ if(isset($profile_uid))
 else
 {
 	$updatesarray=$Wall->Friends_Updates($uid,$lastid,$type);
+	$total=$Wall->Friends_Updates($uid,$lastid,$type);
 	//$total=$Wall->Total_Friends_Updates($uid);
 
 }

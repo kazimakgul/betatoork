@@ -139,9 +139,9 @@ public $perpage = 10; // Uploads perpage
 if(!isset($morequery))
 $morequery="";	 	   
 	  
-$query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M INNER JOIN users U on M.uid_fk=U.id LEFT JOIN games G on M.game_id=G.id  WHERE (M.uid_fk IN(SELECT `subscriber_to_id` FROM `subscriptions` WHERE `subscriber_id`='$uid') $morequery) OR (M.uid_fk='$uid' $morequery)") or die(mysql_error());
+$query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created, U.username,M.uploads FROM messages M INNER JOIN users U on M.uid_fk=U.id WHERE (M.uid_fk IN(SELECT `subscriber_to_id` FROM `subscriptions` WHERE `subscriber_id`='$uid') $morequery) OR (M.uid_fk='$uid' $morequery) order by M.msg_id") or die(mysql_error());
 
-		$data=mysql_fetch_array($query);
+		$data=mysql_num_rows($query);
         return $data;
 		
     }
