@@ -137,7 +137,7 @@ echo "</div>";
 				
 				<?php if($type==5) 
 				{
-				$channeldata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$gameid));
+				//$channeldata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$gameid));
 				
 			
 			if($channeldata['User']['seo_username']!=NULL)
