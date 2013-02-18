@@ -308,9 +308,10 @@ function secureSuperGlobalPOST($value)
     {
 	    $string = preg_replace('/[^\w\d_ -]/si', '', $value);
         $string = htmlspecialchars(stripslashes($string));
-        $string = str_ireplace("script", "blocked", $string);
+        $string = str_replace("script", "blocked", $string);
         $string = mysql_escape_string($string);
 		$string = htmlentities($string);
+		$string = str_replace("_", "", $string);
         return $string;
     }
 
@@ -857,7 +858,7 @@ public function adminedit($id = null) {
 				$this->request->data['User']['username'] = $this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un']));
 				$this->request->data['User']['email'] = $this->request->data['um'];
 				$this->request->data['User']['password'] = $this->request->data['up'];
-				$this->request->data['User']['seo_username'] = strtolower($this->request->data['un']);
+				$this->request->data['User']['seo_username'] = strtolower($this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un'])));
 				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
 				$this->request->data['User']['active'] = 1;
 				//$this->request->data['User']['userstat'] = 0; //buraya bakılacak yeni alan için
