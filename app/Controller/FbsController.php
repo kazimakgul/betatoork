@@ -135,7 +135,7 @@ public function connect()
 		  
     }
 
-    $this->redirect($this->Auth->loginRedirect);
+    //$this->redirect($this->Auth->loginRedirect);
 }
 
 
