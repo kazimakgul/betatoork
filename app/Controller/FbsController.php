@@ -102,6 +102,7 @@ $this->loadModel('User');
 
 public function connect()
 {
+  $this->layout='ajax';
   echo 'gogogo';
 }
 
