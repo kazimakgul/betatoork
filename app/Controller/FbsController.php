@@ -102,6 +102,8 @@ $this->loadModel('User');
 
 public function connect()
 {
+
+  Configure::write('debug', 2);
   
   if($this->Auth->user('facebook_id')==NULL){
   $this->redirect($this->referer());

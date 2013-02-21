@@ -577,7 +577,6 @@ $this->loadModel('Game');
 
 //Bu fonksiyon More buttonunun islevini kontrol eder.
 public function moreupdates_ajax($profile_uid=NULL,$type=NULL) {
-       Configure::write('debug', 2);
 	   //$this->layout='ajax';
       //Import necessary files for wall script
 	   App::import('Vendor', 'wallscript/config');
