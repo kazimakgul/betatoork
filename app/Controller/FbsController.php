@@ -102,39 +102,7 @@ $this->loadModel('User');
 
 public function connect()
 {
-  /*
-  if($this->Auth->user('facebook_id')==NULL){
-  $this->redirect($this->referer());
-  }
-  
-   $this->layout='base';
-
-	$this->loadModel('User');
-	$facebook_id=$this->Connect->user('id');
-    $facebook_email=$this->Connect->user('email');
-	$generated_name=$this->checkUsername($this->Connect->user('username'));
-	$gender=$this->Connect->user('gender');
-	//echo 'Special Facebook Id:'.$facebook_id;
-	//echo 'Special Facebook Email:'.$facebook_email;
-	
-    if($facebook_id!=NULL)//check fb_id exist begins 
-    {	
-	     $getUser=$this->User->find('first',array('conditions'=>array('User.facebook_id'=>$facebook_id)));
-		 $this->User->id=$getUser['User']['id'];
-		  if($gender=='male')
-		  $this->request->data['User']['gender']='m';
-		  if($gender=='female')
-		  $this->request->data['User']['gender']='f';
-		  if($getUser['User']['active']!=1)
-		  {
-		  $this->request->data['User']['active']=1;
-		  }
-		  $this->User->save($this->request->data);
-		  
-    }
-
-    $this->redirect($this->Auth->loginRedirect);
-	*/
+  echo 'gogogo';
 }
 
 
