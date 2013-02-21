@@ -102,9 +102,7 @@ $this->loadModel('User');
 
 public function connect()
 {
-
-  Configure::write('debug', 2);
-  
+  /*
   if($this->Auth->user('facebook_id')==NULL){
   $this->redirect($this->referer());
   }
@@ -135,7 +133,8 @@ public function connect()
 		  
     }
 
-    //$this->redirect($this->Auth->loginRedirect);
+    $this->redirect($this->Auth->loginRedirect);
+	*/
 }
 
 
