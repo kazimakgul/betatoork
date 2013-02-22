@@ -73,7 +73,7 @@ class ConnectComponent extends Component {
 	* @return void
 	* @access public
 	*/
-	public function initialize(&$Controller, $settings = array()){break;
+	public function initialize(&$Controller, $settings = array()){
 		$this->Controller = $Controller;
 		$this->_set($settings);
 		$this->FB = new FB();
