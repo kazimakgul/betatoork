@@ -70,12 +70,6 @@ public function beforeFilter() {
         return false; // The rest don't
     }
 
-public function testdrive()
-{
-echo 'verified';
-}
-
-
 public function addrandom($username)
 {
 $random=rand(100,999);
