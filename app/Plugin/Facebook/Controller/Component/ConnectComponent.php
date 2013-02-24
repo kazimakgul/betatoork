@@ -171,7 +171,7 @@ class ConnectComponent extends Component {
 				}
 			}
 			//Login user if we have one
-			if($this->authUser){
+			if($this->authUser){echo 'Login user';
 				$this->__runCallback('beforeFacebookLogin', $this->authUser);
 				$Auth->authenticate = array(
 					'Form' => array(
