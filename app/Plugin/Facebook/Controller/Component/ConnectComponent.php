@@ -162,12 +162,12 @@ class ConnectComponent extends Component {
 			elseif(empty($this->authUser) && $this->createUser) {echo 'we have to create';
 				$this->authUser[$this->User->alias]['facebook_id'] = $this->uid;
                 $this->authUser[$this->User->alias][$this->modelFields['password']] = $Auth->password(FacebookInfo::randPass());
-				/*if($this->__runCallback('beforeFacebookSave')){
+				if(1){
 					$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
 				}	
 				else {
 					$this->authUser = null;
-				}*/
+				}
 			}
 			//Login user if we have one
 			if($this->authUser){
