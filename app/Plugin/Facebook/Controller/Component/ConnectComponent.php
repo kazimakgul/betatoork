@@ -78,6 +78,7 @@ class ConnectComponent extends Component {
 		$this->_set($settings);
 		$this->FB = new FB();
 		$this->uid = $this->FB->getUser();
+		echo 'id:'.$this->uid;
 	}
 	
 	/**
