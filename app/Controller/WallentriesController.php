@@ -111,7 +111,13 @@ return $a;
 		$this->set('type',NULL);
 		}
 		
-		echo 'fb_id:'.$this->Session->read('Auth.User.facebook_id');
+		//echo 'fb_id:'.$this->Session->read('Auth.User.facebook_id');
+		if($this->Session->read('Auth.User.facebook_id')!=NULL && $this->Session->read('firstfb')==NULL)
+		{
+		    
+		   echo '<script>document.location.reload(true)</script>';
+		   $this->Session->write('firstfb',1);
+		}
 		
 		$userid = $this->Session->read('Auth.User.id');
 	    $subscriber_ids = $this->Subscription->find('all',array('conditions'=>array('subscriber_id'=>$userid)));
