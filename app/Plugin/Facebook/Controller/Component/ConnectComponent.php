@@ -165,13 +165,14 @@ class ConnectComponent extends Component {
 				if(1){
 				echo 'thats the way';
 					$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
+					echo $this->hasAccount;
 				}	
 				else {
 					$this->authUser = null;
 				}
 			}
 			//Login user if we have one
-			if($this->authUser){
+			if($this->authUser){echo 'last point before save';
 				$this->__runCallback('beforeFacebookLogin', $this->authUser);
 				$Auth->authenticate = array(
 					'Form' => array(
