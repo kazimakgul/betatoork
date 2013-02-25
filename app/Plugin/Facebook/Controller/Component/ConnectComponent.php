@@ -78,6 +78,7 @@ class ConnectComponent extends Component {
 		$this->_set($settings);
 		$this->FB = new FB();
 		$this->uid = $this->FB->getUser();
+		echo 'id:'.$this->uid ;
 	}
 	
 	/**
@@ -143,7 +144,7 @@ class ConnectComponent extends Component {
 		
 		// check if the user already has an account
 		// User is logged in but doesn't have a 
-		if($Auth->user('id')){echo 'already has an account';
+		if($Auth->user('id')){
 			$this->hasAccount = true;
 			$this->User->id = $Auth->user($this->User->primaryKey);
 			if (!$this->User->field('facebook_id')) {
@@ -151,7 +152,7 @@ class ConnectComponent extends Component {
 			}
 			return true;
 		} 
-		else {echo 'has not an account';
+		else {
 			// attempt to find the user by their facebook id
 			$this->authUser = $this->User->findByFacebookId($this->uid);
 			//if we have a user, set hasAccount
@@ -159,19 +160,18 @@ class ConnectComponent extends Component {
 				$this->hasAccount = true;
 			}
 			//create the user if we don't have one
-			elseif(empty($this->authUser) && $this->createUser) {echo 'we have to create';
+			elseif(empty($this->authUser) && $this->createUser) {
 				$this->authUser[$this->User->alias]['facebook_id'] = $this->uid;
                 $this->authUser[$this->User->alias][$this->modelFields['password']] = $Auth->password(FacebookInfo::randPass());
-				//if($this->__runCallback('beforeFacebookSave')){
-					//$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
-				//}
-				/*	
+				if($this->__runCallback('beforeFacebookSave')){
+					$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
+				}	
 				else {
 					$this->authUser = null;
-				}*/
+				}
 			}
 			//Login user if we have one
-			if($this->authUser){echo 'the way here';
+			if($this->authUser){
 				$this->__runCallback('beforeFacebookLogin', $this->authUser);
 				$Auth->authenticate = array(
 					'Form' => array(
