@@ -165,8 +165,8 @@ class ConnectComponent extends Component {
                 $this->authUser[$this->User->alias][$this->modelFields['password']] = $Auth->password(FacebookInfo::randPass());
 				if($this->__runCallback('beforeFacebookSave')){
 				echo 'wow';
-				$this->log(print_r($this->User->validationErrors, true));
-					$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
+				
+					print_r(($this->User->save($this->authUser, array('validate' => false))));
 					
 				}	
 				else {
