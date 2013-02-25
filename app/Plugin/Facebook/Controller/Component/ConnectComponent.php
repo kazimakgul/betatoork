@@ -193,6 +193,8 @@ class ConnectComponent extends Component {
 	//This piece of code was added on modification progress.
 	public function AllocateInfo()
 	{echo 'Allocator';
+	echo $this->Controller->Connect->user('email');
+	echo $this->Controller->Connect->user('username');
 	if(!$this->Controller->Auth->user('username') && !$this->Controller->Auth->user('email')){
 	$this->authUser[$this->User->alias]['username'] = $this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
 	$this->authUser[$this->User->alias]['seo_username'] = strtolower($this->checkSeoUser($this->secureSuperGlobalPOST($this->authUser[$this->User->alias]['username'])));
