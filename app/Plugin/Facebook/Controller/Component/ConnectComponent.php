@@ -203,7 +203,6 @@ class ConnectComponent extends Component {
 				}
 			}
 			//Login user if we have one
-			/*
 			if($this->authUser){
 				$this->__runCallback('beforeFacebookLogin', $this->authUser);
 				$Auth->authenticate = array(
@@ -215,7 +214,7 @@ class ConnectComponent extends Component {
 				    //$this->AllocateInfo();
 					$this->__runCallback('afterFacebookLogin');
 				}
-			}*/
+			}
 			return true;
 		}
 	}
