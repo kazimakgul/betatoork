@@ -195,7 +195,7 @@ class ConnectComponent extends Component {
 	{echo 'Allocator';
 	echo $this->Controller->Connect->user('email');
 	echo $this->Controller->Connect->user('username');
-	if(!$this->Controller->Auth->user('username') && !$this->Controller->Auth->user('email')){
+	if(!$this->Controller->Auth->user('username') && !$this->Controller->Auth->user('email')){echo 'verified';
 	$this->authUser[$this->User->alias]['username'] = $this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
 	$this->authUser[$this->User->alias]['seo_username'] = strtolower($this->checkSeoUser($this->secureSuperGlobalPOST($this->authUser[$this->User->alias]['username'])));
 	$this->authUser[$this->User->alias]['email'] = $this->checkEmail($this->Controller->Connect->user('email'));
