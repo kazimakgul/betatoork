@@ -80,9 +80,6 @@ class ConnectComponent extends Component {
 		$this->uid = $this->FB->getUser();
 		//echo 'netice:'.$this->saveAllFbData();
 		
-		if($this->Controller->Session->read('newfbuser')==1)
-		echo 'okey';
-		
 	}
 	
 	/**
@@ -117,9 +114,6 @@ class ConnectComponent extends Component {
 		{
 		$Controller->request->data['Userstat']['user_id'] = $this->Controller->User->getLastInsertID();
 		$this->Controller->Userstat->save($Controller->request->data);
-		
-		$this->Controller->Session->write('newfbuser',1);
-		
 		return 1;
 		}
 		return 0;

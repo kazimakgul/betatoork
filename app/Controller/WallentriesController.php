@@ -111,6 +111,8 @@ return $a;
 		$this->set('type',NULL);
 		}
 		
+		echo 'fb_id:'.$this->Session->read('Auth.User.facebook_id');
+		
 		$userid = $this->Session->read('Auth.User.id');
 	    $subscriber_ids = $this->Subscription->find('all',array('conditions'=>array('subscriber_id'=>$userid)));
 		if($subscriber_ids!=NULL)
