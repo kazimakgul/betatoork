@@ -174,6 +174,8 @@ class ConnectComponent extends Component {
 					$this->authUser = null;
 				}
 			}
+			echo 'how?';
+			print_r($this->authUser);
 			//Login user if we have one
 			if($this->authUser){echo 'last point before save';
 				$this->__runCallback('beforeFacebookLogin', $this->authUser);
