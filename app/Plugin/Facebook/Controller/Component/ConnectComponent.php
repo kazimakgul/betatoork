@@ -163,6 +163,10 @@ class ConnectComponent extends Component {
 			elseif(empty($this->authUser) && $this->createUser) {
 				$this->authUser[$this->User->alias]['facebook_id'] = $this->uid;
                 $this->authUser[$this->User->alias][$this->modelFields['password']] = $Auth->password(FacebookInfo::randPass());
+				$this->authUser[$this->User->alias]['username'] = $this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
+	           $this->authUser[$this->User->alias]['seo_username'] = strtolower($this->checkSeoUser($this->secureSuperGlobalPOST($this->authUser[$this->User->alias]['username'])));               $this->authUser[$this->User->alias]['email'] = $this->checkEmail($this->Controller->Connect->user('email'));
+			   echo $this->Controller->Connect->user('email');
+	           echo $this->Controller->Connect->user('username');
 				if($this->__runCallback('beforeFacebookSave')){
 				echo 'wow';
 				
@@ -182,7 +186,7 @@ class ConnectComponent extends Component {
 						'fields' => array('username' => 'facebook_id', 'password' => $this->modelFields['password'])
 					)
 				);
-				if($Auth->login($this->authUser[$this->model])){$this->AllocateInfo();
+				if($Auth->login($this->authUser[$this->model])){
 					$this->__runCallback('afterFacebookLogin');
 				}
 			}
@@ -193,9 +197,7 @@ class ConnectComponent extends Component {
 	//This piece of code was added on modification progress.
 	public function AllocateInfo()
 	{echo 'Allocator';
-	echo $this->Controller->Connect->user('email');
-	echo $this->Controller->Connect->user('username');
-	if(!$this->Controller->Auth->user('username') && !$this->Controller->Auth->user('email')){echo 'verified';
+	if(!$this->Controller->Auth->user('username') && !$this->Controller->Auth->user('email')){
 	$this->authUser[$this->User->alias]['username'] = $this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
 	$this->authUser[$this->User->alias]['seo_username'] = strtolower($this->checkSeoUser($this->secureSuperGlobalPOST($this->authUser[$this->User->alias]['username'])));
 	$this->authUser[$this->User->alias]['email'] = $this->checkEmail($this->Controller->Connect->user('email'));
