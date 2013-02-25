@@ -99,9 +99,9 @@ class ConnectComponent extends Component {
 		$this->Controller->loadmodel('User');
 		$this->Controller->loadmodel('Userstat');
 		
-		echo 'uid:'.$uid;
-		echo 'username:'.$this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
-		echo 'email:'.$this->checkEmail($this->Controller->Connect->user('email'));break;
+		//echo 'uid:'.$uid;
+		//echo 'username:'.$this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
+		//echo 'email:'.$this->checkEmail($this->Controller->Connect->user('email'));break;
 		
         $Controller->request->data['User']['facebook_id'] = $uid;
         $Controller->request->data['User']['username'] = $this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
