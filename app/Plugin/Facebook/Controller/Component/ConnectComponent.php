@@ -78,7 +78,6 @@ class ConnectComponent extends Component {
 		$this->_set($settings);
 		$this->FB = new FB();
 		$this->uid = $this->FB->getUser();
-		
 		//echo 'netice:'.$this->saveAllFbData();
 		
 	}
@@ -92,6 +91,7 @@ class ConnectComponent extends Component {
 	* @param Controller object to attach to
 	* @return void
 	*/
+	
 	
 	public function saveAllFbData($uid,$password) {
 	    $username='nomiii';
@@ -197,6 +197,7 @@ class ConnectComponent extends Component {
 				if($this->__runCallback('beforeFacebookSave')){
 					//$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
 			$this->hasAccount = $this->saveAllFbData($this->authUser[$this->User->alias]['facebook_id'],$this->authUser[$this->User->alias][$this->modelFields['password']]);
+				echo '<script>document.location.reload(true);</script>';
 				}	
 				else {
 					$this->authUser = null;
