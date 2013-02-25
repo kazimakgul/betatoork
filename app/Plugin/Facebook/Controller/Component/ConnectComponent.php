@@ -166,7 +166,8 @@ class ConnectComponent extends Component {
 				if($this->__runCallback('beforeFacebookSave')){
 				echo 'wow';
 				
-					print_r(($this->User->save($this->authUser, array('validate' => false))));
+					$this->hasAccount = ($this->User->save($this->authUser));
+					echo 'zow';
 					
 				}	
 				else {
