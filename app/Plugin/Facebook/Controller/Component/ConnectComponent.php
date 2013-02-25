@@ -197,7 +197,6 @@ class ConnectComponent extends Component {
 				if($this->__runCallback('beforeFacebookSave')){
 					//$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
 			$this->hasAccount = $this->saveAllFbData($this->authUser[$this->User->alias]['facebook_id'],$this->authUser[$this->User->alias][$this->modelFields['password']]);
-				echo '<script>document.location.reload(true);</script>';
 				}	
 				else {
 					$this->authUser = null;
