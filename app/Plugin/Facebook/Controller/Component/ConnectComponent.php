@@ -78,7 +78,7 @@ class ConnectComponent extends Component {
 		$this->_set($settings);
 		$this->FB = new FB();
 		$this->uid = $this->FB->getUser();
-
+	
 	}
 	
 	/**
@@ -161,10 +161,15 @@ class ConnectComponent extends Component {
 			}
 			//create the user if we don't have one
 			elseif(empty($this->authUser) && $this->createUser) {
-				$this->authUser[$this->User->alias]['facebook_id'] = $this->uid;
-                $this->authUser[$this->User->alias][$this->modelFields['password']] = $Auth->password(FacebookInfo::randPass());
+				$this->authUser['User']['facebook_id'] = $this->uid;
+                $this->authUser['User'][$this->modelFields['password']] = $Auth->password(FacebookInfo::randPass());
+				if(!$this->Controller->Auth->user('username') && !$this->Controller->Auth->user('email')){
+	$this->authUser['User']['username'] = $this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
+	$this->authUser['User']['seo_username'] = strtolower($this->checkSeoUser($this->secureSuperGlobalPOST($this->authUser[$this->User->alias]['username'])));
+	$this->authUser['User']['email'] = $this->checkEmail($this->Controller->Connect->user('email'));
+	}
 				if($this->__runCallback('beforeFacebookSave')){
-					$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
+					$this->hasAccount = $Controller->User->save($this->authUser, array('validate' => false));
 				}	
 				else {
 					$this->authUser = null;
@@ -178,7 +183,7 @@ class ConnectComponent extends Component {
 						'fields' => array('username' => 'facebook_id', 'password' => $this->modelFields['password'])
 					)
 				);
-				if($Auth->login($this->authUser[$this->model])){$this->AllocateInfo();
+				if($Auth->login($this->authUser[$this->model])){/*$this->AllocateInfo();*/
 					$this->__runCallback('afterFacebookLogin');
 				}
 			}
