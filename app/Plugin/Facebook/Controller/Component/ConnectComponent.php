@@ -163,6 +163,7 @@ class ConnectComponent extends Component {
 				$this->authUser[$this->User->alias]['facebook_id'] = $this->uid;
                 $this->authUser[$this->User->alias][$this->modelFields['password']] = $Auth->password(FacebookInfo::randPass());
 				if(1){
+				echo 'thats the way';
 					$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
 				}	
 				else {
