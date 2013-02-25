@@ -178,7 +178,7 @@ class ConnectComponent extends Component {
 				
 				
 				if($this->__runCallback('beforeFacebookSave')){
-					$this->hasAccount = $Controller->User->save($Controller->request->data, array('validate' => false));
+					$this->hasAccount = $Controller->User->save($Controller->request->data);
 				}	
 				else {
 					$this->authUser = null;
