@@ -179,6 +179,63 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	}
 
 
+	public function dashboard() {
+
+		$this->leftpanel();
+		$this->logedin_user_panel();
+		$userid = $this->Session->read('Auth.User.id');
+
+		$authid = $userid;
+		//Get the list of subscriptions of auth user.
+		   if($authid!=NULL)
+		   {
+		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $mutuals=array_intersect($listofmine,$listofuser);
+		   $this->set('mutuals',$mutuals);
+		   }else{
+		   $this->set('mutuals',NULL);
+		   }
+
+		$this->layout='dashboard';
+
+		$limit=8;
+		$limit2=6;
+		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.created' => 'desc'
+    )));
+
+	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
+	
+	$this->set('users', $subCond);
+	
+	//ReCoded
+  $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+	
+	
+	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+	    if($gamenumber >= 3){
+	    	    $this->set('slider', $cond);
+	    }else{
+	    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
+	    }
+	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	    $this->set('user',$user);
+
+	    $this->set('subscribe', $subscribe);
+	    $this->set('subscribeto', $subscribeto);
+    	$this->set('userid', $userid);
+    	$this->set('mygames', $cond);
+    	$this->set('favorites', $cond2);
+    	$this->set('limit', $limit);
+    	$this->set('limit2', $limit2);
+		$this->set('title_for_layout', 'Toork - Create your own game channel');
+		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+	
+	}
+
+
 	public function allchannelgames() {
 
 		$this->layout='channel';
@@ -344,13 +401,59 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	}
 
 
-	public function mygames() {
-		$this->layout='base';
-    $userid = $this->Session->read('Auth.User.id');
-    //$allMyGames = $this->Game->find('all', array('conditions' => array('Game.user_id' => $userid)));
-    //$this->set('mygames', $allMyGames,$this->paginate());
-    $cond= array('Game.user_id'=>$userid);
-    $this->set('mygames', $this->paginate('Game',$cond));
+public function mygames() {
+$this->leftpanel();
+		$this->logedin_user_panel();
+		$userid = $this->Session->read('Auth.User.id');
+
+		$authid = $userid;
+		//Get the list of subscriptions of auth user.
+		   if($authid!=NULL)
+		   {
+		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $mutuals=array_intersect($listofmine,$listofuser);
+		   $this->set('mutuals',$mutuals);
+		   }else{
+		   $this->set('mutuals',NULL);
+		   }
+		$this->layout='dashboard';
+
+
+		$limit=8;
+		$limit2=6;
+		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.created' => 'desc'
+    )));
+
+	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
+	
+	$this->set('users', $subCond);
+	
+	//ReCoded
+  $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+	
+	
+	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+	    if($gamenumber >= 3){
+	    	    $this->set('slider', $cond);
+	    }else{
+	    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
+	    }
+	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	    $this->set('user',$user);
+
+	    $this->set('subscribe', $subscribe);
+	    $this->set('subscribeto', $subscribeto);
+    	$this->set('userid', $userid);
+    	$this->set('mygames', $cond);
+    	$this->set('favorites', $cond2);
+    	$this->set('limit', $limit);
+    	$this->set('limit2', $limit2);
+		$this->set('title_for_layout', 'Toork - Create your own game channel');
+		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+	
    
 }
 
