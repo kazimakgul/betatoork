@@ -21,14 +21,24 @@
 
     <body>
 
-<?php  echo $this->element('NewPanel/header'); ?>
+<?php 
+$logout=$this->Html->url(array("controller" => "users","action" =>"logout")); 
+$addGame=$this->Html->url(array("controller" => "games","action" =>"add"));
+$dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
+$index=$this->Html->url(array("controller" => "games","action" =>"index")); 
+$mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
+?>
+
+
+<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame)); ?>
+
 
         <!-- section content -->
         <section class="section">
             <div class="row-fluid">
                 <!-- span side-left -->
 
-<?php  echo $this->element('NewPanel/leftpanel'); ?>
+<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard)); ?>
 
                 
 <?php echo $content_for_layout?>

@@ -8,8 +8,6 @@ if ($router == "/betatoork/games/dashboard"){
     $class2 = "class='active'";
 }
 
-$dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"));
-$mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
  ?>
 
 

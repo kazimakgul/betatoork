@@ -1,8 +1,3 @@
-<?php $logout=$this->Html->url(array("controller" => "users","action" =>"logout")); ?>
-<?php $addGame=$this->Html->url(array("controller" => "games","action" =>"add")); ?>
-<?php $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); ?>
-<?php $index=$this->Html->url(array("controller" => "games","action" =>"index")); ?>
-
         <!-- section header -->
         <header class="header">
             <!--nav bar helper-->
