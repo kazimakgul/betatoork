@@ -30,7 +30,7 @@ $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 ?>
 
 
-<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame)); ?>
+<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard)); ?>
 
 
         <!-- section content -->
