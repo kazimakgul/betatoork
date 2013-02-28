@@ -78,7 +78,7 @@ class ConnectComponent extends Component {
 		$this->_set($settings);
 		$this->FB = new FB();
 		$this->uid = $this->FB->getUser();
-		
+		//echo 'netice:'.$this->saveAllFbData();
 		
 	}
 	
@@ -91,6 +91,36 @@ class ConnectComponent extends Component {
 	* @param Controller object to attach to
 	* @return void
 	*/
+	
+	
+	public function saveAllFbData($uid,$password) {
+	    $username='nomiii';
+		$email='zaytun2g@gmail.com';
+		$this->Controller->loadmodel('User');
+		$this->Controller->loadmodel('Userstat');
+		
+		//echo 'uid:'.$uid;
+		//echo 'username:'.$this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
+		//echo 'email:'.$this->checkEmail($this->Controller->Connect->user('email'));break;
+		
+        $Controller->request->data['User']['facebook_id'] = $uid;
+        $Controller->request->data['User']['username'] = $this->checkUsername($this->secureSuperGlobalPOST($this->Controller->Connect->user('username')));
+        $Controller->request->data['User']['email'] = $this->checkEmail($this->Controller->Connect->user('email'));
+        $Controller->request->data['User']['password'] = $password;
+        $Controller->request->data['User']['seo_username'] = strtolower($Controller->request->data['User']['username']);
+        $Controller->request->data['User']['confirm_password'] = $password;
+        $Controller->request->data['User']['active'] = 1;
+        if($this->Controller->User->save($Controller->request->data, array('validate' => false)))
+		{
+		$Controller->request->data['Userstat']['user_id'] = $this->Controller->User->getLastInsertID();
+		$this->Controller->Userstat->save($Controller->request->data);
+		return 1;
+		}
+		return 0;
+	}
+	
+	
+	
 	public function startup() {
 		// Prevent using Auth component only if there is noAuth setting provided
 		if (!$this->noAuth && !empty($this->uid)) {
@@ -165,7 +195,8 @@ class ConnectComponent extends Component {
 				$this->authUser[$this->User->alias]['facebook_id'] = $this->uid;
                 $this->authUser[$this->User->alias][$this->modelFields['password']] = $Auth->password(FacebookInfo::randPass());
 				if($this->__runCallback('beforeFacebookSave')){
-					$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
+					//$this->hasAccount = ($this->User->save($this->authUser, array('validate' => false)));
+			$this->hasAccount = $this->saveAllFbData($this->authUser[$this->User->alias]['facebook_id'],$this->authUser[$this->User->alias][$this->modelFields['password']]);
 				}	
 				else {
 					$this->authUser = null;
@@ -179,7 +210,8 @@ class ConnectComponent extends Component {
 						'fields' => array('username' => 'facebook_id', 'password' => $this->modelFields['password'])
 					)
 				);
-				if($Auth->login($this->authUser[$this->model])){$this->AllocateInfo();
+				if($Auth->login($this->authUser[$this->model])){
+				    //$this->AllocateInfo();
 					$this->__runCallback('afterFacebookLogin');
 				}
 			}
@@ -208,6 +240,7 @@ class ConnectComponent extends Component {
 		$string = htmlentities($string);
 		$string = str_replace(' ','',$string);
 		$string = str_replace('.','',$string);
+		$string = str_replace("_", "", $string);
         return $string;
     }
 	
@@ -240,7 +273,7 @@ class ConnectComponent extends Component {
 	   
 	  do
 	    { 
-	        $userExists=$this->User->find('first',array('conditions'=>array('User.username'=>$username)));
+	        $userExists=$this->Controller->User->find('first',array('conditions'=>array('User.username'=>$username)));
             if($userExists!=NULL)
             {
 	        $username=$this->addrandom($username);
@@ -248,7 +281,7 @@ class ConnectComponent extends Component {
 		    $flag=1;
 		    }
 		  
-	    }	while($flag==0);  
+	    }	while($flag==0);
      return $username;
   }
   
@@ -264,7 +297,7 @@ class ConnectComponent extends Component {
 	   
 	  do
 	    { 
-	        $emailExists=$this->User->find('first',array('conditions'=>array('User.email'=>$email)));
+	        $emailExists=$this->Controller->User->find('first',array('conditions'=>array('User.email'=>$email)));
             if($emailExists!=NULL)
             {
 	        $email=$this->addrandom($email);
@@ -272,7 +305,7 @@ class ConnectComponent extends Component {
 		    $flag=1;
 		    }
 		  
-	    }	while($flag==0);  
+	    }	while($flag==0);
      return $email;
   }
 	
