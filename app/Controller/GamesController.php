@@ -235,6 +235,69 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	
 	}
 
+    public function favorites() {
+	$this->layout='dashboard';
+
+	$this->leftpanel();
+    $limit=50;
+    $userid = $this->Session->read('Auth.User.id');
+	//$this->usergame_user_panel($userid);
+    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    $userName = $user['User']['username'];
+    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+    
+	//ReCoded
+	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+	
+	$pagin=$this->paginate('Favorite',array('Favorite.user_id'=>$userid));
+    $this->set('favorites',$this->paginate('Favorite',array('Favorite.user_id'=>$userid)));
+    $this->set('username', $userName);
+	$this->set('user_id', $userid);
+
+	$this->set('title_for_layout',$userName.'- All Favorite Games');
+	$this->set('description_for_layout', 'Find all the games that are favorited by '.$userName);	
+
+   }
+
+
+    public function chains() {
+
+		$this->layout='dashboard';
+        $this->leftpanel();
+		
+		if(!empty($this->request->params['pass'][0]))
+		$userid = $this->request->params['pass'][0];
+		else
+		$userid = $this->Session->read('Auth.User.id');
+		
+		$authid = $this->Session->read('Auth.User.id');
+		//Get the list of subscriptions of auth user.
+		   if($authid!=NULL)
+		   {
+		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $mutuals=array_intersect($listofmine,$listofuser);
+		   $this->set('mutuals',$mutuals);
+		   }else{
+		   $this->set('mutuals',NULL);
+		   }
+		   
+		
+		//$this->usergame_user_panel($userid);(Layout tanimi barindiriyor.)
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    	$userName = $user['User']['username'];
+    	$this->set('user_id', $userid);
+		$this->set('title_for_layout', $userName.' - Chains');
+		$this->set('description_for_layout', $userName.' - All the chains of '.$userName);
+		$this->set('username', $userName);
+
+		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
+	
+		
+
+	}
+
+
 
 	public function allchannelgames() {
 

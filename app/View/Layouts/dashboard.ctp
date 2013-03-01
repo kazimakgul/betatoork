@@ -12,7 +12,7 @@
 
         <!-- styles -->
 
-<?php echo $this->Html->css(array('css2/bootstrap','css2/bootstrap-responsive','css2/stilearn','css2/stilearn-responsive','css2/stilearn-helper','css2/stilearn-icon','css2/font-awesome','css2/animate','css2/uniform.default','css2/select2','css2/fullcalendar','css2/bootstrap-wysihtml5','css2/jquery.pnotify.default')); ?>
+<?php echo $this->Html->css(array('css2/bootstrap','css2/bootstrap-responsive','css2/stilearn','css2/stilearn-responsive','css2/stilearn-helper','css2/stilearn-icon','css2/font-awesome','css2/animate','css2/uniform.default','css2/select2','css2/fullcalendar','css2/bootstrap-wysihtml5','css2/jquery.pnotify.default','channelwall')); ?>
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,10 +27,12 @@ $addGame=$this->Html->url(array("controller" => "games","action" =>"add"));
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
 $index=$this->Html->url(array("controller" => "games","action" =>"index")); 
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
+$favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"));
+$chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
 ?>
 
 
-<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard)); ?>
+<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'chains'=>$chains)); ?>
 
 
         <!-- section content -->
@@ -38,7 +40,7 @@ $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
             <div class="row-fluid">
                 <!-- span side-left -->
 
-<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard)); ?>
+<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites)); ?>
 
                 
 <?php echo $content_for_layout?>

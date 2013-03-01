@@ -34,7 +34,7 @@ if ($router == "/betatoork/games/dashboard"){
                                 </a>
                             </li>
                             <li>
-                                <a href="icons.html" title="icons">
+                                <a href="<?php echo $favorites; ?>" title="icons">
                                     <div class="helper-font-24">
                                         <i class="icofont-heart"></i>
                                     </div>
@@ -43,7 +43,7 @@ if ($router == "/betatoork/games/dashboard"){
                             </li>
 
                             <li>
-                                <a href="charts.html" title="charts">
+                                <a href="<?php echo $chains; ?>" title="charts">
                                     <div class="helper-font-24">
                                         <i class="icofont-link"></i>
                                     </div>
