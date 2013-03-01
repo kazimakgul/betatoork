@@ -53,21 +53,11 @@ if ($router == "/betatoork/games/dashboard"){
                             <li>
                                 <a href="tables.html" title="table">
                                     <div class="helper-font-24">
-                                        <i class="icofont-table"></i>
+                                        <i class="icofont-th-list"></i>
                                     </div>
                                     <span class="sidebar-text">Wall</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="widgets.html" title="widgets">
-                                    <div class="helper-font-24">
-                                        <i class="icofont-reorder"></i>
-                                    </div>
-                                    <span class="sidebar-text">Widgets</span>
-                                </a>
-                            </li>
-
-
                             <li>
                                 <a href="form.html" title="form">
                                     <div class="badge badge-important">3</div>
@@ -103,9 +93,6 @@ if ($router == "/betatoork/games/dashboard"){
                                     </li>
                                 </ul>
                             </li>
-
-
-
                             <li>
                                 <a href="#" title="more">
                                     <div class="badge badge-important">4</div>
@@ -118,7 +105,7 @@ if ($router == "/betatoork/games/dashboard"){
                                     <li>
                                         <a href="404.html" title="not found">
                                             <div class="helper-font-24">
-                                                <i class="icofont-warning-sign"></i>
+                                                <i class="icofont-th-list"></i>
                                             </div>
                                             <span class="sidebar-text">Wall</span>
                                         </a>
@@ -126,27 +113,18 @@ if ($router == "/betatoork/games/dashboard"){
                                     <li>
                                         <a href="login.html" title="login">
                                             <div class="helper-font-24">
-                                                <i class="icofont-lock"></i>
+                                                <i class="icofont-film"></i>
                                             </div>
                                             <span class="sidebar-text">Channel</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="invoice.html" title="invoice">
-                                            <div class="helper-font-24">
-                                                <i class="icofont-barcode"></i>
-                                            </div>
-                                            <span class="sidebar-text">Invoice</span>
-                                        </a>
-                                    </li>
- 
                                     <li class="divider"></li>
                                     <li>
                                         <a href="bonus-page/resume/index.html" title="resume">
                                             <div class="helper-font-24">
                                                 <i class="icofont-user"></i>
                                             </div>
-                                            <span class="sidebar-text">Resume</span>
+                                            <span class="sidebar-text">Home</span>
                                         </a>
                                     </li>
                                 </ul>

@@ -107,38 +107,37 @@
                             </div>
                             <div class="btn-group">
                                 <a class="btn btn-inverse btn-small dropdown-toggle" data-toggle="dropdown" href="#">
-                                    Shortcut
+                                    Explore
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <li><a tabindex="-1" href="calendar.html">Calendar</a></li>
-                                    <li><a tabindex="-1" href="invoice.html">Invoice</a></li>
-                                    <li><a tabindex="-1" href="message.html">Message</a></li>
+                                    <li><a tabindex="-1" href="#">Featured Games</a></li>
+                                    <li><a tabindex="-1" href="#">Best Channels</a></li>
+                                    <li><a tabindex="-1" href="#">New Games</a></li>
                                     <li class="divider"></li>
                                     <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Sample Page</a>
+                                        <a tabindex="-1" href="#">Games</a>
                                         <ul class="dropdown-menu">
-                                            <li><a tabindex="-1" href="pricing.html">Pricing</a></li>
-                                            <li><a tabindex="-1" href="bonus-page/resume/index.html">Resume</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Error Page</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a tabindex="-1" href="403.html">Error 403</a></li>
-                                            <li><a tabindex="-1" href="404.html">Error 404</a></li>
-                                            <li><a tabindex="-1" href="405.html">Error 405</a></li>
-                                            <li><a tabindex="-1" href="500.html">Error 500</a></li>
-                                            <li><a tabindex="-1" href="503.html">Error 503</a></li>
-                                            <li><a tabindex="-1" href="under-construction.html">Under Construction</a></li>
-                                            <li><a tabindex="-1" href="coming-son.html">Coming Son</a></li>
+                                            <li><a tabindex="-1" href="pricing.html">Top Rated</a></li>
+                                            <li><a tabindex="-1" href="bonus-page/resume/index.html">Most Played</a></li>
                                         </ul>
                                     </li>
                                     <li class="divider"></li>
-                                    <li><a tabindex="-1" href="#">Something else here</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">Support and Docs</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a tabindex="-1" href="403.html">About Us</a></li>
+                                            <li><a tabindex="-1" href="404.html">Support</a></li>
+                                            <li><a tabindex="-1" href="503.html">Developers</a></li>
+                                            <li><a tabindex="-1" href="under-construction.html">Advertise With Us</a></li>
+                                            <li><a tabindex="-1" href="405.html">Terms</a></li>
+                                            <li><a tabindex="-1" href="500.html">Privacy</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a tabindex="-1" href="#">FAQs and Descussions</a></li>
                                 </ul>
                             </div>
                             <div class="btn-group">
-                                <a class="btn btn-inverse btn-small" href="#">Other Action</a>
+                                <a class="btn btn-inverse btn-small" href="#">Share</a>
                             </div>
                             <div class="btn-group user-group">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -150,7 +149,8 @@
     } else {
       echo $this->Upload->image($user,'User.picture',array(),array('class'=>'corner-all','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'35','height'=>'35','onerror'=>'imgError(this,"avatar");')); }
   ?><!--this for display on PC device-->
-                                    <button class="btn btn-small btn-inverse"><?php echo $username ?></button> <!--this for display on tablet and phone device-->
+  <button class="btn btn-small btn-danger" data-toggle="dropdown-toggle"><?php echo $username ?> <span class="caret"></span></button>
+                                    <!--this for display on tablet and phone device-->
                                 </a>
                                 <ul class="dropdown-menu dropdown-user" role="menu" aria-labelledby="dLabel">
                                     <li>
