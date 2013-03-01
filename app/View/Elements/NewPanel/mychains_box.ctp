@@ -35,46 +35,54 @@ if($website==NULL){
   $website = "<a class='website_link' href='$website' target='_blank' rel='nofollow'></a>";
 }
 ?>
-        <div id="card1" class="subcard">
-            <div class="subup clearfix">
-                <a class="channelname" href="<?php echo $channelurl ?>"><?php echo $card[0] ?></a>
-				<?php if($this->Session->check('Auth.User')){?>
-				         <?php if(in_array($followid,$mutuals)){?>
-					     <a class="subcardchained" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
-					     <?php }else {?>
-					     <a class="subcardchain" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a>
-					     <?php }?>
-				<?php }else {?>
-					<a class="subcardchain" style="float:right" onclick="javascript:changechain(<?php echo $card[6]['User']['id']; ?>,$(this));"></a> 
-				 <?php }?>				
-            </div>
-            <div class="submid clearfix">
-                <div class="cardsep"></div>
-                <div class="channelavatar">
-              <?php 
+
+
+<div class="span3">
+                                    <div class="box corner-all">
+                                        <div class="box-header grd-white corner-top">
+                                            <div class="header-control">
+                                                <a data-box="collapse"><i class="icofont-caret-up"></i></a>
+                                                <a data-box="close" data-hide="rotateOut">×</a>
+                                            </div>
+                                            <span><?php echo $card[0] ?></span>
+                                        </div>
+                                        <div class="box-body">
+
+                                    <li>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                    <?php 
               if($card[6]['User']['picture']==null) { 
                 echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'90','height'=>'120','url' => array('controller' => 'games', 'action' => 'usergames', $followid))); 
                 } else {
-                  echo $this->Upload->image($card[6],'User.picture',array(),array('onerror'=>'imgError(this,"avatar");'));  }
+                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('onerror'=>'imgError(this,"avatar");'));  }
               ?>
-                </div>
-                <ul>
-                    <li class="clearfix"><a class="" href="<?php echo $channelurl ?>"><?php echo $card[1] ?> Added Games</a></li>
-                    <li class="clearfix"><a class="" href="<?php echo $channelurl ?>"><?php echo $card[2] ?> Favorite Games</a></li>
-                    <li class="clearfix"><a class="" href="<?php echo $playcounturl ?>"><?php echo $card[5] ?> Played Games</a></li>
-                    <li class="clearfix"><a class="" href="<?php echo $folurl ?>"><?php echo $card[4] ?> Followers</a></li>
-                    <li class="clearfix"><a class="" href="<?php echo $suburl ?>"><?php echo $card[3] ?> Chains</a></li>
-					<li class="clearfix"><div class="cardsep" style="margin-bottom:5px; margin-top:5px;"></div></li>
-                    <li class="clearfix">
-                    <?php
-						echo $facebook;
-						echo $twitter;
-						echo $gplus;
-						echo $website;
-                    ?>
-                    </li>
-                </ul>
-            </div>
-            <div class="subdown"></div>
-        </div>				
+                                         
+                                            </a>
+                                            <div class="media-body description">
+                                                <p></p>
+                                                <a class="btn btn-danger btn-small btn-block">View Channel</a>
+                                            </div>
+                                                            
+                    <a class="" href="<?php echo $channelurl ?>"><?php echo $card[1] ?> Added Games</a>
+                    <a class="" href="<?php echo $channelurl ?>"><?php echo $card[2] ?> Favorite Games</a>
+                    <a class="" href="<?php echo $playcounturl ?>"><?php echo $card[5] ?> Played Games</a>
+                    <a class="" href="<?php echo $folurl ?>"><?php echo $card[4] ?> Followers</a>
+                    <a class="" href="<?php echo $suburl ?>"><?php echo $card[3] ?> Chains</a>
+                
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-footer">
+                                        <div>
+                                            <a class="btn btn-small pull-right" href="login.html">Channel</a>
+                                            <a class="btn btn-small" href="#">News</a>
+                                        </div>
+                                    </li>
+  
+
+                                        </div>
+                                    </div>
+                                </div>
+
+			
  <?php endforeach; ?>
