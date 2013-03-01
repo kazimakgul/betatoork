@@ -2,10 +2,16 @@
 <?php
 $router = Router::url();
 
-if ($router == "/betatoork/games/dashboard"){
+
+
+if ($this->action == "dashboard"){
     $class = "class='active first'";
-}else{
+}elseif($this->action == "mygames"){
     $class2 = "class='active'";
+}elseif($this->action == "favorites"){
+    $class3 = "class='active'";
+}elseif($this->action == "chains"){
+    $class4 = "class='active'";
 }
 
  ?>
@@ -33,7 +39,7 @@ if ($router == "/betatoork/games/dashboard"){
                                     <span class="sidebar-text">My Games</span>
                                 </a>
                             </li>
-                            <li>
+                            <li <?php echo $class3;?>>
                                 <a href="<?php echo $favorites; ?>" title="icons">
                                     <div class="helper-font-24">
                                         <i class="icofont-heart"></i>
@@ -42,7 +48,7 @@ if ($router == "/betatoork/games/dashboard"){
                                 </a>
                             </li>
 
-                            <li>
+                            <li <?php echo $class4;?>>
                                 <a href="<?php echo $chains; ?>" title="charts">
                                     <div class="helper-font-24">
                                         <i class="icofont-link"></i>

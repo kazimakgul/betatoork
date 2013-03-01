@@ -32,7 +32,7 @@ $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
 ?>
 
 
-<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'chains'=>$chains)); ?>
+<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard)); ?>
 
 
         <!-- section content -->
@@ -40,7 +40,7 @@ $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
             <div class="row-fluid">
                 <!-- span side-left -->
 
-<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites)); ?>
+<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains)); ?>
 
                 
 <?php echo $content_for_layout?>
