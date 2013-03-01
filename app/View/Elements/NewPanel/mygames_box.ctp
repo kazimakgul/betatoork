@@ -9,7 +9,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
 <?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>"")); ?>
 
-              <li class="span3" style="margin:9px;">
+              <li class="span3">
                 <div class="thumbnail">
                 	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('alt'=>$game['Game']['name'],'width'=>'200','height'=>'110;')); ?></a>
                     <div class="badge-square grd-black color-white">
