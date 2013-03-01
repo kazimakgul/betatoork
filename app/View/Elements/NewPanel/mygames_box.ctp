@@ -9,15 +9,14 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
 <?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>"")); ?>
 
-              <li class="span3">
+              <li class="span3" style="margin:9px;">
                 <div class="thumbnail">
                 	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('alt'=>$game['Game']['name'],'width'=>'200','height'=>'110;')); ?></a>
                     <div class="badge-square grd-black color-white">
                         <div><i rel="tooltip" data-placement="top" data-original-title="Favorited" class="icofont-heart"></i>73 <i rel="tooltip" data-placement="top" data-original-title="Played" class="icofont-play"></i>1242 <i rel="tooltip" data-placement="top" data-original-title="Commented"  class="icofont-comment"></i>13</div>
                     </div>
                   <div class="caption">
-                    <h3><?php echo $game['Game']['name']; ?></h3>
-                    <p><?php echo $game['Game']['description']; ?></p>
+                    <h4 style="margin:0px 0px 4px 0px;"><?php echo $game['Game']['name']; ?></h4>
                     <p><a href="<?php echo $editurl ?>" class="btn btn-info btn-mini">Edit</a> <a href="<?php echo $playurl ?>" class="btn btn-success btn-mini">Play</a> <a href="#myModal<?php echo $game['Game']['id']; ?>" data-toggle="modal" class="btn btn-danger btn-mini">Delete</a></p>
 
                                                     <!-- Modal -->
