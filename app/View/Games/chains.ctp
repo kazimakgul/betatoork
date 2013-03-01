@@ -26,7 +26,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <h2><i class="icofont-umbrella"></i> My Shared Games</h2>
+                            <h2><i class="icofont-link"></i> Chained Channels</h2>
                         </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
@@ -63,7 +63,7 @@
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
                                 <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="interface.html">My Games</a> <span class="divider">&rsaquo;</span></li>
+                                <li><a href="#">Chains</a> <span class="divider">&rsaquo;</span></li>
                                 <li class="active">Data elements</li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->

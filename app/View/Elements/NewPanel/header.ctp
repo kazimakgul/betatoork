@@ -134,6 +134,14 @@
                                         </ul>
                                     </li>
                                     <li><a tabindex="-1" href="#">FAQs and Descussions</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">Quick Links</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a tabindex="-1" href="403.html">Dashboard</a></li>
+                                            <li><a tabindex="-1" href="403.html">Log Out</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="btn-group">

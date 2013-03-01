@@ -290,6 +290,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('title_for_layout', $userName.' - Chains');
 		$this->set('description_for_layout', $userName.' - All the chains of '.$userName);
 		$this->set('username', $userName);
+		$this->set('user', $user);
 
 		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
 	
