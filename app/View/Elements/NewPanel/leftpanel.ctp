@@ -20,7 +20,7 @@ if ($router == "/betatoork/games/dashboard"){
                             <li <?php echo $class;?>> <!--always define class .first for first-child of li element sidebar left-->
                                 <a href="<?php echo $dashboard; ?>" title="dashboard">
                                     <div class="helper-font-24">
-                                        <i class="icofont-dashboard"></i>
+                                        <i class="icofont-home"></i>
                                     </div>
                                     <span class="sidebar-text">Dashboard</span>
                                 </a>
@@ -28,7 +28,7 @@ if ($router == "/betatoork/games/dashboard"){
                             <li <?php echo $class2;?>>
                                 <a href="<?php echo $mygames; ?>" title="interface">
                                     <div class="helper-font-24">
-                                        <i class="icofont-magnet"></i>
+                                        <i class="icofont-umbrella"></i>
                                     </div>
                                     <span class="sidebar-text">My Games</span>
                                 </a>
@@ -36,7 +36,7 @@ if ($router == "/betatoork/games/dashboard"){
                             <li>
                                 <a href="icons.html" title="icons">
                                     <div class="helper-font-24">
-                                        <i class="icofont-star"></i>
+                                        <i class="icofont-heart"></i>
                                     </div>
                                     <span class="sidebar-text">Favorites</span>
                                 </a>
@@ -45,7 +45,7 @@ if ($router == "/betatoork/games/dashboard"){
                             <li>
                                 <a href="charts.html" title="charts">
                                     <div class="helper-font-24">
-                                        <i class="icofont-bar-chart"></i>
+                                        <i class="icofont-link"></i>
                                     </div>
                                     <span class="sidebar-text">Chains</span>
                                 </a>

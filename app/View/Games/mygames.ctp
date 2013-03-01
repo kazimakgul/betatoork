@@ -26,7 +26,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <h2><i class="icofont-magic"></i> Interface elements</h2>
+                            <h2><i class="icofont-umbrella"></i> My Shared Games</h2>
                         </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
