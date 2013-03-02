@@ -29,6 +29,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 $favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"));
 $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
+$wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall2"));
 ?>
 
 
@@ -40,7 +41,7 @@ $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
             <div class="row-fluid">
                 <!-- span side-left -->
 
-<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains)); ?>
+<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall)); ?>
 
                 
 <?php echo $content_for_layout?>

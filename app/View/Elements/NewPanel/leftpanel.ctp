@@ -12,6 +12,8 @@ if ($this->action == "dashboard"){
     $class3 = "class='active'";
 }elseif($this->action == "chains"){
     $class4 = "class='active'";
+}elseif($this->action == "wall2"){
+    $class5 = "class='active'";
 }
 
  ?>
@@ -56,8 +58,8 @@ if ($this->action == "dashboard"){
                                     <span class="sidebar-text">Chains</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="tables.html" title="table">
+                            <li <?php echo $class5;?>>
+                                <a href="<?php echo $wall; ?>" title="table">
                                     <div class="helper-font-24">
                                         <i class="icofont-th-list"></i>
                                     </div>
