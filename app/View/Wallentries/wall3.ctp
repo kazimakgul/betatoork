@@ -51,7 +51,7 @@
                             <!-- dashboar -->
 
                             <div class="row-fluid">
-                                <div class="span12">
+                                <div class="span4">
                                     <div class="box corner-all">
                                         <div class="box-header corner-top grd-white">
                                             <div class="header-control">
@@ -75,7 +75,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+                                
                             </div><!-- tab stat -->
                             
 
@@ -83,9 +83,9 @@
 
 
                             <!-- tab resume content -->
-                            <div class="row-fluid">
+                     
                                 <!-- tab resume update -->
-                                <div class="span12">
+                                <div class="span8">
                                     <div class="box-tab corner-all">
                                         <div class="box-header corner-top">
                                             <!--tab action-->
