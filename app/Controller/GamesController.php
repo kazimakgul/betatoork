@@ -253,7 +253,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
     $this->set('favorites',$this->paginate('Favorite',array('Favorite.user_id'=>$userid)));
     $this->set('username', $userName);
 	$this->set('user_id', $userid);
-
+	$this->set('user', $user);
 	$this->set('title_for_layout',$userName.'- All Favorite Games');
 	$this->set('description_for_layout', 'Find all the games that are favorited by '.$userName);	
 
