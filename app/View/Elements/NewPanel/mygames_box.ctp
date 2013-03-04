@@ -1,5 +1,5 @@
 <?php foreach ($mygames as $game): ?>
-<?php 
+<?php $playgameurl=$this->Html->url(array( "controller" => "games","action" =>"playgame",h($game['Game']['id'])));
 if($game['Game']['seo_url']!=NULL)
 $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
 else
@@ -8,7 +8,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 <?php $editurl=$this->Html->url(array( "controller" => "games","action" =>"edit",h($game['Game']['id']))); ?>
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
 <?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>"")); ?>
-
+    
               <li class="span3">
                 <div class="thumbnail">
                 	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('alt'=>$game['Game']['name'],'width'=>'200','height'=>'110;')); ?></a>
@@ -17,7 +17,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
                     </div>
                   <div class="caption">
                     <h4 style="margin:0px 0px 4px 0px;"><?php echo $game['Game']['name']; ?></h4>
-                    <p><a href="<?php echo $editurl ?>" class="btn btn-info btn-mini">Edit</a> <a href="<?php echo $playurl ?>" class="btn btn-success btn-mini">Play</a> <a href="#myModal<?php echo $game['Game']['id']; ?>" data-toggle="modal" class="btn btn-danger btn-mini">Delete</a></p>
+                    <p><a href="<?php echo $editurl ?>" class="btn btn-info btn-mini">Edit</a> <a href="<?php echo $playgameurl ?>" class="btn btn-success btn-mini">Play</a> <a href="#myModal<?php echo $game['Game']['id']; ?>" data-toggle="modal" class="btn btn-danger btn-mini">Delete</a></p>
 
                                                     <!-- Modal -->
                         <div id="myModal<?php echo $game['Game']['id'];?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
