@@ -7,6 +7,7 @@ $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$f
 $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$followid));
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$followid));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+$profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$followid));
 ?>
 
 <?php
@@ -61,7 +62,7 @@ if($website==NULL){
                                             </a>
                                             <div class="media-body description">
                                                 <p></p>
-                                                <a class="btn btn-danger btn-small btn-block">View Channel</a>
+                                                <a href="<?php echo $profileurl ?>" class="btn btn-danger btn-small btn-block">View Channel</a>
                                             </div>
                                                             
                     <a class="" href="<?php echo $channelurl ?>"><?php echo $card[1] ?> Added Games</a>

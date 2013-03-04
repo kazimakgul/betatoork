@@ -655,6 +655,45 @@ public function channelgames() {
 }
 
 
+public function profile() {
+
+	$this->leftpanel();
+    $userid = $this->request->params['pass'][0];
+    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+	$this->usergame_user_panel($userid);
+	if($user==NULL)
+	$this->redirect('/');
+	    $this->layout='dashboard';
+    $userName = $user['User']['username'];
+	$limit=12;
+	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
+    )));
+	//ReCoded
+    $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+    $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
+    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
+    
+    if($gamenumber >= 3){
+    	    $this->set('slider', $cond);
+    }else{
+    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
+    }
+
+	if($user['User']['verify']!=null){
+		$this->set('googleVerify',$user['User']['verify']);
+	}else{
+		$this->set('googleVerify','');	
+	}
+
+   	$this->set('limit', $limit);
+    $this->set('favorites', $cond2);
+    $this->set('mygames', $cond);
+    $this->set('username', $userName);
+	$this->set('user_id', $userid);
+		
+}
+
+
 
 	public function allusergames() {
 	$this->layout='base';
