@@ -25,11 +25,31 @@
 </div>
 
 <div class="well well-small">
-  
+ 
     <a class="btn btn-danger">
       + Follow
+    </a> <div class="pull-right">
+    <a class="btn btn-info">
+        <div class="helper-font-16">
+        <i class="icofont-facebook"></i>
+        </div>
     </a>
-
+    <a class="btn btn-danger">
+        <div class="helper-font-16">
+        <i class="icofont-pinterest"></i>
+        </div>
+    </a>
+    <a class="btn btn-info">
+        <div class="helper-font-16">
+        <i class="icofont-twitter"></i>
+        </div>
+    </a>
+    <a class="btn btn-danger">
+        <div class="helper-font-16">
+        <i class="icofont-google-plus"></i>
+        </div>
+    </a>
+</div>
 </div>
 
 <div class="row-fluid">
