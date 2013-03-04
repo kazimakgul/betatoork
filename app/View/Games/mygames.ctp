@@ -71,11 +71,10 @@
                         <!-- content-body -->
                         <div class="content-body">
 
-<div class="well">
+<div class="well well-small">
     <div class="box-header corner-top">
                                             <div class="header-control">
-                                            
-                                                <a data-box="close" data-hide="rotateOut">×</a>
+                                            <button data-box="close" data-hide="rotateOut" class="close">&times;</button>
                                             </div>
                                             
                                         </div>
