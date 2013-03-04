@@ -71,7 +71,22 @@
                         <!-- content-body -->
                         <div class="content-body">
 
-
+<div class="well">
+    <div class="box-header corner-top">
+                                            <div class="header-control">
+                                            
+                                                <a data-box="close" data-hide="rotateOut">×</a>
+                                            </div>
+                                            
+                                        </div>
+  <h1>Get more favorite games</h1>
+  <p>When ever you find a game you like just hit favorite to add it on your favorite list down here.</p>
+  <p>
+    <a class="btn btn-info btn-large">
+      Find Games
+    </a>
+  </p>
+</div>
 
 <ul class="thumbnails">
 

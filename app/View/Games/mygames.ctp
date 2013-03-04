@@ -71,7 +71,22 @@
                         <!-- content-body -->
                         <div class="content-body">
 
-
+<div class="well">
+    <div class="box-header corner-top">
+                                            <div class="header-control">
+                                            
+                                                <a data-box="close" data-hide="rotateOut">×</a>
+                                            </div>
+                                            
+                                        </div>
+  <h1>Add a game to your account</h1>
+  <p>Adding a game to your account is as simple as doing copy/paste. Just find a web page where you play a game. That's all.</p>
+  <p>
+    <a class="btn btn-danger btn-large">
+      Add Game
+    </a>
+  </p>
+</div>
 
 <ul class="thumbnails">
 

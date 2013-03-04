@@ -71,7 +71,22 @@
                         <!-- content-body -->
                         <div class="content-body">
 
-
+<div class="well">
+    <div class="box-header corner-top">
+                                            <div class="header-control">
+                                            
+                                                <a data-box="close" data-hide="rotateOut">×</a>
+                                            </div>
+                                            
+                                        </div>
+  <h1>Follow Best Channels</h1>
+  <p>Find a good channel you like and follow them to get the latest news and games from them.</p>
+  <p>
+    <a class="btn btn-success btn-large">
+      Follow Channels
+    </a>
+  </p>
+</div>
 
 <ul class="thumbnails">
 
