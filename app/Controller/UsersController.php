@@ -379,11 +379,13 @@ function secureSuperGlobalPOST($value)
  * @return void
  */
  	public function settings(){
- 		if($this->Session->read('Auth.User.role')=='1'){
- 			$this->redirect(array('action' => 'useredit',$this->Session->read('Auth.User.id')));
-		}else{
-			$this->redirect(array('action' => 'edit',$this->Session->read('Auth.User.id')));		
-		}
+ 		$this->layout='dashboard';
+ 		$userid = $this->Session->read('Auth.User.id');
+ 		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+ 		$username = $user['User']['username'];
+
+ 		$this->set('username', $username);
+ 		$this->set('user',$user);
  	}
 
 	public function edit($id = null) {

@@ -67,7 +67,7 @@ if ($this->action == "dashboard"){
                                 </a>
                             </li>
                             <li>
-                                <a href="form.html" title="form">
+                                <a href="<?php echo $settings; ?>" title="form">
                                     <div class="badge badge-important">3</div>
                                     <div class="helper-font-24">
                                         <i class="icofont-edit"></i>
