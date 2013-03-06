@@ -104,13 +104,16 @@
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active" id="recent-orders">
-                                                    <div class="media">
+                                                   
+												   
+												    
+													<div class="media">
                                                         <a class="pull-left" href="#">
                                                             <img class="media-object" data-src="js/holder.js/64x64">
                                                         </a>
                                                         <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Lorem ipsum </a><small class="helper-font-small">by john doe on 22 aug 2012, ip 192.168.56.7</small></h4>
-                                                            <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+                                                            <h4 class="media-heading"><a href="#">Socialesman </a><small class="helper-font-small">by john doe on 22 aug 2012, ip 192.168.56.7</small></h4>
+                                                            <p>A New Game has been published:zombotkoow</p>
                                                             <div class="btn-group pull-right">
                                                                 <a href="#" class="btn btn-mini">Approve</a>
                                                                 <a href="#" class="btn btn-mini">Invoice</a>
@@ -118,34 +121,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="media">
-                                                        <a class="pull-left" href="#">
-                                                            <img class="media-object" data-src="js/holder.js/64x64">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Lorem ipsum </a><small class="helper-font-small">by jane smith on 18 aug 2012, ip 192.168.56.7</small></h4>
-                                                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
-                                                            <div class="btn-group pull-right">
-                                                                <a href="#" class="btn btn-mini">Approve</a>
-                                                                <a href="#" class="btn btn-mini">Invoice</a>
-                                                                <a href="#" class="btn btn-mini btn-danger">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left" href="#">
-                                                            <img class="media-object" data-src="js/holder.js/64x64">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Lorem ipsum </a><small class="helper-font-small">by john smith on 18 aug 2012, ip 192.168.56.7</small></h4>
-                                                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
-                                                            <div class="btn-group pull-right">
-                                                                <a href="#" class="btn btn-mini">Approve</a>
-                                                                <a href="#" class="btn btn-mini">Invoice</a>
-                                                                <a href="#" class="btn btn-mini btn-danger">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+													
+												
+					<?php echo $this->element('NewPanel/load_mess_boot');?>
+				
+													
+                                                    
+                                                    
+													
                                                     <a href="#" class="btn btn-small btn-link pull-right">View all &rarr;</a>
                                                 </div>
                                                 <div class="tab-pane fade" id="recent-posts">
