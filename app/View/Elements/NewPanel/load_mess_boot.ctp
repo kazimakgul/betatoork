@@ -75,7 +75,7 @@ if($updatesarray)
 															<?php echo $cface; ?>
                                                         </a>
                                                         <div class="media-body">
-                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>">Lorem ipsum </a><small class="helper-font-small">by <?php echo $username?> <a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
+                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>">Lorem ipsum </a><small class="helper-font-small">by <?php echo $username?> <?php echo $mtime; ?></small></h4>
                                                             <p><?php echo $message; ?></p>
 															
 														<?php
