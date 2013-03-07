@@ -52,6 +52,97 @@
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active" id="boxtabpill-1">
 
+<form class="form-horizontal" id="form-validate" novalidate="novalidate">
+                                                        <fieldset>
+                                                            <legend>Form Validate</legend>
+                                                            <div class="control-group  input-prepend">
+                                                                <label class="control-label" for="required">Channel Name</label>
+                                                                <div class="controls">
+                                                                    <span class="add-on">toork.com/</span>
+                                                                    <input type="text" class="grd-white" data-validate="{required: true, messages:{required:'Please enter field required'}}" name="required" id="required">
+                                                                </div>
+                                                            </div>
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="inputEditorSimple">Channel Description</label>
+                                                            <div class="controls">
+                                                                <textarea id="inputEditorSimple" class="span8" rows="6" placeholder="Describe your channel ..."></textarea>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="inputUpload">Channel Avatar</label>
+                                                            <div class="controls">
+                                                                <input type="file" data-form="uniform" id="inputUpload" />
+                                                            </div>
+                                                        </div>
+
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="minlength">Min Length</label>
+                                                                <div class="controls">
+                                                                    <input type="text" class="grd-white" data-validate="{required: true, minlength: 2, messages:{required:'Please enter field min length', minlength:'Please enter at least 2 characters.'}}" name="minlength" id="minlength">
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="maxlength">Max Length</label>
+                                                                <div class="controls">
+                                                                    <input type="text" class="grd-white" data-validate="{required: true, maxlength: 6, messages:{required:'Please enter field max length', maxlength:'Please enter a maximum of 6 characters.'}}" name="maxlength" id="maxlength">
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="email">Email</label>
+                                                                <div class="controls">
+                                                                    <input type="text" class="grd-white" data-validate="{required: true, email:true, messages:{required:'Please enter field email', email:'Please enter a valid email address'}}" name="email" id="email">
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="url">URL</label>
+                                                                <div class="controls">
+                                                                    <input type="text" class="grd-white" data-validate="{required: true, url:true, messages:{required:'Please enter field url', url:'Please enter a valid url'}}" name="url" id="url">
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="date">Date</label>
+                                                                <div class="controls">
+                                                                    <input type="text" class="grd-white" data-validate="{required: true, date:true, messages:{required:'Please enter field date', date:'Please enter a valid date'}}" name="date" id="date">
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="mins">Min</label>
+                                                                <div class="controls">
+                                                                    <input type="text" class="grd-white" data-validate="{required: true, number:true, min: 5, messages:{required:'Please enter field min', number:'Please enter a valid number', min:'Please enter a number greater than or equal to 5'}}" name="mins" id="mins">
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="maxs">Max</label>
+                                                                <div class="controls">
+                                                                    <input type="text" class="grd-white" data-validate="{required: true, number:true, max: 5, messages:{required:'Please enter field max', number:'Please enter a valid number', min:'Please enter a number less than or equal to 5'}}" name="maxs" id="maxs">
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="number">Number</label>
+                                                                <div class="controls">
+                                                                    <input type="text" class="grd-white" data-validate="{required: true, number:true, messages:{required:'Please enter field number', number:'Please enter a valid number'}}" name="number" id="number">
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="password">Password</label>
+                                                                <div class="controls">
+                                                                    <input type="password" class="grd-white" data-validate="{required: true, messages:{required:'Please enter field password'}}" name="password" id="password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="cpassword">Confirm Password</label>
+                                                                <div class="controls">
+                                                                    <input type="password" class="grd-white" data-validate="{required: true, equalTo: '#password', messages:{required:'Please enter field confirm password', equalTo: 'confirmation password does not match the password'}}" name="cpassword" id="cpassword">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-actions">
+                                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                <button type="button" class="btn">Cancel</button>
+                                                            </div>
+                                                        </fieldset>
+                                                    </form>
+
                                                     <!--element-->
                                                     <form class="form-horizontal">
                                                         <div class="control-group">
@@ -268,12 +359,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="control-group">
-                                                            <label class="control-label" for="inputEditorSimple">Simple Editor</label>
-                                                            <div class="controls">
-                                                                <textarea id="inputEditorSimple" class="span10" rows="8" data-form="wysihtml5" placeholder="Enter text ..."></textarea>
-                                                            </div>
-                                                        </div>
+
                                                         <div class="form-actions">
                                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                                             <button type="button" class="btn">Cancel</button>
