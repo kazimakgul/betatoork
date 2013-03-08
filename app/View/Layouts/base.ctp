@@ -39,7 +39,7 @@ echo $this->Html->meta('keywords','online games, browser games, flash games, sha
 <?php
 if(strtolower($this->params['controller'])=='wallentries')
 {
-echo $this->Html->script(array('wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall')); 
+echo $this->Html->script(array('wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall2')); 
 }
 ?>
 

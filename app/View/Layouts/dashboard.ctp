@@ -67,8 +67,35 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings"))
         <!-- required stilearn template js, for full feature-->
 
 
-<?php echo $this->Html->script(array('js2/jquery','js2/jquery-ui.min','js2/bootstrap','js2/uniform/jquery.uniform','js2/peity/jquery.peity','js2/select2/select2','js2/knob/jquery.knob','js2/flot/jquery.flot','js2/flot/jquery.flot.resize','js2/flot/jquery.flot.categories','js2/wysihtml5/wysihtml5-0.3.0','js2/wysihtml5/bootstrap-wysihtml5','js2/calendar/fullcalendar','js2/holder','js2/stilearn-base','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','js2/datepicker/bootstrap-datepicker','js2/colorpicker/bootstrap-colorpicker','js2/validate/jquery.validate','js2/validate/jquery.metadata','js2/wizard/jquery.ui.widget','js2/wizard/jquery.wizard','js2/responsive-tables/responsive-tables')); ?>
+<?php echo $this->Html->script(array('js2/jquery','js2/jquery-ui.min','js2/bootstrap','js2/uniform/jquery.uniform','js2/peity/jquery.peity','js2/select2/select2','js2/knob/jquery.knob','js2/flot/jquery.flot','js2/flot/jquery.flot.resize','js2/flot/jquery.flot.categories','js2/wysihtml5/wysihtml5-0.3.0','js2/wysihtml5/bootstrap-wysihtml5','js2/calendar/fullcalendar','js2/holder','js2/stilearn-base','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','js2/datepicker/bootstrap-datepicker','js2/colorpicker/bootstrap-colorpicker','js2/validate/jquery.validate','js2/validate/jquery.metadata','js2/wizard/jquery.ui.widget','js2/wizard/jquery.wizard','js2/responsive-tables/responsive-tables','wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall2')); ?>
 
+
+<!-- Js variable for wallscript begins-->
+<script>
+wallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'message_ajax2')); ?>';
+
+
+morevar='<?php if(isset($profile_uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax2',$profile_uid,$type)); }
+else 
+{
+    if(isset($type))
+    {
+    echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_filter_ajax',$type));
+    }
+    else
+    {
+    echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax2'));
+    }
+} ?>';
+
+
+commentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'comment_ajax')); ?>';
+delmessagevar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_message_ajax')); ?>';
+delcommentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_comment_ajax')); ?>';
+seeallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'view_ajax')); ?>';
+quick='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'quick_subscription')); ?>';
+</script>
+<!-- Js variable for wallscript ends-->
 
         <script type="text/javascript">
             $(document).ready(function() {

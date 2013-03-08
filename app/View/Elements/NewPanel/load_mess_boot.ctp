@@ -69,13 +69,13 @@ if($updatesarray)
 		}
 		// End Avatar
 ?>
-<div class="media">
+<div class="media" id="stbody<?php echo $msg_id;?>">
                                                         <a class="pull-left" href="#">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>
                                                         </a>
                                                         <div class="media-body">
-                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>">Lorem ipsum </a><small class="helper-font-small">by <?php echo $username?> <?php echo $mtime; ?></small></h4>
+                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
                                                             <p><?php echo $message; ?></p>
 															
 														<?php
@@ -99,25 +99,52 @@ echo "</div>";
 															
                                                             <div class="btn-group pull-right">
 															    <?php if(isset($uid)) {?>
-                                                                <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>">Approve</a>
+                                                                <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>">Comment</a>
 																<?php }?>	
                                                                 <a href="#" class="btn btn-mini">Invoice</a>
 																<?php if(isset($uid) && $uid==$msg_uid) { ?>
                                                                 <a href="#" class="btn btn-mini btn-danger stdelete" id="<?php echo $msg_id;?>">Delete</a>
 																<?php } ?>
                                                             </div>
+															<!-- Comment area begins -->				
+					<div class="commentcontainer feedcomments" id="commentload<?php echo $msg_id;?>">
+			<?php
+				$x=1;
+				echo $this->element('NewPanel/load_comments_boot',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
+			?>
+			</div>
+			<div class="commentupdate feedcommentarea clearfix" style='display:none' id='commentbox<?php echo $msg_id;?>'>
+				<div class="commentleft">
+					<div class="commentavatarback">
+						<?php echo $session_face;?>
+					</div>
+				</div>
+				<div class="commentright">
+					<textarea placeholder="Write a comment..." name="comment" class="commentarea" maxlength="200" cols="53" rows="2" id="ctextarea<?php echo $msg_id;?>"></textarea>
+					<!--<textarea class="commentarea" cols="53" rows="2"></textarea>-->
+					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="comment_button commentbtn">Comment</div>
+					<!--<a class="commentbtn" href="#"></a>-->
+				</div>
+			</div>
+				<!-- Comment area ends-->
                                                         </div>
                                                     </div>
-															
-									
-					
-				
+										
 		
 
 
-  <?php
-  }
-  }
-else
-echo '<div class="feed_status"><div class="upfeed"></div><div class="midfeed clearfix"><h3 id="noupdates" style="margin-top:0px !important">No Updates</h3></div><div class="botfeed"></div></div>';
-?>
+<?php } ?>
+<div id="content2"></div>
+
+<?php
+  if($total>$perpage)
+  {
+  ?>
+ <!-- More Button here $msg_id values is a last message id value. -->
+<div id="more<?php echo $msg_id; ?>" >
+<a href="#" class="btn btn-small btn-link pull-right more" id="<?php echo $msg_id; ?>">View more &rarr;</a>
+</div>
+
+<?php } ?>
+
+<?php } ?>

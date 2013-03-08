@@ -65,12 +65,13 @@
                                                 <div class="control-group">
                                                     <label class="control-label">What do you think</label>
                                                     <div class="controls">
-                                                        <textarea name="message" data-form="wysihtml5" rows="6" class="span11"></textarea>
+                                                        <textarea name="message" data-form="wysihtml5" rows="6" class="span11" id="update"></textarea>
+													
                                                     </div>
                                                 </div>
                                                 <div class="form-actions">
                                                     <input type="reset" class="btn" value="Reset" />
-                                                    <input type="submit" class="btn btn-info" value="Share" />
+                                                    <input type="submit" class="btn btn-info update_data" value="Share" />
                                                 </div>
                                             </form>
                                         </div>
@@ -113,7 +114,7 @@
                                                         </a>
                                                         <div class="media-body">
                                                             <h4 class="media-heading"><a href="#">Socialesman </a><small class="helper-font-small">by john doe on 22 aug 2012, ip 192.168.56.7</small></h4>
-                                                            <p>A New Game has been published:zombotkoow</p>
+                                                            <p>This is a sample layout.Will be deleted.A New Game has been published:zombotkoow</p>
                                                             <div class="btn-group pull-right">
                                                                 <a href="#" class="btn btn-mini">Approve</a>
                                                                 <a href="#" class="btn btn-mini">Invoice</a>
@@ -121,15 +122,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-													
+										<div id="content"></div>			
 												
 					<?php echo $this->element('NewPanel/load_mess_boot');?>
 				
-													
-                                                    
-                                                    
-													
-                                                    <a href="#" class="btn btn-small btn-link pull-right">View all &rarr;</a>
+												
                                                 </div>
                                                 <div class="tab-pane fade" id="recent-posts">
                                                     <div class="media">
