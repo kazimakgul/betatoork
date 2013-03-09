@@ -823,6 +823,31 @@ public function profile() {
 		$this->set('user_id', $userid);
 		$this->set('users', $this->paginate('User',array('User.active' => '1')));
 
+	}
+
+		public function bestchannels2() {
+
+		$this->layout='dashboard';
+		$userid = $this->Session->read('Auth.User.id');
+		$authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+		//Get the list of subscriptions of auth user.
+		   if($authid!=NULL)
+		   {
+		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $mutuals=array_intersect($listofmine,$listofuser);
+		   $this->set('mutuals',$mutuals);
+		   }else{
+		   $this->set('mutuals',NULL);
+		   }
+
+		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
+		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
+		$this->set('user_id', $userid);
+		$this->set('user', $user);
+		$this->set('users', $this->paginate('User',array('User.active' => '1')));
+
 
 
 

@@ -1,3 +1,4 @@
+<?php $bestchannel=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));?>
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -81,7 +82,7 @@
   <h1>Follow Best Channels</h1>
   <p>Find a good channel you like and follow them to get the latest news and games from them.</p>
   <p>
-    <a class="btn btn-success btn-large">
+    <a href="<?php echo $bestchannel; ?>" class="btn btn-success btn-large">
       Follow Channels
     </a>
   </p>
