@@ -184,13 +184,13 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->layout='dashboard';
 		$userid = $this->Session->read('Auth.User.id');
 	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-
+	   	$userName = $user['User']['username'];
 
 		$limit=12;
     	$this->set('top_rated_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order' => 'rand()')));
 	
 	    $this->set('user',$user);
-
+	    $this->set('username',$userName);
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
 		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
 	
