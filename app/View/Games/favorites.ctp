@@ -1,3 +1,4 @@
+<?php $toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2"));?>
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -82,7 +83,7 @@
   <h1>Get more favorite games</h1>
   <p>When ever you find a game you like just hit favorite to add it on your favorite list down here.</p>
   <p>
-    <a class="btn btn-info btn-large">
+    <a href="<?php echo $toprated; ?>" class="btn btn-info btn-large">
       Find Games
     </a>
   </p>
