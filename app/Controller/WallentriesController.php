@@ -484,6 +484,8 @@ return $a;
     	$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
     	$userName = $user['User']['username'];
     	$userDesc = $user['User']['description'];
+    	$this->set('username', $userName);
+    	$this->set('user', $user);
 		$this->set('title_for_layout', $userName.' News - Toork');
 		$this->set('description_for_layout', $userName.' Channel News - '.$userDesc);
 	

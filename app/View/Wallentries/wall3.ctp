@@ -108,7 +108,14 @@
                                                    
 												   
 												    
-													<div class="media">
+
+										<div id="content"></div>			
+												
+					<?php echo $this->element('NewPanel/load_mess_boot');?>
+				
+												
+                                                </div>
+                                                                                                    <div class="media">
                                                         <a class="pull-left" href="#">
                                                             <img class="media-object" data-src="js/holder.js/64x64">
                                                         </a>
@@ -122,12 +129,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-										<div id="content"></div>			
-												
-					<?php echo $this->element('NewPanel/load_mess_boot');?>
-				
-												
-                                                </div>
                                                 <div class="tab-pane fade" id="recent-posts">
                                                     <div class="media">
                                                         <a class="pull-left" href="#">

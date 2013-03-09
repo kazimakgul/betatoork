@@ -12,8 +12,10 @@ if ($this->action == "dashboard"){
     $class3 = "class='active'";
 }elseif($this->action == "chains"){
     $class4 = "class='active'";
-}elseif($this->action == "wall2"){
+}elseif($this->action == "wall3"){
     $class5 = "class='active'";
+}elseif($this->action == "settings"){
+    $class6 = "class='active'";
 }
 
  ?>
@@ -66,7 +68,7 @@ if ($this->action == "dashboard"){
                                     <span class="sidebar-text">Wall</span>
                                 </a>
                             </li>
-                            <li>
+                            <li <?php echo $class6;?>>
                                 <a href="<?php echo $settings; ?>" title="form">
                                     <div class="badge badge-important">3</div>
                                     <div class="helper-font-24">

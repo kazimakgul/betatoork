@@ -29,7 +29,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 $favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"));
 $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
-$wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall2"));
+$wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings"));
 ?>
 
