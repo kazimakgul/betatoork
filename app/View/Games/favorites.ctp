@@ -84,7 +84,7 @@
   <p>When ever you find a game you like just hit favorite to add it on your favorite list down here.</p>
   <p>
     <a href="<?php echo $toprated; ?>" class="btn btn-info btn-large">
-      Find Games
+      <i class="elusive-compass"></i> Find Games
     </a>
   </p>
 </div>

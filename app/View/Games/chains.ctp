@@ -83,7 +83,7 @@
   <p>Find a good channel you like and follow them to get the latest news and games from them.</p>
   <p>
     <a href="<?php echo $bestchannel; ?>" class="btn btn-success btn-large">
-      Follow Channels
+      <i class="elusive-plus-sign"></i> Follow Channels
     </a>
   </p>
 </div>

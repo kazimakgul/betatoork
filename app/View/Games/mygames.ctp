@@ -82,7 +82,7 @@
   <p>Adding a game to your account is as simple as doing copy/paste. Just find a web page where you play a game. That's all.</p>
   <p>
     <a class="btn btn-danger btn-large">
-      Add Game
+      <i class="elusive-plus-sign"></i> Add Game
     </a>
   </p>
 </div>
