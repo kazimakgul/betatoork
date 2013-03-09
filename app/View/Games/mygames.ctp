@@ -74,7 +74,7 @@
 <div class="well well-small">
     <div class="box-header corner-top">
                                             <div class="header-control">
-                                            <button data-box="close" data-hide="rotateOut" class="close">&times;</button>
+                                            <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
                                             </div>
                                             
                                         </div>

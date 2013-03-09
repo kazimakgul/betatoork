@@ -5,11 +5,11 @@ $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']
 else
 $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($game['Game']['id'])));
 ?>	
-<?php $editurl=$this->Html->url(array( "controller" => "games","action" =>"edit",h($game['Game']['id']))); ?>
+
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
 <?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>"")); ?>
 
-              <li class="span3">
+              <li class="span3 header-control">
                 <div class="thumbnail">
                 	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('alt'=>$game['Game']['name'],'width'=>'200','height'=>'110;')); ?></a>
                     <div class="badge-square grd-black color-white">
@@ -17,31 +17,12 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
                     </div>
                   <div class="caption">
                     <h4 style="margin:0px 0px 4px 0px;"><?php echo $game['Game']['name']; ?></h4>
-                    <p><a href="<?php echo $editurl ?>" class="btn btn-info btn-mini">Share</a> <a href="<?php echo $playurl ?>" class="btn btn-success btn-mini">Play</a> <a href="#myModal<?php echo $game['Game']['id']; ?>" data-toggle="modal" class="btn btn-danger btn-mini"><i class="icofont-trash"></i> Remove</a></p>
-
-                                                    <!-- Modal -->
-                        <div id="myModal<?php echo $game['Game']['id'];?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    <h3 id="myModalLabel">Remove <?php echo $game['Game']['name']; ?> ?</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to remove this game from your favorites?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button id="top-success" class="btn btn-success" data-dismiss="modal" aria-hidden="true">No</button>
-                                    <a href="<?php echo $playurl;?>" class="btn btn-danger">Yes! Remove</a>
-         
-                                </div>
-                        </div>
-
-
+                    <p> 
+                    <a href="<?php echo $playurl ?>" class="btn btn-success btn-mini">Play</a>
+                    <a href="#" data-box="close" data-hide="rotateOut" class="btn btn-white btn-mini"><i class="icofont-trash"></i> Remove</a> 
+                    </p>
                   </div>
                 </div>
               </li>
-
-
-
-
 					
  <?php endforeach; ?>

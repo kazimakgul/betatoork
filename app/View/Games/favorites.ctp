@@ -26,7 +26,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <h2><i class="icofont-umbrella"></i> My Shared Games</h2>
+                            <h2><i class="icofont-umbrella"></i> My Favorite Games</h2>
                         </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
@@ -63,7 +63,7 @@
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
                                 <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="interface.html">My Games</a> <span class="divider">&rsaquo;</span></li>
+                                <li><a href="interface.html">Favorite Games</a> <span class="divider">&rsaquo;</span></li>
                                 <li class="active">Data elements</li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
@@ -74,7 +74,7 @@
 <div class="well well-small">
     <div class="box-header corner-top">
                                             <div class="header-control">
-                                            <button data-box="close" data-hide="rotateOut" class="close">&times;</button>
+                                            <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
                                                 
                                             </div>
                                             
