@@ -389,8 +389,18 @@ $('#addgame_button').live("click",function()
 	return false;
 });
 
-// image
+// add image
 $('#camera').live("click",function() 
+{
+	$('#wallstatus').data('form','imageform');
+	$('#addgame_container').slideUp('fast');
+	$('#webcam_container').slideUp('fast');
+	$('#imageupload').slideToggle('fast');
+	return false;
+});
+
+// add image2
+$('#camera2').live("click",function() 
 {
 	$('#wallstatus').data('form','imageform');
 	$('#addgame_container').slideUp('fast');

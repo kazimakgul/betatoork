@@ -66,11 +66,22 @@
                                                     <label class="control-label">What do you think</label>
                                                     <div class="controls">
                                                         <textarea name="message" data-form="wysihtml5" rows="6" class="span11" id="update"></textarea>
-													
+													     
                                                     </div>
+													
+							<!-ImageUploadPanel-><div id="imageupload" class="border" style="display:none;">
+							<?php $image_ajax_url= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax'));?>
+							<form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
+							<div id='preview'></div>
+							<span id='addphoto'>Add Photo:</span> <input type="file" name="photoimg" id="photoimg" />
+							<input type='hidden' id='uploadvalues' />
+							</form>
+					        </div><!-ImageUploadPanel->	
+													
                                                 </div>
                                                 <div class="form-actions">
                                                     <input type="reset" class="btn" value="Reset" />
+													 <a href="javascript:void(0);"  class="btn" id="camera2">Add Image</a>
                                                     <input type="submit" class="btn btn-info update_data" value="Share" />
                                                 </div>
                                             </form>
