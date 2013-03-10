@@ -27,7 +27,7 @@
                         <div class="panel-ext">
                             <div class="btn-group">
                                 <!--notification-->
-                                <a class="btn btn-danger btn-small" data-toggle="dropdown" href="#" title="3 notification">3</a>
+                                <a class="btn btn-danger btn-small" data-toggle="dropdown" href="#" title="3 notification"><i class="icofont-flag"></i> 3</a>
                                 <ul class="dropdown-menu dropdown-notification">
                                     <li class="dropdown-header grd-white"><a href="#">View All Notifications</a></li>
                                     <li class="new">
@@ -107,7 +107,7 @@
                             </div>
                             <div class="btn-group">
                                 <a class="btn btn-inverse btn-small dropdown-toggle" data-toggle="dropdown" href="#">
-                                    Explore
+                                   <i class="elusive-compass"></i> Explore
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                     <li><a tabindex="-1" href="#">Featured Games</a></li>
@@ -145,7 +145,7 @@
                                 </ul>
                             </div>
                             <div class="btn-group">
-                                <a class="btn btn-inverse btn-small" href="#">Share</a>
+                                <a class="btn btn-inverse btn-small" href="#"><i class="icofont-edit"></i> Share</a>
                             </div>
                             <div class="btn-group user-group">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -157,7 +157,7 @@
     } else {
       echo $this->Upload->image($user,'User.picture',array(),array('class'=>'corner-all','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'35','height'=>'35','onerror'=>'imgError(this,"avatar");')); }
   ?><!--this for display on PC device-->
-  <button class="btn btn-small btn-danger" data-toggle="dropdown-toggle"><?php echo $username ?> <span class="caret"></span></button>
+  <button class="btn btn-small btn-danger" data-toggle="dropdown-toggle"><i class="elusive-user"></i> <?php echo $username ?> <span class="caret"></span></button>
                                     <!--this for display on tablet and phone device-->
                                 </a>
                                 <ul class="dropdown-menu dropdown-user" role="menu" aria-labelledby="dLabel">

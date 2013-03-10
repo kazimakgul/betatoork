@@ -27,7 +27,7 @@
 <div class="well well-small">
  
     <a class="btn btn-danger">
-      + Follow
+      <i class="elusive-plus-sign"></i> Follow
     </a> <div class="pull-right">
     <a class="btn btn-info">
         <div class="helper-font-16">
@@ -89,13 +89,17 @@
 
 <ul class="thumbnails">
 
-<?php  echo $this->element('NewPanel/mygames_box'); ?>
+<?php  echo $this->element('NewPanel/channel_game_box'); ?>
 
 </ul>
 
                                                 </div>
                                                 <div class="tab-pane fade" id="boxtab-2">
-                                                    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+<ul class="thumbnails">
+
+<?php  echo $this->element('NewPanel/channel_favorite_box'); ?>
+
+</ul>
                                                 </div>
                                                 <div class="tab-pane fade" id="boxtab-3">
                                 <!-- tab resume update -->
