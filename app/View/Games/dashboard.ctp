@@ -36,27 +36,15 @@
                                 <li class="divider"></li>
                                 <li class="btn-group">
                                     <a href="#" class="btn btn-small btn-link dropdown-toggle" data-toggle="dropdown">
-                                        <i class="icofont-tasks"></i> Tasks
+                                        <i class="icofont-tasks"></i> Sort
                                         <i class="icofont-caret-down"></i>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Some Action</a></li>
-                                        <li><a href="#">Other Action</a></li>
+                                        <li><a href="#">Recomend</a></li>
+                                        <li><a href="#">Date</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#">Something Else</a></li>
+                                        <li><a href="#">Popular</a></li>
                                     </ul>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link">
-                                        <i class="icofont-money"></i> Orders <span class="color-red">(+12)</span>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link">
-                                        <i class="icofont-user"></i> Users <span class="color-red">(+34)</span>
-                                    </a>
                                 </li>
                             </ul><!--/breadcrumb-nav-->
                             
