@@ -14,13 +14,13 @@ $channelurl=$this->Html->url(array("controller" => $seo_username,"action" =>""))
 // End Avatar
 ?>
 
-<div class="media">
+<div class="media" id="stbody<?php echo $msg_id;?>">
                                                         <a class="pull-left" href="#">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $face; ?>
                                                         </a>
                                                         <div class="media-body">
-                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="helper-font-small"><?php echo $mtime; ?></small></h4>
+                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
                                                             <p><?php echo $message; ?></p>
 															
 														<?php
@@ -41,6 +41,17 @@ echo "</div>";
  }
  ?>	
                        
+			<div id="stexpandbox">
+			<div id="stexpand<?php echo $msg_id;?>">
+			<?php
+			if(textlink($orimessage))
+			{
+			$link =textlink($orimessage);
+			echo Expand_URL($link);
+			}?>	
+			</div>
+			</div>	
+					   
 															
                                                             <div class="btn-group pull-right">
 															    <?php if(isset($uid)) {?>

@@ -55,14 +55,14 @@ echo "</div>";
 			</div> 
 			
 			<div id="stexpandbox">
-				<div id="stexpand<?php echo $msg_id;?>">
-					<?php
-					if(textlink($orimessage))
-					{
-						$link =textlink($orimessage);
-						echo Expand_URL($link);
-					}?>	
-				</div>
+			<div id="stexpand<?php echo $msg_id;?>">
+			<?php
+			if(textlink($orimessage))
+			{
+			$link =textlink($orimessage);
+			echo Expand_URL($link);
+			}?>	
+			</div>
 			</div>	
 			
 			<div class="commentcontainer" id="commentload<?php echo $msg_id;?>">

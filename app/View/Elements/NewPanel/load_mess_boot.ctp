@@ -132,12 +132,24 @@ echo "</div>";
 				}
 				?>
 				
-																
-																
-																<?php if(isset($uid) && $uid==$msg_uid) { ?>
-                                                                <a href="#" class="btn btn-mini btn-danger stdelete" id="<?php echo $msg_id;?>">Delete</a>
-																<?php } ?>
-                                                            </div>
+				<?php if(isset($uid) && $uid==$msg_uid) { ?>
+                <a href="#" class="btn btn-mini btn-danger stdelete" id="<?php echo $msg_id;?>">Delete</a>
+				<?php } ?>
+                 </div>
+				 
+				<div id="stexpandbox">
+				<div id="stexpand<?php echo $msg_id;?>">
+				<?php
+				if(textlink($orimessage))
+				{
+				$link =textlink($orimessage);
+				echo Expand_URL($link);
+				}?>	
+				</div>
+			    </div>
+				 
+				 
+				 
 															<!-- Comment area begins -->				
 					<div class="commentcontainer feedcomments" id="commentload<?php echo $msg_id;?>">
 			<?php
