@@ -23,7 +23,7 @@
 
 <?php 
 $logout=$this->Html->url(array("controller" => "users","action" =>"logout")); 
-$addGame=$this->Html->url(array("controller" => "games","action" =>"add"));
+$addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
 $index=$this->Html->url(array("controller" => "games","action" =>"index")); 
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
@@ -31,10 +31,11 @@ $favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"
 $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
 $wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings"));
+$profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
 ?>
 
 
-<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard)); ?>
+<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'publicprofile'=>$profilepublic,'settings'=>$settings)); ?>
 
 
         <!-- section content -->
@@ -42,7 +43,7 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings"))
             <div class="row-fluid">
                 <!-- span side-left -->
 
-<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall,'settings'=>$settings)); ?>
+<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall,'settings'=>$settings,'publicprofile'=>$profilepublic)); ?>
 
                 
 <?php echo $content_for_layout?>

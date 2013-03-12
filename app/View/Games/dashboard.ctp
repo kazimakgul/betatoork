@@ -1,3 +1,6 @@
+<?php 
+$bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
+?>
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -72,7 +75,7 @@
                                             <a class="btn btn-info btn-large">
                                                 <i class="elusive-compass"></i> Take The Tour
                                             </a>
-                                            <a class="btn btn-success btn-large">
+                                            <a href="<?php echo $bestchannels; ?>" class="btn btn-success btn-large">
                                                 <i class="elusive-plus-sign"></i> Follow Channels
                                             </a>
 

@@ -19,7 +19,7 @@ class GamesController extends AppController {
 	        return true;
 	    }
 
-	    if (($this->action === 'add') || ($this->action === 'mygames') || ($this->action === 'channel')) {
+	    if (($this->action === 'add') || ($this->action === 'add2') || ($this->action === 'mygames') || ($this->action === 'channel')) {
 	       // All registered users can add posts
 	        return true;
 	    }
@@ -679,14 +679,17 @@ public function channelgames() {
 
 
 public function profile() {
-	
+
 	$this->layout='dashboard';
     $userid = $this->request->params['pass'][0];
-    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    $authid = $this->Session->read('Auth.User.id');
+    $user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
 
 	if($user==NULL)
 	$this->redirect('/');
     $userName = $user['User']['username'];
+    $publicName = $publicUser['User']['username'];
 	$limit=12;
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
@@ -696,7 +699,7 @@ public function profile() {
 
     
 	if($user['User']['verify']!=null){
-		$this->set('googleVerify',$user['User']['verify']);
+		$this->set('googleVerify',$publicUser['User']['verify']);
 	}else{
 		$this->set('googleVerify','');	
 	}
@@ -705,8 +708,10 @@ public function profile() {
     $this->set('favorites', $cond2);
     $this->set('mygames', $cond);
     $this->set('username', $userName);
-	$this->set('user_id', $userid);
+    $this->set('publicname', $publicName);
+	$this->set('userid', $userid);
 	$this->set('user', $user);
+	$this->set('publicuser', $publicUser);
 		
 }
 
@@ -1215,6 +1220,14 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
    
 	}
 
+	public function headerlogin() {
+		$userid = $this->Session->read('Auth.User.id');
+	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	   	$userName = $user['User']['username'];
+
+	    $this->set('user',$user);
+	    $this->set('username',$userName);
+	}
 
     //this gets game suggestions
 	public function get_game_suggestions($order)
@@ -1335,6 +1348,90 @@ function getExtension($str) {
 		$categories = $this->Game->Category->find('list');
 		$this->set(compact('users', 'categories'));
 
+	$this->set('title_for_layout','Add New Game');
+	$this->set('description_for_layout', 'You are able to add a new game');		
+		
+	}
+
+	public function add2() {
+	
+	App::uses('Folder', 'Utility');
+    App::uses('File', 'Utility');
+	
+		$this->layout='dashboard';
+		$this->headerlogin();
+		$userid = $this->Session->read('Auth.User.id');
+
+    	$limit=12;
+		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
+    )));
+
+		if ($this->request->is('post')) {
+		 
+		 
+		  //Replace Name of Picture Begins
+		   $ext = ".".$this->getExtension($this->request->data["Game"]["picture"]["name"]);
+		   $this->request->data["Game"]["picture"]["name"]="toork_".$this->request->data['Game']['name'].$ext;
+          //Replace Name of Picture Ends
+		 
+           $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($this->request->data['Game']['name']);
+		   $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($this->request->data['Game']['description']);
+
+			$this->request->data['Game']['user_id'] = $this->Auth->user('id');
+			
+			
+			//seourl begins
+		 $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
+		 //seourl ends
+			
+			$this->Game->create();
+			
+			if ($this->Game->save($this->request->data)) {
+			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
+				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
+			
+			$id=$this->Game->getLastInsertId();
+			$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));	
+				
+			//Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/games/'.$id."/".$basename,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$basename,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+				
+				
+				
+				
+				$this->redirect(array('action' => 'channel'));
+			} else {
+				$validationErrors = $this->Game->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
+			}
+			
+			
+		}
+
+		$this->set('mygames', $cond);
+    	$this->set('limit', $limit);
+		$users = $this->Game->User->find('list');
+		$categories = $this->Game->Category->find('list');
+		//$this->set(compact('users', 'categories'));
 	$this->set('title_for_layout','Add New Game');
 	$this->set('description_for_layout', 'You are able to add a new game');		
 		

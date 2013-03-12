@@ -2,8 +2,6 @@
 <?php
 $router = Router::url();
 
-
-
 if ($this->action == "dashboard"){
     $class = "class='active first'";
 }elseif($this->action == "mygames"){
@@ -121,7 +119,7 @@ if ($this->action == "dashboard"){
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="login.html" title="login">
+                                        <a href="<?php echo $publicprofile; ?>" title="login">
                                             <div class="helper-font-24">
                                                 <i class="icofont-film"></i>
                                             </div>

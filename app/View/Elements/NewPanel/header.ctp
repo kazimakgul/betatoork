@@ -177,15 +177,15 @@
                                             <div class="media-body description">
                                                 <p><strong><?php echo $username ?></strong></p>
                                                 <p class="muted">kazimakgul@socialesman.com</p>
-                                                <p class="action"><a class="link" href="#">Activity</a> - <a class="link" href="#">Setting</a></p>
-                                                <a href="<?php echo $dashboard;?>" class="btn btn-danger btn-small btn-block">Go To Dashboard</a>
+                                                <p class="action"><a class="link" href="<?php echo $publicprofile;?>">Public Channel</a> - <a class="link" href="<?php echo $settings;?>">Settings</a></p>
+                                                <a href="<?php echo $dashboard;?>" class="btn btn-danger btn-small btn-block"><i class="icofont-home"></i>Dashboard</a>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="dropdown-footer">
                                         <div>
-                                            <a class="btn btn-small pull-right" href="<?php echo $logout; ?>">Logout</a>
-                                            <a class="btn btn-small btn-success" href="<?php echo $addGame;?>">Add Game</a>
+                                            <a class="btn btn-small pull-right" href="<?php echo $logout; ?>"><i class="icofont-signout"></i> Logout</a>
+                                            <a class="btn btn-small btn-success" href="<?php echo $addGame;?>"><i class="elusive-plus-sign"></i> Add Game</a>
                                         </div>
                                     </li>
                                 </ul>

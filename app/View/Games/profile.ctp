@@ -11,15 +11,15 @@
   <li>
     <a href="#" class="thumbnail">
         <?php 
-  if($user['User']['picture']==null) { 
+  if($publicuser['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
     } else {
-      echo $this->Upload->image($user,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','onerror'=>'imgError(this,"avatar");')); }
+      echo $this->Upload->image($publicuser,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','onerror'=>'imgError(this,"avatar");')); }
   ?>
     </a>
   </li>
   <li>
-    <h5> <?php echo $username ?></h5>
+    <h5> <?php echo $publicname ?></h5>
   </li>
 </ul>
 </div>
