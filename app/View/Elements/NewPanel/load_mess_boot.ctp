@@ -108,7 +108,7 @@ echo "</div>";
                     $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'play'));
                     else
                     $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($gamedata['Game']['id'])));	
-				    echo '<span class="feedplaybtn"><a href="'.$playurl.'">Play</a></span> |'; 
+				    echo '<a href="'.$playurl.'" class="btn btn-mini">Play</a> ';
 				     }
 				     ?>
 					 
@@ -118,7 +118,7 @@ echo "</div>";
                 $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'play'));
                 else
                 $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($gamedata['Game']['id'])));	
-			    echo '<span class="feedplaybtn"><a href="'.$playurl.'">Play</a></span> |'; 
+			    echo '<a href="'.$playurl.'" class="btn btn-mini">Play</a> '; 
 				}
 				?>
 				
@@ -127,8 +127,8 @@ echo "</div>";
 				if($channeldata['User']['seo_username']!=NULL)
                 $playurl=$this->Html->url(array( "controller" => h($channeldata['User']['seo_username'])));
                 $newsurl=$this->Html->url(array("controller"=> h($channeldata['User']['seo_username']),"action"=>"news"));
-				echo '<span class="feedplaybtn"><a href="'.$playurl.'">'.$channeldata['User']['username'].'</a></span> | '; 
-				echo '<span class="feedplaybtn"><a href="'.$newsurl.'">News Feed</a></span> |'; 
+				echo '<a href="'.$playurl.'" class="btn btn-mini">'.$channeldata['User']['username'].'</a>'; 
+				echo '<a href="'.$newsurl.'" class="btn btn-mini">News Feed</a> ';
 				}
 				?>
 				
