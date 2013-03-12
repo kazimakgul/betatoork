@@ -149,6 +149,62 @@ echo "</div>";
 			    </div>
 				 
 				 
+				 <?php if($type==1) { 
+			    $gameimage=$this->Upload->image($gamedata,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$gamename,'width'=>'200','height'=>'110','onerror'=>'imgError(this,"toorksize");'));
+			    ?>
+			 <div class="feedcontent clearfix">
+                                        <div class="feedgameavatar">
+                                            <?php echo $gameimage; ?>
+                                        </div>   
+                                        <div class="feedgamedesc">
+                                            <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedgamedesctitle"><?php echo $gamename; ?></span></a>
+                                            <span class="feedgamedescdesc"><?php echo $description; ?></span>
+                                        </div>                                     
+                                    </div>
+						<?php } ?>
+						
+						
+						<?php if($type==6) { 
+			           $gameimage=$this->Upload->image($gamedata,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$gamename,'width'=>'200','height'=>'110','onerror'=>'imgError(this,"toorksize");'));
+			?>
+			 <div class="feedcontent clearfix">
+                                        <div class="feedgameavatar">
+                                            <?php echo $gameimage; ?>
+                                        </div>   
+                                        <div class="feedgamedesc">
+                                            <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedgamedesctitle"><?php echo $gamename; ?></span></a>
+                                            <span class="feedgamedescdesc"><?php echo $description; ?></span>
+                                        </div>                                     
+                                    </div>
+						<?php } ?>
+						
+						
+			  <?php if($type==5) { 
+			  $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('onerror'=>'imgError(this,"avatar");'));
+			   ?>
+			 <div class="feedcontent clearfix">
+                                        <div class="feedchannelavatar">
+                                            <?php echo $channelimage; ?>
+                                        </div>   
+                                        <div class="feedchanneldesc">
+                                            <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedchanneldesctitle"><?php echo $channeldata['User']['username']; ?></span></a>
+                                            <span class="feedchanneldescdesc"><?php echo $channeldata['User']['description']; ?></span>
+											<span class="feedchannelanalytics"><?php echo $channeldata['User']['username'].' Activity'; ?></span>
+											<ul>
+                                                <li><?php echo $channeldata['Userstat']['uploadcount']; ?> Games Added</li>
+                                                <li><?php echo $channeldata['Userstat']['favoritecount']; ?> Games Favorite</li>
+												<li><?php echo $channeldata['Userstat']['subscribeto']; ?> Followers</li>
+												<li><?php echo $channeldata['Userstat']['subscribe']; ?> Chains</li>
+                                                <li><?php echo $channeldata['Userstat']['playcount']; ?> Games Played</li>
+                                                
+                                            </ul>
+
+                                        </div>                                     
+                                    </div>
+					<?php } ?>
+				 
+				 
+				 
 				 
 															<!-- Comment area begins -->				
 					<div class="commentcontainer feedcomments" id="commentload<?php echo $msg_id;?>">
