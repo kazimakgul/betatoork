@@ -101,7 +101,39 @@ echo "</div>";
 															    <?php if(isset($uid)) {?>
                                                                 <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>">Comment</a>
 																<?php }?>	
-                                                                <a href="#" class="btn btn-mini">Invoice</a>
+                                                                
+				    <?php if($type==1){
+				    $gamedata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_gamedata',$gameid));
+			        if($gamedata['Game']['seo_url']!=NULL)
+                    $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'play'));
+                    else
+                    $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($gamedata['Game']['id'])));	
+				    echo '<span class="feedplaybtn"><a href="'.$playurl.'">Play</a></span> |'; 
+				     }
+				     ?>
+					 
+				<?php if($type==6){
+				$gamedata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_gamedata',$gameid));
+			    if($gamedata['Game']['seo_url']!=NULL)
+                $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'play'));
+                else
+                $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($gamedata['Game']['id'])));	
+			    echo '<span class="feedplaybtn"><a href="'.$playurl.'">Play</a></span> |'; 
+				}
+				?>
+				
+				<?php if($type==5){
+				$channeldata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$gameid));
+				if($channeldata['User']['seo_username']!=NULL)
+                $playurl=$this->Html->url(array( "controller" => h($channeldata['User']['seo_username'])));
+                $newsurl=$this->Html->url(array("controller"=> h($channeldata['User']['seo_username']),"action"=>"news"));
+				echo '<span class="feedplaybtn"><a href="'.$playurl.'">'.$channeldata['User']['username'].'</a></span> | '; 
+				echo '<span class="feedplaybtn"><a href="'.$newsurl.'">News Feed</a></span> |'; 
+				}
+				?>
+				
+																
+																
 																<?php if(isset($uid) && $uid==$msg_uid) { ?>
                                                                 <a href="#" class="btn btn-mini btn-danger stdelete" id="<?php echo $msg_id;?>">Delete</a>
 																<?php } ?>

@@ -107,9 +107,11 @@
                                             </div>
                                             <ul class="nav nav-pills">
                                                 <!--tab menus-->
-                                                <li class="active"><a data-toggle="tab" href="#recent-orders">Whats New</a></li>
-                                                <li><a data-toggle="tab" href="#recent-posts">Recent Posts</a></li>
-                                                <li><a data-toggle="tab" href="#recent-comments">Recent Comments</a></li><!--/tab menus-->
+                                                <li class="active"><a data-toggle="tab" href="#recent-orders">Feed</a></li>
+                                                <li><a data-toggle="tab" href="#recent-posts">Games</a></li>
+                                                <li><a data-toggle="tab" href="#recent-comments">Photo</a></li>
+												<li><a data-toggle="tab" href="#recent-comments">Video</a></li>
+												<!--/tab menus-->
                                             </ul>
                                         </div>
                                         <div class="box-body">
