@@ -1431,7 +1431,7 @@ function getExtension($str) {
     	$this->set('limit', $limit);
 		$users = $this->Game->User->find('list');
 		$categories = $this->Game->Category->find('list');
-		//$this->set(compact('users', 'categories'));
+		$this->set(compact('users2', 'categories'));
 	$this->set('title_for_layout','Add New Game');
 	$this->set('description_for_layout', 'You are able to add a new game');		
 		
