@@ -49,18 +49,6 @@ $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
                                         <li><a href="#">Played</a></li>
                                     </ul>
                                 </li>
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link">
-                                        <i class="icofont-money"></i> Orders <span class="color-red">(+12)</span>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link">
-                                        <i class="icofont-user"></i> Users <span class="color-red">(+34)</span>
-                                    </a>
-                                </li>
                             </ul><!--/breadcrumb-nav-->
                             
                             <!--breadcrumb-->
