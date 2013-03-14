@@ -31,11 +31,12 @@ $favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"
 $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
 $wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings"));
+$login=$this->Html->url(array("controller" => "users","action" =>"login2"));
 $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
 ?>
 
 
-<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'publicprofile'=>$profilepublic,'settings'=>$settings)); ?>
+<?php  echo $this->element('NewPanel/unauthHeader',array('login'=>$login)); ?>
 
                 
 <?php echo $content_for_layout?>

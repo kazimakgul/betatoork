@@ -107,7 +107,7 @@
                             </div>
                             <div class="btn-group">
                                 <a class="btn btn-inverse btn-small dropdown-toggle" data-toggle="dropdown" href="#">
-                                   <i class="elusive-compass"></i> Explore
+                                   <i class="elusive-compass"></i> Explore <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                     <li><a tabindex="-1" href="#">Featured Games</a></li>
