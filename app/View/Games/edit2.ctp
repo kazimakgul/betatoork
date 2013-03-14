@@ -5,7 +5,7 @@
                         <!-- content-header -->
                         <div class="content-header">
 
-                            <h2><i class="icofont-plus-sign"></i> Add Game</h2>
+                            <h2><i class="icofont-edit"></i> Edit Game</h2>
                         </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
@@ -15,7 +15,7 @@
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
                                 <li><a href="#"><i class="icofont-cogs"></i>My Settings</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="#">Add Game</a> <span class="divider">&rsaquo;</span></li>
+                                <li><a href="#">Edit Game</a> <span class="divider">&rsaquo;</span></li>
                                 <li class="active">Data elements</li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
@@ -36,7 +36,7 @@
                                                     </ul>
                                                 </li><!--/tab action-->
                                                 <!--tab menus-->
-                                                <li class="active"><a data-toggle="tab" href="#boxtabpill-1">Add Game</a></li>
+                                                <li class="active"><a data-toggle="tab" href="#boxtabpill-1">Edit Game</a></li>
                                                 <li><a data-toggle="tab" href="#boxtabpill-2">My Games</a></li>
                                             </ul>
                                         </div>
@@ -108,27 +108,10 @@
                                                             <label class="control-label" for="inputUpload">Game Picture</label>
                                                             <div class="controls">
                                                                 <div >
-                                                                    <input data-form="uniform" id="inputUpload" required type="file" name="data[Game][picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="150">
+                                                                    <input data-form="uniform" id="inputUpload" type="file" name="data[Game][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="150">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="control-group">
-                                                            <label class="control-label" for="inputUpload">Are You Hero?</label>
-                                                            <div class="controls">
-                                                                <div>
-<?php
-      echo $this->Recaptcha->show(array(
-        'theme' => 'white',
-        'lang' => 'en',));
-      echo $this->Recaptcha->error();
-?>
-                                                                   
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                           
-                                                      
-
                                                         <div class="form-actions">
                                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                                             <button type="button" class="btn">Cancel</button>

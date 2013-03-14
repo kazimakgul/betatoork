@@ -19,11 +19,13 @@ class GamesController extends AppController {
 	        return true;
 	    }
 
-	    if (($this->action === 'add') || ($this->action === 'add2') || ($this->action === 'mygames') || ($this->action === 'channel')) {
+	    if (($this->action === 'add') || ($this->action === 'add2') || ($this->action === 'dashboard') || 
+	    	($this->action === 'mygames') || ($this->action === 'favorites') || ($this->action === 'settings') || 
+	    	($this->action === 'chains') || ($this->action === 'channel')) {
 	       // All registered users can add posts
 	        return true;
 	    }
-	    if (in_array($this->action, array('edit', 'delete'))) {
+	    if (in_array($this->action, array('edit','edit2','delete'))) {
 	        $gameId = $this->request->params['pass'][0];
 	        return $this->Game->isOwnedBy($gameId, $user['id']);
 	    }
@@ -1417,7 +1419,7 @@ function getExtension($str) {
 				
 				
 				
-				$this->redirect(array('action' => 'channel'));
+				$this->redirect(array('action' => 'mygames'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
@@ -1565,6 +1567,131 @@ function getExtension($str) {
 	$this->set('title_for_layout','Edit Your Game');
 	$this->set('description_for_layout', 'You are able to edit your game');			
 	}
+
+
+public function edit2($id = null) {
+	App::uses('Folder', 'Utility');
+    App::uses('File', 'Utility');
+	
+		$this->layout='dashboard';
+		$this->headerlogin();
+		$userid = $this->Session->read('Auth.User.id');
+    	$limit=12;
+		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
+    )));
+
+
+		$this->Game->id = $id;
+		
+		
+    	$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
+    	$this->set("game",$game);
+		if (!$this->Game->exists()) {
+			throw new NotFoundException(__('Invalid game'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+		
+		   $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($this->request->data['Game']['name']);
+		   $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($this->request->data['Game']['description']);
+		   
+			//$this->request->data['Game']['link']=$this->http_check($this->request->data['Game']['link']);
+			
+			$myval=$this->request->data["Game"]["edit_picture"]["name"];
+			
+			if($myval!="")
+			{
+			
+			/*
+			//remove objects from S3
+			 $prefix = 'upload/games/'.$id;
+             $opt = array(
+             'prefix' => $prefix,
+             );
+			 $bucket=Configure::read('S3.name');
+			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			 foreach($objs as $obj)
+			 {
+			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
+			 //print_r($response);
+			 }
+			//remove objects from S3
+			*/
+			
+			
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
+			
+			
+			$this->request->data["Game"]["picture"]=$this->request->data["Game"]["edit_picture"];
+			
+			
+			//Replace Name of Picture Begins
+			$ext = ".".$this->getExtension($this->request->data["Game"]["picture"]["name"]);
+		    $this->request->data["Game"]["picture"]["name"]="toork_".$this->request->data['Game']['name'].$ext;
+			//Replace Name of Picture Ends
+			}
+			
+			
+			//seourl begins
+		     $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
+		    //seourl ends
+			
+			if ($this->Game->save($this->request->data)) {
+				$this->Session->setFlash('You have successfully updated your game.');
+				
+				
+				
+				//Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/games/'.$id."/".$basename,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$basename,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+				
+				
+				$this->redirect(array('action' => 'mygames'));
+			} else {
+				$validationErrors = $this->Game->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
+			}
+		} else {
+			$this->request->data = $this->Game->read(null, $id);
+		}
+
+		$this->set('mygames', $cond);
+    	$this->set('limit', $limit);
+    	$this->set('id', $id);
+		$users = $this->Game->User->find('list');
+		$categories = $this->Game->Category->find('list');
+		$this->set(compact('users2', 'categories'));
+
+	$this->set('title_for_layout','Edit Your Game');
+	$this->set('description_for_layout', 'You are able to edit your game');			
+	}
+
+
 
 /**
  * delete method
