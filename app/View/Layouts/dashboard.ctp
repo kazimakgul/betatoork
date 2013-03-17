@@ -75,6 +75,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
 <script>
 wallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'message_ajax2')); ?>';
 
+my_feed_var='<?php if(isset($uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax_my',$uid,$type)); }?>';
 
 morevar='<?php if(isset($profile_uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax2',$profile_uid,$type)); }
 else 
