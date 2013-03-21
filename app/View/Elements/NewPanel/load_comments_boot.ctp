@@ -41,14 +41,14 @@ if($commentsarray)
 		}
 // End Avatar
 ?>
-<div class="feedcommentitem clearfix" id="stcommentbody<?php echo $com_id; ?>">
+<div class="feedcommentitem alert fade in alert-success clearfix" id="stcommentbody<?php echo $com_id; ?>">
+<button type="button" class="close" data-dismiss="alert">x</button>
 	<div class="commentleft">
 		<div class="commentavatarback">
 			<?php echo $cface;?>
 		</div>
 	</div>
 	<div class="commentright">
-	
 	<?php if(isset($uid) && ($uid==$com_uid || $uid==$msg_uid) ){ ?>
     <a class="stcommentdelete" href="#" id='<?php echo $com_id; ?>' title='Delete Comment'></a>
     <?php } ?>
