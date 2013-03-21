@@ -201,22 +201,22 @@ echo "</div>";
                                                         </div>
 														
 						<!-- Comment area begins -->				
-					<div class="commentcontainer feedcomments" id="commentload<?php echo $msg_id;?>">
+					<div class="commentcontainer feedcomments" id="commentload2<?php echo $msg_id;?>">
 			<?php
 				$x=1;
 				echo $this->element('NewPanel/load_comments_boot',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
 			?>
 			</div>
-			<div class="commentupdate feedcommentarea clearfix" style='display:none' id='commentbox<?php echo $msg_id;?>'>
+			<div class="commentupdate feedcommentarea clearfix" style='display:none' id='commentbox2<?php echo $msg_id;?>'>
 				<div class="commentleft">
 					<div class="commentavatarback">
 						<?php echo $session_face;?>
 					</div>
 				</div>
 				<div class="commentright">
-					<textarea placeholder="Write a comment..." name="comment" class="commentarea" maxlength="200" cols="53" rows="2" id="ctextarea<?php echo $msg_id;?>"></textarea>
+					<textarea placeholder="Write a comment..." name="comment" class="commentarea" maxlength="200" cols="53" rows="2" id="ctextarea2<?php echo $msg_id;?>"></textarea>
 					<!--<textarea class="commentarea" cols="53" rows="2"></textarea>-->
-					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="comment_button commentbtn">Comment</div>
+					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="comment_button2 commentbtn">Comment</div>
 					<!--<a class="commentbtn" href="#"></a>-->
 				</div>
 			</div>
