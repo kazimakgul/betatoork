@@ -63,7 +63,7 @@ if($updatesarray)
 		}
 		// End Avatar
 ?>
-<div class="media" id="stbody<?php echo $msg_id;?>">
+<div class="media" id="stbody2<?php echo $msg_id;?>">
                                                         <a class="pull-left" href="#">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>

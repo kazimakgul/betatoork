@@ -220,7 +220,7 @@ $(document).ready(function()
 						$("#webcam_container").slideUp('fast');
 						$("#flash").fadeOut(html);
 						$("#content").prepend(html);
-						$("#my_more_content").prepend(html);
+						$("#my_more_content").prepend(html.replace("stbody", "stbody2"));
 						$("#update").val('');	
 						$("#update").focus();
 						$('#preview').html('');
@@ -450,10 +450,11 @@ type: "POST",
 url: delmessagevar,
 data: dataString,
 cache: false,
-beforeSend: function(){ $("#stbody"+ID).css({'backgroundColor':'#fb6c6c'},300);},
+beforeSend: function(){ $("#stbody"+ID).css({'backgroundColor':'#fb6c6c'},300);$("#stbody2"+ID).css({'backgroundColor':'#fb6c6c'},300);},
 success: function(html){
  //$("#stbody"+ID).slideUp();
  $("#stbody"+ID).fadeOut(300,function(){$("#stbody"+ID).remove();});
+ $("#stbody2"+ID).fadeOut(300,function(){$("#stbody"+ID).remove();});
  }
  });
 }
