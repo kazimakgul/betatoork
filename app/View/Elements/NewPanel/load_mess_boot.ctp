@@ -202,11 +202,10 @@ echo "</div>";
                                         </div>                                     
                                     </div>
 					<?php } ?>
-				 
-				 
-				 
-				 
-															<!-- Comment area begins -->				
+				 	
+                                                        </div>
+														
+				<!-- Comment area begins -->				
 					<div class="commentcontainer feedcomments" id="commentload<?php echo $msg_id;?>">
 			<?php
 				$x=1;
@@ -226,8 +225,8 @@ echo "</div>";
 					<!--<a class="commentbtn" href="#"></a>-->
 				</div>
 			</div>
-				<!-- Comment area ends-->
-                                                        </div>
+				<!-- Comment area ends-->										
+														
                                                     </div>
 										
 		

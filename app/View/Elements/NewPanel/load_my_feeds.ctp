@@ -93,7 +93,7 @@ echo "</div>";
 															
                                                             <div class="btn-group pull-right">
 															    <?php if(isset($uid)) {?>
-                                                                <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>">Comment</a>
+                                                                <a href="#" class="btn btn-mini commentopen2" id="<?php echo $msg_id;?>">Comment</a>
 																<?php }?>	
                                                                 
 				    <?php if($type==1){
@@ -198,9 +198,9 @@ echo "</div>";
 					<?php } ?>
 				 
 				 
-				 
-				 
-															<!-- Comment area begins -->				
+                                                        </div>
+														
+						<!-- Comment area begins -->				
 					<div class="commentcontainer feedcomments" id="commentload<?php echo $msg_id;?>">
 			<?php
 				$x=1;
@@ -220,8 +220,9 @@ echo "</div>";
 					<!--<a class="commentbtn" href="#"></a>-->
 				</div>
 			</div>
-				<!-- Comment area ends-->
-                                                        </div>
+				<!-- Comment area ends-->								
+														
+														
                                                     </div>
 										
 		

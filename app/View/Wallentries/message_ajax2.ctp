@@ -56,10 +56,35 @@ echo "</div>";
                                                             <div class="btn-group pull-right">
 															    <?php if(isset($uid)) {?>
                                                                 <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>">Comment</a>
-																<?php }?>	
-                                                                <a href="#" class="btn btn-mini">Invoice</a>
+																<?php }?>
                                                                 <a href="#" class="btn btn-mini btn-danger stdelete" id="<?php echo $msg_id;?>">Delete</a>
 																
                                                             </div>
                                                         </div>
+														
+														<!-- Comment area begins -->				
+					<div class="commentcontainer feedcomments" id="commentload<?php echo $msg_id;?>">
+			<?php
+				$x=1;
+				echo $this->element('NewPanel/load_comments_boot',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
+			?>
+			</div>
+			<div class="commentupdate feedcommentarea clearfix" style='display:none' id='commentbox<?php echo $msg_id;?>'>
+				<div class="commentleft">
+					<div class="commentavatarback">
+						<?php echo $session_face;?>
+					</div>
+				</div>
+				<div class="commentright">
+					<textarea placeholder="Write a comment..." name="comment" class="commentarea" maxlength="200" cols="53" rows="2" id="ctextarea<?php echo $msg_id;?>"></textarea>
+					<!--<textarea class="commentarea" cols="53" rows="2"></textarea>-->
+					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="comment_button commentbtn">Comment</div>
+					<!--<a class="commentbtn" href="#"></a>-->
+				</div>
+			</div>
+				<!-- Comment area ends-->
+														
                                                     </div>
+													
+													
+														
