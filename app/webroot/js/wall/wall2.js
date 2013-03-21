@@ -519,6 +519,24 @@ $("#commentload"+ID).html(html);
 });
 return false;
 });
+
+// View all comments
+$(".view_comments2").live("click",function()  
+{
+var ID = $(this).attr("id");
+
+$.ajax({
+type: "POST",
+url: seeallvar,
+data: "msg_id="+ ID, 
+cache: false,
+success: function(html){
+$("#commentload2"+ID).html(html);
+}
+});
+return false;
+});
+
 // Load More
 
 $('.more').live("click",function() 

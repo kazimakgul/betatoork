@@ -204,7 +204,7 @@ echo "</div>";
 					<div class="commentcontainer feedcomments" id="commentload2<?php echo $msg_id;?>">
 			<?php
 				$x=1;
-				echo $this->element('NewPanel/load_comments_boot',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
+				echo $this->element('NewPanel/load_comments_boot2',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
 			?>
 			</div>
 			<div class="commentupdate feedcommentarea clearfix" style='display:none' id='commentbox2<?php echo $msg_id;?>'>
