@@ -1,3 +1,6 @@
+<?php
+$password=$this->Html->url(array("controller" => "users","action" =>"password2",$this->Session->read('Auth.User.id')));
+?>
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -8,17 +11,6 @@
                             <h2><i class="icofont-cogs"></i> My Settings</h2>
                         </div><!-- /content-header -->
                         
-                        <!-- content-breadcrumb -->
-                        <div class="content-breadcrumb">
-
-                            
-                            <!--breadcrumb-->
-                            <ul class="breadcrumb">
-                                <li><a href="index.html"><i class="icofont-cogs"></i> Settings</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="interface.html">My Settings</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
-                            </ul><!--/breadcrumb-->
-                        </div><!-- /content-breadcrumb -->
                         <!-- content-body -->
                         <div class="content-body">
 
@@ -52,28 +44,30 @@
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active" id="boxtabpill-1">
-
-                                                <form class="form-horizontal" id="form-validate" novalidate="novalidate">
+<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'form-validate','novalidate'=>'novalidate','class'=>'form-horizontal' ,'type' => 'file'));?>
                                                         <fieldset>
                                                             
                                                             <div class="control-group  input-prepend">
                                                                 <label class="control-label" for="required">Channel Name</label>
                                                                 <div class="controls">
                                                                     <span class="add-on">toork.com/</span>
-                                                                    <input type="text" class="grd-white" data-validate="{required: true, messages:{required:'Please enter field required'}}" name="required" id="required">
+<?php echo $this->Form->input('username',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'grd-white','data-validate'=>'{required: true, messages:{required:"Please enter field required"}}','id'=>'required')); ?>
+
                                                                 </div>
                                                             </div>
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputEditorSimple">Channel Description</label>
                                                             <div class="controls">
-                                                                <textarea id="inputEditorSimple" class="span8" rows="6" placeholder="Describe your channel ..."></textarea>
+
+<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>280,'required','placeholder' => 'Describe your channel please.    Ex: Play free online games at Socialesman! Were the best online games website. Find the best uptodate games in socialesman channel.','type' => 'textarea','class'=>'span8','rows'=>'6','id'=>'inputEditorSimple' )); ?>
+
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputUpload">Channel Avatar</label>
                                                             <div class="controls">
-                                                                <input type="file" data-form="uniform" id="inputUpload" />
+<input placeholder="not yet" type="file" name="data[User][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" data-form="uniform" id="inputUpload" size="100">
                                                             </div> <p> * Picture size must be 90x120 pixel</p>
                                                         </div> 
                                      
@@ -86,46 +80,50 @@
 
                                                 </div>
                                                 <div class="tab-pane fade" id="boxtabpill-2">
-                                                   <form class="form-horizontal" id="form-validate" novalidate="novalidate">
+<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'form-validate','novalidate'=>'novalidate','class'=>'form-horizontal' ,'type' => 'file'));?>
                                                         <fieldset>
                                                          
-                                                        <div class="control-group">
-                                                            <label class="control-label" for="inputPrepand">Facebook Page</label>
-                                                            <div class="controls">
-                                                                <div class="input-prepend">
-                                                                    <span class="add-on">facebook.com/</span>
-                                                                    <input id="inputPrepand" class="grd-white" type="text">
+                                                                <div class="control-group">
+                                                                    <label class="control-label" for="inputDisabled">Channel Name</label>
+                                                                    <div class="controls">
+<?php echo $this->Form->input('username',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly')); ?>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group">
-                                                            <label class="control-label" for="inputPrepand">Twitter</label>
-                                                            <div class="controls">
-                                                                <div class="input-prepend">
-                                                                    <span class="add-on">twitter.com/</span>
-                                                                    <input id="inputPrepand" class="grd-white" type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group">
-                                                            <label class="control-label" for="inputPrepand">Google+ Page</label>
-                                                            <div class="controls">
-                                                                <div class="input-prepend">
-                                                                    <span class="add-on">plus.google.com/</span>
-                                                                    <input id="inputPrepand" class="grd-white" type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="control-group">
-                                                            <label class="control-label" for="inputPrepand">Pinterest</label>
-                                                            <div class="controls">
-                                                                <div class="input-prepend">
-                                                                    <span class="add-on">pinterest.com/</span>
-                                                                    <input id="inputPrepand" class="grd-white" type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
 
+
+
+
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="url">Website</label>
+                                                                <div class="controls">
+<?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com','type' => 'url', 'maxlength'=>100)); ?>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="url">Facebook</label>
+                                                                <div class="controls">
+<?php echo $this->Form->input('fb_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://facebook.com/.+' ,'placeholder' => 'http://facebook.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="url">Twitter</label>
+                                                                <div class="controls">
+<?php echo $this->Form->input('twitter_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://twitter.com/.+' ,'placeholder' => 'http://twitter.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="url">Google+</label>
+                                                                <div class="controls">
+<?php echo $this->Form->input('gplus_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://plus.google.com/.+' ,'placeholder' => 'http://plus.google.com/117184471094869274585','type' => 'url', 'maxlength'=>100)); ?>
+                                                                </div>
+                                                            </div>
                                                             <div class="form-actions">
                                                                 <button type="submit" class="btn btn-primary">Save changes</button>
                                                                 <button type="button" class="btn">Cancel</button>
@@ -134,27 +132,21 @@
                                                     </form>
                                                 </div>
                                                 <div class="tab-pane fade" id="boxtabpill-3">
-                                                   <form class="form-horizontal" id="form-validate" novalidate="novalidate">
-                                                        <fieldset>
-
-                                                            <div class="control-group">
-                                                                <label class="control-label" for="password">Password</label>
-                                                                <div class="controls">
-                                                                    <input type="password" class="grd-white" data-validate="{required: true, messages:{required:'Please enter field password'}}" name="password" id="password">
-                                                                </div>
-                                                            </div>
-                                                            <div class="control-group">
-                                                                <label class="control-label" for="cpassword">Confirm Password</label>
-                                                                <div class="controls">
-                                                                    <input type="password" class="grd-white" data-validate="{required: true, equalTo: '#password', messages:{required:'Please enter field confirm password', equalTo: 'confirmation password does not match the password'}}" name="cpassword" id="cpassword">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-actions">
-                                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                                                <button type="button" class="btn">Cancel</button>
-                                                            </div>
-                                                        </fieldset>
-                                                    </form>
+<div class="well well-small">
+    <div class="box-header corner-top">
+                                            <div class="header-control">
+                                            <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
+                                            </div>
+                                            
+                                        </div>
+  <h1>Change Your Password</h1>
+  <p>Please make sure that it is not an easy to remember password. Try to use some numbers and special characters as well.</p>
+  <p>
+    <a href="<?php echo $password; ?>" class="btn btn-danger btn-large">
+      <i class="elusive-lock"></i> Change Password
+    </a>
+  </p>
+</div>
                                                 </div>
                                                 <div class="tab-pane fade" id="boxdropdownpill-1">
                                                     <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>

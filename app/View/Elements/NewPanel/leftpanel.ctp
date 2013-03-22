@@ -68,7 +68,6 @@ if ($this->action == "dashboard"){
                             </li>
                             <li <?php echo $class6;?>>
                                 <a href="<?php echo $settings; ?>" title="form">
-                                    <div class="badge badge-important">3</div>
                                     <div class="helper-font-24">
                                         <i class="icofont-edit"></i>
                                     </div>
@@ -81,58 +80,22 @@ if ($this->action == "dashboard"){
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="form.html" title="form element" class="corner-all">
-                                            <i class="icofont-file"></i>
+                                        <a href="gallery.html" title="gallery" class="corner-all">
+                                            <i class="icofont-money"></i>
+                                            <span class="sidebar-text">Monetize Your Channel</span>
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="<?php echo $settings; ?>" title="form element" class="corner-all">
+                                            <i class="icofont-user"></i>
                                             <span class="sidebar-text">Edit Channel</span>
                                         </a>
                                     </li>
-                                    <li class="divider"></li>
                                     <li>
-                                        <a href="code_editor.html" title="code editor" class="corner-all">
-                                            <i class="icofont-book"></i>
+                                        <a href="<?php echo $password; ?>" title="code editor" class="corner-all">
+                                            <i class="icofont-lock"></i>
                                             <span class="sidebar-text">Change Password</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="gallery.html" title="gallery" class="corner-all">
-                                            <i class="icofont-picture"></i>
-                                            <span class="sidebar-text">AdSense</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" title="more">
-                                    <div class="badge badge-important">4</div>
-                                    <div class="helper-font-24">
-                                        <i class="icofont-th-large"></i>
-                                    </div>
-                                    <span class="sidebar-text">Public</span>
-                                </a>
-                                <ul class="sub-sidebar corner-top shadow-silver-dark">
-                                    <li>
-                                        <a href="404.html" title="not found">
-                                            <div class="helper-font-24">
-                                                <i class="icofont-th-list"></i>
-                                            </div>
-                                            <span class="sidebar-text">Wall</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $publicprofile; ?>" title="login">
-                                            <div class="helper-font-24">
-                                                <i class="icofont-film"></i>
-                                            </div>
-                                            <span class="sidebar-text">Channel</span>
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="bonus-page/resume/index.html" title="resume">
-                                            <div class="helper-font-24">
-                                                <i class="icofont-user"></i>
-                                            </div>
-                                            <span class="sidebar-text">Home</span>
                                         </a>
                                     </li>
                                 </ul>

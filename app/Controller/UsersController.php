@@ -52,7 +52,7 @@ public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.
 	   
 	   
 	   
-	    if (in_array($this->action, array('edit','password','settings'))) {
+	    if (in_array($this->action, array('edit','password','password2','settings'))) {
 	        $userId = $this->request->params['pass'][0];
 	        return $this->User->isOwnedBy($userId, $user['id']);
 	    }
@@ -427,15 +427,122 @@ function secureSuperGlobalPOST($value)
  * @param string $id
  * @return void
  */
- 	public function settings(){
- 		$this->layout='dashboard';
- 		$userid = $this->Session->read('Auth.User.id');
- 		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
- 		$username = $user['User']['username'];
 
- 		$this->set('username', $username);
- 		$this->set('user',$user);
- 	}
+	public function settings($id = null) {
+	App::uses('Folder', 'Utility');
+    App::uses('File', 'Utility');
+	
+		$this->layout = 'dashboard';
+		$this->loadModel('Subscription');
+		$userid=$id;
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+		
+		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
+		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
+		$myval=$this->request->data["User"]["edit_picture"]["name"];
+		
+		if($myval!="")
+			{
+			
+			//remove objects from S3
+			$prefix = 'upload/users/'.$id;
+           
+  
+             $opt = array(
+             'prefix' => $prefix,
+             );
+			 $bucket=Configure::read('S3.name');
+			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			 foreach($objs as $obj)
+			 {
+			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
+			 //print_r($response);
+			 }
+			//remove objects from S3
+			
+			
+			
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
+			
+			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
+			
+			}
+		
+		     //seousername begins
+		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
+		     //seousername ends
+		
+		
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash(__('You successfully updated your channel'));
+				
+				
+				//Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/users/'.$id."/".$basename,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/users/".$id."/".$basename,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+				
+				
+				$this->redirect(array('action' => 'settings',$this->Session->read('Auth.User.id')));
+			} else {
+				$validationErrors = $this->User->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
+				$this->redirect(array('controller' => 'users', 'action' => 'settings',$userid));
+			}	
+		} else {
+		
+			$this->request->data = $this->User->read(null, $id);
+			$this->request->data["User"]["password"]="";
+		}
+		$countries = $this->User->Country->find('list');
+		$this->set(compact('countries'));
+		
+		
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('userid', $userid);
+        $this->set('username', $userName);
+    	$subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
+		$subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+		$this->set('subscribe', $subscribe);
+		$this->set('subscribeto', $subscribeto);
+		
+		
+		$this->set('title_for_layout', 'Edit Channel');
+		$this->set('description_for_layout', 'Edit Your Channel');	
+	}
+
+
 
 	public function edit($id = null) {
 	
@@ -726,6 +833,64 @@ public function adminedit($id = null) {
 		$subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 		$this->set('subscribe', $subscribe);
 		$this->set('subscribeto', $subscribeto);
+
+		$this->set('title_for_layout', 'Change Password');
+		$this->set('description_for_layout', 'Change your password');	
+
+	}
+
+
+public function password2($id = null) {
+		$this->layout = 'dashboard';
+
+		$userid=$id;
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+		
+	if($this->request->data["User"]["new_password"]!="")
+	{
+	    if(Security::hash(Configure::read('Security.salt').$this->request->data['User']['old_password'])==$this->User->field('password'))
+	    {
+		$this->request->data["User"]["password"]=$this->request->data["User"]["new_password"];
+	     $this->request->data["User"]["confirm_password"]=$this->request->data["User"]["new_password"];
+	    }
+		else
+		{
+		$this->Session->setFlash("Old password is wrong");
+		$this->redirect('/users/password2/'.$id);
+		}
+	
+	
+	}
+		
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash(__('The user has been updated'));
+				//$this->redirect(array('action' => 'password',$this->Session->read('Auth.User.id')));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$validationErrors = $this->User->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
+				$this->redirect(array('controller' => 'users', 'action' => 'password2',$id));
+			}
+			
+			
+			
+			
+		} else {
+		
+			$this->request->data = $this->User->read(null, $id);
+			$this->request->data["User"]["password"]="";
+		}
+
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('userid', $userid);
+        $this->set('username', $userName);
 
 		$this->set('title_for_layout', 'Change Password');
 		$this->set('description_for_layout', 'Change your password');	

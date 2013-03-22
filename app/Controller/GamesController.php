@@ -1207,16 +1207,21 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
     $this->random();
    }
 
-	public function playgame($id = null) {
+	public function playgame($channel=NULL,$seo_url=NULL) {
 	
 		$this->layout='dashboard';
+		$this->headerLogin();
+		
+		$gameid = $this->request->params['pass'][0];
+		if(is_numeric($gameid)){
+			$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode')))));//Recoded
 
-		$userid = $this->Session->read('Auth.User.id');
-	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-	   	$userName = $user['User']['username'];
+		}else{
+			$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
+			$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
+		}
 
-	    $this->set('user',$user);
-	    $this->set('username',$userName);
+		$this->set('game', $game);
 		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
 
    

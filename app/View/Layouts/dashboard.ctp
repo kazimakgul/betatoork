@@ -30,8 +30,9 @@ $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 $favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"));
 $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
 $wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
-$settings=$this->Html->url(array("controller" => "users","action" =>"settings"));
+$settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
 $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
+$password=$this->Html->url(array("controller" => "users","action" =>"password2",$this->Session->read('Auth.User.id')));
 ?>
 
 
@@ -43,11 +44,14 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
             <div class="row-fluid">
                 <!-- span side-left -->
 
-<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall,'settings'=>$settings,'publicprofile'=>$profilepublic)); ?>
+<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall,'settings'=>$settings,'password'=>$password,'publicprofile'=>$profilepublic)); ?>
 
                 
 <?php echo $content_for_layout?>
-          
+<?php 
+echo $this->Session->flash('flash', array('element' => 'info'));
+echo $this->Session->flash('auth', array('element' => 'info'));
+?>          
 
 <?php  echo $this->element('NewPanel/rightpanel'); ?>
 
