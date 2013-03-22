@@ -1,78 +1,53 @@
         <!-- section header -->
-        <header class="header">
-            <!--nav bar helper-->
-            <div class="navbar-helper">
-                <div class="row-fluid">
-                    <!--panel site-name-->
-                    <div class="span2">
-                        <div class="panel-sitename">
-                            <h2><a href="<?php echo $index; ?>">T<span size="small" class="color-blue">oo</span>rk</a></h2>
-                        </div>
-                    </div>
-                    <!--/panel name-->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container"><!-- Collapsable nav bar -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Your site name for the upper left corner of the site -->
+      <a href="<?php echo $index; ?>" class="brand">toork</a>
+ <form class="navbar-search">
+  <input type="text" class="search-query" placeholder="Search">
+</form>
+      <!-- Start of the nav bar content -->
+      <div class="nav-collapse"><!-- Other nav bar content -->
+        <!-- The drop down menu -->
+        <ul class="nav pull-right">
 
-                    <div class="span6">
-                        <!--panel search-->
-                        <div class="panel-search">
-                            <form class="form-search">
-                                <div class="input-icon-append">
-                                    <button type="submit" rel="tooltip-bottom" title="search" class="icon"><i class="icofont-search"></i></button>
-                                    <input class="input-large search-query grd-white" maxlength="23" placeholder="Search here..." type="text">
-                                </div>
-                            </form>
-                        </div><!--/panel search-->
-                    </div>
-                    <div class="span4">
-                        <!--panel button ext-->
-                        <div class="panel-ext">
-
-                            <div class="btn-group">
-                                <a class="btn btn-small btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
-                                   <i class="elusive-compass"></i> Explore <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <li><a tabindex="-1" href="#">Featured Games</a></li>
-                                    <li><a tabindex="-1" href="#">Best Channels</a></li>
-                                    <li><a tabindex="-1" href="#">New Games</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Games</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a tabindex="-1" href="pricing.html">Top Rated</a></li>
-                                            <li><a tabindex="-1" href="bonus-page/resume/index.html">Most Played</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Support and Docs</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a tabindex="-1" href="403.html">About Us</a></li>
-                                            <li><a tabindex="-1" href="404.html">Support</a></li>
-                                            <li><a tabindex="-1" href="503.html">Developers</a></li>
-                                            <li><a tabindex="-1" href="under-construction.html">Advertise With Us</a></li>
-                                            <li><a tabindex="-1" href="405.html">Terms</a></li>
-                                            <li><a tabindex="-1" href="500.html">Privacy</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a tabindex="-1" href="#">FAQs and Descussions</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Quick Links</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a tabindex="-1" href="403.html">Dashboard</a></li>
-                                            <li><a tabindex="-1" href="403.html">Log Out</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn btn-small btn-success" href="<?php echo $login; ?>"><i class="icofont-user"></i> Sign up for free</a>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn btn-small btn-inverse" href="<?php echo $login; ?>"><i class="icofont-lock"></i> Sign In</a>
-                            </div>
-                        </div><!--panel button ext-->
-                    </div>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="elusive-compass"></i> Explore <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Best Channels</a></li>
+                    <li><a href="#">Recommended Games</a></li>
+                    <li><a href="#">New Games</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Why Join Toork</a></li>
+                </ul>
+            </li>
+          <li class="divider-vertical"></li>
+          <li><a href="#">Sign Up</a></li>
+          <li class="divider-vertical"></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+            <div class="dropdown-menu span3" style="padding: 15px; padding-bottom: 0px;">
+<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'sign-in','method'=>'post'));?>
+<?php echo $this->Form->input('username',array('label'=>'Username or Email' ,'div'=>false,'type'=>'text','class'=>'input-block-level','data-validate'=>'{required: true, messages:{required:"Please enter field username"}}')); ?>
+<?php echo $this->Form->input('password',array('label'=>'Password' ,'div'=>false,'class'=>'input-block-level','data-validate'=>'{required: true, messages:{required:"Please enter field password"}}','required' ,'type' => 'password')); ?>
+<?php echo $this->Form->input('remember', array('label'=>false ,'div'=>false,'type'=>'checkbox','style'=>"float: left; margin-right: 10px;",'name'=>'remember_me','id'=>'user_remember_me','value'=>0)); ?> 
+                    <label class="string optional" for="user_remember_me"> Remember me</label>
+                    <input class="btn btn-success" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
+                </form>
+                <div class="control-group">
+                    <p class="recover-account"><a href="#modal-recover" class="link" data-toggle="modal">forget your password</a></p>
                 </div>
-            </div><!--/nav bar helper-->
-        </header>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

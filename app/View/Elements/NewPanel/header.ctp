@@ -144,9 +144,6 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="btn-group">
-                                <a class="btn btn-inverse btn-small" href="#"><i class="icofont-edit"></i> Share</a>
-                            </div>
                             <div class="btn-group user-group">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 
@@ -176,7 +173,7 @@
                                             </a>
                                             <div class="media-body description">
                                                 <p><strong><?php echo $username ?></strong></p>
-                                                <p class="muted">kazimakgul@socialesman.com</p>
+                                                <p class="muted"><?php echo $user['User']['email']; ?></p>
                                                 <p class="action"><a class="link" href="<?php echo $publicprofile;?>">Public Channel</a> - <a class="link" href="<?php echo $settings;?>">Settings</a></p>
                                                 <a href="<?php echo $dashboard;?>" class="btn btn-danger btn-small btn-block"><i class="icofont-home"></i>Dashboard</a>
                                             </div>

@@ -74,11 +74,6 @@ if ($this->action == "dashboard"){
                                     <span class="sidebar-text">Settings</span>
                                 </a>
                                 <ul class="sub-sidebar-form corner-top shadow-white">
-                                    <li class="title muted">Change Avatar</li>
-                                    <li>
-                                        <input type="file" data-form="uniform" onchange="alert('your progres uploading file...')" />
-                                    </li>
-                                    <li class="divider"></li>
                                     <li>
                                         <a href="gallery.html" title="gallery" class="corner-all">
                                             <i class="icofont-money"></i>
