@@ -939,6 +939,49 @@ $this->set('description_for_layout', 'Toork - Game Search Engine powered by Goog
 	
 }
 
+//This clone of search function fill be used for dashboard layout.
+public function search2() {
+$this->layout='dashboard';
+if($this->request->is("GET") && isset($this->request->params['pass'][0]))
+{
+$param = $this->request->params['pass'][0];
+}
+
+//search için veri girilmemisse ana sayfaya yönlendir.
+if(!isset($param) || $param=="" )
+{
+$this->redirect(array("controller"=>"games","action"=>"index"));
+}
+else
+{
+$cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.description LIKE'=>'%'.$param.'%','User.username LIKE'=>'%'.$param.'%'),'Game.active'=>'1'));
+$this->set('search', $this->paginate('Game',$cond));
+$this->set('mygames', $cond);
+
+$this->set('title_for_layout', 'Toork - Game Search Engine');
+$this->set('description_for_layout', 'Toork - Game Search Engine powered by Google. Toork Search is specially designed for searching games');
+}
+
+
+	$this->leftpanel();
+	//$this->logedin_user_panel();
+
+	$key=$param;
+	$this->set('myParam',$key);
+    $userid = $this->Session->read('Auth.User.id');
+    
+	
+	$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    $userName = $user['User']['username'];
+	$limit=120;
+	$this->set('limit', $limit);
+    
+    $this->set('username', $userName);
+	$this->set('user_id', $userid);
+	
+	
+}
+
 	public function random() {
         $random = $this->Game->find('first',array(
                 'conditions' => array(

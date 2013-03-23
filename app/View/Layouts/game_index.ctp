@@ -185,6 +185,7 @@ $.get("<?php echo $suburl2; ?>/"+userid,function(data) {alert(data);location.rel
 
 </script>
 
+<!-- Search Function Begins-->
 <?php $searchurl=$this->Html->url(array("controller"=>"games","action"=>"search")); ?>
 
 <script type="text/javascript">
@@ -207,7 +208,7 @@ $(function () {
 });
 
 </script>
-
+<!-- Search Function Ends -->
 
 <?php  echo $this->element('knockout'); ?>
 
