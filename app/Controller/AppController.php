@@ -87,9 +87,9 @@ class AppController extends Controller {
             'subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','playedgames','play2',
             'randomAvatar','lastadded','allusergames','alluserfavorites','allchannelgames','allchannelfavorites','seoplay',
             'seoplay2','channelgames','connect','sync','syncallusers','incgameplay','incscribe','togglefav','totalrate',
-            'getgamecount','potential','message_ajax','message_ajax2','moreupdates_ajax','moreupdates_ajax2','moreupdates_ajax_my','comment_ajax',
+            'getgamecount','potential','message_ajax','message_ajax2','moreupdates_ajax','moreupdates_ajax2','moreupdates_ajax_my','comment_ajax','comment_ajax2',
             'image_ajax','get_userdata','delete_message_ajax','delete_comment_ajax','action_ajax','get_gamedata',
-            'moreupdates_filter_ajax','gamefeed_ajax','view_ajax','mass_subscription','quick_subscription',
+            'moreupdates_filter_ajax','gamefeed_ajax','view_ajax','view_ajax2','mass_subscription','quick_subscription',
             'sync_recommended','profile','playgame','bestchannels2','toprated2','login2');
 
 		$this->set('user',$this->Auth->user());

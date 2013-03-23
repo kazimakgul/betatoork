@@ -69,7 +69,7 @@ if($updatesarray)
 		}
 		// End Avatar
 ?>
-<div class="media" id="stbody<?php echo $msg_id;?>">
+<div class="media well" id="stbody<?php echo $msg_id;?>">
                                                         <a class="pull-left" href="#">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>
@@ -221,7 +221,7 @@ echo "</div>";
 				<div class="commentright">
 					<textarea placeholder="Write a comment..." name="comment" class="commentarea" maxlength="200" cols="53" rows="2" id="ctextarea<?php echo $msg_id;?>"></textarea>
 					<!--<textarea class="commentarea" cols="53" rows="2"></textarea>-->
-					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="comment_button commentbtn">Comment</div>
+					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="comment_button bootcommentbtn btn btn-primary ">Comment</div>
 					<!--<a class="commentbtn" href="#"></a>-->
 				</div>
 			</div>

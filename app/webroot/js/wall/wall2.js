@@ -259,7 +259,7 @@ data: dataString,
 cache: false,
 success: function(html){
 $("#commentload"+ID).append(html);
-$("#commentload2"+ID).append(html);
+$("#commentload2"+ID).append(html.replace('stcommentdelete','stcommentdelete2').replace('stcommentbody','stcommentbody2'));
 $("#ctextarea"+ID).val('');
 $("#ctextarea"+ID).focus();
  }
@@ -291,7 +291,7 @@ data: dataString,
 cache: false,
 success: function(html){
 $("#commentload"+ID).append(html);
-$("#commentload2"+ID).append(html);
+$("#commentload2"+ID).append(html.replace('stcommentdelete','stcommentdelete2').replace('stcommentbody','stcommentbody2'));
 $("#ctextarea2"+ID).val('');
 $("#ctextarea2"+ID).focus();
  }
@@ -399,7 +399,7 @@ $('.stcommentdelete').live("click",function()
 var ID = $(this).attr("id");
 var dataString = 'com_id='+ ID;
 
-if(confirm("Sure you want to delete this update? There is NO undo!"))
+if(confirm("Sure you want to delete this update? There is NO undo!ccc"))
 {
 
 $.ajax({
@@ -411,6 +411,33 @@ beforeSend: function(){$("#stcommentbody"+ID).animate({'backgroundColor':'#fb6c6
 success: function(html){
 // $("#stcommentbody"+ID).slideUp('slow');
 $("#stcommentbody"+ID).fadeOut(300,function(){$("#stcommentbody"+ID).remove();});
+$("#stcommentbody2"+ID).fadeOut(300,function(){$("#stcommentbody2"+ID).remove();});
+ }
+ });
+
+}
+return false;
+});
+
+// delete comment2
+$('.stcommentdelete2').live("click",function() 
+{
+var ID = $(this).attr("id");
+var dataString = 'com_id='+ ID;
+
+if(confirm("Sure you want to delete this update? There is NO undo!ccc"))
+{
+
+$.ajax({
+type: "POST",
+url: delcommentvar,
+data: dataString,
+cache: false,
+beforeSend: function(){$("#stcommentbody2"+ID).animate({'backgroundColor':'#fb6c6c'},300);},
+success: function(html){
+// $("#stcommentbody"+ID).slideUp('slow');
+$("#stcommentbody"+ID).fadeOut(300,function(){$("#stcommentbody"+ID).remove();});
+$("#stcommentbody2"+ID).fadeOut(300,function(){$("#stcommentbody2"+ID).remove();});
  }
  });
 

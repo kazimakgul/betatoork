@@ -1150,9 +1150,110 @@ public function comment_ajax() {
 }
 
 
-
 //Yeni comment girmemizi saglayan fonksiyon.
+public function comment_ajax2() {
+     $this->layout='ajax';
+     error_reporting(0);
+     //Import necessary files for wall script
+	   App::import('Vendor', 'wallscript/config');
+	   $this->set('gravatar',1);
+	   $gravatar=1;
+	   $this->set('base_url','http://localhost/wall/');
+	   $this->set('perpage',10);
+	   App::import('Vendor', 'wallscript/Wall_Updates');
+	   App::import('Vendor', 'wallscript/tolink');
+	   App::import('Vendor', 'wallscript/textlink');
+	   App::import('Vendor', 'wallscript/htmlcode');
+	   App::import('Vendor', 'wallscript/Expand_URL');
+	   //Session starts
+	   if($this->Auth->user('id')) 
+       $session_uid=$this->Auth->user('id'); 
+       if(!empty($session_uid))
+       {
+       $uid=$session_uid;
+	   $this->set('uid',$uid);
+       }else{
+        //echo 'please login';
+       }
+	   //Session Ends
+	   $Wall = new Wall_Updates();
+	   $this->set('Wall',$Wall);
+   if(isSet($_POST['comment']))
+   {
+   $comment=mysql_real_escape_string($_POST['comment']);
+   $comment=str_replace('\n',' ',$comment);
+   $msg_id=$_POST['msg_id'];
+   $ip=$_SERVER['REMOTE_ADDR'];
+   $cdata=$Wall->Insert_Comment($uid,$msg_id,$comment,$ip);
+   if($cdata)
+   {
+   $com_id=$cdata['com_id'];
+   $comment=tolink(htmlentities($cdata['comment'] ));
+   $time=$cdata['created'];
+   $mtime=date("c", $time);
+   $username=$cdata['username'];
+   $uid=$cdata['uid_fk'];
+   $this->set('seo_username',$cdata['seo_username']);
+   
+
+     $this->set('msg_id',$msg_id);
+     $this->set('ip',$ip);
+     $this->set('cdata',$cdata);
+     $this->set('com_id',$com_id);
+     $this->set('comment',$comment);
+	 $this->set('time',$time);
+     $this->set('mtime',$mtime);
+     $this->set('username',$username);
+     $this->set('uid',$uid);
+     $this->set('ip',$ip);
+	 }}
+	 
+}
+
+
+
+//Comment See All Aksiyonu
 public function view_ajax() {
+     $this->layout='ajax';
+     error_reporting(0);
+     //Import necessary files for wall script
+	   App::import('Vendor', 'wallscript/config');
+	   $this->set('gravatar',1);
+	   $gravatar=1;
+	   $this->set('base_url','http://localhost/wall/');
+	   $this->set('perpage',10);
+	   App::import('Vendor', 'wallscript/Wall_Updates');
+	   App::import('Vendor', 'wallscript/tolink');
+	   App::import('Vendor', 'wallscript/textlink');
+	   App::import('Vendor', 'wallscript/time_stamp');
+	   App::import('Vendor', 'wallscript/htmlcode');
+	   //Session starts
+	   if($this->Auth->user('id')) 
+       $session_uid=$this->Auth->user('id'); 
+       if(!empty($session_uid))
+       {
+       $uid=$session_uid;
+	   $this->set('uid',$uid);
+       }else{
+        //echo 'please login';
+       }
+	   //Session Ends
+	   $Wall = new Wall_Updates();
+	   $this->set('Wall',$Wall);
+	   if(isset($_POST['msg_id']))
+       {
+      $msg_id=mysql_real_escape_string($_POST['msg_id']);
+      $x=0;
+	
+	   }
+	 
+	 $this->set('msg_id',$msg_id);
+	 $this->set('x',$x);
+	 
+}
+
+//Comment See All Aksiyonu
+public function view_ajax2() {
      $this->layout='ajax';
      error_reporting(0);
      //Import necessary files for wall script

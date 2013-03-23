@@ -52,6 +52,7 @@ textarea{color: Black; font-family: Arial;font-size: 8pt;}
 .commenttime{font-family:Arial; font-size:8pt; color:#999999; display:block; margin-top:3px; margin-bottom:3px;}
 .commentarea{margin-top:6px; border:1px solid #BDC7D8; width:444px;}
 .commentbtn{color:#FFF;display:block; float:right; margin:5px; font-weight:bold; border:solid 1px #0c6296;cursor:pointer; padding-left:23px; width:85px;padding-top:5px; height:21px; float:right; background-color:#0a75b6;}
+.bootcommentbtn{color:#FFF;display:block; float:right; font-weight:bold; border:solid 1px #0c6296;cursor:pointer; width:85px;padding-top:5px; height:21px; float:right; background-color:#0a75b6;}
 .commentbtn:hover{color:#FFF;display:block; float:right; margin:5px; font-weight:bold; border:solid 1px #0c6296;cursor:pointer; padding-left:23px; width:85px;padding-top:5px; height:21px; float:right; background-color:#1e8acb;}
 .feedplaybtn{font-family:Arial; font-size:8pt; color:#3B5998;}
 .feedcommentarea{width:510px; background-color:#EDEFF4; margin-top:2px;}

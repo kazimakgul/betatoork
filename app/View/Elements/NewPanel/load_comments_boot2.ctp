@@ -41,17 +41,17 @@ if($commentsarray)
 		}
 // End Avatar
 ?>
-<div class="feedcommentitem clearfix" id="stcommentbody<?php echo $com_id; ?>">
+<div class="feedcommentitem clearfix alert alert-info" id="stcommentbody2<?php echo $com_id; ?>">
+<?php if(isset($uid) && ($uid==$com_uid || $uid==$msg_uid) ){ ?>
+<a title='Delete Comment' class="stcommentdelete2 close" href="#" id="<?php echo $com_id; ?>">&times;</a>
+<?php } ?>
 	<div class="commentleft">
 		<div class="commentavatarback">
 			<?php echo $cface;?>
 		</div>
 	</div>
 	<div class="commentright">
-	
-	<?php if(isset($uid) && ($uid==$com_uid || $uid==$msg_uid) ){ ?>
-    <a class="stcommentdelete" href="#" id='<?php echo $com_id; ?>' title='Delete Comment'></a>
-    <?php } ?>
+
 
 		<span class="commentusername"><a href="<?php echo $channelurl ?>"><?php echo $username; ?></a></span>
 		<span class="comment"><?php echo $comment ?></span>
