@@ -49,49 +49,33 @@
                         <!-- content-body -->
                         <div class="content-body">
                             <!-- dashboar -->
-
                             <div class="row-fluid">
-                                <div class="span4">
-                                    <div class="box corner-all">
-                                        <div class="box-header corner-top grd-white">
-                                            <div class="header-control">
-                                                <a data-box="collapse"><i class="icofont-caret-up"></i></a>
-                                                <a data-box="close" data-hide="rotateOutDownRight">&times;</a>
-                                            </div>
-                                            <span><i class="icofont-envelope"></i> Quick Share</span>
-                                        </div>
-                                        <div class="box-body">
-                                            <form>
-                                                <div class="control-group">
-                                                    <label class="control-label">What do you think</label>
-                                                    <div class="controls">
-                                                        <textarea name="message" data-form="wysihtml5" rows="6" class="span11" id="update"></textarea>
-													     
-                                                    </div>
-													
-							<!-ImageUploadPanel-><div id="imageupload" class="border" style="display:none;">
-							<?php $image_ajax_url= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax'));?>
-							<form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
-							<div id='preview'></div>
-							<span id='addphoto'>Add Photo:</span> <input type="file" name="photoimg" id="photoimg" />
-							<input type='hidden' id='uploadvalues' />
-							</form>
-					        </div><!-ImageUploadPanel->	
-													
-                                                </div>
-                                                <div class="form-actions">
-                                                    <input type="reset" class="btn" value="Reset" />
-													 <a href="javascript:void(0);"  class="btn" id="camera2">Add Image</a>
-                                                    <input type="submit" class="btn btn-info update_data" value="Share" />
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                
-                            </div><!-- tab stat -->
-                            
-
-
+            <div class="navbar span4">
+              <div class="navbar-inner">
+                </br>
+                <form class="navbar-form ">
+                    <textarea name="message" id="update" class="span12" rows="4"  placeholder="What do you want to share?"></textarea>
+                 </br>
+                <div class="helper-font-16">
+                          
+                           <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
+                            <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
+                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
+                </div>
+                
+                            <!-ImageUploadPanel-><div id="imageupload" class="border" style="display:none;">
+                            <?php $image_ajax_url= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax'));?>
+                            <form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
+                            <div id='preview'></div>
+                            <span id='addphoto'>Add Photo:</span> <input type="file" name="photoimg" id="photoimg" />
+                            <input type='hidden' id='uploadvalues' />
+                            </form>
+                            </div><!-ImageUploadPanel-> 
+                
+                  <button type="submit" class="btn btn-inverse pull-right update_data">Share</button>
+                </form></br></br>
+              </div>
+            </div>
 
 
                             <!-- tab resume content -->
