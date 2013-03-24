@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <title>Dashboard - Toork Channel Manager</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="stilearning">
+        <meta name="description" content="Create your own game channel">
+        <meta name="author" content="Toork">
 
         <!-- google font -->
         <link href="http://fonts.googleapis.com/css?family=Aclonica:regular" rel="stylesheet" type="text/css" />

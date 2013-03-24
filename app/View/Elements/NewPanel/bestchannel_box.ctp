@@ -40,57 +40,59 @@ if($website==NULL){
 }
 ?>
 
-
-<div class="span3">
-                                    <div class="box corner-all">
-                                        <div class="box-header grd-white corner-top">
-                                            <div class="header-control">
-                                                <a data-box="collapse"><i class="icofont-caret-up"></i></a>
-                                                <a data-box="close" data-hide="rotateOut">×</a>
-                                            </div>
-                                            <span><?php echo $follower['User']['username']; ?></span>
-                                        </div>
-                                        <div class="box-body">
-
-                                    <li>
-                                        <div class="media">
-                                            <a class="pull-left" href="#">
-                                                    <?php 
+<div class="row-fluid">
+    <div class="navbar"><div class="navbar-inner"  style="padding:5px 15px 5px 5px;">
+    <div class="span1" style="margin:0px 20px 0px 0px;">
+            <?php 
               if($follower['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'90','height'=>'120','url' => array('controller' => 'games', 'action' => 'usergames', $followid))); 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'60','url' => array('controller' => 'games', 'action' => 'profile', $followid))); 
                 } else {
-                  echo $this->Upload->image($follower,'User.picture',array('class'=>'img-circle'),array('onerror'=>'imgError(this,"avatar");'));  }
-              ?>
-                                         
-                                            </a>
-                                            <div class="media-body description">
-                                                <p></p>
-                                                <a href="<?php echo $profileurl ?>" class="btn btn-danger btn-small btn-block">View Channel</a>
-                                            </div>
-                                                            
-                <ul>
-                    <li class="clearfix"><a class="" href="<?php echo $channelurl ?>"><?php echo $follower['Userstat']['uploadcount']; ?> Added Games</a></li>
-                    <li class="clearfix"><a class="" href="<?php echo $channelurl ?>"><?php echo $follower['Userstat']['favoritecount']; ?> Favorite Games</a></li>
-                    <li class="clearfix"><a class="" href="<?php echo $playcounturl ?>"><?php echo $follower['Userstat']['playcount']; ?> Played Games</a></li>
-                    <li class="clearfix"><a class="" href="<?php echo $folurl ?>"><?php echo $follower['Userstat']['subscribeto']; ?> Followers</a></li>
-                    <li class="clearfix"><a class="" href="<?php echo $suburl ?>"><?php echo $follower['Userstat']['subscribe']; ?> Chains</a></li>
-                    <!-- <?php echo $follower['Userstat']['potential']; ?> -->
-                    
-                </ul>
-                
-                                        </div>
-                                    </li>
-                                    <li class="dropdown-footer">
-                                        <div>
-                                            <a class="btn btn-small pull-right" href="login.html">Channel</a>
-                                            <a class="btn btn-small" href="#">News</a>
-                                        </div>
-                                    </li>
-  
+                  echo $this->Upload->image($follower,'User.picture',array('class'=>'img-circle'),array('width'=>'60',"class"=>"img-polaroid img-rounded",'url' => array('controller' => 'games', 'action' => 'profile', $followid),'onerror'=>'imgError(this,"avatar");'));  }
+            ?>
+    </div>
+    
+    <div class="span3" style="margin:-10px 10px 0px -25px;">
+        
 
-                                        </div>
-                                    </div>
-                                </div>
+<ul style="padding-left:0px; list-style:none" class="nav-list">
+  <li ><h5><a class="btn" href="<?php echo $profileurl ?>"><?php echo $follower['User']['username']; ?></a></h5></li>
+  <li><a class="" href="<?php echo $folurl ?>"><?php echo $follower['Userstat']['subscribeto']; ?> Followers</a></li>
+  <li><a class="" href="<?php echo $profileurl ?>"><?php echo $follower['Userstat']['uploadcount']; ?> Games</a></li>
+</ul>
+
+                    
+                    
+                    
+                    
+                    
+                    <!-- <?php echo $follower['Userstat']['potential']; ?> -->
+
+    </div>
+
+    <div class="span8">
+
+<ul class="thumbnails pull-right">
+  <li style="margin:0px 0px 0px 5px;">
+    <a href="#" >
+      <img class="img-polaroid" data-src="holder.js/130x72" alt="">
+    </a>
+  </li>  
+  <li style="margin:0px 0px 0px 5px;">
+    <a href="#" >
+      <img class="img-polaroid" data-src="holder.js/130x72" alt="">
+    </a>
+  </li>
+  <li style="margin:0px 0px 0px 5px;">
+    <a href="#" >
+      <img class="img-polaroid" data-src="holder.js/130x72" alt="">
+    </a>
+  </li>
+</ul>
+
+    </div>
+</div>
+</div></div>
+
 
 
 
