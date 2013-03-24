@@ -58,7 +58,8 @@
                  </br>
                 <div class="helper-font-16">
                           
-                           <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
+                          <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
+                           <i rel="tooltip" data-placement="top" data-original-title="add game" href="javascript:void(0);"  id="camera2" class="elusive-plus-sign"></i>
                             <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
                             <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
                 </div>

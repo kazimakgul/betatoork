@@ -61,8 +61,8 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
                         <!-- content-body -->
                         <div class="content-body">
                             <!-- dashboard -->
-
-                            <div class="well well-small">
+<div class="row-fluid">
+                            <div class="well well-small span4">
                                     <div class="box-header corner-top">
                                             <div class="header-control">
                                             <button data-box="close" data-hide="fadeOut" class="close">×</button>
@@ -70,18 +70,48 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
                                             
                                     </div>
                                         <h3>Welcome to Toork</h3>
-                                        <p>Create your own game channel. Find the best games and channels created by users.</p>
+                                        <p>Create your own game channel. Find the best games and channels created by users. Enjoy exploring toork.</p>
                                             <p>
-                                            <a class="btn btn-info btn-large">
-                                                <i class="elusive-compass"></i> Take The Tour
+                                            <a rel="tooltip" data-placement="top" data-original-title="take the tour"  class="btn btn-info">
+                                                <i class="elusive-compass"></i> Tour
                                             </a>
-                                            <a href="<?php echo $bestchannels; ?>" class="btn btn-success btn-large">
+                                            <a rel="tooltip" data-placement="top" data-original-title="Follow Best Channels"  href="<?php echo $bestchannels; ?>" class="btn btn-success">
                                                 <i class="elusive-plus-sign"></i> Follow Channels
                                             </a>
 
                                             </p>
                             </div>
+
+
+            <div class="navbar span8">
+              <div class="navbar-inner">
+                </br>
+                <form class="navbar-form ">
+                    <textarea name="message" id="update" class="span12" rows="4"  placeholder="What do you want to share?"></textarea>
+                 </br>
+                <div class="helper-font-16">
                           
+                           <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
+                           <i rel="tooltip" data-placement="top" data-original-title="add game" href="javascript:void(0);"  id="camera2" class="elusive-plus-sign"></i>
+                            <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
+                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
+                </div>
+                
+                            <!-ImageUploadPanel-><div id="imageupload" class="border" style="display:none;">
+                            <?php $image_ajax_url= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax'));?>
+                            <form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
+                            <div id='preview'></div>
+                            <span id='addphoto'>Add Photo:</span> <input type="file" name="photoimg" id="photoimg" />
+                            <input type='hidden' id='uploadvalues' />
+                            </form>
+                            </div><!-ImageUploadPanel-> 
+                
+                  <button type="submit" class="btn btn-inverse pull-right update_data">Share</button>
+                </form></br></br>
+              </div>
+            </div>
+
+</div>      
                              
                                 <ul class="thumbnails">
                                     <?php  echo $this->element('NewPanel/dashboard_game_box'); ?>
