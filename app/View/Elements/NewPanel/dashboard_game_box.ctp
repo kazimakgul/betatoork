@@ -12,24 +12,34 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
               <li class="span3">
                 <div class="navbar"><div class="navbar-inner" style="padding:5px 5px 5px 5px;">
                 	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('alt'=>$game['Game']['name'],'width'=>'200','height'=>'110;')); ?></a>
-                  <div class="caption">
-                    <h4 style="margin:0px 0px 4px 0px;"><?php echo $game['Game']['name']; ?></h4>
-                    <p>
-                    <a href="<?php echo $channelurl ?>"class="btn btn-mini"><strong><?php echo $game['User']['username']; ?></strong></a>
-                    <a href="<?php echo $playgameurl ?>" class="pull-right btn btn-success btn-mini">Play</a></p>
-                  </div>
-                    
-                      <ul class="inline color-black" style="text-align: center">
-                        <li>
-                          <i rel="tooltip" data-placement="top" data-original-title="Favorited2" class="icofont-heart"></i>73
+                  <div style="margin:-24px 0px 0px 0px; text-align: center">
+                      <ul class="label label-inverse inline color-white" style="padding:0px 0px 0px 0px; text-align: center;">
+                        <li rel="tooltip" data-placement="bottom" data-original-title="Favorited">
+                          <i class="icofont-heart"></i>73
                         </li>
-                        <li>
-                          <i rel="tooltip" data-placement="top" data-original-title="Played" class="icofont-play"></i>52242
+                        <li rel="tooltip" data-placement="bottom" data-original-title="Played" >
+                          <i class="icofont-play"></i>5242
                         </li>
-                        <li>
-                          <i rel="tooltip" data-placement="top" data-original-title="Commented"  class="icofont-comment"></i>18
+                        <li rel="tooltip" data-placement="bottom" data-original-title="Commented"  >
+                          <i class="icofont-comment"></i>18
                         </li>
                       </ul>
+                  </div>
+                  <div class="caption">
+                    <h4 style="margin:0px 0px 4px 0px;"><?php echo $game['Game']['name']; ?></h4>
+                  <p>
+                    <a href="<?php echo $channelurl ?>"class="btn btn-mini"><strong><?php echo $game['User']['username']; ?></strong></a>
+                    <a href="<?php echo $playgameurl ?>" class="pull-right btn btn-success btn-mini">Play</a>
+                  </p>
+                    <div rel="tooltip" data-placement="bottom" data-original-title="28 People Rated"  class="helper-font-16" style="text-align: center">
+                      <i class="icofont-star"></i>
+                      <i class="icofont-star"></i>
+                      <i class="icofont-star"></i>
+                      <i class="icofont-star"></i>
+                      <i class="icofont-star-empty"></i>
+                    </div>
+
+                  </div>
                   
                 </div></div>
               </li>
