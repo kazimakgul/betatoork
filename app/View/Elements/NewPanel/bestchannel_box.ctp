@@ -51,7 +51,7 @@ if($website==NULL){
             ?>
     </div>
     
-    <div class="span3" style="margin:-10px 10px 0px -25px;">
+    <div class="span4" style="margin:-10px 10px 0px -25px;">
         
 
 <ul style="padding-left:0px; list-style:none" class="nav-list">
@@ -69,7 +69,7 @@ if($website==NULL){
 
     </div>
 
-    <div class="span8">
+    <div class="span7">
 
 <ul class="thumbnails pull-right">
   <li style="margin:0px 0px 0px 5px;">

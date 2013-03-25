@@ -10,16 +10,28 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
 <?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>"")); ?>
     
               <li class="span3">
-                <div class="thumbnail">
+                <div class="navbar"><div class="navbar-inner" style="padding:5px 5px 5px 5px;">
                 	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('alt'=>$game['Game']['name'],'width'=>'200','height'=>'110;')); ?></a>
-                    <div class="badge-square grd-black color-white">
-                        <div><i rel="tooltip" data-placement="top" data-original-title="Favorited" class="icofont-heart"></i>73 <i rel="tooltip" data-placement="top" data-original-title="Played" class="icofont-play"></i>1242 <i rel="tooltip" data-placement="top" data-original-title="Commented"  class="icofont-comment"></i>13</div>
-                    </div>
                   <div class="caption">
                     <h4 style="margin:0px 0px 4px 0px;"><?php echo $game['Game']['name']; ?></h4>
-                    <p><a href="<?php echo $playgameurl ?>" class="btn btn-success btn-mini">Play</a></p>
+                    <p>
+                    <a href="<?php echo $channelurl ?>"class="btn btn-mini"><strong><?php echo $game['User']['username']; ?></strong></a>
+                    <a href="<?php echo $playgameurl ?>" class="pull-right btn btn-success btn-mini">Play</a></p>
                   </div>
-                </div>
+                    
+                      <ul class="inline color-black" style="text-align: center">
+                        <li>
+                          <i rel="tooltip" data-placement="top" data-original-title="Favorited2" class="icofont-heart"></i>73
+                        </li>
+                        <li>
+                          <i rel="tooltip" data-placement="top" data-original-title="Played" class="icofont-play"></i>52242
+                        </li>
+                        <li>
+                          <i rel="tooltip" data-placement="top" data-original-title="Commented"  class="icofont-comment"></i>18
+                        </li>
+                      </ul>
+                  
+                </div></div>
               </li>
 
 
