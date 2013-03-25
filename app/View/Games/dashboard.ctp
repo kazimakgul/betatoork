@@ -106,7 +106,7 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
                             </form>
                             </div><!-ImageUploadPanel-> 
                 
-                  <button type="submit" class="btn btn-inverse pull-right update_data">Share</button>
+                  <button id="success-post" type="submit" class="btn btn-inverse pull-right update_data">Share</button>
                 </form></br></br>
               </div>
             </div>

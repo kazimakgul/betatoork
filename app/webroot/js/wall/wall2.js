@@ -202,7 +202,11 @@ $(document).ready(function()
 		{
 			if($.trim(updateval).length==0)
 			{
-				alert("Please Enter Some Text");
+				 $.pnotify({
+            text: 'Please Enter Some Text.',
+            type: 'error',
+			hide: true
+                });
 			}
 			else
 			{
@@ -785,4 +789,13 @@ webcam.capture();
            return false;
         }
     });
+ 
+ 
+ /* 
+ ************************************************************************
+ Sticky Notification Functions
+ ************************************************************************
+ */
+ 
+ 
  

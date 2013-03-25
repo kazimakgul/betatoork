@@ -292,6 +292,29 @@ $(function(){
             type: 'success'
         });
     })
+	
+	$('#success-post').click(function(){
+        
+		    //Eger feed girilen alan bos degil ise.
+		    if($("#update").val().length!=0)
+			{
+		     $.pnotify({
+            text: 'Your feed has been sent.',
+            type: 'info',
+			hide: true
+        });
+			}
+		
+    })
+	
+	$('#error-post').click(function(){
+        $.pnotify({
+            text: 'Please Enter Some Text.',
+            type: 'error',
+			hide: true
+        });
+    })
+	
     $('#sticky-notice').click(function(){
         $.pnotify({
             title: 'Sticky Notice',
