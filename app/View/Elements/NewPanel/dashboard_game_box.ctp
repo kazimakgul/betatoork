@@ -14,13 +14,13 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
                 	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('alt'=>$game['Game']['name'],'width'=>'200','height'=>'110;')); ?></a>
                   <div style="margin:-24px 0px 0px 0px; text-align: center">
                       <ul class="label label-inverse inline color-white" style="padding:0px 0px 0px 0px; text-align: center;">
-                        <li rel="tooltip" data-placement="bottom" data-original-title="Favorited">
+                        <li rel="tooltip" data-placement="bottom" data-original-title="Favorite">
                           <i class="icofont-heart"></i>73
                         </li>
-                        <li rel="tooltip" data-placement="bottom" data-original-title="Played" >
+                        <li rel="tooltip" data-placement="bottom" data-original-title="Play" >
                           <i class="icofont-play"></i>5242
                         </li>
-                        <li rel="tooltip" data-placement="bottom" data-original-title="Commented"  >
+                        <li rel="tooltip" data-placement="bottom" data-original-title="Comment"  >
                           <i class="icofont-comment"></i>18
                         </li>
                       </ul>
@@ -29,7 +29,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
                     <h4 style="margin:0px 0px 4px 0px;"><?php echo $game['Game']['name']; ?></h4>
                   <p>
                     <a href="<?php echo $channelurl ?>"class="btn btn-mini"><strong><?php echo $game['User']['username']; ?></strong></a>
-                    <a href="<?php echo $playgameurl ?>" class="pull-right btn btn-success btn-mini">Play</a>
+                    <a href="<?php echo $playgameurl ?>" class="pull-right btn btn-success btn-mini"><i class="icofont-play"></i> Play</a>
                   </p>
                     <div rel="tooltip" data-placement="bottom" data-original-title="28 People Rated"  class="helper-font-16" style="text-align: center">
                       <i class="icofont-star"></i>

@@ -8,43 +8,6 @@
                             <h2><i class="icofont-home"></i> Wall <small>What is happening ?</small></h2>
                         </div><!-- /content-header -->
                         
-                        <!-- content-breadcrumb -->
-                        <div class="content-breadcrumb">
-                            <!--breadcrumb-nav-->
-                            <ul class="breadcrumb-nav pull-right">
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link dropdown-toggle" data-toggle="dropdown">
-                                        <i class="icofont-tasks"></i> Tasks
-                                        <i class="icofont-caret-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Some Action</a></li>
-                                        <li><a href="#">Other Action</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Something Else</a></li>
-                                    </ul>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link">
-                                        <i class="icofont-money"></i> Orders <span class="color-red">(+12)</span>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link">
-                                        <i class="icofont-user"></i> Users <span class="color-red">(+34)</span>
-                                    </a>
-                                </li>
-                            </ul><!--/breadcrumb-nav-->
-                            
-                            <!--breadcrumb-->
-                            <ul class="breadcrumb">
-                                <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
-                            </ul><!--/breadcrumb-->
-                        </div><!-- /content-breadcrumb -->
                         
                         <!-- content-body -->
                         <div class="content-body">
