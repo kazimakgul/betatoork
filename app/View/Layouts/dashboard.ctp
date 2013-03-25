@@ -36,6 +36,8 @@ $password=$this->Html->url(array("controller" => "users","action" =>"password2",
 ?>
 
 
+
+
 <?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'publicprofile'=>$profilepublic,'settings'=>$settings)); ?>
 
 
@@ -73,22 +75,6 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 
 <?php echo $this->Html->script(array('js2/jquery','js2/jquery-ui.min','js2/bootstrap','js2/uniform/jquery.uniform','js2/peity/jquery.peity','js2/select2/select2','js2/knob/jquery.knob','js2/flot/jquery.flot','js2/flot/jquery.flot.resize','js2/flot/jquery.flot.categories','js2/wysihtml5/wysihtml5-0.3.0','js2/wysihtml5/bootstrap-wysihtml5','js2/calendar/fullcalendar','js2/holder','js2/stilearn-base','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','js2/datepicker/bootstrap-datepicker','js2/colorpicker/bootstrap-colorpicker','js2/validate/jquery.validate','js2/validate/jquery.metadata','js2/wizard/jquery.ui.widget','js2/wizard/jquery.wizard','js2/responsive-tables/responsive-tables','wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall2')); ?>
 
-<!-- Taşınacak -->
-<script>
-
-$('.icofont-search').click(function () {
-         alert('boodarek');
-        window.location = "<?php echo $searchurl; ?>/" + $('.search-query').val()+"/"+"search?&q="+$('.search-query').val();
-
-    });
-
-    $('.search-query').keypress(function (e) {
-        if (e.which == 13) {
-            window.location = "<?php echo $searchurl; ?>/"+ $('.search-query').val()+"/"+"search?&q="+$('.search-query').val();
-        }
-    });
-
-</script>
 
 
 <!-- Js variable for wallscript begins-->
@@ -116,6 +102,9 @@ delmessagevar='<?php echo $this->Html->url(array('controller'=>'wallentries','ac
 delcommentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_comment_ajax')); ?>';
 seeallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'view_ajax2')); ?>';
 quick='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'quick_subscription')); ?>';
+
+search_query=$('.search-query').val();
+search_url='<?php echo $this->Html->url(array("controller"=>"games","action"=>"search2"));?>';
 </script>
 <!-- Js variable for wallscript ends-->
 

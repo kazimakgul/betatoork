@@ -767,3 +767,15 @@ function takeSnap(){
 //console.log(webcam.getCameraList());
 webcam.capture();
  }
+ 
+/* 
+ ************************************************************************
+ Other Jquery Functions Below
+ ************************************************************************
+ */
+ $('.icofont-search').live("click",function() 
+{
+	 window.location = search_url +'/'+  $('.search-query').val() +"/"+"search?&q="+$('.search-query').val();
+     return false;
+});
+ 
