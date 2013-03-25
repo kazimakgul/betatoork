@@ -779,3 +779,10 @@ webcam.capture();
      return false;
 });
  
+ $('.search-query').keypress(function (e) {
+        if (e.which == 13) {
+           window.location = search_url +'/'+  $('.search-query').val() +"/"+"search?&q="+$('.search-query').val();
+           return false;
+        }
+    });
+ 
