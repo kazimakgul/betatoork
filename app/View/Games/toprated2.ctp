@@ -1,3 +1,4 @@
+<?php $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));?>
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -50,8 +51,8 @@
   <h1>Add a game to your account</h1>
   <p>Adding a game to your account is as simple as doing copy/paste. Just find a web page where you play a game. That's all.</p>
   <p>
-    <a class="btn btn-danger btn-large">
-      Add Game
+    <a href="<?php echo $addgame ?>" class="btn btn-danger btn-large">
+      <i class="elusive-plus-sign"></i> Add Game
     </a>
   </p>
 </div>

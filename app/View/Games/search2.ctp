@@ -1,5 +1,6 @@
 <?php 
 $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
+$toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -71,25 +72,16 @@ $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 </ul>
                   <?php }else{ ?>
 				  
-				  <div class="alert alert-info channel">The game you are searching is not added yet, you can add this game after you become a member or Search our custom Toork search engine powered by Google to find your loved games...
+				  <div class="alert alert-info channel"><p><strong>The game you are searching is not added yet, you can add this game after you become a member or Search our custom Toork search engine powered by Google to find your loved games...</strong></p></br>
 
 
-              <?php if($this->Session->check('Auth.User')){?>
-<div id="addButton">
-<a href="<?php echo $addgame?>"><input type="submit" id="submit" value="+ Add Game" class="btn" style=" margin-top:4px;"></a>
-</div>
-               <?php }else{?>
-<div id="addButton">
-<a href="#" onclick="$('#register').lightbox_me();"><input type="submit" id="submit" value="+ Add Game"></a>
-</div>
-               <?php } ?>
+                    <a href="<?php echo $addgame ?>" class="btn btn-danger"><i class="elusive-plus-sign"></i> Add Game</a>
+                    <a href="<?php echo $toprated; ?>" class="btn btn-info"><i class="elusive-compass"></i> Explore Games</a>
 
 
                 </div>
                 <?php }?>
                   
-
-
 
 <?php echo $this->element('googleSearch'); ?>
 
