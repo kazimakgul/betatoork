@@ -37,53 +37,41 @@ if($website==NULL){
 }
 ?>
 
-
-<div class="span3">
-                                    <div class="box corner-all">
-                                        <div class="box-header grd-white corner-top">
-                                            <div class="header-control">
-                                                <a data-box="collapse"><i class="icofont-caret-up"></i></a>
-                                                <a data-box="close" data-hide="rotateOut">×</a>
-                                            </div>
-                                            <span><?php echo $card[0] ?></span>
-                                        </div>
-                                        <div class="box-body">
-
-                                    <li>
-                                        <div class="media">
-                                            <a class="pull-left" href="#">
-                                                    <?php 
+<div class="row-fluid span4">
+    <div class="navbar"><div class="navbar-inner"  style="padding:5px 15px 5px 5px;">
+      <div class="header-control" style="margin:0px -10px 0px 0px;">
+        <button rel="tooltip" data-placement="top" data-original-title="UnFollow" data-box="close" data-hide="fadeOut" class="close">×</button> 
+      </div>
+    <div class="span3" style="margin:0px 20px 0px 0px;">
+            <?php 
               if($card[6]['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'90','height'=>'120','url' => array('controller' => 'games', 'action' => 'usergames', $followid))); 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'60','url' => array('controller' => 'games', 'action' => 'profile', $followid))); 
                 } else {
-                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('onerror'=>'imgError(this,"avatar");'));  }
-              ?>
-                                         
-                                            </a>
-                                            <div class="media-body description">
-                                                <p></p>
-                                                <a href="<?php echo $profileurl ?>" class="btn btn-danger btn-small btn-block">View Channel</a>
-                                            </div>
-                                                            
-                    <a class="" href="<?php echo $channelurl ?>"><?php echo $card[1] ?> Added Games</a>
-                    <a class="" href="<?php echo $channelurl ?>"><?php echo $card[2] ?> Favorite Games</a>
-                    <a class="" href="<?php echo $playcounturl ?>"><?php echo $card[5] ?> Played Games</a>
-                    <a class="" href="<?php echo $folurl ?>"><?php echo $card[4] ?> Followers</a>
-                    <a class="" href="<?php echo $suburl ?>"><?php echo $card[3] ?> Chains</a>
-                
-                                        </div>
-                                    </li>
-                                    <li class="dropdown-footer">
-                                        <div>
-                                            <a class="btn btn-small pull-right" href="login.html">Channel</a>
-                                            <a class="btn btn-small" href="#">News</a>
-                                        </div>
-                                    </li>
-  
+                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'60',"class"=>"img-polaroid img-rounded",'url' => array('controller' => 'games', 'action' => 'profile', $followid),'onerror'=>'imgError(this,"avatar");'));  }
+            ?>
+    </div>
+    
+    <div class="span7" style="margin:-10px 10px 0px -25px;">
+        
 
-                                        </div>
-                                    </div>
-                                </div>
+<ul style="padding-left:0px; list-style:none" class="nav-list">
+  <li ><h5><a class="btn" href="<?php echo $profileurl ?>"><?php echo $card[0] ?></a></h5></li>
+  <li><a class="" href="<?php echo $folurl ?>"><?php echo $card[4] ?> Followers</a></li>
+  <li><a class="" href="<?php echo $profileurl ?>"><?php echo $card[1] ?> Games</a></li>
+</ul>
+                    
+                    
+                    
+                    <!-- <?php echo $follower['Userstat']['potential']; ?> -->
+
+    </div>
+
+
+</div>
+</div>
+
+</div>
+
 
 			
  <?php endforeach; ?>

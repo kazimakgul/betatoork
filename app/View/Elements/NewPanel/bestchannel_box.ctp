@@ -41,7 +41,7 @@ if($website==NULL){
 ?>
 
 <div class="row-fluid">
-    <div class="navbar"><div class="navbar-inner"  style="padding:5px 15px 5px 5px;">
+    <div class="navbar"><div class="navbar-inner"  style="padding:5px 5px 5px 5px;">
     <div class="span1" style="margin:0px 20px 0px 0px;">
             <?php 
               if($follower['User']['picture']==null) { 
@@ -70,7 +70,9 @@ if($website==NULL){
     </div>
 
     <div class="span7">
-
+      <div class="header-control pull-left" style="margin:20px 0px 5px 0px;">
+        <button rel="tooltip" data-placement="top" data-original-title="Follow this Channel" data-box="close" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
+      </div>
 <ul class="thumbnails pull-right">
   <li style="margin:0px 0px 0px 5px;">
     <a href="#" >
