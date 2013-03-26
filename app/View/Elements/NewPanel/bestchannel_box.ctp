@@ -71,7 +71,11 @@ if($website==NULL){
 
     <div class="span7">
       <div class="header-control pull-left" style="margin:20px 0px 5px 0px;">
-        <button rel="tooltip" data-placement="top" data-original-title="Follow this Channel" data-box="close" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
+        <button onclick="$.pnotify({
+            title: 'Thanks for Following',
+            text: 'You are following <strong><?php echo $follower['User']['username']; ?></strong> now.<br>You will be notified about the updates of this channel.',
+            type: 'success'
+          });" rel="tooltip" data-placement="top" data-original-title="Follow this Channel" data-box="close" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
       </div>
 <ul class="thumbnails pull-right">
   <li style="margin:0px 0px 0px 5px;">

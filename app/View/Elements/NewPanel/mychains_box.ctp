@@ -40,7 +40,11 @@ if($website==NULL){
 <div class="row-fluid span4">
     <div class="navbar"><div class="navbar-inner"  style="padding:5px 15px 5px 5px;">
       <div class="header-control" style="margin:0px -10px 0px 0px;">
-        <button rel="tooltip" data-placement="top" data-original-title="UnFollow" data-box="close" data-hide="fadeOut" class="close">×</button> 
+        <button onclick="$.pnotify({
+            title: 'Unfollow is done',
+            text: 'You stopped following <strong><?php echo $card[0] ?></strong> now.<br>You will not be notified about the updates of this channel.',
+            type: 'error'
+          });"  rel="tooltip" data-placement="top" data-original-title="UnFollow" data-box="close" data-hide="fadeOut" class="close">×</button> 
       </div>
     <div class="span3" style="margin:0px 20px 0px 0px;">
             <?php 
