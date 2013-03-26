@@ -81,58 +81,11 @@
                                                 <h5><i class="icofont-comment color-green"></i> Best Channels</h5>
                                             </div><!--/contact-control-->
 
-                                            <!--contact-list, we set this max-height:380px, you can set this if you want-->
-                                            <ul class="contact-list">
+                                           
 
-<?php  echo $this->element('NewPanel/recommend_channel_box'); ?>
+<?php  echo $this->element('NewPanel/recommend_channel_box2'); ?>
 
 
-                                                <li class="contact-alt grd-white">
-                                                    <!--we use data toggle tab for navigate this action-->
-                                                    <a href="#chat" data-toggle="tab" data-id="iin@mail.com">
-                                                        <!--we use contact-item structure like the component media in bootstrap-->
-                                                        <div class="contact-item">
-                                                            <div class="pull-left">
-                                                                <img class="contact-item-object" style="width: 32px;height: 32px;" src="img/user-thumb-mini.jpg">
-                                                            </div>
-                                                            <div class="contact-item-body">
-                                                                <p class="contact-item-heading bold">Socialesman</p>
-                                                                <p class="help-block"><small class="muted">Team Leader one of the best channels created in toork take care of it</small></p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="contact-alt grd-white">
-                                                    <!--we use data toggle tab for navigate this action-->
-                                                    <a href="#chat" data-toggle="tab" data-id="sungep@mail.com">
-                                                        <div class="contact-item">
-                                                            <div class="pull-left">
-                                                                <img class="contact-item-object" style="width: 32px;height: 32px;" src="img/user-thumb-mini.jpg">
-                                                            </div>
-                                                            <div class="contact-item-body">
-                                                                <div class="status" title="idle"><i class="icofont-certificate color-orange"></i></div>
-                                                                <p class="contact-item-heading bold">Sungep</p>
-                                                                <p class="help-block"><small class="muted">UI designer</small></p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="contact-alt grd-white">
-                                                    <!--we use data toggle tab for navigate this action-->
-                                                    <a href="#chat" data-toggle="tab" data-id="sungep@mail.com">
-                                                        <div class="contact-item">
-                                                            <div class="pull-left">
-                                                                <img class="contact-item-object" style="width: 32px;height: 32px;" src="img/user-thumb-mini.jpg">
-                                                            </div>
-                                                            <div class="contact-item-body">
-                                                                <div class="status" title="idle"><i class="icofont-certificate color-orange"></i></div>
-                                                                <p class="contact-item-heading bold">Sungep</p>
-                                                                <p class="help-block"><small class="muted">UI designer</small></p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul><!--/contact-list-->
                                         </div>
                                     </div><!--/contact-->
                                     
