@@ -388,6 +388,7 @@ function secureSuperGlobalPOST($value)
 	}
 
 	public function register() {
+    	$this->layout = 'unauth';
 		if ($this->request->is('post')) {
 		
 		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);

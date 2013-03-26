@@ -105,7 +105,7 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
                             <input type='hidden' id='uploadvalues' />
                             </form>
                             </div><!-ImageUploadPanel-> 
-                
+                    <hr size="3" style="margin:0px 0px 5px 0px;">
                   <button id="success-post" type="submit" class="btn btn-inverse pull-right update_data">Share</button>
                 </form></br></br>
               </div>
