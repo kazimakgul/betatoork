@@ -15,17 +15,17 @@ $channelurl=$this->Html->url(array("controller" => $seo_username,"action" =>""))
 ?>
 
 
-<div class="feedcommentitem clearfix alert alert-info" id="stcommentbody<?php echo $com_id; ?>">
+<div class="clearfix alert alert-info" id="stcommentbody<?php echo $com_id; ?>">
 <a class="stcommentdelete close" href="#" id="<?php echo $com_id; ?>">&times;</a>
 	<div class="commentleft">
 		<div class="commentavatarback">
 			<?php echo $cface;?>
 		</div>
 	</div>
-	<div class="commentright">
+
 	<a class="stcommentdelete" href="#" id='<?php echo $com_id; ?>'></a>
-		<span class="commentusername"><a href="<?php echo $channelurl; ?>"><?php echo $username; ?></a></span>
-		<span class="comment"><?php echo $comment ?></span>
-		<div class="stcommenttime" title="<?php echo $mtime; ?>"></div> 
-	</div>
+		<span class="commentusername"><a href="<?php echo $channelurl ?>"><?php echo $username; ?></a></span>
+		<p><small><?php echo $comment ?></small></p>
+		<small class="helper-font-small"><div class="stcommenttime pull-right" title="<?php echo $mtime; ?>"></div></small>
+
 </div>
