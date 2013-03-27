@@ -52,13 +52,13 @@ if($updatesarray)
 		   {
 		    
 			$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
-			$cface=$this->Upload->image($userdata,'User.picture',array(),array('onerror'=>'imgError(this,"avatar");'));
+			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid img-rounded",'width'=>'60','onerror'=>'imgError(this,"avatar");'));
 			
 		   }
 		else
 		{
 			$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
-			$cface=$this->Upload->image($userdata,'User.picture',array(),array('onerror'=>'imgError(this,"avatar");'));
+			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid img-rounded",'width'=>'60','onerror'=>'imgError(this,"avatar");'));
 		
 		}
 		// End Avatar
@@ -69,7 +69,7 @@ if($updatesarray)
 															<?php echo $cface; ?>
                                                         </a>
                                                         <div class="media-body">
-                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
+                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a></br><small class="helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
                                                             <p><?php echo $message; ?></p>
 															
 														<?php
@@ -89,7 +89,7 @@ $newdata=$Wall->Get_Upload_Image_Id($a);
 echo "</div>";
  }
  ?>	
-                       
+                       <hr size="1">
 															
                                                             <div class="btn-group pull-right">
 															    <?php if(isset($uid)) {?>
@@ -201,22 +201,23 @@ echo "</div>";
                                                         </div>
 														
 						<!-- Comment area begins -->				
-					<div class="commentcontainer feedcomments" id="commentload2<?php echo $msg_id;?>">
+					<div id="commentload2<?php echo $msg_id;?>">
 			<?php
 				$x=1;
 				echo $this->element('NewPanel/load_comments_boot2',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
 			?>
 			</div>
-			<div class="commentupdate feedcommentarea clearfix" style='display:none' id='commentbox2<?php echo $msg_id;?>'>
-				<div class="commentleft">
-					<div class="commentavatarback">
+			<hr size="3">
+			<div class="row-fluid commentupdate clearfix" style='display:none' id='commentbox2<?php echo $msg_id;?>'>
+				
+					<div class="span1">
 						<?php echo $session_face;?>
 					</div>
-				</div>
-				<div class="commentright">
-					<textarea placeholder="Write a comment..." name="comment" class="commentarea" maxlength="200" cols="53" rows="2" id="ctextarea2<?php echo $msg_id;?>"></textarea>
+				
+				<div class="span11">
+					<textarea placeholder="Write a comment..." name="comment" maxlength="200" class="pull-right span12" rows="2" id="ctextarea2<?php echo $msg_id;?>"></textarea>
 					<!--<textarea class="commentarea" cols="53" rows="2"></textarea>-->
-					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="comment_button2 bootcommentbtn btn btn-primary">Comment</div>
+					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button2 btn btn-small btn-primary">Comment</div>
 					<!--<a class="commentbtn" href="#"></a>-->
 				</div>
 			</div>
