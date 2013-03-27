@@ -355,6 +355,32 @@ return $a;
 	}
 	
 
+       public function set_suggested_channels()
+	   {
+	   
+	   //Set first situation of flags
+		$restrict=50;
+		$status='normal';
+		$counter=0;
+		//Repeat it to get data
+		do{
+		$suggestdata=$this->User->find('all',array('limit' => 5,'order'=>'rand()','conditions'=>array('User.id'=>$this->get_suggestions($restrict),'NOT' => array('User.id' => $listofmine))));
+          if($suggestdata==NULL)
+		  {
+          $status='empty';
+		  $restrict+=10;
+		  $counter++;
+		  }else{
+		  $status='normal';
+		  }
+		  if($counter==3)
+		  break;
+		}while($status=='empty');
+	   $this->set('channels',$suggestdata);
+	   
+	   }
+
+
 		public function wall3($type=NULL) {
 		$this->loadModel('User');
 		$this->loadModel('Game');
@@ -452,26 +478,8 @@ return $a;
 		   }else{
 		   $this->set('mutuals',NULL);
 		   }
-		 
-		//Set first situation of flags
-		$restrict=50;
-		$status='normal';
-		$counter=0;
-		//Repeat it to get data
-		do{
-		$suggestdata=$this->User->find('all',array('limit' => 5,'order'=>'rand()','conditions'=>array('User.id'=>$this->get_suggestions($restrict),'NOT' => array('User.id' => $listofmine))));
-          if($suggestdata==NULL)
-		  {
-          $status='empty';
-		  $restrict+=10;
-		  $counter++;
-		  }else{
-		  $status='normal';
-		  }
-		  if($counter==3)
-		  break;
-		}while($status=='empty');
-	   $this->set('channels',$suggestdata);
+		
+	   $this->set_suggested_channels();
 	   
 	   //Actions About Best Games On Right Sidebar
 	   $suggestedgames=$this->Game->find('all',array('limit' => 5,'order'=>'rand()','conditions'=>array('Game.id'=>$this->get_game_suggestions())));
