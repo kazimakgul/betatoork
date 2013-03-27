@@ -1306,7 +1306,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 		$this->set('game', $game);
 		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
-
+	    $this->set_suggested_channels();
    
 	}
 

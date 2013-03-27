@@ -81,7 +81,6 @@ $toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2")
 
                 </div>
                 <?php }?>
-                  
 
 <?php echo $this->element('googleSearch'); ?>
 

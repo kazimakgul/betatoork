@@ -86,15 +86,23 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
             <div class="navbar span8">
               <div class="navbar-inner">
                 </br>
-                <form class="navbar-form ">
-                    <textarea name="message" id="update" class="span12" rows="4"  placeholder="What do you want to share?"></textarea>
-                 </br>
+                <form class="navbar-form">
+                    <div class="row-fluid">
+                        <div class="span2">
+                      <?php 
+  if($user['User']['picture']==null) { 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    } else {
+      echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'61','onerror'=>'imgError(this,"avatar");')); }
+  ?>                    </div>
+                    <textarea name="message" id="update" class="span10 pull-right" rows="4"  placeholder="What do you want to share?"></textarea>
+                </div>
                 <div class="helper-font-16">
                           
-                           <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
-                           <i rel="tooltip" data-placement="top" data-original-title="add game" href="javascript:void(0);"  id="camera2" class="elusive-plus-sign"></i>
-                            <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
-                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
+                           <i rel="tooltip" data-placement="bottom" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
+                           <i rel="tooltip" data-placement="bottom" data-original-title="add game" href="javascript:void(0);"  id="camera2" class="elusive-plus-sign"></i>
+                            <i rel="tooltip" data-placement="bottom" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
+                            <i rel="tooltip" data-placement="bottom" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
                 </div>
                 
                             <!-ImageUploadPanel-><div id="imageupload" class="border" style="display:none;">
