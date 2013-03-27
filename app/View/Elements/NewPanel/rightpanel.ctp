@@ -80,12 +80,15 @@
 
                                                 <h5><i class="icofont-comment color-green"></i> Best Channels</h5>
                                             </div><!--/contact-control-->
-
+                                         
+										 <!--bestchannel-list-->
+										 <ul class="contact-list">
                                            
 
-<?php  echo $this->element('NewPanel/recommend_channel_box2'); ?>
+                                <?php  echo $this->element('NewPanel/recommend_channel_box3'); ?>
 
-
+                                   </ul><!--/bestchannel-list-->
+								   
                                         </div>
                                     </div><!--/contact-->
                                     

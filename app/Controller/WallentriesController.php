@@ -471,7 +471,7 @@ return $a;
 		  if($counter==3)
 		  break;
 		}while($status=='empty');
-	   $this->set('users',$suggestdata);
+	   $this->set('channels',$suggestdata);
 	   
 	   //Actions About Best Games On Right Sidebar
 	   $suggestedgames=$this->Game->find('all',array('limit' => 5,'order'=>'rand()','conditions'=>array('Game.id'=>$this->get_game_suggestions())));

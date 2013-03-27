@@ -6,7 +6,7 @@
                     <!--panel site-name-->
                     <div class="span2">
                         <div class="panel-sitename">
-                            <h2><a href="<?php echo $index; ?>">T<span size="small" class="color-blue">oo</span>rk</a></h2>
+                            <h2><a href="<?php //echo $index; ?>">T<span size="small" class="color-blue">oo</span>rk</a></h2>
                         </div>
                     </div>
                     <!--/panel name-->

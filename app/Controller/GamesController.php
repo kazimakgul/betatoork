@@ -180,6 +180,43 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	
 	}
 
+public function set_suggested_channels()
+{
+//Set first situation of flags
+		$restrict=50;
+		$status='normal';
+		$counter=0;
+		//Repeat it to get data
+		do{
+		$suggestdata=$this->User->find('all',array('limit' => 5,'order'=>'rand()','conditions'=>array('User.id'=>$this->get_suggestions($restrict),'NOT' => array('User.id' => $listofmine))));
+          if($suggestdata==NULL)
+		  {
+          $status='empty';
+		  $restrict+=10;
+		  $counter++;
+		  }else{
+		  $status='normal';
+		  }
+		  if($counter==3)
+		  break;
+		}while($status=='empty');
+	   $this->set('channels',$suggestdata);
+}
+
+
+//this gets channel suggestions
+	public function get_suggestions($restrict)
+	{
+	$top50=$this->User->query('SELECT user_id from userstats ORDER BY potential desc LIMIT '.$restrict);
+		$list50=array();
+		$i=0;
+		foreach($top50 as $oneof50)
+		{
+		$list50[$i]=$oneof50['userstats']['user_id'];
+		$i++;
+		}
+		return $list50;
+	}
 
 	public function dashboard() {
 		
@@ -190,7 +227,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 		$limit=12;
     	$this->set('top_rated_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order' => 'rand()')));
-	
+	    $this->set_suggested_channels();
 	    $this->set('user',$user);
 	    $this->set('username',$userName);
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
@@ -217,7 +254,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	$this->set('user_id', $userid);
 	$this->set('user', $user);
 	$this->set('title_for_layout',$userName.'- All Favorite Games');
-	$this->set('description_for_layout', 'Find all the games that are favorited by '.$userName);	
+	$this->set('description_for_layout', 'Find all the games that are favorited by '.$userName);
+	$this->set_suggested_channels();	
 
    }
 
@@ -253,7 +291,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('description_for_layout', $userName.' - All the chains of '.$userName);
 		$this->set('username', $userName);
 		$this->set('user', $user);
-
+        $this->set_suggested_channels();
 		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
 	
 		
@@ -493,7 +531,7 @@ $this->leftpanel();
     	$this->set('limit2', $limit2);
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
 		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
-	
+	    $this->set_suggested_channels();
    
 }
 
