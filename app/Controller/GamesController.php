@@ -186,9 +186,10 @@ public function set_suggested_channels()
 		$restrict=50;
 		$status='normal';
 		$counter=0;
+		$limit=10;
 		//Repeat it to get data
 		do{
-		$suggestdata=$this->User->find('all',array('limit' => 5,'order'=>'rand()','conditions'=>array('User.id'=>$this->get_suggestions($restrict),'NOT' => array('User.id' => $listofmine))));
+		$suggestdata=$this->User->find('all',array('limit' => $limit,'order'=>'rand()','conditions'=>array('User.id'=>$this->get_suggestions($restrict),'NOT' => array('User.id' => $listofmine))));
           if($suggestdata==NULL)
 		  {
           $status='empty';

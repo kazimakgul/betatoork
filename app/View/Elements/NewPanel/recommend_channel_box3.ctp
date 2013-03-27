@@ -34,30 +34,32 @@
 			<div class="span12" style="margin:0px;">
 
 									
-				 <li class="contact-alt grd-white">
+				 <li class="header-control contact-alt grd-white" style="margin:0px 0px 3px 0px;">
                                                     <!--we use data toggle tab for navigate this action-->
-                                                    <a href="<?php echo $channelurl ?>" >
+                                                    <a style="margin:0px 0px 5px 0px;" href="<?php echo $channelurl ?>" >
                                                         <!--we use contact-item structure like the component media in bootstrap-->
                                                         <div class="contact-item">
                                                             <div class="pull-left">
                                                                 <?php 
               if($card[6]['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'32','height'=>'32','url' => array('controller' => 'games', 'action' => 'usergames', $followid))); 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'32','height'=>'32')); 
                 } else {
                 echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'32','height'=>'32','onerror'=>'imgError(this,"avatar");'));  }
               ?>
                                                             </div>
                                                             <div class="contact-item-body">
+                                                            	       <button href="#" onclick="$.pnotify({
+            title: 'Thanks for Follow',
+            text: 'You are following <strong><?php echo $card[0] ?></strong> now.<br>You will be notified about the updates of this channel.',
+            type: 'success'
+          });"  rel="tooltip" data-placement="top" data-original-title="Follow" data-box="close" data-hide="fadeOut" class="close"><i class="elusive-plus-sign"></i></button> 
                                                                 <p class="contact-item-heading bold"><?php echo $follower['User']['username']; ?></p>
                                                                 <p class="help-block"><small class="muted"><?php echo $card[4] ?> Followers-</small><small class="muted"><?php echo $card[1] ?> Games</small></p>
                                                             </div>
                                                         </div>
                                                     </a>
                                                 </li>				
-									
-									
-									
-									
+			
 			
 			</div>		
 					
