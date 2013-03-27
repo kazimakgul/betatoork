@@ -27,7 +27,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"playgame",h
                       </ul>
                   </div>
                   <div class="caption">
-                    <h4 style="margin:0px 0px 4px 0px;"><?php echo $game['Game']['name']; ?></h4>
+                    <h4 class="text-info" style="margin:5px 0px 0px 0px;"><?php echo $game['Game']['name']; ?></h4>
                     <p>
                         <a href="<?php echo $editurl ?>" class="btn btn-info btn-mini">Edit</a> 
                         <a href="<?php echo $playurl ?>" class="btn btn-success btn-mini">Play</a> 

@@ -540,7 +540,8 @@ function secureSuperGlobalPOST($value)
 		
 		
 		$this->set('title_for_layout', 'Edit Channel');
-		$this->set('description_for_layout', 'Edit Your Channel');	
+		$this->set('description_for_layout', 'Edit Your Channel');
+
 	}
 
 

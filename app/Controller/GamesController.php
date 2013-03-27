@@ -753,7 +753,7 @@ public function profile() {
 	$this->set('userid', $userid);
 	$this->set('user', $user);
 	$this->set('publicuser', $publicUser);
-		
+	$this->set_suggested_channels();	
 }
 
 
