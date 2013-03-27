@@ -37,7 +37,7 @@ if($website==NULL){
 }
 ?>
 
-<div class="row-fluid span4">
+<div class="row-fluid span4" style="margin:0px 15px 0px 0px;">
     <div class="navbar"><div class="navbar-inner"  style="padding:5px 15px 5px 5px;">
       <div class="header-control" style="margin:0px -10px 0px 0px;">
         <button onclick="$.pnotify({

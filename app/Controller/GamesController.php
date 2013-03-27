@@ -353,6 +353,7 @@ public function set_suggested_channels()
 
     	$this->set('username', $userName);
     	$this->set('user', $user);
+    	$this->set_suggested_channels();
 	}
 
 	public function playedgames() {
@@ -909,7 +910,7 @@ public function profile() {
 		$this->set('user_id', $userid);
 		$this->set('user', $user);
 		$this->set('users', $this->paginate('User',array('User.active' => '1')));
-
+	    $this->set_suggested_channels();
 
 
 
@@ -980,6 +981,7 @@ $this->set('description_for_layout', 'Toork - Game Search Engine powered by Goog
 //This clone of search function fill be used for dashboard layout.
 public function search2() {
 $this->layout='dashboard';
+$this->headerLogin();
 if($this->request->is("GET") && isset($this->request->params['pass'][0]))
 {
 $param = $this->request->params['pass'][0];
@@ -1016,7 +1018,7 @@ $this->set('description_for_layout', 'Toork - Game Search Engine powered by Goog
     
     $this->set('username', $userName);
 	$this->set('user_id', $userid);
-	
+	$this->set_suggested_channels();
 	
 }
 
