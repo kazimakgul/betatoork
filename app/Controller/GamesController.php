@@ -891,9 +891,8 @@ public function profile() {
 		public function bestchannels2() {
 
 		$this->layout='dashboard';
-		$userid = $this->Session->read('Auth.User.id');
+		$this->headerlogin();
 		$authid = $this->Session->read('Auth.User.id');
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
 		//Get the list of subscriptions of auth user.
 		   if($authid!=NULL)
 		   {
@@ -908,7 +907,6 @@ public function profile() {
 		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
 		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
 		$this->set('user_id', $userid);
-		$this->set('user', $user);
 		$this->set('users', $this->paginate('User',array('User.active' => '1')));
 	    $this->set_suggested_channels();
 
