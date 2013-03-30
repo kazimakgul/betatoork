@@ -1295,7 +1295,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		
 		$gameid = $this->request->params['pass'][0];
 		if(is_numeric($gameid)){
-			$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode')))));//Recoded
+			$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')))));//Recoded
 
 		}else{
 			$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));

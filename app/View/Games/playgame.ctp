@@ -1,3 +1,6 @@
+<?php
+$profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$game['User']['id'] ));
+?>
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -31,7 +34,7 @@
 
 </div>
 <!-- /Game Unit -->
-
+<?php  echo $this->element('NewPanel/ratebar',array('profilepublic'=>$profilepublic)); ?>
 
 <div class="well well-small">
  
@@ -70,7 +73,6 @@
 </div>
 </div>
 <!-- /Add Unit -->
-
 
             <!--Comment box-->
             <div class="navbar">
@@ -163,3 +165,6 @@
                         </div><!--/content-body -->
                     </div><!-- /content -->
                 </div><!-- /span content -->
+
+
+
