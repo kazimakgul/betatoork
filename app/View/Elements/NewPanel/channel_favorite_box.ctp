@@ -26,7 +26,9 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($ga
                       </ul>
                   </div>
                   <div class="caption">
-                    <h4 class="text-info" style="margin:5px 0px 0px 0px;"><?php echo $game['Game']['name']; ?></h4>
+                    <div style="min-height:45px; height:auto !important; height:45px;">
+                    <h4 class="text-info"><?php echo $game['Game']['name']; ?></h4>
+                    </div>
                   <p>
                     <a href="<?php echo $channelurl ?>"class="btn btn-mini"><strong><?php echo $game['Game']['User']['username']; ?></strong></a>
                     <a href="<?php echo $playgameurl ?>" class="pull-right btn btn-success btn-mini"><i class="icofont-play"></i> Play</a>
