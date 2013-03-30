@@ -12,7 +12,7 @@ $(function(){
     
     $('body').append(control_mode)
     if(sessionStorage.mode == undefined){
-        sessionStorage.mode = 1;
+        sessionStorage.mode = 3;
     }
     
     $('#control-mode > .navigate-mode').click(function(e){
@@ -31,7 +31,7 @@ $(function(){
             'top' : '0px'
         });
         $('.side-left, .side-right').css({
-            'top' : '60px'
+            'top' : '40px'
         });
         
         $('#control-mode > .choice-mode').slideToggle(); // toggle slide hide
@@ -48,7 +48,7 @@ $(function(){
             'top' : '0px'
         });
         $('.side-left, .side-right').css({
-            'top' : '60px'
+            'top' : '40px'
         });
         
         $('#control-mode > .choice-mode').slideToggle(); // toggle slide hide
@@ -66,7 +66,7 @@ $(function(){
         });
         
         $('.side-left, .side-right').css({
-            'top' : '60px'
+            'top' : '40px'
         });
         
         $('#control-mode > .choice-mode').slideToggle(); // toggle slide hide
@@ -79,7 +79,7 @@ $(function(){
         $('.side-left, .side-right').addClass('fixed');
         
         // set position by default
-        if($(window).scrollTop() > 60){
+        if($(window).scrollTop() > 40){
             $('.side-left, .side-right').css({
                 'top' : '0px'
             });
@@ -112,7 +112,7 @@ $(function(){
         if(sessionStorage.mode == 4){
             // control for responsive
             if($(window).width() > 767){
-                data_scroll = 60 - parseInt($(this).scrollTop());
+                data_scroll = 40 - parseInt($(this).scrollTop());
                 $('.side-left, .side-right').css({
                     'top' : data_scroll+'px'
                 });
@@ -134,7 +134,7 @@ $(function(){
             }
             else{
                 $('.side-left, .side-right').css({
-                    'top' : '60px'
+                    'top' : '40px'
                 });
             }
         }
@@ -147,7 +147,7 @@ $(function(){
         if(sessionStorage.mode == 4){
             // control for responsive
             if($(window).width() > 767){
-                data_scroll = 60 - parseInt($(this).scrollTop());
+                data_scroll = 40 - parseInt($(this).scrollTop());
                 $('.side-left, .side-right').css({
                     'top' : data_scroll+'px'
                 });
@@ -169,7 +169,7 @@ $(function(){
             }
             else{
                 $('.side-left, .side-right').css({
-                    'top' : '60px'
+                    'top' : '40px'
                 });
             }
         }
@@ -196,7 +196,7 @@ $(function(){
         
         if(sessionStorage.mode){
             if(sessionStorage.mode == 4){
-                if($(this).scrollTop() > 60){
+                if($(this).scrollTop() > 40){
                     $('.side-left, .side-right').css({
                         'top' : '0px'
                     });
@@ -204,7 +204,7 @@ $(function(){
                 else{
                     // control for responsive
                     if($(window).width() > 767){
-                        data_scroll = 60 - parseInt($(this).scrollTop());
+                        data_scroll = 40 - parseInt($(this).scrollTop());
                         $('.side-left, .side-right').css({
                             'top' : data_scroll+'px'
                         });

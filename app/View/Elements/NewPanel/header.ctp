@@ -1,150 +1,8 @@
         <!-- section header -->
-        <header class="header">
-            <!--nav bar helper-->
-            <div class="navbar-helper">
-                <div class="row-fluid">
-                    <!--panel site-name-->
-                    <div class="span2">
-                        <div class="panel-sitename">
-                            <h2><a href="<?php //echo $index; ?>">T<span size="small" class="color-blue">oo</span>rk</a></h2>
-                        </div>
-                    </div>
-                    <!--/panel name-->
-
-                    <div class="span6">
-                        <!--panel search-->
-                        <div class="panel-search">
-                            <form class="form-search">
-                                <div class="input-icon-append">
-                                    <button type="submit" rel="tooltip-bottom" title="search" class="icon"><i class="icofont-search"></i></button>
-                                    <input class="input-large search-query grd-white" maxlength="23" placeholder="Search here..." type="text">
-                                </div>
-                            </form>
-                        </div><!--/panel search-->
-                    </div>
-                    <div class="span4">
-                        <!--panel button ext-->
-                        <div class="panel-ext">
-                            <div class="btn-group">
-                                <!--notification-->
-                                <a class="btn btn-danger btn-small" data-toggle="dropdown" href="#" title="3 notification"><i class="icofont-flag"></i> 3</a>
-                                <ul class="dropdown-menu dropdown-notification">
-                                    <li class="dropdown-header grd-white"><a href="#">View All Notifications</a></li>
-                                    <li class="new">
-                                        <a href="#">
-                                            <div class="notification">John Doe commented on a post</div>
-                                            <div class="media">
-                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Lorem ipsum <small class="helper-font-small"> john doe</small></h4>
-                                                    <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="new">
-                                        <a href="#">
-                                            <div class="notification">Request new order</div>
-                                            <div class="media">
-                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Tortor dapibus</h4>
-                                                    <p>Vegan fanny pack odio cillum wes anderson 8-bit.</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="new">
-                                        <a href="#">
-                                            <div class="notification">Request new order</div>
-                                            <div class="media">
-                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Lacinia non</h4>
-                                                    <p>Messenger bag gentrify pitchfork tattooed craft beer.</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notification">John Doe commented on a post</div>
-                                            <div class="media">
-                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Lorem ipsum <small class="helper-font-small"> john doe</small></h4>
-                                                    <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notification">Request new order</div>
-                                            <div class="media">
-                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Tortor dapibus</h4>
-                                                    <p>Vegan fanny pack odio cillum wes anderson 8-bit.</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="notification">Request new order</div>
-                                            <div class="media">
-                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Lacinia non</h4>
-                                                    <p>Messenger bag gentrify pitchfork tattooed craft beer.</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <!-- <li class="dropdown-footer"><a href=""></a></li> -->
-                                </ul><!--notification-->
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn btn-inverse btn-small dropdown-toggle" data-toggle="dropdown" href="#">
-                                   <i class="elusive-compass"></i> Explore <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <li><a tabindex="-1" href="#">Featured Games</a></li>
-                                    <li><a tabindex="-1" href="#">Best Channels</a></li>
-                                    <li><a tabindex="-1" href="#">New Games</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Games</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a tabindex="-1" href="pricing.html">Top Rated</a></li>
-                                            <li><a tabindex="-1" href="bonus-page/resume/index.html">Most Played</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Support and Docs</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a tabindex="-1" href="403.html">About Us</a></li>
-                                            <li><a tabindex="-1" href="404.html">Support</a></li>
-                                            <li><a tabindex="-1" href="503.html">Developers</a></li>
-                                            <li><a tabindex="-1" href="under-construction.html">Advertise With Us</a></li>
-                                            <li><a tabindex="-1" href="405.html">Terms</a></li>
-                                            <li><a tabindex="-1" href="500.html">Privacy</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a tabindex="-1" href="#">FAQs and Descussions</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Quick Links</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a tabindex="-1" href="403.html">Dashboard</a></li>
-                                            <li><a tabindex="-1" href="403.html">Log Out</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="btn-group user-group">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container"><!-- Collapsable nav bar -->
+<div class="btn-group user-group btn-navbar" style="background : none; padding:0px 0px 0px 0px; margin:0px 50px 0px 0px;">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 
 
@@ -152,13 +10,78 @@
   if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
     } else {
-      echo $this->Upload->image($user,'User.picture',array(),array('class'=>'corner-all','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'35','height'=>'35','onerror'=>'imgError(this,"avatar");')); }
+      echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'20','onerror'=>'imgError(this,"avatar");')); }
   ?><!--this for display on PC device-->
-  <button class="btn btn-small btn-danger" data-toggle="dropdown-toggle"><i class="elusive-user"></i> <?php echo $username ?> <span class="caret"></span></button>
-                                    <!--this for display on tablet and phone device-->
+  <div class="pull-left">
+  <button class="btn btn-small btn-danger" data-toggle="dropdown-toggle">
+    <i class="elusive-user"></i> Miniclip <span class="caret"></span>
+  </button>
+</div>
+                              <!--this for display on tablet and phone device-->
                                 </a>
-                                <ul class="dropdown-menu dropdown-user" role="menu" aria-labelledby="dLabel">
+                                <ul class="dropdown-menu dropdown-user" role="menu">
                                     <li>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+
+  <?php 
+  if($user['User']['picture']==null) { 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    } else {
+      echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
+  ?>
+
+                                            </a>
+                                            <div class="media-body description">
+                                                <p class="muted"><strong><?php echo $username ?></strong></p>
+                                                <p class="muted"><?php echo $user['User']['email']; ?></p>
+                                                <p class="action"><a class="link" href="<?php echo $publicprofile;?>">Public Channel</a> - <a class="link" href="<?php echo $settings;?>">Settings</a></p>
+                                                <a href="<?php echo $dashboard;?>" class="btn btn-danger btn-small btn-block"><i class="icofont-home"></i>Dashboard</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-footer">
+                                        <div>
+                                            <a class="btn btn-small pull-right" href="<?php echo $logout; ?>"><i class="icofont-signout"></i> Logout</a>
+                                            <a class="btn btn-small btn-success" href="<?php echo $addGame;?>"><i class="elusive-plus-sign"></i> Add Game</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+ 
+      <!-- Your site name for the upper left corner of the site -->
+      <a href="<?php echo $index; ?>" class="brand">toork</a>
+ <form class="navbar-search">
+  <input class="input-large search-query grd-white" maxlength="23" placeholder="Search here..." type="text">
+</form>
+      <!-- Start of the nav bar content -->
+      <div class="nav-collapse"><!-- Other nav bar content -->
+        <!-- The drop down menu -->
+        <ul class="nav pull-right">
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="elusive-compass"></i> Explore <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Best Channels</a></li>
+                    <li><a href="#">Recommended Games</a></li>
+                    <li><a href="#">New Games</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Why Join Toork</a></li>
+                </ul>
+            </li>
+          <li class="divider-vertical"></li>
+          <li class="dropdown user-group">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <div class="pull-left " style="margin:-9px 0px 0px 0px;">
+  <?php 
+  if($user['User']['picture']==null) { 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    } else {
+      echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'20','onerror'=>'imgError(this,"avatar");')); }
+  ?>
+
+                <?php echo $username ?></div><strong class="caret"></strong></a>
+            <div class="dropdown-menu dropdown-user" role="menu" style="padding: 15px; padding-bottom: 15px;">
                                         <div class="media">
                                             <a class="pull-left" href="#">
 
@@ -178,17 +101,17 @@
                                                 <a href="<?php echo $dashboard;?>" class="btn btn-danger btn-small btn-block"><i class="icofont-home"></i>Dashboard</a>
                                             </div>
                                         </div>
-                                    </li>
-                                    <li class="dropdown-footer">
-                                        <div>
+                                  
+                                        <div class="dropdown-footer">
                                             <a class="btn btn-small pull-right" href="<?php echo $logout; ?>"><i class="icofont-signout"></i> Logout</a>
                                             <a class="btn btn-small btn-success" href="<?php echo $addGame;?>"><i class="elusive-plus-sign"></i> Add Game</a>
                                         </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div><!--panel button ext-->
-                    </div>
-                </div>
-            </div><!--/nav bar helper-->
-        </header>
+                                    
+
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

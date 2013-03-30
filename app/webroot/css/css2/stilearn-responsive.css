@@ -40,7 +40,7 @@
     
     /** sidebar-right */
     .side-right{
-        width: 15.3%;
+        width: 17%;
     }
     /** end sidebar-right */
     
@@ -108,7 +108,7 @@
         display: inline-block;
     }
     .user-group .dropdown-user{
-        margin-left: -100%;
+        margin-left: -220%;
         min-width: 260px;
     }
 
@@ -120,7 +120,7 @@
     /** sidebar**/
     .side-left{
         position: relative;
-        top: auto;
+        top: 20px;
         width: 100%;
         display: block;
         z-index: 1;
@@ -303,7 +303,7 @@
     }
     
     .user-group .dropdown-user{
-        margin-left: auto;
+        margin: 0px 0px 0px -70px;
         min-width: 160px;
         text-align: center;
     }
@@ -313,7 +313,7 @@
     }
     .user-group,
     .user-group > a:first-child{
-        margin-right: -23px;
+        margin-right: 0px;
     }
     .user-group > a:first-child .btn{
         

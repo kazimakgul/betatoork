@@ -23,7 +23,7 @@ if ($this->action == "dashboard"){
 
  <div class="span1">
                     <!--side bar-->
-                    <aside class="side-left">
+                    <aside class="side-left" >
                         <ul class="sidebar">
                             <li <?php echo $class;?>> <!--always define class .first for first-child of li element sidebar left-->
                                 <a href="<?php echo $dashboard; ?>" title="dashboard">
