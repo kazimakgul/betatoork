@@ -12,7 +12,7 @@ $(function(){
     
     $('body').append(control_mode)
     if(sessionStorage.mode == undefined){
-        sessionStorage.mode = 3;
+        sessionStorage.mode = 1;
     }
     
     $('#control-mode > .navigate-mode').click(function(e){

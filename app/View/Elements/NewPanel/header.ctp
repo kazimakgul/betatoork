@@ -13,8 +13,9 @@
       echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'20','onerror'=>'imgError(this,"avatar");')); }
   ?><!--this for display on PC device-->
   <div class="pull-left">
-  <button class="btn btn-small btn-danger" data-toggle="dropdown-toggle">
-    <i class="elusive-user"></i> Miniclip <span class="caret"></span>
+<button class="btn" data-toggle="dropdown-toggle" style="margin:5px 0px 0px 0px;">
+    <i class="elusive-user"></i>
+    <span class="caret"></span></span>
   </button>
 </div>
                               <!--this for display on tablet and phone device-->

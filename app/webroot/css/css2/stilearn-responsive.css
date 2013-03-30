@@ -108,7 +108,7 @@
         display: inline-block;
     }
     .user-group .dropdown-user{
-        margin-left: -220%;
+        margin: 0px 0px 0px -300px;
         min-width: 260px;
     }
 
@@ -121,6 +121,7 @@
     .side-left{
         position: relative;
         top: 20px;
+        margin: -20px 0px 0px 0px;
         width: 100%;
         display: block;
         z-index: 1;
@@ -303,7 +304,7 @@
     }
     
     .user-group .dropdown-user{
-        margin: 0px 0px 0px -70px;
+        margin: 0px 0px 0px -170px;
         min-width: 160px;
         text-align: center;
     }
