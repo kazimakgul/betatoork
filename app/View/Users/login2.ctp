@@ -80,7 +80,7 @@
 				
 				
 				
-
+<!--Recpatcha line-->
                                      <div class="control-group">
                                      <label class="control-label">Retype Code Inside Box</label>
                                      <div class="controls">
@@ -113,7 +113,7 @@
                  </div>
 				 </div>
  
-								
+<!--/Recpatcha line-->								
 									
 									
 

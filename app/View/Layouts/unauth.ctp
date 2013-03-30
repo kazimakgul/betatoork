@@ -70,7 +70,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
             })
         </script>
 
-//Javascript variables for login and register
+<!-- avascript variables for login and register-->
 <script type="text/javascript">
 remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
 fbslink='<?php echo $this->Html->url(array('controller'=>'fbs','action'=>'connect')); ?>';

@@ -376,16 +376,11 @@ $(function () {
 
 
 
-
-
-
-
-
 //Gatekeeper functions
 function trecaptcha2(){alert('youclick');
 		$.post(remotecheck, { dt: $('#recaptcha_response_field').val(), c: $('#recaptcha_challenge_field').val(), attr: 'recaptcha_response_field', un: $('#reg_username').val(), um: $('#reg_email').val(), up: $('#reg_password').val() }, function (data) {
 			if (data.rtdata == 'true') {
-				alert('iyibari kayit oldun bundan sonra logine yönlendirilcen');
+				alert('iyibari');
 			}
 			else if(data.rtdata == 'false'){
                 Recaptcha.reload();
@@ -394,88 +389,149 @@ function trecaptcha2(){alert('youclick');
 			else
 			{
 				Recaptcha.reload();
+				$('.t_regbox_signform').animate({ left: '+=350' }, 300);
+				errbox($('#txt_signusername'));
+				//$('.errbox_msg').html(data.rtdata);
 				alert(data.rtdata)
 			}
 		}, 'json');	
 	}
 	
 	
-	function isValidEmailAddress(emailAddress) {
-    var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
-    return pattern.test(emailAddress);
-};
-	
 	//Register button for gatekeeper
 	
 	$('#t_gatekeeper_registerbtn').click(function () {
-	
-		if(checkvalidation())
+        
+		if($('#reg_username').val().length<6 || $('#reg_username').val().length>20)
 		{
-			trecaptcha2();
-			}else{
-				alert('gecersiz');
-				}
+		//aksiyon
+		}
+		 
+		//Eger validationda bir sikinti yoksa.  
 		
+		trecaptcha2();
 		
     });
 	
-	
-	function checkAvailability(dt_var,attr_var) {
-		        
-		$.post(remotecheck, { dt: dt_var, attr: attr_var }, function (data) {
-					if (data.rtdata == null) {
-						//no any messages
-					}
-					else {
-						
-						$.pnotify({
-               text: data.rtdata,
-               type: 'error'
-               });
-					
-					
-					}
-				}, 'json');
-
-	}
-	
-	
-	
-	
-	function checkvalidation() {
-	     result=1;	
-	     if($('#reg_username').val().length==0 || $('#reg_username').val().length<6 || $('#reg_username').val().length>20)
-		 {
-		 //aksiyon
-		 result=0;	
-		 }	
-		 if($('#reg_email').val().length==0 || !isValidEmailAddress($('#reg_email').val()))
-		 {
-		 //aksiyon
-		 result=0;	
-		 }	
-		 if($('#reg_password').val().length==0 || $('#reg_password').val().length<6)
-		 {
-		 //aksiyon
-		 result=0;	
-		 }
-		 if($('#reg_password_again').val().length==0 || $('#reg_password_again').val()!=$('#reg_password').val())
-		 {
-		 //aksiyon
-		 result=0;
-		 }	
-		 if(!checkAvailability($('#reg_username').val(),'txt_signusername'))
-		 {
-		 result=0;
-		 }
-		 if(!checkAvailability($('#reg_email').val(),'txt_signemail'))
-		 {
-		 result=0;
-		 }
-		 
-		 return result;
-		
-	}
-	
 	//------------
 	
+	//Error messages for GateKeeper
+	 function errlist(obj) {
+        obj.parent().css('backgroundPosition', '0px -116px');
+		var topPos = obj.parent().position().top;
+		var leftPos  = obj.parent().position().left + obj.parent().width() + 5;
+        if (obj.attr('id') == 'txt_signusername') {
+            //alert('Choose a Username');
+        }
+        else if (obj.attr('id') == 'txt_signpass') {
+            alert('Choose a Password');
+        }
+        else if (obj.attr('id') == 'txt_signpassagain') {
+            alert('Password Again');
+        }
+        else if (obj.attr('id') == 'txt_logusername') {
+            alert('Email or Username');
+        }
+        else if (obj.attr('id') == 'txt_logpassword') {
+            alert('Type your Password');
+        }
+        else { }
+		if (obj.attr('id') == 'txt_signemail'){
+		    alert('Type your e-mail');
+            alert('Email must be format: example@example.com');
+		}
+		else
+		{
+			 //alert('Please use 6 to 20 characters, only letters and numbers, do not use any space'); Bootstrap validation bunu halleder
+		}
+		$('.t_regbox_errbox_container').css({ 'top': topPos, 'left': leftPos });
+        $('.t_regbox_errbox_container').show();
+
+    }
+	
+	//Error messages for GateKeeper
+	
+	
+	
+	//--------------------Function for Gatekeeper
+	
+	$('.controls input').focus(function () { 
+        if($(this).val() == '' ) { $(this).parent().css('backgroundPosition', '0px -58px'); }
+        if ($('.t_regbox_errlist_container').is(':visible')) { $('.t_regbox_errlist_container').hide(); }
+    }).blur(function () {
+        if ($(this).val() == '') {
+            $(this).parent().css('backgroundPosition', '0px -29px'); errlist($(this));
+        }
+        else if ($(this).attr('id') != 'txt_signemail' && ($(this).val().length < 6 || $(this).val().length > 20)) {
+            errlist($(this));
+        }
+        else { }
+    }).keyup(function () {
+        var _this = $(this);
+        if (_this.attr('id') != 'txt_signemail' && ($(this).val().length < 6 || $(this).val().length > 20)) {
+			if(_this.attr('id') == 'txt_signusername'){errun = true;}else{errpas = true;}
+            errlist($(this));
+        }else {
+			if (_this.attr('id') == 'txt_signemail' && !mailRegex.test($(this).val())) {
+				errmail = true;
+				errlist($(this));
+			}
+			else if (_this.attr('id') == 'txt_signusername' || _this.attr('id') == 'txt_signemail'){
+				$.post(remotecheck, { dt: $(this).val(), attr: _this.attr('id') }, function (data) {
+					if (data.rtdata == null) {
+						if(_this.attr('id') == 'txt_signusername'){errun = false;}else{errmail = false;}
+						_this.parent().css('backgroundPosition', '0px -87px');
+						$('.t_regbox_errlist_container').hide();
+						if (_this.parent().next().children('input').is(':disabled')) {
+							_this.parent().next().children('input').removeAttr('disabled');
+							_this.parent().next().css('backgroundPosition', '0px -29px');
+						}
+					}
+					else {
+						if(_this.attr('id') == 'txt_signusername'){errun = true;}else{errmail = true;}
+						_this.parent().css('backgroundPosition', '0px -116px');
+						$('.errlist_title').html('Choose a Username');
+						$('.errlist_msg').html(data.rtdata);
+						$('.t_regbox_errlist_container').show();
+					}
+				}, 'json');
+			}
+			else if(_this.attr('id') == 'txt_signpass' && $('#txt_signpassagain').val() !='' && _this.val() != $('#txt_signpassagain').val()){
+				errpass = true;
+				$('.t_regbox_signpass').css('backgroundPosition', '0px -116px');
+				$('.errlist_title').html('Password Again');
+				$('.errlist_msg').html('Please re-enter your password twice so that the values match');
+				$('.t_regbox_errlist_container').css({ 'top': '76px' });
+				$('.t_regbox_errlist_container').show();
+			}
+			else if(_this.attr('id') == 'txt_signpassagain' && $('#txt_signpass').val() !='' && _this.val() != $('#txt_signpass').val()){
+				errpass = true;
+				$('.t_regbox_signpassagain').css('backgroundPosition', '0px -116px');
+				$('.errlist_title').html('Password Again');
+				$('.errlist_msg').html('Please re-enter your password twice so that the values match');
+				$('.t_regbox_errlist_container').css({ 'top': '115px' });
+				$('.t_regbox_errlist_container').show();		
+			}
+			else
+			{
+				$('.t_regbox_errlist_container').hide();
+				if($('#txt_signpass').val() == $('#txt_signpassagain').val())
+				{
+					errpass = false;
+					$('.t_regbox_signpass').css('backgroundPosition', '0px -87px');
+					$('.t_regbox_signpassagain').css('backgroundPosition', '0px -87px');			
+				}
+				else
+				{
+					_this.parent().css('backgroundPosition', '0px -87px');
+					if (_this.parent().next().children('input').is(':disabled')) {
+						_this.parent().next().children('input').removeAttr('disabled');
+						_this.parent().next().css('backgroundPosition', '0px -29px');
+					}
+				}
+				
+			}
+		}
+    });
+	
+	//----------------------
