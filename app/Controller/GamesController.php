@@ -187,7 +187,9 @@ public function set_suggested_channels()
 		$status='normal';
 		$counter=0;
 		$limit=10;
+		$authid = $this->Session->read('Auth.User.id');
 		//Repeat it to get data
+		$listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
 		do{
 		$suggestdata=$this->User->find('all',array('limit' => $limit,'order'=>'rand()','conditions'=>array('User.id'=>$this->get_suggestions($restrict),'NOT' => array('User.id' => $listofmine))));
           if($suggestdata==NULL)

@@ -38,7 +38,7 @@ class AppController extends Controller {
         'Session','Cookie','RequestHandler',
 		'Facebook.Connect'=>array('model' => 'User'),
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'wallentries', 'action' => 'wall'),
+            'loginRedirect' => array('controller' => 'games', 'action' => 'dashboard'),
             'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
             'authorize' => array('Controller')
         )
