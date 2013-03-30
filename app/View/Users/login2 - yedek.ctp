@@ -14,7 +14,7 @@
                                     <div class="control-group">
                                         <label class="control-label">Username or Email</label>
                                         <div class="controls">
-<?php echo $this->Form->input('username',array('label'=>false ,'div'=>false,'type'=>'text','class'=>'input-block-level','id'=>'txt_signusername','data-validate'=>'{required: true, messages:{required:"Please enter field username"}}')); ?>
+<?php echo $this->Form->input('username',array('label'=>false ,'div'=>false,'type'=>'text','class'=>'input-block-level','data-validate'=>'{required: true, messages:{required:"Please enter field username"}}')); ?>
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -51,78 +51,31 @@
                                     <div class="control-group">
                                         <label class="control-label">Username</label>
                                         <div class="controls">
-                                            <input type="text" class="input-block-level" data-validate="{required: true, messages:{required:'Please enter field username'}}" name="username" id="reg_username" autocomplete="off" />
+                                            <input type="text" class="input-block-level" data-validate="{required: true, messages:{required:'Please enter field username'}}" name="username" id="username" autocomplete="off" />
                                             <p class="help-block muted helper-font-small">May contain letters, digits, dashes and underscores, and should be between 2 and 20 characters long.</p>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label">Email</label>
                                         <div class="controls">
-                                            <input type="text" class="input-block-level" data-validate="{required: true, email:true, messages:{required:'Please enter field email', email:'Please enter a valid email address'}}" name="email" id="reg_email" autocomplete="off" />
+                                            <input type="text" class="input-block-level" data-validate="{required: true, email:true, messages:{required:'Please enter field email', email:'Please enter a valid email address'}}" name="email" id="email" autocomplete="off" />
                                             <p class="help-block muted helper-font-small"><strong>Type carefully.</strong> You will be sent a confirmation email.</p>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label">Password</label>
                                         <div class="controls">
-                                            <input type="password" class="input-block-level" data-validate="{required: true, minlength: 6, messages:{required:'Please enter field password', minlength:'Please enter at least 6 characters.'}}" name="password" id="reg_password" autocomplete="off" />
+                                            <input type="password" class="input-block-level" data-validate="{required: true, minlength: 6, messages:{required:'Please enter field password', minlength:'Please enter at least 6 characters.'}}" name="password" id="password" autocomplete="off" />
                                             <p class="help-block muted helper-font-small">The longer the better. Include numbers for protein.</p>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label">Password Again</label>
                                         <div class="controls">
-                                            <input type="password" class="input-block-level" data-validate="{required: true, equalTo: '#reg_password', messages:{required:'Please enter field confirm password', equalTo: 'confirmation password does not match the password'}}" name="password_again" id="reg_password_again" autocomplete="off" />
+                                            <input type="password" class="input-block-level" data-validate="{required: true, equalTo: '#password', messages:{required:'Please enter field confirm password', equalTo: 'confirmation password does not match the password'}}" name="password_again" id="password_again" autocomplete="off" />
                                             <p class="help-block muted helper-font-small">Enter your password again.</p>
                                         </div>
                                     </div>
-									
-				
-				
-				
-
-                                     <div class="control-group">
-                                     <label class="control-label">Retype Code Inside Box</label>
-                                     <div class="controls">
-<script type="text/javascript">
- var RecaptchaOptions = {
-    theme : 'clean'
- };
- </script>		
- <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LebitISAAAAABySKYGrPbSNb2vTzSqIQTqUyHvz"></script>
- <div id="recaptcha_widget" style="display:none">
-
-   <div id="recaptcha_image"></div>
-   <div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect please try again</div>
-
-   <span class="recaptcha_only_if_image">Enter the words above:</span>
-   <span class="recaptcha_only_if_audio">Enter the numbers you hear:</span>
-
-   <input type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
-
-   <div><a href="javascript:Recaptcha.reload()">Get another CAPTCHA</a></div>
-   <div class="recaptcha_only_if_image"><a href="javascript:Recaptcha.switch_type('audio')">Get an audio CAPTCHA</a></div>
-   <div class="recaptcha_only_if_audio"><a href="javascript:Recaptcha.switch_type('image')">Get an image CAPTCHA</a></div>
-
-   <div><a href="javascript:Recaptcha.showhelp()">Help</a></div>
-
- </div>
-
-
-
-                 </div>
-				 </div>
- 
-								
-									
-									
-
-
-
-
-									
-									
-									
                                     <div class="control-group">
                                         <p class="term-of-use">Lorem ipsum dolor sit amet, natoque per at morbi at vestibulum leo, velit non, curabitur ac est. <a href="#">terms of use</a> and <a href="#">privacy policy</a>.</p>
                                     </div>
@@ -132,7 +85,7 @@
                                         </label>
                                     </div>
                                     <div class="form-actions">
-                                        <input  class="btn btn-block btn-large btn-success" id="t_gatekeeper_registerbtn" value="Create account" />
+                                        <input type="submit" class="btn btn-block btn-large btn-success" value="Create account" />
                                     </div>
                                 </form>
                             </div>
@@ -140,9 +93,6 @@
                     </div><!--/Sign Up-->
                 </div><!-- /row -->
             </div><!-- /container -->
-           
+            
 <?php  echo $this->element('NewPanel/passwordModal'); ?>
         </section>
-
-
-
