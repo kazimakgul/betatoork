@@ -29,7 +29,7 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
                                     </a>
                                 </li>
                             </ul>
-                            <h2><i class="icofont-home"></i> Dashboard <small>welcome to toork</small></h2>
+                            <h2><i class="icofont-home"></i> Dashboard</h2>
                         </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
@@ -53,8 +53,7 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
+                                <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a></li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
                         

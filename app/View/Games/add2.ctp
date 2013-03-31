@@ -5,7 +5,7 @@
                         <!-- content-header -->
                         <div class="content-header">
 
-                            <h2><i class="icofont-plus-sign"></i> Add Game</h2>
+                            <h2><i class="icofont-plus-sign"></i> Add a Game</h2>
                         </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
@@ -14,9 +14,7 @@
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="#"><i class="icofont-cogs"></i>My Settings</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="#">Add Game</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
+                                <li><a href="#"><i class="icofont-cogs"></i>Add Game</a></li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
                         <!-- content-body -->

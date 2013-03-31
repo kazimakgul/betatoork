@@ -5,7 +5,7 @@
                     <div class="content">
                         <!-- content-header -->
                         <div class="content-header">
-                            <h2><i class="icofont-umbrella"></i> My Favorite Games</h2>
+                            <h2><i class="icofont-heart color-red"></i> My Favorite Games</h2>
                         </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
@@ -25,25 +25,11 @@
                                         <li><a href="#">Played</a></li>
                                     </ul>
                                 </li>
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link">
-                                        <i class="icofont-money"></i> Orders <span class="color-red">(+12)</span>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link">
-                                        <i class="icofont-user"></i> Users <span class="color-red">(+34)</span>
-                                    </a>
-                                </li>
                             </ul><!--/breadcrumb-nav-->
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="interface.html">Favorite Games</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
+                                <li><a href="#"><i class="icofont-heart"></i> My Favorites</a></li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
                         

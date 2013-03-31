@@ -25,25 +25,12 @@
                                         <li><a href="#">Played</a></li>
                                     </ul>
                                 </li>
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link">
-                                        <i class="icofont-money"></i> Orders <span class="color-red">(+12)</span>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link">
-                                        <i class="icofont-user"></i> Users <span class="color-red">(+34)</span>
-                                    </a>
-                                </li>
                             </ul><!--/breadcrumb-nav-->
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="#">Chains</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
+                                <li><a href="#"><i class="icofont-link"></i> Chains</a> </li>
+                                
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
                         

@@ -7,7 +7,7 @@ $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
                     <div class="content">
                         <!-- content-header -->
                         <div class="content-header">
-                            <h2><i class="icofont-umbrella"></i> My Shared Games</h2>
+                            <h2><i class="icofont-umbrella color-blue"></i> My Shared Games</h2>
                         </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
@@ -31,9 +31,7 @@ $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="interface.html">My Games</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
+                                <li><a href="#"><i class="icofont-umbrella"></i> My Games</a></li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
                         

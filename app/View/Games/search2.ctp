@@ -8,7 +8,7 @@ $toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2")
                     <div class="content">
                         <!-- content-header -->
                         <div class="content-header">
-                            <h2><i class="icofont-umbrella"></i> Search Results</h2>
+                            <h2><i class="icofont-search"></i> Search Results</h2>
                         </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
@@ -32,9 +32,7 @@ $toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2")
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="interface.html">Search</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
+                                <li><a href="#"><i class="icofont-search"></i> Search </a> <span class="divider">&rsaquo;</span></li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
                         
