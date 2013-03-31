@@ -4337,14 +4337,20 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar .brand {
-  display: block;
+
   float: left;
-  padding: 7px 10px 10px;
-  margin-left: -10px;
+  padding: 10px 20px 10px;
+  margin-left: 10px;
   font-size: 20px;
   font-weight: 200;
   color: #777777;
   text-shadow: 0 1px 0 #ffffff;
+  background: url(../../img/logo.png) no-repeat center;
+  background-size:80px 22px;
+  width: 80px;
+  height: 20px
+
+
 }
 
 .navbar .brand:hover {

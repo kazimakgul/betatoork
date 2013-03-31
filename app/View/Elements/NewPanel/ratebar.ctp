@@ -7,17 +7,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-<a class="brand img-polaroid" href="<?php echo $profilepublic; ?> " style="text-decoration:none; padding:5px ;margin:3px 3px 3px 3px ; ">  
+          <div class="nav-collapse">
+            <div class="row-fluid">
+
+              <div class="span2">
+<a class="btn" style="padding:2px 5px 2px 5px;" href="<?php echo $profilepublic; ?> ">  
   <?php 
   if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
     } else {
       echo $this->Upload->image($game,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'20','onerror'=>'imgError(this,"avatar");')); }
-  ?> <?php echo $game['User']['username'] ?> 
+  ?> <?php echo $game['User']['username'] ?> <i class="color-red icofont-bolt"></i>
 </a>
 
-          <div class="nav-collapse">
-            <div class="row-fluid">
+              </div>
+
               <div class="span5 helper-font-32">
                  <div class="pull-right" style="margin-top:5px;">
                       <i class="elusive-star"></i>
@@ -27,7 +31,7 @@
                       <i class="elusive-star-empty"></i>
                     </div>
               </div>
-              <div class="span5 helper-font-32">
+              <div class="span4 helper-font-32">
                 <ul>
                   <li rel="tooltip" data-placement="top" data-original-title="Next Game" class="btn pull-right color-blue" style="margin:5px;">
                       <i class="elusive-fire"></i> Next <i class="elusive-circle-arrow-right"></i>

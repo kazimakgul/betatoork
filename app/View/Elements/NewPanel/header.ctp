@@ -51,7 +51,7 @@
                             </div>
  
       <!-- Your site name for the upper left corner of the site -->
-      <a href="<?php echo $index; ?>" class="brand"><img width="80"src="../img/logo.png"></a>
+      <a href="<?php echo $index; ?>" class="brand"></a>
  <form class="navbar-search">
 <div class="input-icon-append">
   <button type="submit" rel="tooltip-bottom" title="" class="color-blue icon" data-original-title="search"><i class="icofont-search"></i></button>
