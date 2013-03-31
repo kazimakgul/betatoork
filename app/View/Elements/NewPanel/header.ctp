@@ -2,7 +2,7 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"><!-- Collapsable nav bar -->
-<div class="btn-group user-group btn-navbar" style="background : none; padding:0px 0px 0px 0px; margin:0px 50px 0px 0px;">
+<div class="btn-group user-group btn-navbar" style="background : none; padding:0px 0px 0px 0px; margin:0px 40px 0px 0px;">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 
 
@@ -51,9 +51,12 @@
                             </div>
  
       <!-- Your site name for the upper left corner of the site -->
-      <a href="<?php echo $index; ?>" class="brand">toork</a>
+      <a href="<?php echo $index; ?>" class="brand"><img width="80"src="../img/logo.png"></a>
  <form class="navbar-search">
-  <input class="input-large search-query grd-white" maxlength="23" placeholder="Search here..." type="text">
+<div class="input-icon-append">
+  <button type="submit" rel="tooltip-bottom" title="" class="color-blue icon" data-original-title="search"><i class="icofont-search"></i></button>
+ <input class="input-large search-query grd-white" maxlength="23" placeholder="Search for a game..." type="text">
+</div>
 </form>
       <!-- Start of the nav bar content -->
       <div class="nav-collapse"><!-- Other nav bar content -->
