@@ -965,6 +965,13 @@
     width: 50px;
     height: 20px
   }
+  .navbar .brand:hover {
+    padding-left: 15px;
+    margin: 0 0px 0 5px;
+    background-size:60px 16px;
+    width: 50px;
+    height: 20px
+  }
   .nav-collapse {
     clear: both;
   }
