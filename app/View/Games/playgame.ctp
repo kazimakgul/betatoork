@@ -7,7 +7,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
                     <div class="content">
                         
                         <!-- content-body -->
-                        <div class="content-body">
+                        <div class="content-body" style="padding-top:15px;">
 
 <!-- Add Unit -->
 <div class="well">

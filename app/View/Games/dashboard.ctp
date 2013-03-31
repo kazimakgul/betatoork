@@ -58,7 +58,7 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
                         </div><!-- /content-breadcrumb -->
                         
                         <!-- content-body -->
-                        <div class="content-body">
+                        <div class="content-body" style="padding-top:15px;">
                             <!-- dashboard -->
 <div class="row-fluid">
                             <div class="well well-small span4">

@@ -74,6 +74,48 @@
                 </ul>
             </li>
           <li class="divider-vertical"></li>
+
+          <li class="dropdown user-group">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <div class="pull-left "> <i class="icofont-comments color-red"></i>
+
+                Share</div><strong class="caret"></strong></a>
+            <div class="dropdown-menu dropdown-user color-red" role="menu" style="padding:5px; padding-bottom: 5px;">
+                                        
+                                           
+            <div class="span4" style=" margin: 5px 5px 5px 5px;">
+              <div style=" padding: 5px 5px 5px 5px;">
+                </br>
+                <form class="navbar-form " >
+                    <textarea name="message" id="update" style=" padding: 0px 0px 0px 3px;" class="span4" rows="4"  placeholder="What do you want to share?"></textarea>
+                 </br>
+                <div class="helper-font-16">
+                          
+                          <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
+                           <i rel="tooltip" data-placement="top" data-original-title="add game" href="javascript:void(0);"  id="camera2" class="elusive-plus-sign"></i>
+                            <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
+                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
+                </div>
+                
+                            <!-ImageUploadPanel-><div id="imageupload" class="border" style="display:none;">
+                            <?php $image_ajax_url= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax'));?>
+                            <form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
+                            <div id='preview'></div>
+                            <span id='addphoto'>Add Photo:</span> <input type="file" name="photoimg" id="photoimg" />
+                            <input type='hidden' id='uploadvalues' />
+                            </form>
+                            </div><!-ImageUploadPanel-> 
+                    <hr size="3" style="margin:0px 0px 5px 0px;">
+                  <button type="submit" class="btn btn-danger pull-right update_data">Share</button>
+                </form></br></br>
+              </div>
+            </div>
+
+                                    
+            </div>
+          </li>
+
+          <li class="divider-vertical"></li>
           <li class="dropdown user-group">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">
             <div class="pull-left " style="margin:-9px 0px 0px 0px;">

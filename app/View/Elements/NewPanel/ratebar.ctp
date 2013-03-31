@@ -10,8 +10,8 @@
           <div class="nav-collapse">
             <div class="row-fluid">
 
-              <div class="span2">
-<a class="btn" style="padding:2px 5px 2px 5px;" href="<?php echo $profilepublic; ?> ">  
+              <div class="span3">
+<a class="btn" style="margin:5px;" href="<?php echo $profilepublic; ?> ">  
   <?php 
   if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
@@ -22,7 +22,7 @@
 
               </div>
 
-              <div class="span5 helper-font-32">
+              <div class="span4 helper-font-32">
                  <div class="pull-right" style="margin-top:5px;">
                       <i class="elusive-star"></i>
                       <i class="elusive-star"></i>
