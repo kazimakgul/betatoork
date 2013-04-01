@@ -83,11 +83,11 @@
             <div class="dropdown-menu dropdown-user color-red" role="menu" style="padding:5px; padding-bottom: 5px;">
                                         
                                            
-            <div class="span4" style=" margin: 5px 5px 5px 5px;">
+            <div class="span4" style=" margin: 5px 5px -15px 5px;">
               <div style=" padding: 5px 5px 5px 5px;">
                 </br>
                 <form class="navbar-form " >
-                    <textarea name="message" id="update" style=" padding: 0px 0px 0px 3px;" class="span4" rows="4"  placeholder="What do you want to share?"></textarea>
+                    <textarea name="message" id="update" style="margin-top:-20px; padding: 0px 0px 0px 3px;" class="span4" rows="5"  placeholder="What do you want to share?"></textarea>
                  </br>
                 <div class="helper-font-16">
                           
@@ -107,6 +107,7 @@
                             </div><!-ImageUploadPanel-> 
                     <hr size="3" style="margin:0px 0px 5px 0px;">
                   <button type="submit" class="btn btn-danger pull-right update_data">Share</button>
+                  <a href="<?php echo $wall;?>" class="btn">My Wall</a>
                 </form></br></br>
               </div>
             </div>
