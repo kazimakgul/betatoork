@@ -3,7 +3,7 @@
 if($game['Game']['seo_url']!=NULL)
 $playurl=$this->Html->url(array( "controller" => h($game['Game']['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playgame'));
 else
-$playurl=$this->Html->url(array( "controller" => "games","action" =>"playgame",h($game['Game']['id'])));
+$playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($game['Game']['id'])));
 ?>  
 
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>

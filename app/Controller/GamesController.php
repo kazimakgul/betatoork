@@ -1310,6 +1310,38 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
    
 	}
 
+	public function gameswitch($id = null) {
+
+		$gameid = $this->request->params['pass'][0];
+		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')))));//Recoded
+		if($game['Game']['embed']==null){
+			$this->redirect(array('controller' => 'games', 'action' => 'playgameframe',$gameid));
+		}else{
+			$this->redirect(array('controller' => 'games', 'action' => 'playgame',$gameid));
+		}
+
+	}
+
+	public function playgameframe($channel=NULL,$seo_url=NULL) {
+	
+		$this->layout='playgameframe';
+		$this->headerLogin();
+		
+		$gameid = $this->request->params['pass'][0];
+		if(is_numeric($gameid)){
+			$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')))));//Recoded
+
+		}else{
+			$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
+			$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
+		}
+
+		$this->set('game', $game);
+		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
+	    $this->set_suggested_channels();
+   
+	}
+
 	public function headerlogin() {
 		$userid = $this->Session->read('Auth.User.id');
 	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));

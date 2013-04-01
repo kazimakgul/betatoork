@@ -10,7 +10,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
                         <div class="content-body" style="padding-top:15px;">
 
 <!-- Add Unit -->
-<div class="well">
+<div class="well" style="padding:5px;">
 <div align="center" style="max-height:110px; overflow:hidden;">
 
 <?php echo $game['User']['adcode'] ?> 
@@ -65,7 +65,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
 </div>
 
 <!-- Add Unit -->
-<div class="well">
+<div class="well" style="padding:5px;">
 <div align="center" style="max-height:110px; overflow:hidden;">
 
 <?php echo $game['User']['adcode'] ?> 
