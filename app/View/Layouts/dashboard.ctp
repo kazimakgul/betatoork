@@ -21,11 +21,17 @@
 
     <body>
 
-<?php 
+<?php
+
+if($this->Session->check('Auth.User')){
+    $index=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
+}else{
+    $index=$this->Html->url(array("controller" => "games","action" =>"index")); 
+}
+
 $logout=$this->Html->url(array("controller" => "users","action" =>"logout")); 
 $addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
-$index=$this->Html->url(array("controller" => "games","action" =>"index")); 
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 $favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"));
 $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));

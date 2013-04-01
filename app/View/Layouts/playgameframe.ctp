@@ -22,10 +22,16 @@
     <body>
 
 <?php 
+
+if($this->Session->check('Auth.User')){
+    $index=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
+}else{
+    $index=$this->Html->url(array("controller" => "games","action" =>"index")); 
+}
+
 $logout=$this->Html->url(array("controller" => "users","action" =>"logout")); 
 $addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
-$index=$this->Html->url(array("controller" => "games","action" =>"index")); 
 $wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
 $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
