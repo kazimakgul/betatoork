@@ -726,19 +726,32 @@ public function profile() {
 	$this->layout='dashboard';
     $userid = $this->request->params['pass'][0];
     $authid = $this->Session->read('Auth.User.id');
+	
+	if(!is_numeric($userid)){
+	$userconvert = $this->User->find('first', array('contain'=>false,'conditions' => array('User.seo_username' => $userid)));
+	$userid=$userconvert['User']['id'];
+	}
+	
     $user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
     $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+
+    
+    
 
 	if($user==NULL)
 	$this->redirect('/');
     $userName = $user['User']['username'];
     $publicName = $publicUser['User']['username'];
 	$limit=12;
+	
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
+	
 	//ReCoded
 	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
-    $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
+    
+	
+	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
 
     
 	if($user['User']['verify']!=null){

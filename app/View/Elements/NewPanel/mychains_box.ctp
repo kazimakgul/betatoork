@@ -7,8 +7,19 @@ $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$f
 $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$followid));
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$followid));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
-$profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$followid));
 ?>
+
+
+
+<?php 
+if($card[6]['User']['seo_username']!=NULL)
+{
+  $profileurl=$this->Html->url(array( "controller" => h($card[6]['User']['seo_username']),"action" =>'go')); 
+}
+else
+  $profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$followid));
+
+?>	
 
 <?php
 $facebook=$card[6]['User']['fb_link'];
