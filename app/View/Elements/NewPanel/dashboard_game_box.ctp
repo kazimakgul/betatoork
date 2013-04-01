@@ -1,9 +1,15 @@
 <?php foreach ($top_rated_games as $game): ?>
-<?php $playgameurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($game['Game']['id'])));
+<?php 
 if($game['Game']['seo_url']!=NULL)
-$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'play'));
+{
+      if($game['Game']['embed']!=NULL)
+      $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playgame'));
+	  else
+	  $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playframe'));
+}
 else
 $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($game['Game']['id'])));
+
 ?>	
 <?php $editurl=$this->Html->url(array( "controller" => "games","action" =>"edit",h($game['Game']['id']))); ?>
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
@@ -31,7 +37,7 @@ $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch"
                     </div>
                   <p>
                     <a href="<?php echo $channelurl ?>"class="btn btn-mini"><strong><?php echo $game['User']['username']; ?></strong></a>
-                    <a href="<?php echo $playgameurl ?>" class="pull-right btn btn-success btn-mini"><i class="icofont-play"></i> Play</a>
+                    <a href="<?php echo $playurl ?>" class="pull-right btn btn-success btn-mini"><i class="icofont-play"></i> Play</a>
                   </p>
                   <hr size="3" style="margin:0px 0px 5px 0px;">
                     <div rel="tooltip" data-placement="bottom" data-original-title="28 People Rated"  class="helper-font-16" style="text-align: center">
