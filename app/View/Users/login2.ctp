@@ -20,7 +20,7 @@
                                     <div class="control-group">
                                         <label class="control-label">Password</label>
                                         <div class="controls">
-<?php echo $this->Form->input('password',array('label'=>false ,'div'=>false,'class'=>'input-block-level','data-validate'=>'{required: true, messages:{required:"Please enter field password"}}','required' ,'type' => 'password')); ?>
+<?php echo $this->Form->input('password',array('label'=>false ,'div'=>false,'class'=>'input-block-level','id'=>'txt_signpass','data-validate'=>'{required: true, messages:{required:"Please enter field password"}}','required' ,'type' => 'password')); ?>
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -33,7 +33,7 @@
                                         </label>
                                     </div>
                                     <div class="form-actions">
-                                        <input type="submit" class="btn btn-block btn-large btn-primary" value="Sign into account" />
+                                        <input class="btn btn-block btn-large btn-primary" id="t_gatekeeper_login_btn" value="Sign into account" />
                                         <p class="recover-account">Recover your <a href="#modal-recover" class="link" data-toggle="modal">username or password</a></p>
                                     </div>
                                 </form>

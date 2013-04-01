@@ -382,19 +382,46 @@ $(function () {
 
 
 //Gatekeeper functions
-function trecaptcha2(){alert('youclick');
+
+//***************************************************
+//------------------Settings-------------------------
+//***************************************************
+//Login Olan Userin Redirect Sayfasi(düzenlenecek)
+var redirect_page='homepage';
+
+
+function trecaptcha2(){
 		$.post(remotecheck, { dt: $('#recaptcha_response_field').val(), c: $('#recaptcha_challenge_field').val(), attr: 'recaptcha_response_field', un: $('#reg_username').val(), um: $('#reg_email').val(), up: $('#reg_password').val() }, function (data) {
 			if (data.rtdata == 'true') {
-				alert('iyibari kayit oldun bundan sonra logine yönlendirilcen');
+				
+				$.pnotify({
+               text: 'You have registered now.You will be redirected to your channel.',
+               type: 'success'
+               });
+				
+				setInterval(function(){autoLogin($('#reg_username').val(),$('#reg_password').val());},2000);
+				
+				
 			}
 			else if(data.rtdata == 'false'){
                 Recaptcha.reload();
-				alert('Recaptcha Code is incorrect. Please try again.');
+				
+				$.pnotify({
+               text: 'Recaptcha Code is incorrect. Please try again.',
+               type: 'error'
+               });
+				
+				
 			}
 			else
 			{
 				Recaptcha.reload();
-				alert(data.rtdata)
+				//alert(data.rtdata)
+				$.pnotify({
+               text: data.rtdata,
+               type: 'error'
+               });
+				
 			}
 		}, 'json');	
 	}
@@ -405,26 +432,54 @@ function trecaptcha2(){alert('youclick');
     return pattern.test(emailAddress);
 };
 	
+	
+	function checkusername() {
+		
+		$.post(remotecheck, { dt: $('#reg_username').val(), attr: 'txt_signusername' }, function (data) {
+					if (data.rtdata == null) {
+						//no any messages
+						alert('boyle bir user yok');hata=0;
+					}
+					else {
+						
+						alert('boyle bir user var');hata=1;
+					    
+						}
+						
+						alert(hata);
+					
+					
+				}, 'json');
+		
+	}
+	
+	
 	//Register button for gatekeeper
 	
 	$('#t_gatekeeper_registerbtn').click(function () {
-	
+	    
+		//checkusername();
 		if(checkvalidation())
 		{
 			trecaptcha2();
 			}else{
-				alert('gecersiz');
+				
+				$.pnotify({
+               text: 'There are some missing parts on registration form.',
+               type: 'error'
+               });
+				
+				
 				}
-		
-		
     });
 	
 	
 	function checkAvailability(dt_var,attr_var) {
-		        
+		       
 		$.post(remotecheck, { dt: dt_var, attr: attr_var }, function (data) {
 					if (data.rtdata == null) {
 						//no any messages
+						onay=1;
 					}
 					else {
 						
@@ -432,9 +487,20 @@ function trecaptcha2(){alert('youclick');
                text: data.rtdata,
                type: 'error'
                });
+						onay=0;
+					}
 					
+					if(onay==1)
+					{
 					
 					}
+					if(onay==0)
+					{
+					my_issue=0;alert('edildi');
+					}
+					
+					
+					
 				}, 'json');
 
 	}
@@ -464,17 +530,70 @@ function trecaptcha2(){alert('youclick');
 		 //aksiyon
 		 result=0;
 		 }	
-		 if(!checkAvailability($('#reg_username').val(),'txt_signusername'))
-		 {
-		 result=0;
-		 }
-		 if(!checkAvailability($('#reg_email').val(),'txt_signemail'))
-		 {
-		 result=0;
-		 }
-		 
+
 		 return result;
+		 
+	}
+	
+	
+	$('#t_gatekeeper_login_btn').click(function () {
 		
+		tlogin2();
+	});
+	
+	
+	function tlogin2(){
+        $.post(remotecheck, { un: $('#txt_signusername').val(), ps: $('#txt_signpass').val(), attr: 'txt_logusername' }, function (data) {
+			if(data.rtdata.msgid=='0'){
+				
+				$.pnotify({
+			   title:'Invalid Username or Password',
+               text: data.rtdata.msg,
+               type: 'error'
+               });
+				
+			}
+			else if(data.rtdata.msgid=='1'){
+				
+				window.location = data.rtdata.msg;
+			}
+			else{
+				
+				$.pnotify({
+			   title:'Invalid Username or Password',
+               text: data.rtdata.msg,
+               type: 'error'
+               });
+							
+			}
+        }, 'json');	
+	}
+	
+	function autoLogin(username,password){
+        $.post(remotecheck, { un: username, ps: password, attr: 'txt_logusername' }, function (data) {
+			if(data.rtdata.msgid=='0'){
+				
+				$.pnotify({
+			   title:'Invalid Username or Password',
+               text: data.rtdata.msg,
+               type: 'error'
+               });
+				
+			}
+			else if(data.rtdata.msgid=='1'){
+				
+				window.location = data.rtdata.msg;
+			}
+			else{
+				
+				$.pnotify({
+			   title:'Invalid Username or Password',
+               text: data.rtdata.msg,
+               type: 'error'
+               });
+							
+			}
+        }, 'json');	
 	}
 	
 	//------------
