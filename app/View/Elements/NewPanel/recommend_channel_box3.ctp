@@ -1,7 +1,16 @@
 					<?php 
 					foreach ($channels as $follower): 
 						$followid = $follower['User']['id'];
-						$channelurl=$this->Html->url(array("controller" => $follower['User']['seo_username'],"action" =>"")); 
+
+if($follower['User']['seo_username']!=NULL)
+{
+  $profileurl=$this->Html->url(array( "controller" => h($follower['User']['seo_username']),"action" =>'go')); 
+}
+else{
+  $profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$followid));
+}
+
+
 						$folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$followid));
 						$suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$followid));
 						$card = $this->requestAction( array('controller' => 'games', 'action' => 'follow_card', $followid));
@@ -36,7 +45,7 @@
 									
 				 <li class="header-control contact-alt grd-white" style="margin:0px 0px 3px 0px;">
                                                     <!--we use data toggle tab for navigate this action-->
-                                                    <a style="margin:0px 0px 5px 0px;" href="<?php echo $channelurl ?>" >
+                                                    <a style="margin:0px 0px 5px 0px;" href="<?php echo $profileurl ?>" >
                                                         <!--we use contact-item structure like the component media in bootstrap-->
                                                         <div class="contact-item">
                                                             <div class="pull-left">

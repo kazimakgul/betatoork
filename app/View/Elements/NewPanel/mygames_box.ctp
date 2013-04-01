@@ -1,13 +1,20 @@
 <?php foreach ($mygames as $game): ?>
-<?php $playgameurl=$this->Html->url(array( "controller" => "games","action" =>"playgame",h($game['Game']['id'])));
+<?php
+
 if($game['Game']['seo_url']!=NULL)
-$playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playgame'));
-else
-$playurl=$this->Html->url(array( "controller" => "games","action" =>"playgame",h($game['Game']['id'])));
+{
+      if($game['Game']['embed']!=NULL)
+      $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playgame'));
+    else
+    $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playframe'));
+}
+else{
+    $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($game['Game']['id'])));
+}
+
 ?>	
 <?php $editurl=$this->Html->url(array( "controller" => "games","action" =>"edit2",h($game['Game']['id']))); ?>
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
-<?php $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>"")); ?>
     
 
               <li class="span3" style="margin:0px 15px 0px 0px;">

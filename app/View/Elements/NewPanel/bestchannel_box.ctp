@@ -4,13 +4,17 @@
 foreach ($users as $follower): ?>
 <?php 
 $followid = $follower['User']['id'];
-//$card = $this->requestAction( array('controller' => 'games', 'action' => 'follow_card', $followid));
-$channelurl=$this->Html->url(array("controller" => $follower['User']['seo_username'],"action" =>"")); 
-$folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$followid));
-$suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$followid));
-$playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$followid));
+
+if($follower['User']['seo_username']!=NULL)
+{
+  $profileurl=$this->Html->url(array( "controller" => h($follower['User']['seo_username']),"action" =>'go')); 
+}
+else{
+  $profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$followid));
+}
+
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
-$profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$followid));
+
 ?>
 
 <?php
@@ -56,8 +60,8 @@ if($website==NULL){
 
 <ul style="padding-left:0px; list-style:none" class="nav-list">
   <li ><h5><a class="btn" href="<?php echo $profileurl ?>"><?php echo $follower['User']['username']; ?></a></h5></li>
-  <li><a class="" href="<?php echo $folurl ?>"><?php echo $follower['Userstat']['subscribeto']; ?> Followers</a></li>
-  <li><a class="" href="<?php echo $profileurl ?>"><?php echo $follower['Userstat']['uploadcount']; ?> Games</a></li>
+  <li><?php echo $follower['Userstat']['subscribeto']; ?> Followers</a></li>
+  <li><?php echo $follower['Userstat']['uploadcount']; ?> Games</a></li>
 </ul>
 
                     
