@@ -47,12 +47,14 @@ if($website==NULL){
 <div class="row-fluid">
     <div class="navbar"><div class="navbar-inner"  style="padding:5px 5px 5px 5px;">
     <div class="span1" style="margin:0px 20px 0px 0px;">
+      <a href="<?php echo $profileurl ?>">
             <?php 
               if($follower['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'60','url' => array('controller' => 'games', 'action' => 'profile', $followid))); 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'60')); 
                 } else {
-                  echo $this->Upload->image($follower,'User.picture',array('class'=>'img-circle'),array('width'=>'60',"class"=>"img-polaroid img-rounded",'url' => array('controller' => 'games', 'action' => 'profile', $followid),'onerror'=>'imgError(this,"avatar");'));  }
+                  echo $this->Upload->image($follower,'User.picture',array('class'=>'img-circle'),array('width'=>'60',"class"=>"img-polaroid img-rounded",'onerror'=>'imgError(this,"avatar");'));  }
             ?>
+      </a>
     </div>
     
     <div class="span4" style="margin:-10px 10px 0px -25px;">

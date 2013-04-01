@@ -57,22 +57,22 @@ if($website==NULL){
             type: 'error'
           });"  rel="tooltip" data-placement="top" data-original-title="UnFollow" data-box="close" data-hide="fadeOut" class="close">×</button> 
       </div>
-    <div class="span3" style="margin:0px 20px 0px 0px;">
+    <a class="span3" href="<?php echo $profileurl ?>" style="margin:0px 20px 0px 0px;">
             <?php 
               if($card[6]['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'60','url' => array('controller' => 'games', 'action' => 'profile', $followid))); 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'60')); 
                 } else {
-                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'60',"class"=>"img-polaroid img-rounded",'url' => array('controller' => 'games', 'action' => 'profile', $followid),'onerror'=>'imgError(this,"avatar");'));  }
+                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'60',"class"=>"img-polaroid img-rounded",'onerror'=>'imgError(this,"avatar");'));  }
             ?>
-    </div>
+    </a>
     
     <div class="span7" style="margin:-10px 10px 0px -25px;">
         
 
 <ul style="padding-left:0px; list-style:none" class="nav-list">
   <li ><h5><a class="btn" href="<?php echo $profileurl ?>"><?php echo $card[0] ?></a></h5></li>
-  <li><a class="" href="<?php echo $folurl ?>"><?php echo $card[4] ?> Followers</a></li>
-  <li><a class="" href="<?php echo $profileurl ?>"><?php echo $card[1] ?> Games</a></li>
+  <li><?php echo $card[4] ?> Followers</a></li>
+  <li><?php echo $card[1] ?> Games</a></li>
 </ul>
                     
                     

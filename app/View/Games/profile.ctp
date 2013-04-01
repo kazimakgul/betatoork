@@ -4,18 +4,18 @@
                     <div class="content">
                         
                         <!-- content-body -->
-                        <div class="content-body">
+                        <div class="content-body" style="padding-top:15px;">
 
 <div class="well well-small">
 <ul class="thumbnails">
   <li>
     <a href="#" class="thumbnail">
-        <?php 
-  if($publicuser['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
-    } else {
-      echo $this->Upload->image($publicuser,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','onerror'=>'imgError(this,"avatar");')); }
-  ?>
+            <?php 
+              if($publicuser['User']['picture']==null) { 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'60')); 
+                } else {
+                  echo $this->Upload->image($publicuser,'User.picture',array('class'=>'img-circle'),array('width'=>'60','onerror'=>'imgError(this,"avatar");'));  }
+            ?>
     </a>
   </li>
   <li>
@@ -24,33 +24,39 @@
 </ul>
 </div>
 
-<div class="well well-small">
- 
-    <a class="btn btn-danger">
-      <i class="elusive-plus-sign"></i> Follow
-    </a> <div class="pull-right">
-    <a class="btn btn-info">
-        <div class="helper-font-16">
-        <i class="icofont-facebook"></i>
+    <div class="well well-small">
+        <div class="row-fluid">
+            <div class="span3">
+                <a class="btn btn-danger">
+                  <i class="elusive-plus-sign"></i> Follow
+                </a> 
+            </div>
+            <div class="span4 pull-right">
+                <div class="pull-right">
+                <a class="btn btn-info">
+                    <div class="helper-font-16">
+                    <i class="icofont-facebook"></i>
+                    </div>
+                </a>
+                <a class="btn btn-danger">
+                    <div class="helper-font-16">
+                    <i class="icofont-pinterest"></i>
+                    </div>
+                </a>
+                <a class="btn btn-info">
+                    <div class="helper-font-16">
+                    <i class="icofont-twitter"></i>
+                    </div>
+                </a>
+                <a class="btn btn-danger">
+                    <div class="helper-font-16">
+                    <i class="icofont-google-plus"></i>
+                    </div>
+                </a>
+            </div>
+            </div>
         </div>
-    </a>
-    <a class="btn btn-danger">
-        <div class="helper-font-16">
-        <i class="icofont-pinterest"></i>
-        </div>
-    </a>
-    <a class="btn btn-info">
-        <div class="helper-font-16">
-        <i class="icofont-twitter"></i>
-        </div>
-    </a>
-    <a class="btn btn-danger">
-        <div class="helper-font-16">
-        <i class="icofont-google-plus"></i>
-        </div>
-    </a>
-</div>
-</div>
+    </div>
 
 <div class="row-fluid">
         <!--span-->
