@@ -16,7 +16,7 @@
   if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
     } else {
-      echo $this->Upload->image($game,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'20','onerror'=>'imgError(this,"avatar");')); }
+      echo $this->Upload->image($game,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'12','onerror'=>'imgError(this,"avatar");')); }
   ?> <?php echo $game['User']['username'] ?> <i class="color-red icofont-bolt"></i>
 </a>
 
