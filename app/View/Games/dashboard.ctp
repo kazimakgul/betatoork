@@ -1,5 +1,6 @@
 <?php 
 $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
+$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -90,7 +91,7 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
                         <div class="span2">
                       <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'61','class'=>'img-polaroid',"alt" => "toork avatar image")); 
     } else {
       echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'61','onerror'=>'imgError(this,"avatar");')); }
   ?>                    </div>

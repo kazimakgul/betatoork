@@ -9,7 +9,7 @@
       </a>
  
       <!-- Your site name for the upper left corner of the site -->
-      <a href="<?php echo $index; ?>" class="brand">toork</a>
+      <a href="<?php echo $index; ?>" class="brand"></a>
  <form class="navbar-search">
   <input type="text" class="search-query" placeholder="Search">
 </form>

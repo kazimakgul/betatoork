@@ -8,7 +8,7 @@
 
   <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'20','class'=>'img-polaroid',"alt" => "toork avatar image"));
     } else {
       echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'20','onerror'=>'imgError(this,"avatar");')); }
   ?><!--this for display on PC device-->
@@ -27,7 +27,7 @@
 
   <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'corner-all',"alt" => "toork avatar image",)); 
     } else {
       echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
   ?>
@@ -122,7 +122,7 @@
             <div class="pull-left " style="margin:-9px 0px 0px 0px;">
   <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'20','class'=>'img-polaroid',"alt" => "toork avatar image")); 
     } else {
       echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'20','onerror'=>'imgError(this,"avatar");')); }
   ?>
@@ -134,7 +134,7 @@
 
   <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array(    "alt" => "toork avatar image",    'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'corner-all',"alt" => "toork avatar image",)); 
     } else {
       echo $this->Upload->image($user,'User.picture',array(),array('class'=>'corner-all','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
   ?>
