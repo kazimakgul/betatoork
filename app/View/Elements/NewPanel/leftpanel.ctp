@@ -34,7 +34,7 @@ if ($this->action == "dashboard"){
                                 </a>
                             </li>
                             <li <?php echo $class2;?>>
-                                <a href="<?php echo $mygames; ?>" title="interface">
+                                <a href="<?php echo $mygames; ?>" title="My Games">
                                     <div class="helper-font-24">
                                         <i class="icofont-umbrella"></i>
                                     </div>
@@ -42,7 +42,7 @@ if ($this->action == "dashboard"){
                                 </a>
                             </li>
                             <li <?php echo $class3;?>>
-                                <a href="<?php echo $favorites; ?>" title="icons">
+                                <a href="<?php echo $favorites; ?>" title="Favorites">
                                     <div class="helper-font-24">
                                         <i class="icofont-heart"></i>
                                     </div>
@@ -51,15 +51,15 @@ if ($this->action == "dashboard"){
                             </li>
 
                             <li <?php echo $class4;?>>
-                                <a href="<?php echo $chains; ?>" title="charts">
+                                <a href="<?php echo $chains; ?>" title="Follows">
                                     <div class="helper-font-24">
                                         <i class="icofont-link"></i>
                                     </div>
-                                    <span class="sidebar-text">Chains</span>
+                                    <span class="sidebar-text">Follows</span>
                                 </a>
                             </li>
                             <li <?php echo $class5;?>>
-                                <a href="<?php echo $wall; ?>" title="table">
+                                <a href="<?php echo $wall; ?>" title="Wall">
                                     <div class="helper-font-24">
                                         <i class="icofont-th-list"></i>
                                     </div>
@@ -67,7 +67,7 @@ if ($this->action == "dashboard"){
                                 </a>
                             </li>
                             <li <?php echo $class6;?>>
-                                <a href="<?php echo $settings; ?>" title="form">
+                                <a href="<?php echo $settings; ?>" title="Settings">
                                     <div class="helper-font-24">
                                         <i class="icofont-edit"></i>
                                     </div>
@@ -75,20 +75,20 @@ if ($this->action == "dashboard"){
                                 </a>
                                 <ul class="sub-sidebar-form corner-top shadow-white">
                                     <li>
-                                        <a href="gallery.html" title="gallery" class="corner-all">
+                                        <a href="gallery.html" title="Monetize" class="corner-all">
                                             <i class="icofont-money"></i>
                                             <span class="sidebar-text">Monetize Your Channel</span>
                                         </a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="<?php echo $settings; ?>" title="form element" class="corner-all">
+                                        <a href="<?php echo $settings; ?>" title="Edit" class="corner-all">
                                             <i class="icofont-user"></i>
                                             <span class="sidebar-text">Edit Channel</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo $password; ?>" title="code editor" class="corner-all">
+                                        <a href="<?php echo $password; ?>" title="Change Password" class="corner-all">
                                             <i class="icofont-lock"></i>
                                             <span class="sidebar-text">Change Password</span>
                                         </a>

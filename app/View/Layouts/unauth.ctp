@@ -22,26 +22,29 @@
     <body>
 
 <?php 
-$logout=$this->Html->url(array("controller" => "users","action" =>"logout")); 
-$addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
-$dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
-$index=$this->Html->url(array("controller" => "games","action" =>"index")); 
-$mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
-$favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"));
-$chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
-$wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
-$settings=$this->Html->url(array("controller" => "users","action" =>"settings"));
+
+if($this->Session->check('Auth.User')){
+    $index=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
+}else{
+    $index=$this->Html->url(array("controller" => "games","action" =>"index")); 
+}
+
+$bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
+$toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
 $login=$this->Html->url(array("controller" => "users","action" =>"login2"));
-$profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
+
 ?>
 
 
-<?php  echo $this->element('NewPanel/unauthHeader',array('login'=>$login)); ?>
+<?php  echo $this->element('NewPanel/unauthHeader',array('index'=>$index,'login'=>$login,'bestchannels'=>$bestchannels,'toprated'=>$toprated)); ?>
 
                 
 <?php echo $content_for_layout?>
 
-
+<?php 
+echo $this->Session->flash('flash', array('element' => 'info'));
+echo $this->Session->flash('auth', array('element' => 'info'));
+?>
 
 
         <!-- javascript

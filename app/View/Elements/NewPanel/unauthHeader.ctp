@@ -11,7 +11,10 @@
       <!-- Your site name for the upper left corner of the site -->
       <a href="<?php echo $index; ?>" class="brand"></a>
  <form class="navbar-search">
-  <input type="text" class="search-query" placeholder="Search">
+<div class="input-icon-append">
+  <button type="submit" rel="tooltip-bottom" title="" class="color-blue icon" data-original-title="search"><i class="icofont-search"></i></button>
+ <input class="input-large search-query grd-white" maxlength="23" placeholder="Search for a game..." type="text">
+</div>
 </form>
       <!-- Start of the nav bar content -->
       <div class="nav-collapse"><!-- Other nav bar content -->
@@ -21,15 +24,15 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="elusive-compass"></i> Explore <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Best Channels</a></li>
-                    <li><a href="#">Recommended Games</a></li>
-                    <li><a href="#">New Games</a></li>
+                    <li><a href="<?php echo $bestchannels; ?>"><i class="icofont-link color-purple"></i> Best Channels</a></li>
+                    <li><a href="<?php echo $toprated; ?>"><i class="elusive-fire color-red"></i> Hot Games</a></li>
+                    <li><a href="#"><i class="elusive-eye-open color-green"></i> New Games</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">Why Join Toork</a></li>
+                    <li><a href="#"><i class="elusive-idea color-blue"></i> Why Join Toork</a></li>
                 </ul>
             </li>
           <li class="divider-vertical"></li>
-          <li><a href="#">Sign Up</a></li>
+          <li><a href="<?php echo $login; ?>">Sign Up</a></li>
           <li class="divider-vertical"></li>
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>

@@ -30,9 +30,7 @@
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="#">Best Channels</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
+                                <li><a href="#"><i class="icofont-link"></i> Best Channels</a></li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
                         

@@ -5,7 +5,7 @@
                     <div class="content">
                         <!-- content-header -->
                         <div class="content-header">
-                            <h2><i class="icofont-link"></i> Chained Channels</h2>
+                            <h2><i class="icofont-link"></i> Following Channels</h2>
                         </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
@@ -29,7 +29,7 @@
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="#"><i class="icofont-link"></i> Chains</a> </li>
+                                <li><a href="#"><i class="icofont-link"></i> Follows</a> </li>
                                 
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->

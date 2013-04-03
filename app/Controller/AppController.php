@@ -40,6 +40,7 @@ class AppController extends Controller {
         'Auth' => array(
             'loginRedirect' => array('controller' => 'games', 'action' => 'dashboard'),
             'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
+            'loginAction' => array('controller' => 'users', 'action' => 'login2'),
             'authorize' => array('Controller')
         )
     );

@@ -36,6 +36,9 @@ $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 $favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"));
 $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
 $wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
+$bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
+$toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
+$login=$this->Html->url(array("controller" => "users","action" =>"login2"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
 $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
 $password=$this->Html->url(array("controller" => "users","action" =>"password2",$this->Session->read('Auth.User.id')));
@@ -43,17 +46,37 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 ?>
 
 
+<?php
+
+if($this->Session->check('Auth.User')){
+
+echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'publicprofile'=>$profilepublic,'settings'=>$settings,'index'=>$index,'avatarImage'=>$avatarImage,'wall'=>$wall,'bestchannels'=>$bestchannels,'toprated'=>$toprated));
 
 
-<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'publicprofile'=>$profilepublic,'settings'=>$settings,'index'=>$index,'avatarImage'=>$avatarImage,'wall'=>$wall)); ?>
+}else{
+    echo $this->element('NewPanel/unauthHeader',array('index'=>$index,'login'=>$login,'bestchannels'=>$bestchannels,'toprated'=>$toprated));
+}
 
+?>
 
         <!-- section content -->
         <section class="section">
             <div class="row-fluid">
                 <!-- span side-left -->
 
-<?php  echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall,'settings'=>$settings,'password'=>$password,'publicprofile'=>$profilepublic)); ?>
+
+<?php
+
+if($this->Session->check('Auth.User')){
+
+echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall,'settings'=>$settings,'password'=>$password,'publicprofile'=>$profilepublic)); 
+
+}else{
+    echo $this->element('NewPanel/unauthLeft',array());
+}
+
+?>
+
 
                 
 <?php echo $content_for_layout?>
