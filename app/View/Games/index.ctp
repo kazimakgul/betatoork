@@ -26,7 +26,7 @@
 <div class="subscriber">
 <div class="subscriber-wrap">
 <h3> Join For Free - Sign Up </h3>
-<p>Don&#8217;t miss this Limited Opportunity, Sign Up Now</p>
+<p>Don&#8217;t miss this Limited Opportunity</p>
 <!-- Newsletter -->
      
 <form action="#" method="post" novalidate>
@@ -35,7 +35,7 @@
 <input  value="Password"  name="PASSWORD"  class="phone-newsletter"   >
 <div style="padding-bottom:10px; margin:-26px 0px 0px 19px;"><i class="color-white elusive-lock"></i></div>
 <input type="submit" value="Join Now" name="subscribe"  class="btn btn-success pull-right">
-<label> * By clicking "Join Now" you agree to Toork's Terms &#38; Privacy Policies.</label>
+<label> * By clicking "Join Now" you agree to Toork's Terms &#38; Privacy.</label>
 </form>
     
 <!-- Newsletter -->
