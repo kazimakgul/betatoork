@@ -921,7 +921,7 @@ public function profile() {
 		   }else{
 		   $this->set('mutuals',NULL);
 		   }
-
+	  
 		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
 		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
 		$this->set('user_id', $userid);
@@ -953,6 +953,14 @@ public function profile() {
 
 
 
+	}
+	
+	public function get_3_games($channel_id=NULL)
+	{
+	//This function gets 3 random games for determined channel id.
+	$count=3;
+	$games=$this->Game->find('all',array('conditions'=>array('Game.user_id'=>$channel_id),'contain' =>array('User'),'order' => 'RAND()','limit' => $count));
+	return $games;
 	}
 
 
