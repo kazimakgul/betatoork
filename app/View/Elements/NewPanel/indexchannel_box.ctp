@@ -1,5 +1,3 @@
-
-
 <?php 
 foreach ($users as $follower): ?>
 <?php 
@@ -76,21 +74,43 @@ if($website==NULL){
 
     <div class="span7">
 <ul class="thumbnails pull-right">
+  
+  
+  <?php
+//Get 3 Games into variable
+$games3=$this->requestAction( array('controller' => 'games', 'action' => 'get_3_games',$follower['User']['id']));	
+foreach ($games3 as $oneof3):
+//--------Setting Up of Play Url----------
+if($oneof3['Game']['seo_url']!=NULL)
+{
+      if($oneof3['Game']['embed']!=NULL)
+      $playurl=$this->Html->url(array( "controller" => h($oneof3['User']['seo_username']),"action" =>h($oneof3['Game']['seo_url']),'playgame'));
+	  else
+	  $playurl=$this->Html->url(array( "controller" => h($oneof3['User']['seo_username']),"action" =>h($oneof3['Game']['seo_url']),'playframe'));
+}
+else{
+       $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($oneof3['Game']['id'])));
+}
+//-------/Setting Up of Play Url----------
+?>
+  
   <li style="margin:0px 0px 0px 5px;">
-    <a href="#" >
-      <img class="img-polaroid" data-src="holder.js/130x72" alt="">
-    </a>
+    
+	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($oneof3,'Game.picture',array(NULL),array('width'=>'130px','height'=>'72px','alt'=>$oneof3['Game']['name'],'class'=>'img-polaroid')); ?></a>
+	
   </li>  
+ 
+<?php endforeach; ?>
+  
+  
+  <!--
   <li style="margin:0px 0px 0px 5px;">
     <a href="#" >
       <img class="img-polaroid" data-src="holder.js/130x72" alt="">
     </a>
   </li>
-  <li style="margin:0px 0px 0px 5px;">
-    <a href="#" >
-      <img class="img-polaroid" data-src="holder.js/130x72" alt="">
-    </a>
-  </li>
+  -->
+  
 </ul>
 
     </div>
