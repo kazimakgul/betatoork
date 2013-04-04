@@ -28,7 +28,7 @@
                                             <!--contact-control-->
                                             <div class="contact-control">
 
-                                                <h5><i class="icofont-link color-blue"></i> Best Channels</h5>
+                                                <h5><i class="icofont-link color-blue"></i> <a href="<?php echo $bestchannels; ?>">Best Channels</a></h5>
                                             </div><!--/contact-control-->
                                          
 										 <!--bestchannel-list-->

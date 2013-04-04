@@ -102,7 +102,7 @@ else{
   
   <li style="margin:0px 0px 0px 5px;">
     
-	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($oneof3,'Game.picture',array(NULL),array('width'=>'130px','height'=>'72px','alt'=>$oneof3['Game']['name'],'class'=>'img-polaroid')); ?></a>
+	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($oneof3,'Game.picture',array(NULL),array('width'=>'130px','height'=>'72px','style'=>'max-height:72px','alt'=>$oneof3['Game']['name'],'class'=>'img-polaroid')); ?></a>
 	
   </li>  
  
