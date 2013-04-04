@@ -57,6 +57,35 @@ class GamesController extends AppController {
 	
 	public function index() {
 
+	if($this->Session->check('Auth.User')){
+		$this->redirect(array("controller"=>"games","action"=>"dashboard"));
+	}
+
+		$this->layout='landing';
+		$this->Game->recursive = 0;
+
+		$limit=4;
+    	$this->set('top_rated_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order' => 'rand()')));
+		$cond= $this->User->find('all', array('limit' => $limit));
+		$this->set('users', $cond);
+		$this->set('most_played_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.playcount')),'limit' => $limit,'order' => 'rand()')));
+
+
+$cond = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '40'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'Category','User'=>array('fields'=>array('User.username','User.seo_username'))))));
+$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '5'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+$cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '4'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+
+
+		$this->set('slider', $cond);
+		$this->set('featured', $cond2);
+		$this->set('newgames', $cond3);
+
+		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel');
+		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+	}
+	
+	public function index2() {
+
 		$this->layout='landing';
 		$this->Game->recursive = 0;
 
@@ -78,8 +107,6 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel');
 		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
 	}
-	
-	
 
 	
 	public function mostplayed() {
