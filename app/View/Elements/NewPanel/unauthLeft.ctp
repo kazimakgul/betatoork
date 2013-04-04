@@ -17,7 +17,7 @@ if ($this->action == "dashboard"){
                     <aside class="side-left" >
                         <ul class="sidebar">
                             <li <?php echo $class;?>> <!--always define class .first for first-child of li element sidebar left-->
-                                <a href="#" title="what is toork">
+                                <a href="<?php echo $index; ?>" title="what is toork">
                                     <div class="helper-font-24">
                                         <i class="icofont-link"></i>
                                     </div>

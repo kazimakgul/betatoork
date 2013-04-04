@@ -72,7 +72,7 @@ if($this->Session->check('Auth.User')){
 echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall,'settings'=>$settings,'password'=>$password,'publicprofile'=>$profilepublic)); 
 
 }else{
-    echo $this->element('NewPanel/unauthLeft',array());
+    echo $this->element('NewPanel/unauthLeft',array('index'=>$index));
 }
 
 ?>
