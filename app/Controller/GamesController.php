@@ -57,10 +57,9 @@ class GamesController extends AppController {
 	
 	public function index() {
 
-		$this->layout='base';
+		$this->layout='landing';
 		$this->Game->recursive = 0;
-		$this->logedin_user_panel();
-		$this->leftpanel();
+
 		$limit=8;
     	$this->set('top_rated_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order' => 'rand()')));
 		
