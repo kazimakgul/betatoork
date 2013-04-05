@@ -764,8 +764,9 @@ public function profile() {
     
     
 
-	if($user==NULL)
-	$this->redirect('/');
+	if($publicUser==NULL){
+		$this->redirect('/');
+	}
     $userName = $user['User']['username'];
     $publicName = $publicUser['User']['username'];
 	$limit=12;
