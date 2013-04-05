@@ -32,16 +32,12 @@ if($this->Session->check('Auth.User')){
 $logout=$this->Html->url(array("controller" => "users","action" =>"logout")); 
 $addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
-$mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
-$favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"));
-$chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
 $wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
 $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
 $toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
 $login=$this->Html->url(array("controller" => "users","action" =>"login2"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
 $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
-$password=$this->Html->url(array("controller" => "users","action" =>"password2",$this->Session->read('Auth.User.id')));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 ?>
 
