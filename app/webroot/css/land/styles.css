@@ -55,11 +55,6 @@ a { color:#1b1d1e; }
 a:focus { outline:0;  }
 a:hover {  text-decoration:none; }
 
-/* Reset input Tags */
-input { border:0;   font-family: 'Titillium Web', sans-serif; color:#fff;  }
-input:focus { border:0; outline:0; }
-input:focus:invalid:focus, textarea:focus:invalid:focus, select:focus:invalid:focus {  color: #eaeaea;border-color:#cccccc;box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3),  1px 1px 2px rgba(0, 0, 0, 0.3) inset; }
-input:focus:valid:focus, textarea:focus:valid:focus, select:focus:valid:focus {  color: #dedede;border-color:#cccccc;box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3),  1px 1px 2px rgba(0, 0, 0, 0.3) inset; }
 
 /* Reset input Tags */
 ::-moz-selection { background: #2e2e2e; color: #fff; text-shadow: none; }

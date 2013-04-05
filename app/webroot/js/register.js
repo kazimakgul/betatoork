@@ -536,6 +536,39 @@ function trecaptcha2(){
 	}
 	
 	
+	$('#t_mobile_login_btn').click(function () {
+		
+		t_mobile_login2();
+	});
+	
+	function t_mobile_login2(){
+        $.post(remotecheck, { un: $('#mobile_signusername').val(), ps: $('#mobile_signpass').val(), attr: 'txt_logusername' }, function (data) {
+			if(data.rtdata.msgid=='0'){
+				
+				$.pnotify({
+			   title:'Invalid Username or Password',
+               text: data.rtdata.msg,
+               type: 'error'
+               });
+				
+			}
+			else if(data.rtdata.msgid=='1'){
+				
+				window.location = data.rtdata.msg;
+			}
+			else{
+				
+				$.pnotify({
+			   title:'Invalid Username or Password',
+               text: data.rtdata.msg,
+               type: 'error'
+               });
+							
+			}
+        }, 'json');	
+	}
+	
+	
 	$('#t_gatekeeper_login_btn').click(function () {
 		
 		tlogin2();
