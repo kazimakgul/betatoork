@@ -141,7 +141,6 @@
                 </div><!-- /row -->
             </div><!-- /container -->
            
-<?php  echo $this->element('NewPanel/passwordModal'); ?>
         </section>
 
 

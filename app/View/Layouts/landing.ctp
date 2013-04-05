@@ -83,6 +83,11 @@ echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGam
 
 <?php echo $content_for_layout?>
 
+<?php 
+echo $this->Session->flash('flash', array('element' => 'info'));
+echo $this->Session->flash('auth', array('element' => 'info'));
+?>
+
 <?php
  echo $this->element('NewPanel/footer2',array());
 ?>
