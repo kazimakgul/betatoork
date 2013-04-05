@@ -13,7 +13,7 @@
               <div class="span3">
 <a class="btn" style="margin:5px;" href="<?php echo $profilepublic; ?> ">  
   <?php 
-  if($user['User']['picture']==null) { 
+  if($game['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
     } else {
       echo $this->Upload->image($game,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'12','onerror'=>'imgError(this,"avatar");')); }

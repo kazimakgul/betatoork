@@ -40,7 +40,22 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
 
 
 
-<?php  echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'publicprofile'=>$profilepublic,'settings'=>$settings,'index'=>$index,'wall'=>$wall)); ?>
+
+
+
+<?php
+
+if($this->Session->check('Auth.User')){
+
+echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'publicprofile'=>$profilepublic,'settings'=>$settings,'index'=>$index,'wall'=>$wall));
+
+
+}else{
+    echo $this->element('NewPanel/unauthHeader',array('index'=>$index,'login'=>$login,'bestchannels'=>$bestchannels,'toprated'=>$toprated));
+}
+
+?>
+
 
 
         <!-- section content -->

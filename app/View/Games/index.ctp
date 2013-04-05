@@ -1,13 +1,16 @@
+<?php
+$bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
+?>
 <div class="clear"></div>
 
 <!-- ### START - Main Section ### -->
 <div class="main" > 
 <div class="gradient">
 <div class="wrapper" style="margin-top:10px;"> 
-
-  <h1>Discover, Share and Explore Games !</h1>
+<div style="margin:20px 0px -10px 0px ;">
+  <h1>Discover, Collect and Share Games !</h1>
   <h2>Create your own game channel</h2> 
-
+</div>
 <!-- ### Slider Ipad ### -->
     <div class="slides">
     <div class="slides_container">
@@ -127,7 +130,10 @@
 <?php  echo $this->element('NewPanel/indexchannel_box'); ?>
 
 </ul>
-
+<div>
+<a class="btn btn-success span3" href="#top">Create Your Game Channel</a>
+<a class="btn span3" href="<?php echo $bestchannels;?>">Explore More Channels</a>
+</div>
  </div>
 </div>
 </div>

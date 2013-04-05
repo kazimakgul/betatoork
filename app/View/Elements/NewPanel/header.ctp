@@ -79,7 +79,7 @@
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">
             <div class="pull-left "> <i class="icofont-comments color-red"></i>
 
-                Share</div><strong class="caret"></strong></a>
+                Post</div><strong class="caret"></strong></a>
             <div class="dropdown-menu dropdown-user color-red" role="menu" style="padding:5px; padding-bottom: 5px;">
                                         
                                            
@@ -106,7 +106,7 @@
                             </form>
                             </div><!-ImageUploadPanel-> 
                     <hr size="3" style="margin:0px 0px 5px 0px;">
-                  <button type="submit" class="btn btn-danger pull-right update_data">Share</button>
+                  <button type="submit" class="btn btn-danger pull-right update_data">Publish</button>
                   <a href="<?php echo $wall;?>" class="btn">My Wall</a>
                 </form></br></br>
               </div>
