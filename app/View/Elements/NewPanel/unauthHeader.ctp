@@ -38,11 +38,11 @@
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
             <div class="dropdown-menu span3" style="padding: 15px; padding-bottom: 0px;">
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'sign-in','method'=>'post'));?>
-<?php echo $this->Form->input('username',array('label'=>'Username or Email' ,'div'=>false,'type'=>'text','class'=>'input-block-level','data-validate'=>'{required: true, messages:{required:"Please enter field username"}}')); ?>
-<?php echo $this->Form->input('password',array('label'=>'Password' ,'div'=>false,'class'=>'input-block-level','data-validate'=>'{required: true, messages:{required:"Please enter field password"}}','required' ,'type' => 'password')); ?>
+<?php echo $this->Form->input('username',array('label'=>'Username or Email' ,'div'=>false,'type'=>'text','class'=>'input-block-level','id'=>'txt_signusername','data-validate'=>'{required: true, messages:{required:"Please enter field username"}}')); ?>
+<?php echo $this->Form->input('password',array('label'=>'Password' ,'div'=>false,'class'=>'input-block-level','id'=>'txt_signpass','data-validate'=>'{required: true, messages:{required:"Please enter field password"}}','required' ,'type' => 'password')); ?>
 <?php echo $this->Form->input('remember', array('label'=>false ,'div'=>false,'type'=>'checkbox','style'=>"float: left; margin-right: 10px;",'name'=>'remember_me','id'=>'user_remember_me','value'=>0)); ?> 
                     <label class="string optional" for="user_remember_me"> Remember me</label>
-                    <input class="btn btn-success" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
+                    <input class="btn btn-success" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" id="t_gatekeeper_login_btn" value="Sign In" />
                 </form>
                 <div class="control-group">
                     <p class="recover-account"><a href="#modal-recover" class="link" data-toggle="modal">forget your password</a></p>
