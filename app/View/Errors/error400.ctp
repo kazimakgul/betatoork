@@ -33,5 +33,3 @@ $index=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"
                 </div>
             </div>
         </section>
-
-

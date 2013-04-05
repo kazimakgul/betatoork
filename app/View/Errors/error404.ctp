@@ -6,7 +6,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"
         <section class="section">
             <div class="container">
                 <div class="error-page">
-                    <h1 class="error-code color-blue">Error 500</h1>
+                    <h1 class="error-code color-blue">Error 404</h1>
                     <p class="error-description muted">The request was a legal request, but the server is refusing to respond to it</p>
                     <form>
                         <div class="control-group">
@@ -33,3 +33,5 @@ $index=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"
                 </div>
             </div>
         </section>
+
+
