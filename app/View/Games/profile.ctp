@@ -5,23 +5,32 @@
                         
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
-
 <div class="well well-small">
-<ul class="thumbnails">
-  <li>
-    <a href="#" class="thumbnail">
-            <?php 
-              if($publicuser['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'60')); 
-                } else {
-                  echo $this->Upload->image($publicuser,'User.picture',array('class'=>'img-circle'),array('width'=>'60','onerror'=>'imgError(this,"avatar");'));  }
-            ?>
-    </a>
-  </li>
-  <li>
-    <h5> <?php echo $publicname ?></h5>
-  </li>
-</ul>
+<div class="row-fluid">
+    <div class="span2">
+        <div class="thumbnails">
+         
+            <a href="#">
+                    <?php 
+                      if($publicuser['User']['picture']==null) { 
+                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'img-polaroid','width'=>'90',"alt" => "toork avatar image")); 
+                        } else {
+                          echo $this->Upload->image($publicuser,'User.picture',array(),array('class'=>'img-polaroid','width'=>'90','onerror'=>'imgError(this,"avatar");'));  }
+                    ?>
+            </a>
+          
+        </div>
+        <h4><?php echo $publicname?></h4>
+        <div>
+        <i class="elusive-plus-sign color-red"></i> 27 Followers
+        </div>
+        <i class="elusive-plus-sign color-blue"></i> 13 Games
+    </div>
+    <div class="span10 thumbnails pull-right">
+        <img data-src="holder.js/745x200"class="img-polaroid">
+        <p><strong><?php echo $publicuser['User']['description'] ?></strong></p>
+    </div>
+</div>
 </div>
 
     <div class="well well-small">
@@ -33,26 +42,20 @@
             </div>
             <div class="span4 pull-right">
                 <div class="pull-right">
-                <a class="btn btn-info">
-                    <div class="helper-font-16">
-                    <i class="icofont-facebook"></i>
-                    </div>
-                </a>
-                <a class="btn btn-danger">
-                    <div class="helper-font-16">
-                    <i class="icofont-pinterest"></i>
-                    </div>
-                </a>
-                <a class="btn btn-info">
-                    <div class="helper-font-16">
-                    <i class="icofont-twitter"></i>
-                    </div>
-                </a>
-                <a class="btn btn-danger">
-                    <div class="helper-font-16">
-                    <i class="icofont-google-plus"></i>
-                    </div>
-                </a>
+
+                    <a href="#" style="margin-right:20px;">
+                        <i class="icofont-facebook color-blue helper-font-32"></i>
+                    </a>
+                    <a href="#" style="margin-right:20px;">                     
+                        <i class="icofont-pinterest color-red helper-font-32"></i>
+                    </a>
+                    <a href="#" style="margin-right:20px;">
+                        <i class="icofont-twitter color-blue helper-font-32"></i>
+                    </a>
+                    <a href="#" style="margin-right:20px;">
+                        <i class="icofont-google-plus color-red helper-font-32"></i>
+                    </a>
+
             </div>
             </div>
         </div>
