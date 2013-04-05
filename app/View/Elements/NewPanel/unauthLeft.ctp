@@ -24,14 +24,42 @@ if ($this->action == "dashboard"){
                                     <span class="sidebar-text">Join Toork</span>
                                 </a>
                             </li>
-                            <li <?php echo $class2;?>>
-                                <a href="#" title="explore">
+                            <li>
+                                <a href="#" title="more">
+                                    <div class="badge badge-important">3</div>
                                     <div class="helper-font-24">
                                         <i class="elusive-compass"></i>
                                     </div>
-                                    <span class="sidebar-text">Explore</span>
+                                    <span class="sidebar-text">Discover</span>
                                 </a>
+                                <ul class="sub-sidebar corner-top shadow-silver-dark">
+                                    <li style="margin:0px 10px 0px 10px;">
+                                        <a href="<?php echo $bestchannels; ?>" title="Best Channels">
+                                            <div class="helper-font-24">
+                                                <i class="icofont-link"></i>
+                                            </div>
+                                            <span class="sidebar-text">Best Channels</span>
+                                        </a>
+                                    </li>
+                                    <li style="margin:0px 10px 0px 10px;">
+                                        <a href="<?php echo $toprated; ?>" title="Hot Games">
+                                            <div class="helper-font-24">
+                                                <i class="elusive-fire"></i>
+                                            </div>
+                                            <span class="sidebar-text">Hot Games</span>
+                                        </a>
+                                    </li>
+                                    <li style="margin:0px 10px 0px 10px;">
+                                        <a href="#" title="New Games">
+                                            <div class="helper-font-24">
+                                                <i class="elusive-eye-open"></i>
+                                            </div>
+                                            <span class="sidebar-text">New Games</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
+
                         </ul>
                     </aside><!--/side bar -->
                 </div><!-- span side-left -->

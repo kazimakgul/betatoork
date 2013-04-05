@@ -28,7 +28,7 @@
                     <li><a href="<?php echo $toprated; ?>"><i class="elusive-fire color-red"></i> Hot Games</a></li>
                     <li><a href="#"><i class="elusive-eye-open color-green"></i> New Games</a></li>
                     <li class="divider"></li>
-                    <li><a href="#"><i class="elusive-idea color-blue"></i> Why Join Toork</a></li>
+                    <li><a href="<?php echo $index; ?>"><i class="elusive-idea color-blue"></i> Why Join Toork</a></li>
                 </ul>
             </li>
           <li class="divider-vertical"></li>
