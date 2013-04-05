@@ -68,25 +68,16 @@
                                     <div class="box-tab corner-all">
                                         <div class="box-header corner-top">
                                             <ul class="nav nav-tabs">
-                                                <!--tab action-->
-                                                <li class="dropdown pull-right">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icofont-cogs"></i></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li class=""><a href="#collapse" data-toggle="tab">@collapse</a></li>
-                                                        <li class=""><a href="#close" data-toggle="tab">@close</a></li>
-                                                        <li class=""><a href="#other" data-toggle="tab">@other action</a></li>
-                                                    </ul>
-                                                </li><!--/tab action-->
+     
                                                 <!--tab menus-->
-                                                <li class="active"><a data-toggle="tab" href="#boxtab-1">Channel Games</a></li>
-                                                <li class=""><a data-toggle="tab" href="#boxtab-2">Favorites</a></li>
-                                                <li class=""><a data-toggle="tab" href="#boxtab-3">Wall</a></li>
+                                                <li class="active"><a data-toggle="tab" href="#boxtab-1"><i class="elusive-user"></i> Channel Games</a></li>
+                                                <li class=""><a data-toggle="tab" href="#boxtab-2"><i class="elusive-heart color-red"></i> Favorites</a></li>
+                                                <li class=""><a data-toggle="tab" href="#boxtab-3"><i class="elusive-th-list color-purple"></i> Wall</a></li>
                                                 <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Follow <b class="caret"></b></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="#boxdropdown-1" data-toggle="tab">Chains</a></li>
+                                                        <li><a href="#boxdropdown-1" data-toggle="tab">Following</a></li>
                                                         <li><a href="#boxdropdown-2" data-toggle="tab">Followers</a></li>
-                                                        <li><a href="#boxdropdown-3" data-toggle="tab">History</a></li>
                                                     </ul>
                                                 </li><!--/tab menus-->
                                             </ul>
@@ -274,9 +265,6 @@
                                                     <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
                                                 </div>
                                                 <div class="tab-pane fade" id="boxdropdown-2">
-                                                    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="boxdropdown-3">
                                                     <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
                                                 </div>
                                             </div><!--/widgets-tab-body-->
