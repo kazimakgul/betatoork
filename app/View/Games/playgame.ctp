@@ -46,7 +46,12 @@ else{
  
     <a class="btn btn-danger">
      <i class="icofont-heart"></i> Favorite
-    </a> <div class="pull-right">
+    </a> 
+
+
+<a class="btn btn-info pull-right" id="gameshare" data-toggle="popover" data-placement="left" data-html="true" data-content='
+
+
     <a class="btn btn-info">
         <div class="helper-font-16">
         <i class="icofont-facebook"> share</i>
@@ -67,7 +72,9 @@ else{
         <i class="icofont-google-plus"> share</i>
         </div>
     </a>
-</div>
+
+' title="Share on Socials" data-original-title="Social Share"><i class="icofont-share"></i> Share</a>
+
 </div>
 
 <!-- Add Unit -->

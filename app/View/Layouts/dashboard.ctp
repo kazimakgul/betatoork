@@ -135,6 +135,9 @@ quick='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=
 
 search_query=$('.search-query').val();
 search_url='<?php echo $this->Html->url(array("controller"=>"games","action"=>"search2"));?>';
+$('#gameshare').popover();
+$('#comment').popover();
+$('#ratebarshare').popover();
 </script>
 <!-- Js variable for wallscript ends-->
 

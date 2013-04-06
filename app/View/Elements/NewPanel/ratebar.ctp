@@ -40,9 +40,43 @@
                       <i class="elusive-heart"></i>
                       <i class="elusive-heart-empty"></i>
                   </li>
-                 <li rel="tooltip" data-placement="top" data-original-title="Comment" class="btn pull-right color-green" style="margin:5px;">
+                 <li rel="tooltip" id="comment" data-toggle="popover" data-placement="top" data-html="true" title="Comment" data-placement="top" data-original-title="Comment" class="btn pull-right color-green" style="margin:5px;"data-content='
+
+                <form class="navbar-form ">
+                    <textarea class="span12" rows="4" placeholder="What do you think about this game?">#<?php echo $game["Game"]["name"];?> </textarea>
+                 </br>
+                  <button type="submit" class="btn btn-info pull-right update_data">Comment</button>
+                </form></br>
+                  '>
                       <i class="elusive-comment"></i>
                   </li>
+                 <li rel="tooltip" id="ratebarshare" data-toggle="popover" data-placement="top" data-html="true" title="Share" data-placement="top" data-original-title="Share" class="btn pull-right color-blue" style="margin:5px;"data-content='
+
+                        <a class="btn btn-info">
+                            <div class="helper-font-16">
+                            <i class="icofont-facebook"> share</i>
+                            </div>
+                        </a>
+                        <a class="btn btn-danger">
+                            <div class="helper-font-16">
+                            <i class="icofont-pinterest"> share</i>
+                            </div>
+                        </a>
+                        <a class="btn btn-info">
+                            <div class="helper-font-16">
+                            <i class="icofont-twitter"> share</i>
+                            </div>
+                        </a>
+                        <a class="btn btn-danger">
+                            <div class="helper-font-16">
+                            <i class="icofont-google-plus"> share</i>
+                            </div>
+                        </a>
+
+                  '>
+                      <i class="elusive-share"></i>
+                  </li>
+
                 </ul>
               </div>
             </div>
