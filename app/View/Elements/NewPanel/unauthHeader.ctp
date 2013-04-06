@@ -12,7 +12,7 @@
       <a href="<?php echo $index; ?>" class="brand"></a>
  <form class="navbar-search">
 <div class="input-icon-append">
-  <button type="submit" rel="tooltip-bottom" title="" class="color-blue icon" data-original-title="search"><i class="icofont-search"></i></button>
+  <button type="button" rel="tooltip-bottom" title="" class="color-blue icon" data-original-title="search"><i class="icofont-search"></i></button>
  <input class="input-large search-query grd-white" maxlength="23" placeholder="Search for a game..." type="text">
 </div>
 </form>
