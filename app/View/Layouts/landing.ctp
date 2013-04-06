@@ -31,7 +31,10 @@
 
 <?php echo $this->Html->script(array('land/jquery.min.js','land/custom2.js','land/custom.js','land/slides.js')); ?>
 
-<script>
+<!--////*************************************************************************************/////-->
+<!--////7Generation search url.All generation function can be collected in one class later.../////-->
+<!--////*************************************************************************************/////-->
+<script type="text/javascript">
 search_url='<?php echo $this->Html->url(array("controller"=>"games","action"=>"search2"));?>';
 </script>
 
