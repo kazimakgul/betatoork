@@ -9,7 +9,7 @@ else{
 ?>
 
 <div style="margin:39px 0px 0px 0px; width:100%; height:100%;">
-<iframe frameBorder="0" src="<?php echo h($game['Game']['link']); ?>" seamless style="width:100%; height:100%;"></iframe>
+<iframe frameBorder="0" src="<?php echo h($game['Game']['link']); ?>" seamless="seamless" style="width:100%; height:100%;"></iframe>
 </div>
 
 
