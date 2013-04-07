@@ -536,8 +536,7 @@ function trecaptcha2(){
 	}
 	
 	
-	$('#t_mobile_login_btn').click(function () {
-		
+	$('#t_mobile_login_btn').live('click',function () {
 		t_mobile_login2();
 	});
 	
