@@ -14,9 +14,9 @@
 <a class="btn" style="margin:5px;" href="<?php echo $profilepublic; ?> ">  
   <?php 
   if($game['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'12',"alt" => "toork avatar image",'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
     } else {
-      echo $this->Upload->image($game,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'12','onerror'=>'imgError(this,"avatar");')); }
+      echo $this->Upload->image($game,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','width'=>'12','onerror'=>'imgError(this,"avatar");')); }
   ?> <?php echo $game['User']['username'] ?> <i class="color-red icofont-bolt"></i>
 </a>
 
@@ -80,12 +80,11 @@
                 </ul>
               </div>
             </div>
-
-        <button style="margin:-35px 0px 0px 0px;" onclick="$.pnotify({
+        <button style="margin:-30px 0px 0px 0px;" onclick="$.pnotify({
             title: 'Rate Bar Removed',
             text: 'If you want to have your rate bar back, Just refresh your browser.',
             type: 'info'
-          });"  rel="tooltip" data-placement="top" data-original-title="Remove This Bar" data-box="close" data-hide="fadeOut" class="close">×</button> 
+          });"  rel="tooltip" data-placement="top" data-original-title="Remove This Bar" data-box="close" data-hide="fadeOut" class="close"><i class="elusive-remove-circle"></i></button> 
           </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
       </div><!-- /navbar-inner -->
