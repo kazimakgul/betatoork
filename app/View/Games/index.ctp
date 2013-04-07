@@ -37,7 +37,7 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
 <input  value="Your Email"  placeholder="Your Email" name="EMAIL"  class="email-newsletter"     >
 <input  value="Password"  placeholder="Password" name="PASSWORD"  class="phone-newsletter"   >
 <div style="padding-bottom:10px; margin:-26px 0px 0px 19px;"><i class="color-white elusive-lock"></i></div>
-
+<input type="submit" value="Join Now" name="subscribe"  class="btn btn-success pull-right">
 <label> * By clicking "Join Now" you agree to Toork's Terms &#38; Privacy.</label>
 </form>
     
