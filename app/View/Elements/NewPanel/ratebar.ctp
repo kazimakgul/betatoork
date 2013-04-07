@@ -43,7 +43,7 @@
                  <li rel="tooltip" id="comment" data-toggle="popover" data-placement="top" data-html="true" title="Comment" data-placement="top" data-original-title="Comment" class="btn pull-right color-green" style="margin:5px;"data-content='
 
                 <form class="navbar-form ">
-                    <textarea class="span12" rows="4" placeholder="What do you think about this game?">#<?php echo $game["Game"]["name"];?> </textarea>
+                    <textarea class="span12" rows="4" placeholder="What do you think about this game?">#<?php echo $game["Game"]["seo_url"];?> </textarea>
                  </br>
                   <button type="submit" class="btn btn-info pull-right update_data">Comment</button>
                 </form></br>
