@@ -78,7 +78,7 @@ if($website==NULL){
             title: 'Thanks for Following',
             text: 'You are following <strong><?php echo $follower['User']['username']; ?></strong> now.<br>You will be notified about the updates of this channel.',
             type: 'success'
-          });" rel="tooltip" data-placement="top" data-original-title="Follow this Channel" data-box="close" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
+          });" rel="tooltip" data-placement="top" data-original-title="Follow this Channel" data-box="close" style="opacity:1;" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
       </div>
 <ul class="thumbnails pull-right" style="margin:2px 0px 0px 0px;">
   
