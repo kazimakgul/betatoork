@@ -12,6 +12,7 @@
          
             <a href="#">
                     <?php 
+                    $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
                       if($publicuser['User']['picture']==null) { 
                         echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'img-polaroid','width'=>'90',"alt" => "toork avatar image")); 
                         } else {
