@@ -23,8 +23,8 @@ if ($this->action == "dashboard"){
 
  <div class="span1">
                     <!--side bar-->
-                    <aside class="side-left" >
-                        <ul class="sidebar">
+                    <aside class="side-left">
+                        <ul class="sidebar" data-step="2" data-position="bottom" data-intro="Hey this is your personal menu. Everything here belongs to you click on some of them and start building your game channel.">
                             <li <?php echo $class;?>> <!--always define class .first for first-child of li element sidebar left-->
                                 <a href="<?php echo $dashboard; ?>" title="dashboard">
                                     <div class="helper-font-24">

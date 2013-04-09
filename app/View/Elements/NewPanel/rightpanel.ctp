@@ -25,7 +25,7 @@
                                     
                                     <!--contact-->
                                     <div class="tab-pane fade active in" id="contact">
-                                        <div class="side-contact">
+                                        <div class="side-contact" data-step="3" data-position="bottom" data-intro="This is your recommendation corner where you will find amazing game channels created by our members like you. Just click on plus button so follow any channel so you will be notified">
                                             <!--contact-control-->
                                             <div class="contact-control">
 

@@ -117,7 +117,7 @@
           </li>
 
           <li class="divider-vertical"></li>
-          <li class="dropdown user-group">
+          <li class="dropdown user-group" data-step="4" data-position="bottom" data-intro="You can see you channel card by clicking here. This card is full of useful shortcuts, such as settings, add game and go to your dashboard. This will always be here as long as you are online.">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">
             <div class="pull-left " style="margin:-9px 0px 0px 0px;">
   <?php 

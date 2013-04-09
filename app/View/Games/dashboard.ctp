@@ -61,6 +61,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
                             <!-- dashboard -->
+
 <div class="row-fluid">
                             <div class="well well-small span4">
                                     <div class="box-header corner-top">
@@ -72,7 +73,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
                                         <h3>Welcome to Toork</h3>
                                         <p>Create your own game channel. Find the best games and channels created by users. Enjoy exploring toork.</p>
                                             <p>
-                                            <a rel="tooltip" data-placement="top" data-original-title="take the tour"  class="btn btn-info">
+                                            <a rel="tooltip" data-placement="top" data-original-title="take the tour"  class="btn btn-info" onclick="javascript:introJs().start();">
                                                 <i class="elusive-compass"></i> Tour
                                             </a>
                                             <a rel="tooltip" data-placement="top" data-original-title="Follow Best Channels"  href="<?php echo $bestchannels; ?>" class="btn btn-success">
@@ -83,7 +84,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
                             </div>
 
 
-            <div class="navbar span8">
+            <div class="navbar span8" data-step="1" data-intro="Hello pal :) This is one of your ways that you can share your ideas about games. Just write what you think and click share button. You can also share a picture or a a video and also a game which is a unique feature to toork.">
               <div class="navbar-inner">
                 </br>
                 <form class="navbar-form">
