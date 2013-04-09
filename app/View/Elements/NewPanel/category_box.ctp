@@ -4,7 +4,7 @@
 					$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 					$catName = h($cat['Category']['name']);
 					$catId = $cat['Category']['id'];
-					$caturl=$this->Html->url(array("controller" => "games","action" =>"categorygames",$catId)); 
+					$caturl=$this->Html->url(array("controller" => "games","action" =>"categorygames2",$catId)); 
 				
 					?>
 				

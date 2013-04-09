@@ -91,7 +91,8 @@ class AppController extends Controller {
             'getgamecount','potential','message_ajax','message_ajax2','moreupdates_ajax','moreupdates_ajax2','moreupdates_ajax_my',
             'comment_ajax','comment_ajax2','image_ajax','get_userdata','delete_message_ajax','delete_comment_ajax','action_ajax',
             'get_gamedata','moreupdates_filter_ajax','gamefeed_ajax','view_ajax','view_ajax2','mass_subscription','quick_subscription',
-            'sync_recommended','profile','playgame','bestchannels2','toprated2','login2','gameswitch','playgameframe','get_3_games');
+            'sync_recommended','profile','playgame','bestchannels2','toprated2','login2','gameswitch','playgameframe','get_3_games',
+            'categorygames2');
 
 		$this->set('user',$this->Auth->user());
 		

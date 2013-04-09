@@ -451,6 +451,58 @@ public function set_suggested_channels()
 		}
 	}
 
+public function categorygames2() {
+		$this->layout='dashboard';
+		$this->leftpanel();
+		$this->headerlogin();
+		$this->set_suggested_channels();
+		$catid = $this->request->params['pass'][0];
+		$category = $this->Category->find('first', array('conditions' => array('Category.id' => $catid)));
+		$catName = $category['Category']['name'];
+		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1','Game.category_id'=>$catid)));
+		$this->set('catName', $catName);
+
+		$this->set('title_for_layout',  $catName.' - Top Rated '.$catName.' Games - Toork');
+		if($catName == 'Action'){
+			$this->set('description_for_layout', 'An action game requires players to use quick reflexes, accuracy, and timing to overcome obstacles.');
+		}elseif($catName == 'Adventure'){
+			$this->set('description_for_layout', 'Adventure games put little pressure on the player in the form of action-based challenges or time constraints, adventure games have had the unique ability to appeal to people who do not normally play video games');
+		}elseif($catName == 'Race'){
+			$this->set('description_for_layout', 'Racing games typically place the player in the drivers seat of a high-performance vehicle and require the player to race against other drivers or sometimes just time.');
+		}elseif($catName == 'Shooting'){
+			$this->set('description_for_layout', 'First-person shooter video games, commonly known as FPSs, emphasize shooting and combat from the perspective of the character controlled by the player.');
+		}elseif($catName == 'Board'){
+			$this->set('description_for_layout', 'Many popular board games have computer versions. AI opponents can help improve ones skill at traditional games. Chess, Checkers, Othello and Backgammon have world class computer programs.');
+		}elseif($catName == 'Multiplayer'){
+			$this->set('description_for_layout', 'Party games are video games developed specifically for multiplayer games between many players. Normally, party games have a variety of mini-games that range between collecting more of a certain item than other players or having the fastest time at something.');
+		}elseif($catName == 'Puzzle'){
+			$this->set('description_for_layout', 'Puzzle games require the player to solve logic puzzles or navigate complex locations such as mazes. They are well suited to casual play, and tile-matching puzzle games are among the most popular casual games.');
+		}elseif($catName == 'Card'){
+			$this->set('description_for_layout', 'All popular card games have computer versions. AI opponents can help improve ones skill at traditional games. ');
+		}elseif($catName == '3D'){
+			$this->set('description_for_layout', 'Play real time 3d games which are choosen by experienced players');
+		}elseif($catName == 'Kids'){
+			$this->set('description_for_layout', 'Kids games are safe for kids under 13. Enjoy these kids games');
+		}elseif($catName == 'Girls'){
+			$this->set('description_for_layout', 'Games especially designed for girls');
+		}elseif($catName == 'Word'){
+			$this->set('description_for_layout', 'Play most popular word games');
+		}elseif($catName == 'Role-Playing'){
+			$this->set('description_for_layout', 'Role-playing video games draw their gameplay from traditional role-playing games. Most cast the player in the role of one or more adventurers who specialize in specific skill sets while progressing through a predetermined storyline.');
+		}elseif($catName == 'Fighting'){
+			$this->set('description_for_layout', 'Fighting games emphasize one-on-one combat between two characters, one of which may be computer controlled. These games are usually played by linking together long chains of button presses on the controller to use physical attacks to fight.');
+		}elseif($catName == 'MMORPG'){
+			$this->set('description_for_layout', 'Massively multiplayer online role-playing games, or MMORPGs, emerged in the mid to late 1990s as a commercial, graphical variant of text-based MUDs, which had existed since 1978.');
+		}elseif($catName == 'Sports'){
+			$this->set('description_for_layout', 'Sports games emulate the playing of traditional physical sports. Some emphasize actually playing the sport, while others emphasize the strategy behind the sport.');
+		}elseif($catName == 'Social'){
+			$this->set('description_for_layout', 'Social simulation games base their gameplay on the social interaction between multiple artificial lives.');
+		}else{
+			$this->set('description_for_layout',  $catName.' - Best games in this category');
+		}
+	}
+
+
 	public function logedin_user_panel() {
 
 		$this->layout='base';
