@@ -454,8 +454,48 @@ function trecaptcha2(){
 	}
 	
 	
-	//Register button for gatekeeper
+	//Register button for landingpage
 	
+	$('#t_landing_registerbtn').live('click',function () {
+	    
+		//checkusername();
+		if(check_land_validation())
+		{
+			trecaptcha2();
+			}else{
+				
+				$.pnotify({
+               text: 'There are some missing parts on registration form.',
+               type: 'error'
+               });
+				
+				
+				}
+    });
+	
+	function check_land_validation() {
+		 result=1;	
+	     if($('#reg_username').val().length==0 || $('#reg_username').val().length<6 || $('#reg_username').val().length>20)
+		 {
+		 //aksiyon
+		 result=0;	
+		 }	
+		 if($('#reg_email').val().length==0 || !isValidEmailAddress($('#reg_email').val()))
+		 {
+		 //aksiyon
+		 result=0;	
+		 }	
+		 if($('#reg_password').val().length==0 || $('#reg_password').val().length<6)
+		 {
+		 //aksiyon
+		 result=0;	
+		 }
+
+		 return result;
+	}
+	
+	
+	//Register button for gatekeeper
 	$('#t_gatekeeper_registerbtn').click(function () {
 	    
 		//checkusername();
@@ -537,6 +577,7 @@ function trecaptcha2(){
 	
 	
 	$('#t_mobile_login_btn').live('click',function () {
+		
 		t_mobile_login2();
 	});
 	

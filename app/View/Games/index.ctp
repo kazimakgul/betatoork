@@ -33,11 +33,12 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
 <!-- Newsletter -->
      
 <form action="#" method="post" novalidate>
-<input  value="Channel Name" placeholder="Channel Name" name="NAME"    class="autoclear name-newsletter"     >
-<input  value="Your Email"  placeholder="Your Email" name="EMAIL"  class="email-newsletter"     >
-<input  value="Password"  placeholder="Password" name="PASSWORD"  class="phone-newsletter"   >
+<input  value="Channel Name" id="reg_username" placeholder="Channel Name" name="NAME"    class="autoclear name-newsletter"     >
+<input  value="Your Email" id="reg_email"  placeholder="Your Email" name="EMAIL"  class="email-newsletter"     >
+<input  value="Password" id="reg_password"  placeholder="Password" name="PASSWORD"  class="phone-newsletter"   >
+<input  type="hidden" "id="fast_register" value="1" >
 <div style="padding-bottom:10px; margin:-26px 0px 0px 19px;"><i class="color-white elusive-lock"></i></div>
-<input type="submit" value="Join Now" name="subscribe"  class="btn btn-success pull-right">
+<input type="button" id="t_landing_registerbtn" value="Join Now" name="subscribe"  class="btn btn-success pull-right">
 <label> * By clicking "Join Now" you agree to Toork's Terms &#38; Privacy.</label>
 </form>
     
