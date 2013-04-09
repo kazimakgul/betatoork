@@ -15,7 +15,8 @@
                             <!--sidebar-right-control-->
                             <div class="sidebar-right-control">
                                 <ul class="sr-control-item">
-                                    <li class="active"><a href="#contact" data-toggle="tab" title="Channels"><i class="icofont-group"></i></a></li>
+                                    <li class="active"><a href="#contact" rel="tooltip" data-placement="top" data-original-title="Best Channels" data-toggle="tab" title="Best Channels"><i class="icofont-group"></i></a></li>
+                                    <li><a href="#alt1" rel="tooltip" data-placement="top" data-original-title="Categories" data-toggle="tab" title="Categories"><i class="icofont-flag"></i></a></li>
                                 </ul>
                             </div><!-- /sidebar-right-control-->
                             <!-- sidebar-right-content -->
@@ -41,7 +42,30 @@
 								   
                                         </div>
                                     </div><!--/contact-->
-                                    
+
+<div class="tab-pane fade" id="alt1">
+                                            <div class="side-contact">
+                                            <!--contact-control-->
+                                            <div class="contact-control">
+
+                                                <h5><i class="icofont-flag color-red"></i> <a href="<?php echo $bestchannels; ?>">Categories</a></h5>
+                                            </div><!--/contact-control-->
+                                         
+                                         <!--bestchannel-list-->
+                                         <ul class="contact-list">
+                                           
+
+                                <?php  echo $this->element('NewPanel/category_box'); ?>
+
+                                   </ul><!--/bestchannel-list-->
+                                   
+                                        </div>
+
+                                       
+                       
+                                        
+                                    </div>
+
                                 </div>
                             </div><!-- /sidebar-right-content -->
                         </div><!-- /sidebar-right -->

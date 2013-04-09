@@ -230,6 +230,7 @@ public function set_suggested_channels()
 		  break;
 		}while($status=='empty');
 	   $this->set('channels',$suggestdata);
+	   	$this->leftpanel(); //for categories
 }
 
 
