@@ -18,7 +18,7 @@
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 		
-		<!-- avascript variables for login and register-->
+<!-- avascript variables for login and register-->
 <script type="text/javascript">
 remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
 </script>
