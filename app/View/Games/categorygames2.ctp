@@ -20,9 +20,6 @@
           
         </div>
         <h4><?php echo $catName; ?></h4>
-        <div>
-        <i class="elusive-plus-sign color-red"></i> 27 Followers
-        </div>
         <i class="elusive-plus-sign color-blue"></i>         <?php
         echo $this->Paginator->counter(array(
         'format' => __('{:count}')
@@ -35,35 +32,6 @@
     </div>
 </div>
 </div>
-
-    <div class="well well-small">
-        <div class="row-fluid">
-            <div class="span3">
-                <a class="btn btn-danger">
-                  <i class="elusive-plus-sign"></i> Follow
-                </a> 
-            </div>
-            <div class="span4 pull-right">
-                <div class="pull-right">
-
-                    <a href="#" style="margin-right:20px;">
-                        <i class="icofont-facebook color-blue helper-font-32"></i>
-                    </a>
-                    <a href="#" style="margin-right:20px;">                     
-                        <i class="icofont-pinterest color-red helper-font-32"></i>
-                    </a>
-                    <a href="#" style="margin-right:20px;">
-                        <i class="icofont-twitter color-blue helper-font-32"></i>
-                    </a>
-                    <a href="#" style="margin-right:20px;">
-                        <i class="icofont-google-plus color-red helper-font-32"></i>
-                    </a>
-
-            </div>
-            </div>
-        </div>
-    </div>
-
 
 
                                 <ul class="thumbnails">
