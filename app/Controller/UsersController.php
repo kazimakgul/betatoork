@@ -1088,9 +1088,134 @@ public function password2($id = null) {
 					$this->set('rtdata', 'true');
 					
 				} else {
-					$this->set('rtdata', 'Can not register. Please try again.');
+					$this->checkUsernameEmail($this->request->data['User']['username'],$this->request->data['User']['email']);//Check availability
+					//$this->set('rtdata', 'Can not register. Please try again.');
 				}
 			}
+		 }
+		 else if($attr == "txt_logusername"){
+			$this->request->data['User']['username'] = $this->request->data['un'];
+			$this->request->data['User']['password'] = $this->request->data['ps'];
+			if ($this->Auth->login() == true) {
+				$results = $this->User->find('first',array('conditions'=>array('OR'=>array('User.email'=>$this->request->data['User']['username'],'User.username'=>$this->request->data['User']['username'])),array('fields'=>array('User.active'))));
+	  	        if ($results['User']['active'] == 0) {
+					$this->Auth->logout();
+					$msg = array("msgid" => '0', "msg" => 'Your account has not been activated yet! Please check your email to activate your account');
+					$this->set('rtdata', $msg);
+				}
+				
+				else
+				{
+					$msg = array("msgid" => '1', "msg" => $this->webroot.$this->Auth->loginRedirect['controller'].'/'.$this->Auth->loginRedirect['action']);
+					$this->set('rtdata', $msg);
+				}
+			}
+			else
+			{
+				$msg = array("msgid" => '2', "msg" => 'Wrong Username or Password. Please enter a valid username and password');
+				$this->set('rtdata', $msg);
+			}
+		 }
+		 else if($attr == "t_regbox_logemail"){	 
+			if(isset($dt) && $dt!= ''){
+				$user = $this->User->find('first',array('conditions' => array('User.email'=>$dt)));
+				if($user === false){
+					$this->set('rtdata', 'This email is not registered to toork yet.');
+				}
+				else{
+					$this->__sendResetEmail($user["User"]["id"]);
+				}
+			}
+			else{
+				$this->set('rtdata', 'Please Enter A Valid Email!');
+			}
+		 }
+		 else{}
+		 
+		 $this->set('_serialize', array('rtdata'));
+		 
+	}
+	
+	public function checkUsername($username){
+	
+	        if($this->User->find('first', array('conditions'=> array('User.username'=>$username))))
+			{
+				return 0;
+			}else{
+			    return 1;
+			}
+	}
+	
+	public function checkEmail($email){
+	         if($this->User->find('first', array('conditions'=> array('User.email'=>$email))))
+			{
+			    return 0;
+			 }else{
+			    return 1;
+			 }
+	}
+	
+	public function checkUsernameEmail($username=NULL,$email=NULL){
+	
+	   if(!$this->checkUsername($username) && $this->checkEmail($email))
+	   {
+	   $this->set('rtdata', 'This Username is alredy been taken. Please try another one.');
+	   }elseif((!$this->checkEmail($email)) && ($this->checkUsername($username))){
+	   $this->set('rtdata', 'This email is already registered. Please try another one.');
+	   }elseif((!$this->checkUsername($username)) && (!$this->checkEmail($email))){
+	   $this->set('rtdata', 'This username and email already registered.Please try another one.');
+	   }else{
+	   $this->set('rtdata', 'Can not register. Please try again.');
+	   }
+	
+	}
+	
+	
+	public function checkUser2(){
+		 $this->loadModel('Userstat');
+		 Configure::write ( 'debug', 0 );
+		 
+		 $dt=$this->request->data['dt'];
+		 $attr=$this->request->data['attr'];
+		 
+		 if($attr == "txt_signusername"){
+			if($this->User->find('first', array('conditions'=> array('User.username'=>$dt))))
+			{
+				$this->set('rtdata', 'This Username is already been taken. Please try another one.');
+			}
+		 }
+		 else if($attr == "txt_signemail") {
+		 	if($this->User->find('first', array('conditions'=> array('User.email'=>$dt))))
+			{
+				$this->set('rtdata', 'This email is already registered. Please try another one.');
+			}
+		 }
+		 else if($attr == "fast_register"){
+			
+		
+		
+				$this->User->create();
+				$this->request->data['User']['username'] = $this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un']));
+				$this->request->data['User']['email'] = $this->request->data['um'];
+				$this->request->data['User']['password'] = $this->request->data['up'];
+				$this->request->data['User']['seo_username'] = strtolower($this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un'])));
+				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
+				$this->request->data['User']['active'] = 1;
+				//$this->request->data['User']['userstat'] = 0; //buraya bakılacak yeni alan için
+				
+				if ($this->User->save($this->request->data)) {
+				    $this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();
+				    $this->Userstat->save($this->request->data);
+					//$this->__sendActivationEmail($this->User->getLastInsertID());
+					$this->set('rtdata', 'true');
+					
+				} else {
+					//$this->set('rtdata', 'Can not register. Please try again.');
+					$this->checkUsernameEmail($this->request->data['User']['username'],$this->request->data['User']['email']);//Check availability
+				}
+				
+				
+			
 		 }
 		 else if($attr == "txt_logusername"){
 			$this->request->data['User']['username'] = $this->request->data['un'];

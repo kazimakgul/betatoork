@@ -37,6 +37,7 @@
 <script type="text/javascript">
 search_url='<?php echo $this->Html->url(array("controller"=>"games","action"=>"search2"));?>';
 remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
+remotecheck2='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser2')); ?>';
 </script>
 
 
