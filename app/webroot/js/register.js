@@ -706,3 +706,35 @@ function trecaptcha2(){
 	
 	//------------
 	
+//***************************************************
+//------------------Subscription Functions-------------------------
+//***************************************************
+
+function subscribe (channel_name,user_auth,id) {
+		          
+		    if(user_auth==1)
+		    {
+				
+		$.pnotify({
+            title: 'Thanks for Following',
+            text: 'You are following <strong>'+channel_name+'</strong> now.<br>You will be notified about the updates of this channel.',
+            type: 'success'
+          });
+		
+			}else{
+				
+			$.pnotify({
+            title: 'Authentication Error',
+            text: 'You have to login first to follow channels.',
+            type: 'error'
+          });	
+				
+				
+			}
+		  
+				
+	}
+
+	
+	
+	

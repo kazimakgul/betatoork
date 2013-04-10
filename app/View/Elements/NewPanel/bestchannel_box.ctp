@@ -72,13 +72,27 @@ if($website==NULL){
 
     </div>
 
+  <!----Declare Channel Name For JavaScript Usage---->
+  <!----=========================================---->
+  <script>
+  <?php if($this->Session->check('Auth.User') == 1){ ?>
+  user_auth=1;
+  <?php }else{?>
+  user_auth=0;
+  <?php }?>
+  
+  </script>
+  <!----=========================================---->
     <div class="span7">
       <div class="header-control pull-left" style="margin:20px 0px 5px 0px;">
-        <button onclick="$.pnotify({
-            title: 'Thanks for Following',
-            text: 'You are following <strong><?php echo $follower['User']['username']; ?></strong> now.<br>You will be notified about the updates of this channel.',
-            type: 'success'
-          });" rel="tooltip" data-placement="top" data-original-title="Follow this Channel" data-box="close" style="opacity:1;" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
+        
+	<?php if($this->Session->check('Auth.User') == 1){ ?>	
+		<button onclick="subscribe('<?php echo $follower['User']['username']; ?>',user_auth,<?php echo $follower['User']['id']; ?>);" rel="tooltip" data-placement="top" data-original-title="Follow this Channel" data-box="close" style="opacity:1;" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
+    <?php }else{ ?>
+	<button onclick="subscribe('<?php echo $follower['User']['username']; ?>',user_auth,<?php echo $follower['User']['id']; ?>);" rel="tooltip" data-placement="top" data-original-title="Follow this Channel"  style="opacity:1;" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
+	<?php } ?>
+		
+		
       </div>
 <ul class="thumbnails pull-right" style="margin:2px 0px 0px 0px;">
   
