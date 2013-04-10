@@ -724,8 +724,8 @@ function subscribe (channel_name,user_auth,id) {
 			}else{
 				
 			$.pnotify({
-            title: 'Authentication Error',
-            text: 'You have to login first to follow channels.',
+            title: 'Sign in Please',
+            text: 'You have to sign in first to follow channels.',
             type: 'error'
           });	
 				
