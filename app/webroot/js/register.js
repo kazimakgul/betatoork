@@ -783,4 +783,23 @@ function subscribe (channel_name,user_auth,id) {
 	});
 	
 	
+//Her sayfa yüklenisinde ve sadece profile sayfasinda çalismak üzere hazirlandi.	
+if($('#follow_button').attr('id')=='follow_button')
+	{
+	checkstatus();
+	}
+	
+	
+		function checkstatus(){
+		$.get(checkFollowStat+'/'+profile_id,function(data) {			  
+											if(data==1) {
+											    $('#follow_button').hide();
+		                                        $('#unFollow_button').show();
+										     } else {
+											    $('#unFollow_button').hide();
+		                                        $('#follow_button').show();				  
+											 }						  
+			                    });
+		         }
+	
 	

@@ -44,6 +44,9 @@
   user_auth=0;
   <?php }?>
   
+  checkFollowStat='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'sub_check')); ?>';
+  profile_id='<?php echo $userid; ?>';
+  
   </script>
   <!----=========================================---->
 
