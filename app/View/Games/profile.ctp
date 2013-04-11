@@ -54,11 +54,11 @@
     <div class="well well-small">
         <div class="row-fluid">
             <div class="span3">
-                <a class="btn btn-danger" id="follow_button" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
+                <a class="btn btn-success" id="follow_button" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
                   <i class="elusive-plus-sign"></i> Follow
                 </a> 
-				<a class="btn btn-danger" id="unFollow_button" style="display:none;" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
-                  <i class="elusive-plus-sign"></i> Unfollow
+				<a class="btn" id="unFollow_button" style="display:none;" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
+                  <i class="elusive-remove-circle"></i> Unfollow
                 </a> 
             </div>
             <div class="span4 pull-right">
