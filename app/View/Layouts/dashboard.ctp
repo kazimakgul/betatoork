@@ -21,6 +21,7 @@
 <!-- avascript variables for login and register-->
 <script type="text/javascript">
 remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
+subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
 </script>
 		
     </head>

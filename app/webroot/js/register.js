@@ -715,6 +715,7 @@ function subscribe (channel_name,user_auth,id) {
 		    if(user_auth==1)
 		    {
 				
+		switch_subscribe(id);
 		$.pnotify({
             title: 'Thanks for Following',
             text: 'You are following <strong>'+channel_name+'</strong> now.<br>You will be notified about the updates of this channel.',
@@ -728,13 +729,58 @@ function subscribe (channel_name,user_auth,id) {
             text: 'You have to sign in first to follow channels.',
             type: 'error'
           });	
-				
-				
+					
 			}
 		  
 				
 	}
-
+	
+	
+	function subscribeout (channel_name,user_auth,id) {
+		        
+		    if(user_auth==1)
+		    {
+				
+		switch_subscribe(id);
+		$.pnotify({
+            title: 'Unfollow is done',
+            text: 'You stopped following <strong>'+channel_name+'</strong> now.<br>You will not be notified about the updates of this channel.',
+            type: 'error'
+          });
+		
+			}else{
+				
+			$.pnotify({
+            title: 'Authentication Error',
+            text: 'You have to login first to follow channels.',
+            type: 'error'
+          });	
+					
+			}
+		  
+				
+	}
+	
+	
+    function switch_subscribe(channel_id)
+    {
+		
+    	$.get(subswitcher+'/'+channel_id,function(data) {/*success callback*/});	
+		
+    }
+	
+	
+	$('#follow_button').click(function () {
+		
+		$('#follow_button').hide();
+		$('#unFollow_button').show();
+	});
+	
+	$('#unFollow_button').click(function () {
+		
+		$('#unFollow_button').hide();
+		$('#follow_button').show();
+	});
 	
 	
 	

@@ -38,7 +38,18 @@ else{
 						  $website = "<a class='website_link' href='$website' target='_blank' rel='nofollow'></a>";
 						}
 					?>
-				
+			
+	<!----Declare Channel Name For JavaScript Usage---->
+  <!----=========================================---->
+  <script>
+  <?php if($this->Session->check('Auth.User') == 1){ ?>
+  user_auth=1;
+  <?php }else{?>
+  user_auth=0;
+  <?php }?>
+  
+  </script>
+  <!----=========================================---->			
 					
 			<div class="span12" style="margin:0px;">
 
@@ -47,11 +58,7 @@ else{
                                                     <!--we use data toggle tab for navigate this action-->
                                                     <a style="margin:0px 0px 5px 0px;" href="<?php echo $profileurl ?>" >
                                                         <!--we use contact-item structure like the component media in bootstrap-->
-                                                    <button style="margin:10px 0px 0px 0px; opacity:1;" href="#" onclick="$.pnotify({
-            title: 'Thanks for Follow',
-            text: 'You are following <strong><?php echo $card[0] ?></strong> now.<br>You will be notified about the updates of this channel.',
-            type: 'success'
-          });"  rel="tooltip" data-placement="left" data-original-title="Follow" data-box="close" data-hide="fadeOut" class="close"><i class="elusive-plus-sign color-green"></i></button> 
+                                                    <button style="margin:10px 0px 0px 0px; opacity:1;" href="#" onclick="subscribe('<?php echo $card[0]; ?>',user_auth,<?php echo $followid; ?>);"  rel="tooltip" data-placement="left" data-original-title="Follow" data-box="close" data-hide="fadeOut" class="close"><i class="elusive-plus-sign color-green"></i></button> 
                                                         <div class="contact-item">
                                                             <div class="pull-left">
                                                                 <?php 

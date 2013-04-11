@@ -34,11 +34,28 @@
 </div>
 </div>
 
+
+<!----Declare Channel Name For JavaScript Usage---->
+  <!----=========================================---->
+  <script>
+  <?php if($this->Session->check('Auth.User') == 1){ ?>
+  user_auth=1;
+  <?php }else{?>
+  user_auth=0;
+  <?php }?>
+  
+  </script>
+  <!----=========================================---->
+
+
     <div class="well well-small">
         <div class="row-fluid">
             <div class="span3">
-                <a class="btn btn-danger">
+                <a class="btn btn-danger" id="follow_button" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
                   <i class="elusive-plus-sign"></i> Follow
+                </a> 
+				<a class="btn btn-danger" id="unFollow_button" style="display:none;" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
+                  <i class="elusive-plus-sign"></i> Unfollow
                 </a> 
             </div>
             <div class="span4 pull-right">
