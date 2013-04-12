@@ -20,8 +20,8 @@ class GamesController extends AppController {
 	    }
 
 	    if (($this->action === 'add') || ($this->action === 'add2') || ($this->action === 'dashboard') || 
-	    	($this->action === 'mygames') || ($this->action === 'favorites') || ($this->action === 'settings') || 
-	    	($this->action === 'chains') || ($this->action === 'channel')) {
+	    	($this->action === 'mygames') || ($this->action === 'favorites') || ($this->action === 'start') || 
+	    	($this->action === 'settings') || ($this->action === 'chains') || ($this->action === 'channel')) {
 	       // All registered users can add posts
 	        return true;
 	    }
@@ -1011,6 +1011,36 @@ public function profile() {
 
 
 	}
+
+		public function start() {
+		//More Buttonu ile gpaginate edilecek...
+
+		$this->layout='starter';
+		$this->headerlogin();
+		$authid = $this->Session->read('Auth.User.id');
+		//Get the list of subscriptions of auth user.
+		   if($authid!=NULL)
+		   {
+		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $mutuals=array_intersect($listofmine,$listofuser);
+		   $this->set('mutuals',$mutuals);
+		   }else{
+		   $this->set('mutuals',NULL);
+		   }
+
+		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
+		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
+		$this->set('user_id', $userid);
+		$users=$this->User->find('all',array('conditions'=>array('NOT' => array('User.id' => $listofmine)),'contain' =>array('Userstat'),'limit'=>10,'order'=> array(
+                'Userstat.potential' => 'desc')));
+		$this->set('users',$users);
+	    $this->set_suggested_channels();
+
+
+
+	}
+
 	
 	public function get_3_games($channel_id=NULL)
 	{
