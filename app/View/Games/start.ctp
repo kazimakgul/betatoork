@@ -1,9 +1,11 @@
+<?php
+$dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
+?>
+
 	<div class="container">
-
-
 		<div id="sections">
 			<div id="demos">
-				<div class="page-header"><a class="btn pull-right">skip</a>
+				<div class="page-header"><a href="<?php echo $dashboard; ?>" class="btn pull-right">skip -></a>
 					<h2>Follow 5 channels to get started</h2> 
 				</div>
 
@@ -19,7 +21,7 @@
 						<div class="step-title"><span class="step-order">4.</span> <span class="step-name">Channel</span></div>
 						<div class="step-title"><span class="step-order">5.</span> <span class="step-name">Channel</span></div>
 						<div class="step-title"><span class="step-order">Well</span> <span class="step-name">Done</span></div>
-						<button class="submit-button btn">Go To Dashboard</button>
+						<a href="<?php echo $dashboard; ?>" class="submit-button btn">Go To Dashboard</a>
 					</div>
 					<div class="span10 pull-right">
 						<ul class="thumbnails step-content ">
@@ -38,8 +40,9 @@
 						<?php  echo $this->element('NewPanel/startchannel_box'); ?>
 						</ul>
 						<ul class="thumbnails step-content hide">
-						<?php  echo $this->element('NewPanel/startchannel_box'); ?>
+						<?php  echo $this->element('NewPanel/startchannel_box',array('dashboard'=>$dashboard)); ?>
 						</ul>
+
 					</div>
 				</div>
 		</div>

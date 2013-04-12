@@ -92,7 +92,7 @@ if($website==NULL){
 	<button onclick="subscribe('<?php echo $follower['User']['username']; ?>',user_auth,<?php echo $follower['User']['id']; ?>);" rel="tooltip" data-placement="top" data-original-title="Follow this Channel"  style="opacity:1;" data-hide="fadeOut" class="next-button close"><a class="btn btn-danger"><i class="elusive-plus-sign"></i> follow</a></button> 
 	<?php } ?>
 		
-		
+		<a href="<?php echo $dashboard; ?>" class="submit-button btn">Dashboard</a>
       </div>
 <ul class="thumbnails pull-right" style="margin:2px 0px 0px 0px;">
   
