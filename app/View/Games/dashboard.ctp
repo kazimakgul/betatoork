@@ -63,7 +63,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
                             <!-- dashboard -->
 
 <div class="row-fluid">
-                            <div class="well well-small span4">
+                            <div class="alert alert-info span4">
                                     <div class="box-header corner-top">
                                             <div class="header-control">
                                             <button data-box="close" data-hide="fadeOut" class="close">×</button>

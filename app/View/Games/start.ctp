@@ -20,8 +20,9 @@ $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"
 						<div class="step-title"><span class="step-order">3.</span> <span class="step-name">Channel</span></div>
 						<div class="step-title"><span class="step-order">4.</span> <span class="step-name">Channel</span></div>
 						<div class="step-title"><span class="step-order">5.</span> <span class="step-name">Channel</span></div>
-						<div class="step-title"><span class="step-order">Well</span> <span class="step-name">Done</span></div>
-						<a href="<?php echo $dashboard; ?>" class="submit-button btn">Go To Dashboard</a>
+						<a href="<?php echo $dashboard; ?>"><div class="step-title"><span class="step-order">Go to</span> <span class="step-name">Dashboard</span></div></a>
+						
+						<div><p class="alert alert-block alert-info"> <small>Don't forget to customize your channel by going to settings to change your profile picture and channel banner.</small></p></div>
 					</div>
 					<div class="span10 pull-right">
 						<ul class="thumbnails step-content ">

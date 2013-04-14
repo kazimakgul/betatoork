@@ -1,5 +1,6 @@
 <?php
 $password=$this->Html->url(array("controller" => "users","action" =>"password2",$this->Session->read('Auth.User.id')));
+$profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -14,6 +15,32 @@ $password=$this->Html->url(array("controller" => "users","action" =>"password2",
                         <!-- content-body -->
                         <div class="content-body">
 
+    <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your <strong><a target="_blank" href="<?php echo $profilepublic;?>">public channel</strong></a> </p>
+<div class="pull-right fileupload fileupload-new" data-provides="fileupload">
+  <div class="fileupload-new thumbnail" style="width: 745px; height: 200px;">
+    <img src="http://www.placehold.it/745x200/EFEFEF/AAAAAA&text=add a banner to your channel" /></div>
+  <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 745px; max-height: 200px; line-height: 20px;"></div>
+  <div>
+    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
+        <span class="fileupload-new"><i class="elusive-edit"></i></span>
+        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input type="file" /></span>
+    <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
+  </div>
+</div>
+
+<div class="fileupload fileupload-new" data-provides="fileupload">
+  <div class="fileupload-new thumbnail" style="width: 90px; height: 120px;">
+    <img src="http://www.placehold.it/90x120/EFEFEF/AAAAAA&text=avatar" /></div>
+  <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 90px; max-height: 120px; line-height: 20px;"></div>
+  <div>
+    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
+        <span class="fileupload-new"><i class="elusive-edit"></i></span>
+        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input type="file" /></span>
+    <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
+  </div>
+</div>
+
+<hr style="margin-top:70px;">
 
                                     <div class="box-tab corner-all">
                                         <div class="box-header corner-top">
