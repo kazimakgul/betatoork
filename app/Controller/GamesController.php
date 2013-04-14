@@ -372,16 +372,13 @@ public function set_suggested_channels()
 
 	public function toprated2() {
 		$this->layout='dashboard';
-		$userid = $this->Session->read('Auth.User.id');
-		$userName = $user['User']['username'];
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+		$this->headerlogin();
 
 		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1')));
 		$this->set('title_for_layout', 'Toork - Top Rated Games');
 		$this->set('description_for_layout', 'Find the best and toprated online games and play and rate popular games online');	
 
-    	$this->set('username', $userName);
-    	$this->set('user', $user);
+
     	$this->set_suggested_channels();
 	}
 

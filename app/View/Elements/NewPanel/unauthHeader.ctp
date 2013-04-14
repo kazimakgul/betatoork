@@ -32,7 +32,7 @@
                 </ul>
             </li>
           <li class="divider-vertical"></li>
-          <li><a href="<?php echo $login; ?>">Sign Up</a></li>
+          <li><a href="<?php echo $index; ?>">Sign Up</a></li>
           <li class="divider-vertical"></li>
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>

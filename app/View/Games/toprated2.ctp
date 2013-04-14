@@ -1,4 +1,7 @@
-<?php $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));?>
+<?php 
+$addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
+$index=$this->Html->url(array("controller" => "games","action" =>"index"));
+?>
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -41,21 +44,59 @@
                         <!-- content-body -->
                         <div class="content-body">
 
-<div class="well well-small">
-    <div class="box-header corner-top">
-                                            <div class="header-control">
-                                            <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
-                                            </div>
-                                            
-                                        </div>
-  <h1>Add a game to your account</h1>
-  <p>Adding a game to your account is as simple as doing copy/paste. Just find a web page where you play a game. That's all.</p>
-  <p>
-    <a href="<?php echo $addgame ?>" class="btn btn-danger btn-large">
-      <i class="elusive-plus-sign"></i> Add Game
-    </a>
-  </p>
-</div>
+<?php
+if($this->Session->check('Auth.User')){
+?>
+
+            <div class="well well-small">
+                <div class="box-header corner-top">
+                <div class="header-control">
+                <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
+                </div>
+                
+            </div>
+              <h1>Add a game to your account</h1>
+              <p>Adding a game to your account is as simple as doing copy/paste. Just find a web page where you play a game. That's all.</p>
+              <p>
+                <a href="<?php echo $addgame ?>" class="btn btn-danger btn-large">
+                  <i class="elusive-plus-sign"></i> Add Game
+                </a>
+              </p>
+            </div>
+
+<?php
+}else{
+?>
+
+
+            <div class="alert alert-info">
+                <div class="box-header corner-top">
+                <div class="header-control">
+                <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
+                </div>
+                
+            </div>
+              <h4>Join Toork For Free</h4>
+              <p>If you join Toork, you will be able to create your own game channel and let people play games you share on your channel. See the benefits below.</p>
+                <ul>
+                    <li>Create your own game channel</li>
+                    <li>Your special dashboard that knows what you want</li>
+                    <li>Collect the games you love</li>
+                    <li>Add new games</li>
+                    <li>Follow other channels</li>
+                    <li>All you need for online games</li>
+                </ul>
+              <p>
+                <a href="<?php echo $index ?>" class="btn btn-danger">
+                  <i class="elusive-user"></i> Join Toork
+                </a>
+              </p>
+            </div>
+
+
+<?php
+}
+?>
 
 <ul class="thumbnails">
 

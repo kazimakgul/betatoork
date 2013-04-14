@@ -19,7 +19,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
 <div class="span10 pull-right fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-new thumbnail" style="width: 745px; height: 200px;">
     <img src="http://www.placehold.it/745x200/EFEFEF/AAAAAA&text=add a banner to your channel" /></div>
-  <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 745px; max-height: 200px; line-height: 20px;"></div>
+  <div class="fileupload-preview fileupload-exists thumbnail" style="width: 745px; height: 200px; line-height: 20px;"></div>
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
         <span class="fileupload-new"><i class="elusive-edit"></i></span>
@@ -31,7 +31,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
 <div class="fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-new thumbnail" style="width: 90px; height: 120px;">
     <img src="http://www.placehold.it/90x120/EFEFEF/AAAAAA&text=avatar" /></div>
-  <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 90px; max-height: 120px; line-height: 20px;"></div>
+  <div class="fileupload-preview fileupload-exists thumbnail" style="width: 90px; height: 120px; line-height: 20px;"></div>
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
         <span class="fileupload-new"><i class="elusive-edit"></i></span>

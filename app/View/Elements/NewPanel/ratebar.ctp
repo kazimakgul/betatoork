@@ -80,11 +80,31 @@
                 </ul>
               </div>
             </div>
+
+<?php
+if($this->Session->check('Auth.User')){
+?>
+
         <button style="margin:-30px 0px 0px 0px;" onclick="$.pnotify({
             title: 'Rate Bar Removed',
             text: 'If you want to have your rate bar back, Just refresh your browser.',
             type: 'info'
           });"  rel="tooltip" data-placement="top" data-original-title="Remove This Bar" data-box="close" data-hide="fadeOut" class="close"><i class="elusive-remove-circle"></i></button> 
+
+<?php
+}else{
+?>
+
+        <button style="margin:-30px 0px 0px 0px;" onclick="$.pnotify({
+            title: 'Sign Up For Free',
+            text: 'If you want to remove this rate bar, You have to be a member of Toork. Dont worry its for free',
+            type: 'error'
+          });"  rel="tooltip" data-placement="top" data-original-title="Remove This Bar" class="close"><i class="elusive-remove-circle"></i></button> 
+
+<?php
+}
+?>
+
           </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
       </div><!-- /navbar-inner -->
