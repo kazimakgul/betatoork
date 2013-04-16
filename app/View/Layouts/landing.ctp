@@ -9,11 +9,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <!-- ### Page Title ### -->
-<title> Toork | Create your own game channel  </title>
+        <title><?php echo $title_for_layout?></title>
+        <link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon" />
+        <meta name="author" content="<?php echo $author_for_layout?>">
+        <meta name="description" content= "<?php echo $description_for_layout?>" />
 
-<!-- ### Description and Keyword ### -->
-<meta name="keywords" content=""/>
-<meta name="description" content=""/>
+        <meta property="og:title" content= "<?php echo $title_for_layout?>" />
+        <meta property="og:type" content="Game"/>
+        <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
+        <meta property="og:image" content="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash4/428808_254949491292199_1660409950_n.jpg"/>
+        <meta property="og:site_name" content="Toork"/>
+        <meta property="fb:admins" content="711440119"/>
+        <meta property="og:description" content= "<?php echo $description_for_layout?>" />
+
+<?php 
+echo $this->Html->meta('keywords','create game channel,share games, social network for gamers, game channels, social for game bloggers,share your games');
+?>
+
+<!-- For third-generation iPad with high-resolution Retina display: -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="mobilePics/144.png">
+<!-- For iPhone with high-resolution Retina display: -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="mobilePics/114.png">
+<!-- For first- and second-generation iPad: -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="mobilePics/72.png">
+<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+<link rel="apple-touch-icon-precomposed" href="mobilePics/57.png">
+
 
 <!-- ### Stylesheet and Bootstrap ### -->
 

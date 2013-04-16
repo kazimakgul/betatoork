@@ -70,18 +70,9 @@ class GamesController extends AppController {
 		$this->set('users', $cond);
 		$this->set('most_played_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.playcount')),'limit' => $limit,'order' => 'rand()')));
 
-
-$cond = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '40'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'Category','User'=>array('fields'=>array('User.username','User.seo_username'))))));
-$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '5'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
-$cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => '4'),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
-
-
-		$this->set('slider', $cond);
-		$this->set('featured', $cond2);
-		$this->set('newgames', $cond3);
-
 		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel');
 		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+		$this->set('author_for_layout', 'Toork');
 	}
 	
 	public function index2() {
@@ -260,8 +251,8 @@ public function set_suggested_channels()
 	    $this->set_suggested_channels();
 	    $this->set('user',$user);
 	    $this->set('username',$userName);
-		$this->set('title_for_layout', 'Toork - Create your own game channel');
-		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+		$this->set('title_for_layout', 'Dashboard - Toork Channel Manager');
+		$this->set('description_for_layout', 'Your Dashboard knows what you want and helps you do everything easier.');
 	
 	}
 
@@ -1436,7 +1427,9 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 
 		$this->set('game', $game);
-		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
+		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
+		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
+		$this->set('author_for_layout', $game['User']['seo_username']);
 	    $this->set_suggested_channels();
    
 	}
@@ -1468,7 +1461,9 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 
 		$this->set('game', $game);
-		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
+		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
+		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
+		$this->set('author_for_layout', $game['User']['seo_username']);
 	    $this->set_suggested_channels();
    
 	}

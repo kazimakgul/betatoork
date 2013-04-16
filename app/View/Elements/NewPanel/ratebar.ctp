@@ -22,6 +22,42 @@
 
               </div>
 
+<!-- Google SEO icin -> arama motorunda oyunlarin yildizlarini aldigi oy sayisini gostermesi icin gerekli.
+
+Ornek=1:
+<div itemscope itemtype="http://schema.org/Product">
+  <img itemprop="image" src="dell-30in-lcd.jpg" />
+  <span itemprop="name">Dell UltraSharp 30" LCD Monitor</span>
+
+  <div itemprop="aggregateRating"
+    itemscope itemtype="http://schema.org/AggregateRating">
+    <span itemprop="ratingValue">37</span>
+    out of <span itemprop="bestRating">100</span>
+    based on <span itemprop="ratingCount">24</span> user ratings
+  </div>
+
+ <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <span itemprop="price">$0</span>
+  </div>
+
+  Product description:
+  <span itemprop="description">0.7 cubic feet countertop microwave.
+  Has six preset cooking categories and convenience features like
+  Add-A-Minute and Child Lock.</span>
+
+</div>
+
+Ornek=2:
+<div xmlns:v="http://rdf.data-vocabulary.org" typeof="v:Review-aggregate">
+
+   <span rel="v:rating">
+    <span class="rating" property="v:average">4.3</span>
+        <span id="rating-count"> <span property="v:votes">418</span> ratings </span>
+   </span>
+
+</div>
+-->
+
               <div class="span4 helper-font-32">
                  <div class="pull-right" style="margin-top:5px;">
                       <i class="elusive-star"></i>
