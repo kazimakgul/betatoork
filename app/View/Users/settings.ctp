@@ -89,7 +89,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
 
     <p class="alert-success alert">The social connections you add will be shown at your public channel. It is just a simple link to your other social networks. If you are curious about how it is going to look like, just preview your current <strong><a target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</strong></a> </p>
 
-<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'tab2','novalidate'=>'novalidate','class'=>'form-horizontal' ,'type' => 'file'));?>
+<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'tab2','class'=>'form-horizontal' ,'type' => 'file'));?>
                                                         <fieldset>
                                                          
                                                 
@@ -99,7 +99,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
                                                             <div class="well control-group">
                                                                 <label class="control-label" for="url">Facebook</label>
                                                                 <div class="controls">
-<?php echo $this->Form->input('fb_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://facebook.com/.+' ,'placeholder' => 'http://facebook.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
+<?php echo $this->Form->input('fb_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|)facebook.com/.+' ,'placeholder' => 'http://facebook.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
                                                                 </div><i class='elusive-facebook color-blue helper-font-32'></i> <p> Just add your Facebook page link if you have any. You will let your users reach your Facebook page using your toork channel.</p>
                                                             </div>
 
@@ -107,7 +107,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
                                                             <div class="well control-group">
                                                                 <label class="control-label" for="url">Twitter</label>
                                                                 <div class="controls">
-<?php echo $this->Form->input('twitter_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://twitter.com/.+' ,'placeholder' => 'http://twitter.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
+<?php echo $this->Form->input('twitter_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|)twitter.com/.+' ,'placeholder' => 'http://twitter.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
                                                                 </div> <i class='elusive-twitter color-blue helper-font-32'></i> <p> Just add your Twitter page link if you have any. You will let your users reach your Twitter page using your toork channel.</p>
                                                             </div>
 
@@ -115,7 +115,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
                                                             <div class="well control-group">
                                                                 <label class="control-label" for="url">Google+</label>
                                                                 <div class="controls">
-<?php echo $this->Form->input('gplus_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://plus.google.com/.+' ,'placeholder' => 'http://plus.google.com/117184471094869274585','type' => 'url', 'maxlength'=>100)); ?>
+<?php echo $this->Form->input('gplus_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|)plus.google.com/.+' ,'placeholder' => 'http://plus.google.com/117184471094869274585','type' => 'url', 'maxlength'=>100)); ?>
                                                                 </div> <i class='elusive-googleplus color-red helper-font-32'></i> <p>Just add your Google+ page link if you have any. You will let your users reach your Google+ page using your toork channel.</p>
                                                             </div>
 
@@ -123,7 +123,7 @@ $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profil
                                                             <div class="well control-group">
                                                                 <label class="control-label" for="url">Pinterest</label>
                                                                 <div class="controls">
-<?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com','type' => 'url', 'maxlength'=>100)); ?>
+<?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|)pinterest.com/.+' ,'placeholder' => 'http://www.pinterest.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
                                                                 </div><i class='elusive-pinterest color-red helper-font-32'></i> <p>Just add your Pinterest page or board link if you have any. You will let your users reach your Pinterest using your toork channel.</p>
                                                             </div>
 
