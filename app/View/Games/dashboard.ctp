@@ -1,6 +1,8 @@
 <?php 
 $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+$addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
+$settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -8,83 +10,74 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
                     <div class="content">
                         <!-- content-header -->
                         <div class="content-header">
-                            <ul class="content-header-action pull-right">
-                                <li>
-                                    <a href="#">
-                                       
-                                        <div class="action-text color-green">8765 <span class="helper-font-small color-silver-dark">Visits</span></div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                       
-                                        <div class="action-text color-teal">1437 <span class="helper-font-small color-silver-dark">favorited</span></div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        
-                                        <div class="action-text color-red">4367 <span class="helper-font-small color-silver-dark">Played</span></div>
-                                    </a>
-                                </li>
-                            </ul>
                             <h2><i class="icofont-home"></i> Dashboard</h2>
                         </div><!-- /content-header -->
                         
-                        <!-- content-breadcrumb -->
-                        <div class="content-breadcrumb">
-                            <!--breadcrumb-nav-->
-                            <ul class="breadcrumb-nav pull-right">
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link dropdown-toggle" data-toggle="dropdown">
-                                        <i class="icofont-tasks"></i> Sort
-                                        <i class="icofont-caret-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Recomend</a></li>
-                                        <li><a href="#">Date</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Popular</a></li>
-                                    </ul>
-                                </li>
-                            </ul><!--/breadcrumb-nav-->
-                            
-                            <!--breadcrumb-->
-                            <ul class="breadcrumb">
-                                <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a></li>
-                            </ul><!--/breadcrumb-->
-                        </div><!-- /content-breadcrumb -->
                         
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
                             <!-- dashboard -->
+<i class="elusive-graph"></i> Your analytics are not active yet!
+<div class="row-fluid" style="opacity:0.5;">
+    <div class="alert alert-info span3">
+        <i class="elusive-thumbs-up helper-font-48"></i>
+        <div class="pull-right ">
+            <h2 style="margin:-8px 0px 0px 0px;">124</h2>
+            <h4>Followers</h4>
+        </div>
+    </div>
+    <div class="alert alert-info span3">
+        <i class="elusive-group helper-font-48"></i>
+        <div class="pull-right ">
+            <h2 style="margin:-8px 0px 0px 0px;">1902</h2>
+            <h4>Visitors</h4>
+        </div>
+    </div>
+    <div class="alert alert-info span3">
+        <i class="elusive-heart-alt helper-font-48"></i>
+        <div class="pull-right ">
+            <h2 style="margin:-8px 0px 0px 0px;">41</h2>
+            <h4>Favorites</h4>
+        </div>
+    </div>
+    <div class="alert alert-info span3">
+        <i class="elusive-play-circle helper-font-48"></i>
+        <div class="pull-right ">
+            <h2 style="margin:-8px 0px 0px 0px;">1575</h2>
+            <h4>Plays</h4>
+        </div>
+    </div>
+</div>
 
 <div class="row-fluid">
-                            <div class="alert alert-info span4">
+                            <div class="alert alert-error span5">
                                     <div class="box-header corner-top">
                                             <div class="header-control">
                                             <button data-box="close" data-hide="fadeOut" class="close">×</button>
                                             </div>
                                             
                                     </div>
-                                        <h3>Welcome to Toork</h3>
-                                        <p>Create your own game channel. Find the best games and channels created by users. Enjoy exploring toork.</p>
+                                        <h3>Start Building!</h3>
+                                        <p>To start building your channel complete these steps.</p>
                                             <p>
-                                            <a rel="tooltip" data-placement="top" data-original-title="take the tour"  class="btn btn-info" onclick="javascript:introJs().start();">
+                                            <a rel="tooltip" data-placement="top" data-original-title="take the tour"  class="btn btn-info" onclick="javascript:introJs().start();" style="margin:0px 3px 5px 0px;">
                                                 <i class="elusive-compass"></i> Tour
                                             </a>
-                                            <a rel="tooltip" data-placement="top" data-original-title="Follow Best Channels"  href="<?php echo $bestchannels; ?>" class="btn btn-success">
-                                                <i class="elusive-plus-sign"></i> Follow Channels
+                                             <a rel="tooltip" data-placement="top" data-original-title="Add a Game" href="<?php echo $addGame; ?>" class="btn btn-danger" style="margin:0px 3px 5px 0px;">
+                                                <i class="elusive-plus"></i> Add Game
+                                            </a>
+                                             <a rel="tooltip" data-placement="top" data-original-title="Customize Your Channel" href="<?php echo $settings; ?>" class="btn btn-warning" style="margin:0px 3px 5px 0px;">
+                                                <i class="elusive-edit"></i> Customize
+                                            </a>
+                                            <a rel="tooltip" data-placement="top" data-original-title="Follow Best Channels"  href="<?php echo $bestchannels; ?>" class="btn btn-success" style="margin:0px 3px 5px 0px;">
+                                                <i class="elusive-plus-sign"></i> Discover Channels
                                             </a>
 
                                             </p>
                             </div>
 
 
-            <div class="navbar span8" data-step="1" data-intro="Hello pal :) This is one of your ways that you can share your ideas about games. Just write what you think and click share button. You can also share a picture or a a video and also a game which is a unique feature to toork.">
+            <div class="navbar span7" data-step="1" data-intro="Hello pal :) This is one of your ways that you can share your ideas about games. Just write what you think and click share button. You can also share a picture or a a video and also a game which is a unique feature to toork.">
               <div class="navbar-inner">
                 </br>
                 <form class="navbar-form">
