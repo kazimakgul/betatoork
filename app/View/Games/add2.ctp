@@ -1,3 +1,8 @@
+<?php
+$mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
+$profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>'go'));
+?>
+
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -7,18 +12,39 @@
 
                             <h2><i class="icofont-plus-sign"></i> Add a Game</h2>
                         </div><!-- /content-header -->
-                        
-                        <!-- content-breadcrumb -->
-                        <div class="content-breadcrumb">
-
-                            
-                            <!--breadcrumb-->
-                            <ul class="breadcrumb">
-                                <li><a href="#"><i class="icofont-cogs"></i>Add Game</a></li>
-                            </ul><!--/breadcrumb-->
-                        </div><!-- /content-breadcrumb -->
                         <!-- content-body -->
                         <div class="content-body">
+
+                <div class="error-page" style="margin:-60px 0px 0px 0px;">
+                    <h1 class="error-code color-blue" style="margin:0px 0px -30px 0px;">Add Game</h1>
+                    <p class="error-description">The game you add will appear in <a href="<?php echo $mygames;?>">"My Games"</a> and your <a href="<?php echo $profilepublic;?>">"Public Channel"</a></p>
+                    <form>
+                        <div class="control-group">
+                            <div class="input-append input-icon-prepend">
+                                <div class="add-on">
+                                    <a title="search" style="" class="icon"><i class="icofont-plus"></i></a>
+                                    <input class="input-xxlarge animated grd-white" onfocus type="text" placeholder="where is the game? Type the link of the website!">
+                                </div>
+                                <input type="submit" class="btn btn-danger" value="Grab the game!">
+                            </div>
+                            <p><small>Simply copy/paste the url from the browser where you play the game.  <strong>Ex: http://phoboslab.org/ztype/</strong></small></p>
+                        </div>
+                    </form>
+      
+                    <div class="alert alert-block alert-info fadein">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <p><h4 class="alert-heading">The Benefits of Adding a Game</h4></p>
+                        
+                        <p><i class="elusive-ok-sign"></i> play the game at your own channel anymore.</p>
+                        <p><i class="elusive-ok-sign"></i> Invite your friends to play the game at your channel</p> 
+                        <p><i class="elusive-ok-sign"></i> Collect the games you love form all around the web </p>
+                        <p><i class="elusive-ok-sign"></i> Don't have to go to any other website to play games anymore</p>
+                        <p><i class="elusive-ok-sign"></i> One Source for your online game activity </p>
+                        <p><i class="elusive-ok-sign"></i> It is totally yours!</p>
+                        
+                    </div>
+
+                </div>
 
 
                                     <div class="box-tab corner-all">

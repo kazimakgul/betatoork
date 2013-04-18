@@ -18,7 +18,7 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
                         <div class="content-body" style="padding-top:15px;">
                             <!-- dashboard -->
 <i class="elusive-graph"></i> Your analytics are not active yet!
-<div class="row-fluid" style="opacity:0.5;">
+<div class="row-fluid" style="opacity:0.3;">
     <div class="alert alert-info span3">
         <i class="elusive-thumbs-up helper-font-48"></i>
         <div class="pull-right ">

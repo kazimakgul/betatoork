@@ -1613,7 +1613,7 @@ function getExtension($str) {
     	$limit=12;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-
+		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 		if ($this->request->is('post')) {
 		 
 		 
@@ -1680,6 +1680,7 @@ function getExtension($str) {
 		$users = $this->Game->User->find('list');
 		$categories = $this->Game->Category->find('list');
 		$this->set(compact('users2', 'categories'));
+		$this->set('user', $user);
 	$this->set('title_for_layout','Add New Game');
 	$this->set('description_for_layout', 'You are able to add a new game');		
 		
