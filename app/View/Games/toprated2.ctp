@@ -6,11 +6,6 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
                 <div class="span9">
                     <!-- content -->
                     <div class="content">
-                        <!-- content-header -->
-                        <div class="content-header">
-
-                            <h2><i class="elusive-compass"></i> Explore Best Games</h2>
-                        </div><!-- /content-header -->
                         
                         <!-- content-breadcrumb -->
                         <div class="content-breadcrumb">
@@ -35,14 +30,12 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="index.html"><i class="icofont-home"></i> Dashboard</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="interface.html">Explore Games</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
+                                <li><a href="index.html"><i class="elusive-fire color-red"></i> Hot Games</a> <span class="divider">&rsaquo;</span></li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
                         
                         <!-- content-body -->
-                        <div class="content-body">
+                        <div class="content-body" style="padding-top:15px;">
 
 <?php
 if($this->Session->check('Auth.User')){

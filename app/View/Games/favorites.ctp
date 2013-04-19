@@ -3,38 +3,9 @@
                 <div class="span9">
                     <!-- content -->
                     <div class="content">
-                        <!-- content-header -->
-                        <div class="content-header">
-                            <h2><i class="icofont-heart color-red"></i> My Favorite Games</h2>
-                        </div><!-- /content-header -->
-                        
-                        <!-- content-breadcrumb -->
-                        <div class="content-breadcrumb">
-                            <!--breadcrumb-nav-->
-                            <ul class="breadcrumb-nav pull-right">
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link dropdown-toggle" data-toggle="dropdown">
-                                        <i class="icofont-tasks"></i> Sort
-                                        <i class="icofont-caret-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Date</a></li>
-                                        <li><a href="#">Rating</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Played</a></li>
-                                    </ul>
-                                </li>
-                            </ul><!--/breadcrumb-nav-->
-                            
-                            <!--breadcrumb-->
-                            <ul class="breadcrumb">
-                                <li><a href="#"><i class="icofont-heart"></i> My Favorites</a></li>
-                            </ul><!--/breadcrumb-->
-                        </div><!-- /content-breadcrumb -->
                         
                         <!-- content-body -->
-                        <div class="content-body">
+                        <div class="content-body" style="padding-top:15px;">
 
 <div class="well well-small">
     <div class="box-header corner-top">

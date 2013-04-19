@@ -8,10 +8,7 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
                 <div class="span9">
                     <!-- content -->
                     <div class="content">
-                        <!-- content-header -->
-                        <div class="content-header">
-                            <h2><i class="icofont-home"></i> Dashboard</h2>
-                        </div><!-- /content-header -->
+
                         
                         
                         <!-- content-body -->

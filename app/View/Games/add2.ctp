@@ -7,13 +7,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                 <div class="span9">
                     <!-- content -->
                     <div class="content">
-                        <!-- content-header -->
-                        <div class="content-header">
 
-                            <h2><i class="icofont-plus-sign"></i> Add a Game</h2>
-                        </div><!-- /content-header -->
                         <!-- content-body -->
-                        <div class="content-body">
+                        <div class="content-body" style="padding-top:15px;">
 
                 <div class="error-page" style="margin:-60px 0px 0px 0px;">
                     <h1 class="error-code color-blue" style="margin:0px 0px -30px 0px;">Add Game</h1>
@@ -35,11 +31,12 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <p><h4 class="alert-heading">The Benefits of Adding a Game</h4></p>
                         
-                        <p><i class="elusive-ok-sign"></i> play the game at your own channel anymore.</p>
-                        <p><i class="elusive-ok-sign"></i> Invite your friends to play the game at your channel</p> 
-                        <p><i class="elusive-ok-sign"></i> Collect the games you love form all around the web </p>
-                        <p><i class="elusive-ok-sign"></i> Don't have to go to any other website to play games anymore</p>
-                        <p><i class="elusive-ok-sign"></i> One Source for your online game activity </p>
+                        <p><i class="elusive-ok-sign"></i> Play the game at your own game channel anymore.</p>
+                        <p><i class="elusive-ok-sign"></i> Don't have to go to any other website to play games anymore.</p>
+                        <p><i class="elusive-ok-sign"></i> Invite your friends to play the game at your channel.</p> 
+                        <p><i class="elusive-ok-sign"></i> Collect the games you love form all around the web.</p>
+                        <p><i class="elusive-ok-sign"></i> Your game will be available via Toork or any other search engines.</p>
+                        <p><i class="elusive-ok-sign"></i> One Source for your online game activity.</p>
                         <p><i class="elusive-ok-sign"></i> It is totally yours!</p>
                         
                     </div>

@@ -3,7 +3,7 @@
 $router = Router::url();
 
 if ($this->action == "dashboard"){
-    $class = "class='active first'";
+    $class = "class='active'";
 }elseif($this->action == "mygames"){
     $class2 = "class='active'";
 }elseif($this->action == "favorites"){

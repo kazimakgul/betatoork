@@ -6,14 +6,8 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                 <div class="span9">
                     <!-- content -->
                     <div class="content">
-                        <!-- content-header -->
-                        <div class="content-header">
-
-                            <h2><i class="icofont-cogs"></i> My Settings</h2>
-                        </div><!-- /content-header -->
-                        
                         <!-- content-body -->
-                        <div class="content-body">
+                        <div class="content-body" style="padding-top:15px;">
 
     <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your <strong><a target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</strong></a> </p>
 

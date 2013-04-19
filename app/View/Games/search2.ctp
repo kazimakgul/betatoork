@@ -7,13 +7,9 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
                 <div class="span9">
                     <!-- content -->
                     <div class="content">
-                        <!-- content-header -->
-                        <div class="content-header">
-                            <h2><i class="icofont-search"></i> Search Results</h2>
-                        </div><!-- /content-header -->
                          
                         <!-- content-body -->
-                        <div class="content-body">
+                        <div class="content-body" style="padding-top:15px;">
 
 
                   <?php if(count($search) >= 1){ ?>

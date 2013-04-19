@@ -4,19 +4,12 @@
                     <aside class="side-right">
                         <!-- sidebar-right -->
                         <div class="sidebar-right">
-                            <!--sidebar-right-header-->
-                            <div class="sidebar-right-header">
 
-                                <div class="sr-header-left">
-                                    <p class="bold">Recommendation</p>
-                                    <small class="muted">Here is the best stuff</small>
-                                </div>
-                            </div><!--/sidebar-right-header-->
                             <!--sidebar-right-control-->
                             <div class="sidebar-right-control">
                                 <ul class="sr-control-item">
-                                    <li class="active"><a href="#contact" rel="tooltip" data-placement="top" data-original-title="Best Channels" data-toggle="tab" title="Best Channels"><i class="icofont-group"></i></a></li>
-                                    <li><a href="#alt1" rel="tooltip" data-placement="top" data-original-title="Categories" data-toggle="tab" title="Categories"><i class="icofont-flag"></i></a></li>
+                                    <li class="active"><a href="#contact" rel="tooltip" data-placement="bottom" data-original-title="Best Channels" data-toggle="tab" title="Best Channels"><i class="icofont-group"></i></a></li>
+                                    <li><a href="#alt1" rel="tooltip" data-placement="bottom" data-original-title="Categories" data-toggle="tab" title="Categories"><i class="icofont-flag"></i></a></li>
                                 </ul>
                             </div><!-- /sidebar-right-control-->
                             <!-- sidebar-right-content -->

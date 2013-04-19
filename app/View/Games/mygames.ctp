@@ -4,54 +4,40 @@ $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
-                    <div class="content">
-                        <!-- content-header -->
-                        <div class="content-header">
-                            <h2><i class="icofont-umbrella color-blue"></i> My Shared Games</h2>
-                        </div><!-- /content-header -->
-                        
-                        <!-- content-breadcrumb -->
-                        <div class="content-breadcrumb">
-                            <!--breadcrumb-nav-->
-                            <ul class="breadcrumb-nav pull-right">
-                                <li class="divider"></li>
-                                <li class="btn-group">
-                                    <a href="#" class="btn btn-small btn-link dropdown-toggle" data-toggle="dropdown">
-                                        <i class="icofont-tasks"></i> Sort
-                                        <i class="icofont-caret-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Date</a></li>
-                                        <li><a href="#">Rating</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Played</a></li>
-                                    </ul>
-                                </li>
-                            </ul><!--/breadcrumb-nav-->
-                            
-                            <!--breadcrumb-->
-                            <ul class="breadcrumb">
-                                <li><a href="#"><i class="icofont-umbrella"></i> My Games</a></li>
-                            </ul><!--/breadcrumb-->
-                        </div><!-- /content-breadcrumb -->
-                        
+                    <div class="content">                      
                         <!-- content-body -->
-                        <div class="content-body">
-
-<div class="well well-small">
+                        <div class="content-body" style="padding-top:15px;">
+<div class="raw-fluid span12">
+<div class="well well-small span5">
     <div class="box-header corner-top">
-                                            <div class="header-control">
-                                            <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
-                                            </div>
-                                            
-                                        </div>
-  <h1>Add a game to your account</h1>
+        <div class="header-control">
+        <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
+        </div>
+        
+    </div>
+  <h4>Add a game to your account</h4>
   <p>Adding a game to your account is as simple as doing copy/paste. Just find a web page where you play a game. That's all.</p>
   <p>
-    <a href="<?php echo $addgame; ?>" class="btn btn-danger btn-large">
+    <a href="<?php echo $addgame; ?>" class="btn btn-danger">
       <i class="elusive-plus-sign"></i> Add Game
     </a>
   </p>
+</div>
+
+<div class="alert alert-info span7">
+    <div class="box-header corner-top">
+        <div class="header-control">
+        <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
+        </div>
+        
+    </div>
+  <h4><i class="elusive-info-sign"></i> Tips and Tricks</h4>
+  <p>You can edit the games after you add them.</p>
+  <p>Change the picture of the game if it doesnt fit your needs.</p>
+  <p>You can also change the name and description of the game.</p>
+  <p>Finally, share games with your social networks, to reach more people.</p>
+
+</div>
 </div>
 
 <ul class="thumbnails">
