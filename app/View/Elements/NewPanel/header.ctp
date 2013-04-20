@@ -90,12 +90,11 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
               <div style=" padding: 5px 5px 5px 5px;">
                 </br>
                 <form class="navbar-form " >
-                    <textarea name="message" id="update" style="margin-top:-20px; padding: 0px 0px 0px 3px;" class="span4" rows="5"  placeholder="What do you want to share?"></textarea>
+                    <textarea name="message" id="update" style="margin-top:-20px; padding: 0px 0px 0px 3px;" class="span4" rows="4"  placeholder="What do you want to share?"></textarea>
                  </br>
                 <div class="helper-font-16">
                           
                           <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
-                           <i rel="tooltip" data-placement="top" data-original-title="add game" href="javascript:void(0);"  id="camera2" class="elusive-plus-sign"></i>
                             <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
                             <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
                 </div>

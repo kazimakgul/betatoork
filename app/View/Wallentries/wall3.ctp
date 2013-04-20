@@ -16,7 +16,6 @@
                 <div class="helper-font-16">
                           
                           <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
-                           <i rel="tooltip" data-placement="top" data-original-title="add game" href="javascript:void(0);"  id="camera2" class="elusive-plus-sign"></i>
                             <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
                             <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
                 </div>
@@ -30,7 +29,7 @@
                             </form>
                             </div><!-ImageUploadPanel-> 
                     <hr size="3" style="margin:0px 0px 5px 0px;">
-                  <button type="submit" class="btn btn-inverse pull-right update_data">Share</button>
+                  <button type="submit" class="btn btn-inverse pull-right update_data" style="margin:0px 0px 0px 0px;">Publish</button>
                 </form></br></br>
               </div>
             </div>
