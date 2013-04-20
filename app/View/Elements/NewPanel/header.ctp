@@ -30,9 +30,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
   <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'corner-all',"alt" => "toork avatar image",)); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'90','class'=>'corner-all',"alt" => "toork avatar image",)); 
     } else {
-      echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
+      echo $this->Upload->image($user,'User.picture',array(),array('width'=>'90','class'=>'img-polaroid','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
   ?>
 
                                             </a>
@@ -136,9 +136,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
   <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'corner-all',"alt" => "toork avatar image",)); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'90','class'=>'corner-all',"alt" => "toork avatar image",)); 
     } else {
-      echo $this->Upload->image($user,'User.picture',array(),array('class'=>'corner-all','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
+      echo $this->Upload->image($user,'User.picture',array(),array('width'=>'90','class'=>'corner-all','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
   ?>
 
 

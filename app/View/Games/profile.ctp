@@ -19,7 +19,7 @@ if($this->Session->check('Auth.User')){
                 <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
                 </div>
             </div>
-            <p><strong><a href="<?php echo $settings;?>"><i class="elusive-pencil"></i> Edit</strong></a>  your own channel and start building your game community now.</p>
+            <strong><a class="btn btn-link btn-small" style="margin=:0px 0px 0px 0px;" href="<?php echo $settings;?>"><i class="elusive-pencil"></i> Edit</strong></a>your own channel and start building your game community now.
         </div>
 
 <?php

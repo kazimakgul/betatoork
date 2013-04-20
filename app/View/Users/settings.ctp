@@ -9,7 +9,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
 
-    <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your <strong><a target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</strong></a> </p>
+    <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your<strong><a class="btn btn-small btn-link" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</strong></a> </p>
 
 <div class="well">
     <ul class="nav nav-tabs">
