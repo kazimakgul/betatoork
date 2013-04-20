@@ -79,19 +79,17 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
                 </br>
                 <form class="navbar-form">
                     <div class="row-fluid">
-                        <div class="span2">
+                        <div class="span2" rel="tooltip" data-placement="right" data-original-title="Change Your Avatar" ><a href="<?php echo $settings; ?>">
                       <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'61','class'=>'img-polaroid',"alt" => "toork avatar image")); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'68','class'=>'img-polaroid',"alt" => "toork avatar image")); 
     } else {
-      echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'61','onerror'=>'imgError(this,"avatar");')); }
-  ?>                    </div>
+      echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'68','onerror'=>'imgError(this,"avatar");')); }
+  ?>                    </div> </a>
                     <textarea name="message" id="update" class="span10 pull-right" rows="4"  placeholder="What do you want to share?"></textarea>
                 </div>
-                <div class="helper-font-16">
-                          
+                <div class="helper-font-24">
                            <i rel="tooltip" data-placement="bottom" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
-                           <i rel="tooltip" data-placement="bottom" data-original-title="add game" href="javascript:void(0);"  id="camera2" class="elusive-plus-sign"></i>
                             <i rel="tooltip" data-placement="bottom" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
                             <i rel="tooltip" data-placement="bottom" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
                 </div>
@@ -105,7 +103,7 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
                             </form>
                             </div><!-ImageUploadPanel-> 
                     <hr size="3" style="margin:0px 0px 5px 0px;">
-                  <button id="success-post" type="submit" class="btn btn-inverse pull-right update_data">Share</button>
+                  <button id="success-post" type="submit" class="btn btn-inverse pull-right update_data" style="margin:0px 0px 0px 0px;">Publish</button>
                 </form></br></br>
               </div>
             </div>
