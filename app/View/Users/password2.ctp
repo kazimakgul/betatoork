@@ -2,11 +2,6 @@
                 <div class="span9">
                     <!-- content -->
                     <div class="content">
-                        <!-- content-header -->
-                        <div class="content-header">
-
-                            <h2><i class="icofont-cogs"></i>Password Settings</h2>
-                        </div><!-- /content-header -->
                         
                         <!-- content-body -->
                         <div class="content-body">
@@ -15,15 +10,7 @@
                                     <div class="box-tab corner-all">
                                         <div class="box-header corner-top">
                                             <ul class="nav nav-pills">
-                                                <!--tab action-->
-                                                <li class="dropdown pull-right">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icofont-cogs"></i></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#collapse" data-toggle="tab">@collapse</a></li>
-                                                        <li><a href="#close" data-toggle="tab">@close</a></li>
-                                                        <li><a href="#other" data-toggle="tab">@other action</a></li>
-                                                    </ul>
-                                                </li><!--/tab action-->
+
                                                 <!--tab menus-->
                                                 <li class="active"><a data-toggle="tab" href="#boxtabpill-1">Change Password</a></li>
                                             </ul>

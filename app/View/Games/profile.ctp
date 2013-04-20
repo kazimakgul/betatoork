@@ -1,3 +1,6 @@
+<?php
+$settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
+?>
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -5,6 +8,30 @@
                         
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
+
+<?php
+if($this->Session->check('Auth.User')){
+?>
+
+        <div class="alert alert-info">
+            <div class="box-header corner-top">
+                <div class="header-control">
+                <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
+                </div>
+            </div>
+            <p><strong><a href="<?php echo $settings;?>"><i class="elusive-pencil"></i> Edit</strong></a>  your own channel and start building your game community now.</p>
+        </div>
+
+<?php
+}else{
+?>
+
+
+<?php
+}
+?>
+
+
 <div class="well well-small">
 <div class="row-fluid">
     <div class="span2">
