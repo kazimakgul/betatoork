@@ -771,15 +771,19 @@ function subscribe (channel_name,user_auth,id) {
 	
 	
 	$('#follow_button').click(function () {
-		
+		   if(user_auth==1)
+		    {
 		$('#follow_button').hide();
 		$('#unFollow_button').show();
+			}
 	});
 	
 	$('#unFollow_button').click(function () {
-		
+		   if(user_auth==1)
+		    {
 		$('#unFollow_button').hide();
 		$('#follow_button').show();
+			}
 	});
 	
 	
@@ -866,35 +870,43 @@ if($('#follow_button').attr('id')=='follow_button')
     }
 	
 	$('#fav_button').click(function () {
-		
+		if(user_auth==1)
+		    {
 		$('#fav_button').hide();
 		$('#fav_button2').hide();
 		$('#unFav_button').show();
 		$('#unFav_button2').show();
+			}
 	});
 	
 	$('#unFav_button').click(function () {
-		
+		   if(user_auth==1)
+		    {
 		$('#unFav_button').hide();
 		$('#unFav_button2').hide();
 		$('#fav_button').show();
 		$('#fav_button2').show();
+			}
 	});
 	
 	$('#fav_button2').click(function () {
-		
+		   if(user_auth==1)
+		    {
 		$('#fav_button').hide();
 		$('#fav_button2').hide();
 		$('#unFav_button').show();
 		$('#unFav_button2').show();
+			}
 	});
 	
 	$('#unFav_button2').click(function () {
-		
+		    if(user_auth==1)
+		    {
 		$('#unFav_button').hide();
 		$('#unFav_button2').hide();
 		$('#fav_button').show();
 		$('#fav_button2').show();
+			}
 	});
 	
 //Her sayfa yüklenisinde ve sadece game sayfasinda çalismak üzere hazirlandi.	
