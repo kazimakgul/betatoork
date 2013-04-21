@@ -49,5 +49,6 @@ $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 
 
                         </div><!--/content-body -->
+<?php  echo $this->element('NewPanel/dashfooter'); ?>                        
                     </div><!-- /content -->
                 </div><!-- /span content -->

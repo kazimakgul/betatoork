@@ -181,5 +181,6 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
 
                         </div><!--/content-body -->
+<?php  echo $this->element('NewPanel/dashfooter'); ?>
                     </div><!-- /content -->
                 </div><!-- /span content -->

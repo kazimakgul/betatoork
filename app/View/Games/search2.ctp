@@ -80,5 +80,6 @@ if($this->Session->check('Auth.User')){
 <?php echo $this->element('googleSearch'); ?>
 
                         </div><!--/content-body -->
+<?php  echo $this->element('NewPanel/dashfooter'); ?>
                     </div><!-- /content -->
                 </div><!-- /span content -->

@@ -64,5 +64,6 @@
 
 
                         </div><!--/content-body -->
+<?php  echo $this->element('NewPanel/dashfooter'); ?>
                     </div><!-- /content -->
                 </div><!-- /span content -->

@@ -116,5 +116,6 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
 
                             <!--/dashboard-->
                         </div><!--/content-body -->
+<?php  echo $this->element('NewPanel/dashfooter'); ?>
                     </div><!-- /content -->
                 </div><!-- /span content -->

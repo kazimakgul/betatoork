@@ -9,7 +9,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
 
-    <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your<strong><a class="btn btn-small btn-link" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</strong></a> </p>
+    <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your<a rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$user['User']['seo_username'];?>" class="btn btn-small btn-link" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</a></p>
 
 <div class="well">
     <ul class="nav nav-tabs">
@@ -81,7 +81,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
       </div>
       <div class="tab-pane fade" id="profile">
 
-    <p class="alert-success alert">The social connections you add will be shown at your public channel. It is just a simple link to your other social networks. If you are curious about how it is going to look like, just preview your current <strong><a target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</strong></a> </p>
+    <p class="alert-success alert">The social connections you add will be shown at your public channel. It is just a simple link to your other social networks. If you are curious about how it is going to look like, just preview your current <a rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$user['User']['seo_username'];?>" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</a> </p>
 
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'tab2','class'=>'form-horizontal' ,'type' => 'file'));?>
                                                         <fieldset>
@@ -151,5 +151,6 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
 
                         </div><!--/content-body -->
+<?php  echo $this->element('NewPanel/dashfooter'); ?>
                     </div><!-- /content -->
                 </div><!-- /span content -->
