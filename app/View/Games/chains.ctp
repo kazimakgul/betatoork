@@ -8,7 +8,7 @@
                         <div class="content-body" style="padding-top:15px;">
 
 <div class="raw-fluid span12">
-<div class="well well-small span5">
+<div class="well well-small span6">
     <div class="box-header corner-top">
         <div class="header-control">
         <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
@@ -24,7 +24,7 @@
   </p>
 </div>
 
-<div class="alert alert-info span7">
+<div class="alert alert-info span6">
     <div class="box-header corner-top">
         <div class="header-control">
         <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
@@ -32,10 +32,10 @@
         
     </div>
   <h5><i class="elusive-info-sign"></i> Tips and Tricks</h5>
-  <p>Follow the channels you are interested about</p>
-  <p>Your dashboard will be full of your interests.</p>
-  <p>Channels will let you know first about the news they have.</p>
-  <p>One game source to rule them all!</p>
+  <p><i class="elusive-ok-sign"></i> Follow the channels you are interested about</p>
+  <p><i class="elusive-ok-sign"></i> Your dashboard will be full of your interests.</p>
+  <p><i class="elusive-ok-sign"></i> Channels will let you know first about the news they have.</p>
+  <p><i class="elusive-ok-sign"></i> One game source to rule them all!</p>
 
 </div>
 </div>

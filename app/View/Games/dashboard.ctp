@@ -69,8 +69,8 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
                                             <a rel="tooltip" data-placement="top" data-original-title="Follow Best Channels"  href="<?php echo $bestchannels; ?>" class="btn btn-success" style="margin:0px 3px 5px 0px;">
                                                 <i class="elusive-plus-sign"></i> Discover Channels
                                             </a>
-
                                             </p>
+                                            <p><i class="elusive-circle-arrow-down"></i> <small>We recommend you games upon your interests here.</small></p>
                             </div>
 
 

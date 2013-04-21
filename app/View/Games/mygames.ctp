@@ -31,11 +31,11 @@ $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
         </div>
         
     </div>
-  <h4><i class="elusive-info-sign"></i> Tips and Tricks</h4>
-  <p>You can edit the games after you add them.</p>
-  <p>Change the picture of the game if it doesnt fit your needs.</p>
-  <p>You can also change the name and description of the game.</p>
-  <p>Finally, share games with your social networks, to reach more people.</p>
+  <h4 style="margin:0px 0px 10px 0px;"><i class="elusive-info-sign"></i> Tips and Tricks</h4>
+  <p><i class="elusive-ok-sign"></i> You can edit the games after you add them.</p>
+  <p><i class="elusive-ok-sign"></i> Change the picture of the game if it doesnt fit your needs.</p>
+  <p><i class="elusive-ok-sign"></i> You can also change the name and description of the game.</p>
+  <p><i class="elusive-ok-sign"></i> Finally, share games with your social networks, to reach more people.</p>
 
 </div>
 </div>

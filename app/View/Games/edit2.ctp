@@ -2,39 +2,14 @@
                 <div class="span9">
                     <!-- content -->
                     <div class="content">
-                        <!-- content-header -->
-                        <div class="content-header">
 
-                            <h2><i class="icofont-edit"></i> Edit Game</h2>
-                        </div><!-- /content-header -->
-                        
-                        <!-- content-breadcrumb -->
-                        <div class="content-breadcrumb">
-
-                            
-                            <!--breadcrumb-->
-                            <ul class="breadcrumb">
-                                <li><a href="#"><i class="icofont-cogs"></i>My Settings</a> <span class="divider">&rsaquo;</span></li>
-                                <li><a href="#">Edit Game</a> <span class="divider">&rsaquo;</span></li>
-                                <li class="active">Data elements</li>
-                            </ul><!--/breadcrumb-->
-                        </div><!-- /content-breadcrumb -->
                         <!-- content-body -->
-                        <div class="content-body">
+                        <div class="content-body" style="padding-top:15px;">
 
 
                                     <div class="box-tab corner-all">
                                         <div class="box-header corner-top">
                                             <ul class="nav nav-pills">
-                                                <!--tab action-->
-                                                <li class="dropdown pull-right">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icofont-cogs"></i></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#collapse" data-toggle="tab">@collapse</a></li>
-                                                        <li><a href="#close" data-toggle="tab">@close</a></li>
-                                                        <li><a href="#other" data-toggle="tab">@other action</a></li>
-                                                    </ul>
-                                                </li><!--/tab action-->
                                                 <!--tab menus-->
                                                 <li class="active"><a data-toggle="tab" href="#boxtabpill-1">Edit Game</a></li>
                                                 <li><a data-toggle="tab" href="#boxtabpill-2">My Games</a></li>
