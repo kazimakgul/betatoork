@@ -26,7 +26,7 @@ else{
 <!-- /Add Unit -->
 
 <!-- Game Unit -->
-<h6><?php echo $game['Game']['name'] ?> : <?php echo $game['Game']['description'] ?> </h6>
+<h6><span class="label label-important"><?php echo $game['Game']['name'] ?></span> : <?php echo $game['Game']['description'] ?> </h6>
 <div class="well well-large">
 
 <div style="margin:0 auto; text-align: center; background-color:#fff; font-family:Verdana, Geneva, sans-serif; color:#000; font-size:14px;">
