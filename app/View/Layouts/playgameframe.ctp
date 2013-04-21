@@ -145,6 +145,7 @@ delmessagevar='<?php echo $this->Html->url(array('controller'=>'wallentries','ac
 delcommentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_comment_ajax')); ?>';
 seeallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'view_ajax2')); ?>';
 quick='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'quick_subscription')); ?>';
+favswitcher='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 
 search_query=$('.search-query').val();
 search_url='<?php echo $this->Html->url(array("controller"=>"games","action"=>"search2"));?>';

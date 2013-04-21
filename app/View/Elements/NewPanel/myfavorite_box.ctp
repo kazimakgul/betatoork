@@ -26,6 +26,18 @@ else{
 
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
 
+<!----Declare Channel Name For JavaScript Usage---->
+  <!----=========================================---->
+  <script>
+  <?php if($this->Session->check('Auth.User') == 1){ ?>
+  user_auth=1;
+  <?php }else{?>
+  user_auth=0;
+  <?php }?>
+  </script>
+  <!----=========================================---->
+
+
 
               <li class="span3 header-control" style="margin:0px 15px 0px 0px;">
                 <div class="navbar"><div class="navbar-inner" style="padding:5px 5px 5px 5px;">
@@ -38,7 +50,7 @@ else{
                     <p>
                     <a href="<?php echo $profileurl ?>"class="btn btn-mini"><strong><?php echo $game['Game']['User']['username']; ?></strong></a>
                     <a href="<?php echo $playurl ?>" class="btn btn-success btn-mini">Play</a>
-                    <a rel="tooltip" data-placement="bottom" data-original-title="Remove" data-box="close" data-hide="rotateOut" class="btn btn-mini pull-right helper-font-16"><i class="icofont-remove"></i></a> 
+                    <a rel="tooltip" onclick="unFavorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);" data-placement="bottom" data-original-title="Remove" data-box="close" data-hide="rotateOut" class="btn btn-mini pull-right helper-font-16"><i class="icofont-remove"></i></a> 
                     </p>
                   <hr size="3" style="margin:0px 0px 5px 0px;">
                     <div class="helper-font-16 pull-right">

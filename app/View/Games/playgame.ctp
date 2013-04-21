@@ -42,10 +42,30 @@ else{
 <!-- /Game Unit -->
 <?php  echo $this->element('NewPanel/ratebar',array('profilepublic'=>$profilepublic)); ?>
 
+
+<!----Declare Channel Name For JavaScript Usage---->
+  <!----=========================================---->
+  <script>
+  <?php if($this->Session->check('Auth.User') == 1){ ?>
+  user_auth=1;
+  <?php }else{?>
+  user_auth=0;
+  <?php }?>
+  checkFavStat='<?php echo $this->Html->url(array('controller'=>'games','action'=>'favorite_check')); ?>';
+  game_id='<?php echo $game['Game']['id']; ?>';
+  </script>
+  <!----=========================================---->
+
+
+
 <div class="well well-small">
  
-    <a class="btn btn-danger">
+    <a class="btn btn-danger" id="fav_button" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);">
      <i class="icofont-heart"></i> Favorite
+    </a> 
+	
+	 <a class="btn btn-danger" id="unFav_button" style="display:none;" onclick="unFavorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);">
+     <i class="icofont-heart"></i> Unfavorite
     </a> 
 
 

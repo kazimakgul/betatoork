@@ -43,6 +43,7 @@
 <script type="text/javascript">
 remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
 subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
+favswitcher='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 </script>
 		
     </head>

@@ -58,6 +58,21 @@ Ornek=2:
 </div>
 -->
 
+
+<!----Declare Channel Name For JavaScript Usage---->
+  <!----=========================================---->
+  <script>
+  <?php if($this->Session->check('Auth.User') == 1){ ?>
+  user_auth=1;
+  <?php }else{?>
+  user_auth=0;
+  <?php }?>
+  checkFavStat='<?php echo $this->Html->url(array('controller'=>'games','action'=>'favorite_check')); ?>';
+  game_id='<?php echo $game['Game']['id']; ?>';
+  </script>
+  <!----=========================================---->
+
+
               <div class="span4 helper-font-32">
                  <div class="pull-right" style="margin-top:5px;">
                       <i class="elusive-star"></i>
@@ -72,8 +87,10 @@ Ornek=2:
                   <li rel="tooltip" data-placement="top" data-original-title="Next Game" class="btn pull-right color-blue" style="margin:5px;">
                       <i class="elusive-fire"></i> Next <i class="elusive-circle-arrow-right"></i>
                   </li>
-                  <li rel="tooltip" data-placement="top" data-original-title="Add to Favorites" class="btn pull-right color-red" style="margin:5px;">
+                  <li rel="tooltip" id="fav_button2" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);" data-placement="top" data-original-title="Add to Favorites" class="btn pull-right color-red" style="margin:5px;">
                       <i class="elusive-heart"></i>
+                  </li>
+				  <li rel="tooltip" id="unFav_button2" style="display:none;" onclick="unFavorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);" data-placement="top" data-original-title="Remove from Favorites" class="btn pull-right color-red" style="margin:5px;">
                       <i class="elusive-heart-empty"></i>
                   </li>
                  <li rel="tooltip" id="comment" data-toggle="popover" data-placement="top" data-html="true" title="Comment" data-placement="top" data-original-title="Comment" class="btn pull-right color-green" style="margin:5px;"data-content='

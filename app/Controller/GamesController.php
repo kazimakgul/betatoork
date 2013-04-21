@@ -1185,6 +1185,23 @@ if(empty($favbefore))
 
 }
 
+public function favorite_check($game_id)
+{
+$this->layout="ajax";
+$user_id=$this->Auth->user('id');
+$favbefore=$this->Game->Favorite->find("first",array("contain"=>false,"conditions"=>array("Favorite.user_id"=>$user_id,"Favorite.game_id"=>$game_id),"fields"=>array("Favorite.user_id","Favorite.game_id","Favorite.id")));
+if(empty($favbefore))
+			{
+			echo 0;
+			
+			}
+			else
+			{
+			echo 1;
+			}
+
+}
+
 
 	public function play($id = null) {
 		

@@ -801,5 +801,144 @@ if($('#follow_button').attr('id')=='follow_button')
 											 }						  
 			                    });
 		         }
+				 
+				 
+//***************************************************
+//------------------Favorite Functions-------------------------
+//***************************************************	
+
+
+	function favorite (game_name,user_auth,id) {
+		   
+		    if(user_auth==1)
+		    {
+				
+		switch_favorite(id);
+		$.pnotify({
+            title: 'Thanks for Favorite',
+            text: 'You have added <strong>'+game_name+'</strong> in your favorite list.<br>You can reach this game when you want to play again.',
+            type: 'success'
+          });
+		
+			}else{
+				
+			$.pnotify({
+            title: 'Sign in Please',
+            text: 'You have to sign in first to favorite games.',
+            type: 'error'
+          });	
+					
+			}
+		  
+				
+	}
 	
+	function unFavorite (game_name,user_auth,id) {
+		          
+		    if(user_auth==1)
+		    {
+				
+		switch_favorite(id);
+		$.pnotify({
+            title: 'Favorite has been removed',
+            text: 'You have removed <strong>'+game_name+'</strong> from your favorite list.',
+            type: 'error'
+          });
+		
+			}else{
+				
+			$.pnotify({
+            title: 'Sign in Please',
+            text: 'You have to sign in first to favorite games.',
+            type: 'error'
+          });	
+					
+			}
+		  
+				
+	}
+	
+	function switch_favorite(game_id)
+    {
+		
+    	$.get(favswitcher+'/'+game_id,function(data) {/*success callback*/});	
+		
+    }
+	
+	$('#fav_button').click(function () {
+		
+		$('#fav_button').hide();
+		$('#fav_button2').hide();
+		$('#unFav_button').show();
+		$('#unFav_button2').show();
+	});
+	
+	$('#unFav_button').click(function () {
+		
+		$('#unFav_button').hide();
+		$('#unFav_button2').hide();
+		$('#fav_button').show();
+		$('#fav_button2').show();
+	});
+	
+	$('#fav_button2').click(function () {
+		
+		$('#fav_button').hide();
+		$('#fav_button2').hide();
+		$('#unFav_button').show();
+		$('#unFav_button2').show();
+	});
+	
+	$('#unFav_button2').click(function () {
+		
+		$('#unFav_button').hide();
+		$('#unFav_button2').hide();
+		$('#fav_button').show();
+		$('#fav_button2').show();
+	});
+	
+//Her sayfa yüklenisinde ve sadece game sayfasinda çalismak üzere hazirlandi.	
+if($('#fav_button').attr('id')=='fav_button')
+	{
+	checkstatus2();
+	}
+	
+	
+		function checkstatus2(){
+		$.get(checkFavStat+'/'+game_id,function(data) {	  
+											if(data==1) {
+											    $('#fav_button').hide();
+												$('#fav_button2').hide();
+		                                        $('#unFav_button').show();
+												$('#unFav_button2').show();
+										     } else {
+											    $('#unFav_button').hide();
+												$('#unFav_button2').hide();
+		                                        $('#fav_button').show();
+												$('#fav_button2').show();
+											 }						  
+			                    });
+		         }
+				 
+	if($('#fav_button2').attr('id')=='fav_button2')
+	{
+	checkstatus2();
+	}
+	
+	
+		function checkstatus2(){
+		$.get(checkFavStat+'/'+game_id,function(data) {	  
+											if(data==1) {
+											    $('#fav_button').hide();
+												$('#fav_button2').hide();
+		                                        $('#unFav_button').show();
+												$('#unFav_button2').show();
+										     } else {
+											    $('#unFav_button').hide();
+												$('#unFav_button2').hide();
+		                                        $('#fav_button').show();
+												$('#fav_button2').show();
+											 }						  
+			                    });
+		         }
 	
