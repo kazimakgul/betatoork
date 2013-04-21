@@ -52,7 +52,6 @@ if($this->Session->check('Auth.User')){
     </div>
   <h5>Follow Channels</h5>
   <p>Following a channel means that you like the channel and you want to be more connected to the channel and games they have. You don't have to go to any other game site to see anything new anymore.</p>
-
 </div>
 
 <div class="alert alert-info span7">
@@ -63,10 +62,10 @@ if($this->Session->check('Auth.User')){
         
     </div>
   <h5><i class="elusive-info-sign"></i> Tips and Tricks</h5>
-  <p>Follow the channels you are interested about</p>
-  <p>Your dashboard will be full of your interests.</p>
-  <p>Channels will let you know first about the news they have.</p>
-  <p>One game source to rule them all!</p>
+  <p><i class="elusive-ok-sign"></i> Follow the channels you are interested about</p>
+  <p><i class="elusive-ok-sign"></i> Your dashboard will be full of your interests.</p>
+  <p><i class="elusive-ok-sign"></i> Channels will let you know first about the news they have.</p>
+  <p><i class="elusive-ok-sign"></i> One game source to rule them all!</p>
 
 </div>
 </div>

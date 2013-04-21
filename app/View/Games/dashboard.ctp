@@ -109,6 +109,7 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
             </div>
 
 </div>      
+<hr>
                              
                                 <ul class="thumbnails">
                                     <?php  echo $this->element('NewPanel/dashboard_game_box'); ?>
