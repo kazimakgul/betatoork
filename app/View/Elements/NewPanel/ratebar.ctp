@@ -58,7 +58,25 @@ Ornek=2:
 </div>
 -->
 
+<!-=================================================================->
+<!---------------Generate Play Url for Random Game----------------->
+<!-=================================================================->
+<?php 
 
+if($randomgame['Game']['seo_url']!=NULL)
+{
+      if($randomgame['Game']['embed']!=NULL)
+      $playurl=$this->Html->url(array( "controller" => h($randomgame['User']['seo_username']),"action" =>h($randomgame['Game']['seo_url']),'playgame'));
+	  else
+	  $playurl=$this->Html->url(array( "controller" => h($randomgame['User']['seo_username']),"action" =>h($randomgame['Game']['seo_url']),'playframe'));
+}
+else{
+    $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($randomgame['Game']['id'])));
+}
+?>
+<!-=================================================================->
+<!---------------/Generate Play Url for Random Game----------------->
+<!-=================================================================->
 <!----Declare Channel Name For JavaScript Usage---->
   <!----=========================================---->
   <script>
@@ -84,8 +102,8 @@ Ornek=2:
               </div>
               <div class="span4 helper-font-32">
                 <ul>
-                  <li rel="tooltip" data-placement="top" data-original-title="Next Game" class="btn pull-right color-blue" style="margin:5px;">
-                      <i class="elusive-fire"></i> Next <i class="elusive-circle-arrow-right"></i>
+                  <li rel="tooltip" data-placement="top" data-original-title="Next Game (<?php echo $game['Game']['name'];?>)" class="btn pull-right color-blue" style="margin:5px;">
+                      <a href="<?php echo $playurl;?>"><i class="elusive-fire"></i> Next <i class="elusive-circle-arrow-right"></i></a>
                   </li>
                   <li rel="tooltip" id="fav_button2" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);" data-placement="top" data-original-title="Add to Favorites" class="btn btn-danger pull-right" style="margin:5px;">
                       <i class="elusive-heart"></i>

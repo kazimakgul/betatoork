@@ -1158,6 +1158,19 @@ $this->set('description_for_layout', 'Toork - Game Search Engine powered by Goog
 		$this->Session->write('Random.user',$random['User']['seo_username']);
 }
 
+public function random2() {
+        $random2 = $this->Game->find('first',array(
+                'conditions' => array(
+                        'Game.active'=>1,
+                ),
+                'order' => 'rand()',
+				'contain'=>array('User'=>array('fields'=>array('User.seo_username'))),
+				'fields'=>array('Game.id,Game.seo_url','Game.embed')
+        ));//Recoded
+		$this->Session->write('Random2.flag',1);
+		$this->Session->write('Random2.game',$random2);
+}
+
 
 	public function view($id = null) {
 		$this->Game->id = $id;
@@ -1431,6 +1444,15 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 	public function playgame($channel=NULL,$seo_url=NULL) {
 	
+	//Getting Random Game Data
+	if($this->Session->read('Random2.flag')!=1)
+		{
+    	$this->random2();
+		$this->set('randomgame',$this->Session->read('Random2.game'));
+		}else{
+		$this->set('randomgame',$this->Session->read('Random2.game'));
+		}
+	
 		$this->layout='dashboard';
 		$this->headerLogin();
 		
@@ -1448,6 +1470,12 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
 		$this->set('author_for_layout', $game['User']['seo_username']);
 	    $this->set_suggested_channels();
+		
+		
+	//Set random game after rendering
+    $this->render();
+	if($this->Session->read('Random2.flag')==1)
+    $this->random2();
    
 	}
 
@@ -1461,9 +1489,20 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 			$this->redirect(array('controller' => 'games', 'action' => 'playgame',$gameid));
 		}
 
+
 	}
 
 	public function playgameframe($channel=NULL,$seo_url=NULL) {
+	
+	    //Getting Random Game Data
+	    if($this->Session->read('Random2.flag')!=1)
+		{
+    	$this->random2();
+		$this->set('randomgame',$this->Session->read('Random2.game'));
+		}else{
+		$this->set('randomgame',$this->Session->read('Random2.game'));
+		}
+	
 	
 		$this->layout='playgameframe';
 		$this->headerLogin();
@@ -1482,6 +1521,11 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
 		$this->set('author_for_layout', $game['User']['seo_username']);
 	    $this->set_suggested_channels();
+		
+	//Set random game after rendering
+    $this->render();
+	if($this->Session->read('Random2.flag')==1)
+    $this->random2();	
    
 	}
 
