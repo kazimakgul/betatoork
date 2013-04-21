@@ -64,7 +64,7 @@ else{
      <i class="icofont-heart"></i> Favorite
     </a> 
 	
-	 <a class="btn btn-danger" id="unFav_button" style="display:none;" onclick="unFavorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);">
+	 <a class="btn" id="unFav_button" style="display:none;" onclick="unFavorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);">
      <i class="icofont-heart"></i> Unfavorite
     </a> 
 
