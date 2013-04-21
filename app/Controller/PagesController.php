@@ -101,6 +101,7 @@ public function leftpanel(){
 
 	public function display() {
 		$path = func_get_args();
+		$this->layout='dashboard';
 		$this->leftpanel();
 		$this->logedin_user_panel();
 
