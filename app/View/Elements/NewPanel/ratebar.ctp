@@ -102,7 +102,7 @@ else{
               </div>
               <div class="span4 helper-font-32">
                 <ul>
-                  <li rel="tooltip" data-placement="top" data-original-title="Next Game (<?php echo $game['Game']['name'];?>)" class="btn pull-right color-blue" style="margin:5px;">
+                  <li rel="tooltip" data-placement="top" data-original-title="Next Game (<?php echo $randomgame['Game']['name'];?>)" class="btn pull-right color-blue" style="margin:5px;">
                       <a href="<?php echo $playurl;?>"><i class="elusive-fire"></i> Next <i class="elusive-circle-arrow-right"></i></a>
                   </li>
                   <li rel="tooltip" id="fav_button2" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);" data-placement="top" data-original-title="Add to Favorites" class="btn btn-danger pull-right" style="margin:5px;">

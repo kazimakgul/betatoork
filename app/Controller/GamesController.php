@@ -1165,7 +1165,7 @@ public function random2() {
                 ),
                 'order' => 'rand()',
 				'contain'=>array('User'=>array('fields'=>array('User.seo_username'))),
-				'fields'=>array('Game.id,Game.seo_url','Game.embed')
+				'fields'=>array('Game.id,Game.seo_url','Game.embed','Game.name')
         ));//Recoded
 		$this->Session->write('Random2.flag',1);
 		$this->Session->write('Random2.game',$random2);
