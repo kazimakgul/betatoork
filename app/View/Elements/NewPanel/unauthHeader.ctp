@@ -44,6 +44,7 @@
                     <label class="string optional" for="user_remember_me"> Remember me</label>
                     <input class="btn btn-success" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="button" name="commit" id="t_mobile_login_btn" value="Sign In" />
                 </form>
+                <a style="margin:10px 0px 0px 0px;" class="btn btn-block"><i class="elusive-facebook color-blue"></i> Connect with Facebook</a>
                 <div class="control-group">
                     <p class="recover-account"><a href="#modal-recover" class="link" data-toggle="modal">forget your password</a></p>
                 </div>
