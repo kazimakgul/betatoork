@@ -1,5 +1,7 @@
 <?php
 $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
+$terms=$this->Html->url(array("controller" => "pages","action" =>"terms"));
+$privacy=$this->Html->url(array("controller" => "pages","action" =>"privacy"));
 ?>
 <div class="clear"></div>
 
@@ -38,8 +40,8 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
 <input  value="Password" id="reg_password"  placeholder="Password" name="PASSWORD" type="password"  class="phone-newsletter"   >
 <input  type="hidden" id="fast_register" value="1" >
 <div style="padding-bottom:10px; margin:-26px 0px 0px 19px;"><i class="color-white elusive-lock"></i></div>
-<input type="button" id="t_landing_registerbtn" value="Join Now" name="subscribe"  class="btn btn-success pull-right">
-<label> * By clicking "Join Now" you agree to Toork's Terms &#38; Privacy.</label>
+<input style="margin:10px 0px 0px 0px;" type="button" id="t_landing_registerbtn" value="Join Now" name="subscribe"  class="btn btn-success pull-right">
+<label> * By clicking "Join Now" you agree to Toork's <a href="<?php echo $terms;?>">Terms</a> &#38; <a href="<?php echo $privacy;?>">Privacy.</a></label>
 </form>
     
 <!-- Newsletter -->
