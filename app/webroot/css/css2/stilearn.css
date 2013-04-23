@@ -313,8 +313,8 @@ ul.dropdown-notification > li.dropdown-header:hover{
     height: 100%;
     top: 40px;
     padding-bottom: 20px;
-    background: #E9E9E9 url('../../img/img2/bg-body-bar3.jpg');
-    border: 1px solid #CDCDCD;
+    background: #333333 url('../../img/img2/bg-body-bar3.jpg');
+    border: 1px solid #2E2E2E;
     width: 6.382978723404255%;
     *width: 6.329787234042553%;
     z-index: 98;
@@ -347,10 +347,16 @@ ul.dropdown-notification > li.dropdown-header:hover{
     display: block;
     text-align: center;
     font-size: 11px;
-    border-bottom: 1px solid #CDCDCD;
+    border-bottom: 1px solid #2E2E2E;
+    border-top: 1px solid #555555;
 }
 .sidebar > li > a{
-    color: #626262;
+    color: #CDCDCD;
+    background-image: -webkit-linear-gradient(top, rgba(86, 86, 86, 0.2) 0%, rgba(54, 54, 54, 0.2) 100%);
+    background-image: -moz-linear-gradient(top, rgba(86, 86, 86, 0.2) 0%, rgba(54, 54, 54, 0.2) 100%);
+    background-image: -o-linear-gradient(top, rgba(86, 86, 86, 0.2) 0%, rgba(54, 54, 54, 0.2) 100%);
+    background-image: -ms-linear-gradient(top, rgba(86, 86, 86, 0.2) 0%, rgba(54, 54, 54, 0.2) 100%);
+    background-image: linear-gradient(top, rgba(86, 86, 86, 0.2) 0%, rgba(54, 54, 54, 0.2) 100%);
 }
 .sidebar > li:hover, .sidebar a:hover{
     color: #2e8def;
@@ -361,7 +367,7 @@ ul.dropdown-notification > li.dropdown-header:hover{
 }
 
 .sidebar > li.active > a{
-    color: #222222;
+    color: #2e8def;
 }
 .sidebar > li.active:after, .sidebar > li.active:before{
     right: -1px;
