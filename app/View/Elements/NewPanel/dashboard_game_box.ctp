@@ -41,13 +41,11 @@ else{
                     </div>
 
                     <div rel="tooltip" data-placement="bottom" data-original-title="28 People Rated" class="pull-left helper-font-16">
-    <!--**************************-->  
-	<!--16px Rating Stars Starts Below-->	
-	<!--**************************-->	  
-	<?php echo  $this->element('NewPanel/rating_stars_16',array('game'=>$game)); ?>
-	<!--**************************-->  
-	<!--/16px Rating Stars Ends Below-->	
-	<!--**************************-->	
+                      <i class="elusive-star"></i>
+                      <i class="elusive-star"></i>
+                      <i class="elusive-star"></i>
+                      <i class="elusive-star"></i>
+                      <i class="elusive-star-empty"></i>
                     </div>
 
                   </div>

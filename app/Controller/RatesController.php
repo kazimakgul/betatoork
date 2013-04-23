@@ -153,7 +153,7 @@ if (!$this->Rate->Game->exists()) {
 			if ($this->Rate->save($this->request->data)) {
 			    $this->starsize($this->Rate->field('game_id'),0);
 				$this->requestAction( array('controller' => 'userstats', 'action' => 'totalrate',$game_id));
-				$this->set("mess","Your rating has been updated.");
+				$this->set("mess","The rate has been updated.");
 				
 			} else {
 				$this->set("mess","The rate could not be updated. Please, try again.");
