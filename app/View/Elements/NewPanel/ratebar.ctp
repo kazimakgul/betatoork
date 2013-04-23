@@ -91,15 +91,26 @@ else{
   <!----=========================================---->
 
 
-              <div class="span4 helper-font-32">
+              
+			  
+			  
+			  <div class="span4 helper-font-32">
                  <div class="pull-right" style="margin-top:5px;">
-                      <i class="elusive-star"></i>
-                      <i class="elusive-star"></i>
-                      <i class="elusive-star"></i>
-                      <i class="elusive-star"></i>
-                      <i class="elusive-star-empty"></i>
-                    </div>
+	
+	
+	<!--**************************-->  
+	<!--32px Rating Stars Starts Below-->	
+	<!--**************************-->	  
+	<?php echo  $this->element('NewPanel/rating_stars_32'); ?>
+	<!--**************************-->  
+	<!--/32px Rating Stars Ends Below-->	
+	<!--**************************-->	
+		
+		
+		</div>
               </div>
+			  
+			  
               <div class="span4 helper-font-32">
                 <ul>
                   <li rel="tooltip" data-placement="top" data-original-title="Next Game (<?php echo $randomgame['Game']['name'];?>)" class="btn pull-right color-blue" style="margin:5px;">
