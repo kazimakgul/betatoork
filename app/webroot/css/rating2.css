@@ -1,0 +1,139 @@
+/*Stars for 32 px*/
+.stars { 
+  position: relative; 
+  float: left; 
+  background: url('../img/rating/star_e.png') repeat-x left top; 
+  cursor: default; 
+}
+
+.stars .star { 
+  height: 32px; 
+  padding-left: 32px; 
+  background: transparent none repeat-x left top; 
+  cursor: pointer; 
+}
+
+
+
+.stars:hover .star { 
+  background-image: url('../img/rating/star_c.png');
+}
+.stars:hover .star:hover {
+  background-image: url('../img/rating/star_h.png'); 
+}
+.stars .ratingbar { 
+  position: absolute; 
+  height: 100%; 
+  background: url('../img/rating/star_h.png') repeat-x left top; 
+}
+
+
+.stars:hover .ratingbar { 
+  display: none;
+}
+
+.nostars { 
+  position: relative; 
+  float: left; 
+  background: url('star_u24.png') repeat-x left top; 
+  cursor: default; 
+}
+.nostars .star { 
+  height: 24px; 
+  padding-left: 24px; 
+  background: transparent none repeat-x left top; 
+  cursor: default; 
+}
+.nostars .rating { 
+  position: absolute; 
+  height: 100%; 
+  background: url('star_d24.png') repeat-x left top; 
+}
+
+
+/*Stars for 16 px*/
+.stars2 { 
+  position: relative; 
+  float: left; 
+  background: url('../img/rating/star_16_e.png') repeat-x left top; 
+  cursor: default; 
+}
+
+.stars2 .star2 { 
+  height: 16px; 
+  padding-left: 16px; 
+  background: transparent none repeat-x left top; 
+}
+
+
+
+/*.stars2:hover .star2 { 
+  background-image: url('../img/rating/star_16_c.png');
+}
+.stars2:hover .star2:hover {
+  background-image: url('../img/rating/star_16_h.png'); 
+}
+*/
+.stars2 .ratingbar2 { 
+  position: absolute; 
+  height: 100%; 
+  background: url('../img/rating/star_16_h.png') repeat-x left top; 
+}
+
+/*
+.stars2:hover .ratingbar2 { 
+  display: none;
+}
+*/
+.nostars2 { 
+  position: relative; 
+  float: left; 
+  background: url('star_u24.png') repeat-x left top; 
+  cursor: default; 
+}
+.nostars2 .star2 { 
+  height: 24px; 
+  padding-left: 24px; 
+  background: transparent none repeat-x left top; 
+  cursor: default; 
+}
+.nostars2 .rating2 { 
+  position: absolute; 
+  height: 100%; 
+  background: url('star_d24.png') repeat-x left top; 
+}
+
+
+/*Favorite Heart*/
+
+
+.hearts { 
+  position: relative; 
+  float: right; 
+  background: url('heart1.png') repeat-x left top; 
+  cursor: default;
+  margin-right:20px;
+}
+.hearts .heart { 
+  height: 32px; 
+  padding-left: 32px; 
+  background: transparent none repeat-x left top; 
+  cursor: pointer; 
+}
+.hearts:hover .heart { 
+  background-image: url('heart1.png'); 
+}
+.hearts:hover .heart:hover {
+  background-image: url('heart3.png'); 
+}
+.hearts .adding { 
+  position: absolute; 
+  height: 100%; 
+  background: url('heart2.png') repeat-x left top; 
+}
+.hearts:hover .adding { 
+  display: none;
+}
+
+
+
