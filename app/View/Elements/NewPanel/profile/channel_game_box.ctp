@@ -3,7 +3,7 @@
 
 if($game['User']['seo_username']!=NULL)
 {
-  $profileurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>'go')); 
+  $profileurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>'')); 
 }
 else{
   $profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$game['User']['id']));
