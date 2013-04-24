@@ -125,9 +125,9 @@ else{
                  <li rel="tooltip" id="comment" data-toggle="popover" data-placement="top" data-html="true" title="Comment" data-placement="top" data-original-title="Comment" class="btn pull-right color-green" style="margin:5px;"data-content='
 
                 <form class="navbar-form ">
-                    <textarea class="span12" rows="4" placeholder="What do you think about this game?">#<?php echo $game["Game"]["seo_url"];?> </textarea>
+                    <textarea class="span12" id="game_comment" rows="4" placeholder="What do you think about this game?">#<?php echo $game["Game"]["seo_url"];?> </textarea>
                  </br>
-                  <button type="submit" class="btn btn-info pull-right update_data">Comment</button>
+                  <button type="button" id="success-post3" class="btn btn-info pull-right update_game_comment">Comment</button>
                 </form></br>
                   '>
                       <i class="elusive-comment"></i>
