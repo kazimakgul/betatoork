@@ -1,6 +1,6 @@
 <?php
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
-$profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>'go'));
+$profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 ?>
 
                 <!-- span content -->
