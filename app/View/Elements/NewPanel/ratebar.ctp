@@ -94,7 +94,7 @@ else{
               
 			  
 			  
-			  <div class="span4 helper-font-32">
+			  <div class="span3 helper-font-32">
                  <div class="pull-right" style="margin-top:5px;">
 	
 	
@@ -111,7 +111,7 @@ else{
               </div>
 			  
 			  
-              <div class="span4 helper-font-32">
+              <div class="span5 helper-font-32">
                 <ul>
                   <li rel="tooltip" data-placement="top" data-original-title="Next Game (<?php echo $randomgame['Game']['name'];?>)" class="btn pull-right color-blue" style="margin:5px;">
                       <a href="<?php echo $playurl;?>"><i class="elusive-fire"></i> Next <i class="elusive-circle-arrow-right"></i></a>
@@ -157,6 +157,19 @@ else{
 
                   '>
                       <i class="elusive-share"></i>
+                  </li>
+
+                 <li rel="tooltip" id="ratebarchain" data-toggle="popover" data-placement="top" data-html="true" title="Chain This Game" data-placement="top" data-original-title="Chain to Game" class="btn pull-right btn-info" style="margin:5px;"data-content='
+                        <p class="alert alert-info" STYLE="font-size:10pt;">A clone of this game will be created in your games section and you will be able to edit the game as you wish.</p>
+                        <a class="btn btn-danger btn-small btn-block">
+                            <div class="helper-font-16">
+                            <i class="elusive-circle-arrow-right"> Chain Now !</i>
+                            </div>
+                        </a>
+                        <p STYLE="font-size:10pt;">
+                          Its the easy way of adding a game to your channel.</p>
+                  '>
+                      <i class="icofont-link"></i>
                   </li>
 
                 </ul>

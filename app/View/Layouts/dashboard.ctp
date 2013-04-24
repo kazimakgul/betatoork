@@ -169,6 +169,7 @@ search_url='<?php echo $this->Html->url(array("controller"=>"games","action"=>"s
 $('#gameshare').popover();
 $('#comment').popover();
 $('#ratebarshare').popover();
+$('#ratebarchain').popover();
 </script>
 <!-- Js variable for wallscript ends-->
 
