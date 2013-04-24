@@ -240,6 +240,110 @@ $(document).ready(function()
 		return false;
 	});
 	
+	
+	// Update Button for Dropdown Update Panel
+	$(".fast_update_data").click(function() 
+	{
+		//Wall postun yazildigi textbox'in i軻rigi.	
+		var updateval = $("#fast_update").val();
+
+		//Uploaded file段n id degerini barindirir.Bu elligi simdilik bozdum.D�zeltilecek.  
+		var uploadvalues=0;
+
+		//Class段 preview olan bir item段n olup olmadigini kontrol edecek.
+		var X=$('.preview').attr('id');
+		//Class段 webcam_preview olan bir item段n olup olmadigini kontrol edecek.
+		var Y=$('.webcam_preview').attr('id');
+		
+		if(X)//Class'i 'preview' olan bir item var mi?
+		{
+			var Z= X+','+uploadvalues;
+		} 
+		else if(Y) //Class'i 'webcam_preview' olan bir item var mi?
+		{
+			var Z= uploadvalues;
+		}
+		else
+		{
+			var Z=0;//Post Media Barindirmiyor?
+		}
+		
+		var dataString = 'update='+ updateval+'&uploads='+Z;
+		var form = 	$('#wallstatus').data('form');
+		if(form == 'addgameform')
+		{
+			var postdata = $('#gameaddform').serialize()+'&status='+ updateval;
+			$.ajax({
+				type: "POST",
+				url: '/betatoork/wallentries/gamefeed_ajax',
+				data: postdata,
+				cache: false,
+				success: function(html)
+				{
+					$('#addgame_container').slideUp('fast',function(){
+						$('#gamename').val('');
+						$('#gamelink').val('');
+						$('#gameembedcode').val('');
+						$('#gamedesc').val('');
+						$('#gameimg').val('');
+					});
+					$("#webcam_container").slideUp('fast');
+					$("#flash").fadeOut('slow');
+					$("#content").prepend(html);
+					$("#fast_update").val('');	
+					$("#fast_update").focus();
+					$('#preview').html('');
+					$('#webcam_preview').html('');
+					$('#uploadvalues').val('');
+					$('#photoimg').val('');
+					console.log(postdata);
+				}
+			});			
+			
+		}
+		if(form != 'addgameform')
+		{
+			if($.trim(updateval).length==0)
+			{
+				 $.pnotify({
+            text: 'Please Enter Some Text.',
+            type: 'error',
+			hide: true
+                });
+			}
+			else
+			{
+				$("#flash").show();
+				$("#flash").fadeIn(400).html('Loading Update...');
+				
+				$.ajax({
+					type: "POST",
+					url: wallvar,
+					data: dataString,
+					cache: false,
+					success: function(html)
+					{   
+						$('#addgame_container').slideUp('fast');
+						$("#webcam_container").slideUp('fast');
+						$("#flash").fadeOut(html);
+						$("#content").prepend(html);
+						$("#my_more_content").prepend(html.replace("stbody", "stbody2").replace("commentopen", "commentopen2").replace("commentbox", "commentbox2").replace("ctextarea", "ctextarea2").replace("comment_button", "comment_button2").replace("commentload", "commentload2"));
+						$("#fast_update").val('');	
+						$("#fast_update").focus();
+						$('#preview').html('');
+						$('#webcam_preview').html('');
+						$('#uploadvalues').val('');
+						$('#photoimg').val('');
+					}
+				});
+				$("#preview").html();
+				$('#imageupload').slideUp('fast');
+			}
+		}
+		return false;
+	});
+	
+	
 //Commment Submit
 
 $('.comment_button').live("click",function() 
