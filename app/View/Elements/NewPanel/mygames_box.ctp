@@ -47,17 +47,19 @@ else{
                         </div>
                   <hr size="3" style="margin:0px 0px 5px 0px;">
                     <div class="helper-font-16 pull-right">
-                      <i style="opacity:0.5;" rel="tooltip" data-placement="bottom" data-original-title="42 Favorites" class="color-red icofont-heart"></i>
-                      <i style="opacity:0.5;" rel="tooltip" data-placement="bottom" data-original-title="177 Plays" class="color-blue icofont-play"></i>
-                       <i style="opacity:0.5;" rel="tooltip" data-placement="bottom" data-original-title="3 Comments" class="color-green icofont-comment"></i>
+                      <i style="opacity:0.5;" rel="tooltip" data-placement="bottom" data-original-title="Favorites" class="color-red icofont-heart"></i>
+                      <i style="opacity:0.5;" rel="tooltip" data-placement="bottom" data-original-title="Plays" class="color-blue icofont-play"></i>
+                       <i style="opacity:0.5;" rel="tooltip" data-placement="bottom" data-original-title="Comments" class="color-green icofont-comment"></i>
                     </div>
 
-                    <div rel="tooltip" data-placement="bottom" data-original-title="28 People Rated" class="pull-left helper-font-16">
-                      <i class="elusive-star"></i>
-                      <i class="elusive-star"></i>
-                      <i class="elusive-star"></i>
-                      <i class="elusive-star"></i>
-                      <i class="elusive-star-empty"></i>
+                    <div rel="tooltip" data-placement="bottom" data-original-title="Avarage Total Rating" class="pull-left helper-font-16">
+    <!--**************************-->  
+  <!--16px Rating Stars Starts Below--> 
+  <!--**************************-->   
+  <?php echo  $this->element('NewPanel/rating_stars_16',array('game'=>$game)); ?>
+  <!--**************************-->  
+  <!--/16px Rating Stars Ends Below-->  
+  <!--**************************--> 
                     </div>
 
                   </div>
