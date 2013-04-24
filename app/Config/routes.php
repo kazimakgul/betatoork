@@ -39,9 +39,9 @@
 	/**
  * ...Generatin seo url
  */
-	Router::connect('/:channel/:seo_url/play', array('controller' => 'games', 'action' => 'seoplay'),array('channel' => '[-a-z0-9]+','seo_url' => '[-a-z0-9]+','pass' => array('channel','seo_url')));
+	Router::connect('/:channel/:seo_url/play', array('controller' => 'games', 'action' => 'playgameframe'),array('channel' => '[-a-z0-9]+','seo_url' => '[-a-z0-9]+','pass' => array('channel','seo_url')));
 	
-	Router::connect('/:channel/:seo_url/play2', array('controller' => 'games', 'action' => 'seoplay2'),array('channel' => '[-a-z0-9]+','seo_url' => '[-a-z0-9]+','pass' => array('channel','seo_url')));
+	Router::connect('/:channel/:seo_url/play2', array('controller' => 'games', 'action' => 'playgame'),array('channel' => '[-a-z0-9]+','seo_url' => '[-a-z0-9]+','pass' => array('channel','seo_url')));
 	
 	
 	//<----New Routing Actions
