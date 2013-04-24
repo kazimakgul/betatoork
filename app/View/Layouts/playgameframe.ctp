@@ -152,6 +152,7 @@ search_query=$('.search-query').val();
 search_url='<?php echo $this->Html->url(array("controller"=>"games","action"=>"search2"));?>';
 $('#comment').popover();
 $('#ratebarshare').popover();
+$('#ratebarchain').popover();
 </script>
 <!-- Js variable for wallscript ends-->
 
