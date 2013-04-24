@@ -152,13 +152,7 @@ if($gplus==NULL){
                                                 <li class="active"><a data-toggle="tab" href="#boxtab-1"><i class="elusive-user"></i> Channel Games</a></li>
                                                 <li class=""><a data-toggle="tab" href="#boxtab-2"><i class="elusive-heart color-red"></i> Favorites</a></li>
                                                 <li class=""><a data-toggle="tab" href="#boxtab-3"><i class="elusive-th-list color-purple"></i> Wall</a></li>
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Follow <b class="caret"></b></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#boxdropdown-1" data-toggle="tab">Following</a></li>
-                                                        <li><a href="#boxdropdown-2" data-toggle="tab">Followers</a></li>
-                                                    </ul>
-                                                </li><!--/tab menus-->
+                                                <li class=""><a data-toggle="tab" href="#boxtab-4"><i class="icofont-link color-blue"></i> Followers</a></li>
                                             </ul>
                                         </div>
                                         <div class="box-body">
@@ -168,7 +162,7 @@ if($gplus==NULL){
 
 <ul class="thumbnails">
 
-<?php  echo $this->element('NewPanel/channel_game_box'); ?>
+<?php  echo $this->element('NewPanel/profile/channel_game_box'); ?>
 
 </ul>
 
@@ -176,7 +170,7 @@ if($gplus==NULL){
                                                 <div class="tab-pane fade" id="boxtab-2">
 <ul class="thumbnails">
 
-<?php  echo $this->element('NewPanel/channel_favorite_box'); ?>
+<?php  echo $this->element('NewPanel/profile/channel_favorite_box'); ?>
 
 </ul>
                                                 </div>
@@ -340,11 +334,12 @@ if($gplus==NULL){
                                     </div><!--/box-tab-->
                                 </div><!-- tab resume update -->
                                                 </div>
-                                                <div class="tab-pane fade" id="boxdropdown-1">
-                                                    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="boxdropdown-2">
-                                                    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+                                                <div class="tab-pane fade" id="boxtab-4">
+<ul class="thumbnails">
+
+<?php  echo $this->element('NewPanel/profile/followers'); ?>
+
+</ul>
                                                 </div>
                                             </div><!--/widgets-tab-body-->
                                         </div>

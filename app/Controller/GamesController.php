@@ -828,7 +828,9 @@ public function profile() {
 		$this->set('googleVerify','');	
 	}
 
-   	$this->set('limit', $limit);
+	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_to_id' => $userid),'limit' => $limit));
+	//$this->set('followers', $subCond);
+	$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_to_id' => $userid)));
     $this->set('favorites', $cond2);
     $this->set('mygames', $cond);
     $this->set('username', $userName);

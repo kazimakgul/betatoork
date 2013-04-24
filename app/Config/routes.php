@@ -59,7 +59,7 @@
 	
 	Router::connect('/:channel/news/:type', array('controller' => 'Wallentries', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','type' => '[-a-z0-9]+','pass' => array('channel','type')));
 	
-	Router::connect('/:channel', array('controller' => 'games', 'action' => 'channelgames'),array('channel' => '[-a-z0-9]+','pass' => array('channel')));
+	Router::connect('/:channel', array('controller' => 'games', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','pass' => array('channel')));
 	
 	
 	

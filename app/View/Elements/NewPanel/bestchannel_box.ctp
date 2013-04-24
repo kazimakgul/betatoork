@@ -5,7 +5,7 @@ $followid = $follower['User']['id'];
 
 if($follower['User']['seo_username']!=NULL)
 {
-  $profileurl=$this->Html->url(array( "controller" => h($follower['User']['seo_username']),"action" =>'go')); 
+  $profileurl=$this->Html->url(array( "controller" => h($follower['User']['seo_username']),"action" =>'')); 
 }
 else{
   $profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$followid));

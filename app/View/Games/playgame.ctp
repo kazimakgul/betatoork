@@ -1,7 +1,7 @@
 <?php
 if($game['User']['seo_username']!=NULL)
 {
-  $profilepublic=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>'go')); 
+  $profilepublic=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>'')); 
 }
 else{
   $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$game['User']['id']));

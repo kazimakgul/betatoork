@@ -1,5 +1,5 @@
 <?php 
-$profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>'go'));
+$profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 ?>
         <!-- section header -->
 <div class="navbar navbar-fixed-top">
