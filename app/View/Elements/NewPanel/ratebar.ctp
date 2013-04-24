@@ -126,6 +126,7 @@ else{
 
                 <form class="navbar-form ">
                     <textarea class="span12" id="game_comment" rows="4" placeholder="What do you think about this game?">#<?php echo $game["Game"]["seo_url"];?> </textarea>
+					<input type="hidden" id="game_id" value="<?php echo $game["Game"]["id"];?>">
                  </br>
                   <button type="button" id="success-post3" class="btn btn-info pull-right update_game_comment">Comment</button>
                 </form></br>

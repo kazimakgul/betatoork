@@ -141,6 +141,7 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 <!-- Js variable for wallscript begins-->
 <script>
 wallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'message_ajax2')); ?>';
+comment_var='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'comment_ajax')); ?>';
 
 my_feed_var='<?php if(isset($uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax_my',$uid,$type)); }?>';
 
