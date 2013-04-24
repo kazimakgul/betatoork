@@ -203,7 +203,7 @@ public function set_suggested_channels()
 		$restrict=50;
 		$status='normal';
 		$counter=0;
-		$limit=10;
+		$limit=20;
 		$authid = $this->Session->read('Auth.User.id');
 		//Repeat it to get data
 		$listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
