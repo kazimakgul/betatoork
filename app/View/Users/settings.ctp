@@ -1,6 +1,6 @@
 <?php
 $password=$this->Html->url(array("controller" => "users","action" =>"password2",$this->Session->read('Auth.User.id')));
-$profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>'go'));
+$profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 ?>
                 <!-- span content -->
                 <div class="span9">

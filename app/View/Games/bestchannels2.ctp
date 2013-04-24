@@ -29,7 +29,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="#"><i class="icofont-link"></i> Best Channels</a></li>
+                                <li><a href="#"><i class="elusive-user"></i> Best Channels</a></li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
                         

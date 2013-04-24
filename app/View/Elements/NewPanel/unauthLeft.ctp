@@ -19,7 +19,7 @@ if ($this->action == "dashboard"){
                             <li <?php echo $class;?>> <!--always define class .first for first-child of li element sidebar left-->
                                 <a href="<?php echo $index; ?>" title="what is toork">
                                     <div class="helper-font-24">
-                                        <i class="icofont-link"></i>
+                                        <i class="elusive-user"></i>
                                     </div>
                                     <span class="sidebar-text">Join Toork</span>
                                 </a>
@@ -36,7 +36,7 @@ if ($this->action == "dashboard"){
                                     <li style="margin:0px 10px 0px 10px;">
                                         <a href="<?php echo $bestchannels; ?>" title="Best Channels">
                                             <div class="helper-font-24">
-                                                <i class="icofont-link"></i>
+                                                <i class="elusive-user"></i>
                                             </div>
                                             <span class="sidebar-text">Best Channels</span>
                                         </a>
