@@ -57,7 +57,7 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
                                         <h3>Start Building!</h3>
                                         <p>To start building your channel complete these steps.</p>
                                             <p>
-                                            <a rel="tooltip" data-placement="top" data-original-title="take the tour"  class="btn btn-info" onclick="javascript:introJs().start();" style="margin:0px 3px 5px 0px;">
+                                            <a rel="tooltip" data-placement="top" data-original-title="Take The Tour"  class="btn btn-info" onclick="javascript:introJs().start();" style="margin:0px 3px 5px 0px;">
                                                 <i class="elusive-compass"></i> Tour
                                             </a>
                                              <a rel="tooltip" data-placement="top" data-original-title="Add a Game" href="<?php echo $addGame; ?>" class="btn btn-danger" style="margin:0px 3px 5px 0px;">

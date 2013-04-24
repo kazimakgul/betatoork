@@ -114,10 +114,11 @@ else{
 //-------/Setting Up of Play Url----------
 ?>
   
+  <?php $gameName = $oneof3['Game']['name'];?>
   <li style="margin:0px 0px 0px 5px;">
-    
-	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($oneof3,'Game.picture',array(NULL),array('width'=>'130px','height'=>'72px','style'=>'max-height:72px','alt'=>$oneof3['Game']['name'],'class'=>'img-polaroid')); ?></a>
-	
+    <div rel="tooltip" data-placement="top" data-original-title="<?php echo $gameName; ?>" >
+  <a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($oneof3,'Game.picture',array(NULL),array('width'=>'130px','height'=>'72px','style'=>'max-height:72px','alt'=>$gameName,'class'=>'img-polaroid')); ?></a>
+   </div>
   </li>  
  
 <?php endforeach; ?>

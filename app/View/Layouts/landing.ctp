@@ -39,7 +39,7 @@ echo $this->Html->meta('keywords','create game channel,share games, social netwo
 <!-- ### Stylesheet and Bootstrap ### -->
 
 
-<?php echo $this->Html->css(array('css2/bootstrap','css2/bootstrap-responsive','css2/stilearn','css2/stilearn-responsive','css2/stilearn-helper','css2/stilearn-icon','css2/font-awesome','css2/animate','css2/uniform.default','css2/select2','css2/jquery.pnotify.default','css2/elusive-webfont')); ?>
+<?php echo $this->Html->css(array('css2/bootstrap','css2/bootstrap-responsive','css2/stilearn','css2/stilearn-responsive','css2/stilearn-helper','css2/stilearn-icon','css2/font-awesome','css2/animate','css2/uniform.default','css2/select2','css2/jquery.pnotify.default','css2/elusive-webfont','rating2')); ?>
 <?php echo $this->Html->css(array('land/styles.css')); ?>
 
 <!-- ### Favicon ### -->
