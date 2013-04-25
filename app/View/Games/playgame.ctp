@@ -93,9 +93,10 @@ else{
               <div class="navbar-inner">
                 </br>
                 <form class="navbar-form ">
-                    <textarea class="span12" rows="4"  placeholder="What do you think about this game?"></textarea>
+                    <textarea id="game_comment2" class="span12" rows="4"  placeholder="What do you think about this game?">#<?php echo $game["Game"]["seo_url"];?> </textarea>
                  </br>
-                  <button type="submit" class="btn btn-info pull-left">Comment</button>
+				  <input type="hidden" id="game_id" value="<?php echo $game["Game"]["id"];?>">
+                  <button type="button" class="btn btn-info pull-left update_game_comment2">Comment</button>
                 </form></br>
               </div>
             </div>
