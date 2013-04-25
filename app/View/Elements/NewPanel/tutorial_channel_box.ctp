@@ -34,7 +34,7 @@ else{
 			<div class="span6" style="margin:0px;">
 
 									
-				 <li class="header-control contact-alt grd-white" style="margin:0px 5px 5px 0px;">
+				 <li class="header-control contact-alt grd-white" style="margin:0px 10px 10px 0px;">
                                                     <!--we use data toggle tab for navigate this action-->
                                                     <a style="margin:0px 0px 5px 0px;" href="#" >
                                                         <!--we use contact-item structure like the component media in bootstrap-->

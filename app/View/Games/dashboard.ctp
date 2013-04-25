@@ -76,7 +76,7 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
                                             <p><i class="elusive-circle-arrow-down"></i> <small>We recommend you games upon your interests here.</small></p>
                             </div>
 <?php  echo $this->element('NewPanel/tutorial'); ?>
-
+<?php  echo $this->element('NewPanel/tutorial2'); ?>
             <div class="navbar span7" data-step="1" data-intro="Hello pal :) This is one of your ways that you can share your ideas about games. Just write what you think and click share button. You can also share a picture or a a video and also a game which is a unique feature to toork.">
               <div class="navbar-inner">
                 </br>
