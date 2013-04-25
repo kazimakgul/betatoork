@@ -72,26 +72,7 @@ else{
 <a class="btn btn-info pull-right" id="gameshare" data-toggle="popover" data-placement="left" data-html="true" data-content='
 
 
-    <a class="btn btn-info">
-        <div class="helper-font-16">
-        <i class="icofont-facebook"> share</i>
-        </div>
-    </a>
-    <a class="btn btn-danger">
-        <div class="helper-font-16">
-        <i class="icofont-pinterest"> share</i>
-        </div>
-    </a>
-    <a class="btn btn-info">
-        <div class="helper-font-16">
-        <i class="icofont-twitter"> share</i>
-        </div>
-    </a>
-    <a class="btn btn-danger">
-        <div class="helper-font-16">
-        <i class="icofont-google-plus"> share</i>
-        </div>
-    </a>
+<?php echo  $this->element("NewPanel/share"); ?>
 
 ' title="Share on Socials" data-original-title="Social Share"><i class="icofont-share"></i> Share</a>
 
@@ -193,7 +174,15 @@ else{
                             </div>
 
 <!-- /Comment Unit -->
+<!-- Add Unit -->
+<div class="well" style="padding:5px;">
+<div align="center" style="max-height:110px; overflow:hidden;">
 
+<?php echo $game['User']['adcode'] ?> 
+
+</div>
+</div>
+<!-- /Add Unit -->
 
                         </div><!--/content-body -->
                     </div><!-- /content -->

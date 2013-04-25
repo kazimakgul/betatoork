@@ -135,26 +135,7 @@ else{
                   </li>
                  <li rel="tooltip" id="ratebarshare" data-toggle="popover" data-placement="top" data-html="true" title="Share" data-placement="top" data-original-title="Share" class="btn pull-right color-blue" style="margin:5px;"data-content='
 
-                        <a class="btn btn-info">
-                            <div class="helper-font-16">
-                            <i class="icofont-facebook"> share</i>
-                            </div>
-                        </a>
-                        <a class="btn btn-danger">
-                            <div class="helper-font-16">
-                            <i class="icofont-pinterest"> share</i>
-                            </div>
-                        </a>
-                        <a class="btn btn-info">
-                            <div class="helper-font-16">
-                            <i class="icofont-twitter"> share</i>
-                            </div>
-                        </a>
-                        <a class="btn btn-danger">
-                            <div class="helper-font-16">
-                            <i class="icofont-google-plus"> share</i>
-                            </div>
-                        </a>
+                  <?php echo  $this->element("NewPanel/share"); ?>
 
                   '>
                       <i class="elusive-share"></i>
