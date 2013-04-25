@@ -13,7 +13,6 @@
                 </ul>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Skip</button>
                     <input type="submit" data-dismiss="modal" href="#modal-tutorial2" data-toggle="modal" class="btn btn-success" value="Next" >
                 </div>
             </div><!-- /modal recover-->
