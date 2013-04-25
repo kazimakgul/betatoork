@@ -770,6 +770,79 @@ error_reporting(0);
 }}
 
 
+//Part of wall function(Bootstrap Theme Adapted)
+//Bu fonksiyon yeni bir post atmamizi saglar.
+public function game_comment_ajax() {
+$this->layout='ajax';
+error_reporting(0);
+//Import necessary files for wall script
+	   App::import('Vendor', 'wallscript/config');
+	   $this->set('gravatar',1);
+	   $gravatar=1;
+	   $this->set('base_url','http://localhost/wall/');
+	   $this->set('perpage',10);
+	   App::import('Vendor', 'wallscript/Wall_Updates');
+	   App::import('Vendor', 'wallscript/tolink');
+	   App::import('Vendor', 'wallscript/textlink');
+	   App::import('Vendor', 'wallscript/htmlcode');
+	   App::import('Vendor', 'wallscript/Expand_URL');
+	   //Session starts
+	   if($this->Auth->user('id')) 
+       $session_uid=$this->Auth->user('id'); 
+       if(!empty($session_uid))
+       {
+       $uid=$session_uid;
+	   $this->set('uid',$uid);
+       }else{
+        //echo 'please login';
+       }
+	   //Session Ends
+	   $Wall = new Wall_Updates();
+   if(isSet($_POST['update']))
+   {
+   $update=mysql_real_escape_string($_POST['update']);
+   $update=str_replace('\n','<br>',$update);
+   $uploads=$_POST['uploads'];
+   $game_id=$_POST['game_id'];
+   $this->set('Wall',$Wall);
+   $this->set('uploads',$uploads);
+   $data=$Wall->Insert_Update($uid,$update,$uploads,$game_id,10);
+
+   if($data)
+   {
+   $msg_id=$data['msg_id'];
+   $orimessage=$data['message'];
+   $message=tolink(htmlcode($data['message']));
+   $time=$data['created'];
+   $mtime=date("c", $time);
+   $uid=$data['uid_fk'];
+   $username=$data['username'];
+   $this->set('data',$data);
+   $this->set('msg_id',$msg_id);
+   $this->set('orimessage',$orimessage);
+   $this->set('message',$message);
+   $this->set('time',$time);
+   $this->set('mtime',$mtime);
+   $this->set('uid',$uid);
+   $this->set('username',$username);
+   $this->set('seo_username',$data['seo_username']);
+	 
+	 
+	if(textlink($orimessage))
+	{
+	$Wall->Edit_Type($msg_id,4);
+	} 
+	 
+	 
+	 //Set the avatar for using on view
+	 $this->set('face',$face);
+	 
+	 
+}
+
+}}
+
+
 //Part of wall function
 //Bu fonksiyon yeni bir post atmamizi saglar.
 public function message_ajax() {
@@ -1053,6 +1126,50 @@ public function moreupdates_ajax_my($profile_uid=NULL,$type=NULL) {
      $lastid=mysql_real_escape_string($_POST['lastid']);
      $this->set('lastid',$lastid);
      
+	 }
+      $this->set('profile_uid',$profile_uid);
+	  $this->set('type',$type);
+	  
+}
+
+//Game comments feedlerini getiren version.
+public function game_comments_ajax($profile_uid=NULL,$type=NULL) {
+	   //$this->layout='ajax';
+      //Import necessary files for wall script
+	   App::import('Vendor', 'wallscript/config');
+	   $this->set('gravatar',1);
+	   $this->set('base_url','http://localhost/wall/');
+	   $this->set('perpage',10);
+	   App::import('Vendor', 'wallscript/Wall_Updates');
+	   App::import('Vendor', 'wallscript/tolink');
+	   App::import('Vendor', 'wallscript/textlink');
+	   App::import('Vendor', 'wallscript/htmlcode');
+	   App::import('Vendor', 'wallscript/Expand_URL');
+	   App::import('Vendor', 'wallscript/time_stamp');
+	   //Session starts
+	   if($this->Auth->user('id')) 
+       $session_uid=$this->Auth->user('id'); 
+       if(!empty($session_uid))
+       {
+       $uid=$session_uid;
+	   $this->set('uid',$uid);
+       }else{
+        //echo 'please login';
+       }
+	   //Session Ends
+
+
+     $Wall = new Wall_Updates();
+	 $this->set('Wall',$Wall);
+     if(isSet($_POST['lastid']))
+     {
+     $lastid=mysql_real_escape_string($_POST['lastid']);
+     $this->set('lastid',$lastid);
+	 }
+	 if(isSet($_POST['game_id']))
+     {
+     $game_id=mysql_real_escape_string($_POST['game_id']);
+     $this->set('game_id',$game_id);
 	 }
       $this->set('profile_uid',$profile_uid);
 	  $this->set('type',$type);

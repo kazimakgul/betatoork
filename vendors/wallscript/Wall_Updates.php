@@ -102,6 +102,51 @@ public $perpage = 10; // Uploads perpage
           $data=mysql_num_rows($query);
            return $data;
 	}
+	
+	
+	// Friends_Updates   	
+	  public function Game_Comments($uid,$lastid,$type,$game_id) 
+	{
+	  // More Button
+        $morequery="";
+		if($lastid)
+		$morequery=" and M.msg_id<'".$lastid."' ";
+	   // More Button End
+	   
+	   if($type==NULL)
+	   {
+	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M INNER JOIN users U on M.uid_fk=U.id LEFT JOIN games G on M.game_id=G.id  WHERE (M.uid_fk IN(SELECT `subscriber_to_id` FROM `subscriptions` WHERE `subscriber_id`='$uid') $morequery) OR (M.uid_fk='$uid' $morequery) order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
+	   }else{
+	   //if type parameter is not null,get specific type of datas.
+	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M INNER JOIN users U on M.uid_fk=U.id LEFT JOIN games G on M.game_id=G.id  WHERE (M.uid_fk='$uid' $morequery) AND (M.type='$type' $morequery) AND (M.game_id='$game_id' $morequery)  order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
+	   
+	   }
+
+		
+         while($row=mysql_fetch_array($query))
+		$data[]=$row;
+		
+		//Bu alanda modification yaptim.$data bos deger döndürdügünde hata veriyordu.
+		if(isset($data))
+	    return $data;
+		else
+		return NULL;
+		
+    }
+	     //Total Friends Updates   	
+	  public function Total_Game_Comments($uid,$type,$game_id) 
+	{
+
+if(!isset($morequery))
+$morequery="";	 	   
+	  
+$query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created, U.username,M.uploads FROM messages M INNER JOIN users U on M.uid_fk=U.id WHERE (M.type='$type' AND M.game_id='$game_id' $morequery) order by M.msg_id") or die(mysql_error());
+
+		$data=mysql_num_rows($query);
+        return $data;
+		
+    }
+
 
     // Friends_Updates   	
 	  public function Friends_Updates($uid,$lastid,$type) 

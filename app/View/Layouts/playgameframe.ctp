@@ -126,6 +126,8 @@ wallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=
 comment_var='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'comment_ajax')); ?>';
 
 my_feed_var='<?php if(isset($uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax_my',$uid,$type)); }?>';
+game_comments_var='<?php if(isset($uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'game_comments_ajax',$uid,$type)); }?>';
+
 
 morevar='<?php if(isset($profile_uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax2',$profile_uid,$type)); }
 else 

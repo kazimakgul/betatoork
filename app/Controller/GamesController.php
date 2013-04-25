@@ -1474,6 +1474,33 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 	    $this->set_suggested_channels();
 		
 		
+		//New Wall Getting Started Below.
+	   App::import('Vendor', 'wallscript/config');
+	   $this->set('gravatar',1);
+	   $this->set('base_url','http://localhost/wall/');
+	   $this->set('perpage',10);
+	   App::import('Vendor', 'wallscript/Wall_Updates');
+	   App::import('Vendor', 'wallscript/tolink');
+	   App::import('Vendor', 'wallscript/textlink');
+	   App::import('Vendor', 'wallscript/htmlcode');
+	   App::import('Vendor', 'wallscript/Expand_URL');
+	   
+	   //Session starts
+	   if($this->Auth->user('id')) 
+       $session_uid=$this->Auth->user('id'); 
+       if(!empty($session_uid))
+       {
+       $uid=$session_uid;
+	   $this->set('uid',$uid);
+       }else{
+        //echo 'please login';
+       }
+	   //Session Ends
+	   
+	   
+	   $Wall = new Wall_Updates();
+	   $this->set('Wall',$Wall);
+		
 	//Set random game after rendering
     $this->render();
 	if($this->Session->read('Random2.flag')==1)

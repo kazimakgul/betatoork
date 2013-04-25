@@ -349,7 +349,7 @@ $('.update_game_comment').live("click",function(e)
 {   
 //Wall postun yazildigi textbox'in içerigi.	
 		var updateval = $("#game_comment").val();
-
+        var game_id = $("#game_id").val();
 		//Uploaded file’in id degerini barindirir.Bu özelligi simdilik bozdum.Düzeltilecek.  
 		var uploadvalues=0;
 
@@ -371,7 +371,7 @@ $('.update_game_comment').live("click",function(e)
 			var Z=0;//Post Media Barindirmiyor?
 		}
 		
-		var dataString = 'update='+ updateval+'&uploads='+Z;
+		var dataString = 'update='+ updateval+'&uploads='+Z+'&game_id='+game_id;
 		var form = 	$('#wallstatus').data('form');
 		if(form == 'addgameform')
 		{
@@ -392,7 +392,7 @@ $('.update_game_comment').live("click",function(e)
 					});
 					$("#webcam_container").slideUp('fast');
 					$("#flash").fadeOut('slow');
-					$("#content").prepend(html);
+					$("#game_comments_content").prepend(html);
 					$("#game_comment").val('');	
 					$("#game_comment").focus();
 					$('#preview').html('');
@@ -418,10 +418,9 @@ $('.update_game_comment').live("click",function(e)
 			{
 				$("#flash").show();
 				$("#flash").fadeIn(400).html('Loading Update...');
-				
 				$.ajax({
 					type: "POST",
-					url: wallvar,
+					url: game_comment_var,
 					data: dataString,
 					cache: false,
 					success: function(html)
@@ -429,8 +428,7 @@ $('.update_game_comment').live("click",function(e)
 						$('#addgame_container').slideUp('fast');
 						$("#webcam_container").slideUp('fast');
 						$("#flash").fadeOut(html);
-						$("#content").prepend(html);
-						$("#my_more_content").prepend(html.replace("stbody", "stbody2").replace("commentopen", "commentopen2").replace("commentbox", "commentbox2").replace("ctextarea", "ctextarea2").replace("comment_button", "comment_button2").replace("commentload", "commentload2"));
+						$("#game_comments_content").prepend(html);
 						$("#game_comment").val('');	
 						$("#game_comment").focus();
 						$('#preview').html('');
@@ -816,6 +814,35 @@ $.ajax({
 type: "POST",
 url: my_feed_var,
 data: "lastid="+ ID, 
+cache: false,
+beforeSend: function(){ $("#my_more"+ID).html('<img src="http://appvidyo.com/images/ajax-preloader.gif" />'); },
+success: function(html){
+$("#my_content").append(html);
+$("#my_more"+ID).remove();
+}
+});
+}
+else
+{
+$("#my_more").html('The End');// no results
+}
+
+return false;
+});
+
+// Load More2 dedicated for my feeds
+
+$('.more_game_comments').live("click",function() 
+{
+
+var ID = $(this).attr("id");
+alert(game_id);
+if(ID)
+{
+$.ajax({
+type: "POST",
+url: game_comments_var,
+data: "lastid="+ ID+'&game_id='+game_id, 
 cache: false,
 beforeSend: function(){ $("#my_more"+ID).html('<img src="http://appvidyo.com/images/ajax-preloader.gif" />'); },
 success: function(html){
