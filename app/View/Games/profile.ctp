@@ -151,7 +151,7 @@ if($gplus==NULL){
                                                 <!--tab menus-->
                                                 <li class="active"><a data-toggle="tab" href="#boxtab-1"><i class="elusive-user"></i> Channel Games</a></li>
                                                 <li class=""><a data-toggle="tab" href="#boxtab-2"><i class="elusive-heart color-red"></i> Favorites</a></li>
-                                                <li class=""><a data-toggle="tab" href="#boxtab-3"><i class="elusive-th-list color-purple"></i> Wall</a></li>
+                                                <li class=""><a data-toggle="tab" href="#boxtab-3"><i class="elusive-th-list color-purple"></i> News Feed</a></li>
                                                 <li class=""><a data-toggle="tab" href="#boxtab-4"><i class="icofont-link color-blue"></i> Followers</a></li>
                                             </ul>
                                         </div>
