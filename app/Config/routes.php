@@ -55,7 +55,7 @@
 	
 	Router::connect('/:channel/:seo_url/playgame', array('controller' => 'games', 'action' => 'playgame'),array('channel' => '[-a-z0-9]+','seo_url' => '[-a-z0-9]+','pass' => array('channel','seo_url')));
 	
-	Router::connect('/:channel/news', array('controller' => 'Wallentries', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','pass' => array('channel')));
+	Router::connect('/:channel/news', array('controller' => 'games', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','pass' => array('channel')));
 	
 	Router::connect('/:channel/news/:type', array('controller' => 'Wallentries', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','type' => '[-a-z0-9]+','pass' => array('channel','type')));
 	

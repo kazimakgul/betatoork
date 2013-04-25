@@ -63,7 +63,7 @@ if ($this->action == "dashboard"){
                                     <div class="helper-font-24">
                                         <i class="icofont-th-list"></i>
                                     </div>
-                                    <span class="sidebar-text">Wall</span>
+                                    <span class="sidebar-text">News Feed</span>
                                 </a>
                             </li>
                             <li <?php echo $class6;?>>

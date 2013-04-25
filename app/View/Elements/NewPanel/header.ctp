@@ -109,7 +109,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                             </div><!-ImageUploadPanel-> 
                     <hr size="3" style="margin:0px 0px 5px 0px;">
                   <button type="submit" id="success-post2" class="btn btn-danger pull-right fast_update_data">Publish</button>
-                  <a href="<?php echo $wall;?>" class="btn">My Wall</a>
+                  <a href="<?php echo $wall;?>" class="btn">News Feed</a>
                 </form></br></br>
               </div>
             </div>
