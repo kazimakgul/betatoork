@@ -42,7 +42,7 @@ $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 
 <ul class="thumbnails">
 
-<?php  echo $this->element('NewPanel/mygames_box'); ?>
+<?php  echo $this->element('NewPanel/gamebox/mygames_box'); ?>
 
 </ul>
 

@@ -15,7 +15,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
                   <?php if(count($search) >= 1){ ?>
 <ul class="thumbnails">
 
-<?php  echo $this->element('NewPanel/search_game_box'); ?>
+<?php  echo $this->element('NewPanel/gamebox/search_game_box'); ?>
 
 </ul>
                   <?php }else{ ?>

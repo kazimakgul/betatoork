@@ -115,7 +115,7 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
 <hr>
                              
                                 <ul class="thumbnails">
-                                    <?php  echo $this->element('NewPanel/dashboard_game_box'); ?>
+                                    <?php  echo $this->element('NewPanel/gamebox/dashboard_game_box'); ?>
                                 </ul>
 <div>
     <a class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;">Load More Games</a>

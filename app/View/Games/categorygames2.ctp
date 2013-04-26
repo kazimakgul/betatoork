@@ -35,10 +35,11 @@
 
 
                                 <ul class="thumbnails">
-                                    <?php  echo $this->element('NewPanel/dashboard_game_box'); ?>
+                                    <?php  echo $this->element('NewPanel/gamebox/dashboard_game_box'); ?>
                                 </ul>
 
 
                         </div><!--/content-body -->
+<?php  echo $this->element('NewPanel/dashfooter'); ?>
                     </div><!-- /content -->
                 </div><!-- /span content -->

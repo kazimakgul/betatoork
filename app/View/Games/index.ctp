@@ -117,7 +117,7 @@ $privacy=$this->Html->url(array("controller" => "pages","action" =>"privacy"));
  <div class="title" ><h3>Explore Some Games</h3></div>
  <div class="row-fluid" style="margin:50px 0px 0px 0px;">
                                 <ul class="thumbnails">
-                                    <?php  echo $this->element('NewPanel/dashboard_game_box'); ?>
+                                    <?php  echo $this->element('NewPanel/gamebox/dashboard_game_box'); ?>
                                 </ul>
 
  </div>

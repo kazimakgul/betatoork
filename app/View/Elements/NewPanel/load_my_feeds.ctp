@@ -99,19 +99,25 @@ echo "</div>";
 				    <?php if($type==1){
 				    $gamedata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_gamedata',$gameid));
 			        if($gamedata['Game']['seo_url']!=NULL)
-                    $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'play'));
+      if($gamedata['Game']['embed']!=NULL)
+      $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'playgame'));
+	  else
+	  $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'playframe'));
                     else
-                    $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($gamedata['Game']['id'])));	
+    $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($gamedata['Game']['id'])));	
 				    echo '<a href="'.$playurl.'" class="btn btn-mini">Play</a> ';
 				     }
 				     ?>
 					 
 				<?php if($type==6){
 				$gamedata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_gamedata',$gameid));
-			    if($gamedata['Game']['seo_url']!=NULL)
-                $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'play'));
-                else
-                $playurl=$this->Html->url(array( "controller" => "games","action" =>"play",h($gamedata['Game']['id'])));	
+			        if($gamedata['Game']['seo_url']!=NULL)
+      if($gamedata['Game']['embed']!=NULL)
+      $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'playgame'));
+	  else
+	  $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'playframe'));
+                    else
+    $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($gamedata['Game']['id'])));		
 			    echo '<a href="'.$playurl.'" class="btn btn-mini">Play</a> '; 
 				}
 				?>

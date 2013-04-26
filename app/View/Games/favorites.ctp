@@ -43,7 +43,7 @@
 
 <ul class="thumbnails">
 
-<?php  echo $this->element('NewPanel/myfavorite_box'); ?>
+<?php  echo $this->element('NewPanel/gamebox/myfavorite_box'); ?>
 
 </ul>
 

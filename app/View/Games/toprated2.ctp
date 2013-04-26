@@ -110,7 +110,7 @@ if($this->Session->check('Auth.User')){
 
 <ul class="thumbnails">
 
-<?php  echo $this->element('NewPanel/toprated_box'); ?>
+<?php  echo $this->element('NewPanel/gamebox/toprated_box'); ?>
 
 </ul>
 
