@@ -143,17 +143,7 @@ else{
                   '>
                       <i class="elusive-share"></i>
                   </li>
-
-                 <li rel="tooltip" id="ratebarchain" data-toggle="popover" data-placement="top" data-html="true" title="Chain This Game" data-placement="top" data-original-title="Chain to Game" class="btn pull-right btn-info" style="margin:5px;"data-content='
-                        <p class="alert alert-info" STYLE="font-size:10pt;">A clone of this game will be created in your games section and you will be able to edit the game as you wish.</p>               <input type="hidden" id="game_name" value="<?php echo $game["Game"]["name"];?>">
-                        <a id="chaingame" class="btn btn-danger btn-small btn-block">
-                            <div class="helper-font-16">
-                            <i class="elusive-circle-arrow-right"> Chain Now !</i>
-                            </div>
-                        </a>
-                        <p STYLE="font-size:10pt;">
-                          Its the easy way of adding a game to your channel.</p>
-                  '>
+                 <li rel="tooltip" data-placement="top" data-original-title="Chain This Game" href="#myModalclone" data-toggle="modal" class="btn pull-right btn-success" style="margin:5px;">
                       <i class="icofont-link"></i>
                   </li>
 
@@ -190,3 +180,29 @@ if($this->Session->check('Auth.User')){
       </div><!-- /navbar-inner -->
     </div>
   </div>
+
+                                                    <!-- Modal -->
+                        <div id="myModalclone" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h3 id="myModalLabel">Chain - <?php echo $game["Game"]["name"];?> ?</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="alert alert-danger">A clone of this game will be created in your games section and you will be able to edit the game as you wish.</p>
+                                    
+                                      <div class="alert alert-info" STYLE="font-size:9pt;">
+                                        <H4>Its the easy way of adding a game to your channel.</H4>
+                                        <h5 style="margin:10px 0px 10px 0px;"><i class="elusive-info-sign"></i> Tips and Tricks</h5>
+                                        <p><i class="elusive-ok-sign"></i> You can edit the games after you chain them.</p>
+                                        <p><i class="elusive-ok-sign"></i> Change the picture of the game if it doesnt fit your needs.</p>
+                                        <p><i class="elusive-ok-sign"></i> You can also change the name and description of the game.</p>
+                                        <p><i class="elusive-ok-sign"></i> Finally, share games with your social networks, to reach more people.</p>
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
+                                    <input type="hidden" id="game_name" value="<?php echo $game["Game"]["name"];?>">
+                                    <a id="chaingame" data-dismiss="modal" href="#" class="btn btn-success">Yes! Chain</a>
+         
+                                </div>
+                        </div>
