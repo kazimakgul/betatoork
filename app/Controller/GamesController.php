@@ -1464,7 +1464,14 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 		}else{
 			$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
-			$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
+			$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
+		}
+		
+		//Oyun clonesa bu oyunun sahibinin adsense bilgilerini getir.
+		if($game['Game']['clone']==1)
+		{
+		$original=$this->User->find('first',array('conditions' => array('User.id'=>$game['Game']['owner_id']),'fields'=>array('User.adcode'),'contain'=>false));
+		$game['User']['adcode']=$original['User']['adcode'];
 		}
 
 		$this->set('game', $game);
@@ -1626,6 +1633,7 @@ function getExtension($str) {
 	        $this->request->data['Game']['embed']=$targetGame['Game']['embed'];
 	        $this->request->data['Game']['seo_url']=$targetGame['Game']['seo_url'];
 	        $this->request->data['Game']['clone']=1;
+			$this->request->data['Game']['owner_id']=$targetGame['Game']['user_id'];
 			$this->Game->create();
 			$this->Game->validate = array();//This line disabled validation rules for game add action.
 	        if ($this->Game->save($this->request->data)) {
