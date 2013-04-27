@@ -43,6 +43,7 @@
  <!-- avascript variables for login and register-->
  <script type="text/javascript">
  remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
+ chaingame='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
  </script>		
 		
 		

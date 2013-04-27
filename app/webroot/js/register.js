@@ -1008,9 +1008,53 @@ function rate_a_game(rating,user_auth,game_id){
   
 }
 
+//***************************************************
+//------------Game Chain/Clone Functions-------------
+//***************************************************
 
-function gimme()
-{
-alert('gimme moooore');	
-}
-	
+$('#chaingame').live('click',function () {
+
+    if(user_auth==1)
+    {   
+	    game_name=$('#game_name').val();
+		$.get(chaingame + '/'+game_id, function (data) {
+			
+			if(data==1)
+			{
+			  $.pnotify({
+			  title: 'You have chained succesfully.',
+              text: 'You have chained.<strong>'+game_name+'</strong> game.You will be able to edit this game as you wish on your games section.',
+              type: 'success'
+              });  
+			}else{
+				
+				$.pnotify({
+			  title: 'System Error',
+              text: 'There are some problems on server,please try again later.',
+              type: 'error'
+              });  
+				
+			}
+			
+		});
+		
+	}else{
+		
+		 $.pnotify({
+            title: 'Sign in Please',
+            text: 'You have to sign in first to chain games.',
+            type: 'error'
+          });	
+		
+		
+		}
+
+      
+	  
+	 
+	  
+	  
+				
+				
+				});
+

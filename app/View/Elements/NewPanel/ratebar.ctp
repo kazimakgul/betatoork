@@ -142,8 +142,8 @@ else{
                   </li>
 
                  <li rel="tooltip" id="ratebarchain" data-toggle="popover" data-placement="top" data-html="true" title="Chain This Game" data-placement="top" data-original-title="Chain to Game" class="btn pull-right btn-info" style="margin:5px;"data-content='
-                        <p class="alert alert-info" STYLE="font-size:10pt;">A clone of this game will be created in your games section and you will be able to edit the game as you wish.</p>
-                        <a class="btn btn-danger btn-small btn-block">
+                        <p class="alert alert-info" STYLE="font-size:10pt;">A clone of this game will be created in your games section and you will be able to edit the game as you wish.</p>               <input type="hidden" id="game_name" value="<?php echo $game["Game"]["name"];?>">
+                        <a id="chaingame" class="btn btn-danger btn-small btn-block">
                             <div class="helper-font-16">
                             <i class="elusive-circle-arrow-right"> Chain Now !</i>
                             </div>

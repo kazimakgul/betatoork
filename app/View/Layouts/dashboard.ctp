@@ -45,6 +45,7 @@ remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'
 subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
 favswitcher='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add')); ?>';
+chaingame='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
 </script>
 		
     </head>

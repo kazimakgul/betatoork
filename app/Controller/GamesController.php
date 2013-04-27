@@ -1604,7 +1604,43 @@ function getExtension($str) {
      $ext = substr($str,$i+1,$l);
      return $ext;
 }
-
+    
+	
+	
+	//Chain functions clones game items on games table.
+    public function clonegame($game_id=NULL) {
+	   $this->layout="ajax";
+	   $userId = $this->Session->read('Auth.User.id');
+	   $targetGame=$this->Game->find('first',array('conditions'=>array('Game.id'=>$game_id),'contain'=>false));
+	   if($targetGame!=NULL)
+	   {
+	        $this->request->data['Game']['name']=$targetGame['Game']['name'];
+	        $this->request->data['Game']['link']=$targetGame['Game']['link'];
+	        $this->request->data['Game']['description']=$targetGame['Game']['description'];
+	        $this->request->data['Game']['active']=1;
+	        $this->request->data['Game']['user_id']=$userId;
+	        $this->request->data['Game']['category_id']=$targetGame['Game']['category_id'];
+	        $this->request->data['Game']['picture']=$targetGame['Game']['picture'];
+	        $this->request->data['Game']['starsize']=0;
+	        $this->request->data['Game']['rate_count']=0;
+	        $this->request->data['Game']['embed']=$targetGame['Game']['embed'];
+	        $this->request->data['Game']['seo_url']=$targetGame['Game']['seo_url'];
+	        $this->request->data['Game']['clone']=1;
+			$this->Game->create();
+			$this->Game->validate = array();//This line disabled validation rules for game add action.
+	        if ($this->Game->save($this->request->data)) {
+			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userId));
+			    $id=$this->Game->getLastInsertId();
+			    $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userId));
+				echo 1;//this means games has been clonned properly.
+			    }else{
+				echo 0;//this means there are some problems.
+				}
+	   
+	       
+	   }
+	 
+	}
 
 	public function add() {
 	
