@@ -2084,10 +2084,10 @@ public function edit2($id = null) {
 		if ($this->Game->delete()) {
 			$this->Session->setFlash(__('You have deleted your game successfully, That game will no longer be visible'));
 			$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
-			$this->redirect(array('action' => 'channel'));
+			$this->redirect(array('action' => 'mygames'));
 		}
 		$this->Session->setFlash(__('Your game was not deleted'));
-		$this->redirect(array('action' => 'channel'));
+		$this->redirect(array('action' => 'mygames'));
 	}
 /**
  * admin_index method

@@ -41,7 +41,7 @@ else{
                                 </div>
                                 <div class="modal-footer">
                                     <button id="top-success" class="btn btn-success" data-dismiss="modal" aria-hidden="true">No</button>
-                                    <a href="<?php echo $playurl;?>" class="btn btn-danger">Yes! Delete</a>
+                                    <a href="<?php echo $deleteurl;?>" class="btn btn-danger">Yes! Delete</a>
          
                                 </div>
                         </div>

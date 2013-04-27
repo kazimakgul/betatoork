@@ -1,3 +1,6 @@
+<?php
+$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+?>
 <div class="navbar navbar-fixed-bottom">
   <div class="header-control">
       <div class="navbar-inner" style="-webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;">
@@ -14,7 +17,7 @@
 <a class="btn" style="margin:5px;" href="<?php echo $profilepublic; ?> ">  
   <?php 
   if($game['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'12',"alt" => "toork avatar image",'url' => array('controller' => 'games', 'action' => 'usergames', $userid))); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'12',"alt" => "toork avatar image")); 
     } else {
       echo $this->Upload->image($game,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','width'=>'12','onerror'=>'imgError(this,"avatar");')); }
   ?> <?php echo $game['User']['username'] ?> <i class="color-red icofont-bolt"></i>
