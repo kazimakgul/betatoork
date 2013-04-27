@@ -27,9 +27,9 @@ else{
 
 <!-- Game Unit -->
 <h6><span class="label label-important"><?php echo $game['Game']['name'] ?></span> : <?php echo $game['Game']['description'] ?> </h6>
-<div class="well well-large">
+<div class="well" style="padding:5px;">
 
-<div style="margin:0 auto; text-align: center; background-color:#fff; font-family:Verdana, Geneva, sans-serif; color:#000; font-size:14px;">
+<div style="margin:0 auto; text-align: center; font-family:Verdana, Geneva, sans-serif; color:#000; font-size:5px;">
 
 <!--<embed id="startGame" src="http://games.mochiads.com/c/g/fruit-ninja-kapow/fruit_indep.swf" menu="false" quality="high" width="900" height="600" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"> -->
 

@@ -66,10 +66,10 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
                                              <a rel="tooltip" data-placement="top" data-original-title="Customize Your Channel" href="<?php echo $settings; ?>" class="btn btn-warning" style="margin:0px 3px 5px 0px;">
                                                 <i class="elusive-edit"></i> Customize
                                             </a>
-                                            <a rel="tooltip" data-placement="top" data-original-title="Follow Best Channels"  href="<?php echo $bestchannels; ?>" class="btn btn-success" style="margin:0px 3px 5px 0px;">
+                                            <a rel="tooltip" data-placement="bottom" data-original-title="Follow Best Channels"  href="<?php echo $bestchannels; ?>" class="btn btn-success" style="margin:0px 3px 5px 0px;">
                                                 <i class="elusive-plus-sign"></i> Discover Channels
                                             </a>
-                                            <a rel="tooltip" data-placement="top" data-original-title="Take The Tour"  class="btn btn-info" onclick="javascript:introJs().start();" style="margin:0px 3px 5px 0px;">
+                                            <a rel="tooltip" data-placement="bottom" data-original-title="Take The Tour"  class="btn btn-info" onclick="javascript:introJs().start();" style="margin:0px 3px 5px 0px;">
                                                 <i class="elusive-compass"></i> Tour
                                             </a>
                                             </p>

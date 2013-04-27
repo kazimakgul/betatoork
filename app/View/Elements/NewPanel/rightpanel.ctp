@@ -8,8 +8,8 @@
                             <!--sidebar-right-control-->
                             <div class="sidebar-right-control">
                                 <ul class="sr-control-item">
-                                    <li class="active"><a href="#contact" rel="tooltip" data-placement="bottom" data-original-title="Best Channels" data-toggle="tab" title="Best Channels"><i class="icofont-group"></i></a></li>
-                                    <li><a href="#alt1" rel="tooltip" data-placement="bottom" data-original-title="Categories" data-toggle="tab" title="Categories"><i class="icofont-flag"></i></a></li>
+                                    <li class="active"><a href="#contact" rel="tooltip" data-placement="left" data-original-title="Best Channels" data-toggle="tab" title="Best Channels"><i class="icofont-group"></i></a></li>
+                                    <li><a href="#alt1" rel="tooltip" data-placement="right" data-original-title="Categories" data-toggle="tab" title="Categories"><i class="icofont-flag"></i></a></li>
                                 </ul>
                             </div><!-- /sidebar-right-control-->
                             <!-- sidebar-right-content -->
@@ -22,7 +22,7 @@
                                             <!--contact-control-->
                                             <div class="contact-control">
 
-                                                <h5><i class="elusive-user color-blue"></i> <a href="<?php echo $bestchannels; ?>">Best Channels</a></h5>
+                                                <h5 rel="tooltip" data-placement="top" data-original-title="See All Channels" ><i class="elusive-user color-blue"></i> <a href="<?php echo $bestchannels; ?>">Recommended Channels</a></h5>
                                             </div><!--/contact-control-->
                                          
 										 <!--bestchannel-list-->
@@ -62,5 +62,6 @@
                                 </div>
                             </div><!-- /sidebar-right-content -->
                         </div><!-- /sidebar-right -->
+                       <div class="well" style="padding:3px; margin:5px; border-radius:0px;"><small><i class="elusive-info-sign"></i> Hit the green plus button to follow the game channels and be notified about the news they have.</small></div>
                     </aside><!-- /side-right -->
                 </div><!-- /span side-right -->
