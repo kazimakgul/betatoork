@@ -64,7 +64,18 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
                                                             </div>
                                                         </div>
-                                                        
+  <?php if ($this->Session->read('Auth.User.role') == 0){
+      }else{
+?> 
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="inputEditorSimple">Ads Code</label>
+                                                            <div class="controls">
+
+<?php echo $this->Form->input('adcode',array('label'=>false ,'div'=>false,'placeholder'=>'This is your advertisement code place. You can just paste your google adsense code or any other advertisement company code here.' ,'type'=>'textarea','class'=>'span8','rows'=>'6','length' => 1000)); ?>
+
+                                                            </div>
+                                                        </div>
+<?php } ?>
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputUpload">Channel Avatar</label>
                                                             <div class="controls">
