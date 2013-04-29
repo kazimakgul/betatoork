@@ -29,7 +29,7 @@
                                                         <a data-box="collapse"><i class="icofont-caret-up"></i></a>
                                                         <a data-box="close">×</a>
                                                     </div>
-                                                    <span>Game Details</span>
+                                                    <span>Edit : <strong><?php echo $game['Game']['name'];?></strong></span>
                                                 </div><!--/box header-->
                                                 <!--box body-->
                                                 <div class="box-body">
@@ -53,7 +53,7 @@
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto">Game Name</label>
                                                             <div class="controls">
-<?php echo $this->Form->input('name',array('label'=>false ,'maxlength'=>28,'required','type'=>'text','class'=>'grd-white','id'=>'inputAuto','placeholder' => 'Metal Slug Brutal 3')); ?>     
+<?php echo $this->Form->input('name',array('label'=>false ,'maxlength'=>28,'required','type'=>'text','class'=>'grd-white span10','id'=>'inputAuto','placeholder' => 'Metal Slug Brutal 3')); ?>     
                                                             </div>
                                                         </div>
 
@@ -61,21 +61,21 @@
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto">Game Link</label>
                                                             <div class="controls">
-<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'required pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white', 'maxlength'=>200)); ?>
+<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'required pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white span10', 'maxlength'=>200)); ?>
                                                             </div>
                                                         </div>
 <?php  } else{?>
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto">Game Link</label>
                                                             <div class="controls">
-<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white', 'maxlength'=>200)); ?>
+<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white span10', 'maxlength'=>200)); ?>
                                                             </div>
                                                         </div>
 
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto">Game Embed</label>
                                                             <div class="controls">
-<?php echo $this->Form->input('embed',array('label'=>false ,'div'=>false, 'pattern'=>'(<iframe|<embed|<object).+.(</iframe>|</embed>|</object>)' ,'placeholder' => 'Paste your game code here please','maxlength'=>1000, 'title'=>'Only <embed> , <iframe> and <object> tags are available and the game code must be starting from one of the tags and ending with the same tag. Ex: <embed> some code </embed>')); ?> 
+<?php echo $this->Form->input('embed',array('label'=>false ,'div'=>false,'class'=>'span10','rows'=>'5','pattern'=>'(<iframe|<embed|<object).+.(</iframe>|</embed>|</object>)' ,'placeholder' => 'Paste your game code here please. The embed code can only be iframe,embed or object type of html tag. Ex: <object> some stuf is here </object>','maxlength'=>1000, 'title'=>'Only <embed> , <iframe> and <object> tags are available and the game code must be starting from one of the tags and ending with the same tag. Ex: <embed> some code </embed>')); ?> 
                                                             </div>
                                                         </div>
 <?php } ?>
@@ -83,7 +83,7 @@
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto">Game Description</label>
                                                             <div class="controls">
-<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>400,'required','placeholder' => 'Describe the game you share please','type' => 'textarea')); ?>  
+<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>400,'required','placeholder' => 'Describe the game you share please','type' => 'textarea','class'=>'span10','rows'=>'5',)); ?>  
                                                             </div>
                                                         </div>
 
