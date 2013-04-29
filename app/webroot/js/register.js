@@ -1049,12 +1049,47 @@ $('#chaingame').live('click',function () {
 		
 		}
 
-      
-	  
-	 
-	  
-	  
 				
 				
 				});
+
+
+function chaingame2(game_name,user_auth,game_id)
+{
+if(user_auth==1)
+    {   
+		$.get(chaingame + '/'+game_id, function (data) {
+			
+			if(data==1)
+			{
+			  $.pnotify({
+			  title: 'You have chained succesfully.',
+              text: 'You have chained.<strong>'+game_name+'</strong> game.You will be able to edit this game as you wish on your games section.',
+              type: 'success'
+              });  
+			}else{
+				
+				$.pnotify({
+			  title: 'System Error',
+              text: 'There are some problems on server,please try again later.',
+              type: 'error'
+              });  
+				
+			}
+			
+		});
+		
+	}else{
+		
+		 $.pnotify({
+            title: 'Sign in Please',
+            text: 'You have to sign in first to chain games.',
+            type: 'error'
+          });	
+		
+		
+		}	
+	
+	
+}
 

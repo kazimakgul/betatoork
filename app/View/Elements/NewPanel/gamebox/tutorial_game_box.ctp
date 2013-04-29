@@ -38,7 +38,7 @@ else{
                                                         <p class="contact-item-heading bold"><?php echo $game['Game']['name']; ?></p>
                                                             </div>
                                                         </div>
-                                                    <button style="margin:-28px 5px 0px 0px; opacity:1;" href="#" rel="tooltip" data-placement="left" data-original-title="Chain" data-box="close" data-hide="fadeOut" class="close"><i class="btn btn-success btn-mini helper-font-16 icofont-link"></i></button> 
+                                                    <button onclick="chaingame2('<?php echo $game['Game']['name']; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" style="margin:-28px 5px 0px 0px; opacity:1;" href="#" rel="tooltip" data-placement="left" data-original-title="Chain" data-box="close" data-hide="fadeOut" class="close"><i class="btn btn-success btn-mini helper-font-16 icofont-link"></i></button> 
                                                     </a>
                                                 </li>       
       
