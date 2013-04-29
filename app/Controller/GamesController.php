@@ -1618,7 +1618,7 @@ function getExtension($str) {
     public function clonegame($game_id=NULL) {
 	   $this->layout="ajax";
 	   $userId = $this->Session->read('Auth.User.id');
-	   $targetGame=$this->Game->find('first',array('conditions'=>array('Game.id'=>$game_id),'contain'=>false));
+	   $targetGame=$this->Game->find('first',array('conditions'=>array('Game.id'=>$game_id),'fields'=>array('Game.id,Game.name,Game.Link,Game.description,Game.active,Game.user_id,Game.category_id,Game.picture,Game.embed,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>false));
 	   if($targetGame!=NULL)
 	   {
 	        $this->request->data['Game']['name']=$targetGame['Game']['name'];
@@ -1633,7 +1633,11 @@ function getExtension($str) {
 	        $this->request->data['Game']['embed']=$targetGame['Game']['embed'];
 	        $this->request->data['Game']['seo_url']=$targetGame['Game']['seo_url'];
 	        $this->request->data['Game']['clone']=1;
+			if($targetGame['Game']['owner_id']!=NULL && $targetGame['Game']['clone']==1)
+			$this->request->data['Game']['owner_id']=$targetGame['Game']['owner_id'];
+			else
 			$this->request->data['Game']['owner_id']=$targetGame['Game']['user_id'];
+			
 			$this->Game->create();
 			$this->Game->validate = array();//This line disabled validation rules for game add action.
 	        if ($this->Game->save($this->request->data)) {
@@ -2024,7 +2028,7 @@ public function edit2($id = null) {
 		     $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
 		    //seourl ends
 			
-			if ($this->Game->save($this->request->data)) {
+			if ($this->Game->save($this->request->data,array('name'))) {
 				$this->Session->setFlash('You have successfully updated your game.');
 				
 				
