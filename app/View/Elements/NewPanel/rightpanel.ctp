@@ -22,7 +22,7 @@
                                             <!--contact-control-->
                                             <div class="contact-control">
 
-                                                <h5 rel="tooltip" data-placement="top" data-original-title="See All Channels" ><i class="elusive-user color-blue"></i> <a href="<?php echo $bestchannels; ?>">Recommended Channels</a></h5>
+                                                <h5 rel="tooltip" data-placement="top" data-original-title="See All Channels" ><i class="elusive-group color-blue"></i> <a href="<?php echo $bestchannels; ?>">Recommended Channels</a></h5>
                                             </div><!--/contact-control-->
                                          
 										 <!--bestchannel-list-->

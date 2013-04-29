@@ -53,7 +53,7 @@ if ($this->action == "dashboard"){
                             <li <?php echo $class4;?>>
                                 <a href="<?php echo $chains; ?>" title="Follows">
                                     <div class="helper-font-24">
-                                        <i class="elusive-user"></i>
+                                        <i class="elusive-group"></i>
                                     </div>
                                     <span class="sidebar-text">Follows</span>
                                 </a>
