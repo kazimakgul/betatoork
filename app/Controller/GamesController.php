@@ -1618,9 +1618,9 @@ function getExtension($str) {
     public function clonegame($game_id=NULL) {
 	   $this->layout="ajax";
 	   $userId = $this->Session->read('Auth.User.id');
-	   $targetGame=$this->Game->find('first',array('conditions'=>array('Game.id'=>$game_id),'fields'=>array('Game.id,Game.name,Game.Link,Game.description,Game.active,Game.user_id,Game.category_id,Game.picture,Game.embed,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>false));
+	   $targetGame=$this->Game->find('first',array('conditions'=>array('Game.id'=>$game_id),'fields'=>array('Game.id,Game.name,Game.link,Game.description,Game.active,Game.user_id,Game.category_id,Game.picture,Game.embed,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>false));
 	   if($targetGame!=NULL)
-	   {
+	   {print_r($targetGame);
 	        $this->request->data['Game']['name']=$targetGame['Game']['name'];
 	        $this->request->data['Game']['link']=$targetGame['Game']['link'];
 	        $this->request->data['Game']['description']=$targetGame['Game']['description'];
