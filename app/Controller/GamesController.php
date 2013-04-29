@@ -1631,7 +1631,7 @@ function getExtension($str) {
 	        $this->request->data['Game']['starsize']=0;
 	        $this->request->data['Game']['rate_count']=0;
 	        $this->request->data['Game']['embed']=$targetGame['Game']['embed'];
-	        $this->request->data['Game']['seo_url']=$targetGame['Game']['seo_url'];
+	        $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$targetGame['Game']['name']));
 	        $this->request->data['Game']['clone']=1;
 			if($targetGame['Game']['owner_id']!=NULL && $targetGame['Game']['clone']==1)
 			$this->request->data['Game']['owner_id']=$targetGame['Game']['owner_id'];
