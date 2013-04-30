@@ -1108,7 +1108,7 @@ function gamedelete(game_name,user_auth,game_id)
 			if(data==1)
 			{
 			  $.pnotify({
-              text:  '<strong>'+game_name+'</strong> has been deleted,That game will no longer be visible',
+              text:  '<strong>'+game_name+'</strong> has been deleted,That game will no longer be visible.',
               type: 'success'
               });  
 			  
