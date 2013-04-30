@@ -39,7 +39,7 @@ else{
                                     <p>Are you sure you want to delete this game? There is no undo.</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button id="top-success" class="btn btn-success" data-dismiss="modal" aria-hidden="true">No</button>
+                                    <button class="btn btn-success" data-dismiss="modal" aria-hidden="true">No</button>
                                     <button onclick="gamedelete('<?php echo $game['Game']['name']; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-danger">Yes! Delete</button>
          
                                 </div>

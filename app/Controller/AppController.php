@@ -47,33 +47,33 @@ class AppController extends Controller {
 
     var $paginate = array(
         'User' => array(//List of Bestchannels on Bestchannels Page 
-            'limit' => 30,
+            'limit' => 18,
             'order' => array(
                 'Userstat.potential' => 'desc',
             ),
         ),
         'Game' => array(
-            'limit' => 28,
+            'limit' => 16,
             'order' => array(
                 'Game.recommend' => 'desc',
             ),
         ),
         'Subscription' => array(
-            'limit' => 30,
+            'limit' => 18,
             'order' => array(
                 'Subscription.created' => 'desc',
             ),
         ),
         'Favorite' => array(
 		'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username')))),
-            'limit' => 28,
+            'limit' => 16,
             'order' => array(
                 'Favorite.recommend' => 'desc',
             ), 
         ),
         'Playcount' => array(
 		'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username')))),
-            'limit' => 28,
+            'limit' => 16,
             'order' => array(
                 'Game.recommend' => 'desc',
             ),
