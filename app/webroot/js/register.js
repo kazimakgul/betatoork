@@ -1093,3 +1093,50 @@ if(user_auth==1)
 	
 }
 
+
+//***************************************************
+//---------------Game Delete Function----------------
+//***************************************************
+function gamedelete(game_name,user_auth,game_id)
+{
+   
+   if(user_auth==1)
+    { 
+	
+	    $.get(deletegame + '/'+game_id, function (data) {
+			
+			if(data==1)
+			{
+			  $.pnotify({
+              text:  '<strong>'+game_name+'</strong> has been deleted,That game will no longer be visible',
+              type: 'success'
+              });  
+			  
+			  $('#myModal'+game_id).modal('toggle');
+			  $('#my_thumb_'+game_id).hide();
+			}else{
+				
+				$.pnotify({
+			  title: 'System Error',
+              text: 'There are some problems on server,please try again later.',
+              type: 'error'
+              });  
+				
+			}
+							
+		});
+	
+	
+	}else{
+		
+		$.pnotify({
+            title: 'Sign in Please',
+            text: 'You have to sign in first to delete games.',
+            type: 'error'
+          });
+		
+		}
+   
+
+}
+

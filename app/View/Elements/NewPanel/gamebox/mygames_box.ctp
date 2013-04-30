@@ -17,7 +17,7 @@ else{
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
     
 
-              <li class="span3" style="margin:0px 15px 0px 0px;">
+              <li class="span3" id="my_thumb_<?php echo $game['Game']['id']; ?>" style="margin:0px 15px 0px 0px;">
                 <div class="navbar"><div class="navbar-inner" style="padding:5px 5px 5px 5px;">
                     <a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('alt'=>$game['Game']['name'],'width'=>'200','height'=>'110;')); ?></a>
 
@@ -41,7 +41,7 @@ else{
                                 </div>
                                 <div class="modal-footer">
                                     <button id="top-success" class="btn btn-success" data-dismiss="modal" aria-hidden="true">No</button>
-                                    <a href="<?php echo $deleteurl;?>" class="btn btn-danger">Yes! Delete</a>
+                                    <button onclick="gamedelete('<?php echo $game['Game']['name']; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-danger">Yes! Delete</button>
          
                                 </div>
                         </div>

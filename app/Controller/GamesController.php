@@ -2168,6 +2168,30 @@ public function edit2($id = null) {
 		$this->Session->setFlash(__('Your game was not deleted'));
 		$this->redirect(array('action' => 'mygames'));
 	}
+	
+	
+ /**************************************
+ * delete method with toork remote api
+ **************************************/
+	public function gamedelete($id = null) {
+	    $this->layout='ajax';
+		if (!$this->request->is('get')) {
+			throw new MethodNotAllowedException();
+		}
+		$this->Game->id = $id;
+		$userid=$this->Game->field('user_id');
+		if (!$this->Game->exists()) {
+			//throw new NotFoundException(__('Invalid game'));
+			echo 0;break;
+		}
+		if ($this->Game->delete()) {
+		    echo 1;
+			$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
+		}else{
+		    echo 0;
+		}
+	
+	}
 /**
  * admin_index method
  *
