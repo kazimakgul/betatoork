@@ -116,7 +116,7 @@ else{
   <?php $gameName = $oneof3['Game']['name'];?>
   <li style="margin:0px 0px 0px 5px;">
     <div rel="tooltip" data-placement="top" data-original-title="<?php echo $gameName; ?>" >
-	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($oneof3,'Game.picture',array('style' => 'toorksize'),array('width'=>'130px','height'=>'72px','style'=>'max-height:72px','alt'=>$gameName,'class'=>'img-polaroid')); ?></a>
+	<a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($oneof3,'Game.picture',array('style' => 'toorksize'),array('width'=>'130px','height'=>'72px','style'=>'max-height:72px','alt'=>$gameName,'class'=>'img-polaroid','onerror'=>'imgError(this,"toorksize");')); ?></a>
 	 </div>
   </li>  
  

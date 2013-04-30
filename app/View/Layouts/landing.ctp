@@ -59,7 +59,28 @@ echo $this->Html->meta('keywords','create game channel,share games, social netwo
 search_url='<?php echo $this->Html->url(array("controller"=>"games","action"=>"search2"));?>';
 remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
 remotecheck2='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser2')); ?>';
+
+
+//Code Block for Broken Images
+function imgError(image,style){
+    image.onerror = "";
+    
+    if(style=="toorksize")
+    image.src = "<?php echo Configure::read('broken.toorksize'); ?>";
+    else if(style=="thumb")
+    image.src = "<?php echo Configure::read('broken.thumb'); ?>";
+    else if(style=="slider")
+    image.src = "<?php echo Configure::read('broken.slider'); ?>";
+    else if(style=="avatar")
+    image.src = "<?php echo Configure::read('broken.avatar'); ?>";
+    return true;
+}
+
+
 </script>
+
+
+
 
 
 <?php echo $this->Html->script(array('js2/jquery-ui.min','js2/bootstrap','js2/uniform/jquery.uniform','js2/peity/jquery.peity','js2/select2/select2','js2/knob/jquery.knob','js2/flot/jquery.flot','js2/flot/jquery.flot.resize','js2/holder','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','js2/validate/jquery.validate','js2/wizard/jquery.wizard','register','wall/wall2')); ?>
