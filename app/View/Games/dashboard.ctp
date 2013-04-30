@@ -3,6 +3,8 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 $addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
+$wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
+$profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -81,8 +83,9 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
               <div class="navbar-inner">
                 </br>
                 <form class="navbar-form">
+
                     <div class="row-fluid">
-                        <div class="span2" rel="tooltip" data-placement="right" data-original-title="Change Your Avatar" ><a href="<?php echo $settings; ?>">
+                        <div class="span2" rel="tooltip" data-placement="right" data-original-title="Change Your Avatar" style="margin-bottom:5px;"><a href="<?php echo $settings; ?>">
                       <?php 
   if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'68','class'=>'img-polaroid',"alt" => "toork avatar image")); 
@@ -107,7 +110,8 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
                             </div><!-ImageUploadPanel-> 
                     <hr size="3" style="margin:0px 0px 5px 0px;">
                   <button id="success-post" type="submit" class="btn btn-inverse pull-right update_data" style="margin:0px 0px 0px 0px;">Publish</button>
-                </form></br></br>
+                  <div><a class="btn btn-link btn-mini" href="<?php echo $wall; ?>">Whats New?</a><a class="btn btn-link btn-mini" href="<?php echo $profilepublic; ?>">Public Channel </a><a class="btn btn-link btn-mini" href="<?php echo $settings; ?>">Customize Channel</a></div>
+                </form></br>
               </div>
             </div>
 
