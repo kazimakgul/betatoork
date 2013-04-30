@@ -37,8 +37,8 @@ html{
     overflow-y: scroll;
 }
 body{
-    background: #E4E4E4 url('../img/bg-body.jpg');
-    font-family: 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+    background: #E4E4E4 url('../../img/img2/bg-body.jpg');
+    font-family: 'Segeo UI', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
 }
 
 a{
@@ -78,10 +78,10 @@ hr.divider:before{
     content: '\00A0';
     width: 100%;
     text-align: center;
-    background: transparent url('../img/divider.jpg') no-repeat center;
+    background: transparent url('../../img/img2/divider.jpg') no-repeat center;
 }
 hr.divider.help:before{
-    background: transparent url('../img/divider.png') no-repeat center;
+    background: transparent url('../../img/img2/divider.png') no-repeat center;
 }
 
 div.divider-content{
@@ -99,7 +99,7 @@ div.divider-content{
 
 div.divider-content > span {
     background-color:#FFFFFF;
-    background-image: url('../img/divider.jpg');
+    background-image: url('../../img/img2/divider.jpg');
     background-position:50% 50%;
     background-repeat:no-repeat no-repeat;
     display:block;
@@ -113,7 +113,7 @@ div.divider-content > span {
 }
 div.divider-content.help > span {
     background-color: transparent;
-    background-image: url('../img/divider.png');
+    background-image: url('../../img/img2/divider.png');
 
 }
 
@@ -188,7 +188,6 @@ h1,h2,h3,h4,h5,h6{
 .bg-black,
 .ui-slider.slider-black .ui-slider-range{
     background: #444444;
-    background-color: #444444;
 }
 
 .bg-silver,
@@ -303,6 +302,7 @@ h1,h2,h3,h4,h5,h6{
     background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f1f1f1',GradientType=0 );
     border: 1px solid #fafafa;
+
 }
 .grd-black{
     background: #444444;
@@ -439,32 +439,26 @@ h1,h2,h3,h4,h5,h6{
 /** font size helper **/
 .helper-font-small{
     font-size : 11px;
-    line-height: 1.2em;
 }
 
 .helper-font-16{
     font-size : 16px;
-    line-height: 1.2em;
 }
 
 .helper-font-24{
     font-size : 24px;
-    line-height: 1.2em;
 }
 
 .helper-font-32{
     font-size : 32px;
-    line-height: 1.2em;
 }
 
 .helper-font-48{
     font-size : 48px;
-    line-height: 1.2em;
 }
 
 .helper-font-64{
     font-size : 64px;
-    line-height: 1.2em;
 }
 /** end font size helper **/
 
@@ -648,11 +642,7 @@ h1,h2,h3,h4,h5,h6{
 }
 /** end shadow helper**/
 
-/** 
-    scrollbar, disabled on v1.3 
-    if you will use this feature, just remove comment tag
-**/
-/*
+/** scrollbar **/
 ::-webkit-scrollbar {
     background: transparent;
     border: rgba(0, 0, 0, 0.2) solid;
@@ -672,7 +662,7 @@ h1,h2,h3,h4,h5,h6{
     background: transparent;
 }
 
- These rules are for scrollbar draggable panel 
+/* These rules are for scrollbar draggable panel */
 ::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.1);
     -webkit-border-radius: 8px;
@@ -686,21 +676,20 @@ h1,h2,h3,h4,h5,h6{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
- These rules are for buttons 
+/* These rules are for buttons */
 ::-webkit-scrollbar-button:start{display:none}
 ::-webkit-scrollbar-button:end{display:block}
 
 ::-webkit-scrollbar-button:vertical:increment {
-    background: no-repeat url("../img/waffle_sprite27.png") -21px 0;
+    background: no-repeat url("../../img/img2/waffle_sprite27.png") -21px 0;
     height:15px;
 }
 ::-webkit-scrollbar-button:vertical:decrement {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    background: no-repeat url("../img/waffle_sprite27.png") -70px -62px;
+    background: no-repeat url("../../img/img2/waffle_sprite27.png") -70px -62px;
     height: 16px;
 }
-*/
 
 /** end scrollbar **/
 
@@ -718,7 +707,7 @@ h1,h2,h3,h4,h5,h6{
 
 /** helper util **/
 .no-border{
-    border: 0 none;
+    border: none;
 }
 /** /helper util **/
 
@@ -742,8 +731,7 @@ h1,h2,h3,h4,h5,h6{
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
-.btn-primary:hover, 
-.btn-primary:focus,
+.btn-primary:hover,
 .btn-primary:active,
 .btn-primary.active,
 .btn-primary.disabled,
@@ -754,7 +742,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .btn-primary:active,
-.btn-primary.active{
+.btn-primary.active {
     background-color: #00a0b1 \9;
 }
 .btn-group.open .btn-primary.dropdown-toggle {
@@ -782,8 +770,6 @@ h1,h2,h3,h4,h5,h6{
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00a0b1', endColorstr='#ff008299', GradientType=0);
 }
-
-
 
 
 /** form element focus **/
@@ -829,7 +815,7 @@ input[type="color"]:focus,
     color: #FFFFFF;
     text-align: center;
     text-decoration: none;
-    background: #444444 url('../img/bg-body-bar.jpg');
+    background: #444444 url('../../img/img2/bg-body-bar.jpg');
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
