@@ -1687,7 +1687,7 @@ function getExtension($str) {
 			    }else{
 				echo 0;//this means there are some problems.
 				}
-	      
+	       $this->render();
 	       $this->cloneS3Folder($game_id,$id);
 	   }
 	 
