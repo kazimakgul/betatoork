@@ -1643,7 +1643,8 @@ function getExtension($str) {
                 array( // Destination
                'bucket'   => Configure::read('S3.name'),
                'filename' => 'upload/games/'.$new_id."/".$result
-                )
+                ),
+				array('acl' => AmazonS3::ACL_PUBLIC)
                 );
 				//print_r($response);
 			 
