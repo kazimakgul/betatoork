@@ -1612,7 +1612,7 @@ function getExtension($str) {
      return $ext;
 }
     
-	public function cloneS3Folder($old_id=NULL)
+	public function cloneS3Folder($old_id=NULL,$new_id=NULL)
 	{
 	
 	
@@ -1625,12 +1625,30 @@ function getExtension($str) {
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
-			 continue;
-			 echo $obj.'<br>';
+			 
+			 $string = $obj;
+             $prefix = "/".$old_id."/";
+             $index = strpos($string, $prefix) + strlen($prefix);
+             $result = substr($string, $index);
+             echo $result; 
+			 
+			     //=========================
+	            //Aws S3 image copy process
+	            //=========================
+	            $response=$this->Amazon->S3->copy_object(
+                array( // Source
+               'bucket'   => Configure::read('S3.name'),
+               'filename' => $obj
+                ),
+                array( // Destination
+               'bucket'   => Configure::read('S3.name'),
+               'filename' => 'upload/games/'.$new_id."/".$result
+                )
+                );
+				print_r($response);
 			 
 			 }
-			echo '<br><br>-----------------------------Belooow---------------------------------------------';
-			print_r($objs);
+			
 			
 	
 	/*
@@ -1697,7 +1715,7 @@ echo $result;
 				echo 0;//this means there are some problems.
 				}
 	      
-	       $this->cloneS3Folder(38);
+	       $this->cloneS3Folder(38,9999);
 	   }
 	 
 	}
