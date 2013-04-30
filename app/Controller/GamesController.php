@@ -922,7 +922,7 @@ public function profile() {
 		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
 		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
 		$this->set('user_id', $userid);
-		$users=$this->User->find('all',array('conditions'=>array('NOT' => array('User.id' => $listofmine)),'contain' =>array('Userstat'),'limit'=>18,'order'=> array(
+		$users=$this->User->find('all',array('conditions'=>array('NOT' => array('User.id' => $listofmine)),'contain' =>array('Userstat'),'limit'=>15,'order'=> array(
                 'Userstat.potential' => 'desc')));
 		$this->set('users',$users);
 	    $this->set_suggested_channels();
