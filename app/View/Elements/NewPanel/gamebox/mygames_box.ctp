@@ -19,7 +19,7 @@ else{
 
               <li class="span3" id="my_thumb_<?php echo $game['Game']['id']; ?>" style="margin:0px 15px 0px 0px;">
                 <div class="navbar"><div class="navbar-inner" style="padding:5px 5px 5px 5px;">
-                    <a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('alt'=>$game['Game']['name'],'width'=>'200','height'=>'110;')); ?></a>
+                  <a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'500','height'=>'110;')); ?></a>
 
                   <div class="caption">
                     <div style="min-height:45px; height:auto !important; height:45px;">
