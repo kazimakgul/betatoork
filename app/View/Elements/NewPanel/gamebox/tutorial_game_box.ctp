@@ -31,7 +31,7 @@ else{
                                                         <div class="contact-item">
                                                             <div class="pull-left" style="margin:4px;" >
                                                                 <?php 
-                echo $this->Upload->image($game,'Game.picture',array('class'=>'img-circle'),array('max-height'=>'40','onerror'=>'imgError(this,"avatar");'));
+                echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('width'=>'720','max-height'=>'40','onerror'=>'imgError(this,"avatar");'));
               ?>
                                                             </div>
                                                             <div class="contact-item-body">
