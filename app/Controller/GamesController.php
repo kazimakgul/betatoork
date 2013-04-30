@@ -1617,7 +1617,7 @@ function getExtension($str) {
 	
 	
 			//get objects from S3
-			 $prefix = 'upload/games/'.$old_id;
+			 $prefix = 'upload/games/'.$old_id.'/';
              $opt = array(
              'prefix' => $prefix,
              );
