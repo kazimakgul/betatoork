@@ -1647,36 +1647,8 @@ function getExtension($str) {
 				array('acl' => AmazonS3::ACL_PUBLIC)
                 );
 				//print_r($response);
-			 
 			 }
-			
-			
-	
-	/*
-	//=========================
-	   //Aws S3 image copy process
-	   //=========================
-	   $this->Amazon->S3->copy_object(
-    array( // Source
-        'bucket'   => Configure::read('S3.name'),
-        'filename' => 'upload/games/'.$id."/".$basename
-    ),
-    array( // Destination
-        'bucket'   => Configure::read('S3.name'),
-        'filename' => 'upload/games/'.$id."/".$basename
-    )
-);
-
-
-$string = "upload/games/38/toork_Tower_Bloxx_original.jpg";
-$prefix = "/38/";
-$index = strpos($string, $prefix) + strlen($prefix);
-$result = substr($string, $index);
-echo $result; 
-
-
-*/
-	   //http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonS3/copy_object Bu hareket ile image dosyasini kopyala.
+	  
 	
 	
 	}
@@ -2170,10 +2142,28 @@ public function edit2($id = null) {
 	}
 	
 	
+ public function deleteS3Image($id=NULL)
+ {
+ 
+ //remove objects from S3
+			 $prefix = 'upload/games/'.$id.'/';
+             $opt = array(
+             'prefix' => $prefix,
+             );
+			 $bucket=Configure::read('S3.name');
+			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			 foreach($objs as $obj)
+			 {echo $obj;
+			 //$response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
+			 //print_r($response);
+			 }
+			//remove objects from S3
+ }	
+	
  /**************************************
  * delete method with toork remote api
  **************************************/
-	public function gamedelete($id = null) {
+	public function gamedelete($id = null) {$this->deleteS3Image(28);
 	    $this->layout='ajax';
 		if (!$this->request->is('get')) {
 			throw new MethodNotAllowedException();
