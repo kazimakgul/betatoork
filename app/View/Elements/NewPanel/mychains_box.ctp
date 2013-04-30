@@ -61,7 +61,7 @@ if($website==NULL){
   <!----=========================================---->
 
 
-<div class="row-fluid span4" style="margin:0px 15px 0px 0px;">
+<div class="row-fluid span4" style="margin:0px 7px 0px 7px;">
     <div class="navbar"><div class="navbar-inner"  style="padding:5px 15px 5px 5px;">
       <div class="header-control" style="margin:0px -10px 0px 0px;">
         <button onclick="subscribeout('<?php echo $card[0]; ?>',user_auth,<?php echo $followid; ?>);"  rel="tooltip" data-placement="top" data-original-title="UnFollow" data-box="close" data-hide="fadeOut" class="close" >×</button> 

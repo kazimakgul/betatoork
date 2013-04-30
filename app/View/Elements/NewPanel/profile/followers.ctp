@@ -22,7 +22,7 @@ else
 ?>	
 
 
-<div class="row-fluid span4" style="margin:0px 15px 0px 0px;">
+<div class="row-fluid span4" style="margin:0px 7px 0px 7px;">
     <div class="navbar"><div class="navbar-inner"  style="padding:5px 15px 5px 5px;">
     <a class="span3" href="<?php echo $profileurl ?>" style="margin:0px 20px 0px 0px;">
             <?php 
