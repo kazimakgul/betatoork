@@ -1687,7 +1687,14 @@ function getExtension($str) {
 			    }else{
 				echo 0;//this means there are some problems.
 				}
-	       $this->render();
+				
+				$this->autoRender = false;
+                $outp = $this->render('clonegame');
+                // do cleanup stuff
+                echo $outp;
+                exit();
+				
+	       
 	       $this->cloneS3Folder($game_id,$id);
 	   }
 	 
