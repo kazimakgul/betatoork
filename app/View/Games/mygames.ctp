@@ -1,5 +1,6 @@
 <?php 
 $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
+$dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -18,10 +19,30 @@ $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
   <h4>Add a game to your account</h4>
   <p>Adding a game to your account is as simple as doing copy/paste. Just find a web page where you play a game. That's all.</p>
   <p>
-    <a href="<?php echo $addgame; ?>" class="btn btn-danger">
-      <i class="elusive-plus-sign"></i> Add Game
+     <a rel="tooltip" data-placement="bottom" data-original-title="Add a Game" href="<?php echo $addgame; ?>" class="btn btn-danger" style="margin:0px 3px 5px 0px;">
+        <i class="elusive-plus"></i> Add Game
+    </a>
+     <a style="margin:0px 3px 5px 0px;" rel="tooltip" id="ratebarchain" data-toggle="popover" data-placement="bottom" data-html="true" title="How to Chain?" data-original-title="How to Chain?" class="btn btn-success" data-content='
+                       <p class="alert alert-info" STYLE="font-size:10pt;">
+                            <i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini icofont-link"></a> chain button at the bottom of the page on the rating bar.
+                      </p>
+
+                        <p>
+ <i class="elusive-info-sign"></i> If you chain a game, a clone of the game will be created in your games section and you will be able to edit the game as you wish.
+                        </p>
+
+                       <a href="<?php echo $dashboard; ?>" class="btn btn-danger btn-small btn-block">
+                            <div class="helper-font-16">
+                            <i class="elusive-circle-arrow-right"> Play a Game</i>
+                            </div>
+                        </a>
+                        <p STYLE="font-size:10pt;">
+                          Its the easy way of adding a game to your channel.</p>
+                  '>
+        <i class="icofont-link"></i> Chain
     </a>
   </p>
+
 </div>
 
 <div class="alert alert-info span7">

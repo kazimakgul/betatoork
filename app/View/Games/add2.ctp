@@ -11,6 +11,16 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
 
+                    <div class="alert alert-block fadein">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <p><h5 class="alert-heading">Do you know what <a class="btn btn-success btn-mini icofont-link"> Chain</a> is? </br>Its the easy way of adding a game to your channel.</h5></p>
+                        
+                        <p><i class="elusive-info-sign"></i> If you chain a game, a clone of the game will be created in your games section and you will be able to edit the game as you wish.</p>
+                        <p><i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini icofont-link"></a> chain button at the bottom of the page on the rating bar.</p>
+                        
+                    </div>
+
+
                 <div class="error-page" style="margin:-60px 0px 0px 0px;">
                     <h1 class="error-code color-blue" style="margin:0px 0px -30px 0px;">Add Game</h1>
                     <p class="error-description">The game you add will appear in <a href="<?php echo $mygames;?>">"My Games"</a> and your <a href="<?php echo $profilepublic;?>">"Public Channel"</a></p>
