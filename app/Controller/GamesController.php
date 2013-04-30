@@ -1625,7 +1625,7 @@ function getExtension($str) {
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
-			 
+			 continue;
 			 echo $obj.'<br>';
 			 
 			 }
@@ -1647,6 +1647,15 @@ function getExtension($str) {
         'filename' => 'upload/games/'.$id."/".$basename
     )
 );
+
+
+$string = "upload/games/38/toork_Tower_Bloxx_original.jpg";
+$prefix = "/38/";
+$index = strpos($string, $prefix) + strlen($prefix);
+$result = substr($string, $index);
+echo $result; 
+
+
 */
 	   //http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonS3/copy_object Bu hareket ile image dosyasini kopyala.
 	
@@ -1687,7 +1696,7 @@ function getExtension($str) {
 			    }else{
 				echo 0;//this means there are some problems.
 				}
-	   
+	      
 	       $this->cloneS3Folder(38);
 	   }
 	 
