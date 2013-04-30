@@ -1622,7 +1622,7 @@ function getExtension($str) {
              'prefix' => $prefix,
              );
 			 $bucket=Configure::read('S3.name');
-			 $objs = $this->Amazon->S3->list_objects($bucket, $opt);
+			 $objs = $this->Amazon->S3->get_object_headers($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
 			 
