@@ -1687,10 +1687,8 @@ function getExtension($str) {
 			    }else{
 				echo 0;//this means there are some problems.
 				}
-				
-	    $this->set('old_id',$game_id);
-		$this->set('new_id',$id);
-	       //$this->cloneS3Folder($game_id,$id);
+	
+	       $this->cloneS3Folder($game_id,$id);
 	   }
 	 
 	}
