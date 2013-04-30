@@ -2156,7 +2156,7 @@ public function edit2($id = null) {
 			 {
 			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
 			 //print_r($response);
-			 }print_r($response);
+			 }
 			//remove objects from S3
  }	
 	
