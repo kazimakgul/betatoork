@@ -1622,11 +1622,11 @@ function getExtension($str) {
              'prefix' => $prefix,
              );
 			 $bucket=Configure::read('S3.name');
-			 $objs = $this->Amazon->S3->get_object($bucket, $opt);
+			 $objs = $this->Amazon->S3->list_objects($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
 			 
-			 echo $obj.'<br><br><br>';
+			 echo $obj.'<br>';
 			 
 			 }
 			echo '<br><br>-----------------------------Belooow---------------------------------------------';
