@@ -1626,10 +1626,11 @@ function getExtension($str) {
 			 foreach($objs as $obj)
 			 {
 			 
-			 echo $obj;
+			 echo $obj.'<br>';
 			 
 			 }
-			
+			echo '<br><br>-----------------------------Belooow---------------------------------------------';
+			print_r($objs);
 			
 	
 	/*
