@@ -1612,7 +1612,45 @@ function getExtension($str) {
      return $ext;
 }
     
+	public function cloneS3Folder($old_id=NULL)
+	{
 	
+	
+			//get objects from S3
+			 $prefix = 'upload/games/'.$old_id;
+             $opt = array(
+             'prefix' => $prefix,
+             );
+			 $bucket=Configure::read('S3.name');
+			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			 foreach($objs as $obj)
+			 {
+			 
+			 echo $obj;
+			 
+			 }
+			
+			
+	
+	/*
+	//=========================
+	   //Aws S3 image copy process
+	   //=========================
+	   $this->Amazon->S3->copy_object(
+    array( // Source
+        'bucket'   => Configure::read('S3.name'),
+        'filename' => 'upload/games/'.$id."/".$basename
+    ),
+    array( // Destination
+        'bucket'   => Configure::read('S3.name'),
+        'filename' => 'upload/games/'.$id."/".$basename
+    )
+);
+*/
+	   //http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonS3/copy_object Bu hareket ile image dosyasini kopyala.
+	
+	
+	}
 	
 	//Chain functions clones game items on games table.
     public function clonegame($game_id=NULL) {
@@ -1649,7 +1687,7 @@ function getExtension($str) {
 				echo 0;//this means there are some problems.
 				}
 	   
-	       
+	       $this->cloneS3Folder(38);
 	   }
 	 
 	}
