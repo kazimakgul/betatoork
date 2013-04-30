@@ -1630,7 +1630,7 @@ function getExtension($str) {
              $prefix = "/".$old_id."/";
              $index = strpos($string, $prefix) + strlen($prefix);
              $result = substr($string, $index);
-             echo $result; 
+             //echo $result; 
 			 
 			     //=========================
 	            //Aws S3 image copy process
