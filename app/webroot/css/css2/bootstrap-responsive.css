@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Responsive v2.3.1
+ * Bootstrap Responsive v2.2.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -7,6 +7,10 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+
+@-ms-viewport {
+  width: device-width;
+}
 
 .clearfix {
   *zoom: 1;
@@ -38,10 +42,6 @@
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-@-ms-viewport {
-  width: device-width;
 }
 
 .hidden {
@@ -91,19 +91,6 @@
     display: inherit !important;
   }
   .hidden-phone {
-    display: none !important;
-  }
-}
-
-.visible-print {
-  display: none !important;
-}
-
-@media print {
-  .visible-print {
-    display: inherit !important;
-  }
-  .hidden-print {
     display: none !important;
   }
 }
@@ -801,14 +788,14 @@
 
 @media (max-width: 767px) {
   body {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 0px;
+    padding-left: 0px;
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom,
   .navbar-static-top {
-    margin-right: -20px;
-    margin-left: -20px;
+    margin-right: 0px;
+    margin-left: 0px;
   }
   .container-fluid {
     padding: 0;
@@ -965,16 +952,25 @@
   }
   .navbar-fixed-top .navbar-inner,
   .navbar-fixed-bottom .navbar-inner {
-    padding: 5px;
+    padding: 0px;
   }
   .navbar .container {
     width: auto;
     padding: 0;
   }
   .navbar .brand {
-    padding-right: 10px;
-    padding-left: 10px;
-    margin: 0 0 0 -5px;
+    padding-left: 15px;
+    margin: 0 0px 0 5px;
+    background-size:60px 16px;
+    width: 50px;
+    height: 20px
+  }
+  .navbar .brand:hover {
+    padding-left: 15px;
+    margin: 0 0px 0 5px;
+    background-size:60px 16px;
+    width: 50px;
+    height: 20px
   }
   .nav-collapse {
     clear: both;
@@ -1016,9 +1012,7 @@
     margin-bottom: 2px;
   }
   .nav-collapse .nav > li > a:hover,
-  .nav-collapse .nav > li > a:focus,
-  .nav-collapse .dropdown-menu a:hover,
-  .nav-collapse .dropdown-menu a:focus {
+  .nav-collapse .dropdown-menu a:hover {
     background-color: #f2f2f2;
   }
   .navbar-inverse .nav-collapse .nav > li > a,
@@ -1026,9 +1020,7 @@
     color: #999999;
   }
   .navbar-inverse .nav-collapse .nav > li > a:hover,
-  .navbar-inverse .nav-collapse .nav > li > a:focus,
-  .navbar-inverse .nav-collapse .dropdown-menu a:hover,
-  .navbar-inverse .nav-collapse .dropdown-menu a:focus {
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover {
     background-color: #111111;
   }
   .nav-collapse.in .btn-group {

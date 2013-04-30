@@ -14,7 +14,6 @@
         display: block;
         width: 100%;
     }
-    
 }
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
@@ -41,7 +40,7 @@
     
     /** sidebar-right */
     .side-right{
-        width: 15.3%;
+        width: 17%;
     }
     /** end sidebar-right */
     
@@ -50,7 +49,6 @@
         display: none;
     }
     /** end message */
-    
 }
 
 /* Landscape phone to portrait tablet */
@@ -110,7 +108,7 @@
         display: inline-block;
     }
     .user-group .dropdown-user{
-        margin-left: -100%;
+        margin: 0px 0px 0px -300px;
         min-width: 260px;
     }
 
@@ -122,7 +120,9 @@
     /** sidebar**/
     .side-left{
         position: relative;
-        top: auto;
+        top: 20px;
+        margin: -20px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
         width: 100%;
         display: block;
         z-index: 1;
@@ -132,28 +132,12 @@
     }
     .side-right{
         position: relative;
-        display: block;
-        width: 99.7%;
+        display: table-cell;
         z-index: 1;
         margin: 10px auto 20px 0px;
         top: 60px;
     }
-    .side-right.side-right-large{
-        display: block;
-        width: 99.7%;
-    }
-    .sideright-toggle-nav{
-        display: none;
-    }
-    
-    .side-right[data-toggle=on],
-    .side-right.side-right-large[data-toggle=on]{
-        position: relative;
-        display: block;
-        left: 0px;
-        width: 99.7%;
-    }
-    
+
     .sidebar{
         margin: auto;
         display: table;
@@ -264,12 +248,6 @@
         border-left: 1px solid #CDCDCD;
         margin-bottom: 0px;
     }
-    .content.content-large,
-    .content.content-large[data-toggle=on],
-    .content.content-small{
-        margin-left: 0px;
-        margin-bottom: 0px;
-    }
     /* end content */
 
     /* box */
@@ -292,12 +270,6 @@
         display: none;
     }
     /** end message */
-    
-    /** footer */
-    footer{
-        margin-top: -10px;
-    }
-    /** end footer */
 }
 
 /* Landscape phones and down */
@@ -333,7 +305,7 @@
     }
     
     .user-group .dropdown-user{
-        margin-left: auto;
+        margin: 0px 0px 0px -170px;
         min-width: 160px;
         text-align: center;
     }
@@ -343,7 +315,7 @@
     }
     .user-group,
     .user-group > a:first-child{
-        margin-right: -23px;
+        margin-right: 0px;
     }
     .user-group > a:first-child .btn{
         
