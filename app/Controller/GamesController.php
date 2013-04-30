@@ -2163,7 +2163,7 @@ public function edit2($id = null) {
  /**************************************
  * delete method with toork remote api
  **************************************/
-	public function gamedelete($id = null) {$this->deleteS3Image(28);
+	public function gamedelete($id = null) {
 	    $this->layout='ajax';
 		if (!$this->request->is('get')) {
 			throw new MethodNotAllowedException();
@@ -2177,6 +2177,7 @@ public function edit2($id = null) {
 		if ($this->Game->delete()) {
 		    echo 1;
 			$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
+			$this->deleteS3Image($id);
 		}else{
 		    echo 0;
 		}
