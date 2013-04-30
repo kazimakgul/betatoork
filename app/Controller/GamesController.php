@@ -1626,7 +1626,7 @@ function getExtension($str) {
 			 foreach($objs as $obj)
 			 {
 			 
-			 echo $obj.'<br>';
+			 echo $obj.'<br><br><br>';
 			 
 			 }
 			echo '<br><br>-----------------------------Belooow---------------------------------------------';
