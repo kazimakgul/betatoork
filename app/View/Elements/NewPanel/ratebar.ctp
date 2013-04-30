@@ -202,7 +202,7 @@ if($this->Session->check('Auth.User')){
                                 <div class="modal-footer">
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
                                     <input type="hidden" id="game_name" value="<?php echo $game["Game"]["name"];?>">
-                                    <a id="chaingame" data-dismiss="modal" href="#" class="btn btn-success">Yes! Chain</a>
+                                    <a id="chaingame" data-dismiss="modal" href="#" onclick="dyn_notice();" class="btn btn-success">Yes! Chain</a>
          
                                 </div>
                         </div>
