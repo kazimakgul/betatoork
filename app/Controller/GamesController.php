@@ -11,7 +11,7 @@ class GamesController extends AppController {
 	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
-
+    
 
 
  	public function isAuthorized($user) {
@@ -32,7 +32,7 @@ class GamesController extends AppController {
 
 	    return false;
 	}
-
+     
 	
 	public function afterFilter() {
 	
@@ -1688,14 +1688,9 @@ function getExtension($str) {
 				echo 0;//this means there are some problems.
 				}
 				
-				$this->autoRender = false;
-                $outp = $this->render('clonegame');
-                // do cleanup stuff
-                echo $outp;
-                exit();
-				
-	       
-	       $this->cloneS3Folder($game_id,$id);
+	    $this->set('old_id',$game_id);
+		$this->set('new_id',$id);
+	       //$this->cloneS3Folder($game_id,$id);
 	   }
 	 
 	}
