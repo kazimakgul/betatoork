@@ -1645,7 +1645,7 @@ function getExtension($str) {
                'filename' => 'upload/games/'.$new_id."/".$result
                 )
                 );
-				print_r($response);
+				//print_r($response);
 			 
 			 }
 			
@@ -1715,7 +1715,7 @@ echo $result;
 				echo 0;//this means there are some problems.
 				}
 	      
-	       $this->cloneS3Folder(38,9999);
+	       $this->cloneS3Folder($game_id,$id);
 	   }
 	 
 	}
