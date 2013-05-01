@@ -16,7 +16,7 @@ else{
 <?php $editurl=$this->Html->url(array( "controller" => "games","action" =>"edit2",h($game['Game']['id']))); ?>
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
               
-              <?php if($game['Game']['clone']){ ?>
+              <?php if($game['Game']['clone']==NULL){ ?>
               <div class="helper-font-48" style="margin: 0px 0px -50px 0px;">
                 <i class="elusive-bookmark color-blue"></i>
               </div>
