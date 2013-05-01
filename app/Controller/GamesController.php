@@ -739,6 +739,7 @@ public function profile() {
 	}
     $userName = $user['User']['username'];
     $publicName = $publicUser['User']['username'];
+    $publicDesc = $publicUser['User']['description'];
 	$limit=12;
 	
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
@@ -750,15 +751,8 @@ public function profile() {
 	
 	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
 
-    
-	if($user['User']['verify']!=null){
-		$this->set('googleVerify',$publicUser['User']['verify']);
-	}else{
-		$this->set('googleVerify','');	
-	}
-
 	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_to_id' => $userid),'limit' => $limit));
-	//$this->set('followers', $subCond);
+
 	$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_to_id' => $userid)));
     $this->set('favorites', $cond2);
     $this->set('mygames', $cond);
@@ -767,7 +761,11 @@ public function profile() {
 	$this->set('userid', $userid);
 	$this->set('user', $user);
 	$this->set('publicuser', $publicUser);
+
 	$this->set_suggested_channels();	
+	$this->set('title_for_layout', $publicName.' Game Channel - Toork');
+	$this->set('description_for_layout', 'Play games on '.$publicName.' : '.$publicDesc);
+
 }
 
 
