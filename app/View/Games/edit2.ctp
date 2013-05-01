@@ -46,12 +46,14 @@
                                                         </div>
 
 <?php if ($this->Session->read('Auth.User.role') == 0){?>
+                           <?php if(!$clone) { ?>
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto"><strong>Game Link</strong></label>
                                                             <div class="controls">
 <?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'required pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white span10', 'maxlength'=>200)); ?>
                                                             </div>
                                                         </div>
+									<?php } ?>			
 <?php  } else{?>
                            <?php if(!$clone) { ?>
                                                         <div class="control-group">
