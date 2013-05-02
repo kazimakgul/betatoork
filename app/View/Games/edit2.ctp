@@ -87,14 +87,6 @@
                                                             </div>
                                                         </div>
                                                         
-                                                        <div class="control-group">
-                                                            <label class="control-label" for="inputUpload"><strong>Game Picture</strong></label>
-                                                            <div class="controls">
-                                                                <div >
-                                                                    <input data-form="uniform" id="inputUpload" type="file" name="data[Game][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="150">
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                         <div class="form-actions">
                                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                                             <button type="button" class="btn">Cancel</button>

@@ -2015,7 +2015,7 @@ public function edit2($id = null) {
 			$filtered_data['Game']['embed']=$this->request->data['Game']['embed'];
 			}
 			
-			if ($this->Game->save($this->request->data)) {
+			if ($this->Game->save($filtered_data)) {
 				$this->Session->setFlash('You have successfully updated your game.');
 				
 				
