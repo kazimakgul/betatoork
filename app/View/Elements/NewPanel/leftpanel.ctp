@@ -36,7 +36,7 @@ if ($this->action == "dashboard"){
                             <li <?php echo $class2;?>>
                                 <a href="<?php echo $mygames; ?>" title="My Games">
                                     <div class="helper-font-24">
-                                        <i class="icofont-umbrella"></i>
+                                        <i class="elusive-star-alt"></i>
                                     </div>
                                     <span class="sidebar-text">My Games</span>
                                 </a>
