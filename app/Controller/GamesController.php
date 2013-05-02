@@ -2005,7 +2005,7 @@ public function edit2($id = null) {
 			'name' => $this->request->data['Game']['name'],
 			'description' => $this->request->data['Game']['description'],
 			'category_id' => $this->request->data['Game']['category_id'],
-			'picture' => array('name' =>$this->request->data["Game"]["picture"]["name"], 'type' =>$this->request->data["Game"]["picture"]["type"],'tmp_name' =>$this->request->data["Game"]["picture"]["tmp_name"],'error' => $this->request->data["Game"]["picture"]["error"],'size' =>$this->request->data["Game"]["picture"]["size"] ),
+			'edit_picture' => array('name' =>$this->request->data["Game"]["picture"]["name"], 'type' =>$this->request->data["Game"]["picture"]["type"],'tmp_name' =>$this->request->data["Game"]["picture"]["tmp_name"],'error' => $this->request->data["Game"]["picture"]["error"],'size' =>$this->request->data["Game"]["picture"]["size"] ),
 			'seo_url' => $this->request->data['Game']['seo_url']));
 			
 			//if game is not clone,submits link & embed datas otherwise not!
@@ -2015,7 +2015,7 @@ public function edit2($id = null) {
 			$filtered_data['Game']['embed']=$this->request->data['Game']['embed'];
 			}
 			
-			if ($this->Game->save($filtered_data,array('name'))) {
+			if ($this->Game->save($this->request->data)) {
 				$this->Session->setFlash('You have successfully updated your game.');
 				
 				
