@@ -32,7 +32,7 @@
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
         <span class="fileupload-new"><i class="elusive-edit"></i></span>
-        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input type="file" /></span>
+        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[Game][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="150" /></span>
     <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
   </div>
 </div>
@@ -87,14 +87,6 @@
                                                             </div>
                                                         </div>
                                                         
-                                                        <div class="control-group">
-                                                            <label class="control-label" for="inputUpload"><strong>Game Picture</strong></label>
-                                                            <div class="controls">
-                                                                <div >
-                                                                    <input data-form="uniform" id="inputUpload" type="file" name="data[Game][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="150">
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                         <div class="form-actions">
                                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                                             <button type="button" class="btn">Cancel</button>
