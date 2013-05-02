@@ -156,7 +156,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                                                 <div >
                                                                     <input data-form="uniform" id="inputUpload" type="file" name="data[Game][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="150">
                                                                 </div>
-                                                            </div>
+                                                            </div></div>
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputUpload">Are You Hero?</label>
                                                             <div class="controls">
