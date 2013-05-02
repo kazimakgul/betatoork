@@ -526,7 +526,7 @@ public function mygames() {
 		$userid = $this->Session->read('Auth.User.id');
 		$this->headerlogin();
 		$limit=16;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.created' => 'desc')));
+		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.clone,User.seo_username'),'limit' => $limit,'order' => array('Game.created' => 'desc')));
 
     	$this->set('mygames', $cond);
 		$this->set('title_for_layout', 'Toork - Create your own game channel');

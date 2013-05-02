@@ -15,17 +15,16 @@ else{
 ?>	
 <?php $editurl=$this->Html->url(array( "controller" => "games","action" =>"edit2",h($game['Game']['id']))); ?>
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
-              
-              <?php if($game['Game']['clone']==NULL){ ?>
-              <div class="helper-font-48" style="margin: 0px 0px -50px 0px;">
-                <i class="elusive-bookmark color-blue"></i>
-              </div>
-              <div class="helper-font-24" style="margin: 10px 0px -50px 0px;">
-                <i rel="tooltip" data-placement="top" data-original-title="Chained"  class="icofont-link color-white" style="margin: 0px 0px 0px 15px;"></i>
-              </div>
-              <?php } ?>
 
               <li class="span3" id="my_thumb_<?php echo $game['Game']['id']; ?>" style="margin:0px 8px 0px 8px;">
+              <?php if($game['Game']['clone']){ ?>
+              <div class="helper-font-48" style="margin: 0px 0px 0px -9px; z-index:1; position:absolute;">
+                <i class="elusive-bookmark color-blue"></i>
+              </div>
+              <div class="helper-font-24" style="margin: 0px 0px 0px -9px; z-index:1; position:absolute;">
+                <i rel="tooltip" data-placement="top" data-original-title="Chained"  class="icofont-link color-white" style="margin: 6px 0px 0px 8px;"></i>
+              </div>
+              <?php } ?>
                 <div class="navbar"><div class="navbar-inner" style="padding:10px 10px 5px 10px;">
                   <a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'720','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></a>
                   <div class="caption">
