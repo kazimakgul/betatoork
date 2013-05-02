@@ -32,7 +32,7 @@ if($this->Session->check('Auth.User')){
 ?>
 
 
-<div class="well well-small">
+<div class="well well-small" style="background-image:url('http://i269.photobucket.com/albums/jj41/sophiaakk/Happykids/cartoons-green-lantern-paintings-batman-paper-minimalistic-iron-man-spider-man-superman-wolverine-superheroes-artwork-852x48_zps06bb8215.jpg');">
 <div class="row-fluid">
     <div class="span2">
         <div class="thumbnails">
@@ -55,7 +55,7 @@ if($this->Session->check('Auth.User')){
         <i class="elusive-star-alt color-red"></i> <?php echo $publicuser['Userstat']['uploadcount']; ?> Games
     </div>
     <div class="span10 thumbnails pull-right">
-        <img data-src="holder.js/745x200"class="img-polaroid">
+        
         <p><strong><?php echo $publicuser['User']['description'] ?></strong></p>
     </div>
 </div>
