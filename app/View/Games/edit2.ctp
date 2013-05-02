@@ -23,20 +23,7 @@
                                                 <div class="box-body">
                                                     <!--element-->
 <?php echo $this->Form->create('Game', array('label'=>false ,'id'=>'addgameform','class'=>'form-horizontal' ,'type' => 'file'));?>
-<div class="control-group">
-    <label class="control-label" for="inputAuto"><strong>Game Picture</strong></label>
-<div class="span2 fileupload fileupload-new" data-provides="fileupload">
-  <div class="fileupload-new img-polaroid" style="width: 215px; height:115px;">
-    <img src="http://www.placehold.it/215x115/EFEFEF/AAAAAA&text=Game Picture" /></div>
-  <div class="fileupload-preview fileupload-exists thumbnail" style="width: 215px; height: 115px; line-height: 20px;"></div>
-  <div>
-    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
-        <span class="fileupload-new"><i class="elusive-edit"></i></span>
-        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input type="file" /></span>
-    <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
-  </div>
-</div>
-</div>
+
 
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto"><strong>Game Name</strong></label>
