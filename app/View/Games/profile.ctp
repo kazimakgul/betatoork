@@ -50,9 +50,9 @@ if($this->Session->check('Auth.User')){
         </div>
         <h4><?php echo $publicname?></h4>
         <div>
-        <i class="elusive-plus-sign color-red"></i> 27 Followers
+        <i class="elusive-plus-sign color-red"></i> <?php echo $publicuser['Userstat']['subscribeto']; ?> Followers
         </div>
-        <i class="elusive-plus-sign color-blue"></i> 13 Games
+        <i class="elusive-plus-sign color-blue"></i> <?php echo $publicuser['Userstat']['uploadcount']; ?> Games
     </div>
     <div class="span10 thumbnails pull-right">
         <img data-src="holder.js/745x200"class="img-polaroid">
