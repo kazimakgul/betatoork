@@ -59,9 +59,13 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
         </div>
         <h4 style="font-family: 'Merriweather Sans', sans-serif; font-size: 18px; color:white; text-shadow: 1px 1px black;"><?php echo $publicname?></h4>
         <div>
-        <i class="elusive-group color-blue"></i> <?php echo $publicuser['Userstat']['subscribeto']; ?> Followers
+                <a style="margin-bottom:5px;" class="btn btn-block btn-success" id="follow_button" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
+                  <i class="elusive-plus-sign"></i> Follow
+                </a> 
+                <a style="margin-bottom:5px;" class="btn btn-block" id="unFollow_button" style="display:none;" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
+                  <i class="elusive-remove-circle"></i> Unfollow
+                </a> 
         </div>
-        <i class="elusive-star-alt color-red"></i> <?php echo $publicuser['Userstat']['uploadcount']; ?> Games
     </div>
     <div class="span10 pull-right " style="padding-top:170px;">
         <p style="background: rgba(255, 255, 255, 0.3);"><strong><?php echo $publicuser['User']['description'] ?></strong></p>
@@ -86,15 +90,12 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
   <!----=========================================---->
 
 
-    <div class="well well-small">
-        <div class="row-fluid">
-            <div class="span3">
-                <a class="btn btn-success" id="follow_button" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
-                  <i class="elusive-plus-sign"></i> Follow
-                </a> 
-				<a class="btn" id="unFollow_button" style="display:none;" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
-                  <i class="elusive-remove-circle"></i> Unfollow
-                </a> 
+    <div class="well well-small" style="padding:5px 5px 0px 5px ;">
+        <div class="row-fluid" >
+            <div class="span3"><h5>
+        <i class="elusive-group color-blue"></i> <?php echo $publicuser['Userstat']['subscribeto']; ?> Followers 
+        <i class="elusive-star-alt color-red"></i> <?php echo $publicuser['Userstat']['uploadcount']; ?> Games
+            </h5>
             </div>
             <div class="span4 pull-right">
                 <div class="pull-right">
