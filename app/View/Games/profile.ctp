@@ -32,7 +32,16 @@ if($this->Session->check('Auth.User')){
 ?>
 
 
-<div class="well well-small" style="background-image:url('http://i269.photobucket.com/albums/jj41/sophiaakk/Happykids/cartoons-green-lantern-paintings-batman-paper-minimalistic-iron-man-spider-man-superman-wolverine-superheroes-artwork-852x48_zps06bb8215.jpg');">
+<div class="well well-small shadow-black" style=" padding-bottom:0px; 
+
+
+background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://mattandcathavebackissues.com/wp-content/themes/pandora/images/ban3.jpg);
+
+background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://mattandcathavebackissues.com/wp-content/themes/pandora/images/ban3.jpg); /* Safari 4+, Chrome 2+ */  
+
+background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://mattandcathavebackissues.com/wp-content/themes/pandora/images/ban3.jpg); /* FF 3.6+ */  
+
+">
 <div class="row-fluid">
     <div class="span2">
         <div class="thumbnails">
@@ -48,15 +57,14 @@ if($this->Session->check('Auth.User')){
             </a>
           
         </div>
-        <h4><?php echo $publicname?></h4>
+        <h4 style="font-family: 'Merriweather Sans', sans-serif; font-size: 18px; color:white; text-shadow: 1px 1px black;"><?php echo $publicname?></h4>
         <div>
         <i class="elusive-group color-blue"></i> <?php echo $publicuser['Userstat']['subscribeto']; ?> Followers
         </div>
         <i class="elusive-star-alt color-red"></i> <?php echo $publicuser['Userstat']['uploadcount']; ?> Games
     </div>
-    <div class="span10 thumbnails pull-right">
-        
-        <p><strong><?php echo $publicuser['User']['description'] ?></strong></p>
+    <div class="span10 pull-right " style="padding-top:170px;">
+        <p style="background: rgba(255, 255, 255, 0.3);"><strong><?php echo $publicuser['User']['description'] ?></strong></p>
     </div>
 </div>
 </div>

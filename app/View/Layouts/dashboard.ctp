@@ -30,6 +30,7 @@
 
         <!-- google font -->
         <link href="http://fonts.googleapis.com/css?family=Aclonica:regular" rel="stylesheet" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:700' rel='stylesheet' type='text/css'>
 
         <!-- styles -->
 
