@@ -1,6 +1,7 @@
 <?php
 $password=$this->Html->url(array("controller" => "users","action" =>"password2",$this->Session->read('Auth.User.id')));
 $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
+$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -23,7 +24,15 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 <div class="raw-fluid">
 <div class="span2 fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-new img-polaroid" style="width: 90px; height: 120px;">
-    <img src="http://www.placehold.it/90x120/EFEFEF/AAAAAA&text=avatar" /></div>
+    
+  <?php 
+  if($user['User']['picture']==null) { 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'90',"alt" => "toork avatar image",)); 
+    } else {
+      echo $this->Upload->image($user,'User.picture',array(),array('width'=>'90','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
+  ?>
+
+    </div>
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 90px; height: 120px; line-height: 20px;"></div>
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
@@ -34,11 +43,12 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 </div>
 
 <div class="span8 fileupload fileupload-new" data-provides="fileupload" style="margin:0px 0px 0px 0px;">
-  <div class="fileupload-new img-polaroid" style="width: 745px; height: 200px;">
-    <img src="http://www.placehold.it/745x200/EFEFEF/AAAAAA&text=add a banner to your channel" /></div>
+  <div class="fileupload-new img-polaroid" style="width: 745px; height: 200px; padding-bottom:0px; 
+      background-image:url('http://mattandcathavebackissues.com/wp-content/themes/pandora/images/ban3.jpg');">
+  </div>
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 745px; height: 200px; line-height: 20px;"></div>
   <div>
-    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
+    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">Change Background 
         <span class="fileupload-new"><i class="elusive-edit"></i></span>
         <span class="fileupload-exists"><i class="elusive-edit"></i></span><input type="file" /></span>
     <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
