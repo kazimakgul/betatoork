@@ -326,6 +326,13 @@ public function __sendResetEmail($user_id) {
  		return $pic_number;
         //$this->set('randomAvatar' , $random['Game']['id']);
 }
+
+	public function randomPicture($number) {
+ 		$pic_number = rand(1,$number);
+ 		return $pic_number;
+        //$this->set('randomAvatar' , $random['Game']['id']);
+}
+
     //List of Bestchannel Names 
 	public function bestChannels(){
 	

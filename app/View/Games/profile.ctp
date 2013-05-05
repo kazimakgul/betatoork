@@ -1,5 +1,6 @@
 <?php
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
+$image = $this->requestAction( array('controller' => 'users', 'action' => 'randomPicture',31));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -34,12 +35,11 @@ if($this->Session->check('Auth.User')){
 
 <div class="well well-small shadow-black" style=" padding-bottom:0px; 
 
+background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);
 
-background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://mattandcathavebackissues.com/wp-content/themes/pandora/images/ban3.jpg);
+background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* Safari 4+, Chrome 2+ */  
 
-background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://mattandcathavebackissues.com/wp-content/themes/pandora/images/ban3.jpg); /* Safari 4+, Chrome 2+ */  
-
-background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://mattandcathavebackissues.com/wp-content/themes/pandora/images/ban3.jpg); /* FF 3.6+ */  
+background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* FF 3.6+ */  
 
 ">
 <div class="row-fluid">

@@ -44,7 +44,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 
 <div class="span8 fileupload fileupload-new" data-provides="fileupload" style="margin:0px 0px 0px 0px;">
   <div class="fileupload-new img-polaroid" style="width: 745px; height: 200px; padding-bottom:0px; 
-      background-image:url('http://mattandcathavebackissues.com/wp-content/themes/pandora/images/ban3.jpg');">
+      background-image:url('http://s3.amazonaws.com/betatoorkpics/banners/31.jpg');">
   </div>
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 745px; height: 200px; line-height: 20px;"></div>
   <div>
