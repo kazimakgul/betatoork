@@ -1143,3 +1143,40 @@ function gamedelete(game_name,user_auth,game_id)
 
 
 
+
+//***************************************************
+//---------------More Data Functions-----------------
+//***************************************************
+
+	
+	$('#loadmoregame').live('click',function(){
+											 
+	
+	$(".paging").hide();  //hide the paging for users with javascript enabled
+	
+	$(".thumbnails").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+		
+	var url = $("a#next").attr("href");
+	$(".paging").remove();
+	
+	$("div.batch").load(url, function(response, status, xhr) {
+            if (status == "error") {
+              var msg = "Sorry but there was an error: ";
+              alert(msg + xhr.status + " " + xhr.statusText);
+            }
+            else {
+                $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
+                $(".paging").hide(); //hide the new paging links
+                $(this).fadeIn();
+				var url = $("a#next").attr("href");
+	            //Check are there anymore?
+				if(typeof url=='undefined')
+				{
+					$('#loadmoregame').hide();
+				}
+ 
+            }
+        }); 
+	
+								 
+				});
