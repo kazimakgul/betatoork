@@ -21,32 +21,17 @@ else{
 }
 ?>	
 
-      <div class="span6" style="margin:0px;">
+  
 
-                  
-         <li class="header-control contact-alt grd-white" style="border-color:grey; margin:0px 10px 10px 0px;">
-                                                    <!--we use data toggle tab for navigate this action-->
-                                                    <a style="margin:0px 0px 5px 0px;" href="#" >
-                                                        <!--we use contact-item structure like the component media in bootstrap-->
-                                                        <div class="contact-item">
-                                                            <div class="pull-left" style="margin:4px;" >
-                                                                <?php 
-                echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('width'=>'720','max-height'=>'40','onerror'=>'imgError(this,"toorksize");'));
-              ?>
-                                                            </div>
-                                                            <div class="contact-item-body">
-                                                        <p class="contact-item-heading bold" style="margin-left:4px;"><?php echo $game['Game']['name']; ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <button onclick="chaingame2('<?php echo $game['Game']['name']; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" style="margin:-30px 4px 4px 4px; opacity:1;" href="#" rel="tooltip" data-placement="left" data-original-title="Chain" data-box="close" data-hide="fadeOut" class="close"><i class="btn btn-success btn-mini helper-font-16 icofont-link"></i></button> 
-                                                    </a>
-                                                </li>       
-      
-      
-      </div>    
-
-
-
+<div class="span6" style="margin:0px 5px 0px 0px;">
+  <li class="header-control">
+    <div class="well thumbnail" >
+<?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'img-polaroid','width'=>'230px','onerror'=>'imgError(this,"toorksize");')); ?>
+      <button onclick="chaingame2('<?php echo $game['Game']['name']; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" style="margin:5px; opacity:1;" href="#" rel="tooltip" data-placement="left" data-original-title="Chain" data-box="close" data-hide="fadeOut" class="close"><i class="btn btn-success btn-mini helper-font-16 icofont-link"></i></button> 
+      <p style="margin:5px;"><strong><?php echo $game['Game']['name']; ?></strong></p>
+    </div>
+  </li>
+</div>
 
 
 
