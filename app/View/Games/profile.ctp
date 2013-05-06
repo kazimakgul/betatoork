@@ -1,6 +1,6 @@
 <?php
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
-$image = $this->requestAction( array('controller' => 'users', 'action' => 'randomPicture',31));
+$image = $this->requestAction( array('controller' => 'users', 'action' => 'randomPicture',62));
 ?>
                 <!-- span content -->
                 <div class="span9">
