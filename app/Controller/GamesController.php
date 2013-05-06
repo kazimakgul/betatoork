@@ -1552,7 +1552,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
     //this gets game suggestions
 	public function get_game_suggestions($order)
 	{
-	$top50=$this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1'),'limit' => 50,'order' => array($order => 'desc'
+	$top50=$this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1'),'limit' => 100,'order' => array($order => 'desc'
     )));
 	
 		$list50=array();
