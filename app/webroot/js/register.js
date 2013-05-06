@@ -1148,6 +1148,16 @@ function gamedelete(game_name,user_auth,game_id)
 //---------------More Data Functions-----------------
 //***************************************************
 
+    if($('#loadmoregame').attr('id')=='loadmoregame')
+	{
+	var url = $("a#next").attr("href");
+	            //Check are there anymore?
+				if(typeof url=='undefined')
+				{
+					$('#loadmoregame').hide();
+				}
+	}
+   
 	
 	$('#loadmoregame').live('click',function(){
 											 

@@ -562,10 +562,21 @@ public function mygames() {
 		$this->layout='dashboard';
 		$userid = $this->Session->read('Auth.User.id');
 		$this->headerlogin();
+		
 		$limit=16;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.embed,Game.clone,User.seo_username'),'limit' => $limit,'order' => array('Game.created' => 'desc')));
+		
+		$this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.embed,Game.clone,User.seo_username'),'limit' => $limit,'order' => array('Game.created' => 'desc')));
+		$cond=$this->paginate('Game');
+        $this->set('mygames', $cond);
+		
+		if ($this->RequestHandler->isAjax()) {  
+		    $this->layout="ajax";
+            $this->render('/elements/NewPanel/gamebox/mygames_box_ajax');   // Render a special view for ajax pagination
+            return;  // return the ajax paginated content without a layout
+        }
 
-    	$this->set('mygames', $cond);
+
+
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
 		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
 	    $this->set_suggested_channels();
