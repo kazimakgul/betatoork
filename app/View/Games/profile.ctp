@@ -44,8 +44,8 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
 ">
 <div class="row-fluid">
     <div class="span12">
+       <!-- <p class="pull-right badge" style="font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;">Worth: $3.12</p> -->       
         <div class="thumbnails">
-         
             <a href="#">
                     <?php 
                     $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
