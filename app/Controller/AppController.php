@@ -92,7 +92,7 @@ class AppController extends Controller {
             'comment_ajax','comment_ajax2','image_ajax','get_userdata','delete_message_ajax','delete_comment_ajax','action_ajax',
             'get_gamedata','moreupdates_filter_ajax','gamefeed_ajax','view_ajax','view_ajax2','mass_subscription','quick_subscription',
             'sync_recommended','profile','playgame','bestchannels2','toprated2','login2','gameswitch','playgameframe','get_3_games',
-            'categorygames2','favorite_check','game_comment_ajax','game_comments_ajax','clonegame','gamedelete','gamelist','getgamelist','dashboard2');
+            'categorygames2','favorite_check','game_comment_ajax','game_comments_ajax','clonegame','gamedelete');
 
 		$this->set('user',$this->Auth->user());
 		

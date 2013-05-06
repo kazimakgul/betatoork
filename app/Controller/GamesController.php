@@ -100,27 +100,6 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	}
 
 	
-	public function gamelist()
-	{
-	$this->layout="ajax";
-	        $this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => 5));
-	        $data = $this->paginate('Game');
-            $this->set('posts',$data);
-		    $this->render('/games/ajax_paging');  
-		    if ($this->RequestHandler->isAjax()) {  
-            $this->render('/games/ajax_paging');  // Render a special view for ajax pagination
-            return;  // return the ajax paginated content without a layout
-        }
-		   
-	
-	}
-	
-	public function getgamelist()
-	{
-	$this->layout="ajax";
-	
-	}
-	
 	public function mostplayed() {
 
    		$this->paginate = array(
@@ -268,7 +247,17 @@ public function set_suggested_channels()
 	   	$userName = $user['User']['username'];
 
 		$limit=16;
-    	$this->set('top_rated_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order' => 'rand()')));
+		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit));
+		$data=$this->paginate('Game');
+    	$this->set('top_rated_games',$data);
+		
+		if ($this->RequestHandler->isAjax()) {  
+		    $this->layout="ajax";
+            $this->render('/elements/NewPanel/gamebox/dashboard_game_box_ajax');   // Render a special view for ajax pagination
+            return;  // return the ajax paginated content without a layout
+        }
+		
+		
 	    $this->set_suggested_channels();
 	    $this->set('user',$user);
 	    $this->set('username',$userName);
