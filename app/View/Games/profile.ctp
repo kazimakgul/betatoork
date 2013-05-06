@@ -73,7 +73,7 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
                 </p>
                 </div>
 
-                <div style="margin-top:8px;">
+                <div class="pull-right" style="margin-top:8px;">
 
 <?php
 $facebook=$publicuser['User']['fb_link'];

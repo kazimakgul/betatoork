@@ -16,27 +16,7 @@ else{
 						$card = $this->requestAction( array('controller' => 'games', 'action' => 'follow_card', $followid));
 						$playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$followid));
 						$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
-						$facebook=$follower['User']['fb_link'];
-						$twitter=$follower['User']['twitter_link'];
-						$gplus=$follower['User']['gplus_link'];
-						$website=$follower['User']['website'];
-						if($facebook==NULL){
-						  
-						}else{
-						  $facebook = "<a class='fb_link' href='$facebook' target='_blank' rel='nofollow'></a>";
-						}
-						if($twitter==NULL){
-						}else{
-						  $twitter = "<a class='twitter_link' href='$twitter' target='_blank' rel='nofollow'></a>";
-						}
-						if($gplus==NULL){
-						}else{
-						  $gplus = "<a class='gplus_link' href='$gplus' target='_blank' rel='nofollow'></a>";
-						}
-						if($website==NULL){
-						}else{
-						  $website = "<a class='website_link' href='$website' target='_blank' rel='nofollow'></a>";
-						}
+
 					?>
 			
 	<!----Declare Channel Name For JavaScript Usage---->
@@ -76,7 +56,6 @@ else{
                                                         </div>
                                                     </a>
                                                 </li>				
-			
 			
 			</div>		
 					
