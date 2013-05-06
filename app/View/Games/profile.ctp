@@ -73,7 +73,7 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
                 </p>
                 </div>
 
-                <div >
+                <div style="margin-top:8px;">
 
 <?php
 $facebook=$publicuser['User']['fb_link'];
@@ -82,38 +82,38 @@ $gplus=$publicuser['User']['gplus_link'];
 $website=$publicuser['User']['website'];
 if($facebook==NULL){
                    echo "<a style='margin-right:20px; text-shadow: 1px 1px black;'>                     
-                        <i class='elusive-facebook helper-font-32' style='opacity:0.3;'></i>
+                        <i class='elusive-facebook helper-font-24' style='opacity:0.3;'></i>
                     </a>";
 }else{
                    echo "<a rel='tooltip' data-placement='bottom' data-original-title='Facebook Page' href='$facebook' target='_blank' rel='nofollow' style='margin-right:20px; text-shadow: 1px 1px black;'>                     
-                        <i class='elusive-facebook color-blue helper-font-32'></i>
+                        <i class='elusive-facebook color-blue helper-font-24'></i>
                     </a>";
 }
 if($website==NULL){
                     echo "<a style='margin-right:20px; text-shadow: 1px 1px black;'>                     
-                        <i class='elusive-pinterest helper-font-32' style='opacity:0.3;'></i>
+                        <i class='elusive-pinterest helper-font-24' style='opacity:0.3;'></i>
                     </a>";
 }else{
                     echo "<a rel='tooltip' data-placement='bottom' data-original-title='Pinterest Board' href='$website' target='_blank' rel='nofollow' style='margin-right:20px; text-shadow: 1px 1px black;'>                     
-                        <i class='elusive-pinterest color-red helper-font-32'></i>
+                        <i class='elusive-pinterest color-red helper-font-24'></i>
                     </a>";
 }
 if($twitter==NULL){
                     echo "<a style='margin-right:20px; text-shadow: 1px 1px black;'>                     
-                        <i class='elusive-twitter helper-font-32' style='opacity:0.3;'></i>
+                        <i class='elusive-twitter helper-font-24' style='opacity:0.3;'></i>
                     </a>";
 }else{
                     echo "<a rel='tooltip' data-placement='bottom' data-original-title='Twitter Page' href='$twitter' target='_blank' rel='nofollow' style='margin-right:20px; text-shadow: 1px 1px black;'>                     
-                        <i class='elusive-twitter color-blue helper-font-32'></i>
+                        <i class='elusive-twitter color-blue helper-font-24'></i>
                     </a>";
 }
 if($gplus==NULL){
                     echo "<a style='margin-right:20px; text-shadow: 1px 1px black;'>                     
-                        <i class='elusive-googleplus helper-font-32' style='opacity:0.3;'></i>
+                        <i class='elusive-googleplus helper-font-24' style='opacity:0.3;'></i>
                     </a>";
 }else{
                     echo "<a rel='tooltip' data-placement='bottom' data-original-title='Google+ Page' href='$gplus' target='_blank' rel='nofollow' style='margin-right:20px; text-shadow: 1px 1px black;'>                     
-                        <i class='elusive-googleplus color-red helper-font-32'></i>
+                        <i class='elusive-googleplus color-red helper-font-24'></i>
                     </a>";
 }
 ?>
