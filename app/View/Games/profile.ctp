@@ -43,7 +43,7 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
 
 ">
 <div class="row-fluid">
-    <div class="span2">
+    <div class="span12">
         <div class="thumbnails">
          
             <a href="#">
@@ -58,19 +58,75 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
           
         </div>
         <h4 style="font-family: 'Merriweather Sans', sans-serif; font-size: 18px; color:white; text-shadow: 1px 1px black;"><?php echo $publicname?></h4>
-        <div>
-                <a style="margin-bottom:5px;" class="btn btn-block btn-success" id="follow_button" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
+        <div class="row-fluid">
+            <div class="span2">
+                <a class="btn btn-block btn-success" id="follow_button" style="margin-top:5px;"  onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
                   <i class="elusive-plus-sign"></i> Follow
                 </a> 
-                <a style="margin-bottom:5px;" class="btn btn-block" id="unFollow_button" style="display:none;" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
+                <a class="btn btn-block" id="unFollow_button" style="display:none;" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);">
                   <i class="elusive-remove-circle"></i> Unfollow
                 </a> 
+            </div> 
+                <div class="span7"><p style="font-family: 'Merriweather Sans', sans-serif; font-size: 15px; color:white; text-shadow: 1px 1px black; margin-top:7px;">
+                    <i class="helper-font-24 elusive-group color-blue"></i> <?php echo $publicuser['Userstat']['subscribeto']; ?> Followers 
+                    <i class="helper-font-24 elusive-star-alt color-red"></i> <?php echo $publicuser['Userstat']['uploadcount']; ?> Games
+                </p>
+                </div>
+
+                <div >
+
+<?php
+$facebook=$publicuser['User']['fb_link'];
+$twitter=$publicuser['User']['twitter_link'];
+$gplus=$publicuser['User']['gplus_link'];
+$website=$publicuser['User']['website'];
+if($facebook==NULL){
+                   echo "<a style='margin-right:20px; text-shadow: 1px 1px black;'>                     
+                        <i class='elusive-facebook helper-font-32' style='opacity:0.3;'></i>
+                    </a>";
+}else{
+                   echo "<a rel='tooltip' data-placement='bottom' data-original-title='Facebook Page' href='$facebook' target='_blank' rel='nofollow' style='margin-right:20px; text-shadow: 1px 1px black;'>                     
+                        <i class='elusive-facebook color-blue helper-font-32'></i>
+                    </a>";
+}
+if($website==NULL){
+                    echo "<a style='margin-right:20px; text-shadow: 1px 1px black;'>                     
+                        <i class='elusive-pinterest helper-font-32' style='opacity:0.3;'></i>
+                    </a>";
+}else{
+                    echo "<a rel='tooltip' data-placement='bottom' data-original-title='Pinterest Board' href='$website' target='_blank' rel='nofollow' style='margin-right:20px; text-shadow: 1px 1px black;'>                     
+                        <i class='elusive-pinterest color-red helper-font-32'></i>
+                    </a>";
+}
+if($twitter==NULL){
+                    echo "<a style='margin-right:20px; text-shadow: 1px 1px black;'>                     
+                        <i class='elusive-twitter helper-font-32' style='opacity:0.3;'></i>
+                    </a>";
+}else{
+                    echo "<a rel='tooltip' data-placement='bottom' data-original-title='Twitter Page' href='$twitter' target='_blank' rel='nofollow' style='margin-right:20px; text-shadow: 1px 1px black;'>                     
+                        <i class='elusive-twitter color-blue helper-font-32'></i>
+                    </a>";
+}
+if($gplus==NULL){
+                    echo "<a style='margin-right:20px; text-shadow: 1px 1px black;'>                     
+                        <i class='elusive-googleplus helper-font-32' style='opacity:0.3;'></i>
+                    </a>";
+}else{
+                    echo "<a rel='tooltip' data-placement='bottom' data-original-title='Google+ Page' href='$gplus' target='_blank' rel='nofollow' style='margin-right:20px; text-shadow: 1px 1px black;'>                     
+                        <i class='elusive-googleplus color-red helper-font-32'></i>
+                    </a>";
+}
+?>
+
+
+            </div>
+
         </div>
     </div>
-    <div class="span10 pull-right " style="padding-top:170px;">
-        <p style="background: rgba(255, 255, 255, 0.3);"><strong><?php echo $publicuser['User']['description'] ?></strong></p>
-    </div>
+
 </div>
+        <p style="background: rgba(255, 255, 255, 0.3);"><strong><?php echo $publicuser['User']['description'] ?></strong></p>
+
 </div>
 
 
@@ -89,65 +145,6 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
   </script>
   <!----=========================================---->
 
-
-    <div class="well well-small" style="padding:5px 5px 0px 5px ;">
-        <div class="row-fluid" >
-            <div class="span3"><h5>
-        <i class="elusive-group color-blue"></i> <?php echo $publicuser['Userstat']['subscribeto']; ?> Followers 
-        <i class="elusive-star-alt color-red"></i> <?php echo $publicuser['Userstat']['uploadcount']; ?> Games
-            </h5>
-            </div>
-            <div class="span4 pull-right">
-                <div class="pull-right">
-
-<?php
-$facebook=$publicuser['User']['fb_link'];
-$twitter=$publicuser['User']['twitter_link'];
-$gplus=$publicuser['User']['gplus_link'];
-$website=$publicuser['User']['website'];
-if($facebook==NULL){
-                   echo "<a style='margin-right:20px;'>                     
-                        <i class='elusive-facebook helper-font-32' style='opacity:0.3;'></i>
-                    </a>";
-}else{
-                   echo "<a rel='tooltip' data-placement='bottom' data-original-title='Facebook Page' href='$facebook' target='_blank' rel='nofollow' style='margin-right:20px;'>                     
-                        <i class='elusive-facebook color-blue helper-font-32'></i>
-                    </a>";
-}
-if($website==NULL){
-                    echo "<a style='margin-right:20px;'>                     
-                        <i class='elusive-pinterest helper-font-32' style='opacity:0.3;'></i>
-                    </a>";
-}else{
-                    echo "<a rel='tooltip' data-placement='bottom' data-original-title='Pinterest Board' href='$website' target='_blank' rel='nofollow' style='margin-right:20px;'>                     
-                        <i class='elusive-pinterest color-red helper-font-32'></i>
-                    </a>";
-}
-if($twitter==NULL){
-                    echo "<a style='margin-right:20px;'>                     
-                        <i class='elusive-twitter helper-font-32' style='opacity:0.3;'></i>
-                    </a>";
-}else{
-                    echo "<a rel='tooltip' data-placement='bottom' data-original-title='Twitter Page' href='$twitter' target='_blank' rel='nofollow' style='margin-right:20px;'>                     
-                        <i class='elusive-twitter color-blue helper-font-32'></i>
-                    </a>";
-}
-if($gplus==NULL){
-                    echo "<a style='margin-right:20px;'>                     
-                        <i class='elusive-googleplus helper-font-32' style='opacity:0.3;'></i>
-                    </a>";
-}else{
-                    echo "<a rel='tooltip' data-placement='bottom' data-original-title='Google+ Page' href='$gplus' target='_blank' rel='nofollow' style='margin-right:20px;'>                     
-                        <i class='elusive-googleplus color-red helper-font-32'></i>
-                    </a>";
-}
-?>
-
-
-            </div>
-            </div>
-        </div>
-    </div>
 
 <div class="row-fluid">
         <!--span-->
