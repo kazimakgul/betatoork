@@ -169,19 +169,22 @@ if($gplus==NULL){
 <ul class="thumbnails" id="thumbnails_area">
 <?php  echo $this->element('NewPanel/profile/channel_game_box'); ?>
 </ul>
+<div>
+<a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+</div>
 
                                                 </div>
 												<!--Bu alana more games buttonu geliyor -->
-	<div>
-    <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
-	</div>
+	
 												<!--/Bu alana more games buttonu geliyor -->
                                                 <div class="tab-pane fade" id="boxtab-2">
 <ul class="thumbnails">
-
 <?php  echo $this->element('NewPanel/profile/channel_favorite_box'); ?>
-
 </ul>
+<div>
+<a id="loadmorefavorite" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+</div>
+
                                                 </div>
                                                 <div class="tab-pane fade" id="boxtab-3">
                                 <!-- tab resume update -->
