@@ -171,6 +171,11 @@ if($gplus==NULL){
 </ul>
 
                                                 </div>
+												<!--Bu alana more games buttonu geliyor -->
+	<div>
+    <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+	</div>
+												<!--/Bu alana more games buttonu geliyor -->
                                                 <div class="tab-pane fade" id="boxtab-2">
 <ul class="thumbnails">
 
@@ -352,8 +357,7 @@ if($gplus==NULL){
 </div>
 
 
-<div>
-    <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+
 	<!--Hidden Pagination -->
 	<div class="paging" style="display:none;">
      <?php 
@@ -363,8 +367,6 @@ if($gplus==NULL){
 	 ?>
     </div>
     <!--Hidden Pagination -->
-
-</div>
 
 
 

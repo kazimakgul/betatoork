@@ -796,7 +796,7 @@ public function profile() {
 	$this->set('mygames', $cond);
 	if ($this->RequestHandler->isAjax()) {  
 		    $this->layout="ajax";
-            $this->render('/elements/NewPanel/profile/channel_game_box_ajax');   // Render a special view for ajax pagination
+            $this->render('/Elements/NewPanel/profile/channel_game_box_ajax');   // Render a special view for ajax pagination
             return;  // return the ajax paginated content without a layout
        }
 
