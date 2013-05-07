@@ -46,15 +46,14 @@
 </ul>
 
     <!--Hidden Pagination -->
-	<div class="paging" style="width:100%; text-align:center;">
-     <?php 
-	 echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled')).'  '; 
-     echo $this->Paginator->numbers();
-     echo '  '.$this->Paginator->next(__('next', true).' >>', array('id'=>'next'), null, array('class' => 'disabled'));
-	 ?>
+    <div class="pagination pagination-centered">
+        <ul>
+            <li><?php echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?></li>
+            <li><?php echo $this->Paginator->numbers(); ?></li>
+            <li><?php echo '  '.$this->Paginator->next(__('next', true).' >>', array('id'=>'next'), null, array('class' => 'disabled'));?></li>
+        </ul>
     </div>
     <!--Hidden Pagination -->
-
 
 
                         </div><!--/content-body -->
