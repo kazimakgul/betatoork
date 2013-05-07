@@ -257,6 +257,7 @@ public function set_suggested_channels()
             return;  // return the ajax paginated content without a layout
         }
 		
+		
 	    $this->set_suggested_channels();
 	    $this->set('user',$user);
 	    $this->set('username',$userName);
@@ -265,6 +266,32 @@ public function set_suggested_channels()
 	    
 	}
 	
+	public function dashboard2() {
+		
+		$this->layout='dashboard';
+		$userid = $this->Session->read('Auth.User.id');
+	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	   	$userName = $user['User']['username'];
+
+
+		$limit=16;
+		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit));
+		$data=$this->paginate('Game');
+    	$this->set('top_rated_games',$data);
+		
+		if ($this->RequestHandler->isAjax()) {  
+		    $this->layout="ajax";
+            $this->render('/elements/NewPanel/gamebox/dashboard_game_box_ajax');   // Render a special view for ajax pagination
+            return;  // return the ajax paginated content without a layout
+        }
+		
+	    $this->set_suggested_channels();
+	    $this->set('user',$user);
+	    $this->set('username',$userName);
+		$this->set('title_for_layout', 'Dashboard - Toork Channel Manager');
+		$this->set('description_for_layout', 'Your Dashboard knows what you want and helps you do everything easier.');
+	    
+	}
 
     public function favorites() {
 	$this->layout='dashboard';
@@ -351,19 +378,7 @@ public function set_suggested_channels()
 		$this->layout='dashboard';
 		$this->headerlogin();
 
-		$limit=16;
-		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1'),'limit' => $limit));
-		$data=$this->paginate('Game');
-    	$this->set('top_rated_games',$data);
-		
-		if ($this->RequestHandler->isAjax()) {  
-		    $this->layout="ajax";
-            $this->render('/Elements/NewPanel/gamebox/toprated_box_ajax');   // Render a special view for ajax pagination
-            return;  // return the ajax paginated content without a layout
-        }
-		
-		
-		
+		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1')));
 		$this->set('title_for_layout', 'Toork - Top Rated Games');
 		$this->set('description_for_layout', 'Find the best and toprated online games and play and rate popular games online');	
 
@@ -445,19 +460,7 @@ public function categorygames2() {
 		$catid = $this->request->params['pass'][0];
 		$category = $this->Category->find('first', array('conditions' => array('Category.id' => $catid)));
 		$catName = $category['Category']['name'];
-		
-		$limit=16;
-		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.category_id'=>$catid),'limit' => $limit));
-		$data=$this->paginate('Game');
-    	$this->set('top_rated_games',$data);
-		
-		if ($this->RequestHandler->isAjax()) {  
-		    $this->layout="ajax";
-            $this->render('/Elements/NewPanel/gamebox/dashboard_game_box_ajax');   // Render a special view for ajax pagination
-            return;  // return the ajax paginated content without a layout
-        }
-		
-		
+		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1','Game.category_id'=>$catid)));
 		$this->set('catName', $catName);
 
 		$this->set('title_for_layout',  $catName.' - Top Rated '.$catName.' Games - Toork');
@@ -1104,24 +1107,8 @@ $this->redirect(array("controller"=>"games","action"=>"index"));
 }
 else
 {
-
-
-
-//$this->set('search', $this->paginate('Game',$cond));
-
-        $limit=16;
-		$cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.description LIKE'=>'%'.$param.'%','User.username LIKE'=>'%'.$param.'%'),'Game.active'=>'1'));
-		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => $cond,'limit' => $limit));
-		$data=$this->paginate('Game');
-    	$this->set('search',$data);
-		
-		if ($this->RequestHandler->isAjax()) {  
-		    $this->layout="ajax";
-            $this->render('/Elements/NewPanel/gamebox/search_game_box_ajax');   // Render a special view for ajax pagination
-            return;  // return the ajax paginated content without a layout
-        }
-
-
+$cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.description LIKE'=>'%'.$param.'%','User.username LIKE'=>'%'.$param.'%'),'Game.active'=>'1'));
+$this->set('search', $this->paginate('Game',$cond));
 $this->set('mygames', $cond);
 
 $this->set('title_for_layout', 'Toork - Game Search Engine');
