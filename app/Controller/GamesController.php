@@ -253,7 +253,7 @@ public function set_suggested_channels()
 		
 		if ($this->RequestHandler->isAjax()) {  
 		    $this->layout="ajax";
-            $this->render('channel');   // Render a special view for ajax pagination
+            $this->render('/elements/game_footer');   // Render a special view for ajax pagination
             return;  // return the ajax paginated content without a layout
         }
 		
