@@ -93,7 +93,7 @@ return $a;
 		$this->logedin_user_panel();
 		
 	//Add recommended channel as chain
-	$this->requestAction( array('controller' => 'subscriptions', 'action' => 'quick_subscription'));
+	//$this->requestAction( array('controller' => 'subscriptions', 'action' => 'quick_subscription'));
 		
 		
 		switch($type)
