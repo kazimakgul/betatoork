@@ -132,7 +132,6 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 	 ?>
     </div>
     <!--Hidden Pagination -->
-
 </div>    
                             <!--/dashboard-->
                         </div><!--/content-body -->

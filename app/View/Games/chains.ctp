@@ -41,11 +41,19 @@
 </div>
 
 <ul class="thumbnails">
-
 <?php  echo $this->element('NewPanel/mychains_box'); ?>
-
 </ul>
 
+
+    <!--Hidden Pagination -->
+	<div class="paging" style="width:100%; text-align:center;">
+     <?php 
+	 echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled')).'  '; 
+     echo $this->Paginator->numbers();
+     echo '  '.$this->Paginator->next(__('next', true).' >>', array('id'=>'next'), null, array('class' => 'disabled'));
+	 ?>
+    </div>
+    <!--Hidden Pagination -->
 
 
                         </div><!--/content-body -->

@@ -297,10 +297,12 @@ public function set_suggested_channels()
 	$this->layout='dashboard';
 	$userid = $this->Session->read('Auth.User.id');
 	$this->headerlogin();
+   
+   
     $limit=16;
+	$this->paginate=array('Favorite'=>array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.embed'),'User'=>array('fields'=>array('User.username','User.seo_username,User.id'))))));
+	$cond2=$this->paginate('Favorite');
 
-	//ReCoded
-	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.embed'),'User'=>array('fields'=>array('User.username','User.seo_username,User.id'))))));
 	
     $this->set('favorites',$cond2);
 
@@ -322,7 +324,11 @@ public function set_suggested_channels()
 		$this->set('description_for_layout', $userName.' - All the chains of '.$userName);
 
         $this->set_suggested_channels();
-		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
+		//$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
+		
+		$limit=18;
+		$this->paginate=array('Subscription'=>array('contain'=>array('User'),'conditions' => array('Subscription.subscriber_id'=>$userid),'limit' => $limit));
+		$this->set('followers', $this->paginate('Subscription'));
 
 	}
 
@@ -568,14 +574,6 @@ public function mygames() {
 		$this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.embed,Game.clone,User.seo_username'),'limit' => $limit,'order' => array('Game.created' => 'desc')));
 		$cond=$this->paginate('Game');
         $this->set('mygames', $cond);
-		
-		if ($this->RequestHandler->isAjax()) {  
-		    $this->layout="ajax";
-            $this->render('/elements/NewPanel/gamebox/mygames_box_ajax');   // Render a special view for ajax pagination
-            return;  // return the ajax paginated content without a layout
-        }
-
-
 
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
 		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
@@ -975,12 +973,21 @@ public function profile() {
 		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
 		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
 		$this->set('user_id', $userid);
-		$users=$this->User->find('all',array('conditions'=>array('NOT' => array('User.id' => $listofmine)),'contain' =>array('Userstat'),'limit'=>15,'order'=> array(
+		
+		$limit=15;
+		$this->paginate=array('User'=>array('conditions'=>array('NOT' => array('User.id' => $listofmine)),'contain' =>array('Userstat'),'limit'=>$limit,'order'=> array(
                 'Userstat.potential' => 'desc')));
-		$this->set('users',$users);
+		$users=$this->paginate('User');
+        $this->set('users',$users);
+		
+		if ($this->RequestHandler->isAjax()) {  
+		    $this->layout="ajax";
+            $this->render('/Elements/NewPanel/bestchannel_box_ajax');   // Render a special view for ajax pagination
+            return;  // return the ajax paginated content without a layout
+        }
+		
+		
 	    $this->set_suggested_channels();
-
-
 
 	}
 
