@@ -104,9 +104,22 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
 
 
 
-                                <ul class="thumbnails">
+                                <ul class="thumbnails" id="thumbnails_area">
                                     <?php  echo $this->element('NewPanel/gamebox/dashboard_game_box'); ?>
                                 </ul>
+<div>
+    <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+	<!--Hidden Pagination -->
+	<div class="paging" style="display:none;">
+     <?php 
+	 echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled')); 
+     echo $this->Paginator->numbers();
+     echo $this->Paginator->next(__('next', true).' >>', array('id'=>'next'), null, array('class' => 'disabled'));
+	 ?>
+    </div>
+    <!--Hidden Pagination -->
+</div>    								
+								
 
 
                         </div><!--/content-body -->
