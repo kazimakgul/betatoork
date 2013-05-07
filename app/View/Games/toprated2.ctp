@@ -30,7 +30,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
                             
                             <!--breadcrumb-->
                             <ul class="breadcrumb">
-                                <li><a href="#"><i class="elusive-fire color-red"></i> Hot Games</a> <span class="divider">&rsaquo;</span></li>
+                                <li><a href="index.html"><i class="elusive-fire color-red"></i> Hot Games</a> <span class="divider">&rsaquo;</span></li>
                             </ul><!--/breadcrumb-->
                         </div><!-- /content-breadcrumb -->
                         
@@ -112,7 +112,7 @@ if($this->Session->check('Auth.User')){
 <?php  echo $this->element('NewPanel/gamebox/toprated_box'); ?>
 </ul>
 
-<div style="margin-bottom:30px;">
+<div>
     <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
 	<!--Hidden Pagination -->
 	<div class="paging" style="display:none;">

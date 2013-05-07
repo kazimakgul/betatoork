@@ -67,15 +67,12 @@ $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"
 
     
 	<!--Hidden Pagination -->
-    <div class="pagination pagination-centered">
-        <ul>
-            <li><?php echo $this->Paginator->prev(__('Prev', true), array(), null, array('class'=>'disabled'));?></li>
-            <li><?php echo $this->Paginator->numbers(); ?></li>
-            <li><?php echo '  '.$this->Paginator->next(__('Next', true), array('id'=>'next'), null, array('class' => 'disabled'));?></li>
-        </ul>
-        <div style="opacity:0.5;">
-            <?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}, showing {:current} games out of {:count} total')));?>
-        </div>
+	<div class="paging" style="width:100%; text-align:center;">
+     <?php 
+	 echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled')).'  '; 
+     echo $this->Paginator->numbers();
+     echo '  '.$this->Paginator->next(__('next', true).' >>', array('id'=>'next'), null, array('class' => 'disabled'));
+	 ?>
     </div>
     <!--Hidden Pagination -->
 
