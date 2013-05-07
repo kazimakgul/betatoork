@@ -16,7 +16,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
                             <!-- dashboard -->
-<i class="elusive-graph"></i> Your analytics are not active yet!
+<i class="elusive-graph"></i> Your analytics are not active yet! You will be able to earn money soon.
 <div class="row-fluid" style="opacity:0.3;">
     <div class="alert alert-info span3">
         <i class="elusive-thumbs-up helper-font-48"></i>
@@ -39,11 +39,11 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
             <h4>Favorites</h4>
         </div>
     </div>
-    <div class="alert alert-info span3">
-        <i class="elusive-play-circle helper-font-48"></i>
+    <div class="alert alert-danger span3">
+        <h4>Channel Worth</h4>
         <div class="pull-right ">
-            <h2 style="margin:-8px 0px 0px 0px;">1575</h2>
-            <h4>Plays</h4>
+            <h2 style="margin:-8px 0px 0px 0px;">$7.15</h2>
+            
         </div>
     </div>
 </div>
@@ -121,7 +121,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                 <ul class="thumbnails" id="thumbnails_area">
                                     <?php  echo $this->element('NewPanel/gamebox/dashboard_game_box'); ?>
                                 </ul>
-<div>
+<div style="margin-bottom:30px;">
     <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
 	<!--Hidden Pagination -->
 	<div class="paging" style="display:none;">
