@@ -75,7 +75,7 @@ if ($this->action == "dashboard"){
                                 </a>
                                 <ul class="sub-sidebar-form corner-top shadow-white">
                                     <li>
-                                        <a href="gallery.html" title="Monetize" class="corner-all">
+                                        <a href="#" title="Monetize" class="corner-all">
                                             <i class="icofont-money"></i>
                                             <span class="sidebar-text">Monetize Your Channel</span>
                                         </a>
