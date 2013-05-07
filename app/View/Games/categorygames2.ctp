@@ -107,7 +107,7 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
                                 <ul class="thumbnails" id="thumbnails_area">
                                     <?php  echo $this->element('NewPanel/gamebox/dashboard_game_box'); ?>
                                 </ul>
-<div>
+<div style="margin-bottom:30px;">
     <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
 	<!--Hidden Pagination -->
 	<div class="paging" style="display:none;">

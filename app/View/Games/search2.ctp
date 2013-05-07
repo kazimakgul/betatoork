@@ -17,7 +17,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
 <?php  echo $this->element('NewPanel/gamebox/search_game_box'); ?>
 </ul>
 
-<div>
+<div style="margin-bottom:50px;">
 <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
 </div>	
                   <?php }else{ ?>
