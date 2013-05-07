@@ -166,10 +166,8 @@ if($gplus==NULL){
                                             <div class="tab-content">
                                                 <div class="tab-pane fade active in" id="boxtab-1">
 
-<ul class="thumbnails">
-
+<ul class="thumbnails" id="thumbnails_area">
 <?php  echo $this->element('NewPanel/profile/channel_game_box'); ?>
-
 </ul>
 
                                                 </div>
@@ -353,6 +351,20 @@ if($gplus==NULL){
          </div><!--/span-->
 </div>
 
+
+<div>
+    <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+	<!--Hidden Pagination -->
+	<div class="paging" style="display:none;">
+     <?php 
+	 echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled')); 
+     echo $this->Paginator->numbers();
+     echo $this->Paginator->next(__('next', true).' >>', array('id'=>'next'), null, array('class' => 'disabled'));
+	 ?>
+    </div>
+    <!--Hidden Pagination -->
+
+</div>
 
 
 

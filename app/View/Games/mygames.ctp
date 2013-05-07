@@ -61,7 +61,7 @@ $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"
 </div>
 </div>
 
-<ul class="thumbnails">
+<ul class="thumbnails" id="thumbnails_area">
 <?php  echo $this->element('NewPanel/gamebox/mygames_box'); ?>
 </ul>
 

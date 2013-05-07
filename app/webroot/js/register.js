@@ -1164,11 +1164,11 @@ function gamedelete(game_name,user_auth,game_id)
 	
 	$(".paging").hide();  //hide the paging for users with javascript enabled
 	
-	$(".thumbnails").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 		
 	var url = $("a#next").attr("href");
 	$(".paging").remove();
-	
+	alert(url);
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
@@ -1188,5 +1188,9 @@ function gamedelete(game_name,user_auth,game_id)
             }
         }); 
 	
+	//This code block below allow make Live Tooltips(allow to work for ajax loaded objects)
+	$('body').tooltip({
+    selector: '[rel=tooltip]'
+    });
 								 
 				});

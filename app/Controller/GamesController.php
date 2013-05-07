@@ -788,10 +788,18 @@ public function profile() {
     $userName = $user['User']['username'];
     $publicName = $publicUser['User']['username'];
     $publicDesc = $publicUser['User']['description'];
-	$limit=12;
 	
-	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
+	$limit=12;
+	$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
+	$cond=$this->paginate('Game');
+	$this->set('mygames', $cond);
+	if ($this->RequestHandler->isAjax()) {  
+		    $this->layout="ajax";
+            $this->render('/elements/NewPanel/profile/channel_game_box_ajax');   // Render a special view for ajax pagination
+            return;  // return the ajax paginated content without a layout
+       }
+
 	
 	//ReCoded
 	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.embed'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
@@ -803,7 +811,6 @@ public function profile() {
 
 	$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_to_id' => $userid)));
     $this->set('favorites', $cond2);
-    $this->set('mygames', $cond);
     $this->set('username', $userName);
     $this->set('publicname', $publicName);
 	$this->set('userid', $userid);

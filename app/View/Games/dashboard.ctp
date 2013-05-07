@@ -118,7 +118,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 </div>      
 <hr>
                              
-                                <ul class="thumbnails">
+                                <ul class="thumbnails" id="thumbnails_area">
                                     <?php  echo $this->element('NewPanel/gamebox/dashboard_game_box'); ?>
                                 </ul>
 <div>
