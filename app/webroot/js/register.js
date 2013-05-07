@@ -1166,9 +1166,8 @@ function gamedelete(game_name,user_auth,game_id)
 	
 	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 		
-	var url = $("a#next").attr("href");
+	var url = $("a#next").attr("href");url='http://54.225.196.20'+url;alert(url);
 	$(".paging").remove();
-	alert(url);
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
