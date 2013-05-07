@@ -196,6 +196,7 @@ $('#gameshare').popover();
 $('#comment').popover();
 $('#ratebarshare').popover();
 $('#ratebarchain').popover();
+$('#imageinfo').popover();
 </script>
 <!-- Js variable for wallscript ends-->
 

@@ -1,3 +1,6 @@
+<?php
+$mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
+?>
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -25,7 +28,7 @@
 <?php echo $this->Form->create('Game', array('label'=>false ,'id'=>'addgameform','class'=>'form-horizontal' ,'type' => 'file'));?>
 <div class="control-group">
     <label class="control-label" for="inputAuto"><strong>Game Picture</strong></label>
-<div class="span2 fileupload fileupload-new" data-provides="fileupload">
+<div class="span4 fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-new img-polaroid" style="width: 215px; height:118px;">
     <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'500','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></div>
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 215px; height: 115px; line-height: 20px;"></div>
@@ -34,6 +37,9 @@
         <span class="fileupload-new"><i class="elusive-edit"></i></span>
         <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[Game][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="150" /></span>
     <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
+
+     <a rel="tooltip" id="imageinfo" data-toggle="popover" style="margin:-80px 30px 0px 10px;" title="Picture Specs Info" data-placement="bottom" data-original-title="Game Image Info" class="btn btn-small" data-html="true" data-content='A good picture size is <strong>600*330</strong>px. For the best experience try to add a rectangle kind of image which is larger than <strong>200*110</strong>px. Any image size is always welcome.'><i class="elusive-info-sign"></i></a>
+
   </div>
 </div>
 </div>
@@ -89,7 +95,7 @@
                                                         
                                                         <div class="form-actions">
                                                             <button type="submit" class="btn btn-primary">Save changes</button>
-                                                            <button type="button" class="btn">Cancel</button>
+                                                            <a type="button" class="btn" href="<?php echo $mygames; ?>">Cancel</a>
                                                         </div>
                                                     </form>
                                                     <!--/element-->
