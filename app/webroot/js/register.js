@@ -1191,5 +1191,19 @@ function gamedelete(game_name,user_auth,game_id)
 	$('body').tooltip({
     selector: '[rel=tooltip]'
     });
-								 
+	//Live Version of Box Close Function Begins
+	$('.header-control [data-box=close]').live('click',function(){
+        var close = $(this),
+        box = close.parent().parent().parent(),
+        data_anim = close.attr('data-hide'),
+        animate = (data_anim == undefined || data_anim == '') ? 'fadeOut' : data_anim;
+
+        box.addClass('animated '+animate);
+        setTimeout(function(){
+            box.hide()
+        },1000);
+    });
+	//Live Version of Box Close Function Ends
+	
+					 
 				});
