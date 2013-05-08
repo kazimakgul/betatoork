@@ -141,7 +141,7 @@ if($gplus==NULL){
   
   checkFollowStat='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'sub_check')); ?>';
   profile_id='<?php echo $userid; ?>';
-  
+  channelfavorite='<?php echo $this->Html->url(array('controller'=>'games','action'=>'channelfavorites')); ?>';
   </script>
   <!----=========================================---->
 
@@ -152,19 +152,19 @@ if($gplus==NULL){
                                     <!--box tab-->
                                     <div class="box-tab corner-all">
                                         <div class="box-header corner-top">
-                                            <ul class="nav nav-tabs">
+                                            <ul class="nav nav-tabs" id="profile_tabs">
      
                                                 <!--tab menus-->
-                                                <li class="active"><a data-toggle="tab" href="#boxtab-1"><i class="elusive-user"></i> Channel Games</a></li>
-                                                <li class=""><a data-toggle="tab" href="#boxtab-2"><i class="elusive-heart color-red"></i> Favorites</a></li>
-                                                <li class=""><a data-toggle="tab" href="#boxtab-3"><i class="elusive-th-list color-purple"></i> News Feed</a></li>
-                                                <li class=""><a data-toggle="tab" href="#boxtab-4"><i class="icofont-link color-blue"></i> Followers</a></li>
+                                                <li class="active"><a data-toggle="tab" href="#games_tab"><i class="elusive-user"></i> Channel Games</a></li>
+                                                <li class=""><a data-toggle="tab" href="#favorites_tab"><i class="elusive-heart color-red"></i> Favorites</a></li>
+                                                <li class=""><a data-toggle="tab" href="#news_tab"><i class="elusive-th-list color-purple"></i> News Feed</a></li>
+                                                <li class=""><a data-toggle="tab" href="#followers_tab"><i class="icofont-link color-blue"></i> Followers</a></li>
                                             </ul>
                                         </div>
                                         <div class="box-body">
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
-                                                <div class="tab-pane fade active in" id="boxtab-1">
+                                                <div class="tab-pane fade active in" id="games_tab">
 
 <ul class="thumbnails" id="thumbnails_area">
 <?php  echo $this->element('NewPanel/profile/channel_game_box'); ?>
@@ -177,16 +177,16 @@ if($gplus==NULL){
 												<!--Bu alana more games buttonu geliyor -->
 	
 												<!--/Bu alana more games buttonu geliyor -->
-                                                <div class="tab-pane fade" id="boxtab-2">
-<ul class="thumbnails">
-<?php  echo $this->element('NewPanel/profile/channel_favorite_box'); ?>
+                                                <div class="tab-pane fade" id="favorites_tab">
+<ul class="thumbnails" id="thumbnails_fav_area">
+<?php  //echo $this->element('NewPanel/profile/channel_favorite_box'); ?>
 </ul>
 <div>
-<a id="loadmorefavorite" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+<a id="loadmorefavorite" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Favorite</a>
 </div>
 
                                                 </div>
-                                                <div class="tab-pane fade" id="boxtab-3">
+                                                <div class="tab-pane fade" id="news_tab">
                                 <!-- tab resume update -->
                                 <div class="span12">
                                     <div class="box-tab corner-all">
@@ -346,11 +346,9 @@ if($gplus==NULL){
                                     </div><!--/box-tab-->
                                 </div><!-- tab resume update -->
                                                 </div>
-                                                <div class="tab-pane fade" id="boxtab-4">
+                                                <div class="tab-pane fade" id="followers_tab">
 <ul class="thumbnails">
-
-<?php  echo $this->element('NewPanel/profile/followers'); ?>
-
+<?php  echo $this->element('NewPanel/profile/followers'); ?>fff
 </ul>
                                                 </div>
                                             </div><!--/widgets-tab-body-->

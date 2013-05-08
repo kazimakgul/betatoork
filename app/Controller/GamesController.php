@@ -759,6 +759,16 @@ public function channelgames() {
 
 	}
 
+public function channelfavorites() {
+$this->layout="ajax";
+$userid = $this->request->params['pass'][0];
+	
+	$limit=12;
+	$this->paginate=array('Favorite'=>array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.embed'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
+	$cond2=$this->paginate('Favorite');
+	$this->set('favorites', $cond2);
+}
+
 
 public function profile() {
 

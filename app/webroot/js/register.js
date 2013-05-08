@@ -1157,11 +1157,13 @@ function gamedelete(game_name,user_auth,game_id)
 					$('#loadmoregame').hide();
 				}
 	}
+	
+	
    
+//==========================================================	
 	
 	$('#loadmoregame').live('click',function(){
 											 
-	
 	$(".paging").hide();  //hide the paging for users with javascript enabled
 	
 	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
@@ -1204,6 +1206,87 @@ function gamedelete(game_name,user_auth,game_id)
         },1000);
     });
 	//Live Version of Box Close Function Ends
+		 
+			});//This is end of MoreGames button click function.
 	
-					 
-				});
+//==========================================================
+$('#loadmorefavorite').live('click',function(){
+											 
+	$(".paging").hide();  //hide the paging for users with javascript enabled
+	
+	$("#thumbnails_fav_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+		
+	var url = $("a#next").attr("href");
+	$(".paging").remove();
+	$("div.batch").load(url, function(response, status, xhr) {
+            if (status == "error") {
+              var msg = "Sorry but there was an error: ";
+              alert(msg + xhr.status + " " + xhr.statusText);
+            }
+            else {
+                $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
+                $(".paging").hide(); //hide the new paging links
+                $(this).fadeIn();
+				var url = $("a#next").attr("href");
+	            //Check are there anymore?
+				if(typeof url=='undefined')
+				{
+					$('#loadmorefavorite').hide();
+				}
+ 
+            }
+        }); 
+	
+	//This code block below allow make Live Tooltips(allow to work for ajax loaded objects)
+	$('body').tooltip({
+    selector: '[rel=tooltip]'
+    });
+		 
+			});//This is end of MoreGames button click function.
+//==========================================================	
+//Run when user click on favorite tab	
+
+$('#profile_tabs a[href="#favorites_tab"]').click(function (e) {
+ 
+  //first_fetch class is key which means whether it is first click or not on favorite tab.
+  if($('.first_fetch').attr('class')!='first_fetch'){
+  //********* Function gets ajax loaded channel favorites********
+   $(".paging").hide();  //hide the paging for users with javascript enabled
+	$("#thumbnails_fav_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+	var url = channelfavorite+'/'+profile_id;
+	$(".paging").remove();
+	$("div.batch").load(url, function(response, status, xhr) {
+            if (status == "error") {
+              var msg = "Sorry but there was an error: ";
+              alert(msg + xhr.status + " " + xhr.statusText);
+            }
+            else {
+                $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
+				$("#thumbnails_fav_area").append('<div class="first_fetch" style="display:none;"></div>');
+                $(".paging").hide(); //hide the new paging links
+                $(this).fadeIn();
+				var url = $("a#next").attr("href");
+	            //Check are there anymore?
+				if(typeof url=='undefined')
+				{
+					$('#loadmorefavorite').hide();
+				}
+            }
+			
+			//This code block below allow make Live Tooltips(allow to work for ajax loaded objects)
+	$('body').tooltip({
+    selector: '[rel=tooltip]'
+    });
+			
+        }); 
+  //*********/Function gets ajax loaded channel favorites********
+   }
+});
+
+$('#profile_tabs a[href="#news_tab"]').click(function (e) {
+  alert('news');
+});
+
+$('#profile_tabs a[href="#followers_tab"]').click(function (e) {
+  alert('followers2');
+});

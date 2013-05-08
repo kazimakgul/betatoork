@@ -42,7 +42,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
     <div class="alert alert-danger span3" style="padding:5px;">
         <h4>Your Channel Worth</h4>
         <div>
-            <h2 style="margin:-3px 0px 0px 0px;">$7.15 <a rel="tooltip" data-placement="bottom" data-original-title="Not Active Yet"  class="btn btn-danger">Sell Now!</a> </h2>
+            <h2 style="margin:-2px 0px 0px 0px;">$7.15 <a rel="tooltip" data-placement="bottom" data-original-title="Not Active Yet"  class="btn btn-danger">Sell Now!</a> </h2>
         </div>
     </div>
 </div>
