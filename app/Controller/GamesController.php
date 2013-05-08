@@ -805,9 +805,6 @@ public function profile() {
             return;  // return the ajax paginated content without a layout
        }
 
-	
-	//ReCoded
-	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.embed'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
     
 	
 	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
@@ -815,7 +812,6 @@ public function profile() {
 	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_to_id' => $userid),'limit' => $limit));
 
 	$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_to_id' => $userid)));
-    $this->set('favorites', $cond2);
     $this->set('username', $userName);
     $this->set('publicname', $publicName);
 	$this->set('userid', $userid);

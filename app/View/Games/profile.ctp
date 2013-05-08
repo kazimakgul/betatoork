@@ -179,7 +179,7 @@ if($gplus==NULL){
 												<!--/Bu alana more games buttonu geliyor -->
                                                 <div class="tab-pane fade" id="favorites_tab">
 <ul class="thumbnails" id="thumbnails_fav_area">
-<?php  //echo $this->element('NewPanel/profile/channel_favorite_box'); ?>
+<?php  //New Ajax Loaded Data Will come here. ?>
 </ul>
 <div>
 <a id="loadmorefavorite" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Favorite</a>
