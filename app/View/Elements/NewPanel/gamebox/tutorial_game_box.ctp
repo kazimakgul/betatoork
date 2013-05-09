@@ -25,8 +25,8 @@ else{
 
 <div class="span6" style="margin:0px 5px 0px 0px;">
   <li class="header-control">
-    <div class="well thumbnail">
-<?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'img-polaroid','width'=>'190px','onerror'=>'imgError(this,"toorksize");')); ?>
+    <div class="well thumbnail" >
+<?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'img-polaroid','width'=>'230px','onerror'=>'imgError(this,"toorksize");')); ?>
       <button onclick="chaingame2('<?php echo $game['Game']['name']; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" style="margin:5px; opacity:1;" href="#" rel="tooltip" data-placement="left" data-original-title="Chain" data-box="close" data-hide="fadeOut" class="close"><i class="btn btn-success btn-mini helper-font-16 icofont-link"></i></button> 
       <p style="margin:5px;"><strong><?php echo $game['Game']['name']; ?></strong></p>
     </div>

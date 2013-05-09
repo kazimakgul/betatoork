@@ -769,6 +769,17 @@ $userid = $this->request->params['pass'][0];
 	$this->set('favorites', $cond2);
 }
 
+public function channelfollowers() {
+$this->layout="ajax";
+$userid = $this->request->params['pass'][0];
+	
+	$limit=16;
+	$this->paginate=array('Subscription'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Subscription.subscriber_to_id' => $userid),'limit' => $limit));
+	$data=$this->paginate('Subscription');
+	$this->set('followers',$data);
+	
+}
+
 
 public function profile() {
 
@@ -809,9 +820,14 @@ public function profile() {
 	
 	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
 
-	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_to_id' => $userid),'limit' => $limit));
 
-	$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_to_id' => $userid)));
+	$limit=16;
+	$this->paginate=array('Subscription'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Subscription.subscriber_to_id' => $userid),'limit' => $limit));
+	$data=$this->paginate('Subscription');
+	$this->set('followers',$data);
+	
+	
+	
     $this->set('username', $userName);
     $this->set('publicname', $publicName);
 	$this->set('userid', $userid);
