@@ -61,7 +61,7 @@ class AppController extends Controller {
         'Subscription' => array(
             'limit' => 18,
             'order' => array(
-                'Subscription.created' => 'desc',
+                'Userstat.potential' => 'desc',
             ),
         ),
         'Favorite' => array(
