@@ -1284,7 +1284,7 @@ $('#loadmorefollowers').live('click',function(){
 $('#profile_tabs a[href="#favorites_tab"]').click(function (e) {
  
   //first_fetch class is key which means whether it is first click or not on favorite tab.
-  if($('.first_fetch').attr('class')!='first_fetch'){
+  if($('.first_fetch_fav').attr('class')!='first_fetch'){
   //********* Function gets ajax loaded channel favorites********
    $(".paging").hide();  //hide the paging for users with javascript enabled
 	$("#thumbnails_fav_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
@@ -1297,7 +1297,7 @@ $('#profile_tabs a[href="#favorites_tab"]').click(function (e) {
             }
             else {
                 $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
-				$("#thumbnails_fav_area").append('<div class="first_fetch" style="display:none;"></div>');
+				$("#thumbnails_fav_area").append('<div class="first_fetch_fav" style="display:none;"></div>');
                 $(".paging").hide(); //hide the new paging links
                 $(this).fadeIn();
 				var url = $("a#next").attr("href");
@@ -1326,7 +1326,7 @@ $('#profile_tabs a[href="#news_tab"]').click(function (e) {
 $('#profile_tabs a[href="#followers_tab"]').click(function (e) {
   
   //first_fetch class is key which means whether it is first click or not on favorite tab.
-  if($('.first_fetch').attr('class')!='first_fetch'){
+  if($('.first_fetch_fol').attr('class')!='first_fetch'){
   //********* Function gets ajax loaded channel favorites********
    $(".paging").hide();  //hide the paging for users with javascript enabled
 	$("#thumbnails_followers_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
@@ -1339,7 +1339,7 @@ $('#profile_tabs a[href="#followers_tab"]').click(function (e) {
             }
             else {
                 $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
-				$("#thumbnails_followers_area").append('<div class="first_fetch" style="display:none;"></div>');
+				$("#thumbnails_followers_area").append('<div class="first_fetch_fol" style="display:none;"></div>');
                 $(".paging").hide(); //hide the new paging links
                 $(this).fadeIn();
 				var url = $("a#next").attr("href");
