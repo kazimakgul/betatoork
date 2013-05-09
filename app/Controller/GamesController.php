@@ -773,7 +773,7 @@ public function channelfollowers() {
 $this->layout="ajax";
 $userid = $this->request->params['pass'][0];
 	
-	$limit=18;
+	$limit=50;
 	$this->paginate=array('Subscription'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Subscription.subscriber_to_id' => $userid),'limit' => $limit));
 	$data=$this->paginate('Subscription');
 	$this->set('followers',$data);
