@@ -349,7 +349,7 @@ if($gplus==NULL){
                                                 </div>
                                                 <div class="tab-pane fade" id="followers_tab">
 <ul class="thumbnails" id="thumbnails_followers_area">
-<?php  //echo $this->element('NewPanel/profile/followers'); ?>
+<?php  //echo 'Ajax Loaded Followers will come here'; ?>
 </ul>
 <div>
 <a id="loadmorefollowers" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Followers</a>
