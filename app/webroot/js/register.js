@@ -1286,7 +1286,7 @@ $('#profile_tabs a[href="#games_tab"]').click(function (e) {
    $(".paging").hide();  //hide the paging for users with javascript enabled
 	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 	var url = getpagination;
-	$(".paging").remove();alert(url);
+	$(".paging").remove();
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
