@@ -143,6 +143,7 @@ if($gplus==NULL){
   profile_id='<?php echo $userid; ?>';
   channelfavorite='<?php echo $this->Html->url(array('controller'=>'games','action'=>'channelfavorites')); ?>';
   channelfollowers='<?php echo $this->Html->url(array('controller'=>'games','action'=>'channelfollowers')); ?>';
+  getpagination='<?php echo $this->Html->url(array('controller'=>'games','action'=>'profile','pagination')); ?>';
   </script>
   <!----=========================================---->
 

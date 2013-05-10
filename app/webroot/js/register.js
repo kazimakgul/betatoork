@@ -1280,6 +1280,34 @@ $('#loadmorefollowers').live('click',function(){
 			});//This is end of MoreGames button click function.
 //==========================================================
 
+$('#profile_tabs a[href="#games_tab"]').click(function (e) {
+  
+  //********* Function gets ajax loaded channel favorites********
+   $(".paging").hide();  //hide the paging for users with javascript enabled
+	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+	var url = getpagination;
+	$(".paging").remove();alert(url);
+	$("div.batch").load(url, function(response, status, xhr) {
+            if (status == "error") {
+              var msg = "Sorry but there was an error: ";
+              alert(msg + xhr.status + " " + xhr.statusText);
+            }
+            else {
+                $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
+                $(".paging").hide(); //hide the new paging links
+                $(this).fadeIn();
+            }
+			
+			//This code block below allow make Live Tooltips(allow to work for ajax loaded objects)
+	$('body').tooltip({
+    selector: '[rel=tooltip]'
+    });
+			
+        }); 
+  //*********/Function gets ajax loaded channel favorites********
+  
+});
+//===============================================================
 //Run when user click on favorite tab	
 $('#profile_tabs a[href="#favorites_tab"]').click(function (e) {
  

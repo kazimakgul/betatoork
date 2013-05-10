@@ -794,8 +794,6 @@ public function profile() {
 	
     $user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
     $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-
-    
     
 
 	if($publicUser==NULL){
@@ -811,9 +809,18 @@ public function profile() {
 	$cond=$this->paginate('Game');
 	$this->set('mygames', $cond);
 	if ($this->RequestHandler->isAjax()) {  
+	
+	if($this->request->params['pass'][0]=='pagination')
+	{
+	 $this->layout="ajax";
+     $this->render('/Elements/NewPanel/getpagination');   // Render a special view for ajax pagination
+     return;  // return the ajax paginated content without a layout
+	}else{
 		    $this->layout="ajax";
             $this->render('/Elements/NewPanel/profile/channel_game_box_ajax');   // Render a special view for ajax pagination
             return;  // return the ajax paginated content without a layout
+	     }
+			
        }
 
     
