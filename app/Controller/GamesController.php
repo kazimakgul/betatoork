@@ -786,14 +786,18 @@ public function profile() {
 	$this->layout='dashboard';
     $userid = $this->request->params['pass'][0];
     $authid = $this->Session->read('Auth.User.id');
-	
+
 	if(!is_numeric($userid)){
 	$userconvert = $this->User->find('first', array('contain'=>false,'conditions' => array('User.seo_username' => $userid)));
 	$userid=$userconvert['User']['id'];
 	}
 	
     $user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     
+	if($publicUser==NULL){
+		$this->redirect('/');
+	}
     $userName = $user['User']['username'];
     $publicName = $publicUser['User']['username'];
     $publicDesc = $publicUser['User']['description'];
@@ -804,24 +808,11 @@ public function profile() {
 	$cond=$this->paginate('Game');
 	$this->set('mygames', $cond);
 	if ($this->RequestHandler->isAjax()) {  
-	
-	if($this->request->params['pass'][0]=='pagination')
-	{
-	 $this->layout="ajax";
-     $this->render('/Elements/NewPanel/getpagination');   // Render a special view for ajax pagination
-     return;  // return the ajax paginated content without a layout
-	}else{
 		    $this->layout="ajax";
             $this->render('/Elements/NewPanel/profile/channel_game_box_ajax');   // Render a special view for ajax pagination
             return;  // return the ajax paginated content without a layout
-	     }
-			
        }
-  
-    $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-	if($publicUser==NULL){
-		$this->redirect('/');
-	}
+
     
 	
 	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
