@@ -793,12 +793,7 @@ public function profile() {
 	}
 	
     $user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
-    $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     
-
-	if($publicUser==NULL){
-		$this->redirect('/');
-	}
     $userName = $user['User']['username'];
     $publicName = $publicUser['User']['username'];
     $publicDesc = $publicUser['User']['description'];
@@ -822,7 +817,11 @@ public function profile() {
 	     }
 			
        }
-
+  
+    $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+	if($publicUser==NULL){
+		$this->redirect('/');
+	}
     
 	
 	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));

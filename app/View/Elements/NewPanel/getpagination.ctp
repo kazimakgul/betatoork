@@ -7,4 +7,3 @@
 	 ?>
     </div>
   <!--Hidden Pagination -->
-  <script>alert('siktirla');</script>
