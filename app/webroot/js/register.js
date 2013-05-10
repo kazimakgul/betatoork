@@ -1281,7 +1281,7 @@ $('#loadmorefollowers').live('click',function(){
 //==========================================================
 
 $('#profile_tabs a[href="#games_tab"]').click(function (e) {
-  alert('mygames');
+  $(".paging").remove();
 });
 
 //Run when user click on favorite tab	
