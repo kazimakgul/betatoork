@@ -1164,12 +1164,12 @@ function gamedelete(game_name,user_auth,game_id)
 	
 	$('#loadmoregame').live('click',function(){
 											 
-	$(".paging").hide();  //hide the paging for users with javascript enabled
+	$(".paging_dash").hide();  //hide the paging for users with javascript enabled
 	
 	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 		
 	var url = $("a#next").attr("href");
-	$(".paging").remove();
+	$(".paging_dash").remove();
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
@@ -1177,7 +1177,7 @@ function gamedelete(game_name,user_auth,game_id)
             }
             else {
                 $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
-                $(".paging").hide(); //hide the new paging links
+                $(".paging_dash").hide(); //hide the new paging links
                 $(this).fadeIn();
 				var url = $("a#next").attr("href");
 	            //Check are there anymore?
@@ -1281,7 +1281,7 @@ $('#loadmorefollowers').live('click',function(){
 //==========================================================
 
 $('#profile_tabs a[href="#games_tab"]').click(function (e) {
-  $(".paging").remove();
+  alert('mygames');
 });
 
 //Run when user click on favorite tab	
