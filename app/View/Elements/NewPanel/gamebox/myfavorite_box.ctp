@@ -49,7 +49,7 @@ else{
                     <p>
                     <a href="<?php echo $profileurl ?>"class="btn btn-mini"><strong><?php echo $game['Game']['User']['username']; ?></strong></a>
                     <a href="<?php echo $playurl ?>" class="btn btn-success btn-mini">Play</a>
-                    <a rel="tooltip" onclick="unFavorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);" data-placement="bottom" data-original-title="Remove" data-box="close" data-hide="rotateOut" class="btn btn-mini pull-right helper-font-16"><i class="icofont-remove"></i></a> 
+                    <a rel="tooltip" onclick="unFavorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>); _gaq.push(['_trackEvent', 'Games', 'unFavorite', '<?php echo $game['Game']['name'];?>']);" data-placement="bottom" data-original-title="Remove" data-box="close" data-hide="rotateOut" class="btn btn-mini pull-right helper-font-16"><i class="icofont-remove"></i></a> 
                     </p>
                   <hr size="3" style="margin:0px 0px 5px 0px;">
                     <div class="helper-font-16 pull-right">
