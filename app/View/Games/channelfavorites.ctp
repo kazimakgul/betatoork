@@ -60,7 +60,7 @@ else{
  <?php endforeach; ?>
  
  <!--Hidden Pagination -->
-	<div class="paging" style="display:none;">
+	<div class="paging_favorites" style="display:none;">
     <?php 
 	 echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled')); 
      echo $this->Paginator->numbers();

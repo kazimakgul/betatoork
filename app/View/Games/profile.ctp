@@ -365,7 +365,7 @@ if($gplus==NULL){
 
 
 	<!--Hidden Pagination -->
-	<div class="paging_dash" style="display:none;">
+	<div class="paging_mygames" style="display:none;">
      <?php 
 	 echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled')); 
      echo $this->Paginator->numbers();
