@@ -1,5 +1,6 @@
 <?php if ($this->Session->check('Auth.User')){
-	$variable = 'Member';
+	$username = $this->Session->read('Auth.User.username');
+	$variable = 'Member - '.$username;
 } else{
 	$variable = 'Visitor';
 }
