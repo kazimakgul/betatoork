@@ -1164,12 +1164,12 @@ function gamedelete(game_name,user_auth,game_id)
 	
 	$('#loadmoregame').live('click',function(){
 											 
-	$(".paging_dash").hide();  //hide the paging for users with javascript enabled
+	$(".paging_mygames").hide();  //hide the paging for users with javascript enabled
 	
 	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 		
 	var url = $("a#next").attr("href");
-	$(".paging_dash").remove();
+	$(".paging_mygames").remove();
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
@@ -1177,7 +1177,7 @@ function gamedelete(game_name,user_auth,game_id)
             }
             else {
                 $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
-                $(".paging_dash").hide(); //hide the new paging links
+                $(".paging_mygames").hide(); //hide the new paging links
                 $(this).fadeIn();
 				var url = $("a#next").attr("href");
 	            //Check are there anymore?
@@ -1212,12 +1212,12 @@ function gamedelete(game_name,user_auth,game_id)
 //==========================================================
 $('#loadmorefavorite').live('click',function(){
 											 
-	$(".paging").hide();  //hide the paging for users with javascript enabled
+	$(".paging_favorites").hide();  //hide the paging for users with javascript enabled
 	
 	$("#thumbnails_fav_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 		
 	var url = $("a#next").attr("href");
-	$(".paging").remove();
+	$(".paging_favorites").remove();
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
@@ -1225,7 +1225,7 @@ $('#loadmorefavorite').live('click',function(){
             }
             else {
                 $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
-                $(".paging").hide(); //hide the new paging links
+                $(".paging_favorites").hide(); //hide the new paging links
                 $(this).fadeIn();
 				var url = $("a#next").attr("href");
 	            //Check are there anymore?
@@ -1247,12 +1247,12 @@ $('#loadmorefavorite').live('click',function(){
 //==========================================================
 $('#loadmorefollowers').live('click',function(){
 											 
-	$(".paging").hide();  //hide the paging for users with javascript enabled
+	$(".paging_followers").hide();  //hide the paging for users with javascript enabled
 	
 	$("#thumbnails_followers_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 		
 	var url = $("a#next").attr("href");
-	$(".paging").remove();
+	$(".paging_followers").remove();
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
@@ -1260,7 +1260,7 @@ $('#loadmorefollowers').live('click',function(){
             }
             else {
                 $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
-                $(".paging").hide(); //hide the new paging links
+                $(".paging_followers").hide(); //hide the new paging links
                 $(this).fadeIn();
 				var url = $("a#next").attr("href");
 	            //Check are there anymore?
@@ -1281,7 +1281,7 @@ $('#loadmorefollowers').live('click',function(){
 //==========================================================
 
 $('#profile_tabs a[href="#games_tab"]').click(function (e) {
-  alert('mygames');
+  //alert('mygames');
 });
 
 //Run when user click on favorite tab	
@@ -1290,10 +1290,10 @@ $('#profile_tabs a[href="#favorites_tab"]').click(function (e) {
   //first_fetch class is key which means whether it is first click or not on favorite tab.
   if($('.first_fetch_fav').attr('class')!='first_fetch_fav'){
   //********* Function gets ajax loaded channel favorites********
-   $(".paging").hide();  //hide the paging for users with javascript enabled
+   $(".paging_favorites").hide();  //hide the paging for users with javascript enabled
 	$("#thumbnails_fav_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 	var url = channelfavorite+'/'+profile_id;
-	$(".paging").remove();
+	$(".paging_favorites").remove();
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
@@ -1302,7 +1302,7 @@ $('#profile_tabs a[href="#favorites_tab"]').click(function (e) {
             else {
                 $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
 				$("#thumbnails_fav_area").append('<div class="first_fetch_fav" style="display:none;"></div>');
-                $(".paging").hide(); //hide the new paging links
+                $(".paging_favorites").hide(); //hide the new paging links
                 $(this).fadeIn();
 				var url = $("a#next").attr("href");
 	            //Check are there anymore?
@@ -1332,10 +1332,10 @@ $('#profile_tabs a[href="#followers_tab"]').click(function (e) {
   //first_fetch class is key which means whether it is first click or not on favorite tab.
   if($('.first_fetch_fol').attr('class')!='first_fetch_fol'){
   //********* Function gets ajax loaded channel favorites********
-   $(".paging").hide();  //hide the paging for users with javascript enabled
+   $(".paging_followers").hide();  //hide the paging for users with javascript enabled
 	$("#thumbnails_followers_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 	var url = channelfollowers+'/'+profile_id;
-	$(".paging").remove();
+	$(".paging_followers").remove();
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
@@ -1344,7 +1344,7 @@ $('#profile_tabs a[href="#followers_tab"]').click(function (e) {
             else {
                 $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
 				$("#thumbnails_followers_area").append('<div class="first_fetch_fol" style="display:none;"></div>');
-                $(".paging").hide(); //hide the new paging links
+                $(".paging_followers").hide(); //hide the new paging links
                 $(this).fadeIn();
 				var url = $("a#next").attr("href");
 	            //Check are there anymore?
