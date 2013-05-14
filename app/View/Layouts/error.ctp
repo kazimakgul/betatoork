@@ -20,7 +20,6 @@
     </head>
 
     <body>
-<?php  echo $this->element('analytics'); ?>
 
 <?php
 
