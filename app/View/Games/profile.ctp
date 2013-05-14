@@ -142,8 +142,6 @@ if($gplus==NULL){
   checkFollowStat='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'sub_check')); ?>';
   profile_id='<?php echo $userid; ?>';
   channelfavorite='<?php echo $this->Html->url(array('controller'=>'games','action'=>'channelfavorites')); ?>';
-  channelfollowers='<?php echo $this->Html->url(array('controller'=>'games','action'=>'channelfollowers')); ?>';
-  getpagination='<?php echo $this->Html->url(array('controller'=>'games','action'=>'profile','pagination')); ?>';
   </script>
   <!----=========================================---->
 
@@ -349,12 +347,9 @@ if($gplus==NULL){
                                 </div><!-- tab resume update -->
                                                 </div>
                                                 <div class="tab-pane fade" id="followers_tab">
-<ul class="thumbnails" id="thumbnails_followers_area">
-<?php  //echo 'Ajax Loaded Followers will come here'; ?>
+<ul class="thumbnails">
+<?php  echo $this->element('NewPanel/profile/followers'); ?>fff
 </ul>
-<div>
-<a id="loadmorefollowers" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Followers</a>
-</div>
                                                 </div>
                                             </div><!--/widgets-tab-body-->
                                         </div>
