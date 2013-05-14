@@ -61,7 +61,8 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                             <a rel="tooltip" data-placement="top" data-original-title="Start Building" href="#modal-tutorial" data-toggle="modal" class="btn btn-info" style="margin:0px 3px 5px 0px;">
                                                 <i class="elusive-play-circle"></i> Start
                                             </a>
-                                             <a rel="tooltip" data-placement="top" data-original-title="Add a Game" href="<?php echo $addGame; ?>" class="btn btn-danger" style="margin:0px 3px 5px 0px;">
+                                             <a onClick="_gaq.push(['_trackEvent', 'Games', 'Add']);"
+                                              rel="tooltip" data-placement="top" data-original-title="Add a Game" href="<?php echo $addGame; ?>" class="btn btn-danger" style="margin:0px 3px 5px 0px;">
                                                 <i class="elusive-plus"></i> Add Game
                                             </a>
                                              <a rel="tooltip" data-placement="top" data-original-title="Customize Your Channel" href="<?php echo $settings; ?>" class="btn btn-warning" style="margin:0px 3px 5px 0px;">
