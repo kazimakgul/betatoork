@@ -119,7 +119,7 @@ else{
                   <li rel="tooltip" data-placement="top" data-original-title="Next Game (<?php echo $randomgame['Game']['name'];?>)" class="btn pull-right color-blue" style="margin:5px;">
                       <a href="<?php echo $playurl;?>"><i class="elusive-fire"></i> Next <i class="elusive-circle-arrow-right"></i></a>
                   </li>
-                  <li rel="tooltip" id="fav_button2" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);" data-placement="top" data-original-title="Add to Favorites" class="btn btn-danger pull-right" style="margin:5px;">
+                  <li rel="tooltip" id="fav_button2" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>); _gaq.push(['_trackEvent', 'Games', 'Favorite', '<?php echo $game['Game']['name']; ?>']);" data-placement="top" data-original-title="Add to Favorites" class="btn btn-danger pull-right" style="margin:5px;">
                       <i class="elusive-heart"></i>
                   </li>
 				          <li rel="tooltip" id="unFav_button2" onclick="unFavorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);" data-placement="top" data-original-title="Remove from Favorites" class="btn pull-right color-red" style="margin:5px; display:none;">
@@ -202,7 +202,7 @@ if($this->Session->check('Auth.User')){
                                 <div class="modal-footer">
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
                                     <input type="hidden" id="game_name" value="<?php echo $game["Game"]["name"];?>">
-                                    <a id="chaingame" data-dismiss="modal" href="#" class="btn btn-success">Yes! Chain</a>
+                                    <a onclick="_gaq.push(['_trackEvent', 'Games', 'Chain', '<?php echo $game['Game']['name']; ?>']);"  id="chaingame" data-dismiss="modal" href="#" class="btn btn-success">Yes! Chain</a>
          
                                 </div>
                         </div>
