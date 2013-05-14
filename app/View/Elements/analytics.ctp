@@ -13,7 +13,7 @@ _gaq.push(['_setCustomVar',
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-30352641-4']);
-  _gaq.push(['_setDomainName', '54.225.196.20.']);
+  _gaq.push(['_setDomainName', '54.225.196.20']);
   _gaq.push(['_trackPageview']);
 
   (function() {
