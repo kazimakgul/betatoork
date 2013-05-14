@@ -38,7 +38,7 @@ else{
                                                     <!--we use data toggle tab for navigate this action-->
                                                     <a style="margin:0px 0px 5px 0px;" href="<?php echo $profileurl ?>" >
                                                         <!--we use contact-item structure like the component media in bootstrap-->
-                                                    <button style="margin:10px 0px 0px 0px; opacity:1;" href="#" onclick="subscribe('<?php echo $card[0]; ?>',user_auth,<?php echo $followid; ?>);"  rel="tooltip" data-placement="left" data-original-title="Follow" data-box="close" data-hide="fadeOut" class="close"><i class="elusive-plus-sign color-green"></i></button> 
+                                                    <button style="margin:10px 0px 0px 0px; opacity:1;" href="#" onclick="subscribe('<?php echo $card[0]; ?>',user_auth,<?php echo $followid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $follower['User']['username']; ?>', 2]);"  rel="tooltip" data-placement="left" data-original-title="Follow" data-box="close" data-hide="fadeOut" class="close"><i class="elusive-plus-sign color-green"></i></button> 
                                                         <div class="contact-item">
                                                             <div class="pull-left">
                                                                 <?php 

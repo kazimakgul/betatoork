@@ -87,7 +87,7 @@ if($website==NULL){
       <div class="header-control pull-left" style="margin:20px 0px 5px 0px;">
         
 	<?php if($this->Session->check('Auth.User') == 1){ ?>	
-		<button onclick="subscribe('<?php echo $follower['User']['username']; ?>',user_auth,<?php echo $follower['User']['id']; ?>);" rel="tooltip" data-placement="top" data-original-title="Follow this Channel" data-box="close" style="opacity:1;" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
+		<button onclick="subscribe('<?php echo $follower['User']['username']; ?>',user_auth,<?php echo $follower['User']['id']; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $follower['User']['username']; ?>', 3]);" rel="tooltip" data-placement="top" data-original-title="Follow this Channel" data-box="close" style="opacity:1;" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
     <?php }else{ ?>
 	<button onclick="subscribe('<?php echo $follower['User']['username']; ?>',user_auth,<?php echo $follower['User']['id']; ?>);" rel="tooltip" data-placement="top" data-original-title="Follow this Channel"  style="opacity:1;" data-hide="fadeOut" class="close"><a class="btn btn-success"><i class="elusive-plus-sign"></i> follow</a></button> 
 	<?php } ?>
