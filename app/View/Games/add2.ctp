@@ -24,18 +24,18 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                 <div class="error-page" style="margin:-60px 0px 0px 0px;">
                     <h1 class="error-code color-blue" style="margin:0px 0px -30px 0px;">Add Game</h1>
                     <p class="error-description">The game you add will appear in <a href="<?php echo $mygames;?>">"My Games"</a> and your <a href="<?php echo $profilepublic;?>">"Public Channel"</a></p>
-                    <form>
+                   <!-- <form>
                         <div class="control-group">
                             <div class="input-append input-icon-prepend">
                                 <div class="add-on">
                                     <a title="search" style="" class="icon"><i class="icofont-plus"></i></a>
-                                    <input class="input-xxlarge animated grd-white" onfocus type="text" placeholder="where is the game? Type the link of the website!">
+                                    <input class="input-xxlarge animated grd-white" required pattern="(http|https)://.+" onfocus type="text" placeholder="where is the game? Type the link of the website!">
                                 </div>
                                 <input onClick="_gaq.push(['_trackEvent', 'Games', 'Add']);" type="submit" class="btn btn-danger" value="Grab the game!">
                             </div>
                             <p><small>Simply copy/paste the url from the browser where you play the game.  <strong>Ex: http://phoboslab.org/ztype/</strong></small></p>
                         </div>
-                    </form>
+                    </form> -->
       
                     <div class="alert alert-block alert-info fadein">
                         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -57,18 +57,10 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                     <div class="box-tab corner-all">
                                         <div class="box-header corner-top">
                                             <ul class="nav nav-pills">
-                                                <!--tab action-->
-                                                <li class="dropdown pull-right">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icofont-cogs"></i></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#collapse" data-toggle="tab">@collapse</a></li>
-                                                        <li><a href="#close" data-toggle="tab">@close</a></li>
-                                                        <li><a href="#other" data-toggle="tab">@other action</a></li>
-                                                    </ul>
-                                                </li><!--/tab action-->
+
                                                 <!--tab menus-->
                                                 <li class="active"><a data-toggle="tab" href="#boxtabpill-1">Add Game</a></li>
-                                                <li><a data-toggle="tab" href="#boxtabpill-2">My Games</a></li>
+
                                             </ul>
                                         </div>
                                         <div class="box-body">
@@ -177,19 +169,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         </div>
 
                                                 </div>
-                                                <div class="tab-pane fade" id="boxtabpill-2">
-                                                   <form class="form-horizontal" id="form-validate" novalidate="novalidate">
-                                                        <fieldset>
-<div class="well">
-    <h1>Your Games Will come here</h1>
-</div>
-                                                            <div class="form-actions">
-                                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                                                <button type="button" class="btn">Cancel</button>
-                                                            </div>
-                                                        </fieldset>
-                                                    </form>
-                                                </div>
+
                                             </div><!--/widgets-tab-body-->
                                         </div>
                                     </div>
