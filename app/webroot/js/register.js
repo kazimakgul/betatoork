@@ -1323,7 +1323,7 @@ $('#profile_tabs a[href="#favorites_tab"]').click(function (e) {
 });
 
 $('#profile_tabs a[href="#news_tab"]').click(function (e) {
-  alert('news');
+  
 });
 
 //Run when user click on followers tab	

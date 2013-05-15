@@ -813,7 +813,30 @@ public function profile() {
             return;  // return the ajax paginated content without a layout
        }
 
-    
+    //New Wall Getting Started Below.
+	   App::import('Vendor', 'wallscript/config');
+	   $this->set('gravatar',1);
+	   $this->set('base_url','http://localhost/wall/');
+	   $this->set('perpage',10);
+	   App::import('Vendor', 'wallscript/Wall_Updates');
+	   App::import('Vendor', 'wallscript/tolink');
+	   App::import('Vendor', 'wallscript/textlink');
+	   App::import('Vendor', 'wallscript/htmlcode');
+	   App::import('Vendor', 'wallscript/Expand_URL');
+	   
+	   //Session starts
+	   
+       if(!empty($userid))
+       {
+	   $this->set('uid',$userid);
+       }else{
+        //echo 'please login';
+       }
+	   //Session Ends
+	   
+	   
+	   $Wall = new Wall_Updates();
+	   $this->set('Wall',$Wall);
 	
 	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     $this->set('username', $userName);
