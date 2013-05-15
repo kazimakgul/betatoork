@@ -26,7 +26,7 @@ if ($this->action == "dashboard"){
                             </li>
                             <li>
                                 <a href="#" title="more">
-                                    <div class="badge badge-important">3</div>
+                                    <div class="badge badge-important">2</div>
                                     <div class="helper-font-24">
                                         <i class="elusive-compass"></i>
                                     </div>
@@ -49,14 +49,14 @@ if ($this->action == "dashboard"){
                                             <span class="sidebar-text">Hot Games</span>
                                         </a>
                                     </li>
-                                    <li style="margin:0px 10px 0px 10px;">
+                                    <!--<li style="margin:0px 10px 0px 10px;">
                                         <a href="#" title="New Games">
                                             <div class="helper-font-24">
                                                 <i class="elusive-eye-open"></i>
                                             </div>
                                             <span class="sidebar-text">New Games</span>
                                         </a>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </li>
 

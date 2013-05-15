@@ -71,7 +71,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                 <ul class="dropdown-menu">
                     <li><a href="<?php echo $bestchannels; ?>"><i class="elusive-user color-blue"></i> Best Channels</a></li>
                     <li><a href="<?php echo $toprated; ?>"><i class="elusive-fire color-red"></i> Hot Games</a></li>
-                    <li><a href="#"><i class="elusive-eye-open color-green"></i> New Games</a></li>
+                    <!-- <li><a href="#"><i class="elusive-eye-open color-green"></i> New Games</a></li> -->
                     <li class="divider"></li>
                     <li><a href="#"><i class="elusive-idea color-blue"></i> Why Join Toork</a></li>
                 </ul>

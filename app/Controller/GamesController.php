@@ -66,9 +66,9 @@ class GamesController extends AppController {
 
 		$limit=4;
     	$this->set('top_rated_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order' => 'rand()')));
-		$cond= $this->User->find('all', array('limit' => $limit));
-		$this->set('users', $cond);
-		$this->set('most_played_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.playcount')),'limit' => $limit,'order' => 'rand()')));
+		$users=$this->User->find('all',array('contain' =>array('Userstat'),'limit'=>$limit,'order'=> array(
+                'Userstat.potential' => 'desc')));
+		$this->set('users', $users);
 
 		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel');
 		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
