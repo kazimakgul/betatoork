@@ -21,6 +21,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active in" id="home">
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'tab','novalidate'=>'novalidate','class'=>'form-horizontal' ,'type' => 'file'));?>
+<!-- 
 <div class="raw-fluid">
 <div class="span2 fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-new img-polaroid" style="width: 90px; height: 120px;">
@@ -58,6 +59,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
   </div>
 </div>
 </div>
+-->
 
                                                         <fieldset>
                                                             
