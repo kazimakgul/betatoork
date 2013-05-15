@@ -159,7 +159,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                                       
 
                                                         <div class="form-actions">
-                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                            <button type="submit" onClick="_gaq.push(['_trackEvent', 'Games', 'Add']);" class="btn btn-primary">Save changes</button>
                                                             <button type="button" class="btn">Cancel</button>
                                                         </div>
                                                     </form>
