@@ -1148,9 +1148,19 @@ function gamedelete(game_name,user_auth,game_id)
 //---------------More Data Functions-----------------
 //***************************************************
 
-    if($('#loadmoregame').attr('id')=='loadmoregame')
+    if($('#loadmoreprofilegame').attr('id')=='loadmoreprofilegame')
 	{
 	var url = $(".paging_mygames a#next").attr("href");
+	            //Check are there anymore?
+				if(typeof url=='undefined')
+				{
+					$('#loadmoreprofilegame').hide();
+				}
+	}
+	
+	if($('#loadmoregame').attr('id')=='loadmoregame')
+	{
+	var url = $(".paging a#next").attr("href");
 	            //Check are there anymore?
 				if(typeof url=='undefined')
 				{
@@ -1164,12 +1174,12 @@ function gamedelete(game_name,user_auth,game_id)
 	
 	$('#loadmoregame').live('click',function(){
 											 
-	$(".paging_mygames").hide();  //hide the paging for users with javascript enabled
+	$(".paging").hide();  //hide the paging for users with javascript enabled
 	
 	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 		
-	var url = $(".paging_mygames a#next").attr("href");
-	$(".paging_mygames").remove();
+	var url = $(".paging a#next").attr("href");
+	$(".paging").remove();
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
@@ -1177,9 +1187,9 @@ function gamedelete(game_name,user_auth,game_id)
             }
             else {
                 $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
-                $(".paging_mygames").hide(); //hide the new paging links
+                $(".paging").hide(); //hide the new paging links
                 $(this).fadeIn();
-				var url = $(".paging_mygames a#next").attr("href");
+				var url = $(".paging a#next").attr("href");
 	            //Check are there anymore?
 				if(typeof url=='undefined')
 				{
@@ -1210,6 +1220,56 @@ function gamedelete(game_name,user_auth,game_id)
 			});//This is end of MoreGames button click function.
 	
 //==========================================================
+	
+	$('#loadmoreprofilegame').live('click',function(){
+											 
+	$(".paging_mygames").hide();  //hide the paging for users with javascript enabled
+	
+	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+		
+	var url = $(".paging_mygames a#next").attr("href");
+	$(".paging_mygames").remove();
+	$("div.batch").load(url, function(response, status, xhr) {
+            if (status == "error") {
+              var msg = "Sorry but there was an error: ";
+              alert(msg + xhr.status + " " + xhr.statusText);
+            }
+            else {
+                $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
+                $(".paging_mygames").hide(); //hide the new paging links
+                $(this).fadeIn();
+				var url = $(".paging_mygames a#next").attr("href");
+	            //Check are there anymore?
+				if(typeof url=='undefined')
+				{
+					$('#loadmoreprofilegame').hide();
+				}
+ 
+            }
+        }); 
+	
+	//This code block below allow make Live Tooltips(allow to work for ajax loaded objects)
+	$('body').tooltip({
+    selector: '[rel=tooltip]'
+    });
+	//Live Version of Box Close Function Begins
+	$('.header-control [data-box=close]').live('click',function(){
+        var close = $(this),
+        box = close.parent().parent().parent(),
+        data_anim = close.attr('data-hide'),
+        animate = (data_anim == undefined || data_anim == '') ? 'fadeOut' : data_anim;
+
+        box.addClass('animated '+animate);
+        setTimeout(function(){
+            box.hide()
+        },1000);
+    });
+	//Live Version of Box Close Function Ends
+		 
+			});//This is end of MoreGames button click function.
+	
+//==========================================================
+
 $('#loadmorefavorite').live('click',function(){
 											 
 	$(".paging_favorites").hide();  //hide the paging for users with javascript enabled

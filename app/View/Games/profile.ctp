@@ -172,7 +172,7 @@ if($gplus==NULL){
 <?php  echo $this->element('NewPanel/profile/channel_game_box'); ?>
 </ul>
 <div>
-<a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+<a id="loadmoreprofilegame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
 </div>
 
                                                 </div>
