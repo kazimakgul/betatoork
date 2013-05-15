@@ -122,7 +122,7 @@ else{
                   <li rel="tooltip" id="fav_button2" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>); _gaq.push(['_trackEvent', 'Games', 'Favorite', '<?php echo $game['Game']['name']; ?>']);" data-placement="top" data-original-title="Add to Favorites" class="btn btn-danger pull-right" style="margin:5px;">
                       <i class="elusive-heart"></i>
                   </li>
-				          <li rel="tooltip" id="unFav_button2" onclick="unFavorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);" data-placement="top" data-original-title="Remove from Favorites" class="btn pull-right color-red" style="margin:5px; display:none;">
+				          <li rel="tooltip" id="unFav_button2" onclick="unFavorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>); _gaq.push(['_trackEvent', 'Games', 'unFavorite', '<?php echo $game['Game']['name']; ?>']);" data-placement="top" data-original-title="Remove from Favorites" class="btn pull-right color-red" style="margin:5px; display:none;">
                       <i class="elusive-heart-empty"></i>
                   </li>
                  <li rel="tooltip" id="comment" data-toggle="popover" data-placement="top" data-html="true" title="Comment" data-placement="top" data-original-title="Comment" class="btn pull-right color-green" style="margin:5px;"data-content='
