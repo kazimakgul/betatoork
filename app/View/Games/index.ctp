@@ -40,7 +40,7 @@ $privacy=$this->Html->url(array("controller" => "pages","action" =>"privacy"));
 <input  value="Password" id="reg_password"  placeholder="Password" name="PASSWORD" type="password"  class="phone-newsletter"   >
 <input  type="hidden" id="fast_register" value="1" >
 <div style="padding-bottom:10px; margin:-26px 0px 0px 19px;"><i class="color-white elusive-lock"></i></div>
-<a style="margin:18px 0px 0px 0px;" class="btn btn-small"><i class="elusive-facebook color-blue"></i> Connect</a>
+<!-- <a style="margin:18px 0px 0px 0px;" class="btn btn-small"><i class="elusive-facebook color-blue"></i> Connect</a> -->
 <input style="margin:10px 0px 0px 0px;" type="button" id="t_landing_registerbtn" value="Join Now" name="subscribe"  class="btn btn-success pull-right">
 <label> * By clicking "Join Now" you agree to Toork's <a href="<?php echo $terms;?>">Terms</a> &#38; <a href="<?php echo $privacy;?>">Privacy.</a></label>
 </form>
