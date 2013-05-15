@@ -11,7 +11,7 @@
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-30352641-4']);
-  _gaq.push(['_setDomainName', '54.225.196.20']);
+  _gaq.push(['_setDomainName', 'toork.com']);
   _gaq.push(['_trackPageview']);
   _gaq.push(['_setCustomVar',
       1,             // This custom var is set to slot #1.  Required parameter.
