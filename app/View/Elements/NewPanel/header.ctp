@@ -80,9 +80,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
           <li class="dropdown user-group">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-            <div class="pull-left "> <i class="icofont-comments color-red"></i>
-
-                Post</div><strong class="caret"></strong></a>
+            <div class="pull-left "> <i class="icofont-comments color-red"></i> Post <strong class="caret"></strong></div></a>
             <div class="dropdown-menu dropdown-user color-red" role="menu" style="padding:5px; padding-bottom: 5px;">
                                         
                                            
