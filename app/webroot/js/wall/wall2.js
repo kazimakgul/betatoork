@@ -965,7 +965,7 @@ $('.more_game_comments').live("click",function()
 {
 
 var ID = $(this).attr("id");
-alert(game_id);
+//alert(game_id);
 if(ID)
 {
 $.ajax({

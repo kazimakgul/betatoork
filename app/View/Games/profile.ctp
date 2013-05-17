@@ -143,7 +143,7 @@ if($gplus==NULL){
   profile_id='<?php echo $userid; ?>';
   channelfavorite='<?php echo $this->Html->url(array('controller'=>'games','action'=>'channelfavorites')); ?>';
   channelfollowers='<?php echo $this->Html->url(array('controller'=>'games','action'=>'channelfollowers')); ?>';
-  getpagination='<?php echo $this->Html->url(array('controller'=>'games','action'=>'profile','pagination')); ?>';
+  getprofilefeed='<?php echo $this->Html->url(array('controller'=>'games','action'=>'loadprofilefeeds')); ?>';
   </script>
   <!----=========================================---->
 
@@ -210,7 +210,7 @@ if($gplus==NULL){
                                                 <div class="tab-pane fade in active" id="recent-orders">
                                                     
 													<div id="my_more_content"></div>			
-					                               <?php echo $this->element('NewPanel/load_profile_feeds');?>
+					                               <?php //echo $this->element('NewPanel/load_profile_feeds');?>
 													
                                                 </div>
                                                 

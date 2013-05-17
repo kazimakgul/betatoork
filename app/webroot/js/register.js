@@ -1384,6 +1384,29 @@ $('#profile_tabs a[href="#favorites_tab"]').click(function (e) {
 
 $('#profile_tabs a[href="#news_tab"]').click(function (e) {
   
+  //first_fetch class is key which means whether it is first click or not on favorite tab.
+  if($('.first_fetch_feed').attr('class')!='first_fetch_feed'){
+  //********* Function gets ajax loaded channel favorites********
+ 
+	$("#recent-orders").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+	var url = getprofilefeed+'/'+profile_id;
+	$("div.batch").load(url, function(response, status, xhr) {
+            if (status == "error") {
+              var msg = "Sorry but there was an error: ";
+              alert(msg + xhr.status + " " + xhr.statusText);
+            }
+            else {
+                $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
+				$("#recent-orders").append('<div class="first_fetch_feed" style="display:none;"></div>');
+                $(this).fadeIn();
+            }
+			
+			
+        }); 
+  //*********/Function gets ajax loaded channel favorites********
+   } 
+  
+  
 });
 
 //Run when user click on followers tab	
