@@ -201,8 +201,7 @@ if($gplus==NULL){
                                             <ul class="nav nav-pills">
                                                 <!--tab menus-->
                                                 <li class="active"><a data-toggle="tab" href="#recent-orders">Whats New</a></li>
-                                                <li><a data-toggle="tab" href="#recent-posts">Shared Videos</a></li>
-                                                <li><a data-toggle="tab" href="#recent-comments">Shared Pictures</a></li><!--/tab menus-->
+                                                <!--/tab menus-->
                                             </ul>
                                         </div>
                                         <div class="box-body">
@@ -211,99 +210,10 @@ if($gplus==NULL){
                                                 <div class="tab-pane fade in active" id="recent-orders">
                                                     
 													<div id="my_more_content"></div>			
-					                               <?php echo $this->element('NewPanel/load_my_feeds');?>
+					                               <?php echo $this->element('NewPanel/load_profile_feeds');?>
 													
                                                 </div>
-                                                <div class="tab-pane fade" id="recent-posts">
-                                                    <div class="media">
-                                                        <a class="pull-left" href="#">
-                                                            <img class="media-object" data-src="js/holder.js/64x64">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Tortor dapibus </a><small class="helper-font-small">by jane smith on 11 aug 2012, ip 192.168.56.7</small></h4>
-                                                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
-                                                            <div class="btn-group pull-right">
-                                                                <a href="#" class="btn btn-mini">Edit</a>
-                                                                <a href="#" class="btn btn-mini">Draft</a>
-                                                                <a href="#" class="btn btn-mini btn-danger">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left" href="#">
-                                                            <img class="media-object" data-src="js/holder.js/64x64">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Tortor dapibus </a><small class="helper-font-small">by john doe on 10 aug 2012, ip 192.168.56.7</small></h4>
-                                                            <p>Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel.</p>
-                                                            <div class="btn-group pull-right">
-                                                                <a href="#" class="btn btn-mini">Edit</a>
-                                                                <a href="#" class="btn btn-mini">Draft</a>
-                                                                <a href="#" class="btn btn-mini btn-danger">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left" href="#">
-                                                            <img class="media-object" data-src="js/holder.js/64x64">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Tortor dapibus </a><small class="helper-font-small">by jane doe on 9 aug 2012, ip 192.168.56.7</small></h4>
-                                                            <p>Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-                                                            <div class="btn-group pull-right">
-                                                                <a href="#" class="btn btn-mini">Edit</a>
-                                                                <a href="#" class="btn btn-mini">Draft</a>
-                                                                <a href="#" class="btn btn-mini btn-danger">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="btn btn-small btn-link pull-right">View all &rarr;</a>
-                                                </div>
-                                                <div class="tab-pane fade" id="recent-comments">
-                                                    <div class="media">
-                                                        <a class="pull-left" href="#">
-                                                            <img class="media-object" data-src="js/holder.js/64x64">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Lacinia non </a><small class="helper-font-small">by jane smith on 20 aug 2012, ip 192.168.56.7</small></h4>
-                                                            <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-                                                            <div class="btn-group pull-right">
-                                                                <a href="#" class="btn btn-mini">Approve</a>
-                                                                <a href="#" class="btn btn-mini">Spam</a>
-                                                                <a href="#" class="btn btn-mini btn-danger">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left" href="#">
-                                                            <img class="media-object" data-src="js/holder.js/64x64">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Lacinia non </a><small class="helper-font-small">by john smith on 19 aug 2012, ip 192.168.56.7</small></h4>
-                                                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
-                                                            <div class="btn-group pull-right">
-                                                                <a href="#" class="btn btn-mini">Approve</a>
-                                                                <a href="#" class="btn btn-mini">Spam</a>
-                                                                <a href="#" class="btn btn-mini btn-danger">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media">
-                                                        <a class="pull-left" href="#">
-                                                            <img class="media-object" data-src="js/holder.js/64x64">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Lacinia non </a><small class="helper-font-small">by john doe on 17 aug 2012, ip 192.168.56.7</small></h4>
-                                                            <p>Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-                                                            <div class="btn-group pull-right">
-                                                                <a href="#" class="btn btn-mini">Approve</a>
-                                                                <a href="#" class="btn btn-mini">Spam</a>
-                                                                <a href="#" class="btn btn-mini btn-danger">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="btn btn-small btn-link pull-right">View all &rarr;</a>
-                                                </div>
+                                                
                                             </div><!--/widgets-tab-body-->
                                         </div><!--/box-body-->
                                     </div><!--/box-tab-->

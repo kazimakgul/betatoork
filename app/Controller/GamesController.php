@@ -825,10 +825,12 @@ public function profile() {
 	   App::import('Vendor', 'wallscript/Expand_URL');
 	   
 	   //Session starts
-	   
-       if(!empty($userid))
+	   if($this->Auth->user('id')) 
+       $session_uid=$this->Auth->user('id'); 
+       if(!empty($session_uid))
        {
-	   $this->set('uid',$userid);
+       $uid=$session_uid;
+	   $this->set('uid',$uid);
        }else{
         //echo 'please login';
        }
@@ -837,7 +839,7 @@ public function profile() {
 	   
 	   $Wall = new Wall_Updates();
 	   $this->set('Wall',$Wall);
-	
+	$this->set('profile_uid',$userid);
 	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     $this->set('username', $userName);
     $this->set('publicname', $publicName);
