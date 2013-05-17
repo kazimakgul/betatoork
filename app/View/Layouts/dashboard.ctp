@@ -392,7 +392,10 @@ $('#imageinfo').popover();
             });
       
         </script>
-
+   
+   <?php if(isset($welcome))
+   echo '<script>$("#modal-tutorial").modal("show");</script>';
+   ?>
         
          <!-- this plugin required jquery ui-->
         

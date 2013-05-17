@@ -242,6 +242,12 @@ public function set_suggested_channels()
 	public function dashboard() {
 		
 		$this->layout='dashboard';
+		
+		$linkParam=$this->request->params['pass'][0];
+		if($linkParam=="welcome")
+		$this->set('welcome',1);
+		
+		
 		$userid = $this->Session->read('Auth.User.id');
 	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	   	$userName = $user['User']['username'];
