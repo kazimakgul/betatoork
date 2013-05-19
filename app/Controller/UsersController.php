@@ -10,6 +10,7 @@ class UsersController extends AppController {
 
 public $components = array('AutoLogin','Email','Amazonsdk.Amazon','Recaptcha.Recaptcha');
 public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
+var $uses = array('Game','Subscription','Userstat','Category');
 
 
 	public function beforeFilter() {
@@ -436,10 +437,54 @@ function secureSuperGlobalPOST($value)
  * @return void
  */
 
+//this gets channel suggestions
+	public function get_suggestions($restrict)
+	{
+	$top50=$this->User->query('SELECT user_id from userstats ORDER BY potential desc LIMIT '.$restrict);
+		$list50=array();
+		$i=0;
+		foreach($top50 as $oneof50)
+		{
+		$list50[$i]=$oneof50['userstats']['user_id'];
+		$i++;
+		}
+		return $list50;
+	}
+
+public function set_suggested_channels()
+{
+//Set first situation of flags
+		$restrict=50;
+		$status='normal';
+		$counter=0;
+		$limit=20;
+		$authid = $this->Session->read('Auth.User.id');
+		//Repeat it to get data
+		$listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		do{
+		$suggestdata=$this->User->find('all',array('limit' => $limit,'order'=>'rand()','conditions'=>array('User.id'=>$this->get_suggestions($restrict),'NOT' => array('User.id' => $listofmine))));
+          if($suggestdata==NULL)
+		  {
+          $status='empty';
+		  $restrict+=10;
+		  $counter++;
+		  }else{
+		  $status='normal';
+		  }
+		  if($counter==3)
+		  break;
+		}while($status=='empty');
+		$category = $this->Category->find('all');
+		$this->set('category',$category);
+	   	$this->set('channels',$suggestdata);
+
+}
+
 	public function settings($id = null) {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
 	
+		    $this->set_suggested_channels();
 		$this->layout = 'dashboard';
 		$this->loadModel('Subscription');
 		$userid=$id;

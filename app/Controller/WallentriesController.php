@@ -355,15 +355,16 @@ return $a;
 	}
 	
 
-       public function set_suggested_channels()
-	   {
-	   
-	   //Set first situation of flags
+public function set_suggested_channels()
+{
+//Set first situation of flags
 		$restrict=50;
 		$status='normal';
 		$counter=0;
-		$limit=10;
+		$limit=20;
+		$authid = $this->Session->read('Auth.User.id');
 		//Repeat it to get data
+		$listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
 		do{
 		$suggestdata=$this->User->find('all',array('limit' => $limit,'order'=>'rand()','conditions'=>array('User.id'=>$this->get_suggestions($restrict),'NOT' => array('User.id' => $listofmine))));
           if($suggestdata==NULL)
@@ -377,9 +378,11 @@ return $a;
 		  if($counter==3)
 		  break;
 		}while($status=='empty');
-	   $this->set('channels',$suggestdata);
-	   
-	   }
+		$category = $this->Category->find('all');
+		$this->set('category',$category);
+	   	$this->set('channels',$suggestdata);
+
+}
 
 
 		public function wall3($type=NULL) {

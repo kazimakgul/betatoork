@@ -6,7 +6,6 @@
 
         <title><?php echo $title_for_layout?></title>
         <link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon" />
-        <meta name="author" content="<?php echo $author_for_layout?>">
         <meta name="description" content= "<?php echo $description_for_layout?>" />
 
 

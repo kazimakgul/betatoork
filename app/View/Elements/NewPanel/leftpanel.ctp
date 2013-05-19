@@ -4,16 +4,24 @@ $router = Router::url();
 
 if ($this->action == "dashboard"){
     $class = "class='active'";
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";
 }elseif($this->action == "mygames"){
     $class2 = "class='active'";
+    $class = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";
 }elseif($this->action == "favorites"){
     $class3 = "class='active'";
+    $class2 = "";$class = "";$class4 = "";$class5 = "";$class6 = "";
 }elseif($this->action == "chains"){
     $class4 = "class='active'";
+    $class2 = "";$class3 = "";$class = "";$class5 = "";$class6 = "";
 }elseif($this->action == "wall3"){
     $class5 = "class='active'";
+    $class2 = "";$class3 = "";$class4 = "";$class = "";$class6 = "";
 }elseif($this->action == "settings"){
     $class6 = "class='active'";
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class = "";
+}else{
+    $class = "";$class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";
 }
 
  ?>

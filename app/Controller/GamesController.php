@@ -220,8 +220,10 @@ public function set_suggested_channels()
 		  if($counter==3)
 		  break;
 		}while($status=='empty');
-	   $this->set('channels',$suggestdata);
-	   	$this->leftpanel(); //for categories
+		$category = $this->Category->find('all');
+		$this->set('category',$category);
+	   	$this->set('channels',$suggestdata);
+
 }
 
 
@@ -243,7 +245,7 @@ public function set_suggested_channels()
 		
 		$this->layout='dashboard';
 		
-		$linkParam=$this->request->params['pass'][0];
+		$linkParam=isset($this->request->params['pass'][0]);
 		if($linkParam=="welcome")
 		$this->set('welcome',1);
 		
@@ -275,6 +277,7 @@ public function set_suggested_channels()
     public function favorites() {
 	$this->layout='dashboard';
 	$userid = $this->Session->read('Auth.User.id');
+	$userName = $this->Session->read('Auth.User.username');
 	$this->headerlogin();
    
    
@@ -298,6 +301,7 @@ public function set_suggested_channels()
 		$this->headerlogin();
 		
 		$userid = $this->Session->read('Auth.User.id');
+		$userName = $this->Session->read('Auth.User.username');
 
 		$this->set('title_for_layout', $userName.' - Chains');
 		$this->set('description_for_layout', $userName.' - All the chains of '.$userName);
@@ -1553,7 +1557,6 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('game', $game);
 		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
 		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
-		$this->set('author_for_layout', $game['User']['seo_username']);
 	    $this->set_suggested_channels();
 		
 		
@@ -1631,7 +1634,6 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('game', $game);
 		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
 		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
-		$this->set('author_for_layout', $game['User']['seo_username']);
 	    $this->set_suggested_channels();
 		
 	//Set random game after rendering
