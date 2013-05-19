@@ -1,22 +1,8 @@
- 
-<?php
-$router = Router::url();
-
-if ($this->action == "dashboard"){
-    $class = "class='active first'";
-}elseif($this->action == "mygames"){
-    $class2 = "class='active'";
-}
- ?>
-
-
-
-
  <div class="span1">
                     <!--side bar-->
                     <aside class="side-left" >
                         <ul class="sidebar">
-                            <li <?php echo $class;?>> <!--always define class .first for first-child of li element sidebar left-->
+                            <li> <!--always define class .first for first-child of li element sidebar left-->
                                 <a href="<?php echo $index; ?>" title="what is toork">
                                     <div class="helper-font-24">
                                         <i class="elusive-user"></i>

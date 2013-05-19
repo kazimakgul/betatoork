@@ -1038,16 +1038,17 @@ public function profile() {
 		   if($authid!=NULL)
 		   {
 		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list');
 		   $mutuals=array_intersect($listofmine,$listofuser);
 		   $this->set('mutuals',$mutuals);
 		   }else{
+		   $listofmine="null";
 		   $this->set('mutuals',NULL);
 		   }
 
 		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
 		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
-		$this->set('user_id', $userid);
+		$this->set('user_id', $authid);
 		
 		$limit=15;
 		$this->paginate=array('User'=>array('conditions'=>array('NOT' => array('User.id' => $listofmine)),'contain' =>array('Userstat'),'limit'=>$limit,'order'=> array(
