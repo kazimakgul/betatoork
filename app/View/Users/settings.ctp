@@ -20,7 +20,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
     </ul>
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active in" id="home">
-<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'tab','novalidate'=>'novalidate','class'=>'form-horizontal' ,'type' => 'file'));?>
+<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'tab','class'=>'form-horizontal' ,'type' => 'file'));?>
 <!-- 
 <div class="raw-fluid">
 <div class="span2 fileupload fileupload-new" data-provides="fileupload">
@@ -96,7 +96,15 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
                                                             <div class="controls">
 <input placeholder="not yet" type="file" name="data[User][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" data-form="uniform" id="inputUpload" size="100">
                                                             </div> <p> * Picture size must be 90x120 pixel</p>
-                                                        </div> 
+                                                        </div>
+
+                                                            <div class="well control-group">
+                                                                <label class="control-label" for="url">My Website</label>
+                                                                <div class="controls">
+<?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|).+' ,'placeholder' => 'http://www.mywebsite.com','type' => 'url', 'maxlength'=>100)); ?>
+                                                                </div><i class='elusive-globe color-red helper-font-32'></i> <p>Just add your website or any other link if you want to link back. You will let your users reach your web page through your toork channel.</p>
+                                                            </div>
+
                                      
                                                             <div class="form-actions">
                                                                 <button type="submit" class="btn btn-primary">Save changes</button>
@@ -141,10 +149,10 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 
 
                                                             <div class="well control-group">
-                                                                <label class="control-label" for="url">Pinterest</label>
+                                                                <label class="control-label" for="url">My Website</label>
                                                                 <div class="controls">
-<?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|)pinterest.com/.+' ,'placeholder' => 'http://www.pinterest.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
-                                                                </div><i class='elusive-pinterest color-red helper-font-32'></i> <p>Just add your Pinterest page or board link if you have any. You will let your users reach your Pinterest using your toork channel.</p>
+<?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|).+' ,'placeholder' => 'http://www.mywebsite.com','type' => 'url', 'maxlength'=>100)); ?>
+                                                                </div><i class='elusive-globe color-red helper-font-32'></i> <p>Just add your website or any other link if you want to link back. You will let your users reach your web page through your toork channel.</p>
                                                             </div>
 
                                                             <div class="form-actions">

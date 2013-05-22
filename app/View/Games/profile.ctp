@@ -57,7 +57,18 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
             </a>
           
         </div>
-        <h4 style="font-family: 'Merriweather Sans', sans-serif; font-size: 18px; color:white; text-shadow: 1px 1px black;"><?php echo $publicname?></h4>
+<?php
+$website=$publicuser['User']['website'];
+?>        
+        <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;"><?php echo $publicname?></h4>
+<?php
+if($website==NULL){
+
+
+}else{
+                    echo "<a target='_blank' rel='nofollow' class='btn btn-link' href='$website' style='padding:0px; font-family: Merriweather Sans, sans-serif; font-size: 12px; color:white; text-shadow: 1px 1px black;'>$website</a>";
+}
+?>
         <div class="row-fluid">
             <div class="span2">
                 <a class="btn btn-block btn-success" id="follow_button" style="margin-top:5px;"  onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);">
@@ -79,7 +90,6 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,
 $facebook=$publicuser['User']['fb_link'];
 $twitter=$publicuser['User']['twitter_link'];
 $gplus=$publicuser['User']['gplus_link'];
-$website=$publicuser['User']['website'];
 if($facebook==NULL){
                    echo "<a style='margin-right:20px; text-shadow: 1px 1px black;'>                     
                         <i class='elusive-facebook helper-font-24' style='opacity:0.3;'></i>
@@ -91,11 +101,11 @@ if($facebook==NULL){
 }
 if($website==NULL){
                     echo "<a style='margin-right:20px; text-shadow: 1px 1px black;'>                     
-                        <i class='elusive-pinterest helper-font-24' style='opacity:0.3;'></i>
+                        <i class='elusive-globe helper-font-24' style='opacity:0.3;'></i>
                     </a>";
 }else{
-                    echo "<a rel='tooltip' data-placement='bottom' data-original-title='Pinterest Board' href='$website' target='_blank' rel='nofollow' style='margin-right:20px; text-shadow: 1px 1px black;'>                     
-                        <i class='elusive-pinterest color-red helper-font-24'></i>
+                    echo "<a rel='tooltip' data-placement='bottom' data-original-title='$website' href='$website' target='_blank' rel='nofollow' style='margin-right:20px; text-shadow: 1px 1px black;'>                     
+                        <i class='elusive-globe color-red helper-font-24'></i>
                     </a>";
 }
 if($twitter==NULL){
