@@ -249,13 +249,44 @@ public function set_suggested_channels()
 		if($linkParam=="welcome")
 		$this->set('welcome',1);
 		
+		switch(rand(0,13))
+		{
+		case 0:
+		$gameorder='Game.id asc';break;
+		case 1:
+		$gameorder='Game.id desc';break;
+		case 2:
+		$gameorder='Game.name asc';break;
+		case 3:
+		$gameorder='Game.name desc';break;
+		case 4:
+		$gameorder='Game.user_id asc';break;
+		case 5:
+		$gameorder='Game.user_id desc';break;
+		case 6:
+		$gameorder='Game.category_id asc';break;
+		case 7:
+		$gameorder='Game.category_id desc';break;
+		case 8:
+		$gameorder='Game.starsize asc';break;
+		case 9:
+		$gameorder='Game.starsize desc';break;
+		case 10:
+		$gameorder='Game.rate_count asc';break;
+		case 11:
+		$gameorder='Game.rate_count desc';break;
+		case 12:
+		$gameorder='Game.created asc';break;
+		case 13:
+		$gameorder='Game.created desc';break;
+		}
 		
 		$userid = $this->Session->read('Auth.User.id');
 	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	   	$userName = $user['User']['username'];
 
 		$limit=16;
-		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit));
+		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order'=>$gameorder));
 		$data=$this->paginate('Game');
     	$this->set('top_rated_games',$data);
 		
