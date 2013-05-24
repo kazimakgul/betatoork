@@ -159,7 +159,7 @@ public function reset_now($user_id = null, $in_hash = null){
 }
 
 public function __sendActivationEmail($user_id) {
-
+/*
 		$user = $this->User->find('first',array('conditions' => array('User.id'=>$user_id)));
 		
 		// Set data for the "view" of the Email
@@ -173,6 +173,22 @@ public function __sendActivationEmail($user_id) {
 		$this->Email->template = 'simple_mail';
 		$this->Email->sendAs = 'html';   // you probably want to use both :)	
 		return $this->Email->send();
+		*/
+		
+		$user = $this->User->find('first',array('contain'=>false,'conditions' => array('User.id'=>$user_id),'fields'=>array('User.username','User.email')));
+		// Set data for the "view" of the Email
+		$this->set('activate_url', 'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
+		$this->set('username', $user["User"]["username"]);
+		
+		$email = new CakeEmail();
+			$email->config('smtp')
+				->template('simple_mail') //I'm assuming these were created
+			    ->emailFormat('html')
+			    ->to($user['User']['email'])
+			    ->from(array('no-reply@toork.com' => 'Toork'))
+			    ->subject('Welcome To Toork')
+			    ->send();
+			$this->Session->setFlash('Email SEND');
 	}
 
 
@@ -259,18 +275,34 @@ public function __sendResetEmail($user_id) {
 	}
 
 public function sendmail(){
-
 			$email = new CakeEmail();
 			$email->config('smtp')
 				->template('simple_mail') //I'm assuming these were created
 			    ->emailFormat('html')
-			    ->to('kaziassfasfa@amazebuy.com')
+			    ->to('hoaltan@hotmail.com')
 			    ->from(array('no-reply@toork.com' => 'Toork'))
 			    ->subject('Welcome To Toork')
 			    ->send();
 			$this->Session->setFlash('Email SEND');
+}
 
-
+public function activationmailsender($user_id=NULL){
+			
+			$user = $this->User->find('first',array('contain'=>false,'conditions' => array('User.id'=>$user_id),'fields'=>array('User.username','User.email')));
+		// Set data for the "view" of the Email
+		$this->set('activate_url', 'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
+		$this->set('username', $user["User"]["username"]);
+		
+		$email = new CakeEmail();
+			$email->config('smtp')
+				->template('simple_mail') //I'm assuming these were created
+			    ->emailFormat('html')
+			    ->to($user['User']['email'])
+			    ->from(array('no-reply@toork.com' => 'Toork'))
+			    ->subject('Welcome To Toork')
+			    ->send();
+			$this->Session->setFlash('Email SEND');
+			
 }
 
     public function login2() {
@@ -1275,6 +1307,7 @@ public function password2($id = null) {
 				    $this->Userstat->save($this->request->data);
 					//$this->__sendActivationEmail($this->User->getLastInsertID());
 					$this->set('rtdata', 'true');
+					$this->Session->write('FirstLogin',$this->User->getLastInsertID());
 					
 				} else {
 					//$this->set('rtdata', 'Can not register. Please try again.');

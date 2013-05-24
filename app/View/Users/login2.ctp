@@ -1,5 +1,5 @@
 <?php
-$send = $this->requestAction( array('controller'=>'users', 'action'=>'sendmail')); ?>
+$send = $this->requestAction( array('controller'=>'users', 'action'=>'mailsender')); ?>
 
         <!-- section content -->
         <section class="section">

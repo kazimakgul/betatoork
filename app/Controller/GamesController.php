@@ -249,6 +249,13 @@ public function set_suggested_channels()
 		if($linkParam=="welcome")
 		$this->set('welcome',1);
 		
+		if($this->Session->read('FirstLogin')!=NULL)
+		{
+		$this->requestAction( array('controller'=>'users', 'action'=>'activationmailsender',$this->Session->read('FirstLogin')));
+		$this->Session->write('FirstLogin',NULL);
+		$this->Session->delete('FirstLogin');
+		}
+		
 		switch(rand(0,13))
 		{
 		case 0:
