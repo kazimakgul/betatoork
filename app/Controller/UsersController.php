@@ -10,7 +10,7 @@ class UsersController extends AppController {
 
 public $components = array('AutoLogin','Email','Amazonsdk.Amazon','Recaptcha.Recaptcha');
 public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
-var $uses = array('Game','Subscription','Userstat','Category');
+var $uses = array('Game','Subscription','Userstat','Category','CakeEmail', 'Network/Email');
 
 
 	public function beforeFilter() {
@@ -257,6 +257,21 @@ public function __sendResetEmail($user_id) {
 		    }
 		}
 	}
+
+public function sendmail(){
+
+			$email = new CakeEmail();
+			$email->config('smtp')
+				->template('simple_mail') //I'm assuming these were created
+			    ->emailFormat('html')
+			    ->to('kaziassfasfa@amazebuy.com')
+			    ->from(array('no-reply@toork.com' => 'Toork'))
+			    ->subject('Welcome To Toork')
+			    ->send();
+			$this->Session->setFlash('Email SEND');
+
+
+}
 
     public function login2() {
     	$this->layout = 'unauth';

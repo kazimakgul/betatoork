@@ -1,3 +1,6 @@
+<?php
+$send = $this->requestAction( array('controller'=>'users', 'action'=>'sendmail')); ?>
+
         <!-- section content -->
         <section class="section">
             <div class="container">
@@ -33,7 +36,7 @@
                                         </label>
                                     </div>
                                     <div class="form-actions">
-                                        <input class="btn btn-block btn-large btn-primary" id="t_gatekeeper_login_btn" value="Sign into account" />
+                                        <input onclick="<?php $send; ?>" class="btn btn-block btn-large btn-primary" id="t_gatekeeper_login_btn" value="Sign into account" />
                                         <p class="recover-account">Recover your <a href="#modal-recover" class="link" data-toggle="modal">username or password</a></p>
                                     </div>
                                 </form>
