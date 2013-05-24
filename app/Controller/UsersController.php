@@ -62,16 +62,20 @@ var $uses = array('Game','Subscription','Userstat','Category','CakeEmail', 'Netw
 	}
 
 
-function activate($user_id = null, $in_hash = null) {
+public function activate($user_id = null, $in_hash = null) {
+    $this->layout="ajax";
 	$this->User->id = $user_id;
+
 	if ($this->User->exists() && ($in_hash == $this->User->getActivationHash()))
 	{
 		// Update the active flag in the database
 		$this->User->saveField('active', 1);
  
 		// Let the user know they can now log in!
-		$this->Session->setFlash('Your account has been activated, please log in using your cridentials');
-		$this->redirect('/');
+		//$this->Session->setFlash('Your account has been activated.');
+		$this->set('activated',1);
+	}else{
+	$this->set('activated',0);
 	}
  
 	// Activation failed, render '/views/user/activate.ctp' which should tell the user.
@@ -294,7 +298,7 @@ public function activationmailsender($user_id=NULL){
 		// Set data for the "view" of the Email
 		$this->set('activate_url', 'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
-		
+		$this->User->id = $user_id;
 		$email = new CakeEmail();
 		    $email->viewVars(array('username' => $user["User"]["username"],'activate_url'=>'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash()));
 			$email->config('smtp')
@@ -1198,17 +1202,10 @@ public function password2($id = null) {
 			$this->request->data['User']['password'] = $this->request->data['ps'];
 			if ($this->Auth->login() == true) {
 				$results = $this->User->find('first',array('conditions'=>array('OR'=>array('User.email'=>$this->request->data['User']['username'],'User.username'=>$this->request->data['User']['username'])),array('fields'=>array('User.active'))));
-	  	        if ($results['User']['active'] == 0) {
-					$this->Auth->logout();
-					$msg = array("msgid" => '0', "msg" => 'Your account has not been activated yet! Please check your email to activate your account');
-					$this->set('rtdata', $msg);
-				}
-				
-				else
-				{
+	  	      
 					$msg = array("msgid" => '1', "msg" => $this->webroot.$this->Auth->loginRedirect['controller'].'/'.$this->Auth->loginRedirect['action']);
 					$this->set('rtdata', $msg);
-				}
+				
 			}
 			else
 			{
@@ -1300,7 +1297,7 @@ public function password2($id = null) {
 				$this->request->data['User']['password'] = $this->request->data['up'];
 				$this->request->data['User']['seo_username'] = strtolower($this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un'])));
 				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
-				$this->request->data['User']['active'] = 1;
+				$this->request->data['User']['active'] = 0;
 				//$this->request->data['User']['userstat'] = 0; //buraya bakılacak yeni alan için
 				
 				if ($this->User->save($this->request->data)) {

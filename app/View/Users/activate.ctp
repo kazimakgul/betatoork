@@ -1,25 +1,26 @@
-<div class="wrapper" >
-<div class="content">
+<?php 
+if($activated==1)
+{
+?>
 
-<div class="users form">
-<?php echo $this->Form->create('User');?>
-    <fieldset>
-        <legend><?php echo __('Please enter your username and password'); ?></legend>
-    <?php
-        echo $this->Form->input('username');
-        echo $this->Form->input('password');
-        echo $this->Form->input('auto_login', array('type' => 'checkbox', 'label' => 'Log me in automatically?'));
-    ?>
-    </fieldset>
-<?php echo $this->Form->end(__('Login'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Register'), array('controller' => 'users', 'action' => 'register')); ?> </li>
-		<li><?php echo $this->Html->link(__('Play Games'), array('controller'=>'games','action' => 'index'));?></li>		
-	</ul>
-</div>
+<script type="text/javascript">
+$.pnotify({
+            text: 'Your account has been activated.',
+            type: 'success'
+          });
 
-</div>
-</div>
+</script>
+Your account has been activated.
+<?php
+}else{
+?>
+
+<script type="text/javascript">
+$.pnotify({
+            text: 'Activation code is not valid!',
+            type: 'error'
+          });
+
+</script>
+Activation code is not valid!
+<?php } ?>
