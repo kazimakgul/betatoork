@@ -24,7 +24,7 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"toprated
                                         <li><a href="<?php echo $currentlink;?>/sort:starsize/direction:desc">Top Rated</a></li>
                                         <li><a href="<?php echo $currentlink;?>/sort:playcount/direction:desc">Most Played</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="<?php echo $currentlink;?>/sort:id/direction:desc"">New Games</a></li>
+                                        <li><a href="<?php echo $currentlink;?>/sort:id/direction:desc">New Games</a></li>
                                     </ul>
                                 </li>
                             </ul><!--/breadcrumb-nav-->
