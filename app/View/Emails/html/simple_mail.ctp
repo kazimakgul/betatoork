@@ -20,7 +20,9 @@
         </tr>
                 <tr>
           <td style="border-bottom:1px solid #bbb">
-            <span style="color:black"><a style="color:black"> Now you have your own channel on Toork.You can edit your channel informations and add your games to your channel from all categories which you want.If you need any further assistance,please feel free to contact by using hello@toork.com.
+            <span style="color:black"><a style="color:black"> Now you have your own channel on Toork.<br>
+              You are able to add new games to your channel now.<br>
+              If you need any further assistance, please feel free to contact us : <a mailto="hello@toork.com">hello@toork.com.</a>
 </a></span><br>
           </td>
         </tr>
@@ -43,7 +45,7 @@
                   </tbody></table>
                 </td>
                 <td style="padding-left:15px">
-                    To verify your email address, click this link: <br>
+                    If button does't work, just copy/paste the link below to your browser: <br>
   <a href="<?php echo $activate_url; ?>" target="_blank"><?php echo $activate_url; ?></a> <br>
 
                 </td>
@@ -55,11 +57,12 @@
     </td>
   </tr>
     <tr>
-    <td style="background-color:#eee;padding:15px">                         <a href="http://toork.com" target="_blank">Toork</a>: Create your own game channel and share your playlists with your friends.
-                                  <br>
+    <td style="background-color:#eee;padding:15px">
+      <a href="http://toork.com" target="_blank">Toork</a>: Create your own game channel and share your games with your friends.
+        <br>
         Have a question or need help with your Toork account? Check our support page.
         <br>
-                  </td>
+    </td>
   </tr>
 </tbody></table>
 </td></tr>
