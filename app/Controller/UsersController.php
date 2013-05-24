@@ -288,7 +288,7 @@ public function sendmail(){
 
 public function activationmailsender($user_id=NULL){
 			
-			$user = $this->User->find('first',array('contain'=>false,'conditions' => array('User.id'=>$user_id),'fields'=>array('User.username','User.email')));
+			$user = $this->User->find('first',array('contain'=>false,'conditions' => array('User.id'=>$user_id),'fields'=>array('User.username','User.email','User.id')));
 		// Set data for the "view" of the Email
 		$this->set('activate_url', 'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
