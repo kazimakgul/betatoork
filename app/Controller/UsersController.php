@@ -304,8 +304,6 @@ public function activationmailsender($user_id=NULL){
 			    ->from(array('no-reply@toork.com' => 'Toork'))
 			    ->subject('Welcome To Toork')
 			    ->send();
-			$this->Session->setFlash('Email SEND');
-			
 }
 
     public function login2() {
