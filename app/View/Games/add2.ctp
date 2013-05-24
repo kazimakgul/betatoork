@@ -10,6 +10,18 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
+    <?php if($isActive==0){ ?>
+    <div class="alert alert-error span12">
+                                    <div class="box-header corner-top">
+                                            <div class="header-control">
+                                            <button data-box="close" data-hide="fadeOut" class="close">×</button>
+                                            </div>
+                                            
+                                    </div>
+        <p> <i class="elusive-mail-alt helper-font-24"></i> Your account is not active yet. Please check your email account to activate your email address to be able to publish your own games.</p>
+    </div>
+<?php }else{}?>
+
 
                     <div class="alert alert-block fadein">
                         <button type="button" class="close" data-dismiss="alert">×</button>

@@ -16,6 +16,17 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
                             <!-- dashboard -->
+    <?php if($isActive==0){ ?>
+    <div class="alert alert-warning span12">
+                                    <div class="box-header corner-top">
+                                            <div class="header-control">
+                                            <button data-box="close" data-hide="fadeOut" class="close">×</button>
+                                            </div>
+                                            
+                                    </div>
+        <p> <i class="elusive-mail-alt helper-font-24"></i> Your account is not active yet. Please check your email account to activate your email address to be able to publish your own games.</p>
+    </div>
+<?php }else{}?>
 <i class="elusive-graph"></i> Your analytics are not active yet! You will be able to earn money via your channel soon.
 <div class="row-fluid" style="opacity:0.3;">
     <div class="alert alert-info span3">

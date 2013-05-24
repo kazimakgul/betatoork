@@ -291,6 +291,7 @@ public function set_suggested_channels()
 		$userid = $this->Session->read('Auth.User.id');
 	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	   	$userName = $user['User']['username'];
+	   	$isActive = $user['User']['active'];
 
 		$limit=16;
 		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order'=>$gameorder));
@@ -306,6 +307,7 @@ public function set_suggested_channels()
 	    $this->set_suggested_channels();
 	    $this->set('user',$user);
 	    $this->set('username',$userName);
+	    $this->set('isActive',$isActive);
 		$this->set('title_for_layout', 'Dashboard - Toork Channel Manager');
 		$this->set('description_for_layout', 'Your Dashboard knows what you want and helps you do everything easier.');
 	    
@@ -1908,6 +1910,7 @@ function getExtension($str) {
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+		$isActive = $user['User']['active'];
 		if ($this->request->is('post')) {
 		 
 		 
@@ -1975,6 +1978,7 @@ function getExtension($str) {
 		$categories = $this->Game->Category->find('list');
 		$this->set(compact('users2', 'categories'));
 		$this->set('user', $user);
+		$this->set('isActive', $isActive);
 	$this->set('title_for_layout','Add New Game');
 	$this->set('description_for_layout', 'You are able to add a new game');		
 		
