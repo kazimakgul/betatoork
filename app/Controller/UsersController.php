@@ -72,10 +72,13 @@ public function activate($user_id = null, $in_hash = null) {
 		$this->User->saveField('active', 1);
  
 		// Let the user know they can now log in!
-		//$this->Session->setFlash('Your account has been activated.');
+		$this->Session->setFlash('Your account has been activated.');
 		$this->set('activated',1);
+		$this->redirect('/');
 	}else{
+	$this->Session->setFlash('Activation code is not valid!');
 	$this->set('activated',0);
+	$this->redirect('/');
 	}
  
 	// Activation failed, render '/views/user/activate.ctp' which should tell the user.
