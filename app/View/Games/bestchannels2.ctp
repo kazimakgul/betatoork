@@ -1,5 +1,6 @@
 <?php
 $index=$this->Html->url(array("controller" => "games","action" =>"index"));
+$currentlink=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
 ?>
 
                 <!-- span content -->
@@ -19,7 +20,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Recommend</a></li>
-                                        <li><a href="#">New Channels</a></li>
+                                        <li><a href="<?php echo $currentlink;?>/sort:id/direction:desc">New Channels</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#">Chained</a></li>
                                     </ul>

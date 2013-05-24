@@ -1,6 +1,7 @@
 <?php 
 $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 $index=$this->Html->url(array("controller" => "games","action" =>"index"));
+$currentlink=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -18,12 +19,12 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
                                         <i class="icofont-caret-down"></i>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Recommended</a></li>
+                                        <li><a href="<?php echo $currentlink;?>/sort:recommend/direction:desc">Recommended</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#">Top Rated</a></li>
-                                        <li><a href="#">Most Played</a></li>
+                                        <li><a href="<?php echo $currentlink;?>/sort:starsize/direction:desc">Top Rated</a></li>
+                                        <li><a href="<?php echo $currentlink;?>/sort:playcount/direction:desc">Most Played</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#">New Games</a></li>
+                                        <li><a href="<?php echo $currentlink;?>/sort:id/direction:desc"">New Games</a></li>
                                     </ul>
                                 </li>
                             </ul><!--/breadcrumb-nav-->
