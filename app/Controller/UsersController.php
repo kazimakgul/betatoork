@@ -276,6 +276,7 @@ public function __sendResetEmail($user_id) {
 
 public function sendmail(){
 			$email = new CakeEmail();
+			$email->viewVars(array('username' => 12345));
 			$email->config('smtp')
 				->template('simple_mail') //I'm assuming these were created
 			    ->emailFormat('html')
@@ -283,6 +284,7 @@ public function sendmail(){
 			    ->from(array('no-reply@toork.com' => 'Toork'))
 			    ->subject('Welcome To Toork')
 			    ->send();
+				
 			$this->Session->setFlash('Email SEND');
 }
 
@@ -294,6 +296,7 @@ public function activationmailsender($user_id=NULL){
 		$this->set('username', $user["User"]["username"]);
 		
 		$email = new CakeEmail();
+		    $email->viewVars(array('username' => $user["User"]["username"],'activate_url'=>'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash()));
 			$email->config('smtp')
 				->template('simple_mail') //I'm assuming these were created
 			    ->emailFormat('html')
