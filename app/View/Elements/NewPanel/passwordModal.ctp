@@ -16,6 +16,6 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                    <input type="button" onclick="forgetPassword();" form="form-recover" class="btn btn-primary" value="Send reset link" >
+                    <input type="button" onclick="forgetPassword();" data-dismiss="modal" form="form-recover" class="btn btn-primary" value="Send reset link" >
                 </div>
             </div><!-- /modal recover-->
