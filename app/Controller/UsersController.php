@@ -211,25 +211,20 @@ public function __sendResetEmail($user_id) {
 			return false;
 		}
  
-		// Set data for the "view" of the Email
-		$this->set('reset_url', 'http://toork.com/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
-		$this->set('username', $user["User"]["username"]);
-        $this->Email->from  = 'Toork <no-reply@toork.com>';
-		$this->Email->to = $user["User"]["email"];
-		$this->Email->subject = 'Toork - Password Reset';
-		$this->Email->template = 'forgot_password';
+		    $email = new CakeEmail();
+		    // Set data for the "view" of the Email
+			$email->viewVars(array('reset_url' => 'http://toork.com/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash(),'username'=>$user["User"]["username"]));
+			$email->config('smtp')
+				->template('forgot_password') //I'm assuming these were created
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => 'Toork'))
+			    ->subject('Toork - Password Reset')
+			    ->send();
+				
+			 $this->Session->setFlash('Email SEND');
 		
-		$this->Email->sendAs = 'html';   // you probably want to use both :)	
 		
-		
-		
-		/*if($this->Email->send())
-	  	{
-		$this->Session->setFlash('A reset link has been sent, please check your email to reset your password');
-		}else{
-		$this->Session->setFlash("Reset email has not been sent.");
-		}
-		*/
 		
 	}
 
@@ -1218,9 +1213,9 @@ public function password2($id = null) {
 		 }
 		 else if($attr == "t_regbox_logemail"){	 
 			if(isset($dt) && $dt!= ''){
-				$user = $this->User->find('first',array('conditions' => array('User.email'=>$dt)));
+				$user = $this->User->find('first',array('conditions' => array('OR'=>array('User.email'=>$dt,'User.username'=>$dt))));
 				if($user === false){
-					$this->set('rtdata', 'This email is not registered to toork yet.');
+					$this->set('rtdata', 'This email is not registered to Toork yet.');
 				}
 				else{
 					$this->__sendResetEmail($user["User"]["id"]);

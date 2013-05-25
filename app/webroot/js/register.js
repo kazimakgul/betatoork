@@ -1448,3 +1448,30 @@ $('#profile_tabs a[href="#followers_tab"]').click(function (e) {
   
   
 });
+
+//==========================================================
+//*********Forget Password Function********
+function forgetPassword()
+{
+	
+	$.post(remotecheck, { dt: $('#resetcredential').val(), attr: 't_regbox_logemail' }, function (data) {
+            if (data.rtdata != null) {
+				
+				$.pnotify({
+            text: data.rtdata,
+            type: 'error'
+          });
+				
+            }
+            else { 
+				$.pnotify({
+            title: 'Reset mail has been sent.',
+            text: 'Please check your mail box.',
+            type: 'success'
+          });
+			}
+        }, 'json');	
+	
+}
+ 
+//*********/Forget Password Function********

@@ -14,7 +14,7 @@
       <table style="font:normal 15px Arial">
         <tbody><tr>
                       <td style="font-size:18px;color:#000">
-                    <b><span style="color:black"><a style="color:black">Hi <?= $username ?>, You can reset your password by following the link below.
+                    <b><span style="color:black"><a style="color:black">Hi <?php echo $username; ?>, You can reset your password by following the link below.
   </a></span></b><br>
                     </td>
         </tr>
@@ -37,14 +37,14 @@
                   <table cellpadding="0" cellspacing="0">
                     <tbody><tr>
                       <td style="border:1px solid #3182b9;background-color:#1a74b0;padding:8px;font:bold 12px Arial" nowrap="">
-                        <a style="color:#fff;white-space:nowrap;text-decoration:none" href="<?= $reset_url ?>" target="_blank">Reset Password</a>
+                        <a style="color:#fff;white-space:nowrap;text-decoration:none" href="<?php echo $reset_url; ?>" target="_blank">Reset Password</a>
                       </td>
                     </tr>
                   </tbody></table>
                 </td>
                 <td style="padding-left:15px">
                     To reset your password, just click this link: <br>
-  <a href="<?= $reset_url ?>" target="_blank"><?= $reset_url ?></a> <br>
+  <a href="<?php echo $reset_url; ?>" target="_blank"><?php echo $reset_url; ?></a> <br>
 
                 </td>
               </tr>

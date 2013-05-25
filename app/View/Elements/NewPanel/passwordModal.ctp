@@ -8,7 +8,7 @@
                     <form id="form-recover" method="post">
                         <div class="control-group">
                             <div class="controls">
-                                <input type="text" class="span4" placeholder="Username or Email Address"/>
+                                <input type="text" id="resetcredential" class="span4" placeholder="Username or Email Address"/>
                                 <p class="help-block helper-font-small">Enter your username or email address and we will send you a link to reset your password.</p>
                             </div>
                         </div>
@@ -16,6 +16,6 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                    <input type="submit" form="form-recover" class="btn btn-primary" value="Send reset link" >
+                    <input type="button" onclick="forgetPassword();" form="form-recover" class="btn btn-primary" value="Send reset link" >
                 </div>
             </div><!-- /modal recover-->
