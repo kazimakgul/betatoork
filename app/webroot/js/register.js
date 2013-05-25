@@ -395,7 +395,7 @@ function trecaptcha2(){
 			if (data.rtdata == 'true') {
 				
 				$.pnotify({
-               text: 'You have registered now.You will be redirected to your channel.',
+               text: 'You have successfully registered now. You will be redirected to your personal channel now. Please be patient and enjoy Toork...',
                type: 'success'
                });
 				
@@ -432,7 +432,7 @@ function trecaptcha2(){
 			if (data.rtdata == 'true') {
 				
 				$.pnotify({
-               text: 'You have registered now.You will be redirected to your channel.',
+               text: 'You have successfully registered now.<br>You will be redirected to your personal channel now.<br>Please be patient and enjoy Toork...',
                type: 'success'
                });
 				

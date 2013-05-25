@@ -1263,9 +1263,9 @@ public function password2($id = null) {
 	   }elseif((!$this->checkEmail($email)) && ($this->checkUsername($username))){
 	   $this->set('rtdata', 'This email is already registered. Please try another one.');
 	   }elseif((!$this->checkUsername($username)) && (!$this->checkEmail($email))){
-	   $this->set('rtdata', 'This username and email already registered.Please try another one.');
+	   $this->set('rtdata', 'This Username and email already registered. Please try another one.');
 	   }else{
-	   $this->set('rtdata', 'Can not register. Please try again.');
+	   $this->set('rtdata', 'Can not register. There is something wrong with the inputs. Please try something else.');
 	   }
 	
 	}
