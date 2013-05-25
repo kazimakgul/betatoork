@@ -1,48 +1,60 @@
-<link type="text/css" rel="stylesheet" href="/css/Addgame.css" />
-
-<div class="content clearfix">
-  <div class="channel_left_panel">
-    <?php  echo $this->element('unlogged_user_panel'); ?>
-    
-  </div>
-  <div class="right_panel">
-
-  <!-- Add Game UI is here-->  
+                <!-- span content -->
+                <div class="span9">
+                    <!-- content -->
+                    <div class="content">
+                        
+                        <!-- content-body -->
+                        <div class="content-body">
 
 
-<?php echo $this->Form->create('User', array('label'=>false ,'id'=>'addgameform','class'=>'contact_form addgame' ,'type' => 'file'));?>
+                                    <div class="box-tab corner-all">
+                                        <div class="box-header corner-top">
+                                            <ul class="nav nav-pills">
 
-        <div class="sep"></div>
-<span class="required_notification">* Denotes Required Field</span>
-    <ul>
+                                                <!--tab menus-->
+                                                <li class="active"><a data-toggle="tab" href="#boxtabpill-1">Change Password</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="box-body">
+                                            <!-- widgets-tab-body -->
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade in active" id="boxtabpill-1">
+
+<?php echo $this->Form->create('User', array('label'=>false ,'type' => 'file'));?>
+                                                        <fieldset>
+                                                            <div class="control-group  input-prepend">
+                                                                <label class="control-label" for="required">New Password</label>
+                                                                <div class="controls">
+                                                                    <span class="add-on"><i class="icofont-lock"></i></span>
+<?php echo $this->Form->input('new_password',array('label'=>false,'div'=>false ,'type'=>'password','class'=>'grd-white','required pattern'=>'[^\f\n\r\t\v\u00A0\u2028\u2029]{6,20}','placeholder' => 'Must be at least 6 characters long','id'=>'required')); ?>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="control-group  input-prepend">
+                                                                <label class="control-label" for="required">Confirm New Password</label>
+                                                                <div class="controls">
+                                                                    <span class="add-on"><i class="icofont-lock"></i></span>
+<?php echo $this->Form->input('confirm_new_password',array('label'=>false,'div'=>false ,'type'=>'password','class'=>'grd-white','required pattern'=>'[^\f\n\r\t\v\u00A0\u2028\u2029]{6,20}','placeholder' => 'Must be same as above','id'=>'required')); ?>
+                                                                </div>
+                                                            </div>
   
-        <li>
-            <label for="name">New Password:</label>
+                                                            <div class="form-actions">
+                                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                <button type="button" class="btn">Cancel</button>
+                                                            </div>
+                                                        </fieldset>
+                                                    </form>
 
-<?php echo $this->Form->input('new_password',array('label'=>false,'div'=>false  ,'required pattern'=>'[^\f\n\r\t\v\u00A0\u2028\u2029]{6,}','placeholder' => 'Must be at least 6 characters long','type'=>'password', 'title'=>"Please use at least 6 characters, only letters,numbers and specials, do not use any space" )); ?>
-		<span class="form_hint">Try to make a hard to guess password by mixing numbers,letters and special characters"</span>
-         </li>
-        <li>
-            <label for="website">Confirm New Password:</label>
-
-<?php echo $this->Form->input('confirm_new_password',array('label'=>false ,'div'=>false ,'required pattern'=>'[^\f\n\r\t\v\u00A0\u2028\u2029]{6,}','placeholder' => 'Must be at least 6 characters long','type'=>'password', 'title'=>"Please use at least 6 characters, only letters,numbers and specials, do not use any space" )); ?>
-
-            <span class="form_hint">Try to make a hard to guess password by mixing numbers,letters and special characters"</span>
-        </li>
+                                                </div>
 
 
-        <li>
-            <button class="submit" type="submit">Submit</button>
-        </li>
-    </ul>
-
-</form>
+                                            </div><!--/widgets-tab-body-->
+                                        </div>
+                                    </div>
 
 
 
-
-<!-- Add Game UI is up till here -->     
-
-
-    </div>
-</div>
+                        </div><!--/content-body -->
+<?php  echo $this->element('NewPanel/dashfooter'); ?>
+                    </div><!-- /content -->
+                </div><!-- /span content -->
