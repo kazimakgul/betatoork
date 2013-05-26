@@ -195,7 +195,6 @@ public function __sendActivationEmail($user_id) {
 			    ->from(array('no-reply@toork.com' => 'Toork'))
 			    ->subject('Welcome To Toork')
 			    ->send();
-			$this->Session->setFlash('Email SEND');
 	}
 
 
@@ -221,10 +220,6 @@ public function __sendResetEmail($user_id) {
 			    ->from(array('no-reply@toork.com' => 'Toork'))
 			    ->subject('Toork - Password Reset')
 			    ->send();
-				
-			 $this->Session->setFlash('Email SEND');
-		
-		
 		
 	}
 
@@ -286,8 +281,7 @@ public function sendmail(){
 			    ->from(array('no-reply@toork.com' => 'Toork'))
 			    ->subject('Welcome To Toork')
 			    ->send();
-				
-			$this->Session->setFlash('Email SEND');
+
 }
 
 public function activationmailsender($user_id=NULL){
