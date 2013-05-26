@@ -22,7 +22,7 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"bestchan
                                         <li><a href="<?php echo $currentlink;?>/sort:Userstat.potential/direction:desc">Recommend</a></li>
                                         <li><a href="<?php echo $currentlink;?>/sort:id/direction:desc">New Channels</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="<?php echo $currentlink;?>/sort:Userstat.subscribeto/direction:desc">Chained</a></li>
+                                        <li><a href="<?php echo $currentlink;?>/sort:Userstat.subscribeto/direction:desc">Followers</a></li>
                                     </ul>
                                 </li>
 
