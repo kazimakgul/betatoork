@@ -14,7 +14,7 @@
       <table style="font:normal 15px Arial">
         <tbody><tr>
                       <td style="font-size:18px;color:#000">
-                    <b><span style="color:black"><a style="color:black">Hi <?php echo $username; ?>, Welcome to Toork.
+                    <b><span style="color:black"><a style="color:black">Hi <?php echo $username; ?>,<br>Welcome to Toork.
   </a></span></b><br>
                     </td>
         </tr>

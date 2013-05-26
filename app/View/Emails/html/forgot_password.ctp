@@ -14,7 +14,7 @@
       <table style="font:normal 15px Arial">
         <tbody><tr>
                       <td style="font-size:18px;color:#000">
-                    <b><span style="color:black"><a style="color:black">Hi <?php echo $username; ?>, You can reset your password by following the link below.
+                    <b><span style="color:black"><a style="color:black">Hi <?php echo $username; ?>,<br>You can reset your password by following the link below.
   </a></span></b><br>
                     </td>
         </tr>
