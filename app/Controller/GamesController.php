@@ -294,7 +294,7 @@ public function set_suggested_channels()
 	   	$isActive = $user['User']['active'];
 
 		$limit=16;
-		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order'=>$gameorder));
+		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username,User.id')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order'=>$gameorder));
 		$data=$this->paginate('Game');
     	$this->set('top_rated_games',$data);
 		
