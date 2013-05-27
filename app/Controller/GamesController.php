@@ -402,7 +402,7 @@ public function set_suggested_channels()
 		$this->headerlogin();
 
 		$limit=16;
-		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1'),'limit' => $limit));
+		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username,User.id')),'conditions' => array('Game.active'=>'1'),'limit' => $limit));
 		$data=$this->paginate('Game');
     	$this->set('top_rated_games',$data);
 		
