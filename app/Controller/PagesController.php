@@ -97,7 +97,48 @@ public function leftpanel(){
 
 	}
 
+//this gets channel suggestions
+	public function get_suggestions($restrict)
+	{
+	$top50=$this->User->query('SELECT user_id from userstats ORDER BY potential desc LIMIT '.$restrict);
+		$list50=array();
+		$i=0;
+		foreach($top50 as $oneof50)
+		{
+		$list50[$i]=$oneof50['userstats']['user_id'];
+		$i++;
+		}
+		return $list50;
+	}
 
+public function set_suggested_channels()
+{
+//Set first situation of flags
+		$restrict=50;
+		$status='normal';
+		$counter=0;
+		$limit=20;
+		$authid = $this->Session->read('Auth.User.id');
+		//Repeat it to get data
+		$listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		do{
+		$suggestdata=$this->User->find('all',array('limit' => $limit,'order'=>'rand()','conditions'=>array('User.id'=>$this->get_suggestions($restrict),'NOT' => array('User.id' => $listofmine))));
+          if($suggestdata==NULL)
+		  {
+          $status='empty';
+		  $restrict+=10;
+		  $counter++;
+		  }else{
+		  $status='normal';
+		  }
+		  if($counter==3)
+		  break;
+		}while($status=='empty');
+		$category = $this->Category->find('all');
+		$this->set('category',$category);
+	   	$this->set('channels',$suggestdata);
+
+}
 
 	public function display() {
 		$path = func_get_args();
@@ -120,7 +161,9 @@ public function leftpanel(){
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
+		$this->set_suggested_channels();
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
 		$this->render(implode('/', $path));
 	}
 }
