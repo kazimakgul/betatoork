@@ -1022,8 +1022,9 @@ public function password2($id = null) {
  * @return void
  */
 	public function admin_index() {
+	$this->layout="ajax";
 		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
+		$this->set('users', $this->paginate('User'));
 	}
 
 /**
