@@ -1108,7 +1108,7 @@ public function password2($id = null) {
 	//dis
 	}
 		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
+		$this->set('users', $this->paginate('User'));
 	}
 
 /**
