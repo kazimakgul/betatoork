@@ -165,40 +165,6 @@ public function reset_now($user_id = null, $in_hash = null){
 
 }
 
-public function __sendActivationEmail($user_id) {
-/*
-		$user = $this->User->find('first',array('conditions' => array('User.id'=>$user_id)));
-		
-		// Set data for the "view" of the Email
-		$this->set('activate_url', 'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
-		$this->set('username', $user["User"]["username"]);
- 
- 		$this->Email->from  = 'Toork <no-reply@toork.com>';
-		$this->Email->to = $user['User']['email'];
-		//$this->Email->subject = 'Toork - Please confirm your email address';
-		$this->Email->subject = 'Welcome to Toork';
-		$this->Email->template = 'simple_mail';
-		$this->Email->sendAs = 'html';   // you probably want to use both :)	
-		return $this->Email->send();
-		*/
-		
-		$user = $this->User->find('first',array('contain'=>false,'conditions' => array('User.id'=>$user_id),'fields'=>array('User.username','User.email')));
-		// Set data for the "view" of the Email
-		$this->set('activate_url', 'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
-		$this->set('username', $user["User"]["username"]);
-		
-		$email = new CakeEmail();
-			$email->config('smtp')
-				->template('simple_mail') //I'm assuming these were created
-			    ->emailFormat('html')
-			    ->to($user['User']['email'])
-			    ->from(array('no-reply@toork.com' => 'Toork'))
-			    ->subject('Welcome To Toork')
-			    ->send();
-	}
-
-
-
 public function __sendResetEmail($user_id) {
 
         $this->User->id=$user_id;
@@ -1181,7 +1147,6 @@ public function password2($id = null) {
 				if ($this->User->save($this->request->data)) {
 				    $this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();
 				    $this->Userstat->save($this->request->data);
-					//$this->__sendActivationEmail($this->User->getLastInsertID());
 					$this->set('rtdata', 'true');
 					
 				} else {
@@ -1281,8 +1246,7 @@ public function password2($id = null) {
 			}
 		 }
 		 else if($attr == "fast_register"){
-			
-		
+					
 		
 				$this->User->create();
 				$this->request->data['User']['username'] = $this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un']));
@@ -1294,9 +1258,21 @@ public function password2($id = null) {
 				//$this->request->data['User']['userstat'] = 0; //buraya bakýlacak yeni alan için
 				
 				if ($this->User->save($this->request->data)) {
-				    $this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();
-				    $this->Userstat->save($this->request->data);
-					//$this->__sendActivationEmail($this->User->getLastInsertID());
+				
+				//userstat data for new user
+				$userstat_data=
+			array('Userstat' =>array(
+			'user_id' => $this->User->getLastInsertID(),
+			'totalrate' => 0,
+			'favoritecount' => 0,
+			'subscribe' => 0,
+			'subscribeto' => 0,
+			'uploadcount' => 0,
+			'playcount' => 0,
+			'potential' => 0));
+				
+				    //$this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();
+				    $this->Userstat->save($userstat_data);
 					$this->set('rtdata', 'true');
 					$this->Session->write('FirstLogin',$this->User->getLastInsertID());
 					
@@ -1400,7 +1376,6 @@ public function password2($id = null) {
 				if ($this->User->save($this->request->data)) {
 				    $this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();
 				    $this->Userstat->save($this->request->data);
-					//$this->__sendActivationEmail($this->User->getLastInsertID());
 					$this->set('rtdata', 'true');
 					
 				} else {
