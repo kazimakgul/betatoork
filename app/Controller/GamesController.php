@@ -875,14 +875,8 @@ public function profile() {
 	$userid=$userconvert['User']['id'];
 	}
 	
-    $user = $this->User->find('first', array('contain'=>array('Userstat'),'conditions' => array('User.id' => $authid)));
-    $publicUser = $this->User->find('first', array('contain'=>array('Userstat'),'conditions' => array('User.id' => $userid)));
-	
-	//If userstat datas are NULL.
-	if($publicUser['Userstat']['subscribeto']==NULL)
-	$publicUser['Userstat']['subscribeto']=0;
-	if($publicUser['Userstat']['uploadcount']==NULL)
-	$publicUser['Userstat']['uploadcount']=0;
+    $user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     
 	if($publicUser==NULL){
 		$this->redirect('/');
