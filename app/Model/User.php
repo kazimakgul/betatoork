@@ -234,7 +234,7 @@ function getActivationHash()
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
-			'type'=>'LEFT'
+			'type'=>'INNER'
 		));
 	
 	public $belongsTo = array(
