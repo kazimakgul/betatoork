@@ -1072,7 +1072,7 @@ public function password2($id = null) {
  
  
 	public function useredit() {
-	$this->layout='dashboard';
+	$this->layout='adminDashboard';
 	if($this->request->isPost())
 	{	
 	//iç
