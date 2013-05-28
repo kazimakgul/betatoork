@@ -288,7 +288,7 @@ public function set_suggested_channels()
 		$gameorder='Game.created desc';break;
 		}
 		
-		$userid = $this->Session->read('Auth.User.id');
+		$userid = $this->Session->read('Auth.User.id');$this->requestAction( array('controller'=>'userstats', 'action'=>'new_user',$userid));
 	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	   	$userName = $user['User']['username'];
 	   	$isActive = $user['User']['active'];
