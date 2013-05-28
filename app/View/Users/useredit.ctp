@@ -1,16 +1,25 @@
-<div class="wrapper" >
-<div class="content">
-
 <?php 
 
- $options=array('1'=>'Admin','0'=>'User','2'=>'Editor');
+$options=array('1'=>'Admin','0'=>'User','2'=>'Editor');
 $options2=array('1'=>'Active','0'=>'Passive');
 $optionscheck=array('1'=>'Yes','0'=>'No');
 
 ?>
-<div >
-	<h2><?php echo __('Users');?></h2>
-	<table cellpadding="0" cellspacing="0">
+
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box corner-all">
+            <div class="box-header grd-white corner-top">
+                <div class="header-control">
+                    <a data-box="collapse"><i class="icofont-caret-up"></i></a>
+                    <a data-box="close" data-hide="bounceOutRight">×</a>
+                </div>
+                <span>Bordered</span>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered responsive">
+                    <thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('id');?></th>
@@ -24,6 +33,8 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 			<th><?php echo $this->Paginator->sort('Update - Activate');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
+                    </thead>
+                    <tbody>
 	<?php
 	foreach ($users as $user): ?>
 	<tr>
@@ -53,7 +64,13 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 		</td>
 	</tr>
 <?php endforeach; ?>
-	</table>
+                    </tbody>
+                </table>
+            </div><!-- /box-body -->
+        </div><!-- /box -->
+    </div><!-- /span -->
+</div>
+
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
@@ -68,8 +85,9 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-	<br><br><br>
-</div>
 
-</div>
-</div>
+
+
+
+
+
