@@ -6,7 +6,6 @@
 
         <title><?php echo $title_for_layout?></title>
         <link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon" />
-        <meta name="description" content= "<?php echo $description_for_layout?>" />
 
 
         <meta property="og:title" content= "<?php echo $title_for_layout?>" />
@@ -15,7 +14,7 @@
         <meta property="og:image" content="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash4/428808_254949491292199_1660409950_n.jpg"/>
         <meta property="og:site_name" content="Toork"/>
         <meta property="fb:admins" content="711440119"/>
-        <meta property="og:description" content= "<?php echo $description_for_layout?>" />
+
 
 
 <!-- For third-generation iPad with high-resolution Retina display: -->

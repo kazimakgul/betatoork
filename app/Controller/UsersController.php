@@ -1075,6 +1075,11 @@ public function password2($id = null) {
 	}
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate('User'));
+		$authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('username',$userName);
 	}
 
 /**
