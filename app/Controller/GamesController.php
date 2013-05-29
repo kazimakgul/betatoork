@@ -333,7 +333,7 @@ public function set_suggested_channels()
 		//$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
 		
 		$limit=18;
-		$this->paginate=array('Subscription'=>array('contain'=>array('User'),'conditions' => array('Subscription.subscriber_id'=>$userid),'limit' => $limit));
+		$this->paginate=array('Subscription'=>array('contain'=>array('User'),'conditions' => array('Subscription.subscriber_id'=>$userid),'limit' => $limit,'order' => array('created' => 'desc')));
 		$this->set('followers', $this->paginate('Subscription'));
 
 	}
