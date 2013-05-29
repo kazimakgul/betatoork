@@ -241,6 +241,20 @@ public function set_suggested_channels()
 		return $list50;
 	}
 
+    public function lucky_number()
+	{
+	
+	 if ($this->Session->check('Dashboard.randomKey')) { 
+      $key = $this->Session->read('Dashboard.randomKey'); 
+    } 
+    else { 
+      $key = mt_rand(); 
+      $this->Session->write('Dashboard.randomKey', $key); 
+    } 
+	return $key;
+	}
+   
+
 	public function dashboard() {
 		
 		$this->layout='dashboard';
@@ -256,45 +270,14 @@ public function set_suggested_channels()
 		$this->Session->delete('FirstLogin');
 		}
 		
-		switch(rand(0,13))
-		{
-		case 0:
-		$gameorder='Game.id asc';break;
-		case 1:
-		$gameorder='Game.id desc';break;
-		case 2:
-		$gameorder='Game.name asc';break;
-		case 3:
-		$gameorder='Game.name desc';break;
-		case 4:
-		$gameorder='Game.user_id asc';break;
-		case 5:
-		$gameorder='Game.user_id desc';break;
-		case 6:
-		$gameorder='Game.category_id asc';break;
-		case 7:
-		$gameorder='Game.category_id desc';break;
-		case 8:
-		$gameorder='Game.starsize asc';break;
-		case 9:
-		$gameorder='Game.starsize desc';break;
-		case 10:
-		$gameorder='Game.rate_count asc';break;
-		case 11:
-		$gameorder='Game.rate_count desc';break;
-		case 12:
-		$gameorder='Game.created asc';break;
-		case 13:
-		$gameorder='Game.created desc';break;
-		}
-		
 		$userid = $this->Session->read('Auth.User.id');$this->requestAction( array('controller'=>'userstats', 'action'=>'new_user',$userid));
 	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	   	$userName = $user['User']['username'];
 	   	$isActive = $user['User']['active'];
 
 		$limit=16;
-		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username,User.id')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order'=>$gameorder));
+		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username,User.id')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit));
+		$this->paginate=array('order'=>sprintf('rand(%f)',$this->lucky_number()));
 		$data=$this->paginate('Game');
     	$this->set('top_rated_games',$data);
 		
