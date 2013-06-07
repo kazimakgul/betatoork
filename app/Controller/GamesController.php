@@ -1795,6 +1795,41 @@ function getExtension($str) {
 	 
 	}
 
+  private static function make_absolute($url, $base) 
+{
+    // Return base if no url
+    if( ! $url) return $base;
+
+    // Return if already absolute URL
+    if(parse_url($url, PHP_URL_SCHEME) != '') return $url;
+    
+    // Urls only containing query or anchor
+    if($url[0] == '#' || $url[0] == '?') return $base.$url;
+    
+    // Parse base URL and convert to local variables: $scheme, $host, $path
+    extract(parse_url($base));
+
+    // If no path, use /
+    if( ! isset($path)) $path = '/';
+ 
+    // Remove non-directory element from path
+    $path = preg_replace('#/[^/]*$#', '', $path);
+ 
+    // Destroy path if relative url points to root
+    if($url[0] == '/') $path = '';
+    
+    // Dirty absolute URL
+    $abs = "$host$path/$url";
+ 
+    // Replace '//' or '/./' or '/foo/../' with '/'
+    $re = array('#(/\.?/)#', '#/(?!\.\.)[^/]+/\.\./#');
+    for($n = 1; $n > 0; $abs = preg_replace($re, '/', $abs, -1, $n)) {}
+    
+    // Absolute URL is ready!
+    return $scheme.'://'.$abs;
+}
+
+
    public function get_image_link($url=NULL)
    {
    $this->layout='ajax';
@@ -1821,7 +1856,7 @@ $response = curl_exec($request);
 curl_close($request);
 //print_r($response);
 	
-	
+$base="http://127.0.0.1/betatoorkson/";	
 	
 $document = new DOMDocument();
 
@@ -1841,7 +1876,7 @@ foreach($document->getElementsByTagName('img') as $img)
     // Extract what we want
     $image = array
     (
-        'src' => $img->getAttribute('src')
+        'src' => $this->make_absolute($img->getAttribute('src'),$base)
     );
     
     // Skip images without src
