@@ -1795,6 +1795,71 @@ function getExtension($str) {
 	 
 	}
 
+   public function get_image_link($url=NULL)
+   {
+   $this->layout='ajax';
+ 
+	$request = curl_init();
+
+curl_setopt_array($request, array
+(
+    CURLOPT_URL => $url,
+    
+    CURLOPT_RETURNTRANSFER => TRUE,
+    CURLOPT_HEADER => FALSE,
+    
+    CURLOPT_SSL_VERIFYPEER => TRUE,
+    CURLOPT_CAINFO => 'cacert.pem',
+
+    CURLOPT_FOLLOWLOCATION => TRUE,
+    CURLOPT_MAXREDIRS => 10,
+));
+
+
+
+$response = curl_exec($request);
+curl_close($request);
+//print_r($response);
+	
+	
+	
+$document = new DOMDocument();
+
+//print_r($response);
+if($response)
+{
+    libxml_use_internal_errors(true);
+	$document->loadHTML($response);
+    libxml_clear_errors();
+}
+//echo $document->saveXML();
+
+$images = array();
+
+foreach($document->getElementsByTagName('img') as $img)
+{
+    // Extract what we want
+    $image = array
+    (
+        'src' => $img->getAttribute('src')
+    );
+    
+    // Skip images without src
+    if( ! $image['src'])
+        continue;
+
+    // Add to collection. Use src as key to prevent duplicates.
+    $images[$image['src']] = $image;
+}
+$images = array_values($images);
+
+print_r($images);
+
+
+   
+   }
+
+
 	public function add() {
 	
 	App::uses('Folder', 'Utility');
@@ -1880,11 +1945,25 @@ function getExtension($str) {
 		
 	}
 
+   public function get_meta($url=NULL)
+   {
+   //Get Meta tags
+   $tags = get_meta_tags($url);
+   print_r($tags);
+   
+   //Get title
+   preg_match("/<title>(.+)<\/title>/siU", file_get_contents($url), $matches);
+   $title = $matches[1];
+   echo $title;
+   
+   }
+
+
 	public function add2() {
 	
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
-	
+	$this->get_meta('http://armorgames.com/play/15032/mini-dash');
 		$this->layout='dashboard';
 		$this->headerlogin();
 		$userid = $this->Session->read('Auth.User.id');
