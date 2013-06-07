@@ -1853,7 +1853,11 @@ foreach($document->getElementsByTagName('img') as $img)
 }
 $images = array_values($images);
 
-print_r($images);
+foreach($images as $image)
+{
+echo '<a href="'.$image['src'].'"><img src="'.$image['src'].'"></a>';
+
+}
 
 
    
