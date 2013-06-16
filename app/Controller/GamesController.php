@@ -1898,29 +1898,26 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    
    }
 
-   public function download_ss()
-   {
-   $command = "xvfb-run --server-args='-screen 0, 1024x768x24' wkhtmltopdf http://www.toork.com /var/www/betatoork/app/webroot/upload/file2aa8.pdf";
-   exec($command, $output, $ret);
-   print_r($ret);
-   print_r($output);
-   if ($ret) {
-    
-$command2 = "convert /var/www/betatoork/app/webroot/upload/file2aa8.pdf -append /var/www/betatoork/app/webroot/upload/file2aa8.png";
-exec($command2, $output2, $ret2);
-print_r($ret2);
-print_r($output2);
-	
-    die;
-             }
-   }
+   
 
-   public function getscreen() {
+   public function getscreen($url=NULL) {
    $this->layout='ajax';
-   $this->download_ss();
-   echo 'naber';
-   }
+  
+  if(isset($url) && $url!=NULL)
+  {
+  
+      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' wkhtmltopdf ".$url." /var/www/betatoork/app/webroot/upload/file2aa9.pdf";
+      exec($command, $output, $ret);
+      if ($ret) {
+      $command2 = "convert /var/www/betatoork/app/webroot/upload/file2aa9.pdf -append /var/www/betatoork/app/webroot/upload/file2aa9.png";
+      exec($command2, $output2, $ret2);
+      die;
+                }
+    }else{
+	echo 'bir parametre lütfen';
+	}
 
+  }
 
 	public function add() {
 	
