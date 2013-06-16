@@ -1890,12 +1890,16 @@ $images = array_values($images);
 
 foreach($images as $image)
 {
-echo '<a href="'.$image['src'].'"><img width="110px" src="'.$image['src'].'"></a>';
+echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a>';
 
 }
 
 
    
+   }
+
+   public function getscreen() {
+   $this->layout='ajax';
    }
 
 
