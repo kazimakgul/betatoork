@@ -2,7 +2,10 @@
  
 // save this snippet as url_to_png.php
 // usage: php url_to_png.php http://example.com
-if (!isset($argv[1])){
+
+$argv[1]="http://www.toork.com";
+
+if(!isset($argv[1])){
     die("specify site: e.g. http://toork.com\n");
 }
  
