@@ -1898,8 +1898,22 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    
    }
 
+   public function download_ss()
+   {
+   $command = "xvfb-run --server-args='-screen 0, 1024x768x24' wkhtmltopdf http://www.toork.com /var/www/betatoork/app/webroot/upload/file2aa6.pdf";
+   exec($command, $output, $ret);
+   print_r($ret);
+   print_r($output);
+   if ($ret) {
+    echo "error fetching screen dump\n";
+    die;
+             }
+   }
+
    public function getscreen() {
    $this->layout='ajax';
+   $this->download_ss();
+   echo 'naber';
    }
 
 
