@@ -5,7 +5,7 @@
 
 $url="http://www.toork.com";
 
-$command = "sudo apt-get install xvfb xvfb-run --server-args='-screen 0, 1024x768x24' wkhtmltopdf http://www.toork.com /var/www/betatoork/app/webroot/file2aa.pdf";
+$command = "sudo apt-get install xvfb xvfb-run --server-args='-screen 0, 1024x768x24' wkhtmltopdf http://www.toork.com /var/www/betatoork/app/webroot/upload/file2aa.pdf";
 exec($command, $output, $ret);
 print_r($ret);
 print_r($output);
