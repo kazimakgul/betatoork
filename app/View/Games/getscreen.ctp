@@ -5,7 +5,7 @@
 
 $url="http://www.toork.com";
 
-$command = "xvfb-run --server-args='-screen 0, 1024x768x24' wkhtmltopdf $url /var/www/betatoork/webroot/file2aa.pdf";
+$command = "xvfb-run --server-args='-screen 0, 1024x768x24' wkhtmltopdf http://www.toork.com /var/www/betatoork/app/webroot/file2aa.pdf";
 exec($command, $output, $ret);
 print_r($ret);
 print_r($output);
