@@ -11,7 +11,7 @@ print_r($ret);
 print_r($output);
 if ($ret) {
     echo "error fetching screen dump\n";
-    //die;
+    die;
 }
 
 $command = "convert /var/www/betatoork/app/webroot/upload/file2aa3.pdf -append /var/www/betatoork/app/webroot/upload/file2aa3.png";
