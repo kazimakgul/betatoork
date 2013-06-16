@@ -11,7 +11,7 @@ if(!isset($argv[1])){
  
 $md5 = md5($argv[1]);
 //$command = "wkhtmltopdf $argv[1] $md5.pdf";
-$command = "xvfb-run --server-args="-screen 0, 1024x768x24" wkhtmltopdf $argv[1] file2.pdf";
+$command = "xvfb-run --server-args='-screen 0, 1024x768x24' wkhtmltopdf $argv[1] file2aa.pdf";
 exec($command, $output, $ret);
 if ($ret) {
     echo "error fetching screen dump\n";
