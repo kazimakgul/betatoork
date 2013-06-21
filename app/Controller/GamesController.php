@@ -1903,7 +1903,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    public function getscreen($url,$name) {
    $this->layout='ajax';
   
-  if(!$isset($url) || !$isset($name))
+  if(!isset($url) || !isset($name)
   break;
   
  
