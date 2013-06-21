@@ -1904,7 +1904,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    $this->layout='ajax';
   
  
-      $command = "/usr/bin/wkhtmltopdf http://www.facebook.com /home/ubuntu/test/zz3zz.pdf";
+      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf http://www.facebook.com /home/ubuntu/test/zzzz22.pdf";
       exec($command, $output, $ret);
 	  print_r($output);print_r($ret);
       if ($ret) {
