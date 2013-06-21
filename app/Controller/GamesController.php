@@ -1904,15 +1904,17 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    $this->layout='ajax';
   
  
-      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf http://www.facebook.com /home/ubuntu/test/zzzz22.pdf";
+      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf http://www.facebook.com /home/ubuntu/test/hugo.pdf";
       exec($command, $output, $ret);
 	  print_r($output);print_r($ret);
       if ($ret) {
+      $command2 = "convert /home/ubuntu/test/hugo.pdf -append /home/ubuntu/test/hugo.png";
+      exec($command2, $output2, $ret2);
       die;
                 }
    
-
   }
+
 
 	public function add() {
 	
