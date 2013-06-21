@@ -1904,7 +1904,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    $this->layout='ajax';
   
  
-      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' wkhtmltopdf http://www.toork.com /var/www/betatoork/app/webroot/upload/file2aa12.pdf";
+      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' wkhtmltopdf http://www.facebook.com /var/www/betatoork/app/webroot/upload/new3sss32.pdf";
       exec($command, $output, $ret);
 	  print_r($output);print_r($ret);
       if ($ret) {
