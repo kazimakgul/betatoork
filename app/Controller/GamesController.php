@@ -1908,8 +1908,6 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
       exec($command, $output, $ret);
 	  print_r($output);print_r($ret);
       if ($ret) {
-      $command2 = "convert /var/www/betatoork/app/webroot/upload/file2aa12.pdf -append /var/www/betatoork/app/webroot/upload/file2aa12.png";
-      exec($command2, $output2, $ret2);
       die;
                 }
    
