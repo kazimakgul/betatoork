@@ -1900,14 +1900,17 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 
    
 
-   public function getscreen() {
+   public function getscreen($url,$name) {
    $this->layout='ajax';
   
+  if(!$isset($url) || !$isset($name))
+  break;
+  
  
-      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf http://www.facebook.com /home/ubuntu/test/hugo.pdf";
+      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/".$name.".pdf";
       exec($command, $output, $ret);
 	  print_r($output);print_r($ret);
-	  $command2 = "convert /home/ubuntu/test/hugo.pdf -append /home/ubuntu/test/hugo.png";
+	  $command2 = "convert /home/ubuntu/test/".$name.".pdf -append /home/ubuntu/test/".$name.".png";
       exec($command2, $output2, $ret2);
       if ($ret) {
       die;
