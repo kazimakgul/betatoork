@@ -1918,6 +1918,15 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    
   }
 
+  public function cropimage()
+{
+$inFile = "milliyet.png";
+$outFile = "test-cropped.jpg";
+$image = new Imagick($inFile);
+$image->cropImage(400,400, 30,10);
+$image->writeImage($outFile);
+}
+
 
 	public function add() {
 	
