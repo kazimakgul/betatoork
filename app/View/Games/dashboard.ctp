@@ -24,10 +24,10 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                             </div>
                                             
                                     </div>
-        <p> <i class="elusive-mail-alt helper-font-24"></i> Your account is not active yet. Please check your email account to activate your email address to be able to publish your own games.</p>
+        <p> <i class="elusive-mail-alt helper-font-24"></i> Your account is not active yet. Please check your email to activate your account to be able to publish your own games. ( Don't forget to check your spam folder also. )</p>
     </div>
 <?php }else{}?>
-<i class="elusive-graph"></i> Your analytics are not active yet! You will be able to earn money via your channel soon.
+<!--<i class="elusive-graph"></i> Your analytics are not active yet! You will be able to earn money via your channel soon.
 <div class="row-fluid" style="opacity:0.3;">
     <div class="alert alert-info span3">
         <i class="elusive-thumbs-up helper-font-48"></i>
@@ -56,7 +56,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
             <h2 style="margin:-3px 0px 0px 0px;">$7.15 <a rel="tooltip" data-placement="bottom" data-original-title="Not Active Yet"  class="btn btn-danger">Sell Now!</a> </h2>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="row-fluid">
                             <div class="alert alert-error span5">

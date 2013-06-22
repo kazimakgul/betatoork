@@ -73,7 +73,7 @@
 												<!--/tab menus-->
                                             </ul>
                                         </div>
-                                        <div class="box-body">
+                                        <div class="box-body" style="margin:-20px 0px 0px 0px;">
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active" id="new-feeds">
