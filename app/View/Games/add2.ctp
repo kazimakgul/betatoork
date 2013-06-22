@@ -36,7 +36,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                 <div class="error-page" style="margin:-60px 0px 0px 0px;">
                     <h1 class="error-code color-blue" style="margin:0px 0px -30px 0px;">Add Game</h1>
                     <p class="error-description">The game you add will appear in <a href="<?php echo $mygames;?>">"My Games"</a> and your <a href="<?php echo $profilepublic;?>">"Public Channel"</a></p>
-                   <!-- <form>
+                   <form>
                         <div class="control-group">
                             <div class="input-append input-icon-prepend">
                                 <div class="add-on">
@@ -47,7 +47,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                             </div>
                             <p><small>Simply copy/paste the url from the browser where you play the game.  <strong>Ex: http://phoboslab.org/ztype/</strong></small></p>
                         </div>
-                    </form> -->
+                    </form>
       
                     <div class="alert alert-block alert-info fadein">
                         <button type="button" class="close" data-dismiss="alert">×</button>

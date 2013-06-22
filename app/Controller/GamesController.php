@@ -2101,7 +2101,8 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 		$this->set('user', $user);
 		$this->set('isActive', $isActive);
 	$this->set('title_for_layout','Add New Game');
-	$this->set('description_for_layout', 'You are able to add a new game');		
+	$this->set('description_for_layout', 'You are able to add a new game');
+	$this->set_suggested_channels();		
 		
 	}
 
