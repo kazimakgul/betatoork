@@ -1899,6 +1899,77 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    }
 
    
+   public function addgame_ajax($url='http://www.toork.com')
+   {
+   $this->layout='ajax';
+      
+	  if($userid = $this->Session->read('Auth.User.id'))
+      {
+	 $basic_info=$this->get_meta($url);
+	 echo $basic_info['title'].'<br>';
+	 echo $basic_info['description'];
+	 
+	 if(empty($basic_info['title']))
+	 $basic_info['title']='Write A Title';
+	 if(empty($basic_info['description']))
+	 $basic_info['description']='Write A Desc';
+	  //----------------------------
+	  
+	  $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($basic_info['title']);
+	  $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($basic_info['description']);
+      $this->request->data['Game']['user_id'] = $this->Auth->user('id');
+	  $this->request->data['Game']['link'] = $url;		
+		//seourl begins
+		$this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$basic_info['title']));
+		//seourl ends
+			
+			$this->Game->create();
+			
+			if ($this->Game->save($this->request->data)) {
+			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
+				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
+			
+			$id=$this->Game->getLastInsertId();
+			$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));	
+				
+			//=============Get ScreenShot==================	
+			//=============/Get ScreenShot=================		
+			
+			//Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/games/'.$id."/".$basename,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$basename,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+				
+
+				$this->redirect(array('action' => 'mygames'));
+			} else {
+				$validationErrors = $this->Game->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);echo $validationErrors[$value][0];
+			}
+	  
+	  //----------------------------
+	  
+      }
+   
+   }
+   
 
    public function getscreen($url,$name) {
    $this->layout='ajax';
@@ -2012,12 +2083,13 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    {
    //Get Meta tags
    $tags = get_meta_tags($url);
-   print_r($tags);
+   //print_r($tags);
    
    //Get title
    preg_match("/<title>(.+)<\/title>/siU", file_get_contents($url), $matches);
    $title = $matches[1];
-   echo $title;
+   $basic_info=array('title'=>$title,'description'=>$tags['description']);
+   return $basic_info;
    
    }
 
@@ -2026,7 +2098,6 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
-	$this->get_meta('http://armorgames.com/play/15032/mini-dash');
 		$this->layout='dashboard';
 		$this->headerlogin();
 		$userid = $this->Session->read('Auth.User.id');
