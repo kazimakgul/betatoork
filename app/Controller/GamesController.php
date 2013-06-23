@@ -1914,7 +1914,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
       exec($command2, $output2, $ret2);
 	  $command3 = "convert /home/ubuntu/test/".$name.".png -quiet  -crop 400x220+30+30  +repage  /home/ubuntu/test/".$name.".png";
       exec($command3, $output3, $ret3);
-      if ($ret) {
+      if ($ret) {echo 'naber';
       die;
                 }
    
