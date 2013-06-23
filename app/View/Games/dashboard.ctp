@@ -107,7 +107,8 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                 <div class="helper-font-24">
                            <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera3" class="elusive-camera"></i>
                             <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera4" class="elusive-youtube"></i>
-                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera5" class="icofont-link"></i>       
+                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera5" class="icofont-link"></i>
+                            <i rel="tooltip" data-placement="top" data-original-title="add game" href="javascript:void(0);"  id="camera6" class="elusive-plus-sign"></i>        
                 </div>
                 
                             <!-ImageUploadPanel-><div id="imageupload3" class="border" style="display:none;">
@@ -128,6 +129,15 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
                             <p>Just copy/paste the link you want to share ex: <strong>http://toork.com</strong></p>
                             </div>
+
+                            <div id="imageupload6" class="border" style="display:none;">
+                            <p>Just copy/paste the game link you play ex: <strong>http://phoboslab.org/ztype/</strong></p>
+                            <div class="input-append">
+                              <input class="span8" id="appendedInputButton" placeholder="Ex: http://chrome.plantsvszombies.com/" type="text">
+                              <button class="btn btn-success" type="button">Grab the Game!</button>
+                            </div>
+                            </div>
+
 
                     <hr size="3" style="margin:0px 0px 5px 0px;">
                   <button id="success-post" type="submit" class="btn btn-inverse pull-right update_data" style="margin:0px 0px 0px 0px;">Publish</button>

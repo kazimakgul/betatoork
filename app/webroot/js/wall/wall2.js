@@ -814,6 +814,7 @@ $('#camera3').live("click",function()
 	$('#imageupload3').slideToggle('fast');
 	$('#imageupload4').slideUp('fast');
 	$('#imageupload5').slideUp('fast');
+	$('#imageupload6').slideUp('fast');
 	return false;
 });
 
@@ -822,12 +823,23 @@ $('#camera4').live("click",function()
 	$('#imageupload4').slideToggle('fast');
 	$('#imageupload3').slideUp('fast');
 	$('#imageupload5').slideUp('fast');
+	$('#imageupload6').slideUp('fast');
 	return false;
 });
 
 $('#camera5').live("click",function() 
 {
 	$('#imageupload5').slideToggle('fast');
+	$('#imageupload4').slideUp('fast');
+	$('#imageupload3').slideUp('fast');
+	$('#imageupload6').slideUp('fast');
+	return false;
+});
+
+$('#camera6').live("click",function() 
+{
+	$('#imageupload6').slideToggle('fast');
+	$('#imageupload5').slideUp('fast');
 	$('#imageupload4').slideUp('fast');
 	$('#imageupload3').slideUp('fast');
 	return false;
