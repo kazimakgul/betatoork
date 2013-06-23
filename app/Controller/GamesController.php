@@ -1912,20 +1912,15 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	  print_r($output);print_r($ret);
 	  $command2 = "convert /home/ubuntu/test/".$name.".pdf -append /home/ubuntu/test/".$name.".png";
       exec($command2, $output2, $ret2);
+	  $command3 = "convert ".$name.".png -quiet  -crop 400x220+30+30  +repage  croped-".$name.".png";
+      exec($command3, $output3, $ret3);
       if ($ret) {
       die;
                 }
    
   }
 
-  public function cropimage()
-{
-$inFile = "milliyet.png";
-$outFile = "test-cropped.jpg";
-$image = new Imagick($inFile);
-$image->cropImage(400,400, 30,10);
-$image->writeImage($outFile);
-}
+  
 
 
 	public function add() {
