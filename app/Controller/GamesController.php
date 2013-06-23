@@ -1912,7 +1912,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	  print_r($output);print_r($ret);
 	  $command2 = "convert /home/ubuntu/test/".$name.".pdf -append /home/ubuntu/test/".$name.".png";
       exec($command2, $output2, $ret2);
-	  $command3 = "convert cnn2.png -quiet  -crop 400x220+30+30  +repage  cnn3.png";
+	  $command3 = "convert /home/ubuntu/test/".$name.".png -quiet  -crop 400x220+30+30  +repage  /home/ubuntu/test/".$name."-crop.png";
       exec($command3, $output3, $ret3);
       if ($ret) {
       die;
