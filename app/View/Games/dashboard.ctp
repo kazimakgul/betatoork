@@ -105,19 +105,30 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                     <textarea name="message" id="update" class="span10 pull-right" rows="4"  placeholder="What do you want to share?"></textarea>
                 </div>
                 <div class="helper-font-24">
-                           <i rel="tooltip" data-placement="bottom" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
-                            <i rel="tooltip" data-placement="bottom" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
-                            <i rel="tooltip" data-placement="bottom" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
+                           <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera3" class="elusive-camera"></i>
+                            <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera4" class="elusive-youtube"></i>
+                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera5" class="icofont-link"></i>       
                 </div>
                 
-                            <!-ImageUploadPanel-><div id="imageupload" class="border" style="display:none;">
+                            <!-ImageUploadPanel-><div id="imageupload3" class="border" style="display:none;">
                             <?php $image_ajax_url= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax'));?>
                             <form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
                             <div id='preview'></div>
                             <span id='addphoto'>Add Photo:</span> <input type="file" name="photoimg" id="photoimg" />
                             <input type='hidden' id='uploadvalues' />
                             </form>
-                            </div><!-ImageUploadPanel-> 
+                            </div><!-ImageUploadPanel->
+
+                            <div id="imageupload4" class="border" style="display:none;">
+
+                            <p>Just copy/paste a youtube or vimeo link ex: <strong>http://www.youtube.com/watch?v=bNNzRyd1xz0</strong></p>
+                            </div>
+
+                            <div id="imageupload5" class="border" style="display:none;">
+
+                            <p>Just copy/paste the link you want to share ex: <strong>http://toork.com</strong></p>
+                            </div>
+
                     <hr size="3" style="margin:0px 0px 5px 0px;">
                   <button id="success-post" type="submit" class="btn btn-inverse pull-right update_data" style="margin:0px 0px 0px 0px;">Publish</button>
                   <div><a class="btn btn-link btn-mini" href="<?php echo $wall; ?>">Whats New?</a><a class="btn btn-link btn-mini" href="<?php echo $profilepublic; ?>" rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$user['User']['seo_username'];?>">Public Channel </a><a class="btn btn-link btn-mini" href="<?php echo $settings; ?>">Customize Channel</a></div>

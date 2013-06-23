@@ -91,8 +91,8 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                 <div class="helper-font-16">
                           
                           <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera2" class="elusive-camera"></i>
-                            <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera2" class="elusive-youtube"></i>
-                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera2" class="icofont-link"></i>       
+                            <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera23" class="elusive-youtube"></i>
+                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera24" class="icofont-link"></i>       
                 </div>
                 
                             <!-ImageUploadPanel-><div id="imageupload" class="border" style="display:none;">
@@ -103,6 +103,18 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                             <input type='hidden' id='uploadvalues' />
                             </form>
                             </div><!-ImageUploadPanel-> 
+
+                            <div id="imageupload23" class="border" style="display:none;">
+
+                            <p>Just copy/paste a youtube or vimeo link ex: <strong>http://www.youtube.com/watch?v=bNNzRyd1xz0</strong></p>
+                            </div>
+
+                            <div id="imageupload24" class="border" style="display:none;">
+
+                            <p>Just copy/paste the link you want to share ex: <strong>http://toork.com</strong></p>
+                            </div>
+
+
                     <hr size="3" style="margin:0px 0px 5px 0px;">
                   <button type="submit" id="success-post2" class="btn btn-danger pull-right fast_update_data">Publish</button>
                   <a href="<?php echo $wall;?>" class="btn">News Feed</a>
