@@ -957,7 +957,8 @@ public function password2($id = null) {
         $this->set('username', $userName);
 
 		$this->set('title_for_layout', 'Change Password');
-		$this->set('description_for_layout', 'Change your password');	
+		$this->set('description_for_layout', 'Change your password');
+		$this->set_suggested_channels();	
 
 	}
 

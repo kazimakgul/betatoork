@@ -2454,7 +2454,8 @@ public function edit2($id = null) {
 		$this->set(compact('users2', 'categories'));
 
 	$this->set('title_for_layout','Edit Your Game');
-	$this->set('description_for_layout', 'You are able to edit your game');			
+	$this->set('description_for_layout', 'You are able to edit your game');
+	$this->set_suggested_channels();	
 	}
 
 
