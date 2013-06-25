@@ -1904,12 +1904,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    $this->layout='ajax';
    App::uses('Folder', 'Utility');
    App::uses('File', 'Utility');
-      
-	  $dir = new Folder(WWW_ROOT."/../../../");
-		    $files = $dir->find('.*');
-			print_r($files);echo 'checked';
-			
-			break;echo 'after break';
+   
 	  
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
