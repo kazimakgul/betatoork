@@ -1935,19 +1935,14 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			//=============Get ScreenShot==================	
 			
 
-      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/abcabc.pdf";
+      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/cccc.pdf";
       exec($command, $output, $ret);
 	  print_r($output);print_r($ret);
-	  $command2 = "convert /home/ubuntu/test/abcabc.pdf -append /home/ubuntu/test/abcabc.png";
+	  $command2 = "convert /home/ubuntu/test/cccc.pdf -append /home/ubuntu/test/cccc.png";
       exec($command2, $output2, $ret2);
-	  $command3 = "convert /home/ubuntu/test/abcabc.png -quiet  -crop 400x220+30+30  +repage  /home/ubuntu/test/abcabc.png";
+	  $command3 = "convert /home/ubuntu/test/cccc.png -quiet  -crop 400x220+30+30  +repage  /home/ubuntu/test/cccc.png";
       exec($command3, $output3, $ret3);
-      if ($ret) {
-      die;
-                }
-				
-				echo 'yes';
-			
+	
 			
 			//=============/Get ScreenShot=================		
 			
@@ -1983,6 +1978,11 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	  //----------------------------
 	  
       }
+   
+   if ($ret) {
+      die;
+             }
+   
    
    }
    
