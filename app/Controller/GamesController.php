@@ -1902,6 +1902,8 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    public function addgame_ajax($url='http://www.toork.com')
    {
    $this->layout='ajax';
+   App::uses('Folder', 'Utility');
+   App::uses('File', 'Utility');
       
 	  $dir = new Folder("/home/ubuntu/test/");
 		    $files = $dir->find('.*');
