@@ -1903,6 +1903,10 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    {
    $this->layout='ajax';
       
+	  $dir = new Folder("/home/ubuntu/test/");
+		    $files = $dir->find('.*');
+			print_r($files);echo 'checked';
+	  
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
 	 $basic_info=$this->get_meta($url);
@@ -1949,7 +1953,6 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			//Upload to aws begins
 			$dir = new Folder("/home/ubuntu/test/");
 		    $files = $dir->find('.*');
-			print_r($files);echo 'checked';
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
