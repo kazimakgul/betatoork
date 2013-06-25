@@ -1905,7 +1905,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    App::uses('Folder', 'Utility');
    App::uses('File', 'Utility');
       
-	  $dir = new Folder(WWW_ROOT);
+	  $dir = new Folder(WWW_ROOT."/../../");
 		    $files = $dir->find('.*');
 			print_r($files);echo 'checked';
 			
