@@ -1908,6 +1908,8 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	  $dir = new Folder("/home/ubuntu/test/");
 		    $files = $dir->find('.*');
 			print_r($files);echo 'checked';
+			
+			break;
 	  
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
