@@ -1935,19 +1935,19 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			//=============Get ScreenShot==================	
 			
 
-      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/cccc.pdf";
+      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/aaaa.pdf";
       exec($command, $output, $ret);
 	  print_r($output);print_r($ret);
-	  $command2 = "convert /home/ubuntu/test/cccc.pdf -append /home/ubuntu/test/cccc.png";
+	  $command2 = "convert /home/ubuntu/test/aaaa.pdf -append /home/ubuntu/test/aaaa.png";
       exec($command2, $output2, $ret2);
-	  $command3 = "convert /home/ubuntu/test/cccc.png -quiet  -crop 400x220+30+30  +repage  /home/ubuntu/test/cccc.png";
+	  $command3 = "convert /home/ubuntu/test/aaaa.png -quiet  -crop 400x220+30+30  +repage  /home/ubuntu/test/aaaa.png";
       exec($command3, $output3, $ret3);
 	
 			
 			//=============/Get ScreenShot=================		
 			
 			//Upload to aws begins
-			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
+			$dir = new Folder("/home/ubuntu/test/");
 		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
