@@ -1949,6 +1949,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			//Upload to aws begins
 			$dir = new Folder("/home/ubuntu/test/");
 		    $files = $dir->find('.*');
+			print_r($files);
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
