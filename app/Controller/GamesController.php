@@ -1934,7 +1934,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 				
 			//=============Get ScreenShot==================	
 			
-
+     /*
       $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/axax.pdf";
       exec($command, $output, $ret);
 	  print_r($output);print_r($ret);
@@ -1942,14 +1942,14 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
       exec($command2, $output2, $ret2);
 	  $command3 = "convert /home/ubuntu/test/axax.png -quiet  -crop 400x220+30+30  +repage  /home/ubuntu/test/axax.png";
       exec($command3, $output3, $ret3);
-	
+	*/
 			
 			//=============/Get ScreenShot=================		
 			
 			//Upload to aws begins
 			$dir = new Folder("/home/ubuntu/test/");
 		    $files = $dir->find('.*');
-			print_r($files);
+			print_r($files);echo 'checked';
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
@@ -1979,11 +1979,11 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	  //----------------------------
 	  
       }
-   
+   /*
    if ($ret) {
       die;
              }
-   
+   */
    
    }
    
