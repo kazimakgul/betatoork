@@ -1905,9 +1905,6 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    App::uses('Folder', 'Utility');
    App::uses('File', 'Utility');
    
-             $dir = new Folder("/home/ubuntu/test");
-		    $files = $dir->find('.*');
-			print_r($files);break;
 	  
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
@@ -1951,7 +1948,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	*/
 			
 			//=============/Get ScreenShot=================		
-			
+			echo 's3 e aktarim yapiliyor';
 			//Upload to aws begins
 			$dir = new Folder("/home/ubuntu/test");
 		    $files = $dir->find('.*');
@@ -1965,11 +1962,10 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
             Configure::read('S3.name'),
             'upload/games/'.$id."/".$basename,
              array(
-            'fileUpload' =>WWW_ROOT ."/upload/games/".$id."/".$basename,
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
-			
+			echo 'aktarildi';
             }
 			//Upload to aws ends
 				
