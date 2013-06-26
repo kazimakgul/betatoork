@@ -1937,13 +1937,14 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 				
 			//=============Get ScreenShot==================	
 			
+	  $fileName=rand(100,100000);	
      
-      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/fffff.pdf";
+      $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/".$fileName.".pdf";
       exec($command, $output, $ret);
 	  print_r($output);print_r($ret);
-	  $command2 = "convert /home/ubuntu/test/fffff.pdf -append /home/ubuntu/test/fffff.png";
+	  $command2 = "convert /home/ubuntu/test/".$fileName.".pdf -append /home/ubuntu/test/".$fileName.".png";
       exec($command2, $output2, $ret2);
-	  $command3 = "convert /home/ubuntu/test/fffff.png -quiet  -crop 400x220+30+30  +repage  /home/ubuntu/test/fffff.png";
+	  $command3 = "convert /home/ubuntu/test/".$fileName.".png -quiet  -crop 400x220+30+30  +repage  /home/ubuntu/test/".$fileName.".png";
       exec($command3, $output3, $ret3);
 	
 			
