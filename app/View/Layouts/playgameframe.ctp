@@ -85,6 +85,7 @@ $login=$this->Html->url(array("controller" => "users","action" =>"login2"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
 $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+$newgames=$this->Html->url(array( "controller" => "games","action" =>"toprated2"));$newgames.='/sort:id/direction:desc';
 ?>
 
 
@@ -92,7 +93,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 
 if($this->Session->check('Auth.User')){
 
-echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'publicprofile'=>$profilepublic,'settings'=>$settings,'index'=>$index,'avatarImage'=>$avatarImage,'wall'=>$wall,'bestchannels'=>$bestchannels,'toprated'=>$toprated));
+echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'publicprofile'=>$profilepublic,'settings'=>$settings,'index'=>$index,'avatarImage'=>$avatarImage,'wall'=>$wall,'bestchannels'=>$bestchannels,'toprated'=>$toprated,'newgames'=>$newgames));
 
 
 }else{
