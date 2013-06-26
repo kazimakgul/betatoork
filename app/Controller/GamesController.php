@@ -1909,6 +1909,17 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	  $dir = new Folder("/home/ubuntu/test");
 		    $files = $dir->find('.*');
 			print_r($files);
+			
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/games/denemelik/aaaa.pdf',
+             array(
+			'fileUpload' => "/home/ubuntu/test/aaaa.pdf",
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+			
 			/*
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
