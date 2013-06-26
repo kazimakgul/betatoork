@@ -1899,7 +1899,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    }
 
    
-   public function addgame_ajax($url='http://www.toork.com')
+   public function addgame_ajax($url)
    {
    $this->layout='ajax';
    App::uses('Folder', 'Utility');
@@ -1933,6 +1933,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			//=============/Get ScreenShot=================		
 			
 			//================Throw to S3==================
+      		$id=$this->Game->getLastInsertId();
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
             'upload/games/'.$id.'/'.$fileName.'.png',
