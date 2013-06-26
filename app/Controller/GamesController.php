@@ -1950,14 +1950,27 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			
 			//=============/Get ScreenShot=================		
 			
+			//================Throw to S3==================
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
-            'upload/games/'.$id.'/'.$fileName.'.pdf',
+            'upload/games/'.$id.'/'.$fileName.'.png',
              array(
-			'fileUpload' => "/home/ubuntu/test/".$fileName.".pdf",
+			'fileUpload' => "/home/ubuntu/test/".$fileName.".png",
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
+			//============/Throw to S3==========================
+			
+			//============Folder Formatting begins============
+			$dir = new Folder("/home/ubuntu/test");
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//============/Folder Formatting ends============
+			
 
 			
 				
@@ -2064,7 +2077,6 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			
             }
 			//Upload to aws ends
-				
 				
 				
 				
