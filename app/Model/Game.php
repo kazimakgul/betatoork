@@ -24,7 +24,13 @@ class Game extends AppModel {
 
 
 public $name = 'Game';
-		
+		var $actsAs = array(
+	'UploadPack.Upload' => array(
+		'picture' => array(
+			'path' => ':webroot/upload/:model/:id/:basename_:style.:extension'
+		)
+	)
+);
 
 
 public $virtualFields = array(
