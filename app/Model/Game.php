@@ -115,7 +115,8 @@ public $virtualFields = array(
 			),
 		),
 		
-		
+		'picture'=> array(	
+			'image' => 
 			
 			'minWidth' => array(
 			'rule' => array('minWidth', '640'),
