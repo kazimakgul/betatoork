@@ -1906,6 +1906,29 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    App::uses('File', 'Utility');
    
 	  
+	  $dir = new Folder("/home/ubuntu/test");
+		    $files = $dir->find('.*');
+			print_r($files);
+			/*
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/games/'.$id."/".$basename,
+             array(
+			'fileUpload' => "/home/ubuntu/test/".$basename,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			*/
+			break;
+	  
+	  
+	  
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
 	 $basic_info=$this->get_meta($url);
