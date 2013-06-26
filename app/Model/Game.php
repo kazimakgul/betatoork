@@ -115,11 +115,7 @@ public $virtualFields = array(
 			),
 		),
 		
-		'picture'=> array(	
-			'image' => array(
-				'rule' => array('extension', array('gif', 'jpeg', 'png', 'jpg')),
-				'message' => 'Please supply a valid image.',
-			),
+		
 			
 			'minWidth' => array(
 			'rule' => array('minWidth', '640'),
