@@ -1899,7 +1899,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    }
 
    
-   public function addgame_ajax($url)
+   public function addgame_ajax($url='http://www.imdb.com')
    {
    $this->layout='ajax';
    App::uses('Folder', 'Utility');
