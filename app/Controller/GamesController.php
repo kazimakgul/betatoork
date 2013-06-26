@@ -1950,6 +1950,15 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			
 			//=============/Get ScreenShot=================		
 			
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/games/'.$id.'/'.$fileName.'.pdf',
+             array(
+			'fileUpload' => "/home/ubuntu/test/".$fileName.".pdf",
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+
 			
 				
 
