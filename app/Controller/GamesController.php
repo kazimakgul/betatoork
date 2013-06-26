@@ -1926,7 +1926,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	  print_r($output);print_r($ret);
 	  $command2 = "convert /home/ubuntu/test/".$fileName.".pdf -append /home/ubuntu/test/".$fileName.".png";
       exec($command2, $output2, $ret2);
-	  $command3 = "convert /home/ubuntu/test/".$fileName.".png -quiet  -crop 400x220+30+30  +repage  /home/ubuntu/test/".$fileName.".png";
+	  $command3 = "convert /home/ubuntu/test/".$fileName.".png -quiet  -crop 640x350+30+30  +repage  /home/ubuntu/test/".$fileName.".png";
       exec($command3, $output3, $ret3);
 	
 			
