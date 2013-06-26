@@ -1918,25 +1918,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	 $basic_info['description']='Write A Desc';
 	  //----------------------------
 	  
-	  $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($basic_info['title']);
-	  $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($basic_info['description']);
-      $this->request->data['Game']['user_id'] = $this->Auth->user('id');
-	  $this->request->data['Game']['link'] = $url;		
-		//seourl begins
-		$this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$basic_info['title']));
-		//seourl ends
-			
-			$this->Game->create();
-			
-			if ($this->Game->save($this->request->data)) {
-			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
-				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
-			
-			$id=$this->Game->getLastInsertId();
-			$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));	
-				
-			//=============Get ScreenShot==================	
-			
+	  //=============Get ScreenShot==================		
 	  $fileName=rand(100,100000);	
      
       $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/".$fileName.".pdf";
@@ -1970,9 +1952,24 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
             $file->close(); 
             }
 			//============/Folder Formatting ends============
+	  
+	  $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($basic_info['title']);
+	  $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($basic_info['description']);
+      $this->request->data['Game']['user_id'] = $this->Auth->user('id');
+	  $this->request->data['Game']['link'] = $url;	
+	  $this->request->data['Game']['picture'] = $fileName.".png";		
+		//seourl begins
+		$this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$basic_info['title']));
+		//seourl ends
 			
-
+			$this->Game->create();
 			
+			if ($this->Game->save($this->request->data)) {
+			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
+				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
+			
+			$id=$this->Game->getLastInsertId();
+			$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));	
 				
 
 				$this->redirect(array('action' => 'mygames'));
