@@ -1943,6 +1943,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 		//seourl ends
 			
 			$this->Game->create();
+			$this->Game->validate = array();
 			
 			if ($this->Game->save($this->request->data)) {
 			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
