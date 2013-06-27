@@ -1899,6 +1899,31 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    }
 
    
+   public function add_virtual_game()
+   {
+   $this->layout='ajax';
+   
+    $this->request->data['Game']['name']="SOntihOnHouse";
+	  $this->request->data['Game']['description']="this is a description";
+      $this->request->data['Game']['user_id'] = $this->Auth->user('id');
+	  $this->request->data['Game']['link'] = "http://www.milliyet.com";	
+	  $this->request->data['Game']['picture'] ="nbrrr.png";		
+		//seourl begins
+		$this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
+		//seourl ends
+			
+			$this->Game->create();
+			$this->Game->validate = array();
+			
+			if ($this->Game->save($this->request->data)) {
+				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
+			
+			}
+   
+   
+   }
+   
+   
    public function addgame_ajax($url='http://www.imdb.com')
    {
    $this->layout='ajax';
@@ -1924,9 +1949,9 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
       $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/".$fileName.".pdf";
       exec($command, $output, $ret);
 	  print_r($output);print_r($ret);
-	  $command2 = "convert /home/ubuntu/test/".$fileName.".pdf -append /home/ubuntu/test/".$fileName.".png";
+	  $command2 = "convert /home/ubuntu/test/".$fileName.".pdf -append /home/ubuntu/test/".$fileName."_toorksize.png";
       exec($command2, $output2, $ret2);
-	  $command3 = "convert /home/ubuntu/test/".$fileName.".png -quiet  -crop 640x350+30+30  +repage  /home/ubuntu/test/".$fileName.".png";
+	  $command3 = "convert /home/ubuntu/test/".$fileName."_toorksize.png -quiet  -crop 640x350+30+30  +repage  /home/ubuntu/test/".$fileName."_toorksize.png";
       exec($command3, $output3, $ret3);
 	
 			
