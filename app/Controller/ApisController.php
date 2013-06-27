@@ -61,6 +61,21 @@ class ApisController extends AppController {
    
    }
 	
+	
+	public function get_meta($url=NULL)
+   {
+   //Get Meta tags
+   $tags = get_meta_tags($url);
+   //print_r($tags);
+   
+   //Get title
+   preg_match("/<title>(.+)<\/title>/siU", file_get_contents($url), $matches);
+   $title = $matches[1];
+   $basic_info=array('title'=>$title,'description'=>$tags['description']);
+   return $basic_info;
+   
+   }
+	
 	public function addgame_ajax($url='http://www.armorgames.com')
    {
    $this->layout='ajax';
