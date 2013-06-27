@@ -61,6 +61,17 @@ class ApisController extends AppController {
    
    }
 	
+	function secureSuperGlobalPOST($value)
+    {
+	    //$string = preg_replace('/[^\w\d_ -]/si', '', $value);<br />
+        //Nokta ve virgülü de engelleyen kod iptal edildi.
+        $string = htmlspecialchars(stripslashes($value));
+        $string = str_ireplace("script", "blocked", $string);
+        $string = mysql_escape_string($string);
+		$string = htmlentities($string);
+        return $string;
+    }
+	
 	
 	public function get_meta($url=NULL)
    {
