@@ -1980,9 +1980,9 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			//================Throw to S3==================
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
-            'upload/games/'.$id.'/'.$fileName.'.png',
+            'upload/games/'.$id.'/'.$fileName.'_toorksize.png',
              array(
-			'fileUpload' => "/home/ubuntu/test/".$fileName.".png",
+			'fileUpload' => "/home/ubuntu/test/".$fileName."_toorksize.png",
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
