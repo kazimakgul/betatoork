@@ -92,7 +92,7 @@ class ApisController extends AppController {
    $this->layout='ajax';
    App::uses('Folder', 'Utility');
    App::uses('File', 'Utility');
-   //Configure::write('debug', 0);
+   Configure::write('debug', 0);
 	  
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
@@ -162,7 +162,8 @@ class ApisController extends AppController {
 			//============/Folder Formatting ends============	
 				
 
-				$this->redirect(array('action' => 'mygames'));
+				//$this->redirect(array('action' => 'mygames'));
+				echo 'done';
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
