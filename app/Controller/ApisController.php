@@ -87,7 +87,7 @@ class ApisController extends AppController {
    
    }
 	
-	public function addgame_ajax($url='http://www.armorgames.com')
+	public function addgame_ajax($url='http://www.toork.com')
    {
    $this->layout='ajax';
    App::uses('Folder', 'Utility');
@@ -97,8 +97,8 @@ class ApisController extends AppController {
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
 	 $basic_info=$this->get_meta($url);
-	 echo $basic_info['title'].'<br>';
-	 echo $basic_info['description'];
+	 //echo $basic_info['title'].'<br>';
+	 //echo $basic_info['description'];
 	 
 	 if(empty($basic_info['title']))
 	 $basic_info['title']='Write A Title';
@@ -111,7 +111,7 @@ class ApisController extends AppController {
      
       $command = "xvfb-run --server-args='-screen 0, 1024x768x24' /usr/bin/wkhtmltopdf ".$url." /home/ubuntu/test/".$fileName.".pdf";
       exec($command, $output, $ret);
-	  print_r($output);print_r($ret);
+	  //print_r($output);print_r($ret);
 	  $command2 = "convert /home/ubuntu/test/".$fileName.".pdf -append /home/ubuntu/test/".$fileName."_toorksize.png";
       exec($command2, $output2, $ret2);
 	  $command3 = "convert /home/ubuntu/test/".$fileName."_toorksize.png -quiet  -crop 640x350+30+30  +repage  /home/ubuntu/test/".$fileName."_toorksize.png";
