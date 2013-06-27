@@ -61,12 +61,12 @@ class ApisController extends AppController {
    
    }
 	
-	public function addgame_ajax($url='http://www.imdb.com')
+	public function addgame_ajax($url='http://www.armorgames.com')
    {
    $this->layout='ajax';
    App::uses('Folder', 'Utility');
    App::uses('File', 'Utility');
-   Configure::write('debug', 0);
+   //Configure::write('debug', 0);
 	  
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
