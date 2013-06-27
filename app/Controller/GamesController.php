@@ -1902,16 +1902,15 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    public function add_virtual_game()
    {
    $this->layout='ajax';
-   
-    $this->request->data['Game']['name']="SOntihOnHouse";
+   $fileName=rand(100,100000);
+    $this->request->data['Game']['name']="SOntihOnHouse".$fileName;
 	  $this->request->data['Game']['description']="this is a description";
       $this->request->data['Game']['user_id'] = $this->Auth->user('id');
-	  $this->request->data['Game']['link'] = "http://www.milliyet.com";	
+	  $this->request->data['Game']['link'] = "http://www.mil".$fileName."liyet.com";	
 	  $this->request->data['Game']['picture'] ="nbrrr.png";		
 		//seourl begins
 		$this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
 		//seourl ends
-			
 			$this->Game->create();
 			$this->Game->validate = array();
 			
