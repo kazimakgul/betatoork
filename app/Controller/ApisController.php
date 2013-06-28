@@ -87,7 +87,7 @@ class ApisController extends AppController {
    
    }
 	
-	public function addgame_ajax($url='http://www.milliyet.com')
+	public function addgame_ajax($url='http://www.toork.com')
    {
    $this->layout='ajax';
    App::uses('Folder', 'Utility');
@@ -95,7 +95,8 @@ class ApisController extends AppController {
    Configure::write('debug', 0);
 	  
 	  $graburl=$this->request->data['graburl'];
-	  echo $graburl;
+	  if($graburl!=NULL)
+	  $url=$graburl;
 	  
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
