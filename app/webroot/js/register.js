@@ -1485,20 +1485,19 @@ $graburl=$('#urlarea').val();
 
 $('#grabloader').css("display", "block");
 
-$.post(grabcheck, { graburl: $graburl }, function (data) {alert('naber');alert(data.msg);alert(data.msg.msg);
+$.post(grabcheck, { graburl: $graburl }, function (data) {
             if (data != null) {
 
 				if(data=="done")
 				{
-					//$('#grabloader').css("display", "none");
-					alert(data.rtdata);
+					$('#grabloader').css("display", "none");
 				}
 				
             }
             else { 
 				alert('some problems');
 			}
-        }, 'json');	
+        });	
 									 							 
 									 
 									 

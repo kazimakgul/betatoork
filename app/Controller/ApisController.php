@@ -167,9 +167,8 @@ class ApisController extends AppController {
 				
 
 				//$this->redirect(array('action' => 'mygames'));
-				$msg = array("msgid" => '2', "msg" => 'done');
-				echo json_encode($msg);
-				//echo 'done';
+				editvar=$this->Html->url(array('controller'=>'users','action'=>'checkUser'));
+				echo $editvar;
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
