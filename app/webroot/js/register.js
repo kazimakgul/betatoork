@@ -1487,7 +1487,7 @@ $('#grabloader').css("display", "block");
 
 $.post(grabcheck, { graburl: $graburl }, function (data) {
             if (data != null) {
-				alert(data);
+
 				if(data=="done")
 				{
 					$('#grabloader').css("display", "none");
