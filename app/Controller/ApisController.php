@@ -168,6 +168,7 @@ class ApisController extends AppController {
 
 				//$this->redirect(array('action' => 'mygames'));
 				echo 'done';
+				$this->set('rtdata', 'This Username is alredy been taken. Please try another one.');
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);

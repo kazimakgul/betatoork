@@ -1490,14 +1490,15 @@ $.post(grabcheck, { graburl: $graburl }, function (data) {
 
 				if(data=="done")
 				{
-					$('#grabloader').css("display", "none");
+					//$('#grabloader').css("display", "none");
+					alert(data.rtdata);
 				}
 				
             }
             else { 
 				alert('some problems');
 			}
-        });	
+        }, 'json');	
 									 							 
 									 
 									 
