@@ -1482,15 +1482,15 @@ function forgetPassword()
 $('#grabgame').live('click',function(){
 									
 $graburl=$('#urlarea').val();									 
-alert($graburl);
-alert(grabcheck);
+
+$('#grabloader').css("display", "block");
 
 $.post(grabcheck, { graburl: $graburl }, function (data) {
             if (data != null) {
 				
 				if(data=="done")
 				{
-					alert('completed');
+					$('#grabloader').css("display", "none");
 				}
 				
             }
@@ -1498,8 +1498,7 @@ $.post(grabcheck, { graburl: $graburl }, function (data) {
 				alert('some problems');
 			}
         });	
-									 
-		alert('how');							 
+									 							 
 									 
 									 
 });

@@ -45,6 +45,10 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                 </div>
                                 <input id="grabgame" onClick="_gaq.push(['_trackEvent', 'Games', 'Add']);" type="button" class="btn btn-danger" value="Grab the game!">
                             </div>
+							<div id="grabloader" style="display:none;">
+							<p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
+							<p><small>Your game is processing... </small></p>
+							</div>
                             <p><small>Simply copy/paste the url from the browser where you play the game.  <strong>Ex: http://phoboslab.org/ztype/</strong></small></p>
                         </div>
                     </form>
