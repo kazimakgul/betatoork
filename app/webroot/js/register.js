@@ -1488,10 +1488,7 @@ $('#grabloader').css("display", "block");
 $.post(grabcheck, { graburl: $graburl }, function (data) {
             if (data != null) {
 
-				if(data=="done")
-				{
-					$('#grabloader').css("display", "none");
-				}
+				alert(data);
 				
             }
             else { 

@@ -167,8 +167,8 @@ class ApisController extends AppController {
 				
 
 				//$this->redirect(array('action' => 'mygames'));
-				editvar=$this->Html->url(array('controller'=>'users','action'=>'checkUser'));
-				echo $editvar;
+				$editurl=Router::url(array('controller'=>'games', 'action'=>'edit',22));
+				echo $editurl;
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
