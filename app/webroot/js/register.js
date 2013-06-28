@@ -1488,11 +1488,14 @@ alert(grabcheck);
 $.post(grabcheck, { graburl: $graburl }, function (data) {
             if (data != null) {
 				
-				alert(data);
+				if(data=="done")
+				{
+					alert('completed');
+				}
 				
             }
             else { 
-				
+				alert('some problems');
 			}
         });	
 									 
