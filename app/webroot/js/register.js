@@ -1485,7 +1485,7 @@ $graburl=$('#urlarea').val();
 
 $('#grabloader').css("display", "block");
 
-$.post(grabcheck, { graburl: $graburl }, function (data) {alert(data.rtdata);
+$.post(grabcheck, { graburl: $graburl }, function (data) {alert('naber');alert(data.msg);alert(data.msg.msg);
             if (data != null) {
 
 				if(data=="done")
