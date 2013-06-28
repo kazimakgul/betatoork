@@ -94,6 +94,9 @@ class ApisController extends AppController {
    App::uses('File', 'Utility');
    Configure::write('debug', 0);
 	  
+	  $graburl=$this->request->data['graburl'];
+	  echo $graburl;
+	  
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
 	 $basic_info=$this->get_meta($url);
