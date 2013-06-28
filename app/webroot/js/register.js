@@ -1475,3 +1475,30 @@ function forgetPassword()
 }
  
 //*********/Forget Password Function********
+
+//==========================================================
+//*********Grab Game Function********
+
+$('#grabgame').live('click',function(){
+									
+$graburl=$('#urlarea').val();									 
+alert($graburl);
+alert(grabcheck);
+
+$.post(grabcheck, { graburl: $graburl }, function (data) {
+            if (data != null) {
+				
+				alert(data);
+				
+            }
+            else { 
+				
+			}
+        });	
+									 
+		alert('how');							 
+									 
+									 
+});
+
+//*********/Grab Game Function********

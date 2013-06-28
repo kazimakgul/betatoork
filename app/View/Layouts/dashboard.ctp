@@ -42,6 +42,7 @@
 <!-- avascript variables for login and register-->
 <script type="text/javascript">
 remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
+grabcheck='<?php echo $this->Html->url(array('controller'=>'apis','action'=>'addgame_ajax')); ?>';
 subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
 favswitcher='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add')); ?>';

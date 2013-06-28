@@ -87,7 +87,7 @@ class ApisController extends AppController {
    
    }
 	
-	public function addgame_ajax($url='http://www.toork.com')
+	public function addgame_ajax($url='http://www.milliyet.com')
    {
    $this->layout='ajax';
    App::uses('Folder', 'Utility');
