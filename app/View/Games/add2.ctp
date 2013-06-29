@@ -43,7 +43,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                     <a title="search" style="" class="icon"><i class="icofont-plus"></i></a>
                                     <input id="urlarea" class="input-xxlarge animated grd-white" required pattern="(http|https)://.+" onfocus type="text" placeholder="where is the game? Type the link of the website!">
                                 </div>
-                                <input id="grabgame" onClick="_gaq.push(['_trackEvent', 'Games', 'Add']);" type="submit" class="btn btn-danger" value="Grab the game!">
+                                <input id="grabgame" onClick="_gaq.push(['_trackEvent', 'Games', 'Add']);" type="button" class="btn btn-danger" value="Grab the game!">
                             </div>
 							<div id="grabloader" style="display:none;">
 							<p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
