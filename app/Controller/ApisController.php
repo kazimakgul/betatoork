@@ -39,6 +39,7 @@ class ApisController extends AppController {
 	public function add_virtual_game()
    {
    $this->layout='ajax';
+   
    Configure::write('debug', 0);
    $fileName=rand(100,100000);
     $this->request->data['Game']['name']="SOntihOnHouse".$fileName;
@@ -87,6 +88,27 @@ class ApisController extends AppController {
    
    }
 	
+	public function duplicate_seourl($seo_url='undefined')
+	{
+	$flag=0;
+	$count=1;
+	
+	do{
+	$seo_check=$this->Game->find('first',array('contain'=>false,'fields'=>array('Game.seo_url'),'conditions'=>array('Game.seo_url'=>$seo_url)));
+	  if($seo_check!=NULL)
+	  {
+	  $seo_url_gen=$seo_url.'-'.$count;
+	  $count++;
+	  }else{
+	  $flag=1;
+	  $seo_url_gen=$seo_url;
+	  }
+	}while($flag=0);
+	
+	return $seo_url_gen;
+	
+	}
+	
 	public function addgame_ajax($url='http://www.toork.com')
    {
    $this->layout='ajax';
@@ -97,6 +119,9 @@ class ApisController extends AppController {
 	  $graburl=$this->request->data['graburl'];
 	  if($graburl!=NULL)
 	  $url=$graburl;
+	  
+	  //Check the http before url
+	  $url=$this->http_check($url);
 	  
 	  if($userid = $this->Session->read('Auth.User.id'))
       {
@@ -129,9 +154,10 @@ class ApisController extends AppController {
 	  $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($basic_info['description']);
       $this->request->data['Game']['user_id'] = $this->Auth->user('id');
 	  $this->request->data['Game']['link'] = $url;	
-	  $this->request->data['Game']['picture'] = $fileName.".png";		
+	  $this->request->data['Game']['picture'] = $fileName.".png";
+	 		
 		//seourl begins
-		$this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$basic_info['title']));
+		$this->request->data['Game']['seo_url']=$this->duplicate_seourl(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])));
 		//seourl ends
 			
 			$this->Game->create();

@@ -120,7 +120,7 @@ class AppController extends Controller {
 public function http_check($str)
 {
 
-if(substr($str, 0, 7)!="http://")
+if(substr($str, 0, 7)!="http://" && substr($str, 0, 8)!="https://")
 			{
 		$str="http://".$str;
 		return $str;
