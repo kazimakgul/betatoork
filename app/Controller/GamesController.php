@@ -2388,24 +2388,6 @@ public function edit2($id = null) {
 			
 			if($myval!="")
 			{
-			
-			/*
-			//remove objects from S3
-			 $prefix = 'upload/games/'.$id;
-             $opt = array(
-             'prefix' => $prefix,
-             );
-			 $bucket=Configure::read('S3.name');
-			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
-			 foreach($objs as $obj)
-			 {
-			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
-			 //print_r($response);
-			 }
-			//remove objects from S3
-			*/
-			
-			
 			//Folder Formatting begins
 			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
 		    $files = $dir->find('.*');
@@ -2465,7 +2447,7 @@ public function edit2($id = null) {
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
-			$basename=$info["basename"];
+			$basename=$info["basename"];echo $basename;
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
@@ -2503,6 +2485,14 @@ public function edit2($id = null) {
 	$this->set_suggested_channels();	
 	}
 
+
+public function crop_game_image($game_name,$id)
+{
+
+  $command3 = "convert /var/www/betatoork/app/webroot/upload/".$id."/".$game_name." -quiet  -crop 200x110+30+30  +repage  /var/www/betatoork/app/webroot/upload/".$id."/".$game_name."";
+  exec($command3, $output3, $ret3);
+
+}
 
 
 /**
