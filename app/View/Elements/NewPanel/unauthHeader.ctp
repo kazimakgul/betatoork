@@ -40,7 +40,7 @@
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'sign-in','method'=>'post'));?>
 <?php echo $this->Form->input('username',array('label'=>'Username or Email' ,'div'=>false,'type'=>'text','class'=>'input-block-level','id'=>'mobile_signusername','data-validate'=>'{required: true, messages:{required:"Please enter field username"}}')); ?>
 <?php echo $this->Form->input('password',array('label'=>'Password' ,'div'=>false,'class'=>'input-block-level','id'=>'mobile_signpass','data-validate'=>'{required: true, messages:{required:"Please enter field password"}}','required' ,'type' => 'password')); ?>
-<?php echo $this->Form->input('remember', array('label'=>false ,'div'=>false,'type'=>'checkbox','style'=>"float: left; margin-right: 10px;",'name'=>'remember_me','id'=>'user_remember_me','value'=>0)); ?> 
+<?php echo $this->Form->input('remember', array('label'=>false ,'div'=>false,'type'=>'checkbox','style'=>"float: left; margin-right: 10px;",'name'=>'remember_me','id'=>'user_remember_me','value'=>0, 'checked')); ?> 
                     <label class="string optional" for="user_remember_me"> Remember me</label>
                     <input class="btn btn-success" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="button" name="commit" id="t_mobile_login_btn" value="Sign In" />
                 </form>
