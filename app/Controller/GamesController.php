@@ -2460,7 +2460,7 @@ public function edit2($id = null) {
             );
 			
 			if(strpos($basename,'toorksize')!=NULL)
-			
+			echo 'aaa';
 			
             }
 			//Upload to aws ends
