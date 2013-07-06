@@ -2449,7 +2449,7 @@ public function edit2($id = null) {
             $info=$file->info();
 			$basename=$info["basename"];echo $basename;
 			$dirname=$info["dirname"];
-			if(strpos($basename,'toorksize')!=NULL)
+			if(strpos($basename,'toorks33ize')!=NULL)
 			echo '<script>alert("mmm");</script>';
 			//echo $file;
 			 $this->Amazon->S3->create_object(
