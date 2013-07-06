@@ -2359,7 +2359,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 public function edit2($id = null) {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
-	break;
+	
 		$this->layout='dashboard';
 		$this->headerlogin();
 		$userid = $this->Session->read('Auth.User.id');
@@ -2447,7 +2447,7 @@ public function edit2($id = null) {
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
-			$basename=$info["basename"];echo $basename;echo '<script>alert("mmm");</script>';
+			$basename=$info["basename"];echo $basename;
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
@@ -2458,7 +2458,7 @@ public function edit2($id = null) {
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
-			
+			echo '<script>alert("mmm");</script>';
             }
 			//Upload to aws ends
 				
