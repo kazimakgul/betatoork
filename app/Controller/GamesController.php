@@ -2447,8 +2447,10 @@ public function edit2($id = null) {
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
-			$basename=$info["basename"];echo $basename;echo strpos($basename,'abc');
+			$basename=$info["basename"];echo $basename;
 			$dirname=$info["dirname"];
+			if(strpos($basename,'toorksize')!=NULL)
+			echo '<script>alert("mmm");</script>';
 			//echo $file;
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
@@ -2458,7 +2460,9 @@ public function edit2($id = null) {
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
-			echo '<script>alert("mmm");</script>';
+			
+			
+			
             }
 			//Upload to aws ends
 				
