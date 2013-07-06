@@ -2448,6 +2448,10 @@ public function edit2($id = null) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
 			$basename=$info["basename"];echo $basename;
+			
+			if(strpos($basename,"toorksize")==false)
+	echo 'böyle bisey yok';
+			
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
@@ -2458,9 +2462,6 @@ public function edit2($id = null) {
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
-			
-			if(strpos('colombia','toorksize')==NULL)
-			echo 'aaa';
 			
             }
 			//Upload to aws ends
