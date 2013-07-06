@@ -2447,10 +2447,10 @@ public function edit2($id = null) {
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
-			$basename=$info["basename"];echo $basename;
+			$basename=$info["basename"];
 			
 			if(strpos($basename,"toorksize")!=false)
-	echo 'böyle bisey var';
+	echo $basename;
 			
 			$dirname=$info["dirname"];
 			//echo $file;
