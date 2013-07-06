@@ -2389,12 +2389,14 @@ public function edit2($id = null) {
 			if($myval!="")
 			{
 			//Folder Formatting begins
+			/*
 			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
 		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $file->delete();
-            $file->close(); 
+            $file->close();
+			*/ 
             }
 			//Folder Formatting ends
 			
