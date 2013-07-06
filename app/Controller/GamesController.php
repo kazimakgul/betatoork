@@ -2437,7 +2437,7 @@ public function edit2($id = null) {
 			}
 			
 			if ($this->Game->save($filtered_data)) {
-				$this->Session->setFlash('You have successfully updated your game.');
+				$this->Session->setFlash('You have successfully updated your game2.');
 				
 				
 				
@@ -2463,7 +2463,7 @@ public function edit2($id = null) {
 			//Upload to aws ends
 				
 				
-				$this->redirect(array('action' => 'mygames'));
+				//$this->redirect(array('action' => 'mygames'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
