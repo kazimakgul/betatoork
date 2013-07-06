@@ -2449,8 +2449,8 @@ public function edit2($id = null) {
             $info=$file->info();
 			$basename=$info["basename"];echo $basename;
 			
-			if(strpos($basename,"toorksize")==false)
-	echo 'böyle bisey yok';
+			if(strpos($basename,"toorksize")!=false)
+	echo 'böyle bisey var';
 			
 			$dirname=$info["dirname"];
 			//echo $file;
