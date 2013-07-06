@@ -2496,7 +2496,7 @@ public function edit2($id = null) {
 public function crop_game_image($game_name,$id)
 {
 
-$command3 = "convert /var/www/betatoork/app/webroot/upload/".$id."/".$game_name." -quiet  -crop 200x110+30+30  +repage  /var/www/betatoork/app/webroot/upload/".$id."/naber.png";
+$command3 = "convert /var/www/betatoork/app/webroot/upload/".$id."/".$game_name." -quiet  -crop 200x110+30+30  +repage  /home/ubuntu/test/".$id."/naber.png";
 exec($command3, $output3, $ret3);
 print_r($output3);print_r($ret3);
    if ($ret3) {
