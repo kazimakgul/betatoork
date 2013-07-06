@@ -2450,8 +2450,10 @@ public function edit2($id = null) {
 			$basename=$info["basename"];
 			
 			if(strpos($basename,"toorksize")!=false)
-	echo $basename;
-			
+			{
+	        echo $basename;
+			$this->crop_game_image($basename,$id);
+			}
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
@@ -2494,7 +2496,7 @@ public function edit2($id = null) {
 public function crop_game_image($game_name,$id)
 {
 
-$command3 = "convert /var/www/betatoork/app/webroot/upload/".$id."/".$game_name." -quiet  -crop 200x110+30+30  +repage  /var/www/betatoork/app/webroot/upload/".$id."/".   $game_name."";
+$command3 = "convert /var/www/betatoork/app/webroot/upload/".$id."/".$game_name." -quiet  -crop 200x110+30+30  +repage  /var/www/betatoork/app/webroot/upload/".$id."/naber.png";
 exec($command3, $output3, $ret3);
 
 }
