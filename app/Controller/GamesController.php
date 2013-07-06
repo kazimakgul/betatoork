@@ -2447,7 +2447,7 @@ public function edit2($id = null) {
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
-			$basename=$info["basename"];echo $basename;break;
+			$basename=$info["basename"];echo $basename;echo '<script>alert("mmm");</script>';
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
