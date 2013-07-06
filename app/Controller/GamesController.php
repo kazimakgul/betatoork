@@ -2452,7 +2452,7 @@ public function edit2($id = null) {
 			if(strpos($basename,"toorksize")!=false)
 			{
 	        echo $basename;
-			$this->crop_game_image($basename,$id);
+			//$this->crop_game_image($basename,$id);
 			}
 			$dirname=$info["dirname"];
 			//echo $file;
