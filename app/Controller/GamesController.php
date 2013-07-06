@@ -2459,7 +2459,7 @@ public function edit2($id = null) {
             )
             );
 			
-			if(strpos('colombia','toorksize')!=NULL)
+			if(strpos('colombia','toorksize')==NULL)
 			echo 'aaa';
 			
             }
