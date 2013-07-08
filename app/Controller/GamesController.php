@@ -2453,7 +2453,10 @@ public function edit2($id = null) {
 			if(strpos($basename,"toorksize")!=false)
 			{
 	        echo $basename;
-			$this->crop_game_image($basename,$id);
+			$ret3=$this->crop_game_image($basename,$id);
+			if ($ret3) {
+        die;
+            }
 			}
 			$dirname=$info["dirname"];
 			//echo $file;
@@ -2501,9 +2504,7 @@ $command3 = "mkdir /home/ubuntu/test/".$id." && convert /var/www/betatoork/app/w
 exec($command3, $output3, $ret3);
 print_r($output3);print_r($ret3);
    
-   if ($ret3) {
-        die;
-            }
+   return ret3;
 			
 }
 
