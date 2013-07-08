@@ -2504,7 +2504,7 @@ $command3 = "mkdir /home/ubuntu/test/".$id." && convert /var/www/betatoork/app/w
 exec($command3, $output3, $ret3);
 print_r($output3);print_r($ret3);
    
-   return ret3;
+   return $ret3;
 			
 }
 
