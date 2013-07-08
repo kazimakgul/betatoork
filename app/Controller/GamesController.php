@@ -2473,7 +2473,7 @@ public function edit2($id = null) {
                 //die;
                 //}
 				
-				//$this->redirect(array('action' => 'mygames'));
+				$this->redirect(array('action' => 'mygames'));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
