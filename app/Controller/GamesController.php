@@ -2438,7 +2438,7 @@ public function edit2($id = null) {
 			}
 			
 			if ($this->Game->save($filtered_data)) {
-				$this->Session->setFlash('You have successfully updated your game2.');
+				$this->Session->setFlash('You have successfully updated your game.');
 				
 				
 				
@@ -2469,9 +2469,9 @@ public function edit2($id = null) {
             }
 			//Upload to aws ends
 				
-				if ($ret3) {
-                die;
-                }
+				//if ($ret3) {
+                //die;
+                //}
 				
 				//$this->redirect(array('action' => 'mygames'));
 			} else {
@@ -2502,7 +2502,7 @@ public function crop_game_image($game_name,$id)
 
 $command3 = "mkdir /home/ubuntu/test/".$id." && convert /var/www/betatoork/app/webroot/upload/games/".$id."/".$game_name." -quiet  -crop 200x110+30+30  +repage  /home/ubuntu/test/".$id."/".$game_name."";
 exec($command3, $output3, $ret3);
-print_r($output3);print_r($ret3);
+//print_r($output3);print_r($ret3);
    
    return $ret3;
 			
