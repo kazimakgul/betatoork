@@ -2454,9 +2454,6 @@ public function edit2($id = null) {
 			{
 	        echo $basename;
 			$ret3=$this->crop_game_image($basename,$id);
-			if ($ret3) {
-        die;
-            }
 			}
 			$dirname=$info["dirname"];
 			//echo $file;
@@ -2472,6 +2469,9 @@ public function edit2($id = null) {
             }
 			//Upload to aws ends
 				
+				if ($ret3) {
+                die;
+                }
 				
 				//$this->redirect(array('action' => 'mygames'));
 			} else {
