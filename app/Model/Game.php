@@ -122,19 +122,19 @@ public $virtualFields = array(
 			),
 			
 			'minWidth' => array(
-			'rule' => array('minWidth', '640'),
+			'rule' => array('minWidth', '0'),
 			'message' => 'Photo size must be 640X350'
 		),
 		'maxWidth' => array(
-			'rule' => array('maxWidth', '640'),
+			'rule' => array('maxWidth', '10000'),
 			'message' => 'Photo size must be 640X350'
 		),
 		'minHeight' => array(
-			'rule' => array('minHeight', '350'),
+			'rule' => array('minHeight', '0'),
 			'message' => 'Photo size must be 640X350'
 		),
 		'maxHeight' => array(
-			'rule' => array('maxHeight', '350'),
+			'rule' => array('maxHeight', '10000'),
 			'message' => 'Photo size must be 640X350'
 		)
 			
