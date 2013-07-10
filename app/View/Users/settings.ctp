@@ -21,7 +21,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active in" id="home">
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'tab','class'=>'form-horizontal' ,'type' => 'file'));?>
-<!-- 
+
 <div class="raw-fluid">
 <div class="span2 fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-new img-polaroid" style="width: 90px; height: 120px;">
@@ -51,7 +51,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">Change Background 
         <span class="fileupload-new"><i class="elusive-edit"></i></span>
-        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input type="file" /></span>
+        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[User][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100" /></span>
     <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
 
      <a rel="tooltip" id="imageinfo" data-toggle="popover" style="margin:-80px 30px 0px 10px;" title="Picture Specs Info" data-placement="bottom" data-original-title="Game Image Info" class="btn btn-small" data-html="true" data-content='If you want to add an image background, For the best experience try <strong>1000*300</strong>px image. You can always add a pattern background image which is going to be repeated. Try a <strong>100*100</strong>px pattern background image. Any image size is always welcome. '><i class="elusive-info-sign"></i></a>
@@ -59,7 +59,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
   </div>
 </div>
 </div>
--->
+
 
                                                         <fieldset>
                                                             
@@ -91,12 +91,12 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
                                                             </div>
                                                         </div>
 <?php } ?>
-                                                        <div class="control-group">
+                                                       <!-- <div class="control-group">
                                                             <label class="control-label" for="inputUpload">Channel Avatar</label>
                                                             <div class="controls">
 <input placeholder="not yet" type="file" name="data[User][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" data-form="uniform" id="inputUpload" size="100">
                                                             </div> <p> * Picture size must be 90x120 pixel</p>
-                                                        </div>
+                                                        </div>-->
 
                                                             <div class="well control-group">
                                                                 <label class="control-label" for="url">My Website</label>
