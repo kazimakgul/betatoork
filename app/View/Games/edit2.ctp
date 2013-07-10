@@ -93,8 +93,13 @@ $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
                                                             </div>
                                                         </div>
                                                         
+														<div style="width:100%;text-align:center;"><div id="grabloader" style="display:none;">
+							<p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
+							<p><small>Your game is processing... </small></p>
+							</div></div>
+														
                                                         <div class="form-actions">
-                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                            <button id="grabgame" type="submit" class="btn btn-primary">Save changes</button>
                                                             <a type="button" class="btn" href="<?php echo $mygames; ?>">Cancel</a>
                                                         </div>
                                                     </form>

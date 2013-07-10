@@ -2449,7 +2449,6 @@ public function edit2($id = null) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
 			$basename=$info["basename"];
-			
 			if(strpos($basename,"toorksize")!=false)
 			{
 	        echo $basename;

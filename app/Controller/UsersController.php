@@ -559,6 +559,11 @@ public function set_suggested_channels()
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
 			$basename=$info["basename"];
+			if(strpos($basename,"original")!=false)
+			{
+	        echo $basename;
+			$ret3=$this->crop_game_image($basename,$id);
+			}
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
@@ -606,6 +611,14 @@ public function set_suggested_channels()
 
 	}
 
+
+   public function crop_game_image($game_name,$id)
+   {
+   $command3 = "mkdir /home/ubuntu/test/".$id." && convert /var/www/betatoork/app/webroot/upload/users/".$id."/".$game_name." -quiet  -crop 200x110+30+30  +repage  /home/ubuntu/test/".$id."/".$game_name."";
+   exec($command3, $output3, $ret3);
+   //print_r($output3);print_r($ret3);
+   return $ret3;	
+   }
 
 
 	public function edit($id = null) {
