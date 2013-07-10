@@ -99,7 +99,7 @@ $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 							</div></div>
 														
                                                         <div class="form-actions">
-                                                            <button id="grabgame" type="submit" class="btn btn-primary">Save changes</button>
+                                                            <button id="editgame" type="submit" class="btn btn-primary">Save changes</button>
                                                             <a type="button" class="btn" href="<?php echo $mygames; ?>">Cancel</a>
                                                         </div>
                                                     </form>

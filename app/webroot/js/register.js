@@ -1501,3 +1501,13 @@ $.post(grabcheck, { graburl: $graburl }, function (data) {
 });
 
 //*********/Grab Game Function********
+
+//*********Edit Game Function********
+
+$('#editgame').live('click',function(){									 
+
+$('#grabloader').css("display", "block");									 							 								 
+									 
+});
+
+//*********/Edit Game Function********
