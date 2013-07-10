@@ -559,11 +559,6 @@ public function set_suggested_channels()
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
 			$basename=$info["basename"];
-			if(strpos($basename,"original")!=false)
-			{
-	        echo $basename;
-			$ret3=$this->crop_game_image($basename,$id);
-			}
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
