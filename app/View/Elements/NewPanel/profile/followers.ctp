@@ -27,9 +27,9 @@ else
     <a class="span3" href="<?php echo $profileurl ?>" style="margin:0px 20px 0px 0px;">
             <?php 
               if($card[6]['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'60')); 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'60','style'=>'height:80px;')); 
                 } else {
-                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'60',"class"=>"img-polaroid img-rounded",'onerror'=>'imgError(this,"avatar");'));  }
+                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'60','style'=>'height:80px;',"class"=>"img-polaroid img-rounded",'onerror'=>'imgError(this,"avatar");'));  }
             ?>
     </a>
     
