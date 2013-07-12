@@ -558,7 +558,7 @@ public function set_suggested_channels()
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
-			$basename=$info["basename"];
+			$basename=$info["basename"];echo $basename;
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
@@ -572,7 +572,7 @@ public function set_suggested_channels()
 			
             }
 			//Upload to aws ends
-				
+				break;
 				
 				$this->redirect(array('action' => 'settings',$this->Session->read('Auth.User.id')));
 			} else {
