@@ -493,11 +493,12 @@ public function set_suggested_channels()
 	public function settings($id = null) {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
+	$userid=$id;
 	$user = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
 		    $this->set_suggested_channels();
 		$this->layout = 'dashboard';
 		$this->loadModel('Subscription');
-		$userid=$id;
+		
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
