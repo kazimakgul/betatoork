@@ -576,6 +576,7 @@ public function set_suggested_channels()
 			//Folder Formatting ends
 			
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
+			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
 			
 			}
 			
