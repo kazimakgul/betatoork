@@ -507,6 +507,7 @@ public function set_suggested_channels()
 		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
 		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
 		$myval=$this->request->data["User"]["edit_picture"]["name"];
+		$channelbanner=$this->request->data["User"]["banner"]["name"];
 		
 		if($myval!="")
 			{
@@ -542,6 +543,42 @@ public function set_suggested_channels()
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
 			
 			}
+			
+			
+			if($channelbanner!="")
+			{
+			//remove objects from S3
+			$prefix = 'upload/users/'.$id;
+           
+  
+             $opt = array(
+             'prefix' => $prefix,
+             );
+			 $bucket=Configure::read('S3.name');
+			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			 foreach($objs as $obj)
+			 {
+			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
+			 //print_r($response);
+			 }
+			//remove objects from S3
+			
+			
+			
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
+			
+			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
+			
+			}
+			
 		
 		     //seousername begins
 		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
@@ -572,7 +609,6 @@ public function set_suggested_channels()
 			
             }
 			//Upload to aws ends
-				break;
 				
 				$this->redirect(array('action' => 'settings',$this->Session->read('Auth.User.id')));
 			} else {
@@ -590,7 +626,7 @@ public function set_suggested_channels()
 		$this->set(compact('countries'));
 		
 		
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
     	$userName = $user['User']['username'];
 	    $this->set('user',$user);
 		$this->set('userid', $userid);

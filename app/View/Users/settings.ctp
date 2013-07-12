@@ -30,7 +30,8 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
   if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'90',"alt" => "toork avatar image",)); 
     } else {
-      echo $this->Upload->image($user,'User.picture',array(),array('width'=>'90','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
+      echo $this->Upload->image($user,'User.picture',array(),array('width'=>'90','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");'));
+	   }
   ?>
 
     </div>
@@ -44,14 +45,22 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 </div>
 
 <div class="span8 fileupload fileupload-new" data-provides="fileupload" style="margin:0px 0px 0px 0px;">
-  <div class="fileupload-new img-polaroid" style="width: 745px; height: 200px; padding-bottom:0px; 
-      background-image:url('http://s3.amazonaws.com/betatoorkpics/banners/31.jpg');">
+  <div class="fileupload-new img-polaroid" style="width: 745px; height: 200px; padding-bottom:0px;">
+	  
+	  <?php 
+  if($user['User']['picture']==null) { 
+    echo $this->Html->image("http://s3.amazonaws.com/betatoorkpics/banners/31.jpg", array('width'=>'90',"alt" => "toork avatar image",)); 
+    } else {
+	   echo $this->Html->image(Configure::read('S3.url')."/".$user['User']['banner'], array('width'=>'90',"alt" => "toork avatar image"));
+	   }
+      ?>
+	  
   </div>
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 745px; height: 200px; line-height: 20px;"></div>
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">Change Background 
         <span class="fileupload-new"><i class="elusive-edit"></i></span>
-        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input type="file" /></span>
+        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[User][banner]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100" /></span>
     <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
 
      <a rel="tooltip" id="imageinfo" data-toggle="popover" style="margin:-80px 30px 0px 10px;" title="Picture Specs Info" data-placement="bottom" data-original-title="Game Image Info" class="btn btn-small" data-html="true" data-content='If you want to add an image background, For the best experience try <strong>1000*300</strong>px image. You can always add a pattern background image which is going to be repeated. Try a <strong>100*100</strong>px pattern background image. Any image size is always welcome. '><i class="elusive-info-sign"></i></a>
