@@ -575,7 +575,8 @@ public function set_suggested_channels()
             }
 			//Folder Formatting ends
 			
-			echo $this->save_image($id);break;
+			echo $this->User->field('picture');echo 'aaa';
+			break;
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
 			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
 			
