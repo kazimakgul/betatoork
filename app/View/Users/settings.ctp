@@ -39,7 +39,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
         <span class="fileupload-new"><i class="elusive-edit"></i></span>
-        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[User][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100" /></span>
+        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[User][edit_picture2]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100" /></span>
     <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
   </div>
 </div>
