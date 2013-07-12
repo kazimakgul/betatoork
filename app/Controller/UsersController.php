@@ -567,7 +567,7 @@ public function set_suggested_channels()
 			
 			//Folder Formatting begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
-		    $files = $dir->find('.*');
+		    $files = $dir->find('.*');print_r($files);break;
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $file->delete();
