@@ -575,7 +575,7 @@ public function set_suggested_channels()
             }
 			//Folder Formatting ends
 			
-			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
+			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"];
 			
 			}
 			
@@ -587,11 +587,11 @@ public function set_suggested_channels()
 		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
-				echo 'naber';break;
+				
 				
 				//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
-		    $files = $dir->find('.*');
+		    $files = $dir->find('.*');print_r($files);break;
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
