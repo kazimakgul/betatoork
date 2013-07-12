@@ -575,6 +575,7 @@ public function set_suggested_channels()
             }
 			//Folder Formatting ends
 			
+			echo $this->save_image($id);break;
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
 			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
 			
@@ -588,7 +589,7 @@ public function set_suggested_channels()
 		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
-				
+				$this->rollback_image($pic,$id);
 				
 				//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
@@ -643,6 +644,18 @@ public function set_suggested_channels()
 
 	}
 
+
+public function rollback_image($picture=NULL,$id=NULL)
+{
+$this->User->id=$id;
+$this->User->saveField('picture', $picture);
+}
+
+public function save_image($id=NULL)
+{
+$this->User->id=$id;
+return $this->User->field('picture');
+}
 
    public function crop_game_image($game_name,$id)
    {
