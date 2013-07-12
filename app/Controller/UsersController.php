@@ -531,14 +531,13 @@ public function set_suggested_channels()
 			
 			
 			//Folder Formatting begins
-			/*
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
 		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $file->delete();
             $file->close(); 
-            }*/
+            }
 			//Folder Formatting ends
 			
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
@@ -568,7 +567,8 @@ public function set_suggested_channels()
 			
 			//Folder Formatting begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
-		    $files = $dir->find('.*');print_r($files);break;
+		    $files = $dir->find('.*');
+			print_r($files);break;
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $file->delete();
