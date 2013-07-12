@@ -23,7 +23,26 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'tab','class'=>'form-horizontal' ,'type' => 'file'));?>
 
 <div class="raw-fluid">
+<div class="span2 fileupload fileupload-new" data-provides="fileupload">
+  <div class="fileupload-new img-polaroid" style="width: 90px; height: 120px;">
+    
+  <?php 
+  if($user['User']['picture']==null) { 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'90',"alt" => "toork avatar image",)); 
+    } else {
+      echo $this->Upload->image($user,'User.picture',array(),array('width'=>'90','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");'));
+	   }
+  ?>
 
+    </div>
+  <div class="fileupload-preview fileupload-exists thumbnail" style="width: 90px; height: 120px; line-height: 20px;"></div>
+  <div>
+    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
+        <span class="fileupload-new"><i class="elusive-edit"></i></span>
+        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[User][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100" /></span>
+    <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
+  </div>
+</div>
 
 <div class="span8 fileupload fileupload-new" data-provides="fileupload" style="margin:0px 0px 0px 0px;">
   <div class="fileupload-new img-polaroid" style="width: 745px; height: 200px; padding-bottom:0px;">
