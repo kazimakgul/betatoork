@@ -538,8 +538,7 @@ public function set_suggested_channels()
             $file = new File($dir->pwd() . DS . $file);
             $file->delete();
             $file->close(); 
-			*/
-            }
+            }*/
 			//Folder Formatting ends
 			
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
