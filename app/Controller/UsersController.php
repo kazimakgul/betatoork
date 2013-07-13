@@ -575,7 +575,7 @@ public function set_suggested_channels()
             }
 			//Folder Formatting ends
 			
-			//$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
+			$save_picture=$this->User->find('first');
 			
 			
 			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
@@ -589,7 +589,7 @@ public function set_suggested_channels()
 		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
-				$this->rollback_image($save_picture,$id);
+				//$this->rollback_image($save_picture,$id);
 				
 				//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
