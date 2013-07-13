@@ -588,7 +588,7 @@ public function set_suggested_channels()
 		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
-				$this->User->saveField('picture', $save_picture['User']['picture']);
+				//$this->User->saveField('picture', $save_picture['User']['picture']);
 				//$this->rollback_image($save_picture,$id);
 				
 				//Upload to aws begins
