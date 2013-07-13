@@ -586,7 +586,7 @@ public function set_suggested_channels()
 		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
-		$this->request->data["User"]["description"]="ogiogifsdafsdafsdafdsfsadfsdafsdafsdafaDASDSAFDASDSFD";
+		$this->request->data["User"]["banner"]="ogiogifsdafsdafsdafdsfsadfsdafsdafsdafaDASDSAFDASDSFD";
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
 				if($channelbanner!="")
