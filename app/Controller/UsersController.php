@@ -578,7 +578,7 @@ public function set_suggested_channels()
 			$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
             
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
-			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
+			$this->request->data["User"]["banner"]="naber.jpg";
 			}
 			
 		
@@ -596,7 +596,7 @@ public function set_suggested_channels()
 				
 				//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
-		    $files = $dir->find('.*');print_r($files);break;
+		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
