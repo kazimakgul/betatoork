@@ -493,12 +493,11 @@ public function set_suggested_channels()
 	public function settings($id = null) {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
-	$userid=$id;
-	$user = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
+	
 		    $this->set_suggested_channels();
 		$this->layout = 'dashboard';
 		$this->loadModel('Subscription');
-		
+		$userid=$id;
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
@@ -576,10 +575,10 @@ public function set_suggested_channels()
             }
 			//Folder Formatting ends
 			
-			echo $user['User']['picture'];
+			$save_picture=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
+			
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
 			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
-			
 			}
 			
 		
@@ -590,7 +589,7 @@ public function set_suggested_channels()
 		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
-				$this->rollback_image($pic,$id);
+				$this->rollback_image($save_picture,$id);
 				
 				//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
@@ -652,11 +651,6 @@ $this->User->id=$id;
 $this->User->saveField('picture', $picture);
 }
 
-public function save_image($id=NULL)
-{
-$this->User->id=$id;
-return $this->User->field('picture');
-}
 
    public function crop_game_image($game_name,$id)
    {
