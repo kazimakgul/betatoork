@@ -51,7 +51,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
   if($user['User']['picture']==null) { 
     echo $this->Html->image("http://s3.amazonaws.com/betatoorkpics/banners/31.jpg", array('width'=>'90',"alt" => "toork avatar image",)); 
     } else {
-	   echo $this->Html->image(Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'], array("alt" => "toork avatar image"));
+	   echo $this->Html->image(Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'], array('max-width'=>'749','max-height'=>'195',"alt" => "toork avatar image"));
 	   }
       ?>
 	  
