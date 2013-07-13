@@ -578,7 +578,12 @@ public function set_suggested_channels()
 			$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
             
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
-			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
+			//$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
+			
+			$noextension=rtrim($this->request->data["User"]["banner"]["name"], $this->getExtension($this->request->data["User"]["banner"]["name"]));
+			$yesextension=$noextension.'_original'.$this->getExtension($this->request->data["User"]["banner"]["name"]);
+			$this->request->data["User"]["banner"]=$yesextension;
+			
 			}
 			
 		
@@ -647,6 +652,14 @@ public function set_suggested_channels()
 
 	}
 
+
+   function getExtension($str) {
+     $i = strrpos($str,".");
+     if (!$i) { return ""; }
+     $l = strlen($str) - $i;
+     $ext = substr($str,$i+1,$l);
+     return $ext;
+   }
 
 public function rollback_image($picture=NULL,$id=NULL)
 {
