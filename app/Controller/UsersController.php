@@ -523,7 +523,7 @@ public function set_suggested_channels()
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
-			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
+			 //$response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
 			 //print_r($response);
 			 }
 			//remove objects from S3
@@ -558,7 +558,7 @@ public function set_suggested_channels()
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
-			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
+			 //$response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
 			 //print_r($response);
 			 }
 			//remove objects from S3
@@ -588,7 +588,9 @@ public function set_suggested_channels()
 		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
-				//$this->User->saveField('picture', $save_picture['User']['picture']);
+				if($channelbanner!="")
+				$this->User->saveField('picture', $save_picture['User']['picture']);
+				
 				//$this->rollback_image($save_picture,$id);
 				
 				//Upload to aws begins
