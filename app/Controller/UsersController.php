@@ -589,7 +589,7 @@ public function set_suggested_channels()
 		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
-				//$this->rollback_image($save_picture,$id);
+				$this->rollback_image($save_picture,$id);
 				
 				//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
@@ -647,8 +647,11 @@ public function set_suggested_channels()
 
 public function rollback_image($picture=NULL,$id=NULL)
 {
-$this->User->id=$id;
-$this->User->saveField('picture', $picture);
+  if($picture!=NULL && $id!=NULL)
+  {
+  $this->User->id=$id;
+  $this->User->saveField('picture', $picture);
+  }
 }
 
 
