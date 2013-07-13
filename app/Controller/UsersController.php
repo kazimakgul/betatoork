@@ -544,7 +544,7 @@ public function set_suggested_channels()
 			
 			}
 			
-			
+			/*
 			if($channelbanner!="")
 			{
 			//remove objects from S3
@@ -580,7 +580,7 @@ public function set_suggested_channels()
 			
 			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
 			}
-			
+			*/
 		
 		     //seousername begins
 		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
@@ -589,7 +589,7 @@ public function set_suggested_channels()
 		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
-				$this->rollback_image($save_picture,$id);
+				//$this->rollback_image($save_picture,$id);
 				
 				//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
