@@ -493,7 +493,7 @@ public function set_suggested_channels()
 	public function settings($id = null) {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
-	
+	$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
 		    $this->set_suggested_channels();
 		$this->layout = 'dashboard';
 		$this->loadModel('Subscription');
@@ -574,8 +574,6 @@ public function set_suggested_channels()
             $file->close(); 
             }
 			//Folder Formatting ends
-			
-			$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
 			
 			
 			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
