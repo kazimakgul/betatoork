@@ -578,7 +578,7 @@ public function set_suggested_channels()
 			$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
             
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
-			$this->request->data["User"]["banner"]="naber.jpg";
+			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
 			}
 			
 		
@@ -632,6 +632,7 @@ public function set_suggested_channels()
 		
 		
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
+		print_r($user);
     	$userName = $user['User']['username'];
 	    $this->set('user',$user);
 		$this->set('userid', $userid);
