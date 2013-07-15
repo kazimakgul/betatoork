@@ -495,7 +495,7 @@ public function set_suggested_channels()
     App::uses('File', 'Utility');
 	
 		    $this->set_suggested_channels();
-		$this->layout = 'dashboard';
+		$this->layout = 'ajax';
 		$this->loadModel('Subscription');
 		$userid=$id;
 		$this->User->id = $id;
@@ -507,6 +507,7 @@ public function set_suggested_channels()
 		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
 		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
 		$myval=$this->request->data["User"]["edit_picture"]["name"];
+		$channelbanner=$this->request->data["User"]["banner"]["name"];
 		
 		if($myval!="")
 			{
@@ -522,7 +523,7 @@ public function set_suggested_channels()
 			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			 foreach($objs as $obj)
 			 {
-			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
+			 //$response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
 			 //print_r($response);
 			 }
 			//remove objects from S3
@@ -542,15 +543,60 @@ public function set_suggested_channels()
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
 			
 			}
+			
+			
+			if($channelbanner!="")
+			{
+			//remove objects from S3
+			$prefix = 'upload/users/'.$id;
+           
+  
+             $opt = array(
+             'prefix' => $prefix,
+             );
+			 $bucket=Configure::read('S3.name');
+			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			 foreach($objs as $obj)
+			 {
+			 //$response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
+			 //print_r($response);
+			 }
+			//remove objects from S3
+			
+			
+			
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
+			
+			$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
+            
+			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
+			//$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
+			
+			$noextension=rtrim($this->request->data["User"]["banner"]["name"], '.'.$this->getExtension($this->request->data["User"]["banner"]["name"]));
+			$yesextension=$noextension.'_original.'.$this->getExtension($this->request->data["User"]["banner"]["name"]);
+			$this->request->data["User"]["banner"]=$yesextension;
+			
+			}
+			
 		
 		     //seousername begins
 		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
-		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
+				if($channelbanner!="")
+				$this->User->saveField('picture', $save_picture['User']['picture']);
 				
+				//$this->rollback_image($save_picture,$id);
 				
 				//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
@@ -558,7 +604,7 @@ public function set_suggested_channels()
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
-			$basename=$info["basename"];
+			$basename=$info["basename"];echo $basename;
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
@@ -572,7 +618,6 @@ public function set_suggested_channels()
 			
             }
 			//Upload to aws ends
-				
 				
 				$this->redirect(array('action' => 'settings',$this->Session->read('Auth.User.id')));
 			} else {
@@ -590,7 +635,7 @@ public function set_suggested_channels()
 		$this->set(compact('countries'));
 		
 		
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
     	$userName = $user['User']['username'];
 	    $this->set('user',$user);
 		$this->set('userid', $userid);
@@ -605,6 +650,24 @@ public function set_suggested_channels()
 		$this->set('description_for_layout', 'Edit Your Channel');
 
 	}
+
+
+   function getExtension($str) {
+     $i = strrpos($str,".");
+     if (!$i) { return ""; }
+     $l = strlen($str) - $i;
+     $ext = substr($str,$i+1,$l);
+     return $ext;
+   }
+
+public function rollback_image($picture=NULL,$id=NULL)
+{
+  if($picture!=NULL && $id!=NULL)
+  {
+  $this->User->id=$id;
+  $this->User->saveField('picture', $picture);
+  }
+}
 
 
    public function crop_game_image($game_name,$id)
