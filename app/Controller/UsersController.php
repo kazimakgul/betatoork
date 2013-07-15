@@ -508,7 +508,7 @@ public function set_suggested_channels()
 		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
 		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
 		$myval=$this->request->data["User"]["edit_picture"]["name"];
-		$channelbanner=$this->request->data["User"]["banner2"]["name"];
+		//$channelbanner=$this->request->data["User"]["banner2"]["name"];
 		
 		if($myval!="")
 			{
