@@ -494,6 +494,7 @@ public function set_suggested_channels()
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
 	
+	
 		    $this->set_suggested_channels();
 		$this->layout = 'dashboard';
 		$this->loadModel('Subscription');
@@ -539,7 +540,7 @@ public function set_suggested_channels()
             $file->close(); 
             }
 			//Folder Formatting ends
-			$this->request->data["User"]["banner"]=NULL;
+			//$this->request->data["User"]["banner"]=NULL;
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
 			
 			}
