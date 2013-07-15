@@ -540,7 +540,7 @@ public function set_suggested_channels()
             $file->close(); 
             }
 			//Folder Formatting ends
-			//$this->request->data["User"]["banner"]=NULL;
+			$this->request->data["User"]["banner"]=NULL;
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
 			
 			}
