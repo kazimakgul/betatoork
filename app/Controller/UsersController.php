@@ -578,8 +578,8 @@ public function set_suggested_channels()
 			
 			$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
             
-			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];echo $this->request->data["User"]["banner"]["name"];break;
-			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
+			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
+			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];echo $this->request->data["User"]["banner"]["name"];break;
 			
 			
 			$noextension=rtrim($this->request->data["User"]["banner"]["name"], '.'.$this->getExtension($this->request->data["User"]["banner"]["name"]));
