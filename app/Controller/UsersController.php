@@ -580,13 +580,14 @@ public function set_suggested_channels()
             
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
 			$banner_var=$this->request->data["User"]["banner"]["name"];
-			echo $banner_var;break;
 			
-			$noextension=rtrim($this->request->data["User"]["banner"]["name"], '.'.$this->getExtension($this->request->data["User"]["banner"]["name"]));
 			
-			$yesextension=$noextension.'_original.'.$this->getExtension($this->request->data["User"]["banner"]["name"]);
+			$noextension=rtrim($banner_var, '.'.$this->getExtension($banner_var));
+			
+			$yesextension=$noextension.'_original.'.$this->getExtension($banner_var);
 			$this->request->data["User"]["banner"]=$yesextension;
-			
+			$banner_var=$yesextension;
+			echo $banner_var;break;
 			
 			
 			}
