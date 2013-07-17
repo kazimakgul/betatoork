@@ -585,6 +585,8 @@ public function set_suggested_channels()
 			$yesextension=$noextension.'_original.'.$this->getExtension($this->request->data["User"]["banner"]["name"]);
 			$this->request->data["User"]["banner"]=$yesextension;
 			
+			echo $this->request->data["User"]["banner"]; break;
+			
 			}
 			
 		
