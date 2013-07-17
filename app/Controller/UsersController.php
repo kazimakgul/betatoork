@@ -585,12 +585,13 @@ public function set_suggested_channels()
 			$noextension=rtrim($banner_var, '.'.$this->getExtension($banner_var));
 			
 			$yesextension=$noextension.'_original.'.$this->getExtension($banner_var);
-			$this->request->data["User"]["banner"]=$yesextension;
 			
-			 $naber =
+			
+			 $sluggedname =
             Inflector::slug(substr($yesextension, 0, strrpos($yesextension, '.'))). // filename
             substr($yesextension, strrpos($yesextension, '.'));
-			echo $naber;break;
+			$this->request->data["User"]["banner"]=$sluggedname;
+			
 
 			}
 			
