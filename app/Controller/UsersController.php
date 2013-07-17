@@ -575,13 +575,13 @@ public function set_suggested_channels()
             $file->close(); 
             }
 			//Folder Formatting ends
-			
+			echo $this->request->data["User"]["banner"]["name"];break;
 			$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
             
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
 			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
 			
-			echo $this->request->data["User"]["banner"]["name"];break;
+			
 			$noextension=rtrim($this->request->data["User"]["banner"]["name"], '.'.$this->getExtension($this->request->data["User"]["banner"]["name"]));
 			
 			$yesextension=$noextension.'_original.'.$this->getExtension($this->request->data["User"]["banner"]["name"]);
