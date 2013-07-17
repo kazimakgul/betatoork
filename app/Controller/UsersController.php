@@ -600,7 +600,13 @@ public function set_suggested_channels()
 			array('User' =>array(
 			'username' => $this->request->data['User']['username'],
 			'description' => $this->request->data['User']['description'],
+			'website' => $this->request->data['User']['website'],
 			'seo_username' => $this->request->data['User']['seo_username']));
+			
+			if($myval!="")
+			{
+			$filtered_data['User']['picture']=$this->request->data["User"]["picture"];
+			}
 		
 		
 		
