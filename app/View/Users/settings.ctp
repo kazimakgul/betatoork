@@ -48,10 +48,10 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
   <div class="fileupload-new img-polaroid" style="width: 745px; height: 200px; padding-bottom:0px;">
 	  
 	  <?php 
-  if($user['User']['banner2']==null) { 
+  if($user['User']['banner']==null) { 
     echo $this->Html->image("http://s3.amazonaws.com/betatoorkpics/banners/31.jpg", array('width'=>'90',"alt" => "toork avatar image",)); 
     } else {
-	   echo $this->Html->image(Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner2'], array('height'=>'195px',"alt" => "toork avatar image"));
+	   echo $this->Html->image(Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'], array('height'=>'195px',"alt" => "toork avatar image"));
 	   }
       ?>
 	  
