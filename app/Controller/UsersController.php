@@ -592,20 +592,19 @@ public function set_suggested_channels()
 		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
-		/*
+		
 		    //*********************
 			//Secure data filtering
 			//*********************
 			$filtered_data=
 			array('User' =>array(
-			'name' => $this->request->data['User']['name'],
+			'username' => $this->request->data['User']['username'],
 			'description' => $this->request->data['User']['description'],
-			'category_id' => $this->request->data['User']['category_id'],
 			'seo_username' => $this->request->data['User']['seo_username']));
-		*/
 		
-		print_r($this->request->data);break;
-			if ($this->User->save($this->request->data)) {
+		
+		
+			if ($this->User->save($filtered_data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
 				if($channelbanner!="")
 				$this->User->saveField('picture', $save_picture['User']['picture']);
