@@ -858,7 +858,7 @@ public function profile() {
 	$userid=$userconvert['User']['id'];
 	}
 	
-    $user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    $user = $this->User->find('first', array('conditions' => array('User.id' => $authid),'fields'=>array('*')));
     $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     
 	if($publicUser==NULL){
