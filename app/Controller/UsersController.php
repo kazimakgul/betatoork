@@ -575,9 +575,9 @@ public function set_suggested_channels()
             $file->close(); 
             }
 			//Folder Formatting ends
-			echo $this->request->data["User"]["banner"]["name"];break;
+			
 			$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
-            
+            echo $this->request->data["User"]["banner"]["name"];break;
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
 			$this->request->data["User"]["banner"]=$this->request->data["User"]["banner"]["name"];
 			
