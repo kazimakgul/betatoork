@@ -508,7 +508,7 @@ public function set_suggested_channels()
 		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
 		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
 		$myval=$this->request->data["User"]["edit_picture"]["name"];
-		//$channelbanner=$this->request->data["User"]["banner2"]["name"];
+		$channelbanner=$this->request->data["User"]["banner2"]["name"];
 		
 		if($myval!="")
 			{
@@ -592,6 +592,19 @@ public function set_suggested_channels()
 		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
+		/*
+		    //*********************
+			//Secure data filtering
+			//*********************
+			$filtered_data=
+			array('User' =>array(
+			'name' => $this->request->data['User']['name'],
+			'description' => $this->request->data['User']['description'],
+			'category_id' => $this->request->data['User']['category_id'],
+			'seo_username' => $this->request->data['User']['seo_username']));
+		*/
+		
+		print_r($this->request->data);break;
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('You successfully updated your channel'));
 				if($channelbanner!="")
