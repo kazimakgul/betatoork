@@ -1500,7 +1500,7 @@ if($graburl!="")
           });	
 									 							 
 }else{//if url not null									 
-alert('bos');
+
 }
 
 });
