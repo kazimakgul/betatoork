@@ -540,63 +540,9 @@ public function set_suggested_channels()
             $file->close(); 
             }
 			//Folder Formatting ends
-			//$this->request->data["User"]["banner2"]="naber.jpg";
+			
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
-			
-			}
-			
-			
-			if($channelbanner!="")
-			{
-			//remove objects from S3
-			$prefix = 'upload/users/'.$id;
-           
-  
-             $opt = array(
-             'prefix' => $prefix,
-             );
-			 $bucket=Configure::read('S3.name');
-			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
-			 foreach($objs as $obj)
-			 {
-			 //$response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
-			 //print_r($response);
-			 }
-			//remove objects from S3
-			
-			
-			
-			//Folder Formatting begins
-			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
-		    $files = $dir->find('.*');
-		    foreach ($files as $file) {
-            $file = new File($dir->pwd() . DS . $file);
-            $file->delete();
-            $file->close(); 
-            }
-			//Folder Formatting ends
-			
-			$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
-            
-			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
-			$banner_var=$this->request->data["User"]["banner"]["name"];
-			
-			
-			$noextension=rtrim($banner_var, '.'.$this->getExtension($banner_var));
-			
-			$yesextension=$noextension.'_original.'.$this->getExtension($banner_var);
-			
-			
-			 $sluggedname =
-            Inflector::slug(substr($yesextension, 0, strrpos($yesextension, '.'))). // filename
-            substr($yesextension, strrpos($yesextension, '.'));
-			$this->request->data["User"]["banner"]=$sluggedname;
-			
-
-			}
-			
-		
-		     //seousername begins
+			//seousername begins
 		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
@@ -658,6 +604,121 @@ public function set_suggested_channels()
     			$this->Session->setFlash($validationErrors[$value][0]);
 				$this->redirect(array('controller' => 'users', 'action' => 'settings',$userid));
 			}	
+			}
+			
+			
+			if($channelbanner!="")
+			{
+			//remove objects from S3
+			$prefix = 'upload/users/'.$id;
+           
+  
+             $opt = array(
+             'prefix' => $prefix,
+             );
+			 $bucket=Configure::read('S3.name');
+			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			 foreach($objs as $obj)
+			 {
+			 //$response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
+			 //print_r($response);
+			 }
+			//remove objects from S3
+			
+			
+			
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
+			
+			$save_picture=$this->User->find('first',array('conditions'=>array('User.id'=>$id),'fields'=>array('User.picture')));
+            
+			$this->request->data["User"]["picture"]=$this->request->data["User"]["banner"];
+			$banner_var=$this->request->data["User"]["banner"]["name"];
+			
+			
+			$noextension=rtrim($banner_var, '.'.$this->getExtension($banner_var));
+			
+			$yesextension=$noextension.'_original.'.$this->getExtension($banner_var);
+			
+			
+			 $sluggedname =
+            Inflector::slug(substr($yesextension, 0, strrpos($yesextension, '.'))). // filename
+            substr($yesextension, strrpos($yesextension, '.'));
+			$this->request->data["User"]["banner"]=$sluggedname;
+			
+//seousername begins
+		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
+		     //seousername ends
+		
+		
+		    //*********************
+			//Secure data filtering
+			//*********************
+			$filtered_data=
+			array('User' =>array(
+			'username' => $this->request->data['User']['username'],
+			'description' => $this->request->data['User']['description'],
+			'website' => $this->request->data['User']['website'],
+			'seo_username' => $this->request->data['User']['seo_username']));
+			
+			if($myval!="")
+			{
+			$filtered_data['User']['picture']=$this->request->data["User"]["picture"];
+			}
+			if($channelbanner!="")
+			{
+			$filtered_data['User']['picture']=$this->request->data["User"]["picture"];
+			$filtered_data['User']['banner']=$this->request->data["User"]["banner"];
+			}
+		
+		
+		
+			if ($this->User->save($filtered_data)) {
+				$this->Session->setFlash(__('You successfully updated your channel'));
+				if($channelbanner!="")
+				$this->User->saveField('picture', $save_picture['User']['picture']);
+				
+				//$this->rollback_image($save_picture,$id);
+				
+				//Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];echo $basename;
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/users/'.$id."/".$basename,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/users/".$id."/".$basename,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+				
+				$this->redirect(array('action' => 'settings',$this->Session->read('Auth.User.id')));
+			} else {
+				$validationErrors = $this->User->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
+				$this->redirect(array('controller' => 'users', 'action' => 'settings',$userid));
+			}	
+			}
+			
+		
+		     
 		} else {
 		
 			$this->request->data = $this->User->read(null, $id);
