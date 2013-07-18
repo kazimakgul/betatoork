@@ -133,8 +133,14 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                             <div id="imageupload6" class="border" style="display:none;">
                             <p>Just copy/paste the game link you play ex: <strong>http://phoboslab.org/ztype/</strong></p>
                             <div class="input-append">
-                              <input class="span8" id="appendedInputButton" placeholder="Ex: http://chrome.plantsvszombies.com/" type="text">
-                              <button class="btn btn-success" type="button">Grab the Game!</button>
+                              <input id="urlarea" class="input-xxlarge animated grd-white" required pattern="(http|https)://.+" onfocus type="text" placeholder="Ex: http://chrome.plantsvszombies.com/">
+                              <button id="grabgame" class="btn btn-success" type="button">Grab the Game!</button>
+							  
+							<div id="grabloader" style="display:none;">
+							<p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
+							<p><small>Your game is processing... </small></p>
+							</div>
+							  
                             </div>
                             </div>
 
