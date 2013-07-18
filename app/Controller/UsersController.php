@@ -542,73 +542,7 @@ public function set_suggested_channels()
 			//Folder Formatting ends
 			//$this->request->data["User"]["banner2"]="naber.jpg";
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
-			//seousername begins
-		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
-		     //seousername ends
-		
-		
-		    //*********************
-			//Secure data filtering
-			//*********************
-			$filtered_data=
-			array('User' =>array(
-			'username' => $this->request->data['User']['username'],
-			'description' => $this->request->data['User']['description'],
-			'website' => $this->request->data['User']['website'],
-			'seo_username' => $this->request->data['User']['seo_username']));
 			
-			if($myval!="")
-			{
-			$filtered_data['User']['picture']=$this->request->data["User"]["picture"];
-			}
-			if($channelbanner!="")
-			{
-			$filtered_data['User']['picture']=$this->request->data["User"]["picture"];
-			$filtered_data['User']['banner']=$this->request->data["User"]["banner"];
-			}
-		
-		
-		
-			if ($this->User->save($filtered_data)) {
-				$this->Session->setFlash(__('You successfully updated your channel'));
-				if($channelbanner!="")
-				$this->User->saveField('picture', $save_picture['User']['picture']);
-				
-				//$this->rollback_image($save_picture,$id);
-				
-				//Upload to aws begins
-			$dir = new Folder(WWW_ROOT ."/upload/users/".$id);
-		    $files = $dir->find('.*');
-		    foreach ($files as $file) {
-            $file = new File($dir->pwd() . DS . $file);
-            $info=$file->info();
-			$basename=$info["basename"];echo $basename;
-			$dirname=$info["dirname"];
-			//echo $file;
-			 $this->Amazon->S3->create_object(
-            Configure::read('S3.name'),
-            'upload/users/'.$id."/".$basename,
-             array(
-            'fileUpload' => WWW_ROOT ."/upload/users/".$id."/".$basename,
-            'acl' => AmazonS3::ACL_PUBLIC
-            )
-            );
-			
-            }
-			//Upload to aws ends
-				
-				$this->redirect(array('action' => 'settings',$this->Session->read('Auth.User.id')));
-			} else {
-				$validationErrors = $this->User->invalidFields();
-				$value = key($validationErrors);
-    			$this->Session->setFlash($validationErrors[$value][0]);
-				$this->redirect(array('controller' => 'users', 'action' => 'settings',$userid));
-			}	
-		} else {
-		
-			$this->request->data = $this->User->read(null, $id);
-			$this->request->data["User"]["password"]="";
-		}
 			}
 			
 			
@@ -657,7 +591,12 @@ public function set_suggested_channels()
             Inflector::slug(substr($yesextension, 0, strrpos($yesextension, '.'))). // filename
             substr($yesextension, strrpos($yesextension, '.'));
 			$this->request->data["User"]["banner"]=$sluggedname;
-			//seousername begins
+			
+
+			}
+			
+		
+		     //seousername begins
 		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
@@ -724,11 +663,6 @@ public function set_suggested_channels()
 			$this->request->data = $this->User->read(null, $id);
 			$this->request->data["User"]["password"]="";
 		}
-
-			}
-			
-		
-		     
 		$countries = $this->User->Country->find('list');
 		$this->set(compact('countries'));
 		
