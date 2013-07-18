@@ -46,14 +46,16 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 </div>
 
 <div class="span8 fileupload fileupload-new" data-provides="fileupload" style="margin:0px 0px 0px 0px;">
-  <div class="fileupload-new img-polaroid" style="width:900px; height:200px; padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* FF 3.6+ */  
-">
+  <div class="fileupload-new img-polaroid" style="width: 745px; height: 200px; padding-bottom:0px;">
 	  
 	  <?php 
-  if($user['User']['banner']==null) { 
+  if($user['User']['banner']==null) { ?>
+    
+  <div style="width: 745px; height: 200px;  padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* FF 3.6+ */  
+"></div>
 
-    } else {
-	   echo $this->Html->image(Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'], array('height'=>'200px',"alt" => "toork avatar image"));
+   <?php } else {
+	   echo $this->Html->image(Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'], array('height'=>'195px',"alt" => "toork avatar image"));
 	   }
       ?>
 	  
