@@ -1483,8 +1483,10 @@ $('#grabgame').live('click',function(){
 									
 $graburl=$('#urlarea').val();
 
+if($graburl=="")
+{
 alert($graburl);	
-
+}
 
 
 $('#grabloader').css("display", "block");
