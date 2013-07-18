@@ -540,7 +540,7 @@ public function set_suggested_channels()
             $file->close(); 
             }
 			//Folder Formatting ends
-			
+			//$this->request->data["User"]["banner2"]="naber.jpg";
 			$this->request->data["User"]["picture"]=$this->request->data["User"]["edit_picture"];
 			//seousername begins
 		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
@@ -604,6 +604,11 @@ public function set_suggested_channels()
     			$this->Session->setFlash($validationErrors[$value][0]);
 				$this->redirect(array('controller' => 'users', 'action' => 'settings',$userid));
 			}	
+		} else {
+		
+			$this->request->data = $this->User->read(null, $id);
+			$this->request->data["User"]["password"]="";
+		}
 			}
 			
 			
@@ -652,8 +657,7 @@ public function set_suggested_channels()
             Inflector::slug(substr($yesextension, 0, strrpos($yesextension, '.'))). // filename
             substr($yesextension, strrpos($yesextension, '.'));
 			$this->request->data["User"]["banner"]=$sluggedname;
-			
-//seousername begins
+			//seousername begins
 		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
@@ -715,15 +719,16 @@ public function set_suggested_channels()
     			$this->Session->setFlash($validationErrors[$value][0]);
 				$this->redirect(array('controller' => 'users', 'action' => 'settings',$userid));
 			}	
-			}
-			
-		
-		     
 		} else {
 		
 			$this->request->data = $this->User->read(null, $id);
 			$this->request->data["User"]["password"]="";
 		}
+
+			}
+			
+		
+		     
 		$countries = $this->User->Country->find('list');
 		$this->set(compact('countries'));
 		
