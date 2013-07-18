@@ -859,7 +859,7 @@ public function profile() {
 	}
 	
     $user = $this->User->find('first', array('conditions' => array('User.id' => $authid),'fields'=>array('*')));
-    $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
     
 	if($publicUser==NULL){
 		$this->redirect('/');
