@@ -2,6 +2,7 @@
 $password=$this->Html->url(array("controller" => "users","action" =>"password2",$this->Session->read('Auth.User.id')));
 $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+$image = $this->requestAction( array('controller' => 'users', 'action' => 'randomPicture',62));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -24,7 +25,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 
 <div class="raw-fluid">
 <div class="span2 fileupload fileupload-new" data-provides="fileupload">
-  <div class="fileupload-new img-polaroid" style="width: 90px; height: 120px;">
+  <div class="fileupload-new img-polaroid" style="width: 90px; max-height: 120px;">
     
   <?php 
   if($user['User']['picture']==null) { 
@@ -45,13 +46,14 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 </div>
 
 <div class="span8 fileupload fileupload-new" data-provides="fileupload" style="margin:0px 0px 0px 0px;">
-  <div class="fileupload-new img-polaroid" style="width: 745px; height: 200px; padding-bottom:0px;">
+  <div class="fileupload-new img-polaroid" style="width:900px; height:200px; padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* FF 3.6+ */  
+">
 	  
 	  <?php 
   if($user['User']['banner']==null) { 
-    echo $this->Html->image("http://s3.amazonaws.com/betatoorkpics/banners/31.jpg", array('width'=>'90',"alt" => "toork avatar image",)); 
+
     } else {
-	   echo $this->Html->image(Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'], array('height'=>'195px',"alt" => "toork avatar image"));
+	   echo $this->Html->image(Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'], array('height'=>'200px',"alt" => "toork avatar image"));
 	   }
       ?>
 	  
