@@ -1485,7 +1485,11 @@ $graburl=$('#urlarea').val();
 
 if($graburl=="")
 {
-break;	
+$.pnotify({
+            text: 'Please type the link of the website.',
+            type: 'error'
+          });	
+break;
 }
 
 
