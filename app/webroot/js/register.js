@@ -1481,7 +1481,12 @@ function forgetPassword()
 
 $('#grabgame').live('click',function(){
 									
-$graburl=$('#urlarea').val();									 
+$graburl=$('#urlarea').val();
+if($graburl==null)
+{
+alert('bos');	
+}
+
 
 $('#grabloader').css("display", "block");
 
