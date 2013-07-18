@@ -1485,7 +1485,7 @@ $graburl=$('#urlarea').val();
 
 if($graburl=="")
 {
-break;
+alert('bos');
 }
 
 
