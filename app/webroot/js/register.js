@@ -1483,13 +1483,6 @@ $('#grabgame').live('click',function(){
 									
 $graburl=$('#urlarea').val();
 
-$.pnotify({
-            title: 'Reset mail has been sent.',
-            text: 'Please check your mail box.',
-            type: 'success'
-          });
-
-
 if($graburl=="")
 {
 break;
