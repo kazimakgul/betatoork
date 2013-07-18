@@ -1485,7 +1485,7 @@ $graburl=$('#urlarea').val();
 
 if($graburl!="")
 {
-
+alert('girdi');
   $('#grabloader').css("display", "block");
 
   $.post(grabcheck, { graburl: $graburl }, function (data) {
