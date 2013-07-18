@@ -55,8 +55,9 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 "></div>
 
    <?php } else {?>
-<div class="well well-small shadow-black" style=" padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>); /* FF 3.6+ */  
-">
+   
+<div style="width: 745px; height: 200px; padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>); /* FF 3.6+ */  
+"></div>
 
 	 <?php  }
       ?>
