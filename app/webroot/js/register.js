@@ -1483,27 +1483,26 @@ $('#grabgame').live('click',function(){
 									
 $graburl=$('#urlarea').val();
 
-if($graburl=="")
+if($graburl!="")
 {
+
+  $('#grabloader').css("display", "block");
+
+  $.post(grabcheck, { graburl: $graburl }, function (data) {
+              if (data != null) {
+
+	  			  window.location = data;
+				
+              }
+              else { 
+			   	  alert('some problems');
+			  }
+          });	
+									 							 
+}else{//if url not null									 
 alert('bos');
 }
 
-
-$('#grabloader').css("display", "block");
-
-$.post(grabcheck, { graburl: $graburl }, function (data) {
-            if (data != null) {
-
-				window.location = data;
-				
-            }
-            else { 
-				alert('some problems');
-			}
-        });	
-									 							 
-									 
-									 
 });
 
 //*********/Grab Game Function********
