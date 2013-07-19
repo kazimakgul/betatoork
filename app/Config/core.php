@@ -32,7 +32,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 0);
+	Configure::write('debug', 2);
 
 /**
  * Configure the Error handler used to handle errors for your application.  By default
@@ -133,7 +133,7 @@
  * Defines the default error type when using the log() function. Used for
  * differentiating error logging and debugging. Currently PHP supports LOG_DEBUG.
  */
-	define('LOG_ERROR', 2);
+	define('LOG_ERROR', 0);
 
 /**
  * Session configuration.
@@ -231,10 +231,10 @@
  */
 	//date_default_timezone_set('UTC');
 
-Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpics');
-Configure::write('S3.name','betatoorkpics');
-#Configure::write('S3.name','betatoorkpicstest');
-#Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpicstest');
+#Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpics');
+#Configure::write('S3.name','betatoorkpics');
+Configure::write('S3.name','betatoorkpicstest');
+Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpicstest');
 
 # test S3 path  -> https://s3.amazonaws.com/betatoorkpicstest
 # toork S3 path -> https://s3.amazonaws.com/betatoorkpics
