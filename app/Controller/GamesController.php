@@ -1693,6 +1693,32 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 	}
 
 
+function seoUrlFormer($material='toork')
+{
+//Add incremental number at the end of the seo_url
+preg_match('/^([^\d]+)([\d]*?)$/', $material, $match);
+$material = $match[1];
+$number = $match[2] + 1;
+echo $material.$number;
+}
+
+function checkDuplicateSeoUrl($seo_url)
+{
+
+  do {
+  
+     $data=$this->Game->find('all',array('contain'=>false,'conditions'=>array('Game.seo_url'=>$seo_url),'fields'=>array('seo_url')));
+     if($data==NULL)
+	 {
+	 return $seo_url;
+	 }else{
+	 $seo_url=$this->seoUrlFormer($seo_url);
+	 }
+    
+  } while(1==1);
+
+}
+
 
 function secureSuperGlobalPOST($value)
     {
@@ -2411,7 +2437,7 @@ public function edit2($id = null) {
 			
 			
 			//seourl begins
-		     $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
+		     $this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])));
 		    //seourl ends
 			
 			
