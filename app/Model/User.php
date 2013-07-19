@@ -196,7 +196,7 @@ function getActivationHash()
 			'message' => 'Your avatar size must be 90x120'
 		),
 		'maxWidth' => array(
-			'rule' => array('maxWidth', '1000'),
+			'rule' => array('maxWidth', '100000'),
 			'message' => 'Your avatar size must be 90x120'
 		),
 		'minHeight' => array(
@@ -204,7 +204,7 @@ function getActivationHash()
 			'message' => 'Your avatar size must be 90x120'
 		),
 		'maxHeight' => array(
-			'rule' => array('maxHeight', '1000'),
+			'rule' => array('maxHeight', '100000'),
 			'message' => 'Your avatar size must be 90x120'
 		)
 			
