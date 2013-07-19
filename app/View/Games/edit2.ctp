@@ -47,7 +47,7 @@ $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto"><strong>Game Name</strong></label>
                                                             <div class="controls">
-<?php echo $this->Form->input('name',array('label'=>false ,'maxlength'=>28,'required','type'=>'text','class'=>'grd-white span10','id'=>'inputAuto','placeholder' => 'Metal Slug Brutal 3')); ?>     
+<?php echo $this->Form->input('name',array('label'=>false ,'maxlength'=>25,'required','type'=>'text','class'=>'grd-white span10','id'=>'inputAuto','placeholder' => 'Metal Slug Brutal 3')); ?>     
                                                             </div>
                                                         </div>
 
