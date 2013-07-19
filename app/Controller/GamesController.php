@@ -1699,10 +1699,10 @@ function seoUrlFormer($material='toork')
 preg_match('/^([^\d]+)([\d]*?)$/', $material, $match);
 $material = $match[1];
 $number = $match[2] + 1;
-echo $material.$number;
+return $material.$number;
 }
 
-function checkDuplicateSeoUrl($seo_url)
+function checkDuplicateSeoUrl($seo_url='toork')
 {
 
   do {
@@ -2392,6 +2392,8 @@ public function edit2($id = null) {
     	$limit=12;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
+	
+	echo $this->checkDuplicateSeoUrl();
 
 
 		$this->Game->id = $id;
@@ -2437,7 +2439,7 @@ public function edit2($id = null) {
 			
 			
 			//seourl begins
-		     $this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])));
+		     $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
 		    //seourl ends
 			
 			
