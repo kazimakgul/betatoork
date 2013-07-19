@@ -51,13 +51,11 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 	  <?php 
   if($user['User']['banner']==null) { ?>
     
-  <div style="width: 745px; height: 200px;  padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* FF 3.6+ */  
-"></div>
+  <div style="width: 745px; height: 200px;  padding-bottom:0px;background: url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);"></div>
 
    <?php } else {?>
-   
-<div style="width: 745px; height: 200px; padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>); /* FF 3.6+ */  
-"></div>
+
+<div style="width: 745px; height: 200px; padding-bottom:0px;background: url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>); "></div>
 
 	 <?php  }
       ?>
@@ -75,7 +73,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
   </div>
 </div>
 </div>
-
+</br>
 
                                                         <fieldset>
                                                             
