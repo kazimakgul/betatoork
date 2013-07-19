@@ -1807,6 +1807,7 @@ function getExtension($str) {
 			
 			$this->Game->create();
 			$this->Game->validate = array();//This line disabled validation rules for game add action.
+			Configure::write('debug', 0);
 	        if ($this->Game->save($this->request->data)) {
 			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userId));
 			    $id=$this->Game->getLastInsertId();
