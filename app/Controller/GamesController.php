@@ -2405,7 +2405,7 @@ public function edit2($id = null) {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 		
-		   $this->request->data['Game']['name']=substr($this->secureSuperGlobalPOST($this->request->data['Game']['name']),25);
+		   $this->request->data['Game']['name']=substr($this->secureSuperGlobalPOST($this->request->data['Game']['name']),0,25);
 		   $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($this->request->data['Game']['description']);
 		   
 			//$this->request->data['Game']['link']=$this->http_check($this->request->data['Game']['link']);
