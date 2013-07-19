@@ -150,7 +150,7 @@ class ApisController extends AppController {
 			//=============/Get ScreenShot=================		
 			
 	  
-	  $this->request->data['Game']['name']=substr($this->secureSuperGlobalPOST($basic_info['title']),0,25);
+	  $this->request->data['Game']['name']=Inflector::slug(substr($this->secureSuperGlobalPOST($basic_info['title']),0,25));
 	  $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($basic_info['description']);
       $this->request->data['Game']['user_id'] = $this->Auth->user('id');
 	  $this->request->data['Game']['link'] = $url;	
