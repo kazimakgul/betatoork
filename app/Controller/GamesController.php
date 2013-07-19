@@ -2392,8 +2392,6 @@ public function edit2($id = null) {
     	$limit=12;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
-	
-	echo $this->checkDuplicateSeoUrl();
 
 
 		$this->Game->id = $id;
@@ -2439,7 +2437,7 @@ public function edit2($id = null) {
 			
 			
 			//seourl begins
-		     $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
+		     $this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])));
 		    //seourl ends
 			
 			
