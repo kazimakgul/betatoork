@@ -142,9 +142,10 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                                                 
 <?php echo $this->Form->input('username',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 <?php echo $this->Form->input('edit_picture',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
-<?php echo $this->Form->input('banner',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 <?php echo $this->Form->input('description',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 <?php echo $this->Form->input('adcode',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
+<input data-form="uniform" id="inputUpload" type="file" name="data[User][banner]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100" />
+<input data-form="uniform" id="inputUpload" type="file" name="data[User][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100" />
                                                             
 
                                                             <div class="well control-group">
