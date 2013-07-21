@@ -105,6 +105,15 @@ class ApisController extends AppController {
 
 }
 
+function seoUrlFormer($material='toork')
+{
+//Add incremental number at the end of the seo_url
+preg_match('/^([^\d]+)([\d]*?)$/', $material, $match);
+$material = $match[1];
+$number = $match[2] + 1;
+return $material.$number;
+}
+
 	
 	public function duplicate_seourl($seo_url='undefined')
 	{
