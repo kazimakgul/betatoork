@@ -157,8 +157,7 @@ class ApisController extends AppController {
 	  $this->request->data['Game']['picture'] = $fileName.".png";
 	 		
 		//seourl begins
-		$var=str_replace('_','',Inflector::slug(strtolower(str_replace(' ','-',$this->request->data['Game']['name']))),'_');
-		$this->request->data['Game']['seo_url']=$this->duplicate_seourl($var);
+		$this->request->data['Game']['seo_url']=str_replace('_','',Inflector::slug($this->duplicate_seourl($this->request->data['Game']['name'])));
 		//seourl ends
 			
 			$this->Game->create();
