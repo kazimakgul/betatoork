@@ -115,27 +115,6 @@ return $material.$number;
 }
 
 	
-	public function duplicate_seourl($seo_url='undefined')
-	{
-	$flag=0;
-	$count=1;
-	
-	do{
-	$seo_check=$this->Game->find('first',array('contain'=>false,'fields'=>array('Game.seo_url'),'conditions'=>array('Game.seo_url'=>$seo_url)));
-	  if($seo_check!=NULL)
-	  {
-	  $seo_url_gen=$seo_url.'-'.$count;
-	  $count++;
-	  }else{
-	  $flag=1;
-	  $seo_url_gen=$seo_url;
-	  }
-	}while($flag=0);
-	
-	return $seo_url_gen;
-	
-	}
-	
 	public function addgame_ajax($url='http://www.toork.com')
    {
    $this->layout='ajax';
