@@ -1018,7 +1018,6 @@ $('#chaingame').live('click',function () {
     {   
 	    game_name=$('#game_name').val();
 		$.get(chaingame + '/'+game_id, function (data) {
-			alert(data);
 			if(data==1)
 			{
 			  $.pnotify({
