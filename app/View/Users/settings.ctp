@@ -77,6 +77,11 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 
                                                         <fieldset>
                                                             
+<?php echo $this->Form->input('fb_link',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
+<?php echo $this->Form->input('twitter_link',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
+<?php echo $this->Form->input('gplus_link',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
+															
+															
                                                             <div class="control-group  input-prepend">
                                                                 <label class="control-label" for="required">Channel Name</label>
                                                                 <div class="controls">
@@ -136,6 +141,10 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                                                          
                                                 
 <?php echo $this->Form->input('username',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
+<?php echo $this->Form->input('edit_picture',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
+<?php echo $this->Form->input('banner',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
+<?php echo $this->Form->input('description',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
+<?php echo $this->Form->input('adcode',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
                                                             
 
                                                             <div class="well control-group">

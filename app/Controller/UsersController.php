@@ -609,6 +609,11 @@ public function set_suggested_channels()
 			'username' => $this->request->data['User']['username'],
 			'description' => $this->request->data['User']['description'],
 			'website' => $this->request->data['User']['website'],
+			'adcode' => $this->request->data['User']['adcode'],
+			'fb_link' => $this->request->data['User']['fb_link'],
+			'twitter_link' => $this->request->data['User']['twitter_link'],
+			'gplus_link' => $this->request->data['User']['gplus_link'],
+			'website' => $this->request->data['User']['website'],
 			'seo_username' => $this->request->data['User']['seo_username']));
 			
 			if($myval!="")
