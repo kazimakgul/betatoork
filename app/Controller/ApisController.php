@@ -109,6 +109,24 @@ class ApisController extends AppController {
 	
 	}
 	
+	function checkDuplicateSeoUrl($seo_url='toork')
+{
+
+  do {
+  
+     $data=$this->Game->find('all',array('contain'=>false,'conditions'=>array('Game.seo_url'=>$seo_url),'fields'=>array('seo_url')));
+     if($data==NULL)
+	 {
+	 return $seo_url;
+	 }else{
+	 $seo_url=$this->seoUrlFormer($seo_url);
+	 }
+    
+  } while(1==1);
+
+}
+	
+	
 	public function addgame_ajax($url='http://www.toork.com')
    {
    $this->layout='ajax';
@@ -157,7 +175,7 @@ class ApisController extends AppController {
 	  $this->request->data['Game']['picture'] = $fileName.".png";
 	 		
 		//seourl begins
-		$this->request->data['Game']['seo_url']=str_replace('_','',Inflector::slug(strtolower(str_replace(' ','-',$this->request->data['Game']['name']))),'_');
+		$this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(str_replace('_','',Inflector::slug(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])))));
 		//seourl ends
 			
 			$this->Game->create();
