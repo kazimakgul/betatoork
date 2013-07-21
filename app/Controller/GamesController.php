@@ -2438,7 +2438,7 @@ public function edit2($id = null) {
 			
 			
 			//seourl begins
-		     $this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(str_replace('_','-',Inflector::slug(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])))));
+		     $this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(str_replace('_','',Inflector::slug(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])))));
 		    //seourl ends
 			
 			
