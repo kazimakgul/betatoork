@@ -66,19 +66,168 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
         <!-- The drop down menu -->
         <ul class="nav pull-right">
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="elusive-compass"></i> Explore <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="<?php echo $bestchannels; ?>"><i class="elusive-user color-blue"></i> Best Channels</a></li>
-                    <li><a href="<?php echo $toprated; ?>"><i class="elusive-fire color-red"></i> Hot Games</a></li>
-                    <li><a href="<?php echo $newgames; ?>"><i class="elusive-eye-open color-green"></i> New Games</a></li>
-                </ul>
-            </li>
+                    <div class="span2">
+                        <!--panel button ext-->
+                       
+                            <div class="btn-group pull-right">
+                                <!--notification-->
+                                <a class="btn btn-danger" data-toggle="dropdown" href="#" title="7 new notifications"><i class="elusive-bullhorn"></i> 6</a>
+                                <ul class="dropdown-menu dropdown-notification">
+                                    <li class="dropdown-header grd-white"><a href="#">View All Notifications</a></li>
+                                    <li class="new">
+                                        <a href="#">
+                                            
+                                            <div class="media">
+                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Miniclip<small class="helper-font-small"> 5 hours ago</small></h4>
+                                                    <p>Commented on Angry Birds</p><small>This game is really rocks man. Hope you make more games</small>
+                                                    
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="new">
+                                        <a href="#">
+                                            
+                                            <div class="media">
+                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/644/toorkish_toork_1_original.png" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Toorkish<small class="helper-font-small"> 7 hours ago</small></h4>
+                                                    <p>Rate on Ice Age Meltdown</p><small>Rewarded as 4 stars</small>
+                                                    
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="new">
+                                        <a href="#">
+                                            
+                                            <div class="media">
+                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/1208/playstation_avatar_toork_original.gif" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Playstation<small class="helper-font-small"> 2 days ago</small></h4>
+                                                    <p>Mentioned your name.</p><small>@socialesman thanks for the good comment on ps4</small>
+                                                    
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="new">
+                                        <a href="#">
+                                            
+                                            <div class="media">
+                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/2124/lego_star_wars_3_toork_original.jpg" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">StarWars<small class="helper-font-small"> 3 days ago</small></h4>
+                                                    <p>Cloned your game Gravity Guy</p><small>+3 clones has been made so far.</small>
+                                                    
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="new">
+                                        <a href="#">
+                                            
+                                            <div class="media">
+                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/1208/playstation_avatar_toork_original.gif" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Playstation<small class="helper-font-small"> 4 days ago</small></h4>
+                                                    <p>Following you now.</p><small>Get all the good news from playstation channel</small>
+                                                    
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="new">
+                                        <a href="#">
+                                            
+                                            <div class="media">
+                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/540/110588_full_original.jpg" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Metal Slug<small class="helper-font-small"> 4 days ago</small></h4>
+                                                    <p>Favorited your game Need For Speed Online</p><small>+17 Favorites has been made so far.</small>
+                                                    
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="new">
+                                        <a href="#">
+                                            <div class="notification">Request new order</div>
+                                            <div class="media">
+                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Tortor dapibus</h4>
+                                                    <p>Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="new">
+                                        <a href="#">
+                                            <div class="notification">Request new order</div>
+                                            <div class="media">
+                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Lacinia non</h4>
+                                                    <p>Messenger bag gentrify pitchfork tattooed craft beer.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="notification">John Doe commented on a post</div>
+                                            <div class="media">
+                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Lorem ipsum <small class="helper-font-small"> john doe</small></h4>
+                                                    <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="notification">Request new order</div>
+                                            <div class="media">
+                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Tortor dapibus</h4>
+                                                    <p>Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="notification">Request new order</div>
+                                            <div class="media">
+                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Lacinia non</h4>
+                                                    <p>Messenger bag gentrify pitchfork tattooed craft beer.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- <li class="dropdown-footer"><a href=""></a></li> -->
+                                </ul><!--notification-->
+                            </div>
+                       
+                    </div>
           <li class="divider-vertical"></li>
 
           <li class="dropdown user-group">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-            <div class="pull-left "> <i class="icofont-comments color-red"></i> Post <strong class="caret"></strong></div></a>
+            <div class="pull-left "> <i class="icofont-comments"></i> Post <strong class="caret"></strong></div></a>
             <div class="dropdown-menu dropdown-user color-red" role="menu" style="padding:5px; padding-bottom: 5px;">
                                         
                                            

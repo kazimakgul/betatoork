@@ -4,35 +4,67 @@ $router = Router::url();
 
 if ($this->action == "dashboard"){
     $class = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";
 }elseif($this->action == "mygames"){
     $class2 = "class='active'";
-    $class = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";
+    $class = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";
 }elseif($this->action == "favorites"){
     $class3 = "class='active'";
-    $class2 = "";$class = "";$class4 = "";$class5 = "";$class6 = "";
+    $class2 = "";$class = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";
 }elseif($this->action == "chains"){
     $class4 = "class='active'";
-    $class2 = "";$class3 = "";$class = "";$class5 = "";$class6 = "";
+    $class2 = "";$class3 = "";$class = "";$class5 = "";$class6 = "";$class7 = "";
 }elseif($this->action == "wall3"){
     $class5 = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class = "";$class6 = "";
+    $class2 = "";$class3 = "";$class4 = "";$class = "";$class6 = "";$class7 = "";
 }elseif($this->action == "settings"){
     $class6 = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class = "";
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class7 = "";$class = "";
+}elseif($this->action == ("bestchannels2" || "toprated2")){
+    $class7 = "class='active'";
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class = "";
 }else{
-    $class = "";$class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";
+    $class = "";$class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";
 }
 
  ?>
-
-
 
 
  <div class="span1">
                     <!--side bar-->
                     <aside class="side-left">
                         <ul class="sidebar" data-step="2" data-position="bottom" data-intro="Hey this is your personal menu. Everything here belongs to you click on some of them and start building your game channel.">
+                            
+                            <li <?php echo $class7;?>>
+                                <a href="<?php echo $bestchannels; ?>" title="Settings">
+                                    <div class="helper-font-24">
+                                        <i class="elusive-compass"></i>
+                                    </div>
+                                    <span class="sidebar-text">Explore</span>
+                                </a>
+                                <ul class="sub-sidebar-form corner-top shadow-white">
+                                    <li>
+                                        <a href="<?php echo $bestchannels; ?>" title="Best Channel" class="corner-all">
+                                            <i class="elusive-user color-blue"></i>
+                                            <span class="sidebar-text">Best Channels</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo $toprated; ?>" title="Edit" class="corner-all">
+                                            <i class="elusive-fire color-red"></i> 
+                                            <span class="sidebar-text">Hot Games</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo $newgames; ?>" title="Change Password" class="corner-all">
+                                            <i class="elusive-eye-open color-green"></i>
+                                            <span class="sidebar-text">New Games</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
                             <li <?php echo $class;?>> <!--always define class .first for first-child of li element sidebar left-->
                                 <a href="<?php echo $dashboard; ?>" title="dashboard">
                                     <div class="helper-font-24">
