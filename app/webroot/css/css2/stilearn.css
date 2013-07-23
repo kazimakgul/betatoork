@@ -224,6 +224,12 @@ ul.dropdown-notification > li.new{
     color: #999;
 }
 
+ul.dropdown-notification > li.read{
+    background: rgba(238, 238, 238, 0.4);
+    color: #999;
+    opacity:0.6;
+}
+
 ul.dropdown-notification > li:hover{
     background: rgba(238, 238, 238, .6);
 }

@@ -69,12 +69,12 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                     <div class="span2">
                         <!--panel button ext-->
                        
-                            <div class="btn-group pull-right">
+                            <div class="pull-right">
                                 <!--notification-->
                                 <a class="btn btn-danger" data-toggle="dropdown" href="#" title="7 new notifications"><i class="elusive-bullhorn"></i> 6</a>
                                 <ul class="dropdown-menu dropdown-notification">
                                     <li class="dropdown-header grd-white"><a href="#">View All Notifications</a></li>
-                                    <li class="new">
+                                    <li >
                                         <a href="#">
                                             
                                             <div class="media">
@@ -88,7 +88,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         </a>
                                     </li>
 
-                                    <li class="new">
+                                    <li >
                                         <a href="#">
                                             
                                             <div class="media">
@@ -102,7 +102,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         </a>
                                     </li>
 
-                                    <li class="new">
+                                    <li>
                                         <a href="#">
                                             
                                             <div class="media">
@@ -116,7 +116,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         </a>
                                     </li>
 
-                                    <li class="new">
+                                    <li class="read">
                                         <a href="#">
                                             
                                             <div class="media">
@@ -130,7 +130,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         </a>
                                     </li>
 
-                                    <li class="new">
+                                    <li class="read">
                                         <a href="#">
                                             
                                             <div class="media">
@@ -144,7 +144,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         </a>
                                     </li>
 
-                                    <li class="new">
+                                    <li class="read">
                                         <a href="#">
                                             
                                             <div class="media">
@@ -158,7 +158,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         </a>
                                     </li>
 
-                                    <li class="new">
+                                    <li class="read">
                                         <a href="#">
                                             <div class="notification">Request new order</div>
                                             <div class="media">
@@ -170,7 +170,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="new">
+                                    <li >
                                         <a href="#">
                                             <div class="notification">Request new order</div>
                                             <div class="media">
