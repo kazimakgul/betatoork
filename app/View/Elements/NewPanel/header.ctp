@@ -78,9 +78,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         <a href="#">
                                             
                                             <div class="media">
-                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg" />
+                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg" />
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">Miniclip<small class="helper-font-small"> 5 hours ago</small></h4>
+                                                    <h4 class="media-heading">Miniclip<small class=" pull-right helper-font-small"> 5 hours ago</small></h4>
                                                     <p>Commented on Angry Birds</p><small>This game is really rocks man. Hope you make more games</small>
                                                     
                                                 </div>
@@ -92,9 +92,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         <a href="#">
                                             
                                             <div class="media">
-                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/644/toorkish_toork_1_original.png" />
+                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/644/toorkish_toork_1_original.png" />
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">Toorkish<small class="helper-font-small"> 7 hours ago</small></h4>
+                                                    <h4 class="media-heading">Toorkish<small class="pull-right helper-font-small"> 7 hours ago</small></h4>
                                                     <p>Rate on Ice Age Meltdown</p><small>Rewarded as 4 stars</small>
                                                     
                                                 </div>
@@ -106,9 +106,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         <a href="#">
                                             
                                             <div class="media">
-                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/1208/playstation_avatar_toork_original.gif" />
+                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/1208/playstation_avatar_toork_original.gif" />
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">Playstation<small class="helper-font-small"> 2 days ago</small></h4>
+                                                    <h4 class="media-heading">Playstation<small class="pull-right helper-font-small"> 2 days ago</small></h4>
                                                     <p>Mentioned your name.</p><small>@socialesman thanks for the good comment on ps4</small>
                                                     
                                                 </div>
@@ -120,9 +120,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         <a href="#">
                                             
                                             <div class="media">
-                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/2124/lego_star_wars_3_toork_original.jpg" />
+                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/2124/lego_star_wars_3_toork_original.jpg" />
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">StarWars<small class="helper-font-small"> 3 days ago</small></h4>
+                                                    <h4 class="media-heading">StarWars<small class="pull-right helper-font-small"> 3 days ago</small></h4>
                                                     <p>Cloned your game Gravity Guy</p><small>+3 clones has been made so far.</small>
                                                     
                                                 </div>
@@ -134,9 +134,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         <a href="#">
                                             
                                             <div class="media">
-                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/1208/playstation_avatar_toork_original.gif" />
+                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/1208/playstation_avatar_toork_original.gif" />
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">Playstation<small class="helper-font-small"> 4 days ago</small></h4>
+                                                    <h4 class="media-heading">Playstation<small class="pull-right helper-font-small"> 4 days ago</small></h4>
                                                     <p>Following you now.</p><small>Get all the good news from playstation channel</small>
                                                     
                                                 </div>
@@ -148,9 +148,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                         <a href="#">
                                             
                                             <div class="media">
-                                                <img class="media-object pull-left thumbnail" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/540/110588_full_original.jpg" />
+                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/540/110588_full_original.jpg" />
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">Metal Slug<small class="helper-font-small"> 4 days ago</small></h4>
+                                                    <h4 class="media-heading">Metal Slug<small class="pull-right helper-font-small"> 4 days ago</small></h4>
                                                     <p>Favorited your game Need For Speed Online</p><small>+17 Favorites has been made so far.</small>
                                                     
                                                 </div>
@@ -281,9 +281,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
             <div class="pull-left " style="margin:-9px 0px 0px 0px;">
   <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'20','class'=>'img-polaroid',"alt" => "toork avatar image")); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'29',"alt" => "toork avatar image")); 
     } else {
-      echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'20','onerror'=>'imgError(this,"avatar");')); }
+      echo $this->Upload->image($user,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'29','onerror'=>'imgError(this,"avatar");')); }
   ?>
 
                 <?php echo $username ?></div><strong class="caret"></strong></a>
