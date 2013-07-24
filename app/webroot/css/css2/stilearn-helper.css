@@ -437,6 +437,19 @@ h1,h2,h3,h4,h5,h6{
 /** end background gradient helper **/
 
 /** font size helper **/
+
+.helper-font-4{
+    font-size : 4px;
+}
+
+.helper-font-6{
+    font-size : 6px;
+}
+
+.helper-font-9{
+    font-size : 9px;
+}
+
 .helper-font-small{
     font-size : 11px;
 }
