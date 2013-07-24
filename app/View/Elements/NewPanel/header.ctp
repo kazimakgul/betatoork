@@ -2,18 +2,6 @@
 $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 ?>
 
-<script type="text/javascript">
-<!--
-    function toggle_visibility(id) {
-       var e = document.getElementById(id);
-       if(e.style.display == 'block')
-          e.style.display = 'none';
-       else
-          e.style.display = 'block';
-    }
-//-->
-</script>
-
         <!-- section header -->
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
@@ -94,19 +82,19 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                                 <div class="media-body">
                                                     <h4 class="media-heading"><p class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;">Miniclip</p><small class=" pull-right helper-font-small"> 5 hours ago</small></h4>
                                                     <p>Commented on Angry Birds</p><small class="helper-font-9">This game is really rocks man. Hope you make more games</small>
-                                                    <p class="helper-font-6" id="hideme" style="display:none;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
+                                                    <p class="helper-font-6"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
                                                 </div>
                                             </div>
                                         
                                     </li>
-                                    <li onmouseover="toggle_visibility('hideme1');"onmouseout="toggle_visibility('hideme1');">
+                                    <li>
                                         
                                             <div class="media" style="margin:5px;">
                                                 <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/644/toorkish_toork_1_original.png" />
                                                 <div class="media-body">
                                                     <h4 class="media-heading"><p class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;">Toorkish</p><small class=" pull-right helper-font-small"> 7 hours ago</small></h4>
                                                     <p>Rate on Ice Age Meltdown</p><small class="helper-font-9">Rewarded as 4 stars</small>
-                                                    <p class="helper-font-6" id="hideme1" style="display:none;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
+                                                    <p class="helper-font-6"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
                                                 </div>
                                             </div>
                                         
