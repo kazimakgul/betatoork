@@ -1021,8 +1021,8 @@ $('#chaingame').live('click',function () {
 			if(data==1)
 			{
 			  $.pnotify({
-			  title: 'You have chained succesfully.',
-              text: 'You have chained.<strong>'+game_name+'</strong> game.You will be able to edit this game as you wish on your games section.',
+			  title: 'You have cloned succesfully.',
+              text: 'You have cloned. <strong>'+game_name+'</strong> game. You will be able to edit this game as you wish on your games section.',
               type: 'success'
               });  
 			}else{
@@ -1041,7 +1041,7 @@ $('#chaingame').live('click',function () {
 		
 		 $.pnotify({
             title: 'Sign in Please',
-            text: 'You have to sign in first to chain games.',
+            text: 'You have to sign in first to clone games.',
             type: 'error'
           });	
 		
@@ -1062,8 +1062,8 @@ if(user_auth==1)
 			if(data==1)
 			{
 			  $.pnotify({
-			  title: 'You have chained succesfully.',
-              text: 'You have chained.<strong>'+game_name+'</strong> game.You will be able to edit this game as you wish on your games section.',
+			  title: 'You have cloned succesfully.',
+              text: 'You have cloned. <strong>'+game_name+'</strong> game. You will be able to edit this game as you wish on your games section.',
               type: 'success'
               });  
 			}else{
@@ -1082,7 +1082,7 @@ if(user_auth==1)
 		
 		 $.pnotify({
             title: 'Sign in Please',
-            text: 'You have to sign in first to chain games.',
+            text: 'You have to sign in first to clone games.',
             type: 'error'
           });	
 		
