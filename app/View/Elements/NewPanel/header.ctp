@@ -2,6 +2,18 @@
 $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 ?>
 
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+
         <!-- section header -->
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
@@ -75,18 +87,31 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                 <a class="btn btn-danger" data-toggle="dropdown" href="#" title="7 new notifications"><i class="elusive-bullhorn"></i> 6</a>
                                 <ul class="dropdown-menu dropdown-notification">
                                     <li class="dropdown-header grd-white"><a href="#">View All Notifications</a></li>
-                                    <li>
+                                    <li onmouseover="toggle_visibility('hideme');"onmouseout="toggle_visibility('hideme');">
                                         
                                             <div class="media" style="margin:5px;">
                                                 <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg" />
                                                 <div class="media-body">
                                                     <h4 class="media-heading"><p class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;">Miniclip</p><small class=" pull-right helper-font-small"> 5 hours ago</small></h4>
                                                     <p>Commented on Angry Birds</p><small class="helper-font-9">This game is really rocks man. Hope you make more games</small>
-                                                    <p class="helper-font-6" style="opacity:0.7;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
+                                                    <p class="helper-font-6" id="hideme" style="display:none;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
                                                 </div>
                                             </div>
                                         
                                     </li>
+                                    <li onmouseover="toggle_visibility('hideme1');"onmouseout="toggle_visibility('hideme1');">
+                                        
+                                            <div class="media" style="margin:5px;">
+                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/644/toorkish_toork_1_original.png" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><p class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;">Toorkish</p><small class=" pull-right helper-font-small"> 7 hours ago</small></h4>
+                                                    <p>Rate on Ice Age Meltdown</p><small class="helper-font-9">Rewarded as 4 stars</small>
+                                                    <p class="helper-font-6" id="hideme1" style="display:none;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
+                                                </div>
+                                            </div>
+                                        
+                                    </li>
+
                                     <li>
                                         
                                             <div class="media" style="margin:5px;">
@@ -94,20 +119,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                                 <div class="media-body">
                                                     <h4 class="media-heading"><p class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;">Toorkish</p><small class=" pull-right helper-font-small"> 7 hours ago</small></h4>
                                                     <p>Rate on Ice Age Meltdown</p><small class="helper-font-9">Rewarded as 4 stars</small>
-                                                    <p class="helper-font-6" style="opacity:0.7;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
-                                                </div>
-                                            </div>
-                                        
-                                    </li>
-
-                                    <li class="read">
-                                        
-                                            <div class="media" style="margin:5px;">
-                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/644/toorkish_toork_1_original.png" />
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><p class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;">Toorkish</p><small class=" pull-right helper-font-small"> 7 hours ago</small></h4>
-                                                    <p>Rate on Ice Age Meltdown</p><small class="helper-font-9">Rewarded as 4 stars</small>
-                                                    <p class="helper-font-6" style="opacity:0.7;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
+                                                    <p class="helper-font-6"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
                                                     
                                                 </div>
                                             </div>
@@ -115,52 +127,136 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                     </li>
 
                                     <li>
+                                        
                                             <div class="media" style="margin:5px;">
                                                 <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/1208/playstation_avatar_toork_original.gif" />
                                                 <div class="media-body">
                                                     <h4 class="media-heading"><p class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;">Playstation</p><small class=" pull-right helper-font-small"> 3 days ago</small></h4>
                                                     <p>Mentioned your name.</p><small class="helper-font-9">@socialesman thanks for the comment you made on ps4.</small>
-                                                    <p class="helper-font-6" style="opacity:0.7;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
+                                                    <p class="helper-font-6"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
                                                     
                                                 </div>
                                             </div>
                                         
                                     </li>
-                                    <li class="read">
-                                            <div class="media" style="margin:5px;">
-                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/2124/lego_star_wars_3_toork_original.jpg" />
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><p class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;">StarWars</p><small class=" pull-right helper-font-small"> 4 days ago</small></h4>
-                                                    <p>Cloned your game Gravity Guy</p><small class="helper-font-9">+3 clones has been made so far.</small>
-                                                    <p class="helper-font-6" style="opacity:0.7;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
-                                                    
-                                                </div>
-                                            </div>
-                                        
-                                    </li>
-                                    <li >
-                                            <div class="media" style="margin:5px;">
+
+                                    <li>
+                                        <a href="#">
+                                            
+                                            <div class="media">
                                                 <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/1208/playstation_avatar_toork_original.gif" />
                                                 <div class="media-body">
-                                                    <h4 class="media-heading"><p class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;">Playstation</p><small class=" pull-right helper-font-small"> 4 days ago</small></h4>
-                                                    <p>Following you now.</p><small class="helper-font-9">Get all the good news from playstation channel (this is channel description)</small>
-                                                    <p class="helper-font-6" style="opacity:0.7;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
+                                                    <h4 class="media-heading">Playstation<small class="pull-right helper-font-small"> 2 days ago</small></h4>
+                                                    <p>Mentioned your name.</p><small>@socialesman thanks for the good comment on ps4</small>
+                                                    
                                                 </div>
                                             </div>
-                                        
+                                        </a>
                                     </li>
-                                    <li>
-                                            <div class="media" style="margin:5px;">
+
+                                    <li class="read">
+                                        <a href="#">
+                                            
+                                            <div class="media">
+                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/2124/lego_star_wars_3_toork_original.jpg" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">StarWars<small class="pull-right helper-font-small"> 3 days ago</small></h4>
+                                                    <p>Cloned your game Gravity Guy</p><small>+3 clones has been made so far.</small>
+                                                    
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="read">
+                                        <a href="#">
+                                            
+                                            <div class="media">
+                                                <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/1208/playstation_avatar_toork_original.gif" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Playstation<small class="pull-right helper-font-small"> 4 days ago</small></h4>
+                                                    <p>Following you now.</p><small>Get all the good news from playstation channel</small>
+                                                    
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="read">
+                                        <a href="#">
+                                            
+                                            <div class="media">
                                                 <img class="media-object pull-left img-polaroid" width="48" src="https://s3.amazonaws.com/betatoorkpics/upload/users/540/110588_full_original.jpg" />
                                                 <div class="media-body">
-                                                    <h4 class="media-heading"><p class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;">Metal Slug</p><small class=" pull-right helper-font-small"> 5 days ago</small></h4>
-                                                    <p>Favorited your game Need For Speed Online</p><small class="helper-font-9">+17 Favorites has been made so far.</small>
-                                                    <p class="helper-font-6" style="opacity:0.7;"><a class="helper-font-9 btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="helper-font-9 btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Burning</a></p>
+                                                    <h4 class="media-heading">Metal Slug<small class="pull-right helper-font-small"> 4 days ago</small></h4>
+                                                    <p>Favorited your game Need For Speed Online</p><small>+17 Favorites has been made so far.</small>
+                                                    
                                                 </div>
                                             </div>
-                                        
+                                        </a>
                                     </li>
-                                   <!-- <li class="dropdown-footer"><a href="">View All Notifications</a></li> -->
+
+                                    <li class="read">
+                                        <a href="#">
+                                            <div class="notification">Request new order</div>
+                                            <div class="media">
+                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Tortor dapibus</h4>
+                                                    <p>Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="#">
+                                            <div class="notification">Request new order</div>
+                                            <div class="media">
+                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Lacinia non</h4>
+                                                    <p>Messenger bag gentrify pitchfork tattooed craft beer.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="notification">John Doe commented on a post</div>
+                                            <div class="media">
+                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Lorem ipsum <small class="helper-font-small"> john doe</small></h4>
+                                                    <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="notification">Request new order</div>
+                                            <div class="media">
+                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Tortor dapibus</h4>
+                                                    <p>Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="notification">Request new order</div>
+                                            <div class="media">
+                                                <img class="media-object pull-left" data-src="js/holder.js/64x64" />
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Lacinia non</h4>
+                                                    <p>Messenger bag gentrify pitchfork tattooed craft beer.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- <li class="dropdown-footer"><a href=""></a></li> -->
                                 </ul><!--notification-->
                             </div>
                        
