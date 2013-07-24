@@ -22,7 +22,7 @@ else{
                 <i class="elusive-bookmark color-blue"></i>
               </div>
               <div class="helper-font-24" style="margin: 0px 0px 0px -9px; z-index:1; position:absolute;">
-                <i rel="tooltip" data-placement="top" data-original-title="Chained"  class="icofont-link color-white" style="margin: 6px 0px 0px 8px;"></i>
+                <i rel="tooltip" data-placement="top" data-original-title="Clone"  class="elusive-tint color-white" style="margin: 0px 0px 0px 12px;"></i>
               </div>
               <?php } ?>
                 <div class="navbar"><div class="navbar-inner" style="padding:10px 10px 5px 10px;">

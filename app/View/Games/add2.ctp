@@ -25,10 +25,10 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
                     <div class="alert alert-block fadein">
                         <button type="button" class="close" data-dismiss="alert">×</button>
-                        <p><h5 class="alert-heading">Do you know what <a class="btn btn-success btn-mini icofont-link"> Chain</a> is? </br>Its the easy way of adding a game to your channel.</h5></p>
+                        <p><h5 class="alert-heading">Do you know what <a class="btn btn-success btn-mini"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone</a> is? </br>Its the easy way of adding a game to your channel.</h5></p>
                         
-                        <p><i class="elusive-info-sign"></i> If you chain a game, a clone of the game will be created in your games section and you will be able to edit the game as you wish.</p>
-                        <p><i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini icofont-link"></a> chain button at the bottom of the page on the rating bar.</p>
+                        <p><i class="elusive-info-sign"></i> If you clone a game, a clone of the game will be created in your games section and you will be able to edit the game as you wish.</p>
+                        <p><i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i></a> clone button at the bottom of the page on the rating bar.</p>
                         
                     </div>
 

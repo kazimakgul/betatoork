@@ -2,7 +2,7 @@
             <div id="modal-tutorial2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modal-recoverLabel" aria-hidden="true">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3 id="modal-recoverLabel">Chain 3 Games<small> to build your channel!</small></h3>
+                    <h3 id="modal-recoverLabel">Clone 3 Games<small> to build your channel!</small></h3>
                 </div>
                 <div style="background-color:#ADD8E6;" class="modal-body">
                         <p class="alert alert-warning">

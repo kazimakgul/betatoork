@@ -22,13 +22,13 @@ $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"
      <a rel="tooltip" data-placement="bottom" data-original-title="Add a Game" href="<?php echo $addgame; ?>" class="btn btn-danger" style="margin:0px 3px 5px 0px;">
         <i class="elusive-plus"></i> Add Game
     </a>
-     <a style="margin:0px 3px 5px 0px;" rel="tooltip" id="ratebarchain" data-toggle="popover" data-placement="bottom" data-html="true" title="How to Chain?" data-original-title="How to Chain?" class="btn btn-success" data-content='
+     <a style="margin:0px 3px 5px 0px;" rel="tooltip" id="ratebarchain" data-toggle="popover" data-placement="bottom" data-html="true" title="How to Clone?" data-original-title="How to Clone?" class="btn btn-success" data-content='
                        <p class="alert alert-info" STYLE="font-size:10pt;">
-                            <i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini icofont-link"></a> chain button at the bottom of the page on the rating bar.
+                            <i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i></a> clone button at the bottom of the page on the rating bar.
                       </p>
 
                         <p>
- <i class="elusive-info-sign"></i> If you chain a game, a clone of the game will be created in your games section and you will be able to edit the game as you wish.
+ <i class="elusive-info-sign"></i> If you clone a game, a clone of the game will be created in your games section and you will be able to edit the game as you wish.
                         </p>
 
                        <a href="<?php echo $dashboard; ?>" class="btn btn-danger btn-small btn-block">
@@ -39,7 +39,7 @@ $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"
                         <p STYLE="font-size:10pt;">
                           Its the easy way of adding a game to your channel.</p>
                   '>
-        <i class="icofont-link"></i> Chain
+        <i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone
     </a>
   </p>
 
