@@ -160,7 +160,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                             </div>
                                         
                                     </li>
-                                   <!-- <li class="dropdown-footer"><a href="">View All Notifications</a></li> -->
+                                   <li class="dropdown-footer"><a href="">Load More Notifications</a></li>
                                 </ul><!--notification-->
                             </div>
                        

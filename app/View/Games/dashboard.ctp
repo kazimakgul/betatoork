@@ -147,7 +147,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
                     <hr size="3" style="margin:0px 0px 5px 0px;">
                   <button id="success-post" type="submit" class="btn btn-inverse pull-right update_data" style="margin:0px 0px 0px 0px;">Publish</button>
-                  <div><a class="btn btn-link btn-mini" href="<?php echo $wall; ?>">Whats New?</a><a class="btn btn-link btn-mini" href="<?php echo $profilepublic; ?>" rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$user['User']['seo_username'];?>">Public Channel </a><a class="btn btn-link btn-mini" href="<?php echo $settings; ?>">Customize Channel</a></div>
+                  <div><a class="btn btn-link btn-mini" href="<?php echo $wall; ?>">Whats New?</a><a class="btn btn-link btn-mini" href="<?php echo $profilepublic; ?>" rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$user['User']['seo_username'];?>">Public Channel </a></div>
                 </form></br>
               </div>
             </div>
