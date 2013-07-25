@@ -79,6 +79,5 @@
                                 </div>
                             </div><!-- /sidebar-right-content -->
                         </div><!-- /sidebar-right -->
-                       <div class="well" style="padding:3px; margin:5px; border-radius:0px;"><small><i class="elusive-info-sign"></i> Hit the green plus button to follow the game channels and be notified about the news they have.</small></div>
                     </aside><!-- /side-right -->
                 </div><!-- /span side-right -->
