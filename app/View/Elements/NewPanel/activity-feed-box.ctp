@@ -25,7 +25,7 @@ else{
                                                     
                                                         <!--we use contact-item structure like the component media in bootstrap-->
 
-                                                        <div class="contact-item" style="margin:5px;">
+                                                        <div class="contact-item" style="margin:5px 5px 0px 5px;">
                                                             <div class="pull-left">
                                                                 <?php 
               if($card[6]['User']['picture']==null) { 
@@ -36,8 +36,10 @@ else{
                                                             </div>
                                                             <div class="contact-item-body">
 
-                                                                <a class="contact-item-heading btn-link btn-mini bold" href="<?php echo $profileurl ?>"  style="margin:-10px 0px -25px 0px; padding-left:0px;padding-left:0px;"><?php echo $follower['User']['username']; ?></a>
+                                                                <a class="contact-item-heading btn-link btn-mini bold" href="<?php echo $profileurl ?>"  style="margin:-9px 0px -25px 0px; padding-left:0px;padding-left:0px;"><?php echo $follower['User']['username']; ?></a>
                                                                 <p style="margin-top:-5px; margin-bottom:-5px; padding:0px;"><small >Comment on Angry Birds and need for speed online</small></p>
+                                                                <i class="muted elusive-comment"></i>
+                                                                <small class="muted pull-right helper-font-9"> 5 days ago</small>
                                                             </div>
                                                         </div>
                                                    
