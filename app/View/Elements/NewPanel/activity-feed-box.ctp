@@ -20,12 +20,12 @@ else{
 			<div class="span12" style="margin:0px;">
 
 									
-				 <li class="header-control contact-alt grd-white" style="margin:0px 0px 3px 0px;">
+				 <li class="contact-alt grd-white" style="margin:0px 0px 3px 0px;">
                                                     <!--we use data toggle tab for navigate this action-->
-                                                    <a style="margin:0px 0px 5px 0px;" href="<?php echo $profileurl ?>" >
+                                                    
                                                         <!--we use contact-item structure like the component media in bootstrap-->
 
-                                                        <div class="contact-item">
+                                                        <div class="contact-item" style="margin:5px;">
                                                             <div class="pull-left">
                                                                 <?php 
               if($card[6]['User']['picture']==null) { 
@@ -36,13 +36,11 @@ else{
                                                             </div>
                                                             <div class="contact-item-body">
 
-                                                                <p class="contact-item-heading bold"><?php echo $follower['User']['username']; ?></p>
-                                                                <p class="help-block"><small >Comment on Angry Birds</small></p>
+                                                                <a class="contact-item-heading btn-link btn-mini bold" href="<?php echo $profileurl ?>"  style="margin:-10px 0px -25px 0px; padding-left:0px;padding-left:0px;"><?php echo $follower['User']['username']; ?></a>
+                                                                <p style="margin-top:-5px; margin-bottom:-5px; padding:0px;"><small >Comment on Angry Birds and need for speed online</small></p>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                    <div class="helper-font-9" style="margin:3px;">This game is really good. Follow us to be notified. <i class="elusive-thumbs-up color-blue" href="#"> Like</i> - <i class="elusive-ok color-blue" href="#"> Good</i> - <i class="elusive-fire color-blue" href="#"> Awesome</i></div>
-                                                    
+                                                   
                                                 </li>				
 			
 			</div>		
