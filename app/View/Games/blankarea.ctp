@@ -6,11 +6,26 @@
 
 <script type="text/javascript" src="http://54.225.196.20/js/js2/jquery.js"></script>
 <script type="text/javascript" src="http://54.225.196.20/js/wall/jquery.wallform.js"></script>
-<script type="text/javascript" src="http://54.225.196.20/js/wall/wall2.js"></script>
+
+<script>
+$('#photoimg').live('change', function()			
+{ 
+var values=$("#uploadvalues").val();
+$("#previeww").html('<img src="icons/loader.gif"/>');
+$("#imageform").ajaxForm({target: '#preview'  }).submit();
+
+var X=$('.preview').attr('id');
+var Z= X+','+values;
+if(Z!='undefined,')
+$("#uploadvalues").val(Z);
+
+});
+</script>
+
 </head>
 <body>
 
-<form id="imageform" method="post" enctype="multipart/form-data" action='http://127.0.0.1/betatoorkson/Wallentries/image_ajax'> 
+<form id="imageform" method="post" enctype="multipart/form-data" action='http://54.225.196.20/Wallentries/image_ajax'> 
 <div id='preview'>
 </div>
 
