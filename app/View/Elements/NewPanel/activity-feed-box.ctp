@@ -20,7 +20,7 @@ else{
 			<div class="span12" style="margin:0px;">
 
 									
-				 <li class="contact-alt grd-white" style="margin:0px 0px 3px 0px;">
+				 <li class="contact-alt grd-white" style="margin:0px 0px 3px 0px; ">
                                                     <!--we use data toggle tab for navigate this action-->
                                                     
                                                         <!--we use contact-item structure like the component media in bootstrap-->
