@@ -1581,7 +1581,7 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
 				
 				
                 if (move_uploaded_file($tmp, $path.$actual_image_name)) {
-				
+				/*
 		    //Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/wall");
 		    $files = $dir->find('.*');
@@ -1613,7 +1613,7 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
             $file->close(); 
             }
 			//Folder Formatting ends
-				   
+				   */
 			
                     $data = $Wall -> Image_Upload($uid, $actual_image_name);
                     $newdata = $Wall -> Get_Upload_Image($uid, $actual_image_name);
