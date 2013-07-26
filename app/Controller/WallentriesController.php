@@ -1533,7 +1533,6 @@ public function image_ajax() {
       App::uses('Folder', 'Utility');
       App::uses('File', 'Utility');
 
-$this->layout="ajax";
   
 error_reporting(0);
 App::import('Vendor', 'wallscript/config');

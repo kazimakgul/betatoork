@@ -215,9 +215,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                 
                             <!-ImageUploadPanel-><div id="imageupload" class="border" style="display:none;">
                             <?php $image_ajax_url= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax'));?>
-                            <form id="imagefor" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
-                            <div id='previe'></div>
-                            <span id='addphoto'>Add Photo:</span> <input type="file" name="photoim" id="photoim" />
+                            <form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
+                            <div id='preview'></div>
+                            <span id='addphoto'>Add Photo:</span> <input type="file" name="photoimg" id="photoimg" />
                             <input type='hidden' id='uploadvalues' />
                             </form>
                             </div><!-ImageUploadPanel-> 

@@ -117,22 +117,6 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('description_for_layout', 'Toork - find the most played online games and channels and play trend topic games');
 	}
 	
-	
-	public function blankarea()
-	{
-	$this->layout="ajax";
-	echo 'naber';
-	
-	}
-	
-	public function image_jaxo()
-	{
-	$this->layout="ajax";
-	echo 'image_jaxo';
-	
-	}
-	
-	
 	public function lastadded() {
    		$this->paginate = array(
 	   		'Game' => array('limit'=>28,'order' => array('created' => 'desc')));
