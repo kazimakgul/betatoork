@@ -4,9 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Facebook WallScript Version 5.0</title>
 
-<script type="text/javascript" src="http://127.0.0.1/submitex/js/jquery.min.js"></script>
-<script type="text/javascript" src="http://127.0.0.1/submitex/js/jquery.wallform.js"></script>
-<script type="text/javascript" src="http://127.0.0.1/submitex/js/wall.js"></script>
+<script type="text/javascript" src="http://54.225.196.20/js/js2/jquery.js"></script>
+<script type="text/javascript" src="http://54.225.196.20/js/wall/jquery.wallform.js"></script>
+<script type="text/javascript" src="http://54.225.196.20/js/wall/wall2.js"></script>
 </head>
 <body>
 

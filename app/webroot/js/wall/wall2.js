@@ -860,7 +860,6 @@ $('#webcam_button').live("click",function()
 
 $('#photoimg').live('change', function()			
 { 
-alert('fsdf ok');
 var values=$("#uploadvalues").val();
 $("#previeww").html('<img src="icons/loader.gif"/>');
 $("#imageform").ajaxForm({target: '#preview'  }).submit();
