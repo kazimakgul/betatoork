@@ -23,7 +23,7 @@
                                             <!--contact-control-->
                                             <div class="contact-control">
 
-                                                <h5><i class="elusive-bullhorn color-red"></i> <a href="<?php echo $bestchannels; ?>">Activity Feed</a></h5>
+                                                <h5><i class="elusive-bullhorn color-red"></i> <a href="<?php echo $wall; ?>">Activity Feed</a></h5>
                                             </div><!--/contact-control-->
                                          
                                          <!--bestchannel-list-->
