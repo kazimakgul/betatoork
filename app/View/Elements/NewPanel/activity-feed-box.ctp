@@ -37,8 +37,8 @@ else{
                                                             <div class="contact-item-body">
 
                                                                 <a class="contact-item-heading btn-link btn-mini bold" href="<?php echo $profileurl ?>"  style="margin:-9px 0px -25px 0px; padding-left:0px;padding-left:0px;"><?php echo $follower['User']['username']; ?></a>
-                                                                <p style="margin-top:-5px; margin-bottom:-5px; padding:0px;"><small >Comment on Angry Birds and need for speed online</small></p>
-                                                                <i class="muted elusive-comment"></i>
+                                                                <p style="margin-top:-5px; margin-bottom:-5px; padding:0px;"><small ><i class="muted elusive-comment"></i> Comment on Angry Birds and need for speed online</small></p>
+
                                                                 <small class="muted pull-right helper-font-9"> 5 days ago</small>
                                                             </div>
                                                         </div>
