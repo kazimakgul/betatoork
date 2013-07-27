@@ -203,8 +203,8 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
             <div class="span4" style=" margin: 5px 5px -15px 5px;">
               <div style=" padding: 5px 5px 5px 5px;">
                 </br>
-                <form class="navbar-form " >
-                    <textarea name="message" id="fast_update" style="margin-top:-20px; padding: 0px 0px 0px 3px;" class="span4" rows="4"  placeholder="What do you want to share?"></textarea>
+                <form class="navbar-form" >
+                    <textarea name="message" id="fast_update" style="margin-top:-20px; padding: 0px 0px 0px 3px;" class="span4" rows="4"  placeholder="What do you want to share?"></textarea></form>
                  </br>
                 <div class="helper-font-16">
                           
@@ -214,10 +214,10 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                 </div>
                 
                             <!-ImageUploadPanel-><div id="imageupload" class="border" style="display:none;">
-                            <?php $image_ajax_url= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax'));?>
-                            <form id="imagefor" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
-                            <div id='previe'></div>
-                            <span id='addphoto'>Add Photo:</span> <input type="file" name="photoim" id="photoim" />
+                            <?php $image_ajax_url_fly= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax_fly'));?>
+                            <form id="imageform_fly" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url_fly; ?>'> 
+                            <div id='preview_fly'></div>
+                            <span id='addphoto'>Add Photo:</span> <input type="file" name="photoimg" id="photoimg_fly" />
                             <input type='hidden' id='uploadvalues' />
                             </form>
                             </div><!-ImageUploadPanel-> 

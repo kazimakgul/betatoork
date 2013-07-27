@@ -1620,7 +1620,7 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
                     if ($newdata) {
                         //echo '<img src="data:image/jpg;base64,'.$newdata['image_base'].'" class="preview" id="'.$newdata['id'].'"/>';
 						$uploadimageurl=Configure::read('S3.url').'/wall/'.$actual_image_name;
-                        echo "<img src='".$uploadimageurl."'  class='preview' id='".$newdata['id']."'/>";
+                        echo "<img src='".$uploadimageurl."'  class='preview_fly' id='".$newdata['id']."'/>";
                     }
                 } else echo "failed";
             } else echo "Image file size max 1 MB";
@@ -1632,6 +1632,110 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
 
 }
 
+
+public function image_ajax_fly() {
+
+      App::uses('Folder', 'Utility');
+      App::uses('File', 'Utility');
+
+$this->layout="ajax";
+  
+error_reporting(0);
+App::import('Vendor', 'wallscript/config');
+$path='wall/';
+$this -> set('gravatar', 1);
+$this -> set('base_url', 'http://localhost/wall/');
+$this -> set('perpage', 10);
+App::import('Vendor', 'wallscript/Wall_Updates');
+//Session starts
+if($this->Auth->user('id')) 
+$session_uid=$this->Auth->user('id'); 
+if (!empty($session_uid)) {
+    $uid = $session_uid;
+    $this -> set('uid', $uid);
+} else {
+   //echo 'please login';
+}
+//Session Ends
+$Wall = new Wall_Updates();
+
+function getExtension($str) {
+
+    $i = strrpos($str, ".");
+    if (!$i) {
+        return "";
+    }
+
+    $l = strlen($str) - $i;
+    $ext = substr($str, $i + 1, $l);
+    return $ext;
+}
+
+$valid_formats = array("jpg", "png", "gif", "bmp", "jpeg", "PNG", "JPG", "JPEG", "GIF", "BMP");
+if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
+    $name = $_FILES['photoimg']['name'];
+    $size = $_FILES['photoimg']['size'];
+
+    if (strlen($name)) {
+        $ext = getExtension($name);
+        if (in_array($ext, $valid_formats)) {
+            if ($size < (1024 * 1024)) {
+                $actual_image_name = time().$uid.".".$ext;
+                $tmp = $_FILES['photoimg']['tmp_name'];
+				
+				
+				
+                if (move_uploaded_file($tmp, $path.$actual_image_name)) {
+				
+		    //Upload to aws begins
+			$dir = new Folder(WWW_ROOT ."/wall");
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $info=$file->info();
+			$basename=$info["basename"];
+			$dirname=$info["dirname"];
+			//echo $file;
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'wall/'.$basename,
+             array(
+            'fileUpload' => WWW_ROOT ."wall/".$basename,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			
+            }
+			//Upload to aws ends
+			
+			
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."wall/");
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
+				   
+			
+                    $data = $Wall -> Image_Upload($uid, $actual_image_name);
+                    $newdata = $Wall -> Get_Upload_Image($uid, $actual_image_name);
+                    if ($newdata) {
+                        //echo '<img src="data:image/jpg;base64,'.$newdata['image_base'].'" class="preview" id="'.$newdata['id'].'"/>';
+						$uploadimageurl=Configure::read('S3.url').'/wall/'.$actual_image_name;
+                        echo "<img src='".$uploadimageurl."'  class='preview' id='".$newdata['id']."'/>";
+                    }
+                } else echo "failed";
+            } else echo "Image file size max 1 MB";
+        } else echo "Invalid file format.";
+    } else echo "Please select image..!";
+
+    exit;
+}
+
+}
 
 
 /**
