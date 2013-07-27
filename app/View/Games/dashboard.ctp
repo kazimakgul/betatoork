@@ -92,7 +92,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
             <div class="navbar span7" data-step="1" data-intro="Hello pal :) This is one of your ways that you can share your ideas about games. Just write what you think and click share button. You can also share a picture or a a video and also a game which is a unique feature to toork.">
               <div class="navbar-inner">
                 </br>
-                <form class="navbar-form">
+                
 
                     <div class="row-fluid">
                         <div class="span2" rel="tooltip" data-placement="right" data-original-title="Change Your Avatar" style="margin-bottom:5px;"><a href="<?php echo $settings; ?>">
@@ -148,7 +148,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                     <hr size="3" style="margin:0px 0px 5px 0px;">
                   <button id="success-post" type="submit" class="btn btn-inverse pull-right update_data" style="margin:0px 0px 0px 0px;">Publish</button>
                   <div><a class="btn btn-link btn-mini" href="<?php echo $wall; ?>">Whats New?</a><a class="btn btn-link btn-mini" href="<?php echo $profilepublic; ?>" rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$user['User']['seo_username'];?>">Public Channel </a></div>
-                </form></br>
+                </br>
               </div>
             </div>
 
