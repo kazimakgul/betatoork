@@ -4,8 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Facebook WallScript Version 5.0</title>
 
-<script type="text/javascript" src="http://54.225.196.20/js/js2/jquery.js"></script>
-<script type="text/javascript" src="http://54.225.196.20/js/wall/jquery.wallform.js"></script>
+
+
+
+
+<?php echo $this->Html->script(array('js2/jquery','wall/jquery.wallform')); ?>
 
 <script>
 $('#photoimg').live('change', function()			
@@ -25,7 +28,7 @@ $("#uploadvalues").val(Z);
 </head>
 <body>
 
-<form id="imageform" method="post" enctype="multipart/form-data" action='http://54.225.196.20/Wallentries/image_ajax'> 
+<form id="imageform" method="post" enctype="multipart/form-data" action='http://127.0.0.1/betatoorkson/Wallentries/image_ajax'> 
 <div id='preview'>
 </div>
 

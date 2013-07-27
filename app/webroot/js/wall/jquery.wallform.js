@@ -261,7 +261,7 @@ $.fn.ajaxSubmit = function(options) {
 		}
 		
 		// take a breath so that pending repaints get some cpu time before the upload starts
-		function doSubmit() {
+		function doSubmit() {alert('wallform runs');
 			// make sure form attrs are set
 			var t = $form.attr('target'), a = $form.attr('action');
 

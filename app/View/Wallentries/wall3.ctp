@@ -26,7 +26,7 @@
             <div class="navbar span4">
               <div class="navbar-inner">
                 </br>
-                <form class="navbar-form ">
+                
                     <textarea name="message" id="update" class="span12" rows="4"  placeholder="What do you want to share?"></textarea>
                  </br>
                 <div class="helper-font-16">
@@ -35,10 +35,10 @@
                             <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera4" class="elusive-youtube"></i>
                             <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera5" class="icofont-link"></i>       
                 </div>
-                
+				
                             <!-ImageUploadPanel-><div id="imageupload3" class="border" style="display:none;">
                             <?php $image_ajax_url= $this->Html->url(array('controller'=>'Wallentries','action'=>'image_ajax'));?>
-                            <form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
+                           <form id="imageform" method="post" enctype="multipart/form-data" action='<?php echo $image_ajax_url; ?>'> 
                             <div id='preview'></div>
                             <span id='addphoto'>Add Photo:</span> <input type="file" name="photoimg" id="photoimg" />
                             <input type='hidden' id='uploadvalues' />
