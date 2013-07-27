@@ -1614,12 +1614,12 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
             }
 			//Folder Formatting ends
 				*/   
-			
+			echo 'test'.$this->webroot;
                     $data = $Wall -> Image_Upload($uid, $actual_image_name);
                     $newdata = $Wall -> Get_Upload_Image($uid, $actual_image_name);
                     if ($newdata) {
                         //echo '<img src="data:image/jpg;base64,'.$newdata['image_base'].'" class="preview" id="'.$newdata['id'].'"/>';
-						$uploadimageurl=$_SERVER['SERVER_NAME'].'/wall/'.$actual_image_name;
+						$uploadimageurl=$this->webroot.'wall/'.$actual_image_name;
                         echo "<img src='".$uploadimageurl."'  class='preview' id='".$newdata['id']."'/>";
                     }
                 } else echo "failed";
