@@ -1603,7 +1603,7 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
             }
 			//Upload to aws ends
 			
-			
+			/*
 			//Folder Formatting begins
 			$dir = new Folder(WWW_ROOT ."wall/");
 		    $files = $dir->find('.*');
@@ -1613,13 +1613,13 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
             $file->close(); 
             }
 			//Folder Formatting ends
-				   
+				*/   
 			
                     $data = $Wall -> Image_Upload($uid, $actual_image_name);
                     $newdata = $Wall -> Get_Upload_Image($uid, $actual_image_name);
                     if ($newdata) {
                         //echo '<img src="data:image/jpg;base64,'.$newdata['image_base'].'" class="preview" id="'.$newdata['id'].'"/>';
-						$uploadimageurl=Configure::read('S3.url').'/wall/'.$actual_image_name;
+						$uploadimageurl=$this->webroot.'/wall/'.$actual_image_name;
                         echo "<img src='".$uploadimageurl."'  class='preview' id='".$newdata['id']."'/>";
                     }
                 } else echo "failed";
