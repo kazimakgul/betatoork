@@ -1619,7 +1619,7 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
                     $newdata = $Wall -> Get_Upload_Image($uid, $actual_image_name);
                     if ($newdata) {
                         //echo '<img src="data:image/jpg;base64,'.$newdata['image_base'].'" class="preview" id="'.$newdata['id'].'"/>';
-						$uploadimageurl=$this->webroot.'wall2/'.$actual_image_name;
+						$uploadimageurl=$_SERVER['SERVER_NAME'].'/wall/'.$actual_image_name;
                         echo "<img src='".$uploadimageurl."'  class='preview' id='".$newdata['id']."'/>";
                     }
                 } else echo "failed";
