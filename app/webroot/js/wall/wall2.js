@@ -875,7 +875,6 @@ $("#uploadvalues").val(Z);
 
 $('#photoimg_fly').live('change', function()			
 { 
-alert('fly');
 var values=$("#uploadvalues").val();
 $("#previeww").html('<img src="icons/loader.gif"/>');
 $("#imageform_fly").ajaxForm({target: '#preview_fly'  }).submit();
