@@ -1614,7 +1614,6 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
             }
 			//Folder Formatting ends
 				*/   
-			echo 'test'.$this->webroot;
                     $data = $Wall -> Image_Upload($uid, $actual_image_name);
                     $newdata = $Wall -> Get_Upload_Image($uid, $actual_image_name);
                     if ($newdata) {
