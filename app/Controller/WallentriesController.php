@@ -1620,7 +1620,7 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
                     if ($newdata) {
                         //echo '<img src="data:image/jpg;base64,'.$newdata['image_base'].'" class="preview" id="'.$newdata['id'].'"/>';
 						$uploadimageurl=Configure::read('S3.url').'/wall/'.$actual_image_name;
-                        echo "<img src='".$uploadimageurl."'  class='preview_fly' id='".$newdata['id']."'/>";
+                        echo "<img src='".$uploadimageurl."'  class='preview' id='".$newdata['id']."'/>";
                     }
                 } else echo "failed";
             } else echo "Image file size max 1 MB";
@@ -1725,7 +1725,7 @@ if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
                     if ($newdata) {
                         //echo '<img src="data:image/jpg;base64,'.$newdata['image_base'].'" class="preview" id="'.$newdata['id'].'"/>';
 						$uploadimageurl=Configure::read('S3.url').'/wall/'.$actual_image_name;
-                        echo "<img src='".$uploadimageurl."'  class='preview' id='".$newdata['id']."'/>";
+                        echo "<img src='".$uploadimageurl."'  class='preview_fly' id='".$newdata['id']."'/>";
                     }
                 } else echo "failed";
             } else echo "Image file size max 1 MB";

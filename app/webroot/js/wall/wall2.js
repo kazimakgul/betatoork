@@ -871,6 +871,23 @@ $("#uploadvalues").val(Z);
 
 });
 
+// Uploading Image On Fly
+
+$('#photoimg_fly').live('change', function()			
+{ 
+alert('fly');
+var values=$("#uploadvalues").val();
+$("#previeww").html('<img src="icons/loader.gif"/>');
+$("#imageform_fly").ajaxForm({target: '#preview_fly'  }).submit();
+
+var X=$('.preview_fly').attr('id');
+var Z= X+','+values;
+if(Z!='undefined,')
+$("#uploadvalues").val(Z);
+
+});
+
+
 
 // delete update
 $('.stdelete').live("click",function() 
