@@ -251,7 +251,7 @@ $(document).ready(function()
 		var uploadvalues=0;
 
 		//Class段 preview olan bir item段n olup olmadigini kontrol edecek.
-		var X=$('.preview').attr('id');
+		var X=$('.preview_fly').attr('id');
 		//Class段 webcam_preview olan bir item段n olup olmadigini kontrol edecek.
 		var Y=$('.webcam_preview').attr('id');
 		
