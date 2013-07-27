@@ -118,21 +118,6 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	}
 	
 	
-	public function blankarea()
-	{
-	$this->layout="ajax";
-	echo 'naber';
-	
-	}
-	
-	public function image_jaxo()
-	{
-	$this->layout="ajax";
-	echo 'image_jaxo';
-	
-	}
-	
-	
 	public function lastadded() {
    		$this->paginate = array(
 	   		'Game' => array('limit'=>28,'order' => array('created' => 'desc')));
