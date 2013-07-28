@@ -25,12 +25,12 @@ if(isset($uid))
    if($gravatar)
    {
    $userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$uid));
-   $session_face=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid img-rounded",'width'=>'30','onerror'=>'imgError(this,"avatar");'));
+   $session_face=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'30','onerror'=>'imgError(this,"avatar");'));
    }
    else
    {
    $userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$uid));
-   $session_face=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid img-rounded",'width'=>'30','onerror'=>'imgError(this,"avatar");'));
+   $session_face=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'30','onerror'=>'imgError(this,"avatar");'));
    }
 }
 
@@ -58,24 +58,24 @@ if($updatesarray)
 		   {
 		    
 			$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
-			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid img-rounded",'width'=>'60','onerror'=>'imgError(this,"avatar");'));
+			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'60','onerror'=>'imgError(this,"avatar");'));
 			
 		   }
 		else
 		{
 			$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
-			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid img-rounded",'width'=>'60','onerror'=>'imgError(this,"avatar");'));
+			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'60','onerror'=>'imgError(this,"avatar");'));
 		
 		}
 		// End Avatar
 ?>
-<div class="media well" id="stbody<?php echo $msg_id;?>">
+<div class="media well shadow" style="background-color:white;" id="stbody<?php echo $msg_id;?>">
                                                         <a class="pull-left" href="#">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>
                                                         </a>
                                                         <div class="media-body">
-                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a></br><small class="helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
+                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
                                                             <p><?php echo $message; ?></p>
 															
 														<?php
@@ -99,9 +99,7 @@ echo "</div>";
                        
 															
                                                             <div class="btn-group pull-right">
-															    <?php if(isset($uid)) {?>
-                                                                <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>">Comment</a>
-																<?php }?>	
+															  
                                                                 
 				    <?php if($type==1){
 				    $gamedata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_gamedata',$gameid));
@@ -134,14 +132,10 @@ echo "</div>";
 				if($channeldata['User']['seo_username']!=NULL)
                 $playurl=$this->Html->url(array( "controller" => h($channeldata['User']['seo_username'])));
                 $newsurl=$this->Html->url(array("controller"=> h($channeldata['User']['seo_username']),"action"=>"news"));
-				echo '<a href="'.$playurl.'" class="btn btn-mini">'.$channeldata['User']['username'].'</a>'; 
-				echo '<a href="'.$newsurl.'" class="btn btn-mini">News Feed</a> ';
 				}
 				?>
 				
-				<?php if(isset($uid) && $uid==$msg_uid) { ?>
-                <a href="#" class="btn btn-mini btn-danger stdelete" id="<?php echo $msg_id;?>">Delete</a>
-				<?php } ?>
+
                  </div>
 				 
 				<div id="stexpandbox">
@@ -187,24 +181,24 @@ echo "</div>";
 						
 						
 			  <?php if($type==5) { 
-			  $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('onerror'=>'imgError(this,"avatar");'));
+			  $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('width'=>'60px','onerror'=>'imgError(this,"avatar");'));
 			   ?>
-			 <div class="feedcontent clearfix">
-                                        <div class="feedchannelavatar">
-                                            <?php echo $channelimage; ?>
-                                        </div>   
+			 <div class="feedcontent clearfix well well-small span10 shadow">
+                                        
+                                            <a class="pull-left"><?php echo $channelimage; ?></a>
+                                        
                                         <div class="feedchanneldesc">
-                                            <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedchanneldesctitle"><?php echo $channeldata['User']['username']; ?></span></a>
-                                            <span class="feedchanneldescdesc"><?php echo $channeldata['User']['description']; ?></span>
-											<span class="feedchannelanalytics"><?php echo $channeldata['User']['username'].' Activity'; ?></span>
-											<ul>
-                                                <li><?php echo $channeldata['Userstat']['uploadcount']; ?> Games Added</li>
-                                                <li><?php echo $channeldata['Userstat']['favoritecount']; ?> Games Favorite</li>
-												<li><?php echo $channeldata['Userstat']['subscribeto']; ?> Followers</li>
-												<li><?php echo $channeldata['Userstat']['subscribe']; ?> Chains</li>
-                                                <li><?php echo $channeldata['Userstat']['playcount']; ?> Games Played</li>
+											<span class="bold"><?php echo '<a href="'.$playurl.'" class="btn btn-large">'.$channeldata['User']['username'].'</a>'; ?></span>
+											
+
+					<p style="font-family: 'Merriweather Sans', sans-serif; font-size: 15px; margin-top:7px;">
+                    	<i class="helper-font-24 elusive-group color-blue"></i> <?php echo $channeldata['Userstat']['subscribeto']; ?> Followers 
+                    	<i class="helper-font-24 elusive-star-alt color-red"></i> <?php echo $channeldata['Userstat']['uploadcount']; ?> Games
+                	</p>
+
+                                               
                                                 
-                                            </ul>
+                                           
 
                                         </div>                                     
                                     </div>
@@ -219,6 +213,12 @@ echo "</div>";
 				echo $this->element('NewPanel/load_comments_boot',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
 			?>
 			</div>
+			  	<?php if(isset($uid)) {?>
+            	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>">Comment</a>
+				<?php }?>
+								<?php if(isset($uid) && $uid==$msg_uid) { ?>
+                <a href="#" class="btn btn-mini btn-danger stdelete" id="<?php echo $msg_id;?>">Delete</a>
+				<?php } ?>	
 			<hr size="3">
 			<div class="row-fluid commentupdate clearfix" style='display:none' id='commentbox<?php echo $msg_id;?>'>
 

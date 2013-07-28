@@ -5,7 +5,7 @@
                     <div class="content">
 
                         <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
+                        <div class="content-body" style="background-color:rgba(0,0,0,.05);  padding-top:15px;">
                             <!-- dashboar -->
 
                     <div class="alert alert-danger">
@@ -23,7 +23,7 @@
                     </div>
 
                             <div class="row-fluid">
-            <div class="navbar span4">
+            <div class="navbar span5">
               <div class="navbar-inner">
                 </br>
                 
@@ -69,15 +69,14 @@
                             <!-- tab resume content -->
                      
                                 <!-- tab resume update -->
-                                <div class="span8">
-                                    <div class="box-tab corner-all">
+                                <div class="span7">
+                                    <div>
                                         <div class="box-header corner-top">
                                             <!--tab action-->
                                             <div class="header-control pull-right">
-                                                <a data-box="collapse"><i class="icofont-caret-up"></i></a>
-                                                <a data-box="close" data-hide="rotateOutDownLeft">&times;</a>
+
                                             </div>
-                                            <ul class="nav nav-pills">
+                                            <ul style="background-color:white;" class="well nav nav-pills">
                                                 <!--tab menus-->
                                                 <li class="active"><a data-toggle="tab" href="#new-feeds">What's New</a></li>
                                                 <li><a data-toggle="tab" href="#my-feeds">My Feeds</a></li>
