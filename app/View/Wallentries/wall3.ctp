@@ -6,7 +6,7 @@
 
                         <!-- content-body -->
                         <div class="content-body" style="background-color:rgba(0,0,0,.05);  padding-top:15px;">
-                            <!-- dashboar -->
+                            <!-- dashboar 
 
                     <div class="alert alert-danger">
                         <div class="box-header corner-top">
@@ -20,7 +20,8 @@
                         <a href="<?php echo $bestchannel; ?>" class="btn btn-danger">
                           <i class="elusive-plus-sign"></i> Follow Channels
                         </a>
-                    </div>
+                    </div> 
+                    -->
 
                             <div class="row-fluid">
             <div class="navbar span5">
@@ -76,7 +77,7 @@
                                             <div class="header-control pull-right">
 
                                             </div>
-                                            <ul style="background-color:white;" class="well nav nav-pills">
+                                            <ul style="background-color:white; margin:0px;" class="shadow well nav nav-pills">
                                                 <!--tab menus-->
                                                 <li class="active"><a data-toggle="tab" href="#new-feeds">What's New</a></li>
                                                 <li><a data-toggle="tab" href="#my-feeds">My Feeds</a></li>

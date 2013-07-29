@@ -11,7 +11,7 @@ if($x)
 	{
 ?>
 	<div class="comment_ui" id="view<?php echo $msg_id; ?>">
-		<a href="#" class="view_comments" id="<?php echo $msg_id; ?>" vi='<?php echo $comment_count; ?>'>View all <?php echo $comment_count; ?> comments</a>
+		<a href="#" class="helper-font-9 bold view_comments" id="<?php echo $msg_id; ?>" vi='<?php echo $comment_count; ?>'>View All <?php echo $comment_count; ?> comments</a>
 	</div>
 <?php
 		$commentsarray=$Wall->Comments($msg_id,$second_count);
@@ -42,9 +42,9 @@ if($commentsarray)
 // End Avatar
 ?>
 
-<div class="clearfix alert alert-info" id="stcommentbody<?php echo $com_id; ?>">
+<div style="border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; margin-bottom:3px; margin-left:-20px; margin-right:-20px; padding:0px;" class="well" id="stcommentbody<?php echo $com_id; ?>">
 <?php if(isset($uid) && ($uid==$com_uid || $uid==$msg_uid) ){ ?>
-<a class="stcommentdelete close" href="#" id="<?php echo $com_id; ?>">&times;</a>
+<a class="stcommentdelete close" style="margin-right:5px;" href="#" id="<?php echo $com_id; ?>">  &times;</a>
 <?php } ?>
 
 	<div class="commentleft">
@@ -55,8 +55,8 @@ if($commentsarray)
 
 
 		<span class="commentusername"><a href="<?php echo $channelurl ?>"><?php echo $username; ?></a></span>
+		<small class="helper-font-9"><div style="margin-right:10px;" class="stcommenttime pull-right" title="<?php echo $mtime; ?>"></div></small>
 		<p><small><?php echo $comment ?></small></p>
-		<small class="helper-font-small"><div class="stcommenttime pull-right" title="<?php echo $mtime; ?>"></div></small>
 
 </div>
 

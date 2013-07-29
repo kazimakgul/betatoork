@@ -58,13 +58,13 @@ if($updatesarray)
 		   {
 		    
 			$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
-			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'60','onerror'=>'imgError(this,"avatar");'));
+			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'40','onerror'=>'imgError(this,"avatar");'));
 			
 		   }
 		else
 		{
 			$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
-			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'60','onerror'=>'imgError(this,"avatar");'));
+			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'40','onerror'=>'imgError(this,"avatar");'));
 		
 		}
 		// End Avatar
@@ -74,9 +74,12 @@ if($updatesarray)
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>
                                                         </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
+                                                        <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
                                                             <p><?php echo $message; ?></p>
+                                                        <hr size="1">
+
+                                                        <div class="media-body" style="align:center; margin:-7px;">
+                                                            
 															
 														<?php
  if($uploads)
@@ -95,7 +98,7 @@ $newdata=$Wall->Get_Upload_Image_Id($a);
 echo "</div>";
  }
  ?>
-                  <hr size="1">
+                  
                        
 															
                                                             <div class="btn-group pull-right">
@@ -207,18 +210,23 @@ echo "</div>";
                                                         </div>
 														
 				<!-- Comment area begins -->				
-					<div id="commentload<?php echo $msg_id;?>">
+					<div style="margin-top:10px;" id="commentload<?php echo $msg_id;?>">
 			<?php
 				$x=1;
 				echo $this->element('NewPanel/load_comments_boot',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
 			?>
 			</div>
+			</br>
 			  	<?php if(isset($uid)) {?>
-            	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>">Comment</a>
+            	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
+            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
+            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-asl"></i> Agree</a>
+            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-down"></i> Disagree</a>
 				<?php }?>
 								<?php if(isset($uid) && $uid==$msg_uid) { ?>
-                <a href="#" class="btn btn-mini btn-danger stdelete" id="<?php echo $msg_id;?>">Delete</a>
-				<?php } ?>	
+                <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
+				<?php } ?>
+			
 			<hr size="3">
 			<div class="row-fluid commentupdate clearfix" style='display:none' id='commentbox<?php echo $msg_id;?>'>
 
