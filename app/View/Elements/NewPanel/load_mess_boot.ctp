@@ -237,7 +237,7 @@ echo "</div>";
 				<div class="span11">
 					<textarea placeholder="Write a comment..." name="comment" maxlength="200" class="pull-right span12" rows="1" id="ctextarea<?php echo $msg_id;?>"></textarea>
 					<!--<textarea class="commentarea" cols="53" rows="2"></textarea>-->
-					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right btn btn-small btn-info">Comment</div>
+					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button btn btn-small btn-info">Comment</div>
 					<!--<a class="commentbtn" href="#"></a>-->
 				</div>
 			</div>

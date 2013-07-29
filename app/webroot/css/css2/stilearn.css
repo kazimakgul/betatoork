@@ -1033,7 +1033,7 @@ ul.dropdown-notification > li.dropdown-header:hover{
     margin-bottom: -62px;
     display: block;
     background: #EDEDED url('../../img/img2/bg-content.jpg');
-    border: 1px solid #CDCDCD;
+    border: 0px solid #CDCDCD;
     border-left: none;
     padding-bottom: 0px;
     min-height: 580px;
@@ -1172,7 +1172,7 @@ ul.dropdown-notification > li.dropdown-header:hover{
 
 /* content-body */
 .content > .content-body{
-    padding: 40px 20px 40px 20px;
+    padding: 40px 20px 40px 25px;
     font-size: .9em;
     background: #FFFFFF url('../../img/img2/noise.png');
 }
