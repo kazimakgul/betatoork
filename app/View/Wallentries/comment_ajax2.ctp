@@ -26,5 +26,6 @@ $channelurl=$this->Html->url(array("controller" => $seo_username,"action" =>""))
       <span class="commentusername"><a href="<?php echo $channelurl ?>"><?php echo $username; ?></a></span>
       <small class="helper-font-9"><div style="margin-right:10px;" class="stcommenttime pull-right" title="<?php echo $mtime; ?>"></div></small>
       <p><small><?php echo $comment ?></small></p>
+      <p style="opacity:0.5;"><small class="btn-link"><i class="elusive-thumbs-up"></i> Like</small> - <small class="btn-link"><i class="elusive-asl"></i> Agree</small> - <small class="btn-link"><i class="elusive-thumbs-down"></i> Disagree</small></p>
 
 </div>

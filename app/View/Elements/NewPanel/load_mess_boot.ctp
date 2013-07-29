@@ -25,12 +25,12 @@ if(isset($uid))
    if($gravatar)
    {
    $userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$uid));
-   $session_face=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'30','onerror'=>'imgError(this,"avatar");'));
+   $session_face=$this->Upload->image($userdata,'User.picture',array(),array('width'=>'30','onerror'=>'imgError(this,"avatar");'));
    }
    else
    {
    $userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$uid));
-   $session_face=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'30','onerror'=>'imgError(this,"avatar");'));
+   $session_face=$this->Upload->image($userdata,'User.picture',array(),array('width'=>'30','onerror'=>'imgError(this,"avatar");'));
    }
 }
 
@@ -184,19 +184,19 @@ echo "</div>";
 						
 						
 			  <?php if($type==5) { 
-			  $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('width'=>'60px','onerror'=>'imgError(this,"avatar");'));
+			  $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('width'=>'50px','onerror'=>'imgError(this,"avatar");'));
 			   ?>
-			 <div class="feedcontent clearfix well well-small span10 shadow">
+			 <div class="offset2 feedcontent clearfix well well-small span8 shadow">
                                         
                                             <a class="pull-left"><?php echo $channelimage; ?></a>
                                         
                                         <div class="feedchanneldesc">
-											<span class="bold"><?php echo '<a href="'.$playurl.'" class="btn btn-large">'.$channeldata['User']['username'].'</a>'; ?></span>
+											<span class="bold"><?php echo '<a href="'.$playurl.'" class="btn">'.$channeldata['User']['username'].'</a>'; ?></span>
 											
 
-					<p style="font-family: 'Merriweather Sans', sans-serif; font-size: 15px; margin-top:7px;">
-                    	<i class="helper-font-24 elusive-group color-blue"></i> <?php echo $channeldata['Userstat']['subscribeto']; ?> Followers 
-                    	<i class="helper-font-24 elusive-star-alt color-red"></i> <?php echo $channeldata['Userstat']['uploadcount']; ?> Games
+					<p style="font-family: 'Merriweather Sans', sans-serif; font-size: 12px; margin-top:7px;">
+                    	<i class="helper-font-16 elusive-group color-blue"></i> <?php echo $channeldata['Userstat']['subscribeto']; ?> Followers 
+                    	<i class="helper-font-16 elusive-star-alt color-red"></i> <?php echo $channeldata['Userstat']['uploadcount']; ?> Games
                 	</p>
 
                                                
@@ -235,9 +235,9 @@ echo "</div>";
 					</div>
 
 				<div class="span11">
-					<textarea placeholder="Write a comment..." name="comment" maxlength="200" class="pull-right span12" rows="2" id="ctextarea<?php echo $msg_id;?>"></textarea>
+					<textarea placeholder="Write a comment..." name="comment" maxlength="200" class="pull-right span12" rows="1" id="ctextarea<?php echo $msg_id;?>"></textarea>
 					<!--<textarea class="commentarea" cols="53" rows="2"></textarea>-->
-					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button btn btn-small btn-primary ">Comment</div>
+					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right btn btn-small btn-info">Comment</div>
 					<!--<a class="commentbtn" href="#"></a>-->
 				</div>
 			</div>
