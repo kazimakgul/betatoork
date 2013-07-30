@@ -64,14 +64,17 @@ if($updatesarray)
 		}
 		// End Avatar
 ?>
-<div class="media well" id="stbody2<?php echo $msg_id;?>">
+<div class="media well shadow" style="background-color:white;" id="stbody2<?php echo $msg_id;?>">
                                                         <a class="pull-left" href="#">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>
                                                         </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a></br><small class="helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
-                                                            <p><?php echo $message; ?></p>
+                                                        <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
+                                                            <p style="margin-left:60px;"><?php echo $message; ?></p>
+                                                        <hr size="1">
+
+                                                        <div class="media-body" style="align:center; margin:-7px;">
+                                                            
 															
 														<?php
  if($uploads)
@@ -89,13 +92,12 @@ $newdata=$Wall->Get_Upload_Image_Id($a);
 }
 echo "</div>";
  }
- ?>	
-                       <hr size="1">
+ ?>
+                  
+                       
 															
                                                             <div class="btn-group pull-right">
-															    <?php if(isset($uid)) {?>
-                                                                <a href="#" class="btn btn-mini commentopen2" id="<?php echo $msg_id;?>">Comment</a>
-																<?php }?>	
+															  
                                                                 
 				    <?php if($type==1){
 				    $gamedata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_gamedata',$gameid));
@@ -105,7 +107,7 @@ echo "</div>";
 	  else
 	  $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'playframe'));
                     else
-    $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($gamedata['Game']['id'])));	
+    $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($gamedata['Game']['id'])));		
 				    echo '<a href="'.$playurl.'" class="btn btn-mini">Play</a> ';
 				     }
 				     ?>
@@ -128,14 +130,10 @@ echo "</div>";
 				if($channeldata['User']['seo_username']!=NULL)
                 $playurl=$this->Html->url(array( "controller" => h($channeldata['User']['seo_username'])));
                 $newsurl=$this->Html->url(array("controller"=> h($channeldata['User']['seo_username']),"action"=>"news"));
-				echo '<a href="'.$playurl.'" class="btn btn-mini">'.$channeldata['User']['username'].'</a>'; 
-				echo '<a href="'.$newsurl.'" class="btn btn-mini">News Feed</a> ';
 				}
 				?>
 				
-				<?php if(isset($uid) && $uid==$msg_uid) { ?>
-                <a href="#" class="btn btn-mini btn-danger stdelete" id="<?php echo $msg_id;?>">Delete</a>
-				<?php } ?>
+
                  </div>
 				 
 				<div id="stexpandbox">
@@ -181,55 +179,64 @@ echo "</div>";
 						
 						
 			  <?php if($type==5) { 
-			  $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('onerror'=>'imgError(this,"avatar");'));
+			  $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('width'=>'50px','onerror'=>'imgError(this,"avatar");'));
 			   ?>
-			 <div class="feedcontent clearfix">
-                                        <div class="feedchannelavatar">
-                                            <?php echo $channelimage; ?>
-                                        </div>   
+			 <div class="offset2 feedcontent clearfix well well-small span8 shadow">
+                                        
+                                            <a class="pull-left"><?php echo $channelimage; ?></a>
+                                        
                                         <div class="feedchanneldesc">
-                                            <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedchanneldesctitle"><?php echo $channeldata['User']['username']; ?></span></a>
-                                            <span class="feedchanneldescdesc"><?php echo $channeldata['User']['description']; ?></span>
-											<span class="feedchannelanalytics"><?php echo $channeldata['User']['username'].' Activity'; ?></span>
-											<ul>
-                                                <li><?php echo $channeldata['Userstat']['uploadcount']; ?> Games Added</li>
-                                                <li><?php echo $channeldata['Userstat']['favoritecount']; ?> Games Favorite</li>
-												<li><?php echo $channeldata['Userstat']['subscribeto']; ?> Followers</li>
-												<li><?php echo $channeldata['Userstat']['subscribe']; ?> Chains</li>
-                                                <li><?php echo $channeldata['Userstat']['playcount']; ?> Games Played</li>
+											<span class="bold"><?php echo '<a href="'.$playurl.'" class="btn">'.$channeldata['User']['username'].'</a>'; ?></span>
+											
+
+					<p style="font-family: 'Merriweather Sans', sans-serif; font-size: 12px; margin-top:7px;">
+                    	<i class="helper-font-16 elusive-group color-blue"></i> <?php echo $channeldata['Userstat']['subscribeto']; ?> Followers 
+                    	<i class="helper-font-16 elusive-star-alt color-red"></i> <?php echo $channeldata['Userstat']['uploadcount']; ?> Games
+                	</p>
+
+                                               
                                                 
-                                            </ul>
+                                           
 
                                         </div>                                     
                                     </div>
 					<?php } ?>
-				 
-				 
+				 	
                                                         </div>
 														
-						<!-- Comment area begins -->				
-					<div id="commentload2<?php echo $msg_id;?>">
+				<!-- Comment area begins -->				
+					<div style="margin-top:10px;" id="commentload<?php echo $msg_id;?>">
 			<?php
 				$x=1;
-				echo $this->element('NewPanel/load_comments_boot2',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
+				echo $this->element('NewPanel/load_comments_boot',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
 			?>
 			</div>
+			</br>
+			  	<?php if(isset($uid)) {?>
+            	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
+            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
+            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-asl"></i> Agree</a>
+            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-down"></i> Disagree</a>
+				<?php }?>
+								<?php if(isset($uid) && $uid==$msg_uid) { ?>
+                <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
+				<?php } ?>
+			
 			<hr size="3">
-			<div class="row-fluid commentupdate clearfix" style='display:none' id='commentbox2<?php echo $msg_id;?>'>
-				
+			<div class="row-fluid commentupdate clearfix" style='display:none' id='commentbox<?php echo $msg_id;?>'>
+
 					<div class="span1">
 						<?php echo $session_face;?>
 					</div>
-				
+
 				<div class="span11">
-					<textarea placeholder="Write a comment..." name="comment" maxlength="200" class="pull-right span12" rows="2" id="ctextarea2<?php echo $msg_id;?>"></textarea>
+					<textarea placeholder="Write a comment..." name="comment" maxlength="200" class="pull-right span12" rows="1" id="ctextarea<?php echo $msg_id;?>"></textarea>
 					<!--<textarea class="commentarea" cols="53" rows="2"></textarea>-->
-					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button2 btn btn-small btn-primary">Comment</div>
+					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button btn btn-small btn-info">Comment</div>
 					<!--<a class="commentbtn" href="#"></a>-->
 				</div>
 			</div>
-				<!-- Comment area ends-->								
-														
+				<!-- Comment area ends-->										
 														
                                                     </div>
 										
