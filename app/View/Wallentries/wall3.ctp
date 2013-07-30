@@ -60,10 +60,17 @@
                   <button type="submit" class="btn btn-inverse pull-right update_data" style="margin:0px 0px 0px 0px;">Publish</button>
                 </form></br></br>
               </div>
-              <div class="alert alert-info" style="margin:10px 0px 0px 0px;">
-                <h4><i class="elusive-info-sign"></i> Congrats! Ready to go.</h4>
-                <p>This is the place where you will get all the news about your channel and the channels you follow. </br>Your followers will hear about your shares so publish your first post and make them happy !</p>
-              </div>
+              <div>
+                <ul style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well nav nav-pills">
+                    <!--tab menus-->
+                    <li class="active"><a data-toggle="tab" href="#new-feeds"><i class="elusive-bell"></i> My Notifications</a></li>
+                    <!--/tab menus-->
+                </ul>
+
+                <?php echo $this->element('NewPanel/load_my_notifications');?>
+
+            </div>
+
             </div>
 
 
