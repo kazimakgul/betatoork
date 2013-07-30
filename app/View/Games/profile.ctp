@@ -10,27 +10,6 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                         <!-- content-body -->
                         <div class="content-body" style="background-color:rgba(0,0,0,.2); padding-top:15px;">
 
-<?php
-if($this->Session->check('Auth.User')){
-?>
-
-        <div class="alert alert-info">
-            <div class="box-header corner-top">
-                <div class="header-control">
-                <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
-                </div>
-            </div>
-            <strong><a class="btn btn-link btn-small" style="margin=:0px 0px 0px 0px;" href="<?php echo $settings;?>"><i class="elusive-pencil"></i> Edit</strong></a>your own channel and start building your game community now.
-        </div>
-
-<?php
-}else{
-?>
-
-
-<?php
-}
-?>
 
 <?php if($publicuser['User']['banner']==null) { ?>
 <div class="well well-small shadow-black" style=" padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* FF 3.6+ */  
@@ -202,10 +181,32 @@ if($gplus==NULL){
 
                                     <div class="row-fluid">
                                     <div class="span5">
+                                        <div class="box-header corner-top">
+                                            <!--tab action-->
+                                            <div class="header-control pull-right">
+
+                                            </div>
+                                            <ul style="background-color:white; padding:10px; margin:0px;" class="shadow well nav nav-pills">
+                                                <!--tab menus-->
+                                                <li class="active"><a data-toggle="tab" href="#new-feeds">Activity Feed</a></li>
+                                                <!--/tab menus-->
+                                            </ul>
+                                        </div>
                                         <?php  echo $this->element('NewPanel/load_my_notifications'); ?>
                                     </div>
 
                                         <div class="box-body span7 pull-right">
+                                        <div class="box-header corner-top">
+                                            <!--tab action-->
+                                            <div class="header-control pull-right">
+
+                                            </div>
+                                            <ul style="background-color:white; padding:10px; margin:0px;" class="shadow well nav nav-pills">
+                                                <!--tab menus-->
+                                                <li class="active"><a data-toggle="tab" href="#new-feeds">Channel News</a></li>
+                                                <!--/tab menus-->
+                                            </ul>
+                                        </div>
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active" id="recent-orders">
