@@ -8,7 +8,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                     <div class="content">
                         
                         <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
+                        <div class="content-body" style="background-color:rgba(0,0,0,.2); padding-top:15px;">
 
 <?php
 if($this->Session->check('Auth.User')){
@@ -159,7 +159,7 @@ if($gplus==NULL){
         <!--span-->
          <div class="span12">
                                     <!--box tab-->
-                                    <div class="box-tab corner-all">
+                                    <div >
                                         <div class="box-header corner-top">
                                             <ul class="nav nav-tabs" id="profile_tabs">
      
@@ -198,20 +198,14 @@ if($gplus==NULL){
                                                 <div class="tab-pane fade" id="news_tab">
                                 <!-- tab resume update -->
                                 <div class="span12">
-                                    <div class="box-tab corner-all">
-                                        <div class="box-header corner-top">
-                                            <!--tab action-->
-                                            <div class="header-control pull-right">
-                                                <a data-box="collapse"><i class="icofont-caret-up"></i></a>
-                                                <a data-box="close" data-hide="rotateOutDownLeft">&times;</a>
-                                            </div>
-                                            <ul class="nav nav-pills">
-                                                <!--tab menus-->
-                                                <li class="active"><a data-toggle="tab" href="#recent-orders">Whats New</a></li>
-                                                <!--/tab menus-->
-                                            </ul>
-                                        </div>
-                                        <div class="box-body">
+                                                    
+
+                                    <div class="row-fluid">
+                                    <div class="span5">
+                                        <?php  echo $this->element('NewPanel/load_my_notifications'); ?>
+                                    </div>
+
+                                        <div class="box-body span7 pull-right">
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active" id="recent-orders">
