@@ -103,13 +103,13 @@ echo "</div>";
 				 <?php if($type==1) { 
 			    $gameimage=$this->Upload->image($gamedata,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$gamename,'width'=>'200','height'=>'110','onerror'=>'imgError(this,"toorksize");'));
 			    ?>
-			 <div class="feedcontent clearfix">
-                                        <div class="feedgameavatar">
+			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; padding:5px;">
+                                        <div class="feedgameavatar" style="padding-right:5px;">
                                             <?php echo $gameimage; ?>
                                         </div>   
-                                        <div class="feedgamedesc">
+                                        <div>
                                             <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedgamedesctitle"><?php echo $gamename; ?></span></a>
-                                            <span class="feedgamedescdesc"><?php echo $description; ?></span>
+                                            <p class="helper-font-9"><?php echo $description; ?></p>
                                         </div>                                     
                                     </div>
 						<?php } ?>
@@ -118,13 +118,13 @@ echo "</div>";
 						<?php if($type==6) { 
 			           $gameimage=$this->Upload->image($gamedata,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$gamename,'width'=>'200','height'=>'110','onerror'=>'imgError(this,"toorksize");'));
 			?>
-			 <div class="feedcontent clearfix">
-                                        <div class="feedgameavatar">
+			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; padding:5px;">
+                                        <div class="feedgameavatar" style="padding-right:5px;">
                                             <?php echo $gameimage; ?>
                                         </div>   
-                                        <div class="feedgamedesc">
+                                        <div>
                                             <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedgamedesctitle"><?php echo $gamename; ?></span></a>
-                                            <span class="feedgamedescdesc"><?php echo $description; ?></span>
+                                            <p class="helper-font-9"><?php echo $description; ?></p>
                                         </div>                                     
                                     </div>
 						<?php } ?>
