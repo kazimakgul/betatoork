@@ -72,7 +72,7 @@ if($updatesarray)
                                                             <p style="margin-left:60px;"><?php echo $message; ?></p>
                                                         <hr size="1">
 
-                                                        <div class="media-body" style="align:center; margin:-7px;">
+                                                        <div class="media-body" style="text-align: center; margin:-7px;">
                                                             
 															
 														<?php
