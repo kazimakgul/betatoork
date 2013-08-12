@@ -722,6 +722,8 @@ function subscribe (channel_name,user_auth,id) {
             type: 'success'
           });
 		
+		pushActivity(null,id,1,1,2);
+		
 			}else{
 				
 			$.pnotify({
@@ -834,7 +836,7 @@ if($('#follow_button').attr('id')=='follow_button')
 					
 			}
 		  
-				
+		pushActivity(id,null,1,1,7);		
 	}
 	
 	function unFavorite (game_name,user_auth,id) {
@@ -1025,6 +1027,9 @@ $('#chaingame').live('click',function () {
               text: 'You have cloned. <strong>'+game_name+'</strong> game. You will be able to edit this game as you wish on your games section.',
               type: 'success'
               });  
+			  
+			pushActivity(game_id,null,1,1,3);	 
+			  
 			}else{
 				
 				$.pnotify({
@@ -1515,3 +1520,21 @@ $('#grabloader').css("display", "block");
 });
 
 //*********/Edit Game Function********
+
+
+
+//==========================================================
+//*********Activity Submit Functions********
+//==========================================================
+function pushActivity(game_id,channel_id,notify,email,type)
+{
+activitypath=pushactivity+'/'+game_id+'/'+channel_id+'/'+notify+'/'+email+'/'+type
+$.post(activitypath, function (data) {
+            if (data!= null) {
+			alert(data);
+            }
+            
+        });	
+
+
+}

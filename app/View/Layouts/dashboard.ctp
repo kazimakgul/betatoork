@@ -48,7 +48,7 @@ favswitcher='<?php echo $this->Html->url(array('controller'=>'favorites','action
 rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add')); ?>';
 chaingame='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
 deletegame='<?php echo $this->Html->url(array('controller'=>'games','action'=>'gamedelete')); ?>';
-
+pushactivity='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'pushactivity')); ?>';
 
 
 
