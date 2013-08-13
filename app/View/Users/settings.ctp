@@ -17,6 +17,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
     <ul class="nav nav-tabs">
       <li class="active"><a href="#home" data-toggle="tab"><i class="elusive-user"></i> Profile</a></li>
       <li><a href="#profile" data-toggle="tab"><i class="elusive-thumbs-up color-blue"></i> Socials</a></li>
+      <li><a href="#notifications" data-toggle="tab"><i class="elusive-envelope color-green"></i> Notifications</a></li>
       <li><a href="#password" data-toggle="tab"><i class="elusive-lock color-red"></i> Password</a></li>
     </ul>
     <div id="myTabContent" class="tab-content">
@@ -185,6 +186,77 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                                                         </fieldset>
                                                     </form>
       </div>
+
+      <div class="tab-pane fade" id="notifications">
+
+        <h3>Notify Me</h3>
+
+<form>
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th class="span1"></th>
+      <th class="span3"></th>
+      <th class="span9"></th>
+      <th class="span2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><strong>Follow</strong></td>
+      <td>I got a new follower</td>
+      <td><span class="label pull-right">Email Me</span></td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><strong>Comment</strong></td>
+      <td>Comments on a post I created</td>
+      <td><span class="label pull-right">Email Me</span></td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><strong>Game Comment</strong></td>
+      <td>Comments on one of my games</td>
+      <td><span class="label pull-right">Email Me</span></td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><strong>Rate</strong></td>
+      <td>One of my games get rated</td>
+      <td><span class="label pull-right">Email Me</span></td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><strong>Favorite</strong></td>
+      <td>Favorite one of my games</td>
+      <td><span class="label pull-right">Email Me</span></td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><strong>Clone</strong></td>
+      <td>Clone one of my games</td>
+      <td><span class="label pull-right">Email Me</span></td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><strong>Mention</strong></td>
+      <td>Mentions me in a post</td>
+      <td><span class="label pull-right">Email Me</span></td>
+    </tr>
+  </tbody>
+</table>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn">Cancel</button>
+    </div>
+
+</form>    
+
+      </div>
+
+
       <div class="tab-pane fade" id="password">
 
 <div >
