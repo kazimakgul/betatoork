@@ -490,6 +490,35 @@ public function set_suggested_channels()
 
 }
 
+   public function setPermissions() {
+   $this->layout="ajax";
+   
+ if($this->Auth->user('id'))
+ { //openning of auth_id control
+ 
+ $auth_id=$this->Session->read('Auth.User.id');
+   
+   if($this->request->is('post'))
+   {
+   $permids=$this->request->data['permdata'];
+   
+   $this->User->Query('DELETE FROM mailpermissions
+WHERE user_id='.$auth_id.'');
+
+      foreach($permids as $permid)
+      {
+             
+			  $this->User->Query('INSERT INTO mailpermissions
+(user_id,type_id) VALUES ('.$auth_id.','.$permid.')');
+		     
+      }
+   
+   }
+   
+   
+ }//closing of auth_id control	  
+   }
+
 	public function settings($id = null) {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');

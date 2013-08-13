@@ -203,43 +203,43 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
   </thead>
   <tbody>
     <tr>
-      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="2" checked> <a href="#"></a></td>
       <td><strong>Follow</strong></td>
       <td>I got a new follower</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="6" checked> <a href="#"></a></td>
       <td><strong>Comment</strong></td>
       <td>Comments on a post I created</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="1" checked> <a href="#"></a></td>
       <td><strong>Game Comment</strong></td>
       <td>Comments on one of my games</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="4" checked> <a href="#"></a></td>
       <td><strong>Rate</strong></td>
       <td>One of my games get rated</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="7" checked> <a href="#"></a></td>
       <td><strong>Favorite</strong></td>
       <td>Favorite one of my games</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="3" checked> <a href="#"></a></td>
       <td><strong>Clone</strong></td>
       <td>Clone one of my games</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="5" checked> <a href="#"></a></td>
       <td><strong>Mention</strong></td>
       <td>Mentions me in a post</td>
       <td><span class="label pull-right">Email Me</span></td>
@@ -248,7 +248,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 </table>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" id="savepermissions" class="btn btn-primary">Save changes</button>
         <button type="button" class="btn">Cancel</button>
     </div>
 

@@ -1521,7 +1521,35 @@ $('#grabloader').css("display", "block");
 
 //*********/Edit Game Function********
 
+//==========================================================
+//***********Set Mail Permissions********
+//==========================================================
+$('#savepermissions').live('click',function(){
+var permarray = [];
+$("input:checkbox[name=permission]:checked").each(function()
+{
+	permarray.push($(this).val());
+	
+});
 
+$.pnotify({
+            text: 'Mail Permissions Updated',
+            type: 'success'
+          });
+//alert(permarray.join('\n'));
+
+
+$.post(setpermission,{permdata:permarray}, function (data) {
+            if (data!= null) {
+			//alert(data);
+            }
+            
+        });	
+
+});
+//==========================================================
+//*********//Set Mail Permissions********
+//==========================================================
 
 //==========================================================
 //*********Activity Submit Functions********
@@ -1535,6 +1563,5 @@ $.post(activitypath, function (data) {
             }
             
         });	
-
 
 }
