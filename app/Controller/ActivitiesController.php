@@ -118,13 +118,13 @@ class ActivitiesController extends AppController {
  
 		    $email = new CakeEmail();
 		    // Set data for the "view" of the Email
-			$email->viewVars(array('reset_url' => 'http://toork.com/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash(),'username'=>$user["User"]["username"]));
+			$email->viewVars(array('reset_url' => 'http://toork.com/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash(),'useremail'=>$user["User"]["email"],'username'=>$user["User"]["username"]));
 			$email->config('smtp')
-				->template('forgot_password') //I'm assuming these were created
+				->template('follow') //I'm assuming these were created
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => 'Toork'))
-			    ->subject('Toork - Password Reset')
+			    ->from(array('no-reply@toork.com' => $user["User"]["username"].' - Toork'))
+			    ->subject($user["User"]["username"].' is following you on Toork.')
 			    ->send();
 	  
 	 //echo 'data has been mailed';
