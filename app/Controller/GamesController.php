@@ -212,7 +212,7 @@ $this->set('lastactivities',$activityData);
 public function set_suggested_channels()
 {
 //Set first situation of flags
-		$restrict=50;$this->get_last_activities();break;
+		$restrict=50;$this->get_last_activities();
 		$status='normal';
 		$counter=0;
 		$limit=20;
