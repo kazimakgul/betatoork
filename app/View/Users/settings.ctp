@@ -261,7 +261,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 
 <div >
 
-  <h1>Change Your Password</h1>
+  <h3>Change Your Password</h3>
   <p>Please make sure that it is not an easy to remember password. Try to use some numbers and special characters as well.</p>
   <p>
     <a href="<?php echo $password; ?>" class="btn btn-danger btn-large">
