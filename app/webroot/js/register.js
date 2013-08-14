@@ -996,6 +996,8 @@ function rate_a_game(rating,user_auth,game_id){
     $('.ratingbar').css({width: '100%'});
     }
   
+   pushActivity(game_id,null,1,1,4);
+  
    }else{
     //if user is no logged in.
     //$('.unauth').click();

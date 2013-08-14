@@ -8,7 +8,7 @@
 class GamesController extends AppController {
 
 	public $name = 'Games';
-	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category');
+	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Activity');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
     
@@ -198,10 +198,21 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	
 	}
 
+public function get_last_activities()
+{
+$auth_id=1166;
+$subscribed_ids=$this->Subscription->find('list',array('contain'=>false,'fields'=>array('Subscription.subscriber_to_id'),'conditions'=>array('Subscription.subscriber_id'=>$auth_id)));
+
+$activityData=$this->Activity->find('all',array('contain'=>false,'conditions'=>array('Activity.performer_id'=>$subscribed_ids)));
+$this->set('lastactivities',$activityData);
+
+}
+
+
 public function set_suggested_channels()
 {
 //Set first situation of flags
-		$restrict=50;
+		$restrict=50;$this->get_last_activities();break;
 		$status='normal';
 		$counter=0;
 		$limit=20;

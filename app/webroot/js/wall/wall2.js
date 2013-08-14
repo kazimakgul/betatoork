@@ -435,6 +435,7 @@ $('.update_game_comment').live("click",function(e)
 						$('#webcam_preview').html('');
 						$('#uploadvalues').val('');
 						$('#photoimg').val('');
+						pushActivity(game_id,null,1,1,1);
 					}
 				});
 				$("#preview").html();
@@ -536,6 +537,7 @@ $('.update_game_comment2').live("click",function(e)
 						$('#webcam_preview').html('');
 						$('#uploadvalues').val('');
 						$('#photoimg').val('');
+						pushActivity(game_id,null,1,1,1);
 					}
 				});
 				$("#preview").html();
