@@ -657,16 +657,16 @@ h1,h2,h3,h4,h5,h6{
 
 /** scrollbar **/
 ::-webkit-scrollbar {
-    background: transparent;
-    border: rgba(0, 0, 0, 0.2) solid;
+
+
 }
 ::-webkit-scrollbar:vertical {
-    border-width: 0 0 0 1px;
+
     width: 8px;
     background: #F1F1F1;
 }
 ::-webkit-scrollbar:horizontal {
-    border-width: 0 0 0 1px;
+
     height: 8px;
     background: #F1F1F1;
 }
