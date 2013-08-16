@@ -200,11 +200,14 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 
 public function get_last_activities()
 {
-$auth_id=1166;
-$subscribed_ids=$this->Subscription->find('list',array('contain'=>false,'fields'=>array('Subscription.subscriber_to_id'),'conditions'=>array('Subscription.subscriber_id'=>$auth_id)));
-
-$activityData=$this->Activity->find('all',array('contain'=>false,'conditions'=>array('Activity.performer_id'=>$subscribed_ids)));
+    if($this->Auth->user('id'))
+	{ //openning of auth_id control
+    $auth_id=$this->Session->read('Auth.User.id');
+    $subscribed_ids=$this->Subscription->find('list',array('contain'=>false,'fields'=>array('Subscription.subscriber_to_id'),'conditions'=>array('Subscription.subscriber_id'=>$auth_id)));
+	$activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username')),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username','ChannelUser.seo_username'))),'conditions'=>array('Activity.performer_id'=>$subscribed_ids)));
 $this->set('lastactivities',$activityData);
+    }//closing of auth_id control
+
 
 }
 
@@ -212,7 +215,7 @@ $this->set('lastactivities',$activityData);
 public function set_suggested_channels()
 {
 //Set first situation of flags
-		$restrict=50;$this->get_last_activities();
+		$restrict=50;
 		$status='normal';
 		$counter=0;
 		$limit=20;
@@ -300,6 +303,7 @@ public function set_suggested_channels()
         }
 		
 	    $this->set_suggested_channels();
+		$this->get_last_activities();
 	    $this->set('user',$user);
 	    $this->set('username',$userName);
 	    $this->set('isActive',$isActive);
@@ -325,7 +329,8 @@ public function set_suggested_channels()
 
 	$this->set('title_for_layout',$userName.'- All Favorite Games');
 	$this->set('description_for_layout', 'Find all the games that are favorited by '.$userName);
-	$this->set_suggested_channels();	
+	$this->set_suggested_channels();
+	$this->get_last_activities();	
 
    }
 
@@ -342,6 +347,7 @@ public function set_suggested_channels()
 		$this->set('description_for_layout', $userName.' - All the chains of '.$userName);
 
         $this->set_suggested_channels();
+		$this->get_last_activities();
 		//$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
 		
 		$limit=18;
@@ -414,6 +420,7 @@ public function set_suggested_channels()
 
 
     	$this->set_suggested_channels();
+		$this->get_last_activities();
 	}
 
 	public function playedgames() {
@@ -487,6 +494,7 @@ public function categorygames2() {
 		$this->leftpanel();
 		$this->headerlogin();
 		$this->set_suggested_channels();
+		$this->get_last_activities();
 		$catid = $this->request->params['pass'][0];
 		$category = $this->Category->find('first', array('conditions' => array('Category.id' => $catid)));
 		$catName = $category['Category']['name'];
@@ -620,6 +628,7 @@ public function mygames() {
 		$this->set('title_for_layout', 'Toork - Create your own game channel');
 		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
 	    $this->set_suggested_channels();
+		$this->get_last_activities();
    
 }
 
@@ -925,7 +934,8 @@ public function profile() {
 	$this->set('user', $user);
 	$this->set('publicuser', $publicUser);
 
-	$this->set_suggested_channels();	
+	$this->set_suggested_channels();
+	$this->get_last_activities();	
 	$this->set('title_for_layout', $publicName.' Game Channel - Toork');
 	$this->set('description_for_layout', 'Play games on '.$publicName.' : '.$publicDesc);
 
@@ -1099,6 +1109,7 @@ public function profile() {
 		
 		
 	    $this->set_suggested_channels();
+		$this->get_last_activities();
 
 	}
 
@@ -1126,6 +1137,7 @@ public function profile() {
                 'Userstat.potential' => 'desc')));
 		$this->set('users',$users);
 	    $this->set_suggested_channels();
+		$this->get_last_activities();
 
 
 
@@ -1259,6 +1271,7 @@ $this->set('description_for_layout', 'Toork - Game Search Engine powered by Goog
     $this->set('username', $userName);
 	$this->set('user_id', $userid);
 	$this->set_suggested_channels();
+	$this->get_last_activities();
 	
 }
 
@@ -1524,6 +1537,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$id=$game['Game']['id'];
 		$this->fav_check($id);
 		
+
 	
 		if ($game==NULL) {
 			throw new NotFoundException(__('Invalid game'));
@@ -1594,6 +1608,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
 		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
 	    $this->set_suggested_channels();
+		$this->get_last_activities();
 		
 		
 		//New Wall Getting Started Below.
@@ -1671,6 +1686,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
 		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
 	    $this->set_suggested_channels();
+		$this->get_last_activities();
 		
 	//Set random game after rendering
     $this->render();
@@ -2211,6 +2227,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			
 			$this->Game->create();
 			
+
 			if ($this->Game->save($this->request->data)) {
 			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
 				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
@@ -2261,7 +2278,8 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 		$this->set('isActive', $isActive);
 	$this->set('title_for_layout','Add New Game');
 	$this->set('description_for_layout', 'You are able to add a new game');
-	$this->set_suggested_channels();		
+	$this->set_suggested_channels();
+	$this->get_last_activities();		
 		
 	}
 
@@ -2530,7 +2548,8 @@ public function edit2($id = null) {
 
 	$this->set('title_for_layout','Edit Your Game');
 	$this->set('description_for_layout', 'You are able to edit your game');
-	$this->set_suggested_channels();	
+	$this->set_suggested_channels();
+	$this->get_last_activities();	
 	}
 
 
