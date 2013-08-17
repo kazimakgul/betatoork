@@ -135,14 +135,26 @@ class ActivitiesController extends AppController {
   
    }
    
-   public function mailPermission($user_id=NULL,$type_id=NULL)
+    public function mailPermission($user_id=NULL,$type_id=NULL)
+    {
+   
+   $default=$this->Activity->query('SELECT * FROM mailpermissions WHERE user_id='.$user_id.'');
+   if($default!=NULL)
    {
-  $perm=$this->Activity->query('SELECT * FROM mailpermissions WHERE user_id='.$user_id.' AND type_id='.$type_id.'');//echo 'access has been checked for '.$user_id.' '.$type_id;
-  if($perm!=NULL)
-  return 1;
-  else
-  return 0;
+      $perm=$this->Activity->query('SELECT * FROM mailpermissions WHERE user_id='.$user_id.' AND type_id='.$type_id.'');//echo 'access has been checked for '.$user_id.' '.$type_id;
+      if($perm!=NULL)
+      return 1;
+      else
+      return 0;
+   }else{
+   return 1;
    }
+   
+   
+   
+  
+  
+    }
 	
 	
 	
