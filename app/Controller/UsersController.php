@@ -260,7 +260,7 @@ public function activationmailsender($user_id=NULL){
 		$email = new CakeEmail();
 		    $email->viewVars(array('username' => $user["User"]["username"],'activate_url'=>'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash()));
 			$email->config('smtp')
-				->template('simple_mail') //I'm assuming these were created
+				->template('register') //I'm assuming these were created
 			    ->emailFormat('html')
 			    ->to($user['User']['email'])
 			    ->from(array('no-reply@toork.com' => 'Toork'))
