@@ -73,6 +73,14 @@ if ($this->action == "dashboard"){
                                     <span class="sidebar-text">Dashboard</span>
                                 </a>
                             </li>
+                            <li <?php echo $class5;?>>
+                                <a href="<?php echo $wall; ?>" title="Wall">
+                                    <div class="helper-font-24">
+                                        <i class="icofont-th-list"></i>
+                                    </div>
+                                    <span class="sidebar-text">News Feed</span>
+                                </a>
+                            </li>
                             <li <?php echo $class2;?>>
                                 <a href="<?php echo $mygames; ?>" title="My Games">
                                     <div class="helper-font-24">
@@ -96,14 +104,6 @@ if ($this->action == "dashboard"){
                                         <i class="elusive-group"></i>
                                     </div>
                                     <span class="sidebar-text">Follows</span>
-                                </a>
-                            </li>
-                            <li <?php echo $class5;?>>
-                                <a href="<?php echo $wall; ?>" title="Wall">
-                                    <div class="helper-font-24">
-                                        <i class="icofont-th-list"></i>
-                                    </div>
-                                    <span class="sidebar-text">News Feed</span>
                                 </a>
                             </li>
                             <li <?php echo $class6;?>>

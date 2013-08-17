@@ -44,7 +44,7 @@ class ActivitiesController extends AppController {
 		$rand4=rand(1,232323);
 		
 		$this->pushActivity($rand2,1558,0,1,10);
-		
+				return $this->render('/emails/html/mention');
 	}
 	
 	
