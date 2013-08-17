@@ -49,12 +49,12 @@ border-left: 1.4em solid #2C2C2C;
 
 </style>
 
-<div align="center" style="background-color:#e5e5e5;margin-bottom:15px;padding:20px 30px 20px 30px">
+<div align="center" style="background-color:#e5e5e5;margin-bottom:15px;padding:10px 10px 10px 10px">
 
   <div style="max-width:520px">
   <div style="background-color:white;border:1px solid #dadada;border-bottom-width:2px;border-top:none">
   <div style="padding:0px 12px;border-bottom:1px solid #f1f1f1">
-    <table style="width:100%;min-height:50px" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="font-size:10px; margin:0px 0px 0px 10px;" class="marker"> </div></td><td style="font-size:18px"><p style="margin-left:20px;">Your game Angry Birds has a new clone right now.</p></td></tr></tbody>
+    <table style="width:100%;min-height:50px" cellpadding="0" cellspacing="0"><tbody><tr><td style="font-size:18px"><p style="font-family:'helvetica neue'; font-weight:bold;font-size:16px;">Your game Angry Birds has a new clone right now.</p></td></tr></tbody>
     </table>
   </div>
 

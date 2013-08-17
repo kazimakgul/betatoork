@@ -44,7 +44,7 @@ class ActivitiesController extends AppController {
 		$rand4=rand(1,232323);
 		
 		$this->pushActivity($rand2,1558,0,1,10);
-				return $this->render('/emails/html/mention');
+				return $this->render('/emails/html/rate');
 	}
 	
 	
@@ -107,26 +107,50 @@ class ActivitiesController extends AppController {
 	        if($channel_id!=NULL)
 			{//-----Channel id bos degilse begins-------
 	           
-			   $this->User->id=$channel_id;
-		$user = $this->User->find('first',array('conditions' => array('User.id'=>$channel_id)));
+			$this->User->id=$channel_id;
+			$user = $this->User->find('first',array('conditions' => array('User.id'=>$channel_id)));
+			$performer = $this->User->find('first',array('conditions' => array('User.id'=>$performer_id)));
 		
 		if ($user === false) {
 			$this->Session->setFlash('This mail is not registered.');
 			debug(__METHOD__." failed to retrieve User data for user.id: {$user_id}");
 			return false;
 		}
- 
-		    $email = new CakeEmail();
-		    // Set data for the "view" of the Email
-			$email->viewVars(array('reset_url' => 'http://toork.com/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash(),'useremail'=>$user["User"]["email"],'username'=>$user["User"]["username"]));
+
+
+
+
+
+ 		$email = new CakeEmail();
+
+ 		if($type_id==2){
+			$email->viewVars(array('perform' => $performer,'performer' => $performer['User']['username'],'perDesc' => $performer['User']['description'],'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
-				->template('follow') //I'm assuming these were created
+				->template('follow') 
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $user["User"]["username"].' - Toork'))
-			    ->subject($user["User"]["username"].' is following you on Toork.')
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' is following you on Toork.')
 			    ->send();
-	  
+	  	}elseif($type_id==7){
+			$email->viewVars(array('perform' => $performer,'performer' => $performer['User']['username'],'perDesc' => $performer['User']['description'],'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('favorite')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' added Angry Birds to its Favorite list.')
+			    ->send();
+	  	}elseif($type_id==1){
+			$email->viewVars(array('perform' => $performer,'performer' => $performer['User']['username'],'perDesc' => $performer['User']['description'],'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('comment')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' commented on your game Angry Birds.')
+			    ->send();
+	  	}
 	 //echo 'data has been mailed';
 	             }//-----Channel id bos degilse begins-------
 	        

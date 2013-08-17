@@ -45,12 +45,12 @@ transform-origin: 100% 100%;
 
 </style>
 
-<div align="center" style="background-color:#e5e5e5;margin-bottom:15px;padding:20px 30px 20px 30px">
+<div align="center" style="background-color:#e5e5e5;margin-bottom:15px;padding:10px 10px 10px 10px">
 
   <div style="max-width:520px">
   <div style="background-color:white;border:1px solid #dadada;border-bottom-width:2px;border-top:none">
   <div style="padding:0px 12px;border-bottom:1px solid #f1f1f1">
-    <table style="width:100%;min-height:50px" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="font-size:15px; margin:-10px 0px 0px 10px;" class="heart"> </div></td><td style="font-size:18px"><p style="margin-left:20px;">Angry Birds Favorited by Socialesman</p></td></tr></tbody>
+    <table style="width:100%;min-height:50px" cellpadding="0" cellspacing="0"><tbody><tr><td style="font-size:18px"><p style="font-family:'helvetica neue'; font-weight:bold;font-size:16px;">Angry Birds Favorited by Socialesman</p></td></tr></tbody>
     </table>
   </div>
 
