@@ -500,7 +500,7 @@ public function set_suggested_channels()
 		$category = $this->Category->find('all');
 		$this->set('category',$category);
 	   	$this->set('channels',$suggestdata);
-
+        $this->get_last_activities();
 }
 
    public function setPermissions() {
@@ -538,7 +538,6 @@ WHERE user_id='.$auth_id.'');
 	
 	
 		    $this->set_suggested_channels();
-			$this->get_last_activities();
 		$this->layout = 'dashboard';
 		$this->loadModel('Subscription');
 		$userid=$id;
