@@ -1,11 +1,11 @@
 
 <?php
-if($perform['User']['seo_username']!=NULL)
+if($performer['User']['seo_username']!=NULL)
 {
-  $profileurl=$this->Html->url(array( "controller" => h($perform['User']['seo_username']),"action" =>'')); 
+  $profileurl=$this->Html->url(array( "controller" => h($performer['User']['seo_username']),"action" =>'')); 
 }
 else{
-  $profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$perform['User']['id']));
+  $profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$performer['User']['id']));
 }
 ?>
 
@@ -14,7 +14,7 @@ else{
   <div style="max-width:520px">
   <div style="background-color:white;border:1px solid #dadada;border-bottom-width:2px;border-top:none">
   <div style="padding:0px 12px;border-bottom:1px solid #f1f1f1">
-    <table style="width:100%;min-height:50px" cellpadding="0" cellspacing="0"><tbody><tr><td style="font-size:18px"><p style="font-family:'helvetica neue'; font-weight:bold;font-size:16px;"><?php echo $performer; ?> is following you now</p></td></tr></tbody>
+    <table style="width:100%;min-height:50px" cellpadding="0" cellspacing="0"><tbody><tr><td style="font-size:18px"><p style="font-family:'helvetica neue'; font-weight:bold;font-size:16px;"><?php echo $performer['User']['seo_username']; ?> is following you now</p></td></tr></tbody>
     </table>
   </div>
 
@@ -23,7 +23,7 @@ else{
     <img style="border:1px solid" width="70" height="90" src="">
 
 
-  </a></td><td style="padding-left:14px"><div style="font:14px arial;font-weight:bold;color:#262626"><a href="<?php echo $profileurl; ?>" style="color:#262626;font:16px arial,normal;text-decoration:none" target="_blank"><?php echo $performer; ?></a></div><div style="font:11px arial,normal;color:#999999;margin-top:3px"><?php echo $perDesc;?></div></td></tr></tbody></table>
+  </a></td><td style="padding-left:14px"><div style="font:14px arial;font-weight:bold;color:#262626"><a href="<?php echo $profileurl; ?>" style="color:#262626;font:16px arial,normal;text-decoration:none" target="_blank"><?php echo $performer['User']['seo_username']; ?></a></div><div style="font:11px arial,normal;color:#999999;margin-top:3px"><?php echo $performer['User']['description'];?></div></td></tr></tbody></table>
   </div>
 
   <div style="padding:14px"><table style="width:100%" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="padding-right:20px;display:inline-block;font-size:16px"><a href="#" style="color:inherit;text-decoration:none" target="_blank">2384 Followers </a></div><div style="padding-right:20px;display:inline-block;font-size:16px"><a href="#" style="color:inherit;text-decoration:none" target="_blank">141 Games</a></div> <td style="text-align:right"><a href="<?php echo $profileurl; ?>" style="background-color:#f5f5f5;border:solid 1px #dfdfdf;border-radius:3px;color:#444;display:inline-block;font-family:Arial;font-size:13px;font-weight:bold;min-height:34px;line-height:34px;min-width:54px;padding:0 20px;text-align:center;text-decoration:none;white-space:nowrap" target="_blank">View Channel</a></td></td></tr></tbody></table></div></div></div>

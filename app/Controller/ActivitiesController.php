@@ -118,19 +118,58 @@ class ActivitiesController extends AppController {
 		}
 
 
+/* Activity Type_id codes
+Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameAdd9 SharePost10 PlayGame11
+*/
 
 
 
  		$email = new CakeEmail();
 
- 		if($type_id==2){
-			$email->viewVars(array('perform' => $performer,'performer' => $performer['User']['username'],'perDesc' => $performer['User']['description'],'perMail'=>$user["User"]["email"]));
+ 		if($type_id==1){
+			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('comment')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' commented on your game.')
+			    ->send();
+	  	}elseif($type_id==2){
+			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('follow') 
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
 			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
 			    ->subject($performer["User"]["username"].' is following you on Toork.')
+			    ->send();
+	  	}elseif($type_id==3){
+			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('clone')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' made a clone of your game.')
+			    ->send();
+	  	}elseif($type_id==4){
+			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('mention')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' is talking about you.')
+			    ->send();
+	  	}elseif($type_id==6){
+			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('postComment')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' commneted on your post.')
 			    ->send();
 	  	}elseif($type_id==7){
 			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
@@ -139,16 +178,16 @@ class ActivitiesController extends AppController {
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
 			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
-			    ->subject($performer["User"]["username"].' added Angry Birds to its Favorite list.')
+			    ->subject($performer["User"]["username"].' added your game to its Favorite list.')
 			    ->send();
-	  	}elseif($type_id==1){
-			$email->viewVars(array('perform' => $performer,'performer' => $performer['User']['username'],'perDesc' => $performer['User']['description'],'perMail'=>$user["User"]["email"]));
+	  	}elseif($type_id==8){
+			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
-				->template('comment')
+				->template('hashtag')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
 			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
-			    ->subject($performer["User"]["username"].' commented on your game Angry Birds.')
+			    ->subject($performer["User"]["username"].' is talking about your game.')
 			    ->send();
 	  	}
 	 //echo 'data has been mailed';
