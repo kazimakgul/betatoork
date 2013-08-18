@@ -134,7 +134,8 @@ return $material.$number;
              }
 */
                 $playurl="empty";
-				$game_name='<a href="'.$playurl.'">'.$lastactivity['Game']['name'].'</a>';
+				$game_name=$lastactivity['Game']['name'];
+				$channel_name=$lastactivity['ChannelUser']['username'];
 				$type=$lastactivity['Activity']['type'];
 				
 				    if($type==1)
@@ -143,7 +144,7 @@ return $material.$number;
 				    }
 					if($type==2)
 				    {
-					$text='Following '.$game_name.' now.';
+					$text='Following '.$channel_name.' now.';
 				    }
 					if($type==3)
 				    {

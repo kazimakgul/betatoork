@@ -1,7 +1,8 @@
 				<?php 
-				/*
+				
 				foreach($lastactivities as $lastactivity)
 				{
+				/*
 				echo $lastactivity['PerformerUser']['username'];
 				echo $lastactivity['PerformerUser']['seo_username'];
 				echo $lastactivity['PerformerUser']['id'];
@@ -14,9 +15,12 @@
 				echo $lastactivity['Game']['id'];
 				echo $lastactivity['Game']['seo_url'];
 				
-				echo 'type:'.$lastactivity['Activity']['type'];
-				}
+		
+				$timestamp = strtotime($lastactivity['Activity']['created']);
+				$time=date("c",$timestamp);
 				*/
+				}
+				
 				?>	
 					
 					
@@ -39,6 +43,8 @@ else{
 						$card = $this->requestAction( array('controller' => 'games', 'action' => 'follow_card', $followid));
 						$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 						$activity_message = $this->requestAction( array('controller' => 'apis', 'action' => 'activityMessage'),array('pass' => $lastactivity));
+						$timestamp = strtotime($lastactivity['Activity']['created']);
+				        $time=date("c",$timestamp);
 
 					?>
 				
@@ -65,7 +71,7 @@ else{
                                                                 <a class="contact-item-heading btn-link btn-mini bold" href="<?php echo $profileurl ?>"  style="margin:-9px 0px -25px 0px; padding-left:0px;padding-left:0px;"><?php echo $lastactivity['PerformerUser']['username']; ?></a>
                                                                 <p style="margin-top:-5px; margin-bottom:-5px; padding:0px;"><small ><?php echo $activity_message;?></small></p>
 
-                                                                <small class="muted pull-right helper-font-9"> 5 days ago</small>
+                                                                <small class="muted pull-right helper-font-9"><a href='#' class="timeago" title='<?php echo $time; ?>'></a></small>
                                                             </div>
                                                         </div>
                                                    

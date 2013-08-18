@@ -9,7 +9,7 @@ class GamesController extends AppController {
 
 	public $name = 'Games';
 	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Activity');
-    public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
+    public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook','Time');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
     
 
@@ -205,7 +205,7 @@ public function get_last_activities()
 	{ //openning of auth_id control
     $auth_id=$this->Session->read('Auth.User.id');
     $subscribed_ids=$this->Subscription->find('list',array('contain'=>false,'fields'=>array('Subscription.subscriber_to_id'),'conditions'=>array('Subscription.subscriber_id'=>$auth_id)));
-	$activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username')),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username','ChannelUser.seo_username'))),'conditions'=>array('Activity.performer_id'=>$subscribed_ids)));
+	$activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username')),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username','ChannelUser.seo_username'))),'conditions'=>array('Activity.performer_id'=>$subscribed_ids),'order'=>'Activity.created DESC'));
 $this->set('lastactivities',$activityData);
     }//closing of auth_id control
 
