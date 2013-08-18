@@ -14,7 +14,7 @@ else{
   <div style="max-width:520px">
   <div style="background-color:white;border:1px solid #dadada;border-bottom-width:2px;border-top:none">
   <div style="padding:0px 12px;border-bottom:1px solid #f1f1f1">
-    <table style="width:100%;min-height:50px" cellpadding="0" cellspacing="0"><tbody><tr><td style="font-size:18px"><p style="font-family:'helvetica neue'; font-weight:bold;font-size:16px;"><?php echo $performer['User']['seo_username']; ?> made a comment on you game</p></td></tr></tbody>
+    <table style="width:100%;min-height:50px" cellpadding="0" cellspacing="0"><tbody><tr><td style="font-size:18px"><p style="font-family:'helvetica neue'; font-weight:bold;font-size:16px;"><?php echo $performer['User']['seo_username']; ?> made a comment on your game</p></td></tr></tbody>
     </table>
   </div>
 
