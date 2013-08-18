@@ -1,42 +1,4 @@
 
-<style type="text/css">
-.controller {
-font-size: 8px;
-background: #2C2C2C;
-position: relative;
-height: 0.4em;
-width: 0.2em;
-margin-top: -1.2em;
-}
-
-.controller::before {
-box-shadow: 2.4em 0em 0 -0.2em #EDEEE8,1.3em 0em 0 -0.2em #EDEEE8,1.4em 0em 0 -0.2em #EDEEE8,1.5em 0em 0 -0.2em #EDEEE8,1.6em 0em 0 -0.2em #EDEEE8,2.3em 0em 0 -0.2em #EDEEE8,2.5em 0em 0 -0.2em #EDEEE8,2.6em 0em 0 -0.2em #EDEEE8,0.5em 0em 0 0 #EDEEE8,-0.5em 0em 0 0 #EDEEE8,0em -0.5em 0 0 #EDEEE8,0em 0.5em 0 0 #EDEEE8,1.1em -0.05em 0 0.95em #2C2C2C,1.759em -0.05em 0 0.95em #2C2C2C,3.2em -0.8em 0 0.2em #2C2C2C,3.2em 0.77em 0 0.2em #2C2C2C;
-top: 1.3em;
-left: -2.1em;
-z-index: 99999;
-height: 0.5em;
-width: 0.5em;
-background: #EDEEE8;
-content: '';
-display: block;
-position: absolute;
-}
-
-.controller::after {
-z-index: 1;
-content: "";
-display: block;
-left: 1.9em;
-top: 2em;
-position: absolute;
-background: #EDEEE8;
-width: 0.6em;
-height: 0.6em;
-border-radius: 100%;
-box-shadow: -0.8em -0.8em 0 0 #EDEEE8,0.8em -0.8em 0 0 #EDEEE8,0em -1.6em 0 0 #EDEEE8,0em -0.8em 0 1em #2C2C2C,-4em -0.8em 0 1em #2C2C2C;
-}
-
-</style>
 <?php
 if($perform['User']['seo_username']!=NULL)
 {

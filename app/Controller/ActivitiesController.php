@@ -133,7 +133,7 @@ class ActivitiesController extends AppController {
 			    ->subject($performer["User"]["username"].' is following you on Toork.')
 			    ->send();
 	  	}elseif($type_id==7){
-			$email->viewVars(array('perform' => $performer,'performer' => $performer['User']['username'],'perDesc' => $performer['User']['description'],'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('favorite')
 			    ->emailFormat('html')
