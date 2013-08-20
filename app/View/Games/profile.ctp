@@ -8,7 +8,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                     <div class="content">
                         
                         <!-- content-body -->
-                        <div class="content-body" style="background-color:rgba(0,0,0,.2); padding-top:15px;">
+                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
 
 
 <?php if($publicuser['User']['banner']==null) { ?>

@@ -5,7 +5,7 @@
                     <div class="content">
 
                         <!-- content-body -->
-                        <div class="content-body" style="background-color:rgba(0,0,0,.2);  padding-top:15px;">
+                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
                             <!-- dashboar 
 
                     <div class="alert alert-danger">

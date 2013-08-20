@@ -5,7 +5,7 @@
                     <div class="content">
                         
                         <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
+                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
 
 <div class="well well-small shadow-black" style=" padding-bottom:0px; 
 

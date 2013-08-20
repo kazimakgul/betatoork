@@ -36,7 +36,7 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"toprated
                         </div><!-- /content-breadcrumb -->
                         
                         <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
+                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
 
 <?php
 if($this->Session->check('Auth.User')){

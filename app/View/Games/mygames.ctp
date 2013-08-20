@@ -7,7 +7,7 @@ $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"
                     <!-- content -->
                     <div class="content">                      
                         <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
+                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
 <div class="raw-fluid span12">
 <div class="well well-small span5">
     <div class="box-header corner-top">
