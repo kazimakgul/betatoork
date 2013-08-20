@@ -110,6 +110,7 @@ class ActivitiesController extends AppController {
 			$this->User->id=$channel_id;
 			$user = $this->User->find('first',array('conditions' => array('User.id'=>$channel_id)));
 			$performer = $this->User->find('first',array('conditions' => array('User.id'=>$performer_id)));
+			$perstat = $this->Userstat->find('first',array('conditions' => array('Userstat.id'=>$performer_id)));
 		
 		if ($user === false) {
 			$this->Session->setFlash('This mail is not registered.');
@@ -127,7 +128,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
  		$email = new CakeEmail();
 
  		if($type_id==1){
-			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('comment')
 			    ->emailFormat('html')
@@ -136,7 +137,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' commented on your game.')
 			    ->send();
 	  	}elseif($type_id==2){
-			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('follow') 
 			    ->emailFormat('html')
@@ -145,7 +146,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' is following you on Toork.')
 			    ->send();
 	  	}elseif($type_id==3){
-			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('clone')
 			    ->emailFormat('html')
@@ -154,7 +155,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' made a clone of your game.')
 			    ->send();
 	  	}elseif($type_id==4){
-			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('mention')
 			    ->emailFormat('html')
@@ -163,7 +164,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' is talking about you.')
 			    ->send();
 	  	}elseif($type_id==6){
-			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('postComment')
 			    ->emailFormat('html')
@@ -172,7 +173,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' commneted on your post.')
 			    ->send();
 	  	}elseif($type_id==7){
-			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('favorite')
 			    ->emailFormat('html')
@@ -181,7 +182,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' added your game to its Favorite list.')
 			    ->send();
 	  	}elseif($type_id==8){
-			$email->viewVars(array('performer' => $performer,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('hashtag')
 			    ->emailFormat('html')
@@ -189,7 +190,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
 			    ->subject($performer["User"]["username"].' is talking about your game.')
 			    ->send();
-	  	}
+	  	}else{}
 	 //echo 'data has been mailed';
 	             }//-----Channel id bos degilse begins-------
 	        
