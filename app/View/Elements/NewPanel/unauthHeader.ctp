@@ -34,6 +34,11 @@
           <li class="divider-vertical"></li>
           <li><a href="<?php echo $index; ?>">Sign Up</a></li>
           <li class="divider-vertical"></li>
+          <li>
+
+<a class="btn btn-mini" style="margin:4px; padding:5px;" data-toggle="modal" href="#myModal" >Login</a>
+
+          </li>
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
             <div class="dropdown-menu span3" style="padding: 15px; padding-bottom: 0px;">

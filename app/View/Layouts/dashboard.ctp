@@ -133,7 +133,9 @@ echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'
 
 ?>
 
-
+<?php
+ echo $this->element('NewPanel/loginModal',array('index'=>$index));
+?>
                 
 <?php echo $content_for_layout?>
 <?php 

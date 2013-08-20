@@ -108,7 +108,9 @@ echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGam
         <section class="section">
 
                 <!-- span side-left -->
-
+<?php
+ echo $this->element('NewPanel/loginModal',array());
+?>
                 
 <?php echo $content_for_layout?>
 <?php 

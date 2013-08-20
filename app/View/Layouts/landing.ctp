@@ -134,6 +134,9 @@ echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGam
 <div class="wrap-switcher">
  <!-- ### START - Header Section ### -->
 <!-- ### END - Header Section ### -->
+<?php
+  echo $this->element('NewPanel/loginModal',array('index'=>$index));
+?>
 
 <?php echo $content_for_layout?>
 
