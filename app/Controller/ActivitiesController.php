@@ -110,7 +110,7 @@ class ActivitiesController extends AppController {
 			$this->User->id=$channel_id;
 			$user = $this->User->find('first',array('conditions' => array('User.id'=>$channel_id)));
 			$performer = $this->User->find('first',array('conditions' => array('User.id'=>$performer_id)));
-			$perstat = $this->Userstat->find('first',array('conditions' => array('Userstat.id'=>$performer_id)));
+			$perstat = $this->Userstat->find('first',array('conditions' => array('Userstat.user_id'=>$performer_id)));
 		
 		if ($user === false) {
 			$this->Session->setFlash('This mail is not registered.');
