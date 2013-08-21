@@ -1567,3 +1567,22 @@ $.post(activitypath, function (data) {
         });	
 
 }
+
+setInterval(function(){getFreshActivity();},10000);
+function getFreshActivity()
+{
+
+last_id=$('.freshactivities').attr("id");
+
+
+//alert(last_id);
+activitypath=freshactivity+'/'+last_id
+$.post(activitypath, function (data) {
+            if (data!= null) {
+				//alert(data);
+			$(".freshactivities").append(data);
+            }
+            
+        });	
+
+}

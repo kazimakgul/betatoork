@@ -50,7 +50,7 @@ chaingame='<?php echo $this->Html->url(array('controller'=>'games','action'=>'cl
 deletegame='<?php echo $this->Html->url(array('controller'=>'games','action'=>'gamedelete')); ?>';
 pushactivity='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'pushactivity')); ?>';
 setpermission='<?php echo $this->Html->url(array('controller'=>'users','action'=>'setpermissions')); ?>';
-
+freshactivity='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getfreshactivity')); ?>';
 
 //Code Block for Broken Images
 function imgError(image,style){

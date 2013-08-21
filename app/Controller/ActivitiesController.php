@@ -47,6 +47,12 @@ class ActivitiesController extends AppController {
 				return $this->render('/emails/html/rate');
 	}
 	
+	public function getFreshActivity($last_id)
+	{
+	$this->layout='ajax';
+	$freshdata=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username')),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username','ChannelUser.seo_username'))),'conditions'=>array('Activity.id >'=>$last_id),'limit'=>2,'order'=>'Activity.created DESC'));
+$this->set('lastactivities',$freshdata);
+	}
 	
 	
 	public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$type=NULL) {
