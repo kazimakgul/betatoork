@@ -117,6 +117,7 @@ $this->set('lastactivities',$freshdata);
 			$user = $this->User->find('first',array('conditions' => array('User.id'=>$channel_id)));
 			$performer = $this->User->find('first',array('conditions' => array('User.id'=>$performer_id)));
 			$perstat = $this->Userstat->find('first',array('conditions' => array('Userstat.user_id'=>$performer_id)));
+			$game = $this->Game->find('first',array('conditions' => array('Game.id'=>$game_id)));
 		
 		if ($user === false) {
 			$this->Session->setFlash('This mail is not registered.');
@@ -134,7 +135,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
  		$email = new CakeEmail();
 
  		if($type_id==1){
-			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('comment')
 			    ->emailFormat('html')
@@ -152,7 +153,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' is following you on Toork.')
 			    ->send();
 	  	}elseif($type_id==3){
-			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('clone')
 			    ->emailFormat('html')
@@ -161,7 +162,16 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' made a clone of your game.')
 			    ->send();
 	  	}elseif($type_id==4){
-			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('rate')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' rated your game.')
+			    ->send();
+	  	}elseif($type_id==5){
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('mention')
 			    ->emailFormat('html')
@@ -179,7 +189,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' commneted on your post.')
 			    ->send();
 	  	}elseif($type_id==7){
-			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('favorite')
 			    ->emailFormat('html')
