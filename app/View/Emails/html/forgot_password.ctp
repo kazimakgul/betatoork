@@ -1,69 +1,152 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Toork</title>
-</head>
-<body>
+<div lang="en" style="background-color:#e5e5e5; padding:0;margin:0">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+ <tbody><tr>
+ <td style="padding:20px 20px 40px">
+ <table cellspacing="0" cellpadding="0" border="0" align="center" width="620">
+ 
+ <tbody><tr>
+ <td align="center" style="padding:20px 0 40px">
+ <a href="http://toork.com" title="Visit Toork" style="border:none" target="_blank">
+ <img src="http://toork.com/img/logo3.png" width="150" style="vertical-align:top;outline:none;border:none" alt="Toork">
+ </a>
+ </td>
+ </tr>
+ 
+ 
+ <tr>
+ <td align="center">
+ <table cellspacing="0" cellpadding="0" border="0" align="center">
+ <tbody><tr>
 
-<tbody><tr><td>
-<table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #bbb;font:normal 12px Arial;color:#666">
-    <tbody><tr>
-    <td style="padding:13px">
-      <table style="font:normal 15px Arial">
-        <tbody><tr>
-                      <td style="font-size:18px;color:#000">
-                    <b><span style="color:black"><a style="color:black">Hi <?php echo $username; ?>,<br>You can reset your password by following the link below.
-  </a></span></b><br>
-                    </td>
-        </tr>
-                <tr>
-          <td style="border-bottom:1px solid #bbb">
-            <span style="color:black"><a style="color:black"> Don't want to intrude, please let us know if you need further assistance.
-</a></span><br>
-          </td>
-        </tr>
-                        <tr>
-          <td style="padding:10px 0">
-                        <table style="font:normal 12px Arial;color:#666">
-                                        </table>
-          </td>
-        </tr>
-                <tr>
-          <td style="border:1px solid #a6d1ed;background-color:#ebf6fe;padding:20px">             <table style="font:normal 12px Arial" cellpadding="0" cellspacing="0">
-              <tbody><tr style="vertical-align:middle">
-                <td>
-                  <table cellpadding="0" cellspacing="0">
-                    <tbody><tr>
-                      <td style="border:1px solid #3182b9;background-color:#1a74b0;padding:8px;font:bold 12px Arial" nowrap="">
-                        <a style="color:#fff;white-space:nowrap;text-decoration:none" href="<?php echo $reset_url; ?>" target="_blank">Reset Password</a>
-                      </td>
-                    </tr>
-                  </tbody></table>
-                </td>
-                <td style="padding-left:15px">
-                    To reset your password, just click this link: <br>
-  <a href="<?php echo $reset_url; ?>" target="_blank"><?php echo $reset_url; ?></a> <br>
+ <h1 style="font-family:georgia,serif;font-weight:normal;font-size:22px;line-height:21px;color:#211922!important;margin:0;padding:0 20px">
+ 
+ 
+ Hi, <?php echo $username; ?>!
+ 
+ 
+ </h1>
+ 
+ </tr>
+ </tbody></table>
+ </td>
+ </tr>
+ 
 
-                </td>
-              </tr>
-            </tbody></table>
-          </td>
-        </tr>
-                      </tbody></table>
-    </td>
-  </tr>
-    <tr>
-    <td style="background-color:#eee;padding:15px">                         <a href="http://toork.com" target="_blank">Toork</a>: Create your own game channel and share your playlists with your friends.
-                                  <br>
-        Have a question or need help with your Toork account? Check our support page.
-        <br>
-                  </td>
-  </tr>
+ 
+ 
+ 
+ <tr>
+ <td style="padding:30px 0">
+ <table cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr>
+ <td width="1" style="background-color:#eceaeb"></td>
+ <td style="background-color:#ffffff;padding:0px;border-top:1px solid #eae9e9;border-bottom:1px solid #b2b1b1;border-left:1px solid #d4d2d3;border-right:1px solid #d4d2d3">
+ <table cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr>
+ <td>
+ <table cellspacing="0" cellpadding="0" border="0" width="618">
+ <tbody><tr>
+ 
+ 
+ <td width="358">
+ <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:14px;color:#211922;line-height:20px;margin:0;padding:0 0 0 20px">
+
+ You can reset your password by following the link below.
+ <a href="<?php echo $reset_url; ?>" style="color:#211922;font-weight:bold;text-decoration:none" title="Reset Password" target="_blank">Click here</a>
+ to reset your password.<br>
+ </p>
+ </td>
+ 
+ 
+ 
+ 
+ 
+<td width="140" align="right" style="padding:20px">
+ <table cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr>
+ <td height="34" align="center" style="background-repeat:repeat-x;border-radius:6px;background-color:#49afcd;border:1px solid #2f96b4;white-space:nowrap;min-height:34px">
+ <a href="<?php echo $reset_url; ?>" style="color:#fcf9f9;text-align:center;text-decoration:none;vertical-align:baseline" title="Reset Password" target="_blank">
+ 
+ <span style="padding:9px 15px;color:#fcf9f9;text-decoration:none;color:#fcf9f9;font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:18px;line-height:18px;white-space:nowrap">Reset Password</span>
+ 
+ </a>
+ </td>
+ </tr>
+ </tbody></table>
+</td>
+
+ 
+ 
+ </tr>
+ </tbody></table>
+ </td>
+ </tr>
+ </tbody></table>
+ </td>
+ <td width="1" style="background-color:#eceaeb"></td>
+ </tr>
+ <tr>
+ <td width="1" style="background-color:#eceaeb"></td>
+ <td height="1" style="background-color:#d5d3d4"></td>
+ <td width="1" style="background-color:#eceaeb"></td>
+ </tr>
+ <tr>
+ <td width="1"></td>
+ <td height="1" style="background-color:#e8e6e7"></td>
+ <td width="1"></td>
+ </tr>
+ </tbody></table>
+ </td>
+ </tr>
+ 
+
+
+ 
+ <tr>
+ <td style="padding-left:20px">
+ <table cellspacing="0" cellpadding="0" border="0" align="center">
+ <tbody><tr>
+ <td align="center" style="padding:20px 0 15px">
+ <h4 style="font-family:georgia,serif;font-weight:normal;font-size:21px;color:#211922!important;margin:0;padding:0">A few tips to get the get the most secure password:</h4>
+ </td>
+ </tr>
+ </tbody></table>
+ <p>Is at least six characters long.
+
+  <p>Does not contain your user name, real name, or company name.</p>
+
+  <p>Does not contain a complete word.</p>
+
+  <p>Is significantly different from previous passwords.</p>
+
+  <p>Contains at least one upper case, one lower case, a number and a special characters.</p>
+
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td align="center" style="padding:30px 0 15px">
+ 
+ 
+
+ <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:10px;color:#999999;line-height:1.35em;margin:0;padding:0">Links not working? Paste this into your browser:<br><a href="<?php echo $reset_url; ?>" style="color:#999;text-decoration:underline" target="_blank"><?php echo $reset_url; ?></a></p>
+
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ <tr>
+ <td align="center">
+ <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:10px;color:#999999;line-height:1.35em;margin:0;padding:0">2013 Toork, Inc. <font style="color:#aaa;padding:0 2px">|</font> All Rights Reserved<br><a href="http://toork.com/pages/privacy" target="_blank" style="color:#999;text-decoration:underline">Privacy Policy</a> <font style="color:#aaa;padding:0 2px"> |</font> <a href="http://toork.com/pages/terms" style="color:#999;text-decoration:underline" target="_blank">Terms and Conditions</a></p>
+ </td>
+ </tr>
+ 
+ </tbody></table>
+ </td>
+ </tr>
 </tbody></table>
-</td></tr>
-</tbody>
-
-</body>
-</html>
+</div>

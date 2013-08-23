@@ -112,8 +112,11 @@
  </tr>
  </tbody></table>
  <p>Follow a few more channels. Toork is as much about discovering new games as it is about sharing!</p>
- <p>Clone with care. You are now part of the Toork community! Use big images, write thoughtful descriptions, and share things you really love. Also, no nudity :)</p>
- <p>Install the <a href="#" style="color:#211922;font-weight:bold;text-decoration:none" target="_blank">Clone It Button</a>. It helps you add a game from any website with just one click.</p>
+ <p>You are now part of the Toork community! Use big images, write thoughtful descriptions, and share games you really love. Also, Do not forget, kids are around so no nudity and violence please!</p>
+<p>Create your own game channel and community by customizing your channel avatar,banner, description etc.</p>
+<p>Let your dashboard help you because he knows what you want!</p>
+<p>Collect the games you love from all around the web, by adding them to your favorites list.</p>
+<p>Adding a game is so easy. Clone any game in toork or just add your own game to your channel and share with others.</p>
  </td>
  </tr>
  
@@ -123,7 +126,7 @@
  <tr>
  <td align="center" style="padding:10px 0 30px">
  
- <h4 style="font-family:georgia,serif;font-weight:normal;font-size:21px;color:#211922!important;margin:0;padding:0">Happy cloning!</h4>
+ <h4 style="font-family:georgia,serif;font-weight:normal;font-size:21px;color:#211922!important;margin:0;padding:0">Attack of the Clones!</h4>
  
  </td>
  </tr>
