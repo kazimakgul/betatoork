@@ -119,7 +119,7 @@
 
   <p>Is significantly different from previous passwords.</p>
 
-  <p>Contains at least one upper case, one lower case, a number and a special characters.</p>
+  <p>Contains at least one upper case, one lower case, a number and a special character.</p>
 
  </td>
  </tr>
