@@ -26,6 +26,8 @@
 $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('class'=>'img-polaroid', 'width'=>'70px','onerror'=>'imgError(this,"avatar");'));
 $image = $this->requestAction( array('controller' => 'users', 'action' => 'randomPicture',62));
 $channelurl=$this->Html->url(array("controller"=> h($channeldata['User']['seo_username'])));
+$publicuser=$user;
+$userid=$user['User']['id'];
 ?>
 <?php if($user['User']['banner']==null) { ?>
 <div class="well well-small shadow-black" style=" padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg); /* FF 3.6+ */  
