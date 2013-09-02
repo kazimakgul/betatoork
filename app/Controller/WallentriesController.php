@@ -531,7 +531,7 @@ public function set_suggested_channels()
 	   $channeldata=$this->User->find('first',array('contain'=>false,'conditions'=>array('id'=>$authid),'field'=>array('User.description','User.id')));
 	   $this->set('channeldata',$channeldata);
 
-    	$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$user = $this->User->find('first', array('conditions' => array('User.id' => $authid),'fields'=>array('*')));
     	$userName = $user['User']['username'];
     	$userDesc = $user['User']['description'];
     	$this->set('username', $userName);
