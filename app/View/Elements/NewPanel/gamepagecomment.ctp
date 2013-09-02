@@ -99,12 +99,7 @@
           <?php if(isset($uid)) {?>
               <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
               <a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
-              <a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-asl"></i> Agree</a>
-              <a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-down"></i> Disagree</a>
         <?php }?>
-                <?php if(isset($uid) && $uid==$msg_uid) { ?>
-                <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
-        <?php } ?>
       
       <hr size="3">
       <div class="row-fluid commentupdate clearfix" style='display:block' id='commentbox<?php echo $msg_id;?>'>
