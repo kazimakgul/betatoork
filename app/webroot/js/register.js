@@ -1568,21 +1568,21 @@ $.post(activitypath, function (data) {
 
 }
 
-setInterval(function(){getFreshActivity();},10000);
+setInterval(function(){getFreshActivity();},30000);
 function getFreshActivity()
 {
 
-last_id=$('.freshactivities').attr("id");
-
-
-//alert(last_id);
+last_id=$('.lastactivityid').val();
+alert(last_id);
 activitypath=freshactivity+'/'+last_id
 $.post(activitypath, function (data) {
-            if (data!= null) {
-				//alert(data);
+            if ($.trim(data)!= '') {
 			$(".freshactivities").append(data);
+			$('#act'+last_id).remove();
             }
             
-        });	
+        });
+
+
 
 }

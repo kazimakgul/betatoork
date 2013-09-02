@@ -24,7 +24,11 @@
 				?>	
 				    <!--get first element of array -->
 					<?php $end_data=reset($lastactivities);?>
-					<div id="<?php echo $end_data['Activity']['id']; ?>" class="freshactivities"></div>
+					<div class="freshactivities"></div>
+					<div id="act<?php echo $end_data['Activity']['id']; ?>">
+					<input class="lastactivityid" type="hidden" value="<?php echo $end_data['Activity']['id']; ?>">
+					</div>
+					
 					<?php 
 					
 					//print_r($lastactivities);

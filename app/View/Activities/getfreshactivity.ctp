@@ -1,8 +1,14 @@
-
+<?php if($lastactivities!=NULL) { ?>
+		
+		
+		            <!--get first element of array -->
+					<?php $end_data=reset($lastactivities);?>
+					<div class="freshactivities"></div>
+					<div id="act<?php echo $end_data['Activity']['id']; ?>">
+					<input class="lastactivityid" type="hidden" value="<?php echo $end_data['Activity']['id']; ?>">
+					</div>
 		
 					<?php 
-					
-					//print_r($lastactivities);
 					
 					foreach ($lastactivities as $lastactivity): 
 						$followid = $lastactivity['PerformerUser']['id'];
@@ -58,3 +64,5 @@ else{
 					
 					
 				<?php endforeach; ?>  
+				
+<?php } ?>				
