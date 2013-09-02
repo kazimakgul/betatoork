@@ -1573,7 +1573,7 @@ function getFreshActivity()
 {
 
 last_id=$('.lastactivityid').val();
-alert(last_id);
+//alert(last_id);
 activitypath=freshactivity+'/'+last_id
 $.post(activitypath, function (data) {
             if ($.trim(data)!= '') {
