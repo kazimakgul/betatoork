@@ -83,6 +83,26 @@ return $a;
 	}
 	
 	
+	public function posts($id=NULL) {
+		$this->layout="ajax";
+		if($id!=NULL)
+		{
+		     $singlepost=$this->Wallentry->query('SELECT * FROM messages WHERE msg_id='.$id.'');
+		     if($singlepost!=NULL)
+		     {
+		     print_r($singlepost);
+			 $msg_id=$singlepost[0]['messages']['msg_id'];
+			 $message=$singlepost[0]['messages']['message'];
+			 $user_id=$singlepost[0]['messages']['uid_fk'];
+			 $created=date('l jS \of F Y h:i:s A',$singlepost[0]['messages']['created']);echo $created;
+			 $type=$singlepost[0]['messages']['type'];
+			 $game_id=$singlepost[0]['messages']['game_id'];
+		     }
+		}
+
+	}
+	
+	
 
 	public function wall($type=NULL) {
 		$this->loadModel('User');
