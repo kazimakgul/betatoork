@@ -1,12 +1,21 @@
 
 
-          <?php 
+    <?php if(isset($gamepost)){
           $time=$gamepost['created'];
           $mtime=date("c", $time);
           $msg_id=$gamepost['id'];
           $msg_uid=$gamepost['user_id'];
           $type = $gamepost['type'];
           $gameid = $gamepost['game_id']; 
+          $message = $gamepost['message'];
+        }else{
+          $mtime='long time ago';
+          $msg_id=$game['Game']['id'];
+          $msg_uid=$game['Game']['user_id'];
+          $type = 1;
+          $gameid = $game['Game']['id'];
+          $message = 'This game is published long time ago.';
+        }
           $channelurl=$this->Html->url(array("controller" => $game['User']['seo_username'],"action" =>""));
 
           // User Avatar
@@ -34,8 +43,8 @@
                                                             
                               <?php echo $cface; ?>
                                                         </a>
-                                                        <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $game['User']['username']; ?> </a><small class="pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
-                                                            <p style="margin-left:60px;"><?php echo $gamepost['message']; ?></p>
+                                                        <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $game['User']['username']; ?> </a><small class="pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'><?php echo $mtime;?></a></small></h4>
+                                                            <p style="margin-left:60px;"><?php echo $message; ?></p>
                                                         <hr size="1">
 
                                                         <div class="media-body" style="text-align: center; margin:-7px;">
