@@ -97,6 +97,11 @@ else{
                  </br>
 				  <input type="hidden" id="game_id" value="<?php echo $game["Game"]["id"];?>">
                   <button type="button" class="btn btn-info pull-left update_game_comment2">Comment</button>
+				  
+				  <!-Örnektir!Düzgün bir alana taşınacak-!>
+				  <?php if(isset($gamepost)){ print_r($gamepost);}?>
+				  <!-/Örnektir!Düzgün bir alana taşınacak-!>
+				  
                 </form></br>
               </div>
             </div>

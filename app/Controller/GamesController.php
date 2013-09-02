@@ -1590,7 +1590,24 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}else{
 			$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
 			$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
+			$gameid=$game['Game']['id'];
 		}
+		
+		//==========Get Post Information About Game===========
+		     $singlepost=$this->Game->query('SELECT * FROM messages WHERE type=6 AND game_id='.$gameid.'');
+		     if($singlepost!=NULL)
+		     {
+			 $msg_id=$singlepost[0]['messages']['msg_id'];
+			 $message=$singlepost[0]['messages']['message'];
+			 $user_id=$singlepost[0]['messages']['uid_fk'];
+			 $created=date('l jS \of F Y h:i:s A',$singlepost[0]['messages']['created']);echo $created;
+			 $type=$singlepost[0]['messages']['type'];
+			 $game_id=$singlepost[0]['messages']['game_id'];
+			 $gamePost=array('id'=>$msg_id,'message'=>$message,'user_id'=>$user_id,'created'=>$created,'type'=>$type,'game_id'=>$game_id);
+			 $this->set('gamepost',$gamePost);
+		     }
+		//=========//Get Post Information About Game===========
+		
 		
 		//Oyun clonesa bu oyunun sahibinin adsense bilgilerini getir.
 		if($game['Game']['clone']==1)
