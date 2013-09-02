@@ -110,8 +110,13 @@ if($gplus==NULL){
         </div>
     </div>
 
-</div>
+    <i rel="tooltip" data-placement="right" data-original-title="Show Description" href="javascript:void(0);"  id="profileDesc" class="elusive-chevron-down"></i>
+
+</div>    
+    
+    <div id="moveDesc" class="border" style="display:none;">
         <p style="background: rgba(255, 255, 255, 0.3);"><strong><?php echo $publicuser['User']['description'] ?></strong></p>
+    </div>    
 
 </div>
 

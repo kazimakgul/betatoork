@@ -6,22 +6,7 @@
 
                         <!-- content-body -->
                         <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
-                            <!-- dashboar 
-
-                    <div class="alert alert-danger">
-                        <div class="box-header corner-top">
-                            <div class="header-control">
-                            <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
-                            </div>
-                            
-                        </div>
-                        <h4><i class="elusive-info-sign"></i> Follow More!</h4>
-                        <p>There are thousands of new channels you will want to follow and you can create your own game community. Check these valuable channels.</p>
-                        <a href="<?php echo $bestchannel; ?>" class="btn btn-danger">
-                          <i class="elusive-plus-sign"></i> Follow Channels
-                        </a>
-                    </div> 
-                    -->
+   
 <?php  
 $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('class'=>'img-polaroid', 'width'=>'70px','onerror'=>'imgError(this,"avatar");'));
 $image = $this->requestAction( array('controller' => 'users', 'action' => 'randomPicture',62));

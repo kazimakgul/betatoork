@@ -811,6 +811,12 @@ $('#camera24').live("click",function()
 	return false;
 });
 
+$('#profileDesc').live("click",function() 
+{
+	$('#moveDesc').slideToggle('fast');
+	return false;
+});
+
 $('#camera3').live("click",function() 
 {
 	$('#imageupload3').slideToggle('fast');

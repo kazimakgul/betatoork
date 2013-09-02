@@ -108,7 +108,7 @@ echo "</div>";
 	  $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'playframe'));
                     else
     $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($gamedata['Game']['id'])));		
-				    echo '<a href="'.$playurl.'" class="btn btn-mini">Play</a> ';
+				    
 				     }
 				     ?>
 					 
@@ -121,7 +121,7 @@ echo "</div>";
 	  $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'playframe'));
                     else
     $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($gamedata['Game']['id'])));		
-			    echo '<a href="'.$playurl.'" class="btn btn-mini">Play</a> '; 
+			    
 				}
 				?>
 				
@@ -153,7 +153,9 @@ echo "</div>";
 			    ?>
 			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; padding:5px;">
                                         <div class="feedgameavatar" style="padding-right:5px;">
-                                            <?php echo $gameimage; ?>
+                                        	<a href="<?php echo $playurl ?>">
+                                            	<?php echo $gameimage; ?>
+                                        	</a>
                                         </div>   
                                         <div>
                                             <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedgamedesctitle"><?php echo $gamename; ?></span></a>
@@ -168,7 +170,9 @@ echo "</div>";
 			?>
 			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; padding:5px;">
                                         <div class="feedgameavatar" style="padding-right:5px;">
-                                            <?php echo $gameimage; ?>
+                                        	<a href="<?php echo $playurl ?>">
+                                            	<?php echo $gameimage; ?>
+                                        	</a>
                                         </div>   
                                         <div>
                                             <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedgamedesctitle"><?php echo $gamename; ?></span></a>
