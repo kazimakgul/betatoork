@@ -1568,10 +1568,9 @@ $.post(activitypath, function (data) {
 
 }
 
-setInterval(function(){getFreshActivity();},30000);
+setInterval(function(){getFreshActivity();},50000);
 function getFreshActivity()
 {
-
 last_id=$('.lastactivityid').val();
 //alert(last_id);
 activitypath=freshactivity+'/'+last_id
@@ -1579,6 +1578,10 @@ $.post(activitypath, function (data) {
             if ($.trim(data)!= '') {
 			$(".freshactivities").append(data);
 			$('#act'+last_id).remove();
+			$('.freshactivities').addClass("freshactivitiesold");
+            $('.freshactivities').removeClass("freshactivities");
+			$('.freshactivitiesnew').addClass("freshactivities");
+            $('.freshactivitiesnew').removeClass("freshactivitiesnew");
             }
             
         });

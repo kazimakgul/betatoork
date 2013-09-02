@@ -3,7 +3,7 @@
 		
 		            <!--get first element of array -->
 					<?php $end_data=reset($lastactivities);?>
-					<div class="freshactivities"></div>
+					<div class="freshactivitiesnew"></div>
 					<div id="act<?php echo $end_data['Activity']['id']; ?>">
 					<input class="lastactivityid" type="hidden" value="<?php echo $end_data['Activity']['id']; ?>">
 					</div>
