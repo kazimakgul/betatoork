@@ -28,7 +28,7 @@ else{
 <!-- /Add Unit -->
 
 <!-- Game Unit -->
-<h6><span class="label label-important"><?php echo $gamename; ?></span> : <?php echo $description; ?> </h6>
+<h6><span class="btn-link label label-important"><a href="#">#<?php echo $gamename; ?></a></span> : <?php echo $description; ?> </h6>
 <div class="well" style="padding:5px;">
 
 <div style="margin:0 auto; text-align: center; font-family:Verdana, Geneva, sans-serif; color:#000; font-size:5px;">
@@ -99,7 +99,7 @@ else{
 
 
         <div style="padding:5px; background-color:white;" class="span5 shadow well">
-                <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="#">Gametivity Feed</a></h5>
+                <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="#">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
         </div>
 
         <div style="padding:10px; background-color:white;" class="span5 shadow well">
