@@ -1,4 +1,6 @@
 <?php
+$gamename = $game['Game']['name'];
+$description = $game['Game']['description'];
 if($game['User']['seo_username']!=NULL)
 {
   $profilepublic=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>'')); 
@@ -13,7 +15,7 @@ else{
                     <div class="content">
                         
                         <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
+                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
 
 <!-- Add Unit -->
 <div class="well" style="padding:5px;">
@@ -26,7 +28,7 @@ else{
 <!-- /Add Unit -->
 
 <!-- Game Unit -->
-<h6><span class="label label-important"><?php echo $game['Game']['name'] ?></span> : <?php echo $game['Game']['description'] ?> </h6>
+<h6><span class="label label-important"><?php echo $gamename; ?></span> : <?php echo $description; ?> </h6>
 <div class="well" style="padding:5px;">
 
 <div style="margin:0 auto; text-align: center; font-family:Verdana, Geneva, sans-serif; color:#000; font-size:5px;">
@@ -69,7 +71,7 @@ else{
     </a> 
 
 
-<a class="btn btn-info pull-right" id="gameshare" data-toggle="popover" data-placement="left" data-html="true" data-content='
+<a class="btn btn-info" id="gameshare" data-toggle="popover" data-placement="right" data-html="true" data-content='
 
 
 <?php echo  $this->element("NewPanel/share"); ?>
@@ -88,25 +90,71 @@ else{
 </div>
 <!-- /Add Unit -->
 
-            <!--Comment box-->
+
+<div class="row-fluid">
+
+
+<?php  echo $this->element('NewPanel/gamepagecomment',array('gamename'=>$gamename,'description'=>$description)); ?>
+
+
+
+        <div style="padding:5px; background-color:white;" class="span5 shadow well">
+                <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="#">Gametivity Feed</a></h5>
+        </div>
+
+        <div style="padding:10px; background-color:white;" class="span5 shadow well">
+                <div>
+                    <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
+                </div>
+                <h4 class="media-heading"><a style="margin-left:9px;" href="#">Miniclip - </a><a class="btn-mini btn-link"><i class="elusive-plus-sign"></i> Follow</a> <small class="pull-right helper-font-small"><a href="#" class="timeago" title="2 hours ago"></a>2 hours ago</small></h4>
+                <p style="margin-left:50px;">A new clone has been made.</p>
+
+        </div>
+        <div style="padding:10px; background-color:white;" class="span5 shadow well">
+                <div>
+                    <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
+                </div>
+                <h4 class="media-heading"><a style="margin-left:9px;" href="#">Avengers - </a><a class="btn-mini btn-link"><i class="elusive-plus-sign"></i> Follow</a> <small class="pull-right helper-font-small"><a href="#" class="timeago" title="2 hours ago"></a>2 hours ago</small></h4>
+                <p style="margin-left:50px;">Added to the favorite list.</p>
+
+        </div>
+          <div style="padding:10px; background-color:white;" class="span5 shadow well">
+                <div>
+                    <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
+                </div>
+                <h4 class="media-heading"><a style="margin-left:9px;" href="#">Socialesman - </a><a class="btn-mini btn-link"><i class="elusive-plus-sign"></i> Follow</a> <small class="pull-right helper-font-small"><a href="#" class="timeago" title="2 hours ago"></a>2 hours ago</small></h4>
+                <p style="margin-left:50px;">Rated this game as 4 stars.</p>
+
+        </div>
+          <div style="padding:10px; background-color:white;" class="span5 shadow well">
+                <div>
+                    <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
+                </div>
+                <h4 class="media-heading"><a style="margin-left:9px;" href="#">StarBucks - </a><a class="btn-mini btn-link"><i class="elusive-plus-sign"></i> Follow</a> <small class="pull-right helper-font-small"><a href="#" class="timeago" title="2 hours ago"></a>2 hours ago</small></h4>
+                <p style="margin-left:50px;">Rated this game as 4 stars.</p>
+
+        </div>
+
+
+
+</div>
+
+<!-- Comment Unit -->
+
             <div class="navbar">
               <div class="navbar-inner">
                 </br>
                 <form class="navbar-form ">
                     <textarea id="game_comment2" class="span12" rows="4"  placeholder="What do you think about this game?">#<?php echo $game["Game"]["seo_url"];?> </textarea>
                  </br>
-				  <input type="hidden" id="game_id" value="<?php echo $game["Game"]["id"];?>">
+          <input type="hidden" id="game_id" value="<?php echo $game["Game"]["id"];?>">
                   <button type="button" class="btn btn-info pull-left update_game_comment2">Comment</button>
-				  
-				  <!-Örnektir!Düzgün bir alana taşınacak-!>
-				  <?php if(isset($gamepost)){ print_r($gamepost);}?>
-				  <!-/Örnektir!Düzgün bir alana taşınacak-!>
-				  
+        
+          
                 </form></br>
               </div>
             </div>
 
-<!-- Comment Unit -->
 
 <div class="row-fluid">
                                 <!-- tab resume update -->

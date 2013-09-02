@@ -1594,13 +1594,13 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 		
 		//==========Get Post Information About Game===========
-		     $singlepost=$this->Game->query('SELECT * FROM messages WHERE type=6 AND game_id='.$gameid.'');
+		     $singlepost=$this->Game->query('SELECT * FROM messages WHERE type=1 AND game_id='.$gameid.'');
 		     if($singlepost!=NULL)
 		     {
 			 $msg_id=$singlepost[0]['messages']['msg_id'];
 			 $message=$singlepost[0]['messages']['message'];
 			 $user_id=$singlepost[0]['messages']['uid_fk'];
-			 $created=date('l jS \of F Y h:i:s A',$singlepost[0]['messages']['created']);echo $created;
+			 $created=$singlepost[0]['messages']['created'];
 			 $type=$singlepost[0]['messages']['type'];
 			 $game_id=$singlepost[0]['messages']['game_id'];
 			 $gamePost=array('id'=>$msg_id,'message'=>$message,'user_id'=>$user_id,'created'=>$created,'type'=>$type,'game_id'=>$game_id);
