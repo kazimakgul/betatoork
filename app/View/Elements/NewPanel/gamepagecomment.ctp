@@ -1,6 +1,12 @@
 
+<!bu issetli uid yi 0'a esitleyen bolum gereksiz aslinda.->
+    <?php
 
-    <?php if(isset($gamepost)){
+    if(!isset($uid)){
+      $uid=0;
+    }
+
+    if(isset($gamepost)){
           $time=$gamepost['created'];
           $mtime=date("c", $time);
           $msg_id=$gamepost['id'];

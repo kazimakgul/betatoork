@@ -1,5 +1,10 @@
+
+<!bu issetli uid yi 0'a esitleyen bolum gereksiz aslinda.->
 <?php
 
+    if(!isset($uid)){
+      $uid=0;
+    }
 
 if(!isset($lastid) || $lastid=='')
 $lastid=0;
@@ -9,8 +14,7 @@ $type=NULL;
 
 if(isset($uid))
 {
-	$updatesarray=$Wall->Updates($uid,$lastid,$type);
-	$total=$Wall->Total_Updates($uid);
+
 }
 
 if(isset($uid))
@@ -28,7 +32,7 @@ if(isset($uid))
 }
 
 
-if($updatesarray)
+if(1)
 {
 
 		$msg_id=$data['Message']['msg_id'];
@@ -224,7 +228,7 @@ echo "</div>";
 				<?php } ?>
 			
 			<hr size="3">
-			<div class="row-fluid commentupdate clearfix" style='display:none' id='commentbox<?php echo $msg_id;?>'>
+			<div class="row-fluid commentupdate clearfix" style='display:block' id='commentbox<?php echo $msg_id;?>'>
 
 					<div class="span1">
 						<?php echo $session_face;?>
@@ -245,15 +249,4 @@ echo "</div>";
 
 
 <?php } ?>
-<div id="my_content"></div>
 
-<?php
-  if($total>$perpage)
-  {
-  ?>
- <!-- More Button here $msg_id values is a last message id value. -->
-<div id="my_more<?php echo $msg_id; ?>" >
-<a href="#" class="btn btn-small btn-link pull-right my_more" id="<?php echo $msg_id; ?>">View more &rarr;</a>
-</div>
-
-<?php } ?>
