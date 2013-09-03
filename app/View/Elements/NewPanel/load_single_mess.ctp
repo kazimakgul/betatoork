@@ -1,23 +1,18 @@
 <?php
 
+
 if(!isset($lastid) || $lastid=='')
 $lastid=0;
 
 if(!isset($type))
 $type=NULL;
 
-if(isset($profile_uid))
+if(isset($uid))
 {
-	$updatesarray=$Wall->Updates($profile_uid,$lastid,$type);
-	$total=$Wall->Total_Updates($profile_uid);
+	$updatesarray=$Wall->Updates($uid,$lastid,$type);
+	$total=$Wall->Total_Updates($uid);
 }
-else
-{
-	$updatesarray=$Wall->Friends_Updates($uid,$lastid,$type);
-	$total=50;
-	//$total=$Wall->Total_Friends_Updates($uid);
 
-}
 if(isset($uid))
 {
    if($gravatar)
@@ -35,23 +30,21 @@ if(isset($uid))
 
 if($updatesarray)
 {
-	foreach($updatesarray as $data)
-	{
-		$msg_id=$data['msg_id'];
-		$orimessage=$data['message'];
-		$message=tolink(htmlcode($data['message']));
-		$time=$data['created'];
+
+		$msg_id=$data['Message']['msg_id'];
+		$orimessage=$data['Message']['message'];
+		$message=tolink(htmlcode($data['Message']['message']));
+		$time=$data['Message']['created'];
 		$mtime=date("c", $time);
-		$username=$data['username'];
-		$uploads=$data['uploads'];
-		$type=$data['type'];
-		$gameid=$data['game_id'];
-		$gamename=$data['name'];
-		$description=$data['description'];
-		$seo_url=$data['seo_url'];
-		$msg_uid=$data['uid_fk'];
-		$channelurl=$this->Html->url(array("controller" => $data['seo_username'],"action" =>""));
-		$postPage=$this->Html->url(array("controller" => "wallentries","action" =>"posts",$msg_id));
+		$username=$data['User']['username'];
+		$uploads=$data['Message']['uploads'];
+		$type=$data['Message']['type'];
+		$gameid=$data['Message']['game_id'];
+		$gamename=$data['Game']['name'];
+		$description=$data['Game']['description'];
+		$seo_url=$data['Game']['seo_url'];
+		$msg_uid=$data['Message']['uid_fk'];
+		$channelurl=$this->Html->url(array("controller" => $data['User']['seo_username'],"action" =>"")); 
 		// User Avatar
 		if($gravatar)
 		   {
@@ -68,12 +61,12 @@ if($updatesarray)
 		}
 		// End Avatar
 ?>
-<div class="media well shadow" style="background-color:white;" id="stbody<?php echo $msg_id;?>">
+<div class="media well shadow" style="background-color:white;" id="stbody2<?php echo $msg_id;?>">
                                                         <a class="pull-left" href="#">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>
                                                         </a>
-                                                        <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
+                                                        <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
                                                             <p style="margin-left:60px;"><?php echo $message; ?></p>
                                                         <hr size="1">
 
@@ -98,7 +91,7 @@ echo "</div>";
  }
  ?>
                   
-                       
+   <!-- Type1 = add game - Type2 = add to favorites - Type3 =  -->           
 															
                                                             <div class="btn-group pull-right">
 															  
@@ -252,17 +245,15 @@ echo "</div>";
 
 
 <?php } ?>
-<div id="content2"></div>
+<div id="my_content"></div>
 
 <?php
   if($total>$perpage)
   {
   ?>
  <!-- More Button here $msg_id values is a last message id value. -->
-<div id="more<?php echo $msg_id; ?>" >
-<a href="#" class="btn btn-small btn-link pull-right more" id="<?php echo $msg_id; ?>">View more &rarr;</a>
+<div id="my_more<?php echo $msg_id; ?>" >
+<a href="#" class="btn btn-small btn-link pull-right my_more" id="<?php echo $msg_id; ?>">View more &rarr;</a>
 </div>
-
-<?php } ?>
 
 <?php } ?>

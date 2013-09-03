@@ -1,6 +1,5 @@
 <?php
-//Srinivas Tamada http://9lessons.info
-//Loading Comments link with load_updates.php 
+
 
 if(!isset($lastid) || $lastid=='')
 $lastid=0;

@@ -83,21 +83,129 @@ return $a;
 	}
 	
 	
-	public function posts($id=NULL) {
-		$this->layout="ajax";
+	public function posts($id=NULL,$type=NULL) {
+		
+		$this->loadModel('User');
+		$this->loadModel('Game');
+		$this->loadModel('Subscription');
+		$this->loadModel('Message');
+		$this->layout='dashboard';
+		$this->leftpanel();
+		//$this->logedin_user_panel();
+		
+		//Add recommended channel as chain
+		$this->requestAction( array('controller' => 'subscriptions', 'action' => 'quick_subscription'));
+		
+		
+		switch($type)
+		{
+		case 'games':
+		$this->set('type',1);
+		break;
+		case 'videos':
+		$this->set('type',4);
+		break;
+		case 'photos':
+		$this->set('type',3);
+		break;
+		default:
+		$this->set('type',NULL);
+		}
+		
+		//echo 'fb_id:'.$this->Session->read('Auth.User.facebook_id');
+		if($this->Session->read('Auth.User.facebook_id')!=NULL && $this->Session->read('firstfb')==NULL)
+		{
+		    
+		   echo '<script>document.location.reload(true)</script>';
+		   $this->Session->write('firstfb',1);
+		}
+		
+		$userid = $this->Session->read('Auth.User.id');
+	    $subscriber_ids = $this->Subscription->find('all',array('conditions'=>array('subscriber_id'=>$userid)));
+		if($subscriber_ids!=NULL)
+		{
+		    $i=0;
+		    foreach ($subscriber_ids as $allids)
+		    {
+		    $ids[$i]=$allids['Subscription']['subscriber_to_id'];
+		    $i++;
+		    }
+		
+	        //$subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
+	        $games = $this->Game->find('all', array('conditions' => array('Game.user_id' => $ids)));	
+		    $this->Wallentry->recursive = 0;
+
+		    $cond= array('Game.user_id' => $ids);
+    	    $this->set('entries', $this->paginate('Game',$cond));
+        }else{
+		$this->set('entries', NULL);
+	    }
+       
+	   
+	   //New Wall Getting Started Below.
+	   App::import('Vendor', 'wallscript/config');
+	   $this->set('gravatar',1);
+	   $this->set('base_url','http://localhost/wall/');
+	   $this->set('perpage',10);
+	   App::import('Vendor', 'wallscript/Wall_Updates');
+	   App::import('Vendor', 'wallscript/tolink');
+	   App::import('Vendor', 'wallscript/textlink');
+	   App::import('Vendor', 'wallscript/htmlcode');
+	   App::import('Vendor', 'wallscript/Expand_URL');
+	   
+	   //Session starts
+	   if($this->Auth->user('id')) 
+       $session_uid=$this->Auth->user('id'); 
+       if(!empty($session_uid))
+       {
+       $uid=$session_uid;
+	   $this->set('uid',$uid);
+       }else{
+        //echo 'please login';
+       }
+	   //Session Ends
+	   
+	   
+	   $Wall = new Wall_Updates();
+	   $this->set('Wall',$Wall);
+	   
+
+     //Get best channels
+      $authid = $this->Session->read('Auth.User.id');
+		//Get the list of subscriptions of auth user.
+		   if($authid!=NULL)
+		   {
+		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $mutuals=array_intersect($listofmine,$listofuser);//Gereksiz sorguyu sil.
+		   $this->set('mutuals',$mutuals);
+		   }else{
+		   $this->set('mutuals',NULL);
+		   }
+		
+	   $this->set_suggested_channels();
+	   
+	   //Actions About Best Games On Right Sidebar
+	   $suggestedgames=$this->Game->find('all',array('limit' => 5,'order'=>'rand()','conditions'=>array('Game.id'=>$this->get_game_suggestions())));
+       $this->set('suggestedgames',$suggestedgames);
+	   
+	   //get channel description
+	   $channeldata=$this->User->find('first',array('contain'=>false,'conditions'=>array('id'=>$authid),'field'=>array('User.description','User.id')));
+	   $this->set('channeldata',$channeldata);
+
+    	$user = $this->User->find('first', array('conditions' => array('User.id' => $authid),'fields'=>array('*')));
+    	$userName = $user['User']['username'];
+    	$userDesc = $user['User']['description'];
+    	$this->set('username', $userName);
+    	$this->set('user', $user);
+		$this->set('title_for_layout', $userName.' News - Toork');
+		$this->set('description_for_layout', $userName.' Channel News - '.$userDesc);
+
+
 		if($id!=NULL)
 		{
-		     $singlepost=$this->Wallentry->query('SELECT * FROM messages WHERE msg_id='.$id.'');
-		     if($singlepost!=NULL)
-		     {
-		     print_r($singlepost);
-			 $msg_id=$singlepost[0]['messages']['msg_id'];
-			 $message=$singlepost[0]['messages']['message'];
-			 $user_id=$singlepost[0]['messages']['uid_fk'];
-			 $created=date('l jS \of F Y h:i:s A',$singlepost[0]['messages']['created']);echo $created;
-			 $type=$singlepost[0]['messages']['type'];
-			 $game_id=$singlepost[0]['messages']['game_id'];
-		     }
+		     $data=$this->Message->find('first', array('conditions' => array('Message.msg_id' => $id)));
+		     $this->set('data', $data);
 		}
 
 	}
