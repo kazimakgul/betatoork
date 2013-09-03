@@ -1,27 +1,4 @@
-				<?php 
-				
-				foreach($lastactivities as $lastactivity)
-				{
-				/*
-				echo $lastactivity['PerformerUser']['username'];
-				echo $lastactivity['PerformerUser']['seo_username'];
-				echo $lastactivity['PerformerUser']['id'];
-				
-				echo $lastactivity['ChannelUser']['username'];
-				echo $lastactivity['ChannelUser']['seo_username'];
-				echo $lastactivity['ChannelUser']['id'];
-				
-				echo $lastactivity['Game']['name'];
-				echo $lastactivity['Game']['id'];
-				echo $lastactivity['Game']['seo_url'];
-				
-		
-				$timestamp = strtotime($lastactivity['Activity']['created']);
-				$time=date("c",$timestamp);
-				*/
-				}
-				
-				?>	
+
 				    <!--get first element of array -->
 					<?php $end_data=reset($lastactivities);?>
 					<div class="freshactivities"></div>
