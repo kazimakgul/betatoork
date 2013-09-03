@@ -1,5 +1,7 @@
-
-        <div style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well">
+        <div class="profileActivityArea"></div>
+        
+		<!--
+		<div style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well">
                 <div>
                     <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
                 </div>
@@ -7,6 +9,7 @@
                 <p style="margin-left:50px;">Cloned your game Gravity Guy</p>
                 <small style="margin-left:50px; opacity:0.5;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></small>
         </div>
+		
 
         <div style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well">
                 <div>
@@ -16,6 +19,7 @@
                 <p style="margin-left:50px;">Favorited your game Need For Speed Online</p>
                 <small style="margin-left:50px; opacity:0.5;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></small>
         </div>
+		
 
         <div style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well">
                 <div>
@@ -25,6 +29,7 @@
                 <p style="margin-left:50px;">Comment on your game Boom Bugs</p>
                 <small style="margin-left:50px; opacity:0.5;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></small>
         </div>
+		
 
         <div style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well">
                 <div>
@@ -34,6 +39,7 @@
                 <p style="margin-left:50px;">Mentioned your name</p>
                 <small style="margin-left:50px; opacity:0.5;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></small>
         </div>
+		
 
        <div style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well">
                 <div>
@@ -43,6 +49,7 @@
                 <p style="margin-left:50px;">Cloned your game Gravity Guy</p>
                 <small style="margin-left:50px; opacity:0.5;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></small>
         </div>
+		
 
         <div style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well">
                 <div>
@@ -52,6 +59,7 @@
                 <p style="margin-left:50px;">Favorited your game Need For Speed Online</p>
                 <small style="margin-left:50px; opacity:0.5;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></small>
         </div>
+		
 
         <div style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well">
                 <div>
@@ -62,6 +70,7 @@
                 <small style="margin-left:50px; opacity:0.5;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></small>
         </div>
 
+
         <div style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well">
                 <div>
                     <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/2124/lego_star_wars_3_toork_original.jpg">
@@ -70,4 +79,4 @@
                 <p style="margin-left:50px;">Mentioned your name</p>
                 <small style="margin-left:50px; opacity:0.5;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></small>
         </div>
-
+-->

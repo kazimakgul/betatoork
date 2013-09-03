@@ -135,6 +135,7 @@ if($gplus==NULL){
   channelfavorite='<?php echo $this->Html->url(array('controller'=>'games','action'=>'channelfavorites')); ?>';
   channelfollowers='<?php echo $this->Html->url(array('controller'=>'games','action'=>'channelfollowers')); ?>';
   getprofilefeed='<?php echo $this->Html->url(array('controller'=>'games','action'=>'loadprofilefeeds')); ?>';
+  getprofileactivity='<?php echo $this->Html->url(array('controller'=>'games','action'=>'getprofileactivity')); ?>';
   </script>
   <!----=========================================---->
 

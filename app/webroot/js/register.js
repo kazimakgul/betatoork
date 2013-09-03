@@ -1409,8 +1409,19 @@ $('#profile_tabs a[href="#news_tab"]').click(function (e) {
 			
 			
         }); 
-  //*********/Function gets ajax loaded channel favorites********
+  //*********/Function gets ajax loaded channel news********
    } 
+ //=========Get profile activity information with ajax============= 
+ var activityurl = getprofileactivity+'/'+profile_id;
+ $.post(activityurl, function (data) {
+            if ($.trim(data)!= '') {
+			$(".profileActivityArea").append(data);
+			$(".profileActivityArea").attr("class","Activityloaded"); //change the class name so it will not be confused with the next batch
+            }
+            
+        });
+ 
+ //=========//Get profile activity information with ajax============= 
   
   
 });

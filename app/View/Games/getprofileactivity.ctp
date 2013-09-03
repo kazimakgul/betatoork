@@ -1,13 +1,5 @@
 <?php if($lastactivities!=NULL) { ?>
 		
-		
-		            <!--get first element of array -->
-					<?php $end_data=reset($lastactivities);?>
-					<div class="freshactivitiesnew"></div>
-					<div id="act<?php echo $end_data['Activity']['id']; ?>">
-					<input class="lastactivityid" type="hidden" value="<?php echo $end_data['Activity']['id']; ?>">
-					</div>
-		
 					<?php 
 					
 					foreach ($lastactivities as $lastactivity): 
@@ -29,39 +21,22 @@ else{
 				        $time=date("c",$timestamp);
 
 					?>
-				
-					
-			<div class="span12" style="margin:0px;">
-
-									
-				 <li class="contact-alt grd-white" style="margin:0px 0px 3px 0px; ">
-                                                    <!--we use data toggle tab for navigate this action-->
-                                                    
-                                                        <!--we use contact-item structure like the component media in bootstrap-->
-
-                                                        <div class="contact-item" style="margin:5px 5px 0px 5px;">
-                                                            <div class="pull-left">
-                                                                <?php 
+			
+			
+			<div style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well">
+                
+                    <div class="media-object pull-left img-polaroid" width="30"><?php 
               if($card[6]['User']['picture']==null) { 
                 echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'32','height'=>'32')); 
                 } else {
                 echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'32','height'=>'32','onerror'=>'imgError(this,"avatar");'));  }
-              ?>
-                                                            </div>
-                                                            <div class="contact-item-body">
-
-                                                                <a class="contact-item-heading btn-link btn-mini bold" href="<?php echo $profileurl ?>"  style="margin:-9px 0px -25px 0px; padding-left:0px;padding-left:0px;"><?php echo $lastactivity['PerformerUser']['username']; ?></a>
-                                                                <p style="margin-top:-5px; margin-bottom:-5px; padding:0px;"><small ><?php echo $activity_message;?></small></p>
-
-                                                                <small class="muted pull-right helper-font-9"><a href='#' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small>
-                                                            </div>
-                                                        </div>
-                                                   
-                                                </li>				
-			
-			</div>		
-					
-					
+              ?></div>
+               
+                <h4 class="media-heading"><a style="margin-left:9px;" href="#"><?php echo $lastactivity['PerformerUser']['username']; ?> - <a class="btn-mini btn-link"><i class="elusive-plus-sign"></i> Follow</a> </a><small class="pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $time; ?>'></a></small></h4>
+                <p style="margin-left:50px;"><?php echo $activity_message;?></p>
+                <small style="margin-left:50px; opacity:0.5;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></small>
+        </div>
+							
 					
 				<?php endforeach; ?>  
 				
