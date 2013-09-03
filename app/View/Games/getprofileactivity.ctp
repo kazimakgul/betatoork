@@ -36,7 +36,6 @@ else{
                
                 <h4 class="media-heading"><a style="margin-left:9px;" href="<?php echo $profileurl ?>"><?php echo $lastactivity['PerformerUser']['username']; ?> - <a class="btn-mini btn-link" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-plus-sign"></i> Follow</a> </a><small class="pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $time; ?>'></a></small></h4>
                 <p style="margin-left:50px;"><?php echo $activity_message;?></p>
-                <small style="margin-left:50px; opacity:0.5;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></small>
         </div>
 							
 					
