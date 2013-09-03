@@ -833,6 +833,18 @@ $userid = $this->request->params['pass'][0];
 	
 }
 
+public function getprofileactivity() {
+$this->layout="ajax";
+  $userid = $this->request->params['pass'][0];
+  if($userid!=NULL)
+  {
+  $limit=20;
+  $activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username'  )),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username',  'ChannelUser.seo_username'))),'conditions'=>array('Activity.performer_id'=>$userid),'order'=>'Activity.created DESC'));
+  $this->set('lastactivities',$activityData);
+  }
+
+}
+
 public function loadprofilefeeds() {
 $this->layout="ajax";
 $userid = $this->request->params['pass'][0];
