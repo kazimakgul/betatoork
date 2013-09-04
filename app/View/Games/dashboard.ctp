@@ -159,7 +159,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
 </div>      
 <hr style="margin-top:0px;">
-<?php  echo $this->element('NewPanel/dashboard/dashfeed'); ?>
+<?php echo $this->element('NewPanel/dashboard/dashfeed');?>
                              
                                 <ul class="thumbnails" id="thumbnails_area">
                                     <?php  echo $this->element('NewPanel/gamebox/dashboard_game_box'); ?>
