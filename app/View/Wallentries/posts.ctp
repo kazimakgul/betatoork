@@ -37,7 +37,7 @@ $userid=$user['User']['id'];
 </div>
                             <div class="row-fluid">
 
-                                <div class="span7">
+                                <div class="offset2 span7">
                                     <div>
 
                                         <div class="box-body" style="margin:-20px 0px 0px 0px;">

@@ -152,10 +152,10 @@ if($gplus==NULL){
                                             <ul class="nav nav-tabs" id="profile_tabs">
      
                                                 <!--tab menus-->
-                                                <li class="active"><a data-toggle="tab" href="#games_tab"><i class="elusive-user"></i> Games - <small><?php echo $gameNumber; ?></small></a></li>
-                                                <li class=""><a data-toggle="tab" href="#favorites_tab"><i class="elusive-heart color-red"></i> Favorites - <small><?php echo $favoriteNumber; ?></small></a></li>
+                                                <li class="active"><a data-toggle="tab" href="#games_tab"><i class="elusive-user"></i> Games - <small>(<?php echo $gameNumber; ?>)</small></a></li>
+                                                <li class=""><a data-toggle="tab" href="#favorites_tab"><i class="elusive-heart color-red"></i> Favorites - <small>(<?php echo $favoriteNumber; ?>)</small></a></li>
                                                 <li class=""><a data-toggle="tab" href="#news_tab"><i class="elusive-th-list color-purple"></i> News Feed</a></li>
-                                                <li class=""><a data-toggle="tab" href="#followers_tab"><i class="icofont-link color-blue"></i> Followers - <small><?php echo $followerNumber; ?></small></a></li>
+                                                <li class=""><a data-toggle="tab" href="#followers_tab"><i class="icofont-link color-blue"></i> Followers - <small>(<?php echo $followerNumber; ?>)</small></a></li>
                                             </ul>
                                         </div>
                                         <div class="box-body">
