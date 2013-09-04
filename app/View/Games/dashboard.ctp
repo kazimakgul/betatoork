@@ -131,7 +131,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         </div>
                         
                 </div>
-                    <h3>Start Building!</h3>
+                    <h3 style="margin:0px;">Start Building!</h3>
                     <p>To start building your channel complete these steps.</p>
                         <p>
                         <a rel="tooltip" data-placement="top" data-original-title="Start Building" href="#modal-tutorial" data-toggle="modal" class="btn btn-info" style="margin:0px 3px 5px 0px;">
@@ -150,7 +150,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                             <i class="elusive-compass"></i> Tour
                         </a>
                         </p>
-                        <p><i class="elusive-circle-arrow-down"></i> <small>We recommend you games upon your interests here.</small></p>
+                        <p style="margin-bottom:0px;" ><i class="elusive-circle-arrow-down"></i> <small>We recommend you games upon your interests here.</small></p>
         </div>
         <?php  echo $this->element('NewPanel/tutorial'); ?>
         <?php  echo $this->element('NewPanel/tutorial2'); ?>
