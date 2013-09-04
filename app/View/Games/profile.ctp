@@ -218,13 +218,11 @@ if($gplus==NULL){
                                         </div>
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
+                                                <!-- channel news feed is in starts-->
                                                 <div class="tab-pane fade in active" id="recent-orders">
-                                                    
-													<div id="my_more_content"></div>			
-					                               <?php //echo $this->element('NewPanel/load_profile_feeds');?>
-													
+
                                                 </div>
-                                                
+                                                <!-- channel news feed is in ends-->
                                             </div><!--/widgets-tab-body-->
                                         </div><!--/box-body-->
                                     </div><!--/box-tab-->
