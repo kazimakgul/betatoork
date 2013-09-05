@@ -71,6 +71,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         <!--panel button ext-->
                        
                             <div class="pull-right">
+
                                 <!--notification-->
                                 <a class="btn btn-danger" data-toggle="dropdown" href="#" title="7 new notifications"><i class="elusive-bell"></i> 6</a>
                                 <ul class="dropdown-menu dropdown-notification">
@@ -194,9 +195,10 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                     </div>
           <li class="divider-vertical"></li>
 
-          <li class="dropdown user-group">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-            <div class="pull-left "> <i class="icofont-comments"></i> Post <strong class="caret"></strong></div></a>
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="margin:0px; padding:0px;">
+              <div class="pull-left btn"> <i class="icofont-comments"></i> Post <strong class="caret"></strong></div>
+            </a>
             <div class="dropdown-menu dropdown-user color-red" role="menu" style="padding:5px; padding-bottom: 5px;">
                                         
                                            
@@ -245,29 +247,31 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
           </li>
 
           <li class="divider-vertical"></li>
-          <li class="dropdown user-group" data-step="4" data-position="bottom" data-intro="You can see you channel card by clicking here. This card is full of useful shortcuts, such as settings, add game and go to your dashboard. This will always be here as long as you are online.">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-            <div class="pull-left " style="margin:-9px 0px 0px 0px;">
-  <?php 
+<! Main User Card starts ->
+<div class="btn-group user-group"><strong></strong>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    
+                                   <!-- <img class="corner-all" align="middle" src="img/user-thumb.jpg" title="John Doe" alt="john doe"> -->
+                                    <button class="btn"><?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'29',"alt" => "toork avatar image")); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'15',"alt" => "toork avatar image")); 
     } else {
-      echo $this->Upload->image($user,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'29','onerror'=>'imgError(this,"avatar");')); }
-  ?>
-
-                <?php echo $username ?></div><strong class="caret"></strong></a>
-            <div class="dropdown-menu dropdown-user" role="menu" style="padding: 15px; padding-bottom: 15px;">
+      echo $this->Upload->image($user,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'15','onerror'=>'imgError(this,"avatar");')); }
+  ?> <strong><?php echo $username ?></strong></button> <!--this for display on tablet and phone device-->
+                                </a>
+                                <ul class="dropdown-menu dropdown-user" role="menu" aria-labelledby="dLabel">
+                                    <li>
                                         <div class="media">
-                                            <a class="pull-left" href="<?php echo $settings;?>">
+                                            <a class="pull-left" href="#">
 
   <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'90','class'=>'corner-all',"alt" => "toork avatar image",)); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'70','class'=>'corner-all img-polaroid',"alt" => "toork avatar image",)); 
     } else {
-      echo $this->Upload->image($user,'User.picture',array(),array('width'=>'90','class'=>'corner-all','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
+      echo $this->Upload->image($user,'User.picture',array(),array('width'=>'70','class'=>'corner-all img-polaroid','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");')); }
   ?>
 
-
+                                                <!-- <img class="img-circle" src="img/user.jpg" title="profile" alt="profile"> -->
                                             </a>
                                             <div class="media-body description">
                                                 <p><strong><?php echo $username ?></strong></p>
@@ -276,15 +280,18 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                                 <a href="<?php echo $dashboard;?>" class="btn btn-danger btn-small btn-block"><i class="icofont-home"></i>Dashboard</a>
                                             </div>
                                         </div>
-                                  
-                                        <div class="dropdown-footer">
+                                    </li>
+                                    <li class="dropdown-footer">
+                                        <div>
+
                                             <a class="btn btn-small pull-right" href="<?php echo $logout; ?>"><i class="icofont-signout"></i> Logout</a>
                                             <a class="btn btn-small btn-success" href="<?php echo $addGame;?>"><i class="elusive-plus-sign"></i> Add Game</a>
                                         </div>
-                                    
+                                    </li>
+                                </ul>
+                            </div>
+<! Main User Card ends ->
 
-            </div>
-          </li>
         </ul>
       </div>
     </div>
