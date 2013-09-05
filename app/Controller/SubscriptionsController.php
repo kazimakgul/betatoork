@@ -27,6 +27,23 @@ class SubscriptionsController extends AppController {
 		$this->set('category', $cat);
 	}
 
+    public function followstatus($target_id=NULL)
+	{
+	   if($this->Auth->user('id'))
+	   { //openning of auth_id control
+	   $auth_id=$this->Session->read('Auth.User.id');
+	   $targetchannelid=$target_id;
+	   $status=$this->Subscription->find('first',array('contains'=>false,'conditions'=>array('Subscription.subscriber_id'=>$auth_id,'Subscription.subscriber_to_id'=>$targetchannelid)));
+	     if($status!=NULL)
+	     {
+		  return 1;
+		 }else{
+		 return 0;
+		 }
+	   }
+	
+	}
+
 
 	public function usergame_user_panel() {
 		$this->loadModel('User');
