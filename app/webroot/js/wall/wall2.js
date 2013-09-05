@@ -554,6 +554,7 @@ $('.update_game_comment2').live("click",function(e)
 $('.comment_button').live("click",function() 
 {
 
+//Push Activity for Comment
 var ID = $(this).attr("id");
 msg_uid=$('#msg_uid'+ID).val();
 

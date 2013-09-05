@@ -139,56 +139,7 @@ else{
 
 </div>
 
-<!-- Comment Unit -->
 
-            <div class="navbar">
-              <div class="navbar-inner">
-                </br>
-                <form class="navbar-form ">
-                    <textarea id="game_comment2" class="span12" rows="4"  placeholder="What do you think about this game?">#<?php echo $game["Game"]["seo_url"];?> </textarea>
-                 </br>
-          <input type="hidden" id="game_id" value="<?php echo $game["Game"]["id"];?>">
-                  <button type="button" class="btn btn-info pull-left update_game_comment2">Comment</button>
-        
-          
-                </form></br>
-              </div>
-            </div>
-
-
-<div class="row-fluid">
-                                <!-- tab resume update -->
-                                <div class="span12">
-                                    <div class="box-tab corner-all">
-                                        <div class="box-header corner-top">
-                                            <!--tab action-->
-                                            <div class="header-control pull-right">
-                                                <a data-box="collapse"><i class="icofont-caret-up"></i></a>
-                                                <a data-box="close" data-hide="rotateOutDownLeft">×</a>
-                                            </div>
-                                            <ul class="nav nav-pills">
-                                                <!--tab menus-->
-                                                <li class="active"><a data-toggle="tab" href="#recent-orders">Comments</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="box-body">
-                                            <!-- widgets-tab-body -->
-                                            <div class="tab-content">
-             
-                                                <div class="tab-pane fade in active" id="recent-orders">
-                                                    
-													<div id="game_comments_content"></div>
-                                                    <?php echo $this->element('NewPanel/load_game_comments',array('game_id'=>$game['Game']['id']));?>
-						
-					
-                                                </div>
-                                            </div><!--/widgets-tab-body-->
-                                        </div><!--/box-body-->
-                                    </div><!--/box-tab-->
-                                </div><!-- tab resume update -->
-                            </div>
-
-<!-- /Comment Unit -->
 <!-- Add Unit -->
 <div class="well" style="padding:5px;">
 <div align="center" style="max-height:110px; overflow:hidden;">
