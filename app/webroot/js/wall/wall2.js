@@ -827,6 +827,13 @@ $('#profileDesc').live("click",function()
 	return false;
 });
 
+$('#wallExpand').live("click",function() 
+{
+	$('#hidePost').slideToggle('fast');
+	return false;
+});
+
+
 $('#camera3').live("click",function() 
 {
 	$('#imageupload3').slideToggle('fast');

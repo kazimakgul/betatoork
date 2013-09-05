@@ -57,27 +57,33 @@ if($updatesarray)
 		   {
 		    
 			$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
-			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'40','onerror'=>'imgError(this,"avatar");'));
+			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'30','onerror'=>'imgError(this,"avatar");'));
 			
 		   }
 		else
 		{
 			$userdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$msg_uid));
-			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'40','onerror'=>'imgError(this,"avatar");'));
+			$cface=$this->Upload->image($userdata,'User.picture',array(),array("class"=>"img-polaroid",'width'=>'30','onerror'=>'imgError(this,"avatar");'));
 		
 		}
 		// End Avatar
 ?>
+
 <div class="media well shadow" style="background-color:white;" id="stbody<?php echo $msg_id;?>">
-                                                        <a class="pull-left" href="#">
+                                                      <a class="pull-left" href="#">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>
                                                         </a>
                                                         <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
-                                                            <p style="margin-left:60px;"><?php echo $message; ?></p>
+                                                            <p style="margin-left:52px;"><?php echo $message; ?><i rel="tooltip" data-placement="bottom" data-original-title="Expand" href="javascript:void(0);" id="wallExpand" class="pull-right elusive-chevron-down"></i></p>
                                                         <hr size="1">
-
-                                                        <div class="media-body" style="text-align: center; margin:-7px;">
+                                                       
+<?php if($type==5){ ?>
+<div id="hidePost" style="display:none;">
+<?php }else{?>
+<div id="hidePost">
+<?php }?>   
+                            <div class="media-body" style="text-align: center; margin:-7px;">                        
                                                             
 															
 														<?php
@@ -229,6 +235,7 @@ echo "</div>";
 								<?php if(isset($uid) && $uid==$msg_uid) { ?>
                 <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
 				<?php } ?>
+
 			
 			<hr size="3">
 			<div class="row-fluid commentupdate clearfix" style='display:none' id='commentbox<?php echo $msg_id;?>'>
@@ -248,6 +255,7 @@ echo "</div>";
 				<!-- Comment area ends-->										
 														
                                                     </div>
+                                                </div>
 										
 		
 
