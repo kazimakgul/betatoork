@@ -808,7 +808,20 @@ if($('#follow_button').attr('id')=='follow_button')
 			                    });
 		         }
 				 
-				 
+			
+			
+	function switchfollow(id)
+	{
+	var x = id;
+    $("a[id=follow" + x + "]").hide();
+	$("a[id=unfollow" + x + "]").show();
+	}
+	function switchunfollow(id)
+	{
+	var x = id;
+    $("a[id=unfollow" + x + "]").hide();
+	$("a[id=follow" + x + "]").show();
+	}
 //***************************************************
 //------------------Favorite Functions-------------------------
 //***************************************************	
