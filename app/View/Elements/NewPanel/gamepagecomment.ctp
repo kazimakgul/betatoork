@@ -15,7 +15,6 @@
           $gameid = $gamepost['game_id']; 
           $message = $gamepost['message'];
           $postPage=$this->Html->url(array("controller" => "wallentries","action" =>"posts",$msg_id));
-          echo $gamepost['id'];
         }else{
           $mtime='long time ago';
           $msg_id=$game['Game']['id'];

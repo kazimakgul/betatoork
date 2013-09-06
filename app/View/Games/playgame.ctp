@@ -93,9 +93,9 @@ else{
 
 <div class="row-fluid">
 
-
 <?php  echo $this->element('NewPanel/gamepagecomment',array('gamename'=>$gamename,'description'=>$description)); ?>
 
+<?php echo $gamepost['id'];?>
 
 
         <div style="padding:5px; background-color:white;" class="span5 shadow well">
