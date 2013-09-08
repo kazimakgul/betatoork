@@ -7,6 +7,9 @@ $folurl=$this->Html->url(array("controller" => "games","action" =>"followers",$f
 $suburl=$this->Html->url(array("controller" => "games","action" =>"subscriptions",$followid));
 $playcounturl=$this->Html->url(array("controller" => "games","action" =>"playedgames",$followid));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+$followstatus=$this->requestAction( array('controller' => 'subscriptions', 'action' => 'followstatus'),array($followid));
+$userid = $followid;
+$publicname = $card[6]['User']['seo_username'];
 ?>
 
 
@@ -23,23 +26,31 @@ else
 
 
 <div class="row-fluid span4" style="margin:0px 7px 0px 7px;">
-    <div class="navbar"><div class="navbar-inner"  style="padding:5px 15px 5px 5px;">
-    <a class="span3" href="<?php echo $profileurl ?>" style="margin:0px 20px 0px 0px;">
+    <div class="navbar"><div class="navbar-inner"  style="padding:5px 15px 15px 5px;">
+     <div class="span4" style="margin:5px 20px 5px 5px;">
+    <a  href="<?php echo $profileurl ?>" >
             <?php 
               if($card[6]['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'60','style'=>'height:80px;')); 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'80','style'=>'height:100px;')); 
                 } else {
-                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'60','style'=>'height:80px;',"class"=>"img-polaroid img-rounded",'onerror'=>'imgError(this,"avatar");'));  }
+                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'80','style'=>'height:100px;',"class"=>"img-polaroid img-rounded",'onerror'=>'imgError(this,"avatar");'));  }
             ?>
-    </a>
+    </a><div style="margin-top:-35px; margin-left:5px; text-align:center;">
+    <?php if($followstatus!=1){ ?><a id="follow<?php echo $userid; ?>" class="btn btn-mini btn-success" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-plus-sign"></i> Follow</a> <a id="unfollow<?php echo $userid; ?>" style="display:none;" class="btn btn-mini" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-remove-circle"></i> Unfollow</a><?php }else{ ?> <a id="unfollow<?php echo $userid; ?>" class="btn btn-mini" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-remove-circle"></i> Unfollow</a><a id="follow<?php echo $userid; ?>" style="display:none;" class="btn btn-mini btn-success" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-plus-sign"></i> Follow</a> <?php } ?> </a></div>
+  </div>
     
     <div class="span7" style="margin:-10px 10px 0px -25px;">
         
 
 <ul style="padding-left:0px; list-style:none" class="nav-list">
-  <li ><h5><a class="btn" href="<?php echo $profileurl ?>"><?php echo $card[0] ?></a></h5></li>
-  <li><?php echo $card[4] ?> Followers</a></li>
-  <li><?php echo $card[1] ?> Games</a></li>
+  <li >
+    <h5>
+      <a class="btn" href="<?php echo $profileurl ?>"><?php echo $card[0] ?></a>
+    </h5>
+  </li>
+  <li><i class="elusive-group color-green"></i> <?php echo $card[4] ?> Followers</a></li>
+  <li><i class="elusive-group color-blue"></i> <?php echo $card[3] ?> Following</a></li>
+  <li><i class="elusive-plus-sign color-red"></i> <?php echo $card[1] ?> Games</a></li>
 </ul>
 
     </div>
