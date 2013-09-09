@@ -98,8 +98,6 @@ else{
 
 <?php  echo $this->element('NewPanel/gamepagecomment',array('gamename'=>$gamename,'description'=>$description)); ?>
 
-<?php echo $gamepost['id'];echo $game['Game']['id'];?>
-
 
         <div style="padding:5px; background-color:white;" class="span5 shadow well">
                 <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="#">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
