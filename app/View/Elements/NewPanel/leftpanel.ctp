@@ -113,14 +113,14 @@ if ($this->action == "dashboard"){
                                     </div>
                                     <span class="sidebar-text">Settings</span>
                                 </a>
-                                <ul class="sub-sidebar-form corner-top shadow-white">
-                                    <li>
+                               <!--   <ul class="sub-sidebar-form corner-top shadow-white">
+                                  <li>
                                         <a href="#" title="Monetize" class="corner-all">
                                             <i class="icofont-money"></i>
                                             <span class="sidebar-text">Monetize Your Channel</span>
                                         </a>
                                     </li>
-                                    <li class="divider"></li>
+                                    <li class="divider"></li> 
                                     <li>
                                         <a href="<?php echo $settings; ?>" title="Edit" class="corner-all">
                                             <i class="icofont-user"></i>
@@ -133,7 +133,7 @@ if ($this->action == "dashboard"){
                                             <span class="sidebar-text">Change Password</span>
                                         </a>
                                     </li>
-                                </ul>
+                                </ul> -->
                             </li>
                         </ul>
                     </aside><!--/side bar -->

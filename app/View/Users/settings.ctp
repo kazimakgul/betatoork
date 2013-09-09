@@ -3,6 +3,7 @@ $password=$this->Html->url(array("controller" => "users","action" =>"password2",
 $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 $image = $this->requestAction( array('controller' => 'users', 'action' => 'randomPicture',62));
+$username = $user['User']['seo_username'];
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -11,7 +12,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
 
-    <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your<a rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$user['User']['seo_username'];?>" class="btn btn-small btn-link" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</a></p>
+    <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your<a rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$username;?>" class="btn btn-small btn-link" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</a></p>
 
 <div class="well">
     <ul class="nav nav-tabs">
@@ -88,9 +89,8 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                                                                 <div class="controls">
                                                                     <span class="add-on">toork.com/</span>
 <?php echo $this->Form->input('username',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'grd-white','data-validate'=>'{required: true, messages:{required:"Please enter field required"}}','id'=>'required')); ?>
-
                                                                 </div>
-                                                            </div>
+                                                            </div><div class="pull-right span5"> <p class="btn btn-link badge badge-important helper-font-16"><a href="<?php echo $profilepublic;?>">@<?php echo $username; ?></a></p></div>
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputEditorSimple">Channel Description</label>
                                                             <div class="controls">
