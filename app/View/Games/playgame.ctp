@@ -95,7 +95,7 @@ else{
 
 <?php  echo $this->element('NewPanel/gamepagecomment',array('gamename'=>$gamename,'description'=>$description)); ?>
 
-<?php echo $gamepost['id'];?>
+<?php echo $gamepost['id'];echo $game['Game']['id'];?>
 
 
         <div style="padding:5px; background-color:white;" class="span5 shadow well">
