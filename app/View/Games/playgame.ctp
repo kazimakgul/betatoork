@@ -29,7 +29,9 @@ else{
 <!-- /Add Unit -->
 
 <!-- Game Unit -->
-<h6><span class="btn-link label label-important"><a href="#">#<?php echo $gamename; ?></a></span> : <?php echo $description; ?> </h6>
+<div style="padding:5px; background-color:white;" class="shadow well">
+<h6 class="media-heading" style="margin-left:9px;" ><span class="btn-link label label-important"><a href="#">#<?php echo $gamename; ?></a></span> : <?php echo $description; ?> </h6>
+</div>
 <div class="well" style="padding:5px;">
 
 <div style="margin:0 auto; text-align: center; font-family:Verdana, Geneva, sans-serif; color:#000; font-size:5px;">
