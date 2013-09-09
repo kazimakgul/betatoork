@@ -1,14 +1,6 @@
 <?php
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
-
-if(isset($gamepost)){
-$msg_id=$gamepost['id'];
-}else{
-$msg_id=$game['Game']['id'];
-}
-
 ?>
-
 <div class="navbar navbar-fixed-bottom">
   <div class="header-control">
       <div class="navbar-inner" style="-webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;">
@@ -136,11 +128,10 @@ else{
                  <li rel="tooltip" id="comment" data-toggle="popover" data-placement="top" data-html="true" title="Comment" data-placement="top" data-original-title="Comment" class="btn pull-right color-green" style="margin:5px;"data-content='
 
                 <form class="navbar-form ">
-				    <textarea placeholder="What do you think about this game?" name="comment" maxlength="200" class="pull-right span12" rows="1" id="cstextarea<?php echo $msg_id;?>">#<?php echo $game["Game"]["seo_url"];?></textarea>
-   
+                    <textarea class="span12" id="game_comment" rows="4" placeholder="What do you think about this game?">#<?php echo $game["Game"]["seo_url"];?> </textarea>
 					<input type="hidden" id="game_id" value="<?php echo $game["Game"]["id"];?>">
                  </br>
-				  <div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button_msg_id btn btn-small btn-info">Comment</div>
+                  <button type="button" id="success-post3" class="btn btn-info pull-right update_game_comment">Comment</button>
                 </form></br>
                   '>
                       <i class="elusive-comment"></i>

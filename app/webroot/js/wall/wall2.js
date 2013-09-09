@@ -547,51 +547,10 @@ $('.update_game_comment2').live("click",function(e)
 		return false;
 
 });	
-
-//Commment Submit for Spesific Game Post
-$('.comment_button_msg_id').live("click",function() 
-{
-
-//Push Activity for Comment
-var ID = $(this).attr("id");
-msg_uid=$('#msg_uid'+ID).val();
-
-activitypath=pushactivity+'/'+null+'/'+msg_uid+'/'+1+'/'+1+'/'+6
-$.post(activitypath, function (data) {
-            if (data!= null) {
-			//alert(data);
-            }
-            
-        });	
-
-
-var comment= $("#cstextarea"+ID).val();
-var dataString = 'comment='+ comment + '&msg_id=' + ID;
-
-if($.trim(comment).length==0)
-{
-alert("Please Enter Comment Text");
-}
-else
-{
-$.ajax({
-type: "POST",
-url: commentvar,
-data: dataString,
-cache: false,
-success: function(html){
-$("#commentload"+ID).append(html);
-$("#commentload2"+ID).append(html.replace('stcommentdelete','stcommentdelete2').replace('stcommentbody','stcommentbody2'));
-$("#cstextarea"+ID).val('');
-$("#cstextarea"+ID).focus();
- }
- });
-}
-return false;
-});
-
+	
 	
 //Commment Submit
+
 $('.comment_button').live("click",function() 
 {
 
