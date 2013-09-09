@@ -264,8 +264,8 @@ echo "</div>";
   {
   ?>
  <!-- More Button here $msg_id values is a last message id value. -->
-<div id="more<?php echo $msg_id; ?>" >
-<a href="#" class="btn btn-small btn-link pull-right more" id="<?php echo $msg_id; ?>">View more &rarr;</a>
+<div class="media well shadow" style="background-color:white; margin:0px; padding:10px;" id="more<?php echo $msg_id; ?>">
+<a href="#" class="btn btn-small btn-link more" id="<?php echo $msg_id; ?>"> <i class="elusive-refresh"></i> View More Posts</a>
 </div>
 
 <?php } ?>
