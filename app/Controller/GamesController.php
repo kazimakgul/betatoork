@@ -1660,6 +1660,15 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
 		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
 	    $this->set_suggested_channels();
+
+		//Recommended Games bolumu icin.
+		$limit=4;
+		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$game['User']['id']),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
+		)));
+		$condnew=$this->paginate('Game');
+		$this->set('mygames', $condnew);
+		//Recommended Games bolumu icin.
+
 		
 		
 		//New Wall Getting Started Below.

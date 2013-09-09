@@ -1,9 +1,10 @@
 <?php
 $gamename = $game['Game']['name'];
 $description = $game['Game']['description'];
-if($game['User']['seo_username']!=NULL)
+$username = $game['User']['seo_username'];
+if($username !=NULL)
 {
-  $profilepublic=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>'')); 
+  $profilepublic=$this->Html->url(array( "controller" => h($username ),"action" =>'')); 
 }
 else{
   $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$game['User']['id']));
@@ -149,6 +150,19 @@ else{
 </div>
 </div>
 <!-- /Add Unit -->
+
+<!-- /Recommended Games -->
+<div style="padding:5px; background-color:white;" class="shadow well">
+
+<h5 class="media-heading" style="margin-left:9px;" >Recommended games by <span class="btn-link label label-important"><a href="<?php echo $profilepublic; ?>"> @<?php echo $username; ?></a></span></h5>
+
+</div>
+
+<ul class="thumbnails" id="thumbnails_area">
+<?php  echo $this->element('NewPanel/profile/channel_game_box'); ?>
+</ul>
+
+<!-- /Recommended Games -->
 
                         </div><!--/content-body -->
 <?php  echo $this->element('NewPanel/dashfooter'); ?>
