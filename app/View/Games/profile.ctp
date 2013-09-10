@@ -59,7 +59,7 @@ if($website==NULL){
             </div> 
                 <div class="span7"><p style="font-family: 'Merriweather Sans', sans-serif; font-size: 15px; color:white; text-shadow: 1px 1px black; margin-top:7px;">
                     <i class="helper-font-24 elusive-group color-blue"></i> <?php echo $followerNumber; ?> Followers 
-                    <i class="helper-font-24 elusive-star-alt color-red"></i> <?php echo $gameNumber; ?> Games
+                    <i class="icon-2x icon-gamepad color-red" style="margin-right:15px;"></i> <?php echo $gameNumber; ?> Games
                 </p>
                 </div>
 
@@ -155,7 +155,7 @@ if($gplus==NULL){
                                                 <li class="active"><a data-toggle="tab" href="#games_tab"><i class="elusive-user"></i> Games - <small>(<?php echo $gameNumber; ?>)</small></a></li>
                                                 <li class=""><a data-toggle="tab" href="#favorites_tab"><i class="elusive-heart color-red"></i> Favorites - <small>(<?php echo $favoriteNumber; ?>)</small></a></li>
                                                 <li class=""><a data-toggle="tab" href="#news_tab"><i class="elusive-th-list color-purple"></i> News Feed</a></li>
-                                                <li class=""><a data-toggle="tab" href="#followers_tab"><i class="icofont-link color-blue"></i> Followers - <small>(<?php echo $followerNumber; ?>)</small></a></li>
+                                                <li class=""><a data-toggle="tab" href="#followers_tab"><i class="elusive-group color-blue"></i> Followers - <small>(<?php echo $followerNumber; ?>)</small></a></li>
                                             </ul>
                                         </div>
                                         <div class="box-body">

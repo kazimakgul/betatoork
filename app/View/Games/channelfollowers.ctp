@@ -50,7 +50,7 @@ else
   </li>
   <li><i class="elusive-group color-green"></i> <?php echo $card[4] ?> Followers</a></li>
   <li><i class="elusive-group color-blue"></i> <?php echo $card[3] ?> Following</a></li>
-  <li><i class="elusive-plus-sign color-red"></i> <?php echo $card[1] ?> Games</a></li>
+  <li><i class="icon-gamepad color-red"></i> <?php echo $card[1] ?> Games</a></li>
 </ul>
 
     </div>

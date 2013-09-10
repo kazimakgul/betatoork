@@ -31,6 +31,10 @@
         <link href="http://fonts.googleapis.com/css?family=Aclonica:regular" rel="stylesheet" type="text/css" />
         <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:700' rel='stylesheet' type='text/css'>
 
+        <!-- font Awsome 3.2.1-->
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
         <!-- styles -->
 
 <?php echo $this->Html->css(array('introjs/introjs','css2/bootstrap','css2/bootstrap-responsive','css2/stilearn','css2/stilearn-responsive','css2/stilearn-helper','css2/stilearn-icon','css2/font-awesome','css2/animate','css2/uniform.default','css2/select2','css2/fullcalendar','css2/bootstrap-wysihtml5','css2/jquery.pnotify.default','channelwall','css2/datepicker','css2/colorpicker','css2/responsive-tables','css2/elusive-webfont','jasny-bootstrap/css/jasny-bootstrap','rating2')); ?>

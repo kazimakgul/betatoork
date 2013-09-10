@@ -73,7 +73,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                             <div class="pull-right">
 
                                 <!--notification-->
-                                <a class="btn btn-danger" data-toggle="dropdown" href="#" title="7 new notifications"><i class="elusive-bell"></i> 6</a>
+                                <a class="btn btn-danger" data-toggle="dropdown" href="#" title="7 new notifications"><i class="elusive-bell" style="margin-right:5px;"></i>
+                                    <p style="margin:-25px -20px 5px 5px ;"> 63 </p>
+                                </a>
                                 <ul class="dropdown-menu dropdown-notification">
                                     <?php  echo $this->element('NewPanel/header/headernotifications',array('wall'=>$wall)); ?>
                                 </ul><!--notification-->
