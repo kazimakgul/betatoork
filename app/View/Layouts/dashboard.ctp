@@ -412,7 +412,7 @@ $('#imageinfo').popover();
         // Basic FitVids Test
         $(".media").fitVids();
         // Custom selector and No-Double-Wrapping Prevention Test
-        $(".media").fitVids({ customSelector: "iframe[src^='http://socialcam.com']"});
+        $(".media").fitVids({ customSelector: "iframe[src^='http://dailymotion.com']"});
       </script>
 
 
