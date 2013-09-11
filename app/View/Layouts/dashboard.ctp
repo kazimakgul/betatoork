@@ -55,6 +55,7 @@ deletegame='<?php echo $this->Html->url(array('controller'=>'games','action'=>'g
 pushactivity='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'pushactivity')); ?>';
 setpermission='<?php echo $this->Html->url(array('controller'=>'users','action'=>'setpermissions')); ?>';
 freshactivity='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getfreshactivity')); ?>';
+notifycount='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getnotificationcount')); ?>';
 
 //Code Block for Broken Images
 function imgError(image,style){

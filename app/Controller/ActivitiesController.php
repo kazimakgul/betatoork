@@ -47,6 +47,21 @@ class ActivitiesController extends AppController {
 				return $this->render('/emails/html/rate');
 	}
 	
+	public function getNotificationCount()
+	{
+	$this->layout='ajax';
+	
+	   if($this->Auth->user('id'))
+	   { //openning of auth_id control
+	   $auth_id=$this->Session->read('Auth.User.id');
+	   $count=$this->Activity->find('count',array('contain'=>false,'conditions'=>array('Activity.channel_id'=>$auth_id,'Activity.notify'=>1,'Activity.seen'=>0)));
+	   echo $count;
+       }else{
+	   echo 0;
+	   }
+	}
+	
+	
 	public function getFreshActivity($last_id)
 	{
 	$this->layout='ajax';
