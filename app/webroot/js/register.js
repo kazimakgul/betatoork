@@ -1638,6 +1638,12 @@ function getNotificationCount()
 function getNewNotification()
 {
 	alert('notifications');
+	$.post(notifyrefresh, function (data) {
+            if ($.trim(data)!= '') {
+			$('#notifyarea').html(data);
+            }
+            
+        });
 }
 
 $('#notifycount').live('click',function(){

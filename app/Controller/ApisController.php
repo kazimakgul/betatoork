@@ -185,6 +185,78 @@ return $material.$number;
 				  return $text;
    
    }
+   
+   
+   public function notificationMessage()
+   {
+   $lastactivity=$this->params['pass'];
+   
+   //Activity Content Generation Function
+   //Generate Play Url
+   /*
+             if($lastactivity['Game']['seo_url']!=NULL)
+             {
+             if($lastactivity['Game']['embed']!=NULL)
+             $playurl=$this->Html->url(array( "controller" => h($lastactivity['ChannelUser']['seo_username']),"action" =>h($lastactivity['Game']['seo_url']),'playgame'));
+	         else
+	         $playurl=$this->Html->url(array( "controller" => h($lastactivity['ChannelUser']['seo_username']),"action" =>h($lastactivity['Game']['seo_url']),'playframe'));
+             }
+             else{
+             $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($lastactivity['Game']['id'])));
+             }
+*/
+                $playurl="empty";
+				$game_name=$lastactivity['Game']['name'];
+				$channel_name=$lastactivity['ChannelUser']['username'];
+				$type=$lastactivity['Activity']['type'];
+				
+				    if($type==1)
+				    {
+					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+				    }
+					if($type==2)
+				    {
+					$text='Following you now.';
+				    }
+					if($type==3)
+				    {
+					$text='Cloned your game:'.$game_name;
+				    }
+					if($type==4)
+				    {
+					$text='Rate on your game:'.$game_name.'';
+				    }
+					if($type==5)
+				    {
+					$text='Mentioned your game:'.$game_name;
+				    }
+					if($type==6)
+				    {
+					$text='Comment on your game:'.$channel_name.' wall.';
+				    }
+					if($type==7)
+				    {
+					$text=' Favorited your game:'.$game_name;
+				    }
+					if($type==8)
+				    {
+					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+				    }
+					if($type==9)
+				    {
+					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+				    }
+					if($type==10)
+				    {
+					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+				    }
+					if($type==11)
+				    {
+					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+				    }
+				  return $text;
+   
+   }
 	
 	
 	public function addgame_ajax($url='http://www.toork.com')

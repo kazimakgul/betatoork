@@ -1,4 +1,8 @@
-                    <li class="dropdown-header grd-white"><a href="<?php echo $wall;?>"><i class="elusive-download-alt"></i> See All Notifications</a></li>
+<li class="dropdown-header grd-white"><a href="<?php echo $wall;?>"><i class="elusive-download-alt"></i> See All Notifications</a></li>
+<div id="notifyarea"></div>
+
+
+                    
                                     <li>
                                         
                                             <div class="media" style="margin:5px;">
@@ -15,6 +19,7 @@
                                             </div>
                                         
                                     </li>
+									
                                     <li>
                                         
                                             <div class="media" style="margin:5px;">
@@ -49,6 +54,7 @@
                                             </div>
                                         
                                     </li>
+
 
                                     <li>
                                             <div class="media" style="margin:5px;">
@@ -111,4 +117,7 @@
                                             </div>
                                         
                                     </li>
+								
                     <li class="dropdown-footer"><a href="<?php echo $wall;?>"><i class="elusive-download-alt"></i> See All Notifications</a></li>
+					
+					
