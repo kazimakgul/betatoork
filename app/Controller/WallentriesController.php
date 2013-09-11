@@ -499,6 +499,18 @@ $this->set('lastactivities',$activityData);
     }
 }
 
+public function set_notify_count()
+{
+       if($this->Auth->user('id'))
+	   { //openning of auth_id control
+	   $auth_id=$this->Session->read('Auth.User.id');
+	   $count=$this->Activity->find('count',array('contain'=>false,'conditions'=>array('Activity.channel_id'=>$auth_id,'Activity.notify'=>1,'Activity.seen'=>0)));
+	   $this->set('notifycount',$count);
+       }else{
+	   $this->set('notifycount',0);
+	   }
+}
+
 public function set_suggested_channels()
 {
 //Set first situation of flags
@@ -527,6 +539,7 @@ public function set_suggested_channels()
 	   	$this->set('channels',$suggestdata);
 		
 		$this->get_last_activities();
+		$this->set_notify_count();
 
 }
 

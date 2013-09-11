@@ -111,6 +111,37 @@ public function leftpanel(){
 		return $list50;
 	}
 
+
+public function get_last_activities()
+{
+    $this->loadModel('Activity');
+    if($this->Auth->user('id'))
+	{ //openning of auth_id control
+    $auth_id=$this->Session->read('Auth.User.id');
+    $subscribed_ids=$this->Subscription->find('list',array('contain'=>false,'fields'=>array('Subscription.subscriber_to_id'),'conditions'=>array('Subscription.subscriber_id'=>$auth_id)));
+	$activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username')),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username','ChannelUser.seo_username'))),'conditions'=>array('Activity.performer_id'=>$subscribed_ids),'order'=>'Activity.created DESC'));
+$this->set('lastactivities',$activityData);
+    }else{//closing of auth_id control
+   //if user is no logged in,get all activity data
+	$activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username')),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username','ChannelUser.seo_username'))),'order'=>'Activity.created DESC'));
+$this->set('lastactivities',$activityData);
+    }
+
+}
+
+public function set_notify_count()
+{
+       $this->loadModel('Activity');
+       if($this->Auth->user('id'))
+	   { //openning of auth_id control
+	   $auth_id=$this->Session->read('Auth.User.id');
+	   $count=$this->Activity->find('count',array('contain'=>false,'conditions'=>array('Activity.channel_id'=>$auth_id,'Activity.notify'=>1,'Activity.seen'=>0)));
+	   $this->set('notifycount',$count);
+       }else{
+	   $this->set('notifycount',0);
+	   }
+}
+
 public function set_suggested_channels()
 {
 //Set first situation of flags
@@ -137,7 +168,9 @@ public function set_suggested_channels()
 		$category = $this->Category->find('all');
 		$this->set('category',$category);
 	   	$this->set('channels',$suggestdata);
-
+		
+		$this->get_last_activities();
+		$this->set_notify_count();
 }
 
 	public function display() {
