@@ -1592,7 +1592,7 @@ $.post(activitypath, function (data) {
 
 }
 
-setInterval(function(){getFreshActivity();getNotificationCount();},50000);
+setInterval(function(){getFreshActivity();getNotificationCount();},10000);
 function getFreshActivity()
 {
 last_id=$('.lastactivityid').val();
@@ -1617,19 +1617,31 @@ $.post(activitypath, function (data) {
 //==========================================================
 function getNotificationCount()
 {
+	lastcount=parseInt($('#notcountsingle').html());
+	
     $.post(notifycount, function (data) {
             if ($.trim(data)!= '') {
 			count=data;	
 			$('#notifycount').attr('title', count+' new notifications');
 			$('#notcountsingle').html(count);
+			    if(parseInt(count)>lastcount)
+				{
+				 $( "body" ).data( "oldtitle", $(document).attr('title'));	
+				 $(document).attr('title', 'You have new notifications.');
+				 //alert('içerde daha çok notification var');
+				}
             }
             
         });
 }
 
+function getNewNotification()
+{
+	alert('notifications');
+	}
 
 $('#notifycount').live('click',function(){
-										
+$(document).attr('title', $( "body" ).data( "oldtitle" ));										
 alert('tikladin son 10 notify okundu sayildi');											
 											
 											});
