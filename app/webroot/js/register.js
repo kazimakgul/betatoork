@@ -1628,7 +1628,7 @@ function getNotificationCount()
 				{
 				 $( "body" ).data( "oldtitle", $(document).attr('title'));	
 				 $(document).attr('title', 'You have new notifications.');
-				 //alert('içerde daha çok notification var');
+				 getNewNotification();
 				}
             }
             
@@ -1638,13 +1638,18 @@ function getNotificationCount()
 function getNewNotification()
 {
 	alert('notifications');
-	}
+}
 
 $('#notifycount').live('click',function(){
-$(document).attr('title', $( "body" ).data( "oldtitle" ));										
-alert('tikladin son 10 notify okundu sayildi');											
-											
-											});
+
+    $(document).attr('title', $( "body" ).data( "oldtitle" ));										
+    
+	$.post(notifytoggle, function (data) {
+              if (data== '1') {
+			  getNotificationCount();
+              }
+          });										
+});
 
 //==========================================================
 //*********//Notification Frontend Functions********

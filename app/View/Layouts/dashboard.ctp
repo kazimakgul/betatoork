@@ -56,6 +56,7 @@ pushactivity='<?php echo $this->Html->url(array('controller'=>'activities','acti
 setpermission='<?php echo $this->Html->url(array('controller'=>'users','action'=>'setpermissions')); ?>';
 freshactivity='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getfreshactivity')); ?>';
 notifycount='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getnotificationcount')); ?>';
+notifytoggle='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'togglelast10')); ?>';
 
 //Code Block for Broken Images
 function imgError(image,style){
