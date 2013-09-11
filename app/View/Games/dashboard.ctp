@@ -94,7 +94,7 @@ $username = $user['User']['seo_username'];
 
                             <div id="imageupload4" class="border" style="display:none;">
 
-                            <p>Just copy/paste a <strong>youtube</strong> ,<strong>vimeo</strong> or <strong>dailymotion</strong> link ex: <strong>http://www.youtube.com/watch?v=bNNzRyd1xz0</strong></p>
+                            <p>Just copy/paste a <strong class="color-red">youtube</strong> ,<strong class="color-green">vimeo</strong> or <strong class="color-blue">dailymotion</strong> link ex: <strong>http://www.youtube.com/watch?v=bNNzRyd1xz0</strong></p>
                             </div>
 
                             <div id="imageupload5" class="border" style="display:none;">
