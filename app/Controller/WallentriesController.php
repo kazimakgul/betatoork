@@ -643,6 +643,7 @@ public function set_suggested_channels()
 		   }
 		
 	   $this->set_suggested_channels();
+	   $this->getallnotifications();
 	   
 	   //Actions About Best Games On Right Sidebar
 	   $suggestedgames=$this->Game->find('all',array('limit' => 5,'order'=>'rand()','conditions'=>array('Game.id'=>$this->get_game_suggestions())));
@@ -663,6 +664,26 @@ public function set_suggested_channels()
        
 	}
 
+	
+	public function getallnotifications() {
+  
+       if($this->Auth->user('id'))
+	   { //openning of auth_id control
+	   $auth_id=$this->Session->read('Auth.User.id');
+       $limit=20;
+       $activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username'  )),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username',  'ChannelUser.seo_username'))),'conditions'=>array('Activity.channel_id'=>$auth_id,'Activity.notify'=>1),'order'=>'Activity.id DESC'));
+	       if($activityData!=NULL)
+		   {
+           $this->set('notifications',$activityData);
+	       $this->set('message',NULL);
+		   }else{
+		   $this->set('notifications',NULL);
+	       $this->set('message','You have no any activity yet.');
+		   }
+        }
+
+}
+	
 	
 	//this gets channel suggestions
 	public function get_suggestions($restrict)
