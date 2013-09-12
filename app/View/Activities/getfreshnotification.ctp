@@ -28,11 +28,12 @@ else{
                                             <div class="media" style="margin:5px;">
                                               <div class="span1" style="margin:0px;">
                                                 <div class="pull-left">
+
                                                                 <?php 
               if($card[6]['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'32','height'=>'32')); 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid","alt" => "toork avatar image",'width'=>'48')); 
                 } else {
-                echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'32','height'=>'32','onerror'=>'imgError(this,"avatar");'));  }
+                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'48',"class"=>"img-polaroid",'onerror'=>'imgError(this,"avatar");'));  }
               ?>
                                                             </div>
                                                 <a class="btn btn-mini pull-left" style="margin-top:4px; padding:0px 4px 0px 4px;"><i class="elusive-plus-sign"></i> Follow</a>
@@ -40,13 +41,13 @@ else{
 
                                                 <div class="media-body">
                                                     <h4 class="media-heading"><a href="<?php echo $profileurl ?>" class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;"><?php echo $lastactivity['PerformerUser']['username']; ?></a><small class=" pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small></h4>
-                                                    <p><?php echo $activity_message;?></p><small class="helper-font-9">This game is really rocks man. Hope you make more games</small>
+                                                    <p><?php echo $activity_message;?></p>
                                                     <p class="helper-font-6" style="opacity:0.7;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></p>
                                                 </div>
                                             </div>
                                         
                                     </li>
-				
+				<hr style="margin:0px;">
 	
 				<?php endforeach; ?>  
 				

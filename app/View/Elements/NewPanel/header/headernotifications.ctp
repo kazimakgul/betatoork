@@ -1,6 +1,14 @@
 <li class="dropdown-header grd-white"><a href="<?php echo $wall;?>"><i class="elusive-download-alt"></i> See All Notifications</a></li>
 <div id="notifyarea" class="firstcome">
-<div id="notifymessage" style="display:none;">You have no new notifications.</div>
+<div id="notifymessage" style="display:none;">
+
+<div class="well" style="text-align: center ;">
+    <i class="elusive-bell helper-font-48"></i> 
+    <p>You Have No New Messages</p>
+</div>
+
+
+</div>
 </div>
 
 <!--
@@ -120,6 +128,5 @@
                                         
                                     </li>
 		-->						
-                    <li class="dropdown-footer"><a href="<?php echo $wall;?>"><i class="elusive-download-alt"></i> See All Notifications</a></li>
 					
 					

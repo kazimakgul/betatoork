@@ -70,15 +70,17 @@ if(!isset($notifycount))
         <!-- The drop down menu -->
         <ul class="nav pull-right">
 
-                    <div class="span2">
+                    <div class="span1">
                         <!--panel button ext-->
                        
                             <div class="pull-right">
 
                                 <!--notification-->
-                                <a class="btn btn-danger" id="notifycount" data-toggle="dropdown" href="#" title="<?php echo $notifycount; ?> new notifications"><i class="elusive-bell" style="margin-right:5px;"></i>
-                                    <p id="notcountsingle" style="margin:-25px -20px 5px 5px ;"> <?php echo $notifycount; ?> </p>
+                                <a class="" id="notifycount" data-toggle="dropdown" href="#" title="<?php echo $notifycount; ?> new notifications">
+                                    <i class="icon-2x elusive-bell" style="opacity:1; margin:5px 15px 5px 5px;"></i>
+                                        <p id="notcountsingle" style="padding:4px; margin:3px 0px 0px -17px ;" class="badge badge-important"><?php echo $notifycount; ?> </p>
                                 </a>
+
                                 <ul class="dropdown-menu dropdown-notification">
                                     <?php  echo $this->element('NewPanel/header/headernotifications',array('wall'=>$wall)); ?>
                                 </ul><!--notification-->
