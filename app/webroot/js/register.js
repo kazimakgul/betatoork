@@ -1641,7 +1641,10 @@ function getNewNotification()
 	$.post(notifyrefresh, function (data) {
             if ($.trim(data)!= '') {
 			$('#notifyarea').html(data);
-            }
+			$('#notifyarea').attr("class","secondcome");
+            }else{
+			$('#notifymessage').show();
+			}
             
         });
 }
@@ -1649,7 +1652,11 @@ function getNewNotification()
 $('#notifycount').live('click',function(){
 
     $(document).attr('title', $( "body" ).data( "oldtitle" ));										
-    
+    classstat=$('#notifyarea').attr("class");
+	    if(classstat=="firstcome")
+		{
+					  getNewNotification();
+		}
 	$.post(notifytoggle, function (data) {
               if (data== '1') {
 			  getNotificationCount();

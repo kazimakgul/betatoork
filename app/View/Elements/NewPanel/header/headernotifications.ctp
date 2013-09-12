@@ -1,7 +1,9 @@
 <li class="dropdown-header grd-white"><a href="<?php echo $wall;?>"><i class="elusive-download-alt"></i> See All Notifications</a></li>
-<div id="notifyarea"></div>
+<div id="notifyarea" class="firstcome">
+<div id="notifymessage" style="display:none;">You have no new notifications.</div>
+</div>
 
-
+<!--
                     
                                     <li>
                                         
@@ -117,7 +119,7 @@
                                             </div>
                                         
                                     </li>
-								
+		-->						
                     <li class="dropdown-footer"><a href="<?php echo $wall;?>"><i class="elusive-download-alt"></i> See All Notifications</a></li>
 					
 					
