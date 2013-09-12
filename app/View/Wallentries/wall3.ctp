@@ -81,7 +81,7 @@ $userid=$user['User']['id'];
                     <!--/tab menus-->
                 </ul>
 
-                <?php echo $this->element('NewPanel/load_my_notifications');?>
+                <?php echo $this->element('NewPanel/load_my_notifications2');?>
 
             </div>
 
