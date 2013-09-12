@@ -140,47 +140,47 @@ return $material.$number;
 				
 				    if($type==1)
 				    {
-					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name;
 				    }
 					if($type==2)
 				    {
-					$text='Following '.$channel_name.' now.';
+					$text='<i class="color-blue elusive-group"></i> Following '.$channel_name.' now.';
 				    }
 					if($type==3)
 				    {
-					$text='Cloned '.$game_name;
+					$text='<i class="color-red elusive-tint"></i> Cloned '.$game_name;
 				    }
 					if($type==4)
 				    {
-					$text='Rate on '.$game_name.'';
+					$text='<i class="color-gold elusive-star"></i> Rate on '.$game_name.'';
 				    }
 					if($type==5)
 				    {
-					$text='Mentioned '.$game_name;
+					$text='<i class="color-purple elusive-user"></i> Talking about '.$game_name;
 				    }
 					if($type==6)
 				    {
-					$text='Comment on '.$channel_name.' wall.';
+					$text='<i class="color-green elusive-comment"></i> Comment on '.$channel_name.' wall.';
 				    }
 					if($type==7)
 				    {
-					$text=' Favorited '.$game_name;
+					$text='<i class="color-orange elusive-heart"></i> Favorited '.$game_name;
 				    }
 					if($type==8)
 				    {
-					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
 				    }
 					if($type==9)
 				    {
-					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
 				    }
 					if($type==10)
 				    {
-					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
 				    }
 					if($type==11)
 				    {
-					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
 				    }
 				  return $text;
    
@@ -216,43 +216,43 @@ return $material.$number;
 				    }
 					if($type==2)
 				    {
-					$text='Following you now.';
+					$text='<i class="color-blue elusive-group"></i> Following you now.';
 				    }
 					if($type==3)
 				    {
-					$text='Cloned your game:'.$game_name;
+					$text='<i class="color-red elusive-tint"></i> Cloned your game: '.$game_name;
 				    }
 					if($type==4)
 				    {
-					$text='Rate on your game:'.$game_name.'';
+					$text='<i class="color-gold elusive-star"></i> Rate on your game: '.$game_name;
 				    }
 					if($type==5)
 				    {
-					$text='Mentioned your game:'.$game_name;
+					$text='<i class="color-purple elusive-user"></i> Talking about your game: '.$game_name;
 				    }
 					if($type==6)
 				    {
-					$text='Comment on your game:'.$channel_name.' wall.';
+					$text='<i class="color-green elusive-comment"></i> Comment on your game: '.$game_name;
 				    }
 					if($type==7)
 				    {
-					$text=' Favorited your game:'.$game_name;
+					$text='<i class="color-orange elusive-heart"></i> Favorited your game: '.$game_name;
 				    }
 					if($type==8)
 				    {
-					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
 				    }
 					if($type==9)
 				    {
-					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
 				    }
 					if($type==10)
 				    {
-					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
 				    }
 					if($type==11)
 				    {
-					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
 				    }
 				  return $text;
    

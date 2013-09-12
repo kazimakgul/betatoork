@@ -522,6 +522,9 @@ h1,h2,h3,h4,h5,h6{
 .color-sky{
     color: #0A5BC4;
 }
+.color-gold{
+    color: #FFD700;
+}
 /** end text color helper**/
 
 /** border corner helper**/
