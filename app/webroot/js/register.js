@@ -1618,10 +1618,22 @@ $.post(activitypath, function (data) {
 function getNotificationCount()
 {
 	lastcount=parseInt($('#notcountsingle').html());
-	
+	classlaststat=$('#notcountsingle').attr("class");
     $.post(notifycount, function (data) {
             if ($.trim(data)!= '') {
-			count=data;	
+			count=data;
+			  if(parseInt(count)==0)
+			  { 
+			     if(classlaststat="badge-important")
+				 {
+				 $('#notcountsingle').removeClass("badge-important");
+			     }
+			  }else{
+				  if(classlaststat!="badge-important")
+				  {
+				  $('#notcountsingle').addClass("badge-important"); 
+				  }
+			  }
 			$('#notifycount').attr('title', count+' new notifications');
 			$('#notcountsingle').html(count);
 			    if(parseInt(count)>lastcount)
