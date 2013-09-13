@@ -14,7 +14,7 @@ if(eregi("youtu",$url) or eregi("youtube",$url)){
 			if(preg_match("/feature/i", $splits[1])){
 			$splits[1] = str_replace("&feature","",$splits[1]);	
 			}
-                $returns = '<iframe width="480" height="360" src="http://www.youtube.com/embed/'.$splits[1].'" frameborder="0" allowfullscreen></iframe>';
+                $returns = '<iframe width="510" height="300" src="http://www.youtube.com/embed/'.$splits[1].'" frameborder="0" allowfullscreen></iframe>';
         }
 } else if(eregi("vimeo",$url)){
         $splits = explode("com/",$url);
@@ -25,7 +25,7 @@ if(eregi("youtu",$url) or eregi("youtube",$url)){
         if(!empty($splits[1])){
             $splits = explode("_",$splits[1]);
         }
-        $returns = '<iframe src="http://www.dailymotion.com/embed/'.$splits[0].'" width="480" height="270" frameborder="0"></iframe>';
+        $returns = '<iframe src="http://www.dailymotion.com/embed/'.$splits[0].'" width="430" height="250" frameborder="0"></iframe>';
 }
 
 
