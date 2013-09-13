@@ -63,7 +63,7 @@ else{
 
 
 
-<div class="well well-small">
+<div style="padding:5px; background-color:white;" class="shadow well">
  
     <a class="btn btn-danger" id="fav_button" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);">
      <i class="icofont-heart"></i> Favorite
