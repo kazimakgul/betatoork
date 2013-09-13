@@ -66,12 +66,12 @@ if($website==NULL){
       <div class="header-control" style="margin:0px -10px 0px 0px;">
         <button onclick="subscribeout('<?php echo $card[0]; ?>',user_auth,<?php echo $followid; ?>); _gaq.push(['_trackEvent', 'Channel', 'unFollow', '<?php echo $card[0] ?>']);"  rel="tooltip" data-placement="top" data-original-title="UnFollow" data-box="close" data-hide="fadeOut" class="close" >×</button> 
       </div>
-    <a class="span3" href="<?php echo $profileurl ?>" style="margin:0px 20px 0px 0px;">
+    <a class="span4" href="<?php echo $profileurl ?>" style="margin:0px 20px 0px 0px;">
             <?php 
               if($card[6]['User']['picture']==null) { 
-                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'60','style'=>'height:80px;')); 
+                echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("class"=>"img-polaroid img-rounded","alt" => "toork avatar image",'width'=>'72','style'=>'height:96px;')); 
                 } else {
-                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'60','style'=>'height:80px;',"class"=>"img-polaroid img-rounded",'onerror'=>'imgError(this,"avatar");'));  }
+                  echo $this->Upload->image($card[6],'User.picture',array('class'=>'img-circle'),array('width'=>'72','style'=>'height:96px;',"class"=>"img-polaroid img-rounded",'onerror'=>'imgError(this,"avatar");'));  }
             ?>
     </a>
     
@@ -80,8 +80,9 @@ if($website==NULL){
 
 <ul style="padding-left:0px; list-style:none" class="nav-list">
   <li ><h5><a class="btn" href="<?php echo $profileurl ?>"><?php echo $card[0] ?></a></h5></li>
-  <li><?php echo $card[4] ?> Followers</a></li>
-  <li><?php echo $card[1] ?> Games</a></li>
+  <li><i class="elusive-group color-green"></i> <?php echo $card[4] ?> Followers</a></li>
+  <li><i class="elusive-group color-blue"></i> <?php echo $card[3] ?> Following</a></li>
+  <li><i class="elusive-star-alt color-red"></i> <?php echo $card[1] ?> Games</a></li>
 </ul>
                     
                     
