@@ -50,10 +50,14 @@ class ActivitiesController extends AppController {
 	public function togglelast10()
 	{
 	   $this->layout='ajax';
+	   
+	   $seenlist=json_decode($_POST['jsondata']);
+	   //print_r($seenlist);
+	   $seenlistcon=implode(",",$seenlist);
 	   if($this->Auth->user('id'))
 	   { //openning of auth_id control
 	   $auth_id=$this->Session->read('Auth.User.id');
-	   $toggle=$this->Activity->query('UPDATE activities SET seen=1 WHERE channel_id='.$auth_id.' AND notify=1 AND seen=0 ORDER BY id DESC LIMIT 10');
+	   $toggle=$this->Activity->query('UPDATE activities SET seen=1 WHERE id IN ('.$seenlistcon.')');
 	   echo 1;
 	   }else{
 	   echo 0;

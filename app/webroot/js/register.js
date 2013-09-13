@@ -1585,7 +1585,7 @@ function pushActivity(game_id,channel_id,notify,email,type)
 activitypath=pushactivity+'/'+game_id+'/'+channel_id+'/'+notify+'/'+email+'/'+type
 $.post(activitypath, function (data) {
             if (data!= null) {
-			alert(data);
+			//alert(data);
             }
             
         });	
@@ -1647,9 +1647,10 @@ function getNotificationCount()
         });
 }
 
+//this function gets all unseen notification with limit 10
 function getNewNotification()
 {
-	alert('notifications');
+	//alert('notifications');
 	$.post(notifyrefresh, function (data) {
             if ($.trim(data)!= '') {
 			$('#notifyarea').html(data);
@@ -1669,11 +1670,21 @@ $('#notifycount').live('click',function(){
 		{
 					  getNewNotification();
 		}
-	$.post(notifytoggle, function (data) {
+	
+	//Panelde gösterilen tüm notificationlarin idsini bir array içinde topladiktan sonra seen degerlerini 1 olarak set etmek için notifytoggle fonksiyonuna gönderiyoruz.
+	var seenlist = [];
+	$('.notifyblocks.unseen').each(function() {
+	$(this).toggleClass('unseen');										
+	seenlist.push(this.id);
+    });
+	//alert(seenlist.join('\n'));
+	
+	$.post(notifytoggle,{jsondata:JSON.stringify(seenlist)},function (data) {
               if (data== '1') {
 			  getNotificationCount();
               }
-          });										
+          });
+	
 });
 
 //==========================================================
