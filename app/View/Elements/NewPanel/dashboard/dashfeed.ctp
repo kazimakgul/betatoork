@@ -14,7 +14,7 @@
                                         </div>
                                         <div class="box-body" style="margin:-20px 0px 0px 0px;">
                                             <!-- widgets-tab-body -->
-                                            <div class="tab-content">
+                                            <div class="tab-content span">
                                                 <div class="tab-pane fade in active" id="new-feeds">
                                                    
 												   
@@ -33,12 +33,6 @@
 												   <div id="my_more_content"></div>			
 					                       <?php echo $this->element('NewPanel/load_my_feeds');?>
                                    
-                                                </div>
-                                                <div class="tab-pane fade" id="recent-comments">
-                                                    
-                                                   
-                                                    
-                                                    <a href="#" class="btn btn-small btn-link pull-right">View all &rarr;</a>
                                                 </div>
                                             </div><!--/widgets-tab-body-->
                                         </div><!--/box-body-->
