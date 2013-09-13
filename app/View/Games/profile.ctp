@@ -59,7 +59,7 @@ if($website==NULL){
             </div> 
                 <div class="span7"><p style="font-family: 'Merriweather Sans', sans-serif; font-size: 15px; color:white; text-shadow: 1px 1px black; margin-top:7px;">
                     <i class="helper-font-24 elusive-group color-blue"></i> <?php echo $followerNumber; ?> Followers 
-                    <i class="icon-2x icon-gamepad color-red" style="margin-right:15px;"></i> <?php echo $gameNumber; ?> Games
+                    <i class="helper-font-24 elusive-star-alt color-red"></i> <?php echo $gameNumber; ?> Games
                 </p>
                 </div>
 

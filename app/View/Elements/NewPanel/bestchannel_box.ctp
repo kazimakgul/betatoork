@@ -60,7 +60,7 @@ if($website==NULL){
 <ul style="padding-left:0px; list-style:none" class="nav-list">
   <li ><h5><a class="btn" href="<?php echo $profileurl ?>"><?php echo $follower['User']['username']; ?></a></h5></li>
   <li><i class="elusive-group color-blue"></i> <?php echo $follower['Userstat']['subscribeto']; ?> Followers</a></li>
-  <li><i class="icon-gamepad color-red"></i> <?php echo $follower['Userstat']['uploadcount']; ?> Games</a></li>
+  <li><i class="elusive-star-alt color-red"></i>  <?php echo $follower['Userstat']['uploadcount']; ?> Games</a></li>
 </ul>
 
                     
