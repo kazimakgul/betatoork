@@ -1163,6 +1163,47 @@ public function profile() {
 
 	}
 
+
+		public function featuredchannels() {
+		//More Buttonu ile gpaginate edilecek...
+
+		$this->layout='dashboard';
+		$this->headerlogin();
+		$authid = $this->Session->read('Auth.User.id');
+		//Get the list of subscriptions of auth user.
+		   if($authid!=NULL)
+		   {
+		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
+		   $listofuser=$this->Subscription->find('list');
+		   $mutuals=array_intersect($listofmine,$listofuser);
+		   $this->set('mutuals',$mutuals);
+		   }else{
+		   $listofmine="null";
+		   $this->set('mutuals',NULL);
+		   }
+
+		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
+		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
+		$this->set('user_id', $authid);
+		
+		$limit=15;
+		$this->paginate=array('User'=>array('conditions'=>array('NOT' => array('User.id' => $listofmine)),'contain' =>array('Userstat'),'fields'=>array('*'),'limit'=>$limit,'order'=> array(
+                'Userstat.potential' => 'desc')));
+		$users=$this->paginate('User');
+        $this->set('users',$users);
+		
+		if ($this->RequestHandler->isAjax()) {  
+		    $this->layout="ajax";
+            $this->render('/Elements/NewPanel/bestchannel_box_ajax');   // Render a special view for ajax pagination
+            return;  // return the ajax paginated content without a layout
+        }
+		
+		
+	    $this->set_suggested_channels();
+
+	}
+
+
 		public function start() {
 		//More Buttonu ile gpaginate edilecek...
 
