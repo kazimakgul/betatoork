@@ -40,9 +40,9 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
                     <?php 
                     $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
                       if($publicuser['User']['picture']==null) { 
-                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'img-polaroid','width'=>'70',"alt" => "toork avatar image")); 
+                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'img-polaroid','width'=>'90',"alt" => "toork avatar image")); 
                         } else {
-                          echo $this->Upload->image($publicuser,'User.picture',array(),array('class'=>'img-polaroid','width'=>'70','onerror'=>'imgError(this,"avatar");'));  }
+                          echo $this->Upload->image($publicuser,'User.picture',array(),array('class'=>'img-polaroid','width'=>'90','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
             </a>
 <ul class="thumbnails pull-right">
