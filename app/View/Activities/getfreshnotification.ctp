@@ -1,5 +1,7 @@
 <?php if($lastactivities!=NULL) { ?>
 		
+		<div id="notifyareanew" class="secondcome"></div>
+		
 					<?php 
 					
 					foreach ($lastactivities as $lastactivity): 
