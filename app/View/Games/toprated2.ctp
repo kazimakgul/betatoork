@@ -8,11 +8,15 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"toprated
                     <!-- content -->
                     <div class="content">
                         
-                        <!-- content-breadcrumb -->
-                        <div class="content-breadcrumb">
-                            <!--breadcrumb-nav-->
+                        <!-- content-body -->
+                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
+
+                            <!-- content-breadcrumb -->
+                        <div style="background-color:white;" class=" shadow well well-small">
+                            <a href="#"><i class="elusive-fire color-red"></i> Hot Games</a>
+
                             <ul class="breadcrumb-nav pull-right">
-                                <li class="divider"></li>
+                                
                                 <li class="btn-group">
                                     <a href="#" class="btn btn-small btn-link dropdown-toggle" data-toggle="dropdown">
                                         <i class="icofont-tasks"></i> Sort
@@ -27,22 +31,17 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"toprated
                                         <li><a href="<?php echo $currentlink;?>/sort:id/direction:desc">New Games</a></li>
                                     </ul>
                                 </li>
+
                             </ul><!--/breadcrumb-nav-->
-                            
-                            <!--breadcrumb-->
-                            <ul class="breadcrumb">
-                                <li><a href="#"><i class="elusive-fire color-red"></i> Hot Games</a> <span class="divider">&rsaquo;</span></li>
-                            </ul><!--/breadcrumb-->
-                        </div><!-- /content-breadcrumb -->
-                        
-                        <!-- content-body -->
-                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
+
+                        </div><!-- content-breadcrumb -->
+
 
 <?php
 if($this->Session->check('Auth.User')){
 ?>
 
-<div class="raw-fluid span12">
+<div class="raw-fluid span12" style="margin-left:0px;">
 <div style="background-color:white;" class="shadow well well-small span5">
     <div class="box-header corner-top">
         <div class="header-control">

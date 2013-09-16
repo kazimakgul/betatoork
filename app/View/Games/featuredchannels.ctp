@@ -7,12 +7,16 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"featured
                 <div class="span9">
                     <!-- content -->
                     <div class="content">
- 
-                        <!-- content-breadcrumb -->
-                        <div class="content-breadcrumb">
-                            <!--breadcrumb-nav-->
+                        
+                        <!-- content-body -->
+                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
+
+                            <!-- content-breadcrumb -->
+                        <div style="background-color:white;" class=" shadow well well-small">
+                            <a href="#"><i class="elusive-star-alt"></i> Featured Channels</a>
+
                             <ul class="breadcrumb-nav pull-right">
-                                <li class="divider"></li>
+                                
                                 <li class="btn-group">
                                     <a href="#" class="btn btn-small btn-link dropdown-toggle" data-toggle="dropdown">
                                         <i class="icofont-tasks"></i> Sort
@@ -27,17 +31,8 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"featured
                                 </li>
 
                             </ul><!--/breadcrumb-nav-->
-                            
-                            <!--breadcrumb-->
-                            <ul class="breadcrumb">
-                                <li><a href="#"><i class="elusive-user"></i> Featured Channels</a></li>
-                            </ul><!--/breadcrumb-->
-                        </div><!-- /content-breadcrumb -->
-                        
-                        <!-- content-body -->
-                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
 
-
+                        </div><!-- content-breadcrumb -->
 
 
 <ul class="thumbnails" id="thumbnails_area">

@@ -7,12 +7,15 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"bestchan
                 <div class="span9">
                     <!-- content -->
                     <div class="content">
- 
-                        <!-- content-breadcrumb -->
-                        <div class="content-breadcrumb">
-                            <!--breadcrumb-nav-->
+                        
+                        <!-- content-body -->
+                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
+                            <!-- content-breadcrumb -->
+                        <div style="background-color:white;" class=" shadow well well-small">
+                            <a href="#"><i class="elusive-user"></i> Best Channels</a>
+
                             <ul class="breadcrumb-nav pull-right">
-                                <li class="divider"></li>
+                                
                                 <li class="btn-group">
                                     <a href="#" class="btn btn-small btn-link dropdown-toggle" data-toggle="dropdown">
                                         <i class="icofont-tasks"></i> Sort
@@ -27,23 +30,14 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"bestchan
                                 </li>
 
                             </ul><!--/breadcrumb-nav-->
-                            
-                            <!--breadcrumb-->
-                            <ul class="breadcrumb">
-                                <li><a href="#"><i class="elusive-user"></i> Best Channels</a></li>
-                            </ul><!--/breadcrumb-->
-                        </div><!-- /content-breadcrumb -->
-                        
-                        <!-- content-body -->
-                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
 
-
+                        </div><!-- content-breadcrumb -->
 
 <?php
 if($this->Session->check('Auth.User')){
 ?>
 
-<div class="raw-fluid span12">
+<div class="raw-fluid">
 <div style="background-color:white;" class=" shadow well well-small span5">
     <div class="box-header corner-top">
         <div class="header-control">
