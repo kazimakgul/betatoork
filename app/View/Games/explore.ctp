@@ -3,6 +3,7 @@ $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestcha
 $topgames=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
 $newgames=$this->Html->url(array( "controller" => "games","action" =>"toprated2"));$newgames.='/sort:id/direction:desc';
 $featuredchannels=$this->Html->url(array("controller" => "games","action" =>"featuredchannels"));
+$categorygames=$this->Html->url(array("controller" => "games","action" =>"categorygames2",1));
 
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 $addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
@@ -93,6 +94,14 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                                           <i class="elusive-eye-open color-purple"></i> New Games
                                         </a> 
                                         </div>
+                                    <div class="well span6 well-small shadow-black" style=" margin-left:10px; padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/57.jpg);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/57.jpg); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/57.jpg); /* FF 3.6+ */">
+                                        
+                                        <a href="<?php echo $categorygames; ?>" class="btn btn-large btn-inverse" style="margin-bottom:10px; margin-top:100px;">
+                                          <i class="elusive-flag color-blue"></i> Categories
+                                        </a> 
+                                        </div>
+
+
                                 </ul>
 <div style="margin-bottom:30px;">
     <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>

@@ -1,5 +1,6 @@
 <?php
 $index=$this->Html->url(array("controller" => "games","action" =>"index"));
+$explore=$this->Html->url(array("controller" => "games","action" =>"explore"));
 $currentlink=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
 ?>
 
@@ -12,7 +13,8 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"bestchan
                         <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
                             <!-- content-breadcrumb -->
                         <div style="background-color:white;" class=" shadow well well-small">
-                            <a href="#"><i class="elusive-user"></i> Best Channels</a>
+                            <a href="<?php echo $explore; ?>"><i class="elusive-compass"></i> Explore</a><span class="divider"> › </span>
+                            <a href="#"><i class="elusive-heart color-orange"></i> Recommended Channels</a>
 
                             <ul class="breadcrumb-nav pull-right">
                                 

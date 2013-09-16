@@ -1,6 +1,7 @@
 <?php 
 $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 $index=$this->Html->url(array("controller" => "games","action" =>"index"));
+$explore=$this->Html->url(array("controller" => "games","action" =>"explore"));
 $currentlink=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
 ?>
                 <!-- span content -->
@@ -13,6 +14,7 @@ $currentlink=$this->Html->url(array("controller" => "games","action" =>"toprated
 
                             <!-- content-breadcrumb -->
                         <div style="background-color:white;" class=" shadow well well-small">
+                            <a href="<?php echo $explore; ?>"><i class="elusive-compass"></i> Explore</a><span class="divider"> › </span>
                             <a href="#"><i class="elusive-fire color-red"></i> Hot Games</a>
 
                             <ul class="breadcrumb-nav pull-right">
