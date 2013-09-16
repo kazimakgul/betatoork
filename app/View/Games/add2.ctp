@@ -23,7 +23,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 <?php }else{}?>
 
 
-                    <div class="alert alert-block fadein">
+                    <div style="background-color:white;" class="shadow alert alert-block fadein">
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <p><h5 class="alert-heading">Do you know what <a class="btn btn-success btn-mini"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone</a> is? </br>Its the easy way of adding a game to your channel.</h5></p>
                         
@@ -53,7 +53,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         </div>
                     </form>
       
-                    <div class="alert alert-block alert-info fadein">
+                    <div style="background-color:white;" class="shadow alert alert-block alert-info fadein">
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <p><h4 class="alert-heading">The Benefits of Adding a Game</h4></p>
                         

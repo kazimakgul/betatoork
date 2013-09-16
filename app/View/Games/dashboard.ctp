@@ -125,7 +125,7 @@ $username = $user['User']['seo_username'];
             </div>
 
 <!- start building starts>
-        <div class="alert alert-error span6">
+        <div style="background-color:white;" class=" shadow alert alert-error span6">
                 <div class="box-header corner-top">
                         <div class="header-control">
                         <button data-box="close" data-hide="fadeOut" class="close">×</button>

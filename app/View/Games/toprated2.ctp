@@ -43,7 +43,7 @@ if($this->Session->check('Auth.User')){
 ?>
 
 <div class="raw-fluid span12">
-<div class="well well-small span5">
+<div style="background-color:white;" class="shadow well well-small span5">
     <div class="box-header corner-top">
         <div class="header-control">
         <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
@@ -59,7 +59,7 @@ if($this->Session->check('Auth.User')){
   </p>
 </div>
 
-<div class="alert alert-info span7">
+<div style="background-color:white;" class="shadow alert alert-info span7">
     <div class="box-header corner-top">
         <div class="header-control">
         <button data-box="close" data-hide="fadeOut" class="close">&times;</button>

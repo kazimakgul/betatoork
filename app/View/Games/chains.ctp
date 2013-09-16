@@ -8,7 +8,7 @@
                         <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
 
 <div class="raw-fluid span12">
-<div class="well well-small span6">
+<div style="background-color:white;" class="shadow well well-small span6">
     <div class="box-header corner-top">
         <div class="header-control">
         <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
@@ -24,7 +24,7 @@
   </p>
 </div>
 
-<div class="alert alert-info span6">
+<div style="background-color:white;" class="shadow alert alert-info span6">
     <div class="box-header corner-top">
         <div class="header-control">
         <button data-box="close" data-hide="fadeOut" class="close">&times;</button>
