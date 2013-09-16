@@ -1695,7 +1695,7 @@ $('#notifycount').live('click',function(){
 	$(this).toggleClass('unseen');										
 	seenlist.push(this.id);
     });
-	alert(seenlist.join('\n'));
+	//alert(seenlist.join('\n'));
 	
 	if(seenlist.length==0)
 	{
