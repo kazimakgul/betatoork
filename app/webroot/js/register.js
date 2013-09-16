@@ -1662,13 +1662,29 @@ function getNewNotification()
         });
 }
 
+function getOldNotification()
+{
+	//alert('old notifications');
+	$.post(oldnotify, function (data) {
+            if ($.trim(data)!= '') {
+			$('#oldnotifyarea').html(data);
+			$('#oldnotifyarea').attr("class","secondcome");
+            }else{
+			$('#oldnotifymessage').show();
+			}
+            
+        });
+}
+
 $('#notifycount').live('click',function(){
 
     $(document).attr('title', $( "body" ).data( "oldtitle" ));										
     classstat=$('#notifyarea').attr("class");
-	    if(classstat=="firstcome")
+	classstatold=$('#oldnotifyarea').attr("class");
+	    if(classstatold=="firstcome")
 		{
 					  //getNewNotification();
+					  getOldNotification();
 		}
 	
 	//Panelde gösterilen tüm notificationlarin idsini bir array içinde topladiktan sonra seen degerlerini 1 olarak set etmek için notifytoggle fonksiyonuna gönderiyoruz.

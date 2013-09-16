@@ -15,6 +15,9 @@
 
 </div>
 
+<div id="oldnotifyarea" class="firstcome">
+</div>
+
 <!--
                     
                                     <li>

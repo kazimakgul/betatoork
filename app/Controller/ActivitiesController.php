@@ -78,6 +78,18 @@ class ActivitiesController extends AppController {
 	   }
 	}
 	
+	public function getOldNotifications()
+    {
+    $this->layout='ajax';
+    
+	   if($this->Auth->user('id'))
+	   { //openning of auth_id control
+	  $auth_id=$this->Session->read('Auth.User.id');
+	  $freshdata=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username')),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username','ChannelUser.seo_username'))),'conditions'=>array('Activity.notify'=>1,'Activity.seen'=>1,'Activity.channel_id'=>$auth_id),'limit'=>10,'order'=>'Activity.id DESC'));
+      $this->set('lastactivities',$freshdata);
+        }
+    }
+	
 	public function getFreshNotification()
 	{
 	$this->layout='ajax';

@@ -96,7 +96,7 @@ class AppController extends Controller {
             'channelfollowers','moreupdates_profile_ajax','loadprofilefeeds','sendmail','activationmailsender','new_user',
             'get_image_link','getscreen','cropimage','addgame_ajax','add_virtual_game','pushActivity','setPermissions','activityMessage',
             'notificationMessage','getFreshActivity','getfreshnotification','posts','getprofileactivity','followstatus','getnotificationcount',
-            'togglelast10','featuredchannels');
+            'togglelast10','featuredchannels','getOldNotifications');
 
 		$this->set('user',$this->Auth->user());
 		
