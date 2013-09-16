@@ -19,9 +19,10 @@ class GamesController extends AppController {
 	        return true;
 	    }
 
-	    if (($this->action === 'add') || ($this->action === 'add2') || ($this->action === 'dashboard') || 
-	    	($this->action === 'mygames') || ($this->action === 'favorites') || ($this->action === 'start') || 
-	    	($this->action === 'settings') || ($this->action === 'chains') || ($this->action === 'channel')) {
+	    if (($this->action === 'add') || ($this->action === 'add2') || ($this->action === 'dashboard') ||
+	    	($this->action === 'explore') || ($this->action === 'mygames') || ($this->action === 'favorites') || 
+	    	($this->action === 'start') || ($this->action === 'settings') || ($this->action === 'chains') || 
+	    	($this->action === 'channel')) {
 	       // All registered users can add posts
 	        return true;
 	    }
@@ -356,6 +357,75 @@ public function set_suggested_channels()
 	    
 	}
 	
+	public function explore() {
+		
+		$this->layout='dashboard';
+		
+		$linkParam=isset($this->request->params['pass'][0]);
+		if($linkParam=="welcome")
+		$this->set('welcome',1);
+		
+		if($this->Session->read('FirstLogin')!=NULL)
+		{
+		$this->requestAction( array('controller'=>'users', 'action'=>'activationmailsender',$this->Session->read('FirstLogin')));
+		$this->Session->write('FirstLogin',NULL);
+		$this->Session->delete('FirstLogin');
+		}
+		
+		$userid = $this->Session->read('Auth.User.id');$this->requestAction( array('controller'=>'userstats', 'action'=>'new_user',$userid));
+	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	   	$userName = $user['User']['username'];
+	   	$isActive = $user['User']['active'];
+
+		$limit=16;
+		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username,User.id')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit));
+		$this->paginate=array('order'=>sprintf('rand(%f)',$this->lucky_number()));
+		$data=$this->paginate('Game');
+    	$this->set('top_rated_games',$data);
+		
+		if ($this->RequestHandler->isAjax()) {  
+		    $this->layout="ajax";
+            $this->render('/Elements/NewPanel/gamebox/dashboard_game_box_ajax');   // Render a special view for ajax pagination
+            return;  // return the ajax paginated content without a layout
+        }
+		
+    //New Wall Getting Started Below.
+	   App::import('Vendor', 'wallscript/config');
+	   $this->set('gravatar',1);
+	   $this->set('base_url','http://localhost/wall/');
+	   $this->set('perpage',10);
+	   App::import('Vendor', 'wallscript/Wall_Updates');
+	   App::import('Vendor', 'wallscript/tolink');
+	   App::import('Vendor', 'wallscript/textlink');
+	   App::import('Vendor', 'wallscript/htmlcode');
+	   App::import('Vendor', 'wallscript/Expand_URL');
+	   
+	   //Session starts
+	   if($this->Auth->user('id')) 
+       $session_uid=$this->Auth->user('id'); 
+       if(!empty($session_uid))
+       {
+       $uid=$session_uid;
+	   $this->set('uid',$uid);
+       }else{
+        //echo 'please login';
+       }
+	   //Session Ends
+	   
+	   
+	   $Wall = new Wall_Updates();
+	   $this->set('Wall',$Wall);
+
+		
+	    $this->set_suggested_channels();
+	    $this->set('user',$user);
+	    $this->set('username',$userName);
+	    $this->set('isActive',$isActive);
+		$this->set('title_for_layout', 'Dashboard - Toork Channel Manager');
+		$this->set('description_for_layout', 'Your Dashboard knows what you want and helps you do everything easier.');
+	    
+	}
+
 
     public function favorites() {
 	$this->layout='dashboard';

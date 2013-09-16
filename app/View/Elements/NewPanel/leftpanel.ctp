@@ -36,7 +36,7 @@ if ($this->action == "dashboard"){
                         <ul class="sidebar" data-step="2" data-position="bottom" data-intro="Hey this is your personal menu. Everything here belongs to you click on some of them and start building your game channel.">
                             
                             <li <?php echo $class7;?>>
-                                <a href="<?php echo $bestchannels; ?>" title="Settings">
+                                <a href="<?php echo $explore; ?>" title="Explore">
                                     <div class="helper-font-24">
                                         <i class="elusive-compass"></i>
                                     </div>
