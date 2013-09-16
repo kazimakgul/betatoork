@@ -96,11 +96,11 @@ if($website==NULL){
         <div class="row-fluid">
 <div class="span2">
     <?php if($followstatus!=1){ ?>
-    <a id="follow<?php echo $userid; ?>" class="btn btn-block btn-success" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-plus-sign"></i> Follow</a> 
+    <a id="follow<?php echo $userid; ?>" style="margin-top: 5px;" class="btn btn-block btn-success" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-plus-sign"></i> Follow</a> 
     <a id="unfollow<?php echo $userid; ?>" style="display:none;" class="btn btn-block" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-remove-circle"></i> Unfollow</a>
     <?php }else{ ?> 
     <a id="unfollow<?php echo $userid; ?>" class="btn btn-block" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-remove-circle"></i> Unfollow</a>
-    <a id="follow<?php echo $userid; ?>" style="display:none;" class="btn btn-block btn-success" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-plus-sign"></i> Follow</a> <?php } ?> 
+    <a id="follow<?php echo $userid; ?>" style="margin-top: 5px; display:none;" class="btn btn-block btn-success" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-plus-sign"></i> Follow</a> <?php } ?> 
     </a></div>
                 <div class="span7"><p style="font-family: 'Merriweather Sans', sans-serif; font-size: 15px; color:white; text-shadow: 1px 1px black; margin-top:7px;">
                     <i class="helper-font-24 elusive-group color-blue"></i> <?php echo $followerNumber; ?> Followers 
