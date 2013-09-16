@@ -14,7 +14,8 @@
 
 
 </div>
-
+<!--Old Notifications Come Below -->
+--------------------------------------------
 <div id="oldnotifyarea" class="firstcome">
 </div>
 
