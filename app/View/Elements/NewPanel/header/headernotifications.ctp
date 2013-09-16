@@ -10,7 +10,7 @@
 
 </div>
 
-<?php  echo $this->element('NewPanel/header/getoldnotification'); ?>
+<?php  echo $this->element('NewPanel/header/currentnotification'); ?>
 
 
 </div>

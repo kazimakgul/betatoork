@@ -23,7 +23,7 @@ else{
 
 					?>
 				
-                                    <li class="notifyblocks" id="<?php echo $lastactivity['Activity']['id']; ?>">
+                                    <li class="notifyblocks unseen" id="<?php echo $lastactivity['Activity']['id']; ?>">
                                         
                                             <div class="media" style="margin:5px;">
                                               <div class="span1" style="margin:0px;">
