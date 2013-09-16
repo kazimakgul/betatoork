@@ -9,6 +9,10 @@
 
 
 </div>
+
+<?php  echo $this->element('NewPanel/header/getfreshnotification'); ?>
+
+
 </div>
 
 <!--

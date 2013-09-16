@@ -1668,7 +1668,7 @@ $('#notifycount').live('click',function(){
     classstat=$('#notifyarea').attr("class");
 	    if(classstat=="firstcome")
 		{
-					  getNewNotification();
+					  //getNewNotification();
 		}
 	
 	//Panelde gösterilen tüm notificationlarin idsini bir array içinde topladiktan sonra seen degerlerini 1 olarak set etmek için notifytoggle fonksiyonuna gönderiyoruz.
@@ -1678,6 +1678,11 @@ $('#notifycount').live('click',function(){
 	seenlist.push(this.id);
     });
 	//alert(seenlist.join('\n'));
+	
+	if(seenlist.length==0)
+	{
+	getNewNotification();
+	}
 	
 	$.post(notifytoggle,{jsondata:JSON.stringify(seenlist)},function (data) {
               if (data== '1') {
