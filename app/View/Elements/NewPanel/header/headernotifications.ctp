@@ -15,7 +15,11 @@
 
 </div>
 <!--Old Notifications Come Below -->
---------------------------------------------
+
+<div class="well well-small" style="text-align: center ;">
+    <p style="margin-bottom:0px;"><i class="elusive-arrow-down"></i> Older Messages</p>
+</div>
+
 <div id="oldnotifyarea" class="firstcome">
 </div>
 
