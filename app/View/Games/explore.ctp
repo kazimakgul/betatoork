@@ -34,39 +34,13 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
         <p> <i class="elusive-mail-alt helper-font-24"></i> Your account is not active yet. Please check your email to activate your account to be able to publish your own games. ( Don't forget to check your spam folder also. )</p>
     </div>
 <?php }else{}?>
-<!--<i class="elusive-graph"></i> Your analytics are not active yet! You will be able to earn money via your channel soon.
-<div class="row-fluid" style="opacity:0.3;">
-    <div class="alert alert-info span3">
-        <i class="elusive-thumbs-up helper-font-48"></i>
-        <div class="pull-right ">
-            <h2 style="margin:-8px 0px 0px 0px;">124</h2>
-            <h4>Followers</h4>
-        </div>
-    </div>
-    <div class="alert alert-info span3">
-        <i class="elusive-group helper-font-48"></i>
-        <div class="pull-right ">
-            <h2 style="margin:-8px 0px 0px 0px;">1902</h2>
-            <h4>Visitors</h4>
-        </div>
-    </div>
-    <div class="alert alert-info span3">
-        <i class="elusive-heart-alt helper-font-48"></i>
-        <div class="pull-right ">
-            <h2 style="margin:-8px 0px 0px 0px;">41</h2>
-            <h4>Favorites</h4>
-        </div>
-    </div>
-    <div class="alert alert-danger span3" style="padding:5px;">
-        <h4>Your Channel Worth</h4>
-        <div>
-            <h2 style="margin:-3px 0px 0px 0px;">$7.15 <a rel="tooltip" data-placement="bottom" data-original-title="Not Active Yet"  class="btn btn-danger">Sell Now!</a> </h2>
-        </div>
-    </div>
-</div> -->
 
+<div>
 <?php echo $this->element('NewPanel/explore/explorefeed');?>
-                             
+</div> 
+
+
+                            <div>
                                 <ul class="thumbnails" id="thumbnails_area">
                                     
                                     <div class="well span6 well-small shadow-black" style=" margin-left:10px; padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/44.jpg);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/44.jpg); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/44.jpg); /* FF 3.6+ */">
@@ -101,8 +75,17 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                                         </a> 
                                         </div>
 
-
+                                    <div class="well span6 well-small shadow" style="background-color:white; margin-left:10px;">
+                                        <a href="#"><i class="elusive-heart color-orange"></i> Featured Games</a>
+                                    </div>
+<div>
+<?php  echo $this->element('NewPanel/gamebox/toprated_box'); ?>
+</div>
                                 </ul>
+                            </div>
+
+
+
 <div style="margin-bottom:30px;">
     <a id="loadmoregame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
 	<!--Hidden Pagination -->
