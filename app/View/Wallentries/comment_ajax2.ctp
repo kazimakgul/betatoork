@@ -15,7 +15,7 @@ $channelurl=$this->Html->url(array("controller" => $seo_username,"action" =>""))
 ?>
 
 
-<div style="border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; margin-bottom:3px; margin-left:-20px; margin-right:-20px; padding:0px;" class="well" id="stcommentbody<?php echo $com_id; ?>">
+<div style="border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; margin-bottom:3px; margin-left:-20px; margin-right:-20px; padding:0px 5px 0px 5px;" class="well" id="stcommentbody<?php echo $com_id; ?>">
 <a class="stcommentdelete close" style="margin-right:5px;" href="#" id="<?php echo $com_id; ?>">  &times;</a>
 	<div class="commentleft">
 		<div class="commentavatarback">
