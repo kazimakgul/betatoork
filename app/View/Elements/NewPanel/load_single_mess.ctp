@@ -186,11 +186,11 @@ echo "</div>";
 			  <?php if($type==5) { 
 			  $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('width'=>'50px','onerror'=>'imgError(this,"avatar");'));
 			   ?>
-			 <div class="offset2 feedcontent clearfix well well-small span8 shadow">
+			 <div class="well well-small span11 shadow">
                                         
                                             <a class="pull-left"><?php echo $channelimage; ?></a>
                                         
-                                        <div class="feedchanneldesc">
+                                        <div>
 											<span class="bold"><?php echo '<a href="'.$playurl.'" class="btn">'.$channeldata['User']['username'].'</a>'; ?></span>
 											
 

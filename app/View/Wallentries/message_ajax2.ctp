@@ -1,5 +1,6 @@
 <?php 
-$channelurl=$this->Html->url(array("controller" => $seo_username,"action" =>"")); 
+$channelurl=$this->Html->url(array("controller" => $seo_username,"action" =>""));
+$postPage=$this->Html->url(array("controller" => "wallentries","action" =>"posts",$msg_id)); 
 // User Avatar
    if($gravatar)
    {
@@ -21,7 +22,7 @@ $channelurl=$this->Html->url(array("controller" => $seo_username,"action" =>""))
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $session_face; ?>
                                                         </a>
-                                                        <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
+                                                        <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
                                                             <p style="margin-left:60px;"><?php echo $message; ?></p>
                                                         <hr size="1">
 
@@ -60,7 +61,7 @@ echo "</div>";
 	  $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'playframe'));
                     else
     $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($gamedata['Game']['id'])));		
-				    echo '<a href="'.$playurl.'" class="btn btn-mini">Play</a> ';
+				    
 				     }
 				     ?>
 					 
@@ -73,7 +74,7 @@ echo "</div>";
 	  $playurl=$this->Html->url(array( "controller" => h($gamedata['User']['seo_username']),"action" =>h($gamedata['Game']['seo_url']),'playframe'));
                     else
     $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($gamedata['Game']['id'])));		
-			    echo '<a href="'.$playurl.'" class="btn btn-mini">Play</a> '; 
+			    
 				}
 				?>
 				
@@ -105,7 +106,9 @@ echo "</div>";
 			    ?>
 			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; padding:5px;">
                                         <div class="feedgameavatar" style="padding-right:5px;">
-                                            <?php echo $gameimage; ?>
+                                        	<a href="<?php echo $playurl ?>">
+                                            	<?php echo $gameimage; ?>
+                                        	</a>
                                         </div>   
                                         <div>
                                             <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedgamedesctitle"><?php echo $gamename; ?></span></a>
@@ -120,7 +123,9 @@ echo "</div>";
 			?>
 			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; padding:5px;">
                                         <div class="feedgameavatar" style="padding-right:5px;">
-                                            <?php echo $gameimage; ?>
+                                        	<a href="<?php echo $playurl ?>">
+                                            	<?php echo $gameimage; ?>
+                                        	</a>
                                         </div>   
                                         <div>
                                             <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedgamedesctitle"><?php echo $gamename; ?></span></a>
@@ -133,11 +138,11 @@ echo "</div>";
 			  <?php if($type==5) { 
 			  $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('width'=>'50px','onerror'=>'imgError(this,"avatar");'));
 			   ?>
-			 <div class="offset2 feedcontent clearfix well well-small span8 shadow">
+			 <div class="well well-small span11 shadow">
                                         
                                             <a class="pull-left"><?php echo $channelimage; ?></a>
                                         
-                                        <div class="feedchanneldesc">
+                                        <div>
 											<span class="bold"><?php echo '<a href="'.$playurl.'" class="btn">'.$channeldata['User']['username'].'</a>'; ?></span>
 											
 
