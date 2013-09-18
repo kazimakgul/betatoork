@@ -10,7 +10,7 @@ function tolink($text,$root=NULL){
         '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
         $text = eregi_replace('([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,4})',
         '<a href="mailto:\\1"  rel="nofollow">\\1</a>', $text);
-		$text = preg_replace('#@([\\d\\w]+)#', '<a href="'.$root.'$1">$0</a>', $text);
+		$text = preg_replace('#@([\\d\\w]+)#', '<a class="btn-link" href="'.$root.'$1">$0</a>', $text);
         return $text;
 }
 
