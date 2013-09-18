@@ -10,6 +10,7 @@ function tolink($text){
         '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
         $text = eregi_replace('([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,4})',
         '<a href="mailto:\\1"  rel="nofollow">\\1</a>', $text);
+		$text = preg_replace('#@([\\d\\w]+)#', '<a href="http://54.225.196.20/$1">$0</a>', $text);
         return $text;
 }
 
