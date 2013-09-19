@@ -1073,6 +1073,73 @@ public function profile() {
 
 }
 
+public function hashtag() {
+
+	$this->layout='dashboard';
+    $userid = $this->request->params['pass'][0];
+    $authid = $this->Session->read('Auth.User.id');
+
+	if(!is_numeric($userid)){
+	$userconvert = $this->User->find('first', array('contain'=>false,'conditions' => array('User.seo_username' => $userid)));
+	$userid=$userconvert['User']['id'];
+	}
+	
+    $user = $this->User->find('first', array('conditions' => array('User.id' => $authid),'fields'=>array('*')));
+    $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
+    
+	if($publicUser==NULL){
+		$this->redirect('/');
+	}
+    $userName = $user['User']['username'];
+    $publicName = $publicUser['User']['username'];
+    $publicDesc = $publicUser['User']['description'];
+	
+
+	if ($this->RequestHandler->isAjax()) {  
+		    $this->layout="ajax";
+            $this->render('/Elements/NewPanel/profile/channel_game_box_ajax');   // Render a special view for ajax pagination
+            return;  // return the ajax paginated content without a layout
+       }
+
+    //New Wall Getting Started Below.
+	   App::import('Vendor', 'wallscript/config');
+	   $this->set('gravatar',1);
+	   $this->set('base_url','http://localhost/wall/');
+	   $this->set('perpage',10);
+	   App::import('Vendor', 'wallscript/Wall_Updates');
+	   App::import('Vendor', 'wallscript/tolink');
+	   App::import('Vendor', 'wallscript/textlink');
+	   App::import('Vendor', 'wallscript/htmlcode');
+	   App::import('Vendor', 'wallscript/Expand_URL');
+	   
+	   //Session starts
+	   if($this->Auth->user('id')) 
+       $session_uid=$this->Auth->user('id'); 
+       if(!empty($session_uid))
+       {
+       $uid=$session_uid;
+	   $this->set('uid',$uid);
+       }else{
+        //echo 'please login';
+       }
+	   //Session Ends
+	   
+	   
+	   $Wall = new Wall_Updates();
+	   $this->set('Wall',$Wall);
+	$this->set('profile_uid',$userid);
+    $this->set('username', $userName);
+    $this->set('publicname', $publicName);
+	$this->set('userid', $userid);
+	$this->set('user', $user);
+	$this->set('publicuser', $publicUser);
+
+	$this->set_suggested_channels();	
+	$this->set('title_for_layout', $publicName.' Game Channel - Toork');
+	$this->set('description_for_layout', 'Play games on '.$publicName.' : '.$publicDesc);
+
+}
+
 
 
 	public function allusergames() {
