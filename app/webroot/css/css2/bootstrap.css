@@ -6241,7 +6241,6 @@ a.badge:hover {
   -moz-border-radius:0 0 0 0.25em;
   border-radius:0 0 0 0.25em;
 
-  z-index:1;
 }
 
 .tag:after {
@@ -6265,7 +6264,7 @@ a.badge:hover {
   position:absolute;
   top:0.667em;
   left:-0.083em;
-  z-index:9999;
+
 }
 
 .tag:hover {
@@ -6275,7 +6274,6 @@ a.badge:hover {
   background-image: -ms-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
   background-image: linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#fee18d', EndColorStr='#fec86c');
-
   border-color:#e1b160;
 }
 
@@ -6286,6 +6284,5 @@ a.badge:hover {
   background-image: -ms-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
   background-image: linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#fee18d', EndColorStr='#fec86c');
-
   border-color:#e1b160;
 }
