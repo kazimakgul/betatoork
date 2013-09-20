@@ -892,6 +892,32 @@ public function set_suggested_channels()
 		$this->set('description_for_layout', $userName.' Channel News - '.$userDesc);
 
 }
+
+public function mention($update=NULL,$msg_id=NULL)
+{
+   $this->loadModel('User');
+   //Check mention here
+   preg_match_all('#@([\\d\\w]+)#', $update, $mentions);
+   if($mentions[0]!=NULL)
+   {
+   
+      foreach($mentions[0] as $mention)
+      {
+	      $seo_url=str_replace("@","",$mention);
+	      $user_data=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.seo_username'=>$seo_url)));
+		  if($user_data!=NULL)
+		  {
+		   $channel_id=$user_data['User']['id'];
+		   $this->requestAction( array('controller' => 'activities', 'action' => 'pushactivity',1,$channel_id,1,1,5));
+		  }
+      }   
+   
+   
+   }
+   
+
+}
+
 //Part of wall function(Bootstrap Theme Adapted)
 //Bu fonksiyon yeni bir post atmamizi saglar.
 public function message_ajax2() {
@@ -932,6 +958,7 @@ error_reporting(0);
    if($data)
    {
    $msg_id=$data['msg_id'];
+   $this->mention($update,$msg_id);
    $orimessage=$data['message'];
    $message=tolink(htmlcode($data['message']));
    $time=$data['created'];
