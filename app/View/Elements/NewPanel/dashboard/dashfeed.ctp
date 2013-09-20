@@ -1,4 +1,4 @@
-                                <div class="span6" style="margin-left:0px; margin-right:10px;">
+                                <div class="span6" style="margin-left:0px; margin-right:7px;">
                                     <div>
                                         <div class="box-header corner-top">
                                             <!--tab action-->

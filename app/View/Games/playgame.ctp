@@ -64,6 +64,10 @@ else{
 
 
 <div style="padding:5px; background-color:white;" class="shadow well">
+
+                   <li rel="tooltip" data-placement="top" data-original-title="Clone This Game" href="#myModalclone" data-toggle="modal" class="btn btn-success">
+                      <a><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone</a>
+                  </li>
  
     <a class="btn btn-danger" id="fav_button" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);">
      <i class="icofont-heart"></i> Favorite
