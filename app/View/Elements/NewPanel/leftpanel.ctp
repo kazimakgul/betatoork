@@ -42,26 +42,6 @@ if ($this->action == "dashboard"){
                                     </div>
                                     <span class="sidebar-text">Explore</span>
                                 </a>
-                                <ul class="sub-sidebar-form corner-top shadow-white">
-                                    <li>
-                                        <a href="<?php echo $bestchannels; ?>" title="Best Channel" class="corner-all">
-                                            <i class="elusive-user color-blue"></i>
-                                            <span class="sidebar-text">Best Channels</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $toprated; ?>" title="Edit" class="corner-all">
-                                            <i class="elusive-fire color-red"></i> 
-                                            <span class="sidebar-text">Hot Games</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $newgames; ?>" title="Change Password" class="corner-all">
-                                            <i class="elusive-eye-open color-green"></i>
-                                            <span class="sidebar-text">New Games</span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
 
 

@@ -100,6 +100,7 @@ $favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"
 $chains=$this->Html->url(array("controller" => "games","action" =>"chains"));
 $wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
 $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
+$featuredchannels=$this->Html->url(array("controller" => "games","action" =>"featuredchannels"));
 $explore=$this->Html->url(array("controller" => "games","action" =>"explore"));
 $toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
 $login=$this->Html->url(array("controller" => "users","action" =>"login2"));
@@ -119,7 +120,7 @@ echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGam
 
 
 }else{
-    echo $this->element('NewPanel/unauthHeader',array('index'=>$index,'login'=>$login,'bestchannels'=>$bestchannels,'toprated'=>$toprated));
+    echo $this->element('NewPanel/unauthHeader',array('index'=>$index,'login'=>$login,'bestchannels'=>$bestchannels,'featuredchannels'=>$featuredchannels,'toprated'=>$toprated));
 }
 
 ?>

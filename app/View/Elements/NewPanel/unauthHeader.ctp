@@ -24,6 +24,7 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="elusive-compass"></i> Explore <b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                    <li><a href="<?php echo $featuredchannels; ?>"><i class="elusive-star-alt color-gold"></i> Featured Channels</a></li>
                     <li><a href="<?php echo $bestchannels; ?>"><i class="elusive-user color-blue"></i> Best Channels</a></li>
                     <li><a href="<?php echo $toprated; ?>"><i class="elusive-fire color-red"></i> Hot Games</a></li>
                     <!-- <li><a href="#"><i class="elusive-eye-open color-green"></i> New Games</a></li> -->

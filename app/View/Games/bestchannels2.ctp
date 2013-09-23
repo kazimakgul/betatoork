@@ -2,6 +2,7 @@
 $index=$this->Html->url(array("controller" => "games","action" =>"index"));
 $explore=$this->Html->url(array("controller" => "games","action" =>"explore"));
 $currentlink=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
+$featuredchannels=$this->Html->url(array("controller" => "games","action" =>"featuredchannels"));
 ?>
 
                 <!-- span content -->
@@ -48,7 +49,12 @@ if($this->Session->check('Auth.User')){
         
     </div>
   <h5>Follow Channels</h5>
-  <p>Following a channel means that you like the channel and you want to be more connected to the channel and games they have. You don't have to go to any other game site to see anything new anymore.</p>
+  <p>Following a channel means that you like the channel and you want to be more connected to the channel and games they have. You don't have to go to any other game site to see anything new anymore. 
+  </p>
+  <a href="<?php echo $featuredchannels; ?>" class="btn btn-danger">
+        <i class="elusive-star-alt color-gold"></i> Featured Channels
+    </a>
+
 </div>
 
 <div style="background-color:white;" class="shadow alert alert-info span7">

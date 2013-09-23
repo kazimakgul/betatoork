@@ -1,5 +1,6 @@
 <?php
 $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
+$featuredchannels=$this->Html->url(array("controller" => "games","action" =>"featuredchannels"));
 $terms=$this->Html->url(array("controller" => "pages","action" =>"terms"));
 $privacy=$this->Html->url(array("controller" => "pages","action" =>"privacy"));
 ?>
@@ -136,7 +137,7 @@ $privacy=$this->Html->url(array("controller" => "pages","action" =>"privacy"));
 </ul>
 <div>
 <a class="btn btn-success span3" href="#top">Create Your Game Channel</a>
-<a class="btn span3" href="<?php echo $bestchannels;?>">Explore More Channels</a>
+<a class="btn span3" href="<?php echo $featuredchannels;?>">Explore More Channels</a>
 </div>
  </div>
 </div>
