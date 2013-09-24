@@ -156,7 +156,7 @@ return $material.$number;
 				    }
 					if($type==5)
 				    {
-					$text='<i class="color-purple elusive-user"></i> Talking about '.$game_name;
+					$text='<i class="color-purple elusive-user"></i> Talking about '.$channel_name;
 				    }
 					if($type==6)
 				    {
@@ -209,6 +209,7 @@ return $material.$number;
 				$game_name=$lastactivity['Game']['name'];
 				$channel_name=$lastactivity['ChannelUser']['username'];
 				$type=$lastactivity['Activity']['type'];
+				$msg_id=1212;
 				
 				    if($type==1)
 				    {
@@ -228,7 +229,7 @@ return $material.$number;
 				    }
 					if($type==5)
 				    {
-					$text='<i class="color-purple elusive-user"></i> Talking about your game: '.$game_name;
+					$text='<i class="color-purple elusive-user"></i> Talking about you'.$msg_id;
 				    }
 					if($type==6)
 				    {

@@ -288,9 +288,6 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
    return 1;
    }
    
-   
-   
-  
   
     }
 	

@@ -894,7 +894,7 @@ public function set_suggested_channels()
 }
 
 public function mention($update=NULL,$msg_id=NULL)
-{
+{  
    $this->loadModel('User');
    //Check mention here
    preg_match_all('#@([\\d\\w]+)#', $update, $mentions);
@@ -908,7 +908,7 @@ public function mention($update=NULL,$msg_id=NULL)
 		  if($user_data!=NULL)
 		  {
 		   $channel_id=$user_data['User']['id'];
-		   $this->requestAction( array('controller' => 'activities', 'action' => 'pushactivity',1,$channel_id,1,1,5));
+		   $this->pushActivity(NULL,$channel_id,1,1,5,$msg_id);
 		  }
       }   
    
@@ -917,6 +917,190 @@ public function mention($update=NULL,$msg_id=NULL)
    
 
 }
+
+//Push Activity Functions Clonned From ActivitiesController
+public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$type=NULL,$msg_id=NULL) {
+	$this->layout='ajax';
+	$this->loadModel('Game');
+	$this->loadModel('Activity');
+	if($this->Auth->user('id'))
+	{ //openning of auth_id control
+	
+	$performer_id=$this->Session->read('Auth.User.id');
+	//if user affect itself,we don't need notify or mail.
+	if($performer_id==$channel_id)
+	$email=0;
+	
+	if($channel_id=='null')
+	$channel_id=NULL;
+	
+	//if channel_id==NULL
+	if($channel_id==NULL)
+	{
+	$targetGame=$this->Game->find('first',array('conditions'=>array('Game.id'=>$game_id),'fields'=>array('Game.user_id'),'contain'=>false));
+	$channel_id=$targetGame['Game']['user_id'];
+	}
+	//echo 'channel id:'.$channel_id.'<br>';
+	   
+		     //*********************
+			 //Secure data filtering
+			 //*********************
+		     $filtered_data=
+			 array('Activity' =>array(
+			 'performer_id' => $performer_id,
+			 'game_id' => $game_id,
+			 'channel_id' => $channel_id,
+			 'notify' => $notify,
+			 'email' => $email,
+			 'type' => $type,
+			 'msg_id' => $msg_id));
+			
+			    if ($this->Activity->save($filtered_data)) {
+				//echo 1;
+				
+				    if($email==1)
+					{
+					//$this->sendNotifyMail($performer_id,$game_id,$channel_id,$type);
+				    }
+				}
+	
+	}//closing of auth_id control			
+		
+ }
+	
+	
+   public function sendNotifyMail($performer_id=NULL,$game_id=NULL,$channel_id=NULL,$type_id=NULL)
+   {
+     
+	  if($this->mailPermission($channel_id,$type_id))
+	  {
+	  //if user allow to send notify by email
+	  
+	        if($channel_id!=NULL)
+			{//-----Channel id bos degilse begins-------
+	           
+			$this->User->id=$channel_id;
+			$user = $this->User->find('first',array('conditions' => array('User.id'=>$channel_id)));
+			$performer = $this->User->find('first',array('conditions' => array('User.id'=>$performer_id)));
+			$perstat = $this->Userstat->find('first',array('conditions' => array('Userstat.user_id'=>$performer_id)));
+			$game = $this->Game->find('first',array('conditions' => array('Game.id'=>$game_id)));
+		
+		if ($user === false) {
+			$this->Session->setFlash('This mail is not registered.');
+			debug(__METHOD__." failed to retrieve User data for user.id: {$user_id}");
+			return false;
+		}
+
+
+/* Activity Type_id codes
+Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameAdd9 SharePost10 PlayGame11
+*/
+
+
+/* Turn Off Mail Send
+ 		$email = new CakeEmail();
+
+ 		if($type_id==1){
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('comment')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' commented on your game.')
+			    ->send();
+	  	}elseif($type_id==2){
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('follow') 
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' is following you on Toork.')
+			    ->send();
+	  	}elseif($type_id==3){
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('clone')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' made a clone of your game.')
+			    ->send();
+	  	}elseif($type_id==4){
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('rate')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' rated your game.')
+			    ->send();
+	  	}elseif($type_id==5){
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('mention')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' is talking about you.')
+			    ->send();
+	  	}elseif($type_id==6){
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('postComment')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' commneted on your post.')
+			    ->send();
+	  	}elseif($type_id==7){
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('favorite')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' added your game to its Favorite list.')
+			    ->send();
+	  	}elseif($type_id==8){
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('hashtag')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' is talking about your game.')
+			    ->send();
+	  	}else{}
+*/
+	  	
+	 //echo 'data has been mailed';
+	             }//-----Channel id bos degilse begins-------
+	        
+		  }
+     
+  
+   }
+   
+    public function mailPermission($user_id=NULL,$type_id=NULL)
+    {
+   
+   $default=$this->Activity->query('SELECT * FROM mailpermissions WHERE user_id='.$user_id.'');
+   if($default!=NULL)
+   {
+      $perm=$this->Activity->query('SELECT * FROM mailpermissions WHERE user_id='.$user_id.' AND type_id='.$type_id.'');//echo 'access has been checked for '.$user_id.' '.$type_id;
+      if($perm!=NULL)
+      return 1;
+      else
+      return 0;
+   }else{
+   return 1;
+   }
+   
+  
+    }
+
 
 //Part of wall function(Bootstrap Theme Adapted)
 //Bu fonksiyon yeni bir post atmamizi saglar.
