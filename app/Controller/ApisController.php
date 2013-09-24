@@ -137,50 +137,52 @@ return $material.$number;
 				$game_name=$lastactivity['Game']['name'];
 				$channel_name=$lastactivity['ChannelUser']['username'];
 				$type=$lastactivity['Activity']['type'];
+				$msg_id=1212;
+				$postPage= Router::url(array('controller'=>'wallentries', 'action'=>'posts', $msg_id), false);
 				
 				    if($type==1)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name;
 				    }
 					if($type==2)
 				    {
-					$text='<i class="color-blue elusive-group"></i> Following '.$channel_name.' now.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-group"></i></a> Following '.$channel_name.' now.';
 				    }
 					if($type==3)
 				    {
-					$text='<i class="color-red elusive-tint"></i> Cloned '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-red elusive-tint"></i></a> Cloned '.$game_name;
 				    }
 					if($type==4)
 				    {
-					$text='<i class="color-gold elusive-star"></i> Rate on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-gold elusive-star"></i></a> Rate on '.$game_name.'';
 				    }
 					if($type==5)
 				    {
-					$text='<i class="color-purple elusive-user"></i> Talking about '.$channel_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-purple elusive-user"></i></a> Talking about '.$channel_name;
 				    }
 					if($type==6)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on '.$channel_name.' wall.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$channel_name.' wall.';
 				    }
 					if($type==7)
 				    {
-					$text='<i class="color-orange elusive-heart"></i> Favorited '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-orange elusive-heart"></i></a> Favorited '.$game_name;
 				    }
 					if($type==8)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
 				    }
 					if($type==9)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
 				    }
 					if($type==10)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
 				    }
 					if($type==11)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
 				    }
 				  return $text;
    
@@ -210,50 +212,51 @@ return $material.$number;
 				$channel_name=$lastactivity['ChannelUser']['username'];
 				$type=$lastactivity['Activity']['type'];
 				$msg_id=1212;
-				
+				$postPage= Router::url(array('controller'=>'wallentries', 'action'=>'posts', $msg_id), false);
+
 				    if($type==1)
 				    {
-					$text='<i class="muted elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="muted elusive-comment"></i></a></a> Comment on '.$game_name.'';
 				    }
 					if($type==2)
 				    {
-					$text='<i class="color-blue elusive-group"></i> Following you now.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-group"></i></a> Following you now.';
 				    }
 					if($type==3)
 				    {
-					$text='<i class="color-red elusive-tint"></i> Cloned your game: '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-red elusive-tint"></i></a> Cloned your game: '.$game_name;
 				    }
 					if($type==4)
 				    {
-					$text='<i class="color-gold elusive-star"></i> Rate on your game: '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-gold elusive-star"></i></a> Rate on your game: '.$game_name;
 				    }
 					if($type==5)
 				    {
-					$text='<i class="color-purple elusive-user"></i> Talking about you'.$msg_id;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-purple elusive-user"></i></a> Talking about you';
 				    }
 					if($type==6)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on your game: '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on your game: '.$game_name;
 				    }
 					if($type==7)
 				    {
-					$text='<i class="color-orange elusive-heart"></i> Favorited your game: '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-orange elusive-heart"></i></a> Favorited your game: '.$game_name;
 				    }
 					if($type==8)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
 				    }
 					if($type==9)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
 				    }
 					if($type==10)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
 				    }
 					if($type==11)
 				    {
-					$text='<i class="color-green elusive-comment"></i> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
 				    }
 				  return $text;
    
