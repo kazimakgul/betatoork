@@ -28,6 +28,9 @@ else{
 						$timestamp = strtotime($lastactivity['Activity']['created']);
 				        $time=date("c",$timestamp);
 
+						$msg_id = 1212;
+						$postPage=$this->Html->url(array("controller" => "wallentries","action" =>"posts",$msg_id));
+
 					?>
 				
 					
@@ -53,7 +56,7 @@ else{
                                                                 <a class="contact-item-heading btn-link btn-mini bold" href="<?php echo $profileurl ?>"  style="margin:-9px 0px -25px 0px; padding-left:0px;padding-left:0px;"><?php echo $lastactivity['PerformerUser']['username']; ?></a>
                                                                 <p style="margin-top:-5px; margin-bottom:-5px; padding:0px;"><small ><?php echo $activity_message;?></small></p>
 
-                                                                <small class="muted pull-right helper-font-9"><a href='#' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small>
+                                                                <small class="muted pull-right helper-font-9"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small>
                                                             </div>
                                                         </div>
                                                    
