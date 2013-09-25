@@ -137,7 +137,7 @@ return $material.$number;
 				$game_name=$lastactivity['Game']['name'];
 				$channel_name=$lastactivity['ChannelUser']['username'];
 				$type=$lastactivity['Activity']['type'];
-				$msg_id=1212;
+				$msg_id=$lastactivity['Activity']['msg_id'];
 				$postPage= Router::url(array('controller'=>'wallentries', 'action'=>'posts', $msg_id), false);
 				
 				    if($type==1)
@@ -211,7 +211,7 @@ return $material.$number;
 				$game_name=$lastactivity['Game']['name'];
 				$channel_name=$lastactivity['ChannelUser']['username'];
 				$type=$lastactivity['Activity']['type'];
-				$msg_id=1212;
+				$msg_id=$lastactivity['Activity']['msg_id'];
 				$postPage= Router::url(array('controller'=>'wallentries', 'action'=>'posts', $msg_id), false);
 
 				    if($type==1)

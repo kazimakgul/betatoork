@@ -1,13 +1,13 @@
-<?php if($lastactivities!=NULL) { ?>
+<?php if($lastnotifies!=NULL) { ?>
 		
 					<?php 
 					
-					foreach ($lastactivities as $lastactivity): 
-						$followid = $lastactivity['PerformerUser']['id'];
+					foreach ($lastnotifies as $lastnotify): 
+						$followid = $lastnotify['PerformerUser']['id'];
 
-if($lastactivity['PerformerUser']['seo_username']!=NULL)
+if($lastnotify['PerformerUser']['seo_username']!=NULL)
 {
-  $profileurl=$this->Html->url(array( "controller" => h($lastactivity['PerformerUser']['seo_username']),"action" =>'')); 
+  $profileurl=$this->Html->url(array( "controller" => h($lastnotify['PerformerUser']['seo_username']),"action" =>'')); 
 }
 else{
   $profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$followid));
@@ -16,14 +16,14 @@ else{
 
 						$card = $this->requestAction( array('controller' => 'games', 'action' => 'follow_card', $followid));
 						$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
-						$activity_message = $this->requestAction( array('controller' => 'apis', 'action' => 'notificationMessage'),array('pass' => $lastactivity));
-						$timestamp = strtotime($lastactivity['Activity']['created']);
+						$activity_message = $this->requestAction( array('controller' => 'apis', 'action' => 'notificationMessage'),array('pass' => $lastnotify));
+						$timestamp = strtotime($lastnotify['Activity']['created']);
 				        $time=date("c",$timestamp);
 						$wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
 
 					?>
 				
-                                    <li class="notifyblocks unseen" id="<?php echo $lastactivity['Activity']['id']; ?>">
+                                    <li class="notifyblocks unseen" id="<?php echo $lastnotify['Activity']['id']; ?>">
                                         
                                             <div class="media" style="margin:5px;">
                                               <div class="span1" style="margin:0px;">
@@ -40,7 +40,7 @@ else{
                                               </div>
 
                                                 <div class="media-body">
-                                                    <h4 class="media-heading"><a href="<?php echo $profileurl ?>" class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;"><?php echo $lastactivity['PerformerUser']['username']; ?></a><small class=" pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small></h4>
+                                                    <h4 class="media-heading"><a href="<?php echo $profileurl ?>" class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;"><?php echo $lastnotify['PerformerUser']['username']; ?></a><small class=" pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small></h4>
                                                     <p><?php echo $activity_message;?></p>
                                                     <p class="helper-font-6" style="opacity:0.7;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></p>
                                                 </div>
