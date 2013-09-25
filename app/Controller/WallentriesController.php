@@ -485,6 +485,7 @@ return $a;
 
 public function get_last_activities()
 {
+    $this->loadModel('Activity');
     if($this->Auth->user('id'))
 	{ //openning of auth_id control
     $auth_id=$this->Session->read('Auth.User.id');
