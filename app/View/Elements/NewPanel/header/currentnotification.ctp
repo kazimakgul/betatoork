@@ -21,9 +21,12 @@ else{
 				        $time=date("c",$timestamp);
 						$wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
 
+            $msg_id=$lastnotify['Activity']['msg_id'];
+            $postPage=$this->Html->url(array("controller" => "wallentries","action" =>"posts",$msg_id));
+
 					?>
 				
-                                    <li class="notifyblocks unseen" id="<?php echo $lastnotify['Activity']['id']; ?>">
+                                    <li class="grd-white notifyblocks unseen" id="<?php echo $lastnotify['Activity']['id']; ?>">
                                         
                                             <div class="media" style="margin:5px;">
                                               <div class="span1" style="margin:0px;">
@@ -40,7 +43,7 @@ else{
                                               </div>
 
                                                 <div class="media-body">
-                                                    <h4 class="media-heading"><a href="<?php echo $profileurl ?>" class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;"><?php echo $lastnotify['PerformerUser']['username']; ?></a><small class=" pull-right helper-font-small"><a href='#' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small></h4>
+                                                    <h4 class="media-heading"><a href="<?php echo $profileurl ?>" class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;"><?php echo $lastnotify['PerformerUser']['username']; ?></a><small class=" pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small></h4>
                                                     <p><?php echo $activity_message;?></p>
                                                     <p class="helper-font-6" style="opacity:0.7;"><a class="btn-link"><i class="elusive-thumbs-up"></i> Like</a> - <a class="btn-link"><i class="elusive-comment"></i> Thanx</a> - <a class="btn-link"><i class="elusive-ok"></i> Good</a> - <a class="btn-link"><i class="elusive-fire"></i> Awesome</a></p>
                                                 </div>
