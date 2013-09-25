@@ -266,7 +266,7 @@ if ($this->request->is('get')) {
 			$this->Subscription->id = $subscribebefore["Subscription"]["id"];
 			if ($this->Subscription->delete()) {
 			$this->set('SubMessage','Subscription deleted');
-			$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$subscriber_to_id,$subscriber_id,5,0));	
+			//$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$subscriber_to_id,$subscriber_id,5,0));	Unfollow postu atilmayacak.
 			
 		}
 			}

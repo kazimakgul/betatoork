@@ -1387,9 +1387,9 @@ $this->loadModel('Game');
    $channel = $this->User->find('first', array('conditions' => array('User.id'=>$content_id),'fields'=>array('User.username','User.seo_username'),'contain'=>'false'));
    $type=5;//id of game add function is 1
    if($status==0)
-   $update=''.$auth['User']['username']. ' unchained from '.$channel['User']['username'].' channel';
+   $update=''.$auth['User']['username']. ' is not following '.$channel['User']['username'].' channel anymore';
    if($status==1)
-   $update=''.$auth['User']['username']. ' chained to '.$channel['User']['username'].' channel';
+   $update=''.$auth['User']['username']. ' is following '.$channel['User']['username'].' channel';
    $uploads=$_POST['uploads'];
    $data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
    $data2=$Wall->Insert_Update($content_id,$update,$uploads,$uid,$type);
