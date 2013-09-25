@@ -28,7 +28,7 @@ else{
 						$timestamp = strtotime($lastactivity['Activity']['created']);
 				        $time=date("c",$timestamp);
 
-						$msg_id = 1212;
+						$msg_id=$lastactivity['Activity']['msg_id'];
 						$postPage=$this->Html->url(array("controller" => "wallentries","action" =>"posts",$msg_id));
 
 					?>
