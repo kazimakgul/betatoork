@@ -152,7 +152,8 @@ if($twitter==NULL){
                                             <ul class="nav nav-tabs" id="profile_tabs">
      
                                                 <!--tab menus-->
-                                                <li class="active"><a data-toggle="tab" href="#games_tab"><i class="elusive-user"></i> Games - <small>(<?php echo $gameNumber; ?>)</small></a></li>
+                                                <li class="active"><a data-toggle="tab" href="#home_tab"><i class="elusive-home"></i> Home</a></li>
+                                                <li class=""><a data-toggle="tab" href="#games_tab"><i class="elusive-user color-green"></i> Games - <small>(<?php echo $gameNumber; ?>)</small></a></li>
                                                 <li class=""><a data-toggle="tab" href="#favorites_tab"><i class="elusive-heart color-red"></i> Favorites - <small>(<?php echo $favoriteNumber; ?>)</small></a></li>
                                                 <li class=""><a data-toggle="tab" href="#news_tab"><i class="elusive-th-list color-purple"></i> News Feed</a></li>
                                                 <li class=""><a data-toggle="tab" href="#followers_tab"><i class="elusive-group color-blue"></i> Followers - <small>(<?php echo $followerNumber; ?>)</small></a></li>
@@ -161,7 +162,39 @@ if($twitter==NULL){
                                         <div class="box-body">
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
-                                                <div class="tab-pane fade active in" id="games_tab">
+
+                                                <div class="tab-pane fade active in" id="home_tab">
+
+                                        <div class="span6" style="margin-left:0px; margin-right:10px;">
+                                        <div class="box-header corner-top">
+                                            <!--tab action-->
+                                            <div class="header-control pull-right">
+
+                                            </div>
+                                            <ul style="background-color:white; padding:10px; margin:0px;" class="shadow well nav nav-pills">
+                                                <!--tab menus-->
+                                                <li class="active"><a data-toggle="tab" href="#new-feeds">Channel News</a></li>
+                                                <!--/tab menus-->
+                                            </ul>
+                                        </div>
+                                            <!-- widgets-tab-body -->
+                                            <div class="tab-content">
+                                                <!-- channel news feed is in starts-->
+                                                <?php  echo $this->element('NewPanel/load_profile_feeds'); ?>
+                                                <!-- channel news feed is in ends-->
+                                            </div><!--/widgets-tab-body-->
+                                        </div><!--/box-body-->
+
+<ul class="thumbnails" id="thumbnails_area">
+<?php  echo $this->element('NewPanel/profile/channel_game_box'); ?>
+</ul>
+<div>
+<a id="loadmoreprofilegame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+</div>
+
+                                                </div>
+
+                                                <div class="tab-pane fade" id="games_tab">
 
 <ul class="thumbnails" id="thumbnails_area">
 <?php  echo $this->element('NewPanel/profile/channel_game_box'); ?>
