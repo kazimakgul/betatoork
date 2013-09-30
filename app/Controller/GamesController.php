@@ -2075,6 +2075,7 @@ function getExtension($str) {
 	   $this->layout="ajax";
 	   $userId = $this->Session->read('Auth.User.id');
 	   $targetGame=$this->Game->find('first',array('conditions'=>array('Game.id'=>$game_id),'fields'=>array('Game.id,Game.name,Game.link,Game.description,Game.active,Game.user_id,Game.category_id,Game.picture,Game.embed,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>false));
+	   $gameUser=$targetGame['Game']['user_id'];
 	   if($targetGame!=NULL)
 	   {
 	        $this->request->data['Game']['name']=$targetGame['Game']['name'];
@@ -2101,6 +2102,7 @@ function getExtension($str) {
 			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userId));
 			    $id=$this->Game->getLastInsertId();
 			    $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userId));
+				$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$gameUser,7,1));
 				echo 1;//this means games has been clonned properly.
 			    }else{
 				echo 0;//this means there are some problems.

@@ -1421,6 +1421,22 @@ $this->loadModel('Game');
       }
    }
    
+   if($action!=NULL && $action==7)
+   {
+   $auth = $this->User->find('first', array('conditions' => array('User.id'=>$uid),'fields'=>array('User.username','User.seo_username'),'contain'=>'false'));
+   $game = $this->Game->find('first', array('conditions' => array('Game.id'=>$content_id),'fields'=>array('Game.name'),'contain'=>'false'));
+   $type=7;
+   if($status==1)
+   $update=''.$auth['User']['username']. ' cloned your game '.$game['Game']['name'].'';
+   $uploads=$_POST['uploads'];
+   $data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+      if($data)
+      {
+      $msg_id=$data['msg_id'];
+      $this->pushActivity($content_id,$uid,1,1,30,$msg_id);
+      }
+   }
+   
    
 }
    
