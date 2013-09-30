@@ -2102,7 +2102,7 @@ function getExtension($str) {
 			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userId));
 			    $id=$this->Game->getLastInsertId();
 			    $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userId));
-				$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$gameUser,7,1));
+				//$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$gameUser,7,1));
 				echo 1;//this means games has been clonned properly.
 			    }else{
 				echo 0;//this means there are some problems.
