@@ -1391,8 +1391,16 @@ $this->loadModel('Game');
    if($status==1)
    $update=''.$auth['User']['username']. ' is following '.$channel['User']['username'].' channel';
    $uploads=$_POST['uploads'];
-   $data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+   //$data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
    $data2=$Wall->Insert_Update($content_id,$update,$uploads,$uid,$type);
+   
+     if($data2)
+     {
+     $msg_id=$data2['msg_id'];
+     $this->pushActivity(NULL,$content_id,1,1,2,$msg_id);
+     }
+   
+   
    }
    
    if($action!=NULL && $action==6)
@@ -1406,6 +1414,11 @@ $this->loadModel('Game');
    $update=''.$auth['User']['username']. ' added '.$game['Game']['name'].' to favorites';
    $uploads=$_POST['uploads'];
    $data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+      if($data)
+      {
+      $msg_id=$data['msg_id'];
+      $this->pushActivity($content_id,NULL,1,1,7,$msg_id);
+      }
    }
    
    

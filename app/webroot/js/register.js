@@ -722,7 +722,7 @@ function subscribe (channel_name,user_auth,id) {
             type: 'success'
           });
 		
-		pushActivity(null,id,1,1,2);
+		//pushActivity(null,id,1,1,2);
 		
 			}else{
 				
@@ -849,7 +849,7 @@ if($('#follow_button').attr('id')=='follow_button')
 					
 			}
 		  
-		pushActivity(id,null,1,1,7);		
+		//pushActivity(id,null,1,1,7);		
 	}
 	
 	function unFavorite (game_name,user_auth,id) {
