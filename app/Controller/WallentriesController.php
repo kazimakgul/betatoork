@@ -1433,7 +1433,7 @@ $this->loadModel('Game');
       if($data)
       {
       $msg_id=$data['msg_id'];
-      $this->pushActivity($content_id,$uid,1,1,30,$msg_id);
+      $this->pushActivity($content_id,$uid,1,1,3,$msg_id);
       }
    }
    
