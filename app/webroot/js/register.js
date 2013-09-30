@@ -1043,7 +1043,7 @@ $('#chaingame').live('click',function () {
               type: 'success'
               });  
 			  
-			pushActivity(game_id,null,1,1,3);	 
+			//pushActivity(game_id,null,1,1,3);	 
 			  
 			}else{
 				
