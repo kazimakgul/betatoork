@@ -100,7 +100,7 @@ echo "</div>";
                                                             <div class="btn-group pull-right">
 															  
                                                                 
-				    <?php if($type==1){
+				    <?php if($type==1 || $type==7 ){
 				    $gamedata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_gamedata',$gameid));
 			        if($gamedata['Game']['seo_url']!=NULL)
       if($gamedata['Game']['embed']!=NULL)
@@ -149,7 +149,7 @@ echo "</div>";
 			    </div>
 				 
 				 
-				 <?php if($type==1) { 
+				 <?php if($type==1  || $type==7 ) { 
 			    $gameimage=$this->Upload->image($gamedata,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$gamename,'width'=>'200','height'=>'110','onerror'=>'imgError(this,"toorksize");'));
 			    ?>
 			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; padding:5px;">
