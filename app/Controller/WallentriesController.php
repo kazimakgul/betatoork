@@ -92,10 +92,7 @@ return $a;
 		$this->layout='dashboard';
 		$this->leftpanel();
 		//$this->logedin_user_panel();
-		
-		//Add recommended channel as chain
-		$this->requestAction( array('controller' => 'subscriptions', 'action' => 'quick_subscription'));
-		
+			
 		
 		switch($type)
 		{
@@ -355,8 +352,6 @@ return $a;
 		$this->leftpanel();
 		//$this->logedin_user_panel();
 		
-	//Add recommended channel as chain
-	$this->requestAction( array('controller' => 'subscriptions', 'action' => 'quick_subscription'));
 		
 		
 		switch($type)
@@ -562,11 +557,7 @@ public function set_suggested_channels()
 		$this->loadModel('Subscription');
 		$this->layout='dashboard';
 		$this->leftpanel();
-		//$this->logedin_user_panel();
-		
-		//Add recommended channel as chain
-		$this->requestAction( array('controller' => 'subscriptions', 'action' => 'quick_subscription'));
-		
+			
 		
 		switch($type)
 		{
