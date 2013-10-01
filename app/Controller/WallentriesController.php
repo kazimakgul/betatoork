@@ -7,9 +7,9 @@ App::uses('AppController', 'Controller');
  */
 class WallentriesController extends AppController {
     
-	
+	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Activity','CakeEmail', 'Network/Email');
     public $helpers = array('Html', 'Form','Upload','Facebook.Facebook');
-	public $components = array('Amazonsdk.Amazon');
+	public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Email');
 /**
  * index method
  *
