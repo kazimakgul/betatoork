@@ -1034,7 +1034,7 @@ $('#chaingame').live('click',function () {
     if(user_auth==1)
     {   
 	    game_name=$('#game_name').val();
-		$.get(chaingame + '/'+game_id, function (data) {
+		$.get(chaingame + '/'+game_id, function(data) {
 			if(data==1)
 			{
 			  $.pnotify({
