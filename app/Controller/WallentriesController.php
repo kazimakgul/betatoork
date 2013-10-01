@@ -952,7 +952,7 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 				
 				    if($email==1)
 					{
-					$this->sendNotifyMail($performer_id,$game_id,$channel_id,$type);
+					//$this->sendNotifyMail($performer_id,$game_id,$channel_id,$type);
 				    }
 				}
 	
