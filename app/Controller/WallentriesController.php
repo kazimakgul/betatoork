@@ -907,7 +907,61 @@ public function mention($update=NULL,$msg_id=NULL)
    
    }
    
+}
 
+public function hashtag($update=NULL,$msg_id=NULL)
+{  
+    
+   if($this->Auth->user('id'))
+   { //openning of auth_id control
+	 
+    $performer_id=$this->Session->read('Auth.User.id');
+	 
+   //Check hashtag here
+   preg_match_all('/#([\\d\\w]+)/', $update, $hashtags);
+   if($hashtags[0]!=NULL)
+   {
+   
+      foreach($hashtags[0] as $hashtag)
+      {
+	      $seo_url=str_replace("#","",$hashtag);
+		  
+		  //is A game exists
+		  $game_data=$this->Game->find('first',array('contain'=>false,'conditions'=>array('Game.seo_url'=>$seo_url),'fields'=>array('Game.id','Game.user_id')));
+		  if($game_data!=NULL)
+		  {
+		  $itisgame=1;//it is a game
+		  $game_id=$game_data['Game']['id'];
+	      
+		  $this->Wallentry->Query('INSERT INTO hashtags (hashtag,user_id,msg_id,game_id,itisgame) VALUES ("'.$seo_url.'","'.$performer_id.'","'.$msg_id.'","'.$game_id.'","'.$itisgame.'")');
+		  
+		  //Send notice to Owner Of Game
+		  $channel_id=$game_data['Game']['user_id'];
+		  $this->pushActivity(NULL,$channel_id,1,1,8,$msg_id);
+		  
+		  }else{
+		  //if it is not a game
+		  $itisgame=0;//it is not a game
+		  $game_id=NULL;
+		  $this->Wallentry->Query('INSERT INTO hashtags (hashtag,user_id,msg_id,game_id,itisgame) VALUES ("'.$seo_url.'","'.$performer_id.'","'.$msg_id.'","'.$game_id.'","'.$itisgame.'")');
+		  }
+		  
+		  
+		  
+		  /*
+	      $user_data=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.seo_username'=>$seo_url)));
+		  if($user_data!=NULL)
+		  {
+		   $channel_id=$user_data['User']['id'];
+		   $this->pushActivity(NULL,$channel_id,1,1,5,$msg_id);
+		  }
+		  */
+      }   
+   
+   
+   }
+ } //Auth Check Ends
+ 
 }
 
 //Push Activity Functions Clonned From ActivitiesController
@@ -1135,6 +1189,7 @@ error_reporting(0);
    {
    $msg_id=$data['msg_id'];
    $this->mention($update,$msg_id);
+   $this->hashtag($update,$msg_id);
    $orimessage=$data['message'];
    $message=tolink(htmlcode($data['message']));
    $time=$data['created'];
