@@ -1,4 +1,4 @@
-<?php
+h<?php
 
 /**
  * Games Controller
@@ -1076,30 +1076,27 @@ public function profile() {
 public function hashtag() {
 
 	$this->layout='dashboard';
-    $userid = $this->request->params['pass'][0];
+    $hashtag = $this->request->params['pass'][0];
     $authid = $this->Session->read('Auth.User.id');
 
-	if(!is_numeric($userid)){
-	$userconvert = $this->User->find('first', array('contain'=>false,'conditions' => array('User.seo_username' => $userid)));
-	$userid=$userconvert['User']['id'];
+	$idList = $this->Game->find('list', array('contain'=>false,'conditions' => array('Game.seo_url' => $hashtag),'fields'=>array('Game.id')));
+	if($idList!=NULL)
+	{
+  //it is a game
+  $limit=20;
+  $activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username'  )),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username',  'ChannelUser.seo_username'))),'fields'=>array('Activity.id','Activity.performer_id','Activity.game_id','Activity.channel_id','Activity.msg_id','Activity.seen','Activity.notify','Activity.email','Activity.type','Activity.replied','Activity.created','PerformerUser.id','PerformerUser.username','PerformerUser.seo_username','ChannelUser.id','ChannelUser.username','ChannelUser.seo_username','Game.id','Game.name','Game.seo_url','Game.embed'),'conditions'=>array('Activity.game_id'=>$idList),'limit'=>$limit,'order'=>'Activity.created DESC'));
+  $this->set('tagActivities',$activityData);
+	
+	
+	}else{
+	//it is not a game
 	}
 	
-    $user = $this->User->find('first', array('conditions' => array('User.id' => $authid),'fields'=>array('*')));
-    $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
     
-	if($publicUser==NULL){
-		$this->redirect('/');
-	}
-    $userName = $user['User']['username'];
-    $publicName = $publicUser['User']['username'];
-    $publicDesc = $publicUser['User']['description'];
+   
 	
 
-	if ($this->RequestHandler->isAjax()) {  
-		    $this->layout="ajax";
-            $this->render('/Elements/NewPanel/profile/channel_game_box_ajax');   // Render a special view for ajax pagination
-            return;  // return the ajax paginated content without a layout
-       }
+	
 
     //New Wall Getting Started Below.
 	   App::import('Vendor', 'wallscript/config');
@@ -1133,6 +1130,7 @@ public function hashtag() {
 	$this->set('userid', $userid);
 	$this->set('user', $user);
 	$this->set('publicuser', $publicUser);
+	$this->set('hashtagTitle', $hashtag);
 
 	$this->set_suggested_channels();	
 	$this->set('title_for_layout', $publicName.' Game Channel - Toork');

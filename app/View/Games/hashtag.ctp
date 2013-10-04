@@ -24,7 +24,7 @@ $userid=$user['User']['id'];
             <a href="<?php echo $channelurl; ?>">
             <?php echo $channelimage; ?>
             </a>
-            <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;">#AngryBirds</h4>
+            <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;">#<?php echo $hashtagTitle; ?></h4>
         </div>
 
     </div>
@@ -63,7 +63,7 @@ $userid=$user['User']['id'];
                     <!--/tab menus-->
                 </ul>
 
-                <!-- Games Activities <?php echo $this->element('NewPanel/load_my_notifications2');?> -->
+                <?php echo $this->element('NewPanel/load_my_tag_activity');?>
 
             </div>
 
