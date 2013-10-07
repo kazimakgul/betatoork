@@ -82,8 +82,6 @@ $userid=$user['User']['id'];
                                             <ul style="background-color:white; padding:10px; margin:0px;" class="shadow well nav nav-pills">
                                                 <!--tab menus-->
                                                 <li class="active"><a data-toggle="tab" href="#new-feeds">#Angrybirds</a></li>
-                                                <li><a data-toggle="tab" href="#my-feeds">#AngryChickens</a></li>
-                                                <li><a data-toggle="tab" href="#my-feeds">#AngryBirdsStarWars2</a></li>
 												<!--/tab menus-->
                                             </ul>
                                         </div>
@@ -97,7 +95,7 @@ $userid=$user['User']['id'];
 
 										<div id="content"></div>			
 												
-					                       <?php echo $this->element('NewPanel/load_mess_boot');?>
+					                       <?php echo $this->element('NewPanel/load_hashtag_feeds');?>
 						
                                                 </div>
                                                             
@@ -106,7 +104,7 @@ $userid=$user['User']['id'];
                                                    
 												   
 												   <div id="my_more_content"></div>			
-					                       <?php echo $this->element('NewPanel/load_my_feeds');?>
+					                       <?php //echo $this->element('NewPanel/load_my_feeds');?>
                                    
                                                 </div>
                                                 <div class="tab-pane fade" id="recent-comments">

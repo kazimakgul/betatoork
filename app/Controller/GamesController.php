@@ -1092,10 +1092,6 @@ public function hashtag() {
 	//it is not a game
 	}
 	
-    
-   
-	
-
 	
 
     //New Wall Getting Started Below.
@@ -1121,20 +1117,22 @@ public function hashtag() {
        }
 	   //Session Ends
 	   
+	   $user = $this->User->find('first', array('conditions' => array('User.id' => $authid),'fields'=>array('*')));
+       $userName = $user['User']['username'];
+       $userDesc = $user['User']['description'];
 	   
 	   $Wall = new Wall_Updates();
 	   $this->set('Wall',$Wall);
-	$this->set('profile_uid',$userid);
+	$this->set('profile_uid',$authid);
     $this->set('username', $userName);
-    $this->set('publicname', $publicName);
-	$this->set('userid', $userid);
+	$this->set('userid', $authid);
 	$this->set('user', $user);
-	$this->set('publicuser', $publicUser);
+	
 	$this->set('hashtagTitle', $hashtag);
 
 	$this->set_suggested_channels();	
-	$this->set('title_for_layout', $publicName.' Game Channel - Toork');
-	$this->set('description_for_layout', 'Play games on '.$publicName.' : '.$publicDesc);
+	$this->set('title_for_layout', $hashtag.' Game Channel - Toork');
+	$this->set('description_for_layout', 'All information about '.$hashtag);
 
 }
 
