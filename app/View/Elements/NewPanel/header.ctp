@@ -91,7 +91,7 @@ if(!isset($notifycount))
 
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="margin:0px; padding:0px;">
-              <div class="pull-left btn"> <i class="icofont-comments"></i> Post <strong class="caret"></strong></div>
+              <div class="pull-left btn btn-custom-darken"> <i class="icofont-comments"></i> Post <strong class="caret"></strong></div>
             </a>
             <div class="dropdown-menu dropdown-user color-red" role="menu" style="padding:5px; padding-bottom: 5px;">
                                         
@@ -146,12 +146,12 @@ if(!isset($notifycount))
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     
                                    <!-- <img class="corner-all" align="middle" src="img/user-thumb.jpg" title="John Doe" alt="john doe"> -->
-                                    <button class="btn"><?php 
+                                    <button class="btn btn-custom-darken"><?php 
   if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'15',"alt" => "toork avatar image")); 
     } else {
       echo $this->Upload->image($user,'User.picture',array(),array('align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'15','onerror'=>'imgError(this,"avatar");')); }
-  ?> <strong><?php echo $username ?></strong></button> <!--this for display on tablet and phone device-->
+  ?> <?php echo $username ?></button> <!--this for display on tablet and phone device-->
                                 </a>
                                 <ul class="dropdown-menu dropdown-user" role="menu" aria-labelledby="dLabel">
                                     <li>

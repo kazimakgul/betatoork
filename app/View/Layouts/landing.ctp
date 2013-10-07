@@ -677,21 +677,17 @@
                   <div class='row'>
                     <div class='span4'>
                       <div class='footer-logo'>
-                        <a>Theme<strong>Venera</strong></a>
+                        <a><strong>Toork</strong> beta</a>
                       </div>
                       <ul class='footer-address'>
                         <li>
                           <strong>Address:</strong>
-                          2850 Collins ave<br/>
-                          Camden, NJ 32432-1343, USA
+                          Taksim Cad. No:55<br/>
+                          Beyoglu, Istanbul, Turkiye
                         </li>
                         <li>
-                          <strong>Phone:</strong>
-                          (324) 234-2343
-                        </li>
-                        <li>
-                          <strong>Fax:</strong>
-                          (324) 366-5423
+                          <strong>Contact:</strong>
+                          <a href="mailto:hello@toork.com">hello@toork.com</a>
                         </li>
                       </ul>
                     </div>
@@ -713,7 +709,7 @@
                       </ul>
                     </div>
                     <div class='span4'>
-                      <h5 class='footer-header'>Photostream</h5>
+                      <h5 class='footer-header'>Noteworthy Channels</h5>
                       <ul class='footer-img-list thumbnails'>
                         <li class='span1'>
                           <a class='thumbnail'>
@@ -767,23 +763,11 @@
                       <div class='copyright'>Copyright &copy; 2013 Toork. All rights reserved.</div>
                     </div>
                     <div class='span6'>
-                      <ul class='footer-links'>
-                        <li>
-                          <a>Some</a>
-                        </li>
-                        <li>
-                          <a>Footer</a>
-                        </li>
-                        <li>
-                          <a>Policy</a>
-                        </li>
-                        <li>
-                          <a>Terms Of Use</a>
-                        </li>
-                        <li>
-                          <a>Links</a>
-                        </li>
-                      </ul>
+                      
+                    <?php
+                     echo $this->element('NewPanel/landfooter',array());
+                    ?>
+                      
                     </div>
                   </div>
                 </div>
