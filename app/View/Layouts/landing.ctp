@@ -277,32 +277,32 @@
                       <div class='testimonials-users row hidden-phone'>
                         <div class='span1'>
                           <a class='testimonials-user-w active' data-toggle='testimonial' href='#testimonial1'>
-                            <span class='testimonials-user'><img alt="Avatar-1" src="img/images/test-user.png" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-1" src="img/images/photos/14.jpg" /></span>
                           </a>
                         </div>
                         <div class='span1'>
                           <a class='testimonials-user-w' data-toggle='testimonial' href='#testimonial2'>
-                            <span class='testimonials-user'><img alt="Avatar-2" src="img/images/test-user.png" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-2" src="img/images/photos/15.jpg" /></span>
                           </a>
                         </div>
                         <div class='span1'>
                           <a class='testimonials-user-w' data-toggle='testimonial' href='#testimonial3'>
-                            <span class='testimonials-user'><img alt="Avatar-4" src="img/images/test-user.png" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-4" src="img/images/photos/16.jpg" /></span>
                           </a>
                         </div>
                         <div class='span1'>
                           <a class='testimonials-user-w' data-toggle='testimonial' href='#testimonial4'>
-                            <span class='testimonials-user'><img alt="Avatar-1" src="img/images/test-user.png" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-1" src="img/images/photos/17.jpg" /></span>
                           </a>
                         </div>
                         <div class='span1'>
                           <a class='testimonials-user-w' data-toggle='testimonial' href='#testimonial5'>
-                            <span class='testimonials-user'><img alt="Avatar-2" src="img/images/test-user.png" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-2" src="img/images/photos/18.jpg" /></span>
                           </a>
                         </div>
                         <div class='span1'>
                           <a class='testimonials-user-w' data-toggle='testimonial' href='#testimonial6'>
-                            <span class='testimonials-user'><img alt="Avatar-4" src="img/images/test-user.png" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-4" src="img/images/photos/19.jpg" /></span>
                           </a>
                         </div>
                       </div>
@@ -416,32 +416,32 @@
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-1" src="img/images/test-square.png" />
+                      <img alt="Client-1" src="img/images/photos/1.jpg" />
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-2" src="img/images/test-square.png" />
+                      <img alt="Client-2" src="img/images/photos/2.jpg" />
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-3" src="img/images/test-square.png" />
+                      <img alt="Client-3" src="img/images/photos/3.jpg" />
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-4" src="img/images/test-square.png" />
+                      <img alt="Client-4" src="img/images/photos/4.jpg" />
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-5" src="img/images/test-square.png" />
+                      <img alt="Client-5" src="img/images/photos/5.jpg" />
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-6" src="img/images/test-square.png" />
+                      <img alt="Client-6" src="img/images/photos/6.jpg" />
                     </div>
                   </div>
                 </div>
