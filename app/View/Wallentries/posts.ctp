@@ -5,7 +5,7 @@
                     <div class="content">
 
                         <!-- content-body -->
-                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
+                        <div class="content-body" style="padding-top:15px;">
    
 <?php  
 $channelimage=$this->Upload->image($channeldata,'User.picture',array(),array('class'=>'img-polaroid', 'width'=>'70px','onerror'=>'imgError(this,"avatar");'));

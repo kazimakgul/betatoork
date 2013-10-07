@@ -15,7 +15,7 @@ $username = $user['User']['seo_username'];
                         
                         
                         <!-- content-body -->
-                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
+                        <div class="content-body" style="padding-top:15px;">
                             <!-- dashboard -->
     <?php if($isActive==0){ ?>
     <div class="alert alert-warning span12">

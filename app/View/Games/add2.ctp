@@ -9,7 +9,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                     <div class="content">
 
                         <!-- content-body -->
-                        <div class="content-body" style="background-color:#e5e5e5; padding-top:15px;">
+                        <div class="content-body" style="padding-top:15px;">
     <?php if($isActive==0){ ?>
     <div class="alert alert-error span12">
                                     <div class="box-header corner-top">
