@@ -309,56 +309,56 @@
                       <div class='testimonials-speeches'>
                         <div class="testimonials-speech active" id="testimonial1">
                           <p>
-                            <strong>Homer Simpson is amazing.</strong>
-                            I've worked with Homer on couple of projects and i really like how lazy he is. Sleeps a lot, does not compain much, a perfect employee.
+                            <strong>Toork is the right place.</strong>
+                            When ever I feel bored, I come to spend time in toork to play some games and follow other friends of mine like batman and spiderman. So they keep me informed with their latest news.
                           </p>
                           <div class="speech-by">
-                            Mr. Burns, Springfield Nuclear Power Plant
+                            Superman, Kryptonite Planet
                           </div>
                         </div>
                         <div class='testimonials-speech' id='testimonial2'>
                           <p>
-                            <strong>Nulla gravida tellus id fermentum.</strong>
-                            Phasellus aliquet lobortis dolor, vel aliquam tortor porta vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.
+                            <strong>Build your channel.</strong>
+                            You all can create your own channel and let others to follow you. Customize your channel and make it nice for your visitors. put some black in your channel and stay away from joker.
                           </p>
                           <div class='speech-by'>
-                            John Doe, Dundler Mufflin
+                            Batman, Unknown Place
                           </div>
                         </div>
                         <div class='testimonials-speech' id='testimonial3'>
                           <p>
-                            <strong>Aliquam at sodales arcu.</strong>
-                            Nulla gravida, tellus id fermentum tempus, urna elit tempus justo, a tincidunt dui lacus nec est. Maecenas ligula ipsum, suscipit quis posuere id, porttitor vitae odio. Phasellus cursus mauris nec felis sollicitudin ac semper quam hendrerit. Morbi sagittis lobortis libero id imperdiet.
+                            <strong>Protect your channel</strong>
+                            Share the things you love about games and let people know what they think about your stuff. Coment,like or clone stuff here.
                           </p>
                           <div class='speech-by'>
-                            John Doe, Dundler Mufflin
+                            Green Lantern, Earth
                           </div>
                         </div>
                         <div class='testimonials-speech' id='testimonial4'>
                           <p>
-                            <strong>Aenean purus ipsum convallis.</strong>
-                            Quisque eu est ipsum. Aliquam at sodales arcu. Cras justo velit, pretium quis luctus a, posuere vitae justo. Proin porttitor ultricies justo at semper. Curabitur leo tortor, placerat ut placerat vel, tristique et ipsum. Maecenas at tellus leo, vitae pellentesque velit. Mauris ac augue magna. Vestibulum et magna at urna venenatis vehicula.
+                            <strong>Never get bored</strong>
+                            You will never be bored here because alot of new games, videos or pictures are shared here. People are sharing faster than I run pal. Even I cant catch up.
                           </p>
                           <div class='speech-by'>
-                            John Doe, Solomon Inc
+                            Flash, Several places in a second
                           </div>
                         </div>
                         <div class='testimonials-speech' id='testimonial5'>
                           <p>
-                            <strong>Maecenas id rutrum enim.</strong>
-                            Pellentesque fringilla fringilla molestie. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                            <strong>Better than juping on the tree</strong>
+                            I like it more to hangout here on toork than jumping o top of the trees. I dont have to hide here. People are following me and I enjoy being popular.
                           </p>
                           <div class='speech-by'>
-                            John Doe, ThemeForest
+                            Hawk, Unknown Forest
                           </div>
                         </div>
                         <div class='testimonials-speech' id='testimonial6'>
                           <p>
-                            <strong>Pellentesque habitant morbi tristique</strong>
-                            Aenean venenatis nisi sit amet massa congue commodo. Aenean purus ipsum, convallis quis rhoncus ut, ullamcorper eget metus.
+                            <strong>Blop blop, glu blop glu</strong>
+                            bloop glue bloop blop blop gleu gleu glu glu. Sorry I forgat that you dont understand the under water talk. Toork is more fun than swimming. I am happy to be a part of it.
                           </p>
                           <div class='speech-by'>
-                            John Doe, Dundler Mufflin
+                            Aquaman, Atlantis
                           </div>
                         </div>
                       </div>
@@ -412,7 +412,7 @@
               <div class='container'>
                 <div class='row clients-w'>
                   <div class='span12'>
-                    <h3 class='section-header'>Our Clients</h3>
+                    <h3 class='section-header'>Our Showcase</h3>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
