@@ -9,7 +9,7 @@ $msg_id=$game['Game']['id'];
 
 ?>
 
-<div class="navbar navbar-fixed-bottom">
+<div class="navbar navbar-fixed-bottom shadow-black">
   <div class="header-control">
       <div class="navbar-inner" style="-webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;">
         <div class="container">
