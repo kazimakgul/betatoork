@@ -3368,15 +3368,16 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar .brand {
   float: left;
-  display: block;
-  padding: 0px 20px 0px;
-  margin-left: -20px;
-  font-size: 24px;
-  line-height: 40px;
-  color: #53564e;
-  text-shadow: 2px 2px 1px #fff;
-  text-transform: uppercase;
-  font-weight: 400;
+  padding: 10px 0px 10px;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: 200;
+  color: #777777;
+  text-shadow: 0 1px 0 #ffffff;
+  background: url(../../../img/logoNew.png) no-repeat center;
+  background-size:160px 40px;
+  width: 160px;
+  height: 20px
 }
 .navbar .brand:hover,
 .navbar .brand:focus {

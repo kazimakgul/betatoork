@@ -27,7 +27,7 @@
                       <span class='icon-bar'></span>
                       <span class='icon-bar'></span>
                     </a>
-                    <a href="index.html" class="brand">Toork beta</a>
+                    <a href="index.html" class="brand"></a><a>beta</a>
                     <div class='nav-collapse subnav-collapse collapse pull-right' id='top-navigation'>
                       <ul class='nav'>
                         <li class='active'>
