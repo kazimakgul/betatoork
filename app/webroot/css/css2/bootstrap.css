@@ -6056,18 +6056,15 @@ a.badge:hover {
 /* Custom Code For Toork*//* Custom Code For Toork*//* Custom Code For Toork*/
 
 
-
-/* Custom navbar ENDS */
-
 .navbar-custom {
-  background-color: #a0c93f;
-  border-color: #8eb433;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#b4d467), to(#a0c93f));
-  background-image: -webkit-linear-gradient(top, #b4d467, 0%, #a0c93f, 100%);
-  background-image: -moz-linear-gradient(top, #b4d467 0%, #a0c93f 100%);
-  background-image: linear-gradient(to bottom, #b4d467 0%, #a0c93f 100%);
+  background-color: #76a3a0;
+  border-color: #649491;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#95b7b5), to(#76a3a0));
+  background-image: -webkit-linear-gradient(top, #95b7b5, 0%, #76a3a0, 100%);
+  background-image: -moz-linear-gradient(top, #95b7b5 0%, #76a3a0 100%);
+  background-image: linear-gradient(to bottom, #95b7b5 0%, #76a3a0 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb4d467', endColorstr='#ffa0c93f', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff95b7b5', endColorstr='#ff76a3a0', GradientType=0);
 }
 .navbar-custom .navbar-brand {
   color: #3b3b3b;
@@ -6081,11 +6078,11 @@ a.badge:hover {
   color: #3b3b3b;
 }
 .navbar-custom .navbar-nav > li:last-child > a {
-  border-right: 1px solid #8eb433;
+  border-right: 1px solid #649491;
 }
 .navbar-custom .navbar-nav > li > a {
   color: #3b3b3b;
-  border-left: 1px solid #8eb433;
+  border-left: 1px solid #649491;
 }
 .navbar-custom .navbar-nav > li > a:hover,
 .navbar-custom .navbar-nav > li > a:focus {
@@ -6096,13 +6093,13 @@ a.badge:hover {
 .navbar-custom .navbar-nav > .active > a:hover,
 .navbar-custom .navbar-nav > .active > a:focus {
   color: #9e9e9e;
-  background-color: #8eb433;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#8eb433), to(#a7cd4d));
-  background-image: -webkit-linear-gradient(top, #8eb433, 0%, #a7cd4d, 100%);
-  background-image: -moz-linear-gradient(top, #8eb433 0%, #a7cd4d 100%);
-  background-image: linear-gradient(to bottom, #8eb433 0%, #a7cd4d 100%);
+  background-color: #649491;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#649491), to(#81aaa7));
+  background-image: -webkit-linear-gradient(top, #649491, 0%, #81aaa7, 100%);
+  background-image: -moz-linear-gradient(top, #649491 0%, #81aaa7 100%);
+  background-image: linear-gradient(to bottom, #649491 0%, #81aaa7 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8eb433', endColorstr='#ffa7cd4d', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff649491', endColorstr='#ff81aaa7', GradientType=0);
 }
 .navbar-custom .navbar-nav > .disabled > a,
 .navbar-custom .navbar-nav > .disabled > a:hover,
@@ -6122,7 +6119,7 @@ a.badge:hover {
 }
 .navbar-custom .navbar-collapse,
 .navbar-custom .navbar-form {
-  border-color: #8cb232;
+  border-color: #639390;
 }
 .navbar-custom .navbar-nav > .dropdown > a:hover .caret,
 .navbar-custom .navbar-nav > .dropdown > a:focus .caret {
@@ -6132,7 +6129,7 @@ a.badge:hover {
 .navbar-custom .navbar-nav > .open > a,
 .navbar-custom .navbar-nav > .open > a:hover,
 .navbar-custom .navbar-nav > .open > a:focus {
-  background-color: #8eb433;
+  background-color: #649491;
   color: #9e9e9e;
 }
 .navbar-custom .navbar-nav > .open > a .caret,
@@ -6158,7 +6155,7 @@ a.badge:hover {
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #9e9e9e;
-    background-color: #8eb433;
+    background-color: #649491;
   }
   .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -6174,6 +6171,9 @@ a.badge:hover {
   color: #9e9e9e;
 }
 
+/* Custom navbar ENDS */
+
+
 /* Custom button starts */
 
 .btn-custom-darken.active {
@@ -6182,17 +6182,17 @@ a.badge:hover {
 .btn-custom-darken {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #82cb37;
-  background-image: -moz-linear-gradient(top, #8cd641, #72bc28);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8cd641), to(#72bc28));
-  background-image: -webkit-linear-gradient(top, #8cd641, #72bc28);
-  background-image: -o-linear-gradient(top, #8cd641, #72bc28);
-  background-image: linear-gradient(to bottom, #8cd641, #72bc28);
+  background-color: #6c9996;
+  background-image: -moz-linear-gradient(top, #76a3a0, #5c8a87);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#76a3a0), to(#5c8a87));
+  background-image: -webkit-linear-gradient(top, #76a3a0, #5c8a87);
+  background-image: -o-linear-gradient(top, #76a3a0, #5c8a87);
+  background-image: linear-gradient(to bottom, #76a3a0, #5c8a87);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8cd641', endColorstr='#ff72bc28', GradientType=0);
-  border-color: #72bc28 #72bc28 #4c7d1b;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff76a3a0', endColorstr='#ff5c8a87', GradientType=0);
+  border-color: #5c8a87 #5c8a87 #3e5c5a;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #72bc28;
+  *background-color: #5c8a87;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -6204,12 +6204,12 @@ a.badge:hover {
 .btn-custom-darken.disabled,
 .btn-custom-darken[disabled] {
   color: #ffffff;
-  background-color: #72bc28;
-  *background-color: #66a724;
+  background-color: #5c8a87;
+  *background-color: #527a78;
 }
 .btn-custom-darken:active,
 .btn-custom-darken.active {
-  background-color: #59921f ;
+  background-color: #486b69 ;
 }
 
 /* Custom button Ends */

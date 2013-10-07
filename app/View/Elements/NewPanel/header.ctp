@@ -6,7 +6,7 @@ if(!isset($notifycount))
 ?>
 
         <!-- section header -->
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top shadow-black">
   <div class="navbar-inner navbar-custom">
     <div class="container"><!-- Collapsable nav bar -->
 <div class="btn-group user-group btn-navbar" style="background : none; padding:0px 0px 0px 0px; margin:0px 40px 0px 0px;">
@@ -77,7 +77,7 @@ if(!isset($notifycount))
 
                                 <!--notification-->
                                 <a class="" id="notifycount" data-toggle="dropdown" href="#" title="<?php echo $notifycount; ?> new notifications">
-                                    <i class="icon-2x elusive-bell" style="opacity:1; margin:5px 15px 5px 5px;"></i>
+                                    <i class="icon-2x elusive-bell color-white" style="opacity:1; margin:5px 15px 5px 5px;"></i>
                                         <p id="notcountsingle" style="padding:2px 4px 2px 4px; margin:3px 0px 0px -17px ;" class="label"><?php echo $notifycount; ?> </p>
                                 </a>
 
