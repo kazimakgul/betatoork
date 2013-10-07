@@ -135,13 +135,13 @@
                     </div>
                     <div class='slider-browsers-w clearfix'>
                       <div class='slider-browser slider-browser-left hidden-phone' data-position-bottom='-8%'>
-                        <img alt="Browser-window-1" src="http://soziev.com/assets/theme_venera/photos/browser-window-2.png" />
+                        <img alt="Browser-window-1" src="img/images/browser-window1.png" />
                       </div>
                       <div class='slider-browser slider-browser-center' data-position-bottom='-9%'>
-                        <img alt="Browser-window-2" src="http://soziev.com/assets/theme_venera/photos/browser-window-1.png" />
+                        <img alt="Browser-window-2" src="img/images/browser-window.png" />
                       </div>
                       <div class='slider-browser slider-browser-right hidden-phone' data-position-bottom='-8%'>
-                        <img alt="Browser-window-3" src="http://soziev.com/assets/theme_venera/photos/browser-window-3.png" />
+                        <img alt="Browser-window-3" src="img/images/browser-window3.png" />
                       </div>
                     </div>
                   </div>
@@ -222,7 +222,7 @@
                           </span>
                         </a>
                       </div><i style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></i>
-                      <h5>NewsGround</h5>
+                      <h5>NewGrounds</h5>
                       <p>Newgrounds is an American entertainment and social media website and company. Here you will find latest news and games from newsground.com</p>
                     </div>
                   </div>
