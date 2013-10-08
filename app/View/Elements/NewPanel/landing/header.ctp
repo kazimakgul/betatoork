@@ -1,5 +1,6 @@
 <?php 
   $register=$this->Html->url(array( "controller" => "users","action" =>"register2"));
+  $login=$this->Html->url(array( "controller" => "users","action" =>"login3"));
   $index=$this->Html->url(array( "controller" => "games","action" =>"index"));
 ?>
             <header id='header'>
@@ -15,22 +16,7 @@
                     <div class='nav-collapse subnav-collapse collapse pull-right' id='top-navigation'>
                       <div class=''>
                         <a href="<?php echo $register; ?>" class="btn btn-success">Create Account</a>
-                        <a href="#" class="btn top-sign-in">Sign In</a>
-                        <div class='login-box'>
-                          <a class='close login-box-close' href='#'>&times;</a>
-                          <h4 class='login-box-head'>Login Form</h4>
-                          <div class='control-group'>
-                            <label>Username</label>
-                            <input class='span2' placeholder='Input username...' type='text'>
-                          </div>
-                          <div class='control-group'>
-                            <label>Password</label>
-                            <input class='span2' placeholder='Input password...' type='text'>
-                          </div>
-                          <div class='login-actions'>
-                            <button class='btn btn-primary'>Log Me In</button>
-                          </div>
-                        </div>
+                        <a href="<?php echo $login; ?>" class="btn">Sign In</a>
                       </div>
                     </div>
                   </div>

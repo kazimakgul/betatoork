@@ -316,6 +316,54 @@ public function activationmailsender($user_id=NULL){
 	}
 
 
+    public function login3() {
+    	$this->layout = 'landing';
+		
+		$this->set('title_for_layout', 'Toork - Login');
+		$this->set('description_for_layout', 'Login to Toork');	
+
+    	if($this->request->is('post')){
+    		if(empty($this->data['User']['username'])){
+    			$this->User->validationErrors['username'] = "Please enter your username";
+    		}
+    		if(empty($this->data['User']['password'])){
+    			$this->User->validationErrors['password'] = "Please enter your password";
+    		}
+		    else if ($this->Auth->login()) {
+			
+	
+				$results = $this->User->find('first',array('conditions'=>array('OR'=>array('User.email'=>$this->data['User']['username'],'User.username'=>$this->data['User']['username'])),array('fields'=>array('User.active'))));
+	  	        if ($results['User']['active'] == 0) {
+	  	        $this->Session->setFlash('Your account has not been activated yet! Please check your email to activate your account');
+	  	        $this->Auth->logout();
+	  	        $this->redirect('/');
+	  	
+                } else {
+				
+				     if($this->data['User']['remember']==1)
+					 {
+					 
+					  $cookie = array();
+                      $cookie['username'] = $this->request->data['User']['username'];
+                      $cookie['password'] = $this->request->data['User']['password'];
+                      $this->Cookie->write('User', $cookie, true, '+2 weeks');
+					 
+					 }
+ 	 			$this->redirect($this->Auth->loginRedirect);
+                //$this->redirect($this->Auth->redirect(array('controller' => 'games', 'action' => 'channel')));
+	  	
+                }
+				
+			
+		        
+		    } else {
+		        $this->Session->setFlash('Please enter a valid username and password');
+		        $this->redirect('/');
+		    }
+		}
+	}
+
+
 
 	public function logout() {
 	    $this->Cookie->delete('User');
