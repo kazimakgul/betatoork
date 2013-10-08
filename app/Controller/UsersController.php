@@ -439,6 +439,43 @@ function secureSuperGlobalPOST($value)
 		}
 	}
 
+	public function register2() {
+    	$this->layout = 'landing';
+		if ($this->request->is('post')) {
+		
+		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
+		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
+		
+		     //seousername begins
+		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
+		     //seousername ends
+		
+			$this->User->create();
+			if ($this->User->save($this->request->data)) {
+
+			/*	Bu blok direk calisiyor
+				
+				$this->Email->from  = 'root@toork.com';
+				$this->Email->to   = 'denemeli@faros.com.tr';
+				$this->Email->subject = 'deniyorum';
+				$this->Email->send('Hello message body!');
+				*/
+				$this->__sendActivationEmail($this->User->getLastInsertID());
+				$this->Session->setFlash('You are successfully registered. Please check your email to verify your account');
+				$this->redirect(array('controller' => 'games', 'action' => 'index'));
+			} else {
+				//$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$validationErrors = $this->User->invalidFields();
+				$value = key($validationErrors);
+    			$this->Session->setFlash($validationErrors[$value][0]);
+				$this->redirect(array('controller' => 'games', 'action' => 'index'));
+			}
+		}
+		$this->set('title_for_layout', 'Register for toork');
+		$this->set('description_for_layout', 'Create your toork account for free');
+
+	}
+
 
 /**
  * edit method

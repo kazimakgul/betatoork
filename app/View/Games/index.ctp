@@ -1,6 +1,4 @@
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-            <![endif]-->
+
 
                     <?php
                      echo $this->element('NewPanel/landing/header',array());
@@ -415,20 +413,8 @@
                   </div>
                 </div>
               </div>
-              <div class='deep-footer'>
-                <div class='container'>
-                  <div class='row'>
-                    <div class='span6'>
-                      <div class='copyright'>Copyright &copy; 2013 Toork. All rights reserved.</div>
-                    </div>
-                    <div class='span6'>
-                      
-                    <?php
-                     echo $this->element('NewPanel/landfooter',array());
-                    ?>
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+                <?php
+                 echo $this->element('NewPanel/landfooter',array());
+                ?>
             </footer>

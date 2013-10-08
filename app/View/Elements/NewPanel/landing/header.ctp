@@ -1,3 +1,7 @@
+<?php 
+  $register=$this->Html->url(array( "controller" => "users","action" =>"register2"));
+  $index=$this->Html->url(array( "controller" => "games","action" =>"index"));
+?>
             <header id='header'>
               <div class='navbar navbar-fixed-top'>
                 <div class='navbar-inner'>
@@ -7,19 +11,11 @@
                       <span class='icon-bar'></span>
                       <span class='icon-bar'></span>
                     </a>
-                    <a href="index.html" class="brand"></a><span>beta</span>
+                    <a href="<?php echo $index; ?>" class="brand"></a><span>beta</span>
                     <div class='nav-collapse subnav-collapse collapse pull-right' id='top-navigation'>
-                      <ul class='nav'>
-                        <li class='active'>
-                          <a href="index.html">Home</a>
-                        </li>
-                        <li class='dropdown'>
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog</a>
-                        </li>
-                      </ul>
-                      <div class='top-account-control visible-desktop'>
-                        <a href="features/pricing_tables.html" class="top-create-account">Create Account</a>
-                        <a href="#" class="top-sign-in">Sign In</a>
+                      <div class=''>
+                        <a href="<?php echo $register; ?>" class="btn btn-success">Create Account</a>
+                        <a href="#" class="btn top-sign-in">Sign In</a>
                         <div class='login-box'>
                           <a class='close login-box-close' href='#'>&times;</a>
                           <h4 class='login-box-head'>Login Form</h4>
