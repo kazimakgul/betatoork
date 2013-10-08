@@ -31,7 +31,7 @@
 	                            <div class="span12">
 	                              <div class="control-group">
 	                                <label>Channel Name</label>
-	                                <input class="span12" placeholder="At least 6 characters..." type="text">
+	                                <input style="height:40px;" class="span12" placeholder="At least 6 characters... Ex: Armorgames" type="text">
 	                              </div>
 	                            </div>
                             </div>
@@ -40,7 +40,7 @@
 	                            <div class="span12">
 	                              <div class="control-group">
 	                                <label>Email Address</label>
-	                                <input class="span12" placeholder="Needs for activation and notifications..." type="email">
+	                                <input style="height:40px;" class="span12" placeholder="Needs for activation and notifications..." type="email">
 	                              </div>
 	                            </div>
                             </div> 
@@ -48,7 +48,7 @@
 	                            <div class="span12">
 	                              <div class="control-group">
 	                                <label>Password</label>
-	                                <input class="span12" placeholder="At least 6 characters..." type="password">
+	                                <input style="height:40px;" class="span12" placeholder="At least 6 characters..." type="password">
 	                              </div>
 	                            </div>
                             </div>                                         
