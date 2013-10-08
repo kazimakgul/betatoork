@@ -34,7 +34,7 @@
     <div class="span6">
 
                           	<div class="row-fluid">
-	                            <div class="span12">
+	                            <div class="span11">
 	                              <div class="control-group">
 	                                <label>Channel Name</label>
 	                                <input style="height:40px;" class="span12" placeholder="At least 6 characters... Ex: Armorgames" type="text">
@@ -43,7 +43,7 @@
                             </div>
 
                            	<div class="row-fluid">
-	                            <div class="span12">
+	                            <div class="span11">
 	                              <div class="control-group">
 	                                <label>Email Address</label>
 	                                <input style="height:40px;" class="span12" placeholder="Needs for activation and notifications..." type="email">
@@ -51,7 +51,7 @@
 	                            </div>
                             </div> 
                            	<div class="row-fluid">
-	                            <div class="span12">
+	                            <div class="span11">
 	                              <div class="control-group">
 	                                <label>Password</label>
 	                                <input style="height:40px;" class="span12" placeholder="At least 6 characters..." type="password">

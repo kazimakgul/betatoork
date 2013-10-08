@@ -64,17 +64,16 @@
                                 </label>                                
                                   <button class="btn btn-success pull-right" name="button" type="submit">Sign In Now</button>
                               </div>
-                            </div><a href="#">Forgot password?</a>
+                            </div>
                           </fieldset>
                         </form>
+                          <p><a href="#modal-recover" class="link" data-toggle="modal">Forgot password?</a></p>
+                          <?php  echo $this->element('NewPanel/passwordModal'); ?>
                       </div>
                     </div>
                   </div>
                 </div>
               </section>
-
-
-
 
                 <?php
                  echo $this->element('NewPanel/landfooter',array());

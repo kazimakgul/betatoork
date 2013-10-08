@@ -87,10 +87,10 @@ if(!isset($notifycount))
                             </div>
                        
                     </div>
-          <li class="divider-vertical"></li>
+          
 
           <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="margin:0px; padding:0px;">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="margin-left:5px; padding:0px;">
               <div class="pull-left btn btn-custom-darken"> <i class="icofont-comments"></i> Post <strong class="caret"></strong></div>
             </a>
             <div class="dropdown-menu dropdown-user color-red" role="menu" style="padding:5px; padding-bottom: 5px;">
@@ -140,7 +140,7 @@ if(!isset($notifycount))
             </div>
           </li>
 
-          <li class="divider-vertical"></li>
+          <li style="margin:5px;"></li>
 <! Main User Card starts ->
 <div class="btn-group user-group"><strong></strong>
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
