@@ -138,7 +138,7 @@ if($this->Session->check('Auth.User')){
 echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall,'settings'=>$settings,'bestchannels'=>$bestchannels,'explore'=>$explore,'toprated'=>$toprated,'newgames'=>$newgames,'password'=>$password)); 
 
 }else{
-    echo $this->element('NewPanel/unauthLeft',array('index'=>$index,'bestchannels'=>$bestchannels,'toprated'=>$toprated));
+    echo $this->element('NewPanel/unauthLeft',array('index'=>$index,'featuredchannels'=>$featuredchannels,'bestchannels'=>$bestchannels,'toprated'=>$toprated,'explore'=>$explore));
 }
 
 ?>
