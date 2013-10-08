@@ -62,8 +62,11 @@ $userid=$user['User']['id'];
                     <li class="active"><a data-toggle="tab" href="#new-feeds"><i class="elusive-bullhorn color-gold"></i> Game Activities</a></li>
                     <!--/tab menus-->
                 </ul>
-
-                <?php echo $this->element('NewPanel/load_my_tag_activity');?>
+<?php if(isset($tagActivities)) { ?>
+<?php echo $this->element('NewPanel/load_my_tag_activity');?>
+<?php }else{ ?>
+Bu bir oyun degil ise bu alana birseyler gelecek
+<?php } ?>
 
             </div>
 
