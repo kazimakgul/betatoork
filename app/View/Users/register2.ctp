@@ -57,20 +57,28 @@
     <div class="span6 white-card">
     						<h5 class="text-center">Simply connect with your social account</h5>
 
-                           	<div class="row-fluid">
+
+                            <div class="row-fluid">
 	                            <div class="span12">
 	                              <div class="control-group">
-	                                <a class="btn btn-block span12" style="height:40px; margin-bottom:20px;" type="button"><i class="icon-facebook-sign color-blue" ></i> Connect With Facebook</a>
+	                                <a class="btn btn-block span12" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-facebook-sign"></h3> SignUp With Facebook</a>
 	                              </div>
 	                            </div>
                             </div>   
                            	<div class="row-fluid">
 	                            <div class="span12">
 	                              <div class="control-group">
-	                                <a class="btn btn-block span12" style="height:40px;" type="button"><i class="icon-google-plus-sign" ></i> Connect With Google+</a>
+	                                <a class="btn btn-block span12" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-twitter-sign" ></h3> SignUp With Twitter</a>
 	                              </div>
 	                            </div>
-                            </div> 
+                            </div>                            
+                           	<div class="row-fluid">
+	                            <div class="span12">
+	                              <div class="control-group">
+	                                <a class="btn btn-block span12" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-google-plus-sign" ></h3> SignUp With Google+</a>
+	                              </div>
+	                            </div>
+                            </div>   
 
     </div>
   </div>
