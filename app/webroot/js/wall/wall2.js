@@ -1057,7 +1057,6 @@ return false;
 
 $('.more_hash_feed').live("click",function() 
 {
-alert(morehashvar);
 var ID = $(this).attr("id");
 if(ID)
 {

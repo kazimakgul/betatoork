@@ -5,11 +5,12 @@ $lastid=0;
 
 if(!isset($type))
 $type=NULL;
-$keyword="#zokor";
+$keyword="#island";
 if(isset($keyword))
 {   
 	$updatesarray=$Wall->Updates_hashtag($keyword,$lastid,$type);
-	$total=$Wall->Total_hashtag($profile_uid);;
+	$total=$Wall->Total_hashtag($keyword);
+	//echo 'our total is:'.$total;
 }
 else
 {
