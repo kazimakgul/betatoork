@@ -81,7 +81,7 @@ $userid=$user['User']['id'];
                                             </div>
                                             <ul style="background-color:white; padding:10px; margin:0px;" class="shadow well nav nav-pills">
                                                 <!--tab menus-->
-                                                <li class="active"><a data-toggle="tab" href="#new-feeds">#Angrybirds</a></li>
+                                                <li class="active"><a data-toggle="tab" href="#new-feeds">#<?php echo $hashtag; ?></a></li>
 												<!--/tab menus-->
                                             </ul>
                                         </div>
