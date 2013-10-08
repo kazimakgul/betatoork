@@ -21,6 +21,10 @@
         <meta property="fb:admins" content="711440119"/>
         <meta property="og:description" content= "<?php echo $description_for_layout?>" />
 
+        <?php 
+        echo $this->Html->meta('keywords','create game channel,share games, social network for gamers, game channels, social for game bloggers,share your games');
+        ?>
+
 
         <!-- For third-generation iPad with high-resolution Retina display: -->
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mobilePics/144.png">
@@ -33,13 +37,20 @@
 
 
 
-    <?php echo $this->Html->css(array('assets/css/theme_venera')); ?>
+    <?php echo $this->Html->css(array('assets/css/toork_lander')); ?>
 
   <link href="http://fonts.googleapis.com/css?family=Abel:400|Oswald:300,400,700" media="all" rel="stylesheet" type="text/css" />
 </head>
     <body>
+    
+    <?php  echo $this->element('analytics'); ?>
+    
+    <?php echo $content_for_layout; ?>
 
-    <?php echo $content_for_layout?>
+    <?php 
+    echo $this->Session->flash('flash', array('element' => 'info'));
+    echo $this->Session->flash('auth', array('element' => 'info'));
+    ?>  
 
     <?php echo $this->Html->script(array('assets/jquery-1.10.1.min','assets/bootstrap','assets/prettify','assets/lightbox','assets/main')); ?>
 

@@ -1,5 +1,5 @@
         <!-- section header -->
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top shadow-black">
   <div class="navbar-inner">
     <div class="container"><!-- Collapsable nav bar -->
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
