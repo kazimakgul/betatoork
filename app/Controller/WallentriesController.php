@@ -1191,7 +1191,7 @@ error_reporting(0);
    $this->mention($update,$msg_id);
    $this->hashtag($update,$msg_id);
    $orimessage=$data['message'];
-   $message=tolink(htmlcode($data['message']));
+   $message=tolink(htmlcode($data['message']),Router::url('/', true));
    $time=$data['created'];
    $mtime=date("c", $time);
    $uid=$data['uid_fk'];
