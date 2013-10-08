@@ -1,6 +1,12 @@
-                <?php
-                 echo $this->element('NewPanel/landing/header',array());
-                ?>
+
+
+<?php
+	$terms=$this->Html->url(array( "controller" => "pages","action" =>"terms"));
+	$privacy=$this->Html->url(array( "controller" => "pages","action" =>"privacy"));
+	
+	echo $this->element('NewPanel/landing/header',array());
+                
+?>
 
 
 			<section class="section-wrapper create-account-page-w">
@@ -88,7 +94,7 @@
                             <div class="row-fluid">
                               <div class="span12">
                                 <div class="form-actions no-margin-bottom">
-                                  <button style="margin-left:20px;" class="btn btn-success btn-large" name="button" type="submit">+ Join Toork Now</button><span class="offset2">by joinin toork.com you agree to our terms and privacy policies.</span>
+                                  <button style="margin-left:20px;" class="btn btn-success btn-large" name="button" type="submit">+ Join Toork Now</button><span class="offset2"><i class="icon-check"></i> By joinin toork.com you agree to our <a href="<?php echo $terms; ?>">terms</a> and <a href="<?php echo $privacy; ?>">privacy</a> policies.</span>
                                 </div>
                               </div>
                             </div>
