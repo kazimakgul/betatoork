@@ -24,7 +24,7 @@ $userid=$user['User']['id'];
             <a href="<?php echo $channelurl; ?>">
             <?php echo $channelimage; ?>
             </a>
-            <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;">#<?php echo $hashtagTitle; ?></h4>
+            <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;">#<?php echo $hashtag; ?></h4>
         </div>
 
     </div>

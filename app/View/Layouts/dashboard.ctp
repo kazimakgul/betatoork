@@ -199,6 +199,7 @@ else
     }
 } ?>';
 
+morehashvar='<?php if(isset($hashtag)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax3',$hashtag,$type)); } ?>';
 
 commentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'comment_ajax2')); ?>';
 delmessagevar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_message_ajax')); ?>';

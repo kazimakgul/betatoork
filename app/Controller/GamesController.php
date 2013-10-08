@@ -1128,7 +1128,7 @@ public function hashtag() {
 	$this->set('userid', $authid);
 	$this->set('user', $user);
 	
-	$this->set('hashtagTitle', $hashtag);
+	$this->set('hashtag', $hashtag);
 
 	$this->set_suggested_channels();	
 	$this->set('title_for_layout', $hashtag.' Game Channel - Toork');

@@ -1053,6 +1053,34 @@ $("#more").html('The End');// no results
 return false;
 });
 
+// Load More Hashtag Feed
+
+$('.more_hash_feed').live("click",function() 
+{
+alert(morehashvar);
+var ID = $(this).attr("id");
+if(ID)
+{
+$.ajax({
+type: "POST",
+url: morehashvar,
+data: "lastid="+ ID, 
+cache: false,
+beforeSend: function(){ $("#more"+ID).html('<img src="http://appvidyo.com/images/ajax-preloader.gif" />'); },
+success: function(html){
+$("#content2").append(html);
+$("#more"+ID).remove();
+}
+});
+}
+else
+{
+$("#more").html('The End');// no results
+}
+
+return false;
+});
+
 // Load More2 dedicated for my feeds
 
 $('.my_more').live("click",function() 

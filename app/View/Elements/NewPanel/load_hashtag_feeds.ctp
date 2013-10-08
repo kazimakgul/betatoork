@@ -5,11 +5,11 @@ $lastid=0;
 
 if(!isset($type))
 $type=NULL;
-
-if(isset($profile_uid))
-{
-	$updatesarray=$Wall->Updates($profile_uid,$lastid,$type);
-	$total=$Wall->Total_Updates($profile_uid);
+$keyword="#zokor";
+if(isset($keyword))
+{   
+	$updatesarray=$Wall->Updates_hashtag($keyword,$lastid,$type);
+	$total=$Wall->Total_hashtag($profile_uid);;
 }
 else
 {
@@ -265,7 +265,7 @@ echo "</div>";
   ?>
  <!-- More Button here $msg_id values is a last message id value. -->
 <div class="media well shadow" style="background-color:white; margin:0px; padding:10px;" id="more<?php echo $msg_id; ?>">
-<a href="#" class="btn btn-small btn-link more" id="<?php echo $msg_id; ?>"> <i class="elusive-refresh"></i> View More Posts</a>
+<a href="#" class="btn btn-small btn-link more_hash_feed" id="<?php echo $msg_id; ?>"> <i class="elusive-refresh"></i> View More Posts</a>
 </div>
 
 <?php } ?>
