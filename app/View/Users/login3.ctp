@@ -59,9 +59,12 @@
 
                             <div class="row-fluid">
                               <div class="span12">
-                                  <button class="btn btn-success btn-large pull-right" name="button" type="submit">Sign In Now</button>
+                                <label class="span6 checkbox">
+                                   <input checked type="checkbox"> Remember me
+                                </label>                                
+                                  <button class="btn btn-success pull-right" name="button" type="submit">Sign In Now</button>
                               </div>
-                            </div>
+                            </div><a href="#">Forgot password?</a>
                           </fieldset>
                         </form>
                       </div>

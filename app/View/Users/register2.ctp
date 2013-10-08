@@ -18,7 +18,7 @@
                           <div class="row-fluid">
                             <div class="span12">
                               <div class="form-side-info">
-                                <p>We are glad to see you on this page. Please be patient and Enjoy Toork.</p>
+                                <p>Get ready to follow thousands of channels and players.</p>
                               </div>
                             </div>
                           </div>
@@ -88,7 +88,7 @@
                             <div class="row-fluid">
                               <div class="span12">
                                 <div class="form-actions no-margin-bottom">
-                                  <button style="margin-left:20px;" class="btn btn-success btn-large" name="button" type="submit">+ Join Toork Now</button>
+                                  <button style="margin-left:20px;" class="btn btn-success btn-large" name="button" type="submit">+ Join Toork Now</button><span class="offset2">by joinin toork.com you agree to our terms and privacy policies.</span>
                                 </div>
                               </div>
                             </div>
