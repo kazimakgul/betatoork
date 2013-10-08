@@ -12,7 +12,7 @@
                         <fieldset>
                           <div class="row-fluid">
                             <div class="span12">
-                              <h1 class="form-header">Create Your Channel</h1>
+                              <h1 class="form-header"><i class="icon-plus"></i> Create Your Channel</h1>
                             </div>
                           </div>
                           <div class="row-fluid">
@@ -51,15 +51,7 @@
 	                                <input class="span12" placeholder="At least 6 characters..." type="password">
 	                              </div>
 	                            </div>
-                            </div>   
-                           	<div class="row-fluid">
-	                            <div class="span12">
-	                              <div class="control-group">
-	                                <label>Confirm Password</label>
-	                                <input class="span12" placeholder="Same as above..." type="password">
-	                              </div>
-	                            </div>
-                            </div>                                            
+                            </div>                                         
 
     </div>
     <div class="span6 white-card">
@@ -75,7 +67,6 @@
                            	<div class="row-fluid">
 	                            <div class="span12">
 	                              <div class="control-group">
-	                                
 	                                <a class="btn btn-block span12" style="height:40px;" type="button"><i class="icon-google-plus-sign" ></i> Connect With Google+</a>
 	                              </div>
 	                            </div>
