@@ -5,12 +5,12 @@ $lastid=0;
 
 if(!isset($type))
 $type=NULL;
-$keyword="#island";
+$keyword="#".$hashtag;
 if(isset($keyword))
 {   
 	$updatesarray=$Wall->Updates_hashtag($keyword,$lastid,$type);
 	$total=$Wall->Total_hashtag($keyword);
-	//echo 'our total is:'.$total;
+	echo 'our total is:'.$total;
 }
 else
 {
