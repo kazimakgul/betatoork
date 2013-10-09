@@ -108,8 +108,10 @@ else{
                 <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="<?php echo $hashtaglink; ?>">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
         </div>
 
-<?php if(isset($tagActivities)) { ?>
+<?php if($tagActivities!=NULL) { ?>
 <?php echo $this->element('NewPanel/load_game_activity');?>
+<?php }else{ ?>
+There no any activity!
 <?php } ?>
 
 </div>

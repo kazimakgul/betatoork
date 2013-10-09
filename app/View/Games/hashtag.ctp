@@ -81,7 +81,11 @@ else{
                     <!--/tab menus-->
                 </ul>
 <?php if(isset($tagActivities)) { ?>
+   <?php if($tagActivities!=NULL) { ?>
 <?php echo $this->element('NewPanel/load_my_tag_activity');?>
+   <?php }else{ ?>
+   Bu bir oyun ama activity yok
+   <?php } ?>
 <?php }else{ ?>
 Bu bir oyun degil ise bu alana birseyler gelecek
 <?php } ?>

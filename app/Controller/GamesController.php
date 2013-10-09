@@ -1870,7 +1870,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 		
 		//=====Get Game Specified Activity=======
-		$limit=20;
+		$limit=4;
 		$activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username'  )),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username',  'ChannelUser.seo_username'))),'fields'=>array('Activity.id','Activity.performer_id','Activity.game_id','Activity.channel_id','Activity.msg_id','Activity.seen','Activity.notify','Activity.email','Activity.type','Activity.replied','Activity.created','PerformerUser.id','PerformerUser.username','PerformerUser.seo_username','ChannelUser.id','ChannelUser.username','ChannelUser.seo_username','Game.id','Game.name','Game.seo_url','Game.embed'),'conditions'=>array('Activity.game_id'=>$gameid),'limit'=>$limit,'order'=>'Activity.created DESC'));
   $this->set('tagActivities',$activityData);
 		//=====//Get Game Specified Activity=======
