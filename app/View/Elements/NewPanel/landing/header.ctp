@@ -1,8 +1,4 @@
-<?php 
-  $register=$this->Html->url(array( "controller" => "users","action" =>"register2"));
-  $login=$this->Html->url(array( "controller" => "users","action" =>"login3"));
-  $index=$this->Html->url(array( "controller" => "games","action" =>"index"));
-?>
+
             <header id='header'>
               <div class='navbar navbar-fixed-top'>
                 <div class='navbar-inner'>

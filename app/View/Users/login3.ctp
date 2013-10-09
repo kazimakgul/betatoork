@@ -1,7 +1,3 @@
-                <?php
-                 echo $this->element('NewPanel/landing/header',array());
-                ?>
-
 
 			<section class="section-wrapper create-account-page-w">
               <div class="container">
@@ -74,7 +70,3 @@
                   </div>
                 </div>
               </section>
-
-                <?php
-                 echo $this->element('NewPanel/landfooter',array());
-                ?>

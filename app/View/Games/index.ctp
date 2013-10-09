@@ -1,8 +1,13 @@
 
 
-                    <?php
-                     echo $this->element('NewPanel/landing/header',array());
-                    ?>
+        <?php
+          $login=$this->Html->url(array( "controller" => "users","action" =>"login3"));
+
+          $miniclip=$this->Html->url(array( "controller" => 'miniclip',"action" =>''));
+          $newgrounds=$this->Html->url(array( "controller" => 'newgrounds',"action" =>'')); 
+          $armorgames=$this->Html->url(array( "controller" => 'armorgames',"action" =>'')); 
+          $kongregate=$this->Html->url(array( "controller" => 'kongregate',"action" =>''));  
+        ?>
 
             <div class='carousel slide over-something' id='homepage-carousel'>
               <div class='carousel-inner slider-w'>
@@ -96,12 +101,12 @@
                   <div class='span3'>
                     <div class='white-card'>
                       <div class="img-w hover-fader">
-                        <a href="http://toork.com/newgrounds"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/10.jpg">
+                        <a href="<?php echo $newgrounds; ?>"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/10.jpg">
                           <span class="hover-fade">
                             <i class="icon-upload"></i>
                           </span>
                         </a>
-                      </div><i style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></i>
+                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></a>
                       <h5>NewGrounds</h5>
                       <p>Newgrounds is an American entertainment and social media website and company. Here you will find latest news and games from newsground.com</p>
                     </div>
@@ -109,12 +114,12 @@
                   <div class='span3'>
                     <div class='white-card'>
                       <div class="img-w hover-fader">
-                        <a href="http://toork.com/miniclip"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/11.jpg">
+                        <a href="<?php echo $miniclip; ?>"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/11.jpg">
                           <span class="hover-fade">
                             <i class="icon-upload"></i>
                           </span>
                         </a>
-                      </div><i style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></i>
+                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></a>
                       <h5>MiniClip</h5>
                       <p>Miniclip is a mobile and online games company which includes the website Miniclip.com. Here you will find latest news and games from miniclip.</p>
                     </div>
@@ -122,12 +127,12 @@
                   <div class='span3'>
                     <div class='white-card'>
                       <div class="img-w hover-fader">
-                        <a href="http://toork.com/armorgames"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/12.jpg">
+                        <a href="<?php echo $armorgames; ?>"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/12.jpg">
                           <span class="hover-fade">
                             <i class="icon-upload"></i>
                           </span>
                         </a>
-                      </div><i style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></i>
+                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></a>
                       <h5>ArmorGames</h5>
                       <p>Armor Games, formerly Games Of Gondor, is a website, that hosts free Flash-based browser games. Here you will find latest news and games.</p>
                     </div>
@@ -135,12 +140,12 @@
                   <div class='span3'>
                     <div class='white-card'>
                       <div class="img-w hover-fader">
-                        <a href="http://toork.com/kongregate"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/13.jpg">
+                        <a href="<?php echo $kongregate; ?>"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/13.jpg">
                           <span class="hover-fade">
                             <i class="icon-upload"></i>
                           </span>
                         </a>
-                      </div><i style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></i>
+                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></a>
                       <h5>KongreGate</h5>
                       <p>Kongregate is an online games hosting website, which allows users to upload user-created Adobe Flash, HTML 5/JavaScript, Shockwave, Java or Unity3D games.</p>
                     </div>
@@ -427,7 +432,4 @@
                 </div>
               </div>
 
-                <?php
-                 echo $this->element('NewPanel/landfooter',array());
-                ?>
             </footer>

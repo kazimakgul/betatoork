@@ -42,10 +42,18 @@
   <link href="http://fonts.googleapis.com/css?family=Abel:400|Oswald:300,400,700" media="all" rel="stylesheet" type="text/css" />
 </head>
     <body>
-    
+    <?php
+        $register=$this->Html->url(array( "controller" => "users","action" =>"register2"));
+        $login=$this->Html->url(array( "controller" => "users","action" =>"login3"));
+        $index=$this->Html->url(array( "controller" => "games","action" =>"index"));
+    ?>
+
+    <?php  echo $this->element('NewPanel/landing/header',array('register'=>$register,'login'=>$login,'index'=>$index)); ?>
     <?php  echo $this->element('analytics'); ?>
     
     <?php echo $content_for_layout; ?>
+
+    <?php echo $this->element('NewPanel/landfooter',array()); ?>
 
     <?php 
     echo $this->Session->flash('flash', array('element' => 'info'));

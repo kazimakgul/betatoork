@@ -3,9 +3,7 @@
 <?php
 	$terms=$this->Html->url(array( "controller" => "pages","action" =>"terms"));
 	$privacy=$this->Html->url(array( "controller" => "pages","action" =>"privacy"));
-	
-	echo $this->element('NewPanel/landing/header',array());
-                
+	              
 ?>
 
 
@@ -133,10 +131,3 @@
                   </div>
                 </div>
               </section>
-
-
-
-
-                <?php
-                 echo $this->element('NewPanel/landfooter',array());
-                ?>
