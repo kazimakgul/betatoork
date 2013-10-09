@@ -78,10 +78,25 @@ function imgError(image,style){
 
 
 </script>
-		
+
+<!-- Browser Loading Bar JS-->
+<?php echo $this->Html->script(array('nprogress/jquery-2.0','nprogress/nprogress')); ?>
+
     </head>
 
     <body>
+  <script>
+    $('body').show();
+    $('.version').text(NProgress.version);
+    NProgress.start();
+    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+
+    $("#b-40").click(function() { NProgress.set(0.4); });
+    $("#b-inc").click(function() { NProgress.inc(); });
+    $("#b-100").click(function() { NProgress.done(); });
+  </script>
+<!-- Browser Loading Bar JS-->
+  
 <?php  echo $this->element('analytics'); ?>
 
 <?php
@@ -146,8 +161,17 @@ echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'
 <?php
  echo $this->element('NewPanel/loginModal',array('index'=>$index));
 ?>
-                
+
+  <script>
+NProgress.set(0.2);
+  </script>
+
 <?php echo $content_for_layout?>
+
+  <script>
+NProgress.set(0.6);
+  </script>
+
 <?php 
 echo $this->Session->flash('flash', array('element' => 'info'));
 echo $this->Session->flash('auth', array('element' => 'info'));
@@ -155,6 +179,9 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 
 <?php  echo $this->element('NewPanel/rightpanel',array('bestchannels'=>$bestchannels,'wall'=>$wall)); ?>
 
+  <script>
+NProgress.set(0.8);
+  </script>
 
             </div>
         </section>
@@ -172,18 +199,8 @@ echo $this->Session->flash('auth', array('element' => 'info'));
 
 
 
-<?php echo $this->Html->script(array('introjs/intro','js2/jquery','js2/jquery-ui.min','js2/bootstrap','js2/uniform/jquery.uniform','js2/peity/jquery.peity','js2/select2/select2','js2/knob/jquery.knob','js2/flot/jquery.flot','js2/flot/jquery.flot.resize','js2/flot/jquery.flot.categories','js2/wysihtml5/wysihtml5-0.3.0','js2/wysihtml5/bootstrap-wysihtml5','js2/calendar/fullcalendar','js2/holder','js2/stilearn-base','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','js2/datepicker/bootstrap-datepicker','js2/colorpicker/bootstrap-colorpicker','js2/validate/jquery.validate','js2/validate/jquery.metadata','js2/wizard/jquery.ui.widget','js2/wizard/jquery.wizard','js2/responsive-tables/responsive-tables','wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall2','register','js2/jquery.fitvids','jasny-bootstrap/js/jasny-bootstrap','nprogress/nprogress')); ?>
+<?php echo $this->Html->script(array('introjs/intro','js2/jquery','js2/jquery-ui.min','js2/bootstrap','js2/uniform/jquery.uniform','js2/peity/jquery.peity','js2/select2/select2','js2/knob/jquery.knob','js2/flot/jquery.flot','js2/flot/jquery.flot.resize','js2/flot/jquery.flot.categories','js2/wysihtml5/wysihtml5-0.3.0','js2/wysihtml5/bootstrap-wysihtml5','js2/calendar/fullcalendar','js2/holder','js2/stilearn-base','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','js2/datepicker/bootstrap-datepicker','js2/colorpicker/bootstrap-colorpicker','js2/validate/jquery.validate','js2/validate/jquery.metadata','js2/wizard/jquery.ui.widget','js2/wizard/jquery.wizard','js2/responsive-tables/responsive-tables','wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall2','register','js2/jquery.fitvids','jasny-bootstrap/js/jasny-bootstrap')); ?>
 
-<!-- Browser Loading Bar JS-->
-  <script>
-    NProgress.start();
-    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
-
-    $("#b-0").click(function() { NProgress.start(); });
-    $("#b-40").click(function() { NProgress.set(0.4); });
-    $("#b-inc").click(function() { NProgress.inc(); });
-    $("#b-100").click(function() { NProgress.done(); });
-  </script>
 
 
 <!-- Js variable for wallscript begins-->
@@ -417,6 +434,10 @@ $('#imageinfo').popover();
       
         </script>
    
+  <script>
+ NProgress.done();
+  </script>
+
    <?php if(isset($welcome))
    echo '<script>$("#modal-tutorial").modal("show");</script>';
    ?>

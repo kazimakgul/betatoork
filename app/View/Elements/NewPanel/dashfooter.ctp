@@ -8,7 +8,7 @@ $advertise=$this->Html->url(array( "controller" => "pages","action" =>"advertise
 $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
 ?>
 
-<div id='b-inc' class="well well-small" style="opacity:0.6; margin:0px 0px 0px 0px; text-align: center ;">
+<div class="well well-small" style="opacity:0.6; margin:0px 0px 0px 0px; text-align: center ;">
 
 <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ftoork.com&amp;width=450&amp;height=21&amp;colorscheme=light&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;send=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
     
@@ -52,6 +52,6 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
         </li>
     </ul>
 
-<p id='b-100'><small><strong>Toork</strong> © Copyright 2013. All Rights Reserved</small></p>
+<p><small><strong>Toork</strong> © Copyright 2013. All Rights Reserved</small></p>
 
 </div>
