@@ -25,6 +25,12 @@ $userid=$user['User']['id'];
             <?php echo $channelimage; ?>
             </a>
             <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;">#<?php echo $hashtag; ?></h4>
+
+<?php if(isset($tagActivities)) { ?>
+    <a class="btn btn-block btn-success"><i class="elusive-play-alt"></i> Play Game</a>
+<?php }else{ ?>
+
+<?php } ?>            
         </div>
 
     </div>
