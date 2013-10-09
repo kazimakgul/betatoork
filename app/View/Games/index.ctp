@@ -328,6 +328,19 @@
               </div>
             </section>
 
+            <section class='section-wrapper'>
+              <div class='container'>
+                
+                  <h3 class="section-header">Join Professionals For Free</h3>
+                  <div>
+                    <a href="#" class="btn btn-success btn-large"><i class="icon-plus"></i> Join Toork Now</a>
+                    <a href="#" class="btn btn-cta btn-large"><i class="icon-compass"></i> Explore Toork</a>
+                  </div>
+
+              </div>
+            </section>
+
+
             <footer>
               <div class='pre-footer'>
                 <div class='container'>
