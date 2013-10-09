@@ -2,11 +2,20 @@
 
         <?php
           $login=$this->Html->url(array( "controller" => "users","action" =>"login3"));
+          $register=$this->Html->url(array( "controller" => "users","action" =>"register2"));
+          $explore=$this->Html->url(array( "controller" => "games","action" =>"explore"));
 
           $miniclip=$this->Html->url(array( "controller" => 'miniclip',"action" =>''));
           $newgrounds=$this->Html->url(array( "controller" => 'newgrounds',"action" =>'')); 
           $armorgames=$this->Html->url(array( "controller" => 'armorgames',"action" =>'')); 
-          $kongregate=$this->Html->url(array( "controller" => 'kongregate',"action" =>''));  
+          $kongregate=$this->Html->url(array( "controller" => 'kongregate',"action" =>''));
+          $zyngagames=$this->Html->url(array( "controller" => 'zyngagames',"action" =>''));
+          $eagames=$this->Html->url(array( "controller" => 'eagames',"action" =>''));
+          $popcap=$this->Html->url(array( "controller" => 'popcap',"action" =>''));
+          $woogagames=$this->Html->url(array( "controller" => 'woogagames',"action" =>''));
+          $kinggames=$this->Html->url(array( "controller" => 'kinggames',"action" =>''));
+          $playdom=$this->Html->url(array( "controller" => 'playdom',"action" =>''));
+
         ?>
 
             <div class='carousel slide over-something' id='homepage-carousel'>
@@ -301,32 +310,32 @@
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/30.jpg" />
+                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/30.jpg" /></a>
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-2" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/31.jpg" />
+                      <a href="<?php echo $popcap; ?>"><img alt="Client-2" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/31.jpg" /></a>
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-3" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/32.jpg" />
+                      <a href="<?php echo $eagames; ?>"><img alt="Client-3" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/32.jpg" /></a>
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-4" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/33.jpg" />
+                      <a href="<?php echo $woogagames; ?>"><img alt="Client-4" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/33.jpg" /></a>
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-5" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/34.jpg" />
+                      <a href="<?php echo $kinggames; ?>"><img alt="Client-5" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/34.jpg" /></a>
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-6" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/35.jpg" />
+                      <a href="<?php echo $playdom; ?>"><img alt="Client-6" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/35.jpg" /></a>
                     </div>
                   </div>
                 </div>
@@ -338,8 +347,8 @@
                 
                   <h3 class="section-header">Join Professionals For Free</h3>
                   <div>
-                    <a href="#" class="btn btn-success btn-large"><i class="icon-plus"></i> Join Toork Now</a>
-                    <a href="#" class="btn btn-cta btn-large"><i class="icon-compass"></i> Explore Toork</a>
+                    <a href="<?php echo $register; ?>" class="btn btn-success btn-large"><i class="icon-plus"></i> Join Toork Now</a>
+                    <a href="<?php echo $explore; ?>" class="btn btn-cta btn-large"><i class="icon-compass"></i> Explore Toork</a>
                   </div>
 
               </div>
