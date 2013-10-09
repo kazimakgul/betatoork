@@ -2,7 +2,7 @@
 $gamename = $game['Game']['name'];
 $description = $game['Game']['description'];
 $username = $game['User']['seo_username'];
-$hashtaglink=$this->Html->url(array("controller" => "games","action" =>"hashtag"));
+$hashtaglink=$this->Html->url(array("controller" => "games","action" =>"hashtag",$game['Game']['seo_url']));
 if($username !=NULL)
 {
   $profilepublic=$this->Html->url(array( "controller" => h($username ),"action" =>'')); 
@@ -31,7 +31,7 @@ else{
 
 <!-- Game Unit -->
 <div style="padding:5px; background-color:white;" class="shadow well">
-<h6 class="media-heading" style="margin-left:9px;" ><span class="btn-link label label-important"><a href="#">#<?php echo $gamename; ?></a></span> : <?php echo $description; ?> </h6>
+<h6 class="media-heading" style="margin-left:9px;" ><span class="btn-link label label-important"><a href="<?php echo $hashtaglink; ?>">#<?php echo $gamename; ?></a></span> : <?php echo $description; ?> </h6>
 </div>
 <div class="well" style="padding:5px;">
 
@@ -105,7 +105,7 @@ else{
 
 
         <div style="padding:5px; background-color:white;" class="span5 shadow well">
-                <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="<?php echo $hashtaglink.'/'.$game['Game']['seo_url']; ?>">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
+                <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="<?php echo $hashtaglink; ?>">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
         </div>
 
         <div style="padding:10px; background-color:white;" class="span5 shadow well">
