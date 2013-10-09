@@ -21,7 +21,7 @@
                             <li> <!--always define class .first for first-child of li element sidebar left-->
                                 <a href="<?php echo $featuredchannels; ?>" title="what is toork">
                                     <div class="helper-font-24">
-                                        <i class="elusive-user"></i>
+                                        <i class="elusive-star-alt"></i>
                                     </div>
                                     <span class="sidebar-text">Featured</span>
                                 </a>

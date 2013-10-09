@@ -1,6 +1,6 @@
         <!-- section header -->
 <div class="navbar navbar-fixed-top shadow-black">
-  <div class="navbar-inner">
+  <div class="navbar-inner navbar-custom">
     <div class="container"><!-- Collapsable nav bar -->
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
         <span class="icon-bar"></span>
@@ -19,29 +19,13 @@
       <!-- Start of the nav bar content -->
       <div class="nav-collapse"><!-- Other nav bar content -->
         <!-- The drop down menu -->
-        <ul class="nav pull-right">
+        <ul class="nav span3 pull-right">
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="elusive-compass"></i> Explore <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="<?php echo $featuredchannels; ?>"><i class="elusive-star-alt color-gold"></i> Featured Channels</a></li>
-                    <li><a href="<?php echo $bestchannels; ?>"><i class="elusive-user color-blue"></i> Best Channels</a></li>
-                    <li><a href="<?php echo $toprated; ?>"><i class="elusive-fire color-red"></i> Hot Games</a></li>
-                    <!-- <li><a href="#"><i class="elusive-eye-open color-green"></i> New Games</a></li> -->
-                    <li class="divider"></li>
-                    <li><a href="<?php echo $index; ?>"><i class="elusive-idea color-blue"></i> Why Join Toork</a></li>
-                </ul>
-            </li>
-          <li class="divider-vertical"></li>
-          <li><a href="<?php echo $index; ?>">Sign Up</a></li>
-          <li class="divider-vertical"></li>
+          <a class="btn btn-success" href="<?php echo $index; ?>"><i class="elusive-edit"></i> Sign Up</a>
           <li>
-
-<a class="btn btn-mini" style="margin:4px; padding:5px;" data-toggle="modal" href="#myModal" >Login</a>
-
           </li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+          <a class="dropdown">
+            <a class="btn btn-custom-darken dropdown-toggle" href="#" data-toggle="dropdown"><i class="icofont-signin"></i> Sign In </a>
             <div class="dropdown-menu span3" style="padding: 15px; padding-bottom: 0px;">
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'sign-in','method'=>'post'));?>
 <?php echo $this->Form->input('username',array('label'=>'Username or Email' ,'div'=>false,'type'=>'text','class'=>'input-block-level','id'=>'mobile_signusername','data-validate'=>'{required: true, messages:{required:"Please enter field username"}}')); ?>
@@ -55,7 +39,7 @@
                     <p class="recover-account"><a href="#modal-recover" class="link" data-toggle="modal">forget your password</a></p>
                 </div>
             </div>
-          </li>
+          </a>
         </ul>
       </div>
     </div>
