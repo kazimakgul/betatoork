@@ -90,10 +90,10 @@ class ApisController extends AppController {
 	
 	function checkDuplicateSeoUrl($seo_url='toork')
 {
-
+  $authid = $this->Session->read('Auth.User.id');
   do {
   
-     $data=$this->Game->find('all',array('contain'=>false,'conditions'=>array('Game.seo_url'=>$seo_url),'fields'=>array('seo_url')));
+     $data=$this->Game->find('first',array('contain'=>false,'conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$authid),'fields'=>array('seo_url')));
      if($data==NULL)
 	 {
 	 return $seo_url;
@@ -311,7 +311,7 @@ return $material.$number;
 	  $this->request->data['Game']['picture'] = $fileName.".png";
 	 		
 		//seourl begins
-		$this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(Inflector::slug(strtolower($this->request->data['Game']['name'])));
+		$this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(str_replace('_','',Inflector::slug(strtolower($this->request->data['Game']['name']))));
 		//seourl ends
 			
 			$this->Game->create();
