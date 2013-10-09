@@ -22,9 +22,7 @@
         <ul class="nav span3 pull-right">
 
           <a class="btn btn-success" href="<?php echo $index; ?>"><i class="elusive-edit"></i> Sign Up</a>
-          <li>
-          </li>
-          <a class="dropdown">
+          <span class="dropdown">
             <a class="btn btn-custom-darken dropdown-toggle" href="#" data-toggle="dropdown"><i class="icofont-signin"></i> Sign In </a>
             <div class="dropdown-menu span3" style="padding: 15px; padding-bottom: 0px;">
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'sign-in','method'=>'post'));?>
@@ -39,7 +37,7 @@
                     <p class="recover-account"><a href="#modal-recover" class="link" data-toggle="modal">forget your password</a></p>
                 </div>
             </div>
-          </a>
+          </span>
         </ul>
       </div>
     </div>
