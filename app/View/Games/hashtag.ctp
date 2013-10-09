@@ -26,8 +26,20 @@ $userid=$user['User']['id'];
             </a>
             <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;">#<?php echo $hashtag; ?></h4>
 
-<?php if(isset($tagActivities)) { ?>
-    <a class="btn btn-block btn-success"><i class="elusive-play-alt"></i> Play Game</a>
+<?php if(isset($tagActivities)) { 
+//Generating Game Link Here
+if($game['Game']['seo_url']!=NULL)
+{
+      if($game['Game']['embed']!=NULL)
+      $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playgame'));
+	  else
+	  $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playframe'));
+}
+else{
+    $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($game['Game']['id'])));
+}
+?>
+    <a href="<?php echo $playurl; ?>" class="btn btn-block btn-success"><i class="elusive-play-alt"></i> Play Game</a>
 <?php }else{ ?>
 
 <?php } ?>            

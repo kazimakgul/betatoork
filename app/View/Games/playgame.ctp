@@ -2,6 +2,7 @@
 $gamename = $game['Game']['name'];
 $description = $game['Game']['description'];
 $username = $game['User']['seo_username'];
+$hashtaglink=$this->Html->url(array("controller" => "games","action" =>"hashtag"));
 if($username !=NULL)
 {
   $profilepublic=$this->Html->url(array( "controller" => h($username ),"action" =>'')); 
@@ -104,7 +105,7 @@ else{
 
 
         <div style="padding:5px; background-color:white;" class="span5 shadow well">
-                <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="#">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
+                <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="<?php echo $hashtaglink.'/'.$game['Game']['seo_url']; ?>">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
         </div>
 
         <div style="padding:10px; background-color:white;" class="span5 shadow well">
