@@ -112,51 +112,6 @@ else{
 <?php echo $this->element('NewPanel/load_game_activity');?>
 <?php } ?>
 
-<!--
-        <div style="padding:10px; background-color:white;" class="span5 shadow well">
-                <div>
-                    <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
-                </div>
-                <h4 class="media-heading"><a style="margin-left:9px;" href="#">Miniclip - </a><a class="btn-mini btn-link"><i class="elusive-plus-sign"></i> Follow</a> <small class="pull-right helper-font-small"><a href="#" class="timeago" title="2 hours ago"></a>2 hours ago</small></h4>
-                <p style="margin-left:50px;">A new clone has been made.</p>
-
-        </div>
-		
-		
-        <div style="padding:10px; background-color:white;" class="span5 shadow well">
-                <div>
-                    <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
-                </div>
-                <h4 class="media-heading"><a style="margin-left:9px;" href="#">Avengers - </a><a class="btn-mini btn-link"><i class="elusive-plus-sign"></i> Follow</a> <small class="pull-right helper-font-small"><a href="#" class="timeago" title="2 hours ago"></a>2 hours ago</small></h4>
-                <p style="margin-left:50px;">Added to the favorite list.</p>
-
-        </div>
-		
-		
-		
-          <div style="padding:10px; background-color:white;" class="span5 shadow well">
-                <div>
-                    <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
-                </div>
-                <h4 class="media-heading"><a style="margin-left:9px;" href="#">Socialesman - </a><a class="btn-mini btn-link"><i class="elusive-plus-sign"></i> Follow</a> <small class="pull-right helper-font-small"><a href="#" class="timeago" title="2 hours ago"></a>2 hours ago</small></h4>
-                <p style="margin-left:50px;">Rated this game as 4 stars.</p>
-
-        </div>
-		
-		
-		
-          <div style="padding:10px; background-color:white;" class="span5 shadow well">
-                <div>
-                    <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
-                </div>
-                <h4 class="media-heading"><a style="margin-left:9px;" href="#">StarBucks - </a><a class="btn-mini btn-link"><i class="elusive-plus-sign"></i> Follow</a> <small class="pull-right helper-font-small"><a href="#" class="timeago" title="2 hours ago"></a>2 hours ago</small></h4>
-                <p style="margin-left:50px;">Rated this game as 4 stars.</p>
-
-        </div>
-		
--->
-
-
 </div>
 
 
