@@ -16,6 +16,15 @@
           $kinggames=$this->Html->url(array( "controller" => 'kinggames',"action" =>''));
           $playdom=$this->Html->url(array( "controller" => 'playdom',"action" =>''));
 
+          $playstation=$this->Html->url(array( "controller" => 'playstation',"action" =>''));
+          $konami=$this->Html->url(array( "controller" => 'konami',"action" =>''));
+          $xboxone=$this->Html->url(array( "controller" => 'xboxone',"action" =>''));
+          $nintendo=$this->Html->url(array( "controller" => 'nintendo',"action" =>''));
+          $dccomics=$this->Html->url(array( "controller" => 'dccomics',"action" =>''));
+          $marvel=$this->Html->url(array( "controller" => 'marvel',"action" =>''));
+          $segagames=$this->Html->url(array( "controller" => 'segagames',"action" =>''));
+          $disney=$this->Html->url(array( "controller" => 'disney',"action" =>''));
+
         ?>
 
             <div class='carousel slide over-something' id='homepage-carousel'>
@@ -396,42 +405,42 @@
                       <h5 class='footer-header'>Noteworthy Channels</h5>
                       <ul class='footer-img-list thumbnails'>
                         <li class='span1'>
-                          <a class='thumbnail'>
+                          <a href="<?php echo $playstation; ?>" class='thumbnail'>
                             <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/36.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
-                          <a class='thumbnail'>
+                          <a href="<?php echo $nintendo; ?>" class='thumbnail'>
                             <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/37.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
-                          <a class='thumbnail'>
+                          <a href="<?php echo $konami; ?>" class='thumbnail'>
                             <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/38.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
-                          <a class='thumbnail'>
+                          <a href="<?php echo $segagames; ?>" class='thumbnail'>
                             <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/39.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
-                          <a class='thumbnail'>
+                          <a href="<?php echo $marvel; ?>" class='thumbnail'>
                             <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/40.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
-                          <a class='thumbnail'>
+                          <a href="<?php echo $dccomics; ?>" class='thumbnail'>
                             <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/41.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
-                          <a class='thumbnail'>
+                          <a href="<?php echo $xboxone; ?>" class='thumbnail'>
                             <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/42.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
-                          <a class='thumbnail'>
+                          <a href="<?php echo $disney; ?>" class='thumbnail'>
                             <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/44.jpg" />
                           </a>
                         </li>
