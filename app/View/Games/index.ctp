@@ -96,7 +96,7 @@
                   <div class='span3'>
                     <div class='white-card'>
                       <div class="img-w hover-fader">
-                        <a href="http://toork.com/newsground"><img alt="Photo-card" src="img/images/photos/10.jpg">
+                        <a href="http://toork.com/newgrounds"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/10.jpg">
                           <span class="hover-fade">
                             <i class="icon-upload"></i>
                           </span>
@@ -109,7 +109,7 @@
                   <div class='span3'>
                     <div class='white-card'>
                       <div class="img-w hover-fader">
-                        <a href="http://toork.com/miniclip"><img alt="Photo-card" src="img/images/photos/11.jpg">
+                        <a href="http://toork.com/miniclip"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/11.jpg">
                           <span class="hover-fade">
                             <i class="icon-upload"></i>
                           </span>
@@ -122,7 +122,7 @@
                   <div class='span3'>
                     <div class='white-card'>
                       <div class="img-w hover-fader">
-                        <a href="http://toork.com/armorgames"><img alt="Photo-card" src="img/images/photos/12.jpg">
+                        <a href="http://toork.com/armorgames"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/12.jpg">
                           <span class="hover-fade">
                             <i class="icon-upload"></i>
                           </span>
@@ -135,7 +135,7 @@
                   <div class='span3'>
                     <div class='white-card'>
                       <div class="img-w hover-fader">
-                        <a href="http://toork.com/kongregate"><img alt="Photo-card" src="img/images/photos/13.jpg">
+                        <a href="http://toork.com/kongregate"><img alt="Photo-card" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/13.jpg">
                           <span class="hover-fade">
                             <i class="icon-upload"></i>
                           </span>
@@ -157,32 +157,32 @@
                       <div class='testimonials-users row hidden-phone'>
                         <div class='span1'>
                           <a class='testimonials-user-w active' data-toggle='testimonial' href='#testimonial1'>
-                            <span class='testimonials-user'><img alt="Avatar-1" src="img/images/photos/14.jpg" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/14.jpg" /></span>
                           </a>
                         </div>
                         <div class='span1'>
                           <a class='testimonials-user-w' data-toggle='testimonial' href='#testimonial2'>
-                            <span class='testimonials-user'><img alt="Avatar-2" src="img/images/photos/15.jpg" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-2" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/15.jpg" /></span>
                           </a>
                         </div>
                         <div class='span1'>
                           <a class='testimonials-user-w' data-toggle='testimonial' href='#testimonial3'>
-                            <span class='testimonials-user'><img alt="Avatar-4" src="img/images/photos/16.jpg" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-4" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/16.jpg" /></span>
                           </a>
                         </div>
                         <div class='span1'>
                           <a class='testimonials-user-w' data-toggle='testimonial' href='#testimonial4'>
-                            <span class='testimonials-user'><img alt="Avatar-1" src="img/images/photos/17.jpg" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/17.jpg" /></span>
                           </a>
                         </div>
                         <div class='span1'>
                           <a class='testimonials-user-w' data-toggle='testimonial' href='#testimonial5'>
-                            <span class='testimonials-user'><img alt="Avatar-2" src="img/images/photos/18.jpg" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-2" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/18.jpg" /></span>
                           </a>
                         </div>
                         <div class='span1'>
                           <a class='testimonials-user-w' data-toggle='testimonial' href='#testimonial6'>
-                            <span class='testimonials-user'><img alt="Avatar-4" src="img/images/photos/19.jpg" /></span>
+                            <span class='testimonials-user'><img alt="Avatar-4" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/19.jpg" /></span>
                           </a>
                         </div>
                       </div>
@@ -296,32 +296,32 @@
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-1" src="img/images/photos/1.jpg" />
+                      <img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/30.jpg" />
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-2" src="img/images/photos/2.jpg" />
+                      <img alt="Client-2" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/31.jpg" />
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-3" src="img/images/photos/3.jpg" />
+                      <img alt="Client-3" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/32.jpg" />
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-4" src="img/images/photos/4.jpg" />
+                      <img alt="Client-4" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/33.jpg" />
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-5" src="img/images/photos/5.jpg" />
+                      <img alt="Client-5" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/34.jpg" />
                     </div>
                   </div>
                   <div class='span2'>
                     <div class='white-card'>
-                      <img alt="Client-6" src="img/images/photos/6.jpg" />
+                      <img alt="Client-6" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/35.jpg" />
                     </div>
                   </div>
                 </div>
@@ -370,42 +370,42 @@
                       <ul class='footer-img-list thumbnails'>
                         <li class='span1'>
                           <a class='thumbnail'>
-                            <img alt="8b9890" src="img/images/test-square.png" />
+                            <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/36.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
                           <a class='thumbnail'>
-                            <img alt="8b9890" src="img/images/test-square.png" />
+                            <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/37.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
                           <a class='thumbnail'>
-                            <img alt="8b9890" src="img/images/test-square.png" />
+                            <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/38.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
                           <a class='thumbnail'>
-                            <img alt="8b9890" src="img/images/test-square.png" />
+                            <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/39.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
                           <a class='thumbnail'>
-                            <img alt="8b9890" src="img/images/test-square.png" />
+                            <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/40.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
                           <a class='thumbnail'>
-                            <img alt="8b9890" src="img/images/test-square.png" />
+                            <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/41.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
                           <a class='thumbnail'>
-                            <img alt="8b9890" src="img/images/test-square.png" />
+                            <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/42.jpg" />
                           </a>
                         </li>
                         <li class='span1'>
                           <a class='thumbnail'>
-                            <img alt="8b9890" src="img/images/test-square.png" />
+                            <img alt="8b9890" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/44.jpg" />
                           </a>
                         </li>
                       </ul>
