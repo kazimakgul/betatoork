@@ -108,6 +108,11 @@ else{
                 <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="<?php echo $hashtaglink; ?>">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
         </div>
 
+<?php if(isset($tagActivities)) { ?>
+<?php echo $this->element('NewPanel/load_game_activity');?>
+<?php } ?>
+
+<!--
         <div style="padding:10px; background-color:white;" class="span5 shadow well">
                 <div>
                     <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
@@ -116,6 +121,8 @@ else{
                 <p style="margin-left:50px;">A new clone has been made.</p>
 
         </div>
+		
+		
         <div style="padding:10px; background-color:white;" class="span5 shadow well">
                 <div>
                     <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
@@ -124,6 +131,9 @@ else{
                 <p style="margin-left:50px;">Added to the favorite list.</p>
 
         </div>
+		
+		
+		
           <div style="padding:10px; background-color:white;" class="span5 shadow well">
                 <div>
                     <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
@@ -132,6 +142,9 @@ else{
                 <p style="margin-left:50px;">Rated this game as 4 stars.</p>
 
         </div>
+		
+		
+		
           <div style="padding:10px; background-color:white;" class="span5 shadow well">
                 <div>
                     <img class="media-object pull-left img-polaroid" width="30" src="https://s3.amazonaws.com/betatoorkpics/upload/users/6/184532_292173477569836_806612665_n_1_original.jpg">
@@ -140,7 +153,8 @@ else{
                 <p style="margin-left:50px;">Rated this game as 4 stars.</p>
 
         </div>
-
+		
+-->
 
 
 </div>
