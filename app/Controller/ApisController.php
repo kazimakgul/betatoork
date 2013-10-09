@@ -311,7 +311,7 @@ return $material.$number;
 	  $this->request->data['Game']['picture'] = $fileName.".png";
 	 		
 		//seourl begins
-		$this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(str_replace('_','',Inflector::slug(strtolower($this->request->data['Game']['name']))));
+		$this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(Inflector::slug(strtolower($this->request->data['Game']['name'])));
 		//seourl ends
 			
 			$this->Game->create();
