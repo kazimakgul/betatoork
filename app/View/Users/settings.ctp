@@ -14,7 +14,7 @@ $username = $user['User']['seo_username'];
 
     <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your<a rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$username;?>" class="btn btn-small btn-link" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</a></p>
 
-<div class="well">
+<div class="well shadow-black" style="background-color:white;">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#home" data-toggle="tab"><i class="elusive-user"></i> Profile</a></li>
       <li><a href="#profile" data-toggle="tab"><i class="elusive-thumbs-up color-blue"></i> Socials</a></li>
