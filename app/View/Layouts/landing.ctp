@@ -35,8 +35,10 @@
         <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
         <link rel="apple-touch-icon-precomposed" href="mobilePics/57.png">
 
-
-
+    <!-- avascript variables for login and register-->
+    <script type="text/javascript">
+    remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
+	</script>
     <?php echo $this->Html->css(array('assets/css/toork_lander')); ?>
 
   <link href="http://fonts.googleapis.com/css?family=Abel:400|Oswald:300,400,700" media="all" rel="stylesheet" type="text/css" />
@@ -60,7 +62,7 @@
     echo $this->Session->flash('auth', array('element' => 'info'));
     ?>  
 
-    <?php echo $this->Html->script(array('assets/jquery-1.10.1.min','assets/bootstrap','assets/prettify','assets/lightbox','assets/main')); ?>
+    <?php echo $this->Html->script(array('assets/jquery-1.10.1.min','landingscripts','assets/bootstrap','assets/prettify','assets/lightbox','assets/main','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo')); ?>
 
     </body>
 </html>

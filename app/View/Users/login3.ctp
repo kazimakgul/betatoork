@@ -38,7 +38,7 @@
                               <div class="span12">
                                 <div class="control-group">
                                   <label>Username</label>
-                                  <input style="height:40px;" class="span12" placeholder="Channel Name or Email" type="text">
+                                  <input id="txt_signusername" style="height:40px;" class="span12" placeholder="Channel Name or Email" type="text">
                                 </div>
                               </div>
                             </div>
@@ -47,7 +47,7 @@
                               <div class="span12">
                                 <div class="control-group">
                                   <label>Password</label>
-                                  <input style="height:40px;" class="span12" placeholder="Capital letter sensitive" type="password">
+                                  <input id="txt_signpass" style="height:40px;" class="span12" placeholder="Capital letter sensitive" type="password">
                                 </div>
                               </div>
                             </div>
@@ -58,7 +58,7 @@
                                 <label class="span6 checkbox">
                                    <input checked type="checkbox"> Remember me
                                 </label>                                
-                                  <button class="btn btn-success pull-right" name="button" type="submit">Sign In Now</button>
+                                  <button id="t_gatekeeper_login_btn" class="btn btn-success pull-right" name="button" type="button">Sign In Now</button>
                               </div>
                             </div>
                           </fieldset>
