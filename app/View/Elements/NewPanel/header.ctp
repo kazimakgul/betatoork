@@ -78,7 +78,10 @@ if(!isset($notifycount))
                                 <!--notification-->
                                 <a class="" id="notifycount" data-toggle="dropdown" href="#" title="<?php echo $notifycount; ?> new notifications">
                                     <i class="icon-2x elusive-bell color-white" style="opacity:1; margin:5px 15px 5px 5px;"></i>
-                                        <p id="notcountsingle" style="padding:2px 4px 2px 4px; margin:3px 0px 0px -17px ;" class="label"><?php echo $notifycount; ?> </p>
+                                        
+                            <?php if($notifycount>0){$label='label badge-important'; }else{ $label='label';}?>
+
+                                        <p id="notcountsingle" style="padding:2px 4px 2px 4px; margin:3px 0px 0px -17px ;" class="<?php echo $label; ?>"><?php echo $notifycount; ?> </p>
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-notification">
