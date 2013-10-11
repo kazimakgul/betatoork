@@ -1264,7 +1264,7 @@ error_reporting(0);
    {
    $msg_id=$data['msg_id'];
    $orimessage=$data['message'];
-   $message=tolink(htmlcode($data['message']));
+   $message=tolink(htmlcode($data['message']),Router::url('/', true));
    $time=$data['created'];
    $mtime=date("c", $time);
    $uid=$data['uid_fk'];
@@ -1336,7 +1336,7 @@ error_reporting(0);
    {
    $msg_id=$data['msg_id'];
    $orimessage=$data['message'];
-   $message=tolink(htmlcode($data['message']));
+   $message=tolink(htmlcode($data['message']),Router::url('/', true));
    $time=$data['created'];
    $mtime=date("c", $time);
    $uid=$data['uid_fk'];
@@ -1815,7 +1815,7 @@ public function comment_ajax() {
    if($cdata)
    {
    $com_id=$cdata['com_id'];
-   $comment=tolink(htmlentities($cdata['comment'] ));
+   $comment=tolink(htmlentities($cdata['comment'] ),Router::url('/', true));
    $time=$cdata['created'];
    $mtime=date("c", $time);
    $username=$cdata['username'];
@@ -1876,7 +1876,7 @@ public function comment_ajax2() {
    if($cdata)
    {
    $com_id=$cdata['com_id'];
-   $comment=tolink(htmlentities($cdata['comment'] ));
+   $comment=tolink(htmlentities($cdata['comment'] ),Router::url('/', true));
    $time=$cdata['created'];
    $mtime=date("c", $time);
    $username=$cdata['username'];

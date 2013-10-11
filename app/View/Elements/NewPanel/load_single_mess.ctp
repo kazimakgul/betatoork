@@ -37,7 +37,7 @@ if(1)
 
 		$msg_id=$data['Message']['msg_id'];
 		$orimessage=$data['Message']['message'];
-		$message=tolink(htmlcode($data['Message']['message']));
+		$message=tolink(htmlcode($data['Message']['message']),Router::url('/', true));
 		$time=$data['Message']['created'];
 		$mtime=date("c", $time);
 		$username=$data['User']['username'];

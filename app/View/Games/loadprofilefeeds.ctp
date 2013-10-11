@@ -36,7 +36,7 @@ if($updatesarray)
 	{
 		$msg_id=$data['msg_id'];
 		$orimessage=$data['message'];
-		$message=tolink(htmlcode($data['message']));
+		$message=tolink(htmlcode($data['message']),Router::url('/', true));
 		$time=$data['created'];
 		$mtime=date("c", $time);
 		$username=$data['username'];

@@ -22,7 +22,7 @@ if($commentsarray)
 	foreach($commentsarray as $cdata)
 	{
 		$com_id=$cdata['com_id'];
-		$comment=tolink(htmlcode($cdata['comment'] ));
+		$comment=tolink(htmlcode($cdata['comment']),Router::url('/', true));
 		$time=$cdata['created'];
 		$mtime=date("c", $time);
 		$username=$cdata['username'];
