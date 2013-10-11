@@ -22,6 +22,9 @@
 
 <div id="oldnotifyarea" class="firstcome">
 </div>
+<div class="well well-small" style="text-align: center ; margin-bottom:0px;">
+    <a href="<?php echo $wall;?>"><p style="margin-bottom:0px;"><i class="elusive-arrow-down"></i> See All Notifications</p></a>
+</div>
 
 <!--
                     
