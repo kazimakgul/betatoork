@@ -909,6 +909,18 @@ public function mention($update=NULL,$msg_id=NULL)
    
 }
 
+public function hashcount($hashtag=NULL)
+{
+    $today = date("y-m-d");
+    $checkexists=$this->Wallentry->Query('SELECT * FROM `hashcount` WHERE `hashtag`="'.$hashtag.'" AND `date`="'.$today.'"');
+    if($checkexists!=NULL)
+    {
+	$this->Wallentry->Query('UPDATE `hashcount` SET count=count+1 WHERE `hashtag`="'.$hashtag.'" AND `date`="'.$today.'"');
+    }else{
+	$this->Wallentry->Query('INSERT INTO hashcount (hashtag,date) VALUES ("'.$hashtag.'","'.$today.'")');
+	}
+}
+
 public function hashtag($update=NULL,$msg_id=NULL)
 {  
     
@@ -925,7 +937,7 @@ public function hashtag($update=NULL,$msg_id=NULL)
       foreach($hashtags[0] as $hashtag)
       {
 	      $seo_url=str_replace("#","",$hashtag);
-		  
+		  $this->hashcount($seo_url);
 		  //is A game exists
 		  $game_data=$this->Game->find('first',array('contain'=>false,'conditions'=>array('Game.seo_url'=>$seo_url),'fields'=>array('Game.id','Game.user_id')));
 		  if($game_data!=NULL)
