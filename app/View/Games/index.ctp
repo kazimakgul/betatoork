@@ -32,9 +32,9 @@
                 <div class='active item'>
                   <div class='container'>
                     <h1 class='slider-header'>Discover, <strong>Collect</strong> and Share <strong>Games</strong> with Friends</h1>
-                    <h2 class='slider-sub-header'>Creaet Your Own Game Channel For Free</h2>
+                    <h2 class='slider-sub-header'>Create Your Own Game Channel For Free</h2>
                     <div class='cta'>
-                      <a href="features/pricing_tables.html" class="btn btn-cta"><i class="icon-plus"></i> Create Channel</a>
+                      <a href="<?php echo $register ?>" class="btn btn-cta"><i class="icon-plus"></i> Create Channel</a>
                     </div>
                     <div class='slider-browsers-w clearfix'>
                       <div class='slider-browser slider-browser-left hidden-phone' data-position-bottom='-8%'>
@@ -54,7 +54,7 @@
                     <h1 class='slider-header'>One Game <strong>Source</strong> to Rule Them All</h1>
                     <h2 class='slider-sub-header'>Your Personal Game Advisor</h2>
                     <div class='cta'>
-                      <a href="features/pricing_tables.html" class="btn btn-cta btn-warning">Join Toork Now</a>
+                      <a href="<?php echo $register ?>" class="btn btn-cta btn-warning">Join Toork Now</a>
                     </div>
                     <div class='row zoomed-browsers-w'>
                       <div class='span4'>
