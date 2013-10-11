@@ -1437,7 +1437,7 @@ public function password2($id = null) {
 			}
 			else
 			{
-				$msg = array("msgid" => '2', "msg" => 'Wrong Username or Password. Please enter a valid username and password');
+				$msg = array("msgid" => '2', "msg" => 'The username-password combination you entered is incorrect.');
 				$this->set('rtdata', $msg);
 			}
 		 }

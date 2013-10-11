@@ -62,7 +62,7 @@
     echo $this->Session->flash('auth', array('element' => 'info'));
     ?>  
 
-    <?php echo $this->Html->script(array('assets/jquery-1.10.1.min','landingscripts','assets/bootstrap','assets/prettify','assets/lightbox','assets/main','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo')); ?>
+    <?php echo $this->Html->script(array('assets/jquery-1.10.1.min','landingscripts','assets/bootstrap','assets/prettify','assets/lightbox','assets/main','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','jquery.validate')); ?>
 
     </body>
 </html>

@@ -1,11 +1,10 @@
-
-			<section class="section-wrapper create-account-page-w">
+<section class="section-wrapper create-account-page-w">
               <div class="container">
                 <div class="row offset3">
                   <div class="span5">
                     <div class="white-card extra-padding">
-                      <form>
-                        <fieldset>
+<form id="toorkLogin">
+<fieldset>
 
                 <h5 class="text-center">Simply connect with your social account</h5>
 
@@ -38,7 +37,8 @@
                               <div class="span12">
                                 <div class="control-group">
                                   <label>Username</label>
-                                  <input id="txt_signusername" style="height:40px;" class="span12" placeholder="Channel Name or Email" type="text">
+  <input name="email" id="txt_signusername" style="height:40px;" class="span12" placeholder="Channel Name or Email" type="text" required>
+  <span style="display:none;" class="errormsg" id="errormsg_Email">Enter your email address.</span>
                                 </div>
                               </div>
                             </div>
@@ -47,7 +47,8 @@
                               <div class="span12">
                                 <div class="control-group">
                                   <label>Password</label>
-                                  <input id="txt_signpass" style="height:40px;" class="span12" placeholder="Capital letter sensitive" type="password">
+                                  <input name="password" id="txt_signpass" style="height:40px;" class="span12" placeholder="Capital letter sensitive" type="password">
+								  <span style="display:none;" class="errormsg" id="errormsg_Passwd">The username or password you entered is incorrect.</span>
                                 </div>
                               </div>
                             </div>
@@ -57,9 +58,9 @@
                               <div class="span12">
                                 <label class="span6 checkbox">
                                    <input checked type="checkbox"> Remember me
-                                </label>                                
-                                  <button id="t_gatekeeper_login_btn" class="btn btn-success pull-right" name="button" type="button">Sign In Now</button>
-                              </div>
+                                </label>      
+  <button id="t_gatekeeper_login_btn" class="validateLogin btn btn-success pull-right" type="button">Sign In Now</button>
+</div>
                             </div>
                           </fieldset>
                         </form>
@@ -70,3 +71,11 @@
                   </div>
                 </div>
               </section>
+	  
+			  
+			  
+			  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
+<script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
+
+			  
