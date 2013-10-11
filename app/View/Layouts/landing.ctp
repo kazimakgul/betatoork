@@ -38,6 +38,8 @@
     <!-- avascript variables for login and register-->
     <script type="text/javascript">
     remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
+	remotecheck2='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser2')); ?>';
+	authcheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'usernameAvailable')); ?>';
 	</script>
     <?php echo $this->Html->css(array('assets/css/toork_lander')); ?>
 

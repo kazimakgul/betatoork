@@ -12,7 +12,7 @@
                 <div class="row">
                   <div class="span9">
                     <div class="white-card extra-padding">
-                      <form>
+                      <form id="toorkRegister">
                         <fieldset>
                           <div class="row-fluid">
                             <div class="span12">
@@ -35,7 +35,7 @@
 	                            <div class="span11">
 	                              <div class="control-group">
 	                                <label>Channel Name</label>
-	                                <input style="height:40px;" class="span12" placeholder="At least 6 characters... Ex: Armorgames" type="text">
+	                                <input name="username" id="reg_username" style="height:40px;" class="span12" placeholder="At least 6 characters... Ex: Armorgames" type="text">
 	                              </div>
 	                            </div>
                             </div>
@@ -44,7 +44,7 @@
 	                            <div class="span11">
 	                              <div class="control-group">
 	                                <label>Email Address</label>
-	                                <input style="height:40px;" class="span12" placeholder="Needs for activation and notifications..." type="email">
+	                                <input name="email" id="reg_email" style="height:40px;" class="span12" placeholder="Needs for activation and notifications..." type="email">
 	                              </div>
 	                            </div>
                             </div> 
@@ -52,7 +52,7 @@
 	                            <div class="span11">
 	                              <div class="control-group">
 	                                <label>Password</label>
-	                                <input style="height:40px;" class="span12" placeholder="At least 6 characters..." type="password">
+	                                <input name="password" id="reg_password" style="height:40px;" class="span12" placeholder="At least 6 characters..." type="password">
 	                              </div>
 	                            </div>
                             </div>                                         
@@ -88,11 +88,16 @@
   </div>
 </div>
 
+<div style="width:100%;text-align:center;"><div id="grabloader" style="display:none;">
+							<p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
+							<p><small>You have successfully registered now.<br>You will be redirected to your personal channel now.<br>Please be patient and enjoy Toork...</small></p>
+							</div></div>
+
 
                             <div class="row-fluid">
                               <div class="span12">
                                 <div class="form-actions no-margin-bottom">
-                                  <button style="margin-left:20px;" class="btn btn-success btn-large" name="button" type="submit">+ Join Toork Now</button><span class="offset2"><i class="icon-check"></i> By joinin toork.com you agree to our <a href="<?php echo $terms; ?>">terms</a> and <a href="<?php echo $privacy; ?>">privacy</a> policies.</span>
+                                  <button id="t_landing_registerbtn" style="margin-left:20px;" class="btn btn-success btn-large validateRegister" name="button" type="button">+ Join Toork Now</button><span class="offset2"><i class="icon-check"></i> By joinin toork.com you agree to our <a href="<?php echo $terms; ?>">terms</a> and <a href="<?php echo $privacy; ?>">privacy</a> policies.</span>
                                 </div>
                               </div>
                             </div>
@@ -131,3 +136,8 @@
                   </div>
                 </div>
               </section>
+
+
+ <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
+<script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>

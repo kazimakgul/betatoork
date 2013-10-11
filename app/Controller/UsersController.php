@@ -1496,6 +1496,31 @@ public function password2($id = null) {
 	}
 	
 	
+	public function usernameAvailable(){
+	$this->loadModel('Userstat');
+		 Configure::write ( 'debug', 0 );
+		 
+		 $dt=$this->request->data['dt'];
+		 $attr=$this->request->data['attr'];
+		 
+		 if($attr == "check_username"){
+			if(!$this->User->find('first', array('contain'=>false,'conditions'=> array('User.username'=>$dt))))
+			{
+				$this->set('rtdata', 1);
+			}
+		 }
+		 
+		 if($attr == "check_email"){
+			if(!$this->User->find('first', array('contain'=>false,'conditions'=> array('User.email'=>$dt))))
+			{
+				$this->set('rtdata', 1);
+			}
+		 }
+		 
+		 $this->set('_serialize', array('rtdata'));
+		 
+	
+	}
 	public function checkUser2(){
 		 $this->loadModel('Userstat');
 		 Configure::write ( 'debug', 0 );
