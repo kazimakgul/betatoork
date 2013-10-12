@@ -42,7 +42,7 @@ if($commentsarray)
 // End Avatar
 ?>
 
-<div style=" border-top-style:solid; border-right-style:none; border-left-style:none; border-bottom-style:none;  border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; margin-bottom:3px; margin-left:-20px; margin-right:-20px; padding:0px 5px 0px 5px;" class="well" id="stcommentbody<?php echo $com_id; ?>">
+<div style=" border-top-style:solid; border-right-style:none; border-left-style:none; border-bottom-style:none;  border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; margin-bottom:3px; margin-left:-20px; margin-right:-20px; padding:0px 20px 0px 20px;" class="well" id="stcommentbody<?php echo $com_id; ?>">
 <?php if(isset($uid) && ($uid==$com_uid || $uid==$msg_uid) ){ ?>
 <a class="stcommentdelete close" style="margin-right:5px;" href="#" id="<?php echo $com_id; ?>">  &times;</a>
 <?php } ?>

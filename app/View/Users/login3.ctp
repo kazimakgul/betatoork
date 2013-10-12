@@ -37,7 +37,7 @@
                               <div class="span12">
                                 <div class="control-group">
                                   <label>Username</label>
-  <input name="email" id="txt_signusername" style="height:40px;" class="span12" placeholder="Channel Name or Email" type="text" required>
+  <input name="username" id="txt_signusername" style="height:40px;" class="span12" placeholder="Channel Name or Email" type="text" required>
   <span style="display:none;" class="errormsg" id="errormsg_Email">Enter your email address.</span>
                                 </div>
                               </div>

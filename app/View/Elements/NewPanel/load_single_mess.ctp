@@ -211,9 +211,9 @@ echo "</div>";
 														
 				<!-- Comment area begins -->				
 			</br>
-<div style="background-color:#f5f5f5; padding:30px; margin:-20px; margin-bottom:-45px; ">				
+<div style="background-color:#f5f5f5; padding:30px 10px 30px 10px; margin:-20px; margin-bottom:-45px; ">				
 			  	<?php if(isset($uid)) {?>
-			  	<div style="margin-left:-15px;">
+			  	<div>
             	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
             	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
             	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
@@ -229,7 +229,7 @@ echo "</div>";
 			?>
 			</div>
 
-			<div class="row-fluid commentupdate clearfix" style='margin-left: -15px; margin-top: 10px; display:block' id='commentbox<?php echo $msg_id;?>'>
+			<div class="row-fluid commentupdate clearfix" style='margin-top: 10px; display:block' id='commentbox<?php echo $msg_id;?>'>
 
 					<div class="span1">
 						<?php echo $session_face;?>
