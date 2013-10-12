@@ -76,7 +76,7 @@ if($updatesarray)
 															<?php echo $cface; ?>
                                                         </a>
                                                         <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
-                                                            <p style="margin-left:52px;"><?php echo $message; ?><i rel="tooltip" data-placement="bottom" data-original-title="Expand" href="javascript:void(0);" id="wallExpand" class="pull-right elusive-chevron-down"></i></p>
+                                                            <p style="margin-left:50px;"><?php echo $message; ?><i rel="tooltip" data-placement="bottom" data-original-title="Expand" href="javascript:void(0);" id="wallExpand" class="pull-right elusive-chevron-down"></i></p>
                                                         <hr size="1">
                                                         
 <div id="hidePost">
@@ -158,7 +158,7 @@ echo "</div>";
 				 <?php if($type==1 || $type==7 ) { 
 			    $gameimage=$this->Upload->image($gamedata,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$gamename,'width'=>'200','height'=>'110','onerror'=>'imgError(this,"toorksize");'));
 			    ?>
-			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; padding:5px;">
+			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; margin-bottom:30px; padding:5px;">
                                         <div class="feedgameavatar" style="padding-right:5px;">
                                         	<a href="<?php echo $playurl ?>">
                                             	<?php echo $gameimage; ?>
@@ -175,7 +175,7 @@ echo "</div>";
 						<?php if($type==6) { 
 			           $gameimage=$this->Upload->image($gamedata,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$gamename,'width'=>'200','height'=>'110','onerror'=>'imgError(this,"toorksize");'));
 			?>
-			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; padding:5px;">
+			 <div class="well shadow feedcontent clearfix span11" style="margin:20px; margin-bottom:30px; padding:5px;">
                                         <div class="feedgameavatar" style="padding-right:5px;">
                                         	<a href="<?php echo $playurl ?>">
                                             	<?php echo $gameimage; ?>
@@ -216,26 +216,26 @@ echo "</div>";
                                                         </div>
 														
 				<!-- Comment area begins -->				
+			</br>
+<div style="background-color:#f5f5f5; padding:30px; margin:-20px;">				
+			  	<?php if(isset($uid)) {?>
+			  	<div style="margin-left:-15px;">
+            	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
+            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
+            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
+				<?php }?>
+								<?php if(isset($uid) && $uid==$msg_uid && $type!=1) { ?>
+                <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
+				<?php } ?></div>
+
 					<div style="margin-top:10px;" id="commentload<?php echo $msg_id;?>">
 			<?php
 				$x=1;
 				echo $this->element('NewPanel/load_comments_boot',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
 			?>
 			</div>
-			</br>
-			  	<?php if(isset($uid)) {?>
-            	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-asl"></i> Agree</a>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-down"></i> Disagree</a>
-				<?php }?>
-								<?php if(isset($uid) && $uid==$msg_uid && $type!=1) { ?>
-                <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
-				<?php } ?>
 
-			
-			<hr size="3">
-			<div class="row-fluid commentupdate clearfix" style='display:none' id='commentbox<?php echo $msg_id;?>'>
+			<div class="row-fluid commentupdate clearfix" style='margin-left: -15px; margin-top: 10px; display:none' id='commentbox<?php echo $msg_id;?>'>
 
 					<div class="span1">
 						<?php echo $session_face;?>
@@ -249,6 +249,7 @@ echo "</div>";
 					<!--<a class="commentbtn" href="#"></a>-->
 				</div>
 			</div>
+</div>			
 				<!-- Comment area ends-->										
 														
                                                     </div>

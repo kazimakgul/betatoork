@@ -380,7 +380,7 @@
                         </li>
                         <li>
                           <strong>Contact:</strong>
-                          <a href="mailto:hello@toork.com">hello@toork.com</a>
+                          <a style="font-family:arial; font-size:13px;" href="mailto:hello@toork.com">hello [at] toork.com</a>
                         </li>
                       </ul>
                     </div>

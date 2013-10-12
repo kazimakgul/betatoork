@@ -81,7 +81,7 @@
          <?php if($type==1) { 
           $gameimage=$this->Upload->image($gamedata,'Game.picture',array('style' => 'toorksize'),array('class'=>'gamethumb','alt'=>$gamename,'width'=>'200','height'=>'110','onerror'=>'imgError(this,"toorksize");'));
           ?>
-       <div class="well shadow feedcontent clearfix span11" style="margin:20px; padding:5px;">
+       <div class="well shadow feedcontent clearfix span11" style="margin:20px; margin-bottom:30px; padding:5px;">
                                         <div class="feedgameavatar" style="padding-right:5px;">
                                             <?php echo $gameimage; ?>
                                         </div>   
@@ -96,22 +96,26 @@
           
                                                         </div>
                             
-        <!-- Comment area begins -->        
+        <!-- Comment area begins -->  
+<div style="background-color:#f5f5f5; padding:30px; margin:-20px; padding-top:0px;">               
+
+      </br>
+          <?php if(isset($uid)) {?>
+              <div style="margin-left:-15px;">
+              <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
+			         <input type="hidden" id="msg_uid<?php echo $msg_id;?>" value="<?php echo $msg_uid;?>"/>
+              <a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
+              <a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>              
+        <?php }?></div>
+
           <div style="margin-top:10px;" id="commentload<?php echo $msg_id;?>">
       <?php
         $x=1;
         echo $this->element('NewPanel/load_comments_boot',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
       ?>
-      </div>
-      </br>
-          <?php if(isset($uid)) {?>
-              <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
-			  <input type="hidden" id="msg_uid<?php echo $msg_id;?>" value="<?php echo $msg_uid;?>"/>
-              <a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
-        <?php }?>
-      
-      <hr size="3">
-      <div class="row-fluid commentupdate clearfix" style='display:block' id='commentbox<?php echo $msg_id;?>'>
+      </div>      
+
+      <div class="row-fluid commentupdate clearfix" style='margin-left: -15px; margin-top: 10px; display:block' id='commentbox<?php echo $msg_id;?>'>
 
           <div class="span1">
             <?php echo $session_face;?>
@@ -124,6 +128,8 @@
           <!--<a class="commentbtn" href="#"></a>-->
         </div>
       </div>
+</div>
+
         <!-- Comment area ends-->                   
                             
 </div>
