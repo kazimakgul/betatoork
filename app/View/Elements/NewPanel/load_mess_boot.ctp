@@ -78,7 +78,7 @@ if($updatesarray)
                                                             <p style="margin-left:50px;"><?php echo $message; ?><i rel="tooltip" data-placement="bottom" data-original-title="Expand" href="javascript:void(0);" id="wallExpand" class="pull-right elusive-chevron-down"></i></p>
                                                         <hr size="1">
                                                         
-<div id="hidePost">
+<div id="hidePost" style="margin-bottom:-45px;">
                             <div class="media-body" style="text-align: center; margin:-7px;">                        
                                                             
 															

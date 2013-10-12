@@ -211,7 +211,7 @@ echo "</div>";
 														
 				<!-- Comment area begins -->				
 			</br>
-<div style="background-color:#f5f5f5; padding:30px; margin:-20px;">				
+<div style="background-color:#f5f5f5; padding:30px; margin:-20px; margin-bottom:-45px; ">				
 			  	<?php if(isset($uid)) {?>
 			  	<div style="margin-left:-15px;">
             	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
