@@ -97,7 +97,7 @@
                                                         </div>
                             
         <!-- Comment area begins -->  
-<div style="background-color:#f5f5f5; padding:30px 10px 30px 10px; margin:-20px; padding-top:0px; margin-bottom:-45px; ">               
+<div style="background-color:#f5f5f5; padding:30px 20px 30px 20px; margin:-20px; padding-top:0px; margin-bottom:-45px; ">               
 
       </br>
           <?php if(isset($uid)) {?>
