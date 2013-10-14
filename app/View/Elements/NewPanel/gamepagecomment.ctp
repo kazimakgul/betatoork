@@ -100,8 +100,8 @@
 <div style="background-color:#f5f5f5; padding:30px 20px 30px 20px; margin:-20px; padding-top:0px; margin-bottom:-45px; ">               
 
       </br>
+      <div>
           <?php if(isset($uid)) {?>
-              <div>
               <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
 			         <input type="hidden" id="msg_uid<?php echo $msg_id;?>" value="<?php echo $msg_uid;?>"/>
               <a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
