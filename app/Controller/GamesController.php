@@ -1109,9 +1109,9 @@ public function hashtag() {
 	{
 	$t_ids[$i]=$trend['hashcount']['id'];
 	$i++;
-	}echo 'this is point';
+	}
 	$comma_separated = implode(",", $t_ids);
-	
+	echo 'this is point';
 	if($t_count>=13)
 	{
 	$this->set('trends',$trends);
