@@ -1079,7 +1079,7 @@ public function hashtag() {
     $hashtag = $this->request->params['pass'][0];
     $authid = $this->Session->read('Auth.User.id');
 
-    $yesterday=date("Y-m-d", time() - 60 * 60 * 24);echo $yesterday;
+    $yesterday=date("Y-m-d", time() - 60 * 60 * 24);
  
 	$idList = $this->Game->find('list', array('contain'=>false,'conditions' => array('Game.seo_url' => $hashtag),'fields'=>array('Game.id')));
 	if($idList!=NULL)
