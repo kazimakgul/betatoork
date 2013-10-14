@@ -82,7 +82,8 @@ $wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
 $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
 $featuredchannels=$this->Html->url(array("controller" => "games","action" =>"featuredchannels"));
 $toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
-$login=$this->Html->url(array("controller" => "users","action" =>"login2"));
+$login=$this->Html->url(array("controller" => "users","action" =>"login3"));
+$register=$this->Html->url(array("controller" => "users","action" =>"register2"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
 $profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
@@ -98,7 +99,7 @@ echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGam
 
 
 }else{
-    echo $this->element('NewPanel/unauthHeader',array('index'=>$index,'login'=>$login,'bestchannels'=>$bestchannels,'featuredchannels'=>$featuredchannels,'toprated'=>$toprated));
+    echo $this->element('NewPanel/unauthHeader',array('index'=>$index,'login'=>$login,'register'=>$register,'bestchannels'=>$bestchannels,'featuredchannels'=>$featuredchannels,'toprated'=>$toprated));
 }
 
 ?>
