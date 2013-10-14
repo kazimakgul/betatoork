@@ -76,7 +76,7 @@ $('.validateLogin').click(function() {
 		}, 'json');
             return response;
         },
-        "Username is Already Taken"
+        "Username is already taken"
     );
  
  jQuery.validator.addMethod(
@@ -89,7 +89,7 @@ $('.validateLogin').click(function() {
 		}, 'json');
             return response;
         },
-        "Email is Already Taken"
+        "Email is already registered"
     );
  
  

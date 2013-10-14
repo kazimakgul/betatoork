@@ -36,6 +36,7 @@
 	                              <div class="control-group">
 	                                <label>Channel Name</label>
 	                                <input name="username" id="reg_username" style="height:40px;" class="span12" placeholder="At least 6 characters... Ex: Armorgames" type="text">
+                                  <label style="display:none; color:red; font-family:arial; font-size:13px;" for="reg_username" class="error">Username is already taken</label>
 	                              </div>
 	                            </div>
                             </div>
@@ -45,6 +46,7 @@
 	                              <div class="control-group">
 	                                <label>Email Address</label>
 	                                <input name="email" id="reg_email" style="height:40px;" class="span12" placeholder="Needs for activation and notifications..." type="email">
+                                  <label style="display:none; color:red; font-family:arial; font-size:13px;" for="reg_email" class="error">Email is already taken</label>
 	                              </div>
 	                            </div>
                             </div> 
@@ -53,6 +55,7 @@
 	                              <div class="control-group">
 	                                <label>Password</label>
 	                                <input name="password" id="reg_password" style="height:40px;" class="span12" placeholder="At least 6 characters..." type="password">
+                                  <label style="display:none; color:red; font-family:arial; font-size:13px;" for="reg_password" class="error">Password is wrong</label>
 	                              </div>
 	                            </div>
                             </div>                                         

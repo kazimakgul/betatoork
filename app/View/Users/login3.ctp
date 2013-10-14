@@ -37,8 +37,8 @@
                               <div class="span12">
                                 <div class="control-group">
                                   <label>Username</label>
-  <input name="username" id="txt_signusername" style="height:40px;" class="span12" placeholder="Channel Name or Email" type="text" required>
-  <span style="display:none;" class="errormsg" id="errormsg_Email">Enter your email address.</span>
+  <input name="username" id="txt_signusername" style="height:40px;" class="span12" placeholder="Channel Name or Email" type="text">
+  <span style="display:none; color:red; font-family:arial;"  class="errormsg" id="errormsg_Email">Enter your username or email address.</span>
                                 </div>
                               </div>
                             </div>
@@ -48,7 +48,7 @@
                                 <div class="control-group">
                                   <label>Password</label>
                                   <input name="password" id="txt_signpass" style="height:40px;" class="span12" placeholder="Capital letter sensitive" type="password">
-								  <span style="display:none;" class="errormsg" id="errormsg_Passwd">The username or password you entered is incorrect.</span>
+								  <span style="display:none; color:red; font-family:arial;" id="errormsg_Passwd">The username or password you entered is incorrect.</span>
                                 </div>
                               </div>
                             </div>
