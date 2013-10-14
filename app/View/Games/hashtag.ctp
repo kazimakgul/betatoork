@@ -48,19 +48,19 @@ else{
     </div>
     <div class="helper-font-16 span6 pull-right">
         <div class="pull-right">
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#angryboys</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#angrychickens</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#angrysonic</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#angrybirdsstarwars2</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#angrynews</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#angrymetalslug</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#metalslug</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#papermario</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#SuperMario</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#NinjaTurtles</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#angryboys</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#angrychickens</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px;" class="tag">#angrysonic</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angryboys</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrychickens</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrysonic</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrybirdsstarwars2</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrynews</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrymetalslug</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#metalslug</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#papermario</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#SuperMario</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#NinjaTurtles</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angryboys</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrychickens</a>
+    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrysonic</a>
     
         </div>
     </div>
