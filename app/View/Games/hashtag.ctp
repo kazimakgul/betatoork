@@ -49,9 +49,9 @@ else{
     <div class="helper-font-16 span6 pull-right">
         <div class="pull-right">
 	<?php $hashlink=$this->Html->url(array( "controller" => "games","action" =>"hashtag")); ?>	
-	<?php foreach ($trends as $trend){ ?>
+	<?php if($trends!=NULL) { foreach ($trends as $trend){ ?>
 	<a href="<?php echo $hashlink.'/'.$trend['hashcount']['hashtag'] ?>" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#<?php echo $trend['hashcount']['hashtag']; ?></a>
-	<?php } ?>
+	<?php } } ?>
 	<!--	
     <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angryboys</a>
     <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrychickens</a>
