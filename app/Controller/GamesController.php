@@ -1102,7 +1102,7 @@ public function hashtag() {
 	$t_count=count($trends);
 	$t_total=13;
 	$missing=$t_total-$t_count;
-	
+	echo 'this is point';
 	$i=0;
 	$t_ids=array();
 	foreach($trends as $trend)
@@ -1120,7 +1120,7 @@ public function hashtag() {
 	$merged=array_merge($trends,$trendsother);
 	$this->set('trends',$merged);
 	}
-	echo 'this is point';
+	
 	//=====//Get Trendy Hastags==========
 
     //New Wall Getting Started Below.
