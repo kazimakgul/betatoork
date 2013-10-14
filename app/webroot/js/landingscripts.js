@@ -92,13 +92,18 @@ $('.validateLogin').click(function() {
         "Email is already registered"
     );
  
+ jQuery.validator.addMethod("nospace", function(value, element) { 
+  return value.indexOf(" ") < 0 && value != ""; 
+}, "No space please and don't leave it empty");
+ 
  
  $("#toorkRegister").validate({
         rules: {
 			 username: {
                 required: true,
 				minlength: 6,
-				uniqueUserName:true
+				uniqueUserName:true,
+				nospace:true
             },
             email: {
                 required: true,
@@ -107,13 +112,15 @@ $('.validateLogin').click(function() {
             },
             password: {
                 required: true,
-				minlength: 6
+				minlength: 6,
+				nospace:true
             }
         },
         messages: {
 			username: {
                 required: "Please enter username.",
-				minlength:"At least 6 characters."
+				minlength:"At least 6 characters.",
+				nospace:"You cannot use space in your username."
             },
             email: {
                 required: "Please enter email.",
@@ -121,7 +128,8 @@ $('.validateLogin').click(function() {
             },
             password: {
                 required: "Please enter password.",
-				minlength: "At least 6 characters."
+				minlength: "At least 6 characters.",
+				nospace:"You cannot use space in your password."
             }
         }
     });
@@ -138,13 +146,7 @@ $('.validateLogin').click(function() {
 		{
 			checkUser2();
 			}else{
-				
-				$.pnotify({
-               text: 'There are some missing parts on registration form.',
-               type: 'error'
-               });
-				
-				
+				//Acts for no validation.
 				}
 		
     });
