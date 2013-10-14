@@ -1111,11 +1111,11 @@ public function hashtag() {
 	$i++;
 	}
 	$comma_separated = implode(",", $t_ids);
-	echo 'this is point';
+	
 	if($t_count>=13)
 	{
 	$this->set('trends',$trends);
-	}else{
+	}else{echo 'this is point';
 	$trendsother=$this->Activity->query('SELECT hashtag,id FROM hashcount WHERE id NOT IN ('.$comma_separated.') ORDER BY count DESC LIMIT '.$missing.'');
 	$merged=array_merge($trends,$trendsother);
 	$this->set('trends',$merged);
