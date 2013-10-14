@@ -1111,7 +1111,8 @@ public function hashtag() {
 	$i++;
 	}
 	$comma_separated = implode(",", $t_ids);
-	
+	if($t_count==0)
+	$trends=array();
 	if($t_count>=13)
 	{
 	$this->set('trends',$trends);
