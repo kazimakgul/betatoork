@@ -1115,9 +1115,9 @@ public function hashtag() {
 	if($t_count>=13)
 	{
 	$this->set('trends',$trends);
-	}else{echo 'this is point';
+	}else{
 	$trendsother=$this->Activity->query('SELECT hashtag,id FROM hashcount WHERE id NOT IN ('.$comma_separated.') ORDER BY count DESC LIMIT '.$missing.'');
-	$merged=array_merge($trends,$trendsother);
+	$merged=array_merge($trends,$trendsother);echo 'this is point';
 	$this->set('trends',$merged);
 	}
 	
