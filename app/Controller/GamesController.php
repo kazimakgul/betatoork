@@ -1117,10 +1117,10 @@ public function hashtag() {
 	$this->set('trends',$trends);
 	}else{
 	$trendsother=$this->Activity->query('SELECT hashtag,id FROM hashcount WHERE id NOT IN ('.$comma_separated.') ORDER BY count DESC LIMIT '.$missing.'');
-	//$merged=array_merge($trends,$trendsother);
-	$this->set('trends',$trends);
+	$merged=array_merge($trends,$trendsother);
+	$this->set('trends',$merged);
 	}
-	
+	echo 'this is point';
 	//=====//Get Trendy Hastags==========
 
     //New Wall Getting Started Below.
