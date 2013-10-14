@@ -1102,14 +1102,14 @@ public function hashtag() {
 	$t_count=count($trends);
 	$t_total=13;
 	$missing=$t_total-$t_count;
-	echo 'this is point';
+	
 	$i=0;
 	$t_ids=array();
 	foreach($trends as $trend)
 	{
 	$t_ids[$i]=$trend['hashcount']['id'];
 	$i++;
-	}
+	}echo 'this is point';
 	$comma_separated = implode(",", $t_ids);
 	
 	if($t_count>=13)
