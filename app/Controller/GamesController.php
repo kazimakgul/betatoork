@@ -1116,10 +1116,14 @@ public function hashtag() {
 	{
 	$this->set('trends',$trends);
 	}else{
-	$trendsother=$this->Activity->query('SELECT hashtag,id FROM hashcount WHERE id NOT IN ('.$comma_separated.') ORDER BY count DESC LIMIT '.$missing.'');
+	 if($comma_separated!=NULL)
+	 $trendsother=$this->Activity->query('SELECT hashtag,id FROM hashcount WHERE id NOT IN ('.$comma_separated.') ORDER BY count DESC LIMIT '.$missing.'');
+	 else
+	 $trendsother=$this->Activity->query('SELECT hashtag,id FROM hashcount ORDER BY count DESC LIMIT '.$missing.'');
+	 
 	   if($trendsother!=NULL)
 	   {
-	   $merged=$trendsother;
+	   $merged=array_merge($trends,$trendsother);
 	   $this->set('trends',$merged);
 	   }else{
 	   $this->set('trends',NULL);
