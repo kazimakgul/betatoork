@@ -117,7 +117,7 @@ $('.validateLogin').click(function() {
             },
             email: {
                 required: "Please enter email.",
-				email: "Your email address must be in the format of name@domain.com."
+				email: "Your email address must be in the format of name@domain.com"
             },
             password: {
                 required: "Please enter password.",
