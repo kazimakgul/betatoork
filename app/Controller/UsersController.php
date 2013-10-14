@@ -1195,7 +1195,8 @@ public function password2($id = null) {
 	}
 		
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been updated'));
+				$this->Session->setFlash(__('You successfully changed your password'));
+				$this->redirect('/users/settings/'.$id);
 				//$this->redirect(array('action' => 'password',$this->Session->read('Auth.User.id')));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));

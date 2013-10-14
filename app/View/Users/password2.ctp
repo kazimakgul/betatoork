@@ -30,7 +30,7 @@
 <?php echo $this->Form->input('old_password',array('label'=>false,'div'=>false ,'placeholder' => 'Write your current password','type'=>'password','class'=>'grd-white','required','id'=>'required')); ?>
 
                                                                 </div>
-                                                            </div>
+                                                            </div><br>
                                                             <div class="control-group  input-prepend">
                                                                 <label class="control-label" for="required">New Password</label>
                                                                 <div class="controls">
@@ -38,7 +38,7 @@
 <?php echo $this->Form->input('new_password',array('label'=>false,'div'=>false ,'type'=>'password','class'=>'grd-white','required pattern'=>'[^\f\n\r\t\v\u00A0\u2028\u2029]{6,20}','placeholder' => 'Must be at least 6 characters long','id'=>'required')); ?>
 
                                                                 </div>
-                                                            </div>
+                                                            </div><br>
                                                             <div class="control-group  input-prepend">
                                                                 <label class="control-label" for="required">Confirm New Password</label>
                                                                 <div class="controls">
