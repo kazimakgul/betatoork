@@ -1079,6 +1079,8 @@ public function hashtag() {
     $hashtag = $this->request->params['pass'][0];
     $authid = $this->Session->read('Auth.User.id');
 
+    $yesterday=date("Y-m-d", time() - 60 * 60 * 24);echo $yesterday;
+ 
 	$idList = $this->Game->find('list', array('contain'=>false,'conditions' => array('Game.seo_url' => $hashtag),'fields'=>array('Game.id')));
 	if($idList!=NULL)
 	{
@@ -1094,6 +1096,18 @@ public function hashtag() {
 	}
 	
 	
+	//=====Get Trendy Hastags==========
+	
+	$trends=$this->Activity->query('SELECT hashtag FROM hashcount WHERE date="'.$yesterday.'" ORDER BY count DESC LIMIT 13');
+	if($trends!=NULL)
+	{
+	$this->set('trends',$trends);
+	}else{
+	$trends=$this->Activity->query('SELECT hashtag FROM hashcount ORDER BY count DESC LIMIT 13');
+	$this->set('trends',$trends);
+	}
+	
+	//=====//Get Trendy Hastags==========
 
     //New Wall Getting Started Below.
 	   App::import('Vendor', 'wallscript/config');
