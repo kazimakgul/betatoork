@@ -1098,13 +1098,27 @@ public function hashtag() {
 	
 	//=====Get Trendy Hastags==========
 	
-	$trends=$this->Activity->query('SELECT hashtag FROM hashcount WHERE date="'.$yesterday.'" ORDER BY count DESC LIMIT 13');
-	if($trends!=NULL)
+	$trends=$this->Activity->query('SELECT hashtag,id FROM hashcount WHERE date="'.$yesterday.'" ORDER BY count DESC LIMIT 13');
+	$t_count=count($trends);
+	$t_total=13;
+	$missing=$t_total-$t_count;
+	
+	$i=0;
+	$t_ids=array();
+	foreach($trends as $trend)
+	{
+	$t_ids[$i]=$trend['hashcount']['id'];
+	$i++;
+	}
+	$comma_separated = implode(",", $t_ids);
+	
+	if($t_count>=13)
 	{
 	$this->set('trends',$trends);
 	}else{
-	$trends=$this->Activity->query('SELECT hashtag FROM hashcount ORDER BY count DESC LIMIT 13');
-	$this->set('trends',$trends);
+	$trendsother=$this->Activity->query('SELECT hashtag,id FROM hashcount WHERE id NOT IN ('.$comma_separated.') ORDER BY count DESC LIMIT '.$missing.'');
+	$merged=array_merge($trends,$trendsother);
+	$this->set('trends',$merged);
 	}
 	
 	//=====//Get Trendy Hastags==========
