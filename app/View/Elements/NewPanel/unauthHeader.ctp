@@ -21,7 +21,7 @@
         <!-- The drop down menu -->
         <ul class="nav span3 pull-right">
 
-          <a class="btn btn-success" href="<?php echo $register; ?>"><i class="elusive-edit"></i> Create Account</a>
+          <a class="btn btn-success" href="<?php echo $register; ?>"><i class="elusive-edit"></i> Register</a>
           <span class="dropdown">
             <a class="btn btn-custom-darken" href="<?php echo $login; ?>"><i class="icofont-signin"></i> Sign In </a>
           </span>
