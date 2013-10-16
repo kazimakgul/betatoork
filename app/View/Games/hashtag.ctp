@@ -48,29 +48,16 @@ else{
     </div>
     <div class="helper-font-16 span6 pull-right">
         <div class="pull-right">
-	<?php $hashlink=$this->Html->url(array( "controller" => "games","action" =>"hashtag")); ?>	
+
 	<?php
 	 if(isset($trends))
 	 {
 	 foreach ($trends as $trend){ 
+        $hashlink=$this->Html->url(array( "controller" => "games","action" =>"hashtag",$trend['hashcount']['hashtag']));
 	 ?>
-	<a href="<?php echo $hashlink.'/'.$trend['hashcount']['hashtag'] ?>" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#<?php echo $trend['hashcount']['hashtag']; ?></a>
+	<a href="<?php echo $hashlink; ?>" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#<?php echo $trend['hashcount']['hashtag']; ?></a>
 	<?php } } ?>
-	<!--	
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angryboys</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrychickens</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrysonic</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrybirdsstarwars2</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrynews</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrymetalslug</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#metalslug</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#papermario</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#SuperMario</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#NinjaTurtles</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angryboys</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrychickens</a>
-    <a href="#" style="padding-top:1px; padding-bottom:1px; float:right;" class="tag">#angrysonic</a>
-    -->
+
         </div>
     </div>
 
@@ -93,10 +80,33 @@ else{
    <?php if($tagActivities!=NULL) { ?>
 <?php echo $this->element('NewPanel/load_my_tag_activity');?>
    <?php }else{ ?>
-   Bu bir oyun ama activity yok
+        
+        <div style="background-color:white; padding:20px; margin:15px 0px 0px 0px;" class="span12 shadow well">
+        
+                <h5 class="media-heading color-purple"><i class="elusive-upload"></i> Hit the play button to create the an activity</h5>
+                <h6 class="media-heading"><i class="elusive-download-alt"></i> Use the rate bar at the game page</h6>
+                <h4 class="media-heading color-red"><i class="elusive-heart"></i> Add this game to your favorites</h4>
+                <h3 class="media-heading color-blue"><i class="elusive-tint"></i> Make a Clone!</h3>
+                <h5 class="media-heading color-gold"><i class="elusive-star"></i> Rate this game please!</h5>
+                <h4 class="media-heading color-green"><i class="elusive-comment"></i> Comment about the game!</h5>
+                <h6 class="media-heading">Your activity will be published here</h6>
+        </div>
+              
    <?php } ?>
 <?php }else{ ?>
-Bu bir oyun degil ise bu alana birseyler gelecek
+                <div style="background-color:white; padding:20px; margin:15px 0px 0px 0px;" class="span12 shadow well">
+                    <p class="alert alert-info"> <a class="bold">Beginners Guide For Hashtags</a><br>
+Spaces are an absolute no-no. Even if your hashtag contains multiple words, group them all together. If you want to differentiate between words, use capitals instead <span class="label label-warning">#SuperMario</span>. Uppercase letters will not alter your search results, so searching for <span class="label label-warning">#SuperMario</span> will yield the same results as <span class="label label-warning">#supermario</span>.<br><br>
+
+Numbers are supported, so publish about <span class="label label-warning">#50ShadesOfGrey</span> to your heart’s content. However, punctuation marks are not, so commas, periods, exclamation points, question marks and apostrophes are out. Forget about asterisks, ampersands or any other special characters.<br><br>
+
+Keep in mind that the <span class="label label-warning">@</span> symbol does something completely different. Using <span class="label label-warning">@</span> before a channel name, it will create a mention about it, letting the channel owner know that you have written something about them. A hashtag will not. Sometimes users will hashtag a channel name instead of using their channel name. it is acceptable to post something like <span class="label label-warning">#clonemaster</span> or <span class="label label-warning">@clonemaster</span>. But if you are trying to reach the channel owner directly, don’t use a hashtag.<br><br>
+
+One more thing about hashtags in toork which is completely different than other social networks is where if you hashtag a game will completely result in a different hashtag page, This new hashtag page is called <span class="label label-warning">gametag</span> page. This page includes the direct play button for the game and game activities are listed and more...<br><br>
+
+There is no preset list of hashtags. Create a brand new hashtag simply by putting the hash before a series of words, and if it hasn't been used before, voilà! You've invented a hashtag.<a class="pull-right bold">"- Mashable -"</a>
+                    </p>
+                </div>
 <?php } ?>
 
             </div>
