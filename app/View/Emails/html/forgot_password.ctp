@@ -6,9 +6,11 @@
  
  <tbody><tr>
  <td align="center" style="padding:20px 0 40px">
- <a href="http://toork.com" title="Visit Toork" style="border:none" target="_blank">
- <img src="http://toork.com/img/logo3.png" width="150" style="vertical-align:top;outline:none;border:none" alt="Toork">
- </a>
+ 	<a href="http://toork.com"  style="text-decoration:none;">
+	 	<p title="Visit Toork" style="border:none" target="_blank">
+			<h1 bold style="text-shadow: 1px 2px 2px #4d4d4d; color: #33CCCC; font: 40px 'impact';">Toork Team</h1>
+	 	</p>
+ 	</a>
  </td>
  </tr>
  
@@ -64,7 +66,7 @@
 <td width="140" align="right" style="padding:20px">
  <table cellspacing="0" cellpadding="0" border="0">
  <tbody><tr>
- <td height="34" align="center" style="background-repeat:repeat-x;border-radius:6px;background-color:#49afcd;border:1px solid #2f96b4;white-space:nowrap;min-height:34px">
+ <td height="34" align="center" style="background-repeat:repeat-x;border-radius:6px;background-color:#33CCCC;border:1px solid #2f96b4;white-space:nowrap;min-height:34px">
  <a href="<?php echo $reset_url; ?>" style="color:#fcf9f9;text-align:center;text-decoration:none;vertical-align:baseline" title="Reset Password" target="_blank">
  
  <span style="padding:9px 15px;color:#fcf9f9;text-decoration:none;color:#fcf9f9;font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:18px;line-height:18px;white-space:nowrap">Reset Password</span>
