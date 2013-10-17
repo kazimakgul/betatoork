@@ -187,7 +187,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 */
 
 
-/* Turn Off Mail Send
+
  		$email = new CakeEmail();
 
  		if($type_id==1){
@@ -263,7 +263,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' is talking about your game.')
 			    ->send();
 	  	}else{}
-*/
+
 	  	
 	 //echo 'data has been mailed';
 	             }//-----Channel id bos degilse begins-------
