@@ -178,7 +178,7 @@ $('.validateLogin').click(function() {
 			}
 			else
 			{
-				alert(data.rtdata)
+				//alert(data.rtdata)
 				
 			}
 		}, 'json');	
