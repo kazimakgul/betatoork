@@ -18,29 +18,40 @@ $userid=$user['User']['id'];
 ">
 
 <!--Game Image-->
-<?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'100','height'=>'80','onerror'=>'imgError(this,"toorksize");')); ?>
+
 <!--/Game Image-->
 
 <div class="row-fluid" style="margin-bottom:10px;" >
     <div class="span2">    
         <div class="thumbnails">
-            <a href="<?php echo $channelurl; ?>">
-            <?php echo $channelimage; ?>
-            </a>
-            <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;">#<?php echo $hashtag; ?></h4>
-
-<?php if(isset($tagActivities)) { 
+            
+<?php if(isset($tagActivities)) {
 //Generating Game Link Here
 if($game['Game']['seo_url']!=NULL)
 {
       if($game['Game']['embed']!=NULL)
       $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playgame'));
-	  else
-	  $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playframe'));
+      else
+      $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playframe'));
 }
 else{
     $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($game['Game']['id'])));
+}?>
+<a href="<?php echo $playurl; ?>">
+<?php
+echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'img-polaroid','alt'=>$game['Game']['name'],'width'=>'200','height'=>'100','onerror'=>'imgError(this,"toorksize");')); 
 }
+else{?></a>
+<a href="<?php echo $channelurl; ?>">
+<?php
+    echo $channelimage;
+}
+?> 
+            </a>
+            <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;">#<?php echo $hashtag; ?></h4>
+
+<?php if(isset($tagActivities)) { 
+
 ?>
     <a href="<?php echo $playurl; ?>" class="btn btn-block btn-success"><i class="elusive-play-alt"></i> Play Game</a>
 <?php }else{ ?>
