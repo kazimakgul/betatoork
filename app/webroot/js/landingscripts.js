@@ -71,10 +71,15 @@ $('.validateLogin').click(function() {
         function(value, element) {
             $.post(authcheck, {attr: 'check_username', dt: value }, function (data) {
 		
-			response = ( data.rtdata == 1 ) ? true : false;
+			if(data.rtdata == 1 )
+			{
+			$( "#reg_username" ).data( "valid", true );
+			}else{
+			$( "#reg_username" ).data( "valid", false );
+			}
 			
 		}, 'json');
-            return response;
+            return $( "#reg_username" ).data("valid");
         },
         "Username is already taken"
     );
@@ -84,10 +89,15 @@ $('.validateLogin').click(function() {
         function(value, element) {
             $.post(authcheck, {attr: 'check_email', dt: value }, function (data) {
 		
-			response = ( data.rtdata == 1 ) ? true : false;
+			if(data.rtdata == 1 )
+			{
+			$( "#reg_email" ).data( "valid", true );
+			}else{
+			$( "#reg_email" ).data( "valid", false );
+			}
 			
 		}, 'json');
-            return response;
+            return $( "#reg_email" ).data( "valid");
         },
         "Email is already registered"
     );
@@ -163,21 +173,12 @@ $('.validateLogin').click(function() {
 			}
 			else if(data.rtdata == 'false'){
         
-				
-				$.pnotify({
-               text: 'Recaptcha Code is incorrect. Please try again.',
-               type: 'error'
-               });
-				
-				
+				//Recaptcha Code is incorrect. Please try again.
+	
 			}
 			else
 			{
-				//alert(data.rtdata)
-				$.pnotify({
-               text: data.rtdata,
-               type: 'error'
-               });
+				alert(data.rtdata)
 				
 			}
 		}, 'json');	
@@ -215,5 +216,31 @@ $('.validateLogin').click(function() {
 //==========/Login Register Functions=============
 
 
+
+//*********Forget Password Function********
+function forgetPassword()
+{
+	
+	$.post(remotecheck, { dt: $('#resetcredential').val(), attr: 't_regbox_logemail' }, function (data) {
+            if (data.rtdata != null) {
+				
+				$.pnotify({
+            text: data.rtdata,
+            type: 'error'
+          });
+				
+            }
+            else { 
+				$.pnotify({
+            title: 'Reset mail has been sent.',
+            text: 'Please check your mail box.',
+            type: 'success'
+          });
+			}
+        }, 'json');	
+	
+}
+ 
+//*********/Forget Password Function********
 
 });
