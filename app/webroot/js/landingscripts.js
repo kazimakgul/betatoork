@@ -218,7 +218,7 @@ $('.validateLogin').click(function() {
 
 
 //*********Forget Password Function********
-$('#resetcredential').keypress(function (e) { if(e.which == 13) {alert('naber');
+$('#resetcredential').keypress(function (e) { if(e.which == 13) {
         $('#forget_pass').click();
     } });
 
