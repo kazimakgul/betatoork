@@ -17,6 +17,9 @@ $userid=$user['User']['id'];
 <div class="well well-small shadow-black" style=" padding-bottom:0px;background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/toork-social-wall.jpg);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/toork-social-wall.jpg); /* Safari 4+, Chrome 2+ */  background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%), url(http://s3.amazonaws.com/betatoorkpics/banners/toork-social-wall.jpg); /* FF 3.6+ */  
 ">
 
+<!--Game Image-->
+<?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'100','height'=>'80','onerror'=>'imgError(this,"toorksize");')); ?>
+<!--/Game Image-->
 
 <div class="row-fluid" style="margin-bottom:10px;" >
     <div class="span2">    

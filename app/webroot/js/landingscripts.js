@@ -218,10 +218,10 @@ $('.validateLogin').click(function() {
 
 
 //*********Forget Password Function********
-function forgetPassword()
-{
-	
-	$.post(remotecheck, { dt: $('#resetcredential').val(), attr: 't_regbox_logemail' }, function (data) {
+
+$('#forget_pass').click(function () {
+	    
+		$.post(remotecheck, { dt: $('#resetcredential').val(), attr: 't_regbox_logemail' }, function (data) {
             if (data.rtdata != null) {
 				
 				$.pnotify({
@@ -238,8 +238,9 @@ function forgetPassword()
           });
 			}
         }, 'json');	
-	
-}
+		
+    });
+
  
 //*********/Forget Password Function********
 

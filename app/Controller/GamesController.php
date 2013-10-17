@@ -1089,7 +1089,7 @@ public function hashtag() {
   $activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username'  )),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username',  'ChannelUser.seo_username'))),'fields'=>array('Activity.id','Activity.performer_id','Activity.game_id','Activity.channel_id','Activity.msg_id','Activity.seen','Activity.notify','Activity.email','Activity.type','Activity.replied','Activity.created','PerformerUser.id','PerformerUser.username','PerformerUser.seo_username','ChannelUser.id','ChannelUser.username','ChannelUser.seo_username','Game.id','Game.name','Game.seo_url','Game.embed'),'conditions'=>array('Activity.game_id'=>$idList),'limit'=>$limit,'order'=>'Activity.created DESC'));
   $this->set('tagActivities',$activityData);
   $play_id=array_rand($idList,1);	
-  $game=$this->Game->find('first', array('contain'=>array('User'=>array('fields'=>array('User.seo_username'))),'conditions' => array('Game.id' => $play_id),'fields'=>array('Game.id','Game.seo_url','Game.embed')));
+  $game=$this->Game->find('first', array('contain'=>array('User'=>array('fields'=>array('User.seo_username'))),'conditions' => array('Game.id' => $play_id),'fields'=>array('Game.id','Game.seo_url','Game.embed','Game.name','Game.picture')));
   $this->set('game',$game);
 	}else{
 	//it is not a game
