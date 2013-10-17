@@ -6,11 +6,7 @@
  
  <tbody><tr>
  <td align="center" style="padding:20px 0 40px">
- 	<a href="http://toork.com"  style="text-decoration:none;">
-	 	<p title="Visit Toork" style="border:none" target="_blank">
-			<h1 bold style="text-shadow: 1px 2px 2px #4d4d4d; color: #33CCCC; font: 40px 'impact';">Toork Team</h1>
-	 	</p>
- 	</a>
+	<a href="http://toork.com" style="color:#33cccc; font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:35px;line-height:15px; text-decoration:none">Toork Team</a> 
  </td>
  </tr>
  
