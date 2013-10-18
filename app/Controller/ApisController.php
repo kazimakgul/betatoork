@@ -348,7 +348,7 @@ return $material.$number;
 
 				//$this->redirect(array('action' => 'mygames'));
 				$editurl=Router::url(array('controller'=>'games', 'action'=>'edit2',$id));
-				echo $editurl;
+				$this->redirect(array('controller'=>'games', 'action'=>'edit2',$id));
 			} else {
 				$validationErrors = $this->Game->invalidFields();
 				$value = key($validationErrors);
