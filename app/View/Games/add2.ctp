@@ -1,5 +1,6 @@
 <?php
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
+$gameaddurl=$this->Html->url(array("controller" => "apis","action" =>"addgame_ajax"));
 $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 ?>
 
@@ -25,6 +26,8 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
                     <div style="background-color:white;" class="shadow alert alert-block fadein">
                         <button type="button" class="close" data-dismiss="alert">×</button>
+                        <p><h5 class="alert-heading">Drag this button: <a class="btn btn-success btn-mini" href="javascript:location.href='<?php echo $gameaddurl; ?>/'+decodeURIComponent(location.href)"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone Game</a> up to your Bookmarks Bar. </br>You can add any game from any website via this button.</h5></p>
+
                         <p><h5 class="alert-heading">Do you know what <a class="btn btn-success btn-mini"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone</a> is? </br>Its the easy way of adding a game to your channel.</h5></p>
                         
                         <p><i class="elusive-info-sign"></i> If you clone a game, a clone of the game will be created in your games section and you will be able to edit the game as you wish.</p>
