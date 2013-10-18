@@ -111,7 +111,7 @@ echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGam
 
                 <!-- span side-left -->
 <?php
- echo $this->element('NewPanel/loginModal',array());
+ //echo $this->element('NewPanel/loginModal',array()); this element has missing variable so this blocks js files
 ?>
                 
 <?php echo $content_for_layout?>
