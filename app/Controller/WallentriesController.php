@@ -1495,6 +1495,22 @@ $this->loadModel('Game');
       }
    }
    
+   if($action!=NULL && $action==8)
+   {
+   $auth = $this->User->find('first', array('conditions' => array('User.id'=>$uid),'fields'=>array('User.username','User.seo_username'),'contain'=>'false'));
+   $game = $this->Game->find('first', array('conditions' => array('Game.id'=>$content_id),'fields'=>array('Game.name','Game.user_id','User.username'),'contain'=>array('User'=>array('fields'=>array('User.username')))));
+   $type=8;
+   if($status==1)
+   $update=''.$auth['User']['username']. ' rated '.$game['Game']['name'].'';
+   $uploads=$_POST['uploads'];
+   $data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+      if($data)
+      {
+      $msg_id=$data['msg_id'];
+      $this->pushActivity($content_id,NULL,1,1,4,$msg_id);
+      }
+   }
+   
    
 }
    

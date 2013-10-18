@@ -84,6 +84,7 @@ class RatesController extends AppController {
 				{
 				    $this->starsize($game_id,1);
 					$this->requestAction( array('controller' => 'userstats', 'action' => 'totalrate',$game_id));
+					$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$user_id,8,1));
 					$this->set("rateMessage","Your rating has been saved.");
 
 				}else{
