@@ -25,9 +25,9 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 
                     <div style="background-color:white;" class="shadow alert alert-block fadein">
                         <button type="button" class="close" data-dismiss="alert">×</button>
-                        <p><h5 class="alert-heading">Drag this button: <a class="btn btn-success btn-mini" href="javascript:location.href='http://54.225.196.20/apis/addgame_ajax/'+decodeURIComponent(location.href)"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone Game</a> up to your Bookmarks Bar. </br>You can add any game from any website via this button.</h5></p>
+                        <p><h5 class="alert-heading well">Drag this button: <a class="btn btn-danger" href="javascript:location.href='http://54.225.196.20/apis/addgame_ajax/'+decodeURIComponent(location.href)"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone Game</a> up to your Bookmarks Bar. </br>You can add any game from any website via this button.</h5></p>
 
-                        <p><h5 class="alert-heading">Do you know what <a class="btn btn-success btn-mini"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone</a> is? </br>Its the easy way of adding a game to your channel.</h5></p>
+                        <p><h6 class="alert-heading">Do you know what <a class="btn btn-success btn-mini"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone</a> is? </br>Its the easy way of adding a game to your channel.</h6></p>
                         
                         <p><i class="elusive-info-sign"></i> If you clone a game, a clone of the game will be created in your games section and you will be able to edit the game as you wish.</p>
                         <p><i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i></a> clone button at the bottom of the page on the rating bar.</p>
