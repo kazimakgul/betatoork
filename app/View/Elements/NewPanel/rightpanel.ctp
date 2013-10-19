@@ -6,7 +6,7 @@
                         <div class="sidebar-right">
 
                             <!--sidebar-right-control-->
-                            <div class="sidebar-right-control">
+                            <div class="sidebar-right-control" data-intro="Switch between Activities, Best Channels and Categories." data-position="left">
                                 <ul class="sr-control-item">
                                     <li class="active"><a href="#activity" rel="tooltip" data-placement="left" data-original-title="Best Channels" data-toggle="tab" title="Activity Feed"><i class="elusive-bullhorn"></i></a></li>
                                     <li ><a href="#contact" rel="tooltip" data-placement="bottom" data-original-title="Best Channels" data-toggle="tab" title="Best Channels"><i class="icofont-group"></i></a></li>
@@ -40,7 +40,7 @@
 
                                     <!--contact-->
                                     <div class="tab-pane" id="contact">
-                                        <div class="side-contact" data-step="3" data-position="bottom" data-intro="This is your recommendation corner where you will find amazing game channels created by our members like you. Just click on plus button so follow any channel so you will be notified">
+                                        <div class="side-contact">
                                             <!--contact-control-->
                                             <div class="contact-control">
 

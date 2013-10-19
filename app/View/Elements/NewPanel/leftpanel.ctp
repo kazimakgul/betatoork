@@ -33,7 +33,7 @@ if ($this->action == "dashboard"){
  <div class="span1">
                     <!--side bar-->
                     <aside class="side-left">
-                        <ul class="sidebar" data-step="2" data-position="bottom" data-intro="Hey this is your personal menu. Everything here belongs to you click on some of them and start building your game channel.">
+                        <ul class="sidebar">
                             
                             <li <?php echo $class7;?>>
                                 <a href="<?php echo $explore; ?>" title="Explore">
@@ -86,7 +86,7 @@ if ($this->action == "dashboard"){
                                     <span class="sidebar-text">Follows</span>
                                 </a>
                             </li>
-                            <li <?php echo $class6;?>>
+                            <li <?php echo $class6;?> data-intro="Customize your channel and change your notification settings here" data-position="right">
                                 <a href="<?php echo $settings; ?>" title="Settings">
                                     <div class="helper-font-24">
                                         <i class="icofont-edit"></i>

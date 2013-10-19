@@ -22,7 +22,7 @@ $userid=$user['User']['id'];
 <!--/Game Image-->
 
 <div class="row-fluid" style="margin-bottom:10px;" >
-    <div class="span2">    
+    <div class="span3">    
         <div class="thumbnails">
             
 <?php if(isset($tagActivities)) {
@@ -53,15 +53,16 @@ else{?></a>
 <?php if(isset($tagActivities)) { 
 
 ?>
-    <a href="<?php echo $playurl; ?>" class="btn btn-block btn-success"><i class="elusive-play-alt"></i> Play Game</a>
+    <a href="<?php echo $playurl; ?>" class="btn btn-success"><i class="elusive-play-alt"></i> Play Game</a>
+    <a rel="tooltip" data-placement="bottom" data-original-title="Take The Tour"  class="btn btn-info" onclick="javascript:$('.content').chardinJs('start');"> <i class="elusive-compass"></i> Tour</a>
 <?php }else{ ?>
-
+    <a rel="tooltip" data-placement="bottom" data-original-title="Take The Tour"  class="btn btn-info" onclick="javascript:$('.content').chardinJs('start');"> <i class="elusive-compass"></i> Tour</a>
 <?php } ?>            
         </div>
 
     </div>
     <div class="helper-font-16 span6 pull-right">
-        <div class="pull-right">
+        <div class="pull-right" data-intro="Daily top trends are here. Use hashtags to join the converisations" data-position="left">
 
 	<?php
 	 if(isset($trends))
@@ -87,7 +88,7 @@ else{?></a>
               <div class="span5">
                 <ul style="background-color:white; padding:10px; margin:0px 0px 0px 0px;" class="span12 shadow well nav nav-pills">
                     <!--tab menus-->
-                    <li class="active"><a data-toggle="tab" href="#new-feeds"><i class="elusive-bullhorn color-gold"></i> Game Activities</a></li>
+                    <li class="active"><a data-toggle="tab" href="#new-feeds" data-intro="If you hashtag a game, you will see the activities here" data-position="right"><i class="elusive-bullhorn color-gold"></i> Game Activities</a></li>
                     <!--/tab menus-->
                 </ul>
 <?php if(isset($tagActivities)) { ?>

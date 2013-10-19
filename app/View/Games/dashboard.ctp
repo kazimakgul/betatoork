@@ -60,7 +60,7 @@ $username = $user['User']['seo_username'];
 </div> -->
 
 <div class="row-fluid">
-    <div class="navbar span6" data-step="1" data-intro="Hello pal :) This is one of your ways that you can share your ideas about games. Just write what you think and click share button. You can also share a picture or a a video and also a game which is a unique feature to toork.">
+    <div class="navbar span6" data-intro="Share something amazing for your followers. You can also share videos and pictures." data-position="right">
         <div class="navbar-inner">
                 </br>
                 
@@ -147,7 +147,7 @@ $username = $user['User']['seo_username'];
                         <a rel="tooltip" data-placement="bottom" data-original-title="Follow Best Channels"  href="<?php echo $bestchannels; ?>" class="btn btn-success" style="margin:0px 3px 5px 0px;">
                             <i class="elusive-plus-sign"></i> Discover Channels
                         </a>
-                        <a rel="tooltip" data-placement="bottom" data-original-title="Take The Tour"  class="btn btn-info" onclick="javascript:introJs().start();" style="margin:0px 3px 5px 0px;">
+                        <a rel="tooltip" data-placement="bottom" data-original-title="Take The Tour"  class="btn btn-info" onclick="javascript:$('body').chardinJs('start');" style="margin:0px 3px 5px 0px;">
                             <i class="elusive-compass"></i> Tour
                         </a>
                         </p>

@@ -68,7 +68,7 @@ if(!isset($notifycount))
       <!-- Start of the nav bar content -->
       <div class="nav-collapse"><!-- Other nav bar content -->
         <!-- The drop down menu -->
-        <ul class="nav pull-right">
+        <ul class="nav pull-right span4">
 
                     <div class="span1">
                         <!--panel button ext-->
@@ -145,7 +145,7 @@ if(!isset($notifycount))
 
           <li style="margin:5px;"></li>
 <! Main User Card starts ->
-<div class="btn-group user-group"><strong></strong>
+<div class="btn-group user-group"><strong>Username</strong>
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     
                                    <!-- <img class="corner-all" align="middle" src="img/user-thumb.jpg" title="John Doe" alt="john doe"> -->

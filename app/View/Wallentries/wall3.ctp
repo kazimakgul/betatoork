@@ -22,14 +22,13 @@ $userid=$user['User']['id'];
 ">
 <?php } ?>
 <div class="row-fluid" style="margin-bottom:10px;" >
-    <div class="span2">    
+    <div class="span3">    
         <div class="thumbnails">
             <a href="<?php echo $channelurl; ?>">
             <?php echo $channelimage; ?>
             </a>
-          
+<a style="margin-bottom:-70px;" rel="tooltip" data-placement="bottom" data-original-title="Take The Tour"  class="btn btn-info" onclick="javascript:$('.content').chardinJs('start');"> <i class="elusive-compass"></i> See Tips</a>            
         </div>
-
     </div>
 
 </div>
@@ -78,7 +77,7 @@ $userid=$user['User']['id'];
               <div>
                 <ul style="background-color:white; padding:10px; margin:15px 0px 0px 0px;" class="span12 shadow well nav nav-pills">
                     <!--tab menus-->
-                    <li class="active"><a data-toggle="tab" href="#new-feeds"><i class="elusive-bell"></i> My Notifications</a></li>
+                    <li class="active" data-intro="See all your notifications and try to contact the users." data-position="right" ><a data-toggle="tab" href="#new-feeds"><i class="elusive-bell"></i> My Notifications</a></li>
                     <!--/tab menus-->
                 </ul>
 
@@ -99,7 +98,7 @@ $userid=$user['User']['id'];
                                             <div class="header-control pull-right">
 
                                             </div>
-                                            <ul style="background-color:white; margin:0px;" class="shadow well nav nav-pills">
+                                            <ul data-intro="switch between your feeds or your followings feeds" data-position="left" style="background-color:white; margin:0px;" class="shadow well nav nav-pills">
                                                 <!--tab menus-->
                                                 <li class="active"><a data-toggle="tab" href="#new-feeds">What's New</a></li>
                                                 <li><a data-toggle="tab" href="#my-feeds">My Feeds</a></li>
