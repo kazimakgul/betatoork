@@ -1,3 +1,5 @@
+<?php $tools=$this->Html->url(array("controller" => "pages","action" =>"buttons")); ?>
+
                 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -22,6 +24,10 @@ In this section you can add your own games by uploading your game file. Please l
 Toork is working so hard to become developer friendly so you will be able to use toork api to interact with thousands of games and members.
                       </small></p>
 
+                      <h4>Toork Social Buttons</h4>
+                      <p><small>
+Toork is a social network about games, gamers, game bloggers, game developers and game sites. Toork is the right place to promote your games. Add one of our pre-build toork social buttons to let your visitors reach your channel. Share good stuff , make them follow you and grow your community. Have fun. You already can use our pre-build social buttons <a class="btn" href="<?php echo $tools;?>">Toork Buttons Page</a>
+                      </small></p>
 
                         </div>
 

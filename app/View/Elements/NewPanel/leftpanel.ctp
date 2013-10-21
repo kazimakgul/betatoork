@@ -4,27 +4,30 @@ $router = Router::url();
 
 if ($this->action == "dashboard"){
     $class = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";
 }elseif($this->action == "mygames"){
     $class2 = "class='active'";
-    $class = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";
+    $class = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";
 }elseif($this->action == "favorites"){
     $class3 = "class='active'";
-    $class2 = "";$class = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";
+    $class2 = "";$class = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";
 }elseif($this->action == "chains"){
     $class4 = "class='active'";
-    $class2 = "";$class3 = "";$class = "";$class5 = "";$class6 = "";$class7 = "";
+    $class2 = "";$class3 = "";$class = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";
 }elseif($this->action == "wall3"){
     $class5 = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class = "";$class6 = "";$class7 = "";
+    $class2 = "";$class3 = "";$class4 = "";$class = "";$class6 = "";$class7 = "";$class8 = "";
 }elseif($this->action == "settings"){
     $class6 = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class7 = "";$class = "";
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class7 = "";$class = "";$class8 = "";
 }elseif($this->action == ("bestchannels2" || "toprated2")){
     $class7 = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class = "";
-}else{
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class = "";$class8 = "";
+}elseif($this->action == "buttons"){
+    $class8 = "class='active'";
     $class = "";$class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";
+}else{
+    $class = "";$class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";
 }
 
  ?>
@@ -93,28 +96,16 @@ if ($this->action == "dashboard"){
                                     </div>
                                     <span class="sidebar-text">Settings</span>
                                 </a>
-                               <!--   <ul class="sub-sidebar-form corner-top shadow-white">
-                                  <li>
-                                        <a href="#" title="Monetize" class="corner-all">
-                                            <i class="icofont-money"></i>
-                                            <span class="sidebar-text">Monetize Your Channel</span>
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li> 
-                                    <li>
-                                        <a href="<?php echo $settings; ?>" title="Edit" class="corner-all">
-                                            <i class="icofont-user"></i>
-                                            <span class="sidebar-text">Edit Channel</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $password; ?>" title="Change Password" class="corner-all">
-                                            <i class="icofont-lock"></i>
-                                            <span class="sidebar-text">Change Password</span>
-                                        </a>
-                                    </li>
-                                </ul> -->
                             </li>
+                            <li <?php echo $class8;?> >
+                                <a href="<?php echo $tools; ?>" title="Tools">
+                                    <div class="helper-font-24">
+                                        <i class="elusive-briefcase"></i>
+                                    </div>
+                                    <span class="sidebar-text">Tools</span>
+                                </a>
+                            </li>
+
                         </ul>
                     </aside><!--/side bar -->
                 </div><!-- span side-left -->

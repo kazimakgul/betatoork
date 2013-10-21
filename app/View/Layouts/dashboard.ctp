@@ -121,7 +121,7 @@ $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$
 $password=$this->Html->url(array("controller" => "users","action" =>"password2",$this->Session->read('Auth.User.id')));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 $newgames=$this->Html->url(array( "controller" => "games","action" =>"toprated2"));$newgames.='/sort:id/direction:desc';
-
+$tools=$this->Html->url(array("controller" => "pages","action" =>"buttons"));
 ?>
 
 
@@ -148,7 +148,7 @@ echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGam
 
 if($this->Session->check('Auth.User')){
 
-echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall,'settings'=>$settings,'bestchannels'=>$bestchannels,'explore'=>$explore,'toprated'=>$toprated,'newgames'=>$newgames,'password'=>$password)); 
+echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'=>$dashboard,'favorites'=>$favorites,'chains'=>$chains,'wall'=>$wall,'settings'=>$settings,'bestchannels'=>$bestchannels,'explore'=>$explore,'toprated'=>$toprated,'newgames'=>$newgames,'password'=>$password,'tools'=>$tools)); 
 
 }else{
     echo $this->element('NewPanel/unauthLeft',array('index'=>$index,'featuredchannels'=>$featuredchannels,'bestchannels'=>$bestchannels,'toprated'=>$toprated,'explore'=>$explore));
