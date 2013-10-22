@@ -369,11 +369,6 @@
 
                   <div class='span2'>
                     
-                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/cnet.png" /></a>
-                    
-                  </div>
-                  <div class='span2'>
-                    
                       <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/mashable.png" /></a>
                     
                   </div>
@@ -382,6 +377,12 @@
                       <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/techcrunch.png" /></a>
                     
                   </div>
+                  <div class='span2'>
+                    
+                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/cnet.png" /></a>
+                    
+                  </div>
+                  
                   <div class='span2'>
                     
                       <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/flipboard.png" /></a>
