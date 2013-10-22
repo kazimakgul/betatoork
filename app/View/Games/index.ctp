@@ -437,19 +437,19 @@
                       </ul>
                     </div>
                     <div class='span4'>
-                      <h5 class='footer-header'>Recent Posts</h5>
+                      <h5 class='footer-header'>Benefits of Toork</h5>
                       <ul class='footer-list'>
                         <li>
-                          <a>Vestibulum auctor dapibus</a>
+                          <p>Create Your Own Game Channel</p>
                         </li>
                         <li>
-                          <a>Aliquam tincidunt mauris</a>
+                          <p>Follow Channels and Friends</p>
                         </li>
                         <li>
-                          <a>Lorem ipsum dolor sit</a>
+                          <p>Your Personal Dashboard</p>
                         </li>
                         <li>
-                          <a>Consectetur adipisicing elit</a>
+                          <p>Add, Play, Clone and Share Games</p>
                         </li>
                       </ul>
                     </div>
