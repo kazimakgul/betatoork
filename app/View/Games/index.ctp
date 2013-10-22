@@ -268,41 +268,53 @@
                     </div>
                   </div>
                   <div class="span6">
-                    <h3 class="section-header">Services We Offer</h3>
+                    <h3 class="section-header">Why join Toork?</h3>
                     <div class="accordion" id="accordion">
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseOne">
-                            Web Development
+                            <i class="icon-plus-sign"></i> Create Your Own Game Channel
                           </a>
                         </div>
                         <div class="accordion-body collapse in" id="collapseOne">
                           <div class="accordion-inner">
-                            Cras lacinia laoreet libero et mattis. In facilisis neque id lectus hendrerit in dignissim orci rhoncus. Etiam lacinia, mauris sed sagittis laoreet, sapien erat consectetur enim, eget sagittis orci magna at dolor. Donec semper tellus vitae massa laoreet congue. In id elit in turpis fermentum bibendum eget ac nibh.
+                            You will have your own unique game channel (toork.com/mychannel). Customize your channel, let others to follow your channel and grow your gaming community. You will be able to share games, videos and pictures.Toork is a social game network and It is especially designed for gamers, game bloggers, game developers, game sites and game companies.
                           </div>
                         </div>
                       </div>
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">
-                            Photoshop Website Design
+                            Follow Channels and Friends
                           </a>
                         </div>
                         <div class="accordion-body collapse" id="collapseTwo">
                           <div class="accordion-inner">
-                            Cras lacinia laoreet libero et mattis. In facilisis neque id lectus hendrerit in dignissim orci rhoncus. Etiam lacinia, mauris sed sagittis laoreet, sapien erat consectetur enim, eget sagittis orci magna at dolor. Donec semper tellus vitae massa laoreet congue. In id elit in turpis fermentum bibendum eget ac nibh.
+                            Game channels are user generated themed game sites inside toork. You will be able to follow channels to be notified with the latest games and news about the channel. Grow your community, make your friends follow you and run your own game channel.
                           </div>
                         </div>
                       </div>
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseThree">
-                            Search Engine Optimization
+                            Your Personal Dashboard
                           </a>
                         </div>
                         <div class="accordion-body collapse" id="collapseThree">
                           <div class="accordion-inner">
-                            Cras lacinia laoreet libero et mattis. In facilisis neque id lectus hendrerit in dignissim orci rhoncus. Etiam lacinia, mauris sed sagittis laoreet, sapien erat consectetur enim, eget sagittis orci magna at dolor. Donec semper tellus vitae massa laoreet congue. In id elit in turpis fermentum bibendum eget ac nibh.
+                            Toork is your personal assitant for your game activity. Toork analize your game personality and Its game recommendation engine helps you personalize your dashboard which knows what you like and what you may like. It offers you best games, what to play next and who to follow kind of recommendations.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-group">
+                        <div class="accordion-heading">
+                          <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseFour">
+                            Add,Play,Share Games
+                          </a>
+                        </div>
+                        <div class="accordion-body collapse" id="collapseFour">
+                          <div class="accordion-inner">
+                            Add a game to your channel with one click. any one can add games. You don't have to be a developer to have your own games anymore. Play, rate, share and love your games. Use Toork's inovative feature "clone" to simply add games to your channel.
                           </div>
                         </div>
                       </div>

@@ -1,7 +1,7 @@
        <?php if($this->Session->check('Auth.User')){
-              $buttonlink=$this->Html->url(array( "controller" => $this->Session->read('Auth.User.seo_username'),"action" =>'')); 
+              $buttonlink= 'http://toork.com/'.$this->Session->read('Auth.User.seo_username');
        }else{
-              $buttonlink=$this->Html->url(array( "controller" => 'games',"action" =>'index')); 
+              $buttonlink= 'http://toork.com'; 
        }
 
 $image1= $this->Html->image('socials/followontoork3.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'203'));
