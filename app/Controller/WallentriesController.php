@@ -1900,6 +1900,7 @@ public function comment_ajax2() {
    $comment=str_replace('\n',' ',$comment);
    $msg_id=$_POST['msg_id'];
    $ip=$_SERVER['REMOTE_ADDR'];
+   $msg_uid_data=$this->Wallentry->query('SELECT uid_fk from messages WHERE msg_id='.$msg_id.' ');
    $cdata=$Wall->Insert_Comment($uid,$msg_id,$comment,$ip);
    if($cdata)
    {
@@ -1909,6 +1910,7 @@ public function comment_ajax2() {
    $mtime=date("c", $time);
    $username=$cdata['username'];
    $uid=$cdata['uid_fk'];
+   $this->pushActivity(NULL,$msg_uid_data[0]['messages']['uid_fk'],1,1,6,$msg_id);
    $this->set('seo_username',$cdata['seo_username']);
    
 
