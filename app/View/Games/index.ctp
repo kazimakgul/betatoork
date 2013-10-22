@@ -273,7 +273,7 @@
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseOne">
-                            <i class="icon-plus-sign"></i> Create Your Own Game Channel
+                            <i class="icon-plus"></i> Create Your Own Game Channel
                           </a>
                         </div>
                         <div class="accordion-body collapse in" id="collapseOne">
@@ -285,19 +285,19 @@
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">
-                            Follow Channels and Friends
+                            <i class="icon-group"></i> Follow Channels and Friends
                           </a>
                         </div>
                         <div class="accordion-body collapse" id="collapseTwo">
                           <div class="accordion-inner">
-                            Game channels are user generated themed game sites inside toork. You will be able to follow channels to be notified with the latest games and news about the channel. Grow your community, make your friends follow you and run your own game channel.
+                            Game channels are user generated themed game sites inside toork. You will be able to follow channels to be notified with the latest games and news about the channel. Grow your community, make your friends follow you. Run your own game community.
                           </div>
                         </div>
                       </div>
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseThree">
-                            Your Personal Dashboard
+                            <i class="icon-home"></i> Your Personal Dashboard
                           </a>
                         </div>
                         <div class="accordion-body collapse" id="collapseThree">
@@ -309,7 +309,7 @@
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseFour">
-                            Add,Play,Share Games
+                            <i class="icon-heart"></i> Add, Play, Clone and Share Games
                           </a>
                         </div>
                         <div class="accordion-body collapse" id="collapseFour">
@@ -358,6 +358,39 @@
                     <div class='white-card'>
                       <a href="<?php echo $playdom; ?>"><img alt="Client-6" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/35.jpg" /></a>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class='section-wrapper stripped'>
+              <div class='container'>
+                <div class='row clients-w' style="opacity:0.8; margin-left:50px;">
+
+                  <div class='span2'>
+                    
+                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/cnet.png" /></a>
+                    
+                  </div>
+                  <div class='span2'>
+                    
+                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/mashable.png" /></a>
+                    
+                  </div>
+                  <div class='span2'>
+                    
+                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/techcrunch.png" /></a>
+                    
+                  </div>
+                  <div class='span2'>
+                    
+                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/flipboard.png" /></a>
+                    
+                  </div>
+                  <div class='span2'>
+                    
+                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/engadged.png" /></a>
+                    
                   </div>
                 </div>
               </div>
