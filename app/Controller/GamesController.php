@@ -1117,9 +1117,9 @@ public function hashtag() {
 	$this->set('trends',$trends);
 	}else{
 	 if($comma_separated!=NULL)
-	 $trendsother=$this->Activity->query('SELECT hashtag,id FROM hashcount WHERE hashtag NOT IN ("'.$comma_separated.'") ORDER BY count DESC LIMIT '.$missing.'');
+	 $trendsother=$this->Activity->query('SELECT hashtag,id FROM hashcount  WHERE hashtag NOT IN ("'.$comma_separated.'") GROUP BY hashtag ORDER BY count DESC LIMIT '.$missing.'');
 	 else
-	 $trendsother=$this->Activity->query('SELECT DISTINCT hashtag,id FROM hashcount ORDER BY count DESC LIMIT '.$missing.'');
+	 $trendsother=$this->Activity->query('SELECT id,hashtag FROM hashcount GROUP BY hashtag ORDER BY count DESC LIMIT 13');
 	 
 	   if($trendsother!=NULL)
 	   {
