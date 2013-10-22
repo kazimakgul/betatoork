@@ -44,7 +44,7 @@
                     </div>
                     <div class='slider-browsers-w clearfix'>
                       <div class='slider-browser slider-browser-left hidden-phone' data-position-bottom='-8%'>
-                        <img alt="Browser-window-1" src="img/images/browser-window1.png" />
+                        <img alt="Browser-window-1" src="img/images/browser-window2.png" />
                       </div>
                       <div class='slider-browser slider-browser-center' data-position-bottom='-9%'>
                         <img alt="Browser-window-2" src="img/images/browser-window.png" />
@@ -65,17 +65,17 @@
                     <div class='row zoomed-browsers-w'>
                       <div class='span4'>
                         <div class='zoomed-browser'>
-                          <img alt="Browser-window-1" src="http://soziev.com/assets/theme_venera/photos/browser-window-2.png" />
+                          <img alt="Browser-window-1" src="img/images/browser-window5.png"  />
                         </div>
                       </div>
                       <div class='span4'>
                         <div class='zoomed-browser hidden-phone'>
-                          <img alt="Browser-window-2" src="http://soziev.com/assets/theme_venera/photos/browser-window-1.png" />
+                          <img alt="Browser-window-2" src="img/images/browser-window4.png"  />
                         </div>
                       </div>
                       <div class='span4'>
                         <div class='zoomed-browser hidden-phone'>
-                          <img alt="Browser-window-3" src="http://soziev.com/assets/theme_venera/photos/browser-window-3.png" />
+                          <img alt="Browser-window-3" src="img/images/browser-window6.png"  />
                         </div>
                       </div>
                     </div>
