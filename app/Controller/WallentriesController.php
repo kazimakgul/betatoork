@@ -1130,6 +1130,15 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
 			    ->subject($performer["User"]["username"].' is talking about your game.')
 			    ->send();
+	  	}elseif($type_id==12){
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('postgame')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->subject($performer["User"]["username"].' commented on your game.')
+			    ->send();
 	  	}else{}
 
 	 //echo 'data has been mailed';
@@ -1899,7 +1908,7 @@ public function comment_ajax2() {
    $comment=str_replace('\n',' ',$comment);
    $msg_id=$_POST['msg_id'];
    $ip=$_SERVER['REMOTE_ADDR'];
-   $msg_uid_data=$this->Wallentry->query('SELECT uid_fk from messages WHERE msg_id='.$msg_id.' ');
+   $msg_uid_data=$this->Wallentry->query('SELECT uid_fk,game_id from messages WHERE msg_id='.$msg_id.' ');
    $cdata=$Wall->Insert_Comment($uid,$msg_id,$comment,$ip);
    if($cdata)
    {
@@ -1909,7 +1918,16 @@ public function comment_ajax2() {
    $mtime=date("c", $time);
    $username=$cdata['username'];
    $uid=$cdata['uid_fk'];
-   $this->pushActivity(NULL,$msg_uid_data[0]['messages']['uid_fk'],1,1,6,$msg_id);
+   
+   
+   if($msg_uid_data!=NULL)
+   {
+      if($msg_uid_data[0]['messages']['game_id']!=NULL)
+	  $this->pushActivity(NULL,$msg_uid_data[0]['messages']['uid_fk'],1,1,12,$msg_id);
+	  else
+      $this->pushActivity(NULL,$msg_uid_data[0]['messages']['uid_fk'],1,1,6,$msg_id);
+   }
+   
    $this->set('seo_username',$cdata['seo_username']);
    
 
