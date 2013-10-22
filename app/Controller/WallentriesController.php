@@ -1908,7 +1908,7 @@ public function comment_ajax2() {
    $comment=str_replace('\n',' ',$comment);
    $msg_id=$_POST['msg_id'];
    $ip=$_SERVER['REMOTE_ADDR'];
-   $msg_uid_data=$this->Wallentry->query('SELECT uid_fk,game_id from messages WHERE msg_id='.$msg_id.' ');
+   $msg_uid_data=$this->Wallentry->query('SELECT uid_fk,game_id,type from messages WHERE msg_id='.$msg_id.' ');
    $cdata=$Wall->Insert_Comment($uid,$msg_id,$comment,$ip);
    if($cdata)
    {
@@ -1922,8 +1922,8 @@ public function comment_ajax2() {
    
    if($msg_uid_data!=NULL)
    {
-      if($msg_uid_data[0]['messages']['game_id']!=0)
-	  $this->pushActivity(NULL,$msg_uid_data[0]['messages']['uid_fk'],1,1,12,$msg_id);
+      if($msg_uid_data[0]['messages']['game_id']!=0 && $msg_uid_data[0]['messages']['type']==1)
+	  $this->pushActivity($msg_uid_data[0]['messages']['game_id'],$msg_uid_data[0]['messages']['uid_fk'],1,1,12,$msg_id);
 	  else
       $this->pushActivity(NULL,$msg_uid_data[0]['messages']['uid_fk'],1,1,6,$msg_id);
    }
