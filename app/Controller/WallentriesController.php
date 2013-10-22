@@ -1106,11 +1106,11 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 	  	}elseif($type_id==6){
 			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
-				->template('postComment')
+				->template('postcomment')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
 			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
-			    ->subject($performer["User"]["username"].' commneted on your post.')
+			    ->subject($performer["User"]["username"].' commented on your post.')
 			    ->send();
 	  	}elseif($type_id==7){
 			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
@@ -1132,7 +1132,6 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->send();
 	  	}else{}
 
-	  	
 	 //echo 'data has been mailed';
 	             }//-----Channel id bos degilse begins-------
 	        
@@ -1910,7 +1909,7 @@ public function comment_ajax2() {
    $mtime=date("c", $time);
    $username=$cdata['username'];
    $uid=$cdata['uid_fk'];
-   $this->pushActivity(NULL,15,1,1,6,1888);
+   $this->pushActivity(NULL,$msg_uid_data[0]['messages']['uid_fk'],1,1,6,$msg_id);
    $this->set('seo_username',$cdata['seo_username']);
    
 
