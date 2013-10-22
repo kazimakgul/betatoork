@@ -1910,7 +1910,7 @@ public function comment_ajax2() {
    $mtime=date("c", $time);
    $username=$cdata['username'];
    $uid=$cdata['uid_fk'];
-   $this->pushActivity(NULL,$msg_uid_data[0]['messages']['uid_fk'],1,1,6,$msg_id);
+   $this->pushActivity(NULL,15,1,1,6,1888);
    $this->set('seo_username',$cdata['seo_username']);
    
 
