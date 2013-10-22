@@ -20,7 +20,7 @@ $image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag'
                         <div class="content-body" style="padding-top:15px;">
                           
                           <div class="well">
-                            <h3>Buttons for your site</h3>
+                            <h3>Buttons for your website</h3>
                             <h5>Add buttons to your website to help your visitors share games from your site and connect with you on Toork.</h5></br>
 
 <div class="menu shadow-black" style="background-color:white;">
