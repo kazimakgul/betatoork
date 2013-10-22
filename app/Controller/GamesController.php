@@ -1124,9 +1124,9 @@ public function hashtag() {
 	   if($trendsother!=NULL)
 	   {
 	   $merged=array_merge($trends,$trendsother);
-	   $this->set('trends',$merged);
+	   $this->set('trends',array_unique($merged));
 	   }else{
-	   $this->set('trends',$trends);
+	   $this->set('trends',array_unique($trends));
 	   }
 	}
 	
