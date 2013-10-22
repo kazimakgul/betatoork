@@ -556,6 +556,7 @@ $('.comment_button_msg_id').live("click",function()
 var ID = $(this).attr("id");
 msg_uid=$('#msg_uid'+ID).val();
 
+
 activitypath=pushactivity+'/'+null+'/'+msg_uid+'/'+1+'/'+1+'/'+6
 $.post(activitypath, function (data) {
             if (data!= null) {

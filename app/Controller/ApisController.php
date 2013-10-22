@@ -162,7 +162,7 @@ return $material.$number;
 				    }
 					if($type==6)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$channel_name.' wall.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$channel_name.' post.';
 				    }
 					if($type==7)
 				    {
@@ -183,6 +183,10 @@ return $material.$number;
 					if($type==11)
 				    {
 					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
+				    }
+					if($type==12)
+				    {
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$channel_name.' game.';
 				    }
 				  return $text;
    
@@ -236,7 +240,7 @@ return $material.$number;
 				    }
 					if($type==6)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on your game: '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Commented on your post.';
 				    }
 					if($type==7)
 				    {
@@ -257,6 +261,10 @@ return $material.$number;
 					if($type==11)
 				    {
 					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
+				    }
+					if($type==12)
+				    {
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Commented on your game.';
 				    }
 				  return $text;
    
