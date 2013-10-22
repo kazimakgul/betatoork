@@ -432,7 +432,7 @@
                         </li>
                         <li>
                           <strong>Contact:</strong>
-                          <a style="font-family:arial; font-size:13px;" href="mailto:hello@toork.com">hello [at] toork.com</a>
+                          <a style="color:silver; font-size:14px;" href="mailto:hello@toork.com">hello [at] toork.com</a>
                         </li>
                       </ul>
                     </div>
