@@ -16,6 +16,12 @@
           $kinggames=$this->Html->url(array( "controller" => 'kinggames',"action" =>''));
           $playdom=$this->Html->url(array( "controller" => 'playdom',"action" =>''));
 
+          $cnetgames=$this->Html->url(array( "controller" => 'cnetgames',"action" =>''));
+          $mashable=$this->Html->url(array( "controller" => 'mashable',"action" =>''));
+          $flipboard=$this->Html->url(array( "controller" => 'flipboard',"action" =>''));
+          $techcrunch=$this->Html->url(array( "controller" => 'techcrunch',"action" =>''));
+          $engadget=$this->Html->url(array( "controller" => 'engadget',"action" =>''));
+
           $playstation=$this->Html->url(array( "controller" => 'playstation',"action" =>''));
           $konami=$this->Html->url(array( "controller" => 'konami',"action" =>''));
           $xboxone=$this->Html->url(array( "controller" => 'xboxone',"action" =>''));
@@ -369,28 +375,28 @@
 
                   <div class='span2'>
                     
-                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/mashable.png" /></a>
+                      <a href="<?php echo $mashable; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/mashable.png" /></a>
                     
                   </div>
                   <div class='span2'>
                     
-                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/techcrunch.png" /></a>
+                      <a href="<?php echo $techcrunch; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/techcrunch.png" /></a>
                     
                   </div>
                   <div class='span2'>
                     
-                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/cnet.png" /></a>
+                      <a href="<?php echo $cnetgames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/cnet.png" /></a>
                     
                   </div>
-                  
+
                   <div class='span2'>
                     
-                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/flipboard.png" /></a>
+                      <a href="<?php echo $flipboard; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/flipboard.png" /></a>
                     
                   </div>
                   <div class='span2'>
                     
-                      <a href="<?php echo $zyngagames; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/engadged.png" /></a>
+                      <a href="<?php echo $engadget; ?>"><img alt="Client-1" src="https://s3.amazonaws.com/betatoorkpics/upload/landingPage/technews/engadget.png" /></a>
                     
                   </div>
                 </div>
