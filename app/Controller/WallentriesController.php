@@ -1919,7 +1919,7 @@ public function comment_ajax2() {
    $username=$cdata['username'];
    $uid=$cdata['uid_fk'];
    
-   
+   echo 'game_id:'.$msg_uid_data[0]['messages']['game_id'];
    if($msg_uid_data!=NULL)
    {
       if($msg_uid_data[0]['messages']['game_id']!=NULL)
