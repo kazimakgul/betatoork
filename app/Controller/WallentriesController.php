@@ -1919,10 +1919,10 @@ public function comment_ajax2() {
    $username=$cdata['username'];
    $uid=$cdata['uid_fk'];
    
-   echo 'game_id:'.$msg_uid_data[0]['messages']['game_id'];
+   
    if($msg_uid_data!=NULL)
    {
-      if($msg_uid_data[0]['messages']['game_id']!=NULL)
+      if($msg_uid_data[0]['messages']['game_id']!=0)
 	  $this->pushActivity(NULL,$msg_uid_data[0]['messages']['uid_fk'],1,1,12,$msg_id);
 	  else
       $this->pushActivity(NULL,$msg_uid_data[0]['messages']['uid_fk'],1,1,6,$msg_id);
