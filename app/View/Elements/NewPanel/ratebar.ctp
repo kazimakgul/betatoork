@@ -6,7 +6,7 @@ $msg_id=$gamepost['id'];
 }else{
 $msg_id=$game['Game']['id'];
 }
-
+$postPage=$this->Html->url(array("controller" => "wallentries","action" =>"posts",$msg_id));
 ?>
 
 <div class="navbar navbar-fixed-bottom shadow-black">
@@ -140,6 +140,7 @@ else{
    
 					<input type="hidden" id="game_id" value="<?php echo $game["Game"]["id"];?>">
                  </br>
+				 <a href="<?php echo $postPage; ?>">all posts</a>
 				  <div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button_msg_id btn btn-small btn-info">Comment</div>
                 </form></br>
                   '>
