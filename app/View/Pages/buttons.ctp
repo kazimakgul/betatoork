@@ -4,11 +4,11 @@
               $buttonlink= 'http://toork.com'; 
        }
 
-$image1= $this->Html->image('socials/followontoork3.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'203'));
-$image2= $this->Html->image('socials/Toork.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'137'));
-$image3= $this->Html->image('socials/clone.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'203'));
-$image4= $this->Html->image('socials/clone2.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'137'));
-$image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'36'));
+$image1= $this->Html->image('socials/followontoork3.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'130'));
+$image2= $this->Html->image('socials/Toork.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'85'));
+$image3= $this->Html->image('socials/clone.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'130'));
+$image4= $this->Html->image('socials/clone2.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'85'));
+$image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'24'));
         ?>
 
 
@@ -23,7 +23,7 @@ $image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag'
                             <h3>Buttons for your website</h3>
                             <h5>Add buttons to your website to help your visitors share games from your site and connect with you on Toork.</h5></br>
 
-<div class="menu shadow-black" style="background-color:white;">
+<div class="menu shadow-black" style="background-color:silver;">
   <div class="accordion">
     <div class="accordion-group">
       <div class="accordion-heading country" style="margin:10px;">
@@ -36,7 +36,7 @@ $image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag'
         <div class="accordion-inner">
           <h5>Copy this button code into the HTML of your site.</h5>
           <p class="well color-red">&lt;a href="<?php echo $buttonlink;?>"&gt; <br>
-            &lt;img width="203" height="37" src="http://toork.com/img/socials/followontoork3.png"/&gt;<br>
+            &lt;img width="130" src="http://toork.com/img/socials/followontoork3.png"/&gt;<br>
             &lt;/a&gt;</p>
         </div>
       </div>
@@ -50,7 +50,7 @@ $image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag'
         <div class="accordion-inner">
           <h5>Copy this button code into the HTML of your site.</h5>
           <p class="well color-red">&lt;a href="<?php echo $buttonlink;?>"&gt; <br>
-            &lt;img width="137" height="37" src="http://toork.com/img/socials/Toork.png"/&gt;<br>
+            &lt;img width="85" src="http://toork.com/img/socials/Toork.png"/&gt;<br>
             &lt;/a&gt;</p>
         </div>
       </div>
@@ -61,8 +61,8 @@ $image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag'
       <div id="country3" class="accordion-body collapse">
         <div class="accordion-inner">
           <h5>Copy this button code into the HTML of your site.</h5>
-          <p class="well color-red">&lt;a href="<?php echo $buttonlink;?>"&gt; <br>
-            &lt;img width="203" height="37" src="http://toork.com/img/socials/clone.png"/&gt;<br>
+          <p class="well color-red">&lt;a href="javascript:location.href='http://toork.com/apis/addgame_ajax/'+decodeURIComponent(location.href)"&gt; <br>
+            &lt;img width="130" src="http://toork.com/img/socials/clone.png"/&gt;<br>
             &lt;/a&gt;</p>
         </div>
       </div>
@@ -73,8 +73,8 @@ $image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag'
       <div id="country4" class="accordion-body collapse">
         <div class="accordion-inner">
           <h5>Copy this button code into the HTML of your site.</h5>
-          <p class="well color-red">&lt;a href="<?php echo $buttonlink;?>"&gt; <br>
-            &lt;img width="137" height="37" src="http://toork.com/img/socials/clone2.png"/&gt;<br>
+          <p class="well color-red">&lt;a href="javascript:location.href='http://toork.com/apis/addgame_ajax/'+decodeURIComponent(location.href)"&gt; <br>
+            &lt;img width="85" src="http://toork.com/img/socials/clone2.png"/&gt;<br>
             &lt;/a&gt;</p>
         </div>
       </div>
@@ -87,7 +87,7 @@ $image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag'
         <div class="accordion-inner">
           <h5>Copy this button code into the HTML of your site.</h5>
           <p class="well color-red">&lt;a href="<?php echo $buttonlink;?>"&gt; <br>
-            &lt;img width="36" height="33" src="http://toork.com/img/socials/button2.png"/&gt;<br>
+            &lt;img width="24" src="http://toork.com/img/socials/button2.png"/&gt;<br>
             &lt;/a&gt;</p>
         </div>
       </div>
