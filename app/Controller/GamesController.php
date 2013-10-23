@@ -2001,7 +2001,8 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		     if($singlepost!=NULL)
 		     {
 			 $msg_id=$singlepost[0]['messages']['msg_id'];
-			 $this->set('gamepost',$msg_id);
+			 $gamePost=array('id'=>$msg_id);
+			 $this->set('gamepost',$gamePost);
 		     }
 		//=========//Get Post Information About Game===========       
 
