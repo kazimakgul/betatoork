@@ -1994,6 +1994,17 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 			$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
 			$game = $this->Game->find('first', array('conditions' => array('Game.seo_url'=>$seo_url,'Game.user_id'=>$channel_id['User']['id']),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'),'conditions'=>array('User.seo_username'=>$channel)))));
 		}
+        $gameid=$game['Game']['id'];
+ 
+        //==========Get Post Information About Game===========
+		     $singlepost=$this->Game->query('SELECT msg_id FROM messages WHERE type=1 AND game_id='.$gameid.'');
+		     if($singlepost!=NULL)
+		     {
+			 $msg_id=$singlepost[0]['messages']['msg_id'];
+			 $this->set('gamepost',$msg_id);
+		     }
+		//=========//Get Post Information About Game===========       
+
 
 		$this->set('game', $game);
 		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
