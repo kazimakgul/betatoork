@@ -8,7 +8,6 @@
                                             <ul style="background-color:white; margin:0px; padding:10px;" class="shadow well nav nav-pills">
                                                 <!--tab menus-->
                                                 <li class="active"><a data-toggle="tab" href="#new-feeds">What's New</a></li>
-                                                <li><a data-toggle="tab" href="#my-feeds">My Feeds</a></li>
 												<!--/tab menus-->
                                             </ul>
                                         </div>
@@ -25,15 +24,7 @@
 					                       <?php echo $this->element('NewPanel/load_mess_boot');?>
 						
                                                 </div>
-                                                            
-															                                        
-                                                <div class="tab-pane fade" id="my-feeds">
-                                                   
-												   
-												   <div id="my_more_content"></div>			
-					                       <?php echo $this->element('NewPanel/load_my_feeds');?>
-                                   
-                                                </div>
+
                                             </div><!--/widgets-tab-body-->
                                         </div><!--/box-body-->
                                     </div><!--/box-tab-->
