@@ -943,6 +943,17 @@ $userid = $this->request->params['pass'][0];
 	$this->set('favorites', $cond2);
 }
 
+public function profilegames() {
+$this->layout="ajax";
+$userid = $this->request->params['pass'][0];
+	
+	$limit=12;
+	$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
+    )));
+	$cond=$this->paginate('Game');
+	$this->set('profilegames', $cond);
+}
+
 public function channelfollowers() {
 $this->layout="ajax";
 $userid = $this->request->params['pass'][0];

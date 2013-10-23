@@ -1,4 +1,4 @@
-<?php foreach ($mygames as $game): ?>
+<?php foreach ($profilegames as $game): ?>
 <?php
 
 if($game['User']['seo_username']!=NULL)
@@ -50,6 +50,7 @@ else{
   <!--/16px Rating Stars Ends Below-->  
   <!--**************************--> 
                     </div>
+
                   </div>
                   
                 </div></div>
@@ -58,7 +59,7 @@ else{
  <?php endforeach; ?>
  
  <!--Hidden Pagination -->
-	<div class="paging_home" style="display:none;">
+	<div class="paging_games" style="display:none;">
     <?php 
 	 echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled')); 
      echo $this->Paginator->numbers();

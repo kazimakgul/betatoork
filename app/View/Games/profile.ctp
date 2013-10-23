@@ -139,6 +139,7 @@ if($twitter==NULL){
   channelfollowers='<?php echo $this->Html->url(array('controller'=>'games','action'=>'channelfollowers')); ?>';
   getprofilefeed='<?php echo $this->Html->url(array('controller'=>'games','action'=>'loadprofilefeeds')); ?>';
   getprofileactivity='<?php echo $this->Html->url(array('controller'=>'games','action'=>'getprofileactivity')); ?>';
+  profilegames='<?php echo $this->Html->url(array('controller'=>'games','action'=>'profilegames')); ?>';
   </script>
   <!----=========================================---->
 
@@ -162,6 +163,10 @@ if($twitter==NULL){
                                         <div class="box-body">
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
+
+<!------------------|||Seperator|||------------------------->
+
+<!-- Home Tab Begins Here -->
 
                                                 <div class="tab-pane fade active in" id="home_tab">
 
@@ -194,20 +199,34 @@ if($twitter==NULL){
 
                                                 </div>
 
-                                                <div class="tab-pane fade" id="games_tab">
 
-<ul class="thumbnails" id="thumbnails_area">
-<?php  echo $this->element('NewPanel/profile/channel_game_box'); ?>
+
+<!-- //Home Tab ENDS Here -->
+
+<!------------------|||Seperator|||------------------------->
+
+<!-- Game Tab Begins Here -->
+
+
+<div class="tab-pane fade" id="games_tab">
+<ul class="thumbnails" id="thumbnails_game_area">
+<?php  //New Ajax Loaded Data Will come here. ?>
 </ul>
 <div>
-<a id="loadmoreprofilegame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+<a id="loadmorechannelgames" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Game</a>
 </div>
 
-                                                </div>
-												<!--Bu alana more games buttonu geliyor -->
+</div>
+
+												
+<!-- //Game Tab ENDS Here -->
+
+
+<!------------------|||Seperator|||------------------------->
+
 	
-												<!--/Bu alana more games buttonu geliyor -->
-                                                <div class="tab-pane fade" id="favorites_tab">
+												
+<div class="tab-pane fade" id="favorites_tab">
 <ul class="thumbnails" id="thumbnails_fav_area">
 <?php  //New Ajax Loaded Data Will come here. ?>
 </ul>
@@ -215,7 +234,10 @@ if($twitter==NULL){
 <a id="loadmorefavorite" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Favorite</a>
 </div>
 
-                                                </div>
+</div>
+												
+												<!------------------|||Seperator|||------------------------->
+												
                                                 <div class="tab-pane fade" id="news_tab">
                                 <!-- tab resume update -->
                                 <div class="span12">
@@ -261,6 +283,11 @@ if($twitter==NULL){
                                     </div><!--/box-tab-->
                                 </div><!-- tab resume update -->
                                                 </div>
+												
+												
+											<!------------------|||Seperator|||------------------------->	
+												
+												
                                                 <div class="tab-pane fade" id="followers_tab">
 <ul class="thumbnails" id="thumbnails_followers_area">
 <?php  //echo 'Ajax Loaded Followers will come here'; ?>
@@ -278,7 +305,7 @@ if($twitter==NULL){
 
 
 	<!--Hidden Pagination -->
-	<div class="paging_mygames" style="display:none;">
+	<div class="paging_home" style="display:none;">
      <?php 
 	 echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled')); 
      echo $this->Paginator->numbers();

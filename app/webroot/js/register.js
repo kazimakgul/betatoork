@@ -1167,7 +1167,7 @@ function gamedelete(game_name,user_auth,game_id)
 
     if($('#loadmoreprofilegame').attr('id')=='loadmoreprofilegame')
 	{
-	var url = $(".paging_mygames a#next").attr("href");
+	var url = $(".paging_home a#next").attr("href");
 	            //Check are there anymore?
 				if(typeof url=='undefined')
 				{
@@ -1240,12 +1240,12 @@ function gamedelete(game_name,user_auth,game_id)
 	
 	$('#loadmoreprofilegame').live('click',function(){
 											 
-	$(".paging_mygames").hide();  //hide the paging for users with javascript enabled
+	$(".paging_home").hide();  //hide the paging for users with javascript enabled
 	
 	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
 		
-	var url = $(".paging_mygames a#next").attr("href");
-	$(".paging_mygames").remove();
+	var url = $(".paging_home a#next").attr("href");
+	$(".paging_home").remove();
 	$("div.batch").load(url, function(response, status, xhr) {
             if (status == "error") {
               var msg = "Sorry but there was an error: ";
@@ -1253,9 +1253,9 @@ function gamedelete(game_name,user_auth,game_id)
             }
             else {
                 $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
-                $(".paging_mygames").hide(); //hide the new paging links
+                $(".paging_home").hide(); //hide the new paging links
                 $(this).fadeIn();
-				var url = $(".paging_mygames a#next").attr("href");
+				var url = $(".paging_home a#next").attr("href");
 	            //Check are there anymore?
 				if(typeof url=='undefined')
 				{
@@ -1322,6 +1322,44 @@ $('#loadmorefavorite').live('click',function(){
 			});//This is end of MoreGames button click function.
 
 //==========================================================
+//==========================================================
+
+$('#loadmorechannelgames').live('click',function(){
+											 
+	$(".paging_games").hide();  //hide the paging for users with javascript enabled
+	
+	$("#thumbnails_game_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+		
+	var url = $(".paging_games a#next").attr("href");
+	$(".paging_games").remove();
+	$("div.batch").load(url, function(response, status, xhr) {
+            if (status == "error") {
+              var msg = "Sorry but there was an error: ";
+              alert(msg + xhr.status + " " + xhr.statusText);
+            }
+            else {
+                $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
+                $(".paging_games").hide(); //hide the new paging links
+                $(this).fadeIn();
+				var url = $(".paging_games a#next").attr("href");
+	            //Check are there anymore?
+				if(typeof url=='undefined')
+				{
+					$('#loadmorechannelgames').hide();
+				}
+ 
+            }
+        }); 
+	
+	//This code block below allow make Live Tooltips(allow to work for ajax loaded objects)
+	$('body').tooltip({
+    selector: '[rel=tooltip]'
+    });
+		 
+			});//This is end of MoreGames button click function.
+
+//==========================================================
+
 $('#loadmorefollowers').live('click',function(){
 											 
 	$(".paging_followers").hide();  //hide the paging for users with javascript enabled
@@ -1358,7 +1396,40 @@ $('#loadmorefollowers').live('click',function(){
 //==========================================================
 
 $('#profile_tabs a[href="#games_tab"]').click(function (e) {
-  //alert('mygames');
+  //first_fetch class is key which means whether it is first click or not on favorite tab.
+  if($('.first_fetch_game').attr('class')!='first_fetch_game'){
+  //********* Function gets ajax loaded channel favorites********
+   $(".paging_games").hide();  //hide the paging for users with javascript enabled
+	$("#thumbnails_game_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+	var url = profilegames+'/'+profile_id;
+	$(".paging_games").remove();
+	$("div.batch").load(url, function(response, status, xhr) {
+            if (status == "error") {
+              var msg = "Sorry but there was an error: ";
+              alert(msg + xhr.status + " " + xhr.statusText);
+            }
+            else {
+                $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
+				$("#thumbnails_game_area").append('<div class="first_fetch_game" style="display:none;"></div>');
+                $(".paging_games").hide(); //hide the new paging links
+                $(this).fadeIn();
+				var url = $(".paging_games a#next").attr("href");
+	            //Check are there anymore?
+				if(typeof url=='undefined')
+				{
+					$('#loadmorechannelgames').hide();
+				}
+            }
+			
+			//This code block below allow make Live Tooltips(allow to work for ajax loaded objects)
+	$('body').tooltip({
+    selector: '[rel=tooltip]'
+    });
+			
+        }); 
+  //*********/Function gets ajax loaded channel favorites********
+   }
+   
 });
 
 //Run when user click on favorite tab	
