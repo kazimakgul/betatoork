@@ -140,7 +140,7 @@ else{
    
 					<input type="hidden" id="game_id" value="<?php echo $game["Game"]["id"];?>">
                  </br>
-				  <div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button btn btn-small btn-info">Comment</div>
+				  <div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button_msg_id btn btn-small btn-info">Comment</div>
                 </form></br>
                   '>
                       <i class="elusive-comment"></i>
