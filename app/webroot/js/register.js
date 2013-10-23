@@ -1401,6 +1401,7 @@ $('#profile_tabs a[href="#games_tab"]').click(function (e) {
   //********* Function gets ajax loaded channel favorites********
    $(".paging_games").hide();  //hide the paging for users with javascript enabled
 	$("#thumbnails_game_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+	
 	var url = profilegames+'/'+profile_id;
 	$(".paging_games").remove();
 	$("div.batch").load(url, function(response, status, xhr) {
