@@ -136,11 +136,11 @@ else{
                  <li rel="tooltip" id="comment" data-toggle="popover" data-placement="top" data-html="true" title="Comment" data-placement="top" data-original-title="Comment" class="btn pull-right color-green" style="margin:5px;"data-content='
 
                 <form class="navbar-form ">
-				    <textarea placeholder="What do you think about this game?" name="comment" maxlength="200" class="pull-right span12" rows="1" id="cstextarea<?php echo $msg_id;?>">#<?php echo $game["Game"]["seo_url"];?></textarea>
+				    <textarea placeholder="What do you think about this game?" name="comment" maxlength="200" class="pull-right span12" rows="3" id="cstextarea<?php echo $msg_id;?>">#<?php echo $game["Game"]["seo_url"];?></textarea>
    
 					<input type="hidden" id="game_id" value="<?php echo $game["Game"]["id"];?>">
                  </br>
-				 <a href="<?php echo $postPage; ?>">all posts</a>
+				 <a class="btn btn-link helper-font-9" href="<?php echo $postPage; ?>">See Comments</a>
 				  <div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button_msg_id btn btn-small btn-info">Comment</div>
                 </form></br>
                   '>
