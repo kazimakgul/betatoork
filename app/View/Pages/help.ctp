@@ -6,10 +6,12 @@
                         <div class="content-body" style="padding-top:15px;">
                           
                           <div class="well">
+                            <h4>What is Toork and why Toork?</h4><p>
+Toork is a social network about games, gamers, game bloggers, game developers and game sites. Toork is the right place to promote your games and build your community about games. Add one of our pre-build toork social buttons to let your visitors reach your channel. Share good stuff , make them follow you and grow your community. Have fun.</p>
+                            
                             <h2>How To Start</h2>
-
-                        <p><small>
-
+                        <p class="well well-small bold">
+                          <small>
 Before you start make sure you have time to play some games. Because we do not guarantee you not being late to work,sleep,meeting,lunch etc...
 
                       </small></p>
@@ -18,13 +20,13 @@ Before you start make sure you have time to play some games. Because we do not g
                       <p><small>
 Please choose the appropriate answer for yourself.
 
-Clever : if you are clever enough, you will not need our directions to tell you how to become a member. You probably a member right now and you are just reading this for fun.
+<p class="alert alert-info"><span class="label label-info">Clever</span> if you are clever enough, you will not need our directions to tell you how to become a member. You probably a member right now and you are just reading this for fun.</p>
 
-Normal : Just click “Register now” link on the blue card at the top right corner of home page or the lock icon on the right top korner of toork bar.
+<p class="alert alert-success"><span class="label label-success">Normal</span> Just click “Register now” link on the blue card at the top right corner of home page or the lock icon on the right top korner of toork bar.</p>
 
-Stupid : On the home page of toork you will see a lock icon where will lead you to become a member after you click it. Click “Register Now” link and fill in the form with your real informations. Because we will be sending you a confirmation email to verify you. Otherwise you will not be able to log in to the system.
+<p class="alert alert-warning"><span class="label label-warning">Stupid</span> On the home page of toork you will see a lock icon where will lead you to become a member after you click it. Click “Register Now” link and fill in the form with your real informations. Because we will be sending you a confirmation email to verify you. Otherwise you will not be able to log in to the system.</p>
 
-idiot: Get lost !!
+<p class="alert alert-danger"><span class="label label-important">Idiot</span> Get lost !!</p>
                       </small></p>
                       
                       <h4>Add to Favorites</h4>
@@ -44,13 +46,13 @@ contact us at hello@toork.com to be able to publish your own games and pages.
 
 Please choose the appropriate answer for yourself.
 
-Clever: you already figured out how to do that so stop wasting my time.
+<p class="alert alert-info"><span class="label label-info">Clever</span> you already figured out how to do that so stop wasting my time.</p>
 
-Normal: Click on the  “+ Add Game” button on your channel card and fill in the form
+<p class="alert alert-success"><span class="label label-success">Normal</span> Click on the  “+ Add Game” button on your channel card and fill in the form</p>
 
-Stupid: Go to your channel and click on the “+ Add Game” link on your blue channel card on the left top corner. Fill in the form that appears and you will need 2 types of pictures for your games. One is for you game icon and the other is the slider picture. These 2 pictures need to be the exact size as wanted.
+<p class="alert alert-warning"><span class="label label-warning">Stupid</span> Go to your channel and click on the “+ Add Game” link on your blue channel card on the left top corner. Fill in the form that appears and you will need 2 types of pictures for your games. One is for you game icon and the other is the slider picture. These 2 pictures need to be the exact size as wanted.</p>
 
-idiot: I don’t know how you come so far but please put your mouse down slowly and ask some one to log you out.
+<p class="alert alert-danger"><span class="label label-important">Idiot</span> I don’t know how you come so far but please put your mouse down slowly and ask some one to log you out.</p>
 
                       </small></p>
                       
@@ -64,27 +66,27 @@ contact us at hello@toork.com to be able to publish your own games and pages fir
 
 Please choose the appropriate answer for yourself.
 
-Clever: You don’t need to read this.
+<p class="alert alert-info"><span class="label label-info">Clever</span> You don’t need to read this.</p>
 
-Normal: You will see “Google Adsense” button on your channel card. Just click it.
+<p class="alert alert-success"><span class="label label-success">Normal</span> You will see “Google Adsense” button on your channel card. Just click it.</p>
 
-Stupid: Go to your channel and click on the “Google Adsense” link on your blue channel card. After that you will see a field where you can put your adsense code in. So just copy your adsense code and paste it there.
+<p class="alert alert-warning"><span class="label label-warning">Stupid</span> Go to your channel and click on the “Google Adsense” link on your blue channel card. After that you will see a field where you can put your adsense code in. So just copy your adsense code and paste it there.</p>
 
-idiot: Go to kitchen and see if you are there or not ?
+<p class="alert alert-danger"><span class="label label-important">Idiot</span> Go to kitchen and see if you are there or not ? </>
 
                       </small></p>
                       
 
                       <h4>Tips and Tricks</h4>
-                      <p><small>
-1- Add a game that you can’t find by searching in Toork.
-2- Make a shiny great icon for each game you add.
-3- Do your best to make a great slider picture.
-4- Choose your best games to promote in the Slider
-5- Write a unique description. Do not copy/paste the description from another site.
-6- Do not change the name of the game.
-7- Keep games original but unique by describing games with your own words.
-
+                      <p><small><ul>
+<li> Add a game that you can’t find by searching in Toork.</li>
+<li> Make a shiny great icon for each game you add.</li>
+<li> Do your best to make a great slider picture.</li>
+<li> Choose your best games to promote in the Slider</li>
+<li> Write a unique description. Do not copy/paste the description from another site.</li>
+<li> Do not change the name of the game.</li>
+<li> Keep games original but unique by describing games with your own words.</li>
+</ul>
 
                       </small></p>
 

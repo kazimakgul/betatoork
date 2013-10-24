@@ -86,7 +86,6 @@ function imgError(image,style){
 
     <body>
   <script>
-  $('body').chardinJs('start');
     $('body').show();
     $('.version').text(NProgress.version);
     NProgress.start();

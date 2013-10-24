@@ -170,17 +170,13 @@ if($twitter==NULL){
 
                                                 <div class="tab-pane fade active in" id="home_tab">
 
-                                        <div class="span6" style="margin-left:0px; margin-right:10px;">
+                                        <div class="span6" style="margin-left:0px; margin-right:10px; margin-top:-18px;">
                                         <div class="box-header corner-top">
                                             <!--tab action-->
                                             <div class="header-control pull-right">
 
                                             </div>
-                                            <ul style="background-color:white; padding:10px; margin:0px;" class="shadow well nav nav-pills">
-                                                <!--tab menus-->
-                                                <li class="active"><a data-toggle="tab" href="#new-feeds">Channel News</a></li>
-                                                <!--/tab menus-->
-                                            </ul>
+
                                         </div>
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
