@@ -8,7 +8,7 @@
                           <div class="well">
                             <h4>What is Toork and why Toork?</h4><p>
 Toork is a social network about games, gamers, game bloggers, game developers and game sites. Toork is the right place to promote your games and build your community about games. Add one of our pre-build toork social buttons to let your visitors reach your channel. Share good stuff , make them follow you and grow your community. Have fun.</p>
-                            
+
                             <h2>How To Start</h2>
                         <p class="well well-small bold">
                           <small>
@@ -22,9 +22,9 @@ Please choose the appropriate answer for yourself.
 
 <p class="alert alert-info"><span class="label label-info">Clever</span> if you are clever enough, you will not need our directions to tell you how to become a member. You probably a member right now and you are just reading this for fun.</p>
 
-<p class="alert alert-success"><span class="label label-success">Normal</span> Just click “Register now” link on the blue card at the top right corner of home page or the lock icon on the right top korner of toork bar.</p>
+<p class="alert alert-success"><span class="label label-success">Normal</span> Just click “Register” or "Create Channel" or "Create Account" button on the at the top right corner of landing page or right top corner of toork bar.</p>
 
-<p class="alert alert-warning"><span class="label label-warning">Stupid</span> On the home page of toork you will see a lock icon where will lead you to become a member after you click it. Click “Register Now” link and fill in the form with your real informations. Because we will be sending you a confirmation email to verify you. Otherwise you will not be able to log in to the system.</p>
+<p class="alert alert-warning"><span class="label label-warning">Stupid</span> On the landing page of toork you will see a "+ Create Channel" button where will lead you to become a member after you click it. Click “Register” or "Create Channel" or "Create Account" button and fill in the form with your real informations. Because we will be sending you a confirmation email to verify you. Otherwise you will not be able to add a game to your channel.</p>
 
 <p class="alert alert-danger"><span class="label label-important">Idiot</span> Get lost !!</p>
                       </small></p>
