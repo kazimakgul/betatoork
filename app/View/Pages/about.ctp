@@ -10,15 +10,15 @@
 
                             <h4>We are glad that you asked</h4>
                      <p><small>
-                            Toork is the place where you can discover the best online games. So if you go to our home page you will see the top rated games or the most played games and the game channels which are created by you. They are themed channels but the only thing you will find here are web games. We help you easily discover new and interesting games on the Web. If you rate the games and pages, next time you will see better and more popular games. More games you rate and comment more better games will be published. Don’t forget all you’ll find here is fun.
+Toork is a social network about games, gamers, game bloggers, game developers and game sites. Toork is the right place to promote your games and build your community about games. We are a small company who are well focused on making toork the biggest community in the world. We are working really hard to make toork more advanced tool for gamers. Add one of our pre-build toork social buttons to let your visitors reach your channel. Share good stuff , make them follow you and grow your community. Have fun.
                       </small></p>
                       <br />
                       <h4>Hey! I have a game site!</h4>
                       <p><small>
                             Thats really good that you have a web site about games. But how do you promote your site/games, how do you drive traffic to your games?
                             We are here to promote your site. Actually you are here to promote your site.
-                            Just register and let us know so you can publish your games directly or just publish your site pages.
-                            contact us at <a class="btn-link" href="mailto:siteowner@toork.com">siteowner@toork.com</a> to be able to publish your own games and pages.
+                            Just register and customize your channel, add your site url and add your games. As we are in beta and still in development please let us know if you have any problems so
+                            contact us at <a class="btn-link" href="mailto:siteowner@toork.com">siteowner@toork.com</a>.
                       </small></p>
                       <br />
                       <h4>Wanna talk to us?</h4>

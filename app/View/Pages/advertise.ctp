@@ -8,36 +8,25 @@
                           <div class="well">
                             <h2>Advertise With Us</h2>
 
-                      <p><small>
-We are always interested to hear from those wishing to advertise with us. We are currently compiling our statistics for publication on these pages.
+                      <p>
+We have no plans for advertising at the moment but we are always interested to hear from those wishing to advertise with us. We are currently compiling our statistics for publication on these pages.
 Until then, if you would like to get in touch with us, please contact us at <a class="btn-link" href="mailto:advertise@toork.com">advertise@toork.com</a>
-                      </small></p>
-                      
-                      <h4>For game sites/blogs publishers and game companies /labels and developers</h4>
-                      <p><small>
+                      </p>
+  
+<h3>Our Mission?</h3>                      
+                      <p>
+We are working really hard to create a unique social network and help game community grow. Our mission to become the number one portal in the gameing industry so we are not going to get advertisements at the moment. Consider toork as a tool for marketing and promoting your games or you game activities.</a>
+                      </p>
 
-Get discovered with toork advertising. Get a prominent spot in toork.
-More Traffic
-Toork advertising exposes your site or games many more users
-Bringing highly targeted users directly to your site
-No click-through required
+<h3>Toork as a tool</h3> 
+                      <p>
+Consider toork as a tool for marketing and promoting your games or your game activities for free. Toork is the only platform that is going to combine the whole gaming sector. You will not need any other source than toork to know about the news about the games.</a>
+                      </p>
 
-                      </small></p>
-                      
-
-                      <h4>Floating banner above toork fixed header bar</h4>
-                      <p><small>
-
-Flat rate campaigns. You will be able to advertise on all pages above toork blue bar so just contact us at <a class="btn-link" href="mailto:advertise@toork.com">advertise@toork.com</a> for a rate card.
-
-                      </small></p>
-                      
-
-                      <h4>Sponsored (branded) channel</h4>
-                      <p><small>
-All your favorite channels are for sale to be all over colored with all your company logo and colors. contact us at <a class="btn-link" href="mailto:advertise@toork.com">advertise@toork.com</a> for a rate card.
-                      </small></p>
-
+<h3>Be patient</h3> 
+                      <p>
+please be patient while we are developing toork. We will never stop doing what we are trying to do so keep up with us we are growing really fast. Join toor and get your spot. Dont be late.
+                      </p>
 
                         </div>
 
