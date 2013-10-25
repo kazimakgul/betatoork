@@ -1055,6 +1055,8 @@ public function profile() {
 		}else{
 		$this->set('follow',0);
 		}
+   }else{
+   		$this->set('follow',1);
    }
    //=======/Get Current Subscription===============
 
