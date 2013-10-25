@@ -267,7 +267,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' added your game to its Favorite list.')
 			    ->send();
 	  	}elseif($type_id==8){
-			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('hashtag')
 			    ->emailFormat('html')
