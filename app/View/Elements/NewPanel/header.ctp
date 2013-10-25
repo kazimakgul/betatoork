@@ -8,10 +8,10 @@ if(!isset($notifycount))
         <!-- section header -->
 <div class="navbar navbar-fixed-top shadow-black">
   <div class="navbar-inner navbar-custom">
-    <div class="container"><!-- Collapsable nav bar -->
-<div class="btn-group user-group btn-navbar" style="background : none; padding:0px 0px 0px 0px; margin:0px 40px 0px 0px;">
+    <div class="container">
+      <!-- Collapsable nav bar -->
+<div class="btn-group user-group btn-navbar" style="background : none; padding:2px 0px 0px 0px; margin:0px 40px 0px 0px;">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $settings;?>">
-
 
   <?php 
   if($user['User']['picture']==null) { 
