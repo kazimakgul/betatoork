@@ -68,7 +68,7 @@ if(!isset($notifycount))
       <!-- Start of the nav bar content -->
       <div class="nav-collapse"><!-- Other nav bar content -->
         <!-- The drop down menu -->
-        <ul class="nav pull-right span4">
+        <ul class="nav pull-right span5" style="margin-right:-90px;">
 
                     <div class="span1">
                         <!--panel button ext-->
@@ -84,7 +84,7 @@ if(!isset($notifycount))
                                         <p id="notcountsingle" style="padding:2px 4px 2px 4px; margin:3px 0px 0px -17px ;" class="<?php echo $label; ?>"><?php echo $notifycount; ?> </p>
                                 </a>
 
-                                <ul class="dropdown-menu dropdown-notification">
+                                <ul class="dropdown-menu dropdown-notification" style="margin-right:150px;">
                                     <?php  echo $this->element('NewPanel/header/headernotifications',array('wall'=>$wall)); ?>
                                 </ul><!--notification-->
                             </div>
@@ -92,7 +92,7 @@ if(!isset($notifycount))
                     </div>
           
 
-          <li class="dropdown">
+          <li class="dropdown" style="margin-right:5px;">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="margin-left:5px; padding:0px;">
               <div class="pull-left btn btn-custom-darken"> <i class="icofont-comments"></i> Post <strong class="caret"></strong></div>
             </a>
@@ -143,7 +143,6 @@ if(!isset($notifycount))
             </div>
           </li>
 
-          <li style="margin:5px;"></li>
 <! Main User Card starts ->
 <div class="btn-group user-group"><strong>Username</strong>
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
