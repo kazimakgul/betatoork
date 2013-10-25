@@ -760,6 +760,18 @@ WHERE user_id='.$auth_id.'');
 		    //*********************
 			//Secure data filtering
 			//*********************
+		     if($this->Auth->user('role')==0){
+			$filtered_data=
+			array('User' =>array(
+			'username' => $this->request->data['User']['username'],
+			'description' => $this->request->data['User']['description'],
+			'website' => $this->request->data['User']['website'],
+			'fb_link' => $this->request->data['User']['fb_link'],
+			'twitter_link' => $this->request->data['User']['twitter_link'],
+			'gplus_link' => $this->request->data['User']['gplus_link'],
+			'website' => $this->request->data['User']['website'],
+			'seo_username' => $this->request->data['User']['seo_username']));
+			}else{
 			$filtered_data=
 			array('User' =>array(
 			'username' => $this->request->data['User']['username'],
@@ -771,6 +783,7 @@ WHERE user_id='.$auth_id.'');
 			'gplus_link' => $this->request->data['User']['gplus_link'],
 			'website' => $this->request->data['User']['website'],
 			'seo_username' => $this->request->data['User']['seo_username']));
+			}
 			
 			if($myval!="")
 			{

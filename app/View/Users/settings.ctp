@@ -95,7 +95,7 @@ $username = $user['User']['seo_username'];
                                                             <label class="control-label" for="inputEditorSimple">Channel Description</label>
                                                             <div class="controls">
 
-<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>280,'placeholder' => 'Describe your channel please.    Ex: Play free online games at Socialesman! Were the best online games website. Find the best uptodate games in socialesman channel.','type' => 'textarea','class'=>'span8','rows'=>'6','id'=>'inputEditorSimple' )); ?>
+<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>280,'placeholder' => 'Describe your channel please.    Ex: Everything related to Starwars! Our channel is all about starwars and games.','type' => 'textarea','class'=>'span8','rows'=>'6','id'=>'inputEditorSimple' )); ?>
 
                                                             </div>
                                                         </div>
