@@ -651,10 +651,27 @@ WHERE user_id='.$auth_id.'');
     App::uses('File', 'Utility');
 	
 	
-		    $this->set_suggested_channels();
+		$this->set_suggested_channels();
 		$this->layout = 'dashboard';
 		$this->loadModel('Subscription');
+		
 		$userid=$id;
+		
+		//============Get Current Permissions=============
+		$permissions=$this->User->query('SELECT * FROM mailpermissions WHERE user_id='.$userid.'');
+		if($permissions)
+		{
+		     $user_perms=array();
+		     foreach($permissions as $permission)
+		     {
+			  array_push($user_perms,$permission['mailpermissions']['type_id']);
+		     }
+			 $this->set('user_perms', $user_perms);
+		}
+		//============/Get Current Permissions============
+		
+		
+		
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));

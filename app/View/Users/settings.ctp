@@ -203,45 +203,51 @@ $username = $user['User']['seo_username'];
   </thead>
   <tbody>
     <tr>
-      <td><input type="checkbox" name="permission" value="2" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="2" <?php if(in_array(2,$user_perms)) echo 'checked'; ?>> <a href="#"></a></td>
       <td><strong>Follow</strong></td>
       <td>I got a new follower</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" name="permission" value="6" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="6" <?php if(in_array(6,$user_perms)) echo 'checked'; ?>> <a href="#"></a></td>
       <td><strong>Comment</strong></td>
       <td>Comments on a post I created</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" name="permission" value="1" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="12" <?php if(in_array(12,$user_perms)) echo 'checked'; ?>> <a href="#"></a></td>
       <td><strong>Game Comment</strong></td>
       <td>Comments on one of my games</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" name="permission" value="4" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="4" <?php if(in_array(4,$user_perms)) echo 'checked'; ?>> <a href="#"></a></td>
       <td><strong>Rate</strong></td>
       <td>One of my games get rated</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" name="permission" value="7" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="7" <?php if(in_array(7,$user_perms)) echo 'checked'; ?>> <a href="#"></a></td>
       <td><strong>Favorite</strong></td>
       <td>Favorite one of my games</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" name="permission" value="3" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="3" <?php if(in_array(3,$user_perms)) echo 'checked'; ?>> <a href="#"></a></td>
       <td><strong>Clone</strong></td>
       <td>Clone one of my games</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
     <tr>
-      <td><input type="checkbox" name="permission" value="5" checked> <a href="#"></a></td>
+      <td><input type="checkbox" name="permission" value="5" <?php if(in_array(5,$user_perms)) echo 'checked'; ?>> <a href="#"></a></td>
       <td><strong>Mention</strong></td>
       <td>Mentions me in a post</td>
+      <td><span class="label pull-right">Email Me</span></td>
+    </tr>
+	<tr>
+      <td><input type="checkbox" name="permission" value="8" <?php if(in_array(8,$user_perms)) echo 'checked'; ?>> <a href="#"></a></td>
+      <td><strong>Hashtag</strong></td>
+      <td>Someone hashtag my games</td>
       <td><span class="label pull-right">Email Me</span></td>
     </tr>
   </tbody>
