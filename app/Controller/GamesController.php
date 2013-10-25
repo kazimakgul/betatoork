@@ -1051,9 +1051,9 @@ public function profile() {
    $subscribebefore=$this->Subscription->find("first",array("contain"=>false,"conditions"=>array("Subscription.subscriber_id"=>$authid,"Subscription.subscriber_to_id"=>$userid)));
        if($subscribebefore!=NULL)
 		{
-		$this->set('follow',1);echo 1;
+		$this->set('follow',1);
 		}else{
-		$this->set('follow',0);echo 0;
+		$this->set('follow',0);
 		}
    }
    //=======/Get Current Subscription===============
