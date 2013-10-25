@@ -51,7 +51,7 @@ if($website==NULL){
         <div class="row-fluid">
             <div class="span2">
 			<?php if($follow==0){ ?>
-                <a class="btn btn-block btn-success" id="follow_button" style="margin-top:5px;"  onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);">
+                <a class="btn btn-block btn-success" id="follow_button" style="margin-top:6px;"  onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);">
                   <i class="elusive-plus-sign"></i> Follow
                 </a> 
                 <a class="btn btn-block" id="unFollow_button" style="display:none;" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'unFollow', '<?php echo $publicname?>']);">
@@ -59,7 +59,7 @@ if($website==NULL){
                 </a> 
 			<?php }else{ ?>
 			
-			<a class="btn btn-block btn-success" id="follow_button" style="display:none;" style="margin-top:5px;"  onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);">
+			<a class="btn btn-block btn-success" id="follow_button" style="display:none; margin-top: 6px;" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);">
                   <i class="elusive-plus-sign"></i> Follow
                 </a> 
                 <a class="btn btn-block" id="unFollow_button" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'unFollow', '<?php echo $publicname?>']);">
