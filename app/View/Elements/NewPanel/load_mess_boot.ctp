@@ -75,7 +75,7 @@ if($updatesarray)
 															<?php echo $cface; ?>
                                                         </a>
                                                         <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
-                                                            <p style="margin-left:50px;"><?php echo $message; ?><i rel="tooltip" data-placement="bottom" data-original-title="Expand" href="javascript:void(0);" id="wallExpand" class="pull-right elusive-chevron-down"></i></p>
+                                                            <p style="margin-left:50px;"><?php echo $message; ?></p>
                                                         <hr size="1">
                                                         
 <div id="hidePost" style="margin-bottom:-45px;">
