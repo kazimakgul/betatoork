@@ -170,7 +170,7 @@ return $material.$number;
 				    }
 					if($type==8)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Talking about '.$game_name.'';
 				    }
 					if($type==9)
 				    {
@@ -248,7 +248,7 @@ return $material.$number;
 				    }
 					if($type==8)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Talking about your game:'.$game_name.'';
 				    }
 					if($type==9)
 				    {

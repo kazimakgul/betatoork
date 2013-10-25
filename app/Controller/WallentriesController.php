@@ -949,7 +949,7 @@ public function hashtag($update=NULL,$msg_id=NULL)
 		  
 		  //Send notice to Owner Of Game
 		  $channel_id=$game_data['Game']['user_id'];
-		  $this->pushActivity(NULL,$channel_id,1,1,8,$msg_id);
+		  $this->pushActivity($game_id,$channel_id,1,1,8,$msg_id);
 		  
 		  }else{
 		  //if it is not a game
