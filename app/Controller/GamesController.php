@@ -1044,6 +1044,21 @@ public function profile() {
             return;  // return the ajax paginated content without a layout
        }
 
+
+   //========Get Current Subscription===============
+   if($authid)
+   {
+   $subscribebefore=$this->Subscription->find("first",array("contain"=>false,"conditions"=>array("Subscription.subscriber_id"=>$authid,"Subscription.subscriber_to_id"=>$userid)));
+       if($subscribebefore!=NULL)
+		{
+		$this->set('follow',1);echo 1;
+		}else{
+		$this->set('follow',0);echo 0;
+		}
+   }
+   //=======/Get Current Subscription===============
+
+
     //New Wall Getting Started Below.
 	   App::import('Vendor', 'wallscript/config');
 	   $this->set('gravatar',1);
