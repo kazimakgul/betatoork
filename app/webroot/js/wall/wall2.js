@@ -551,6 +551,9 @@ $('.update_game_comment2').live("click",function(e)
 //Commment Submit for Spesific Game Post
 $('.comment_button_msg_id').live("click",function() 
 {
+    //authcheck begins
+    if(user_auth==1)
+    {
 
 //Push Activity for Comment
 var ID = $(this).attr("id");
@@ -560,7 +563,11 @@ var dataString = 'comment='+ comment + '&msg_id=' + ID;
 
 if($.trim(comment).length==0)
 {
-alert("Please Enter Comment Text");
+	
+          $.pnotify({
+          text: 'Please Enter Comment Text',
+          type: 'error'
+          });
 }
 else
 {
@@ -576,7 +583,25 @@ $("#cstextarea"+ID).val('');
 $("#cstextarea"+ID).focus();
  }
  });
+       
+	      //If comment has been sent
+          $.pnotify({
+            text: 'Comment has been sent',
+            type: 'success'
+           });
+   
 }
+
+    }else{
+		
+	      $.pnotify({
+          title: 'Sign in Please',
+          text: 'You have to sign in first to comment.',
+          type: 'error'
+          });	
+	
+	}//End of Auth Check
+  
 return false;
 });
 
