@@ -1156,7 +1156,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
    if($default!=NULL)
    {
       $perm=$this->Activity->query('SELECT * FROM mailpermissions WHERE user_id='.$user_id.' AND type_id='.$type_id.'');//echo 'access has been checked for '.$user_id.' '.$type_id;
-      if($perm!=NULL)
+      if($perm==NULL)
       return 1;
       else
       return 0;

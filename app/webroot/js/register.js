@@ -1622,7 +1622,7 @@ $('#grabloader').css("display", "block");
 //==========================================================
 $('#savepermissions').live('click',function(){
 var permarray = [];
-$("input:checkbox[name=permission]:checked").each(function()
+$("input:checkbox[name=permission]:not(:checked)").each(function()
 {
 	permarray.push($(this).val());
 	
