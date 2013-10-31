@@ -1190,7 +1190,7 @@ function gamedelete(game_name,user_auth,game_id)
 //==========================================================	
 	
 	$('#loadmoregame').live('click',function(){
-											 
+	$(".more").click();										 
 	$(".paging").hide();  //hide the paging for users with javascript enabled
 	
 	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
@@ -1239,7 +1239,7 @@ function gamedelete(game_name,user_auth,game_id)
 //==========================================================
 	
 	$('#loadmoreprofilegame').live('click',function(){
-											 
+	$(".profile_more").click();								 
 	$(".paging_home").hide();  //hide the paging for users with javascript enabled
 	
 	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
