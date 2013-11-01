@@ -8,7 +8,7 @@
 
 
 			<section class="section-wrapper create-account-page-w">
-              <div class="container">
+              <div class="container"><br>
                 <div class="row">
                   <div class="span9">
                     <div class="white-card extra-padding">
@@ -61,6 +61,53 @@
                             </div>                                         
 
     </div>
+
+    <div class="span6 white-card">
+                <h5 class="text-center">Some Activities You Can Do After Registration</h5>
+
+
+                            <div class="row-fluid">
+                              <div class="span6">
+                                <div class="control-group">
+                                  <a class="btn btn-block span12 btn-success" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-plus-sign"></h3> Follow Channels</a>
+                                </div>
+                              </div>
+                                <div class="span6">
+                                <div class="control-group">
+                                  <a class="btn btn-block span12 btn-danger" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-tint" ></h3> Clone Games</a>
+                                </div>
+                              </div>
+                            </div>                            
+                            <div class="row-fluid">
+                              <div class="span6">
+                                <div class="control-group">
+                                  <a class="btn btn-block span12 btn-warning" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-heart" ></h3> Favorite Games</a>
+                                </div>
+                              </div>
+                               <div class="span6">
+                                <div class="control-group">
+                                  <a class="btn btn-block span12 btn-primary" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-plus" ></h3> Add Games</a>
+                                </div>
+                              </div> 
+                            </div> 
+                            <div class="row-fluid">
+                              <div class="span6">
+                                <div class="control-group">
+                                  <a class="btn btn-block span12 btn-info" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-play" ></h3> Play Games</a>
+                                </div>
+                              </div>
+                               <div class="span6">
+                                <div class="control-group">
+                                  <a class="btn btn-block span12" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-star" ></h3> Rate Games</a>
+                                </div>
+                              </div> 
+                            </div>   
+
+
+    </div>
+
+
+<!--    
     <div class="span6 white-card">
     						<h5 class="text-center">Simply connect with your social account</h5>
 
@@ -88,6 +135,8 @@
                             </div>   
 
     </div>
+-->
+
   </div>
 </div>
 

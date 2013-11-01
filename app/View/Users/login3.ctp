@@ -1,14 +1,15 @@
 <section class="section-wrapper create-account-page-w">
-              <div class="container">
+              <div class="container"><br>
                 <div class="row offset3">
                   <div class="span5">
                     <div class="white-card extra-padding">
 <form id="toorkLogin">
 <fieldset>
 
+                <h5 class="text-center">Log in to your Toork account</h5>
+
+<!--
                 <h5 class="text-center">Simply connect with your social account</h5>
-
-
                             <div class="row-fluid">
                               <div class="span12">
                                 <div class="control-group">
@@ -32,6 +33,7 @@
                             </div>   
 
                             <h5 class="text-center">Or</h5>
+-->
 
                             <div class="row-fluid">
                               <div class="span12">
