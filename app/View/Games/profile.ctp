@@ -172,7 +172,7 @@ if($twitter==NULL){
                                                 <li class=""><a data-toggle="tab" href="#followers_tab"><i class="elusive-group color-blue"></i> Followers - <small>(<?php echo $followerNumber; ?>)</small></a></li>
                                             </ul>
                                         </div>
-                                        <div class="box-body">
+                                        <div class="box-body" style="margin-top:-15px;">
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
 
