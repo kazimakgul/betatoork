@@ -1404,7 +1404,7 @@ public function hashtag() {
 		
 		if ($this->RequestHandler->isAjax()) {  
 		    $this->layout="ajax";
-            $this->render('/Elements/NewPanel/bestchannel_box_ajax');   // Render a special view for ajax pagination
+            $this->render('/Elements/NewPanel/featured_channel_box_ajax');   // Render a special view for ajax pagination
             return;  // return the ajax paginated content without a layout
         }
 		

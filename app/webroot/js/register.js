@@ -1359,6 +1359,43 @@ $('#loadmorechannelgames').live('click',function(){
 			});//This is end of MoreGames button click function.
 
 //==========================================================
+//==========================================================
+
+
+$('#loadmorefeaturedchannels').live('click',function(){						 
+	$(".paging").hide();  //hide the paging for users with javascript enabled
+	
+	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
+		
+	var url = $(".paging a#next").attr("href");
+	$(".paging").remove();
+	$("div.batch").load(url, function(response, status, xhr) {
+            if (status == "error") {
+              var msg = "Sorry but there was an error: ";
+              alert(msg + xhr.status + " " + xhr.statusText);
+            }
+            else {
+                $(this).attr("class","loaded"); //change the class name so it will not be confused with the next batch
+                $(".paging").hide(); //hide the new paging links
+                $(this).fadeIn();
+				var url = $(".paging a#next").attr("href");
+	            //Check are there anymore?
+				if(typeof url=='undefined')
+				{
+					$('#loadmorefeaturedchannels').hide();
+				}
+ 
+            }
+        }); 
+	
+	//This code block below allow make Live Tooltips(allow to work for ajax loaded objects)
+	$('body').tooltip({
+    selector: '[rel=tooltip]'
+    });
+		 
+			});//This is end of MoreGames button click function.
+
+//==========================================================
 
 $('#loadmorefollowers').live('click',function(){
 											 
