@@ -102,16 +102,31 @@ $('.validateLogin').click(function() {
  jQuery.validator.addMethod(
         "uniqueEmail", 
         function(value, element) {
-            $.post(authcheck, {attr: 'check_email', dt: value }, function (data) {
-		
-			if(data.rtdata == 1 )
+          
+			$.ajax({
+        type: "POST",
+        url: authcheck,
+        data: {attr: 'check_email', dt: value },
+        dataType: "json",
+		async: false,
+        success: function(data){
+			
+			if(data.rtdata==1)
 			{
-			$( "#reg_email" ).data( "valid", true );
+				 
+				 $( "#reg_email" ).data( "valid", true );
+				
 			}else{
-			$( "#reg_email" ).data( "valid", false );
+				$( "#reg_email" ).data( "valid", false );
+			
 			}
 			
-		}, 'json');
+			},
+        failure: function(errMsg) {
+            //alert(errMsg);
+        }
+  });
+						
             return $( "#reg_email" ).data( "valid");
         },
         "Email is already registered"
