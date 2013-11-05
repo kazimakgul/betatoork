@@ -178,6 +178,11 @@ seeallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action
 quick='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'quick_subscription')); ?>';
 favswitcher='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add')); ?>';
+freshactivity='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getfreshactivity')); ?>';
+notifycount='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getnotificationcount')); ?>';
+notifytoggle='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'togglelast10')); ?>';
+notifyrefresh='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getfreshnotification')); ?>';
+oldnotify='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getoldnotifications')); ?>';
 
 search_query=$('.search-query').val();
 search_url='<?php echo $this->Html->url(array("controller"=>"games","action"=>"search2"));?>';

@@ -9,7 +9,7 @@ class ActivitiesController extends AppController {
     
 	public $name = 'Activities';
     var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Activity','CakeEmail', 'Network/Email');
-    public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
+    public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Email'); 
 /**
  * index method
