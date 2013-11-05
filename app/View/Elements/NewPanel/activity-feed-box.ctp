@@ -1,4 +1,9 @@
-
+<?php 
+if($lastactivities==NULL)
+{
+echo 'null';
+}
+?>
 				    <!--get first element of array -->
 					<?php $end_data=reset($lastactivities);?>
 					<div class="freshactivities"></div>

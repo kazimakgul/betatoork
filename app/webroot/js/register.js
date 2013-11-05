@@ -1703,6 +1703,10 @@ setInterval(function(){getFreshActivity();getNotificationCount();},10000);
 function getFreshActivity()
 {
 last_id=$('.lastactivityid').val();
+if(typeof last_id == 'undefined' || last_id==null || last_id=='')
+{
+//alert('null');
+}else{
 //alert(last_id);
 activitypath=freshactivity+'/'+last_id
 $.post(activitypath, function (data) {
@@ -1716,7 +1720,7 @@ $.post(activitypath, function (data) {
             }
             
         });
-
+     }//End of last_id control
 }
 
 //==========================================================
