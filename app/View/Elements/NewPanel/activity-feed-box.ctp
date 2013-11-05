@@ -1,7 +1,8 @@
-<?php 
+<?php
+$featured=$this->Html->url(array("controller" => "games","action" =>"featuredchannels")); 
 if($lastactivities==NULL)
 {
-echo 'null';
+echo '<p class="alert alert-important">Follow some great channels and see activities go to <a href='.$featured.' class="btn btn-success">Featured Channels</a><p>';
 }
 ?>
 				    <!--get first element of array -->
