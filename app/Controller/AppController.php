@@ -93,7 +93,7 @@ class AppController extends Controller {
             'get_gamedata','moreupdates_filter_ajax','gamefeed_ajax','view_ajax','view_ajax2','mass_subscription','quick_subscription',
             'sync_recommended','profile','playgame','bestchannels2','toprated2','gameswitch','playgameframe','get_3_games',
             'categorygames2','favorite_check','game_comment_ajax','game_comments_ajax','clonegame','gamedelete','channelfavorites','profilegames',
-            'channelfollowers','moreupdates_profile_ajax','loadprofilefeeds','sendmail','activationmailsender','new_user',
+            'channelfollowers','moreupdates_profile_ajax','moreupdates_profile_ajax_home','loadprofilefeeds','sendmail','activationmailsender','new_user',
             'get_image_link','getscreen','cropimage','addgame_ajax','add_virtual_game','pushActivity','setPermissions','activityMessage',
             'notificationMessage','getFreshActivity','getfreshnotification','posts','getprofileactivity','followstatus','getnotificationcount',
             'togglelast10','featuredchannels','getOldNotifications','hashtag','register2','login3');

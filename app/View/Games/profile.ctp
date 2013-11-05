@@ -193,7 +193,7 @@ if($twitter==NULL){
                                             <!-- widgets-tab-body -->
                                             <div class="tab-content">
                                                 <!-- channel news feed is in starts-->
-                                                <?php  echo $this->element('NewPanel/load_profile_feeds'); ?>
+                                                <?php  echo $this->element('NewPanel/load_profile_feeds_home'); ?>
                                                 <!-- channel news feed is in ends-->
                                             </div><!--/widgets-tab-body-->
                                         </div><!--/box-body-->

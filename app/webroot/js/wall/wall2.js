@@ -1152,6 +1152,33 @@ return false;
 });
 
 
+//======================================
+$('.profile_more2').live("click",function() 
+{
+
+var ID = $(this).attr("id");
+if(ID)
+{
+$.ajax({
+type: "POST",
+url: profile_news_var_home,
+data: "lastid="+ ID, 
+cache: false,
+beforeSend: function(){ $("#my_more_home"+ID).html('<img src="http://appvidyo.com/images/ajax-preloader.gif" />'); },
+success: function(html){
+$("#my_content_home").append(html);
+$("#my_more_home"+ID).remove();
+}
+});
+}
+else
+{
+$("#my_more_home").html('The End');// no results
+}
+
+return false;
+});
+
 // Load More2 dedicated for my feeds
 
 $('.more_game_comments').live("click",function() 
