@@ -1545,6 +1545,8 @@ public function password2($id = null) {
 			if(!$this->User->find('first', array('contain'=>false,'conditions'=> array('User.email'=>$dt))))
 			{
 				$this->set('rtdata', 1);
+			}else{
+			$this->set('rtdata', 0);
 			}
 		 }
 		 

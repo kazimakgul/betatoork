@@ -69,16 +69,31 @@ $('.validateLogin').click(function() {
  jQuery.validator.addMethod(
         "uniqueUserName", 
         function(value, element) {
-            $.post(authcheck, {attr: 'check_username', dt: value }, function (data) {
-		
-			if(data.rtdata == 1 )
+            
+			 $.ajax({
+        type: "POST",
+        url: authcheck,
+        data: {attr: 'check_username', dt: value },
+        dataType: "json",
+		async: false,
+        success: function(data){
+			
+			if(data.rtdata==1)
 			{
-			$( "#reg_username" ).data( "valid", true );
+				 
+				 $( "#reg_username" ).data( "valid", true );
+				
 			}else{
-			$( "#reg_username" ).data( "valid", false );
+				$( "#reg_username" ).data( "valid", false );
+			
 			}
 			
-		}, 'json');
+			},
+        failure: function(errMsg) {
+            //alert(errMsg);
+        }
+  });			
+			
             return $( "#reg_username" ).data("valid");
         },
         "Username is already taken"
