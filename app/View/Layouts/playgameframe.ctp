@@ -175,7 +175,6 @@ commentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','actio
 delmessagevar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_message_ajax')); ?>';
 delcommentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_comment_ajax')); ?>';
 seeallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'view_ajax2')); ?>';
-quick='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'quick_subscription')); ?>';
 favswitcher='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add')); ?>';
 freshactivity='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getfreshactivity')); ?>';
