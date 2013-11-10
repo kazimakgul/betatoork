@@ -55,6 +55,12 @@
                               </div>
                             </div>
 
+<!--PreLoader-->
+<div style="width:100%;text-align:center;"><div id="grabloader" style="display:none;">
+							<p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
+							<p><small>Just a moment.<br>You will be redirected to your personal channel now.</small></p>
+							</div></div>
+<!--/PreLoader-->
 
                             <div class="row-fluid">
                               <div class="span12">

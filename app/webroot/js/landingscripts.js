@@ -16,6 +16,7 @@ $(function(){
 			}
 			else if(data.rtdata.msgid=='1'){
 				
+				$('#grabloader').css("display", "block");
 				window.location = data.rtdata.msg;
 			}
 			else{

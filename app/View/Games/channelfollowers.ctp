@@ -1,3 +1,5 @@
+<?php if($followers==NULL){ echo 'You dont have any profile followers';} ?>
+
 <?php foreach ($followers as $follower): ?>
 <?php 
 $followid = $follower['Subscription']['subscriber_id'];

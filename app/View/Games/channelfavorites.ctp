@@ -1,3 +1,5 @@
+<?php if($favorites==NULL){ echo 'You dont have any profile favorites';} ?>
+
 <?php foreach ($favorites as $game): ?>
 <?php
 if($game['Game']['User']['seo_username']!=NULL)
