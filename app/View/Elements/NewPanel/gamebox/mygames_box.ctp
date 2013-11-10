@@ -1,3 +1,6 @@
+<?php if($mygames==NULL){ echo 'You dont have any game';} ?>
+
+
 <?php foreach ($mygames as $game): ?>
 <?php
 

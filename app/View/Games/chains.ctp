@@ -44,7 +44,7 @@
 <?php  echo $this->element('NewPanel/mychains_box'); ?>
 </ul>
 
-
+<?php if($followers!=NULL){ ?>
     <!--Hidden Pagination -->
     <div class="pagination pagination-centered">
         <ul>
@@ -53,11 +53,11 @@
             <li><?php echo '  '.$this->Paginator->next(__('Next', true), array('id'=>'next'), null, array('class' => 'disabled'));?></li>
         </ul>
         <div style="opacity:0.5;">
-            <?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}, showing {:current} channels out of {:count} total')));?>
+            <?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}, showing {:current} channels out of {:count} total')));?>f
         </div>
     </div>
     <!--Hidden Pagination -->
-
+<?php } ?>
 
                         </div><!--/content-body -->
 <?php  echo $this->element('NewPanel/dashfooter'); ?>

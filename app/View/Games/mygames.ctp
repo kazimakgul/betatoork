@@ -65,7 +65,7 @@ $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"
 <?php  echo $this->element('NewPanel/gamebox/mygames_box'); ?>
 </ul>
 
-    
+ <?php if($mygames!=NULL){ ?>   
 	<!--Hidden Pagination -->
     <div class="pagination pagination-centered">
         <ul>
@@ -78,7 +78,7 @@ $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"
         </div>
     </div>
     <!--Hidden Pagination -->
-
+<?php } ?>
 
 
                         </div><!--/content-body -->

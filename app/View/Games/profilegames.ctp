@@ -1,3 +1,5 @@
+<?php if($profilegames==NULL){ echo 'You dont have any profile games';} ?>
+
 <?php foreach ($profilegames as $game): ?>
 <?php
 

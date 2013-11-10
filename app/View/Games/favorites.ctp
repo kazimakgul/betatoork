@@ -45,6 +45,7 @@
 <?php  echo $this->element('NewPanel/gamebox/myfavorite_box'); ?>
 </ul>
 
+<?php if($favorites!=NULL){ ?> 
     <!--Hidden Pagination -->
     <div class="pagination pagination-centered">
         <ul>
@@ -57,7 +58,7 @@
         </div>
     </div>
     <!--Hidden Pagination -->
-
+<?php } ?>
 
                         </div><!--/content-body -->
 <?php  echo $this->element('NewPanel/dashfooter'); ?>

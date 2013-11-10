@@ -1,3 +1,5 @@
+<?php if($favorites==NULL){ echo 'You dont have any favorite';} ?>
+
 <?php foreach ($favorites as $game): ?>
 <?php 
 
