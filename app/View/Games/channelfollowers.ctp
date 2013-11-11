@@ -1,4 +1,4 @@
-<?php if($followers==NULL){ echo 'You dont have any profile followers';} ?>
+<?php if($followers==NULL){ echo "<div class='elusive-plus-sign color-green media well shadow span12' style='background-color:white;'> No Followers Yet. Be the first to follow.</div>";} ?>
 
 <?php foreach ($followers as $follower): ?>
 <?php 

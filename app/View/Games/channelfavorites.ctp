@@ -1,4 +1,4 @@
-<?php if($favorites==NULL){ echo 'You dont have any profile favorites';} ?>
+<?php if($favorites==NULL){ echo "<div class='elusive-heart color-red media well shadow span12' style='background-color:white;'> No Games Favorited Yet.</div>";} ?>
 
 <?php foreach ($favorites as $game): ?>
 <?php

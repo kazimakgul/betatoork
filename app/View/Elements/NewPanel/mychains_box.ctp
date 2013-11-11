@@ -1,4 +1,4 @@
-<?php if($followers==NULL){ echo 'You dont have any chain';} ?>
+<?php if($followers==NULL){ echo "<div class='elusive-plus-sign color-green media well shadow span6' style='background-color:white;'> You have't followed any channels yet.</div>";} ?>
 
 <?php foreach ($followers as $follower): ?>
 <?php 

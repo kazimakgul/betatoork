@@ -1,4 +1,4 @@
-<?php if($profilegames==NULL){ echo 'You dont have any profile games';} ?>
+<?php if($profilegames==NULL){ echo "<div class='elusive-plus-sign color-blue media well shadow span12' style='background-color:white;'> No Games Added Yet.</div>";} ?>
 
 <?php foreach ($profilegames as $game): ?>
 <?php
