@@ -32,6 +32,8 @@ if(isset($uid))
    }
 }
 
+if($updatesarray==NULL && $lastid==0)
+echo 'Wall is empty yet1212.';
 
 if($updatesarray)
 {
