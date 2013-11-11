@@ -27,6 +27,8 @@ if(isset($uid))
    }
 }
 
+if($updatesarray==NULL && $lastid==0)
+echo 'You dont have a feed1313.';
 
 if($updatesarray)
 {

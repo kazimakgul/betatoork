@@ -1,3 +1,5 @@
+<?php if($notifications==NULL){ echo 'You dont have any notification yet';} ?>
+
 <?php if($notifications!=NULL) { ?>
 		
 					<?php 

@@ -1,4 +1,4 @@
-<?php if($mygames==NULL){ echo "<div class='elusive-plus-sign color-blue media well shadow span5' style='background-color:white;'> You have't added any games yet.</div>";} ?>
+<?php if($mygames==NULL){ echo "<div class='elusive-plus-sign color-blue media well shadow span5' style='background-color:white;'> You haven't added any games yet.</div>";} ?>
 
 
 <?php foreach ($mygames as $game): ?>
