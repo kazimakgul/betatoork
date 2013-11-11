@@ -711,10 +711,14 @@ function trecaptcha2(){
 //***************************************************
 
 function subscribe (channel_name,user_auth,id) {
-		          
+		      			
+				  
 		    if(user_auth==1)
 		    {
-				
+		currentflw=$('#flwnumber').html();
+		currentflw=parseInt(currentflw);
+		$('#flwnumber').html(currentflw+1);
+		
 		switch_subscribe(id);
 		$.pnotify({
             title: 'Thanks for Following',
@@ -742,7 +746,10 @@ function subscribe (channel_name,user_auth,id) {
 		        
 		    if(user_auth==1)
 		    {
-				
+		currentflw=$('#flwnumber').html();
+		currentflw=parseInt(currentflw);
+		$('#flwnumber').html(currentflw-1);
+		
 		switch_subscribe(id);
 		$.pnotify({
             title: 'Unfollow is done',
