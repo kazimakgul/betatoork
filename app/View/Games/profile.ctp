@@ -203,7 +203,7 @@ if($twitter==NULL){
 </ul>
 <div>
 <?php if($mygames!=NULL){?>
-<a id="loadmoreprofilegame" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
+<a id="loadmoreprofilegame" class="offset3 span6 btn btn-block loadertrig" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More</a>
 <?php } ?>
 </div>
 
