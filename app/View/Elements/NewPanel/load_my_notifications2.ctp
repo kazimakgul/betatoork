@@ -1,4 +1,8 @@
-<?php if($notifications==NULL){ echo 'You dont have any notification yet';} ?>
+<?php if($notifications==NULL){ $featured=$this->Html->url(array("controller" => "games","action" =>"featuredchannels")); 
+echo "<div class='color-blue media well shadow span12' style='margin-left:0px; background-color:white;'>
+		<a href='$featured' class='offset3 btn btn-info helper-font-24 elusive-plus-sign'> Follow</a>
+ 		<h4>You don't have any notifications yet. Please <a class='color-red'>follow</a> some <a class='color-red'>channels</a> and make them follow back.</h4>
+ 	</div>";} ?>
 
 <?php if($notifications!=NULL) { ?>
 		
