@@ -31,7 +31,7 @@ if(isset($uid))
 
 
 if($updatesarray==NULL && $lastid==0)
-echo 'Profile Feed is empty yet.';
+echo "<div class='elusive-share color-blue media well shadow span12' style='background-color:white;'> No Posts Shared Yet.</div>";
 
 if($updatesarray)
 {

@@ -1,4 +1,4 @@
-<?php if($mygames==NULL){ echo 'You donT have any dashboard game'; }?>
+<?php if($mygames==NULL){ echo "<div class='elusive-plus-sign color-red media well shadow span6' style='background-color:white;'> No Games Shared Yet.</div>"; }?>
 
 <?php foreach ($mygames as $game): ?>
 <?php

@@ -1,4 +1,4 @@
-<?php if($lastactivities==NULL){ echo 'You dont have any activity yet';} ?>
+<?php if($lastactivities==NULL){ echo "<div class='elusive-bullhorn color-orange media well shadow span12' style='margin-top:18px; background-color:white;'> No Activities Yet.</div>";} ?>
 
 <?php if($lastactivities!=NULL) { ?>
 		
