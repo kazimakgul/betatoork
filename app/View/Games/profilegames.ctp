@@ -60,6 +60,7 @@ else{
 					
  <?php endforeach; ?>
  
+ <?php if($profilegames!=NULL){ ?>
  <!--Hidden Pagination -->
 	<div class="paging_games" style="display:none;">
     <?php 
@@ -69,3 +70,4 @@ else{
 	 ?>
     </div>
   <!--Hidden Pagination -->
+  <?php } ?>

@@ -1,3 +1,5 @@
+<?php if($lastactivities==NULL){ echo 'You dont have any activity yet';} ?>
+
 <?php if($lastactivities!=NULL) { ?>
 		
 					<?php 

@@ -30,6 +30,9 @@ if(isset($uid))
 }
 
 
+if($updatesarray==NULL && $lastid==0)
+echo 'Profile Feed is empty yet.';
+
 if($updatesarray)
 {
 	foreach($updatesarray as $data)

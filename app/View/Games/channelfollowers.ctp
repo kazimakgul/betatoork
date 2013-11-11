@@ -62,10 +62,10 @@ else
 
 </div>
 
-
 			
  <?php endforeach; ?>
- 
+
+<?php if($followers!=NULL){ ?>
  <!--Hidden Pagination -->
 	<div class="paging_followers" style="display:none;">
     <?php 
@@ -75,3 +75,4 @@ else
 	 ?>
     </div>
   <!--Hidden Pagination -->
+<?php } ?>

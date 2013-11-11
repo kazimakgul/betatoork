@@ -1,3 +1,5 @@
+<?php if($mygames==NULL){ echo 'You donT have any dashboard game'; }?>
+
 <?php foreach ($mygames as $game): ?>
 <?php
 

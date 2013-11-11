@@ -29,6 +29,9 @@ if(isset($uid))
    }
 }
 
+if($updatesarray==NULL && $lastid==0)
+echo 'Profile Wall is empty yet.';
+
 
 if($updatesarray)
 {

@@ -61,6 +61,8 @@ else{
 					
  <?php endforeach; ?>
  
+ 
+ <?php if($favorites!=NULL){ ?>
  <!--Hidden Pagination -->
 	<div class="paging_favorites" style="display:none;">
     <?php 
@@ -70,3 +72,4 @@ else{
 	 ?>
     </div>
   <!--Hidden Pagination -->
+  <?php } ?>
