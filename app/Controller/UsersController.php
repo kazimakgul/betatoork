@@ -98,7 +98,7 @@ public function reset_request()
 		$user = $this->User->find('first',array('conditions' => array('User.email'=>$email)));
 
 		if ($user === false) {
-			$this->Session->setFlash('This email is not registered to toork yet.');
+			$this->Session->setFlash('This email is not registered to Clone yet.');
 			return false;
 		}
 
@@ -178,13 +178,13 @@ public function __sendResetEmail($user_id) {
  
 		    $email = new CakeEmail();
 		    // Set data for the "view" of the Email
-			$email->viewVars(array('reset_url' => 'http://toork.com/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash(),'username'=>$user["User"]["username"]));
+			$email->viewVars(array('reset_url' => 'http://clone.gs/users/reset_now/' . $user['User']['id'] . '/' . $this->User->getActivationHash(),'username'=>$user["User"]["username"]));
 			$email->config('smtp')
 				->template('forgot_password') //I'm assuming these were created
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => 'Toork'))
-			    ->subject('Toork - Password Reset')
+			    ->from(array('no-reply@clone.gs' => 'Clone'))
+			    ->subject('Clone - Password Reset')
 			    ->send();
 		
 	}
@@ -193,8 +193,8 @@ public function __sendResetEmail($user_id) {
     public function login() {
     	$this->layout = 'base';
 		
-		$this->set('title_for_layout', 'Toork - Login');
-		$this->set('description_for_layout', 'Login to Toork');	
+		$this->set('title_for_layout', 'Clone - Login');
+		$this->set('description_for_layout', 'Login to Clone');	
 
     	if($this->request->is('post')){
     		if(empty($this->data['User']['username'])){
@@ -244,8 +244,8 @@ public function sendmail(){
 				->template('simple_mail') //I'm assuming these were created
 			    ->emailFormat('html')
 			    ->to('hoaltan@hotmail.com')
-			    ->from(array('no-reply@toork.com' => 'Toork'))
-			    ->subject('Welcome To Toork')
+			    ->from(array('no-reply@clone.gs' => 'Clone'))
+			    ->subject('Welcome To Clone')
 			    ->send();
 
 }
@@ -254,25 +254,25 @@ public function activationmailsender($user_id=NULL){
 			
 			$user = $this->User->find('first',array('contain'=>false,'conditions' => array('User.id'=>$user_id),'fields'=>array('User.username','User.email','User.id')));
 		// Set data for the "view" of the Email
-		$this->set('activate_url', 'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
+		$this->set('activate_url', 'http://clone.gs/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash());
 		$this->set('username', $user["User"]["username"]);
 		$this->User->id = $user_id;
 		$email = new CakeEmail();
-		    $email->viewVars(array('username' => $user["User"]["username"],'activate_url'=>'http://toork.com/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash()));
+		    $email->viewVars(array('username' => $user["User"]["username"],'activate_url'=>'http://clone.gs/users/activate/' . $user['User']['id'] . '/' . $this->User->getActivationHash()));
 			$email->config('smtp')
 				->template('register') //I'm assuming these were created
 			    ->emailFormat('html')
 			    ->to($user['User']['email'])
-			    ->from(array('no-reply@toork.com' => 'Toork'))
-			    ->subject('Welcome To Toork')
+			    ->from(array('no-reply@clone.gs' => 'Clone'))
+			    ->subject('Welcome To Clone')
 			    ->send();
 }
 
     public function login2() {
     	$this->layout = 'unauth';
 		
-		$this->set('title_for_layout', 'Toork - Login');
-		$this->set('description_for_layout', 'Login to Toork');	
+		$this->set('title_for_layout', 'Clone - Login');
+		$this->set('description_for_layout', 'Login to Clone');	
 
     	if($this->request->is('post')){
     		if(empty($this->data['User']['username'])){
@@ -319,8 +319,8 @@ public function activationmailsender($user_id=NULL){
     public function login3() {
     	$this->layout = 'landing';
 		
-		$this->set('title_for_layout', 'Toork - Login');
-		$this->set('description_for_layout', 'Login to Toork');	
+		$this->set('title_for_layout', 'Clone - Login');
+		$this->set('description_for_layout', 'Login to Clone');	
 
     	if($this->request->is('post')){
     		if(empty($this->data['User']['username'])){
@@ -519,8 +519,8 @@ function secureSuperGlobalPOST($value)
 				$this->redirect(array('controller' => 'games', 'action' => 'index'));
 			}
 		}
-		$this->set('title_for_layout', 'Register for toork');
-		$this->set('description_for_layout', 'Create your toork account for free');
+		$this->set('title_for_layout', 'Register for Clone');
+		$this->set('description_for_layout', 'Create your Clone account for free');
 
 	}
 
@@ -1476,7 +1476,7 @@ public function password2($id = null) {
 			if(isset($dt) && $dt!= ''){
 				$user = $this->User->find('first',array('conditions' => array('OR'=>array('User.email'=>$dt,'User.username'=>$dt))));
 				if($user === false){
-					$this->set('rtdata', 'This email is not registered to Toork yet.');
+					$this->set('rtdata', 'This email is not registered to Clone yet.');
 				}
 				else{
 					$this->__sendResetEmail($user["User"]["id"]);
@@ -1639,7 +1639,7 @@ public function password2($id = null) {
 			if(isset($dt) && $dt!= ''){
 				$user = $this->User->find('first',array('conditions' => array('User.email'=>$dt)));
 				if($user === false){
-					$this->set('rtdata', 'This email is not registered to toork yet.');
+					$this->set('rtdata', 'This email is not registered to Clone yet.');
 				}
 				else{
 					$this->__sendResetEmail($user["User"]["id"]);
@@ -1738,7 +1738,7 @@ public function password2($id = null) {
 			if(isset($dt) && $dt!= ''){
 				$user = $this->User->find('first',array('conditions' => array('User.email'=>$dt)));
 				if($user === false){
-					$this->set('rtdata', 'This email is not registered to toork yet.');
+					$this->set('rtdata', 'This email is not registered to Clone yet.');
 				}
 				else{
 					$this->__sendResetEmail($user["User"]["id"]);

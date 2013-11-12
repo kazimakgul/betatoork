@@ -3374,9 +3374,9 @@ input[type="submit"].btn.btn-mini {
   font-weight: 200;
   color: #777777;
   text-shadow: 0 1px 0 #ffffff;
-  background: url(../../../img/logoNew.png) no-repeat center;
-  background-size:160px 40px;
-  width: 160px;
+  background: url(../../../img/clone.png) no-repeat center;
+  background-size:150px 45px;
+  width: 155px;
   height: 20px
 }
 .navbar .brand:hover,

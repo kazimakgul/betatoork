@@ -195,7 +195,7 @@ return $a;
     	$userDesc = $user['User']['description'];
     	$this->set('username', $userName);
     	$this->set('user', $user);
-		$this->set('title_for_layout', $userName.' News - Toork');
+		$this->set('title_for_layout', $userName.' News - Clone');
 		$this->set('description_for_layout', $userName.' Channel News - '.$userDesc);
 
 
@@ -335,7 +335,7 @@ return $a;
     	$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
     	$userName = $user['User']['username'];
     	$userDesc = $user['User']['description'];
-		$this->set('title_for_layout', $userName.' News - Toork');
+		$this->set('title_for_layout', $userName.' News - Clone');
 		$this->set('description_for_layout', $userName.' Channel News - '.$userDesc);
 	
 	}
@@ -468,7 +468,7 @@ return $a;
     	$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
     	$userName = $user['User']['username'];
     	$userDesc = $user['User']['description'];
-		$this->set('title_for_layout', $userName.' News - Toork');
+		$this->set('title_for_layout', $userName.' News - Clone');
 		$this->set('description_for_layout', $userName.' Channel News - '.$userDesc);
 	
        
@@ -658,7 +658,7 @@ public function set_suggested_channels()
     	$userDesc = $user['User']['description'];
     	$this->set('username', $userName);
     	$this->set('user', $user);
-		$this->set('title_for_layout', $userName.' News - Toork');
+		$this->set('title_for_layout', $userName.' News - Clone');
 		$this->set('description_for_layout', $userName.' Channel News - '.$userDesc);
 	
        
@@ -877,7 +877,7 @@ public function set_suggested_channels()
 	    $user = $this->User->find('first', array('conditions' => array('User.id' => $profile_uid)));
     	$userName = $user['User']['username'];
     	$userDesc = $user['User']['description'];
-		$this->set('title_for_layout', $userName.' News - Toork');
+		$this->set('title_for_layout', $userName.' News - Clone');
 		$this->set('description_for_layout', $userName.' Channel News - '.$userDesc);
 
 }
@@ -1061,7 +1061,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('comment')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' commented on your game.')
 			    ->send();
 	  	}elseif($type_id==2){
@@ -1070,8 +1070,8 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('follow') 
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
-			    ->subject($performer["User"]["username"].' is following you on Toork.')
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
+			    ->subject($performer["User"]["username"].' is following you on Clone.')
 			    ->send();
 	  	}elseif($type_id==3){
 			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
@@ -1079,7 +1079,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('clone')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' made a clone of your game.')
 			    ->send();
 	  	}elseif($type_id==4){
@@ -1088,7 +1088,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('rate')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' rated your game.')
 			    ->send();
 	  	}elseif($type_id==5){
@@ -1097,7 +1097,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('mention')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' is talking about you.')
 			    ->send();
 	  	}elseif($type_id==6){
@@ -1106,7 +1106,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('postcomment')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' commented on your post.')
 			    ->send();
 	  	}elseif($type_id==7){
@@ -1115,7 +1115,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('favorite')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' added your game to its Favorite list.')
 			    ->send();
 	  	}elseif($type_id==8){
@@ -1124,7 +1124,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('hashtag')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' is talking about your game.')
 			    ->send();
 	  	}elseif($type_id==12){
@@ -1133,7 +1133,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('postgame')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' commented on your game.')
 			    ->send();
 	  	}else{}

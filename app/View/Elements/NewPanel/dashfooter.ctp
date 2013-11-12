@@ -56,6 +56,6 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
         </li>
     </ul>
 
-<p><small><strong>Toork</strong> © Copyright 2013. All Rights Reserved</small></p>
+<p><small><strong>Clone</strong> © Copyright 2013. All Rights Reserved</small></p>
 
 </div>

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Toork</title>
+<title>Clone</title>
 </head>
 <body>
 
@@ -14,15 +14,15 @@
       <table style="font:normal 15px Arial">
         <tbody><tr>
                       <td style="font-size:18px;color:#000">
-                    <b><span style="color:black"><a style="color:black">Hi <?php echo $username; ?>,<br>Welcome to Toork.
+                    <b><span style="color:black"><a style="color:black">Hi <?php echo $username; ?>,<br>Welcome to Clone.
   </a></span></b><br>
                     </td>
         </tr>
                 <tr>
           <td style="border-bottom:1px solid #bbb">
-            <span style="color:black"><a style="color:black"> Now you have your own channel on Toork.<br>
+            <span style="color:black"><a style="color:black"> Now you have your own channel on Clone.<br>
               You are able to add new games to your channel now.<br>
-              If you need any further assistance, please feel free to contact us : <a mailto="hello@toork.com">hello@toork.com.</a>
+              If you need any further assistance, please feel free to contact us : <a mailto="hello@clone.gs">hello@clone.gs.</a>
 </a></span><br>
           </td>
         </tr>
@@ -58,9 +58,9 @@
   </tr>
     <tr>
     <td style="background-color:#eee;padding:15px">
-      <a href="http://toork.com" target="_blank">Toork</a>: Create your own game channel and share your games with your friends.
+      <a href="http://clone.gs" target="_blank">Clone</a>: Create your own game channel and share your games with your friends.
         <br>
-        Have a question or need help with your Toork account? Check our support page.
+        Have a question or need help with your Clone account? Check our support page.
         <br>
     </td>
   </tr>

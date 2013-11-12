@@ -142,14 +142,14 @@
 
 <div style="width:100%;text-align:center;"><div id="grabloader" style="display:none;">
 							<p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
-							<p><small>You have successfully registered now.<br>You will be redirected to your personal channel now.<br>Please be patient and enjoy Toork...</small></p>
+							<p><small>You have successfully registered now.<br>You will be redirected to your personal channel now.<br>Please be patient and enjoy Clone...</small></p>
 							</div></div>
 
 
                             <div class="row-fluid">
                               <div class="span12">
                                 <div class="form-actions no-margin-bottom">
-                                  <button id="t_landing_registerbtn" style="margin-left:20px;" class="btn btn-success btn-large validateRegister" name="button" type="button">+ Join Toork Now</button><span class="offset2"><i class="icon-check"></i> By joinin toork.com you agree to our <a href="<?php echo $terms; ?>">terms</a> and <a href="<?php echo $privacy; ?>">privacy</a> policies.</span>
+                                  <button id="t_landing_registerbtn" style="margin-left:20px;" class="btn btn-success btn-large validateRegister" name="button" type="button">+ Join Clone Now</button><span class="offset2"><i class="icon-check"></i> By joinin clone.gs you agree to our <a href="<?php echo $terms; ?>">terms</a> and <a href="<?php echo $privacy; ?>">privacy</a> policies.</span>
                                 </div>
                               </div>
                             </div>

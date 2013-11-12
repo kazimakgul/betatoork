@@ -60,7 +60,7 @@
                     <h1 class='slider-header'>One Game <strong>Source</strong> to Rule Them All</h1>
                     <h2 class='slider-sub-header'>Your Personal Game Advisor</h2>
                     <div class='cta'>
-                      <a href="<?php echo $register ?>" class="btn btn-cta btn-warning">Join Toork Now</a>
+                      <a href="<?php echo $register ?>" class="btn btn-cta btn-warning">Join Clone Now</a>
                     </div>
                     <div class='row zoomed-browsers-w'>
                       <div class='span4'>
@@ -218,8 +218,8 @@
                       <div class='testimonials-speeches'>
                         <div class="testimonials-speech active" id="testimonial1">
                           <p>
-                            <strong>Toork is the right place.</strong>
-                            When ever I feel bored, I come to spend time in toork to play some games and follow other friends of mine like batman and spiderman. So they keep me informed with their latest news.
+                            <strong>Clone is the right place.</strong>
+                            When ever I feel bored, I come to spend time in clone to play some games and follow other friends of mine like batman and spiderman. So they keep me informed with their latest news.
                           </p>
                           <div class="speech-by">
                             Superman, Kryptonite Planet
@@ -255,7 +255,7 @@
                         <div class='testimonials-speech' id='testimonial5'>
                           <p>
                             <strong>Better than juping on the tree</strong>
-                            I like it more to hangout here on toork than jumping o top of the trees. I dont have to hide here. People are following me and I enjoy being popular.
+                            I like it more to hangout here on clone than jumping o top of the trees. I dont have to hide here. People are following me and I enjoy being popular.
                           </p>
                           <div class='speech-by'>
                             Hawk, Unknown Forest
@@ -264,7 +264,7 @@
                         <div class='testimonials-speech' id='testimonial6'>
                           <p>
                             <strong>Blop blop, glu blop glu</strong>
-                            bloop glue bloop blop blop gleu gleu glu glu. Sorry I forgat that you dont understand the under water talk. Toork is more fun than swimming. I am happy to be a part of it.
+                            bloop glue bloop blop blop gleu gleu glu glu. Sorry I forgat that you dont understand the under water talk. clone is more fun than swimming. I am happy to be a part of it.
                           </p>
                           <div class='speech-by'>
                             Aquaman, Atlantis
@@ -274,7 +274,7 @@
                     </div>
                   </div>
                   <div class="span6">
-                    <h3 class="section-header">Why join Toork?</h3>
+                    <h3 class="section-header">Why join Clone?</h3>
                     <div class="accordion" id="accordion">
                       <div class="accordion-group">
                         <div class="accordion-heading">
@@ -284,7 +284,7 @@
                         </div>
                         <div class="accordion-body collapse in" id="collapseOne">
                           <div class="accordion-inner">
-                            You will have your own unique game channel (toork.com/mychannel). Customize your channel, let others to follow your channel and grow your gaming community. You will be able to share games, videos and pictures.Toork is a social game network and It is especially designed for gamers, game bloggers, game developers, game sites and game companies.
+                            You will have your own unique game channel (clone.gs/mychannel). Customize your channel, let others to follow your channel and grow your gaming community. You will be able to share games, videos and pictures.Clone is a social game network and It is especially designed for gamers, game bloggers, game developers, game sites and game companies.
                           </div>
                         </div>
                       </div>
@@ -296,7 +296,7 @@
                         </div>
                         <div class="accordion-body collapse" id="collapseTwo">
                           <div class="accordion-inner">
-                            Game channels are user generated themed game sites inside toork. You will be able to follow channels to be notified with the latest games and news about the channel. Grow your community, make your friends follow you. Run your own game community.
+                            Game channels are user generated themed game sites inside clone.gs. You will be able to follow channels to be notified with the latest games and news about the channel. Grow your community, make your friends follow you. Run your own game community.
                           </div>
                         </div>
                       </div>
@@ -308,7 +308,7 @@
                         </div>
                         <div class="accordion-body collapse" id="collapseThree">
                           <div class="accordion-inner">
-                            Toork is your personal assitant for your game activity. Toork analize your game personality and Its game recommendation engine helps you personalize your dashboard which knows what you like and what you may like. It offers you best games, what to play next and who to follow kind of recommendations.
+                            Clone is your personal assitant for your game activity. Clone analize your game personality and Its game recommendation engine helps you personalize your dashboard which knows what you like and what you may like. It offers you best games, what to play next and who to follow kind of recommendations.
                           </div>
                         </div>
                       </div>
@@ -320,7 +320,7 @@
                         </div>
                         <div class="accordion-body collapse" id="collapseFour">
                           <div class="accordion-inner">
-                            Add a game to your channel with one click. any one can add games. You don't have to be a developer to have your own games anymore. Play, rate, share and love your games. Use Toork's inovative feature "clone" to simply add games to your channel.
+                            Add a game to your channel with one click. any one can add games. You don't have to be a developer to have your own games anymore. Play, rate, share and love your games. Use Clone.gs's inovative feature "clone" to simply add games to your channel.
                           </div>
                         </div>
                       </div>
@@ -408,8 +408,8 @@
                 
                   <h3 class="section-header">Join Professionals For Free</h3>
                   <div>
-                    <a href="<?php echo $register; ?>" class="btn btn-success btn-large"><i class="icon-plus"></i> Join Toork Now</a>
-                    <a href="<?php echo $explore; ?>" class="btn btn-cta btn-large"><i class="icon-compass"></i> Explore Toork</a>
+                    <a href="<?php echo $register; ?>" class="btn btn-success btn-large"><i class="icon-plus"></i> Join Clone Now</a>
+                    <a href="<?php echo $explore; ?>" class="btn btn-cta btn-large"><i class="icon-compass"></i> Explore Clone</a>
                   </div>
 
               </div>
@@ -422,7 +422,7 @@
                   <div class='row'>
                     <div class='span4'>
                       <div class='footer-logo'>
-                        <a><strong>Toork</strong> beta</a>
+                        <a><strong>Clone</strong> beta</a>
                       </div>
                       <ul class='footer-address'>
                         <li>
@@ -432,12 +432,12 @@
                         </li>
                         <li>
                           <strong>Contact:</strong>
-                          <a style="color:silver; font-size:14px;" href="mailto:hello@toork.com">hello [at] toork.com</a>
+                          <a style="color:silver; font-size:14px;" href="mailto:hello@clone.gs">hello [at] clone.gs</a>
                         </li>
                       </ul>
                     </div>
                     <div class='span4'>
-                      <h5 class='footer-header'>Benefits of Toork</h5>
+                      <h5 class='footer-header'>Benefits of Clone</h5>
                       <ul class='footer-list'>
                         <li>
                           <p>Create Your Own Game Channel</p>

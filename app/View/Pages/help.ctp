@@ -6,8 +6,8 @@
                         <div class="content-body" style="padding-top:15px;">
                           
                           <div class="well">
-                            <h4>What is Toork and why Toork?</h4><p>
-Toork is a social network about games, gamers, game bloggers, game developers and game sites. Toork is the right place to promote your games and build your community about games. Add one of our pre-build toork social buttons to let your visitors reach your channel. Share good stuff , make them follow you and grow your community. Have fun.</p>
+                            <h4>What is Clone.gs and why Clone.gs?</h4><p>
+Clone is a social network about games, gamers, game bloggers, game developers and game sites. Clone is the right place to promote your games and build your community about games. Add one of our pre-build clone social buttons to let your visitors reach your channel. Share good stuff , make them follow you and grow your community. Have fun.</p>
 
                             <h2>How To Start</h2>
                         <p class="well well-small bold">
@@ -22,9 +22,9 @@ Please choose the appropriate answer for yourself.
 
 <p class="alert alert-info"><span class="label label-info">Clever</span> if you are clever enough, you will not need our directions to tell you how to become a member. You probably a member right now and you are just reading this for fun.</p>
 
-<p class="alert alert-success"><span class="label label-success">Normal</span> Just click “Register” or "Create Channel" or "Create Account" button on the at the top right corner of landing page or right top corner of toork bar.</p>
+<p class="alert alert-success"><span class="label label-success">Normal</span> Just click “Register” or "Create Channel" or "Create Account" button on the at the top right corner of landing page or right top corner of clone bar.</p>
 
-<p class="alert alert-warning"><span class="label label-warning">Stupid</span> On the landing page of toork you will see a "+ Create Channel" button where will lead you to become a member after you click it. Click “Register” or "Create Channel" or "Create Account" button and fill in the form with your real informations. Because we will be sending you a confirmation email to verify you. Otherwise you will not be able to add games to your channel.</p>
+<p class="alert alert-warning"><span class="label label-warning">Stupid</span> On the landing page of clone.gs you will see a "+ Create Channel" button where will lead you to become a member after you click it. Click “Register” or "Create Channel" or "Create Account" button and fill in the form with your real informations. Because we will be sending you a confirmation email to verify you. Otherwise you will not be able to add games to your channel.</p>
 
 <p class="alert alert-danger"><span class="label label-important">Idiot</span> Get lost !!</p>
                       </small></p>
@@ -32,17 +32,17 @@ Please choose the appropriate answer for yourself.
                       <h4>Add to Favorites and Clone a game</h4>
                       <p><small>
 
-One of the first things you will notice about Toork is the rating bar at the bottom of each game you play. On this rating bar there are plenty of buttons you will notice about but there 2 buttons you should know what they are for? the red heart shaped one is the favorite button which helps you add the game to your favorites and the green one with 2 icons which shows that you can clone the game to your channel. Do not affraid, just click it.
+One of the first things you will notice about Clone is the rating bar at the bottom of each game you play. On this rating bar there are plenty of buttons you will notice about but there 2 buttons you should know what they are for? the red heart shaped one is the favorite button which helps you add the game to your favorites and the green one with 2 icons which shows that you can clone the game to your channel. Do not affraid, just click it.
 
                       </small></p>
                       
                       <h4>Adding A Game</h4>
                       <p><small>
 
-You can simply add games to your channels having regards of the terms and conditions. Do not forget that you have your own game channel on toork and you are responsible from your channel so be aware of the illegal actions and stay away from them. You will be able to add any game which is shared on the web but make sure that the game you are adding to your channel is legal and licenced to web site you are taking it from and that web site is letting you have it. So what else do we need to know to add a new game to our channel;
+You can simply add games to your channels having regards of the terms and conditions. Do not forget that you have your own game channel on clone.gs and you are responsible from your channel so be aware of the illegal actions and stay away from them. You will be able to add any game which is shared on the web but make sure that the game you are adding to your channel is legal and licenced to web site you are taking it from and that web site is letting you have it. So what else do we need to know to add a new game to our channel;
 
 if you are a developer or game publisher and have your own games, we are at beta right now so you will not be able to add your games right now so,
-contact us at hello@toork.com to be able to publish your own games and pages.
+contact us at hello@clone.gs to be able to publish your own games and pages.
 
 Please choose the appropriate answer for yourself.
 
@@ -59,10 +59,10 @@ Please choose the appropriate answer for yourself.
                       <h4>Earn Money</h4>
                       <p><small>
 
-You did create your game channel and added lots of games that you collected from all around the web. You have lots of visitors and subscribers each day. The only thing is left here is to make this a business and earn money but how? Here is the solution that Toork created for you to earn money.
+You did create your game channel and added lots of games that you collected from all around the web. You have lots of visitors and subscribers each day. The only thing is left here is to make this a business and earn money but how? Here is the solution that Clone created for you to earn money.
 
 we are at beta only selected people has this ability right now so you will not be able to add your ads code right now so,
-contact us at hello@toork.com to be able to publish your own games and pages first.
+contact us at hello@clone.gs to be able to publish your own games and pages first.
 
 Please choose the appropriate answer for yourself.
 
@@ -79,7 +79,7 @@ Please choose the appropriate answer for yourself.
 
                       <h4>Tips and Tricks</h4>
                       <p><small><ul>
-<li> Add a game that you can’t find by searching in Toork.</li>
+<li> Add a game that you can’t find by searching in Clone.gs</li>
 <li> Make a shiny great icon for each game you add.</li>
 <li> Do your best to make a great slider picture.</li>
 <li> Choose your best games to promote in the Slider</li>

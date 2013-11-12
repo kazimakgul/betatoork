@@ -12,7 +12,7 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
     <div class='container'>
       <div class='row'>
         <div class='span6'>
-          <div class='copyright'>Copyright &copy; 2013 Toork. All rights reserved.</div>
+          <div class='copyright'>Copyright &copy; 2013 Clone. All rights reserved.</div>
         </div>
         <div class='span6'>
           

@@ -12,7 +12,7 @@ $username = $user['User']['seo_username'];
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
 
-    <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your<a rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$username;?>" class="btn btn-small btn-link" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</a></p>
+    <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your<a rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://clone.gs/'.$username;?>" class="btn btn-small btn-link" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</a></p>
 
 <div class="well shadow-black" style="background-color:white;">
     <ul class="nav nav-tabs">
@@ -87,7 +87,7 @@ $username = $user['User']['seo_username'];
                                                             <div class="control-group  input-prepend">
                                                                 <label class="control-label" for="required">Channel Name</label>
                                                                 <div class="controls">
-                                                                    <span class="add-on">toork.com/</span>
+                                                                    <span class="add-on">clone.gs/</span>
 <?php echo $this->Form->input('username',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'grd-white','data-validate'=>'{required: true, messages:{required:"Please enter field required"}}','id'=>'required')); ?>
                                                                 </div>
                                                             </div><div class="pull-right span5"> <p class="btn btn-link badge badge-important helper-font-16"><a href="<?php echo $profilepublic;?>">@<?php echo $username; ?></a></p></div>
@@ -122,7 +122,7 @@ $username = $user['User']['seo_username'];
                                                                 <label class="control-label" for="url">My Website</label>
                                                                 <div class="controls">
 <?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|).+' ,'placeholder' => 'http://www.mywebsite.com','type' => 'url', 'maxlength'=>100)); ?>
-                                                                </div><i class='elusive-globe color-red helper-font-32'></i> <p>Just add your website or any other link if you want to link back. You will let your users reach your web page through your toork channel.</p>
+                                                                </div><i class='elusive-globe color-red helper-font-32'></i> <p>Just add your website or any other link if you want to link back. You will let your users reach your web page through your Clone channel.</p>
                                                             </div>
 
                                      
@@ -135,7 +135,7 @@ $username = $user['User']['seo_username'];
       </div>
       <div class="tab-pane fade" id="profile">
 
-    <p class="alert-success alert">The social connections you add will be shown at your public channel. It is just a simple link to your other social networks. If you are curious about how it is going to look like, just preview your current <a rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$user['User']['seo_username'];?>" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</a> </p>
+    <p class="alert-success alert">The social connections you add will be shown at your public channel. It is just a simple link to your other social networks. If you are curious about how it is going to look like, just preview your current <a rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://clone.gs/'.$user['User']['seo_username'];?>" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</a> </p>
 
 <?php echo $this->Form->create('User', array('label'=>false ,'id'=>'tab2','class'=>'form-horizontal' ,'type' => 'file'));?>
                                                         <fieldset>
@@ -152,7 +152,7 @@ $username = $user['User']['seo_username'];
                                                                 <label class="control-label" for="url">Facebook</label>
                                                                 <div class="controls">
 <?php echo $this->Form->input('fb_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|)facebook.com/.+' ,'placeholder' => 'http://facebook.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
-                                                                </div><i class='elusive-facebook color-blue helper-font-32'></i> <p> Just add your Facebook page link if you have any. You will let your users reach your Facebook page using your toork channel.</p>
+                                                                </div><i class='elusive-facebook color-blue helper-font-32'></i> <p> Just add your Facebook page link if you have any. You will let your users reach your Facebook page using your Clone channel.</p>
                                                             </div>
 
 
@@ -160,7 +160,7 @@ $username = $user['User']['seo_username'];
                                                                 <label class="control-label" for="url">Twitter</label>
                                                                 <div class="controls">
 <?php echo $this->Form->input('twitter_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|)twitter.com/.+' ,'placeholder' => 'http://twitter.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
-                                                                </div> <i class='elusive-twitter color-blue helper-font-32'></i> <p> Just add your Twitter page link if you have any. You will let your users reach your Twitter page using your toork channel.</p>
+                                                                </div> <i class='elusive-twitter color-blue helper-font-32'></i> <p> Just add your Twitter page link if you have any. You will let your users reach your Twitter page using your Clone channel.</p>
                                                             </div>
 
 
@@ -168,7 +168,7 @@ $username = $user['User']['seo_username'];
                                                                 <label class="control-label" for="url">Google+</label>
                                                                 <div class="controls">
 <?php echo $this->Form->input('gplus_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|)plus.google.com/.+' ,'placeholder' => 'http://plus.google.com/117184471094869274585','type' => 'url', 'maxlength'=>100)); ?>
-                                                                </div> <i class='elusive-googleplus color-red helper-font-32'></i> <p>Just add your Google+ page link if you have any. You will let your users reach your Google+ page using your toork channel.</p>
+                                                                </div> <i class='elusive-googleplus color-red helper-font-32'></i> <p>Just add your Google+ page link if you have any. You will let your users reach your Google+ page using your Clone channel.</p>
                                                             </div>
 
 
@@ -176,7 +176,7 @@ $username = $user['User']['seo_username'];
                                                                 <label class="control-label" for="url">My Website</label>
                                                                 <div class="controls">
 <?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://(www.|).+' ,'placeholder' => 'http://www.mywebsite.com','type' => 'url', 'maxlength'=>100)); ?>
-                                                                </div><i class='elusive-globe color-red helper-font-32'></i> <p>Just add your website or any other link if you want to link back. You will let your users reach your web page through your toork channel.</p>
+                                                                </div><i class='elusive-globe color-red helper-font-32'></i> <p>Just add your website or any other link if you want to link back. You will let your users reach your web page through your Clone channel.</p>
                                                             </div>
 
                                                             <div class="form-actions">

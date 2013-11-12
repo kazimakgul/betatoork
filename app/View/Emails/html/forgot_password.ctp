@@ -6,7 +6,7 @@
  
  <tbody><tr>
  <td align="center" style="padding:20px 0 40px">
-	<a href="http://toork.com" style="color:#33cccc; font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:35px;line-height:15px; text-decoration:none">Toork Team</a> 
+	<a href="http://clone.gs" style="color:#33cccc; font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:35px;line-height:15px; text-decoration:none">Clone Team</a> 
  </td>
  </tr>
  
@@ -139,7 +139,7 @@
  
  <tr>
  <td align="center">
- <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:10px;color:#999999;line-height:1.35em;margin:0;padding:0">2013 Toork, Inc. <font style="color:#aaa;padding:0 2px">|</font> All Rights Reserved<br><a href="http://toork.com/pages/privacy" target="_blank" style="color:#999;text-decoration:underline">Privacy Policy</a> <font style="color:#aaa;padding:0 2px"> |</font> <a href="http://toork.com/pages/terms" style="color:#999;text-decoration:underline" target="_blank">Terms and Conditions</a></p>
+ <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:10px;color:#999999;line-height:1.35em;margin:0;padding:0">2013 Clone, Inc. <font style="color:#aaa;padding:0 2px">|</font> All Rights Reserved<br><a href="http://clone.gs/pages/privacy" target="_blank" style="color:#999;text-decoration:underline">Privacy Policy</a> <font style="color:#aaa;padding:0 2px"> |</font> <a href="http://clone.gs/pages/terms" style="color:#999;text-decoration:underline" target="_blank">Terms and Conditions</a></p>
  </td>
  </tr>
  

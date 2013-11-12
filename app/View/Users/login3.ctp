@@ -6,7 +6,7 @@
 <form id="toorkLogin">
 <fieldset>
 
-                <h5 class="text-center">Log in to your Toork account</h5>
+                <h5 class="text-center">Log in to your Clone account</h5>
 
 <!--
                 <h5 class="text-center">Simply connect with your social account</h5>

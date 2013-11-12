@@ -31,7 +31,7 @@ else{
   <div style="max-width:520px">
   <div style="background-color:white;border:1px solid #dadada;border-bottom-width:2px;border-top:none">
   <div style="padding:0px 12px;border-bottom:1px solid #f1f1f1">
-    <table style="width:100%;min-height:50px" cellpadding="0" cellspacing="0"><tbody><tr><td><p><a href="http://toork.com" style="color:#2f96b4; font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:18px;line-height:18px; text-decoration:none">toork.com</a> - create your own game channel</p></td></tr></tbody>
+    <table style="width:100%;min-height:50px" cellpadding="0" cellspacing="0"><tbody><tr><td><p><a href="http://clone.gs" style="color:#2f96b4; font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:18px;line-height:18px; text-decoration:none">clone.gs</a> - create your own game channel</p></td></tr></tbody>
     </table>
   </div>
   </div>
@@ -44,7 +44,7 @@ else{
  
  
 
- <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:10px;color:#999999;line-height:1.35em;margin:0;padding:0">This email was sent to <?php echo $perMail; ?>.<br><a href="http://toork.com" style="color:#999;text-decoration:underline" target="_blank">Change your email preferences.</a></p>
+ <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:10px;color:#999999;line-height:1.35em;margin:0;padding:0">This email was sent to <?php echo $perMail; ?>.<br><a href="http://clone.gs" style="color:#999;text-decoration:underline" target="_blank">Change your email preferences.</a></p>
 
  
  
@@ -54,7 +54,7 @@ else{
  
  <tr>
  <td align="center">
- <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:10px;color:#999999;line-height:1.35em;margin:0;padding:0">2013 Toork, Inc. <font style="color:#aaa;padding:0 2px">|</font> All Rights Reserved<br><a href="http://toork.com/pages/privacy" target="_blank" style="color:#999;text-decoration:underline">Privacy Policy</a> <font style="color:#aaa;padding:0 2px"> |</font> <a href="http://toork.com/pages/terms" style="color:#999;text-decoration:underline" target="_blank">Terms and Conditions</a></p><img src="#" width="0" height="0">
+ <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:10px;color:#999999;line-height:1.35em;margin:0;padding:0">2013 Clone, Inc. <font style="color:#aaa;padding:0 2px">|</font> All Rights Reserved<br><a href="http://clone.gs/pages/privacy" target="_blank" style="color:#999;text-decoration:underline">Privacy Policy</a> <font style="color:#aaa;padding:0 2px"> |</font> <a href="http://clone.gs/pages/terms" style="color:#999;text-decoration:underline" target="_blank">Terms and Conditions</a></p><img src="#" width="0" height="0">
  </td>
  </tr>
 

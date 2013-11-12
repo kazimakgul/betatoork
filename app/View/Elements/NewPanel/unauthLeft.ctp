@@ -3,15 +3,15 @@
                     <aside class="side-left" >
                         <ul class="sidebar">
                             <li> <!--always define class .first for first-child of li element sidebar left-->
-                                <a href="<?php echo $index; ?>" title="what is toork">
+                                <a href="<?php echo $index; ?>" title="Join Clone">
                                     <div class="helper-font-24">
                                         <i class="elusive-user"></i>
                                     </div>
-                                    <span class="sidebar-text">Join Toork</span>
+                                    <span class="sidebar-text">Join Clone</span>
                                 </a>
                             </li>
                             <li> <!--always define class .first for first-child of li element sidebar left-->
-                                <a href="<?php echo $explore; ?>" title="what is toork">
+                                <a href="<?php echo $explore; ?>" title="Explore">
                                     <div class="helper-font-24">
                                         <i class="elusive-compass"></i>
                                     </div>
@@ -19,7 +19,7 @@
                                 </a>
                             </li>
                             <li> <!--always define class .first for first-child of li element sidebar left-->
-                                <a href="<?php echo $featuredchannels; ?>" title="what is toork">
+                                <a href="<?php echo $featuredchannels; ?>" title="Featured Channels">
                                     <div class="helper-font-24">
                                         <i class="elusive-star-alt"></i>
                                     </div>
@@ -27,7 +27,7 @@
                                 </a>
                             </li>
                             <li> <!--always define class .first for first-child of li element sidebar left-->
-                                <a href="<?php echo $toprated; ?>" title="what is toork">
+                                <a href="<?php echo $toprated; ?>" title="Hot Games">
                                     <div class="helper-font-24">
                                         <i class="elusive-fire"></i>
                                     </div>

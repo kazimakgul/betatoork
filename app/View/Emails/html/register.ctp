@@ -6,7 +6,7 @@
  
  <tbody><tr>
  <td align="center" style="padding:20px 0 40px">
-	<a href="http://toork.com" style="color:#33cccc; font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:35px;line-height:15px; text-decoration:none">Toork Team</a> 
+	<a href="http://clone.gs" style="color:#33cccc; font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:35px;line-height:15px; text-decoration:none">Clone Team</a> 
  </td>
  </tr>
  
@@ -49,7 +49,7 @@
  <td width="358">
  <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:14px;color:#211922;line-height:20px;margin:0;padding:0 0 0 20px">
 
- Welcome to Toork, Enjoy sharing games and make friends.
+ Welcome to Clone, Enjoy sharing games and make friends.
  <a href="<?php echo $activate_url; ?>" style="color:#211922;font-weight:bold;text-decoration:none" title="Verify email" target="_blank">Click here</a>
  to confirm your email address.<br>
  </p>
@@ -105,16 +105,16 @@
  <table cellspacing="0" cellpadding="0" border="0" align="center">
  <tbody><tr>
  <td align="center" style="padding:20px 0 15px">
- <h4 style="font-family:georgia,serif;font-weight:normal;font-size:21px;color:#211922!important;margin:0;padding:0">A few tips to get the most out of Toork:</h4>
+ <h4 style="font-family:georgia,serif;font-weight:normal;font-size:21px;color:#211922!important;margin:0;padding:0">A few tips to get the most out of Clone:</h4>
  </td>
  </tr>
  </tbody></table>
- <p>Follow a few more channels. Toork is as much about discovering new games as it is about sharing!</p>
- <p>You are now part of the Toork community! Use big images, write thoughtful descriptions, and share games you really love. Also, Do not forget, kids are around so no nudity and violence please!</p>
+ <p>Follow a few more channels. Clone is as much about discovering new games as it is about sharing!</p>
+ <p>You are now part of the Clone community! Use big images, write thoughtful descriptions, and share games you really love. Also, Do not forget, kids are around so no nudity and violence please!</p>
 <p>Create your own game channel and community by customizing your channel avatar,banner, description etc.</p>
 <p>Let your dashboard help you because he knows what you want!</p>
 <p>Collect the games you love from all around the web, by adding them to your favorites list.</p>
-<p>Adding a game is so easy. Clone any game in toork or just add your own game to your channel and share with others.</p>
+<p>Adding a game is so easy. Clone any game in Clone or just add your own game to your channel and share with others.</p>
  </td>
  </tr>
  
@@ -146,7 +146,7 @@
  
  <tr>
  <td align="center">
- <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:10px;color:#999999;line-height:1.35em;margin:0;padding:0">2013 Toork, Inc. <font style="color:#aaa;padding:0 2px">|</font> All Rights Reserved<br><a href="http://toork.com/pages/privacy" target="_blank" style="color:#999;text-decoration:underline">Privacy Policy</a> <font style="color:#aaa;padding:0 2px"> |</font> <a href="http://toork.com/pages/terms" style="color:#999;text-decoration:underline" target="_blank">Terms and Conditions</a></p>
+ <p style="font-family:'helvetica neue',helvetica,arial,sans-serif;font-size:10px;color:#999999;line-height:1.35em;margin:0;padding:0">2013 Clone, Inc. <font style="color:#aaa;padding:0 2px">|</font> All Rights Reserved<br><a href="http://clone.gs/pages/privacy" target="_blank" style="color:#999;text-decoration:underline">Privacy Policy</a> <font style="color:#aaa;padding:0 2px"> |</font> <a href="http://clone.gs/pages/terms" style="color:#999;text-decoration:underline" target="_blank">Terms and Conditions</a></p>
  </td>
  </tr>
  

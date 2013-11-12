@@ -33,7 +33,7 @@ class ApisController extends AppController {
 
 	public function index() {
 	$this->layout='ajax';
-		echo 'this is toork api V 1.0';
+		echo 'this is Clone api V 1.0';
 	}
 	
 	public function add_virtual_game()

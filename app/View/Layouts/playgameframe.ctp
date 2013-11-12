@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title><?php echo $title_for_layout?></title>
-        <link rel="shortcut icon" href="http://toork.com/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="http://clone.gs/favicon.ico" type="image/x-icon" />
         <meta name="description" content= "<?php echo $description_for_layout?>" />
 
 
@@ -13,7 +13,7 @@
         <meta property="og:type" content="Game"/>
         <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
         <meta property="og:image" content="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash4/428808_254949491292199_1660409950_n.jpg"/>
-        <meta property="og:site_name" content="Toork"/>
+        <meta property="og:site_name" content="Clone"/>
         <meta property="fb:admins" content="711440119"/>
         <meta property="og:description" content= "<?php echo $description_for_layout?>" />
 

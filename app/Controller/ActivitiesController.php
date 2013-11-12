@@ -33,7 +33,7 @@ class ActivitiesController extends AppController {
 
 	public function index() {
 	$this->layout='ajax';
-		echo 'this is toork activities screen V 1.0';
+		echo 'this is Clone activities screen V 1.0';
 		echo 'auth id'.$this->Session->read('Auth.User.id');
 		$data=$this->Activity->find('all');
 		//print_r($data);
@@ -209,7 +209,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('comment')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' commented on your game.')
 			    ->send();
 	  	}elseif($type_id==2){
@@ -218,8 +218,8 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('follow') 
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
-			    ->subject($performer["User"]["username"].' is following you on Toork.')
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
+			    ->subject($performer["User"]["username"].' is following you on Clone.')
 			    ->send();
 	  	}elseif($type_id==3){
 			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
@@ -227,7 +227,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('clone')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' made a clone of your game.')
 			    ->send();
 	  	}elseif($type_id==4){
@@ -236,7 +236,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('rate')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' rated your game.')
 			    ->send();
 	  	}elseif($type_id==5){
@@ -245,7 +245,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('mention')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' is talking about you.')
 			    ->send();
 	  	}elseif($type_id==6){
@@ -254,7 +254,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('postComment')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' commneted on your post.')
 			    ->send();
 	  	}elseif($type_id==7){
@@ -263,7 +263,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('favorite')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' added your game to its Favorite list.')
 			    ->send();
 	  	}elseif($type_id==8){
@@ -272,7 +272,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 				->template('hashtag')
 			    ->emailFormat('html')
 			    ->to($user["User"]["email"])
-			    ->from(array('no-reply@toork.com' => $performer["User"]["username"].' - Toork'))
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' is talking about your game.')
 			    ->send();
 	  	}else{}

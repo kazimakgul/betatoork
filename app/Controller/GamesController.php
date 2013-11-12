@@ -72,9 +72,9 @@ class GamesController extends AppController {
                 'Userstat.potential' => 'desc')));
 		$this->set('users', $users);
 
-		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel');
-		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
-		$this->set('author_for_layout', 'Toork');
+		$this->set('title_for_layout', 'Clone - Create Your Own Game Channel');
+		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
+		$this->set('author_for_layout', 'Clone');
 	}
 	
 	public function index2() {
@@ -97,8 +97,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('featured', $cond2);
 		$this->set('newgames', $cond3);
 
-		$this->set('title_for_layout', 'Toork - Create Your Own Game Channel');
-		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+		$this->set('title_for_layout', 'Clone - Create Your Own Game Channel');
+		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	}
 
 	
@@ -115,8 +115,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		
 		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
 
-		$this->set('title_for_layout', 'Toork - Most Played Games');
-		$this->set('description_for_layout', 'Toork - find the most played online games and channels and play trend topic games');
+		$this->set('title_for_layout', 'Clone - Most Played Games');
+		$this->set('description_for_layout', 'Clone - find the most played online games and channels and play trend topic games');
 	}
 	
 	
@@ -130,8 +130,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		
 		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
 
-		$this->set('title_for_layout', 'Toork - New Games');
-		$this->set('description_for_layout', 'Toork - Find the latest and popular online games so fresh and new games. Enjoy');
+		$this->set('title_for_layout', 'Clone - New Games');
+		$this->set('description_for_layout', 'Clone - Find the latest and popular online games so fresh and new games. Enjoy');
 	}
 
 
@@ -195,8 +195,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
     	$this->set('favorites', $cond2);
     	$this->set('limit', $limit);
     	$this->set('limit2', $limit2);
-		$this->set('title_for_layout', 'Toork - Create your own game channel');
-		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+		$this->set('title_for_layout', 'Clone - Create your own game channel');
+		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	
 	}
 
@@ -363,7 +363,7 @@ public function set_suggested_channels()
 	    $this->set('user',$user);
 	    $this->set('username',$userName);
 	    $this->set('isActive',$isActive);
-		$this->set('title_for_layout', 'Dashboard - Toork Channel Manager');
+		$this->set('title_for_layout', 'Dashboard - Clone Channel Manager');
 		$this->set('description_for_layout', 'Your Dashboard knows what you want and helps you do everything easier.');
 	    
 	}
@@ -432,7 +432,7 @@ public function set_suggested_channels()
 	    $this->set('user',$user);
 	    $this->set('username',$userName);
 	    $this->set('isActive',$isActive);
-		$this->set('title_for_layout', 'Dashboard - Toork Channel Manager');
+		$this->set('title_for_layout', 'Dashboard - Clone Channel Manager');
 		$this->set('description_for_layout', 'Your Dashboard knows what you want and helps you do everything easier.');
 	    
 	}
@@ -491,8 +491,8 @@ public function set_suggested_channels()
 	    $this->set('user',$user);
     	$this->set('userid', $userid);
     	$this->set('mygames', $this->paginate('Game',array('Game.active'=>'1', 'Game.user_id'=>$userid)));
-		$this->set('title_for_layout', 'Toork - Create your own game channel');
-		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+		$this->set('title_for_layout', 'Clone - Create your own game channel');
+		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	}
 
 		public function allchannelfavorites() {
@@ -505,8 +505,8 @@ public function set_suggested_channels()
 	    $this->set('user',$user);
     	$this->set('userid', $userid);
     	$this->set('favorites',$this->paginate('Favorite',array('Game.active'=>'1','Favorite.user_id'=>$userid)));
-		$this->set('title_for_layout', 'Toork - Create your own game channel');
-		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+		$this->set('title_for_layout', 'Clone - Create your own game channel');
+		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	}
 	
 	
@@ -517,7 +517,7 @@ public function set_suggested_channels()
 
 		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1')));
 
-		$this->set('title_for_layout', 'Toork - Top Rated Games');
+		$this->set('title_for_layout', 'Clone - Top Rated Games');
 		$this->set('description_for_layout', 'Find the best and toprated online games and play and rate popular games online');	
 	}
 
@@ -538,7 +538,7 @@ public function set_suggested_channels()
 		
 		
 		
-		$this->set('title_for_layout', 'Toork - Top Rated Games');
+		$this->set('title_for_layout', 'Clone - Top Rated Games');
 		$this->set('description_for_layout', 'Find the best and toprated online games and play and rate popular games online');	
 
 
@@ -557,7 +557,7 @@ public function set_suggested_channels()
 
     $this->set('username', $userName);
 	$this->set('userid', $userid);
-	$this->set('title_for_layout',  $userName.' - Played Games - Toork');
+	$this->set('title_for_layout',  $userName.' - Played Games - Clone');
 	$this->set('description_for_layout', 'Find all the games that'.$userName.' played recently');
 
 	}
@@ -571,7 +571,7 @@ public function set_suggested_channels()
 		$catName = $category['Category']['name'];
 		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1','Game.category_id'=>$catid)));
 
-		$this->set('title_for_layout',  $catName.' - Top Rated '.$catName.' Games - Toork');
+		$this->set('title_for_layout',  $catName.' - Top Rated '.$catName.' Games - Clone');
 		if($catName == 'Action'){
 			$this->set('description_for_layout', 'An action game requires players to use quick reflexes, accuracy, and timing to overcome obstacles.');
 		}elseif($catName == 'Adventure'){
@@ -634,7 +634,7 @@ public function categorygames2() {
 		
 		$this->set('catName', $catName);
 
-		$this->set('title_for_layout',  $catName.' - Top Rated '.$catName.' Games - Toork');
+		$this->set('title_for_layout',  $catName.' - Top Rated '.$catName.' Games - Clone');
 		if($catName == 'Action'){
 			$this->set('description_for_layout', 'An action game requires players to use quick reflexes, accuracy, and timing to overcome obstacles.');
 		}elseif($catName == 'Adventure'){
@@ -746,8 +746,8 @@ public function mygames() {
 		$cond=$this->paginate('Game');
         $this->set('mygames', $cond);
 
-		$this->set('title_for_layout', 'Toork - Create your own game channel');
-		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+		$this->set('title_for_layout', 'Clone - Create your own game channel');
+		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	    $this->set_suggested_channels();
    
 }
@@ -847,8 +847,8 @@ public function channelgames() {
 	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 	
-	$this->set('title_for_layout', $userName.' - Welcome to '.$userName."'s game channel published by Toork");
-	$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+	$this->set('title_for_layout', $userName.' - Welcome to '.$userName."'s game channel published by Clone");
+	$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	//$cond2= $this->Favorite->find('all',array('conditions' => array('Favorite.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     //)));
 	
@@ -1096,7 +1096,7 @@ public function profile() {
 	$this->set('publicuser', $publicUser);
 
 	$this->set_suggested_channels();	
-	$this->set('title_for_layout', $publicName.' Game Channel - Toork');
+	$this->set('title_for_layout', $publicName.' Game Channel - Clone');
 	$this->set('description_for_layout', 'Play games on '.$publicName.' : '.$publicDesc);
 
 }
@@ -1197,7 +1197,7 @@ public function hashtag() {
 	$this->set('hashtag', $hashtag);
 
 	$this->set_suggested_channels();	
-	$this->set('title_for_layout', $hashtag.' Game Channel - Toork');
+	$this->set('title_for_layout', $hashtag.' Game Channel - Clone');
 	$this->set('description_for_layout', 'All information about '.$hashtag);
 
 }
@@ -1327,8 +1327,8 @@ public function hashtag() {
 		   $this->set('mutuals',NULL);
 		   }
 	  
-		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
-		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
+		$this->set('title_for_layout', 'Clone - Best Online Game Channels ');
+		$this->set('description_for_layout', 'Clone has all the best channels for games and gamers');
 		$this->set('user_id', $userid);
 		$this->set('users', $this->paginate('User',array('User.active' => '1')));
 
@@ -1352,8 +1352,8 @@ public function hashtag() {
 		   $this->set('mutuals',NULL);
 		   }
 
-		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
-		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
+		$this->set('title_for_layout', 'Clone - Best Online Game Channels ');
+		$this->set('description_for_layout', 'Clone has all the best channels for games and gamers');
 		$this->set('user_id', $authid);
 		
 		$limit=15;
@@ -1392,8 +1392,8 @@ public function hashtag() {
 		   $this->set('mutuals',NULL);
 		   }
 
-		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
-		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
+		$this->set('title_for_layout', 'Clone - Best Online Game Channels ');
+		$this->set('description_for_layout', 'Clone has all the best channels for games and gamers');
 		$this->set('user_id', $authid);
 		
 		$limit=15;
@@ -1431,8 +1431,8 @@ public function hashtag() {
 		   $this->set('mutuals',NULL);
 		   }
 
-		$this->set('title_for_layout', 'Toork - Best Online Game Channels ');
-		$this->set('description_for_layout', 'Toork has all the best channels for games and gamers');
+		$this->set('title_for_layout', 'Clone - Best Online Game Channels ');
+		$this->set('description_for_layout', 'Clone has all the best channels for games and gamers');
 		$this->set('user_id', $userid);
 		$users=$this->User->find('all',array('conditions'=>array('NOT' => array('User.id' => $listofmine)),'contain' =>array('Userstat'),'limit'=>10,'order'=> array(
                 'Userstat.potential' => 'desc')));
@@ -1489,8 +1489,8 @@ $cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.des
 $this->set('search', $this->paginate('Game',$cond));
 $this->set('mygames', $cond);
 
-$this->set('title_for_layout', 'Toork - Game Search Engine');
-$this->set('description_for_layout', 'Toork - Game Search Engine powered by Google. Toork Search is specially designed for searching games');
+$this->set('title_for_layout', 'Clone - Game Search Engine');
+$this->set('description_for_layout', 'Clone - Game Search Engine powered by Google. Clone Search is specially designed for searching games');
 }
 
 
@@ -1550,8 +1550,8 @@ else
 
 $this->set('mygames', $cond);
 
-$this->set('title_for_layout', 'Toork - Game Search Engine');
-$this->set('description_for_layout', 'Toork - Game Search Engine powered by Google. Toork Search is specially designed for searching games');
+$this->set('title_for_layout', 'Clone - Game Search Engine');
+$this->set('description_for_layout', 'Clone - Game Search Engine powered by Google. Clone Search is specially designed for searching games');
 }
 
 
@@ -1669,7 +1669,7 @@ if(empty($favbefore))
 		}
 		$this->set('sharedby',$game['User']['username']);//Recoded
 		$this->set('game',$game);
-		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
+		$this->set('title_for_layout', 'Clone - '.$game['Game']['name'].' - '.$game['Game']['description']);
 
 		//start size calculation for play page
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$user_id,"Rate.game_id"=>$id)));
@@ -1730,7 +1730,7 @@ if(empty($favbefore))
 		}
 		$this->set('sharedby',$game['User']['username']);//Recoded
 		$this->set('game', $game);
-		$this->set('title_for_layout', 'Toork - '.$game['Game']['name'].' - '.$game['Game']['description']);
+		$this->set('title_for_layout', 'Clone - '.$game['Game']['name'].' - '.$game['Game']['description']);
 
 		//start size calculation for play page
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$auth_id,"Rate.game_id"=>$id)));
@@ -1783,7 +1783,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 		$this->set('sharedby',$game['User']['username']);//Recoded
 		$this->set('game',$game);
-		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
+		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Clone');
 
 		//start size calculation for play page
 		//ReCoded
@@ -1852,7 +1852,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('mygames', $cond);
 		$this->set('game', $game);
 		$this->set('user', $game);
-		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
+		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Clone');
         
 		//start size calculation for play page-Recoded
 		$current=$this->Game->Rate->find("first",array("conditions"=>array("Rate.user_id"=>$auth_id,"Rate.game_id"=>$id),'contain'=>false,'fields'=>'Rate.current'));
@@ -1921,7 +1921,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		}
 
 		$this->set('game', $game);
-		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
+		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Clone');
 		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
 	    $this->set_suggested_channels();
 
@@ -2025,7 +2025,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 
 		$this->set('game', $game);
-		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Toork');
+		$this->set('title_for_layout', $game['Game']['name'].' - '.$game['User']['seo_username'].' - Clone');
 		$this->set('description_for_layout', 'Play '.$game['Game']['name'].' for free: '.$game['Game']['description']);
 	    $this->set_suggested_channels();
 		
