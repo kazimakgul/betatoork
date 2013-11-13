@@ -435,7 +435,7 @@
                           <a style="color:silver; font-size:14px;" href="mailto:hello@clone.gs">hello [at] clone.gs</a>
                         </li>
                       </ul>
-                      <a href="http://toork.com"><img alt="Toork Social Network Engine" width="170" src="img/toorklogo.png" />
+                      <a target="_blank" href="http://toork.com"><img alt="Toork Social Network Engine" width="170" src="img/toorklogo.png" />
                         <h4>a social network engine</h4>
                     </div>
                     <div class='span4'>
