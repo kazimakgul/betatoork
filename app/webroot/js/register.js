@@ -1196,7 +1196,7 @@ function gamedelete(game_name,user_auth,game_id)
 $('.loadertrig').live('click',function(){
 						var objid=this.id;
 						$( ".loadertrig" ).data( "oldhtml",document.getElementById(objid).innerHTML);
-						document.getElementById(objid).innerHTML='<img src="../img/wall/icons/ajaxloader.gif"  />';
+						document.getElementById(objid).innerHTML='<img src="https://s3.amazonaws.com/betatoorkpics/socials/ajaxloader.gif"  />';
 						
 						var moretimer=setInterval(function(){document.getElementById(objid).innerHTML=$( ".loadertrig" ).data( "oldhtml");clearInterval(moretimer);},1200);
 						
