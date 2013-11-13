@@ -223,7 +223,7 @@ if($twitter==NULL){
 <?php  //New Ajax Loaded Data Will come here. ?>
 </ul>
 <div>
-<a id="loadmorechannelgames" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Game</a>
+<a id="loadmorechannelgames" class="offset3 span6 btn btn-block loadertrig" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Game</a>
 </div>
 
 </div>
@@ -241,7 +241,7 @@ if($twitter==NULL){
 <?php  //New Ajax Loaded Data Will come here. ?>
 </ul>
 <div>
-<a id="loadmorefavorite" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Favorite</a>
+<a id="loadmorefavorite" class="offset3 span6 btn btn-block loadertrig" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Favorite</a>
 </div>
 
 </div>
@@ -303,7 +303,7 @@ if($twitter==NULL){
 <?php  //echo 'Ajax Loaded Followers will come here'; ?>
 </ul>
 <div>
-<a id="loadmorefollowers" class="offset3 span6 btn btn-block" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Followers</a>
+<a id="loadmorefollowers" class="offset3 span6 btn btn-block loadertrig" style="border-radius:0px; opacity:0.7;"><i class="elusive-refresh"></i> Load More Followers</a>
 </div>
                                                 </div>
                                             </div><!--/widgets-tab-body-->

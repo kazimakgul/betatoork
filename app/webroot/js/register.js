@@ -1194,10 +1194,11 @@ function gamedelete(game_name,user_auth,game_id)
 	
 //==========================================================	
 $('.loadertrig').live('click',function(){
-						$( ".loadertrig" ).data( "oldhtml",$(this).html());
-						$(this).html('<img src="http://127.0.0.1/betatoorkson/img/wall/icons/ajaxloader.gif"  />');	
+						var objid=this.id;
+						$( ".loadertrig" ).data( "oldhtml",document.getElementById(objid).innerHTML);
+						document.getElementById(objid).innerHTML='<img src="../img/wall/icons/ajaxloader.gif"  />';
 						
-						var moretimer=setInterval(function(){$(".loadertrig").html($( ".loadertrig" ).data( "oldhtml"));clearInterval(moretimer);},1500);
+						var moretimer=setInterval(function(){document.getElementById(objid).innerHTML=$( ".loadertrig" ).data( "oldhtml");clearInterval(moretimer);},1200);
 						
 										 });
    
