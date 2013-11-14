@@ -19,8 +19,7 @@ class GamesController extends AppController {
 	        return true;
 	    }
 
-	    if (($this->action === 'add') || ($this->action === 'add2') || ($this->action === 'dashboard') ||
-	    	($this->action === 'explore') || ($this->action === 'mygames') || ($this->action === 'favorites') || 
+	    if (($this->action === 'add') || ($this->action === 'add2') || ($this->action === 'dashboard') || ($this->action === 'mygames') || ($this->action === 'favorites') || 
 	    	($this->action === 'start') || ($this->action === 'settings') || ($this->action === 'chains') || 
 	    	($this->action === 'channel')) {
 	       // All registered users can add posts
@@ -383,10 +382,15 @@ public function set_suggested_channels()
 		$this->Session->delete('FirstLogin');
 		}
 		
+		if($this->Auth->user('id')) 
+		{
 		$userid = $this->Session->read('Auth.User.id');$this->requestAction( array('controller'=>'userstats', 'action'=>'new_user',$userid));
 	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	   	$userName = $user['User']['username'];
 	   	$isActive = $user['User']['active'];
+		}else{
+		$isActive=1;
+		}
 
 		$limit=16;
 		$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username,User.id')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit));
