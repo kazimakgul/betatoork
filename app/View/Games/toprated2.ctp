@@ -3,6 +3,7 @@ $addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
 $index=$this->Html->url(array("controller" => "games","action" =>"index"));
 $explore=$this->Html->url(array("controller" => "games","action" =>"explore"));
 $currentlink=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
+$register=$this->Html->url(array("controller" => "users","action" =>"register2"));
 ?>
                 <!-- span content -->
                 <div class="span9">
@@ -88,8 +89,8 @@ if($this->Session->check('Auth.User')){
                 </div>
                 
             </div>
-              <h4>Join Toork For Free</h4>
-              <p>If you join Toork, you will be able to create your own game channel and let people play games you share on your channel. See the benefits below.</p>
+              <h4>Join Clone For Free</h4>
+              <p>If you join Clone, you will be able to create your own game channel and let people play games you share on your channel. See the benefits below.</p>
                 <ul>
                     <li>Create your own game channel</li>
                     <li>Your special dashboard that knows what you want</li>
@@ -99,8 +100,8 @@ if($this->Session->check('Auth.User')){
                     <li>All you need for online games</li>
                 </ul>
               <p>
-                <a href="<?php echo $index ?>" class="btn btn-danger">
-                  <i class="elusive-user"></i> Join Toork
+                <a href="<?php echo $register ?>" class="btn btn-danger">
+                  <i class="elusive-user"></i> Join Clone
                 </a>
               </p>
             </div>
