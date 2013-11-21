@@ -1690,7 +1690,46 @@ public function password2($id = null) {
 		 
 		 $this->set('_serialize', array('rtdata'));
 		 
-	}	
+	}
+	
+	public function FaceUser(){
+		 $this->loadModel('Userstat');
+		 Configure::write ( 'debug', 0 );
+		 
+		 $accesstoken=$this->request->data['at'];
+		 
+		 //Accesstoken sistemde kayitlimi degilmi kayitli degilse yeni register paneline yönlendir.Kayitliysa sisteme login olmasini sagla.
+		 
+		
+		
+		 $user_exists=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.access_token'=>$accesstoken)));
+		 if($user_exists!=NULL)
+		 {
+		 $msg = array("status" => 'user exists',"msgid" => '2', "msg" => 'Naptin nettin'.$accesstoken);
+		 }else{
+		 $msg = array("status" => 'user no exists',"msgid" => '2', "msg" => 'Naptin nettin'.$accesstoken);
+		 }
+		 
+		 
+		 
+		 
+		        $this->User->create();
+				$this->request->data['User']['username'] = 'zangiefgodd';
+				$this->request->data['User']['email'] = 'zangiefgodd@gmail.com';
+				$this->request->data['User']['password'] = 'zangiefgodd';
+				$this->request->data['User']['seo_username'] = 't3ommybooy2222';
+				$this->request->data['User']['confirm_password'] = $this->request->data['User']['password'];
+				$this->request->data['User']['active'] = 1;
+		        $this->request->data['User']['access_token'] = $accesstoken;
+				$this->User->save($this->request->data);
+		 
+		 
+		       //$msg = array("status" => '2',"msgid" => '2', "msg" => 'Naptin nettin'.$accesstoken.$message);
+				$this->set('rtdata', $msg);
+		 
+		 $this->set('_serialize', array('rtdata'));
+		 
+		 }	
 	
 	
 	public function gatekeeper(){

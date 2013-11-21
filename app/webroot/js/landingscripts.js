@@ -278,4 +278,13 @@ $('#forget_pass').click(function () {
  
 //*********/Forget Password Function********
 
+//*********Social Function********
+$('#facebookreg').click(function () {
+		
+		alert('Login With Facebook(landingscripts)');
+		facebooklogin();
+	});
+//*********//Social Function********
+
+
 });
