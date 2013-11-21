@@ -63,7 +63,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         <p><i class="elusive-ok-sign"></i> Don't have to go to any other website to play games anymore.</p>
                         <p><i class="elusive-ok-sign"></i> Invite your friends to play the game at your channel.</p> 
                         <p><i class="elusive-ok-sign"></i> Collect the games you love form all around the web.</p>
-                        <p><i class="elusive-ok-sign"></i> Your game will be available via Toork or any other search engines.</p>
+                        <p><i class="elusive-ok-sign"></i> Your game will be available via Clone or any other search engines.</p>
                         <p><i class="elusive-ok-sign"></i> One Source for your online game activity.</p>
                         <p><i class="elusive-ok-sign"></i> It is totally yours!</p>
                         

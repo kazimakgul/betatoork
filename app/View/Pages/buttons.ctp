@@ -61,7 +61,7 @@ $image3= $this->Html->image('socials/clonelogo.png', array('alt' => 'country fla
         <div class="accordion-inner">
           <h5>Copy this button code into the HTML of your site.</h5>
           <p class="well color-red">&lt;a href="<?php echo $buttonlink;?>"&gt; <br>
-            &lt;img width="130" src="http://clone.gs/img/socials/clonelogo.png"/&gt;<br>
+            &lt;img width="24" src="http://clone.gs/img/socials/clonelogo.png"/&gt;<br>
             &lt;/a&gt;</p>
         </div>
       </div>
