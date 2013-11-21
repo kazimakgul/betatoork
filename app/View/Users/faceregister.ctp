@@ -22,7 +22,21 @@
 
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span7">
+
+    <div class="span5 well">
+                <h5 class="text-center">Your Channel Picture</h5>
+
+                <div class="row-fluid"><div style="text-align: center ;" >
+                  <img width="150px" src="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon.jpg" class="img-polaroid">
+                  <br>
+                  <a style="margin-top:10px;" class="btn"> Change Picture</a></div>
+                </div>
+
+
+    </div>
+
+
+    <div class="span7 well">
 
                           	<div class="row-fluid">
 	                            <div class="span11">
@@ -63,18 +77,6 @@
                             </div>                                         
 
     </div>
-
-    <div class="span5 white-card">
-                <h5 class="text-center">Your Channel Picture</h5>
-
-                <div class="row-fluid">
-                  <img width="190px" src="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon.jpg" class="offset2 img-polaroid">
-                  <a style="margin-top:10px;" class="btn offset3"> Change Picture</a>
-                </div>
-
-
-    </div>
-
 
 <!--    
     <div class="span6 white-card">
