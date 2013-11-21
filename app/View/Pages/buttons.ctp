@@ -4,11 +4,9 @@
               $buttonlink= 'http://clone.gs'; 
        }
 
-$image1= $this->Html->image('socials/followontoork3.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'130'));
-$image2= $this->Html->image('socials/Toork.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'85'));
-$image3= $this->Html->image('socials/clone.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'130'));
-$image4= $this->Html->image('socials/clone2.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'85'));
-$image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'24'));
+$image1= $this->Html->image('socials/follow.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'130'));
+$image2= $this->Html->image('socials/clone.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'85'));
+$image3= $this->Html->image('socials/clonelogo.png', array('alt' => 'country flag','style'=>'float:left; margin: 3px 10px 0 3px; text-align:center;', 'width'=>'24'));
         ?>
 
 
@@ -36,7 +34,7 @@ $image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag'
         <div class="accordion-inner">
           <h5>Copy this button code into the HTML of your site.</h5>
           <p class="well color-red">&lt;a href="<?php echo $buttonlink;?>"&gt; <br>
-            &lt;img width="130" src="http://clone.gs/img/socials/followontoork3.png"/&gt;<br>
+            &lt;img width="130" src="http://clone.gs/img/socials/follow.png"/&gt;<br>
             &lt;/a&gt;</p>
         </div>
       </div>
@@ -50,53 +48,30 @@ $image5= $this->Html->image('socials/button2.png', array('alt' => 'country flag'
         <div class="accordion-inner">
           <h5>Copy this button code into the HTML of your site.</h5>
           <p class="well color-red">&lt;a href="<?php echo $buttonlink;?>"&gt; <br>
-            &lt;img width="85" src="http://clone.gs/img/socials/Toork.png"/&gt;<br>
+            &lt;img width="85" src="http://clone.gs/img/socials/clone.png"/&gt;<br>
             &lt;/a&gt;</p>
         </div>
       </div>
       <div class="accordion-heading country" style="margin:10px;">
               <?php echo $image3; ?>
-        <a class="accordion-toggle" data-toggle="collapse" href="#country3"><i class="elusive-align-left"></i> Show Code</a>
+        <a class="accordion-toggle" data-toggle="collapse" href="#country3"><i class="elusive-align-left"></i> Show Code
+        <blockquote class="pull-right"><small>This button is a link to your channel directly</small></blockquote></a>
       </div>
       <div id="country3" class="accordion-body collapse">
         <div class="accordion-inner">
           <h5>Copy this button code into the HTML of your site.</h5>
-          <p class="well color-red">&lt;a href="javascript:location.href='http://clone.gs/apis/addgame_ajax/'+decodeURIComponent(location.href)"&gt; <br>
-            &lt;img width="130" src="http://clone.gs/img/socials/clone.png"/&gt;<br>
-            &lt;/a&gt;</p>
-        </div>
-      </div>
-      <div class="accordion-heading country" style="margin:10px;">
-              <?php echo $image4; ?>
-        <a class="accordion-toggle" data-toggle="collapse" href="#country4"><i class="elusive-align-left"></i> Show Code</a>
-      </div>
-      <div id="country4" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <h5>Copy this button code into the HTML of your site.</h5>
-          <p class="well color-red">&lt;a href="javascript:location.href='http://clone.gs/apis/addgame_ajax/'+decodeURIComponent(location.href)"&gt; <br>
-            &lt;img width="85" src="http://clone.gs/img/socials/clone2.png"/&gt;<br>
-            &lt;/a&gt;</p>
-        </div>
-      </div>
-      <div class="accordion-heading country" style="margin:10px;">
-              <?php echo $image5; ?>
-        <a class="accordion-toggle" data-toggle="collapse" href="#country5"><i class="elusive-align-left"></i> Show Code
-        <blockquote class="pull-right"><small>This button is a link to your channel directly</small></blockquote></a>
-      </div>
-      <div id="country5" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <h5>Copy this button code into the HTML of your site.</h5>
           <p class="well color-red">&lt;a href="<?php echo $buttonlink;?>"&gt; <br>
-            &lt;img width="24" src="http://clone.gs/img/socials/button2.png"/&gt;<br>
+            &lt;img width="130" src="http://clone.gs/img/socials/clonelogo.png"/&gt;<br>
             &lt;/a&gt;</p>
         </div>
       </div>
+
 
     </div>
   </div>
 </div>
 <div class="alert alert-info">
-  <h5>You can change the size of the buttons using the width <span class="color-red">(width="203")</span> atribute in the button code</h5>
+  <h5>You can change the size of the buttons using the width <span class="color-red">(width)</span> atribute in the button code</h5>
 </div>
 
                       <p>
