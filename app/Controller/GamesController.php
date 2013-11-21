@@ -56,6 +56,13 @@ class GamesController extends AppController {
 	
 	}
 	
+	
+	public function fblogin() {
+	$this->layout="ajax";
+	
+	}
+	
+	
 	public function index() {
 
 	if($this->Session->check('Auth.User')){
