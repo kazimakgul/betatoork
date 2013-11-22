@@ -20,7 +20,7 @@ else{
 
   <div style="padding:14px"><table style="width:100%" cellpadding="0" cellspacing="0"><tbody><tr><td style="width:46px"><a href="<?php echo $profileurl; ?>" target="_blank">
   
-    <img style="border:1px solid" width="70" height="90" src="">
+    <img width="90" src="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon2.png">
 
 
   </a></td><td style="padding-left:14px"><div style="font:14px arial;font-weight:bold;color:#262626"><a href="<?php echo $profileurl; ?>" style="color:#262626;font:16px arial,normal;text-decoration:none" target="_blank"><?php echo $performer['User']['seo_username']; ?></a></div><div style="font:11px arial,normal;color:#999999;margin-top:3px"><?php echo $performer['User']['description'];?></div></td></tr></tbody></table>
