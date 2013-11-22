@@ -27,7 +27,7 @@
                 <h5 class="text-center">Your Channel Picture</h5>
 
                 <div class="row-fluid"><div style="text-align: center ;" >
-                  <img width="150px" src="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon.jpg" class="img-polaroid">
+                  <img id="faceavatar" width="150px" src="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon.jpg" class="img-polaroid">
                   <br>
                   <a style="margin-top:10px;" class="btn"> Change Picture</a></div>
                 </div>
@@ -42,7 +42,7 @@
 	                            <div class="span11">
 	                              <div class="control-group">
 	                                <label>Screen Name</label>
-	                                <input name="screenname" style="height:40px;" class="span12" placeholder="Your Public Name Ex: Clint Eastwood" type="text">
+	                                <input name="screenname" id="screenname" style="height:40px;" class="span12" placeholder="Your Public Name Ex: Clint Eastwood" type="text">
 	                              </div>
 	                            </div>
                             </div>

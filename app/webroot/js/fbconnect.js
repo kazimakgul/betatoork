@@ -17,7 +17,7 @@
             // The response object is returned with a status field that lets the app know the current
             // login status of the person. In this case, we're handling the situation where they 
             // have logged in to the app.
-            alert('logged in');
+            alert('logged in');getUserInfo();
         } else if (response.status === 'not_authorized') {
             // In this case, the person is logged into Facebook, but not into the app, so we call
             // FB.login() to prompt them to do so. 
@@ -47,6 +47,21 @@
   };//End of facebook area all functions will be inside
   
   
+  function getUserInfo() {
+	    FB.api('/me', function(response) {
+		  $("#screenname").val(response.name); 
+		  $("#reg_email").val(response.email); 	    
+    });
+		
+		FB.api('/me/picture?type=normal', function(response) {
+
+		  var str=response.data.url;
+	  	  document.getElementById("faceavatar").src=str;
+	  	  	    
+    });
+		
+    }//end of get user info
+  
   function facebooklogin() {
 	  //do some loading act like preloader
 	alert('facebook login');  
@@ -61,7 +76,7 @@
                 //$(".appendloading_mask").remove();
                 //$(".appendloading_lightbox").remove();
                 //loadingBarLightbox();
-                registerFbUser(response.authResponse.accessToken);
+                registerFbUser(response.authResponse.accessToken,response.authResponse.userID);
             } else {
 				//User don't allow the app!!!
                 //$("#id_facebookregisterloading").remove();
@@ -84,17 +99,19 @@
   }//end of facebook login function
   
   
-  function registerFbUser(accessToken) {alert(remotecheck);
-    
-	 $.post(remotecheck, { at: accessToken}, function (data) {
+  function registerFbUser(accessToken,fb_id) {
+   
+	 $.post(facecheck, { at: accessToken,ui:fb_id}, function (data) {
 			if(data.rtdata.status=='user exists'){
-				alert('user exists');
+				alert(data.rtdata.msg);
+				
 				//$('#errormsg_Passwd').html(data.rtdata.msg);
 				//$('#errormsg_Passwd').show();
 				
 			}
 			else if(data.rtdata.status=='user no exists'){
 				alert('user no exists');
+				window.location=data.rtdata.location;
 				//$('#grabloader').css("display", "block");
 				//window.location = data.rtdata.msg;
 			}

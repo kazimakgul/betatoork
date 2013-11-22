@@ -1,7 +1,7 @@
 <html>
 <head>
 <script>
-remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'FaceUser')); ?>';
+facecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'FaceUser')); ?>';
 </script>
 </head>
 <body>

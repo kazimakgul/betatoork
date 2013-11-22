@@ -40,12 +40,15 @@
     remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
 	remotecheck2='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser2')); ?>';
 	authcheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'usernameAvailable')); ?>';
+	facecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'FaceUser')); ?>';
 	</script>
     <?php echo $this->Html->css(array('assets/css/toork_lander')); ?>
 
   <link href="http://fonts.googleapis.com/css?family=Abel:400|Oswald:300,400,700" media="all" rel="stylesheet" type="text/css" />
 </head>
     <body>
+	<div id="fb-root"></div>
+<?php echo $this->Html->script('fbconnect'); ?>
     <?php
         $register=$this->Html->url(array( "controller" => "users","action" =>"register2"));
         $login=$this->Html->url(array( "controller" => "users","action" =>"login3"));

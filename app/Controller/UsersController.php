@@ -1697,32 +1697,36 @@ public function password2($id = null) {
 		 Configure::write ( 'debug', 0 );
 		 
 		 $accesstoken=$this->request->data['at'];
+		 $facebook_id=$this->request->data['ui'];
 		 
 		 //Accesstoken sistemde kayitlimi degilmi kayitli degilse yeni register paneline yönlendir.Kayitliysa sisteme login olmasini sagla.
 		 
 		
 		
-		 $user_exists=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.access_token'=>$accesstoken)));
+		 $user_exists=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.facebook_id'=>$facebook_id)));
 		 if($user_exists!=NULL)
 		 {
-		 $msg = array("status" => 'user exists',"msgid" => '2', "msg" => 'Naptin nettin'.$accesstoken);
+		 //Update the access token and redirect to logged in.
+		 $msg = array('status' => 'user exists','msgid' => '1', 'msg' => 'Just a moment.<br>You will be redirected to your personal channel now..');
 		 }else{
-		 $msg = array("status" => 'user no exists',"msgid" => '2', "msg" => 'Naptin nettin'.$accesstoken);
+		 //redirect to social register page with facebook id and access token.
+		 $msg = array("status" => 'user no exists','msgid' => '2', 'msg' => 'Just a moment.<br>You will be redirected to register panel..','location'=>$this->webroot.'users/'.'faceregister');
 		 }
 		 
 		 
 		 
-		 
+		 /*
 		        $this->User->create();
-				$this->request->data['User']['username'] = 'zangiefgodd';
-				$this->request->data['User']['email'] = 'zangiefgodd@gmail.com';
-				$this->request->data['User']['password'] = 'zangiefgodd';
-				$this->request->data['User']['seo_username'] = 't3ommybooy2222';
+				$this->request->data['User']['username'] = 'hhfgodd';
+				$this->request->data['User']['email'] = 'z2ahhfgodd@gmail.com';
+				$this->request->data['User']['password'] = 'z2anhhefgodd';
+				$this->request->data['User']['seo_username'] = 't23ohhooy2222';
 				$this->request->data['User']['confirm_password'] = $this->request->data['User']['password'];
 				$this->request->data['User']['active'] = 1;
+				$this->request->data['User']['facebook_id'] = $facebook_id;
 		        $this->request->data['User']['access_token'] = $accesstoken;
 				$this->User->save($this->request->data);
-		 
+		 */
 		 
 		       //$msg = array("status" => '2',"msgid" => '2', "msg" => 'Naptin nettin'.$accesstoken.$message);
 				$this->set('rtdata', $msg);

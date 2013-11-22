@@ -13,7 +13,7 @@
                             <div class="row-fluid">
                               <div class="span12">
                                 <div class="control-group">
-                                  <a class="btn btn-block span12" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-facebook-sign"></h3> Login With Facebook</a>
+                                  <a id="facebookreg" class="btn btn-block span12" style="height:40px; margin-bottom:20px;" type="button"><h3 class="icon-facebook-sign"></h3> Login With Facebook</a>
                                 </div>
                               </div>
                             </div>     
