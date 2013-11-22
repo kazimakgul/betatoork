@@ -12,7 +12,7 @@
         <meta property="og:title" content= "<?php echo $title_for_layout?>" />
         <meta property="og:type" content="Game"/>
         <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
-        <meta property="og:image" content="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash4/428808_254949491292199_1660409950_n.jpg"/>
+        <meta property="og:image" content="https://s3.amazonaws.com/betatoorkpics/socials/clone-logo-new.jpg"/>
         <meta property="og:site_name" content="Clone"/>
         <meta property="fb:admins" content="711440119"/>
         <meta property="og:description" content= "<?php echo $description_for_layout?>" />
