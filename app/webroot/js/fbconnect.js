@@ -17,7 +17,8 @@
             // The response object is returned with a status field that lets the app know the current
             // login status of the person. In this case, we're handling the situation where they 
             // have logged in to the app.
-            alert('logged in');getUserInfo();
+            //alert('logged in');
+			getUserInfo(response.authResponse.accessToken);
         } else if (response.status === 'not_authorized') {
             // In this case, the person is logged into Facebook, but not into the app, so we call
             // FB.login() to prompt them to do so. 
@@ -47,10 +48,12 @@
   };//End of facebook area all functions will be inside
   
   
-  function getUserInfo() {
+  function getUserInfo(access_token) {
 	    FB.api('/me', function(response) {
-		  $("#screenname").val(response.name); 
-		  $("#reg_email").val(response.email); 	    
+		  $("#reg_screenname").val(response.name); 
+		  $("#reg_email").val(response.email); 	
+		  $("#facebook_id").val(response.id);
+		  $("#access_token").val(access_token);
     });
 		
 		FB.api('/me/picture?type=normal', function(response) {
@@ -64,12 +67,12 @@
   
   function facebooklogin() {
 	  //do some loading act like preloader
-	alert('facebook login');  
+	//alert('facebook login');  
 	
 	try {
 		 FB.login(function(response) {
-            console.log('first response ')
-            console.log(response);            
+            //console.log('first response ')
+            //console.log(response);            
             if (response.authResponse) {
                 // connected
                 //Appendloading gif kaldır
@@ -103,14 +106,13 @@
    
 	 $.post(facecheck, { at: accessToken,ui:fb_id}, function (data) {
 			if(data.rtdata.status=='user exists'){
-				alert(data.rtdata.msg);
-				
+				//alert(data.rtdata.msg);
+				window.location=data.rtdata.location;
 				//$('#errormsg_Passwd').html(data.rtdata.msg);
 				//$('#errormsg_Passwd').show();
 				
 			}
 			else if(data.rtdata.status=='user no exists'){
-				alert('user no exists');
 				window.location=data.rtdata.location;
 				//$('#grabloader').css("display", "block");
 				//window.location = data.rtdata.msg;

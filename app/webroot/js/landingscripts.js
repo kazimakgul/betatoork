@@ -180,6 +180,10 @@ $('.validateLogin').click(function() {
 //});
  
  
+    $('#t_facebook_registerbtn').click(function () {
+		faceUser();
+    });
+ 
 	$('#t_landing_registerbtn').click(function () {
 	    
 		//checkusername();
@@ -194,6 +198,29 @@ $('.validateLogin').click(function() {
  
  function checkUser2(){
 		$.post(remotecheck2, {attr: 'fast_register', un: $('#reg_username').val(), um: $('#reg_email').val(), up: $('#reg_password').val() }, function (data) {
+			if (data.rtdata == 'true') {
+				
+				$('#grabloader').show();
+				
+				setInterval(function(){autoLogin($('#reg_username').val(),$('#reg_password').val());},2000);
+				
+				
+			}
+			else if(data.rtdata == 'false'){
+        
+				//Recaptcha Code is incorrect. Please try again.
+	
+			}
+			else
+			{
+				//alert(data.rtdata)
+				
+			}
+		}, 'json');	
+	}
+	
+	function faceUser(){
+		$.post(remotecheck2, {attr: 'facebook_register', sn: $('#reg_screenname').val(), un: $('#reg_username').val(), um: $('#reg_email').val(), up: $('#reg_password').val(), fi: $('#facebook_id').val(),at: $('#access_token').val() }, function (data) {
 			if (data.rtdata == 'true') {
 				
 				$('#grabloader').show();
@@ -281,7 +308,7 @@ $('#forget_pass').click(function () {
 //*********Social Function********
 $('#facebookreg').click(function () {
 		
-		alert('Login With Facebook(landingscripts)');
+		//alert('Login With Facebook(landingscripts)');
 		facebooklogin();
 	});
 //*********//Social Function********

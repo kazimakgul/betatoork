@@ -1649,6 +1649,48 @@ public function password2($id = null) {
 				
 			
 		 }
+		 else if($attr == "facebook_register"){
+					
+		
+				$this->User->create();
+				$this->request->data['User']['screenname'] = $this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['sn']));
+				$this->request->data['User']['username'] = $this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un']));
+				$this->request->data['User']['email'] = $this->request->data['um'];
+				$this->request->data['User']['password'] = $this->request->data['up'];
+				$this->request->data['User']['seo_username'] = strtolower($this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un'])));
+				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
+				$this->request->data['User']['active'] = 0;
+				$this->request->data['User']['facebook_id'] = $this->request->data['fi'];
+				$this->request->data['User']['access_token'] = $this->request->data['at'];
+				//$this->request->data['User']['userstat'] = 0; //buraya bakılacak yeni alan için
+				
+				if ($this->User->save($this->request->data)) {
+				
+				//userstat data for new user
+				$userstat_data=
+			array('Userstat' =>array(
+			'user_id' => $this->User->getLastInsertID(),
+			'totalrate' => 0,
+			'favoritecount' => 0,
+			'subscribe' => 0,
+			'subscribeto' => 0,
+			'uploadcount' => 0,
+			'playcount' => 0,
+			'potential' => 0));
+				
+				    //$this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();
+				    $this->Userstat->save($userstat_data);
+					$this->set('rtdata', 'true');
+					$this->Session->write('FirstLogin',$this->User->getLastInsertID());
+					
+				} else {
+					//$this->set('rtdata', 'Can not register. Please try again.');
+					$this->checkUsernameEmail($this->request->data['User']['username'],$this->request->data['User']['email']);//Check availability
+				}
+				
+				
+			
+		 }
 		 else if($attr == "txt_logusername"){
 			$this->request->data['User']['username'] = $this->request->data['un'];
 			$this->request->data['User']['password'] = $this->request->data['ps'];
@@ -1700,35 +1742,26 @@ public function password2($id = null) {
 		 $facebook_id=$this->request->data['ui'];
 		 
 		 //Accesstoken sistemde kayitlimi degilmi kayitli degilse yeni register paneline yönlendir.Kayitliysa sisteme login olmasini sagla.
-		 
-		
 		
 		 $user_exists=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.facebook_id'=>$facebook_id)));
 		 if($user_exists!=NULL)
 		 {
 		 //Update the access token and redirect to logged in.
-		 $msg = array('status' => 'user exists','msgid' => '1', 'msg' => 'Just a moment.<br>You will be redirected to your personal channel now..');
+		 
+		 $user = $this->User->find('first', array('conditions' => array('User.facebook_id' =>711440119)));
+		 if($user!=NULL)
+         $this->Auth->login($user['User']);
+		 
+		 $msg = array('status' => 'user exists','msgid' => '1', 'msg' => 'Just a moment.<br>You will be redirected to your personal channel now..','location'=>$this->webroot.$this->Auth->loginRedirect['controller'].'/'.$this->Auth->loginRedirect['action']);
+		 
+		 
+		 
+		 
 		 }else{
 		 //redirect to social register page with facebook id and access token.
 		 $msg = array("status" => 'user no exists','msgid' => '2', 'msg' => 'Just a moment.<br>You will be redirected to register panel..','location'=>$this->webroot.'users/'.'faceregister');
 		 }
 		 
-		 
-		 
-		 /*
-		        $this->User->create();
-				$this->request->data['User']['username'] = 'hhfgodd';
-				$this->request->data['User']['email'] = 'z2ahhfgodd@gmail.com';
-				$this->request->data['User']['password'] = 'z2anhhefgodd';
-				$this->request->data['User']['seo_username'] = 't23ohhooy2222';
-				$this->request->data['User']['confirm_password'] = $this->request->data['User']['password'];
-				$this->request->data['User']['active'] = 1;
-				$this->request->data['User']['facebook_id'] = $facebook_id;
-		        $this->request->data['User']['access_token'] = $accesstoken;
-				$this->User->save($this->request->data);
-		 */
-		 
-		       //$msg = array("status" => '2',"msgid" => '2', "msg" => 'Naptin nettin'.$accesstoken.$message);
 				$this->set('rtdata', $msg);
 		 
 		 $this->set('_serialize', array('rtdata'));

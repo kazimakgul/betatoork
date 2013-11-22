@@ -42,7 +42,7 @@
 	                            <div class="span11">
 	                              <div class="control-group">
 	                                <label>Screen Name</label>
-	                                <input name="screenname" id="screenname" style="height:40px;" class="span12" placeholder="Your Public Name Ex: Clint Eastwood" type="text">
+	                                <input name="screenname" id="reg_screenname" style="height:40px;" class="span12" placeholder="Your Public Name Ex: Clint Eastwood" type="text">
 	                              </div>
 	                            </div>
                             </div>
@@ -75,7 +75,8 @@
 	                              </div>
 	                            </div>
                             </div>                                         
-
+                           <input name="facebook_id" id="facebook_id" type="hidden" value="empty">
+						   <input name="access_token" id="access_token" type="hidden" value="empty">
     </div>
 
 <!--    
@@ -120,7 +121,7 @@
                             <div class="row-fluid">
                               <div class="span12">
                                 <div class="form-actions no-margin-bottom">
-                                  <button id="t_landing_registerbtn" style="margin-left:20px;" class="btn btn-success btn-large validateRegister" name="button" type="button"><i class="icon-facebook-sign"></i> Join Clone Now</button><span class="offset2"><i class="icon-check"></i> By joinin clone.gs you agree to our <a href="<?php echo $terms; ?>">terms</a> and <a href="<?php echo $privacy; ?>">privacy</a> policies.</span>
+                                  <button id="t_facebook_registerbtn" style="margin-left:20px;" class="btn btn-success btn-large validateRegister" name="button" type="button"><i class="icon-facebook-sign"></i> Join Clone Now</button><span class="offset2"><i class="icon-check"></i> By joinin clone.gs you agree to our <a href="<?php echo $terms; ?>">terms</a> and <a href="<?php echo $privacy; ?>">privacy</a> policies.</span>
                                 </div>
                               </div>
                             </div>
