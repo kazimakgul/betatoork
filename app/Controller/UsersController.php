@@ -9,7 +9,7 @@ class UsersController extends AppController {
 
 
 public $components = array('AutoLogin','Email','Amazonsdk.Amazon','Recaptcha.Recaptcha');
-public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook');
+public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
 var $uses = array('Game','Subscription','Userstat','Category','Activity','CakeEmail', 'Network/Email');
 
 
@@ -1653,7 +1653,7 @@ public function password2($id = null) {
 					
 		
 				$this->User->create();
-				$this->request->data['User']['screenname'] = $this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['sn']));
+				$this->request->data['User']['screenname'] = $this->secureSuperGlobalPOST($this->request->data['sn']);
 				$this->request->data['User']['username'] = $this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un']));
 				$this->request->data['User']['email'] = $this->request->data['um'];
 				$this->request->data['User']['password'] = $this->request->data['up'];

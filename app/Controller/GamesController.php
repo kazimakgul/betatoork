@@ -9,7 +9,7 @@ class GamesController extends AppController {
 
 	public $name = 'Games';
 	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Activity');
-    public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Facebook.Facebook','Time');
+    public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Time');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
     
 

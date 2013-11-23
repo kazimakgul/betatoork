@@ -143,12 +143,14 @@ $('.validateLogin').click(function() {
 			 username: {
                 required: true,
 				minlength: 6,
+				maxlength: 20,
 				uniqueUserName:true,
 				nospace:true
             },
 			screenname: {
                 required: true,
-				minlength: 6
+				minlength: 4,
+				maxlength: 20
             },
             email: {
                 required: true,
@@ -165,11 +167,13 @@ $('.validateLogin').click(function() {
 			username: {
                 required: "Please enter username.",
 				minlength:"At least 6 characters.",
+				maxlength:"Maximum 20 characters.",
 				nospace:"You cannot use space in your username."
             },
 			screenname: {
                 required: "Please enter screen name.",
-				minlength:"At least 6 characters."
+				minlength:"At least 4 characters.",
+				maxlength:"Maximum 20 characters."
             },
             email: {
                 required: "Please enter email.",
