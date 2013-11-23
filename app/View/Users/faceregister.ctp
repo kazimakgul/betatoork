@@ -24,12 +24,13 @@
   <div class="row-fluid">
 
     <div class="span5 well">
-                <h5 class="text-center">Your Channel Picture</h5>
+                <h5 class="text-center">Welcome to Clone</h5>
 
                 <div class="row-fluid"><div style="text-align: center ;" >
                   <img id="faceavatar" width="150px" src="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon.jpg" class="img-polaroid">
                   <br>
-                  <a style="margin-top:10px;" class="btn"> Change Picture</a></div>
+                  <!-- <a style="margin-top:10px;" class="btn"> Change Picture</a> -->
+                </div>
                 </div>
 
 

@@ -83,14 +83,24 @@ $username = $user['User']['seo_username'];
 <?php echo $this->Form->input('twitter_link',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 <?php echo $this->Form->input('gplus_link',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 															
-															
+
+                                                            <div class="control-group  input-prepend">
+                                                                <label class="control-label" for="required">Screen Name</label>
+                                                                <div class="controls">
+                                                                    <span class="add-on"><i class="elusive-user"></i></span>
+<?php echo $this->Form->input('screenname',array('label'=>false,'div'=>false ,'placeholder' => 'Its your visible name.','type'=>'text','class'=>'grd-white','data-validate'=>'{required: true, messages:{required:"Please enter field required"}}','id'=>'required', 'style'=>'width: 250px;')); ?>
+                                                                </div>
+                                                            </div>
+			
                                                             <div class="control-group  input-prepend">
                                                                 <label class="control-label" for="required">Channel Name</label>
                                                                 <div class="controls">
                                                                     <span class="add-on">clone.gs/</span>
 <?php echo $this->Form->input('username',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'grd-white','data-validate'=>'{required: true, messages:{required:"Please enter field required"}}','id'=>'required')); ?>
                                                                 </div>
-                                                            </div><div class="pull-right span5"> <p class="btn btn-link badge badge-important helper-font-16"><a href="<?php echo $profilepublic;?>">@<?php echo $username; ?></a></p></div>
+                                                            </div>
+                                                            <div class="pull-right span5"> <p class="btn btn-link badge badge-important helper-font-16"><a href="<?php echo $profilepublic;?>">@<?php echo $username; ?></a></p>
+                                                          </div>
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputEditorSimple">Channel Description</label>
                                                             <div class="controls">
