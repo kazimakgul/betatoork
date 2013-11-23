@@ -2,7 +2,7 @@
   FB.init({
     appId      : '231470890353921',
     status     : true, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
+    cookie     : false, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML
   });
 
