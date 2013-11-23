@@ -1746,7 +1746,7 @@ public function password2($id = null) {
 		 {
 		 //Update the access token and redirect to logged in.
 		 
-		 $user = $this->User->find('first', array('conditions' => array('User.facebook_id' =>711440119)));
+		 $user = $this->User->find('first', array('conditions' => array('User.facebook_id' =>$facebook_id)));
 		 if($user!=NULL)
          $this->Auth->login($user['User']);
 		 
