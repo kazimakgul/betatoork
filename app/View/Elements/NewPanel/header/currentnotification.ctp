@@ -3,7 +3,16 @@
 					<?php 
 					
 					foreach ($lastnotifies as $lastnotify): 
-						$followid = $lastnotify['PerformerUser']['id'];
+					
+					$followid = $lastnotify['PerformerUser']['id'];
+					
+					//Check screenname exist
+					if($lastnotify['PerformerUser']['screenname']!=NULL)
+						{
+						$performername=$lastnotify['PerformerUser']['screenname'];
+						}else{
+						$performername=$lastnotify['PerformerUser']['username'];
+						}
 
 if($lastnotify['PerformerUser']['seo_username']!=NULL)
 {
@@ -42,7 +51,7 @@ else{
                                               </div>
 
                                                 <div class="media-body">
-                                                    <h4 class="media-heading"><a href="<?php echo $profileurl ?>" class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;"><?php echo $lastnotify['PerformerUser']['username']; ?></a><small class=" pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small></h4>
+                                                    <h4 class="media-heading"><a href="<?php echo $profileurl ?>" class="btn btn-link" style="margin-top:0px; padding:0px 0px 0px 0px;"><?php echo $performername; ?></a><small class=" pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small></h4>
                                                     <p><?php echo $activity_message;?></p>
                                                 </div>
                                             </div>
