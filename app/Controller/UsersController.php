@@ -715,8 +715,8 @@ WHERE user_id='.$auth_id.'');
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 		
-		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
-		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
+		//$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
+		//$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
 		$myval=$this->request->data["User"]["edit_picture"]["name"];
 		$channelbanner=$this->request->data["User"]["banner"]["name"];
 		
@@ -807,7 +807,7 @@ WHERE user_id='.$auth_id.'');
 			
 		
 		     //seousername begins
-		     $this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
+		     //$this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
 		     //seousername ends
 		
 		
