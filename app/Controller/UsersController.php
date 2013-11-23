@@ -817,7 +817,7 @@ WHERE user_id='.$auth_id.'');
 		     if($this->Auth->user('role')==0){
 			$filtered_data=
 			array('User' =>array(
-			'screenname' => $this->request->data['User']['screenname'],
+			'username' => $this->request->data['User']['screenname'],
 			'description' => $this->request->data['User']['description'],
 			'website' => $this->request->data['User']['website'],
 			'fb_link' => $this->request->data['User']['fb_link'],
@@ -828,7 +828,7 @@ WHERE user_id='.$auth_id.'');
 			}else{
 			$filtered_data=
 			array('User' =>array(
-			'screenname' => $this->request->data['User']['screenname'],
+			'username' => $this->request->data['User']['screenname'],
 			'description' => $this->request->data['User']['description'],
 			'website' => $this->request->data['User']['website'],
 			'adcode' => $this->request->data['User']['adcode'],
