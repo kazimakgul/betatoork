@@ -96,7 +96,7 @@ $username = $user['User']['seo_username'];
                                                                 <label class="control-label" for="required">Channel Name</label>
                                                                 <div class="controls">
                                                                     <span class="add-on">clone.gs/</span>
-<?php echo $this->Form->input('username',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'grd-white','data-validate'=>'{required: true, messages:{required:"Please enter field required"}}','id'=>'required')); ?>
+<?php echo $this->Form->input('username',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'grd-white','data-validate'=>'{required: true, messages:{required:"Please enter field required"}}','id'=>'required','disabled')); ?>
                                                                 </div>
                                                             </div>
                                                             <div class="pull-right span5"> <p style="padding:6px;" class="btn btn-link label label-important helper-font-16"><a href="<?php echo $profilepublic;?>">@<?php echo $username; ?></a></p>

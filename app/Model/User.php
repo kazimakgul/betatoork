@@ -103,6 +103,17 @@ function getActivationHash()
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			
 		),
+		'screenname' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Please dont leave screen name empty.',
+				),
+			'between' => array(
+				'rule' => array('between', 6, 20),
+				'message' => 'Screen name must be between 6-20 characters long.',
+				)
+			
+		),
 		'email' => array(
 
 			'notempty' => array(

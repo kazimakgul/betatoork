@@ -817,7 +817,7 @@ WHERE user_id='.$auth_id.'');
 		     if($this->Auth->user('role')==0){
 			$filtered_data=
 			array('User' =>array(
-			'username' => $this->request->data['User']['username'],
+			'screenname' => $this->request->data['User']['screenname'],
 			'description' => $this->request->data['User']['description'],
 			'website' => $this->request->data['User']['website'],
 			'fb_link' => $this->request->data['User']['fb_link'],
@@ -828,7 +828,7 @@ WHERE user_id='.$auth_id.'');
 			}else{
 			$filtered_data=
 			array('User' =>array(
-			'username' => $this->request->data['User']['username'],
+			'screenname' => $this->request->data['User']['screenname'],
 			'description' => $this->request->data['User']['description'],
 			'website' => $this->request->data['User']['website'],
 			'adcode' => $this->request->data['User']['adcode'],
@@ -888,7 +888,7 @@ WHERE user_id='.$auth_id.'');
 			}	
 		} else {
 		
-			$this->request->data = $this->User->read(null, $id);
+			$this->request->data = $this->User->read(array('screenname','username','description','website','adcode','fb_link','twitter_link','gplus_link','seo_username'), $id);
 			$this->request->data["User"]["password"]="";
 		}
 		$countries = $this->User->Country->find('list');
