@@ -817,26 +817,24 @@ WHERE user_id='.$auth_id.'');
 		     if($this->Auth->user('role')==0){
 			$filtered_data=
 			array('User' =>array(
-			'username' => $this->request->data['User']['screenname'],
+			'screenname' => $this->request->data['User']['screenname'],
 			'description' => $this->request->data['User']['description'],
 			'website' => $this->request->data['User']['website'],
 			'fb_link' => $this->request->data['User']['fb_link'],
 			'twitter_link' => $this->request->data['User']['twitter_link'],
 			'gplus_link' => $this->request->data['User']['gplus_link'],
-			'website' => $this->request->data['User']['website'],
-			'seo_username' => $this->request->data['User']['seo_username']));
+			'website' => $this->request->data['User']['website']));
 			}else{
 			$filtered_data=
 			array('User' =>array(
-			'username' => $this->request->data['User']['screenname'],
+			'screenname' => $this->request->data['User']['screenname'],
 			'description' => $this->request->data['User']['description'],
 			'website' => $this->request->data['User']['website'],
 			'adcode' => $this->request->data['User']['adcode'],
 			'fb_link' => $this->request->data['User']['fb_link'],
 			'twitter_link' => $this->request->data['User']['twitter_link'],
 			'gplus_link' => $this->request->data['User']['gplus_link'],
-			'website' => $this->request->data['User']['website'],
-			'seo_username' => $this->request->data['User']['seo_username']));
+			'website' => $this->request->data['User']['website']));
 			}
 			
 			if($myval!="")
