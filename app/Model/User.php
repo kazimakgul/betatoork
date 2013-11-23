@@ -109,8 +109,8 @@ function getActivationHash()
 				'message' => 'Please dont leave screen name empty.',
 				),
 			'between' => array(
-				'rule' => array('between', 6, 20),
-				'message' => 'Screen name must be between 6-20 characters long.',
+				'rule' => array('between', 4, 20),
+				'message' => 'Screen name must be between 4-20 characters long.',
 				)
 			
 		),
