@@ -11,7 +11,17 @@
 					<?php 
 					
 					foreach ($lastactivities as $lastactivity): 
-						$followid = $lastactivity['PerformerUser']['id'];
+						
+					$followid = $lastactivity['PerformerUser']['id'];
+					
+					//Check screenname exist
+					if($lastactivity['PerformerUser']['screenname']!=NULL)
+						{
+						$performername=$lastactivity['PerformerUser']['screenname'];
+						}else{
+						$performername=$lastactivity['PerformerUser']['username'];
+						}
+					
 
 if($lastactivity['PerformerUser']['seo_username']!=NULL)
 {
@@ -53,7 +63,7 @@ else{
                                                             </a></div>
                                                             <div class="contact-item-body">
 
-                                                                <a class="contact-item-heading btn-link btn-mini bold" href="<?php echo $profileurl ?>"  style="margin:-9px 0px -25px 0px; padding-left:0px;padding-left:0px;"><?php echo $lastactivity['PerformerUser']['username']; ?></a>
+                                                                <a class="contact-item-heading btn-link btn-mini bold" href="<?php echo $profileurl ?>"  style="margin:-9px 0px -25px 0px; padding-left:0px;padding-left:0px;"><?php echo $performername; ?></a>
                                                                 <p style="margin-top:-5px; margin-bottom:-5px; padding:0px;"><small ><?php echo $activity_message;?></small></p>
 
                                                                 <small class="muted pull-right helper-font-9"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $time; ?>' style="margin:-2px 0px -25px 0px; padding-left:0px;padding-left:0px;"></a></small>
