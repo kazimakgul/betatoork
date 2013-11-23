@@ -39,7 +39,7 @@ $favoriteNumber = $publicuser['Userstat']['favoritecount'];
 <?php
 $website=$publicuser['User']['website'];
 ?>        
-        <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;"><?php echo $publicname?></h4>
+        <h4 style="margin-bottom:2px; font-family: 'Merriweather Sans', sans-serif; font-size: 20px; color:white; text-shadow: 1px 1px black;"><?php echo $publicname?><?php echo $screenname?></h4>
 <?php
 if($website==NULL){
 

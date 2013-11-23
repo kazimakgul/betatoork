@@ -1042,7 +1042,14 @@ public function profile() {
 	}
     $userName = $user['User']['username'];
     $publicName = $publicUser['User']['username'];
+	$screenName = $publicUser['User']['screenname'];
     $publicDesc = $publicUser['User']['description'];
+	
+	if($screenName==NULL)
+	{
+	$screenName=$publicName;
+	}
+	
 	
 	$limit=12;
 	$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
@@ -1102,6 +1109,7 @@ public function profile() {
 	$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
     $this->set('username', $userName);
     $this->set('publicname', $publicName);
+	$this->set('screenname', $screenName);
 	$this->set('userid', $userid);
 	$this->set('user', $user);
 	$this->set('publicuser', $publicUser);
