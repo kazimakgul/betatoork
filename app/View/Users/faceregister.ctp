@@ -43,6 +43,7 @@
 	                              <div class="control-group">
 	                                <label>Screen Name</label>
 	                                <input name="screenname" id="reg_screenname" style="height:40px;" class="span12" placeholder="Your Public Name Ex: Clint Eastwood" type="text">
+									<label style="display:none; color:red; font-family:arial; font-size:13px;" for="reg_screenname" class="error">Screen name is already taken</label>
 	                              </div>
 	                            </div>
                             </div>

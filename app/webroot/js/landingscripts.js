@@ -146,6 +146,10 @@ $('.validateLogin').click(function() {
 				uniqueUserName:true,
 				nospace:true
             },
+			screenname: {
+                required: true,
+				minlength: 6
+            },
             email: {
                 required: true,
 				email: true,
@@ -162,6 +166,10 @@ $('.validateLogin').click(function() {
                 required: "Please enter username.",
 				minlength:"At least 6 characters.",
 				nospace:"You cannot use space in your username."
+            },
+			screenname: {
+                required: "Please enter screen name.",
+				minlength:"At least 6 characters."
             },
             email: {
                 required: "Please enter email.",
@@ -181,7 +189,10 @@ $('.validateLogin').click(function() {
  
  
     $('#t_facebook_registerbtn').click(function () {
+		if($("#toorkRegister").valid())
+		{										 
 		faceUser();
+		}
     });
  
 	$('#t_landing_registerbtn').click(function () {
