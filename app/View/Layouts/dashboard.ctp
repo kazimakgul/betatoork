@@ -155,10 +155,6 @@ echo $this->element('NewPanel/leftpanel',array('mygames' => $mygames,'dashboard'
 
 ?>
 
-<?php
- echo $this->element('NewPanel/loginModal',array('index'=>$index));
-?>
-
   <script>
 NProgress.set(0.2);
   </script>
@@ -194,13 +190,16 @@ NProgress.set(0.8);
 
         <!-- required stilearn template js, for full feature-->
 
-
+<!-- Tutorial Modal -->
+   <?php if(isset($welcome))
+   echo $this->Html->script(array('js2/bootstrap')); 
+   echo '<script>$("#modal-tutorial").modal("show");</script>';
+   ?>
+<!-- Tutorial Modal -->   
 
 <?php echo $this->Html->script(array('js2/jquery','js2/jquery-ui.min','js2/bootstrap','js2/uniform/jquery.uniform','js2/peity/jquery.peity','js2/select2/select2','js2/knob/jquery.knob','js2/flot/jquery.flot','js2/flot/jquery.flot.resize','js2/flot/jquery.flot.categories','js2/holder','js2/stilearn-base','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','js2/validate/jquery.validate','js2/validate/jquery.metadata','js2/wizard/jquery.ui.widget','js2/wizard/jquery.wizard','js2/responsive-tables/responsive-tables','wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall2','register','js2/jquery.fitvids','jasny-bootstrap/js/jasny-bootstrap','introjs/chardinjs')); ?>
 
-  <script>
 
-  </script>
 
 <!-- Js variable for wallscript begins-->
 <script>
@@ -246,9 +245,7 @@ $('#imageinfo').popover();
  NProgress.done();
   </script>
 
-   <?php if(isset($welcome))
-   echo '<script>$("#modal-tutorial").modal("show");</script>';
-   ?>
+
         
          <!-- this plugin required jquery ui-->
         
