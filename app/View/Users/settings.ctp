@@ -12,8 +12,6 @@ $username = $user['User']['seo_username'];
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
 
-    <p class="alert-info alert">Add a good quality channel avatar and a channel banner to make your channel unique. Preview your<a rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://clone.gs/'.$username;?>" class="btn btn-small btn-link" target="_blank" href="<?php echo $profilepublic;?>"><i class="elusive-user"></i> public channel</a></p>
-
 <div class="well shadow-black" style="background-color:white;">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#home" data-toggle="tab"><i class="elusive-user"></i> Profile</a></li>
