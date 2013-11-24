@@ -4,31 +4,33 @@ $router = Router::url();
 
 if ($this->action == "dashboard"){
     $class = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";$class9 = "";
 }elseif($this->action == "mygames"){
     $class2 = "class='active'";
-    $class = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";
+    $class = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";$class9 = "";
 }elseif($this->action == "favorites"){
     $class3 = "class='active'";
-    $class2 = "";$class = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";
+    $class2 = "";$class = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";$class9 = "";
 }elseif($this->action == "chains"){
     $class4 = "class='active'";
-    $class2 = "";$class3 = "";$class = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";
+    $class2 = "";$class3 = "";$class = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";$class9 = "";
 }elseif($this->action == "wall3"){
     $class5 = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class = "";$class6 = "";$class7 = "";$class8 = "";
+    $class2 = "";$class3 = "";$class4 = "";$class = "";$class6 = "";$class7 = "";$class8 = "";$class9 = "";
 }elseif($this->action == "settings"){
     $class6 = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class7 = "";$class = "";$class8 = "";
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class7 = "";$class = "";$class8 = "";$class9 = "";
 }elseif($this->action == ("bestchannels2" || "toprated2")){
     $class7 = "class='active'";
-    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class = "";$class8 = "";
+    $class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class = "";$class8 = "";$class9 = "";
 }elseif($this->action == "buttons"){
     $class8 = "class='active'";
-    $class = "";$class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";
+    $class = "";$class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class9 = "";
 }else{
-    $class = "";$class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";
+    $class = "";$class2 = "";$class3 = "";$class4 = "";$class5 = "";$class6 = "";$class7 = "";$class8 = "";$class9 = "";
 }
+
+$mychannel=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 
  ?>
 
@@ -47,11 +49,20 @@ if ($this->action == "dashboard"){
                                 </a>
                             </li>
 
+                            <li <?php echo $class9;?>>
+                                <a href="<?php echo $mychannel; ?>" title="My Channel">
+                                    <div class="helper-font-24">
+                                        <i class="elusive-user"></i>
+                                    </div>
+                                    <span class="sidebar-text">My Channel</span>
+                                </a>
+                            </li>
+
 
                             <li <?php echo $class;?>> <!--always define class .first for first-child of li element sidebar left-->
                                 <a href="<?php echo $dashboard; ?>" title="dashboard">
                                     <div class="helper-font-24">
-                                        <i class="icofont-home"></i>
+                                        <i class="icofont-dashboard"></i>
                                     </div>
                                     <span class="sidebar-text">Dashboard</span>
                                 </a>
