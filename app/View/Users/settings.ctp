@@ -150,6 +150,7 @@ $username = $user['User']['seo_username'];
                                                          
                                                 
 <?php echo $this->Form->input('username',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
+<?php echo $this->Form->input('screenname',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 <?php echo $this->Form->input('description',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 <?php echo $this->Form->input('adcode',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 <input data-form="uniform" id="inputUpload" type="hidden" name="data[User][banner]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100" />
