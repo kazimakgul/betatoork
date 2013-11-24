@@ -154,7 +154,7 @@ else{
                       <i class="elusive-share"></i>
                   </li>
                  <li rel="tooltip" data-placement="top" data-original-title="Clone This Game" href="#myModalclone" data-toggle="modal" class="btn pull-right btn-success" style="margin:5px;">
-                      <a><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i></a>
+                      <a><i class="elusive-plus-sign"></i> Clone</a>
                   </li>
 
                 </ul>

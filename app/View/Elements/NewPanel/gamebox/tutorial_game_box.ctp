@@ -26,11 +26,10 @@ else{
 <div class="span6" style="margin:0px 5px 0px 0px;">
   <li class="header-control">
     <div class="well thumbnail">
-<?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'img-polaroid','width'=>'190px','onerror'=>'imgError(this,"toorksize");')); ?>
-      <button onclick="chaingame2('<?php echo $game['Game']['name']; ?>',user_auth,<?php echo $game['Game']['id']; ?>); _gaq.push(['_trackEvent', 'Games', 'Clone', '<?php echo $game['Game']['name']; ?>']);" style="margin:5px; opacity:1;" href="#" rel="tooltip" data-placement="left" data-original-title="Clone" data-box="close" data-hide="fadeOut" class="close">
+<?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class'=>'img-polaroid','width'=>'230px','onerror'=>'imgError(this,"toorksize");')); ?>
+      <button onclick="chaingame2('<?php echo $game['Game']['name']; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" style="margin-top:-150px; margin-left:80px;" href="#" rel="tooltip" data-placement="left" data-original-title="Clone" data-box="close" data-hide="fadeOut" class="btn btn-success"><i class="elusive-plus-sign"></i> Clone</button>
 
-        <a class="btn btn-success btn-mini helper-font-16"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i></a></button>
-      <p style="margin:5px;"><strong><?php echo $game['Game']['name']; ?></strong></p>
+      <p style="margin:5px; margin-top:-15px;"><strong><?php echo $game['Game']['name']; ?></strong></p>
     </div>
   </li>
 </div>
