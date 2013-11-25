@@ -22,7 +22,7 @@
         <meta property="og:description" content= "<?php echo $description_for_layout?>" />
 
         <?php 
-        echo $this->Html->meta('keywords','create game channel,share games, social network for gamers, game channels, social for game bloggers,share your games');
+        echo $this->Html->meta('keywords','clone, clone games, create game channel, share games, social network for gamers, game channels, social network for game bloggers, share your games');
         ?>
 
 
