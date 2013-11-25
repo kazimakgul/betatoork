@@ -1748,7 +1748,7 @@ public function password2($id = null) {
 		 
 		 $user = $this->User->find('first', array('conditions' => array('User.facebook_id' =>$facebook_id)));
 		 if($user!=NULL)
-         $this->Auth->login($user['User']);
+         $this->Auth->login($user['User']);//Variable name has to be "user" for manual login.
 		 
 		 $msg = array('status' => 'user exists','msgid' => '1', 'msg' => 'Just a moment.<br>You will be redirected to your personal channel now..','location'=>$this->webroot.$this->Auth->loginRedirect['controller'].'/'.$this->Auth->loginRedirect['action']);
 		 
