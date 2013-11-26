@@ -200,8 +200,8 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 */
         //Generate User Image
 		$baseofs3=Configure::read('S3.url');
-		$avatarurl=$baseofs3.'/upload/users/'.$performer['User']['id'].'/'.$performer['User']['picture'];
-
+		//$avatarurl=$baseofs3.'/upload/users/'.$performer['User']['id'].'/'.$performer['User']['picture'];
+$avatarurl="avatar linki buraya gelecek".$baseofs3;
 
  		$email = new CakeEmail();
 
