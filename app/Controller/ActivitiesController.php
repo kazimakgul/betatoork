@@ -199,9 +199,9 @@ $this->set('lastactivities',$activityData);
 Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameAdd9 SharePost10 PlayGame11
 */
         //Generate User Image
-		$baseofs3=Configure::read('S3.url');
+		//$baseofs3=Configure::read('S3.url');
 		//$avatarurl=$baseofs3.'/upload/users/'.$performer['User']['id'].'/'.$performer['User']['picture'];
-$avatarurl="avatar linki buraya gelecek".$baseofs3;
+        $denemelik="avatar linki buraya gelecek";
 
  		$email = new CakeEmail();
 
@@ -215,7 +215,7 @@ $avatarurl="avatar linki buraya gelecek".$baseofs3;
 			    ->subject($performer["User"]["username"].' commented on your game.')
 			    ->send();
 	  	}elseif($type_id==2){
-			$email->viewVars(array('performer' => $performer,'avatar'=>$avatarurl,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'denemelik'=>$avatarurl,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('follow') 
 			    ->emailFormat('html')
