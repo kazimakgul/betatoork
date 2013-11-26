@@ -163,7 +163,7 @@ $this->set('lastactivities',$activityData);
 				
 				    if($email==1)
 					{
-					//$this->sendNotifyMail($performer_id,$game_id,$channel_id,$type);
+					$this->sendNotifyMail($performer_id,$game_id,$channel_id,$type);
 				    }
 				}
 	
