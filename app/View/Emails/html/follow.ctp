@@ -20,6 +20,15 @@ else{
 
   <div style="padding:14px"><table style="width:100%" cellpadding="0" cellspacing="0"><tbody><tr><td style="width:46px"><a href="<?php echo $profileurl; ?>" target="_blank">
   
+  <?php 
+  if($performer['User']['seo_username']!=NULL)
+  {
+  echo '<img width="90" src="'.$avatar.'">';
+  }else{
+  echo '<img width="90" src="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon2.png">';
+  }    
+  ?>
+  
     <img width="90" src="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon2.png">
 
 
