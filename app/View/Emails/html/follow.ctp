@@ -23,12 +23,12 @@ else{
   <?php 
   if($performer['User']['seo_username']!=NULL)
   {
-  echo '<img width="90" src="'.$avatar.'">';
+  echo '<img width="90" src="'.$avatarurl.'">';
   }else{
   echo '<img width="90" src="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon2.png">';
   }    
   ?>
-  <?php echo $avatar; ?>
+  <?php echo $avatarurl; ?>
     <img width="90" src="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon2.png">
 
 
