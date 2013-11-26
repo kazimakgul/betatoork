@@ -215,7 +215,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' commented on your game.')
 			    ->send();
 	  	}elseif($type_id==2){
-			$email->viewVars(array('performer' => $performer,'denemelik'=>$avatarurl,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'denemelik'=>$denemelik,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('follow') 
 			    ->emailFormat('html')
