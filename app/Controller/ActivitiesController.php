@@ -199,14 +199,13 @@ $this->set('lastactivities',$activityData);
 Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameAdd9 SharePost10 PlayGame11
 */
         //Generate User Image
-		//$baseofs3=Configure::read('S3.url');
-		//$avatarurl=$baseofs3.'/upload/users/'.$performer['User']['id'].'/'.$performer['User']['picture'];
-        $denemelik="avatar linki buraya gelecek";
+		$baseofs3=Configure::read('S3.url');
+        $performer['User']['avatarurl']="www.toork.comavatar";
 
  		$email = new CakeEmail();
 
  		if($type_id==1){
-			$email->viewVars(array('game' => $game,'performer' => $performer,'avatar'=>$avatarurl,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('comment')
 			    ->emailFormat('html')
@@ -215,7 +214,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' commented on your game.')
 			    ->send();
 	  	}elseif($type_id==2){
-			$email->viewVars(array('performer' => $performer,'denemelik'=>$denemelik,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('follow') 
 			    ->emailFormat('html')
@@ -224,7 +223,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' is following you on Clone.')
 			    ->send();
 	  	}elseif($type_id==3){
-			$email->viewVars(array('game' => $game,'performer' => $performer,'avatar'=>$avatarurl,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('clone')
 			    ->emailFormat('html')
@@ -233,7 +232,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' made a clone of your game.')
 			    ->send();
 	  	}elseif($type_id==4){
-			$email->viewVars(array('game' => $game,'performer' => $performer,'avatar'=>$avatarurl,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('rate')
 			    ->emailFormat('html')
@@ -242,7 +241,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' rated your game.')
 			    ->send();
 	  	}elseif($type_id==5){
-			$email->viewVars(array('game' => $game,'performer' => $performer,'avatar'=>$avatarurl,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('mention')
 			    ->emailFormat('html')
@@ -251,7 +250,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' is talking about you.')
 			    ->send();
 	  	}elseif($type_id==6){
-			$email->viewVars(array('performer' => $performer,'avatar'=>$avatarurl,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('postComment')
 			    ->emailFormat('html')
@@ -260,7 +259,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' commneted on your post.')
 			    ->send();
 	  	}elseif($type_id==7){
-			$email->viewVars(array('game' => $game,'performer' => $performer,'avatar'=>$avatarurl,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('favorite')
 			    ->emailFormat('html')
@@ -269,7 +268,7 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->subject($performer["User"]["username"].' added your game to its Favorite list.')
 			    ->send();
 	  	}elseif($type_id==8){
-			$email->viewVars(array('game' => $game,'performer' => $performer,'avatar'=>$avatarurl,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->viewVars(array('game' => $game,'performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
 			$email->config('smtp')
 				->template('hashtag')
 			    ->emailFormat('html')
