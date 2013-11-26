@@ -1015,7 +1015,7 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 				
 				    if($email==1)
 					{
-					//$this->sendNotifyMail($performer_id,$game_id,$channel_id,$type);
+					$this->sendNotifyMail($performer_id,$game_id,$channel_id,$type);
 				    }
 				}
 	
@@ -1050,8 +1050,9 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 /* Activity Type_id codes
 Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameAdd9 SharePost10 PlayGame11
 */
-
-
+        //Generating User Avatar
+		$baseofs3=Configure::read('S3.url');
+        $performer['User']['avatarurl']=$baseofs3.'/upload/users/'.$performer['User']['picture'];
 
  		$email = new CakeEmail();
 
