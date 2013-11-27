@@ -1023,6 +1023,13 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 		
  }
 	
+	function getExtension2($str) {
+     $i = strrpos($str,".");
+     if (!$i) { return ""; }
+     $l = strlen($str) - $i;
+     $ext = substr($str,$i+1,$l);
+     return $ext;
+}
 	
    public function sendNotifyMail($performer_id=NULL,$game_id=NULL,$channel_id=NULL,$type_id=NULL)
    {
@@ -1052,9 +1059,9 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 */
         //--------Generating User Avatar
 		$baseofs3=Configure::read('S3.url');
-		//$noextension=rtrim($performer['User']['picture']['name'], '.'.$this->getExtension($performer['User']['picture']['name']));
-		//$yesextension=$noextension.'_original.'.$this->getExtension($performer['User']['picture']['name']);
-        $performer['User']['avatarurl']=$baseofs3.'/upload/users/';
+		$noextension=rtrim($performer['User']['picture']['name'], '.'.$this->getExtension2($performer['User']['picture']['name']));
+		$yesextension=$noextension.'_original.'.$this->getExtension2($performer['User']['picture']['name']);
+        $performer['User']['avatarurl']=$baseofs3.'/upload/users/'.$yesextension;
 		//------/Generating User Avatar
 
  		$email = new CakeEmail();
