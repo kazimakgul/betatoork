@@ -1029,6 +1029,11 @@ public function profile() {
     $userid = $this->request->params['pass'][0];
     $authid = $this->Session->read('Auth.User.id');
 
+$url = 'http://nuwildroots.files.wordpress.com/2010/07/flowers.gif?w=955';
+$img = '/home/ubuntu/test/flower.gif';
+file_put_contents($img, file_get_contents($url));
+echo 'naber';break;
+
 	if(!is_numeric($userid)){
 	$userconvert = $this->User->find('first', array('contain'=>false,'conditions' => array('User.seo_username' => $userid)));
 	$userid=$userconvert['User']['id'];
