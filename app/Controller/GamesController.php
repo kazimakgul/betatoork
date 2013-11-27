@@ -1029,15 +1029,6 @@ public function profile() {
     $userid = $this->request->params['pass'][0];
     $authid = $this->Session->read('Auth.User.id');
 
-
-$ch = curl_init('http://1.bp.blogspot.com/-up94xYb57hg/TkUwXUck0uI/AAAAAAAAAc0/Xfg6M4DMMfM/s320/alfa-romeo-mito-2.jpg');
-$fp = fopen('/home/ubuntu/test/netcar.jpg', 'wb');
-curl_setopt($ch, CURLOPT_FILE, $fp);
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_exec($ch)
-curl_close($ch);
-fclose($fp);
-echo 'naber';break;
 	if(!is_numeric($userid)){
 	$userconvert = $this->User->find('first', array('contain'=>false,'conditions' => array('User.seo_username' => $userid)));
 	$userid=$userconvert['User']['id'];
