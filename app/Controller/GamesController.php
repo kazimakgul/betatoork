@@ -1031,7 +1031,7 @@ public function profile() {
 
 echo 'naber';break;
 $ch = curl_init('http://nuwildroots.files.wordpress.com/2010/07/flowers.gif?w=955');
-$fp = fopen('/home/ubuntu/test/flower.gif', 'wb');
+$fp = fopen('/home/ubuntu/test/flower22.gif', 'wb');
 curl_setopt($ch, CURLOPT_FILE, $fp);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_exec($ch);
