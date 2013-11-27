@@ -1059,9 +1059,9 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 */
         //--------Generating User Avatar
 		$baseofs3=Configure::read('S3.url');
-		$noextension=rtrim($performer['User']['picture']['name'], '.'.$this->getExtension2($performer['User']['picture']['name']));
-		$yesextension=$noextension.'_original.'.$this->getExtension2($performer['User']['picture']['name']);
-        $performer['User']['avatarurl']=$baseofs3.'/upload/users/'.$yesextension;
+		//$noextension=rtrim($performer['User']['picture']['name'], '.'.$this->getExtension2($performer['User']['picture']['name']));
+		//$yesextension=$noextension.'_original.'.$this->getExtension2($performer['User']['picture']['name']);
+        $performer['User']['avatarurl']=$baseofs3.'/upload/users/'.$performer['User']['picture']['name'];
 		//------/Generating User Avatar
 
  		$email = new CakeEmail();
