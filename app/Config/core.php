@@ -231,10 +231,10 @@
  */
 	//date_default_timezone_set('UTC');
 
-#Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpics');
-#</h3>Configure::write('S3.name','betatoorkpics');
-Configure::write('S3.name','betatoorkpicstest');
-Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpicstest');
+Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpics');
+Configure::write('S3.name','betatoorkpics');
+#Configure::write('S3.name','betatoorkpicstest');
+#Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpicstest');
 
 # test S3 path  -> https://s3.amazonaws.com/betatoorkpicstest
 # toork S3 path -> https://s3.amazonaws.com/betatoorkpics
