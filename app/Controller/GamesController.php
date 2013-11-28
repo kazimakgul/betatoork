@@ -2646,12 +2646,115 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 
 
 
-	public function add3() {
+	public function add3($link="www.armorgames.com") {
 	
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
 		$this->layout='dashboard';
 		$this->headerlogin();
+		
+	$linknow='http://'.$link;	
+		echo 'ready...<br>';
+//Document for dom element using http://stackoverflow.com/questions/3711357/get-title-and-meta-tags-of-external-site		
+		$myURL = 'http://www.facebook.com';
+if (preg_match('/<title>(.+)<\/title>/',file_get_contents($myURL),$matches) && isset($matches[1] ))
+{
+   $title = $matches[1];
+   //echo $title; 
+}
+else
+   $title = "Not Found";
+   
+   $dom = new DOMDocument;
+//$dom->loadHTML("<html><head><title id='pageTitle'>Facebook</title></head><body>Test<br></body></html>");
+/*** get the HTML ***/
+$content=file_get_contents($linknow);
+@$dom->loadHTML($content);
+/*** remove silly white space ***/
+$dom->preserveWhiteSpace = false;
+
+//------------Echo titles-----------
+$titles = $dom->getElementsByTagName('title');
+foreach ($titles as $title) {
+    $nrmtitle=$title->nodeValue;
+}
+//----------//Echo titles-----------
+//$images = $dom->getElementsByTagName('img');
+
+$metas = $dom->getElementsByTagName('meta');
+$dom_flag=1;
+for ($i = 0; $i < $metas->length; $i++)
+{
+    $meta = $metas->item($i);
+    if($meta->getAttribute('name') == 'description')
+        $description = $meta->getAttribute('content');
+    if($meta->getAttribute('name') == 'keywords')
+        $keywords = $meta->getAttribute('content');
+	if($meta->getAttribute('property') == 'og:title') 
+        $meta_og_title = $meta->getAttribute('content');
+	if($meta->getAttribute('property') == 'og:description') 
+        $meta_og_description = $meta->getAttribute('content');		
+	if($meta->getAttribute('property') == 'og:image' && $dom_flag==1) { 
+        $meta_og_image = $meta->getAttribute('content');
+		$dom_flag=0;//One image is enough...
+    }
+	
+}
+
+//For Title
+if(isset($meta_og_title))
+$current_title=$meta_og_title;
+else if(isset($nrmtitle))
+$current_title=$nrmtitle;
+else
+$current_title="There is no any title data.Please write a title.";
+
+//For Description
+if(isset($meta_og_description))
+$current_description=$meta_og_description;
+else if(isset($description))
+$current_description=$description;
+else
+$current_description="There is no any description data.Please write a description.";
+
+//For Og:Image
+if(isset($meta_og_image))
+$current_image=$meta_og_image;
+else
+$current_image="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon2.png";
+
+//For Keyword
+if(isset($keywords))
+$current_keywords=$keywords;
+else
+$current_keywords="There is no any keyword data.Please write a keyword.";
+
+
+echo '<br>'.'Title:'.$current_title.'<br>';
+echo 'Description:'.$current_description.'<br>';
+echo 'Image:'.$current_image.'<br>';
+echo 'Keywords:'.$current_keywords.'<br>';
+
+
+
+//foreach($dom->getElementsByTagName('meta') as $meta) {
+  //  if($meta->getAttribute('property') == 'og:image') { 
+        //Assign the value from content attribute to $meta_og_image
+    //    $meta_og_image = $meta->getAttribute('content');
+        //stop all iterations in this loop
+      //  break;
+    //}
+//}
+//if(!isset($meta_og_image))
+//{
+//$meta_og_image="yok";
+//}
+
+
+		
+		
+		
+		break;
 		$userid = $this->Session->read('Auth.User.id');
 
     	$limit=12;
