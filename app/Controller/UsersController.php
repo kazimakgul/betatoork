@@ -1663,11 +1663,11 @@ public function password2($id = null) {
 				//$this->request->data['User']['userstat'] = 0; //buraya bakýlacak yeni alan için
 				
 				if ($this->User->save($this->request->data)) {
-				
+				$lastinsertid=$this->User->getLastInsertID();
 				//userstat data for new user
 				$userstat_data=
 			array('Userstat' =>array(
-			'user_id' => $this->User->getLastInsertID(),
+			'user_id' => $lastinsertid,
 			'totalrate' => 0,
 			'favoritecount' => 0,
 			'subscribe' => 0,
@@ -1678,6 +1678,25 @@ public function password2($id = null) {
 				
 				    //$this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();
 				    $this->Userstat->save($userstat_data);
+					
+					//-----Download Facebook Image-----
+					$randomimageid=rand(100000,99999999);
+					$this->Game->query('UPDATE users SET picture="'.$randomimageid.'.jpg" WHERE id='.$lastinsertid.';');
+					$url = 'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-prn1/942514_10151693256505120_468147234_n.jpg';
+                    $img = '/home/ubuntu/test/'.$randomimageid.'_original.jpg';
+                    file_put_contents($img, file_get_contents($url));
+					//-----/Download Facebook Image-----
+					//================Throw to S3==================
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/users/'.$lastinsertid.'/'.$randomimageid.'_original.jpg',
+             array(
+			'fileUpload' => "/home/ubuntu/test/".$randomimageid."_original.jpg",
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			//============/Throw to S3==========================
+					
 					$this->set('rtdata', 'true');
 					$this->Session->write('FirstLogin',$this->User->getLastInsertID());
 					
