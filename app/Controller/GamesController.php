@@ -2646,14 +2646,16 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 
 
 
-	public function add3($link="www.armorgames.com") {
+	public function add3() {
 	
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
 		$this->layout='dashboard';
 		$this->headerlogin();
 		
-	$linknow='http://'.$link;	
+	$linknow=$_GET['q'];;	echo $linknow;
+	
+	
 		echo 'ready...<br>';
 //Document for dom element using http://stackoverflow.com/questions/3711357/get-title-and-meta-tags-of-external-site		
 		$myURL = 'http://www.facebook.com';
@@ -2698,7 +2700,6 @@ for ($i = 0; $i < $metas->length; $i++)
         $meta_og_image = $meta->getAttribute('content');
 		$dom_flag=0;//One image is enough...
     }
-	
 }
 
 //For Title
