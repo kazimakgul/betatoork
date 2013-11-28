@@ -1682,7 +1682,7 @@ public function password2($id = null) {
 					//-----Download Facebook Image-----
 					$randomimageid=rand(100000,99999999);
 					$this->Game->query('UPDATE users SET picture="'.$randomimageid.'.jpg" WHERE id='.$lastinsertid.';');
-					$url = 'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-prn1/942514_10151693256505120_468147234_n.jpg';
+					$url = 'https://graph.facebook.com/'.$this->request->data['User']['facebook_id'].'/picture?width=120&height=160';
                     $img = '/home/ubuntu/test/'.$randomimageid.'_original.jpg';
                     file_put_contents($img, file_get_contents($url));
 					//-----/Download Facebook Image-----
