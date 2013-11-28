@@ -1660,7 +1660,7 @@ public function password2($id = null) {
 				$this->request->data['User']['active'] = 0;
 				$this->request->data['User']['facebook_id'] = $this->request->data['fi'];
 				$this->request->data['User']['access_token'] = $this->request->data['at'];
-				$this->request->data['User']['fb_link'] = 'https://www.facebook/'.$this->request->data['User']['facebook_id'];
+				$this->request->data['User']['fb_link'] = 'https://www.facebook.com/'.$this->request->data['User']['facebook_id'];
 				
 				//-----Get some from fb graph api--------
 				//$pageContent = file_get_contents('http://graph.facebook.com/1157251270');
