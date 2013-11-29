@@ -1630,6 +1630,52 @@ function forgetPassword()
 
 //==========================================================
 //*********Grab Game Function********
+$('#metacrawler').live('click',function(){
+		$graburl=$('#urlarea').val();
+		$("#fetchurl").html($graburl.substring(0,35));
+		$('#fetchloader').show();
+		if($graburl!="")//bu bölüme validation kontrolü gelecek
+       {
+		   
+		   //if given url ia valid url execute codes below
+		   $.ajax({
+        type: "POST",
+        url: crawler,
+        data: {crawlurl: $graburl },
+        dataType: "json",
+		async: true,
+        success: function(data){
+			
+			$title=data.rtdata.title;
+			$description=data.rtdata.description;
+			$imagevalid=data.rtdata.imagevalid;
+			$image=data.rtdata.image;
+			
+			if($imagevalid==1)
+			{
+				document.getElementById("currentavatar").src=$image;
+				$('#external_image').val($image);
+			}
+			
+			$('#game_name').val($title);
+			$('#game_link').val($graburl);
+			$('#game_desc').val($description);
+			$("#expandGame").collapse('show');
+			
+			//window.scrollBy(0,50);
+			var $target=$('#expandGame');
+			$('html, body').animate({scrollTop:$target.position().top-120}, 'slow');
+			$('#fetchloader').css("display", "none");
+			},
+        failure: function(errMsg) {
+            //alert(errMsg);
+        }
+  });	
+		      
+	   }
+	
+});
+
 
 $('#grabgame').live('click',function(){
 									
@@ -1663,7 +1709,19 @@ if($graburl!="")
 
 $('#editgame').live('click',function(){									 
 
-$('#grabloader').css("display", "block");									 							 								 
+        if($("#addgameform").valid())
+		{	
+		$('#grabloader').css("display", "block");
+		}									 							 								 
+									 
+});
+
+$('#submitgame').live('click',function(){									 
+
+        if($("#addgameform").valid())
+		{	
+		$('#grabloader').css("display", "block");
+		}
 									 
 });
 
@@ -1737,6 +1795,19 @@ $.post(activitypath, function (data) {
         });
      }//End of last_id control
 }
+
+
+
+
+//==========================================================
+//*********Some Validations********
+//==========================================================
+ // Setup form validation on the #register-form element
+    $("#addgameform").validate({ });
+//==========================================================
+//*********Some Validations********
+//==========================================================
+
 
 //==========================================================
 //*********Notification Frontend Functions********

@@ -59,6 +59,7 @@ notifycount='<?php echo $this->Html->url(array('controller'=>'activities','actio
 notifytoggle='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'togglelast10')); ?>';
 notifyrefresh='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getfreshnotification')); ?>';
 oldnotify='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getoldnotifications')); ?>';
+crawler='<?php echo $this->Html->url(array('controller'=>'apis','action'=>'metacrawler')); ?>';
 
 //Code Block for Broken Images
 function imgError(image,style){
@@ -197,7 +198,7 @@ NProgress.set(0.8);
    ?>
 <!-- Tutorial Modal -->   
 
-<?php echo $this->Html->script(array('js2/jquery','js2/jquery-ui.min','js2/bootstrap','js2/uniform/jquery.uniform','js2/peity/jquery.peity','js2/select2/select2','js2/knob/jquery.knob','js2/flot/jquery.flot','js2/flot/jquery.flot.resize','js2/flot/jquery.flot.categories','js2/holder','js2/stilearn-base','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','js2/validate/jquery.validate','js2/validate/jquery.metadata','js2/wizard/jquery.ui.widget','js2/wizard/jquery.wizard','js2/responsive-tables/responsive-tables','wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall2','register','js2/jquery.fitvids','jasny-bootstrap/js/jasny-bootstrap','introjs/chardinjs')); ?>
+<?php echo $this->Html->script(array('js2/jquery','js2/jquery-ui.min','js2/bootstrap','js2/uniform/jquery.uniform','js2/peity/jquery.peity','js2/select2/select2','js2/knob/jquery.knob','js2/flot/jquery.flot','js2/flot/jquery.flot.resize','js2/flot/jquery.flot.categories','js2/holder','js2/stilearn-base','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','js2/validate/jquery.validate','js2/validate/jquery.metadata','js2/wizard/jquery.ui.widget','js2/wizard/jquery.wizard','js2/responsive-tables/responsive-tables','wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall2','register','js2/jquery.fitvids','jasny-bootstrap/js/jasny-bootstrap','introjs/chardinjs','jquery.validate')); ?>
 
 
 

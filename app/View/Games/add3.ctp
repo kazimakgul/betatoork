@@ -40,17 +40,22 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                     <a title="search" style="" class="icon"><i class="icofont-plus"></i></a>
                                     <input id="urlarea" class="input-xxlarge animated grd-white" required pattern="(http|https)://.+" onfocus type="text" placeholder="where is the game? Type the link of the website!">
                                 </div>
-                                <input id="grabgame" onClick="_gaq.push(['_trackEvent', 'Games', 'Add']);" type="button" class="btn btn-danger" value="Grab the game!">
+                                <input id="metacrawler" type="button" class="btn btn-danger" value="Grab the game!">
                             </div>
-                            <div id="grabloader" style="display:none;">
-                            <p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
-                            <p><small>Your game is processing... </small></p>
-                            </div>
+                      
                             <p><small>Simply copy/paste the url from the browser where you play the game.  <strong>Ex: http://phoboslab.org/ztype/</strong></small></p>
                         </div>
                     </form>
 
                 </div>
+
+
+    <!--Loader for data fetching-->
+<div style="width:100%;text-align:center;"><div id="fetchloader" style="display:none;">
+                            <p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
+                            <p><small>Data is fetching from <span id="fetchurl"></span> </small></p>
+                            </div></div>
+	<!--/Loader for data fetching-->
 
 
         <a style="text-align: center ;"class="accordion-toggle collapsed color-red" data-toggle="collapse" href="#expandGame">
@@ -69,7 +74,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
     <label class="control-label" for="inputAuto"><strong>Game Picture</strong></label>
 <div class="span4 fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-new img-polaroid" style="width: 215px; height:118px;">
-    <img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" alt="" width="500" height="110"></div>
+    <img id="currentavatar" src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" alt="" style="width:180px;height:100px;"></div>
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 215px; height: 115px; line-height: 20px;"></div>
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
@@ -86,7 +91,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto"><strong>Game Name</strong></label>
                                                             <div class="controls">
-<?php echo $this->Form->input('name',array('label'=>false ,'maxlength'=>25,'required','type'=>'text','class'=>'grd-white span10','id'=>'inputAuto','placeholder' => 'Metal Slug Brutal 3')); ?>     
+<?php echo $this->Form->input('name',array('label'=>false ,'maxlength'=>25,'required','type'=>'text','class'=>'grd-white span10','id'=>'game_name','placeholder' => 'Metal Slug Brutal 3')); ?>     
                                                             </div>
                                                         </div>
 
@@ -95,7 +100,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto"><strong>Game Link</strong></label>
                                                             <div class="controls">
-<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'required pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white span10', 'maxlength'=>200)); ?>
+<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'required pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white span10','id'=>'game_link', 'maxlength'=>200)); ?>
                                                             </div>
                                                         </div>
                                     <?php } ?>          
@@ -104,7 +109,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto"><strong>Game Link</strong></label>
                                                             <div class="controls">
-<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white span10', 'maxlength'=>200)); ?>
+<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white span10','id'=>'game_link', 'maxlength'=>200)); ?>
                                                             </div>
                                                         </div>
                                 
@@ -121,7 +126,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto"><strong>Game Description</strong></label>
                                                             <div class="controls">
-<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>400,'required','placeholder' => 'Describe the game you share please','type' => 'textarea','class'=>'span10','rows'=>'5',)); ?>  
+<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>400,'required','placeholder' => 'Describe the game you share please','type' => 'textarea','class'=>'span10','id'=>'game_desc','rows'=>'5',)); ?>  
                                                             </div>
                                                         </div>
 
@@ -131,14 +136,14 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
  <?php echo $this->Form->input('category_id',array('label'=>'Select Category:' )); ?>
                                                             </div>
                                                         </div>
-                                                        
+                                                        <input name="data[Game][external_image]" id="external_image" type="hidden" value="">
                                                         <div style="width:100%;text-align:center;"><div id="grabloader" style="display:none;">
                             <p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
                             <p><small>Your game is processing... </small></p>
                             </div></div>
                                                         
                                                         <div class="form-actions">
-                                                            <button id="editgame" type="submit" class="btn btn-primary">Save changes</button>
+                                                            <button id="submitgame" type="submit" onClick="_gaq.push(['_trackEvent', 'Games', 'Add']);" class="btn btn-primary">Submit Game</button>
                                                             <a type="button" class="btn" href="<?php echo $mygames; ?>">Cancel</a>
                                                         </div>
                                                     </form>

@@ -2673,6 +2673,13 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 		   
 			//$this->request->data['Game']['link']=$this->http_check($this->request->data['Game']['link']);
 			
+			
+			$ext_image=$this->request->data["Game"]["external_image"];
+			if($ext_image!="")
+			{
+			//if there is an external image from link.
+			}
+			
 			$myval=$this->request->data["Game"]["edit_picture"]["name"];
 			
 			if($myval!="")
@@ -2728,11 +2735,14 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			}
 			
 			if ($this->Game->save($filtered_data)) {
-				$this->Session->setFlash('You have successfully added your game.');
-				
+				$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
+				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
+				$id=$this->Game->getLastInsertId();
+			    $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));
 				
 				
 				//Upload to aws begins
+				/*
 			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
 		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
@@ -2757,7 +2767,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			
             }
 			//Upload to aws ends
-				
+				*/
 				//if ($ret3) {
                 //die;
                 //}

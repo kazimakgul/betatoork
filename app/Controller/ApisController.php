@@ -273,12 +273,11 @@ return $material.$number;
 	
 	public function metacrawler()
 	{
-	$this->layout="ajax";
+		 Configure::write ( 'debug', 0 );
+		 
+		 $linknow=$this->request->data['crawlurl'];
 	
-	$linknow=$_GET['q'];;	echo $linknow;
-	
-	
-		echo 'ready...<br>';
+		//echo 'ready...<br>';
 //Document for dom element using http://stackoverflow.com/questions/3711357/get-title-and-meta-tags-of-external-site		
 		$myURL = 'http://www.facebook.com';
 if (preg_match('/<title>(.+)<\/title>/',file_get_contents($myURL),$matches) && isset($matches[1] ))
@@ -334,6 +333,7 @@ for ($i = 0; $i < $links->length; $i++)
         $videothumbnail = $link->getAttribute('href');
 }
 
+$imagevalid=1;
 
 //For Title
 if(isset($meta_og_title))
@@ -359,7 +359,10 @@ $current_image=$image_src;
 else if(isset($videothumbnail))
 $current_image=$videothumbnail;
 else
+{
 $current_image="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon2.png";
+$imagevalid=0;
+}
 
 //For Keyword
 if(isset($keywords))
@@ -368,11 +371,15 @@ else
 $current_keywords="There is no any keyword data.Please write a keyword.";
 
 
-echo '<br>'.'Title:'.$current_title.'<br>';
-echo 'Description:'.$current_description.'<br>';
-echo 'Image:'.$current_image.'<br>';
-echo 'Keywords:'.$current_keywords.'<br>';
+//echo '<br>'.'Title:'.$current_title.'<br>';
+//echo 'Description:'.$current_description.'<br>';
+//echo 'Image:'.$current_image.'<br>';
+//echo 'Keywords:'.$current_keywords.'<br>';
 
+//if image valid equal 0,want users to upload an image.
+$msg = array("title" => $current_title,'description' => $current_description, 'imagevalid' => $imagevalid,'image'=>$current_image);
+$this->set('rtdata', $msg);
+$this->set('_serialize', array('rtdata'));
 
 
 //foreach($dom->getElementsByTagName('meta') as $meta) {
