@@ -2742,7 +2742,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 				
 				
 				//Upload to aws begins
-				/*
+				
 			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
 		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
@@ -2767,7 +2767,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			
             }
 			//Upload to aws ends
-				*/
+				
 				//if ($ret3) {
                 //die;
                 //}
