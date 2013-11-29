@@ -2652,152 +2652,98 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
     App::uses('File', 'Utility');
 		$this->layout='dashboard';
 		$this->headerlogin();
-		
-	$linknow=$_GET['q'];;	echo $linknow;
-	
-	
-		echo 'ready...<br>';
-//Document for dom element using http://stackoverflow.com/questions/3711357/get-title-and-meta-tags-of-external-site		
-		$myURL = 'http://www.facebook.com';
-if (preg_match('/<title>(.+)<\/title>/',file_get_contents($myURL),$matches) && isset($matches[1] ))
-{
-   $title = $matches[1];
-   //echo $title; 
-}
-else
-   $title = "Not Found";
-   
-   $dom = new DOMDocument;
-//$dom->loadHTML("<html><head><title id='pageTitle'>Facebook</title></head><body>Test<br></body></html>");
-/*** get the HTML ***/
-$content=file_get_contents($linknow);
-@$dom->loadHTML($content);
-/*** remove silly white space ***/
-$dom->preserveWhiteSpace = false;
 
-//------------Echo titles-----------
-$titles = $dom->getElementsByTagName('title');
-foreach ($titles as $title) {
-    $nrmtitle=$title->nodeValue;
-}
-//----------//Echo titles-----------
-//$images = $dom->getElementsByTagName('img');
-
-$metas = $dom->getElementsByTagName('meta');
-$dom_flag=1;
-for ($i = 0; $i < $metas->length; $i++)
-{
-    $meta = $metas->item($i);
-    if($meta->getAttribute('name') == 'description')
-        $description = $meta->getAttribute('content');
-    if($meta->getAttribute('name') == 'keywords')
-        $keywords = $meta->getAttribute('content');
-	if($meta->getAttribute('property') == 'og:title') 
-        $meta_og_title = $meta->getAttribute('content');
-	if($meta->getAttribute('property') == 'og:description') 
-        $meta_og_description = $meta->getAttribute('content');		
-	if($meta->getAttribute('property') == 'og:image' && $dom_flag==1) { 
-        $meta_og_image = $meta->getAttribute('content');
-		$dom_flag=0;//One image is enough...
-    }
-}
-
-//For Title
-if(isset($meta_og_title))
-$current_title=$meta_og_title;
-else if(isset($nrmtitle))
-$current_title=$nrmtitle;
-else
-$current_title="There is no any title data.Please write a title.";
-
-//For Description
-if(isset($meta_og_description))
-$current_description=$meta_og_description;
-else if(isset($description))
-$current_description=$description;
-else
-$current_description="There is no any description data.Please write a description.";
-
-//For Og:Image
-if(isset($meta_og_image))
-$current_image=$meta_og_image;
-else
-$current_image="https://s3.amazonaws.com/betatoorkpics/socials/clone-user-icon2.png";
-
-//For Keyword
-if(isset($keywords))
-$current_keywords=$keywords;
-else
-$current_keywords="There is no any keyword data.Please write a keyword.";
-
-
-echo '<br>'.'Title:'.$current_title.'<br>';
-echo 'Description:'.$current_description.'<br>';
-echo 'Image:'.$current_image.'<br>';
-echo 'Keywords:'.$current_keywords.'<br>';
-
-
-
-//foreach($dom->getElementsByTagName('meta') as $meta) {
-  //  if($meta->getAttribute('property') == 'og:image') { 
-        //Assign the value from content attribute to $meta_og_image
-    //    $meta_og_image = $meta->getAttribute('content');
-        //stop all iterations in this loop
-      //  break;
-    //}
-//}
-//if(!isset($meta_og_image))
-//{
-//$meta_og_image="yok";
-//}
-
-
-		
-		
-		
-		break;
 		$userid = $this->Session->read('Auth.User.id');
 
     	$limit=12;
 		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
     )));
 		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	
+    	
+		$clone=0;
+		$this->set("clone",$clone);
+		
 		$isActive = $user['User']['active'];
-		if ($this->request->is('post')) {
-		 
-		 
-		  //Replace Name of Picture Begins
-		   $ext = ".".$this->getExtension($this->request->data["Game"]["picture"]["name"]);
-		   $this->request->data["Game"]["picture"]["name"]="toork_".$this->request->data['Game']['name'].$ext;
-          //Replace Name of Picture Ends
-		 
-           $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($this->request->data['Game']['name']);
+		
+		if ($this->request->is('post') || $this->request->is('put')) {
+		
+		   $this->request->data['Game']['name']=substr($this->secureSuperGlobalPOST($this->request->data['Game']['name']),0,25);
 		   $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($this->request->data['Game']['description']);
-
-			$this->request->data['Game']['user_id'] = $this->Auth->user('id');
+		   
+			//$this->request->data['Game']['link']=$this->http_check($this->request->data['Game']['link']);
+			
+			$myval=$this->request->data["Game"]["edit_picture"]["name"];
+			
+			if($myval!="")
+			{
+			/*
+			//Folder Formatting begins
+			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
+		    $files = $dir->find('.*');
+		    foreach ($files as $file) {
+            $file = new File($dir->pwd() . DS . $file);
+            $file->delete();
+            $file->close(); 
+            }
+			//Folder Formatting ends
+			*/
+			
+			$this->request->data["Game"]["picture"]=$this->request->data["Game"]["edit_picture"];
+			
+			
+			//Replace Name of Picture Begins
+			$ext = ".".$this->getExtension($this->request->data["Game"]["picture"]["name"]);
+		    $this->request->data["Game"]["picture"]["name"]="toork_".$this->request->data['Game']['name'].$ext;
+			//Replace Name of Picture Ends
+			}
 			
 			
 			//seourl begins
-		 $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
-		 //seourl ends
+		     $this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(str_replace('_','',Inflector::slug(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])))));
+		    //seourl ends
 			
-			$this->Game->create();
 			
-
-			if ($this->Game->save($this->request->data)) {
-			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
-				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
 			
-			$id=$this->Game->getLastInsertId();
-			$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));	
+			//*********************
+			//Secure data filtering
+			//*********************
+			$filtered_data=
+			array('Game' =>array(
+			'name' => $this->request->data['Game']['name'],
+			'description' => $this->request->data['Game']['description'],
+			'category_id' => $this->request->data['Game']['category_id'],
+			'user_id' => $userid,
+			'seo_url' => $this->request->data['Game']['seo_url']));
+			//if game is not clone,submits link & embed datas otherwise not!
+			if(!$clone)
+			{
+			$filtered_data['Game']['link']=$this->request->data['Game']['link'];
+			$filtered_data['Game']['embed']=$this->request->data['Game']['embed'];
+			}
+			//if new image exists,submit,otherwise not!
+			if($myval!="")
+			{
+			$filtered_data['Game']['picture']=$this->request->data["Game"]["picture"];
+			}
+			
+			if ($this->Game->save($filtered_data)) {
+				$this->Session->setFlash('You have successfully added your game.');
 				
-			//Upload to aws begins
+				
+				
+				//Upload to aws begins
 			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
 		    $files = $dir->find('.*');
 		    foreach ($files as $file) {
             $file = new File($dir->pwd() . DS . $file);
             $info=$file->info();
 			$basename=$info["basename"];
+			if(strpos($basename,"toorksize")!=false)
+			{
+	        echo $basename;
+			$ret3=$this->crop_game_image($basename,$id);
+			}
 			$dirname=$info["dirname"];
 			//echo $file;
 			 $this->Amazon->S3->create_object(
@@ -2812,8 +2758,9 @@ echo 'Keywords:'.$current_keywords.'<br>';
             }
 			//Upload to aws ends
 				
-				
-				
+				//if ($ret3) {
+                //die;
+                //}
 				
 				$this->redirect(array('action' => 'mygames'));
 			} else {
