@@ -2738,7 +2738,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 				$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
 				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
 				$id=$this->Game->getLastInsertId();
-			    //$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));
+			    $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));
 				
 				
 				//Upload to aws begins
