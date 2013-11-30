@@ -105,7 +105,7 @@ if($this->Session->check('Auth.User')){
 }
 
 $logout=$this->Html->url(array("controller" => "users","action" =>"logout")); 
-$addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
+$addGame=$this->Html->url(array("controller" => "games","action" =>"add3"));
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 $favorites=$this->Html->url(array("controller" => "games","action" =>"favorites"));

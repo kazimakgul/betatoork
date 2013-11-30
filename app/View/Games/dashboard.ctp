@@ -1,7 +1,7 @@
 <?php 
 $bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
-$addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
+$addGame=$this->Html->url(array("controller" => "games","action" =>"add3"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
 $wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
 $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));

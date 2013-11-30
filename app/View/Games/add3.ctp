@@ -74,7 +74,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
     <label class="control-label" for="inputAuto"><strong>Game Picture</strong></label>
 <div class="span4 fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-new img-polaroid" style="width: 215px; height:118px;">
-    <img id="currentavatar" src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" alt="" style="width:180px;height:100px;"></div>
+    <img id="currentavatar" src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" alt="" style="width: 215px; height:118px;"></div>
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 215px; height: 115px; line-height: 20px;"></div>
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
