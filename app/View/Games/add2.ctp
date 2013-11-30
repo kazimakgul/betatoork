@@ -23,17 +23,12 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 <?php }else{}?>
 
 
-                    <div style="background-color:white;" class="shadow alert alert-block fadein">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <p><h5 class="alert-heading well">Drag this button: <a class="btn btn-danger" href="javascript:location.href='http://54.225.196.20/apis/addgame_ajax/'+decodeURIComponent(location.href)"><i class="elusive-plus-sign"></i> Clone Game</a> up to your Bookmarks Bar. </br>You can add any game from any website via this button.</h5></p>
 
-                        <p><h6 class="alert-heading">Do you know what <a class="btn btn-success btn-mini"><i class="elusive-plus-sign"></i> Clone</a> is? </br>Its the easy way of adding a game to your channel.</h6></p>
-                        
-                        <p><i class="elusive-info-sign"></i> If you clone a game, a clone of the game will be created in your games section and you will be able to edit the game as you wish.</p>
-                        <p><i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini"><i class="elusive-plus-sign"></i> Clone</a> clone button at the bottom of the page on the rating bar.</p>
-                        
-                    </div>
-
+<div class="menu shadow-black" style="background-color:white;">
+  <div class="accordion">
+    <div class="accordion-group">
+      <div class="accordion-heading country" style="margin:10px;">
+        
 
                 <div class="error-page" style="margin:-60px 0px 0px 0px;">
                     <h1 class="error-code color-blue" style="margin:0px 0px -30px 0px;">Add Game</h1>
@@ -45,16 +40,128 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                     <a title="search" style="" class="icon"><i class="icofont-plus"></i></a>
                                     <input id="urlarea" class="input-xxlarge animated grd-white" required pattern="(http|https)://.+" onfocus type="text" placeholder="where is the game? Type the link of the website!">
                                 </div>
-                                <input id="grabgame" onClick="_gaq.push(['_trackEvent', 'Games', 'Add']);" type="button" class="btn btn-danger" value="Grab the game!">
+                                <input id="metacrawler" type="button" class="btn btn-danger" value="Grab the game!">
                             </div>
-							<div id="grabloader" style="display:none;">
-							<p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
-							<p><small>Your game is processing... </small></p>
-							</div>
+                      
                             <p><small>Simply copy/paste the url from the browser where you play the game.  <strong>Ex: http://phoboslab.org/ztype/</strong></small></p>
                         </div>
                     </form>
-      
+
+                </div>
+
+
+    <!--Loader for data fetching-->
+<div style="width:100%;text-align:center;"><div id="fetchloader" style="display:none;">
+                            <p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
+                            <p><small>Data is fetching from <span id="fetchurl"></span> </small></p>
+                            </div></div>
+	<!--/Loader for data fetching-->
+
+
+        <a style="text-align: center ;"class="accordion-toggle collapsed color-red" data-toggle="collapse" href="#expandGame">
+        <small>Add Game Manually</small></br><i class="elusive-chevron-down"></i></a>
+
+      </div>
+      <div id="expandGame" class="accordion-body collapse" style="height: 0px;">
+        <div class="accordion-inner">
+
+
+<!- Game Edit Starts>
+
+
+<?php echo $this->Form->create('Game', array('label'=>false ,'id'=>'addgameform','class'=>'form-horizontal' ,'type' => 'file'));?>
+<div class="control-group">
+    <label class="control-label" for="inputAuto"><strong>Game Picture</strong></label>
+<div class="span4 fileupload fileupload-new" data-provides="fileupload">
+  <div class="fileupload-new img-polaroid" style="width: 215px; height:118px;">
+    <img id="currentavatar" src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" alt="" style="width:180px;height:100px;"></div>
+  <div class="fileupload-preview fileupload-exists thumbnail" style="width: 215px; height: 115px; line-height: 20px;"></div>
+  <div>
+    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
+        <span class="fileupload-new"><i class="elusive-edit"></i></span>
+        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[Game][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="150" /></span>
+    <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
+
+     <a rel="tooltip" id="imageinfo" data-toggle="popover" style="margin:-80px 30px 0px 10px;" title="Picture Specs Info" data-placement="bottom" data-original-title="Game Image Info" class="btn btn-small" data-html="true" data-content='A good picture size is <strong>600*330</strong>px. For the best experience try to add a rectangle kind of image which is larger than <strong>200*110</strong>px. Any image size is always welcome.'><i class="elusive-info-sign"></i></a>
+
+  </div>
+</div>
+</div>
+
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="inputAuto"><strong>Game Name</strong></label>
+                                                            <div class="controls">
+<?php echo $this->Form->input('name',array('label'=>false ,'maxlength'=>25,'required','type'=>'text','class'=>'grd-white span10','id'=>'game_name','placeholder' => 'Metal Slug Brutal 3')); ?>     
+                                                            </div>
+                                                        </div>
+
+<?php if ($this->Session->read('Auth.User.role') == 0){?>
+                           <?php if(!$clone) { ?>
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="inputAuto"><strong>Game Link</strong></label>
+                                                            <div class="controls">
+<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'required pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white span10','id'=>'game_link', 'maxlength'=>200)); ?>
+                                                            </div>
+                                                        </div>
+                                    <?php } ?>          
+<?php  } else{?>
+                           <?php if(!$clone) { ?>
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="inputAuto"><strong>Game Link</strong></label>
+                                                            <div class="controls">
+<?php echo $this->Form->input('link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com/msb3.html','type' => 'url','class'=>'grd-white span10','id'=>'game_link', 'maxlength'=>200)); ?>
+                                                            </div>
+                                                        </div>
+                                
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="inputAuto"><strong>Game Embed</strong></label>
+                                                            <div class="controls">
+<?php echo $this->Form->input('embed',array('label'=>false ,'div'=>false,'class'=>'span10','rows'=>'5','pattern'=>'(<iframe|<embed|<object).+.(</iframe>|</embed>|</object>)' ,'placeholder' => 'Paste your game code here please. The embed code can only be iframe,embed or object type of html tag. Ex: <object> some stuf is here </object>','maxlength'=>1000, 'title'=>'Only <embed> , <iframe> and <object> tags are available and the game code must be starting from one of the tags and ending with the same tag. Ex: <embed> some code </embed>')); ?> 
+                                                            </div>
+                                                        </div>
+                                <?php } ?>                      
+                                                        
+<?php } ?>
+
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="inputAuto"><strong>Game Description</strong></label>
+                                                            <div class="controls">
+<?php  echo $this->Form->input('description',array('label'=>false,'div'=>false,'maxlength'=>400,'required','placeholder' => 'Describe the game you share please','type' => 'textarea','class'=>'span10','id'=>'game_desc','rows'=>'5',)); ?>  
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="inputAuto"><strong>Game Category</strong></label>
+                                                            <div class="controls">
+ <?php echo $this->Form->input('category_id',array('label'=>'Select Category:' )); ?>
+                                                            </div>
+                                                        </div>
+                                                        <input name="data[Game][external_image]" id="external_image" type="hidden" value="">
+                                                        <div style="width:100%;text-align:center;"><div id="grabloader" style="display:none;">
+                            <p><small><?php echo $this->Html->image("/img/loading.gif");?> </small></p>
+                            <p><small>Your game is processing... </small></p>
+                            </div></div>
+                                                        
+                                                        <div class="form-actions">
+                                                            <button id="submitgame" type="submit" onClick="_gaq.push(['_trackEvent', 'Games', 'Add']);" class="btn btn-primary">Submit Game</button>
+                                                            <a type="button" class="btn" href="<?php echo $mygames; ?>">Cancel</a>
+                                                        </div>
+                                                    </form>
+
+
+<!- Game Edit Ends>
+
+
+        </div>
+      </div>
+     
+
+
+    </div>
+  </div>
+</div>
+
+
                     <div style="background-color:white;" class="shadow alert alert-block alert-info fadein">
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <p><h4 class="alert-heading">The Benefits of Adding a Game</h4></p>
@@ -69,7 +176,6 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                         
                     </div>
 
-                </div>
 
                         </div><!--/content-body -->
 <?php  echo $this->element('NewPanel/dashfooter'); ?>
