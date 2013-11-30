@@ -2057,7 +2057,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 	public function headerlogin() {
 		$userid = $this->Session->read('Auth.User.id');
-	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>6)));
 	   	$userName = $user['User']['username'];
 
 	    $this->set('user',$user);
