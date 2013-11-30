@@ -1,5 +1,5 @@
 <?php 
-$addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
+$addgame=$this->Html->url(array("controller" => "games","action" =>"add3"));
 $index=$this->Html->url(array("controller" => "games","action" =>"index"));
 $explore=$this->Html->url(array("controller" => "games","action" =>"explore"));
 $currentlink=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
