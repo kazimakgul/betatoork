@@ -1,5 +1,5 @@
 <?php 
-$addgame=$this->Html->url(array("controller" => "games","action" =>"add2"));
+$addgame=$this->Html->url(array("controller" => "games","action" =>"add3"));
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"));
 ?>
                 <!-- span content -->
