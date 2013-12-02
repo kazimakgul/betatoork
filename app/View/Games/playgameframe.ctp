@@ -1,4 +1,7 @@
 <?php
+
+print_r($game);
+
 if($game['User']['seo_username']!=NULL)
 {
   $profilepublic=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>'')); 
