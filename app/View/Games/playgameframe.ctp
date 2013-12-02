@@ -1,5 +1,5 @@
 <?php
-
+echo 'print_r starts here:';
 print_r($game);
 
 if($game['User']['seo_username']!=NULL)
