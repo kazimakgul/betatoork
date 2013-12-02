@@ -2033,7 +2033,6 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
         $gameid=$game['Game']['id'];
  
         //==========Get Post Information About Game===========
-		/*
 		     $singlepost=$this->Game->query('SELECT msg_id FROM messages WHERE type=1 AND game_id='.$gameid.'');
 		     if($singlepost!=NULL)
 		     {
@@ -2041,7 +2040,6 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 			 $gamePost=array('id'=>$msg_id);
 			 $this->set('gamepost',$gamePost);
 		     }
-			 */
 		//=========//Get Post Information About Game===========       
 
 
