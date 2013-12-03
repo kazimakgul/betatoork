@@ -2091,10 +2091,10 @@ return $material.$number;
 }
 
 function checkDuplicateSeoUrl($seo_url='toork')
-{ echo $seo_url;
+{ 
   $authid = $this->Session->read('Auth.User.id');
   do {
-  
+   echo $seo_url;
      $data=$this->Game->find('all',array('contain'=>false,'conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$authid),'fields'=>array('seo_url')));
      if($data==NULL)
 	 {
