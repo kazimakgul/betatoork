@@ -2758,6 +2758,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
                     $img = '/home/ubuntu/test/'.$randomimageid.'_toorksize.jpg';
                     file_put_contents($img, file_get_contents($url));
 					//-----/Download Facebook Image-----
+					$ret4=$this->crop_game_image2($randomimageid.'_toorksize.jpg',0);
 					//================Throw to S3==================
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
@@ -3101,6 +3102,17 @@ public function crop_game_image($game_name,$id)
 {
 
 $command3 = "mkdir /home/ubuntu/test/".$id." && convert /var/www/betatoork/app/webroot/upload/games/".$id."/".$game_name." -quiet  -crop 200x110+30+30  +repage  /home/ubuntu/test/".$id."/".$game_name."";
+exec($command3, $output3, $ret3);
+//print_r($output3);print_r($ret3);
+   
+   return $ret3;
+			
+}
+
+public function crop_game_image2($game_name,$id)
+{
+
+$command3 = "convert /home/ubuntu/test/".$game_name." -quiet  -crop 200x110+30+30  +repage  /home/ubuntu/test/".$game_name."";
 exec($command3, $output3, $ret3);
 //print_r($output3);print_r($ret3);
    
