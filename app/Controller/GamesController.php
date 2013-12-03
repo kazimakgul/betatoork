@@ -2749,7 +2749,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 				
 			//Settings of external image	
 			$external_img=$this->request->data["Game"]["external_image"];
-			if($external_img!="" && $myval=="")
+			if($external_img!="" && $myval=="")//beginning of external condition	
 			{
 			       //-----Download Facebook Image-----
 					$randomimageid=rand(100000,99999999);
@@ -2769,7 +2769,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
             );
 			//============/Throw to S3==========================
 					
-			}else{
+			}else{//else for external condition	
 				
 				
 				//Upload to aws begins
