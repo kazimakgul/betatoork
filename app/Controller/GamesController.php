@@ -2687,12 +2687,6 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			}
 			
 			
-			$external_img=$this->request->data["Game"]["external_image"];
-			if($external_img!="")
-			{
-			echo 'image var';
-			break;
-			}
 			$myval=$this->request->data["Game"]["edit_picture"]["name"];
 			
 			if($myval!="")
@@ -2753,6 +2747,30 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 				$id=$this->Game->getLastInsertId();
 			    $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));
 				
+			//Settings of external image	
+			$external_img=$this->request->data["Game"]["external_image"];
+			if($external_img!="" && $myval=="")
+			{
+			       //-----Download Facebook Image-----
+					$randomimageid=rand(100000,99999999);
+					$this->Game->query('UPDATE games SET picture="'.$randomimageid.'.jpg" WHERE id='.$id.';');
+					$url = $external_img;
+                    $img = '/home/ubuntu/test/'.$randomimageid.'_toorksize.jpg';
+                    file_put_contents($img, file_get_contents($url));
+					//-----/Download Facebook Image-----
+					//================Throw to S3==================
+			 $this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/games/'.$id.'/'.$randomimageid.'_toorksize.jpg',
+             array(
+			'fileUpload' => "/home/ubuntu/test/".$randomimageid."_toorksize.jpg",
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			//============/Throw to S3==========================
+					
+			}else{
+				
 				
 				//Upload to aws begins
 				
@@ -2780,7 +2798,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			
             }
 			//Upload to aws ends
-				
+	 }//end of external condition	
 				//if ($ret3) {
                 //die;
                 //}
