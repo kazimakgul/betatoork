@@ -2091,7 +2091,7 @@ return $material.$number;
 }
 
 function checkDuplicateSeoUrl($seo_url='toork')
-{
+{ echo $seo_url;
   $authid = $this->Session->read('Auth.User.id');
   do {
   
