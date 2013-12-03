@@ -2753,7 +2753,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			{
 			       //-----Download Facebook Image-----
 					$randomimageid=rand(100000,99999999);
-					$this->Game->query('UPDATE games SET picture="'.$randomimageid.'.jpg" WHERE id='.$id.';');
+					$this->Game->query('UPDATE games SET picture="'.$randomimageid.'.png" WHERE id='.$id.';');
 					$url = $external_img;
                     $img = '/home/ubuntu/test/'.$randomimageid.'_toorksize.png';
                     file_put_contents($img, file_get_contents($url));
