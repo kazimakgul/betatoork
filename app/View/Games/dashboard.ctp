@@ -79,8 +79,7 @@ $username = $user['User']['seo_username'];
                 <div class="helper-font-24">
                            <i rel="tooltip" data-placement="top" data-original-title="add image" href="javascript:void(0);"  id="camera3" class="elusive-camera"></i>
                             <i rel="tooltip" data-placement="top" data-original-title="add video" href="javascript:void(0);"  id="camera4" class="elusive-youtube"></i>
-                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera5" class="icofont-link"></i>
-                            <i rel="tooltip" data-placement="top" data-original-title="add game" href="javascript:void(0);"  id="camera6" class="elusive-plus-sign"></i>        
+                            <i rel="tooltip" data-placement="top" data-original-title="add link" href="javascript:void(0);"  id="camera5" class="icofont-link"></i>      
                 </div>
                 
                             <!-ImageUploadPanel-><div id="imageupload3" class="border" style="display:none;">
@@ -100,20 +99,6 @@ $username = $user['User']['seo_username'];
                             <div id="imageupload5" class="border" style="display:none;">
 
                             <p>Just copy/paste the link you want to share ex: <strong>http://toork.com</strong></p>
-                            </div>
-
-                            <div id="imageupload6" class="border" style="display:none;">
-                            <p>Just copy/paste the game link you play ex: <strong>http://phoboslab.org/ztype/</strong></p>
-                            <div class="input-append">
-                              <input id="urlarea" class="span12" required pattern="(http|https)://.+" onfocus type="text" placeholder="Ex: http://chrome.plantsvszombies.com/">
-                              <button id="grabgame" class="btn btn-success" type="button">Grab the Game!</button>
-							  
-							<div id="grabloader" style="display:none; margin-top:5px;">
-							<span><?php echo $this->Html->image("/img/loading.gif",array('width'=>'40'));?></span>
-                            <small>Your game is processing... </small>
-							</div>
-							  
-                            </div>
                             </div>
 
 
