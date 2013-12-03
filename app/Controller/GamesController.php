@@ -2755,16 +2755,16 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 					$randomimageid=rand(100000,99999999);
 					$this->Game->query('UPDATE games SET picture="'.$randomimageid.'.jpg" WHERE id='.$id.';');
 					$url = $external_img;
-                    $img = '/home/ubuntu/test/'.$randomimageid.'_toorksize.jpg';
+                    $img = '/home/ubuntu/test/'.$randomimageid.'_toorksize.png';
                     file_put_contents($img, file_get_contents($url));
 					//-----/Download Facebook Image-----
-					$ret4=$this->crop_game_image2($randomimageid.'_toorksize.jpg',0);
+					$ret4=$this->crop_game_image2($randomimageid.'_toorksize.png',0);
 					//================Throw to S3==================
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
-            'upload/games/'.$id.'/'.$randomimageid.'_toorksize.jpg',
+            'upload/games/'.$id.'/'.$randomimageid.'_toorksize.png',
              array(
-			'fileUpload' => "/home/ubuntu/test/".$randomimageid."_toorksize.jpg",
+			'fileUpload' => "/home/ubuntu/test/".$randomimageid."_toorksize.png",
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
