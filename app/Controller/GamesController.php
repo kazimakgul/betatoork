@@ -2084,17 +2084,23 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 function seoUrlFormer($material='toork')
 {
 //Add incremental number at the end of the seo_url
-preg_match('/^([^\d]+)([\d]*?)$/', $material, $match);
-$material = $match[1];
-$number = $match[2] + 1;
-return $material.$number;
+//preg_match('/^([^\d]+)([\d]*?)$/', $material, $match);
+//$material = $match[1];
+//$number = $match[2] + 1;
+//return $material.$number;
+
+$str=$material; //our original string
+$temp=explode($material,$str); //making an array of it
+$str=$material.($temp[1]+1); //the text and the number+1
+return $str;
+
 }
 
 function checkDuplicateSeoUrl($seo_url='toork')
-{ 
+{
   $authid = $this->Session->read('Auth.User.id');
   do {
-   echo $seo_url;
+  
      $data=$this->Game->find('all',array('contain'=>false,'conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$authid),'fields'=>array('seo_url')));
      if($data==NULL)
 	 {
