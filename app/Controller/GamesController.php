@@ -2689,8 +2689,10 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			
 			$external_img=$this->request->data["Game"]["external_image"];
 			if($external_img!="")
+			{
 			echo 'image var';
-			
+			break;
+			}
 			$myval=$this->request->data["Game"]["edit_picture"]["name"];
 			
 			if($myval!="")
