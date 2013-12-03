@@ -38,7 +38,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                             <div class="input-append input-icon-prepend">
                                 <div class="add-on">
                                     <a title="search" style="" class="icon"><i class="icofont-plus"></i></a>
-                                    <input id="urlarea" class="input-xxlarge animated grd-white" required pattern="(http|https)://.+" onfocus type="text" placeholder="where is the game? Type the link of the website!">
+                                    <input id="urlarea" class="input-xxlarge animated grd-white" required pattern="(http|https)://.+" onfocus type="text" placeholder="where is the game? Type the link of the website!" value="http://">
                                 </div>
                                 <input id="metacrawler" type="button" class="btn btn-danger" value="Grab the game!">
                             </div>
