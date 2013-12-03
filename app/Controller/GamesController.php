@@ -2758,7 +2758,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
                     $img = '/home/ubuntu/test/'.$randomimageid.'_toorksize.jpg';
                     file_put_contents($img, file_get_contents($url));
 					//-----/Download Facebook Image-----
-					//$ret4=$this->crop_game_image2($randomimageid.'_toorksize.jpg',0);
+					$ret4=$this->crop_game_image2($randomimageid.'_toorksize.jpg',0);
 					//================Throw to S3==================
 			 $this->Amazon->S3->create_object(
             Configure::read('S3.name'),
