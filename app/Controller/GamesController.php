@@ -3112,7 +3112,7 @@ exec($command3, $output3, $ret3);
 public function crop_game_image2($game_name,$id)
 {
 
-$command3 = "convert /home/ubuntu/test/".$game_name." -quiet  -crop 200x94+30+30  +repage  /home/ubuntu/test/".$game_name."";
+$command3 = "convert /home/ubuntu/test/".$game_name." -quiet  -resize 200x110  +repage  /home/ubuntu/test/".$game_name."";
 exec($command3, $output3, $ret3);
 //print_r($output3);print_r($ret3);
    
