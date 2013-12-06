@@ -36,7 +36,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 <?php }else{}?>
 
 <div>
-<?php //echo $this->element('NewPanel/explore/explorefeed');?>
+<?php echo $this->element('NewPanel/explore/explorefeed');?>
 </div> 
 
 
