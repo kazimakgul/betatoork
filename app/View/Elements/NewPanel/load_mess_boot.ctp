@@ -3,6 +3,9 @@
 if(!isset($lastid) || $lastid=='')
 $lastid=0;
 
+if(!isset($uid))
+$uid=NULL;
+
 if(!isset($type))
 $type=NULL;
 

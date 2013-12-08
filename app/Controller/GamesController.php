@@ -440,8 +440,14 @@ public function set_suggested_channels()
 
 		
 	    $this->set_suggested_channels();
-	    $this->set('user',$user);
+	    
+		if(isset($user))
+		$this->set('user',$user);
+		
+		if(isset($userName))
 	    $this->set('username',$userName);
+		
+		
 	    $this->set('isActive',$isActive);
 		$this->set('title_for_layout', 'Dashboard - Clone Channel Manager');
 		$this->set('description_for_layout', 'Your Dashboard knows what you want and helps you do everything easier.');
