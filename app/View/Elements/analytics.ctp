@@ -10,16 +10,14 @@
 
 </script>
 
-<?php if ($this->Session->check('Auth.User')){ 
-  $username = $this->Session->read('Auth.User.username');
-  $variable = 'Member - '.$username; ?>
+<?php if ($this->Session->check('Auth.User')){ ?>
 
 <script type="text/javascript">
 
-  _gaq.push(['_setCustomVar',
+_gaq.push(['_setCustomVar',
       1,             // This custom var is set to slot #1.  Required parameter.
-      'UserType',   // The name of the custom variable.  Required parameter.
-      '<?php echo $variable; ?>',      // Sets the value of "User Type" to "Member" or "Visitor" depending on status.  Required parameter.
+      'User Type',   // The name of the custom variable.  Required parameter.
+      'Member',      // Sets the value of "User Type" to "Member" or "Visitor" depending on status.  Required parameter.
        2             // Sets the scope to session-level.  Optional parameter.
    ]);
 
@@ -30,10 +28,10 @@
 
 <script type="text/javascript">
 
-  _gaq.push(['_setCustomVar',
+_gaq.push(['_setCustomVar',
       1,             // This custom var is set to slot #1.  Required parameter.
-      'UserType',   // The name of the custom variable.  Required parameter.
-      '<?php echo $variable; ?>',      // Sets the value of "User Type" to "Member" or "Visitor" depending on status.  Required parameter.
+      'User Type',   // The name of the custom variable.  Required parameter.
+      'Visitor',      // Sets the value of "User Type" to "Member" or "Visitor" depending on status.  Required parameter.
        2             // Sets the scope to session-level.  Optional parameter.
    ]);
 
