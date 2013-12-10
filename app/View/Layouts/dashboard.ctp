@@ -83,6 +83,7 @@ function imgError(image,style){
 <!-- Browser Loading Bar JS-->
 <?php echo $this->Html->script(array('nprogress/jquery-2.0','nprogress/nprogress')); ?>
 
+<?php  echo $this->element('analytics'); ?>
     </head>
 
     <body>
@@ -93,8 +94,6 @@ function imgError(image,style){
     setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
   </script>
 <!-- Browser Loading Bar JS-->
-
-<?php  echo $this->element('analytics'); ?>
 
 <?php
 

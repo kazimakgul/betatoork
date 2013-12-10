@@ -45,6 +45,8 @@
     <?php echo $this->Html->css(array('assets/css/toork_lander')); ?>
 
   <link href="http://fonts.googleapis.com/css?family=Abel:400|Oswald:300,400,700" media="all" rel="stylesheet" type="text/css" />
+
+    <?php  echo $this->element('analytics'); ?>  
 </head>
     <body>
 	<div id="fb-root"></div>
@@ -56,7 +58,6 @@
     ?>
 
     <?php  echo $this->element('NewPanel/landing/header',array('register'=>$register,'login'=>$login,'index'=>$index)); ?>
-    <?php  echo $this->element('analytics'); ?>
     
     <?php echo $content_for_layout; ?>
 

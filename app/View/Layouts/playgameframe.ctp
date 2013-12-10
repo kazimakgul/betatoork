@@ -66,11 +66,10 @@ function imgError(image,style){
  
  </script>		
 		
-		
+<?php  echo $this->element('analytics'); ?>		
     </head>
 
     <body>
-<?php  echo $this->element('analytics'); ?>
 
 <?php 
 
