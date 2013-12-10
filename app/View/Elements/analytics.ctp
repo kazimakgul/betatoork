@@ -14,26 +14,21 @@
 
 <script type="text/javascript">
 
-_gaq.push(['_setCustomVar',
-      1,             // This custom var is set to slot #1.  Required parameter.
-      'User Type',   // The name of the custom variable.  Required parameter.
-      'Member',      // Sets the value of "User Type" to "Member" or "Visitor" depending on status.  Required parameter.
-       2             // Sets the scope to session-level.  Optional parameter.
-   ]);
+var _gaq = _gaq || [];  
+_gaq.push(['_setAccount','UA-45726606-1']);  
+_gaq.push(['_setCustomVar',1,'UserType','Member',2]);
+gaq.push(['_trackPageview']);
 
 </script>
 
-<?php }else{
-  $variable = 'Visitor'?>
+<?php }else{ ?>
 
 <script type="text/javascript">
 
-_gaq.push(['_setCustomVar',
-      1,             // This custom var is set to slot #1.  Required parameter.
-      'User Type',   // The name of the custom variable.  Required parameter.
-      'Visitor',      // Sets the value of "User Type" to "Member" or "Visitor" depending on status.  Required parameter.
-       2             // Sets the scope to session-level.  Optional parameter.
-   ]);
+var _gaq = _gaq || [];  
+_gaq.push(['_setAccount','UA-45726606-1']);  
+_gaq.push(['_setCustomVar',1,'UserType','Visitor',2]);
+gaq.push(['_trackPageview']);
 
 </script>
 
