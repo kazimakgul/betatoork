@@ -17,7 +17,7 @@
 var _gaq = _gaq || [];  
 _gaq.push(['_setAccount','UA-45726606-1']);  
 _gaq.push(['_setCustomVar',1,'UserType','Member',2]);
-gaq.push(['_trackPageview']);
+_gaq.push(['_trackPageview']);
 
 </script>
 
@@ -28,7 +28,7 @@ gaq.push(['_trackPageview']);
 var _gaq = _gaq || [];  
 _gaq.push(['_setAccount','UA-45726606-1']);  
 _gaq.push(['_setCustomVar',1,'UserType','Visitor',2]);
-gaq.push(['_trackPageview']);
+_gaq.push(['_trackPageview']);
 
 </script>
 
