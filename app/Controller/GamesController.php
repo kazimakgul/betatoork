@@ -2212,7 +2212,7 @@ function getExtension($str) {
 	        if ($this->Game->save($this->request->data)) {
 			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userId));
 			    $id=$this->Game->getLastInsertId();
-			    $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userId));
+			    //$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userId)); Standart game publish feed
 				$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$userId,7,1));
 				echo 1;//this means games has been clonned properly.
 			    }else{
