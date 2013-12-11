@@ -217,7 +217,7 @@ echo "</div>";
 <div style="background-color:#f5f5f5; padding:30px 20px 30px 20px; margin:-20px; margin-bottom:-45px; ">				
 				<div>
 			  	<?php if(isset($uid)) {?>
-            	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
+            	<a href="#" class="btn btn-mini commentopen3" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
             	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
             	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
 				<?php }?>
@@ -226,23 +226,23 @@ echo "</div>";
 				<?php } ?></div>
 
 
-					<div style="margin-top:10px;" id="commentload<?php echo $msg_id;?>">
+					<div style="margin-top:10px;" id="commentload3<?php echo $msg_id;?>">
 			<?php
 				$x=1;
 				echo $this->element('NewPanel/load_comments_boot',array('msg_id'=>$msg_id,'x'=>$x,'msg_uid'=>$msg_uid)); 
 			?>
 			</div>			
 
-			<div class="row-fluid commentupdate clearfix" style='margin-top: 10px; display:none' id='commentbox<?php echo $msg_id;?>'>
+			<div class="row-fluid commentupdate clearfix" style='margin-top: 10px; display:none' id='commentbox3<?php echo $msg_id;?>'>
 
 					<div class="span1">
 						<?php echo $session_face;?>
 					</div>
 
 				<div class="span11">
-					<textarea placeholder="Write a comment..." name="comment" maxlength="200" class="pull-right span12" rows="1" id="ctextarea<?php echo $msg_id;?>"></textarea>
+					<textarea placeholder="Write a comment..." name="comment" maxlength="200" class="pull-right span12" rows="1" id="ctextarea3<?php echo $msg_id;?>"></textarea>
 					<!--<textarea class="commentarea" cols="53" rows="2"></textarea>-->
-					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button btn btn-small btn-info">Comment</div>
+					<div type="submit"  value=""  id="<?php echo $msg_id;?>" class="pull-right comment_button3 btn btn-small btn-info">Comment</div>
 					<!--<a class="commentbtn" href="#"></a>-->
 				</div>
 			</div>

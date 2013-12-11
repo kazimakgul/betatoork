@@ -694,6 +694,38 @@ $("#ctextarea2"+ID).focus();
 return false;
 });
 
+//Commment Submit 3(profile-newsfeed)
+$('.comment_button3').live("click",function() 
+{
+
+//Push Activity for Comment
+var ID = $(this).attr("id");
+
+var comment= $("#ctextarea3"+ID).val();
+var dataString = 'comment='+ comment + '&msg_id=' + ID;
+
+if($.trim(comment).length==0)
+{
+alert("Please Enter Comment Text22");
+}
+else
+{
+$.ajax({
+type: "POST",
+url: commentvar,
+data: dataString,
+cache: false,
+success: function(html){
+$("#commentload"+ID).append(html);
+$("#commentload3"+ID).append(html.replace('stcommentdelete','stcommentdelete2').replace('stcommentbody','stcommentbody2'));
+$("#ctextarea3"+ID).val('');
+$("#ctextarea3"+ID).focus();
+ }
+ });
+}
+return false;
+});
+
 // commentopen 
 $('.commentopen').live("click",function() 
 {
@@ -709,6 +741,15 @@ $('.commentopen2').live("click",function()
 var ID = $(this).attr("id");
 $("#commentbox2"+ID).slideToggle('fast');
 $("#ctextarea2"+ID).focus();
+return false;
+});	
+
+// commentopen3 
+$('.commentopen3').live("click",function() 
+{
+var ID = $(this).attr("id");
+$("#commentbox3"+ID).slideToggle('fast');
+$("#ctextarea3"+ID).focus();
 return false;
 });	
 
