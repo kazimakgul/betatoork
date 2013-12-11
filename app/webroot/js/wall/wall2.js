@@ -1083,7 +1083,6 @@ return false;
 });
 
 // Load More
-
 $('.more').live("click",function() 
 {
 
@@ -1219,6 +1218,35 @@ $("#my_more_home").html('The End');// no results
 
 return false;
 });
+
+
+// Load More Explore Feed
+$('.explore_more').live("click",function() 
+{
+alert(explore_more_morevar);
+var ID = $(this).attr("id");
+if(ID)
+{
+$.ajax({
+type: "POST",
+url: explore_more_morevar,
+data: "lastid="+ ID, 
+cache: false,
+beforeSend: function(){ $("#more"+ID).html('<img src="http://appvidyo.com/images/ajax-preloader.gif" />'); },
+success: function(html){
+$("#content2").append(html);
+$("#more"+ID).remove();
+}
+});
+}
+else
+{
+$("#more").html('The End');// no results
+}
+
+return false;
+});
+
 
 // Load More2 dedicated for my feeds
 

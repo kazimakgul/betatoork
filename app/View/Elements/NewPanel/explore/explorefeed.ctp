@@ -21,7 +21,7 @@
 
 										<div id="content"></div>			
 												
-					                       <?php echo $this->element('NewPanel/load_mess_boot');?>
+					                       <?php echo $this->element('NewPanel/load_explore_boot');?>
 						
                                                 </div>
 											                                        
