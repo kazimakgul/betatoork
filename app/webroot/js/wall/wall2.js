@@ -1223,7 +1223,6 @@ return false;
 // Load More Explore Feed
 $('.explore_more').live("click",function() 
 {
-alert(explore_more_morevar);
 var ID = $(this).attr("id");
 if(ID)
 {
