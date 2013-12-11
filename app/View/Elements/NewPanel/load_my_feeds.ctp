@@ -28,11 +28,13 @@ if(isset($uid))
 }
 
 if($updatesarray==NULL && $lastid==0)
+{
 $featured=$this->Html->url(array("controller" => "games","action" =>"featuredchannels")); 
 echo "<div class='color-blue media well shadow span12' style='margin-left:0px; background-color:white;'>
 		<a href='$featured' class='offset4 btn btn-large btn-warning helper-font-24 elusive-plus-sign'> Follow</a>
  		<h4>You haven't shared anything with your followers yet. Please <a class='color-red'>follow</a> some <a class='color-red'>channels</a>.</h4>
  	</div>";
+}
 
 if($updatesarray)
 {
