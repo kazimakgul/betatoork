@@ -1205,7 +1205,8 @@ $('.loadertrig').live('click',function(){
 //==========================================================	
 	
 	$('#loadmoregame').live('click',function(){
-	$(".more").click();										 
+	$(".more").click();
+	$(".explore_more").click();	
 	$(".paging").hide();  //hide the paging for users with javascript enabled
 	
 	$("#thumbnails_area").append('<div class="batch" style="display:none;"></div>'); //append a container to hold ajax content	
