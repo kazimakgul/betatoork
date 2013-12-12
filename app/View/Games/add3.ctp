@@ -133,7 +133,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
                                                         <div class="control-group">
                                                             <label class="control-label" for="inputAuto"><strong>Game Category</strong></label>
                                                             <div class="controls">
- <?php echo $this->Form->input('category_id',array('label'=>'Select Category:' )); ?>
+ <?php echo $this->Form->input('category_id',array('label'=>'Select Category:','default'=>'18' )); ?>
                                                             </div>
                                                         </div>
                                                         <input name="data[Game][external_image]" id="external_image" type="hidden" value="">
