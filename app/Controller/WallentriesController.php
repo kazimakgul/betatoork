@@ -1465,8 +1465,8 @@ $this->loadModel('Game');
    if($status==1)
    $update=''.$auth['User']['username']. ' is following '.$channel['User']['username'].' channel';
    $uploads=$_POST['uploads'];
-   //$data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
-   $data2=$Wall->Insert_Update($content_id,$update,$uploads,$uid,$type);
+   $data2=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+   //$data2=$Wall->Insert_Update($content_id,$update,$uploads,$uid,$type);
    
      if($data2)
      {
