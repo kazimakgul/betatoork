@@ -142,7 +142,7 @@ return $material.$number;
 				
 				    if($type==1)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Published '.$game_name;
 				    }
 					if($type==2)
 				    {

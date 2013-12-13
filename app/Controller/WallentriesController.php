@@ -1453,6 +1453,12 @@ $this->loadModel('Game');
    $update='A New Game has been published:'.$game['Game']['name'];
    $uploads=$_POST['uploads'];
    $data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+      if($data)
+      {
+      $msg_id=$data['msg_id'];
+      $this->pushActivity($content_id,NULL,0,0,$type,$msg_id);
+      }
+   
    }
    
    if($action!=NULL && $action==5)
