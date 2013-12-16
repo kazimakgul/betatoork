@@ -344,6 +344,31 @@ $(document).ready(function()
 	});
 	
 	
+//=======Like Feed Functions(Feed)========
+$('.likepost').live("click",function(e) 
+{   
+$feed_id=this.id;
+likefeed($feed_id,1);
+});
+$('.likecomment').live("click",function(e) 
+{   
+$feed_id=this.id;
+likefeed($feed_id,2);
+});
+function likefeed(feed_id,type)
+{
+	//alert('likefeed:'+$feed_id+'type:'+type+feedlike);
+	
+	$.post(feedlike, {feed_id: feed_id, feed_type:type}, function (data) {
+		alert(data.rtdata.message);
+			
+		},'json');	
+	
+	
+}
+
+//=======//Like Feed Functions(Feed)========	
+	
 //Send Game Comment(Feed)
 $('.update_game_comment').live("click",function(e) 
 {   

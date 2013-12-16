@@ -82,6 +82,36 @@ return $a;
 
 	}
 	
+	public function likeswitch() {
+	  $this->layout = "ajax";
+	  Configure::write ( 'debug', 0 );
+	  if($this->Auth->user('id'))//if user logged in
+	  {
+	  
+		  $performer=$this->Auth->user('id');
+		  $id=$this->request->data['feed_id'];
+		  $feedtype=$this->request->data['feed_type'];
+		  
+		     
+			     //This function works for both post and comments
+				 $likebefore=$this->Wallentry->query('SELECT id from feedlike WHERE user_id='.$performer.' AND feed_id='.$id.' AND feed_type='.$feedtype);
+				 if($likebefore!=NULL)//if it is not null,remove it
+				 {
+				 //echo 'notnull:';
+				 $this->Wallentry->Query('DELETE FROM feedlike WHERE id='.$likebefore[0]['feedlike']['id'].'');
+				 $msg = array('result' => 1,'message'=>'Unliked');
+				 }else{//if it is null,insert it
+				 //echo 'itisnull';
+				 $this->Wallentry->Query('INSERT INTO feedlike (user_id,feed_id,feed_type) VALUES ('.$performer.','.$id.','.$feedtype.')');
+				 $msg = array('result' => 1,'message'=>'Liked');
+				 }
+			 
+			 $this->set('rtdata', $msg);
+		     $this->set('_serialize', array('rtdata'));
+	   
+	  }//end of auth control
+	}
+	
 	
 	public function posts($id=NULL,$type=NULL) {
 		

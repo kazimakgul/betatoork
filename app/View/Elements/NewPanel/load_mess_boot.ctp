@@ -232,7 +232,7 @@ echo "</div>";
 			  	<div>
 			  	<?php if(isset($uid)) {?>
             	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
+            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
             	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
 				<?php }?>
 								<?php if(isset($uid) && $uid==$msg_uid && $type!=1) { ?>
