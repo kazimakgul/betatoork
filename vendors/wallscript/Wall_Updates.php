@@ -195,7 +195,7 @@ $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created, U.usernam
 	   
 	   if($type==NULL)
 	   {
-	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M INNER JOIN users U on M.uid_fk=U.id LEFT JOIN games G on M.game_id=G.id  INNER JOIN (SELECT subscriber_to_id FROM subscriptions WHERE subscriber_id='$uid') AS subscriber ON uid_fk=subscriber_to_id WHERE M.type NOT IN(8,7,6,5) $morequery order by M.msg_id DESC limit " .$this->perpage) or die(mysql_error());
+	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type,M.likecount, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M INNER JOIN users U on M.uid_fk=U.id LEFT JOIN games G on M.game_id=G.id  INNER JOIN (SELECT subscriber_to_id FROM subscriptions WHERE subscriber_id='$uid') AS subscriber ON uid_fk=subscriber_to_id WHERE M.type NOT IN(8,7,6,5) $morequery order by M.msg_id DESC limit " .$this->perpage) or die(mysql_error());
 	   }else{
 	   //if type parameter is not null,get specific type of datas.
 	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M INNER JOIN users U on M.uid_fk=U.id LEFT JOIN games G on M.game_id=G.id  WHERE (M.uid_fk IN(SELECT `subscriber_to_id` FROM `subscriptions` WHERE `subscriber_id`='$uid') AND M.type='$type' $morequery) OR (M.uid_fk='$uid' $morequery) AND (M.type='$type' $morequery)  order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
@@ -233,7 +233,7 @@ $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created, U.usernam
 	$query='';
 	  if($second_count)
 	  $query="limit $second_count,2";
-	    $query = mysql_query("SELECT C.com_id, C.uid_fk, C.comment, C.created, U.username,U.seo_username FROM comments C, users U WHERE C.uid_fk=U.id and C.msg_id_fk='$msg_id' order by C.com_id asc $query") or die(mysql_error());
+	    $query = mysql_query("SELECT C.com_id, C.uid_fk, C.comment, C.created, C.likecount, U.username,U.seo_username FROM comments C, users U WHERE C.uid_fk=U.id and C.msg_id_fk='$msg_id' order by C.com_id asc $query") or die(mysql_error());
 	   while($row=mysql_fetch_array($query))
 	    $data[]=$row;
         if(!empty($data))

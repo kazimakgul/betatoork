@@ -54,6 +54,7 @@ if($updatesarray)
 		$time=$data['created'];
 		$mtime=date("c", $time);
 		$username=$data['username'];
+		$plikecount=$data['likecount'];
 		$uploads=$data['uploads'];
 		$type=$data['type'];
 		$gameid=$data['game_id'];
@@ -225,7 +226,7 @@ echo "</div>";
 				 	
                                                         </div>
 				<!-- this gets like status of posts -->		
-				<?php $plikestatus = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'getlikestatus',$msg_id,1));	 ?>									
+				<?php $plikestatus = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'getlikestatus',$msg_id,1));?>									
 
 				<!-- Comment area begins -->
 				</br>	
@@ -235,9 +236,9 @@ echo "</div>";
             	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
 				
 				<?php if($plikestatus) { ?>
-            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-down"></i> Unlike</a>
+            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-down"></i> Unlike-<span class="plikecount"><?php echo $plikecount; ?></span> </a>
 				<?php }else{ ?>
-				<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
+				<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like-<span class="plikecount"><?php echo $plikecount; ?></span></a>
 				<?php } ?>
             	
 				<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>

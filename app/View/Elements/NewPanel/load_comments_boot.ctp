@@ -22,6 +22,7 @@ if($commentsarray)
 	foreach($commentsarray as $cdata)
 	{
 		$com_id=$cdata['com_id'];
+		$clikecount=$cdata['likecount'];
 		$comment=tolink(htmlcode($cdata['comment'] ),Router::url('/', true));
 		$time=$cdata['created'];
 		$mtime=date("c", $time);
@@ -60,9 +61,9 @@ if($commentsarray)
 		<div style="margin-right:15px;" class="helper-font-9 stcommenttime pull-right" title="<?php echo $mtime; ?>"></div>
 		
 		<?php if($clikestatus) { ?>
-		<p ><small><?php echo $comment ?></small> - <small class="btn-link likecomment" id="<?php echo $com_id; ?>"><i class="elusive-thumbs-down"></i> Unlike</small></p>
+		<p ><small><?php echo $comment ?></small> - <small class="btn-link likecomment" id="<?php echo $com_id; ?>"><i class="elusive-thumbs-down"></i> Unlike-<span class="clikecount"><?php echo $clikecount; ?></span></small></p>
 		<?php }else{ ?>
-		<p ><small><?php echo $comment ?></small> - <small class="btn-link likecomment" id="<?php echo $com_id; ?>"><i class="elusive-thumbs-up"></i> Like</small></p>
+		<p ><small><?php echo $comment ?></small> - <small class="btn-link likecomment" id="<?php echo $com_id; ?>"><i class="elusive-thumbs-up"></i> Like-<span class="clikecount"><?php echo $clikecount; ?></span></small></p>
 		<?php } ?>
 		
 
