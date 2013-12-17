@@ -360,7 +360,17 @@ function likefeed(feed_id,type)
 	//alert('likefeed:'+$feed_id+'type:'+type+feedlike);
 	
 	$.post(feedlike, {feed_id: feed_id, feed_type:type}, function (data) {
-		alert(data.rtdata.message);
+		
+		
+		if(type==1)
+		{
+		//alert('post');
+		$('.likepost[id="'+feed_id+'"]').html(data.rtdata.icon+data.rtdata.buttontext);
+		}else if(type==2)
+		{
+		//alert('comment');
+		$('.likecomment[id="'+feed_id+'"]').html(data.rtdata.icon+data.rtdata.buttontext);
+		}
 			
 		},'json');	
 	

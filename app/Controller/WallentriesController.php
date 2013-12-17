@@ -99,11 +99,11 @@ return $a;
 				 {
 				 //echo 'notnull:';
 				 $this->Wallentry->Query('DELETE FROM feedlike WHERE id='.$likebefore[0]['feedlike']['id'].'');
-				 $msg = array('result' => 1,'message'=>'Unliked');
+				 $msg = array('result' => 1,'message'=>'Unliked','buttontext'=>'Like','icon'=>'<i class="elusive-thumbs-up"></i>');
 				 }else{//if it is null,insert it
 				 //echo 'itisnull';
 				 $this->Wallentry->Query('INSERT INTO feedlike (user_id,feed_id,feed_type) VALUES ('.$performer.','.$id.','.$feedtype.')');
-				 $msg = array('result' => 1,'message'=>'Liked');
+				 $msg = array('result' => 1,'message'=>'Liked','buttontext'=>'Unlike','icon'=>'<i class="elusive-thumbs-down"></i>');
 				 }
 			 
 			 $this->set('rtdata', $msg);
