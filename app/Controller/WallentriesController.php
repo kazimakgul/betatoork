@@ -82,9 +82,27 @@ return $a;
 
 	}
 	
+	public function getlikestatus($id=NULL,$feedtype=NULL) {
+	
+	if($this->Auth->user('id'))//if user logged in
+	  {
+	     $performer=$this->Auth->user('id');
+	     $likebefore=$this->Wallentry->query('SELECT id from feedlike WHERE user_id='.$performer.' AND feed_id='.$id.' AND feed_type='.$feedtype);
+		 if($likebefore!=NULL)//if it is not null,remove it
+		 {
+		 return 1;
+		 }else{
+		 return 0;
+		 }
+	  
+	  
+	  }//end of auth control
+	
+	}
+	
 	public function likeswitch() {
 	  $this->layout = "ajax";
-	  Configure::write ( 'debug', 0 );
+	  Configure::write('debug',0);
 	  if($this->Auth->user('id'))//if user logged in
 	  {
 	  

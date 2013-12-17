@@ -53,10 +53,18 @@ if($commentsarray)
 		</div>
 	</div>
 
+          <!-- this gets like status of comments -->		
+		  <?php $clikestatus = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'getlikestatus',$com_id,2));?>	
 
 		<span class="commentusername"><a href="<?php echo $channelurl ?>"><?php echo $username; ?></a></span>
 		<div style="margin-right:15px;" class="helper-font-9 stcommenttime pull-right" title="<?php echo $mtime; ?>"></div>
+		
+		<?php if($clikestatus) { ?>
+		<p ><small><?php echo $comment ?></small> - <small class="btn-link likecomment" id="<?php echo $com_id; ?>"><i class="elusive-thumbs-down"></i> Unlike</small></p>
+		<?php }else{ ?>
 		<p ><small><?php echo $comment ?></small> - <small class="btn-link likecomment" id="<?php echo $com_id; ?>"><i class="elusive-thumbs-up"></i> Like</small></p>
+		<?php } ?>
+		
 
 </div>
 

@@ -224,7 +224,8 @@ echo "</div>";
 					<?php } ?>
 				 	
                                                         </div>
-														
+				<!-- this gets like status of posts -->		
+				<?php $plikestatus = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'getlikestatus',$msg_id,1));	 ?>									
 
 				<!-- Comment area begins -->
 				</br>	
@@ -232,8 +233,14 @@ echo "</div>";
 			  	<div>
 			  	<?php if(isset($uid)) {?>
             	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
-            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
+				
+				<?php if($plikestatus) { ?>
+            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-down"></i> Unlike</a>
+				<?php }else{ ?>
+				<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
+				<?php } ?>
+            	
+				<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
 				<?php }?>
 								<?php if(isset($uid) && $uid==$msg_uid && $type!=1) { ?>
                 <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
