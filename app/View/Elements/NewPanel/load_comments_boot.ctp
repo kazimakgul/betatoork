@@ -61,9 +61,9 @@ if($commentsarray)
 		<div style="margin-right:15px;" class="helper-font-9 stcommenttime pull-right" title="<?php echo $mtime; ?>"></div>
 		
 		<?php if($clikestatus) { ?>
-		<p ><small><?php echo $comment ?></small> - <small class="btn-link likecomment" id="<?php echo $com_id; ?>"><i class="elusive-thumbs-down"></i> Unlike-<span class="clikecount"><?php echo $clikecount; ?></span></small></p>
+		<p ><small><?php echo $comment ?></small> - <small class="btn-link likecomment" id="<?php echo $com_id; ?>"><span class="buttontext"><i class="elusive-thumbs-down"></i> Unlike</span>-<span class="clikecount" id="<?php echo $com_id;?>"><?php echo $clikecount; ?></span></small></p>
 		<?php }else{ ?>
-		<p ><small><?php echo $comment ?></small> - <small class="btn-link likecomment" id="<?php echo $com_id; ?>"><i class="elusive-thumbs-up"></i> Like-<span class="clikecount"><?php echo $clikecount; ?></span></small></p>
+		<p ><small><?php echo $comment ?></small> - <small class="btn-link likecomment" id="<?php echo $com_id; ?>"><span class="buttontext"><i class="elusive-thumbs-up"></i> Like</span>-<span class="clikecount" id="<?php echo $com_id;?>"><?php echo $clikecount; ?></span></small></p>
 		<?php } ?>
 		
 

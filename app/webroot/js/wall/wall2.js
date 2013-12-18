@@ -365,14 +365,44 @@ function likefeed(feed_id,type)
 		if(type==1)
 		{
 		//alert('post');
-		$('.likepost[id="'+feed_id+'"]').html(data.rtdata.icon+data.rtdata.buttontext);
+		$('.likepost[id="'+feed_id+'"] .buttontext').html(data.rtdata.icon+data.rtdata.buttontext);
+		
+		   //=====This is increase/decrease instantly=====
+		   if(data.rtdata.message=='liked')
+		   {
+			$currentlike=$('.plikecount[id="'+feed_id+'"]').html();
+			$currentlike=parseInt($currentlike)+1;
+			$('.plikecount[id="'+feed_id+'"]').html($currentlike)
+		   }else if(data.rtdata.message=='unliked')
+		   {
+			$currentlike=$('.plikecount[id="'+feed_id+'"]').html();
+			$currentlike=parseInt($currentlike)-1;
+			$('.plikecount[id="'+feed_id+'"]').html($currentlike)
+		   }
+		   //=====//This is increase/decrease instantly=====
+		
 		}else if(type==2)
 		{
 		//alert('comment');
-		$('.likecomment[id="'+feed_id+'"]').html(data.rtdata.icon+data.rtdata.buttontext);
+		$('.likecomment[id="'+feed_id+'"] .buttontext').html(data.rtdata.icon+data.rtdata.buttontext);
+		
+		//=====This is increase/decrease instantly=====
+		   if(data.rtdata.message=='liked')
+		   {
+			$currentlike=$('.clikecount[id="'+feed_id+'"]').html();
+			$currentlike=parseInt($currentlike)+1;
+			$('.clikecount[id="'+feed_id+'"]').html($currentlike)
+		   }else if(data.rtdata.message=='unliked')
+		   {
+			$currentlike=$('.clikecount[id="'+feed_id+'"]').html();
+			$currentlike=parseInt($currentlike)-1;
+			$('.clikecount[id="'+feed_id+'"]').html($currentlike)
+		   }
+		   //=====//This is increase/decrease instantly=====
+		
 		}
 			
-		},'json');	
+	},'json');	
 	
 	
 }
