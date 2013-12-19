@@ -122,22 +122,10 @@ return $a;
 				   if($feedtype==1)//if it is a post
 				   {
 				      $this->Wallentry->Query('UPDATE `messages` SET likecount=likecount-1 WHERE `msg_id`="'.$id.'"');
-					  //Codes below gets owner of post and send activity and notification
-				      $p_userid=$this->Wallentry->query('SELECT uid_fk from messages WHERE msg_id='.$id.'');
-					  if($p_userid!=NULL)
-					  $postowner=$p_userid[0]['messages']['uid_fk'];
-					  $this->pushActivity(NULL,$postowner,1,1,13,$id);
-					  
 				   }
 				   else //if it is a comment
 				   {
 				      $this->Wallentry->Query('UPDATE `comments` SET likecount=likecount-1 WHERE `com_id`="'.$id.'"');
-					  //Codes below gets owner of comment and send activity and notification
-				      $c_userid=$this->Wallentry->query('SELECT uid_fk,msg_id_fk from comments WHERE com_id='.$id.'');
-					  if($c_userid!=NULL)
-					  $commentowner=$c_userid[0]['comments']['uid_fk'];
-					  $p_idofcomment=$c_userid[0]['comments']['msg_id_fk'];
-					  $this->pushActivity(NULL,$commentowner,1,1,14,$p_idofcomment);
 				   }
 				 
 				 }else{//if it is null,insert it
@@ -148,10 +136,23 @@ return $a;
 				  if($feedtype==1)//if it is a post
 				  {
 				  $this->Wallentry->Query('UPDATE `messages` SET likecount=likecount+1 WHERE `msg_id`="'.$id.'"');
+				      //Codes below gets owner of post and send activity and notification
+				      $p_userid=$this->Wallentry->query('SELECT uid_fk from messages WHERE msg_id='.$id.'');
+					  if($p_userid!=NULL)
+					  $postowner=$p_userid[0]['messages']['uid_fk'];
+					  $this->pushActivity(NULL,$postowner,1,1,13,$id);
+					  
 				  }
 				  else //if it is a comment
 				  {
 				  $this->Wallentry->Query('UPDATE `comments` SET likecount=likecount+1 WHERE `com_id`="'.$id.'"');
+				      //Codes below gets owner of comment and send activity and notification
+				      $c_userid=$this->Wallentry->query('SELECT uid_fk,msg_id_fk from comments WHERE com_id='.$id.'');
+					  if($c_userid!=NULL)
+					  $commentowner=$c_userid[0]['comments']['uid_fk'];
+					  $p_idofcomment=$c_userid[0]['comments']['msg_id_fk'];
+					  $this->pushActivity(NULL,$commentowner,1,1,14,$p_idofcomment);
+					  
 				  }
 				   
 				 }
