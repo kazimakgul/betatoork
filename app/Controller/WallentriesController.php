@@ -119,20 +119,40 @@ return $a;
 				 $this->Wallentry->Query('DELETE FROM feedlike WHERE id='.$likebefore[0]['feedlike']['id'].'');
 				 $msg = array('result' => 1,'message'=>'unliked','buttontext'=>'Like','icon'=>'<i class="elusive-thumbs-up"></i> ');
 				 
-				   if($feedtype==1)
-				   $this->Wallentry->Query('UPDATE `messages` SET likecount=likecount-1 WHERE `msg_id`="'.$id.'"');
-				   else
-				   $this->Wallentry->Query('UPDATE `comments` SET likecount=likecount-1 WHERE `com_id`="'.$id.'"');
+				   if($feedtype==1)//if it is a post
+				   {
+				      $this->Wallentry->Query('UPDATE `messages` SET likecount=likecount-1 WHERE `msg_id`="'.$id.'"');
+					  //Codes below gets owner of post and send activity and notification
+				      $p_userid=$this->Wallentry->query('SELECT uid_fk from messages WHERE msg_id='.$id.'');
+					  if($p_userid!=NULL)
+					  $postowner=$p_userid[0]['messages']['uid_fk'];
+					  $this->pushActivity(NULL,$postowner,1,1,13,$id);
+					  
+				   }
+				   else //if it is a comment
+				   {
+				      $this->Wallentry->Query('UPDATE `comments` SET likecount=likecount-1 WHERE `com_id`="'.$id.'"');
+					  //Codes below gets owner of comment and send activity and notification
+				      $c_userid=$this->Wallentry->query('SELECT uid_fk,msg_id_fk from comments WHERE com_id='.$id.'');
+					  if($c_userid!=NULL)
+					  $commentowner=$c_userid[0]['comments']['uid_fk'];
+					  $p_idofcomment=$c_userid[0]['comments']['msg_id_fk'];
+					  $this->pushActivity(NULL,$commentowner,1,1,14,$p_idofcomment);
+				   }
 				 
 				 }else{//if it is null,insert it
 				 //echo 'itisnull';
 				 $this->Wallentry->Query('INSERT INTO feedlike (user_id,feed_id,feed_type) VALUES ('.$performer.','.$id.','.$feedtype.')');
 				 $msg = array('result' => 1,'message'=>'liked','buttontext'=>'Unlike','icon'=>'<i class="elusive-thumbs-down"></i> ');
 				 
-				  if($feedtype==1)
+				  if($feedtype==1)//if it is a post
+				  {
 				  $this->Wallentry->Query('UPDATE `messages` SET likecount=likecount+1 WHERE `msg_id`="'.$id.'"');
-				  else
+				  }
+				  else //if it is a comment
+				  {
 				  $this->Wallentry->Query('UPDATE `comments` SET likecount=likecount+1 WHERE `com_id`="'.$id.'"');
+				  }
 				   
 				 }
 			 
@@ -1206,6 +1226,24 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->to($user["User"]["email"])
 			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' commented on your game.')
+			    ->send();
+	  	}elseif($type_id==13){
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('likepost')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
+			    ->subject($performer["User"]["username"].' liked your post.')
+			    ->send();
+	  	}elseif($type_id==14){
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('likecomment')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
+			    ->subject($performer["User"]["username"].' liked your comment.')
 			    ->send();
 	  	}else{}
 

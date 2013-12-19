@@ -188,6 +188,14 @@ return $material.$number;
 				    {
 					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Commented on '.$game_name.'';
 				    }
+					if($type==13)
+				    {
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Liked '.$channel_name.' post.';
+				    }
+					if($type==14)
+				    {
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Liked '.$channel_name.' comment.';
+				    }
 				  return $text;
    
    }
@@ -265,6 +273,14 @@ return $material.$number;
 					if($type==12)
 				    {
 					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Commented on your game:'.$game_name.'';
+				    }
+					if($type==13)
+				    {
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Liked your post.';
+				    }
+					if($type==14)
+				    {
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Liked your comment.';
 				    }
 				  return $text;
    
