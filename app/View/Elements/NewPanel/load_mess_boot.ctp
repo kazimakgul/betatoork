@@ -87,6 +87,9 @@ if($updatesarray)
 if($type==14){
 $ownerdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$owner));
 $previousdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$previous_id));
+
+$prev_id_url=$this->Html->url(array("controller" => $previousdata['User']['seo_username'],"action" =>""));
+$owner_url=$this->Html->url(array("controller" => $ownerdata['User']['seo_username'],"action" =>""));
 }
 ?>
 
@@ -100,14 +103,14 @@ $previousdata = $this->requestAction( array('controller' => 'Wallentries', 'acti
                                                              
 															 <?php if($type==14){ ?>
 															 
-															 <span class="bold btn-link"><a href="#"><i class="elusive-star"></i> <?php echo $previousdata['User']['username']; ?></span>
+															 <span class="bold btn-link"><a href="<?php echo $prev_id_url; ?>"><i class="elusive-star"></i> <?php echo $previousdata['User']['username']; ?></span>
 															 </br>
                                                             <?php }?>
                                                             	<?php echo $message; ?>
                                                             
                                                             </br>
 															<?php if($type==14){?>
-															<p class="pull-right"><small class="mute">Originally published by <a href="#" class="btn-link"><?php echo $ownerdata['User']['username']; ?></a></small></p>
+															<p class="pull-right"><small class="mute">Originally published by <a href="<?php echo $owner_url; ?>" class="btn-link"><?php echo $ownerdata['User']['username']; ?></a></small></p>
                                                             <?php } ?>
 															</p>
                                                         <hr size="1">
