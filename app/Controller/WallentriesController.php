@@ -117,7 +117,7 @@ return $a;
 				 {
 				 //echo 'notnull:';
 				 $this->Wallentry->Query('DELETE FROM feedlike WHERE id='.$likebefore[0]['feedlike']['id'].'');
-				 $msg = array('result' => 1,'message'=>'unliked','buttontext'=>'Like','icon'=>'<i class="elusive-thumbs-up"></i> ');
+				 $msg = array('result' => 1,'message'=>'unliked','buttontext'=>'Like','icon'=>'');
 				 
 				   if($feedtype==1)//if it is a post
 				   {
@@ -131,7 +131,7 @@ return $a;
 				 }else{//if it is null,insert it
 				 //echo 'itisnull';
 				 $this->Wallentry->Query('INSERT INTO feedlike (user_id,feed_id,feed_type) VALUES ('.$performer.','.$id.','.$feedtype.')');
-				 $msg = array('result' => 1,'message'=>'liked','buttontext'=>'Unlike','icon'=>'<i class="elusive-thumbs-down"></i> ');
+				 $msg = array('result' => 1,'message'=>'liked','buttontext'=>'Unlike','icon'=>'');
 				 
 				  if($feedtype==1)//if it is a post
 				  {

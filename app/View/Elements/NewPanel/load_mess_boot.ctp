@@ -236,9 +236,9 @@ echo "</div>";
             	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
 				
 				<?php if($plikestatus) { ?>
-            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext"><i class="elusive-thumbs-down"></i> Unlike</span>-<span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span> </a>
+            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext">Unlike</span> - <i class="elusive-thumbs-up"></i> <span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span> </a>
 				<?php }else{ ?>
-				<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext"><i class="elusive-thumbs-up"></i> Like</span>-<span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span></a>
+				<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext">Like</span> - <i class="elusive-thumbs-up"></i> <span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span></a>
 				<?php } ?>
             	
 				<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
