@@ -87,7 +87,13 @@ if($updatesarray)
 															<?php echo $cface; ?>
                                                         </a>
                                                         <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
-                                                            <p style="margin-left:50px;"><?php echo $message; ?></p>
+                                                            <p style="margin-left:50px;">
+                                                            <span class="bold btn-link"><a href="#"><i class="elusive-star"></i> Socialesman</span></br>
+                                                            
+                                                            	<?php echo $message; ?>
+                                                            
+                                                            </br><p class="pull-right"><small class="mute">Originally published by <a href="#" class="btn-link">OgiAltan</a></small></p>
+                                                            </p>
                                                         <hr size="1">
                                                         
 <div id="hidePost" style="margin-bottom:-45px;">
