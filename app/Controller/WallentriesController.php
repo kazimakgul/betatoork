@@ -111,7 +111,7 @@ return $a;
 		
 		  if($target!=NULL)
 		  {
-		    $this->Wallentry->Query('INSERT INTO messages (message,uid_fk,ip,uploads,type,owner,created) VALUES ("'.$message.'",'.$performer.',"'.$ip.'","'.$uploads.'",'.$type.','.$owner.','.$mtime.')');
+		    $this->Wallentry->Query('INSERT INTO messages (message,uid_fk,ip,uploads,type,owner,created,previous_id) VALUES ("'.$message.'",'.$performer.',"'.$ip.'","'.$uploads.'",'.$type.','.$owner.','.$mtime.','.$target[0]['messages']['uid_fk'].')');
 			$msg = array('result' => 1,'message'=>'shared');
 			$this->pushActivity(NULL,$target[0]['messages']['uid_fk'],1,1,15,$msg_id);
 		  }
