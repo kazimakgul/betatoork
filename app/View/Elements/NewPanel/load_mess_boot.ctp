@@ -112,6 +112,7 @@ $owner_url=$this->Html->url(array("controller" => $ownerdata['User']['seo_userna
 															<?php if($type==14){?>
 															<p class="pull-right"><small class="mute">Originally published by <a href="<?php echo $owner_url; ?>" class="btn-link"><?php echo $ownerdata['User']['username']; ?></a></small></p>
                                                             <?php } ?>
+                                                            
 															</p>
                                                         <hr size="1">
                                                         
