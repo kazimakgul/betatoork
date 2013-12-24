@@ -82,6 +82,48 @@ return $a;
 
 	}
 	
+	
+	public function sharepost() {
+	$this->layout = "ajax";
+	Configure::write('debug',0);
+	
+	   if($performer=$this->Auth->user('id'))//if user logged in
+	    {
+	    
+		
+		$msg_id=$this->request->data['post_id'];
+		 
+		if($msg_id!=NULL)
+		$target=$this->Wallentry->query('SELECT * FROM messages WHERE msg_id='.$msg_id);
+		
+		$message=$target[0]['messages']['message'];
+		$type=14;
+		$ip=$_SERVER["REMOTE_ADDR"]; 
+		$uploads=$target[0]['messages']['uploads'];
+		
+		$ownerfield=$target[0]['messages']['owner'];
+		if($ownerfield==NULL)
+		$owner=$target[0]['messages']['uid_fk'];
+		else
+		$owner=$target[0]['messages']['owner'];
+	
+		
+		  if($target!=NULL)
+		  {
+		    $this->Wallentry->Query('INSERT INTO messages (message,uid_fk,ip,uploads,type,owner) VALUES ("'.$message.'",'.$performer.',"'.$ip.'","'.$uploads.'",'.$type.','.$owner.')');
+			$msg = array('result' => 1,'message'=>'shared');
+			$this->pushActivity(NULL,$target[0]['messages']['uid_fk'],1,1,15,$msg_id);
+		  }
+		
+		//print_r($target);
+	  
+	    }//auth control
+		
+		$this->set('rtdata', $msg);
+		$this->set('_serialize', array('rtdata'));
+	
+	}
+	
 	public function getlikestatus($id=NULL,$feedtype=NULL) {
 	
 	if($this->Auth->user('id'))//if user logged in
@@ -1245,6 +1287,15 @@ Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			    ->to($user["User"]["email"])
 			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
 			    ->subject($performer["User"]["username"].' liked your comment.')
+			    ->send();
+	  	}elseif($type_id==15){
+			$email->viewVars(array('performer' => $performer,'perstat' => $perstat,'perMail'=>$user["User"]["email"]));
+			$email->config('smtp')
+				->template('sharepost')
+			    ->emailFormat('html')
+			    ->to($user["User"]["email"])
+			    ->from(array('no-reply@clone.gs' => $performer["User"]["username"].' - Clone'))
+			    ->subject($performer["User"]["username"].' shared your post.')
 			    ->send();
 	  	}else{}
 

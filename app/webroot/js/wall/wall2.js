@@ -344,7 +344,30 @@ $(document).ready(function()
 	});
 	
 	
-//=======Like Feed Functions(Feed)========
+//=======Like-Share Feed Functions(Feed)========
+$('.sharepost').live("click",function(e) 
+{
+$post_id=this.id;
+
+    $.post(sharepost, {post_id: $post_id}, function (data) {
+	
+	  if(data.rtdata.result==1)
+	  {
+		
+		$.pnotify({
+            text: 'You have shared this post.',
+            type: 'success',
+			hide: true
+         });
+		
+	  }
+															   
+															   
+    },'json');
+
+});
+
+
 $('.likepost').live("click",function(e) 
 {   
 $feed_id=this.id;
@@ -407,7 +430,7 @@ function likefeed(feed_id,type)
 	
 }
 
-//=======//Like Feed Functions(Feed)========	
+//=======//Like-Share Feed Functions(Feed)========	
 	
 //Send Game Comment(Feed)
 $('.update_game_comment').live("click",function(e) 
