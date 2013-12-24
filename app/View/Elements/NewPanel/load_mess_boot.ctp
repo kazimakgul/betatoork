@@ -97,8 +97,12 @@ $previousdata = $this->requestAction( array('controller' => 'Wallentries', 'acti
                                                         </a>
                                                         <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
                                                             <p style="margin-left:50px;">
-                                                             <span class="bold btn-link"><a href="#"><i class="elusive-star"></i> <?php echo $previousdata['User']['username']; ?></span></br>
-                                                            
+                                                             
+															 <?php if($type==14){ ?>
+															 
+															 <span class="bold btn-link"><a href="#"><i class="elusive-star"></i> <?php echo $previousdata['User']['username']; ?></span>
+															 </br>
+                                                            <?php }?>
                                                             	<?php echo $message; ?>
                                                             
                                                             </br>
