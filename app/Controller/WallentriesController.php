@@ -100,6 +100,7 @@ return $a;
 		$type=14;
 		$ip=$_SERVER["REMOTE_ADDR"]; 
 		$uploads=$target[0]['messages']['uploads'];
+		$mtime=time();
 		
 		$ownerfield=$target[0]['messages']['owner'];
 		if($ownerfield==NULL)
@@ -110,7 +111,7 @@ return $a;
 		
 		  if($target!=NULL)
 		  {
-		    $this->Wallentry->Query('INSERT INTO messages (message,uid_fk,ip,uploads,type,owner) VALUES ("'.$message.'",'.$performer.',"'.$ip.'","'.$uploads.'",'.$type.','.$owner.')');
+		    $this->Wallentry->Query('INSERT INTO messages (message,uid_fk,ip,uploads,type,owner,created) VALUES ("'.$message.'",'.$performer.',"'.$ip.'","'.$uploads.'",'.$type.','.$owner.','.$mtime.')');
 			$msg = array('result' => 1,'message'=>'shared');
 			$this->pushActivity(NULL,$target[0]['messages']['uid_fk'],1,1,15,$msg_id);
 		  }
