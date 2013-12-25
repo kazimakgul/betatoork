@@ -79,9 +79,9 @@ public $perpage = 10; // Uploads perpage
         // More Button End
 	   if($type==NULL)	
        {
-	$query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type,U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M LEFT JOIN games G on M.game_id=G.id, users U   WHERE M.type NOT IN(8,7,6,5) AND M.uid_fk=U.id and M.uid_fk='$uid' $morequery order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
+	$query = mysql_query("SELECT M.msg_id, M.owner, M.previous_id , M.uid_fk, M.message, M.created,M.type,U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M LEFT JOIN games G on M.game_id=G.id, users U   WHERE M.type NOT IN(8,7,6,5) AND M.uid_fk=U.id and M.uid_fk='$uid' $morequery order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
 	   }else{
-	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created,M.type,U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M LEFT JOIN games G on M.game_id=G.id, users U   WHERE M.type='$type' AND M.uid_fk=U.id and M.uid_fk='$uid' $morequery order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
+	   $query = mysql_query("SELECT M.msg_id,M.owner, M.previous_id , M.uid_fk, M.message, M.created,M.type,U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M LEFT JOIN games G on M.game_id=G.id, users U   WHERE M.type='$type' AND M.uid_fk=U.id and M.uid_fk='$uid' $morequery order by M.msg_id desc limit " .$this->perpage) or die(mysql_error());
 	   }
 	
         while($row=mysql_fetch_array($query))

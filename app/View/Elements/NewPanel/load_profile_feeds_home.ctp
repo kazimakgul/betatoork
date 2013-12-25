@@ -39,10 +39,13 @@ if($updatesarray)
 	{
 		$msg_id=$data['msg_id'];
 		$orimessage=$data['message'];
+		$owner=$data['owner'];
+		$previous_id=$data['previous_id'];
 		$message=tolink(htmlcode($data['message']),Router::url('/', true));
 		$time=$data['created'];
 		$mtime=date("c", $time);
 		$username=$data['username'];
+		$plikecount=$data['likecount'];
 		$uploads=$data['uploads'];
 		$type=$data['type'];
 		$gameid=$data['game_id'];
@@ -68,13 +71,38 @@ if($updatesarray)
 		}
 		// End Avatar
 ?>
+
+<?php
+if($type==14){
+$ownerdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$owner));
+$previousdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$previous_id));
+
+$prev_id_url=$this->Html->url(array("controller" => $previousdata['User']['seo_username'],"action" =>""));
+$owner_url=$this->Html->url(array("controller" => $ownerdata['User']['seo_username'],"action" =>""));
+}
+?>
+
 <div class="media well shadow" style="background-color:white;" id="stbody2<?php echo $msg_id;?>">
                                                         <a class="pull-left" href="#">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>
                                                         </a>
                                                         <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
-                                                            <p style="margin-left:50px;"><?php echo $message; ?></p>
+                                                            <p style="margin-left:50px;">
+                                                             
+															 <?php if($type==14){ ?>
+															 
+															 <span class="bold btn-link"><a href="<?php echo $prev_id_url; ?>"><i class="elusive-star"></i> <?php echo $previousdata['User']['username']; ?></span>
+															 </br>
+                                                            <?php }?>
+                                                            	<?php echo $message; ?>
+                                                            
+                                                            </br>
+															<?php if($type==14){?>
+															<p class="pull-right"><small class="mute">Originally published by <a href="<?php echo $owner_url; ?>" class="btn-link"><?php echo $ownerdata['User']['username']; ?></a></small></p>
+                                                            <?php } ?>
+                                                            
+															</p>
                                                         <hr size="1">
 
                                                         <div class="media-body" style="text-align: center; margin:-7px;">
