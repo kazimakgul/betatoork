@@ -190,15 +190,15 @@ return $material.$number;
 				    }
 					if($type==13)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Liked '.$channel_name.' post.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-thumbs-up"></i></a> Liked '.$channel_name.' post.';
 				    }
 					if($type==14)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Liked '.$channel_name.' comment.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-thumbs-up"></i></a> Liked '.$channel_name.' comment.';
 				    }
 					if($type==15)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Shared '.$channel_name.' post.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-share"></i></a> Shared '.$channel_name.' post.';
 				    }
 				  return $text;
    
@@ -280,15 +280,15 @@ return $material.$number;
 				    }
 					if($type==13)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Liked your post.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-thumbs-up"></i></a> Liked your post.';
 				    }
 					if($type==14)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Liked your comment.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-thumbs-up"></i></a> Liked your comment.';
 				    }
 					if($type==15)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Shared your post.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-share"></i></a> Shared your post.';
 				    }
 				  return $text;
    
