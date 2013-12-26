@@ -249,8 +249,14 @@ echo "</div>";
 			  	<div>
 			  	<?php if(isset($uid)) {?>
             	<a href="#" class="btn btn-mini commentopen2" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
+				
+            	<?php if($plikestatus) { ?>
+            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext">Unlike</span> - <i class="elusive-thumbs-up"></i> <span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span> </a>
+				<?php }else{ ?>
+				<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext">Like</span> - <i class="elusive-thumbs-up"></i> <span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span></a>
+				<?php } ?>
+            	
+				<a class="btn btn-mini sharepost" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
 				<?php }?>
 								<?php if(isset($uid) && $uid==$msg_uid && $type!=1) { ?>
                 <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
