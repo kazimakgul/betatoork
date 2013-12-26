@@ -50,10 +50,13 @@ if($updatesarray)
 	{
 		$msg_id=$data['msg_id'];
 		$orimessage=$data['message'];
+		$owner=$data['owner'];
+		$previous_id=$data['previous_id'];
 		$message=tolink(htmlcode($data['message']),Router::url('/', true));
 		$time=$data['created'];
 		$mtime=date("c", $time);
 		$username=$data['username'];
+		$plikecount=$data['likecount'];
 		$uploads=$data['uploads'];
 		$type=$data['type'];
 		$gameid=$data['game_id'];
@@ -80,13 +83,37 @@ if($updatesarray)
 		// End Avatar
 ?>
 
+<?php
+if($type==14){
+$ownerdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$owner));
+$previousdata = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'get_userdata',$previous_id));
+
+$prev_id_url=$this->Html->url(array("controller" => $previousdata['User']['seo_username'],"action" =>""));
+$owner_url=$this->Html->url(array("controller" => $ownerdata['User']['seo_username'],"action" =>""));
+}
+?>
+
 <div class="media well shadow" style="background-color:white;" id="stbody<?php echo $msg_id;?>">
                                                       <a class="pull-left" href="#">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>
                                                         </a>
                                                         <h4 class="media-heading"><a href="<?php echo $channelurl ?>"><?php echo $username?> </a><small class="pull-right helper-font-small"><a href='<?php echo $postPage; ?>' class="timeago" title='<?php echo $mtime; ?>'></a></small></h4>
-                                                            <p style="margin-left:50px;"><?php echo $message; ?></p>
+                                                            <p style="margin-left:50px;">
+                                                             
+															 <?php if($type==14){ ?>
+															 
+															 <span class="bold btn-link"><a href="<?php echo $prev_id_url; ?>"><i class="elusive-star"></i> <?php echo $previousdata['User']['username']; ?></span>
+															 </br>
+                                                            <?php }?>
+                                                            	<?php echo $message; ?>
+                                                            
+                                                            </br>
+															<?php if($type==14){?>
+															<p class="pull-right"><small class="mute">Originally published by <a href="<?php echo $owner_url; ?>" class="btn-link"><?php echo $ownerdata['User']['username']; ?></a></small></p>
+                                                            <?php } ?>
+                                                            
+															</p>
                                                         <hr size="1">
                                                         
 <div id="hidePost" style="margin-bottom:-45px;">
@@ -226,14 +253,25 @@ echo "</div>";
                                                         </div>
 														
 
+                <!-- this gets like status of posts -->		
+				<?php $plikestatus = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'getlikestatus',$msg_id,1));?>	
+
 				<!-- Comment area begins -->
 				</br>	
 <div style="background-color:#f5f5f5; padding:30px 20px 30px 20px; margin:-20px;">				
 			  	<div>
 			  	<?php if(isset($uid)) {?>
             	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
+				
+            	<?php if($plikestatus) { ?>
+            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext">Unlike</span> - <i class="elusive-thumbs-up"></i> <span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span> </a>
+				<?php }else{ ?>
+				<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext">Like</span> - <i class="elusive-thumbs-up"></i> <span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span></a>
+				<?php } ?>
+            	
+				<a class="btn btn-mini sharepost" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
+				
+				
 				<?php }?>
 								<?php if(isset($uid) && $uid==$msg_uid && $type!=1) { ?>
                 <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
