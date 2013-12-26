@@ -142,63 +142,63 @@ return $material.$number;
 				
 				    if($type==1)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Published '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> <a class="btn-link" href="'.$postPage.'"> Published</a> '.$game_name;
 				    }
 					if($type==2)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-group"></i></a> Following '.$channel_name.' now.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-group"></i></a> <a class="btn-link" href="'.$postPage.'"> Following</a>  '.$channel_name.' now.';
 				    }
 					if($type==3)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-red elusive-tint"></i></a> Cloned '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-red elusive-tint"></i></a> <a class="btn-link" href="'.$postPage.'"> Cloned</a>  '.$game_name;
 				    }
 					if($type==4)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-gold elusive-star"></i></a> Rate on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-gold elusive-star"></i></a> <a class="btn-link" href="'.$postPage.'"> Rate</a>  on '.$game_name.'';
 				    }
 					if($type==5)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-purple elusive-user"></i></a> Talking about '.$channel_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-purple elusive-user"></i></a> <a class="btn-link" href="'.$postPage.'"> Talking</a>  about '.$channel_name;
 				    }
 					if($type==6)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$channel_name.' post.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> <a class="btn-link" href="'.$postPage.'"> Comment</a>  on '.$channel_name.' post.';
 				    }
 					if($type==7)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-orange elusive-heart"></i></a> Favorited '.$game_name;
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-orange elusive-heart"></i></a> <a class="btn-link" href="'.$postPage.'"> Favorited</a>  '.$game_name;
 				    }
 					if($type==8)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-purple bold">#</i></a> Talking about '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-purple bold">#</i></a> <a class="btn-link" href="'.$postPage.'"> Talking</a>  about '.$game_name.'';
 				    }
 					if($type==9)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> <a class="btn-link" href="'.$postPage.'"> Comment</a>  on '.$game_name.'';
 				    }
 					if($type==10)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> <a class="btn-link" href="'.$postPage.'"> Comment</a>  on '.$game_name.'';
 				    }
 					if($type==11)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Comment on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> <a class="btn-link" href="'.$postPage.'"> Comment</a>  on '.$game_name.'';
 				    }
 					if($type==12)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> Commented on '.$game_name.'';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-comment"></i></a> <a class="btn-link" href="'.$postPage.'"> Commented</a>  on '.$game_name.'';
 				    }
 					if($type==13)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-thumbs-up"></i></a> Liked '.$channel_name.' post.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-thumbs-up"></i></a> Liked '.$channel_name.' <a class="btn-link" href="'.$postPage.'"> post</a> .';
 				    }
 					if($type==14)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-thumbs-up"></i></a> Liked '.$channel_name.' comment.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-blue elusive-thumbs-up"></i></a> Liked '.$channel_name.' <a class="btn-link" href="'.$postPage.'"> comment</a> .';
 				    }
 					if($type==15)
 				    {
-					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-share"></i></a> Shared '.$channel_name.' post.';
+					$text='<a class="btn-link" href="'.$postPage.'"> <i class="color-green elusive-share"></i></a> Shared '.$channel_name.' <a class="btn-link" href="'.$postPage.'"> post</a> .';
 				    }
 				  return $text;
    
