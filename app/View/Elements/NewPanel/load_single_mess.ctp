@@ -37,13 +37,13 @@ if(1)
 
 		$msg_id=$data['Message']['msg_id'];
 		$orimessage=$data['Message']['message'];
-		$owner=$data['owner'];
-		$previous_id=$data['previous_id'];
+		$owner=$data['Message']['owner'];
+		$previous_id=$data['Message']['previous_id'];
 		$message=tolink(htmlcode($data['Message']['message']),Router::url('/', true));
 		$time=$data['Message']['created'];
 		$mtime=date("c", $time);
 		$username=$data['User']['username'];
-		$plikecount=$data['likecount'];
+		$plikecount=$data['Message']['likecount'];
 		$uploads=$data['Message']['uploads'];
 		$type=$data['Message']['type'];
 		$gameid=$data['Message']['game_id'];
@@ -236,6 +236,10 @@ echo "</div>";
 					<?php } ?>
 				 	
                                                         </div>
+					
+				<!-- this gets like status of posts -->		
+				<?php $plikestatus = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'getlikestatus',$msg_id,1));?>	
+					
 														
 				<!-- Comment area begins -->				
 			</br>
@@ -244,8 +248,15 @@ echo "</div>";
 			  	<?php if(isset($uid)) {?>
             	<a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
 				<input type="hidden" id="msg_uid<?php echo $msg_id;?>" value="<?php echo $msg_uid;?>"/>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
-            	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
+				
+            	<?php if($plikestatus) { ?>
+            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext">Unlike</span> - <i class="elusive-thumbs-up"></i> <span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span> </a>
+				<?php }else{ ?>
+				<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext">Like</span> - <i class="elusive-thumbs-up"></i> <span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span></a>
+				<?php } ?>
+            	
+				<a class="btn btn-mini sharepost" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
+				
 				<?php }?>
 								<?php if(isset($uid) && $uid==$msg_uid && $type!=1) { ?>
                 <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
