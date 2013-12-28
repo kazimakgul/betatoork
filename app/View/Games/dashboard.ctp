@@ -69,7 +69,7 @@ $username = $user['User']['seo_username'];
                 <div class="span2" rel="tooltip" data-placement="right" data-original-title="Change Your Avatar" style="margin-bottom:5px;"><a href="<?php echo $settings; ?>">
                     <?php 
                           if($user['User']['picture']==null) { 
-                            echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'53','class'=>'img-polaroid',"alt" => "toork avatar image")); 
+                            echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'53','class'=>'img-polaroid',"alt" => "clone avatar image")); 
                             } else {
                               echo $this->Upload->image($user,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'53','onerror'=>'imgError(this,"avatar");')); }
                     ?>   
@@ -98,13 +98,13 @@ $username = $user['User']['seo_username'];
 
                             <div id="imageupload5" class="border" style="display:none;">
 
-                            <p>Just copy/paste the link you want to share ex: <strong>http://toork.com</strong></p>
+                            <p>Just copy/paste the link you want to share ex: <strong>http://clone.gs</strong></p>
                             </div>
 
 
                     <hr size="3" style="margin:0px 0px 5px 0px;">
                   <button id="success-post" type="submit" class="btn btn-inverse pull-right update_data" style="margin:0px 0px 0px 0px;">Publish</button>
-                  <div><a class="btn btn-link btn-mini" href="<?php echo $wall; ?>">Whats New?</a><a class="btn btn-link btn-mini" href="<?php echo $profilepublic; ?>" rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://toork.com/'.$username?>">@<?php echo $username; ?></a></div>
+                  <div><a class="btn btn-link btn-mini" href="<?php echo $wall; ?>">Whats New?</a><a class="btn btn-link btn-mini" href="<?php echo $profilepublic; ?>" rel="tooltip" data-placement="bottom" data-original-title="<?php echo 'http://clone.gs/'.$username?>">@<?php echo $username; ?></a></div>
                 </br>
               </div>
             </div>
