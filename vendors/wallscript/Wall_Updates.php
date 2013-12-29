@@ -192,7 +192,7 @@ $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.created, U.usernam
 		if($lastid)
 		$morequery=" and M.msg_id<'".$lastid."' ";
 	   // More Button End
-	   mysql_query("set names 'utf8'");
+	   
 	   if($type==NULL)
 	   {
 	   $query = mysql_query("SELECT M.msg_id, M.uid_fk, M.message, M.owner, M.previous_id, M.created,M.type,M.likecount, U.username,U.seo_username,M.uploads,G.name,G.description,G.seo_url,M.game_id FROM messages M INNER JOIN users U on M.uid_fk=U.id LEFT JOIN games G on M.game_id=G.id  INNER JOIN (SELECT subscriber_to_id FROM subscriptions WHERE subscriber_id='$uid') AS subscriber ON uid_fk=subscriber_to_id WHERE M.type NOT IN(8,7,6,5) $morequery order by M.msg_id DESC limit " .$this->perpage) or die(mysql_error());
