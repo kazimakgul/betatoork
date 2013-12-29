@@ -2127,7 +2127,7 @@ function secureSuperGlobalPOST($value)
         $string = htmlspecialchars(stripslashes($value));
         $string = str_ireplace("script", "blocked", $string);
         $string = mysql_escape_string($string);
-		$string = htmlentities($string);
+		//$string = htmlentities($string);
         return $string;
     }
        
