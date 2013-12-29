@@ -2158,7 +2158,7 @@ public function comment_ajax2() {
    if($cdata)
    {
    $com_id=$cdata['com_id'];
-   $comment=tolink(htmlentities($cdata['comment'] ),Router::url('/', true));
+   $comment=tolink($cdata['comment'],Router::url('/', true));
    $time=$cdata['created'];
    $mtime=date("c", $time);
    $username=$cdata['username'];
