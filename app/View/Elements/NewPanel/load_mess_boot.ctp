@@ -61,7 +61,7 @@ if($updatesarray)
 		$type=$data['type'];
 		$gameid=$data['game_id'];
 		$gamename=$data['name'];
-		$description=$data['description'];
+		$description=$data['description']; echo $description;
 		$seo_url=$data['seo_url'];
 		$msg_uid=$data['uid_fk'];
 		$channelurl=$this->Html->url(array("controller" => $data['seo_username'],"action" =>""));
@@ -203,7 +203,7 @@ echo "</div>";
                                         </div>   
                                         <div>
                                             <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedgamedesctitle"><?php echo $gamename; ?></span></a>
-                                            <p class="helper-font-9"><?php //echo $description; ?></p>
+                                            <p class="helper-font-9"><?php echo $description; ?></p>
                                         </div>                                     
                                     </div>
 						<?php } ?>
