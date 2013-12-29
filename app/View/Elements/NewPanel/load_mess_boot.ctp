@@ -203,7 +203,7 @@ echo "</div>";
                                         </div>   
                                         <div>
                                             <a class="gb_gamename" href="<?php echo $playurl ?>"><span class="feedgamedesctitle"><?php echo $gamename; ?></span></a>
-                                            <p class="helper-font-9"><?php echo $description; ?></p>
+                                            <p class="helper-font-9"><?php //echo $description; ?></p>
                                         </div>                                     
                                     </div>
 						<?php } ?>
