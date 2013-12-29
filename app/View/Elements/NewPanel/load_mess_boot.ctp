@@ -61,7 +61,7 @@ if($updatesarray)
 		$type=$data['type'];
 		$gameid=$data['game_id'];
 		$gamename=$data['name'];
-		$description=$data['description']; echo $description;
+		$description=$data['description'];
 		$seo_url=$data['seo_url'];
 		$msg_uid=$data['uid_fk'];
 		$channelurl=$this->Html->url(array("controller" => $data['seo_username'],"action" =>""));
