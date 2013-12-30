@@ -273,7 +273,7 @@ echo "</div>";
 				
 				
 				<?php }?>
-								<?php if(isset($uid) && $uid==$msg_uid && $type!=1) { ?>
+								<?php if(isset($uid) && $uid==$msg_uid) { ?>
                 <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
 				<?php } ?>
 			</div>

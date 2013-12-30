@@ -246,7 +246,7 @@ echo "</div>";
             	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
             	<a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>
 				<?php }?>
-								<?php if(isset($uid) && $uid==$msg_uid && $type!=1) { ?>
+								<?php if(isset($uid) && $uid==$msg_uid) { ?>
                 <a href="#" class="btn btn-mini pull-right stdelete" id="<?php echo $msg_id;?>"><i class="elusive-trash"></i> Delete</a>
 				<?php } ?></div>
 			
