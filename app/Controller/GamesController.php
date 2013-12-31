@@ -3186,6 +3186,7 @@ exec($command3, $output3, $ret3);
 		}
 		if ($this->Game->delete()) {
 		    echo 1;
+			$this->Game->query('DELETE FROM messages WHERE uid_fk='.$userid.' AND game_id='.$id.'');
 			$this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
 			$this->deleteS3Image($id);
 		}else{
