@@ -94,28 +94,36 @@ class GamesController extends AppController {
 	
 	if(is_numeric($targetid))
 	{
-	$game = $this->Game->find('first', array('conditions' => array('Game.id' => $targetid),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')))));
+	$games = $this->Game->find('all', array('conditions' => array('Game.user_id' => $targetid),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')))));
 	}
 	
 	
+	foreach($games as $game)
+	{
+	     echo '<br><br><span style=" color:green;">'.$game['Game']['name'].'('.$game['Game']['id'].')</span>';
+		 
+		 if($game['User']['username']==NULL && $game['User']['id']==NULL)
+	     {
+	     echo '<br><span style=" color:green;">-We cannot find any channel user for this game</span>';
+	   
+	        if($targetid==NULL || $newid==NULL)
+	        {
+	        echo '<br><span style=" color:red;">-Please enter a target id and new id.</span>';
+	        }else{
+	        $this->Game->query('UPDATE games SET user_id='.$newid.' WHERE id='.$game['Game']['id'].'');
+	        echo '<br><span style=" color:green;">-Data Has been replaced.</span>';
+	        }
+	   
+	     }else{
+	     echo '<br><span style=" color:green;">-Game data is correct.</span>';
+	     echo '<br><span style=" color:green;">-Game Name:'.$game['Game']['name'].'</span>';
+	     echo '<br><span style=" color:green;">-Channel Name:'.$game['User']['username'].'('.$game['User']['id'].')</span>';
+	     }
 	
-	   if($game['User']['username']==NULL && $game['User']['id']==NULL)
-	   {
-	   echo '<br><span style=" color:green;">-We cannot find any channel user for this game</span>';
+	}
+	
+	
 	   
-	      if($targetid==NULL || $newid==NULL)
-	      {
-	      echo '<br><span style=" color:red;">-Please enter a target id and new id.</span>';
-	      }else{
-	      $this->Game->query('UPDATE games SET user_id='.$newid.' WHERE id='.$targetid.'');
-	      echo '<br><span style=" color:green;">-Data Has been replaced.</span>';
-	      }
-	   
-	   }else{
-	   echo '<br><span style=" color:green;">-Game data is correct.</span>';
-	   echo '<br><span style=" color:green;">-Game Name:'.$game['Game']['name'].'</span>';
-	   echo '<br><span style=" color:green;">-Channel Name:'.$game['User']['username'].'('.$game['User']['id'].')</span>';
-	   }
 	}
 	
 	
