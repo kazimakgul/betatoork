@@ -1174,7 +1174,10 @@ ul.dropdown-notification > li.dropdown-header:hover{
 .content > .content-body{
     padding: 40px 20px 40px 25px;
     font-size: .9em;
-    background: #ebede3 url('../../img/images/stripped-bg.png') left top repeat;
+    /*background: #ebede3 url('../../img/images/stripped-bg.png') left top repeat;*/
+    margin: 0 auto; 
+    max-width: 950px; 
+
 }
 /* end content-body */
 
