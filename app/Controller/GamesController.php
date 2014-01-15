@@ -13,7 +13,7 @@ class GamesController extends AppController {
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
     
 
-
+    //=====Kullanici sisteme login ise=======
  	public function isAuthorized($user) {
 	    if (parent::isAuthorized($user)) {
 	        return true;
@@ -40,8 +40,7 @@ class GamesController extends AppController {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
 	
-	//Delete upload dir
- 	 	
+	//===Eger upload adinda bir klasör varsa siler.====
         $upload_dir = new Folder(WWW_ROOT ."upload");
  	    $updir=$upload_dir->pwd();
 		if($updir!=NULL)
@@ -49,20 +48,12 @@ class GamesController extends AppController {
 		$upload_dir->delete();
 		//print_r($upload_dir->errors());
 		}
-      
- 	 	
-    //Delete upload dir  
+    //===//Eger upload adinda bir klasör varsa siler.====
 	
 	
 	}
 	
-	
-	public function fblogin() {
-	$this->layout="ajax";
-	
-	}
-	
-	
+	//Pasif???
 	public function index() {
 
 	if($this->Session->check('Auth.User')){
