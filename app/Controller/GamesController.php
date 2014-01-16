@@ -74,7 +74,7 @@ class GamesController extends AppController {
 		$this->set('author_for_layout', 'Clone');
 	}
 	
-	
+	//Bu fonksiyon channel id si olmayan oyunlara yeni bir channel id atar.
 	public function gamerepair($targetid=NULL,$newid=NULL) {
 	$this->layout='ajax';
 	
@@ -117,7 +117,7 @@ class GamesController extends AppController {
 	   
 	}
 	
-	
+	//Pasif???
 	public function index2() {
 
 		$this->layout='landing';
@@ -142,7 +142,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	}
 
-	
+	//Silinecek-Viewla beraber.
 	public function mostplayed() {
 
    		$this->paginate = array(
@@ -160,7 +160,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('description_for_layout', 'Clone - find the most played online games and channels and play trend topic games');
 	}
 	
-	
+	//Silinecek-Viewla beraber
 	public function lastadded() {
    		$this->paginate = array(
 	   		'Game' => array('limit'=>28,'order' => array('created' => 'desc')));
@@ -175,7 +175,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('description_for_layout', 'Clone - Find the latest and popular online games so fresh and new games. Enjoy');
 	}
 
-
+    //====Bu fonksiyon categorygames2 tarafindan kullaniliyor.======
 	public function leftpanel(){
 		$this->Game->recursive = 0;
 		if($this->Session->read('LeftPanel.data')==NULL)
@@ -184,6 +184,7 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('category',$this->Session->read('LeftPanel.data'));
 	}
 
+    //Silinecek-Viewla beraber
 	public function channel() {
 
 		$this->layout='channel';
@@ -241,6 +242,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 	
 	}
 
+
+//GamesControlerina bagli sayfalar için last activityleri getirir.Component yapilabilir.
 public function get_last_activities()
 {
     if($this->Auth->user('id'))
@@ -257,6 +260,7 @@ $this->set('lastactivities',$activityData);
 
 }
 
+//Kullanicinin kaç tane notificationu oldugunun bilgisini saglar.
 public function set_notify_count()
 {
        if($this->Auth->user('id'))
@@ -269,6 +273,7 @@ public function set_notify_count()
 	   }
 }
 
+//Notification bilgisini getirir.
 public function set_notify()
 {
        if($this->Auth->user('id'))
@@ -279,6 +284,7 @@ public function set_notify()
         }
 }
 
+//En iyi channellari getirir.(Potential)
 public function set_suggested_channels()
 {
 //Set first situation of flags
@@ -532,7 +538,7 @@ public function set_suggested_channels()
 	}
 
 
-
+    //Silinecek-Viewla beraber
 	public function allchannelgames() {
 
 		$this->layout='channel';
@@ -546,7 +552,7 @@ public function set_suggested_channels()
 		$this->set('title_for_layout', 'Clone - Create your own game channel');
 		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	}
-
+        //Silinecek-Viewla
 		public function allchannelfavorites() {
 
 		$this->layout='channel';
@@ -561,7 +567,7 @@ public function set_suggested_channels()
 		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	}
 	
-	
+	//Silinecek-Vievla
 	public function toprated() {
 		$this->layout='base';
 		$this->leftpanel();
@@ -596,9 +602,10 @@ public function set_suggested_channels()
 
     	$this->set_suggested_channels();
 	}
-
+    
+	//silinecek-viewla
 	public function playedgames() {
-	$this->layout='base';
+	$this->layout='base';//layoutu sil
 
 	$this->leftpanel();
     $userid = $this->request->params['pass'][0];
@@ -613,7 +620,8 @@ public function set_suggested_channels()
 	$this->set('description_for_layout', 'Find all the games that'.$userName.' played recently');
 
 	}
-
+    
+	//Silinecek-vievla
 	public function categorygames() {
 		$this->layout='base';
 		$this->leftpanel();
@@ -663,6 +671,7 @@ public function set_suggested_channels()
 		}
 	}
 
+//Yeni sisteme ait bu fonksiyon oyunlari kategorilere göre siralar.
 public function categorygames2() {
 		$this->layout='dashboard';
 		$this->leftpanel();
@@ -805,11 +814,11 @@ public function mygames() {
 }
 
 	
-
+    //Silinecek-viewla
 	public function usergames() {
 
 	$this->leftpanel();
-    $this->layout='usergames';
+    $this->layout='usergames';//Eski sitem layoutu silinecek.
     $userid = $this->request->params['pass'][0];
     $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
 	$this->usergame_user_panel($userid);
@@ -870,6 +879,7 @@ public function get_user_dict($cond2=NULL)
    return $allusernames;
 }
 
+//Silinecek-viewla
 public function channelgames() {
 
 	$this->leftpanel();
@@ -877,7 +887,7 @@ public function channelgames() {
     $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
 	$userid=$user['User']['id'];
 	$this->usergame_user_panel($userid);
-	$this->layout='usergames';
+	$this->layout='usergames';//silinecek
 	if($user==NULL)
 	$this->redirect('/');
 
@@ -1263,9 +1273,9 @@ public function hashtag() {
 }
 
 
-
+    //Silinecek-viewla
 	public function allusergames() {
-	$this->layout='base';
+	$this->layout='base';//Silinecek
 
 	$this->leftpanel();
     $userid = $this->request->params['pass'][0];
@@ -1308,7 +1318,7 @@ public function hashtag() {
 
 
 	
-
+    //silinecek-viewla
 	public function followers() {
 
 		$this->layout='base';
@@ -1338,7 +1348,8 @@ public function hashtag() {
 		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_to_id' => $userid)));
 
 	}
-
+    
+	//Silinecek-viewla
 	public function subscriptions() {
 
 		$this->layout='base';
@@ -1368,7 +1379,8 @@ public function hashtag() {
 		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
 
 	}
-
+        
+		//Silinecek-viewla
 		public function bestchannels() {
 
 		$this->layout='base';
@@ -1531,6 +1543,7 @@ public function hashtag() {
 	}
 
 
+//Silinecek-viewla
 public function search() {
 
 if($this->request->is("GET") && isset($this->request->params['pass'][0]))
@@ -1756,7 +1769,7 @@ if(empty($favbefore))
 
 	}
 
-
+    //Pasif???-Muhtemelen silinecek
 	public function play2($id = null) {
 	
 		$this->leftpanel();
@@ -1812,7 +1825,7 @@ if(empty($favbefore))
 	}
 
 
-
+//silinecek,incele
 public function seoplay($channel=NULL,$seo_url=NULL) {
 
 		if($this->Session->read('Random.flag')!=1)
@@ -1825,7 +1838,7 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 		$this->set('randomuser',$this->Session->read('Random.user'));
 		}
 		
-		$this->layout='game_index';
+		$this->layout='game_index';//silinecek
 		//ReCoded
 		$channel_id=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$channel),'fields'=>array('User.id'),'contain'=>false));
 		
@@ -1871,10 +1884,10 @@ public function seoplay($channel=NULL,$seo_url=NULL) {
 
 	}
 
-
+    //silinecek,incele
 	public function seoplay2($channel=NULL,$seo_url=NULL) {
 		
-		$this->layout='game_index2';
+		$this->layout='game_index2';//silinecek
 		
 		$this->leftpanel();
 		
@@ -2503,7 +2516,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 
   
 
-
+    //Silinecek-viewla-eski sistem
 	public function add() {
 	
 	App::uses('Folder', 'Utility');
@@ -2875,6 +2888,8 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
  * @param string $id
  * @return void
  */
+ 
+    //Silinecek-eski sistem-viewla
 	public function edit($id = null) {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
@@ -2999,6 +3014,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	}
 
 
+//====Yeni sisteme ait edit game fonksiyonu=====
 public function edit2($id = null) {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
