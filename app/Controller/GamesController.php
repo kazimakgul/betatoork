@@ -707,7 +707,7 @@ $userid = $this->request->params['pass'][0];
 	
 }
 
-
+//Yeni Sistem
 public function getprofileactivity() {
 $this->layout="ajax";
   $userid = $this->request->params['pass'][0];
@@ -720,6 +720,7 @@ $this->layout="ajax";
 
 }
 
+//Yeni Sistem
 public function loadprofilefeeds() {
 $this->layout="ajax";
 $userid = $this->request->params['pass'][0];
@@ -753,7 +754,7 @@ $userid = $this->request->params['pass'][0];
 $this->set('profile_uid',$userid);
 }
 
-
+//Yeni Sistem-Channel Sayfalari
 public function profile() {
 
 	$this->layout='dashboard';
@@ -851,6 +852,7 @@ public function profile() {
 
 }
 
+//Yeni Sistem
 public function hashtag() {
 
 	$this->layout='dashboard';
@@ -952,25 +954,6 @@ public function hashtag() {
 
 }
 
-
-    //Silinecek-viewla
-	public function allusergames() {break;
-	$this->layout='base';//Silinecek
-
-	$this->leftpanel();
-    $userid = $this->request->params['pass'][0];
-	$this->usergame_user_panel($userid);
-    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-    $userName = $user['User']['username'];
-    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-    $this->set('mygames', $this->paginate('Game',array('Game.active' => '1','Game.user_id'=>$userid)));
-    $this->set('username', $userName);
-	$this->set('user_id', $userid);
-
-	$this->set('title_for_layout',$userName.' - All Channel Games');
-	$this->set('description_for_layout', 'Find all the games that are published by '.$userName);
-	
-}
 
 	public function alluserfavorites() {
 	$this->layout='base';
