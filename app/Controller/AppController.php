@@ -85,7 +85,7 @@ class AppController extends Controller {
 		$this->Auth->allow('index','checkUser','checkUser2','FaceUser','gatekeeper','usernameAvailable','view','register','logout','play','profile','playlist',
             'search','search2','display','activate','reset_request','reset_now','followers',
             'subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','play2',
-            'randomAvatar','randomPicture','alluserfavorites','seoplay',
+            'randomAvatar','randomPicture','seoplay',
             'seoplay2','connect','sync','syncallusers','incgameplay','incscribe','togglefav','totalrate',
             'getgamecount','potential','message_ajax','message_ajax2','moreupdates_ajax','explore_more_feed','moreupdates_ajax2','moreupdates_ajax3','moreupdates_ajax_my',
             'comment_ajax','comment_ajax2','image_ajax','image_ajax_fly','get_userdata','delete_message_ajax','delete_comment_ajax','action_ajax',

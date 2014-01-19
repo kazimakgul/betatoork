@@ -955,31 +955,6 @@ public function hashtag() {
 }
 
 
-	public function alluserfavorites() {
-	$this->layout='base';
-
-	$this->leftpanel();
-    $limit=50;
-    $userid = $this->request->params['pass'][0];
-	$this->usergame_user_panel($userid);
-    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-    $userName = $user['User']['username'];
-    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-    
-	//ReCoded
-	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
-	
-	$pagin=$this->paginate('Favorite',array('Favorite.user_id'=>$userid));
-    $this->set('favorites',$this->paginate('Favorite',array('Favorite.user_id'=>$userid)));
-    $this->set('username', $userName);
-	$this->set('user_id', $userid);
-
-	$this->set('title_for_layout',$userName.'- All Favorite Games');
-	$this->set('description_for_layout', 'Find all the games that are favorited by '.$userName);	
-
-}
-
-
 	
     //silinecek-viewla
 	public function followers() {break;
