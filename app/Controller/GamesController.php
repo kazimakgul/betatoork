@@ -142,38 +142,8 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	}
 
-	//Silinecek-Viewla beraber.
-	public function mostplayed() {break;
-
-   		$this->paginate = array(
-	   		'Game' => array('limit'=>28,'order' => array('playcount' => 'desc')));
-
-		$this->layout='base';
-		$this->leftpanel();
-		$this->logedin_user_panel();
-
-
-		
-		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
-
-		$this->set('title_for_layout', 'Clone - Most Played Games');
-		$this->set('description_for_layout', 'Clone - find the most played online games and channels and play trend topic games');
-	}
 	
-	//Silinecek-Viewla beraber
-	public function lastadded() {break;
-   		$this->paginate = array(
-	   		'Game' => array('limit'=>28,'order' => array('created' => 'desc')));
-
-		$this->layout='base';
-		$this->leftpanel();
-		$this->logedin_user_panel();
-		
-		$this->set('most_played_games', $this->paginate('Game',array('Game.active'=>'1')));
-
-		$this->set('title_for_layout', 'Clone - New Games');
-		$this->set('description_for_layout', 'Clone - Find the latest and popular online games so fresh and new games. Enjoy');
-	}
+	
 
     //====Bu fonksiyon categorygames2 tarafindan kullaniliyor.======
 	public function leftpanel(){
@@ -184,66 +154,9 @@ $cond3 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'
 		$this->set('category',$this->Session->read('LeftPanel.data'));
 	}
 
-    //Silinecek-Viewla beraber
-	public function channel() {break;
-
-		$this->layout='channel';
-		$this->leftpanel();
-		$this->logedin_user_panel();
-		$userid = $this->Session->read('Auth.User.id');
-
-		$authid = $userid;
-		//Get the list of subscriptions of auth user.
-		   if($authid!=NULL)
-		   {
-		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $mutuals=array_intersect($listofmine,$listofuser);
-		   $this->set('mutuals',$mutuals);
-		   }else{
-		   $this->set('mutuals',NULL);
-		   }
 
 
-
-		$limit=8;
-		$limit2=6;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.created' => 'desc'
-    )));
-
-	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
-	
-	$this->set('users', $subCond);
-	
-	//ReCoded
-  $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
-	
-	
-	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
-	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	    if($gamenumber >= 3){
-	    	    $this->set('slider', $cond);
-	    }else{
-	    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
-	    }
-	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-	    $this->set('user',$user);
-
-	    $this->set('subscribe', $subscribe);
-	    $this->set('subscribeto', $subscribeto);
-    	$this->set('userid', $userid);
-    	$this->set('mygames', $cond);
-    	$this->set('favorites', $cond2);
-    	$this->set('limit', $limit);
-    	$this->set('limit2', $limit2);
-		$this->set('title_for_layout', 'Clone - Create your own game channel');
-		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
-	
-	}
-
-
-//GamesControlerina bagli sayfalar için last activityleri getirir.Component yapilabilir.
+//Yeni Sistem-GamesControlerina bagli sayfalar için last activityleri getirir.Component yapilabilir.
 public function get_last_activities()
 {
     if($this->Auth->user('id'))
@@ -260,7 +173,7 @@ $this->set('lastactivities',$activityData);
 
 }
 
-//Kullanicinin kaç tane notificationu oldugunun bilgisini saglar.
+//Yeni Sistem-Kullanicinin kaç tane notificationu oldugunun bilgisini saglar.
 public function set_notify_count()
 {
        if($this->Auth->user('id'))
@@ -273,7 +186,7 @@ public function set_notify_count()
 	   }
 }
 
-//Notification bilgisini getirir.
+//Yeni Sistem-Notification bilgisini getirir.
 public function set_notify()
 {
        if($this->Auth->user('id'))
@@ -284,7 +197,7 @@ public function set_notify()
         }
 }
 
-//En iyi channellari getirir.(Potential)
+//Yeni Sistem-En iyi channellari getirir.(Potential)
 public function set_suggested_channels()
 {
 //Set first situation of flags
@@ -318,7 +231,7 @@ public function set_suggested_channels()
 }
 
 
-//this gets channel suggestions
+//Yeni Sistem-this gets channel suggestions
 	public function get_suggestions($restrict)
 	{
 	$top50=$this->User->query('SELECT user_id from userstats ORDER BY potential desc LIMIT '.$restrict);
@@ -345,7 +258,7 @@ public function set_suggested_channels()
 	return $key;
 	}
    
-//Yeni sistem Homepage
+//Yeni sistem-Homepage
 	public function dashboard() {
 		
 		$this->layout='dashboard';
@@ -414,7 +327,7 @@ public function set_suggested_channels()
 		$this->set('description_for_layout', 'Your Dashboard knows what you want and helps you do everything easier.');
 	    
 	}
-	//Yeni sistem explore sayfasi
+	//Yeni sistem-Explore sayfasi
 	public function explore() {
 		
 		$this->layout='dashboard';
@@ -538,48 +451,7 @@ public function set_suggested_channels()
 	}
 
 
-    //Silinecek-Viewla beraber
-	public function allchannelgames() {break;
 
-		$this->layout='channel';
-		$this->leftpanel();
-		$this->logedin_user_panel();
-		$userid = $this->Session->read('Auth.User.id');
-	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-	    $this->set('user',$user);
-    	$this->set('userid', $userid);
-    	$this->set('mygames', $this->paginate('Game',array('Game.active'=>'1', 'Game.user_id'=>$userid)));
-		$this->set('title_for_layout', 'Clone - Create your own game channel');
-		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
-	}
-        //Silinecek-Viewla
-		public function allchannelfavorites() {break;
-
-		$this->layout='channel';
-		$this->leftpanel();
-		$this->logedin_user_panel();
-		$userid = $this->Session->read('Auth.User.id');
-	    $user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-	    $this->set('user',$user);
-    	$this->set('userid', $userid);
-    	$this->set('favorites',$this->paginate('Favorite',array('Game.active'=>'1','Favorite.user_id'=>$userid)));
-		$this->set('title_for_layout', 'Clone - Create your own game channel');
-		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
-	}
-	
-	//Silinecek-Vievla
-	public function toprated() {break;
-		$this->layout='base';
-		$this->leftpanel();
-		$this->logedin_user_panel();
-
-		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1')));
-
-		$this->set('title_for_layout', 'Clone - Top Rated Games');
-		$this->set('description_for_layout', 'Find the best and toprated online games and play and rate popular games online');	
-	}
-    
-	
 	//Yeni Sistem-Toprated Games
 	public function toprated2() {
 		$this->layout='dashboard';
@@ -605,73 +477,6 @@ public function set_suggested_channels()
     	$this->set_suggested_channels();
 	}
     
-	//silinecek-viewla
-	public function playedgames() {break;
-	$this->layout='base';//layoutu sil
-
-	$this->leftpanel();
-    $userid = $this->request->params['pass'][0];
-	$this->usergame_user_panel($userid);
-    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-    $userName = $user['User']['username'];
-    $this->set('top_rated_games', $this->paginate('Playcount',array('Playcount.user_id'=>$userid,'Game.active'=>1)));
-
-    $this->set('username', $userName);
-	$this->set('userid', $userid);
-	$this->set('title_for_layout',  $userName.' - Played Games - Clone');
-	$this->set('description_for_layout', 'Find all the games that'.$userName.' played recently');
-
-	}
-    
-	//Silinecek-vievla
-	public function categorygames() {break;
-		$this->layout='base';
-		$this->leftpanel();
-		$this->logedin_user_panel();
-		$catid = $this->request->params['pass'][0];
-		$category = $this->Category->find('first', array('conditions' => array('Category.id' => $catid)));
-		$catName = $category['Category']['name'];
-		$this->set('top_rated_games', $this->paginate('Game',array('Game.active'=>'1','Game.category_id'=>$catid)));
-
-		$this->set('title_for_layout',  $catName.' - Top Rated '.$catName.' Games - Clone');
-		if($catName == 'Action'){
-			$this->set('description_for_layout', 'An action game requires players to use quick reflexes, accuracy, and timing to overcome obstacles.');
-		}elseif($catName == 'Adventure'){
-			$this->set('description_for_layout', 'Adventure games put little pressure on the player in the form of action-based challenges or time constraints, adventure games have had the unique ability to appeal to people who do not normally play video games');
-		}elseif($catName == 'Race'){
-			$this->set('description_for_layout', 'Racing games typically place the player in the drivers seat of a high-performance vehicle and require the player to race against other drivers or sometimes just time.');
-		}elseif($catName == 'Shooting'){
-			$this->set('description_for_layout', 'First-person shooter video games, commonly known as FPSs, emphasize shooting and combat from the perspective of the character controlled by the player.');
-		}elseif($catName == 'Board'){
-			$this->set('description_for_layout', 'Many popular board games have computer versions. AI opponents can help improve ones skill at traditional games. Chess, Checkers, Othello and Backgammon have world class computer programs.');
-		}elseif($catName == 'Multiplayer'){
-			$this->set('description_for_layout', 'Party games are video games developed specifically for multiplayer games between many players. Normally, party games have a variety of mini-games that range between collecting more of a certain item than other players or having the fastest time at something.');
-		}elseif($catName == 'Puzzle'){
-			$this->set('description_for_layout', 'Puzzle games require the player to solve logic puzzles or navigate complex locations such as mazes. They are well suited to casual play, and tile-matching puzzle games are among the most popular casual games.');
-		}elseif($catName == 'Card'){
-			$this->set('description_for_layout', 'All popular card games have computer versions. AI opponents can help improve ones skill at traditional games. ');
-		}elseif($catName == '3D'){
-			$this->set('description_for_layout', 'Play real time 3d games which are choosen by experienced players');
-		}elseif($catName == 'Kids'){
-			$this->set('description_for_layout', 'Kids games are safe for kids under 13. Enjoy these kids games');
-		}elseif($catName == 'Girls'){
-			$this->set('description_for_layout', 'Games especially designed for girls');
-		}elseif($catName == 'Word'){
-			$this->set('description_for_layout', 'Play most popular word games');
-		}elseif($catName == 'Role-Playing'){
-			$this->set('description_for_layout', 'Role-playing video games draw their gameplay from traditional role-playing games. Most cast the player in the role of one or more adventurers who specialize in specific skill sets while progressing through a predetermined storyline.');
-		}elseif($catName == 'Fighting'){
-			$this->set('description_for_layout', 'Fighting games emphasize one-on-one combat between two characters, one of which may be computer controlled. These games are usually played by linking together long chains of button presses on the controller to use physical attacks to fight.');
-		}elseif($catName == 'MMORPG'){
-			$this->set('description_for_layout', 'Massively multiplayer online role-playing games, or MMORPGs, emerged in the mid to late 1990s as a commercial, graphical variant of text-based MUDs, which had existed since 1978.');
-		}elseif($catName == 'Sports'){
-			$this->set('description_for_layout', 'Sports games emulate the playing of traditional physical sports. Some emphasize actually playing the sport, while others emphasize the strategy behind the sport.');
-		}elseif($catName == 'Social'){
-			$this->set('description_for_layout', 'Social simulation games base their gameplay on the social interaction between multiple artificial lives.');
-		}else{
-			$this->set('description_for_layout',  $catName.' - Best games in this category');
-		}
-	}
 
 //Yeni Sistem- Bu fonksiyon oyunlari kategorilere göre siralar.
 public function categorygames2() {
@@ -817,139 +622,8 @@ public function mygames() {
    
 }
 
-	
-    //Silinecek-viewla
-	public function usergames() {break;
 
-	$this->leftpanel();
-    $this->layout='usergames';//Eski sitem layoutu silinecek.
-    $userid = $this->request->params['pass'][0];
-    $user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-	$this->usergame_user_panel($userid);
-	if($user==NULL)
-	$this->redirect('/');
-	
-    $userName = $user['User']['username'];
-	$limit=12;
-	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
-    )));
-	//ReCoded
-    $cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
-    $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
-    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-    
-    if($gamenumber >= 3){
-    	    $this->set('slider', $cond);
-    }else{
-    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
-    }
 
-	if($user['User']['verify']!=null){
-		$this->set('googleVerify',$user['User']['verify']);
-	}else{
-		$this->set('googleVerify','');	
-	}
-
-   	$this->set('limit', $limit);
-    $this->set('favorites', $cond2);
-    $this->set('mygames', $cond);
-    $this->set('username', $userName);
-	$this->set('user_id', $userid);
-}
-
-//Silinecek-Hiçbir yerden çagirilmiyor!!!
-public function get_user_dict($cond2=NULL)
-{break;
-
-    $j=0;
-	$alluserids=array();
-	foreach($cond2 as $cond1)
-	{
-	$alluserids[$j]=$cond1['Game']['user_id'];
-	$j++;
-	}
-	
-    $userdata=$this->User->find('all',array('conditions'=>array('User.id'=>$alluserids),'fields'=>array('User.username')));
-  
-  
-    $i=0;
-	$allusernames=array();
-	foreach($userdata as $username)
-	{
-	$allusernames[$username['User']['id']]=$username['User']['username'];
-	$i++;
-	}
-
-   return $allusernames;
-}
-
-//Silinecek-viewla
-public function channelgames() {break;
-
-	$this->leftpanel();
-    $seo_username = $this->request->params['pass'][0];
-    $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $seo_username)));
-	$userid=$user['User']['id'];
-	$this->usergame_user_panel($userid);
-	$this->layout='usergames';//silinecek
-	if($user==NULL)
-	$this->redirect('/');
-
-	$authid = $this->Session->read('Auth.User.id');
-		//Get the list of subscriptions of auth user.
-		   if($authid!=NULL)
-		   {
-		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $mutuals=array_intersect($listofmine,$listofuser);
-		   $this->set('mutuals',$mutuals);
-		   }else{
-		   $this->set('mutuals',NULL);
-		   }
-
-    $userName = $user['User']['username'];
-	$limit=8;
-	$limit2=6;
-	$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
-    )));
-	
-	$this->set('title_for_layout', $userName.' - Welcome to '.$userName."'s game channel published by Clone");
-	$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
-	//$cond2= $this->Favorite->find('all',array('conditions' => array('Favorite.active'=>'1','Favorite.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
-    //)));
-	
-	//ReCoded
-	$cond2 = $this->Favorite->find('all',array('conditions'=>array('Favorite.active'=>1,'Favorite.user_id' => $userid),'limit' =>$limit,'order' => array('Favorite.recommend' => 'desc'),'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username'))))));
-	
-	$subCond= $this->Subscription->find('all', array('conditions' => array('Subscription.subscriber_id' => $userid),'limit' => $limit2));
-//print_r($cond2);
-	
-	$this->set('users', $subCond);
-	
-    $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
-    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-    
-    if($gamenumber >= 3){
-    	    $this->set('slider', $cond);
-    }else{
-    		$this->set('slider', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
-    }
-
-	if($user['User']['verify']!=null){
-		$this->set('googleVerify',$user['User']['verify']);
-	}else{
-		$this->set('googleVerify','');	
-	}
-
-   	$this->set('limit', $limit);
-   	$this->set('limit2', $limit2);
-    $this->set('favorites', $cond2);
-    $this->set('mygames', $cond);
-    $this->set('username', $userName);
-	$this->set('user_id', $userid);
-	
-	
-}
     //pasif???-emin degilim!
 	public function recommend() {
 		$this->loadModel('User');
