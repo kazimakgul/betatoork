@@ -543,29 +543,6 @@ public function categorygames2() {
 	}
 
 
-    //Silinecek
-	public function logedin_user_panel() {break;
-
-		$this->layout='base';
-	    $userid = $this->Session->read('Auth.User.id');
-	    $username = $this->Session->read('Auth.User.username');
-	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
-	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
-	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
-		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-	    $this->set('user',$user);
-
-	    $this->set('userid', $userid);
-	   	$this->set('username', $username);
-	    $this->set('gamenumber', $gamenumber);
-	    $this->set('favoritenumber', $favoritenumber);
-	   	$this->set('subscribe', $subscribe);
-	    $this->set('subscribeto', $subscribeto);
-	    $this->set('playcount', $playcount);
-
-	}
         //Silinecek-Önce bu fonksiyonu çagiran fonksiyonlari sil.
 		public function usergame_user_panel($userid=NULL) {break;
 
@@ -955,37 +932,6 @@ public function hashtag() {
 }
 
 
-	
-    //silinecek-viewla
-	public function followers() {break;
-
-		$this->layout='base';
-		$this->leftpanel();
-		$userid = $this->request->params['pass'][0];
-
-		$authid = $this->Session->read('Auth.User.id');
-		//Get the list of subscriptions of auth user.
-		   if($authid!=NULL)
-		   {
-		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $mutuals=array_intersect($listofmine,$listofuser);
-		   $this->set('mutuals',$mutuals);
-		   }else{
-		   $this->set('mutuals',NULL);
-		   }
-
-		$this->usergame_user_panel($userid);
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-    	$userName = $user['User']['username'];
-    	$this->set('user_id', $userid);
-		$this->set('title_for_layout', $userName.' - Followers');
-		$this->set('description_for_layout', $userName.' - All the followers of '.$userName);
-		$this->set('username', $userName);
-
-		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_to_id' => $userid)));
-
-	}
     
 	//Silinecek-viewla
 	public function subscriptions() {break;

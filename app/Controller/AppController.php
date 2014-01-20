@@ -83,7 +83,7 @@ class AppController extends Controller {
     public function beforeFilter() {
 		$this->loadModel('User');
 		$this->Auth->allow('index','checkUser','checkUser2','FaceUser','gatekeeper','usernameAvailable','view','register','logout','play','profile','playlist',
-            'search','search2','display','activate','reset_request','reset_now','followers',
+            'search','search2','display','activate','reset_request','reset_now',
             'subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','play2',
             'randomAvatar','randomPicture','seoplay',
             'seoplay2','connect','sync','syncallusers','incgameplay','incscribe','togglefav','totalrate',
