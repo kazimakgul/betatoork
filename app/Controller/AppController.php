@@ -82,11 +82,10 @@ class AppController extends Controller {
 
     public function beforeFilter() {
 		$this->loadModel('User');
-		$this->Auth->allow('index','checkUser','checkUser2','FaceUser','gatekeeper','usernameAvailable','view','register','logout','play','profile','playlist',
+		$this->Auth->allow('index','checkUser','checkUser2','FaceUser','gatekeeper','usernameAvailable','view','register','logout','profile','playlist',
             'search','search2','display','activate','reset_request','reset_now',
-            'subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels','play2',
-            'randomAvatar','randomPicture','seoplay',
-            'seoplay2','connect','sync','syncallusers','incgameplay','incscribe','togglefav','totalrate',
+            'subscriptions','follow_card','add_subscription','sub_check','add_play','bestChannels',
+            'randomAvatar','randomPicture','connect','sync','syncallusers','incgameplay','incscribe','togglefav','totalrate',
             'getgamecount','potential','message_ajax','message_ajax2','moreupdates_ajax','explore_more_feed','moreupdates_ajax2','moreupdates_ajax3','moreupdates_ajax_my',
             'comment_ajax','comment_ajax2','image_ajax','image_ajax_fly','get_userdata','delete_message_ajax','delete_comment_ajax','action_ajax',
             'get_gamedata','moreupdates_filter_ajax','gamefeed_ajax','view_ajax','view_ajax2',
