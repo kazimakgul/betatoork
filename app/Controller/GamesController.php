@@ -25,7 +25,7 @@ class GamesController extends AppController {
 	       // All registered users can add posts
 	        return true;
 	    }
-	    if (in_array($this->action, array('edit','edit2','delete'))) {
+	    if (in_array($this->action, array('edit2','delete'))) {
 	        $gameId = $this->request->params['pass'][0];
 	        return $this->Game->isOwnedBy($gameId, $user['id']);
 	    }
@@ -543,27 +543,6 @@ public function categorygames2() {
 	}
 
 
-        //Silinecek-Önce bu fonksiyonu çagiran fonksiyonlari sil.
-		public function usergame_user_panel($userid=NULL) {break;
-
-		$this->layout='base';
-	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
-	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
-	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
-		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
-		$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
-	    $this->set('user',$user);
-        $this->set('userid', $userid);
-	    $this->set('gamenumber', $gamenumber);
-	    $this->set('favoritenumber', $favoritenumber);
-	    $this->set('subscribe', $subscribe);
-	    $this->set('subscribeto', $subscribeto);
-	    $this->set('playcount', $playcount);
-
-	}
-
-
 
 //Yeni Sistem-Kullanicinin oyunlarini getirir.
 public function mygames() {
@@ -917,64 +896,6 @@ public function hashtag() {
 }
 
 
-    
-	//Silinecek-viewla
-	public function subscriptions() {break;
-
-		$this->layout='base';
-		$this->leftpanel();
-		$userid = $this->request->params['pass'][0];
-		$authid = $this->Session->read('Auth.User.id');
-		//Get the list of subscriptions of auth user.
-		   if($authid!=NULL)
-		   {
-		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $mutuals=array_intersect($listofmine,$listofuser);
-		   $this->set('mutuals',$mutuals);
-		   }else{
-		   $this->set('mutuals',NULL);
-		   }
-		   
-		
-		$this->usergame_user_panel($userid);
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-    	$userName = $user['User']['username'];
-    	$this->set('user_id', $userid);
-		$this->set('title_for_layout', $userName.' - Chains');
-		$this->set('description_for_layout', $userName.' - All the chains of '.$userName);
-		$this->set('username', $userName);
-
-		$this->set('followers', $this->paginate('Subscription',array('Subscription.subscriber_id' => $userid)));
-
-	}
-        
-		//Silinecek-viewla
-		public function bestchannels() {break;
-
-		$this->layout='base';
-		$this->leftpanel();
-		$this->logedin_user_panel();
-		$userid = $this->Session->read('Auth.User.id');
-		$authid = $this->Session->read('Auth.User.id');
-		//Get the list of subscriptions of auth user.
-		   if($authid!=NULL)
-		   {
-		   $listofmine=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$authid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $listofuser=$this->Subscription->find('list',array('conditions'=>array('Subscription.subscriber_id'=>$userid),'fields'=>array('Subscription.subscriber_to_id')));
-		   $mutuals=array_intersect($listofmine,$listofuser);
-		   $this->set('mutuals',$mutuals);
-		   }else{
-		   $this->set('mutuals',NULL);
-		   }
-	  
-		$this->set('title_for_layout', 'Clone - Best Online Game Channels ');
-		$this->set('description_for_layout', 'Clone has all the best channels for games and gamers');
-		$this->set('user_id', $userid);
-		$this->set('users', $this->paginate('User',array('User.active' => '1')));
-
-	}
-
 		public function bestchannels2() {
 		//More Buttonu ile gpaginate edilecek...
 
@@ -1112,49 +1033,6 @@ public function hashtag() {
 	}
 
 
-//Silinecek-viewla
-public function search() {break;
-
-if($this->request->is("GET") && isset($this->request->params['pass'][0]))
-{
-$param = $this->request->params['pass'][0];
-}
-
-//search için veri girilmemisse ana sayfaya yönlendir.
-if(!isset($param) || $param=="" )
-{
-$this->redirect(array("controller"=>"games","action"=>"index"));
-}
-else
-{
-$cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.description LIKE'=>'%'.$param.'%','User.username LIKE'=>'%'.$param.'%'),'Game.active'=>'1'));
-$this->set('search', $this->paginate('Game',$cond));
-$this->set('mygames', $cond);
-
-$this->set('title_for_layout', 'Clone - Game Search Engine');
-$this->set('description_for_layout', 'Clone - Game Search Engine powered by Google. Clone Search is specially designed for searching games');
-}
-
-
-	$this->leftpanel();
-	$this->logedin_user_panel();
-	$this->layout='base';
-
-	$key=$param;
-	$this->set('myParam',$key);
-    $userid = $this->Session->read('Auth.User.id');
-    
-	
-	$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-    $userName = $user['User']['username'];
-	$limit=120;
-	$this->set('limit', $limit);
-    
-    $this->set('username', $userName);
-	$this->set('user_id', $userid);
-	
-	
-}
 
 //This clone of search function fill be used for dashboard layout.
 public function search2() {
@@ -1859,92 +1737,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
    
   }
 
-  
-
-    //Silinecek-viewla-eski sistem
-	public function add() {break;
 	
-	App::uses('Folder', 'Utility');
-    App::uses('File', 'Utility');
-	
-		$this->layout='base';
-		$this->logedin_user_panel();
-		$userid = $this->Session->read('Auth.User.id');
-    	$this->leftpanel();
-    	$limit=12;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
-    )));
-
-		if ($this->request->is('post')) {
-		 
-		 
-		  //Replace Name of Picture Begins
-		   $ext = ".".$this->getExtension($this->request->data["Game"]["picture"]["name"]);
-		   $this->request->data["Game"]["picture"]["name"]="toork_".$this->request->data['Game']['name'].$ext;
-          //Replace Name of Picture Ends
-		 
-           $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($this->request->data['Game']['name']);
-		   $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($this->request->data['Game']['description']);
-
-			$this->request->data['Game']['user_id'] = $this->Auth->user('id');
-			
-			
-			//seourl begins
-		 $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
-		 //seourl ends
-			
-			$this->Game->create();
-			
-			if ($this->Game->save($this->request->data)) {
-			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
-				$this->Session->setFlash(__('You have successfully added a game to your channel.'));
-			
-			$id=$this->Game->getLastInsertId();
-			$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));	
-				
-			//Upload to aws begins
-			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
-		    $files = $dir->find('.*');
-		    foreach ($files as $file) {
-            $file = new File($dir->pwd() . DS . $file);
-            $info=$file->info();
-			$basename=$info["basename"];
-			$dirname=$info["dirname"];
-			//echo $file;
-			 $this->Amazon->S3->create_object(
-            Configure::read('S3.name'),
-            'upload/games/'.$id."/".$basename,
-             array(
-            'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$basename,
-            'acl' => AmazonS3::ACL_PUBLIC
-            )
-            );
-			
-            }
-			//Upload to aws ends
-				
-				
-				
-				$this->redirect(array('action' => 'channel'));
-			} else {
-				$validationErrors = $this->Game->invalidFields();
-				$value = key($validationErrors);
-    			$this->Session->setFlash($validationErrors[$value][0]);
-			}
-			
-			
-		}
-
-		$this->set('mygames', $cond);
-    	$this->set('limit', $limit);
-		$users = $this->Game->User->find('list');
-		$categories = $this->Game->Category->find('list');
-		$this->set(compact('users', 'categories'));
-
-	$this->set('title_for_layout','Add New Game');
-	$this->set('description_for_layout', 'You are able to add a new game');		
-		
-	}
 
    public function get_meta($url=NULL)
    {
@@ -2224,138 +2017,6 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 	$this->set('description_for_layout', 'You are able to add a new game');
 	$this->set_suggested_channels();		
 		
-	}
-
-
-/**
- * edit method
- *
- * @param string $id
- * @return void
- */
- 
-    //Silinecek-eski sistem-viewla
-	public function edit($id = null) {break;
-	App::uses('Folder', 'Utility');
-    App::uses('File', 'Utility');
-	
-		$this->layout='base';
-		$this->logedin_user_panel();
-		$userid = $this->Session->read('Auth.User.id');
-		$this->leftpanel();
-    	$limit=12;
-		$cond= $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'
-    )));
-
-
-		$this->Game->id = $id;
-		
-		
-    	$game = $this->Game->find('first', array('conditions' => array('Game.id' => $id)));
-    	$this->set("game",$game);
-		if (!$this->Game->exists()) {
-			throw new NotFoundException(__('Invalid game'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-		
-		   $this->request->data['Game']['name']=$this->secureSuperGlobalPOST($this->request->data['Game']['name']);
-		   $this->request->data['Game']['description']=$this->secureSuperGlobalPOST($this->request->data['Game']['description']);
-		   
-			//$this->request->data['Game']['link']=$this->http_check($this->request->data['Game']['link']);
-			
-			$myval=$this->request->data["Game"]["edit_picture"]["name"];
-			
-			if($myval!="")
-			{
-			
-			/*
-			//remove objects from S3
-			 $prefix = 'upload/games/'.$id;
-             $opt = array(
-             'prefix' => $prefix,
-             );
-			 $bucket=Configure::read('S3.name');
-			 $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
-			 foreach($objs as $obj)
-			 {
-			 $response=$this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
-			 //print_r($response);
-			 }
-			//remove objects from S3
-			*/
-			
-			
-			//Folder Formatting begins
-			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
-		    $files = $dir->find('.*');
-		    foreach ($files as $file) {
-            $file = new File($dir->pwd() . DS . $file);
-            $file->delete();
-            $file->close(); 
-            }
-			//Folder Formatting ends
-			
-			
-			$this->request->data["Game"]["picture"]=$this->request->data["Game"]["edit_picture"];
-			
-			
-			//Replace Name of Picture Begins
-			$ext = ".".$this->getExtension($this->request->data["Game"]["picture"]["name"]);
-		    $this->request->data["Game"]["picture"]["name"]="toork_".$this->request->data['Game']['name'].$ext;
-			//Replace Name of Picture Ends
-			}
-			
-			
-			//seourl begins
-		     $this->request->data['Game']['seo_url']=strtolower(str_replace(' ','-',$this->request->data['Game']['name']));
-		    //seourl ends
-			
-			if ($this->Game->save($this->request->data)) {
-				$this->Session->setFlash('You have successfully updated your game.');
-				
-				
-				
-				//Upload to aws begins
-			$dir = new Folder(WWW_ROOT ."/upload/games/".$id);
-		    $files = $dir->find('.*');
-		    foreach ($files as $file) {
-            $file = new File($dir->pwd() . DS . $file);
-            $info=$file->info();
-			$basename=$info["basename"];
-			$dirname=$info["dirname"];
-			//echo $file;
-			 $this->Amazon->S3->create_object(
-            Configure::read('S3.name'),
-            'upload/games/'.$id."/".$basename,
-             array(
-            'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$basename,
-            'acl' => AmazonS3::ACL_PUBLIC
-            )
-            );
-			
-            }
-			//Upload to aws ends
-				
-				
-				$this->redirect(array('action' => 'channel'));
-			} else {
-				$validationErrors = $this->Game->invalidFields();
-				$value = key($validationErrors);
-    			$this->Session->setFlash($validationErrors[$value][0]);
-			}
-		} else {
-			$this->request->data = $this->Game->read(null, $id);
-		}
-
-		$this->set('mygames', $cond);
-    	$this->set('limit', $limit);
-    	$this->set('id', $id);
-		$users = $this->Game->User->find('list');
-		$categories = $this->Game->Category->find('list');
-		$this->set(compact('users', 'categories'));
-
-	$this->set('title_for_layout','Edit Your Game');
-	$this->set('description_for_layout', 'You are able to edit your game');			
 	}
 
 
