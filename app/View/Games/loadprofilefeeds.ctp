@@ -239,6 +239,9 @@ echo "</div>";
 					<?php } ?>
 				 	
                                                         </div>
+		    <!-- this gets like status of posts -->		
+			<?php $plikestatus = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'getlikestatus',$msg_id,1));?>		
+				
 														
 				<!-- Comment area begins -->								
 			</br>
