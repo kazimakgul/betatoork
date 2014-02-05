@@ -590,7 +590,7 @@ public function mygames() {
 	}
 
 //pasif???-emin degilim!
-public function channelfavorites() {break;
+public function channelfavorites() {
 $this->layout="ajax";
 $userid = $this->request->params['pass'][0];
 	
