@@ -612,7 +612,7 @@ $userid = $this->request->params['pass'][0];
 }
 
 //pasif???-emin degilim!
-public function channelfollowers() {break;
+public function channelfollowers() {
 $this->layout="ajax";
 $userid = $this->request->params['pass'][0];
 	
