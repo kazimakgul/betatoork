@@ -6047,51 +6047,50 @@ a.badge:hover {
 /* Custom Code For Toork*//* Custom Code For Toork*//* Custom Code For Toork*/
 /* Custom Code For Toork*//* Custom Code For Toork*//* Custom Code For Toork*/
 
-
 .navbar-custom {
-  background-color: #76a3a0;
-  border-color: #649491;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#95b7b5), to(#76a3a0));
-  background-image: -webkit-linear-gradient(top, #95b7b5, 0%, #76a3a0, 100%);
-  background-image: -moz-linear-gradient(top, #95b7b5 0%, #76a3a0 100%);
-  background-image: linear-gradient(to bottom, #95b7b5 0%, #76a3a0 100%);
+  background-color: #a38d78;
+  border-color: #957c65;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#b8a796), to(#a38d78));
+  background-image: -webkit-linear-gradient(top, #b8a796, 0%, #a38d78, 100%);
+  background-image: -moz-linear-gradient(top, #b8a796 0%, #a38d78 100%);
+  background-image: linear-gradient(to bottom, #b8a796 0%, #a38d78 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff95b7b5', endColorstr='#ff76a3a0', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb8a796', endColorstr='#ffa38d78', GradientType=0);
 }
 .navbar-custom .navbar-brand {
-  color: #3b3b3b;
+  color: #ffffff;
 }
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus {
-  color: #222222;
+  color: #e6e6e6;
   background-color: transparent;
 }
 .navbar-custom .navbar-text {
-  color: #3b3b3b;
+  color: #ffffff;
 }
 .navbar-custom .navbar-nav > li:last-child > a {
-  border-right: 1px solid #649491;
+  border-right: 1px solid #957c65;
 }
 .navbar-custom .navbar-nav > li > a {
-  color: #3b3b3b;
-  border-left: 1px solid #649491;
+  color: #ffffff;
+  border-left: 1px solid #957c65;
 }
 .navbar-custom .navbar-nav > li > a:hover,
 .navbar-custom .navbar-nav > li > a:focus {
-  color: #9e9e9e;
+  color: #774b38;
   background-color: transparent;
 }
 .navbar-custom .navbar-nav > .active > a,
 .navbar-custom .navbar-nav > .active > a:hover,
 .navbar-custom .navbar-nav > .active > a:focus {
-  color: #9e9e9e;
-  background-color: #649491;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#649491), to(#81aaa7));
-  background-image: -webkit-linear-gradient(top, #649491, 0%, #81aaa7, 100%);
-  background-image: -moz-linear-gradient(top, #649491 0%, #81aaa7 100%);
-  background-image: linear-gradient(to bottom, #649491 0%, #81aaa7 100%);
+  color: #774b38;
+  background-color: #957c65;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#957c65), to(#aa9683));
+  background-image: -webkit-linear-gradient(top, #957c65, 0%, #aa9683, 100%);
+  background-image: -moz-linear-gradient(top, #957c65 0%, #aa9683 100%);
+  background-image: linear-gradient(to bottom, #957c65 0%, #aa9683 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff649491', endColorstr='#ff81aaa7', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff957c65', endColorstr='#ffaa9683', GradientType=0);
 }
 .navbar-custom .navbar-nav > .disabled > a,
 .navbar-custom .navbar-nav > .disabled > a:hover,
@@ -6111,43 +6110,43 @@ a.badge:hover {
 }
 .navbar-custom .navbar-collapse,
 .navbar-custom .navbar-form {
-  border-color: #639390;
+  border-color: #937b64;
 }
 .navbar-custom .navbar-nav > .dropdown > a:hover .caret,
 .navbar-custom .navbar-nav > .dropdown > a:focus .caret {
-  border-top-color: #9e9e9e;
-  border-bottom-color: #9e9e9e;
+  border-top-color: #774b38;
+  border-bottom-color: #774b38;
 }
 .navbar-custom .navbar-nav > .open > a,
 .navbar-custom .navbar-nav > .open > a:hover,
 .navbar-custom .navbar-nav > .open > a:focus {
-  background-color: #649491;
-  color: #9e9e9e;
+  background-color: #957c65;
+  color: #774b38;
 }
 .navbar-custom .navbar-nav > .open > a .caret,
 .navbar-custom .navbar-nav > .open > a:hover .caret,
 .navbar-custom .navbar-nav > .open > a:focus .caret {
-  border-top-color: #9e9e9e;
-  border-bottom-color: #9e9e9e;
+  border-top-color: #774b38;
+  border-bottom-color: #774b38;
 }
 .navbar-custom .navbar-nav > .dropdown > a .caret {
-  border-top-color: #3b3b3b;
-  border-bottom-color: #3b3b3b;
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 @media (max-width: 767) {
   .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
-    color: #3b3b3b;
+    color: #ffffff;
   }
   .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #9e9e9e;
+    color: #774b38;
     background-color: transparent;
   }
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #9e9e9e;
-    background-color: #649491;
+    color: #774b38;
+    background-color: #957c65;
   }
   .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -6157,10 +6156,10 @@ a.badge:hover {
   }
 }
 .navbar-custom .navbar-link {
-  color: #3b3b3b;
+  color: #ffffff;
 }
 .navbar-custom .navbar-link:hover {
-  color: #9e9e9e;
+  color: #774b38;
 }
 
 /* Custom navbar ENDS */
@@ -6174,17 +6173,17 @@ a.badge:hover {
 .btn-custom-darken {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #6c9996;
-  background-image: -moz-linear-gradient(top, #76a3a0, #5c8a87);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#76a3a0), to(#5c8a87));
-  background-image: -webkit-linear-gradient(top, #76a3a0, #5c8a87);
-  background-image: -o-linear-gradient(top, #76a3a0, #5c8a87);
-  background-image: linear-gradient(to bottom, #76a3a0, #5c8a87);
+  background-color: #694231;
+  background-image: -moz-linear-gradient(top, #774b38, #543528);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#774b38), to(#543528));
+  background-image: -webkit-linear-gradient(top, #774b38, #543528);
+  background-image: -o-linear-gradient(top, #774b38, #543528);
+  background-image: linear-gradient(to bottom, #774b38, #543528);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff76a3a0', endColorstr='#ff5c8a87', GradientType=0);
-  border-color: #5c8a87 #5c8a87 #3e5c5a;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff774b38', endColorstr='#ff543528', GradientType=0);
+  border-color: #543528 #543528 #20140f;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #5c8a87;
+  *background-color: #543528;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -6196,13 +6195,53 @@ a.badge:hover {
 .btn-custom-darken.disabled,
 .btn-custom-darken[disabled] {
   color: #ffffff;
-  background-color: #5c8a87;
-  *background-color: #527a78;
+  background-color: #543528;
+  *background-color: #432a20;
 }
 .btn-custom-darken:active,
 .btn-custom-darken.active {
-  background-color: #486b69 ;
+  background-color: #321f17 ;
 }
+
+
+/*light button*/
+
+.btn-custom-lighten.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+.btn-custom-lighten {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #ab9784;
+  background-image: -moz-linear-gradient(top, #a38d78, #b8a796);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#a38d78), to(#b8a796));
+  background-image: -webkit-linear-gradient(top, #a38d78, #b8a796);
+  background-image: -o-linear-gradient(top, #a38d78, #b8a796);
+  background-image: linear-gradient(to bottom, #a38d78, #b8a796);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffa38d78', endColorstr='#ffb8a796', GradientType=0);
+  border-color: #b8a796 #b8a796 #998069;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #b8a796;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-custom-lighten:hover,
+.btn-custom-lighten:focus,
+.btn-custom-lighten:active,
+.btn-custom-lighten.active,
+.btn-custom-lighten.disabled,
+.btn-custom-lighten[disabled] {
+  color: #ffffff;
+  background-color: #b8a796;
+  *background-color: #ad9a87;
+}
+.btn-custom-lighten:active,
+.btn-custom-lighten.active {
+  background-color: #a38d78 ;
+}
+
 
 /* Custom button Ends */
 

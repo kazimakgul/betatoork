@@ -132,7 +132,7 @@ $username = $user['User']['seo_username'];
                         <a rel="tooltip" data-placement="bottom" data-original-title="Follow Best Channels"  href="<?php echo $bestchannels; ?>" class="btn btn-success" style="margin:0px 3px 5px 0px;">
                             <i class="elusive-plus-sign"></i> Discover Channels
                         </a>
-                        <a rel="tooltip" data-placement="bottom" data-original-title="Take The Tour"  class="btn btn-info" onclick="javascript:$('body').chardinJs('start');" style="margin:0px 3px 5px 0px;">
+                        <a rel="tooltip" data-placement="bottom" data-original-title="Take The Tour"  class="btn btn-custom-lighten" onclick="javascript:$('body').chardinJs('start');" style="margin:0px 3px 5px 0px;">
                             <i class="elusive-compass"></i> Tour
                         </a>
                         </p>
