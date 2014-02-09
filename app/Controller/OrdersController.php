@@ -36,7 +36,7 @@ class OrdersController extends AppController {
 	
 	$orderdata=$this->Order->find('all');
 	//print_r($orderdata);
-	$this->Add_Credit(3,1);
+	$this->Add_Activity();
 	}
 	
 	//>>>>>>>>>callBot function started<<<<<<<<<<
@@ -64,7 +64,7 @@ class OrdersController extends AppController {
 	  }
 	}while($free!=1);
 
-	echo $free_bot;
+	return($free_bot);
 	
 	}
 	//>>>>>>>>>callBot function finished<<<<<<<<<<
@@ -103,6 +103,69 @@ class OrdersController extends AppController {
 	
 	}
 	//>>>>>>>>>Add_Credit function finished<<<<<<<
+	
+	
+	//>>>>>>>>>Add_Activity function begins<<<<<<<
+	//Description:this function will be started for each activity.Will check the total credit of user.If it is available to get new bot order.We will add an order for that user.
+	//This function will contain possiblity ratios of each activity.
+	public function Add_Activity($user_id=1,$bot_id=12) {
+	
+	     //Check total credit of user.
+	     $totalcredit=$this->Order->query('SELECT credit FROM botcredits WHERE user_id='.$user_id.'');
+		 if($totalcredit==NULL || $totalcredit[0]['botcredits']['credit']<30)
+		 {
+		 //If user below credit limit,break it.
+		 break;
+		 }
+	
+	
+	     //Hangi activity tipi seçilecek?
+		 $activity_perc=rand(0,100);
+	     switch ($activity_perc) {
+              case $activity_perc >= 0 && $activity_perc <= 30 :
+                  // Follow Activity
+			      $credit=3;
+				  $activity_id=2;
+                  break ;
+              case $activity_perc >= 30 && $activity_perc <= 50 :
+                  // Clone Activity
+			      $credit=5;
+				  $activity_id=3;
+                  break ;
+              case $activity_perc >= 50 && $activity_perc <= 60 :
+                  // Rate Activity
+			      $credit=1;
+				  $activity_id=4;
+                  break ;
+			  default:
+			  // Rate Activity
+			  $credit=1;
+			  $activity_id=4;
+         }
+	
+	//echo 'random activity seçici:<br>';
+	//echo 'seçilen activity id:'. $activity_id.'<br>';
+	//echo 'seçilen activitynin credisi:'. $credit.'<br>';
+	//echo 'Yüzde:'. $activity_perc.'<br>';
+	
+	
+	  
+	  
+	 if($totalcredit!=NULL && $totalcredit>=$credit)
+	 { 
+	     //Submit the datas into Orders table
+         $this->request->data['Order']['user_id'] = $user_id;	
+	        $this->request->data['Order']['action_id'] =$activity_id;	
+	     $this->request->data['Order']['date'] =date('Y-m-d');	
+	     $this->Order->create();	
+	     if ($this->Order->save($this->request->data)) {
+	     //We will decrease credit here from total credit of user.
+		 $this->Order->query('UPDATE botcredits SET credit=credit-'.$credit.' WHERE user_id='.$user_id.'');
+	     } 
+	  }
+	
+}
+	//>>>>>>>>>Add_Activity function finished<<<<<<<
 	
 	
 	
