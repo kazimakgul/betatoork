@@ -94,7 +94,7 @@ $owner_url=$this->Html->url(array("controller" => $ownerdata['User']['seo_userna
 ?>
 
 <div class="media well shadow" style="background-color:white;" id="stbody<?php echo $msg_id;?>">
-                                                      <a class="pull-left" href="#">
+                                                      <a class="pull-left" href="<?php echo $channelurl ?>">
                                                             <!--<img class="media-object" data-src="js/holder.js/64x64">-->
 															<?php echo $cface; ?>
                                                         </a>
