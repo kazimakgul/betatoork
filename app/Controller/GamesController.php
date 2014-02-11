@@ -61,16 +61,9 @@ class GamesController extends AppController {
 	}
 
 		$this->layout='landing';
-		$this->Game->recursive = 0;
 
-		$limit=4;
-    	$this->set('top_rated_games', $this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1','Game.id'=>$this->get_game_suggestions('Game.recommend')),'limit' => $limit,'order' => 'rand()')));
-		$users=$this->User->find('all',array('contain' =>array('Userstat'),'limit'=>$limit,'order'=> array(
-                'Userstat.potential' => 'desc')));
-		$this->set('users', $users);
-
-		$this->set('title_for_layout', 'Clone - Create Your Own Game Channel');
-		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
+		$this->set('title_for_layout', 'Clone Games');
+		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
 		$this->set('author_for_layout', 'Clone');
 	}
 	
