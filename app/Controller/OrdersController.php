@@ -36,7 +36,7 @@ class OrdersController extends AppController {
 	
 	$orderdata=$this->Order->find('all');
 	//print_r($orderdata);
-	$this->Add_Activity();
+	$this->Execute_Activity();
 	}
 	
 	//>>>>>>>>>callBot function started<<<<<<<<<<
@@ -166,6 +166,35 @@ class OrdersController extends AppController {
 	
 }
 	//>>>>>>>>>Add_Activity function finished<<<<<<<
+	
+	//>>>>>>>>>ExecuteActivity function begins<<<<<<<
+	public function Execute_Activity() {
+	
+	
+	
+	$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0),'order' => array('Order.date DESC')));
+	
+	
+	$user_id=$order_in_order['Order']['user_id'];
+	$clonebot_id=$order_in_order['Order']['clonebot_id'];
+	$action_id=$order_in_order['Order']['action_id'];
+	
+	    if($action_id==2)
+        {//Follow activity
+		$subscriber_id=$clonebot_id;
+		$subscriber_to_id=$user_id;
+		$subscribebefore=$this->Subscription->find("first",array("conditions"=>array("Subscription.subscriber_id"=>$subscriber_id,"Subscription.subscriber_to_id"=>$subscriber_to_id)));
+		
+		
+		
+		
+	    
+	    } 	
+	
+	
+	
+	}
+	//>>>>>>>>>ExecuteActivity function ends<<<<<<<
 	
 	
 	
