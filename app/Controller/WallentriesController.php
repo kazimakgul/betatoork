@@ -687,6 +687,56 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 	}//closing of auth_id control			
 		
  }
+ 
+ 
+ public function pushActivity_bot($performer_id=NULL,$game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$type=NULL,$msg_id=NULL) {
+	$this->layout='ajax';
+	$this->loadModel('Game');
+	$this->loadModel('Activity');
+	if($this->Auth->user('id'))
+	{ //openning of auth_id control
+	
+	$performer_id=$performer_id;
+	//if user affect itself,we don't need notify or mail.
+	if($performer_id==$channel_id)
+	$email=0;
+	
+	if($channel_id=='null')
+	$channel_id=NULL;
+	
+	//if channel_id==NULL
+	if($channel_id==NULL)
+	{
+	$targetGame=$this->Game->find('first',array('conditions'=>array('Game.id'=>$game_id),'fields'=>array('Game.user_id'),'contain'=>false));
+	$channel_id=$targetGame['Game']['user_id'];
+	}
+	//echo 'channel id:'.$channel_id.'<br>';
+	   
+		     //*********************
+			 //Secure data filtering
+			 //*********************
+		     $filtered_data=
+			 array('Activity' =>array(
+			 'performer_id' => $performer_id,
+			 'game_id' => $game_id,
+			 'channel_id' => $channel_id,
+			 'notify' => $notify,
+			 'email' => $email,
+			 'type' => $type,
+			 'msg_id' => $msg_id));
+			
+			    if ($this->Activity->save($filtered_data)) {
+				//echo 1;
+				
+				    if($email==1)
+					{
+					$this->sendNotifyMail($performer_id,$game_id,$channel_id,$type);
+				    }
+				}
+	
+	}//closing of auth_id control			
+		
+ }
 	
 	function getExtension2($str) {
      $i = strrpos($str,".");
@@ -1133,6 +1183,13 @@ $this->loadModel('Game');
 	   App::import('Vendor', 'wallscript/config');
 	   App::import('Vendor', 'wallscript/Wall_Updates');
 	   
+   if($action!=NULL)
+   {
+   //give activity and credit for action.
+   $this->requestAction( array('controller' => 'orders', 'action' => 'Add_Activity'));
+   $this->requestAction( array('controller' => 'orders', 'action' => 'Add_Credit',2));
+   }	   
+	   
 	
    $Wall = new Wall_Updates();
    if($content_id!=NULL)
@@ -1226,14 +1283,115 @@ $this->loadModel('Game');
    }
    
    
-}
-   
-   
-
-
-
+  }
+    
 }
 
+
+public function action_ajax_bot($performer_id=NULL,$content_id=NULL,$uid=NULL,$action=NULL,$status=NULL) {
+$this->layout='ajax';
+error_reporting(0);
+$this->loadModel('Game');
+//Import necessary files for wall script
+	   App::import('Vendor', 'wallscript/config');
+	   App::import('Vendor', 'wallscript/Wall_Updates');
+	   
+	
+   $Wall = new Wall_Updates();
+   if($content_id!=NULL)
+   {
+   
+   if($action==NULL)
+   {
+   $game = $this->Game->find('first', array('conditions' => array('Game.id'=>$content_id),'fields'=>array('Game.name'),'contain'=>'false'));
+   $type=1;//id of game add function is 1
+   $update='A New Game has been published:'.$game['Game']['name'];
+   $uploads=$_POST['uploads'];
+   $data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+      if($data)
+      {
+      $msg_id=$data['msg_id'];
+      $this->pushActivity_bot($performer_id,$content_id,NULL,0,0,$type,$msg_id);
+      }
+   
+   }
+   
+   if($action!=NULL && $action==5)
+   {
+   $auth = $this->User->find('first', array('conditions' => array('User.id'=>$uid),'fields'=>array('User.username','User.seo_username'),'contain'=>'false'));
+   $channel = $this->User->find('first', array('conditions' => array('User.id'=>$content_id),'fields'=>array('User.username','User.seo_username'),'contain'=>'false'));
+   $type=5;//id of game add function is 1
+   if($status==0)
+   $update=''.$auth['User']['username']. ' is not following '.$channel['User']['username'].' channel anymore';
+   if($status==1)
+   $update=''.$auth['User']['username']. ' is following '.$channel['User']['username'].' channel';
+   $uploads=$_POST['uploads'];
+   $data2=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+   //$data2=$Wall->Insert_Update($content_id,$update,$uploads,$uid,$type);
+   
+     if($data2)
+     {
+     $msg_id=$data2['msg_id'];
+     $this->pushActivity_bot($performer_id,NULL,$content_id,1,1,2,$msg_id);
+     }
+   
+   
+   }
+   
+   if($action!=NULL && $action==6)
+   {
+   $auth = $this->User->find('first', array('conditions' => array('User.id'=>$uid),'fields'=>array('User.username','User.seo_username'),'contain'=>'false'));
+   $game = $this->Game->find('first', array('conditions' => array('Game.id'=>$content_id),'fields'=>array('Game.name'),'contain'=>'false'));
+   $type=6;//id of game add function is 1
+   if($status==0)
+   $update=''.$auth['User']['username']. ' removed '.$game['Game']['name'].' from favorites';
+   if($status==1)
+   $update=''.$auth['User']['username']. ' added '.$game['Game']['name'].' to favorites';
+   $uploads=$_POST['uploads'];
+   $data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+      if($data)
+      {
+      $msg_id=$data['msg_id'];
+      $this->pushActivity_bot($performer_id,$content_id,NULL,1,1,7,$msg_id);
+      }
+   }
+   
+   if($action!=NULL && $action==7)
+   {
+   $auth = $this->User->find('first', array('conditions' => array('User.id'=>$uid),'fields'=>array('User.username','User.seo_username'),'contain'=>'false'));
+   $game = $this->Game->find('first', array('conditions' => array('Game.id'=>$content_id),'fields'=>array('Game.name','Game.user_id','User.username'),'contain'=>array('User'=>array('fields'=>array('User.username')))));
+   $type=7;
+   if($status==1)
+   $update=''.$auth['User']['username']. ' cloned '.$game['Game']['name'].' by '.$game['User']['username'].' channel';
+   $uploads=$_POST['uploads'];
+   $data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+      if($data)
+      {
+      $msg_id=$data['msg_id'];
+      $this->pushActivity_bot($performer_id,$content_id,$game['Game.user_id'],1,1,3,$msg_id);
+      }
+   }
+   
+   if($action!=NULL && $action==8)
+   {
+   $auth = $this->User->find('first', array('conditions' => array('User.id'=>$uid),'fields'=>array('User.username','User.seo_username'),'contain'=>'false'));
+   $game = $this->Game->find('first', array('conditions' => array('Game.id'=>$content_id),'fields'=>array('Game.name','Game.user_id','User.username'),'contain'=>array('User'=>array('fields'=>array('User.username')))));
+   $type=8;
+   if($status==1)
+   $update=''.$auth['User']['username']. ' rated '.$game['Game']['name'].'';
+   $uploads=$_POST['uploads'];
+   $data=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
+      if($data)
+      {
+      $msg_id=$data['msg_id'];
+      $this->pushActivity_bot($performer_id,$content_id,NULL,1,1,4,$msg_id);
+      }
+   }
+   
+   
+  }
+    
+}
 
 //Bu fonksiyon More buttonunun islevini kontrol eder.
 public function moreupdates_ajax($profile_uid=NULL,$type=NULL) {

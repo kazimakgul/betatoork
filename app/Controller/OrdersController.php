@@ -71,20 +71,29 @@ class OrdersController extends AppController {
 	
 	//>>>>>>>>>Add_Credit function started<<<<<<<
 	//Kullaniciya her activitysi için kredi vericez.Her kredi verme isleminde eger bakiyesi yeterli ise bir görev siparisi eklicez.Ve krediyi total bakiyeden düsücez.
-	public function Add_Credit($activity_id=NULL,$user_id=NULL) {
+	public function Add_Credit($activity_id=NULL) {
+	
+	     if($this->Auth->user('id'))
+	     {//openning of auth_id control
+	     $user_id=$this->Session->read('Auth.User.id');
+	     }else{
+		 //if user is not logged in
+		 break;
+		 }
+	
 	
 	     switch ($activity_id) {
             case 2 :
                 // Follow Activity
-			    $credit=3;
+			    $credit=30;
                 break ;
             case 3 :
                 // Clone Activity
-			    $credit=5;
+			    $credit=50;
                 break ;
             case 4 :
                 // Rate Activity
-			    $credit=1;
+			    $credit=10;
                 break ;
          }
 		
@@ -108,7 +117,17 @@ class OrdersController extends AppController {
 	//>>>>>>>>>Add_Activity function begins<<<<<<<
 	//Description:this function will be started for each activity.Will check the total credit of user.If it is available to get new bot order.We will add an order for that user.
 	//This function will contain possiblity ratios of each activity.
-	public function Add_Activity($user_id=1,$bot_id=12) {
+	public function Add_Activity() {
+	
+	     if($this->Auth->user('id'))
+	     {//openning of auth_id control
+	     $user_id=$this->Session->read('Auth.User.id');
+	     }else{
+		 //if user is not logged in
+		 break;
+		 }
+		 
+		 $bot_id=$this->callBot($user_id);
 	
 	     //Check total credit of user.
 	     $totalcredit=$this->Order->query('SELECT credit FROM botcredits WHERE user_id='.$user_id.'');
@@ -155,6 +174,7 @@ class OrdersController extends AppController {
 	 { 
 	     //Submit the datas into Orders table
          $this->request->data['Order']['user_id'] = $user_id;	
+		 $this->request->data['Order']['clonebot_id'] = $bot_id;	
 	        $this->request->data['Order']['action_id'] =$activity_id;	
 	     $this->request->data['Order']['date'] =date('Y-m-d');	
 	     $this->Order->create();	
@@ -175,21 +195,40 @@ class OrdersController extends AppController {
 	$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0),'order' => array('Order.date DESC')));
 	
 	
+	
+	
 	$user_id=$order_in_order['Order']['user_id'];
 	$clonebot_id=$order_in_order['Order']['clonebot_id'];
 	$action_id=$order_in_order['Order']['action_id'];
 	
 	    if($action_id==2)
-        {//Follow activity
-		$subscriber_id=$clonebot_id;
-		$subscriber_to_id=$user_id;
-		$subscribebefore=$this->Subscription->find("first",array("conditions"=>array("Subscription.subscriber_id"=>$subscriber_id,"Subscription.subscriber_to_id"=>$subscriber_to_id)));
+        {//Follow activity starts
+		     $subscriber_id=$clonebot_id;
+		     $subscriber_to_id=$user_id;
+		     $subscribebefore=$this->Subscription->find("first",array("conditions"=>array("Subscription.subscriber_id"=>$subscriber_id,"Subscription.subscriber_to_id"=>$subscriber_to_id)));
+		     //if bot didn't subscribe this user before,it is free.
+		     if(empty($subscribebefore))
+		     {
+		     //Subscription Process starts
+		      $this->Subscription->create();
+			  $this->request->data["Subscription"]["subscriber_id"]=$subscriber_id;
+			  $this->request->data["Subscription"]["subscriber_to_id"]=$subscriber_to_id;
+			  if ($this->Subscription->save($this->request->data)) {
+		 		  $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax_bot',$clonebot_id,$subscriber_to_id,$subscriber_id,5,1));	echo 'done';
+			    }
+		     //Subscription Process ends
+		   
+		     }else{
+		     //bot subscribe this user before,change the bot!!!
+		     //DO SOMETHING
+		     }
+	    }else if($action_id==3){//Follow activity ends.
+		     //Clone activity starts
 		
 		
 		
-		
-	    
-	    } 	
+		     //Clone activity ends
+		}
 	
 	
 	
