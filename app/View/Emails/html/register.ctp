@@ -1,12 +1,12 @@
-<div lang="en" style="background-color:#e5e5e5; padding:0;margin:0">
+<div lang="en" style="background-color:#e0dad5; padding:0;margin:0">
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
  <tbody><tr>
  <td style="padding:20px 20px 40px">
  <table cellspacing="0" cellpadding="0" border="0" align="center" width="620">
  
  <tbody><tr>
- <td align="center" style="padding:20px 0 40px">
-	<a href="http://clone.gs" style="color:#33cccc; font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:35px;line-height:15px; text-decoration:none">Clone Team</a> 
+ <td align="center" style="padding:10px 0 20px">
+    <img width="150" src="https://s3.amazonaws.com/betatoorkpics/socials/clone.png">
  </td>
  </tr>
  
@@ -16,7 +16,7 @@
  <table cellspacing="0" cellpadding="0" border="0" align="center">
  <tbody><tr>
 
- <h1 style="font-family:georgia,serif;font-weight:normal;font-size:22px;line-height:21px;color:#211922!important;margin:0;padding:0 20px">
+ <h1 style="font-family:georgia,serif;font-weight:normal;font-size:18px;line-height:21px;color:#211922!important;margin:0;padding:0 20px">
  
  
  Hi, <?php echo $username; ?>!
@@ -62,7 +62,7 @@
 <td width="140" align="right" style="padding:20px">
  <table cellspacing="0" cellpadding="0" border="0">
  <tbody><tr>
- <td height="34" align="center" style="background-repeat:repeat-x;border-radius:6px;background-color:#33CCCC;border:1px solid #2f96b4;white-space:nowrap;min-height:34px">
+ <td height="34" align="center" style="background-repeat:repeat-x;border-radius:6px;background-color:#794e3b;border:1px solid #794e3b;white-space:nowrap;min-height:34px">
  <a href="<?php echo $activate_url; ?>" style="color:#fcf9f9;text-align:center;text-decoration:none;vertical-align:baseline" title="Confirm Email" target="_blank">
  
  <span style="padding:9px 15px;color:#fcf9f9;text-decoration:none;color:#fcf9f9;font-family:'helvetica neue',helvetica,arial,sans-serif;font-weight:bold;font-size:18px;line-height:18px;white-space:nowrap">Confirm Email</span>

@@ -9,7 +9,11 @@ else{
 }
 ?>
 
-<div align="center" style="background-color:#e5e5e5;margin-bottom:15px;padding:10px 10px 10px 10px">
+<div align="center" style="background-color:#e0dad5;margin-bottom:15px;padding:10px 10px 10px 10px">
+
+  <td align="center">
+    <img width="150" src="https://s3.amazonaws.com/betatoorkpics/socials/clone.png">
+  </td></br>
 
   <div style="max-width:520px">
   <div style="background-color:white;border:1px solid #dadada;border-bottom-width:2px;border-top:none">
