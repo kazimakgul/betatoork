@@ -218,6 +218,7 @@ echo 'finished';
 		     }else{
 		     //bot subscribe this user before,change the bot!!!
 		     //DO SOMETHING
+			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
 		     }
 	    }else if($action_id==3){//Follow activity ends.
 		     //Clone activity starts
