@@ -60,6 +60,7 @@ notifytoggle='<?php echo $this->Html->url(array('controller'=>'activities','acti
 notifyrefresh='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getfreshnotification')); ?>';
 oldnotify='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getoldnotifications')); ?>';
 crawler='<?php echo $this->Html->url(array('controller'=>'apis','action'=>'metacrawler')); ?>';
+order_execute='<?php echo $this->Html->url(array('controller'=>'orders','action'=>'execute_activity')); ?>';
 
 //Code Block for Broken Images
 function imgError(image,style){

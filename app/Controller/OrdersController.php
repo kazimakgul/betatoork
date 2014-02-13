@@ -36,7 +36,8 @@ class OrdersController extends AppController {
 	
 	$orderdata=$this->Order->find('all');
 	//print_r($orderdata);
-	$this->Execute_Activity();
+	$this->Add_Credit(2);
+	echo 'OK';
 	}
 	
 	//>>>>>>>>>callBot function started<<<<<<<<<<
@@ -119,24 +120,17 @@ class OrdersController extends AppController {
 	//This function will contain possiblity ratios of each activity.
 	public function Add_Activity() {
 	
-	     if($this->Auth->user('id'))
-	     {//openning of auth_id control
-	     $user_id=$this->Session->read('Auth.User.id');
-	     }else{
-		 //if user is not logged in
-		 break;
-		 }
+	  if($this->Auth->user('id'))
+	  {//openning of auth_id control
+	  $user_id=$this->Session->read('Auth.User.id');
+	     
 		 
 		 $bot_id=$this->callBot($user_id);
 	
-	     //Check total credit of user.
-	     $totalcredit=$this->Order->query('SELECT credit FROM botcredits WHERE user_id='.$user_id.'');
-		 if($totalcredit==NULL || $totalcredit[0]['botcredits']['credit']<30)
-		 {
-		 //If user below credit limit,break it.
-		 break;
-		 }
-	
+	       //Check total credit of user.
+	       $totalcredit=$this->Order->query('SELECT credit FROM botcredits WHERE user_id='.$user_id.'');
+		   if($totalcredit!=NULL && $totalcredit[0]['botcredits']['credit']>30)
+		   {//If user have more than 30 credit
 	
 	     //Hangi activity tipi seçilecek?
 		 $activity_perc=rand(0,100);
@@ -183,14 +177,18 @@ class OrdersController extends AppController {
 		 $this->Order->query('UPDATE botcredits SET credit=credit-'.$credit.' WHERE user_id='.$user_id.'');
 	     } 
 	  }
-	
+  
+             }//Close of credit limit control
+				 
+  }//close of auth_id control
+echo 'finished';	
 }
 	//>>>>>>>>>Add_Activity function finished<<<<<<<
 	
 	//>>>>>>>>>ExecuteActivity function begins<<<<<<<
 	public function Execute_Activity() {
-	
-	
+	$this->layout='ajax';
+	echo 'ready';
 	
 	$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0),'order' => array('Order.date DESC')));
 	
