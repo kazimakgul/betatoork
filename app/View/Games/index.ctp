@@ -427,8 +427,8 @@
                       <ul class='footer-address'>
                         <li>
                           <strong>Address:</strong>
-                          Taksim Cad. No:55<br/>
-                          Beyoglu, Istanbul, Turkiye
+                          Divan Yolu Cad. No:23<br/>
+                          Fatih, Istanbul, Turkiye
                         </li>
                         <li>
                           <strong>Contact:</strong>
