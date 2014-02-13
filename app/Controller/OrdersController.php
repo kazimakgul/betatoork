@@ -190,9 +190,7 @@ echo 'finished';
 	$this->layout='ajax';
 	echo 'ready';
 	
-	$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0),'order' => array('Order.date DESC')));
-	
-	
+	$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0),'order' => array('Order.date DESC')));
 	
 	
 	$user_id=$order_in_order['Order']['user_id'];
@@ -212,6 +210,7 @@ echo 'finished';
 			  $this->request->data["Subscription"]["subscriber_id"]=$subscriber_id;
 			  $this->request->data["Subscription"]["subscriber_to_id"]=$subscriber_to_id;
 			  if ($this->Subscription->save($this->request->data)) {
+			      $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
 		 		  $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax_bot',$clonebot_id,$subscriber_to_id,$subscriber_id,5,1));	echo 'done';
 			    }
 		     //Subscription Process ends
