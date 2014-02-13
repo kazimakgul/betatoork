@@ -6,7 +6,7 @@
  
  <tbody><tr>
  <td align="center" style="padding:10px 0 20px">
-    <img width="150" src="https://s3.amazonaws.com/betatoorkpics/socials/clone.png">
+    <a href="http://clone.gs"><img width="150" src="https://s3.amazonaws.com/betatoorkpics/socials/clone.png"></a>
  </td>
  </tr>
  

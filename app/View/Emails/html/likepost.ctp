@@ -13,7 +13,7 @@ else{
 
 <tr>
   <td align="center">
-    <img width="150" src="https://s3.amazonaws.com/betatoorkpics/socials/clone.png">
+    <a href="http://clone.gs"><img width="150" src="https://s3.amazonaws.com/betatoorkpics/socials/clone.png"></a>
   </td></br>
 </tr>
 
