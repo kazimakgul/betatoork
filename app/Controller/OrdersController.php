@@ -150,17 +150,17 @@ class OrdersController extends AppController {
 	     //Hangi activity tipi seçilecek?
 		 $activity_perc=rand(0,100);
 	     switch ($activity_perc) {
-              case $activity_perc >= 0 && $activity_perc <= 30 :
+              case $activity_perc >= 0 && $activity_perc <= 100 :
                   // Follow Activity
 			      $credit=3;
 				  $activity_id=2;
                   break ;
-              case $activity_perc >= 30 && $activity_perc <= 50 :
+              case $activity_perc >= 101 && $activity_perc <= 500 :
                   // Clone Activity
 			      $credit=5;
 				  $activity_id=3;
                   break ;
-              case $activity_perc >= 50 && $activity_perc <= 60 :
+              case $activity_perc >= 5000 && $activity_perc <= 6000 :
                   // Rate Activity
 			      $credit=1;
 				  $activity_id=4;
