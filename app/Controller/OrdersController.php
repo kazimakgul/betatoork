@@ -36,9 +36,23 @@ class OrdersController extends AppController {
 	
 	$orderdata=$this->Order->find('all');
 	//print_r($orderdata);
-	$this->Add_Credit(2);
+	$this->callActBot(1594,2);
 	echo 'OK';
 	}
+	
+	public function callActBot($target_user=NULL,$action_id=NULL) {
+	
+	   if($action_id==2)
+	   {
+	   $freebot=$this->Order->query('select * from clonebots where user_id NOT IN (select clonebot_id from orders where user_id='.$target_user.' AND action_id='.$action_id.') LIMIT 1');
+	     if($freebot!=NULL)
+	     {
+	     return $freebot[0]['clonebots']['user_id'];
+	     }
+	   }
+	
+	}
+	
 	
 	//>>>>>>>>>callBot function started<<<<<<<<<<
 	//This function find the most appropriate bot for this job.
@@ -194,16 +208,19 @@ echo 'finished';
 	
 	
 	$user_id=$order_in_order['Order']['user_id'];
-	$clonebot_id=$order_in_order['Order']['clonebot_id'];
 	$action_id=$order_in_order['Order']['action_id'];
+	$clonebot_id=$order_in_order['Order']['clonebot_id'];
+	
+	
 	
 	    if($action_id==2)
         {//Follow activity starts
+		     $clonebot_id=$this->callActBot($user_id,$action_id);
 		     $subscriber_id=$clonebot_id;
 		     $subscriber_to_id=$user_id;
 		     $subscribebefore=$this->Subscription->find("first",array("conditions"=>array("Subscription.subscriber_id"=>$subscriber_id,"Subscription.subscriber_to_id"=>$subscriber_to_id)));
 		     //if bot didn't subscribe this user before,it is free.
-		     if(empty($subscribebefore))
+		     if($clonebot_id!=NULL && empty($subscribebefore))
 		     {
 		     //Subscription Process starts
 		      $this->Subscription->create();
@@ -218,8 +235,8 @@ echo 'finished';
 		     }else{
 		     //bot subscribe this user before,change the bot!!!
 		     //DO SOMETHING
-			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
 		     }
+			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
 	    }else if($action_id==3){//Follow activity ends.
 		     //Clone activity starts
 		
