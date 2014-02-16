@@ -36,7 +36,7 @@ class OrdersController extends AppController {
 	
 	$orderdata=$this->Order->find('all');
 	//print_r($orderdata);
-	$this->callActBot(1594,2);
+	$this->wakeup_project();
 	echo 'OK';
 	}
 	
@@ -140,7 +140,8 @@ class OrdersController extends AppController {
 	  $user_id=$this->Session->read('Auth.User.id');
 	     
 		 
-		 $bot_id=$this->callBot($user_id);
+		 //$bot_id=$this->callBot($user_id);
+		 $bot_id=0;
 	
 	       //Check total credit of user.
 	       $totalcredit=$this->Order->query('SELECT credit FROM botcredits WHERE user_id='.$user_id.'');
@@ -251,6 +252,29 @@ echo 'finished';
 	}
 	//>>>>>>>>>ExecuteActivity function ends<<<<<<<
 	
+	function wakeup_project()
+	{
+	//Kulllanici banner eklemis mi?
+	
+	$users=$this->User->find('all',array('conditions'=>array('User.banner !='=>NULL),'fields'=>array('User.id'),'limit' => 2));
+	foreach($users as $user)
+	{
+	     //Add order for all users.
+	     //Submit the datas into Orders table
+         $this->request->data['Order']['user_id'] = $user['User']['id'];	
+		 $this->request->data['Order']['clonebot_id'] = 0;	
+	     $this->request->data['Order']['action_id'] =2;	
+	     $this->request->data['Order']['date'] =date('Y-m-d');	
+	     $this->Order->create();	
+	     if ($this->Order->save($this->request->data)) {
+	     //We will decrease credit here from total credit of user.
+	     }
+	}
+	
+	echo 'ready2';
+	
+	
+	}
 	
 	
 
