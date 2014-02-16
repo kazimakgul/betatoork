@@ -44,9 +44,10 @@ class OrdersController extends AppController {
 	
 	   if($action_id==2)
 	   {
-	   $freebot=$this->Order->query('select * from clonebots where user_id NOT IN (select clonebot_id from orders where user_id='.$target_user.' AND action_id='.$action_id.') LIMIT 1');
+	   $freebot=$this->Order->query('select * from clonebots where user_id NOT IN (select clonebot_id from orders where user_id='.$target_user.' AND action_id='.$action_id.' AND done=1) LIMIT 1');
 	     if($freebot!=NULL)
 	     {
+		 echo $freebot[0]['clonebots']['user_id'];
 	     return $freebot[0]['clonebots']['user_id'];
 	     }
 	   }
@@ -227,7 +228,7 @@ echo 'finished';
 			  $this->request->data["Subscription"]["subscriber_id"]=$subscriber_id;
 			  $this->request->data["Subscription"]["subscriber_to_id"]=$subscriber_to_id;
 			  if ($this->Subscription->save($this->request->data)) {
-			      $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
+			      $this->Order->query('UPDATE orders SET done=1,clonebot_id='.$clonebot_id.' WHERE id='.$order_in_order['Order']['id']);
 		 		  $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax_bot',$clonebot_id,$subscriber_to_id,$subscriber_id,5,1));	echo 'done';
 			    }
 		     //Subscription Process ends
