@@ -36,7 +36,7 @@ class OrdersController extends AppController {
 	
 	$orderdata=$this->Order->find('all');
 	//print_r($orderdata);
-	$this->wakeup_project();
+	$this->callActBot(1594,2);
 	echo 'OK';
 	}
 	
@@ -239,6 +239,7 @@ echo 'finished';
 		     //DO SOMETHING
 		     }
 			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
+			 $this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
 	    }else if($action_id==3){//Follow activity ends.
 		     //Clone activity starts
 		
