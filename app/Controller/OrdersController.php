@@ -36,7 +36,7 @@ class OrdersController extends AppController {
 	
 	$orderdata=$this->Order->find('all');
 	//print_r($orderdata);
-	$this->callActBot(1594,2);
+	$this->Add_Debt_Activity();
 	echo 'OK';
 	}
 	
@@ -129,6 +129,39 @@ class OrdersController extends AppController {
 	}
 	//>>>>>>>>>Add_Credit function finished<<<<<<<
 	
+	//>>>>>>>>>Add_debt_Activity function begins<<<<<<<
+	//Description:If there are users have more than 30 credit in system,this function will give order or this users.
+    public function Add_Debt_Activity()
+    {
+	$this->layout='ajax';
+	echo 'Add_Debt_Activity2';
+	  $users=$this->Order->query('SELECT user_id FROM botcredits WHERE credit>30 LIMIT 2');
+      if($users!=NULL)
+	  {//Users isnot null
+	      foreach($users as $user)
+	      {
+	         //Add order for all users.
+	         //Submit the datas into Orders table
+             $this->request->data['Order']['user_id'] = $user['botcredits']['user_id'];	
+		     $this->request->data['Order']['clonebot_id'] = 0;	
+	         $this->request->data['Order']['action_id'] =2;	
+	         $this->request->data['Order']['date'] =date('Y-m-d');	
+	         $this->Order->create();	
+	         if ($this->Order->save($this->request->data)) {
+	         //We will decrease credit here from total credit of user.
+			 $credit=3;
+			 $this->Order->query('UPDATE botcredits SET credit=credit-'.$credit.' WHERE user_id='.$user['botcredits']['user_id'].'');
+			 echo 'done adding order';
+	         }
+	       }
+		}//Users isnot null   
+	
+	}
+	
+	
+	//>>>>>>>>>Add_debt_Activity function ends<<<<<<<
+	
+	
 	
 	//>>>>>>>>>Add_Activity function begins<<<<<<<
 	//Description:this function will be started for each activity.Will check the total credit of user.If it is available to get new bot order.We will add an order for that user.
@@ -213,7 +246,8 @@ echo 'finished';
 	$action_id=$order_in_order['Order']['action_id'];
 	$clonebot_id=$order_in_order['Order']['clonebot_id'];
 	
-	
+  if($order_in_order!=NULL)
+  {//If there is an activity in order.	
 	
 	    if($action_id==2)
         {//Follow activity starts
@@ -248,9 +282,12 @@ echo 'finished';
 		     //Clone activity ends
 		}
 	
-	
-	
+	}else{
+	//There is no any activity in order
+	echo 'no activity';
 	}
+    $this->Add_Debt_Activity();	
+}
 	//>>>>>>>>>ExecuteActivity function ends<<<<<<<
 	
 	function wakeup_project()
