@@ -132,12 +132,12 @@ class OrdersController extends AppController {
 	//>>>>>>>>>Add_Credit function finished<<<<<<<
 	
 	//>>>>>>>>>Add_debt_Activity function begins<<<<<<<
-	//Description:If there are users have more than 30 credit in system,this function will give order or this users.
+	//Description:If there are users have more than 10 credit in system,this function will give order or this users.
     public function Add_Debt_Activity()
     {
 	$this->layout='ajax';
 	echo 'Add_Debt_Activity2';
-	  $users=$this->Order->query('SELECT user_id FROM botcredits WHERE credit>30 LIMIT 2');
+	  $users=$this->Order->query('SELECT user_id FROM botcredits WHERE credit>10 LIMIT 2');
       if($users!=NULL)
 	  {//Users isnot null
 	      foreach($users as $user)
@@ -180,8 +180,8 @@ class OrdersController extends AppController {
 	
 	       //Check total credit of user.
 	       $totalcredit=$this->Order->query('SELECT credit FROM botcredits WHERE user_id='.$user_id.'');
-		   if($totalcredit!=NULL && $totalcredit[0]['botcredits']['credit']>30)
-		   {//If user have more than 30 credit
+		   if($totalcredit!=NULL && $totalcredit[0]['botcredits']['credit']>10)
+		   {//If user have more than 10 credit
 	
 	     //Hangi activity tipi seçilecek?
 		 $activity_perc=rand(0,100);
