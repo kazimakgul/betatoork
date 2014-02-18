@@ -34,10 +34,12 @@ class OrdersController extends AppController {
 	public function index() {
 	$this->layout='ajax';
 	
-	$orderdata=$this->Order->find('all');
+	//$orderdata=$this->Order->find('all');
 	//print_r($orderdata);
-	$this->Add_Debt_Activity();
-	echo 'OK';
+	   if($_GET['task']=='wakeup')
+       {
+	   $this->wakeup_project();
+	   }
 	}
 	
 	public function callActBot($target_user=NULL,$action_id=NULL) {
@@ -294,7 +296,7 @@ echo 'finished';
 	{
 	//Kulllanici banner eklemis mi?
 	
-	$users=$this->User->find('all',array('conditions'=>array('User.banner !='=>NULL),'fields'=>array('User.id'),'limit' => 2));
+	$users=$this->User->find('all',array('conditions'=>array('User.banner !='=>NULL),'fields'=>array('User.id')));
 	foreach($users as $user)
 	{
 	     //Add order for all users.
@@ -306,10 +308,10 @@ echo 'finished';
 	     $this->Order->create();	
 	     if ($this->Order->save($this->request->data)) {
 	     //We will decrease credit here from total credit of user.
+		 echo 'wake up process done'.'<br>';
 	     }
 	}
 	
-	echo 'ready2';
 	
 	
 	}
