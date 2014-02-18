@@ -1814,7 +1814,7 @@ $.post(activitypath, function (data) {
 //*********Execute Bot Activity Start********
 //==========================================================
 
-setInterval(function(){execute_order();},10000);
+setInterval(function(){execute_order();},30000);
 
 function execute_order()
 {

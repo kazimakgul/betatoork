@@ -103,15 +103,15 @@ class OrdersController extends AppController {
 	     switch ($activity_id) {
             case 2 :
                 // Follow Activity
-			    $credit=30;
+			    $credit=3;
                 break ;
             case 3 :
                 // Clone Activity
-			    $credit=50;
+			    $credit=4;
                 break ;
             case 4 :
                 // Rate Activity
-			    $credit=10;
+			    $credit=1;
                 break ;
          }
 		
@@ -151,7 +151,7 @@ class OrdersController extends AppController {
 	         $this->Order->create();	
 	         if ($this->Order->save($this->request->data)) {
 	         //We will decrease credit here from total credit of user.
-			 $credit=3;
+			 $credit=5;
 			 $this->Order->query('UPDATE botcredits SET credit=credit-'.$credit.' WHERE user_id='.$user['botcredits']['user_id'].'');
 			 echo 'done adding order';
 	         }
@@ -188,7 +188,7 @@ class OrdersController extends AppController {
 	     switch ($activity_perc) {
               case $activity_perc >= 0 && $activity_perc <= 100 :
                   // Follow Activity
-			      $credit=3;
+			      $credit=5;
 				  $activity_id=2;
                   break ;
               case $activity_perc >= 101 && $activity_perc <= 500 :
