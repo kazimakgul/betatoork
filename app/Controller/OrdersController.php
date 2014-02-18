@@ -232,7 +232,7 @@ class OrdersController extends AppController {
              }//Close of credit limit control
 				 
   }//close of auth_id control
-echo 'finished';	
+	
 }
 	//>>>>>>>>>Add_Activity function finished<<<<<<<
 	
