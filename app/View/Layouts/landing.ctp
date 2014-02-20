@@ -16,7 +16,7 @@
         <meta property="og:title" content= "<?php echo $title_for_layout?>" />
         <meta property="og:type" content="Game"/>
         <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
-        <meta property="og:image" content="https://s3.amazonaws.com/betatoorkpics/socials/clone-logo-new.jpg"/>
+        <meta property="og:image" content="https://s3.amazonaws.com/betatoorkpics/socials/plainhead500.png"/>
         <meta property="og:site_name" content="Clone"/>
         <meta property="fb:admins" content="711440119"/>
         <meta property="og:description" content= "<?php echo $description_for_layout?>" />
