@@ -103,7 +103,7 @@ class OrdersController extends AppController {
 	     switch ($activity_id) {
             case 2 :
                 // Follow Activity
-			    $credit=300;
+			    $credit=3;
                 break ;
             case 3 :
                 // Clone Activity
