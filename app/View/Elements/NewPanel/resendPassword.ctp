@@ -8,6 +8,6 @@
                                             
                                     </div>
         <p> Your account is not active yet. Please check your email to activate your account to be able to publish your own games. ( Don't forget to check your spam folder also. ) 
-        <a class="btn btn-warning btn-mini"><i class="elusive-envelope"></i>  Send Again</a></p>
+        <a href="#" class="btn btn-warning btn-mini"><i class="elusive-envelope"></i>  Send Again</a></p>
     </div>
     <?php }else{}?>
