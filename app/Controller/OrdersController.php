@@ -99,11 +99,18 @@ class OrdersController extends AppController {
 		 break;
 		 }
 	
-	
+/* Activity Type_id codes
+Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameAdd9 SharePost10 PlayGame11
+*/
+
 	     switch ($activity_id) {
+			case 1 :
+                // GameAdd Activity
+			    $credit=16;
+                break ;
 			case 2 :
                 // Follow Activity
-			    $credit=1;
+			    $credit=3;
                 break ;
             case 3 :
                 // Clone Activity
@@ -111,11 +118,39 @@ class OrdersController extends AppController {
                 break ;
             case 4 :
                 // Rate Activity
-			    $credit=2;
+			    $credit=3;
+                break ;
+            case 5 :
+                // Mention Activity
+			    $credit=11;
+                break ;
+            case 6 :
+                // PostComment Activity
+			    $credit=3;
+                break ;
+            case 7 :
+                // Favorite Activity
+			    $credit=5;
+                break ;
+            case 8 :
+                // GameHashtag Activity
+			    $credit=11;
+                break ;
+            case 10 :
+                // SendPost Activity
+			    $credit=15;
+                break ;
+            case 12 :
+                // CommentGame Activity
+			    $credit=3;
+                break ;
+            case 15 :
+                // SharePost Activity
+			    $credit=11;
                 break ;
 			default:
 			    // All Other Activities
-                $credit=1;	
+                $credit=2;	
          }
 		
 		 //Is there any data on credit table before
