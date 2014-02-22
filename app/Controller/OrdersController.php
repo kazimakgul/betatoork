@@ -150,7 +150,7 @@ class OrdersController extends AppController {
              $this->request->data['Order']['user_id'] = $user['botcredits']['user_id'];	
 		     $this->request->data['Order']['clonebot_id'] = 0;	
 	         $this->request->data['Order']['action_id'] =2;	
-	         $this->request->data['Order']['date'] =date('Y-m-d');	
+	         $this->request->data['Order']['date'] =date('Y-m-d H:i:s');	
 	         $this->Order->create();	
 	         if ($this->Order->save($this->request->data)) {
 	         //We will decrease credit here from total credit of user.
@@ -224,7 +224,7 @@ class OrdersController extends AppController {
          $this->request->data['Order']['user_id'] = $user_id;	
 		 $this->request->data['Order']['clonebot_id'] = $bot_id;	
 	        $this->request->data['Order']['action_id'] =$activity_id;	
-	     $this->request->data['Order']['date'] =date('Y-m-d');	
+	     $this->request->data['Order']['date'] =date('Y-m-d H:i:s');	
 	     $this->Order->create();	
 	     if ($this->Order->save($this->request->data)) {
 	     //We will decrease credit here from total credit of user.
@@ -244,7 +244,7 @@ class OrdersController extends AppController {
 	$this->layout='ajax';
 	echo 'ready';
 	
-	$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0),'order' => array('Order.date DESC')));
+	$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0),'order' => array('Order.date ASC')));
 	
 	
 	$user_id=$order_in_order['Order']['user_id'];
