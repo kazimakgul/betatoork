@@ -27,7 +27,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
 if($this->Session->check('Auth.User')){
 ?>
 
-                  <div class="alert alert-info channel"><p><strong>The game you are searching is not added yet, you can add this game after you become a member or Search our custom Toork search engine powered by Google to find your loved games...</strong></p></br>
+                  <div class="alert alert-info channel"><p><strong>The game you are searching is not added yet, you can add this game after you become a member or Search our custom Clone search engine powered by Google to find your loved games...</strong></p></br>
 
 
                     <a href="<?php echo $addgame ?>" class="btn btn-danger"><i class="elusive-plus-sign"></i> Add Game</a>
@@ -42,7 +42,7 @@ if($this->Session->check('Auth.User')){
 
                   <div class="alert alert-info">
                     <p>
-                        <strong><i class="elusive-search"></i> The game you are searching is not added yet, you can add this game after you become a member or Search our custom Toork search engine powered by Google to find your loved games...
+                        <strong><i class="elusive-search"></i> The game you are searching is not added yet, you can add this game after you become a member or Search our custom Clone search engine powered by Google to find your loved games...
                         </strong>
                     </p>
                 </div>
@@ -54,8 +54,8 @@ if($this->Session->check('Auth.User')){
                 </div>
                 
             </div>
-              <h4>Join Toork For Free</h4>
-              <p>If you join Toork, you will be able to create your own game channel and let people play games you share on your channel. See the benefits below.</p>
+              <h4>Join Clone For Free</h4>
+              <p>If you join Clone, you will be able to create your own game channel and let people play games you share on your channel. See the benefits below.</p>
                 <ul>
                     <li>Create your own game channel</li>
                     <li>Your special dashboard that knows what you want</li>
@@ -66,7 +66,7 @@ if($this->Session->check('Auth.User')){
                 </ul>
               <p>
                 <a href="<?php echo $index ?>" class="btn btn-danger">
-                  <i class="elusive-user"></i> Join Toork
+                  <i class="elusive-user"></i> Join Clone
                 </a> or 
                 <a href="<?php echo $toprated; ?>" class="btn btn-info"><i class="elusive-compass"></i> Explore Games</a>
               </p>
