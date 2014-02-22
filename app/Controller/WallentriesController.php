@@ -646,6 +646,14 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 	if($this->Auth->user('id'))
 	{ //openning of auth_id control
 	
+	if($type!=NULL)
+   {
+   //give activity and credit for action.
+   $this->requestAction( array('controller' => 'orders', 'action' => 'Add_Activity'));
+   $this->requestAction( array('controller' => 'orders', 'action' => 'Add_Credit',$type));
+   }
+	
+	
 	$performer_id=$this->Session->read('Auth.User.id');
 	//if user affect itself,we don't need notify or mail.
 	if($performer_id==$channel_id)
@@ -1182,14 +1190,7 @@ $this->loadModel('Game');
 //Import necessary files for wall script
 	   App::import('Vendor', 'wallscript/config');
 	   App::import('Vendor', 'wallscript/Wall_Updates');
-	   
-   if($action!=NULL)
-   {
-   //give activity and credit for action.
-   $this->requestAction( array('controller' => 'orders', 'action' => 'Add_Activity'));
-   $this->requestAction( array('controller' => 'orders', 'action' => 'Add_Credit',2));
-   }	   
-	   
+	      	   	   
 	
    $Wall = new Wall_Updates();
    if($content_id!=NULL)

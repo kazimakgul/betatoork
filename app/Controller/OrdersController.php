@@ -46,7 +46,7 @@ class OrdersController extends AppController {
 	
 	   if($action_id==2)
 	   {
-	   $freebot=$this->Order->query('select * from clonebots where user_id NOT IN (select clonebot_id from orders where user_id='.$target_user.' AND action_id='.$action_id.' AND done=1) LIMIT 1');
+	   $freebot=$this->Order->query('select * from clonebots where user_id NOT IN (select clonebot_id from orders where user_id='.$target_user.' AND action_id='.$action_id.' AND done=1) ORDER BY RAND() LIMIT 1');
 	     if($freebot!=NULL)
 	     {
 		 echo $freebot[0]['clonebots']['user_id'];
@@ -101,18 +101,21 @@ class OrdersController extends AppController {
 	
 	
 	     switch ($activity_id) {
-            case 2 :
+			case 2 :
                 // Follow Activity
-			    $credit=3;
+			    $credit=1;
                 break ;
             case 3 :
                 // Clone Activity
-			    $credit=4;
+			    $credit=5;
                 break ;
             case 4 :
                 // Rate Activity
-			    $credit=1;
+			    $credit=2;
                 break ;
+			default:
+			    // All Other Activities
+                $credit=1;	
          }
 		
 		 //Is there any data on credit table before
