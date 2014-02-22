@@ -100,7 +100,7 @@ class OrdersController extends AppController {
 		 }
 	
 /* Activity Type_id codes
-Comment1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameAdd9 SharePost10 PlayGame11
+GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameAdd9 SharePost10 PlayGame11
 */
 
 	     switch ($activity_id) {
