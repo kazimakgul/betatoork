@@ -677,6 +677,7 @@ public function profile() {
 	
     $user = $this->User->find('first', array('conditions' => array('User.id' => $authid),'fields'=>array('*')));
     $publicUser = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
+    $isActive = $user['User']['active'];
     
 	if($publicUser==NULL){
 		$this->redirect('/');
@@ -754,6 +755,7 @@ public function profile() {
 	$this->set('userid', $userid);
 	$this->set('user', $user);
 	$this->set('publicuser', $publicUser);
+	$this->set('isActive',$isActive);
 
 	$this->set_suggested_channels();	
 	$this->set('title_for_layout', $publicName.' Game Channel - Clone');

@@ -12,6 +12,8 @@ $username = $user['User']['seo_username'];
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
 
+<?php  echo $this->element('NewPanel/resendPassword'); ?>
+
 <div class="well shadow-black" style="background-color:white;">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#home" data-toggle="tab"><i class="elusive-user"></i> Profile</a></li>

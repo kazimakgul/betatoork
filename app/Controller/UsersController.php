@@ -769,6 +769,7 @@ WHERE user_id='.$auth_id.'');
 		
 		
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
+		$isActive = $user['User']['active'];
     	$userName = $user['User']['username'];
 	    $this->set('user',$user);
 		$this->set('userid', $userid);
@@ -777,6 +778,7 @@ WHERE user_id='.$auth_id.'');
 		$subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 		$this->set('subscribe', $subscribe);
 		$this->set('subscribeto', $subscribeto);
+		$this->set('isActive',$isActive);
 		
 		
 		$this->set('title_for_layout', 'Edit Channel');

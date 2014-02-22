@@ -23,17 +23,8 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
                             <!-- dashboard -->
-    <?php if($isActive==0){ ?>
-    <div class="alert alert-warning span12">
-                                    <div class="box-header corner-top">
-                                            <div class="header-control">
-                                            <button data-box="close" data-hide="fadeOut" class="close">×</button>
-                                            </div>
-                                            
-                                    </div>
-        <p> <i class="elusive-mail-alt helper-font-24"></i> Your account is not active yet. Please check your email to activate your account to be able to publish your own games. ( Don't forget to check your spam folder also. )</p>
-    </div>
-<?php }else{}?>
+    
+    <?php  echo $this->element('NewPanel/resendPassword'); ?>
 
 <div>
 <?php echo $this->element('NewPanel/explore/explorefeed');?>
