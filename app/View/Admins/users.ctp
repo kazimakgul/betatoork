@@ -1,3 +1,5 @@
+
+<div class="span11">
 <div class="content">
 <div class="content-body" style="padding-top:15px;">
 
@@ -73,3 +75,4 @@ echo $this->element('NewPanel/admin/adminNavbar');
 
 	</div>
     </div>
+</div>
