@@ -7,6 +7,13 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 ?>
 
 
+                <div class="span11">
+                    <!-- content -->
+                    <div class="content">
+                        <!-- content-body -->
+                        <div class="content-body" style="padding-top:15px;">
+
+
 <div class="row-fluid">
     <div class="span12">
         <div class="box corner-all">
@@ -15,7 +22,7 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
                     <a data-box="collapse"><i class="icofont-caret-up"></i></a>
                     <a data-box="close" data-hide="bounceOutRight">×</a>
                 </div>
-                <span>Bordered</span>
+                <span>Users</span>
             </div>
             <div class="box-body">
                 <table class="table table-bordered responsive">
@@ -24,8 +31,6 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('username');?> - <?php echo $this->Paginator->sort('email');?></th>
-			<th><?php echo $this->Paginator->sort('facebook_id');?></th>
-			<th><?php echo $this->Paginator->sort('seo_username');?></th>
 			<th><?php echo $this->Paginator->sort('role');?> - <?php echo $this->Paginator->sort('active');?></th>
 			<th><?php echo $this->Paginator->sort('active -> Effect Game?');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
@@ -43,8 +48,6 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 		<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['username']); ?>&nbsp; <?php echo h($user['User']['email']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['facebook_id']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['seo_username']); ?>&nbsp;</td>
 		
 		<?php echo $this->Form->create(null,array('url'=>'/users/useredit'));?>
 		<td><?php  echo $this->Form->select('role',$options,array('value'=>$user['User']['role']))?>
@@ -83,7 +86,9 @@ $optionscheck=array('1'=>'Yes','0'=>'No');
 
 
 
-
+        </div><!-- /box -->
+    </div><!-- /span -->
+</div>
 
 
 
