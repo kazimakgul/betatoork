@@ -22,7 +22,51 @@ class AdminsController extends AppController {
 	
 	public function users() {
 	$this->layout='adminDashboard';
-		echo 'users ready';
+
+	if($this->request->isPost())
+	{	
+	//iç
+
+	$this->User->id =$this->request->data["User"]["id"];
+	$id=$this->request->data["User"]["id"];
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->User->save($this->request->data)) {
+			   
+			    if($this->request->data["User"]["affect"]==1)
+			    {
+				$value=$this->request->data["User"]["active"];
+				$this->affected($id,$value);
+				
+			    }
+				else
+				{
+				$this->Session->setFlash(__('The user has been updated'));
+				}
+			   
+				
+				$this->redirect(array('action' => 'useredit'));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}
+		} else {
+			$this->request->data = $this->User->read(null, $id);
+		}
+
+	//dis
+	}
+		$this->User->recursive = 0;
+		$this->set('users', $this->paginate('User'));
+		$authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('username',$userName);
+
+	
+		
 	}
 	
 	public function affected($id,$value)
