@@ -19,6 +19,12 @@ class AdminsController extends AppController {
 		echo 'ready';
 	}
 	
+	
+	public function users() {
+	$this->layout='adminDashboard';
+		echo 'users ready';
+	}
+	
 	public function affected($id,$value)
     {
     $this->User->Game->updateAll(array('active'=>$value),array('user_id'=>$id));
