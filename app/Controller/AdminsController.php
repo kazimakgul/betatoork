@@ -247,4 +247,17 @@ class AdminsController extends AppController {
     //<<<<<<<<<<adminview function ends>>>>>>>>>>>>
 	
 	
+	
+	//<<<<<<<<<<Remote functions starts>>>>>>>>>>>>
+	//<<<<<<<<<<edit user form function starts>>>>>>>>>>>>
+	
+	public function edit_user_form($id = null) {
+	$this->layout = 'ajax';
+	
+	
+	}
+	
+	
+	//<<<<<<<<<<edit user form function ends>>>>>>>>>>>>
+	//<<<<<<<<<<Remote functions ends>>>>>>>>>>>>
 }
