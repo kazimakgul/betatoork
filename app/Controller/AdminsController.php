@@ -250,14 +250,118 @@ class AdminsController extends AppController {
 	
 	//<<<<<<<<<<Remote functions starts>>>>>>>>>>>>
 	//<<<<<<<<<<edit user form function starts>>>>>>>>>>>>
-	
 	public function edit_user_form($id = null) {
 	$this->layout = 'ajax';
 	
+	$user=$this->User->find('all', array(
+    'joins' => array(
+        array(
+            'table' => 'botcredits',
+            'alias' => 'Botcred',
+            'type' => 'LEFT',
+            'conditions' => array(
+                'Botcred.user_id = User.id'
+            )
+        )
+    ),
+    'conditions' => array(
+        'User.id' => $id
+    ),
+    'fields' => array('Botcred.credit', 'User.id', 'User.screenname', 'User.username', 'User.email', 'User.role')
+));
+	
+	//Is this user bot?
+	$bot_info=$this->User->query('SELECT user_id from clonebots WHERE user_id='.$id.'');
+	if($bot_info!=NULL)
+	$bot=1;
+	else
+	$bot=0;
+	
+	
+	if($bot==1)
+	$this->set('bot',1);
+	else
+	$this->set('bot',0);
+	
+	$this->set('user',$user);
+	
 	
 	}
-	
-	
 	//<<<<<<<<<<edit user form function ends>>>>>>>>>>>>
+	
+	//<<<<<<<<<<edit user submit function starts>>>>>>>>>>>>
+	public function edit_user_submit() {
+	$this->layout = 'ajax';
+	echo 'submit ready';
+	
+	$id=$_POST['id'];
+	$screenname=$_POST['screenname'];
+	$username=$_POST['username'];
+	$email=$_POST['email'];
+	$role=$_POST['role'];
+	$credit=$_POST['credit'];
+	$bot=$_POST['bot'];
+	
+	$this->User->id = $id;
+	
+	echo 'id:'.$id.'<br>';
+	echo 'screenname:'.$screenname.'<br>';
+	echo 'username:'.$username.'<br>';
+	echo 'email:'.$email.'<br>';
+	echo 'role:'.$role.'<br>';
+	echo 'credit:'.$credit.'<br>';
+	echo 'bot:'.$bot.'<br>';
+	
+	//Screenname cannot be null
+	if($screenname==NULL)
+	$screenname=$username;
+	
+	      $filtered_data=
+		  array('User' =>array(
+		  'screenname' => $screenname,
+		  'username' => $username,
+		  'email' => $email,
+		  'role' => $role));
+		  if ($this->User->save($filtered_data)) {echo 'saved userdata';}
+		  
+		  //Is there any data on credit table before
+		 $creditbefore=$this->User->query('SELECT * FROM botcredits WHERE user_id='.$id.'');
+		 if($creditbefore!=NULL)
+         {
+		 //If user already has credit data before.
+		 $this->User->query('UPDATE botcredits SET credit='.$credit.' WHERE user_id='.$id.'');
+		 }else{
+		  //If user has no credit data before.
+		 $this->User->Query('INSERT INTO botcredits (user_id,credit) VALUES ('.$id.','.$credit.')');
+		 }
+		  
+		//Check bot status from clonebots table
+		$clonebot_data=$this->User->query('SELECT * FROM clonebots WHERE user_id='.$id.'');
+		if($bot==1)
+		{    
+		    if($clonebot_data!=NULL)
+			{
+			//is already bot,we are okey,go ahaed!
+			}else{
+			//Add this user as bot!
+			$this->User->Query('INSERT INTO clonebots (user_id) VALUES ('.$id.')');
+			}
+		     
+		}else{
+		     
+			 if($clonebot_data!=NULL)
+			{
+			//we have to remove it here!
+			$this->User->Query('DELETE FROM clonebots WHERE user_id='.$id.'');
+			}else{
+			//We'r okey here,go ahaed!
+			}
+			 
+		}//bot variable control ends here.	
+			
+	
+	
+	}
+	//<<<<<<<<<<edit user submit function ends>>>>>>>>>>>>
 	//<<<<<<<<<<Remote functions ends>>>>>>>>>>>>
 }

@@ -61,6 +61,8 @@ notifyrefresh='<?php echo $this->Html->url(array('controller'=>'activities','act
 oldnotify='<?php echo $this->Html->url(array('controller'=>'activities','action'=>'getoldnotifications')); ?>';
 crawler='<?php echo $this->Html->url(array('controller'=>'apis','action'=>'metacrawler')); ?>';
 order_execute='<?php echo $this->Html->url(array('controller'=>'orders','action'=>'execute_activity')); ?>';
+edit_user_form='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'edit_user_form')); ?>';
+edit_user_submit='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'edit_user_submit')); ?>';
 
 //Code Block for Broken Images
 function imgError(image,style){

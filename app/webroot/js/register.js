@@ -1828,6 +1828,85 @@ $.post(order_execute,function (data) {
 //==========================================================
 
 
+//==========================================================
+//*********Admin Functions Begins********
+//==========================================================
+
+// commentopen 
+$('.detailopen').live("click",function() 
+{
+
+//Remove old adminforms
+$("#adminform").remove();
+
+var ID = $(this).attr("id");
+$("#detailbox"+ID).slideToggle('fast');
+//<<<<<<Get detail page with ajax starts>>>>>>
+$.ajax({
+        type: "POST",
+        url: edit_user_form+'/'+ID,
+		async: true,
+        success: function(data){
+		
+	    $("#detailbox"+ID).html(data);
+			
+			},
+        failure: function(errMsg) {
+            //alert(errMsg);
+        }
+  });
+//<<<<<Get detail page with ajax ends>>>>>>
+
+
+return false;
+});	
+
+
+
+function submit_user($id)
+{
+   $screenname=$('.user_screen').val();
+   $username=$('.user_username').val();
+   $email=$('.user_email').val();
+   $role=$('.user_role').val();
+   $credit=$('.user_credit').val();
+   $botmode=$('.user_botmode').is(':checked');
+   if($botmode)
+   {
+   $bot=1;
+   }else{
+   $bot=0; 
+   }
+ 
+   
+   //=============Submit User Function Starts===============
+   $.ajax({
+        type: "POST",
+        url: edit_user_submit,
+		data: {id: $id,screenname:$screenname,username:$username,email: $email,role: $role,credit: $credit,bot: $bot },
+		async: true,
+        success: function(data){
+		
+	    //Remove old adminforms
+        $("#adminform").remove();
+			
+			},
+        failure: function(errMsg) {
+            //alert(errMsg);
+        }
+  });
+   //=============Submit User Function Ends===============
+
+
+}
+
+
+
+//==========================================================
+//*********Admin Functions Ends********
+//==========================================================
+
+
 
 //==========================================================
 //*********Notification Frontend Functions********

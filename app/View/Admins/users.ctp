@@ -25,7 +25,7 @@ echo $this->element('NewPanel/admin/adminNavbar');
 
 
 <h4 class="media-heading"><a href="/betatoorkson/hoaltan"><?php echo h($user['User']['username']); ?> </a><small class="pull-right helper-font-small"><?php echo h($user['User']['created']); ?></small></h4><p class="pull-right">
-<a href="#" class="btn btn-mini commentopen" id="<?php echo $random = rand(); ?>"><i class="elusive-edit"></i> Edit</a>
+<a href="#" class="btn btn-mini detailopen" id="<?php echo h($user['User']['id']); ?>"><i class="elusive-edit"></i> Edit</a>
 <a href="#" class="btn btn-mini commentopen" id="<?php echo $random2 = rand(); ?>"><i class="elusive-user"></i> Role</a>
 </p>
                                                             
@@ -40,11 +40,8 @@ echo $this->element('NewPanel/admin/adminNavbar');
 <div style="background-color:#f5f5f5; padding:0px 20px 30px 20px; margin:-20px;">				
 			  	
 																		
-			<div class="row-fluid commentupdate clearfix" style="margin-top: 10px; display:none" id="commentbox<?php echo $random; ?>">
-				<div class="span11">
-					<?php echo h($user['User']['email']); ?>
-					<?php echo h($user['User']['id']); ?>
-			   </div>
+			<div class="row-fluid commentupdate clearfix" style="margin-top: 10px; display:none" id="detailbox<?php echo h($user['User']['id']); ?>">
+				<div class="span11"> </div>
 			</div>
 			<div class="row-fluid commentupdate clearfix" style="margin-top: 10px; display:none" id="commentbox<?php echo $random2; ?>">
 				<div class="span11">
