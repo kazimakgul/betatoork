@@ -1,6 +1,8 @@
 <?php 
 $users=$this->Html->url(array("controller" => "admins","action" =>"users"));  
 $bots=$this->Html->url(array("controller" => "admins","action" =>"bots"));
+$admins=$this->Html->url(array("controller" => "admins","action" =>"users",1));
+$managers=$this->Html->url(array("controller" => "admins","action" =>"users",2));
 ?>
 
 <div class="navbar">
@@ -41,7 +43,8 @@ $bots=$this->Html->url(array("controller" => "admins","action" =>"bots"));
                                                             <ul class="dropdown-menu">
                                                                 <li><a href="<?php echo $users; ?>">Users</a></li>
                                                                 <li><a href="<?php echo $bots; ?>">Bots</a></li>
-                                                                <li><a href="#">Something else here</a></li>
+                                                                <li><a href="<?php echo $admins; ?>">Admins(Role:1)</a></li>
+																<li><a href="<?php echo $managers; ?>">Managers(Role:2)</a></li>
                                                                 <li class="divider"></li>
                                                                 <li><a href="#">Separated link</a></li>
                                                             </ul>

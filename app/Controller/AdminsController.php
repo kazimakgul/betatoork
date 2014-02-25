@@ -29,9 +29,12 @@ public function bots() {
 	}	
 	
 	
-	public function users() {
+	public function users($role=NULL) {
 	$this->layout='adminDashboard';
 
+
+        if($role!=NULL)
+        $this->paginate = array('conditions'=>array('User.role'=>$role));
 
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate('User'));
