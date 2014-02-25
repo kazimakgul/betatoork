@@ -23,7 +23,11 @@ public function bots() {
 	$this->layout='adminDashboard';
 	
 	$this->set('users', $this->paginate('Clonebot'));
-	
+	$authid = $this->Session->read('Auth.User.id');
+	$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    $userName = $user['User']['username'];
+	$this->set('user',$user);
+	$this->set('username',$userName);
 	
 	
 	}	
