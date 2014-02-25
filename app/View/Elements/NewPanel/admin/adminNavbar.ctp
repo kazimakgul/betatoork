@@ -46,7 +46,7 @@ $managers=$this->Html->url(array("controller" => "admins","action" =>"users",2))
                                                                 <li><a href="<?php echo $admins; ?>">Admins(Role:1)</a></li>
 																<li><a href="<?php echo $managers; ?>">Managers(Role:2)</a></li>
                                                                 <li class="divider"></li>
-                                                                <li><a href="#">Separated link</a></li>
+                                                                <li><?php echo $this->Paginator->sort('id','Sort with id'); ?></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
