@@ -1,5 +1,6 @@
 <?php 
 $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
+$adminpage=$this->Html->url(array( "controller" => 'admins',"action" =>'users'));
 
 if(!isset($notifycount))
 {$notifycount="-";}
@@ -182,6 +183,10 @@ if(!isset($notifycount))
 
                                             <a class="btn btn-small pull-right" href="<?php echo $logout; ?>"><i class="icofont-signout"></i> Logout</a>
                                             <a class="btn btn-small btn-success" href="<?php echo $addGame;?>"><i class="elusive-plus-sign"></i> Add Game</a>
+                                            <?php 
+                                            if($user['User']['role']==1) { ?>
+                                            <a class="btn btn-small pull-right" href="<?php echo $adminpage;?>"><i class="elusive-cog"></i> Admin</a>
+                                            <?php }else{}?>
                                         </div>
                                     </li>
                                 </ul>

@@ -209,6 +209,7 @@ public function bots() {
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
     	$userName = $user['User']['username'];
 	    $this->set('user',$user);
+	    $this->set('users', $this->paginate());
 		$this->set('userid', $userid);
         $this->set('username', $userName);
     	$subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
@@ -351,7 +352,7 @@ public function bots() {
 	public function get_search_users($keywords=NULL) {
 	$this->layout = 'ajax';
 	
-	$users=$this->User->find('all',array('contain'=>false,'conditions'=>array('User.username LIKE'=>'%'.$keywords.'%'),'fields'=>array('User.username','User.id','User.screenname','User.created','User.picture')));
+	$users=$this->User->find('all',array('contain'=>false,'conditions'=>array('User.username LIKE'=>'%'.$keywords.'%'),'fields'=>array('User.username','User.id','User.screenname','User.created','User.picture','User.seo_username')));
 	$this->set('users',$users);
 	
 	

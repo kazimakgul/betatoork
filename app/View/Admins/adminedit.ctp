@@ -9,7 +9,9 @@ $useredit=$this->Html->url(array("controller" => "admins","action" =>"useredit")
                         <!-- content-body -->
                         <div class="content-body" style="padding-top:15px;">
 
-
+<?php 
+echo $this->element('NewPanel/admin/adminNavbar');
+?>
 
         <div class="box corner-all">
             <!--box header-->

@@ -6,7 +6,7 @@ $adminedit=$this->Html->url(array("controller" => "admins","action" =>"adminedit
 $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
 ?>
 
-<div class="media well shadow-blue" style="background-color:white;">
+<div class="media well shadow" style="background-color:white;">
                                                       <a class="pull-left" href="<?php echo $profilepublic; ?>">
                                                        
   <?php 
@@ -25,7 +25,6 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 	</small>
 </h4>
 
-
 <p class="pull-right">
 <a href="#" class="btn btn-mini detailopen" id="<?php echo h($user['User']['id']); ?>"><i class="elusive-edit"></i> Quick Edit</a>
 <a href="<?php echo $adminedit; ?>" class="btn btn-mini"><i class="elusive-edit"></i> Edit</a>
@@ -38,7 +37,7 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
   	<?php 
   		if($user['User']['role']==1) { 
   			$result= "<p class='label label-important'>Admin</p>";
-  		}else if($user['User']['role']==2) {
+  		}elseif($user['User']['role']==2) {
   			$result= "<p class='label label-info'>Manager</p>";
   		}else{
   			$result= "<p class='label'>User</p>";
@@ -72,4 +71,4 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
              </div>
           </div>
 												
-			<?php endforeach; ?>
+			<?php endforeach; ?>		

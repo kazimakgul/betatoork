@@ -13,11 +13,11 @@ $managers=$this->Html->url(array("controller" => "admins","action" =>"users",2))
                                                     <span class="icon-bar"></span>
                                                     <span class="icon-bar"></span>
                                                 </a>
-                                                <a class="brand" href="#"></a>
+                                                <a class="brand" href="<?php echo $users; ?>"></a>
                                                 <div class="nav-collapse collapse navbar-responsive-collapse">
                                                     <ul class="nav">
-                                                        <li class="active"><a href="#">Home</a></li>
-                                                        <li><a href="#">Link</a></li>
+                                                        <li class="active"><a href="<?php echo $users; ?>">Users</a></li>
+                                                        <li><a href="#">Games</a></li>
                                                         <li><a href="#">Link</a></li>
                                                         <li class="dropdown">
                                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -33,7 +33,7 @@ $managers=$this->Html->url(array("controller" => "admins","action" =>"users",2))
                                                         </li>
                                                     </ul>
                                                     <form class="navbar-search pull-left" action="">
-														<input name="adm_search_box"  class="search-query input-large adm_usr_src" type="text" value="">
+														<input placeholder="Search now..." name="adm_search_box"  class="search-query input-large adm_usr_src" type="text" value="">
                                                     </form>
                                                     <ul class="nav pull-right">
                                                         <li><a href="#">Link</a></li>
@@ -46,7 +46,7 @@ $managers=$this->Html->url(array("controller" => "admins","action" =>"users",2))
                                                                 <li><a href="<?php echo $admins; ?>">Admins(Role:1)</a></li>
 																<li><a href="<?php echo $managers; ?>">Managers(Role:2)</a></li>
                                                                 <li class="divider"></li>
-                                                                <li><?php echo $this->Paginator->sort('id','Sort with id'); ?></li>
+                                                                <li><?php echo $this->Paginator->sort('created','Sort by Date'); ?></li>
                                                             </ul>
                                                         </li>
                                                     </ul>

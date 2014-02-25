@@ -4,18 +4,18 @@
         <?php echo $this->Html->charset("utf-8"); ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title><?php echo $title_for_layout?></title>
+        <title>Clone</title>
         <link rel="shortcut icon" href="http://clone.gs/favicon.ico" type="image/x-icon" />
-        <meta name="description" content= "<?php echo $description_for_layout?>" />
+        <meta name="description" content= "" />
 
 
-        <meta property="og:title" content= "<?php echo $title_for_layout?>" />
+        <meta property="og:title" content= "Clone" />
         <meta property="og:type" content="Game"/>
         <meta property="og:url" content="<?php echo Router::url( $this->here, true ); ?>"/>
         <meta property="og:image" content="https://s3.amazonaws.com/betatoorkpics/socials/plainhead500.png"/>
         <meta property="og:site_name" content="Clone"/>
         <meta property="fb:admins" content="711440119"/>
-        <meta property="og:description" content= "<?php echo $description_for_layout?>" />
+        <meta property="og:description" content= "" />
 
 
 <!-- For third-generation iPad with high-resolution Retina display: -->
