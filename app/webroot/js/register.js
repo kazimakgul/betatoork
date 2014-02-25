@@ -1862,7 +1862,7 @@ return false;
 });	
 
 
-
+//User Edit Submit function begins
 function submit_user($id)
 {
    $screenname=$('.user_screen').val();
@@ -1896,11 +1896,43 @@ function submit_user($id)
         }
   });
    //=============Submit User Function Ends===============
+}
+//User Edit Submit function ends
 
+
+
+$('.adm_usr_src').on('input', function() {
+    // do your stuff
+    $src_content=$('.adm_usr_src').val();
+    $length=$('.adm_usr_src').val().length
+    if($length>4)
+    {
+	get_search_users($src_content);  
+    }
+});
+
+
+//Get_search_users function begins
+function get_search_users($keyword)
+{
+	//=============Submit User Function Starts===============
+   $.ajax({
+        type: "POST",
+        url: bring_search_users+'/'+$keyword,
+		async: true,
+        success: function(data){
+		
+        $(".search-content").html(data);
+			
+			},
+        failure: function(errMsg) {
+            //alert(errMsg);
+        }
+  });
+   //=============Get_search_users Function Ends===============
 
 }
-
-
+//User Get Search user function ends
 
 //==========================================================
 //*********Admin Functions Ends********

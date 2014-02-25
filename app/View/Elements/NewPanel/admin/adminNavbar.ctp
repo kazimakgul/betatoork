@@ -26,7 +26,7 @@
                                                         </li>
                                                     </ul>
                                                     <form class="navbar-search pull-left" action="">
-                                                        <input type="text" class="search-query input-large" placeholder="Search">
+														<input name="adm_search_box"  class="search-query input-large adm_usr_src" type="text" value="">
                                                     </form>
                                                     <ul class="nav pull-right">
                                                         <li><a href="#">Link</a></li>

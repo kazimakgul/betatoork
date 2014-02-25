@@ -63,6 +63,7 @@ crawler='<?php echo $this->Html->url(array('controller'=>'apis','action'=>'metac
 order_execute='<?php echo $this->Html->url(array('controller'=>'orders','action'=>'execute_activity')); ?>';
 edit_user_form='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'edit_user_form')); ?>';
 edit_user_submit='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'edit_user_submit')); ?>';
+bring_search_users='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'get_search_users')); ?>';
 
 //Code Block for Broken Images
 function imgError(image,style){

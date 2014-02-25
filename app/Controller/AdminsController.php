@@ -363,5 +363,17 @@ class AdminsController extends AppController {
 	
 	}
 	//<<<<<<<<<<edit user submit function ends>>>>>>>>>>>>
+	
+	//<<<<<<<<<<get search users function begins>>>>>>>>>>>>
+	public function get_search_users($keywords=NULL) {
+	$this->layout = 'ajax';
+	
+	$users=$this->User->find('all',array('contain'=>false,'conditions'=>array('User.username LIKE'=>'%'.$keywords.'%'),'fields'=>array('User.username','User.id','User.screenname','User.created','User.picture')));
+	$this->set('users',$users);
+	
+	
+	}
+	//<<<<<<<<<<get search users function ends>>>>>>>>>>>>
+	
 	//<<<<<<<<<<Remote functions ends>>>>>>>>>>>>
 }
