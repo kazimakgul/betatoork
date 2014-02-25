@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class AdminsController extends AppController {
     
 	public $name = 'Admins';
-    var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category');
+    var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Clonebot');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
 
@@ -19,44 +19,20 @@ class AdminsController extends AppController {
 		echo 'ready';
 	}
 	
+public function bots() {
+	$this->layout='adminDashboard';
+	
+	$this->set('users', $this->paginate('Clonebot'));
+	
+	
+	
+	}	
+	
 	
 	public function users() {
 	$this->layout='adminDashboard';
 
-	if($this->request->isPost())
-	{	
-	//iç
 
-	$this->User->id =$this->request->data["User"]["id"];
-	$id=$this->request->data["User"]["id"];
-		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->User->save($this->request->data)) {
-			   
-			    if($this->request->data["User"]["affect"]==1)
-			    {
-				$value=$this->request->data["User"]["active"];
-				$this->affected($id,$value);
-				
-			    }
-				else
-				{
-				$this->Session->setFlash(__('The user has been updated'));
-				}
-			   
-				
-				$this->redirect(array('action' => 'useredit'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->User->read(null, $id);
-		}
-
-	//dis
-	}
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate('User'));
 		$authid = $this->Session->read('Auth.User.id');
