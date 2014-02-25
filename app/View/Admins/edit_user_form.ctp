@@ -17,7 +17,7 @@
                                                                 <label class="control-label" for="required">Channel Name</label>
                                                                 <div class="controls">
                                                                     <span class="add-on">clone.gs/</span>
-<input name="user_username" placeholder="Ex: GameMonster" class="grd-white user_username" data-validate="{required: true, messages:{required:&quot;Please enter field required&quot;}}" id="required" disabled="disabled" type="text" value="<?php echo $user[0]['User']['username'];?>">                                                                </div>
+<input name="user_username" placeholder="Ex: GameMonster" class="grd-white user_username" data-validate="{required: true, messages:{required:&quot;Please enter field required&quot;}}" id="required" type="text" value="<?php echo $user[0]['User']['username'];?>">                                                                </div>
                                                             </div>
 															
 														
@@ -26,7 +26,7 @@
                                                                 <label class="control-label" for="required">Email</label>
                                                                 <div class="controls">
                                                                     <span class="add-on"><i class="elusive-user"></i></span>
-<input name="user_email" placeholder="Email adress." class="grd-white user_email" data-validate="{required: true, messages:{required:&quot;Please enter field required&quot;}}" id="required" disabled="disabled" type="text" value="<?php echo $user[0]['User']['email'];?>">                                                                </div>
+<input name="user_email" placeholder="Email adress." class="grd-white user_email" data-validate="{required: true, messages:{required:&quot;Please enter field required&quot;}}" id="required" type="text" value="<?php echo $user[0]['User']['email'];?>">                                                                </div>
                                                             </div>	
 															
 															
