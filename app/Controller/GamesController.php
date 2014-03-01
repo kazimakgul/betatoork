@@ -242,6 +242,13 @@ public function set_suggested_channels()
 		$this->Session->delete('FirstLogin');
 		}
 		
+		if(isset($_GET['q']) && $_GET['q']=="sendactivation")
+		{
+		$this->requestAction( array('controller'=>'users', 'action'=>'activationmailsender',$this->Session->read('Auth.User.id')));
+		$this->set('resend',1);
+		}
+		
+		
 		$userid = $this->Session->read('Auth.User.id');$this->requestAction( array('controller'=>'userstats', 'action'=>'new_user',$userid));
 	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
 	   	$userName = $user['User']['username'];
