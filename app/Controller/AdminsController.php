@@ -352,7 +352,7 @@ public function bots() {
 	public function get_search_users($keywords=NULL) {
 	$this->layout = 'ajax';
 	
-	$users=$this->User->find('all',array('contain'=>false,'conditions'=>array('User.username LIKE'=>'%'.$keywords.'%'),'fields'=>array('User.username','User.id','User.screenname','User.created','User.picture','User.seo_username')));
+	$users=$this->User->find('all',array('contain'=>false,'conditions'=>array('User.username LIKE'=>'%'.$keywords.'%'),'fields'=>array('User.username','User.id','User.screenname','User.created','User.picture','User.seo_username','User.role')));
 	$this->set('users',$users);
 	
 	
