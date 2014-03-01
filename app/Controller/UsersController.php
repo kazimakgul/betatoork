@@ -85,6 +85,54 @@ public function activate($user_id = null, $in_hash = null) {
 }
 
 
+public function reset_now($user_id = null, $in_hash = null){
+
+		$this->layout = 'dashboard';
+		$userid=$user_id;
+      	$this->User->id = $user_id;
+
+      if ($this->User->exists() && ($in_hash == $this->User->getActivationHash()))
+	  {
+	//password reset begin
+	
+	
+	if ($this->request->is('post') || $this->request->is('put')) {
+		
+	if($this->request->data["User"]["new_password"]!="")
+	{
+	    
+		$this->request->data["User"]["password"]=$this->request->data["User"]["new_password"];
+	     $this->request->data["User"]["confirm_password"]=$this->request->data["User"]["new_password"];
+
+	}
+		
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash('Your password has been reset, Please login with your new password');
+				$this->redirect('/');
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}
+			
+			
+			
+			
+		} else {
+		
+			//request is not post
+		}
+	
+	
+	
+	//password reset ends
+	  }//user exist and hash
+	  	$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('userid', $userid);
+        $this->set('username', $userName);
+
+}
+
 
 public function __sendResetEmail($user_id) {
 
