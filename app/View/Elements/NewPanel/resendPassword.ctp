@@ -17,7 +17,7 @@ $sendactivation=$sendactivation."/?q=sendactivation";
 		<?php
 		if($resend)
 		{
-		echo '<p id="successmail">success</p>';
+		echo '<p class="label label-success" id="successmail"><i class="elusive-envelope"></i> The email is resend successfully</p>';
 		}
 		?>
 		
