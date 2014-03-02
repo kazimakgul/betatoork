@@ -51,31 +51,10 @@ $randommin=rand(1,10);
 echo date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes'));
 $getme=date('Y-m-d H:i:s');
 */
-$totalcredit=$this->Order->query('SELECT credit,last_order FROM botcredits WHERE user_id=1594');
-      
-	  //Zaman araligi kontrolü begins
-	  $nowdate=new DateTime(date('Y-m-d H:i:s'));
-	  if($totalcredit[0]['botcredits']['last_order']!=NULL)
-	  {
-	  $last_order_date=new DateTime($totalcredit[0]['botcredits']['last_order']);//Adamin son aktivity alma saati.
-	  $interval = $nowdate->diff($last_order_date);
-	  if($interval->y!=0 || $interval->m!=0 || $interval->d!=0 || $interval->h!=0)
-	  $goahaed=1;
-	  else
-	  $goahaed=0;
-	  if($goahaed==0 && $interval->h>5)
-	  {
-	  $goahaed=1;
-	  }else{
-	  //There is no minimum 5min difference between last order time.So we need to forward next order time.
-	  $goahaed=0;
-	  $randommin=rand(1,10);
-	  $nowdate=date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes'));
-	  }
-	  }//Null Control Ends
-	  //Zaman araligi kontrolü ends.
+$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0,'Order.date <'=>date('Y-m-d H:i:s', strtotime('+5 minutes'))),'order' => array('Order.date ASC')));
 
-
+print_r($order_in_order);
+echo date('Y-m-d H:i:s');
 
 
 
@@ -349,7 +328,7 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 	$this->layout='ajax';
 	echo 'ready';
 	
-	$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0),'order' => array('Order.date ASC')));
+	$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0,'Order.date <'=>date('Y-m-d H:i:s', strtotime('+5 minutes'))),'order' => array('Order.date ASC')));
 	
 	
 	$user_id=$order_in_order['Order']['user_id'];
