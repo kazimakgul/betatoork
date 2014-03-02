@@ -57,11 +57,14 @@ $order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>arra
 //echo '<br>now:'.date('Y-m-d H:i:s');
 //$nowdate=$this->time_control("2014-03-02 15:41:20");
 //echo '<br>fuuu:'.$nowdate->format('Y-m-d H:i:s');
+//echo 'firtuna';
+//$nowdate=new DateTime('2014-03-02 15:57:11');
+//$nowdate->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+echo date('Y-m-d H:i:s');
+$orderfuture=$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0,'Order.date <'=>date('Y-m-d H:i:s', strtotime('+5 minutes'))),'order' => array('Order.date ASC')));
+print_r($orderfuture);
 
 $this->Add_Activity();
-
-
-//$this->Order->query('UPDATE botcredits SET last_order="'.$nowdate->format('Y-m-d H:i:s').'" WHERE user_id=1601');
 
 	}
 	
@@ -215,8 +218,11 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 	     }else if($goahaed==0 && $interval->h<5){
 	     //There is no minimum 5min difference between last order time.So we need to forward next order time.
 	     $goahaed=0;
-	     $randommin=rand(1,10);
-	     $nowdate=new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes')));
+	     //$randommin=rand(1,10);
+	     //$nowdate=new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes')));
+		 $minutes_to_add=rand(1,10);
+		 $last_order_date->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+		 $nowdate=$last_order_date;
 	     }
 	  }//Null Control Ends
 	  //Zaman araligi kontrolü ends.
