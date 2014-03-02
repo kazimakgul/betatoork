@@ -53,10 +53,15 @@ $getme=date('Y-m-d H:i:s');
 */
 $order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0,'Order.date <'=>date('Y-m-d H:i:s', strtotime('+5 minutes'))),'order' => array('Order.date ASC')));
 
-print_r($order_in_order);
-echo date('Y-m-d H:i:s');
+//print_r($order_in_order);
+//echo '<br>now:'.date('Y-m-d H:i:s');
+//$nowdate=$this->time_control("2014-03-02 15:41:20");
+//echo '<br>fuuu:'.$nowdate->format('Y-m-d H:i:s');
+
+$this->Add_Activity();
 
 
+//$this->Order->query('UPDATE botcredits SET last_order="'.$nowdate->format('Y-m-d H:i:s').'" WHERE user_id=1601');
 
 	}
 	
@@ -191,25 +196,31 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 	{
 	 //Zaman araligi kontrolü begins
 	  $nowdate=new DateTime(date('Y-m-d H:i:s'));
+	  
 	  if($last_order!=NULL)
-	  {
+	  {  $nowdate=new DateTime(date('Y-m-d H:i:s'));
 	     $last_order_date=new DateTime($last_order);//Adamin son aktivity alma saati.
 	     $interval = $nowdate->diff($last_order_date);
 	     if($interval->y!=0 || $interval->m!=0 || $interval->d!=0 || $interval->h!=0)
+		 {
 	     $goahaed=1;
-	     else
+	     }
+		 else
+		 {
 	     $goahaed=0;
-	     if($goahaed==0 && $interval->h>5)
+		 }
+	     if($goahaed==0 && $interval->h>=5)
 	     {
 	     $goahaed=1;
-	     }else{
+	     }else if($goahaed==0 && $interval->h<5){
 	     //There is no minimum 5min difference between last order time.So we need to forward next order time.
 	     $goahaed=0;
 	     $randommin=rand(1,10);
-	     $nowdate=date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes'));
+	     $nowdate=new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes')));
 	     }
 	  }//Null Control Ends
 	  //Zaman araligi kontrolü ends.
+	  //echo 'go:'.$goahaed;
 	  return $nowdate;
 	}
 	
@@ -233,13 +244,13 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
              $this->request->data['Order']['user_id'] = $user['botcredits']['user_id'];	
 		     $this->request->data['Order']['clonebot_id'] = 0;	
 	         $this->request->data['Order']['action_id'] =2;	
-	         $this->request->data['Order']['date'] =$nowdate;	
+	         $this->request->data['Order']['date'] =$nowdate->format('Y-m-d H:i:s');	
 	         $this->Order->create();	
 	         if ($this->Order->save($this->request->data)) {
 	         //We will decrease credit here from total credit of user.
 			 $credit=5;
 			 $this->Order->query('UPDATE botcredits SET credit=credit-'.$credit.' WHERE user_id='.$user['botcredits']['user_id'].'');
-			 $this->Order->query('UPDATE botcredits SET last_order="'.$nowdate.'" WHERE user_id='.$user['botcredits']['user_id'].'');
+			 $this->Order->query('UPDATE botcredits SET last_order="'.$nowdate->format('Y-m-d H:i:s').'" WHERE user_id='.$user['botcredits']['user_id'].'');
 			 echo 'done adding order';
 	         }
 	       }
@@ -307,12 +318,12 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
          $this->request->data['Order']['user_id'] = $user_id;	
 		 $this->request->data['Order']['clonebot_id'] = $bot_id;	
 	        $this->request->data['Order']['action_id'] =$activity_id;	
-	     $this->request->data['Order']['date'] =$nowdate;//asagidaki ile sync olmali!!	
+	     $this->request->data['Order']['date'] =$nowdate->format('Y-m-d H:i:s');	
 	     $this->Order->create();	
 	     if ($this->Order->save($this->request->data)) {
 	     //We will decrease credit here from total credit of user.
 		 $this->Order->query('UPDATE botcredits SET credit=credit-'.$credit.' WHERE user_id='.$user_id.'');
-		 $this->Order->query('UPDATE botcredits SET last_order="'.$nowdate.'" WHERE user_id='.$user_id.'');
+		 $this->Order->query('UPDATE botcredits SET last_order="'.$nowdate->format('Y-m-d H:i:s').'" WHERE user_id='.$user_id.'');
 	     } 
 	  }
   
