@@ -51,7 +51,7 @@ $randommin=rand(1,10);
 echo date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes'));
 $getme=date('Y-m-d H:i:s');
 */
-$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0,'Order.date <'=>date('Y-m-d H:i:s', strtotime('+5 minutes'))),'order' => array('Order.date ASC')));
+$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0,'Order.date <'=>date('Y-m-d H:i:s', strtotime('+1 minutes'))),'order' => array('Order.date ASC')));
 
 //print_r($order_in_order);
 //echo '<br>now:'.date('Y-m-d H:i:s');
@@ -65,6 +65,16 @@ $orderfuture=$order_in_order=$this->Order->find('first',array('contain'=>false,'
 print_r($orderfuture);
 
 $this->Add_Activity();
+
+
+$d1 = new DateTime('2008-09-03 14:11:11');
+$d2 = new DateTime('2008-09-03 14:11:12');
+
+if($d1<$d2)
+echo 'd2 büyük';
+else
+echo 'd1 büyük';
+
 
 	}
 	
@@ -218,9 +228,16 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 	     $goahaed=0;
 	     //$randommin=rand(1,10);
 	     //$nowdate=new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes')));
-		 $minutes_to_add=rand(1,10);
-		 $last_order_date->add(new DateInterval('PT' . $minutes_to_add . 'M'));
-		 $nowdate=$last_order_date;
+		    //Compare and which will be find reference
+		    if($nowdate>=$last_order_date)
+		    {
+			$randommin=rand(1,10);
+			$nowdate=new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes')));
+			}else{
+		    $minutes_to_add=rand(1,10);
+		    $last_order_date->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+		    $nowdate=$last_order_date;
+			}
 	     }
 	  }else{//Null Control Ends
 	  //credit date is null
