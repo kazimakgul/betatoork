@@ -15,7 +15,7 @@ $sendactivation=$sendactivation."/?q=sendactivation";
         <a href="<?php echo $sendactivation; ?>" class="btn btn-warning btn-mini"><i class="elusive-envelope"></i>  Send Again</a></p>
 		
 		<?php
-		if($resend)
+		if(isset($resend) && $resend)
 		{
 		echo '<p class="label label-success" id="successmail"><i class="elusive-envelope"></i> The email is resend successfully</p>';
 		}

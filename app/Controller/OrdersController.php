@@ -40,6 +40,45 @@ class OrdersController extends AppController {
        {
 	   $this->wakeup_project();
 	   }
+	   /*
+	   $date1=new DateTime(date('Y-m-d H:i:s'));//birinci büyük olmali!
+	   $date2=new DateTime("2014-03-01 18:09:21");
+	   $interval = $date1->diff($date2);
+echo "difference " . $interval->i . " minutes, "; 
+print_r($interval);
+echo date('Y-m-d H:i:s').'<br>';
+$randommin=rand(1,10);
+echo date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes'));
+$getme=date('Y-m-d H:i:s');
+*/
+$totalcredit=$this->Order->query('SELECT credit,last_order FROM botcredits WHERE user_id=1594');
+      
+	  //Zaman araligi kontrolü begins
+	  $nowdate=new DateTime(date('Y-m-d H:i:s'));
+	  if($totalcredit[0]['botcredits']['last_order']!=NULL)
+	  {
+	  $last_order_date=new DateTime($totalcredit[0]['botcredits']['last_order']);//Adamin son aktivity alma saati.
+	  $interval = $nowdate->diff($last_order_date);
+	  if($interval->y!=0 || $interval->m!=0 || $interval->d!=0 || $interval->h!=0)
+	  $goahaed=1;
+	  else
+	  $goahaed=0;
+	  if($goahaed==0 && $interval->h>5)
+	  {
+	  $goahaed=1;
+	  }else{
+	  //There is no minimum 5min difference between last order time.So we need to forward next order time.
+	  $goahaed=0;
+	  $randommin=rand(1,10);
+	  $nowdate=date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes'));
+	  }
+	  }//Null Control Ends
+	  //Zaman araligi kontrolü ends.
+
+
+
+
+
 	}
 	
 	public function callActBot($target_user=NULL,$action_id=NULL) {
@@ -169,28 +208,59 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 	}
 	//>>>>>>>>>Add_Credit function finished<<<<<<<
 	
+	public function time_control($last_order=NULL)
+	{
+	 //Zaman araligi kontrolü begins
+	  $nowdate=new DateTime(date('Y-m-d H:i:s'));
+	  if($last_order!=NULL)
+	  {
+	     $last_order_date=new DateTime($last_order);//Adamin son aktivity alma saati.
+	     $interval = $nowdate->diff($last_order_date);
+	     if($interval->y!=0 || $interval->m!=0 || $interval->d!=0 || $interval->h!=0)
+	     $goahaed=1;
+	     else
+	     $goahaed=0;
+	     if($goahaed==0 && $interval->h>5)
+	     {
+	     $goahaed=1;
+	     }else{
+	     //There is no minimum 5min difference between last order time.So we need to forward next order time.
+	     $goahaed=0;
+	     $randommin=rand(1,10);
+	     $nowdate=date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes'));
+	     }
+	  }//Null Control Ends
+	  //Zaman araligi kontrolü ends.
+	  return $nowdate;
+	}
+	
+	
 	//>>>>>>>>>Add_debt_Activity function begins<<<<<<<
 	//Description:If there are users have more than 10 credit in system,this function will give order or this users.
     public function Add_Debt_Activity()
     {
 	$this->layout='ajax';
 	echo 'Add_Debt_Activity2';
-	  $users=$this->Order->query('SELECT user_id FROM botcredits WHERE credit>10 LIMIT 2');
+	  $users=$this->Order->query('SELECT user_id,last_order FROM botcredits WHERE credit>10 LIMIT 2');
       if($users!=NULL)
 	  {//Users isnot null
 	      foreach($users as $user)
 	      {
+		  
+	         $nowdate=$this->time_control($user['botcredits']['last_order']);
+		  
 	         //Add order for all users.
 	         //Submit the datas into Orders table
              $this->request->data['Order']['user_id'] = $user['botcredits']['user_id'];	
 		     $this->request->data['Order']['clonebot_id'] = 0;	
 	         $this->request->data['Order']['action_id'] =2;	
-	         $this->request->data['Order']['date'] =date('Y-m-d H:i:s');	
+	         $this->request->data['Order']['date'] =$nowdate;	
 	         $this->Order->create();	
 	         if ($this->Order->save($this->request->data)) {
 	         //We will decrease credit here from total credit of user.
 			 $credit=5;
 			 $this->Order->query('UPDATE botcredits SET credit=credit-'.$credit.' WHERE user_id='.$user['botcredits']['user_id'].'');
+			 $this->Order->query('UPDATE botcredits SET last_order="'.$nowdate.'" WHERE user_id='.$user['botcredits']['user_id'].'');
 			 echo 'done adding order';
 	         }
 	       }
@@ -217,7 +287,7 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 		 $bot_id=0;
 	
 	       //Check total credit of user.
-	       $totalcredit=$this->Order->query('SELECT credit FROM botcredits WHERE user_id='.$user_id.'');
+	       $totalcredit=$this->Order->query('SELECT credit,last_order FROM botcredits WHERE user_id='.$user_id.'');
 		   if($totalcredit!=NULL && $totalcredit[0]['botcredits']['credit']>10)
 		   {//If user have more than 10 credit
 	
@@ -250,8 +320,7 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 	//echo 'seçilen activitynin credisi:'. $credit.'<br>';
 	//echo 'Yüzde:'. $activity_perc.'<br>';
 	
-	
-	  
+	 $nowdate=$this->time_control($totalcredit[0]['botcredits']['last_order']);
 	  
 	 if($totalcredit!=NULL && $totalcredit>=$credit)
 	 { 
@@ -259,11 +328,12 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
          $this->request->data['Order']['user_id'] = $user_id;	
 		 $this->request->data['Order']['clonebot_id'] = $bot_id;	
 	        $this->request->data['Order']['action_id'] =$activity_id;	
-	     $this->request->data['Order']['date'] =date('Y-m-d H:i:s');	
+	     $this->request->data['Order']['date'] =$nowdate;//asagidaki ile sync olmali!!	
 	     $this->Order->create();	
 	     if ($this->Order->save($this->request->data)) {
 	     //We will decrease credit here from total credit of user.
 		 $this->Order->query('UPDATE botcredits SET credit=credit-'.$credit.' WHERE user_id='.$user_id.'');
+		 $this->Order->query('UPDATE botcredits SET last_order="'.$nowdate.'" WHERE user_id='.$user_id.'');
 	     } 
 	  }
   
