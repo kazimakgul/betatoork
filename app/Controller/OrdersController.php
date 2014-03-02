@@ -198,8 +198,6 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 	public function time_control($last_order=NULL)
 	{
 	 //Zaman araligi kontrolü begins
-	  $nowdate=new DateTime(date('Y-m-d H:i:s'));
-	  
 	  if($last_order!=NULL)
 	  {  $nowdate=new DateTime(date('Y-m-d H:i:s'));
 	     $last_order_date=new DateTime($last_order);//Adamin son aktivity alma saati.
@@ -224,7 +222,11 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 		 $last_order_date->add(new DateInterval('PT' . $minutes_to_add . 'M'));
 		 $nowdate=$last_order_date;
 	     }
-	  }//Null Control Ends
+	  }else{//Null Control Ends
+	  //credit date is null
+	  $randommin=rand(5,15);
+	  $nowdate=new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes')));
+	  }
 	  //Zaman araligi kontrolü ends.
 	  //echo 'go:'.$goahaed;
 	  return $nowdate;
