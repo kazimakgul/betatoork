@@ -287,17 +287,17 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
               case $activity_perc >= 101 && $activity_perc <= 500 :
                   // Clone Activity
 			      $credit=5;
-				  $activity_id=3;
+				  $activity_id=2;
                   break ;
               case $activity_perc >= 5000 && $activity_perc <= 6000 :
                   // Rate Activity
 			      $credit=1;
-				  $activity_id=4;
+				  $activity_id=2;
                   break ;
 			  default:
 			  // Rate Activity
 			  $credit=1;
-			  $activity_id=4;
+			  $activity_id=2;
          }
 	
 	//echo 'random activity seçici:<br>';
