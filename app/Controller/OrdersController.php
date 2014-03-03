@@ -44,6 +44,8 @@ class OrdersController extends AppController {
        {
        $this->Execute_Activity_Now();
        }
+	   
+	   echo date('Y-m-d H:i:s');
 
 
 	}
