@@ -721,7 +721,7 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 			 'email' => $email,
 			 'type' => $type,
 			 'msg_id' => $msg_id));
-			
+			    $this->Activity->create();
 			    if ($this->Activity->save($filtered_data)) {
 				//echo 1;
 				
