@@ -34,43 +34,12 @@ class OrdersController extends AppController {
 	public function index() {
 	$this->layout='ajax';
 	
-	//$orderdata=$this->Order->find('all');
-	//print_r($orderdata);
 	   if($_GET['task']=='wakeup')
        {
 	   $this->wakeup_project();
 	   }
-	   /*
-	   $date1=new DateTime(date('Y-m-d H:i:s'));//birinci büyük olmali!
-	   $date2=new DateTime("2014-03-01 18:09:21");
-	   $interval = $date1->diff($date2);
-echo "difference " . $interval->i . " minutes, "; 
-print_r($interval);
-echo date('Y-m-d H:i:s').'<br>';
-$randommin=rand(1,10);
-echo date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes'));
-$getme=date('Y-m-d H:i:s');
-*/
-$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0,'Order.date <'=>date('Y-m-d H:i:s', strtotime('+1 minutes'))),'order' => array('Order.date ASC')));
-
-//print_r($order_in_order);
-//echo '<br>now:'.date('Y-m-d H:i:s');
-//$nowdate=$this->time_control("2014-03-02 15:41:20");
-//echo '<br>fuuu:'.$nowdate->format('Y-m-d H:i:s');
-//echo 'firtuna';
-//$nowdate=new DateTime('2014-03-02 15:57:11');
-//$nowdate->add(new DateInterval('PT' . $minutes_to_add . 'M'));
-echo date('Y-m-d H:i:s');
-$orderfuture=$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0,'Order.date <'=>date('Y-m-d H:i:s', strtotime('+5 minutes'))),'order' => array('Order.date ASC')));
-print_r($orderfuture);
 
 
-
-
-        //for($i=1;$i<11;$i++)
-		//{    
-		//$this->Execute_Activity();
-		//}
        if($_GET['task']=='execute')
        {
        $this->Execute_Activity_Now();
