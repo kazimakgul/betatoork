@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class AdminsController extends AppController {
     
 	public $name = 'Admins';
-    var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Clonebot');
+    var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Clonebot','Order');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
 
@@ -57,6 +57,15 @@ public function bots() {
     $this->User->Game->updateAll(array('active'=>$value),array('user_id'=>$id));
     $this->Session->setFlash(__('The user has been updated all games of this user has been affected'));
     }
+	
+	//<<<<<<<<<<Orders function begins>>>>>>>>>
+	public function orders() {
+	$this->layout='adminDashboard';
+	$orderdata=$this->Order->find('all');
+	$this->set('orders',$orderdata);
+	}
+	
+	//<<<<<<<<<<Orders function ends>>>>>>>>>
 	
 	
 	//<<<<<<<<<<useredit function begins>>>>>>>>>
