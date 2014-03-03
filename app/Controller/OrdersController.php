@@ -64,16 +64,17 @@ echo date('Y-m-d H:i:s');
 $orderfuture=$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0,'Order.date <'=>date('Y-m-d H:i:s', strtotime('+5 minutes'))),'order' => array('Order.date ASC')));
 print_r($orderfuture);
 
-$this->Add_Activity();
 
 
-$d1 = new DateTime('2008-09-03 14:11:11');
-$d2 = new DateTime('2008-09-03 14:11:12');
 
-if($d1<$d2)
-echo 'd2 büyük';
-else
-echo 'd1 büyük';
+        //for($i=1;$i<11;$i++)
+		//{    
+		//$this->Execute_Activity();
+		//}
+       if($_GET['task']=='execute')
+       {
+       $this->Execute_Activity_Now();
+       }
 
 
 	}
@@ -414,6 +415,65 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
     $this->Add_Debt_Activity();	
 }
 	//>>>>>>>>>ExecuteActivity function ends<<<<<<<
+	
+	
+	//>>>>>>>>>ExecuteActivity_Now function begins<<<<<<<
+	//Aktivity'i hemen alir.
+	public function Execute_Activity_Now() {
+	$this->layout='ajax';
+	echo 'readyExecute_Activity_Now';
+	
+	$order_in_order=$this->Order->find('first',array('contain'=>false,'fields'=>array('Order.id','Order.user_id','Order.clonebot_id','Order.action_id'),'conditions'=>array('Order.done'=>0,'Order.date <'=>date('Y-m-d H:i:s', strtotime('+55 minutes'))),'order' => array('Order.date ASC')));
+	
+	
+	$user_id=$order_in_order['Order']['user_id'];
+	$action_id=$order_in_order['Order']['action_id'];
+	$clonebot_id=$order_in_order['Order']['clonebot_id'];
+	
+  if($order_in_order!=NULL)
+  {//If there is an activity in order.	
+	
+	    if($action_id==2)
+        {//Follow activity starts
+		     $clonebot_id=$this->callActBot($user_id,$action_id);
+		     $subscriber_id=$clonebot_id;
+		     $subscriber_to_id=$user_id;
+		     $subscribebefore=$this->Subscription->find("first",array("conditions"=>array("Subscription.subscriber_id"=>$subscriber_id,"Subscription.subscriber_to_id"=>$subscriber_to_id)));
+		     //if bot didn't subscribe this user before,it is free.
+		     if($clonebot_id!=NULL && empty($subscribebefore))
+		     {
+		     //Subscription Process starts
+		      $this->Subscription->create();
+			  $this->request->data["Subscription"]["subscriber_id"]=$subscriber_id;
+			  $this->request->data["Subscription"]["subscriber_to_id"]=$subscriber_to_id;
+			  if ($this->Subscription->save($this->request->data)) {
+			      $this->Order->query('UPDATE orders SET done=1,clonebot_id='.$clonebot_id.' WHERE id='.$order_in_order['Order']['id']);
+		 		  $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax_bot',$clonebot_id,$subscriber_to_id,$subscriber_id,5,1));	echo 'done';
+			    }
+		     //Subscription Process ends
+		   
+		     }else{
+		     //bot subscribe this user before,change the bot!!!
+		     //DO SOMETHING
+		     }
+			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
+			 $this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
+	    }else if($action_id==3){//Follow activity ends.
+		     //Clone activity starts
+		
+		
+		
+		     //Clone activity ends
+		}
+	
+	}else{
+	//There is no any activity in order
+	echo 'no activity';
+	}
+    $this->Add_Debt_Activity();	
+}
+	//>>>>>>>>>ExecuteActivity_Now function ends<<<<<<<
+	
 	
 	function wakeup_project()
 	{

@@ -41,8 +41,47 @@ return $a;
 }
 
 	public function index() {
+	$this->layout="ajax";
 		$this->Wallentry->recursive = 0;
 		$this->set('wallentries', $this->paginate());
+		
+		$users[0]=1;
+		$users[2]=3;
+		$users[3]=5;
+		$users[4]=6;
+		$users[5]=8;
+		$users[6]=9;
+		$users[7]=10;
+		$users[8]=11;
+		$users[9]=13;
+		$users[10]=14;
+		
+		/*
+		for($i=5;$i<11;$i++)
+		{    
+		     $clonebot_id=$users[$i];
+		     $subscriber_id=$clonebot_id;
+		     $subscriber_to_id=1604;
+		$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax_bot',$clonebot_id,$subscriber_to_id,$subscriber_id,5,1));
+		
+		}
+		echo 'done';
+		*/
+		/*
+		$msgid=rand(1000,5000);
+		for($a=5;$a<11;$a++)
+		{    
+		     $clonebot_id=$users[$a];
+		     $subscriber_id=$clonebot_id;
+		     $subscriber_to_id=1603;
+		$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax_bot',$clonebot_id,$subscriber_to_id,$subscriber_id,5,1));
+		$this->pushActivity_bot($clonebot_id,NULL,$subscriber_to_id,1,1,2,$msg_id);
+		}
+		*/
+		
+		
+		
+		
 	}
 
 	public function leftpanel(){
@@ -732,7 +771,7 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 			 'email' => $email,
 			 'type' => $type,
 			 'msg_id' => $msg_id));
-			
+			    $this->Activity->create();
 			    if ($this->Activity->save($filtered_data)) {
 				//echo 1;
 				
