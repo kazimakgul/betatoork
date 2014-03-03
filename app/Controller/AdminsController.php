@@ -17,6 +17,10 @@ class AdminsController extends AppController {
 	public function index() {
 	$this->layout='ajax';
 		echo 'ready';
+		if($_GET['task']=='deleteorders')
+        {
+		$this->deleteallorders();
+		}
 	}
 	
 public function bots() {
@@ -29,8 +33,13 @@ public function bots() {
 	$this->set('user',$user);
 	$this->set('username',$userName);
 	
-	
 	}	
+	
+	public function deleteallorders()
+	{
+	$this->Order->query('DELETE FROM `orders` WHERE 1');
+	echo 'deleted orders';
+	}
 	
 	
 	public function users($role=NULL) {
