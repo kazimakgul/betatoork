@@ -56,17 +56,18 @@ return $a;
 		$users[9]=13;
 		$users[10]=14;
 		
-		/*
+		
 		for($i=5;$i<11;$i++)
 		{    
 		     $clonebot_id=$users[$i];
 		     $subscriber_id=$clonebot_id;
-		     $subscriber_to_id=1604;
+		     $subscriber_to_id=1614;
+			 echo '<br>$clonebot_id'.$clonebot_id;
 		$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax_bot',$clonebot_id,$subscriber_to_id,$subscriber_id,5,1));
 		
 		}
 		echo 'done';
-		*/
+		
 		/*
 		$msgid=rand(1000,5000);
 		for($a=5;$a<11;$a++)

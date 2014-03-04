@@ -1,6 +1,6 @@
 <table class="table table-striped">
                         <thead>
-						<span class="label label-info">Orders</span>
+						<span class="label label-info">Orders-Time Now:<?php echo date('Y-m-d H:i:s'); ?></span>
                             <tr>
                                 <th><?php echo $this->Paginator->sort('id','#',array('direction' => 'desc')); ?></th>
                                 <th>Bot id</th>
