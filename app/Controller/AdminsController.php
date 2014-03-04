@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class AdminsController extends AppController {
     
 	public $name = 'Admins';
-    var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Clonebot','Order');
+    var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Clonebot','Order','Activity','Message');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
 
@@ -70,11 +70,41 @@ public function bots() {
 	//<<<<<<<<<<Orders function begins>>>>>>>>>
 	public function orders() {
 	$this->layout='adminDashboard';
-	$orderdata=$this->Order->find('all');
+	$orderdata=$this->paginate('Order');
 	$this->set('orders',$orderdata);
+	$authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('username',$userName);
 	}
-	
 	//<<<<<<<<<<Orders function ends>>>>>>>>>
+	
+	//<<<<<<<<<<Activities function begins>>>>>>>>>
+	public function activities() {
+	$this->layout='adminDashboard';
+	$orderdata=$this->paginate('Activity');
+	$this->set('activities',$orderdata);
+	$authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('username',$userName);
+	}
+	//<<<<<<<<<<Activities function ends>>>>>>>>>
+	
+	//<<<<<<<<<<Messages function begins>>>>>>>>>
+	public function messages() {
+	$this->layout='adminDashboard';
+	$orderdata=$this->paginate('Message');
+	$this->set('messages',$orderdata);
+	$authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('username',$userName);
+	}
+	//<<<<<<<<<<Messages function ends>>>>>>>>>
 	
 	
 	//<<<<<<<<<<useredit function begins>>>>>>>>>

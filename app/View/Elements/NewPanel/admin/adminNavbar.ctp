@@ -3,6 +3,9 @@ $users=$this->Html->url(array("controller" => "admins","action" =>"users"));
 $bots=$this->Html->url(array("controller" => "admins","action" =>"bots"));
 $admins=$this->Html->url(array("controller" => "admins","action" =>"users",1));
 $managers=$this->Html->url(array("controller" => "admins","action" =>"users",2));
+$orders=$this->Html->url(array("controller" => "admins","action" =>"orders"));
+$activities=$this->Html->url(array("controller" => "admins","action" =>"activities"));
+$messages=$this->Html->url(array("controller" => "admins","action" =>"messages"));
 ?>
 
 <div class="navbar">
@@ -20,11 +23,11 @@ $managers=$this->Html->url(array("controller" => "admins","action" =>"users",2))
                                                         <li><a href="#">Games</a></li>
                                                         <li><a href="#">Link</a></li>
                                                         <li class="dropdown">
-                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Insights <b class="caret"></b></a>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="<?php echo $users; ?>">Users</a></li>
-                                                                <li><a href="<?php echo $bots; ?>">Bots</a></li>
-                                                                <li><a href="#">Something else here</a></li>
+                                                                <li><a href="<?php echo $orders; ?>">Orders</a></li>
+                                                                <li><a href="<?php echo $activities; ?>">Activities</a></li>
+                                                                <li><a href="<?php echo $messages; ?>">Messages</a></li>
                                                                 <li class="divider"></li>
                                                                 <li class="nav-header">Nav header</li>
                                                                 <li><a href="#">Separated link</a></li>

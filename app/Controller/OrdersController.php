@@ -46,8 +46,24 @@ class OrdersController extends AppController {
        }
 	   
 	   echo date('Y-m-d H:i:s');
+	   
+	   
+	      if($_GET['userid']!=NULL)
+          {
+	         $getpushcount=$this->Order->Query('Select * from malicious WHERE user_id='.$_GET['userid'].'');
+		     if($getpushcount!=NULL)
+			 {
+			 //get
+			 }else{
+			 $this->Order->Query('INSERT INTO malicious (user_id,game_id) VALUES ('.$_GET['userid'].',0)');
+			 }
+			 
+		  echo '<br>Pushcount:'.$getpushcount[0]['malicious']['game_id'];
+		  //$this->Order->query('UPDATE malicious SET game_id=game_id+1 WHERE user_id='.$_GET['userid'].'');Bunu push fonksiyonuna ekle.
+		  
+		  }
 
-
+//end of func
 	}
 	
 	public function callActBot($target_user=NULL,$action_id=NULL) {

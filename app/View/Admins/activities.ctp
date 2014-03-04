@@ -9,7 +9,7 @@ echo $this->element('NewPanel/admin/adminNavbar');
 <div class="search-content"></div>
 
 <?php 
-echo $this->element('NewPanel/admin/adminOrder');
+echo $this->element('NewPanel/admin/adminActivity');
 ?>			
 			
    
