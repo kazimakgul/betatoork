@@ -84,6 +84,7 @@ return $a;
 		//$this->Logger->submitlog(6,"pushactivity_bot");
 		//$this->Logger->submitlog(6,"pushactivity_botsave");
 		//$this->Logger->submitlog(6,"incscribe");
+		$this->Logger->incscribe2(1594);
 		
 		
 	}

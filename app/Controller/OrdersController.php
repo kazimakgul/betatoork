@@ -386,8 +386,8 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 		     //DO SOMETHING
 		     }
 			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
-			 $this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
-			 $this->Logger->submitlog($subscriber_to_id,"incscribe");
+			 //$this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
+			 $this->Logger->incscribe($subscriber_to_id);
 	    }else if($action_id==3){//Follow activity ends.
 		     //Clone activity starts
 		
@@ -445,8 +445,8 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 		     //DO SOMETHING
 		     }
 			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
-			 $this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
-			 $this->Logger->submitlog($subscriber_to_id,"incscribefast");
+			 //$this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
+			 $this->Logger->incscribe2($subscriber_to_id);
 	    }else if($action_id==3){//Follow activity ends.
 		     //Clone activity starts
 		
