@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class AdminsController extends AppController {
     
 	public $name = 'Admins';
-    var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Clonebot','Order','Activity','Message');
+    var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Clonebot','Order','Activity','Message','Log');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
 
@@ -66,6 +66,21 @@ public function bots() {
     $this->User->Game->updateAll(array('active'=>$value),array('user_id'=>$id));
     $this->Session->setFlash(__('The user has been updated all games of this user has been affected'));
     }
+	
+	
+	//<<<<<<<<<<Logs function begins>>>>>>>>>
+	public function logs() {
+	$this->layout='adminDashboard';
+	$orderdata=$this->paginate('Log');
+	$this->set('logs',$orderdata);
+	$authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('username',$userName);
+	}
+	//<<<<<<<<<<Logs function ends>>>>>>>>>
+	
 	
 	//<<<<<<<<<<Orders function begins>>>>>>>>>
 	public function orders() {

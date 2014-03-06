@@ -10,7 +10,7 @@ class OrdersController extends AppController {
 	public $name = 'Orders';
     var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Order');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
-    public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
+    public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Logger');
 /**
  * index method
  *
@@ -122,7 +122,7 @@ class OrdersController extends AppController {
 		 //if user is not logged in
 		 break;
 		 }
-	
+	$this->Logger->submitlog($user_id,"start");
 /* Activity Type_id codes
 GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameAdd9 SharePost10 PlayGame11
 */
@@ -387,6 +387,7 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 		     }
 			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
 			 $this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
+			 $this->Logger->submitlog($subscriber_to_id,"incscribe");
 	    }else if($action_id==3){//Follow activity ends.
 		     //Clone activity starts
 		
@@ -445,6 +446,7 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 		     }
 			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
 			 $this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
+			 $this->Logger->submitlog($subscriber_to_id,"incscribefast");
 	    }else if($action_id==3){//Follow activity ends.
 		     //Clone activity starts
 		

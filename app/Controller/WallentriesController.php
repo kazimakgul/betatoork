@@ -9,7 +9,7 @@ class WallentriesController extends AppController {
     
 	var $uses = array('Game','User','Favorite','Subscription','Wallentry','Playcount','Rate','Userstat','Category','Activity','CakeEmail', 'Network/Email');
     public $helpers = array('Html', 'Form','Upload');
-	public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Email');
+	public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Email','Logger');
 /**
  * index method
  *
@@ -56,7 +56,7 @@ return $a;
 		$users[9]=13;
 		$users[10]=14;
 		
-		
+		/*
 		for($i=5;$i<11;$i++)
 		{    
 		     $clonebot_id=$users[$i];
@@ -68,7 +68,7 @@ return $a;
 		}
 		echo 'done';
 		
-		/*
+		
 		$msgid=rand(1000,5000);
 		for($a=5;$a<11;$a++)
 		{    
@@ -80,7 +80,10 @@ return $a;
 		}
 		*/
 		
-		
+		//$this->Logger->submitlog(6,"action_ajax_bot");
+		//$this->Logger->submitlog(6,"pushactivity_bot");
+		//$this->Logger->submitlog(6,"pushactivity_botsave");
+		//$this->Logger->submitlog(6,"incscribe");
 		
 		
 	}
@@ -743,7 +746,7 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 	$this->loadModel('Activity');
 	if($this->Auth->user('id'))
 	{ //openning of auth_id control
-	
+	$this->Logger->submitlog($channel_id,"pushactivity_bot");
 	$performer_id=$performer_id;
 	//if user affect itself,we don't need notify or mail.
 	if($performer_id==$channel_id)
@@ -775,7 +778,7 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 			    $this->Activity->create();
 			    if ($this->Activity->save($filtered_data)) {
 				//echo 1;
-				
+				$this->Logger->submitlog($channel_id,"pushactivity_botsave");
 				    if($email==1)
 					{
 					$this->sendNotifyMail($performer_id,$game_id,$channel_id,$type);
@@ -1369,7 +1372,7 @@ $this->loadModel('Game');
    $uploads=$_POST['uploads'];
    $data2=$Wall->Insert_Update($uid,$update,$uploads,$content_id,$type);
    //$data2=$Wall->Insert_Update($content_id,$update,$uploads,$uid,$type);
-   
+   $this->Logger->submitlog($content_id,"action_ajax_bot");
      if($data2)
      {
      $msg_id=$data2['msg_id'];
