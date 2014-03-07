@@ -8,6 +8,7 @@
                                 <th>pushactivity_botsave</th>
 								<th>incscribe</th>
 								<th>incscribefast</th>
+								<th>User</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -18,6 +19,7 @@
 						$pushactivity_botsave=$log['Log']['pushactivity_botsave'];
                         $incscribe=$log['Log']['incscribe'];
 						$incscribefast=$log['Log']['incscribefast'];
+						$user=$log['User']['username'].'('.$log['Log']['user_id'].')';
                         ?>
                             <tr>
                                 <td><?php echo $id;?></td>
@@ -26,6 +28,7 @@
                                 <td><?php echo $pushactivity_botsave;?></td>
                                 <td><?php echo $incscribe;?></td>
 								<td><?php echo $incscribefast;?></td>
+								<td><?php echo $user;?></td>
                             </tr>
 						<?php endforeach; ?>
                         </tbody>
