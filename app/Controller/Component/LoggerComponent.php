@@ -44,7 +44,7 @@ public $components = array('Auth');
 	    $this->Userstat = ClassRegistry::init('Userstat');
 		$this->Subscription = ClassRegistry::init('Subscription');
 		//recoded begins for subscribes of user_id
-		$user_id=$this->Auth->user('id');
+		$user_id=$subscribe_to;
 		$this->submitlog($user_id,"incscribe");
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)
@@ -85,7 +85,7 @@ public $components = array('Auth');
 	    $this->Userstat = ClassRegistry::init('Userstat');
 		$this->Subscription = ClassRegistry::init('Subscription');
 		//recoded begins for subscribes of user_id
-		$user_id=$this->Auth->user('id');
+		$user_id=$subscribe_to;
 		$this->submitlog($user_id,"incscribefast");
 		$userstatrow=$this->Userstat->find('first',array('conditions'=>array('Userstat.user_id'=>$user_id),'contain'=>false,'fields'=>array('Userstat.id')));
 		if($userstatrow!=NULL)

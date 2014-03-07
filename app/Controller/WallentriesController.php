@@ -745,10 +745,8 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 	$this->layout='ajax';
 	$this->loadModel('Game');
 	$this->loadModel('Activity');
-	if($this->Auth->user('id'))
-	{ //openning of auth_id control
+	
 	$this->Logger->submitlog($channel_id,"pushactivity_bot");
-	$performer_id=$performer_id;
 	//if user affect itself,we don't need notify or mail.
 	if($performer_id==$channel_id)
 	$email=0;
@@ -784,9 +782,7 @@ public function pushActivity($game_id=NULL,$channel_id=NULL,$notify=0,$email=0,$
 					{
 					$this->sendNotifyMail($performer_id,$game_id,$channel_id,$type);
 				    }
-				}
-	
-	}//closing of auth_id control			
+				}			
 		
  }
 	
