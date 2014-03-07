@@ -377,6 +377,7 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			  $this->request->data["Subscription"]["subscriber_to_id"]=$subscriber_to_id;
 			  if ($this->Subscription->save($this->request->data)) {
 			      $this->Order->query('UPDATE orders SET done=1,clonebot_id='.$clonebot_id.' WHERE id='.$order_in_order['Order']['id']);
+				  $this->Logger->incscribe($subscriber_to_id);//Buraya tasididm test et.
 		 		  $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax_bot',$clonebot_id,$subscriber_to_id,$subscriber_id,5,1));	echo 'done';
 			    }
 		     //Subscription Process ends
@@ -387,7 +388,6 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 		     }
 			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
 			 //$this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
-			 $this->Logger->incscribe($subscriber_to_id);
 	    }else if($action_id==3){//Follow activity ends.
 		     //Clone activity starts
 		
@@ -436,6 +436,7 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 			  $this->request->data["Subscription"]["subscriber_to_id"]=$subscriber_to_id;
 			  if ($this->Subscription->save($this->request->data)) {
 			      $this->Order->query('UPDATE orders SET done=1,clonebot_id='.$clonebot_id.' WHERE id='.$order_in_order['Order']['id']);
+				  $this->Logger->incscribe2($subscriber_to_id);//Buraya tasididm test et.
 		 		  $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax_bot',$clonebot_id,$subscriber_to_id,$subscriber_id,5,1));	echo 'done';
 			    }
 		     //Subscription Process ends
@@ -446,7 +447,6 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 		     }
 			 $this->Order->query('UPDATE orders SET done=1 WHERE id='.$order_in_order['Order']['id']);
 			 //$this->requestAction( array('controller' => 'userstats', 'action' => 'incscribe',$subscriber_to_id));
-			 $this->Logger->incscribe2($subscriber_to_id);
 	    }else if($action_id==3){//Follow activity ends.
 		     //Clone activity starts
 		
