@@ -1189,7 +1189,7 @@ if(empty($favbefore))
 		}
 		
 		//==========Get Post Information About Game===========
-		     $singlepost=$this->Game->query('SELECT * FROM messages WHERE type=1 AND game_id='.$gameid.'');
+		     $singlepost=$this->Game->query('SELECT * FROM messages WHERE type=1 AND game_id='.$gameid.'');print_r($singlepost);
 		     if($singlepost!=NULL)
 		     {
 			 $msg_id=$singlepost[0]['messages']['msg_id'];
@@ -1198,7 +1198,7 @@ if(empty($favbefore))
 			 $created=$singlepost[0]['messages']['created'];
 			 $type=$singlepost[0]['messages']['type'];
 			 $game_id=$singlepost[0]['messages']['game_id'];
-			 $likecount=$singlepost[0]['messages']['likecount'];echo 'testt:'.$likecount;
+			 $likecount=$singlepost[0]['messages']['likecount'];
 			 $gamePost=array('id'=>$msg_id,'message'=>$message,'user_id'=>$user_id,'created'=>$created,'type'=>$type,'game_id'=>$game_id,'likecount'=>$likecount);
 			 $this->set('gamepost',$gamePost);
 		     }
