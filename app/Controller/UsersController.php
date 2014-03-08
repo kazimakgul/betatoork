@@ -1241,8 +1241,10 @@ public function password2($id = null) {
 			$this->request->data['User']['username'] = $this->request->data['un'];
 			$this->request->data['User']['password'] = $this->request->data['ps'];
 			if ($this->Auth->login() == true) {
-				$results = $this->User->find('first',array('conditions'=>array('OR'=>array('User.email'=>$this->request->data['User']['username'],'User.username'=>$this->request->data['User']['username'])),array('fields'=>array('User.active'))));
-	  	      
+				$results = $this->User->find('first',array('conditions'=>array('OR'=>array('User.email'=>$this->request->data['User']['username'],'User.username'=>$this->request->data['User']['username'])),array('fields'=>array('User.active','User.id'))));
+	  	            
+					$this->User->id=$results['User']['id'];
+					$this->User->saveField('last_login', date('Y-m-d H:i:s'));
 					$msg = array("msgid" => '1', "msg" => $this->webroot.$this->Auth->loginRedirect['controller'].'/'.$this->Auth->loginRedirect['action']);
 					$this->set('rtdata', $msg);
 				
@@ -1364,6 +1366,7 @@ public function password2($id = null) {
 				$this->request->data['User']['seo_username'] = strtolower($this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un'])));
 				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
 				$this->request->data['User']['active'] = 0;
+				$this->request->data['User']['last_login'] = date('Y-m-d H:i:s');
 				//$this->request->data['User']['userstat'] = 0; //buraya bakýlacak yeni alan için
 				
 				if ($this->User->save($this->request->data)) {
@@ -1407,6 +1410,7 @@ public function password2($id = null) {
 				$this->request->data['User']['facebook_id'] = $this->request->data['fi'];
 				$this->request->data['User']['access_token'] = $this->request->data['at'];
 				$this->request->data['User']['fb_link'] = 'https://www.facebook.com/'.$this->request->data['User']['facebook_id'];
+				$this->request->data['User']['last_login'] = date('Y-m-d H:i:s');
 				
 				//-----Get some from fb graph api--------
 				//$pageContent = file_get_contents('http://graph.facebook.com/1157251270');
@@ -1514,7 +1518,7 @@ public function password2($id = null) {
 		 
 		 //Accesstoken sistemde kayitlimi degilmi kayitli degilse yeni register paneline yönlendir.Kayitliysa sisteme login olmasini sagla.
 		
-		 $user_exists=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.facebook_id'=>$facebook_id)));
+		 $user_exists=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.facebook_id'=>$facebook_id),'fields'=>array('User.id')));
 		 if($user_exists!=NULL)
 		 {
 		 //Update the access token and redirect to logged in.
@@ -1522,6 +1526,10 @@ public function password2($id = null) {
 		 $user = $this->User->find('first', array('conditions' => array('User.facebook_id' =>$facebook_id)));
 		 if($user!=NULL)
          $this->Auth->login($user['User']);//Variable name has to be "user" for manual login.
+		 
+		 //Enter last login data!
+		 $this->User->id=$user_exists['User']['id'];
+		 $this->User->saveField('last_login', date('Y-m-d H:i:s'));
 		 
 		 $msg = array('status' => 'user exists','msgid' => '1', 'msg' => 'Just a moment.<br>You will be redirected to your personal channel now..','location'=>$this->webroot.$this->Auth->loginRedirect['controller'].'/'.$this->Auth->loginRedirect['action']);
 		 

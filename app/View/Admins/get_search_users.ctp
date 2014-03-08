@@ -21,7 +21,10 @@ $profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_user
 <h4 class="media-heading">
 	<a href="<?php echo $profilepublic; ?>"><?php echo h($user['User']['username']); ?></a>
 	<small class="pull-right helper-font-small">
-		<?php echo h($user['User']['created']); ?>
+		Created: <?php echo h($user['User']['created']); ?>
+	</small>
+	<small class="pull-right helper-font-small">
+		Last Login: <?php echo h($user['User']['last_login']); ?>
 	</small>
 </h4>
 

@@ -10,7 +10,7 @@ class AdminsController extends AppController {
 	public $name = 'Admins';
     var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Clonebot','Order','Activity','Message','Log');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
-    public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
+    public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Common');
 
 
 
@@ -183,13 +183,12 @@ public function bots() {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 		
-		$this->request->data['User']['username']=$this->secureSuperGlobalPOST($this->request->data['User']['username']);
+		$this->request->data['User']['username']=$this->Common->secureSuperGlobalPOST($this->request->data['User']['username']);
 		$this->request->data['User']['username']=str_replace(' ','',$this->request->data['User']['username']);
 		$myval=$this->request->data["User"]["edit_picture"]["name"];
 		
 		if($myval!="")
 			{
-			
 			//remove objects from S3
 			$prefix = 'upload/users/'.$id;
            
@@ -415,7 +414,7 @@ public function bots() {
 	public function get_search_users($keywords=NULL) {
 	$this->layout = 'ajax';
 	
-	$users=$this->User->find('all',array('contain'=>false,'conditions'=>array('User.username LIKE'=>'%'.$keywords.'%'),'fields'=>array('User.username','User.id','User.screenname','User.created','User.picture','User.seo_username','User.role')));
+	$users=$this->User->find('all',array('contain'=>false,'conditions'=>array('User.username LIKE'=>'%'.$keywords.'%'),'fields'=>array('User.username','User.id','User.screenname','User.created','User.picture','User.seo_username','User.role','User.last_login')));
 	$this->set('users',$users);
 	
 	

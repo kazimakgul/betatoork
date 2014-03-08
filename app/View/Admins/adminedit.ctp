@@ -37,8 +37,7 @@ echo $this->element('NewPanel/admin/adminNavbar');
             <label for="name">SEO Username:</label>
 <?php echo $this->Form->input('seo_username',array('label'=>false ,'required','placeholder' => 'Ex: GameMonster')); ?>
 
-            <label for="name">Facebook_id:</label>
-<?php echo $this->Form->input('facebook_id',array('label'=>false ,'required','readonly','placeholder' => 'Ex: khs6jagssa6')); ?>
+
 
             <label for="message">Channel Description:</label>
 
@@ -52,23 +51,23 @@ echo $this->element('NewPanel/admin/adminNavbar');
 
             <label for="website">Your Website Link:</label>
 
-<?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://.+' ,'placeholder' => 'http://www.socialesman.com','type' => 'url', 'maxlength'=>100)); ?>
+<?php echo $this->Form->input('website',array('label'=>false ,'div'=>false,'placeholder' => 'http://www.socialesman.com','type' => 'url', 'maxlength'=>100)); ?>
 
 
             <label for="website">Facebook Fan Page:</label>
 
-<?php echo $this->Form->input('fb_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://facebook.com/.+' ,'placeholder' => 'http://facebook.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
+<?php echo $this->Form->input('fb_link',array('label'=>false ,'div'=>false,'placeholder' => 'http://facebook.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
 
 
 
             <label for="website">Twitter Page:</label>
 
-<?php echo $this->Form->input('twitter_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://twitter.com/.+' ,'placeholder' => 'http://twitter.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
+<?php echo $this->Form->input('twitter_link',array('label'=>false ,'div'=>false,'placeholder' => 'http://twitter.com/thetoork','type' => 'url', 'maxlength'=>100)); ?>
 
 
             <label for="website">Google+ Page:</label>
 
-<?php echo $this->Form->input('gplus_link',array('label'=>false ,'div'=>false,'pattern'=>'(http|https)://plus.google.com/.+' ,'placeholder' => 'http://plus.google.com/117184471094869274585','type' => 'url', 'maxlength'=>100)); ?>
+<?php echo $this->Form->input('gplus_link',array('label'=>false ,'div'=>false,'placeholder' => 'http://plus.google.com/117184471094869274585','type' => 'url', 'maxlength'=>100)); ?>
 
 
 

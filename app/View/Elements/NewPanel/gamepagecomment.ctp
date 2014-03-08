@@ -14,12 +14,14 @@
           $type = $gamepost['type'];
           $gameid = $gamepost['game_id']; 
           $message = $gamepost['message'];
+		  $plikecount=$gamepost['likecount'];
           $postPage=$this->Html->url(array("controller" => "wallentries","action" =>"posts",$msg_id));
         }else{
           $mtime='long time ago';
           $msg_id=$game['Game']['id'];
           $msg_uid=$game['Game']['user_id'];
           $type = 1;
+		  $plikecount=0;
           $gameid = $game['Game']['id'];
           $message = 'This game is published long time ago.';
           $postPage=$this->Html->url(array("controller" => "wallentries","action" =>"posts",$msg_id));
@@ -95,7 +97,10 @@
             
           
                                                         </div>
-                            
+                          
+		        <!-- this gets like status of posts -->		
+				<?php $plikestatus = $this->requestAction( array('controller' => 'Wallentries', 'action' => 'getlikestatus',$msg_id,1));?>					  
+						    
         <!-- Comment area begins -->  
 <div style="background-color:#f5f5f5; padding:30px 20px 30px 20px; margin:-20px; padding-top:0px; margin-bottom:-45px; ">               
 
@@ -104,8 +109,14 @@
           <?php if(isset($uid)) {?>
               <a href="#" class="btn btn-mini commentopen" id="<?php echo $msg_id;?>"><i class="elusive-comment"></i> Comment</a>
 			         <input type="hidden" id="msg_uid<?php echo $msg_id;?>" value="<?php echo $msg_uid;?>"/>
-              <a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-thumbs-up"></i> Like</a>
-              <a href="#" class="btn btn-mini" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>              
+					 
+					 <?php if($plikestatus) { ?>
+            	<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext">Unlike</span> - <i class="elusive-thumbs-up"></i> <span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span> </a>
+				<?php }else{ ?>
+				<a class="btn btn-mini likepost" id="<?php echo $msg_id;?>"><span class="buttontext">Like</span> - <i class="elusive-thumbs-up"></i> <span class="plikecount" id="<?php echo $msg_id;?>"><?php echo $plikecount; ?></span></a>
+				<?php } ?>
+				
+              <a class="btn btn-mini sharepost" id="<?php echo $msg_id;?>"><i class="elusive-share-alt"></i> Share</a>             
         <?php }?></div>
 
           <div style="margin-top:10px;" id="commentload<?php echo $msg_id;?>">

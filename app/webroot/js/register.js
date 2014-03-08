@@ -720,12 +720,13 @@ function subscribe (channel_name,user_auth,id) {
 		$('#flwnumber').html(currentflw+1);
 		
 		switch_subscribe(id);
+		/*
 		$.pnotify({
             title: 'Thanks for Following',
             text: 'You are following <strong>'+channel_name+'</strong> now.<br>You will be notified about the updates of this channel.',
             type: 'success'
           });
-		
+		*/
 		//pushActivity(null,id,1,1,2);
 		
 			}else{
@@ -751,11 +752,13 @@ function subscribe (channel_name,user_auth,id) {
 		$('#flwnumber').html(currentflw-1);
 		
 		switch_subscribe(id);
+		/*
 		$.pnotify({
             title: 'Unfollow is done',
             text: 'You stopped following <strong>'+channel_name+'</strong> now.<br>You will not be notified about the updates of this channel.',
             type: 'error'
           });
+		*/
 		
 			}else{
 				
