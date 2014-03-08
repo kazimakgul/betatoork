@@ -50,6 +50,7 @@ $messages=$this->Html->url(array("controller" => "admins","action" =>"messages")
 																<li><a href="<?php echo $managers; ?>">Managers(Role:2)</a></li>
                                                                 <li class="divider"></li>
                                                                 <li><?php echo $this->Paginator->sort('created','Sort by Date'); ?></li>
+																<li><?php echo $this->Paginator->sort('last_login','Sort By Last Login',array('direction'=>'desc')); ?></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
