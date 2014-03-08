@@ -1189,7 +1189,7 @@ if(empty($favbefore))
 		}
 		
 		//==========Get Post Information About Game===========
-		     $singlepost=$this->Game->query('SELECT * FROM messages WHERE type=1 AND game_id='.$gameid.'');print_r($singlepost);
+		     $singlepost=$this->Game->query('SELECT * FROM messages WHERE type=1 AND game_id='.$gameid.'');
 		     if($singlepost!=NULL)
 		     {
 			 $msg_id=$singlepost[0]['messages']['msg_id'];
