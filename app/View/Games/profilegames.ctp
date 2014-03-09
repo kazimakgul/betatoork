@@ -26,9 +26,9 @@ else{
 
     
               <li class="span3" style="margin:0px 8px 0px 8px;">
-                <div class="navbar"><div class="navbar-inner" style="padding:10px 10px 5px 10px;">
+                <div class="well" style="background-color:white; padding:0px 0px 25px 0px;">
                   <a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'720','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></a>
-                  <div class="caption">
+                  <div class="caption" style="margin:-5px 5px -5px 5px;">
                     <div style="min-height:45px; height:auto !important; height:45px;">
                     <h4 class="text-info"><?php echo $game['Game']['name']; ?></h4>
                     </div>
@@ -55,7 +55,7 @@ else{
 
                   </div>
                   
-                </div></div>
+                </div>
               </li>
 					
  <?php endforeach; ?>
