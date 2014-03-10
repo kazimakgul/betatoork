@@ -1462,8 +1462,8 @@ function getExtension($str) {
 	//Bu fonksiyon mu daha hizli yoksa direk games tablosuna root_id eklemek mi?test et'Kiyasla!
 	public function get_game_root($game_id=NULL)
 	{
-	$clone_info=$this->Clone->find('first',array('contain'=>false,'fields'=>array('Clone.root_id'),'conditions'=> array('Clone.game_id'=>$game_id)));
-	return $clone_info['Clone']{'root_id'];
+	//$clone_info=$this->Clone->find('first',array('contain'=>false,'fields'=>array('Clone.root_id'),'conditions'=> array('Clone.game_id'=>$game_id)));
+	//return $clone_info['Clone']{'root_id'];
 	}
 	
 	
