@@ -8,7 +8,7 @@
 class GamesController extends AppController {
 
 	public $name = 'Games';
-	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Activity');
+	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Activity','Clone');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Time');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
     
@@ -1448,6 +1448,25 @@ function getExtension($str) {
 	
 	}
 	
+	public function add_clonelog($game_id=NULL,$user_id=NULL,$root_id=NULL)
+	{
+	        $filtered_data=
+			array('Clone' =>array(
+			'game_id' => $game_id,
+			'user_id' => $user_id,
+			'root_id' => $root_id));
+			$this->Clone->save($filtered_data);
+	}
+	
+	//Get root_id of game
+	//Bu fonksiyon mu daha hizli yoksa direk games tablosuna root_id eklemek mi?test et'Kiyasla!
+	public function get_game_root($game_id=NULL)
+	{
+	$clone_info=$this->Clone->find('first',array('contain'=>false,'fields'=>array('Clone.root_id'),'conditions'=> array('Clone.game_id'=>$game_id)));
+	return $clone_info['Clone']{'root_id'];
+	}
+	
+	
 	//Chain functions clones game items on games table.
     public function clonegame($game_id=NULL) {
 	   $this->layout="ajax";
@@ -1469,9 +1488,15 @@ function getExtension($str) {
 	        $this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(str_replace('_','',Inflector::slug(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])))));
 	        $this->request->data['Game']['clone']=1;
 			if($targetGame['Game']['owner_id']!=NULL && $targetGame['Game']['clone']==1)
+			{
 			$this->request->data['Game']['owner_id']=$targetGame['Game']['owner_id'];
+			//$this->add_clonelog();
+			}
 			else
+			{
 			$this->request->data['Game']['owner_id']=$targetGame['Game']['user_id'];
+			$this->add_clonelog($game_id,$userId,$game_id);
+			}
 			
 			$this->Game->create();
 			$this->Game->validate = array();//This line disabled validation rules for game add action.
