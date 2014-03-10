@@ -8,7 +8,7 @@
 class GamesController extends AppController {
 
 	public $name = 'Games';
-	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Activity','Clone');
+	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Activity','Cloneship');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Time');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
     
@@ -230,7 +230,6 @@ public function set_suggested_channels()
 	public function dashboard() {
 		
 		$this->layout='dashboard';
-		
 		$linkParam=isset($this->request->params['pass'][0]);
 		if($linkParam=="welcome")
 		$this->set('welcome',1);
@@ -1451,19 +1450,22 @@ function getExtension($str) {
 	public function add_clonelog($game_id=NULL,$user_id=NULL,$root_id=NULL)
 	{
 	        $filtered_data=
-			array('Clone' =>array(
+			array('Cloneship' =>array(
 			'game_id' => $game_id,
 			'user_id' => $user_id,
 			'root_id' => $root_id));
-			$this->Clone->save($filtered_data);
+			$this->Cloneship->save($filtered_data);
 	}
 	
 	//Get root_id of game
 	//Bu fonksiyon mu daha hizli yoksa direk games tablosuna root_id eklemek mi?test et'Kiyasla!
 	public function get_game_root($game_id=NULL)
 	{
-	//$clone_info=$this->Clone->find('first',array('contain'=>false,'fields'=>array('Clone.root_id'),'conditions'=> array('Clone.game_id'=>$game_id)));
-	//return $clone_info['Clone']{'root_id'];
+	  $clone_info=$this->Cloneship->find('first',array('contain'=>false,'fields'=>array('Cloneship.root_id'),'conditions'=> array('Cloneship.game_id'=>$game_id)));
+	  if($clone_info!=NULL)
+	  return $clone_info['Cloneship']['root_id'];
+	  else
+	  return NULL;
 	}
 	
 	
@@ -1490,7 +1492,7 @@ function getExtension($str) {
 			if($targetGame['Game']['owner_id']!=NULL && $targetGame['Game']['clone']==1)
 			{
 			$this->request->data['Game']['owner_id']=$targetGame['Game']['owner_id'];
-			//$this->add_clonelog();
+			$this->add_clonelog($game_id,$userId,$this->get_game_root($game_id));
 			}
 			else
 			{
