@@ -4,6 +4,23 @@
 <?php foreach ($mygames as $game): ?>
 <?php
 
+
+
+
+
+if(isset($game['Gamestat'][0]['playcount'])){$playcount=$game['Gamestat'][0]['playcount'];}else{$playcount=0;}
+if(isset($game['Gamestat'][0]['favcount'])){$favcount=$game['Gamestat'][0]['favcount'];}else{$favcount=0;}
+if(isset($game['Gamestat'][0]['channelclone'])){$channelclone=$game['Gamestat'][0]['channelclone'];}else{$channelclone=0;}
+if(isset($game['Gamestat'][0]['potential'])){$potential=$game['Gamestat'][0]['potential'];}else{$potential=0;}
+
+$ratecount=$game['Game']['rate_count'];
+
+
+//echo 'Playcount'.$playcount.'<br>';
+//echo 'Favcount'.$favcount.'<br>';
+//echo 'Channelclone'.$channelclone.'<br>';
+//echo 'potential'.$potential.'<br>';
+
 if($game['Game']['seo_url']!=NULL)
 {
       if($game['Game']['embed']!=NULL)
@@ -35,7 +52,7 @@ else{
   <!--/16px Rating Stars Ends Below-->  
   <!--**************************--> 
               </div>
-          <p>Potantional is 173</p>
+          <p>Potential:<?php echo $potential; ?> </p>
             <p>
                 <a href="<?php echo $editurl ?>" class="btn btn-info btn-mini">Edit</a> 
                 <a href="<?php echo $playurl ?>" class="btn btn-success btn-mini">Play</a> 
@@ -58,10 +75,10 @@ else{
 
           </div>
           <div style="margin:-4px; padding:0px 3px 0px 3px; border-radius:0px" class="alert alert-info"> <h5>INSIGHTS</h5>
-            <p class="label label-warning">172 Plays</p>
-            <p class="label label-info">84 Clones</p>
-            <p class="label label-success">12 Favorites</p>
-            <p class="label label-important">47 Rates</p>
+            <p class="label label-warning"><?php echo $playcount; ?> Plays</p>
+            <p class="label label-info"><?php echo $channelclone; ?> Clones</p>
+            <p class="label label-success"><?php echo $favcount; ?> Favorites</p>
+            <p class="label label-important"><?php echo $ratecount; ?> Rates</p>
         </div>
         </div>
       </li>

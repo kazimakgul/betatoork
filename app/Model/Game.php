@@ -175,16 +175,9 @@ public $virtualFields = array(
 	
 	
 	public $hasMany = array(
-		'Rate' => array(
-			'className' => 'Rate',
-			'foreignKey' => 'id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Favorite' => array(
-			'className' => 'Favorite',
-			'foreignKey' => 'id',
+		'Gamestat' => array(
+			'className' => 'Gamestat',
+			'foreignKey' => 'game_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
