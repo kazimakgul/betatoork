@@ -23,7 +23,7 @@ else{
       <li class="span3" id="my_thumb_<?php echo $game['Game']['id']; ?>" style="background-color:white;">
         <div class="thumbnail" style="border-radius:0px">
           <a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'720','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></a>
-          <div class="caption">
+          <div class="caption" style="margin:0px; padding:0px 3px 0px 3px;" >
             <h5><?php echo $game['Game']['name']; ?></h5>
 
               <div rel="tooltip" data-placement="bottom" data-original-title="Avarage Total Rating" class="pull-left helper-font-16">
