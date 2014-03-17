@@ -20,7 +20,7 @@ else{
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
 
 					
-      <li class="span3" id="my_thumb_<?php echo $game['Game']['id']; ?>" style="background-color:white;">
+      <li class="span3" id="my_thumb_<?php echo $game['Game']['id']; ?>" style="background-color:white; margin:0px 8px 15px 8px;">
         <div class="thumbnail" style="border-radius:0px">
           <a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'720','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></a>
           <div class="caption" style="margin:0px; padding:0px 3px 0px 3px;" >
