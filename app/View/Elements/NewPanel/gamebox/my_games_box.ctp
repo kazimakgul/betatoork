@@ -12,8 +12,8 @@ if(isset($game['Gamestat'][0]['playcount'])){$playcount=$game['Gamestat'][0]['pl
 if(isset($game['Gamestat'][0]['favcount'])){$favcount=$game['Gamestat'][0]['favcount'];}else{$favcount=0;}
 if(isset($game['Gamestat'][0]['channelclone'])){$channelclone=$game['Gamestat'][0]['channelclone'];}else{$channelclone=0;}
 if(isset($game['Gamestat'][0]['potential'])){$potential=$game['Gamestat'][0]['potential'];}else{$potential=0;}
+if(isset($game['Game']['rate_count'])){$ratecount=$game['Game']['rate_count'];}else{$ratecount=0;}
 
-$ratecount=$game['Game']['rate_count'];
 
 
 //echo 'Playcount'.$playcount.'<br>';
