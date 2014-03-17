@@ -32,7 +32,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 2);
+	Configure::write('debug', 0);
 
 /**
  * Configure the Error handler used to handle errors for your application.  By default
@@ -248,6 +248,14 @@ $multiple=array(
 'plainrates'=>1
 );
 Configure::write('multiples',$multiple);
+
+# Best Games Settings
+$g_multiple=array(
+'playcount'=>1,
+'favcount'=>2,
+'channelclone'=>4
+);
+Configure::write('g_multiples',$g_multiple);
 
 # Channel Id of recommended channel
 Configure::write('recommended.id',1988);

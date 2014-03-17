@@ -8,7 +8,7 @@
 class GamesController extends AppController {
 
 	public $name = 'Games';
-	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Category','Activity','Cloneship');
+	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Gamestat','Category','Activity','Cloneship');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Time');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
     
@@ -1515,6 +1515,7 @@ function getExtension($str) {
 				//================Add Cloneships ends=====================
 				
 			    //$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userId)); Standart game publish feed
+				$this->Gamestat->sync_channel_clone($game_id);
 				$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$userId,7,1));
 				echo 1;//this means games has been clonned properly.
 			    }else{

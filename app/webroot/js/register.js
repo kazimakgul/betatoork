@@ -843,11 +843,14 @@ if($('#follow_button').attr('id')=='follow_button')
 		    {
 				
 		switch_favorite(id);
+		
+		/*
 		$.pnotify({
             title: 'Thanks for Favorite',
             text: 'You have added <strong>'+game_name+'</strong> in your favorite list.<br>You can reach this game when you want to play again.',
             type: 'success'
           });
+		*/
 		
 			}else{
 				
@@ -868,11 +871,13 @@ if($('#follow_button').attr('id')=='follow_button')
 		    {
 				
 		switch_favorite(id);
+		/*
 		$.pnotify({
             title: 'Favorite has been removed',
             text: 'You have removed <strong>'+game_name+'</strong> from your favorite list.',
             type: 'error'
           });
+		*/
 		
 			}else{
 				
