@@ -20,7 +20,7 @@
     </a>
      <a style="margin:0px 3px 5px 0px;" rel="tooltip" id="ratebarchain" data-toggle="popover" data-placement="bottom" data-html="true" title="How to Clone?" data-original-title="How to Clone?" class="btn btn-success" data-content='
                        <p class="alert alert-info" STYLE="font-size:10pt;">
-                            <i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i></a> clone button at the bottom of the page on the rating bar.
+                            <i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini"><i class="elusive-plus-sign"></i> Clone</a> clone button at the bottom of the page on the rating bar.
                       </p>
 
                         <p>
@@ -35,7 +35,7 @@
                         <p STYLE="font-size:10pt;">
                           Its the easy way of adding a game to your channel.</p>
                   '>
-        <i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone
+        <i class="elusive-plus-sign"></i> Clone
     </a>
   </p>
 
@@ -48,11 +48,23 @@
         </div>
         
     </div>
-  <h4 style="margin:0px 0px 10px 0px;"><i class="elusive-info-sign"></i> Tips and Tricks</h4>
-  <p><i class="elusive-ok-sign"></i> You can edit the games after you add them.</p>
-  <p><i class="elusive-ok-sign"></i> Change the picture of the game if it doesnt fit your needs.</p>
-  <p><i class="elusive-ok-sign"></i> You can also change the name and description of the game.</p>
-  <p><i class="elusive-ok-sign"></i> Finally, share games with your social networks, to reach more people.</p>
+    <p class="pull-right">All your games total score</p>
+  <h4 style="margin:0px 0px 10px 0px;"><i class="elusive-info-sign"></i> Total Insights </h4>
+<div class="row-fluid">
+    <div class="alert alert-success span4">
+       <h3> <i class="elusive-play-alt"></i> 1242</h3>
+       <h5>Game Plays</h5>
+    </div>
+    <div class="alert alert-info span4">
+       <h3> <i class="elusive-plus-sign"></i> 239</h3>
+       <h5>Clones</h5>
+    </div>
+    <div class="alert alert-important span4">
+       <h3> <i class="elusive-heart"></i> 103</h3>
+       <h5>Favorites</h5>
+    </div>
+
+</div>
 
 </div>
 </div>

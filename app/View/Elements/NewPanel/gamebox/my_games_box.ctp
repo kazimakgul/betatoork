@@ -26,7 +26,7 @@ else{
           <div class="caption" style="margin:0px; padding:0px 3px 0px 3px;" >
             <h5><?php echo $game['Game']['name']; ?></h5>
 
-              <div rel="tooltip" data-placement="bottom" data-original-title="Avarage Total Rating" class="pull-left helper-font-16">
+              <div rel="tooltip" data-placement="top" data-original-title="Avarage Total Rating" class="pull-left helper-font-16">
     <!--**************************-->  
   <!--16px Rating Stars Starts Below--> 
   <!--**************************-->   
