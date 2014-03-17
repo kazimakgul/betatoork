@@ -1447,13 +1447,14 @@ function getExtension($str) {
 	
 	}
 	
-	public function add_clonelog($game_id=NULL,$user_id=NULL,$root_id=NULL)
+	public function add_clonelog($game_id=NULL,$user_id=NULL,$root_id=NULL,$cloned_id=NULL)
 	{
 	        $filtered_data=
 			array('Cloneship' =>array(
 			'game_id' => $game_id,
 			'user_id' => $user_id,
-			'root_id' => $root_id));
+			'root_id' => $root_id,
+			'cloned_id' => $cloned_id));
 			$this->Cloneship->save($filtered_data);
 	}
 	
@@ -1461,7 +1462,7 @@ function getExtension($str) {
 	//Bu fonksiyon mu daha hizli yoksa direk games tablosuna root_id eklemek mi?test et'Kiyasla!
 	public function get_game_root($game_id=NULL)
 	{
-	  $clone_info=$this->Cloneship->find('first',array('contain'=>false,'fields'=>array('Cloneship.root_id'),'conditions'=> array('Cloneship.game_id'=>$game_id)));
+	  $clone_info=$this->Cloneship->find('first',array('contain'=>false,'fields'=>array('Cloneship.root_id'),'conditions'=> array('Cloneship.cloned_id'=>$game_id)));
 	  if($clone_info!=NULL)
 	  return $clone_info['Cloneship']['root_id'];
 	  else
@@ -1492,12 +1493,12 @@ function getExtension($str) {
 			if($targetGame['Game']['owner_id']!=NULL && $targetGame['Game']['clone']==1)
 			{
 			$this->request->data['Game']['owner_id']=$targetGame['Game']['owner_id'];
-			$this->add_clonelog($game_id,$userId,$this->get_game_root($game_id));
+			$clone=1;
 			}
 			else
 			{
 			$this->request->data['Game']['owner_id']=$targetGame['Game']['user_id'];
-			$this->add_clonelog($game_id,$userId,$game_id);
+			$clone=0;
 			}
 			
 			$this->Game->create();
@@ -1506,6 +1507,13 @@ function getExtension($str) {
 	        if ($this->Game->save($this->request->data)) {
 			    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userId));
 			    $id=$this->Game->getLastInsertId();
+				//================Add Cloneships begins=====================
+				if($clone)
+				$this->add_clonelog($game_id,$userId,$this->get_game_root($game_id),$id);
+				else
+				$this->add_clonelog($game_id,$userId,$game_id,$id);
+				//================Add Cloneships ends=====================
+				
 			    //$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userId)); Standart game publish feed
 				$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$userId,7,1));
 				echo 1;//this means games has been clonned properly.

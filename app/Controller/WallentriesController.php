@@ -9,7 +9,7 @@ class WallentriesController extends AppController {
     
 	var $uses = array('Game','User','Favorite','Subscription','Wallentry','Playcount','Rate','Userstat','Category','Activity','CakeEmail', 'Network/Email');
     public $helpers = array('Html', 'Form','Upload');
-	public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Email','Logger');
+	public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Email','Logger','Gamestat');
 /**
  * index method
  *
@@ -44,7 +44,7 @@ return $a;
 	$this->layout="ajax";
 		$this->Wallentry->recursive = 0;
 		$this->set('wallentries', $this->paginate());
-		
+		$this->Gamestat->add_playcount(6);break;
 		$users[0]=1;
 		$users[2]=3;
 		$users[3]=5;
