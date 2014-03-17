@@ -9,7 +9,6 @@ class FavoritesController extends AppController {
 
 
 public $helpers = array('Html', 'Form','Upload');
-var $uses = array('Gamestat');
 
 
  public function beforeFilter() {
@@ -68,6 +67,7 @@ var $uses = array('Gamestat');
 	public function add() {
 	
 	$this->layout = "ajax";
+	$this->loadModel('Gamestat');
 	
 	$user_id=$this->Auth->user('id');
 	$game_id=$this->request["pass"][0];
