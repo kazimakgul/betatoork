@@ -38,16 +38,17 @@ else{
 
 
 
-                                                    <tr class="gradeA odd" id="my_thumb_<?php echo $game['Game']['id']; ?>">
+
+                                                    <tr id="my_thumb_<?php echo $game['Game']['id']; ?>" >
                                                         <td class=" sorting_1">
 
                                           <div class="span12">
                                           <a class="thumbnail" href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'720','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></a>
-                                          <p><?php echo  $this->element('NewPanel/rating_stars_16',array('game'=>$game)); ?></p>
+                                          <p><?php echo  $this->element('NewPanel/rating_stars_16',array('game'=>$game)); ?> Value: <?php echo $potential; ?> </p>
                                           </div>
 
                                                         </td>
-                                                        <td class="span8"><?php echo $game['Game']['name']; ?>
+                                                        <td class=" "><h4><?php echo $game['Game']['name']; ?></h4>
                                                             <p><?php echo $game['Game']['description']; ?></p>
                                                             <p>
                                                              <span class="label label-warning"><?php echo $playcount; ?> Plays</span>
@@ -57,15 +58,37 @@ else{
 
                                                             </p>
                                                         </td>
-                                                        <td class=" ">Created : <?php echo $game['Game']['created']; ?></td>
+                                                        <td class="span2">Created: <?php echo $game['Game']['created']; ?></td>
                                                         <td class=" "></td>
                                                         <td class=" ">
                                                              <div class="btn-group">
-                                                              <button class="btn">Modify</button>
+                                                              <button class="btn"> <a href="<?php echo $editurl ?>">Modify</a></button>
                                                               <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                                               <ul class="dropdown-menu">
                                                                 <li><a href="<?php echo $editurl ?>">Edit</a></li>
-                                                                <li><a href="#myModal<?php echo $game['Game']['id']; ?>" data-toggle="modal">Delete</a></li>
+                                                                <li><a data-original-title="Delete" href="#myModal<?php echo $game['Game']['id']; ?>" data-toggle="modal">Delete</a></li>
+                                                                <li class="divider"></li>
+                                                                <li><a href="#">UnPublish</a></li>
+                                                              </ul>
+                                                            </div>
+
+                                                            <?php if($game['Game']['clone']){ ?>
+
+                                                            <span class="label label-info">
+                                                            This is a Clone
+                                                            </span>
+
+                                                            <?php }else{?>   
+
+                                                            <span class="label label-success">
+                                                            Original Game
+                                                            </span>
+
+                                                            <?php } ?>
+
+                                                        </td>
+                                                        
+                                                    </tr>
 
                 <div id="myModal<?php echo $game['Game']['id'];?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-header">
@@ -82,15 +105,6 @@ else{
                         </div>
                 </div>
 
-
-                                                                <li class="divider"></li>
-                                                                <li><a href="#">UnPublish</a></li>
-                                                              </ul>
-                                                            </div>
-
-                                                        </td>
-                                                        
-                                                    </tr>
 
 
  <?php endforeach; ?>
