@@ -36,28 +36,37 @@ else{
 <?php $editurl=$this->Html->url(array( "controller" => "games","action" =>"edit2",h($game['Game']['id']))); ?>
 <?php $deleteurl=$this->Html->url(array( "controller" => "games","action" =>"delete",h($game['Game']['id']))); ?>
 
-					
-      <li class="span3" id="my_thumb_<?php echo $game['Game']['id']; ?>" style="background-color:white; margin:0px 8px 15px 8px;">
-        <div class="thumbnail" style="border-radius:0px">
-          <a href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'720','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></a>
-          <div class="caption" style="margin:0px; padding:0px 3px 0px 3px;" >
-            <h5><?php echo $game['Game']['name']; ?></h5>
 
-              <div rel="tooltip" data-placement="top" data-original-title="Avarage Total Rating" class="pull-left helper-font-16">
-    <!--**************************-->  
-  <!--16px Rating Stars Starts Below--> 
-  <!--**************************-->   
-  <?php echo  $this->element('NewPanel/rating_stars_16',array('game'=>$game)); ?>
-  <!--**************************-->  
-  <!--/16px Rating Stars Ends Below-->  
-  <!--**************************--> 
-              </div>
-          <p>Potential:<?php echo $potential; ?> </p>
-            <p>
-                <a href="<?php echo $editurl ?>" class="btn btn-info btn-mini">Edit</a> 
-                <a href="<?php echo $playurl ?>" class="btn btn-success btn-mini">Play</a> 
-                <a rel="tooltip" data-placement="bottom" data-original-title="Delete" href="#myModal<?php echo $game['Game']['id']; ?>" data-toggle="modal" class="btn btn-mini pull-right helper-font-16"><i class="icofont-trash"></i></a>
-            </p>
+
+                                                    <tr class="gradeA odd" id="my_thumb_<?php echo $game['Game']['id']; ?>">
+                                                        <td class=" sorting_1">
+
+                                          <div class="span12">
+                                          <a class="thumbnail" href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'720','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></a>
+                                          <p><?php echo  $this->element('NewPanel/rating_stars_16',array('game'=>$game)); ?></p>
+                                          </div>
+
+                                                        </td>
+                                                        <td class="span8"><?php echo $game['Game']['name']; ?>
+                                                            <p><?php echo $game['Game']['description']; ?></p>
+                                                            <p>
+                                                             <span class="label label-warning"><?php echo $playcount; ?> Plays</span>
+                                                              <span class="label label-info"><?php echo $channelclone; ?> Clones</span>
+                                                              <span class="label label-success"><?php echo $favcount;?> Favorites</span>
+                                                              <span class="label label-important"><?php echo $ratecount; ?> Rates</span>
+
+                                                            </p>
+                                                        </td>
+                                                        <td class=" ">Created : <?php echo $game['Game']['created']; ?></td>
+                                                        <td class=" "></td>
+                                                        <td class=" ">
+                                                             <div class="btn-group">
+                                                              <button class="btn">Modify</button>
+                                                              <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                                              <ul class="dropdown-menu">
+                                                                <li><a href="<?php echo $editurl ?>">Edit</a></li>
+                                                                <li><a href="#myModal<?php echo $game['Game']['id']; ?>" data-toggle="modal">Delete</a></li>
+
                 <div id="myModal<?php echo $game['Game']['id'];?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -73,15 +82,15 @@ else{
                         </div>
                 </div>
 
-          </div>
-          <div style="margin:-4px; padding:0px 3px 0px 3px; border-radius:0px" class="alert alert-info"> <h5>INSIGHTS</h5>
-            <p class="label label-warning"><?php echo $playcount; ?> Plays</p>
-            <p class="label label-info"><?php echo $channelclone; ?> Clones</p>
-            <p class="label label-success"><?php echo $favcount; ?> Favorites</p>
-            <p class="label label-important"><?php echo $ratecount; ?> Rates</p>
-        </div>
-        </div>
-      </li>
+
+                                                                <li class="divider"></li>
+                                                                <li><a href="#">UnPublish</a></li>
+                                                              </ul>
+                                                            </div>
+
+                                                        </td>
+                                                        
+                                                    </tr>
 
 
  <?php endforeach; ?>

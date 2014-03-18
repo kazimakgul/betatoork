@@ -69,13 +69,46 @@
 </div>
 </div>
 
-<ul class="thumbnails" id="thumbnails_area">
-<?php  echo $this->element('NewPanel/gamebox/my_games_box'); ?>
-<br><br>
-</ul>
+
+<div class="row-fluid">
+                                <div class="span12">
+                                    <div class="box corner-all">
+                                        <div class="box-header grd-white corner-top">
+                                            <div class="header-control">
+                                                <a data-box="collapse"><i class="icofont-caret-up"></i></a>
+                                                <a data-box="close" data-hide="bounceOutRight">×</a>
+                                            </div>
+                                            <span>Game Details and Dashboard</span>
+                                        </div>
+                                        <div class="box-body">
+                                            <div id="datatablestools_wrapper" class="dataTables_wrapper form-inline" role="grid">
+
+                                              <div class="row-fluid">
+                                                <div class="span6">
+                                                  <div class="btn-group">
+                                                    <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                      <li><a href="#">UnPublish</a></li>
+                                                      <li class="divider"></li>
+                                                      <li><a href="#">Delete</a></li>
+                                                    </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="span6"><div class="pull-right dataTables_filter" id="datatablestools_filter"><label>Search: <input type="text" aria-controls="datatablestools"></label></div></div></div><table id="datatablestools" class="table table-hover responsive dataTable" aria-describedby="datatablestools_info">
+                                                <thead>
+                                                    <tr role="row"><th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="datatablestools" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 172px;">Your Game Details</th></tr>
+                                                </thead>
+                                                
+                                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+
+
+                                              <?php  echo $this->element('NewPanel/gamebox/my_games_box'); ?>
+
+
+                                            </tbody></table>
 
  <?php if($mygames!=NULL){ ?>   
-	<!--Hidden Pagination -->
+  <!--Hidden Pagination -->
     <div class="pagination pagination-centered">
         <ul>
             <li><?php echo $this->Paginator->prev(__('Prev', true), array(), null, array('class'=>'disabled'));?></li>
@@ -88,6 +121,14 @@
     </div>
     <!--Hidden Pagination -->
 <?php } ?>
+
+                                          </div>
+                                            
+                                        </div><!-- /box-body -->
+                                    </div><!-- /box -->
+                                </div><!-- /span -->
+                            </div>
+
 
 
                         </div><!--/content-body -->
