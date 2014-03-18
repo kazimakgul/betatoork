@@ -91,10 +91,26 @@
                                                       <li><a href="#">UnPublish</a></li>
                                                       <li class="divider"></li>
                                                       <li><a href="#">Delete</a></li>
+                                                      <li><a href="#">UnPublish All</a></li>
                                                     </ul>
                                                   </div>
                                               </div>
-                                              <div class="span6"><div class="pull-right dataTables_filter" id="datatablestools_filter"><label>Search: <input type="text" aria-controls="datatablestools"></label></div></div></div><table id="datatablestools" class="table table-hover responsive dataTable" aria-describedby="datatablestools_info">
+                                              <div class="span6">
+                                                <div class="pull-right dataTables_filter" id="datatablestools_filter">
+                                                <label>Search: <input type="text" aria-controls="datatablestools"></label>
+                                                  <div class="btn-group">
+                                                    <button class="btn dropdown-toggle" data-toggle="dropdown">Sort <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                      <li><a href="#">Value</a></li>
+                                                      <li><a href="#">Clone</a></li>
+                                                      <li><a href="#">Plays</a></li>
+                                                      <li class="divider"></li>
+                                                      <li><a href="#">Date</a></li>
+                                                      <li><a href="#">UnPublished</a></li>
+                                                    </ul>
+                                                  </div>
+                                              </div>
+                                            </div></div><table id="datatablestools" class="table table-hover responsive dataTable" aria-describedby="datatablestools_info">
                                                 <thead>
                                                     <tr role="row"><th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="datatablestools" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 172px;">Your Game Details</th></tr>
                                                 </thead>

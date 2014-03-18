@@ -86,6 +86,10 @@ else{
 
                                                             <?php } ?>
 
+                                                            <span class="label">
+                                                            Published
+                                                            </span>
+
                                                         </td>
                                                         
                                                     </tr>
