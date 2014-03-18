@@ -97,15 +97,15 @@
                                               </div>
                                               <div class="span6">
                                                 <div class="pull-right dataTables_filter" id="datatablestools_filter">
-                                                <label>Search: <input type="text" aria-controls="datatablestools"></label>
+                                                <label>Search: <input type="text" id='mygames_src'></label>
                                                   <div class="btn-group">
                                                     <button class="btn dropdown-toggle" data-toggle="dropdown">Sort <span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
                                                       <li><a href="#">Value</a></li>
                                                       <li><a href="#">Clone</a></li>
-                                                      <li><a href="#">Plays</a></li>
+                                                      <li><?php echo $this->Paginator->sort('playcount','Playcount'); ?></li>
                                                       <li class="divider"></li>
-                                                      <li><a href="#">Date</a></li>
+                                                      <li><?php echo $this->Paginator->sort('created','Date'); ?></li>
                                                       <li><a href="#">UnPublished</a></li>
                                                     </ul>
                                                   </div>

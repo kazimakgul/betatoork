@@ -545,8 +545,18 @@ public function my_games() {
 		$this->headerlogin();
 		
 		$limit=16;
+
+        if($this->params['pass'][0]=='search' && $q=$this->params['pass'][1])
+        {
+            
+		$this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid,'Game.name LIKE'=>"%$q%"),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description'),'limit' => $limit,'order' => array('Game.created' => 'desc')));
+        
+        }else{
+        $this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description'),'limit' => $limit,'order' => array('Game.created' => 'desc')));	
+        }	
+
+
 		
-		$this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description'),'limit' => $limit,'order' => array('Game.created' => 'desc')));
 		$cond=$this->paginate('Game');
         $this->set('mygames', $cond);
 
