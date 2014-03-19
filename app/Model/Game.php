@@ -39,6 +39,24 @@ public $virtualFields = array(
 );
 
 
+   /**
+   * Runs after a save and submit userstat values for zero.
+   * @param boolean $created
+   */
+   function afterSave($created) {
+   
+            $exist=array('Gamestat.game_id'=>$this->id);
+   
+            if ($created && !$this->Gamestat->hasAny($exist)) {
+            $filtered_data=
+			array('Gamestat' =>array(
+			'game_id' => $this->id));
+			$this->Gamestat->save($filtered_data);
+			}
+			
+   }
+
+
  	public function isOwnedBy($game, $user) {
 		return $this->field('id', array('id' => $game, 'user_id' => $user)) === $game;
 	}
