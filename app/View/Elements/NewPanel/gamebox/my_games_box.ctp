@@ -8,10 +8,10 @@
 
 
 
-if(isset($game['Gamestat'][0]['playcount'])){$playcount=$game['Gamestat'][0]['playcount'];}else{$playcount=0;}
-if(isset($game['Gamestat'][0]['favcount'])){$favcount=$game['Gamestat'][0]['favcount'];}else{$favcount=0;}
-if(isset($game['Gamestat'][0]['channelclone'])){$channelclone=$game['Gamestat'][0]['channelclone'];}else{$channelclone=0;}
-if(isset($game['Gamestat'][0]['potential'])){$potential=$game['Gamestat'][0]['potential'];}else{$potential=0;}
+if(isset($game['Gamestat']['playcount'])){$playcount=$game['Gamestat']['playcount'];}else{$playcount=0;}
+if(isset($game['Gamestat']['favcount'])){$favcount=$game['Gamestat']['favcount'];}else{$favcount=0;}
+if(isset($game['Gamestat']['channelclone'])){$channelclone=$game['Gamestat']['channelclone'];}else{$channelclone=0;}
+if(isset($game['Gamestat']['potential'])){$potential=$game['Gamestat']['potential'];}else{$potential=0;}
 if(isset($game['Game']['rate_count'])){$ratecount=$game['Game']['rate_count'];}else{$ratecount=0;}
 
 
@@ -44,7 +44,8 @@ else{
 
                                           <div class="span12">
                                           <a class="thumbnail" href="<?php echo $playurl ?>"><?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'720','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></a>
-                                          <p><?php echo  $this->element('NewPanel/rating_stars_16',array('game'=>$game)); ?> Value: <?php echo $potential; ?> </p>
+                                          <p><?php echo  $this->element('NewPanel/rating_stars_16',array('game'=>$game)); ?>  </p>
+										  <p class="pull-right">Value: <?php echo $potential; ?></p>
                                           </div>
 
                                                         </td>

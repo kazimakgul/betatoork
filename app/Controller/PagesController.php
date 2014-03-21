@@ -80,7 +80,7 @@ public function leftpanel(){
 	    $userid = $this->Session->read('Auth.User.id');
 	    $username = $this->Session->read('Auth.User.username');
 	    $gamenumber = $this->Game->find('count', array('conditions' => array('Game.User_id' => $userid)));
-	    $favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
+	    //$favoritenumber = $this->Game->Favorite->find('count', array('conditions' => array('Favorite.User_id' => $userid)));
 	    $subscribe = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_id' => $userid)));
 	    $subscribeto = $this->Subscription->find('count', array('conditions' => array('Subscription.subscriber_to_id' => $userid)));
 		$playcount = $this->Playcount->find('count', array('conditions' => array('Playcount.user_id' => $userid)));
@@ -90,7 +90,7 @@ public function leftpanel(){
 	    $this->set('userid', $userid);
 	   	$this->set('username', $username);
 	    $this->set('gamenumber', $gamenumber);
-	    $this->set('favoritenumber', $favoritenumber);
+	    //$this->set('favoritenumber', $favoritenumber);
 	   	$this->set('subscribe', $subscribe);
 	    $this->set('subscribeto', $subscribeto);
 	    $this->set('playcount', $playcount);
@@ -115,7 +115,7 @@ public function leftpanel(){
 public function get_last_activities()
 {
 	$this->loadModel('Activity');
-    if($this->Auth->user('id'))
+    if(1==2)
 	{ //openning of auth_id control
     $auth_id=$this->Session->read('Auth.User.id');
     $subscribed_ids=$this->Subscription->find('list',array('contain'=>false,'fields'=>array('Subscription.subscriber_to_id'),'conditions'=>array('Subscription.subscriber_id'=>$auth_id)));

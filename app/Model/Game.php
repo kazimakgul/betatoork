@@ -34,8 +34,8 @@ public $name = 'Game';
 
 
 public $virtualFields = array(
-    'recommend' => 'Game.starsize * Game.rate_count',
-	'playcount' => 'SELECT SUM(count) FROM playcounts where playcounts.game_id=Game.id'
+    'recommend' => 'SELECT potential FROM gamestats where gamestats.game_id=Game.id',
+	'playcount' => 'SELECT playcount FROM gamestats where gamestats.game_id=Game.id'
 );
 
 
@@ -192,7 +192,7 @@ public $virtualFields = array(
 	
 	
 	
-	public $hasMany = array(
+	public $hasOne = array(
 		'Gamestat' => array(
 			'className' => 'Gamestat',
 			'foreignKey' => 'game_id',

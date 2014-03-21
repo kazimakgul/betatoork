@@ -10,7 +10,7 @@ class GamesController extends AppController {
 	public $name = 'Games';
 	var $uses = array('Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Gamestat','Category','Activity','Cloneship');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Time');
-    public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha');
+    public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Common');
     
 
     //=====Kullanici sisteme login ise=======
@@ -193,7 +193,7 @@ public function set_suggested_channels()
 		$this->set('category',$category);
 	   	$this->set('channels',$suggestdata);
 
-       $this->get_last_activities();
+       $this->Common->get_last_activities();
 	   $this->set_notify_count();
 	   $this->set_notify();
 }
@@ -546,19 +546,19 @@ public function my_games() {
 		
 		$limit=16;
 
-        if($this->params['pass'][0]=='search' && $q=$this->params['pass'][1])
+        if($this->params['pass'][0]!=NULL && $this->params['pass'][0]=='search' && $q=$this->params['pass'][1])
         {
             
 		$this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid,'Game.name LIKE'=>"%$q%"),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description'),'limit' => $limit,'order' => array('Game.created' => 'desc')));
         
         }else{
-        $this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description'),'limit' => $limit,'order' => array('Game.created' => 'desc')));	
+        $this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description','Gamestat.playcount','Gamestat.favcount','Gamestat.channelclone','Gamestat.potential'),'limit' => $limit,'order' => array('Game.id' => 'DESC')));	
         }	
 
 
 		
 		$cond=$this->paginate('Game');
-        $this->set('mygames', $cond);
+        $this->set('mygames', $cond);//print_r($cond);
 
 		$this->set('title_for_layout', 'Clone - Create your own game channel');
 		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');

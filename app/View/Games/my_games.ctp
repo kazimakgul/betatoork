@@ -1,3 +1,12 @@
+<?php 
+$addgame=$this->Html->url(array("controller" => "games","action" =>"add3"));
+$dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"));
+?>
+
+<script type="text/javascript">
+my_search='<?php echo $this->Html->url(array('controller'=>'games','action'=>'my_games')); ?>';
+</script>
+
 <!-- span content -->
                 <div class="span9">
                     <!-- content -->
@@ -74,10 +83,6 @@
                                 <div class="span12">
                                     <div class="box corner-all">
                                         <div class="box-header grd-white corner-top">
-                                            <div class="header-control">
-                                                <a data-box="collapse"><i class="icofont-caret-up"></i></a>
-                                                <a data-box="close" data-hide="bounceOutRight">×</a>
-                                            </div>
                                             <span>Game Details and Dashboard</span>
                                         </div>
                                         <div class="box-body">
@@ -85,7 +90,8 @@
 
                                               <div class="row-fluid">
                                                 <div class="span6">
-                                                  <div class="btn-group">
+                                                  <!--
+												  <div class="btn-group">
                                                     <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
                                                       <li><a href="#">UnPublish</a></li>
@@ -94,6 +100,8 @@
                                                       <li><a href="#">UnPublish All</a></li>
                                                     </ul>
                                                   </div>
+												  -->
+												  
                                               </div>
                                               <div class="span6">
                                                 <div class="pull-right dataTables_filter" id="datatablestools_filter">
@@ -101,12 +109,12 @@
                                                   <div class="btn-group">
                                                     <button class="btn dropdown-toggle" data-toggle="dropdown">Sort <span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
-                                                      <li><a href="#">Value</a></li>
+                                                      <li><?php echo $this->Paginator->sort('Gamestat.potential','Value',array('direction'=>'desc')); ?></li>
                                                       <li><a href="#">Clone</a></li>
-                                                      <li><?php echo $this->Paginator->sort('playcount','Playcount'); ?></li>
+                                                      <li><?php echo $this->Paginator->sort('Gamestat.playcount','Playcount',array('direction'=>'desc')); ?></li>
                                                       <li class="divider"></li>
-                                                      <li><?php echo $this->Paginator->sort('created','Date'); ?></li>
-                                                      <li><a href="#">UnPublished</a></li>
+                                                      <li><?php echo $this->Paginator->sort('created','Date',array('direction'=>'desc')); ?></li>
+                                                      <!--<li><a href="#">UnPublished</a></li>-->
                                                     </ul>
                                                   </div>
                                               </div>

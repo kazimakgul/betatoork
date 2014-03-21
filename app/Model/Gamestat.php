@@ -115,6 +115,17 @@ public function add_playcount($game_id)
 	}
 
 
+public $belongsTo = array(
+		'Game' => array(
+			'className' => 'Game',
+			'foreignKey' => 'game_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+
 
 
 }

@@ -1954,7 +1954,7 @@ function get_search_users($keyword)
 $('#mygames_src').keypress(function (e) {
 	    if(e.which == 13) {
 	    //alert($('#mygames_src').val());
-	    window.location.href = 'search/'+$('#mygames_src').val();
+	    window.location.href = my_search+'/search/'+$('#mygames_src').val();
 	    }
 	}); 
 //==========================================================

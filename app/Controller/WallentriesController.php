@@ -353,7 +353,7 @@ return $a;
 public function get_last_activities()
 {
     $this->loadModel('Activity');
-    if($this->Auth->user('id'))
+    if(1==2)
 	{ //openning of auth_id control
     $auth_id=$this->Session->read('Auth.User.id');
     $subscribed_ids=$this->Subscription->find('list',array('contain'=>false,'fields'=>array('Subscription.subscriber_to_id'),'conditions'=>array('Subscription.subscriber_id'=>$auth_id)));
