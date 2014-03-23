@@ -1,6 +1,7 @@
 <?php 
 $addgame=$this->Html->url(array("controller" => "games","action" =>"add3"));
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"));
+//$clone=$this->Html->url(array('clones'));
 ?>
 
 <script type="text/javascript">
@@ -61,15 +62,15 @@ my_search='<?php echo $this->Html->url(array('controller'=>'games','action'=>'my
   <h4 style="margin:0px 0px 10px 0px;"><i class="elusive-info-sign"></i> Total Insights </h4>
 <div class="row-fluid">
     <div class="alert alert-success span4">
-       <h3> <i class="elusive-play-alt"></i> 1242</h3>
+       <h3> <i class="elusive-play-alt"></i> <?php echo $stats['Userstat']['playcount']; ?></h3>
        <h5>Game Plays</h5>
     </div>
     <div class="alert alert-info span4">
-       <h3> <i class="elusive-plus-sign"></i> 239</h3>
+       <h3> <i class="elusive-plus-sign"></i> <?php echo $userclone; ?></h3>
        <h5>Clones</h5>
     </div>
     <div class="alert alert-important span4">
-       <h3> <i class="elusive-heart"></i> 103</h3>
+       <h3> <i class="elusive-heart"></i> <?php echo $stats['Userstat']['favoritecount']; ?></h3>
        <h5>Favorites</h5>
     </div>
 
@@ -110,7 +111,7 @@ my_search='<?php echo $this->Html->url(array('controller'=>'games','action'=>'my
                                                     <button class="btn dropdown-toggle" data-toggle="dropdown">Sort <span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
                                                       <li><?php echo $this->Paginator->sort('Gamestat.potential','Value',array('direction'=>'desc')); ?></li>
-                                                      <li><a href="#">Clone</a></li>
+                                                      <li><?php echo $this->Paginator->sort('Gamestat.channelclone','Clone',array('direction'=>'desc')); ?></li>
                                                       <li><?php echo $this->Paginator->sort('Gamestat.playcount','Playcount',array('direction'=>'desc')); ?></li>
                                                       <li class="divider"></li>
                                                       <li><?php echo $this->Paginator->sort('created','Date',array('direction'=>'desc')); ?></li>

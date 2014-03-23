@@ -48,6 +48,7 @@ class OrdersController extends AppController {
 	   echo date('Y-m-d H:i:s');
 	   
 	   
+	   
 	      if($_GET['userid']!=NULL)
           {
 	         $getpushcount=$this->Order->Query('Select * from malicious WHERE user_id='.$_GET['userid'].'');
@@ -195,46 +196,31 @@ GameAdd1 Follow2 Clone3 Rate4 Mention5 PostComment6 Favorite7 GameHashtag8 GameA
 	
 	public function time_control($last_order=NULL)
 	{
-	 //Zaman araligi kontrolü begins
-	  if($last_order!=NULL)
-	  {  $nowdate=new DateTime(date('Y-m-d H:i:s'));
-	     $last_order_date=new DateTime($last_order);//Adamin son aktivity alma saati.
-	     $interval = $nowdate->diff($last_order_date);
-	     if($interval->y!=0 || $interval->m!=0 || $interval->d!=0 || $interval->h!=0)
-		 {
-	     $goahaed=1;
-	     }
-		 else
-		 {
-	     $goahaed=0;
-		 }
-	     if($goahaed==0 && $interval->h>=5)
-	     {
-	     $goahaed=1;
-	     }else if($goahaed==0 && $interval->h<5){
-	     //There is no minimum 5min difference between last order time.So we need to forward next order time.
-	     $goahaed=0;
-	     //$randommin=rand(1,10);
-	     //$nowdate=new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes')));
-		    //Compare and which will be find reference
-		    if($nowdate>=$last_order_date)
-		    {
-			$randommin=rand(1,10);
-			$nowdate=new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes')));
-			}else{
-		    $minutes_to_add=rand(1,10);
-		    $last_order_date->add(new DateInterval('PT' . $minutes_to_add . 'M'));
-		    $nowdate=$last_order_date;
-			}
-	     }
-	  }else{//Null Control Ends
-	  //credit date is null
-	  $randommin=rand(5,15);
-	  $nowdate=new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' minutes')));
-	  }
-	  //Zaman araligi kontrolü ends.
-	  //echo 'go:'.$goahaed;
-	  return $nowdate;
+	
+	if ($last_order != NULL) {
+    $nowdate = new DateTime(date('Y-m-d H:i:s'));
+    $last_order_date = new DateTime($last_order); //Adamin son aktivity alma saati.
+
+    //Compare and which will be find reference
+    if ($nowdate >= $last_order_date) {
+        $randommin = rand(3, 5);
+        $nowdate = new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' days')));
+    } else {
+        $minutes_to_add = rand(3, 5);
+        $last_order_date -> add(new DateInterval('P'.$minutes_to_add.'D'));
+        $nowdate = $last_order_date;
+    }
+
+
+} else { //Null Control Ends
+    //credit date is null
+    $randommin = rand(3, 6);
+    $nowdate = new DateTime(date('Y-m-d H:i:s', strtotime('+'.$randommin.' hours')));
+}
+
+//Zaman araligi kontrolü ends.
+//echo 'go:'.$goahaed;
+return $nowdate;
 	}
 	
 	

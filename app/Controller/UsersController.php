@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
 
-public $components = array('AutoLogin','Email','Amazonsdk.Amazon','Recaptcha.Recaptcha','Common');
+public $components = array('AutoLogin','Email','Amazonsdk.Amazon','Recaptcha.Recaptcha');
 public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
 var $uses = array('Game','Subscription','Userstat','Category','Activity','CakeEmail', 'Network/Email');
 
@@ -572,7 +572,7 @@ public function set_suggested_channels()
 		$category = $this->Category->find('all');
 		$this->set('category',$category);
 	   	$this->set('channels',$suggestdata);
-        $this->Common->get_last_activities();
+        $this->get_last_activities();
 		$this->set_notify_count2();
 		$this->set_notify();
 }

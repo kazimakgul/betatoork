@@ -551,15 +551,26 @@ public function my_games() {
             
 		$this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid,'Game.name LIKE'=>"%$q%"),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description'),'limit' => $limit,'order' => array('Game.created' => 'desc')));
         
-        }else{
+        }elseif($this->params['pass'][0]!=NULL && $this->params['pass'][0]=='clones'){
+		$this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid,'Game.clone'=>1),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description','Gamestat.playcount','Gamestat.favcount','Gamestat.channelclone','Gamestat.potential'),'limit' => $limit,'order' => array('Game.id' => 'DESC')));	
+		}else{
         $this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description','Gamestat.playcount','Gamestat.favcount','Gamestat.channelclone','Gamestat.potential'),'limit' => $limit,'order' => array('Game.id' => 'DESC')));	
         }	
 
-
+        //Get userstat info
+        $stats=$this->Userstat->find('first',array('contain'=>false,'conditions'=>array('Userstat.user_id'=>$userid),'fields'=>array('Userstat.playcount','Userstat.favoritecount')));
 		
 		$cond=$this->paginate('Game');
-        $this->set('mygames', $cond);//print_r($cond);
-
+		$top=0;
+		foreach($cond as $item)
+		{
+		$userclone+=$item['Gamestat']['channelclone'];
+		}
+		
+		
+        $this->set('mygames', $cond);
+        $this->set('stats', $stats);
+		$this->set('userclone', $userclone);
 		$this->set('title_for_layout', 'Clone - Create your own game channel');
 		$this->set('description_for_layout', 'Clone is a social network for online gamers. With Clone, you will be able to create your own game channel.');
 	    $this->set_suggested_channels();
