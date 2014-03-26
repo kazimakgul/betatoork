@@ -9,7 +9,7 @@ class WallentriesController extends AppController {
     
 	var $uses = array('Game','User','Favorite','Subscription','Wallentry','Playcount','Rate','Userstat','Category','Activity','Gamestat','CakeEmail', 'Network/Email');
     public $helpers = array('Html', 'Form','Upload');
-	public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Email','Logger');
+	public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Email','Logger','Common');
 /**
  * index method
  *
@@ -416,7 +416,7 @@ public function set_suggested_channels()
 		$this->set('category',$category);
 	   	$this->set('channels',$suggestdata);
 		
-		$this->get_last_activities();
+		$this->Common->get_last_activities();
 		$this->set_notify_count();
 		$this->set_notify();
 

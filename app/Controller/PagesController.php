@@ -46,6 +46,7 @@ class PagesController extends AppController {
  * @var array
  */
 		public $helpers = array('Html', 'Form','Upload','Session','Recaptcha.Recaptcha');
+		public $components = array('Common');
 
 /**
  * This controller does not use a model
@@ -179,7 +180,7 @@ public function set_suggested_channels()
 		$this->set('category',$category);
 	   	$this->set('channels',$suggestdata);
 		
-		$this->get_last_activities();
+		$this->Common->get_last_activities();
 		$this->set_notify_count();
 		$this->set_notify();
 }

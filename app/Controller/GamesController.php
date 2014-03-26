@@ -519,7 +519,7 @@ public function categorygames2() {
 
 
 //Yeni Sistem-Kullanicinin oyunlarini getirir.
-public function mygames() {
+public function my_games() {
 
 		$this->layout='dashboard';
 		$userid = $this->Session->read('Auth.User.id');
@@ -538,7 +538,7 @@ public function mygames() {
 }
 
 //Yeni Sistem-Kullanicinin oyunlarini getirir.
-public function my_games() {
+public function mygames() {
 
 		$this->layout='dashboard';
 		$userid = $this->Session->read('Auth.User.id');

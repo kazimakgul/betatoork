@@ -1,14 +1,8 @@
 <?php 
 $addgame=$this->Html->url(array("controller" => "games","action" =>"add3"));
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"));
-//$clone=$this->Html->url(array('clones'));
 ?>
-
-<script type="text/javascript">
-my_search='<?php echo $this->Html->url(array('controller'=>'games','action'=>'my_games')); ?>';
-</script>
-
-<!-- span content -->
+                <!-- span content -->
                 <div class="span9">
                     <!-- content -->
                     <div class="content">                      
@@ -30,7 +24,7 @@ my_search='<?php echo $this->Html->url(array('controller'=>'games','action'=>'my
     </a>
      <a style="margin:0px 3px 5px 0px;" rel="tooltip" id="ratebarchain" data-toggle="popover" data-placement="bottom" data-html="true" title="How to Clone?" data-original-title="How to Clone?" class="btn btn-success" data-content='
                        <p class="alert alert-info" STYLE="font-size:10pt;">
-                            <i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini"><i class="elusive-plus-sign"></i> Clone</a> clone button at the bottom of the page on the rating bar.
+                            <i class="elusive-info-sign"></i> While you are playing a game you will see the <a class="btn btn-success btn-mini"><i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i></a> clone button at the bottom of the page on the rating bar.
                       </p>
 
                         <p>
@@ -45,7 +39,7 @@ my_search='<?php echo $this->Html->url(array('controller'=>'games','action'=>'my
                         <p STYLE="font-size:10pt;">
                           Its the easy way of adding a game to your channel.</p>
                   '>
-        <i class="elusive-plus-sign"></i> Clone
+        <i class="elusive-map-marker"></i><i class="elusive-resize-horizontal"></i><i class="elusive-tint"></i> Clone
     </a>
   </p>
 
@@ -58,82 +52,21 @@ my_search='<?php echo $this->Html->url(array('controller'=>'games','action'=>'my
         </div>
         
     </div>
-    <p class="pull-right">All your games total score</p>
-  <h4 style="margin:0px 0px 10px 0px;"><i class="elusive-info-sign"></i> Total Insights </h4>
-<div class="row-fluid">
-    <div class="alert alert-success span4">
-       <h3> <i class="elusive-play-alt"></i> <?php echo $stats['Userstat']['playcount']; ?></h3>
-       <h5>Game Plays</h5>
-    </div>
-    <div class="alert alert-info span4">
-       <h3> <i class="elusive-plus-sign"></i> <?php echo $userclone; ?></h3>
-       <h5>Clones</h5>
-    </div>
-    <div class="alert alert-important span4">
-       <h3> <i class="elusive-heart"></i> <?php echo $stats['Userstat']['favoritecount']; ?></h3>
-       <h5>Favorites</h5>
-    </div>
-
-</div>
+  <h4 style="margin:0px 0px 10px 0px;"><i class="elusive-info-sign"></i> Tips and Tricks</h4>
+  <p><i class="elusive-ok-sign"></i> You can edit the games after you add them.</p>
+  <p><i class="elusive-ok-sign"></i> Change the picture of the game if it doesnt fit your needs.</p>
+  <p><i class="elusive-ok-sign"></i> You can also change the name and description of the game.</p>
+  <p><i class="elusive-ok-sign"></i> Finally, share games with your social networks, to reach more people.</p>
 
 </div>
 </div>
 
-
-<div class="row-fluid">
-                                <div class="span12">
-                                    <div class="box corner-all">
-                                        <div class="box-header grd-white corner-top">
-                                            <span>Game Details and Dashboard</span>
-                                        </div>
-                                        <div class="box-body">
-                                            <div id="datatablestools_wrapper" class="dataTables_wrapper form-inline" role="grid">
-
-                                              <div class="row-fluid">
-                                                <div class="span6">
-                                                  <!--
-												  <div class="btn-group">
-                                                    <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                      <li><a href="#">UnPublish</a></li>
-                                                      <li class="divider"></li>
-                                                      <li><a href="#">Delete</a></li>
-                                                      <li><a href="#">UnPublish All</a></li>
-                                                    </ul>
-                                                  </div>
-												  -->
-												  
-                                              </div>
-                                              <div class="span6">
-                                                <div class="pull-right dataTables_filter" id="datatablestools_filter">
-                                                <label>Search: <input type="text" id='mygames_src'></label>
-                                                  <div class="btn-group">
-                                                    <button class="btn dropdown-toggle" data-toggle="dropdown">Sort <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                      <li><?php echo $this->Paginator->sort('Gamestat.potential','Value',array('direction'=>'desc')); ?></li>
-                                                      <li><?php echo $this->Paginator->sort('Gamestat.channelclone','Clone',array('direction'=>'desc')); ?></li>
-                                                      <li><?php echo $this->Paginator->sort('Gamestat.playcount','Playcount',array('direction'=>'desc')); ?></li>
-                                                      <li class="divider"></li>
-                                                      <li><?php echo $this->Paginator->sort('created','Date',array('direction'=>'desc')); ?></li>
-                                                      <!--<li><a href="#">UnPublished</a></li>-->
-                                                    </ul>
-                                                  </div>
-                                              </div>
-                                            </div></div><table id="datatablestools" class="table table-hover responsive dataTable" aria-describedby="datatablestools_info">
-                                                <thead>
-                                                    <tr role="row"><th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="datatablestools" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 172px;">Your Game Details</th></tr>
-                                                </thead>
-                                                
-                                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-
-
-                                              <?php  echo $this->element('NewPanel/gamebox/my_games_box'); ?>
-
-
-                                            </tbody></table>
+<ul class="thumbnails" id="thumbnails_area">
+<?php  echo $this->element('NewPanel/gamebox/mygames_box'); ?>
+</ul>
 
  <?php if($mygames!=NULL){ ?>   
-  <!--Hidden Pagination -->
+	<!--Hidden Pagination -->
     <div class="pagination pagination-centered">
         <ul>
             <li><?php echo $this->Paginator->prev(__('Prev', true), array(), null, array('class'=>'disabled'));?></li>
@@ -146,14 +79,6 @@ my_search='<?php echo $this->Html->url(array('controller'=>'games','action'=>'my
     </div>
     <!--Hidden Pagination -->
 <?php } ?>
-
-                                          </div>
-                                            
-                                        </div><!-- /box-body -->
-                                    </div><!-- /box -->
-                                </div><!-- /span -->
-                            </div>
-
 
 
                         </div><!--/content-body -->

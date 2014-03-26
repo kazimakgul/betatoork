@@ -15,7 +15,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" href="#modal-tutorial" data-toggle="modal" aria-hidden="true">Back</button>
-                    <a href="<?php echo $dashboard?>"><input  type="submit" class="btn btn-success" value="Finish" >
-                    </a>
+                    <input type="submit" data-dismiss="modal" data-toggle="modal" class="btn btn-success" value="Finish" >
+                    
                 </div>
             </div><!-- /modal recover-->
