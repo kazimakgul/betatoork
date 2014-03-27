@@ -21,6 +21,9 @@ class AdminsController extends AppController {
         {
 		$this->deleteallorders();
 		}
+		//$this->add_session(245);
+		//$this->delete_session(15);
+		
 	}
 	
 public function bots() {
@@ -40,6 +43,84 @@ public function bots() {
 	$this->Order->query('DELETE FROM `orders` WHERE 1');
 	echo 'deleted orders';
 	}
+	
+	public function add_session($id)
+	{
+	   $selectedlist=array();
+	   
+	   $arr=$this->Session->read('User.selectedlst');
+	   if($arr!=NULL)
+	   {
+	    $selectedlist=$arr;
+		array_push($selectedlist, $id);
+		$this->Session->write('User.selectedlst', $selectedlist);
+	   }else{
+	   array_push($selectedlist, $id);
+	   $this->Session->write('User.selectedlst', $selectedlist);
+	   }
+	   
+	print_r($selectedlist);
+	}
+	
+	public function delete_session($id)
+	{
+	   $selectedlist=array();
+	   
+	   $arr=$this->Session->read('User.selectedlst');
+	   if($arr!=NULL)
+	   {
+	      foreach($arr as $key=>$value)
+		  {
+		     if($value==$id) { unset($arr[$key]); }
+		  }
+	   }
+	$this->Session->write('User.selectedlst', $arr);   
+	print_r($arr);
+	}
+	
+	public function do_pwd_changes() {
+	$this->layout='ajax';
+	
+	   $password=$_POST['password'];
+	   $confirm_pwd=$_POST['confirm_pwd'];
+	
+	   $arr=$this->Session->read('User.selectedlst');
+	   if($arr!=NULL)
+	   {print_r($arr);
+	       foreach($arr as $ar)
+		   {
+		      $this->User->id=$ar;
+			  if($this->User->saveField('password', $password))
+			  {
+			  echo '<br>Password changed for '.$ar;
+			  }
+			  
+		   }
+	   }
+	
+	}
+	
+	public function mass_pwd_change() {
+	$this->layout='adminDashboard';
+	
+	
+	   $arr=$this->Session->read('User.selectedlst');
+	   if($arr!=NULL)
+	   {
+	    $this->set('checkedlist', $arr);
+	   }
+	
+	
+	    $this->User->recursive = 0;
+		$this->set('users', $this->paginate('User'));
+		$authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('username',$userName);
+	
+	}
+	
 	
 	
 	public function users($role=NULL) {

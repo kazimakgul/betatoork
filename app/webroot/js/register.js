@@ -1942,6 +1942,56 @@ function get_search_users($keyword)
 }
 //User Get Search user function ends
 
+
+//Add checked users to session function begins
+function addmasslist(user_id)
+{
+	var checked = document.getElementById("check"+user_id).checked;
+	alert(user_id);
+	if(checked==true)
+	{
+	   
+	   $.post(add_mass_session+'/'+user_id, function (data) {
+            if ($.trim(data)!= '') {
+			alert(data);
+            }
+        });
+	
+	
+	}else{
+	    
+		$.post(remove_mass_session+'/'+user_id, function (data) {
+            if ($.trim(data)!= '') {
+			alert(data);
+            }
+        });
+	}
+	
+	
+}
+//Add checked users to session function ends
+
+
+$('#do_pwd_changes').live('click',function(){
+										   
+   $password=$('#mass_pwd').val();
+   $confirm_pwd=$('#mass_pwd_confirm').val();
+											
+		$.ajax({
+        type: "POST",
+        url: do_pwd_changes,
+		data: {password: $password,confirm_pwd:$confirm_pwd},
+		async: true,
+        success: function(data){
+	     alert(data);
+			},
+        failure: function(errMsg) {
+            //alert(errMsg);
+        }
+      });
+			
+});
+
 //==========================================================
 //*********Admin Functions Ends********
 //==========================================================

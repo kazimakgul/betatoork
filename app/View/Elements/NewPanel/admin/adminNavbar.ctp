@@ -6,6 +6,7 @@ $managers=$this->Html->url(array("controller" => "admins","action" =>"users",2))
 $orders=$this->Html->url(array("controller" => "admins","action" =>"orders"));
 $activities=$this->Html->url(array("controller" => "admins","action" =>"activities"));
 $messages=$this->Html->url(array("controller" => "admins","action" =>"messages"));
+$mass_pwd_change=$this->Html->url(array("controller" => "admins","action" =>"mass_pwd_change"));
 ?>
 
 <div class="navbar">
@@ -30,7 +31,7 @@ $messages=$this->Html->url(array("controller" => "admins","action" =>"messages")
                                                                 <li><a href="<?php echo $messages; ?>">Messages</a></li>
                                                                 <li class="divider"></li>
                                                                 <li class="nav-header">Nav header</li>
-                                                                <li><a href="#">Separated link</a></li>
+                                                                <li><a href="<?php echo $mass_pwd_change; ?>">Mass Password</a></li>
                                                                 <li><a href="#">One more separated link</a></li>
                                                             </ul>
                                                         </li>
