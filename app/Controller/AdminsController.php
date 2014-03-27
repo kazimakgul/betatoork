@@ -59,6 +59,7 @@ public function bots() {
 	   $this->Session->write('User.selectedlst', $selectedlist);
 	   }
 	   
+	$this->Session->write('User.selectedcount', count($selectedlist));  
 	print_r($selectedlist);
 	}
 	
@@ -74,7 +75,8 @@ public function bots() {
 		     if($value==$id) { unset($arr[$key]); }
 		  }
 	   }
-	$this->Session->write('User.selectedlst', $arr);   
+	$this->Session->write('User.selectedlst', $arr);
+	$this->Session->write('User.selectedcount', count($arr));    
 	print_r($arr);
 	}
 	
@@ -98,7 +100,20 @@ public function bots() {
 		   }
 	   }
 	
+	//Remove Sessions
+	$this->Session->delete('User.selectedlst');
+	$this->Session->delete('User.selectedcount');
+	
 	}
+	
+	public function remove_selections()
+	{
+	//Remove Sessions
+	$this->Session->delete('User.selectedlst');
+	$this->Session->delete('User.selectedcount');
+	echo 'All removed';
+	}
+	
 	
 	public function mass_pwd_change() {
 	$this->layout='adminDashboard';
@@ -108,6 +123,12 @@ public function bots() {
 	   if($arr!=NULL)
 	   {
 	    $this->set('checkedlist', $arr);
+	   }
+	   
+	   $selectedcount=$this->Session->read('User.selectedcount');
+	   if($selectedcount!=NULL)
+	   {
+	    $this->set('selectedcount', $selectedcount);
 	   }
 	
 	

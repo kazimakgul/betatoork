@@ -1,8 +1,12 @@
-<?php $selected=0; ?>
+<?php
+if(!isset($selectedcount))
+$selectedcount=0; 
+?>
 
 <table class="table table-striped">
                         <thead>
-						<span class="label label-info">Selected Row:<?php echo $selected; ?></span>
+						<span class="label label-info">Selected Row:<div id="selectedcount"><?php echo $selectedcount; ?></div></span>
+						<div id="remove_selections" class="btn btn-warning">Remove All</div>
                             <tr>
 							    <th></th>
                                 <th><?php echo $this->Paginator->sort('id','#',array('direction' => 'desc')); ?></th>

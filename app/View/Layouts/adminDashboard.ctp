@@ -67,6 +67,7 @@ bring_search_users='<?php echo $this->Html->url(array('controller'=>'admins','ac
 add_mass_session='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'add_session')); ?>';
 remove_mass_session='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'delete_session')); ?>';
 do_pwd_changes='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'do_pwd_changes')); ?>';
+remove_selections='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'remove_selections')); ?>';
 
 //Code Block for Broken Images
 function imgError(image,style){

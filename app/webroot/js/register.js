@@ -1947,13 +1947,17 @@ function get_search_users($keyword)
 function addmasslist(user_id)
 {
 	var checked = document.getElementById("check"+user_id).checked;
-	alert(user_id);
+	//alert(user_id);
 	if(checked==true)
 	{
 	   
 	   $.post(add_mass_session+'/'+user_id, function (data) {
             if ($.trim(data)!= '') {
-			alert(data);
+			//alert(data);
+			//increase row count
+			currentrow=$('#selectedcount').html();
+		    currentrow=parseInt(currentrow);
+		    $('#selectedcount').html(currentrow+1);
             }
         });
 	
@@ -1962,7 +1966,11 @@ function addmasslist(user_id)
 	    
 		$.post(remove_mass_session+'/'+user_id, function (data) {
             if ($.trim(data)!= '') {
-			alert(data);
+			//alert(data);
+			//decrease row count
+			currentrow=$('#selectedcount').html();
+		    currentrow=parseInt(currentrow);
+		    $('#selectedcount').html(currentrow-1);
             }
         });
 	}
@@ -1971,7 +1979,7 @@ function addmasslist(user_id)
 }
 //Add checked users to session function ends
 
-
+//Do changes for selected users func begins
 $('#do_pwd_changes').live('click',function(){
 										   
    $password=$('#mass_pwd').val();
@@ -1984,6 +1992,11 @@ $('#do_pwd_changes').live('click',function(){
 		async: true,
         success: function(data){
 	     alert(data);
+		 
+		 //Do All chkboxes unchecked
+		 var $checkBoxes = $('input[type="checkbox"]'); 
+		 $checkBoxes.attr('checked', false);
+		 
 			},
         failure: function(errMsg) {
             //alert(errMsg);
@@ -1991,6 +2004,22 @@ $('#do_pwd_changes').live('click',function(){
       });
 			
 });
+//Do changes for selected users func ends
+
+$('#remove_selections').live('click',function(){
+	
+	    $.post(remove_selections, function (data) {
+            if ($.trim(data)!= '') {
+			alert(data);
+		   //Do All chkboxes unchecked
+		   var $checkBoxes = $('input[type="checkbox"]'); 
+		   $checkBoxes.attr('checked', false);
+		   //Do Row Count Zero
+		   $('#selectedcount').html(0);
+            }
+        });									   
+});
+
 
 //==========================================================
 //*********Admin Functions Ends********
