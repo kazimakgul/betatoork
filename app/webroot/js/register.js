@@ -1991,11 +1991,15 @@ $('#do_pwd_changes').live('click',function(){
 		data: {password: $password,confirm_pwd:$confirm_pwd},
 		async: true,
         success: function(data){
-	     alert(data);
+	     //alert(data);
+		 $('#affectedusers').html(data);
+		 $('#modalaffected').modal();  
 		 
 		 //Do All chkboxes unchecked
 		 var $checkBoxes = $('input[type="checkbox"]'); 
 		 $checkBoxes.attr('checked', false);
+		 //Do Row Count Zero
+		 $('#selectedcount').html(0);
 		 
 			},
         failure: function(errMsg) {

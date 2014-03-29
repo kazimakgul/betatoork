@@ -6,7 +6,6 @@
 <?php 
 echo $this->element('NewPanel/admin/adminNavbar');
 ?>
-<div class="search-content"></div>
 
 <div class="mass_pwd_area">
                                  <div class="control-group  input-prepend">
@@ -38,6 +37,18 @@ echo $this->element('NewPanel/admin/adminNavbar');
 echo $this->element('NewPanel/admin/adminMassPwd');
 ?>			
 			
+  <div id="modalaffected" class="modal hide fade">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h2>Affected Users</h2>
+	</div>	
+	<div class="modal-body" id="affectedusers">
+		<ul>
+<li>Coffee</li>
+<li>Milk</li>
+</ul>
+	</div>
+</div>
    
    
    <div class="pagination pagination-centered">

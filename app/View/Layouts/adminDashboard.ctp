@@ -63,11 +63,16 @@ crawler='<?php echo $this->Html->url(array('controller'=>'apis','action'=>'metac
 order_execute='<?php echo $this->Html->url(array('controller'=>'orders','action'=>'execute_activity')); ?>';
 edit_user_form='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'edit_user_form')); ?>';
 edit_user_submit='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'edit_user_submit')); ?>';
-bring_search_users='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'get_search_users')); ?>';
 add_mass_session='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'add_session')); ?>';
 remove_mass_session='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'delete_session')); ?>';
 do_pwd_changes='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'do_pwd_changes')); ?>';
 remove_selections='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'remove_selections')); ?>';
+
+<?php if($this->params['action']=='mass_pwd_change'){?>
+bring_search_users='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'get_search_users',2)); ?>';
+<?php }else{?>
+bring_search_users='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'get_search_users',1)); ?>';
+<?php }?>
 
 //Code Block for Broken Images
 function imgError(image,style){

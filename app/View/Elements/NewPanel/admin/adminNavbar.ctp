@@ -1,8 +1,19 @@
 <?php 
 $users=$this->Html->url(array("controller" => "admins","action" =>"users"));  
 $bots=$this->Html->url(array("controller" => "admins","action" =>"bots"));
+
+if($this->params['action']=='mass_pwd_change')
+{
+$admins=$this->Html->url(array("controller" => "admins","action" =>"mass_pwd_change",1));
+$managers=$this->Html->url(array("controller" => "admins","action" =>"mass_pwd_change",2));
+}else{
 $admins=$this->Html->url(array("controller" => "admins","action" =>"users",1));
 $managers=$this->Html->url(array("controller" => "admins","action" =>"users",2));
+}
+
+
+
+
 $orders=$this->Html->url(array("controller" => "admins","action" =>"orders"));
 $activities=$this->Html->url(array("controller" => "admins","action" =>"activities"));
 $messages=$this->Html->url(array("controller" => "admins","action" =>"messages"));

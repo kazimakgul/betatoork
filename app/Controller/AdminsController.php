@@ -88,17 +88,26 @@ public function bots() {
 	
 	   $arr=$this->Session->read('User.selectedlst');
 	   if($arr!=NULL)
-	   {print_r($arr);
+	   {
 	       foreach($arr as $ar)
 		   {
 		      $this->User->id=$ar;
 			  if($this->User->saveField('password', $password))
 			  {
-			  echo '<br>Password changed for '.$ar;
+			  //echo '<br>Password changed for '.$ar;
 			  }
 			  
 		   }
+	   }//Arr is not null
+	   //Get usernames for ids.
+	   $userinfos=$this->User->find('all',array('contain'=>false,'fields'=>array('User.username','User.id'),'conditions'=>array('User.id'=>$arr)));
+	   echo '<ul>';
+	   foreach($userinfos as $userinfo)
+	   {
+	   echo '<li>'.$userinfo['User']['username'].'('.$userinfo['User']['id'].')</li>';
 	   }
+	   echo '<ul>';
+	   
 	
 	//Remove Sessions
 	$this->Session->delete('User.selectedlst');
@@ -115,7 +124,7 @@ public function bots() {
 	}
 	
 	
-	public function mass_pwd_change() {
+	public function mass_pwd_change($role=NULL) {
 	$this->layout='adminDashboard';
 	
 	
@@ -131,6 +140,8 @@ public function bots() {
 	    $this->set('selectedcount', $selectedcount);
 	   }
 	
+	    if($role!=NULL)
+        $this->paginate = array('conditions'=>array('User.role'=>$role));
 	
 	    $this->User->recursive = 0;
 		$this->set('users', $this->paginate('User'));
@@ -513,12 +524,21 @@ public function bots() {
 	//<<<<<<<<<<edit user submit function ends>>>>>>>>>>>>
 	
 	//<<<<<<<<<<get search users function begins>>>>>>>>>>>>
-	public function get_search_users($keywords=NULL) {
+	public function get_search_users($rendertype=1,$keywords=NULL) {
 	$this->layout = 'ajax';
 	
-	$users=$this->User->find('all',array('contain'=>false,'conditions'=>array('User.username LIKE'=>'%'.$keywords.'%'),'fields'=>array('User.username','User.id','User.screenname','User.created','User.picture','User.seo_username','User.role','User.last_login')));
+	$users=$this->User->find('all',array('contain'=>false,'conditions'=>array('User.username LIKE'=>'%'.$keywords.'%'),'fields'=>array('User.username','User.id','User.screenname','User.created','User.picture','User.seo_username','User.email','User.role','User.last_login')));
 	$this->set('users',$users);
 	
+	   if($rendertype==2)
+	   {
+	       $arr=$this->Session->read('User.selectedlst');
+	       if($arr!=NULL)
+	       {
+	       $this->set('checkedlist', $arr);
+	       }
+	   $this -> render('mass_users_change');
+	   }
 	
 	}
 	//<<<<<<<<<<get search users function ends>>>>>>>>>>>>
