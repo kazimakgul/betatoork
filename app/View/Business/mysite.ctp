@@ -147,7 +147,7 @@
 
           <?php  
             $div = "<div class='col-xs-3' style='padding:5px;'>";
-            $limit = 12;
+            $limit = 8;
             echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
           ?>
 
