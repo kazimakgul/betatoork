@@ -42,7 +42,7 @@ $mass_pwd_change=$this->Html->url(array("controller" => "admins","action" =>"mas
                                                                 <li><a href="<?php echo $messages; ?>">Messages</a></li>
                                                                 <li class="divider"></li>
                                                                 <li class="nav-header">Nav header</li>
-                                                                <li><a href="<?php echo $mass_pwd_change; ?>">Mass Password</a></li>
+                                                                <li><a href="<?php echo $mass_pwd_change; ?>">Mass User Edit</a></li>
                                                                 <li><a href="#">One more separated link</a></li>
                                                             </ul>
                                                         </li>
