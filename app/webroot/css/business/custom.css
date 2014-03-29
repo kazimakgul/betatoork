@@ -25,6 +25,8 @@ body {
   border-radius: 60px;
   -webkit-border-radius: 60px;
   -moz-border-radius: 60px;
+  -ms-border-radius: 60px;
+  -o-border-radius: 60px;
 
   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
