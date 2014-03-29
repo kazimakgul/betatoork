@@ -84,7 +84,9 @@ public function bots() {
 	$this->layout='ajax';
 	
 	   $password=$_POST['password'];
-	   $confirm_pwd=$_POST['confirm_pwd'];
+	   
+	   if($password!=NULL)
+	   {
 	
 	   $arr=$this->Session->read('User.selectedlst');
 	   if($arr!=NULL)
@@ -112,6 +114,52 @@ public function bots() {
 	//Remove Sessions
 	$this->Session->delete('User.selectedlst');
 	$this->Session->delete('User.selectedcount');
+	
+	}else{//End of null control
+	echo 'Error:You have to enter password in field!';
+	}
+	
+	}
+	
+	
+	public function do_adcode_changes() {
+	$this->layout='ajax';
+	
+	   $adcode=$_POST['adcode'];
+
+	if($adcode!=NULL)
+	{
+	
+	   $arr=$this->Session->read('User.selectedlst');
+	   if($arr!=NULL)
+	   {
+	       foreach($arr as $ar)
+		   {
+		      $this->User->id=$ar;
+			  if($this->User->saveField('adcode', $adcode))
+			  {
+			  //echo '<br>Password changed for '.$ar;
+			  }
+			  
+		   }
+	   }//Arr is not null
+	   //Get usernames for ids.
+	   $userinfos=$this->User->find('all',array('contain'=>false,'fields'=>array('User.username','User.id'),'conditions'=>array('User.id'=>$arr)));
+	   echo '<ul>';
+	   foreach($userinfos as $userinfo)
+	   {
+	   echo '<li>'.$userinfo['User']['username'].'('.$userinfo['User']['id'].')</li>';
+	   }
+	   echo '<ul>';
+	   
+	
+	//Remove Sessions
+	$this->Session->delete('User.selectedlst');
+	$this->Session->delete('User.selectedcount');
+	
+	}else{//End of null control
+	echo 'Error:You have to enter ad code in field!';
+	}
 	
 	}
 	

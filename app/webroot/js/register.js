@@ -2010,6 +2010,36 @@ $('#do_pwd_changes').live('click',function(){
 });
 //Do changes for selected users func ends
 
+//Do adcode changes for selected users func begins
+$('#do_adcode_changes').live('click',function(){
+										   
+   $adcode=$('#useradcode').val();
+											
+		$.ajax({
+        type: "POST",
+        url: do_adcode_changes,
+		data: {adcode: $adcode},
+		async: true,
+        success: function(data){
+	     //alert(data);
+		 $('#affectedusers').html(data);
+		 $('#modalaffected').modal();  
+		 
+		 //Do All chkboxes unchecked
+		 var $checkBoxes = $('input[type="checkbox"]'); 
+		 $checkBoxes.attr('checked', false);
+		 //Do Row Count Zero
+		 $('#selectedcount').html(0);
+		 
+			},
+        failure: function(errMsg) {
+            //alert(errMsg);
+        }
+      });
+			
+});
+//Do adcode changes for selected users func ends
+
 $('#remove_selections').live('click',function(){
 	
 	    $.post(remove_selections, function (data) {

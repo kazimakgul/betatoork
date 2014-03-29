@@ -7,6 +7,18 @@
 echo $this->element('NewPanel/admin/adminNavbar');
 ?>
 
+
+<!--Tab Begins Here -->
+<ul class="nav nav-tabs" style="margin-bottom:0px;">
+      <li class="active"><a href="#mass_pwd" data-toggle="tab"><i class="elusive-user"></i> Mass Password Change</a></li>
+      <li><a href="#mass_adcode" data-toggle="tab"><i class="elusive-thumbs-up color-blue"></i> Mass Ad-Code Change</a></li>
+    </ul>
+	
+	<div class="tab-content">
+    <div id="mass_pwd" class="tab-pane fade in active">
+        <!--Mass Password Form Elements begins-->
+		
+		<!--mass_password_area begins here -->
 <div class="mass_pwd_area">
                                  <div class="control-group  input-prepend">
                                  <label class="control-label" for="required">New Password</label>
@@ -23,15 +35,41 @@ echo $this->element('NewPanel/admin/adminNavbar');
 <input name="data[User][confirm_new_password]" class="grd-white" required="" pattern="[^\f\n\r\t\v\u00A0\u2028\u2029]{6,20}" placeholder="Must be same as above" id="mass_pwd_confirm" type="password">                  </div>
                                   </div>
 								  
-								  <button type="button" id="do_pwd_changes" class="btn btn-primary">Save changes</button>
+								  <button type="button" id="do_pwd_changes" class="btn btn-primary">Save password changes</button>
 								  
 								  
 								  
 </div>
-
+<!--mass_password_area ends here -->
+		
+		<!--Mass Password Form Elements ends-->
+    </div>
+    <div id="mass_adcode" class="tab-pane fade">
+          <!--Mass Ad-Code Form Elements begins-->
+		 
+		 <!--mass_adcode_area begins here -->
 <div class="mass_adcode_area">
 
+<div class="control-group">
+                                                            <label class="control-label" for="inputEditorSimple">Ads Code</label>
+                                                            <div class="controls">
+
+<textarea name="data[User][adcode]" placeholder="This is your advertisement code place. You can just paste your google adsense code or any other advertisement company code here." class="span8" rows="6" length="1000" cols="30" id="useradcode"></textarea>
+                                                            </div>
+															
+															<button type="button" id="do_adcode_changes" class="btn btn-primary">Save adcode changes</button>
+															
+                                                        </div>
+
+
 </div>
+<!--mass_adcode_area ends here -->
+		 
+		  <!--Mass Ad-Code Form Elements ends-->
+    </div>
+</div>
+<!--Tab Ends Here -->
+
 
 <?php 
 echo $this->element('NewPanel/admin/adminMassPwd');
