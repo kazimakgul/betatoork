@@ -18,6 +18,19 @@ body {
      margin-bottom:-60px;
 }
 
+
+.circular {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  }
+
 .profilpanel
 {
     background-image:url("http://www.playthrough.fr/sites/default/files/styles/emission_background_900x200_crop/public/new_super_mario_bros.png?itok=9JC4sds6"); 
