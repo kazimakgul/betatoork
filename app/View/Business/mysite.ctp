@@ -1,7 +1,7 @@
 
 <div class="container">
 
-<?php  echo $this->element('business/ads'); ?>
+<?php  echo $this->element('Business/ads'); ?>
 
 <div class="col-md-12">
 
@@ -40,7 +40,7 @@
 </div>
 
 
-  <?php  echo $this->element('business/channelbanner'); ?>
+  <?php  echo $this->element('Business/channelbanner'); ?>
 
 
   <!--left-->
@@ -56,7 +56,7 @@
          	<div class="panel-body">
 
         <div class="col-xs-12" style="padding:0px;">
-          <?php  echo $this->element('business/games/box'); ?>
+          <?php  echo $this->element('Business/Games/box'); ?>
         </div>
 
 
@@ -83,10 +83,10 @@
           <div class="panel-body">
 
         <div class="col-xs-6" style="padding:0px 15px 0px 5px;">
-          <?php  echo $this->element('business/games/box'); ?>
+          <?php  echo $this->element('Business/Games/box'); ?>
         </div>
         <div class="col-xs-6" style="padding:0px 5px 0px 15px;">
-          <?php  echo $this->element('business/games/box'); ?>
+          <?php  echo $this->element('Business/Games/box'); ?>
         </div>
 
 
@@ -115,7 +115,7 @@
          	<div class="panel-body">
 
         <div class="col-xs-12" style="padding:0px;">
-          <?php  echo $this->element('business/games/box'); ?>
+          <?php  echo $this->element('Business/Games/box'); ?>
         </div>
 
 
@@ -129,7 +129,7 @@
   </div><!--/right-->
 
 
-<?php  echo $this->element('business/ads'); ?>
+<?php  echo $this->element('Business/ads'); ?>
 
 
 <!--/footer-->
@@ -145,7 +145,7 @@
       <div class="panel-body">
 
         <div class="col-xs-3" style="padding:5px;">
-          <?php  echo $this->element('business/games/box'); ?>
+          <?php  echo $this->element('Business/Games/box'); ?>
         </div>
 
 
@@ -160,7 +160,7 @@
 
   </div><!--/footer-->
 
-<?php  echo $this->element('business/ads'); ?>
+<?php  echo $this->element('Business/ads'); ?>
 
 
 </div><!-- /.container -->
