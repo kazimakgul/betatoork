@@ -13,11 +13,11 @@
 
     <body>
 
-        <?php  echo $this->element('Business/header'); ?>
+        <?php  echo $this->element('business/header'); ?>
 
         <?php echo $content_for_layout?>
 
-        <?php  echo $this->element('Business/footer'); ?>
+        <?php  echo $this->element('business/footer'); ?>
 
         <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
