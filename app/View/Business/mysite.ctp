@@ -55,10 +55,12 @@
           </div>
          	<div class="panel-body">
 
-        <div class="col-xs-12" style="padding:0px;">
-          <?php  echo $this->element('business/games/box'); ?>
-        </div>
-
+                  
+          <?php  
+            $div = "<div class='col-xs-12' style='padding:0px;'>";
+            $limit = 3;
+            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
+          ?>
 
           </div>
         </div>
@@ -82,14 +84,12 @@
         </div>
           <div class="panel-body">
 
-        <div class="col-xs-6" style="padding:0px 15px 0px 5px;">
-          <?php  echo $this->element('business/games/box'); ?>
-        </div>
-        <div class="col-xs-6" style="padding:0px 5px 0px 15px;">
-          <?php  echo $this->element('business/games/box'); ?>
-        </div>
-
-
+      
+          <?php  
+            $div = "<div class='col-xs-6' style='padding:0px 15px 0px 5px;'>";
+            $limit = 6;
+            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
+          ?>
 
           </div>
         </div>
@@ -114,10 +114,11 @@
          	<div class="panel-heading"><a href="#" class="black"><span class="fa fa-flash"></span> New Games!</a></div>
          	<div class="panel-body">
 
-        <div class="col-xs-12" style="padding:0px;">
-          <?php  echo $this->element('business/games/box'); ?>
-        </div>
-
+          <?php  
+            $div = "<div class='col-xs-12' style='padding:0px;'>";
+            $limit = 3;
+            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
+          ?>
 
           </div>
         </div>
@@ -144,9 +145,11 @@
       </div>
       <div class="panel-body">
 
-        <div class="col-xs-3" style="padding:5px;">
-          <?php  echo $this->element('business/games/box'); ?>
-        </div>
+          <?php  
+            $div = "<div class='col-xs-3' style='padding:5px;'>";
+            $limit = 12;
+            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
+          ?>
 
 
 

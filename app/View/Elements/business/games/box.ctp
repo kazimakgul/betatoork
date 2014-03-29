@@ -1,3 +1,4 @@
+<?php $counter=0;?>
 <?php foreach ($games as $game): ?>
 <?php
 if($game['Game']['seo_url']!=NULL)
@@ -12,7 +13,7 @@ if($game['Game']['seo_url']!=NULL)
 }
 
 ?>
-          
+          <?php echo $div; ?>
             <div class="panel panel-default">
                 <a href="<?php echo $playurl; ?>" class="panel-image">
                 <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class' => 'panel-image-preview','alt'=>$game['Game']['name'],'onerror'=>'imgError(this,"toorksize");')); ?></a>
@@ -34,5 +35,7 @@ if($game['Game']['seo_url']!=NULL)
                     </div>
                 </div>
             </div>
+          </div>
 
+<?php $counter = $counter+1; if($counter==$limit){ break; }else{continue;}?>
  <?php endforeach; ?>
