@@ -29,12 +29,20 @@ $index=$this->Html->url(array("controller" => "business","action" =>"mysite",$us
 <?php
 if($this->Session->check('Auth.User')){ ?>
 
+
     <div class="col-sm-2 col-md-2 navbar-right " style="margin-top:8px;">
     
-	<div class="btn-group">
-	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-	    <i class="glyphicon glyphicon-user"></i> <?php echo $user['User']['username'] ?> <span class="caret"></span>
-	  </button>
+
+<div class="btn-group">
+
+<a class="btn btn-default" href="<?php echo $dashboard; ?>"> 
+	<i class="glyphicon glyphicon-user"></i> <?php echo $user['User']['username'] ?>
+</a>
+
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
 	  <ul class="dropdown-menu" role="menu">
 	    <li><a href="<?php echo $dashboard; ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 	    <li><a href="<?php echo $mygames; ?>"><i class="fa fa-gamepad"></i> My Games</a></li>
@@ -42,7 +50,8 @@ if($this->Session->check('Auth.User')){ ?>
 	    <li class="divider"></li>
 	    <li><a href="<?php echo $logout; ?>"><i class="fa fa-sign-out"></i> Sign Out</a></li>
 	  </ul>
-	</div>
+</div>
+
     
     </div>
 

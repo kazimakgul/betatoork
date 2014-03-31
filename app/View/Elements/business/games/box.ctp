@@ -13,10 +13,20 @@ if($game['Game']['seo_url']!=NULL)
 }
 
 ?>
+
+
+
+
           <?php echo $div; ?>
             <div class="panel panel-default">
+              <div class="imagehover">
+                <div class="caption">
+                    <p><a href="" class="label label-danger" data-placement="bottom" data-toggle="tooltip" title="Change This Game">Change</a>
+                    <a href="" class="label label-default" data-placement="bottom" data-toggle="tooltip" title="Play This Game">Play</a></p>
+                </div>
                 <a href="<?php echo $playurl; ?>" class="panel-image">
                 <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class' => 'panel-image-preview','alt'=>$game['Game']['name'],'onerror'=>'imgError(this,"toorksize");')); ?></a>
+              </div>
                 <div class="panel-footer text-center" style="padding:0px;">
                   <a href="<?php echo $playurl; ?>" style="padding:0px;"><h5 class="darkblue" ><?php echo $game['Game']['name']; ?></h5></a>
                   <div class="row">

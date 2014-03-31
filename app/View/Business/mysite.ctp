@@ -48,7 +48,7 @@
 
      <div class="row">
       <div class="col-xs-12">
-        
+
     	<div class="panel panel-danger">
          	<div class="panel-heading"><a href="#" class="black"><span class="glyphicon glyphicon-star"></span> Featured Games</a>
           <a href="#" class="black pull-right" data-toggle="tooltip" data-placement="top" title="Add/Change Games" ><span class="fa fa-edit fa-2x"></span></a>
