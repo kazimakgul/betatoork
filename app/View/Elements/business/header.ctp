@@ -30,10 +30,10 @@ $index=$this->Html->url(array("controller" => "business","action" =>"mysite",$us
 if($this->Session->check('Auth.User')){ ?>
 
 
-    <div class="col-sm-2 col-md-2 navbar-right " style="margin-top:8px;">
+    <div class="col-sm-3 col-md-3 navbar-right " style="margin-top:8px;">
     
 
-<div class="btn-group">
+<div class="pull-right btn-group">
 
 <a class="btn btn-default" href="<?php echo $dashboard; ?>"> 
 	<i class="glyphicon glyphicon-user"></i> <?php echo $this->Session->read('Auth.User.username'); ?>
@@ -59,7 +59,7 @@ if($this->Session->check('Auth.User')){ ?>
     
     <div class="col-sm-3 col-md-3 navbar-right" style="margin-top:8px;">
     
-      <div class="input-group-btn">
+      <div class="pull-right btn-group">
         <button data-toggle="modal" data-target="#login" class="btn btn-default" ><i class="glyphicon glyphicon-user"></i> Login</button>
         <button data-toggle="modal" data-target="#register" class="btn btn-default" ><i class="glyphicon glyphicon-edit"></i> Register</button>
       </div>

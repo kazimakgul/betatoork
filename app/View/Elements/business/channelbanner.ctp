@@ -3,7 +3,9 @@
     $followNo = $user['Userstat']['subscribeto']; 
     $gameNo = $user['Userstat']['uploadcount'];
 ?>    
-    <div class="col-md-12">
+
+
+    <div class="showhim col-md-12">
 
                 <?php if($user['User']['banner']==null) { ?>
                 <div style="background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg)">
@@ -20,11 +22,14 @@
                     ?>
 
                     <div class="name">
+                        <div class="showme">
+                            <a href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -125px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
+                        </div>
                       <a class="btn btn-primary"><i class="fa fa-plus-circle"></i> Follow - <?php echo $followNo;?></a>
                       <a class="btn btn-danger"><i class="fa fa-gamepad"></i> Games - <?php echo $gameNo;?></a>
                     </div>
 
-                
+<a href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -150px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
 
 <?php
 $website=$user['User']['website'];

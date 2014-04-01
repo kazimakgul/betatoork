@@ -33,10 +33,6 @@ body {
   -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
   }
 
-.profilpanel
-{
-    background-image:url("http://www.playthrough.fr/sites/default/files/styles/emission_background_900x200_crop/public/new_super_mario_bros.png?itok=9JC4sds6"); 
-}
 
 .name
 {
@@ -160,3 +156,9 @@ body {
     z-index:2;
 }
 
+.showme{ 
+display: none;
+}
+.showhim:hover .showme{
+display : block;
+}
