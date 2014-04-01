@@ -36,7 +36,7 @@ if($this->Session->check('Auth.User')){ ?>
 <div class="btn-group">
 
 <a class="btn btn-default" href="<?php echo $dashboard; ?>"> 
-	<i class="glyphicon glyphicon-user"></i> <?php echo $user['User']['username'] ?>
+	<i class="glyphicon glyphicon-user"></i> <?php echo $this->Session->read('Auth.User.username'); ?>
 </a>
 
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">

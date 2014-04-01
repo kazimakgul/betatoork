@@ -14,9 +14,6 @@ if($game['Game']['seo_url']!=NULL)
 
 ?>
 
-
-
-
           <?php echo $div; ?>
             <div class="panel panel-default">
               <div class="imagehover">
@@ -47,5 +44,33 @@ if($game['Game']['seo_url']!=NULL)
             </div>
           </div>
 
-<?php $counter = $counter+1; if($counter==$limit){ break; }else{continue;}?>
+<?php $counter = $counter+1; 
+      if($counter==$limit){ 
+        break; }else{continue;} ?>
+
  <?php endforeach; ?>
+
+<?php while ($counter < $limit){?>
+
+          <?php echo $div; ?>
+            <div class="panel panel-default" style="background-color:silver;">
+              <div style="padding:20% 0% 18% 0%;" class="text-center">
+              <button class="btn btn-default btn-lg btn-danger"> <i class="fa fa-plus-square fa-2x"></i> </button>
+              </div>
+                <div class="panel-footer text-center" style="padding:0px;">
+                  <a href="<?php echo $playurl; ?>" style="padding:0px;"><h5 class="darkblue" >+Add Game</h5></a>
+                  <div class="row">
+
+                    </div>
+                </div>
+            </div>
+          </div>
+
+<?php $counter++;  } ?>
+
+
+
+
+
+
+

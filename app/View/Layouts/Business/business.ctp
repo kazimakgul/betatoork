@@ -23,6 +23,11 @@
         <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <?php echo $this->Html->script(array('business/custom.js')); ?>
 
+        <script>
+        toorksize='<?php echo Configure::read('broken.toorksize'); ?>';
+        avatar='<?php echo Configure::read('broken.avatar'); ?>';
+        </script>
+
 
     </body>
 </html>

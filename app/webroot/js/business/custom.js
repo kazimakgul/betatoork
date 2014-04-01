@@ -16,18 +16,10 @@
 function imgError(image,style){
     image.onerror = "";
 	
-
 	if(style=="toorksize")
-	image.src = "https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png";
-	else if(style=="thumb")
-    image.src = "<?php echo Configure::read('broken.thumb'); ?>";
-	else if(style=="slider")
-    image.src = "<?php echo Configure::read('broken.slider'); ?>";
+		image.src = toorksize;
 	else if(style=="avatar")
-    image.src = "<?php echo Configure::read('broken.avatar'); ?>";
+    	image.src = avatar;
     return true;
-
-
-
 
 }

@@ -51,7 +51,6 @@
 
     	<div class="panel panel-danger">
          	<div class="panel-heading"><a href="#" class="black"><span class="glyphicon glyphicon-star"></span> Featured Games</a>
-          <a href="#" class="black pull-right" data-toggle="tooltip" data-placement="top" title="Add/Change Games" ><span class="fa fa-edit fa-2x"></span></a>
           </div>
          	<div class="panel-body">
 
@@ -80,7 +79,6 @@
       <div class="col-xs-12">
       <div class="panel panel-info">
         <div class="panel-heading"><a href="#" class="black"><span class="fa fa-fire"></span> Hot Games!</a>
-          <a href="#" class="pull-right" data-toggle="tooltip" data-placement="top" title="Add/Change Games" ><span class="fa fa-edit fa-2x"></span></a>
         </div>
           <div class="panel-body">
 
@@ -141,7 +139,7 @@
         
 <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">All Games</h3>
+        <h3 class="panel-title">Recommended Games</h3>
       </div>
       <div class="panel-body">
 
