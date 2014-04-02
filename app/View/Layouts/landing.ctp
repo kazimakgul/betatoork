@@ -47,6 +47,8 @@
   <link href="http://fonts.googleapis.com/css?family=Abel:400|Oswald:300,400,700" media="all" rel="stylesheet" type="text/css" />
 
     <?php  echo $this->element('analytics'); ?>  
+    <!-- goodgame studio verify -->
+    <!-- 96b6ff13778d8ac5d9dfa7bbdd230819 -->
 </head>
     <body>
 	<div id="fb-root"></div>
