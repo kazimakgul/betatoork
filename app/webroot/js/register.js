@@ -1982,7 +1982,7 @@ function addmasslist(user_id)
 //Do changes for selected users func begins
 $('#do_pwd_changes').live('click',function(){
 										   
-   $password=$('#mass_pwd').val();
+   $password=$('#mass_pwd_text').val();
    $confirm_pwd=$('#mass_pwd_confirm').val();
 											
 		$.ajax({

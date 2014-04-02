@@ -122,6 +122,12 @@ public function bots() {
 	}
 	
 	
+	public function filepicker()
+	{
+	$this->layout='adminDashboard';
+	echo 'filepicker ready';
+	}
+	
 	public function do_adcode_changes() {
 	$this->layout='ajax';
 	

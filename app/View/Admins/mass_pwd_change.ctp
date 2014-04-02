@@ -24,7 +24,7 @@ echo $this->element('NewPanel/admin/adminNavbar');
                                  <label class="control-label" for="required">New Password</label>
                                  <div class="controls">
                                  <span class="add-on"><i class="icofont-lock"></i></span>
-<input name="data[User][new_password]" class="grd-white" required="" pattern="[^\f\n\r\t\v\u00A0\u2028\u2029]{6,20}" placeholder="Must be at least 6 characters long" id="mass_pwd" type="password">
+<input name="data[User][new_password]" class="grd-white" required="" pattern="[^\f\n\r\t\v\u00A0\u2028\u2029]{6,20}" placeholder="Must be at least 6 characters long" id="mass_pwd_text" type="password">
                                   </div>
                                   </div>
 								  
