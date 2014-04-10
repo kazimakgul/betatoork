@@ -12,30 +12,96 @@
  <?php echo $this->Html->css(array('uploadplugin/style','uploadplugin/jquery.fileupload')); ?>
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
 
+
 <script>
-uploadhandler='<?php echo 'http://127.0.0.1/ogipicker/server/php/fuk.php'; ?>';
+uploadhandler='<?php echo $this->webroot.'/uploadplugin/uploadhandler.php?uploadtype='.$uploadtype.'&id='.$id; ?>';
 </script>
 
 
 </head>
 <body>
 
- <!-- The fileinput-button span is used to style the file input field as button -->
-    <span class="btn btn-success fileinput-button" style="background-color: #C2C6C6;border-color: #C2C6C6;">
+
+
+
+<div id="main-wrapper" class="panel panel-default">
+
+<div id="top-menu">
+<a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-upload"></i> Upload</a>
+<a href="#album" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-list"></i> Album</a>
+<a href="#photos" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-user"></i> Photos Of You</a>
+
+ 
+
+</div>
+
+<div id="main-area">
+<!-- Main Begins-->
+
+<div class="tab-content">
+                        <div class="tab-pane active" id="upload" style=" text-align:center;padding:10px;">
+						<!--Upload Area begins -->
+						
+					<div id="uploadtools">	<!-- Upload tools starts here -->	
+						<!-- The fileinput-button span is used to style the file input field as button begins -->
+    <span class="btn btn-success fileinput-button" style="background-color: #C2C6C6;border-color: #C2C6C6;margin-top:65px;">
         <i class="glyphicon glyphicon-cloud-upload" style="font-size:40px;"></i><br>
         <span style="font-size:25px;">Select photo...</span>
         <!-- The file input field used as target for the file upload widget -->
         <input id="fileupload" type="file" name="files[]" multiple>
+		<input id="selected_image" type="hidden" value="empty">
     </span>
-    <br>
-    <br>
-    <!-- The global progress bar -->
-    <div id="progress" class="progress" style="width:500px;">
+				        <!-- The fileinput-button span is used to style the file input field as button ends -->	
+						
+						
+	<!-- The global progress bar begins -->
+    <div id="progress" class="progress" style="width:500px; margin:0px auto;margin-top:25px; display:block;">
         <div class="progress-bar progress-bar-info" style="background-color: #C2C6C6;border-color: #C2C6C6;"></div>
     </div>
-    <!-- The container for the uploaded files -->
+	<!-- The global progress bar ends -->
+	   </div><!-- Upload tools ends here -->	
+	
+	
+	<div id="viewtools" style="display:none;"><!-- View tools begins here -->
+	
+	
+	<ul class="breadcrumb pull-left" style=" background:#E0DFDF;padding: 2px 15px;margin-bottom: 10px;font-size: 12px; width:100%;">
+    <li class="pull-left"><a onclick="new_upload();" href="#">Upload</a></li>
+    <li class="pull-left" id="image_name">Sentry Knight</li>
+</ul>
+	
+	
+	 <!-- The container for the uploaded files begins -->
     <div id="files" class="files"></div>
-    <br>
+	<!-- The container for the uploaded files ends -->
+	</div><!-- View tools ends here -->		
+			
+						<!--Upload Area ends -->
+						</div>
+                        <div class="tab-pane" id="album">
+						Albums Area
+						</div>
+                        <div class="tab-pane" id="photos">
+						Photos Area
+						</div>
+                       
+                    </div>
+
+<!-- Main End-->
+</div>
+
+
+<div id="bottom-menu">
+<a href="#comments" id="set_photo" class="btn btn-primary tip disabled" title=""><i class="glyphicon glyphicon-ok"></i> Set As Profile Photo</a>
+<a href="#comments" id="crop_photo" class="btn btn-primary tip disabled" title="">Crop</a>
+<a href="#comments" class="btn btn-default tip" title="">Cancel</a>
+</div>
+
+</div>
+
+	
+  
+
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -61,7 +127,13 @@ $(function () {
         dataType: 'json',
         done: function (e, data) {
             $.each(data.result.files, function (index, file) {
-				$('#files').prepend('<img id="theImg" src="'+file.url+'" />')
+			    $( "#uploadtools" ).hide();
+				$( "#viewtools" ).show();
+				$('#files').html('<img id="theImg" src="'+file.url+'" />');
+				$('#selected_image').val(file.name);
+				$('#image_name').html(file.name);
+				$('#set_photo').removeClass('disabled');
+				$('#crop_photo').removeClass('disabled');
             });
         },
         progressall: function (e, data) {
@@ -74,6 +146,34 @@ $(function () {
     }).prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
 });
+
+$('#fileupload').click(function () {
+		//$( ".progress" ).show();
+	});
+
+	
+	$('#set_photo').click(function () {
+		selected_image=$('#selected_image').val().trim();
+		if(selected_image!='empty')
+		{
+		//do jobs for s3 upload and database save
+		}
+	});
+	
+	$('#crop_photo').click(function () {
+		alert('photo has been cropped');
+	});
+	
+	function new_upload()
+	{
+	    $( "#uploadtools" ).show();
+		$( "#viewtools" ).hide();
+		$('#progress .progress-bar').css('width',0);
+		$('#set_photo').addClass('disabled');
+		$('#crop_photo').addClass('disabled');
+		$('#selected_image').val('empty');
+	}
+
 </script>
 
 </body> 
