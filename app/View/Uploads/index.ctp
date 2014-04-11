@@ -14,7 +14,7 @@
 
 
 <script>
-uploadhandler='<?php echo $this->webroot.'/uploadplugin/uploadhandler.php?uploadtype='.$uploadtype.'&id='.$id; ?>';
+uploadhandler='<?php echo $this->webroot.'uploadplugin/uploadhandler.php?uploadtype='.$uploadtype.'&id='.$id; ?>';
 </script>
 
 
