@@ -67,7 +67,7 @@ class UploadHandler
             'upload_dir' => $relative_upload_dir,
             'upload_url' => $relative_upload_url,
             'user_dirs' => false,
-            'mkdir_mode' => 777,
+            'mkdir_mode' => 0777,
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
