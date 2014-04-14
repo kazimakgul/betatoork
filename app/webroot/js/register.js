@@ -2054,6 +2054,18 @@ $('#remove_selections').live('click',function(){
         });									   
 });
 
+$('#select_all').live('click',function(){
+	
+	       //Do All chkboxes checked
+		   var $checkBoxes = $('input[type="checkbox"]'); 
+		   $checkBoxes.attr('checked', true);	
+		   var count = $("input[type=checkbox]:checked").size();
+		   //increase row count
+		   currentrow=$('#selectedcount').html();
+		   currentrow=parseInt(currentrow);
+		   $('#selectedcount').html(currentrow+count);
+});
+
 
 //==========================================================
 //*********Admin Functions Ends********

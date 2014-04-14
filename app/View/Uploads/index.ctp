@@ -15,6 +15,9 @@
 
 <script>
 uploadhandler='<?php echo $this->webroot.'uploadplugin/uploadhandler.php?uploadtype='.$uploadtype.'&id='.$id; ?>';
+set_photo='<?php echo $this->Html->url(array('controller'=>'uploads','action'=>'set_as')); ?>';
+upload_type='<?php echo $uploadtype;?>';
+user_id='<?php echo $id;?>';
 </script>
 
 
@@ -157,6 +160,26 @@ $('#fileupload').click(function () {
 		if(selected_image!='empty')
 		{
 		//do jobs for s3 upload and database save
+		//------
+		   $.ajax({
+        type: "POST",
+        url: set_photo,
+		data: {uploadtype:upload_type,name: selected_image,id:user_id },
+        dataType: "json",
+		async: true,
+        success: function(data){
+			
+			alert(data.rtdata.title);
+			
+			//$title=data.rtdata.title;
+			
+			},
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+  });
+  //------	
+		
 		}
 	});
 	

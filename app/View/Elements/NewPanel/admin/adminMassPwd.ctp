@@ -7,6 +7,7 @@ $selectedcount=0;
                         <thead>
 						<span class="label label-info">Selected Row:<div id="selectedcount"><?php echo $selectedcount; ?></div></span>
 						<div id="remove_selections" class="btn btn-warning">Remove All</div>
+						<div id="select_all" class="btn btn-primary">Select All-Pasif.</div>
                             <tr>
 							    <th></th>
                                 <th><?php echo $this->Paginator->sort('id','#',array('direction' => 'desc')); ?></th>
