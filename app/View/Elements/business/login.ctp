@@ -285,7 +285,7 @@
         </div>
     </div>
 
-    <!-- About Modal -->
+    <!-- Image Change Modal -->
     <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -293,7 +293,7 @@
 
                 </div>
                 <div class="modal-body">
-
+<iframe src='http://54.225.196.20/uploads/index/avatar_image/2'></iframe>
                 </div>
                 <div class="modal-footer">
 
