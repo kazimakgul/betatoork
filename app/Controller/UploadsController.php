@@ -67,7 +67,7 @@ class UploadsController extends AppController {
 	rename(WWW_ROOT ."/upload/users/".$id."/".$name, WWW_ROOT ."/upload/users/".$id."/".$newname);
 	
 	        //Upload to aws begins
-			$this->Amazon->S3->create_object(
+			$feedback=$this->Amazon->S3->create_object(
             Configure::read('S3.name'),
             'upload/users/'.$id."/".$newname,
              array(
@@ -80,8 +80,12 @@ class UploadsController extends AppController {
 	}
 	//Throw to S3 ends
 	
+	if($feedback)
+	{
+    $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 1);
+	}
+
 	
-	$msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 1);
     $this->set('rtdata', $msg);
     $this->set('_serialize', array('rtdata'));
 	}
