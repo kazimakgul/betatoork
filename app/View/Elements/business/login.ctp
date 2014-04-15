@@ -290,7 +290,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 
-                <iframe src='http://54.225.196.20/uploads/index/avatar_image/2' style='width:800px;height:600px;'></iframe>
+                <?php $url='http://54.225.196.20/uploads/index/avatar_image/'.$user_id; ?>
+                <iframe src="<?php echo $url; ?>" style='width:800px;height:450px;'></iframe>
                 
             </div>
         </div>

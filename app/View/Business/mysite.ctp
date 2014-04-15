@@ -39,7 +39,7 @@
 
 </div>
 
-  <?php  echo $this->element('business/login'); ?>
+  <?php  echo $this->element('business/login',array('user_id'=>$user['User']['id'])); ?>
   <?php  echo $this->element('business/channelbanner'); ?>
 
 
