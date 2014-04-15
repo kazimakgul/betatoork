@@ -93,7 +93,7 @@ class AppController extends Controller {
             'channelfollowers','moreupdates_profile_ajax','moreupdates_profile_ajax_home','loadprofilefeeds','sendmail','activationmailsender','new_user',
             'get_image_link','getscreen','cropimage','addgame_ajax','add_virtual_game','pushActivity','setPermissions','activityMessage',
             'notificationMessage','getFreshActivity','getfreshnotification','posts','getprofileactivity','followstatus','getnotificationcount',
-            'togglelast10','featuredchannels','getOldNotifications','hashtag','register2','login3','explore','faceregister','metacrawler','likeswitch','getlikestatus','sharepost','gamerepair','Add_Activity','Add_Credit','Execute_Activity','Add_Debt_Activity','set_image','textjson');
+            'togglelast10','featuredchannels','getOldNotifications','hashtag','register2','login3','explore','faceregister','metacrawler','likeswitch','getlikestatus','sharepost','gamerepair','Add_Activity','Add_Credit','Execute_Activity','Add_Debt_Activity','set_image','set_as');
 
 		$this->set('user',$this->Auth->user());
 		
