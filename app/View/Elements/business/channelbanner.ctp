@@ -23,7 +23,7 @@
 
                     <div class="name">
                         <div class="showme">
-                            <a href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -125px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
+                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -125px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
                         </div>
                       <a class="btn btn-primary"><i class="fa fa-plus-circle"></i> Follow - <?php echo $followNo;?></a>
                       <a class="btn btn-danger"><i class="fa fa-gamepad"></i> Games - <?php echo $gameNo;?></a>
