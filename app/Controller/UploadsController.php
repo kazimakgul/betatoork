@@ -85,7 +85,7 @@ class UploadsController extends AppController {
 	//Set the picture field on db.
 	//remove related id folder from users folder.
 	$this->User->query('UPDATE users SET picture="'.$basename.'" WHERE id='.$id);	
-    $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir111.'.$newname.'has been changed','result' => 1);
+    $msg = array("title" => 'Image has been saved on s3.','result' => 1);
 	}else{
 	$msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	}
