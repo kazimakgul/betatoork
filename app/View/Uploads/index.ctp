@@ -97,7 +97,7 @@ user_id='<?php echo $id;?>';
 <div id="bottom-menu">
 <a href="#comments" id="set_photo" class="btn btn-primary tip disabled" title=""><i class="glyphicon glyphicon-ok"></i> Set As Profile Photo</a>
 <a href="#comments" id="crop_photo" class="btn btn-primary tip disabled" title="">Crop</a>
-<a href="#comments" class="btn btn-default tip" title="">Cancel</a>
+<a id='close_panel' href="#comments" class="btn btn-default tip" title="">Cancel</a>
 </div>
 
 </div>

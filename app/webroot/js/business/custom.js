@@ -23,3 +23,19 @@ function imgError(image,style){
     return true;
 
 }
+
+//Controller functions for modals
+$('#avatarframe').load(function(){
+  $(this).contents().find("#close_panel").on('click', function(event) { $('#pictureChange').modal('toggle'); });
+});
+
+$('#avatarframe').load(function(){
+  $(this).contents().find("#set_photo").on('click', function(event) { 
+   $('#pictureChange').modal('toggle');
+   $('#user_avatar').attr('src','http://clone.gs/img/loading.gif');
+
+   });
+
+alert($(this).contents().find("#selected_image").val());
+
+});

@@ -18,7 +18,7 @@
                       if($user['User']['picture']==null) { 
                         echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'pic circular img-thumbnail',"alt" => "clone user image")); 
                         } else {
-                          echo $this->Upload->image($user,'User.picture',array(),array('class'=>'pic circular img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
+                          echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'pic circular img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
 
                     <div class="name">

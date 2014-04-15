@@ -285,13 +285,13 @@
         </div>
     </div>
 
-    <!-- Image Change Modal -->
+    <!-- Avatar Change Modal -->
     <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 
                 <?php $url='http://54.225.196.20/uploads/index/avatar_image/'.$user_id; ?>
-                <iframe src="<?php echo $url; ?>" style='width:800px;height:450px;'></iframe>
+                <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px;'></iframe>
                 
             </div>
         </div>
