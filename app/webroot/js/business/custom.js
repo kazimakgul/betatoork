@@ -36,7 +36,6 @@ $('#avatarframe').load(function(){
 
    });
 
-alert($(this).contents().find("#selected_image").val());
 var name = $('iframe[id=avatarframe]').contents().find('#selected_image').val();
 alert(name);
 
