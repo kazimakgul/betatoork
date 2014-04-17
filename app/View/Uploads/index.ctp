@@ -171,7 +171,6 @@ $('#fileupload').click(function () {
         success: function(data){
 			
 			alert(data.rtdata.title);
-			alert(data.rtdata.newlink);
 			$('#new_image_link').val(data.rtdata.newlink);
 			
 			//$title=data.rtdata.title;
