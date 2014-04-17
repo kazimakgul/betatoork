@@ -34,7 +34,7 @@ $('#avatarframe').load(function(){
    $('#pictureChange').modal('toggle');
    $('#user_avatar').attr('src','http://www.imageyourself.net/images/website/loading.gif');
    var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
-   $('#user_avatar').attr('class',new_img);
+   $('#user_avatar').attr('src',new_img);
    });
 
 var name = $('iframe[id=avatarframe]').contents().find('#selected_image').val();
