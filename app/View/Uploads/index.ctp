@@ -167,7 +167,7 @@ $('#fileupload').click(function () {
         url: set_photo,
 		data: {uploadtype:upload_type,name: selected_image,id:user_id },
         dataType: "json",
-		async: true,
+		async: false,
         success: function(data){
 			
 			alert(data.rtdata.title);
