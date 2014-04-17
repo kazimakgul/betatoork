@@ -9,9 +9,8 @@
 <!-- Bootstrap styles -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <!-- Generic page styles -->
- <?php echo $this->Html->css(array('uploadplugin/style','uploadplugin/jquery.fileupload')); ?>
+ <?php echo $this->Html->css(array('uploadplugin/style','uploadplugin/jquery.fileupload','uploadplugin/jquery.Jcrop')); ?>
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
-
 
 <script>
 uploadhandler='<?php echo $this->webroot.'uploadplugin/uploadhandler.php?uploadtype='.$uploadtype.'&id='.$id; ?>';
@@ -76,7 +75,7 @@ user_id='<?php echo $id;?>';
 	
 	
 	 <!-- The container for the uploaded files begins -->
-    <div id="files" class="files"></div>
+    <div id="files" class="files crop-image-wrapper"></div>
 	<!-- The container for the uploaded files ends -->
 	</div><!-- View tools ends here -->		
 			
@@ -117,7 +116,7 @@ user_id='<?php echo $id;?>';
 <?php echo $this->Html->script(array('uploadplugin/jquery.fileupload')); ?>
 <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
+<?php echo $this->Html->script(array('uploadplugin/jquery.Jcrop')); ?>
 <script>
 /*jslint unparam: true */
 /*global window, $ */
@@ -138,6 +137,7 @@ $(function () {
 				$('#image_name').html(file.name);
 				$('#set_photo').removeClass('disabled');
 				$('#crop_photo').removeClass('disabled');
+				$('#theImg').Jcrop({ addClass: 'jcrop-centered' });
             });
         },
         progressall: function (e, data) {
