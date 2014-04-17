@@ -294,7 +294,7 @@
 				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','avatar_image',$user_id));
 				$url=$avatar_image_url;
 				?>
-                <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px;'></iframe>
+                <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
                 
             </div>
         </div>
