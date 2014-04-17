@@ -41,7 +41,7 @@ $('#avatarframe').load(function(){
 
    });
 
-var name = $('iframe[id=avatarframe]').contents().find('#selected_image').val();
-alert(name);
+//var name = $('iframe[id=avatarframe]').contents().find('#selected_image').val();
+//alert(name);
 
 });
