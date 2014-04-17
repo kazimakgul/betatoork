@@ -290,7 +290,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 
-                <?php $url='http://54.225.196.20/uploads/index/avatar_image/'.$user_id; ?>
+                <?php 
+				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','avatar_image',$user_id));
+				$url=$avatar_image_url;
+				?>
                 <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px;'></iframe>
                 
             </div>

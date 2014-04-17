@@ -32,10 +32,12 @@ $('#avatarframe').load(function(){
 $('#avatarframe').load(function(){
   $(this).contents().find("#set_photo").on('click', function(event) { 
    $('#pictureChange').modal('toggle');
-   $('#user_avatar').attr('src','http://clone.gs/img/loading.gif');
+   $('#user_avatar').attr('src','http://www.imageyourself.net/images/website/loading.gif');
 
    });
 
 alert($(this).contents().find("#selected_image").val());
+var name = $('iframe[id=avatarframe]').contents().find('#selected_image').val();
+alert(name);
 
 });
