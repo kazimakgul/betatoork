@@ -26,6 +26,13 @@ user_id='<?php echo $id;?>';
 
 
 
+			<input type="hidden" id="x" name="x" />
+			<input type="hidden" id="y" name="y" />
+			<input type="hidden" id="w" name="w" />
+			<input type="hidden" id="h" name="h" />
+			
+
+
 
 <div id="main-wrapper" class="panel panel-default">
 
@@ -138,7 +145,7 @@ $(function () {
 				$('#image_name').html(file.name);
 				$('#set_photo').removeClass('disabled');
 				$('#crop_photo').removeClass('disabled');
-				$('#theImg').Jcrop({ addClass: 'jcrop-centered' });
+				$('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords });
             });
         },
         progressall: function (e, data) {
@@ -194,7 +201,7 @@ $('#fileupload').click(function () {
 		   $.ajax({
         type: "POST",
         url: crophandler,
-        data: {uploadtype:upload_type,name: selected_image,id:user_id},
+        data: {uploadtype:upload_type,name: selected_image,id:user_id,x:$('#x').val(),y:$('#y').val(),w:$('#w').val(),h:$('#h').val()},
 		async: false,
         success: function(data){
 			alert(data);
@@ -221,6 +228,22 @@ $('#fileupload').click(function () {
 		$('#crop_photo').addClass('disabled');
 		$('#selected_image').val('empty');
 	}
+
+
+	function updateCoords(c)
+  {
+  	$('#x').val(c.x);
+    $('#y').val(c.y);
+    $('#w').val(c.w);
+    $('#h').val(c.h);
+  }
+
+  function checkCoords()
+  {
+    if (parseInt($('#w').val())) return true;
+    alert('Please select a crop region then press submit.');
+    return false;
+  }
 
 </script>
 
