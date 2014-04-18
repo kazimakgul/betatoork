@@ -145,7 +145,7 @@ $(function () {
 				$('#image_name').html(file.name);
 				$('#set_photo').removeClass('disabled');
 				$('#crop_photo').removeClass('disabled');
-				$('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords });
+				$('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords,boxWidth: 650, boxHeight: 400 });
             });
         },
         progressall: function (e, data) {
