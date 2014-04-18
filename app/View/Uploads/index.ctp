@@ -14,6 +14,7 @@
 
 <script>
 uploadhandler='<?php echo $this->webroot.'uploadplugin/uploadhandler.php?uploadtype='.$uploadtype.'&id='.$id; ?>';
+crophandler='<?php echo $this->webroot.'uploadplugin/crop.php'?>';
 set_photo='<?php echo $this->Html->url(array('controller'=>'uploads','action'=>'set_as')); ?>';
 upload_type='<?php echo $uploadtype;?>';
 user_id='<?php echo $id;?>';
@@ -186,7 +187,28 @@ $('#fileupload').click(function () {
 	});
 	
 	$('#crop_photo').click(function () {
+		selected_image=$('#selected_image').val().trim();
 		alert('photo has been cropped');
+      alert(crophandler);
+    //------
+		   $.ajax({
+        type: "POST",
+        url: crophandler,
+        data: {uploadtype:upload_type,name: selected_image,id:user_id},
+		async: false,
+        success: function(data){
+			alert(data);
+			//alert(data.rtdata.title);
+			
+			
+			},
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+  });
+  //------	
+
+
 	});
 	
 	function new_upload()
