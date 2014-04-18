@@ -199,7 +199,8 @@ $('#fileupload').click(function () {
         success: function(data){
 			alert(data);
 			//alert(data.rtdata.title);
-			
+			//$('#theImg').attr('src', $('#theImg').attr('src')+'?'+Math.random());
+			$('#files').html('<img id="theImg" src="'+$('#theImg').attr('src')+'" />');
 			
 			},
         failure: function(errMsg) {
