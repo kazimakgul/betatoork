@@ -40,7 +40,7 @@ class GamesController extends AppController {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
 	
-	//===Eger upload adinda bir klasï¿½r varsa siler.====
+	//===Eger upload adinda bir klasör varsa siler.====
         $upload_dir = new Folder(WWW_ROOT ."upload");
  	    $updir=$upload_dir->pwd();
 		if($updir!=NULL)
@@ -48,7 +48,7 @@ class GamesController extends AppController {
 		$upload_dir->delete();
 		//print_r($upload_dir->errors());
 		}
-    //===//Eger upload adinda bir klasï¿½r varsa siler.====
+    //===//Eger upload adinda bir klasör varsa siler.====
 	
 	
 	}
@@ -124,7 +124,7 @@ class GamesController extends AppController {
 
 
 
-//Yeni Sistem-GamesControlerina bagli sayfalar iï¿½in last activityleri getirir.Component yapilabilir.
+//Yeni Sistem-GamesControlerina bagli sayfalar için last activityleri getirir.Component yapilabilir.
 public function get_last_activities()
 {
     if($this->Auth->user('id'))
@@ -141,7 +141,7 @@ $this->set('lastactivities',$activityData);
 
 }
 
-//Yeni Sistem-Kullanicinin kaï¿½ tane notificationu oldugunun bilgisini saglar.
+//Yeni Sistem-Kullanicinin kaç tane notificationu oldugunun bilgisini saglar.
 public function set_notify_count()
 {
        if($this->Auth->user('id'))
@@ -452,7 +452,7 @@ public function set_suggested_channels()
 	}
     
 
-//Yeni Sistem- Bu fonksiyon oyunlari kategorilere gï¿½re siralar.
+//Yeni Sistem- Bu fonksiyon oyunlari kategorilere göre siralar.
 public function categorygames2() {
 		$this->layout='dashboard';
 		$this->leftpanel();
@@ -546,12 +546,12 @@ public function mygames() {
 		
 		$limit=16;
 
-        if(isset($this->params['pass'][0]) && $this->params['pass'][0]!=NULL && $this->params['pass'][0]=='search' && $q=$this->params['pass'][1])
+        if($this->params['pass'][0]!=NULL && $this->params['pass'][0]=='search' && $q=$this->params['pass'][1])
         {
             
 		$this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid,'Game.name LIKE'=>"%$q%"),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description'),'limit' => $limit,'order' => array('Game.created' => 'desc')));
         
-        }elseif(isset($this->params['pass'][0]) && $this->params['pass'][0]!=NULL && $this->params['pass'][0]=='clones'){
+        }elseif($this->params['pass'][0]!=NULL && $this->params['pass'][0]=='clones'){
 		$this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid,'Game.clone'=>1),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description','Gamestat.playcount','Gamestat.favcount','Gamestat.channelclone','Gamestat.potential'),'limit' => $limit,'order' => array('Game.id' => 'DESC')));	
 		}else{
         $this->paginate=array('Game'=>array('conditions' => array('Game.user_id'=>$userid),'fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description','Gamestat.playcount','Gamestat.favcount','Gamestat.channelclone','Gamestat.potential'),'limit' => $limit,'order' => array('Game.id' => 'DESC')));	
@@ -562,7 +562,6 @@ public function mygames() {
 		
 		$cond=$this->paginate('Game');
 		$top=0;
-		$userclone=0;
 		foreach($cond as $item)
 		{
 		$userclone+=$item['Gamestat']['channelclone'];
@@ -1059,7 +1058,7 @@ if($this->request->is("GET") && isset($this->request->params['pass'][0]))
 $param = $this->request->params['pass'][0];
 }
 
-//search iï¿½in veri girilmemisse ana sayfaya yï¿½nlendir.
+//search için veri girilmemisse ana sayfaya yönlendir.
 if(!isset($param) || $param=="" )
 {
 $this->redirect(array("controller"=>"games","action"=>"index"));
@@ -1411,7 +1410,7 @@ function checkDuplicateSeoUrl($seo_url='toork')
 function secureSuperGlobalPOST($value)
     {
 	    //$string = preg_replace('/[^\w\d_ -]/si', '', $value);<br />
-        //Nokta ve virgï¿½lï¿½ de engelleyen kod iptal edildi.
+        //Nokta ve virgülü de engelleyen kod iptal edildi.
         $string = htmlspecialchars(stripslashes($value));
         $string = str_ireplace("script", "blocked", $string);
         $string = mysql_escape_string($string);
@@ -2319,7 +2318,7 @@ exec($command3, $output3, $ret3);
 	$this->layout='adminTry';
 	if($this->request->isPost())
 	{	
-	//iï¿½
+	//iç
 
 	$this->Game->id =$this->request->data["Game"]["id"];
 	$id=$this->request->data["Game"]["id"];

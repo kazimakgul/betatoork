@@ -58,7 +58,7 @@ if($game['Game']['seo_url']!=NULL)
               <button class="btn btn-default btn-lg btn-danger"> <i class="fa fa-plus-square fa-2x"></i> </button>
               </div>
                 <div class="panel-footer text-center" style="padding:0px;">
-                  <a href="#" style="padding:0px;"><h5 class="darkblue" >+Add Game</h5></a>
+                  <a href="<?php echo $playurl; ?>" style="padding:0px;"><h5 class="darkblue" >+Add Game</h5></a>
                   <div class="row">
 
                     </div>
