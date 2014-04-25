@@ -24,12 +24,11 @@ user_id='<?php echo $id;?>';
 </head>
 <body>
 
-
-
-			<input type="text" id="x" name="x" />
-			<input type="text" id="y" name="y" />
-			<input type="text" id="w" name="w" />
-			<input type="text" id="h" name="h" />
+            <!--These inputs are keeps coordinated-->
+			<input type="hidden" id="x" name="x" />
+			<input type="hidden" id="y" name="y" />
+			<input type="hidden" id="w" name="w" />
+			<input type="hidden" id="h" name="h" />
 			
 
 
@@ -145,7 +144,16 @@ $(function () {
 				$('#image_name').html(file.name);
 				$('#set_photo').removeClass('disabled');
 				$('#crop_photo').removeClass('disabled');
-				$('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords,boxWidth: 650, boxHeight: 400 });
+
+                //get image sizes begins
+                var img = new Image();
+                img.onload = function() {
+                $('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [this.width ,this.height],aspectRatio: 1 });
+                }
+                img.src = file.url;
+                //get image sizes ends
+
+				
             });
         },
         progressall: function (e, data) {
@@ -195,8 +203,7 @@ $('#fileupload').click(function () {
 	
 	$('#crop_photo').click(function () {
 		selected_image=$('#selected_image').val().trim();
-		alert('photo has been cropped');
-      alert(crophandler);
+		//alert('photo has been cropped');
     //------
 		   $.ajax({
         type: "POST",
@@ -204,7 +211,7 @@ $('#fileupload').click(function () {
         data: {uploadtype:upload_type,name: selected_image,id:user_id,x:$('#x').val(),y:$('#y').val(),w:$('#w').val(),h:$('#h').val()},
 		async: false,
         success: function(data){
-			alert(data);
+			//alert(data);
 			//alert(data.rtdata.title);
 			//$('#theImg').attr('src', $('#theImg').attr('src')+'?'+Math.random());
 			$('#files').html('<img id="theImg" src="'+$('#theImg').attr('src')+'" />');
