@@ -9,7 +9,7 @@
 <!-- Bootstrap styles -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <!-- Generic page styles -->
- <?php echo $this->Html->css(array('uploadplugin/style','uploadplugin/jquery.fileupload','uploadplugin/jquery.Jcrop')); ?>
+ <?php echo $this->Html->css(array('uploadplugin/style','uploadplugin/jquery.fileupload','uploadplugin/jquery.Jcrop','uploadplugin/imgpicker/image-picker')); ?>
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
 
 <script>
@@ -37,8 +37,8 @@ user_id='<?php echo $id;?>';
 
 <div id="top-menu">
 <a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-upload"></i> Upload</a>
-<a href="#album" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-list"></i> Album</a>
-<a href="#photos" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-user"></i> Photos Of You</a>
+<a href="#album" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-list"></i> Gallery</a>
+<a href="#photos" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-user"></i> Your Photos</a>
 
  
 
@@ -89,7 +89,9 @@ user_id='<?php echo $id;?>';
 						<!--Upload Area ends -->
 						</div>
                         <div class="tab-pane" id="album">
-						Albums Area
+						<!--Content of Gallery begins -->
+						<?php echo $this->element('uploadplugin/gallery'); ?>
+						<!--Content of Gallery ends -->
 						</div>
                         <div class="tab-pane" id="photos">
 						Photos Area
@@ -124,6 +126,7 @@ user_id='<?php echo $id;?>';
 <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <?php echo $this->Html->script(array('uploadplugin/jquery.Jcrop')); ?>
+<?php echo $this->Html->script(array('uploadplugin/imgpicker/image-picker')); ?>
 <script>
 /*jslint unparam: true */
 /*global window, $ */

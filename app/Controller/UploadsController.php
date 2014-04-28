@@ -24,10 +24,15 @@ class UploadsController extends AppController {
 	$this->layout='uploadplugin/upload';
 	//echo 'upload is ready';
 	//Kullanici yalnizca kendi idsinde degisiklik yaparken admin herkes için yapabilmeli.Güvenlik önlemi Al!!!
-	   if(1)
+	   if($uploadtype=='avatar_image')
        {//User need to be logged in.COndition ekle!!!
 	
-	   
+	   $this->set('gallery','Avatar resimleri için galery içerigi');
+	   $this->set('uploadtype',$uploadtype);
+	   $this->set('id',$id);
+	   }elseif($uploadtype=='cover_image')
+	   {
+	   $this->set('gallery','Cover resimleri için galery içerigi');
 	   $this->set('uploadtype',$uploadtype);
 	   $this->set('id',$id);
 	   } 

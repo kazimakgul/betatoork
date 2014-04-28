@@ -2088,6 +2088,35 @@ $('#mygames_src').keypress(function (e) {
 
 
 //==========================================================
+//*********Upload Modal Functions Begins********
+//==========================================================
+//Controller functions for modals
+$('#avatarframe').load(function(){
+  $(this).contents().find("#close_panel").on('click', function(event) { $('#pictureChange').modal('toggle'); });
+});
+
+$('#avatarframe').load(function(){
+  $(this).contents().find("#set_photo").on('click', function(event) { 
+   $('#pictureChange').modal('toggle');
+   $('#user_avatar').attr('src','http://www.imageyourself.net/images/website/loading.gif');
+   
+   setTimeout(function(){
+		var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
+        $('#user_avatar').attr('src',new_img);			   
+   },1000);
+
+   });
+
+//var name = $('iframe[id=avatarframe]').contents().find('#selected_image').val();
+//alert(name);
+
+});
+//==========================================================
+//*********Upload Modal Functions Ends********
+//==========================================================
+
+
+//==========================================================
 //*********Notification Frontend Functions********
 //==========================================================
 function getNotificationCount()

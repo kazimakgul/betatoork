@@ -31,7 +31,7 @@ $username = $user['User']['seo_username'];
     
   <?php 
   if($user['User']['picture']==null) { 
-    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'90',"alt" => "toork avatar image",)); 
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'90',"alt" => "toork avatar image","id" => "user_avatar")); 
     } else {
       echo $this->Upload->image($user,'User.picture',array(),array('width'=>'90','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");'));
 	   }
@@ -83,7 +83,7 @@ $username = $user['User']['seo_username'];
 <?php echo $this->Form->input('twitter_link',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 <?php echo $this->Form->input('gplus_link',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 															
-
+<a data-toggle="modal" data-target="#pictureChange" href="#" class="btn btn-xs btn-default pull-left"><span class="fa fa-picture-o"></span> Changenaber</a>
                                                             <div class="control-group  input-prepend">
                                                                 <label class="control-label" for="required">Screen Name</label>
                                                                 <div class="controls">
@@ -303,3 +303,17 @@ $username = $user['User']['seo_username'];
 <?php  echo $this->element('NewPanel/dashfooter'); ?>
                     </div><!-- /content -->
                 </div><!-- /span content -->
+				
+				
+				<!-- Avatar Change Modal -->
+    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:800px;">
+            <div >
+                <?php 
+				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','avatar_image',$userid));
+				$url=$avatar_image_url;
+				?>
+                <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
