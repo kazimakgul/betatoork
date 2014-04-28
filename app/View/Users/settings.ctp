@@ -306,14 +306,14 @@ $username = $user['User']['seo_username'];
 				
 				
 	<!-- Avatar Change Modal begins -->
-    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: -1111;">
+    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:800px;">
             <div >
                 <?php 
 				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','avatar_image',$userid));
 				$url=$avatar_image_url;
 				?>
-                <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden; z-index=111' scrolling="no"></iframe>
+                <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
             </div>
         </div>
     </div>
