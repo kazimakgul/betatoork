@@ -33,7 +33,7 @@ $username = $user['User']['seo_username'];
   if($user['User']['picture']==null) { 
     echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'90',"alt" => "toork avatar image","id" => "user_avatar")); 
     } else {
-      echo $this->Upload->image($user,'User.picture',array(),array('width'=>'90','align'=>'middle','title'=>'profile','alt'=>'profile','onerror'=>'imgError(this,"avatar");'));
+      echo $this->Upload->image($user,'User.picture',array(),array('width'=>'90','align'=>'middle','title'=>'profile','alt'=>'profile',"id" => "user_avatar",'onerror'=>'imgError(this,"avatar");'));
 	   }
   ?>
 
