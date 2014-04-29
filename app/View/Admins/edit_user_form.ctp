@@ -1,5 +1,32 @@
 <div id="adminform">
 
+<div style='width:100%; margin-bottom:10px;'>
+
+<!--Change Avatar Thumb begins-->
+<div class="span2 fileupload fileupload-new" data-provides="fileupload">
+  <div class="fileupload-new img-polaroid" style="width: 90px; max-height: 120px;">
+    
+  <?php 
+    if($user[0]['User']['picture']==null) {
+    echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('width'=>'90',"alt" => "toork avatar image","id" => "user_avatar")).'poo'; 
+    } else {
+      echo $this->Upload->image($user[0],'User.picture',array(),array('width'=>'90','align'=>'middle','title'=>'profile','alt'=>'profile',"id" => "user_avatar",'onerror'=>'imgError(this,"avatar");'));
+       }
+  ?>
+
+    </div>
+  <div class="fileupload-preview fileupload-exists thumbnail" style="width: 90px; height: 120px; line-height: 20px;"></div>
+  <div>
+    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
+        <a data-toggle="modal" data-target="#pictureChange" href="#"><span class="fileupload-new"><i class="elusive-edit"></i></span></a>
+  </span>
+  </div>
+</div>
+<!--Change Avatar Thumb ends-->
+
+</div><!--Extra div ends ends-->
+
+
 <br>
 <form action="/betatoorkson/users/settings/1594" id="tab" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 
@@ -61,5 +88,26 @@
                                                             </div>
                                                         </fieldset>
                                                     </form>
+
+
+
+
+
+<!-- Avatar Change Modal begins -->
+    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:800px;">
+            <div >
+                <?php 
+                $avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','avatar_image',$user[0]['User']['id']));
+                $url=$avatar_image_url;
+                ?>
+                <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Avatar Change Modal ends -->
+
+
+
 													
 </div><!-- Adminform closed-->													

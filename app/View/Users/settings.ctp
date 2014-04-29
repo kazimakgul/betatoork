@@ -41,9 +41,8 @@ $username = $user['User']['seo_username'];
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 90px; height: 120px; line-height: 20px;"></div>
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
-        <span class="fileupload-new"><i class="elusive-edit"></i></span>
-        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[User][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100" /></span>
-    <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
+        <a data-toggle="modal" data-target="#pictureChange" href="#"><span class="fileupload-new"><i class="elusive-edit"></i></span></a>
+  </span>
   </div>
 </div>
 
@@ -83,7 +82,7 @@ $username = $user['User']['seo_username'];
 <?php echo $this->Form->input('twitter_link',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 <?php echo $this->Form->input('gplus_link',array('label'=>false,'div'=>false ,'placeholder' => 'Ex: GameMonster','type'=>'text','class'=>'input-xlarge','id'=>'inputDisabled','readonly','type'=>'hidden')); ?>
 															
-<a data-toggle="modal" data-target="#pictureChange" href="#" class="btn btn-xs btn-default pull-left"><span class="fa fa-picture-o"></span> Changenaber</a>
+
                                                             <div class="control-group  input-prepend">
                                                                 <label class="control-label" for="required">Screen Name</label>
                                                                 <div class="controls">

@@ -480,7 +480,7 @@ public function bots() {
     'conditions' => array(
         'User.id' => $id
     ),
-    'fields' => array('Botcred.credit', 'User.id', 'User.screenname', 'User.username', 'User.email', 'User.role')
+    'fields' => array('Botcred.credit', 'User.id', 'User.screenname', 'User.username', 'User.email', 'User.role', 'User.picture')
 ));
 	
 	//Is this user bot?
