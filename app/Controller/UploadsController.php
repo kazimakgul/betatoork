@@ -92,7 +92,7 @@ class UploadsController extends AppController {
 	$image_patch=$this->request->data['image'];
 	
 	//Load Avatar From Upload begins
-	if($uploadtype=='avatar_image' && $loadfrom='upload')
+	if($uploadtype=='avatar_image' && $loadfrom=='upload')
 	{
 	   $file = new File(WWW_ROOT ."/upload/users/".$id."/".$name,false);
 	   $info=$file->info();
@@ -127,7 +127,7 @@ class UploadsController extends AppController {
 	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	   }
     //Load Avatar From Upload ends
-	}elseif($uploadtype=='avatar_image' && $loadfrom='gallery'){
+	}elseif($uploadtype=='avatar_image' && $loadfrom=='gallery'){
 	//Load Avatar From Gallery begins
 	
 	
