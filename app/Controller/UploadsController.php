@@ -40,13 +40,24 @@ class UploadsController extends AppController {
 			  $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
 			  $this->set('avatars',$objs);
 			  //get avatar gallery from S3 ends
+			  
 	   
 	   
-	   }elseif($uploadtype=='cover_image')
-	   {
+	   }elseif($uploadtype=='cover_image'){
+	   
 	   $this->set('gallery','Cover resimleri için galery içerigi');
 	   $this->set('uploadtype',$uploadtype);
 	   $this->set('id',$id);
+	   
+	     //get cover gallery from S3 begins
+	     $prefix = 'upload/gallery/covers';
+         $opt = array(
+         'prefix' => $prefix,
+         );
+	     $bucket=Configure::read('S3.name');
+	     $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+	     $this->set('covers',$objs);
+		 //get cover gallery from S3 ends
 	   } 
 	
 	}
