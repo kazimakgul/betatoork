@@ -133,6 +133,7 @@ class UploadsController extends AppController {
 	
 	 $image_patch=$image_patch;
 	 $basename = basename($image_patch);
+	 //http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonS3/copy_object
 	
 	
 	//Load Avatar From Photos ends
