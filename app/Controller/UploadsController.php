@@ -27,10 +27,6 @@ class UploadsController extends AppController {
 	   if($uploadtype=='avatar_image')
        {//User need to be logged in.COndition ekle!!!
 	
-	    $filepath="/upload/gallery/covers/10.jpg";
-		$filepath = basename($filepath);echo $filepath;
-	
-	
 	      $this->set('gallery','Avatar resimleri için galery içerigi');
 	      $this->set('uploadtype',$uploadtype);
 	      $this->set('id',$id);
@@ -93,6 +89,7 @@ class UploadsController extends AppController {
 	$name=$this->request->data['name'];
 	$id=$this->request->data['id'];
 	$loadfrom=$this->request->data['from'];
+	$image_patch=$this->request->data['image'];
 	
 	//Load Avatar From Upload begins
 	if($uploadtype=='avatar_image' && $loadfrom='upload')
@@ -133,6 +130,9 @@ class UploadsController extends AppController {
 	}elseif($uploadtype=='avatar_image' && $loadfrom='gallery'){
 	//Load Avatar From Gallery begins
 	
+	
+	 $image_patch=$image_patch;
+	 $basename = basename($image_patch);
 	
 	
 	//Load Avatar From Photos ends
