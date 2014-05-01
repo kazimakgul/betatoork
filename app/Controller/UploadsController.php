@@ -43,7 +43,7 @@ class UploadsController extends AppController {
 			  if(substr($obj, -1)=="/")
 			  unset($objs[$key]);
 			  }
-			  $this->set('avatars',$objs);
+			  $this->set('gallery',$objs);
 			  //get avatar gallery from S3 ends
 			  
 	   
@@ -61,7 +61,7 @@ class UploadsController extends AppController {
          );
 	     $bucket=Configure::read('S3.name');
 	     $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
-	     $this->set('covers',$objs);
+	     $this->set('gallery',$objs);
 		 //get cover gallery from S3 ends
 	   } 
 	
