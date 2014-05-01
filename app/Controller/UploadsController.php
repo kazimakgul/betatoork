@@ -32,7 +32,7 @@ class UploadsController extends AppController {
 	      $this->set('id',$id);
 		  
 		      //get avatar gallery from S3 begins
-			  /*/
+			  
 			  $prefix = 'upload/gallery/avatars';
               $opt = array(
               'prefix' => $prefix,
@@ -42,8 +42,10 @@ class UploadsController extends AppController {
 			  foreach($objs as $obj)
 			  {
 			 //DO something
+			 echo 'naber';
+			 print_r($objs);
 			  }
-			  */
+			  
 			  //get avatar gallery from S3 ends
 	   
 	   
