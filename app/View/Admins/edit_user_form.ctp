@@ -18,7 +18,7 @@
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 90px; height: 120px; line-height: 20px;"></div>
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
-        <a data-toggle="modal" data-target="#pictureChange" href="#"><span class="fileupload-new"><i class="elusive-edit"></i></span></a>
+        <a id="opencheck" data-toggle="modal" data-target="#pictureChange" href="#"><span class="fileupload-new"><i class="elusive-edit"></i></span></a>
   </span>
   </div>
 </div>

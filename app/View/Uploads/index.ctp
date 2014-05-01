@@ -59,6 +59,7 @@ user_id='<?php echo $id;?>';
         <!-- The file input field used as target for the file upload widget -->
         <input id="fileupload" type="file" name="files[]" multiple>
 		<input id="selected_image" type="hidden" value="empty">
+		<input id="loadfrom" type="hidden" value="upload">
 		<input id="new_image_link" type="hidden" value="emptylink">
     </span>
 				        <!-- The fileinput-button span is used to style the file input field as button ends -->	
@@ -177,6 +178,7 @@ $('#fileupload').click(function () {
 	
 	$('#set_photo').click(function () {
 		selected_image=$('#selected_image').val().trim();
+		loadfrom=$('#loadfrom').val();
 		if(selected_image!='empty')
 		{
 		//do jobs for s3 upload and database save
@@ -184,7 +186,7 @@ $('#fileupload').click(function () {
 		   $.ajax({
         type: "POST",
         url: set_photo,
-		data: {uploadtype:upload_type,name: selected_image,id:user_id },
+		data: {uploadtype:upload_type,name: selected_image,id:user_id,from:loadfrom },
         dataType: "json",
 		async: false,
         success: function(data){

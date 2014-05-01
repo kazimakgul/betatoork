@@ -2111,6 +2111,31 @@ $('#avatarframe').load(function(){
 //alert(name);
 
 });
+
+
+//I use some javasript here to access dynamically created iframe
+$('#opencheck').live('click',function(){
+	
+		   var iframe = document.getElementById("avatarframe");
+		   var btn1 = iframe.contentWindow.document.getElementById('close_panel');
+		   btn1.onclick = function() {
+		   //Actions for button 1
+           $('#pictureChange').modal('toggle');
+		   //Actions for button 1 ends
+           }
+		   var btn2 = iframe.contentWindow.document.getElementById('set_photo');
+		   btn2.onclick = function() {
+		   //Actions for button 2
+           $('#pictureChange').modal('toggle');
+           $('#user_avatar').attr('src','http://www.imageyourself.net/images/website/loading.gif');
+           setTimeout(function(){
+		   var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
+           $('#user_avatar').attr('src',new_img);			   
+           },1000);
+           //Actions for button 2 ends
+           }
+   
+});
 //==========================================================
 //*********Upload Modal Functions Ends********
 //==========================================================

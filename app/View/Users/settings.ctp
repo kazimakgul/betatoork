@@ -307,7 +307,7 @@ $username = $user['User']['seo_username'];
 	<!-- Avatar Change Modal begins -->
     <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:800px;">
-            <div >
+            <div>
                 <?php 
 				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','avatar_image',$userid));
 				$url=$avatar_image_url;

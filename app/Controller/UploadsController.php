@@ -27,9 +27,26 @@ class UploadsController extends AppController {
 	   if($uploadtype=='avatar_image')
        {//User need to be logged in.COndition ekle!!!
 	
-	   $this->set('gallery','Avatar resimleri için galery içerigi');
-	   $this->set('uploadtype',$uploadtype);
-	   $this->set('id',$id);
+	      $this->set('gallery','Avatar resimleri için galery içerigi');
+	      $this->set('uploadtype',$uploadtype);
+	      $this->set('id',$id);
+		  
+		      //get avatar gallery from S3 begins
+			  /*/
+			  $prefix = 'upload/gallery/avatars';
+              $opt = array(
+              'prefix' => $prefix,
+              );
+			  $bucket=Configure::read('S3.name');
+			  $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			  foreach($objs as $obj)
+			  {
+			 //DO something
+			  }
+			  */
+			  //get avatar gallery from S3 ends
+	   
+	   
 	   }elseif($uploadtype=='cover_image')
 	   {
 	   $this->set('gallery','Cover resimleri için galery içerigi');
@@ -46,7 +63,7 @@ class UploadsController extends AppController {
 	}
 	
 	
-	public function set_as($uploadtype=NULL,$name=NULL,$id=NULL)
+	public function set_as($uploadtype=NULL,$name=NULL,$id=NULL,$loadfrom=NULL)
 	{
 	Configure::write ( 'debug', 0 );
 	App::uses('Folder', 'Utility');
@@ -55,21 +72,20 @@ class UploadsController extends AppController {
 	$uploadtype=$this->request->data['uploadtype'];
 	$name=$this->request->data['name'];
 	$id=$this->request->data['id'];
+	$loadfrom=$this->request->data['from'];
 	
-	
-	//Throw to S3 begins
-	if($uploadtype=='avatar_image')
+	//Load Avatar From Upload begins
+	if($uploadtype=='avatar_image' && $loadfrom='upload')
 	{
-	//s3 fuctions begins here
-	$file = new File(WWW_ROOT ."/upload/users/".$id."/".$name,false);
-	$info=$file->info();
+	   $file = new File(WWW_ROOT ."/upload/users/".$id."/".$name,false);
+	   $info=$file->info();
 
-	$filename=$info["filename"];
-	$ext=$info["extension"];
-	$basename=$info["basename"];
-	$dirname=$info["dirname"];
-	$newname=$filename.'_original.'.$ext;
-	rename(WWW_ROOT ."/upload/users/".$id."/".$name, WWW_ROOT ."/upload/users/".$id."/".$newname);
+	   $filename=$info["filename"];
+	   $ext=$info["extension"];
+	   $basename=$info["basename"];
+	   $dirname=$info["dirname"];
+	   $newname=$filename.'_original.'.$ext;
+	   rename(WWW_ROOT ."/upload/users/".$id."/".$name, WWW_ROOT ."/upload/users/".$id."/".$newname);
 	
 	        //Upload to aws begins
 			$feedback=$this->Amazon->S3->create_object(
@@ -81,24 +97,34 @@ class UploadsController extends AppController {
             )
             );
 			//Upload to aws ends
-	//s3 fuctions ends here
-	}
-	//Throw to S3 ends
+	   //s3 fuctions ends here
 	
-	if($feedback)
-	{
-	//Set the picture field on db.
-	//remove related id folder from users folder.
-	$newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$newname;
-	$this->User->query('UPDATE users SET picture="'.$basename.'" WHERE id='.$id);	
-    $msg = array("title" => 'Image has been saved on s3.','result' => 1,'newlink'=>$newurl);
-	}else{
-	$msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
-	}
-
+	   if($feedback)
+	   {
+	   //Set the picture field on db.
+	   //remove related id folder from users folder.
+	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$newname;
+	   $this->User->query('UPDATE users SET picture="'.$basename.'" WHERE id='.$id);	
+       $msg = array("title" => 'Image has been saved on s3.','result' => 1,'newlink'=>$newurl);
+	   }else{
+	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
+	   }
+    //Load Avatar From Upload ends
+	}elseif($uploadtype=='avatar_image' && $loadfrom='gallery'){
+	//Load Avatar From Gallery begins
 	
-    $this->set('rtdata', $msg);
-    $this->set('_serialize', array('rtdata'));
+	
+	
+	//Load Avatar From Photos ends
+	}elseif($uploadtype=='avatar_image' && $loadfrom='photos'){
+	//Load Avatar From Gallery begins
+	
+	
+	//Load Avatar From Photos ends
+	}
+	
+       $this->set('rtdata', $msg);
+       $this->set('_serialize', array('rtdata'));
 	}
 	
 	
