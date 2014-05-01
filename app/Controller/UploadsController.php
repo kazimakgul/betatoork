@@ -38,6 +38,11 @@ class UploadsController extends AppController {
               );
 			  $bucket=Configure::read('S3.name');
 			  $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			  foreach($objs as $key => $obj)
+			  {
+			  if(substr($obj, -1)=="/")
+			  unset($objs[$key]);
+			  }
 			  $this->set('avatars',$objs);
 			  //get avatar gallery from S3 ends
 			  
