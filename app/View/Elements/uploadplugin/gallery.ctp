@@ -7,6 +7,13 @@
 <div id=gal-wrapper" style=" padding:10px; width:100%">
 
 
+<?php  foreach($avatars as $link){ ?>
+
+<div id="thumbwrap"  onclick="select_me(this)" style="width: 140px; height: 78px;">
+<img class="Ed-Gj-re-Ui" src="https://s3.amazonaws.com/betatoorkpicstest/<?php echo $link;?>" title="Grass.jpg" style="width: 140px; height: 78px;">
+</div>
+
+<?php  } ?>
 
 <div id="thumbwrap"  onclick="select_me(this)" style="width: 140px; height: 78px;">
 <img class="Ed-Gj-re-Ui" src="https://lh4.googleusercontent.com/-zDwkUkb_0oM/UTpAVEKFsLI/AAAAAAAAAZ0/ZKemOcec6xE/w140-h78-p/Grass.jpg" title="Grass.jpg" style="width: 140px; height: 78px;">
