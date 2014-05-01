@@ -27,6 +27,10 @@ class UploadsController extends AppController {
 	   if($uploadtype=='avatar_image')
        {//User need to be logged in.COndition ekle!!!
 	
+	    $filepath="/upload/gallery/covers/10.jpg";
+		$filepath = basename($filepath);echo $filepath;
+	
+	
 	      $this->set('gallery','Avatar resimleri için galery içerigi');
 	      $this->set('uploadtype',$uploadtype);
 	      $this->set('id',$id);
