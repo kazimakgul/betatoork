@@ -1,3 +1,6 @@
+<?php print_r($avatars);?>
+
+
 <div id="gallery" style=" width:100%; height:350px;" class="scroll">
 <?php //echo $gallery; ?>
 
