@@ -178,8 +178,25 @@ class UploadsController extends AppController {
 	//Load Avatar From Photos ends
 	}elseif($uploadtype=='avatar_image' && $loadfrom='photos'){
 	//Load Avatar From Gallery begins
+	$basename = basename($image_patch);
+    $noextension=rtrim($basename, '.'.$this->getExtension($basename));
+    $noextension=substr($noextension, 0, -9);
+	$yesextension=$noextension.'.'.$this->getExtension($basename);
 	
-	
+	if($basename)
+	{
+	//Set the picture field on db.
+	//remove related id folder from users folder.
+	$newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$basename;
+	$this->User->query('UPDATE users SET picture="'.$yesextension.'" WHERE id='.$id);	
+    $msg = array("title" => 'Image has been saved on s3.','result' => 1,'newlink'=>$newurl);
+	}else{
+	$msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
+	}
+
+
+    
+
 	//Load Avatar From Photos ends
 	}
 	
