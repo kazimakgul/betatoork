@@ -151,10 +151,7 @@ class UploadsController extends AppController {
 	 //Upload to aws begins
 	 $feedback=$this->Amazon->S3->copy_object(
      array(Configure::read('S3.name'),$image_patch),
-     array(Configure::read('S3.name'),'upload/users/'.$id."/".$basename),
-     array( // Optional parameters
-        'acl'  => AmazonS3::ACL_PUBLIC
-    )
+     array(Configure::read('S3.name'),'upload/users/'.$id."/".$basename)
       );
 	  //Upload to aws ends
 	
