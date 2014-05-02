@@ -148,15 +148,32 @@ class UploadsController extends AppController {
 	 $basename = basename($image_patch);
 	 //http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonS3/copy_object
 
-	 //Upload to aws begins
-	 $feedback=$this->Amazon->S3->copy_object(
-     array(Configure::read('S3.name'),$image_patch),
-     array(Configure::read('S3.name'),'upload/users/'.$id."/".$basename)
-      );
-	  //Upload to aws ends
-	
+	 $noextension=rtrim($basename, '.'.$this->getExtension($basename));
+	 $yesextension=$noextension.'_original.'.$this->getExtension($basename);
 
-	$msg = array("title" =>'bu bir basliktir.');
+      //Upload to aws begins
+      $feedback=$this->Amazon->S3->copy_object(
+     array('bucket'=>Configure::read('S3.name'),'filename'=>'upload/gallery/avatars/'.$basename),
+     array('bucket'=>Configure::read('S3.name'),'filename'=>'upload/users/'.$id.'/'.$yesextension),
+     array( // Optional parameters
+        'acl'  => AmazonS3::ACL_PUBLIC
+    )
+      );
+      //Upload to aws ends
+
+
+	   if($feedback)
+	   {
+	   //Set the picture field on db.
+	   //remove related id folder from users folder.
+	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$yesextension;
+	   $this->User->query('UPDATE users SET picture="'.$basename.'" WHERE id='.$id);	
+       $msg = array("title" => 'Image has been saved on s3.','result' => 1,'newlink'=>$newurl);
+	   }else{
+	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
+	   }
+
+
 	
 	//Load Avatar From Photos ends
 	}elseif($uploadtype=='avatar_image' && $loadfrom='photos'){
@@ -170,6 +187,15 @@ class UploadsController extends AppController {
        $this->set('_serialize', array('rtdata'));
 	}
 	
+
+function getExtension($str) {
+     $i = strrpos($str,".");
+     if (!$i) { return ""; }
+     $l = strlen($str) - $i;
+     $ext = substr($str,$i+1,$l);
+     return $ext;
+   }
+
 	
 	public function set_image($id=35,$name='mervesez.jpg') {
 	App::uses('Folder', 'Utility');

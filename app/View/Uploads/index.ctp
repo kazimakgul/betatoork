@@ -59,7 +59,7 @@ user_id='<?php echo $id;?>';
         <!-- The file input field used as target for the file upload widget -->
         <input id="fileupload" type="file" name="files[]" multiple>
 		<input id="selected_image" type="hidden" value="empty">
-		<input id="loadfrom" type="hidden" value="gallery">
+		<input id="loadfrom" type="hidden" value="upload">
 		<input id="imagepatch" type="hidden" value="empty">
 		<input id="new_image_link" type="hidden" value="empty">
     </span>
@@ -195,7 +195,7 @@ $('#fileupload').click(function () {
 		async: false,
         success: function(data){
 			
-			alert(data.rtdata.title);
+			//alert(data.rtdata.title);
 			$('#new_image_link').val(data.rtdata.newlink);
 			
 			//$title=data.rtdata.title;
@@ -245,6 +245,7 @@ $('#fileupload').click(function () {
 		$('#selected_image').val('empty');
 		$('#imagepatch').val('empty');
 		$('.picker-badges').remove();
+		$('#loadfrom').val('upload');
 	}
 
 	function go_gallery()
@@ -254,6 +255,7 @@ $('#fileupload').click(function () {
 		$('#selected_image').val('empty');
 		$('#imagepatch').val('empty');
 		$('.picker-badges').remove();
+		$('#loadfrom').val('gallery');
 	}
 
 	function go_photos()
@@ -263,6 +265,7 @@ $('#fileupload').click(function () {
 		$('#selected_image').val('empty');
 		$('#imagepatch').val('empty');
 		$('.picker-badges').remove();
+		$('#loadfrom').val('photos');
 	}
 
 
