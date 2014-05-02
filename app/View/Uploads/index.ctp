@@ -37,8 +37,8 @@ user_id='<?php echo $id;?>';
 
 <div id="top-menu">
 <a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-upload"></i> Upload</a>
-<a href="#album" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-list"></i> Gallery</a>
-<a href="#photos" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-user"></i> Your Photos</a>
+<a href="#album" onclick="go_gallery();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-list"></i> Gallery</a>
+<a href="#photos" onclick="go_photos();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-user"></i> Your Photos</a>
 
  
 
@@ -60,8 +60,8 @@ user_id='<?php echo $id;?>';
         <input id="fileupload" type="file" name="files[]" multiple>
 		<input id="selected_image" type="hidden" value="empty">
 		<input id="loadfrom" type="hidden" value="upload">
-		<input id="imagepatch" type="hidden" value="upload">
-		<input id="new_image_link" type="hidden" value="emptylink">
+		<input id="imagepatch" type="hidden" value="empty">
+		<input id="new_image_link" type="hidden" value="empty">
     </span>
 				        <!-- The fileinput-button span is used to style the file input field as button ends -->	
 						
@@ -96,7 +96,9 @@ user_id='<?php echo $id;?>';
 						<!--Content of Gallery ends -->
 						</div>
                         <div class="tab-pane" id="photos">
-						Photos Area
+						<!--Content of Photos begins -->
+						<?php echo $this->element('uploadplugin/photos'); ?>
+						<!--Content of Photos ends -->
 						</div>
                        
                     </div>
@@ -241,6 +243,26 @@ $('#fileupload').click(function () {
 		$('#set_photo').addClass('disabled');
 		$('#crop_photo').addClass('disabled');
 		$('#selected_image').val('empty');
+		$('#imagepatch').val('empty');
+		$('.picker-badges').remove();
+	}
+
+	function go_gallery()
+	{
+		$('#set_photo').addClass('disabled');
+		$('#crop_photo').addClass('disabled');
+		$('#selected_image').val('empty');
+		$('#imagepatch').val('empty');
+		$('.picker-badges').remove();
+	}
+
+	function go_photos()
+	{
+		$('#set_photo').addClass('disabled');
+		$('#crop_photo').addClass('disabled');
+		$('#selected_image').val('empty');
+		$('#imagepatch').val('empty');
+		$('.picker-badges').remove();
 	}
 
 

@@ -45,6 +45,21 @@ class UploadsController extends AppController {
 			  }
 			  $this->set('gallery',$objs);
 			  //get avatar gallery from S3 ends
+
+			  //get avatar gallery from S3 by id begins
+			  $prefix = 'upload/users/'.$id;
+              $opt = array(
+              'prefix' => $prefix,
+              );
+			  $bucket=Configure::read('S3.name');
+			  $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+			  foreach($objs as $key => $obj)
+			  {
+			  if(substr($obj, -1)=="/")
+			  unset($objs[$key]);
+			  }
+			  $this->set('photos',$objs);
+			  //get avatar gallery from S3 by id ends
 			  
 	   
 	   
@@ -129,11 +144,19 @@ class UploadsController extends AppController {
     //Load Avatar From Upload ends
 	}elseif($uploadtype=='avatar_image' && $loadfrom=='gallery'){
 	//Load Avatar From Gallery begins
-	
-	
-	 $image_patch=$image_patch;
+
 	 $basename = basename($image_patch);
 	 //http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonS3/copy_object
+
+	 //Upload to aws begins
+	 $feedback=$this->Amazon->S3->copy_object(
+     array(Configure::read('S3.name'),$image_patch),
+     array(Configure::read('S3.name'),'upload/users/'.$id."/".$basename),
+     array( // Optional parameters
+        'acl'  => AmazonS3::ACL_PUBLIC
+    )
+      );
+	  //Upload to aws ends
 	
 	
 	//Load Avatar From Photos ends
