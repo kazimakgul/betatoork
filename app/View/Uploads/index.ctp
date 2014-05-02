@@ -183,7 +183,7 @@ $('#fileupload').click(function () {
 		selected_image=$('#selected_image').val().trim();
 		loadfrom=$('#loadfrom').val();
 		imagepatch=$('#imagepatch').val();
-		if(selected_image!='empty')
+		if(selected_image!='empty' || imagepatch!='empty')
 		{
 		//do jobs for s3 upload and database save
 		//------
@@ -195,7 +195,7 @@ $('#fileupload').click(function () {
 		async: false,
         success: function(data){
 			
-			//alert(data.rtdata.title);
+			alert(data.rtdata.title);
 			$('#new_image_link').val(data.rtdata.newlink);
 			
 			//$title=data.rtdata.title;

@@ -158,6 +158,8 @@ class UploadsController extends AppController {
       );
 	  //Upload to aws ends
 	
+
+	$msg = array("title" =>'bu bir basliktir.');
 	
 	//Load Avatar From Photos ends
 	}elseif($uploadtype=='avatar_image' && $loadfrom='photos'){
