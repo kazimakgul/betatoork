@@ -6,35 +6,10 @@
 <div class="col-md-12">
 
 <div class="btn-group" style="margin-bottom:10px;">
-  <button type="button" class="btn btn-default btn-sm">Action</button>
-  <button type="button" class="btn btn-default btn-sm">Adventure</button>
-  <button type="button" class="btn btn-default btn-sm">MMO</button>
-  <button type="button" class="btn btn-default btn-sm">Kids</button>
-  <button type="button" class="btn btn-default btn-sm">Girls</button>
-  <button type="button" class="btn btn-default btn-sm">Words</button>
-  <button type="button" class="btn btn-default btn-sm">Socials</button>
-  <button type="button" class="btn btn-default btn-sm">MMO</button>
-  <button type="button" class="btn btn-default btn-sm">Kids</button>
-  <button type="button" class="btn btn-default btn-sm">Girls</button>
-  <button type="button" class="btn btn-default btn-sm">Words</button>
-  <button type="button" class="btn btn-default btn-sm">Socials</button>
-  <button type="button" class="btn btn-default btn-sm">Girls</button>
-  <button type="button" class="btn btn-default btn-sm">Words</button>
-
-  <div class="btn-group">
-    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-      More...
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Racing</a></li>
-      <li><a href="#">Shooting</a></li>
-      <li><a href="#">Racing</a></li>
-      <li><a href="#">Shooting</a></li>
-      <li><a href="#">Racing</a></li>
-      <li><a href="#">Shooting</a></li>
-    </ul>
-  </div>
+<?php
+	$limit = 14;
+	echo $this->element('business/category', array('limit'=>$limit));
+?>
   </div>
 
 </div>
@@ -58,7 +33,8 @@
           <?php  
             $div = "<div class='col-xs-12' style='padding:0px;'>";
             $limit = 3;
-            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
+			$fix = 'fix';
+            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit, 'fix' =>$fix)); 
           ?>
 
           </div>
@@ -165,3 +141,5 @@
 
 
 </div><!-- /.container -->
+
+<?php  echo $this->element('business/footer'); ?>

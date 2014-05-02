@@ -1,27 +1,19 @@
 <?php $counter=0;?>
-<?php foreach ($games as $game): ?>
-<?php
-if($game['Game']['seo_url']!=NULL)
-{
-    if($game['Game']['embed']!=NULL)
-      $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playgame'));
-    else
-      $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playframe'));
-}
-    else{
-      $playurl=$this->Html->url(array( "controller" => "games","action" =>"gameswitch",h($game['Game']['id'])));
-}
-
+<?php foreach ($games as $game): 
+$playurl=$this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
 ?>
 
           <?php echo $div; ?>
             <div class="panel panel-default">
               <div class="imagehover">
-                <div class="caption">
+               <? if (isset($fix)){ ?>
+               <div class="caption">
                     <p><a href="" class="label label-danger" data-placement="bottom" data-toggle="tooltip" title="Change This Game">Change</a>
                     <a href="" class="label label-default" data-placement="bottom" data-toggle="tooltip" title="Play This Game">Play</a></p>
                 </div>
-                <a href="<?php echo $playurl; ?>" class="panel-image">
+               <? } ?>
+               
+               <a href="<?php echo $playurl; ?>" class="panel-image">
                 <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class' => 'panel-image-preview','alt'=>$game['Game']['name'],'onerror'=>'imgError(this,"toorksize");')); ?></a>
               </div>
                 <div class="panel-footer text-center" style="padding:0px;">

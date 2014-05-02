@@ -4,7 +4,7 @@ $logout=$this->Html->url(array("controller" => "users","action" =>"logout"));
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
-$index=$this->Html->url(array("controller" => "business","action" =>"mysite",$user['User']['id'])); 
+$index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$user['User']['id'])); 
 
 ?>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -16,7 +16,8 @@ $index=$this->Html->url(array("controller" => "business","action" =>"mysite",$us
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" rel="home" href="#"><?php echo $user['User']['screenname']?></a>
+		<!-- Username kısmını ilerde screenname olarak değiştir -->
+		<a class="navbar-brand" rel="home" href="#"><?php echo $user['User']['username']?></a>
 	</div>
 
 	<div class="collapse navbar-collapse">

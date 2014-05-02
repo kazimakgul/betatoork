@@ -40,7 +40,7 @@ class GamesController extends AppController {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
 	
-	//===Eger upload adinda bir klasör varsa siler.====
+	//===Eger upload adinda bir klasï¿½r varsa siler.====
         $upload_dir = new Folder(WWW_ROOT ."upload");
  	    $updir=$upload_dir->pwd();
 		if($updir!=NULL)
@@ -48,7 +48,7 @@ class GamesController extends AppController {
 		$upload_dir->delete();
 		//print_r($upload_dir->errors());
 		}
-    //===//Eger upload adinda bir klasör varsa siler.====
+    //===//Eger upload adinda bir klasï¿½r varsa siler.====
 	
 	
 	}
@@ -124,7 +124,7 @@ class GamesController extends AppController {
 
 
 
-//Yeni Sistem-GamesControlerina bagli sayfalar için last activityleri getirir.Component yapilabilir.
+//Yeni Sistem-GamesControlerina bagli sayfalar iï¿½in last activityleri getirir.Component yapilabilir.
 public function get_last_activities()
 {
     if($this->Auth->user('id'))
@@ -141,7 +141,7 @@ $this->set('lastactivities',$activityData);
 
 }
 
-//Yeni Sistem-Kullanicinin kaç tane notificationu oldugunun bilgisini saglar.
+//Yeni Sistem-Kullanicinin kaï¿½ tane notificationu oldugunun bilgisini saglar.
 public function set_notify_count()
 {
        if($this->Auth->user('id'))
@@ -452,7 +452,7 @@ public function set_suggested_channels()
 	}
     
 
-//Yeni Sistem- Bu fonksiyon oyunlari kategorilere göre siralar.
+//Yeni Sistem- Bu fonksiyon oyunlari kategorilere gï¿½re siralar.
 public function categorygames2() {
 		$this->layout='dashboard';
 		$this->leftpanel();
@@ -1058,7 +1058,7 @@ if($this->request->is("GET") && isset($this->request->params['pass'][0]))
 $param = $this->request->params['pass'][0];
 }
 
-//search için veri girilmemisse ana sayfaya yönlendir.
+//search iï¿½in veri girilmemisse ana sayfaya yï¿½nlendir.
 if(!isset($param) || $param=="" )
 {
 $this->redirect(array("controller"=>"games","action"=>"index"));
@@ -1288,7 +1288,6 @@ if(empty($favbefore))
 	}
 
 	public function gameswitch($id = null) {
-
 		$gameid = $this->request->params['pass'][0];
 		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid),'fields'=>array('Game.embed'),'contain'=>false));//Recoded
 		if($game['Game']['embed']==null){
@@ -1296,8 +1295,6 @@ if(empty($favbefore))
 		}else{
 			$this->redirect(array('controller' => 'games', 'action' => 'playgame',$gameid));
 		}
-
-
 	}
 
 	public function playgameframe($channel=NULL,$seo_url=NULL) {
@@ -1410,7 +1407,7 @@ function checkDuplicateSeoUrl($seo_url='toork')
 function secureSuperGlobalPOST($value)
     {
 	    //$string = preg_replace('/[^\w\d_ -]/si', '', $value);<br />
-        //Nokta ve virgülü de engelleyen kod iptal edildi.
+        //Nokta ve virgï¿½lï¿½ de engelleyen kod iptal edildi.
         $string = htmlspecialchars(stripslashes($value));
         $string = str_ireplace("script", "blocked", $string);
         $string = mysql_escape_string($string);
@@ -2318,7 +2315,7 @@ exec($command3, $output3, $ret3);
 	$this->layout='adminTry';
 	if($this->request->isPost())
 	{	
-	//iç
+	//iï¿½
 
 	$this->Game->id =$this->request->data["Game"]["id"];
 	$id=$this->request->data["Game"]["id"];
