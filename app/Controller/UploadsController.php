@@ -70,7 +70,7 @@ class UploadsController extends AppController {
 	   $this->set('id',$id);
 	   
 	   
-	     //get cover gallery from S3 begins
+	     //get cover photos from S3 begins
 	     $prefix = 'upload/users/'.$id.'/covers';
          $opt = array(
          'prefix' => $prefix,
@@ -82,10 +82,10 @@ class UploadsController extends AppController {
 		 if(substr($obj, -1)=="/")
 		 unset($objs[$key]);
 		 }
-	     $this->set('gallery',$objs);
-		 //get cover gallery from S3 ends
+	     $this->set('photos',$objs);
+		 //get cover photos from S3 ends
 		 
-		 //get cover photos from S3 begins
+		 //get cover gallery from S3 begins
 	     $prefix = 'upload/gallery/covers';
          $opt = array(
          'prefix' => $prefix,
@@ -98,7 +98,7 @@ class UploadsController extends AppController {
 		 unset($objs[$key]);
 		 }
 	     $this->set('gallery',$objs);
-		 //get cover photos from S3 ends
+		 //get cover galery from S3 ends
 		 
 	   }elseif($uploadtype=='game_image'){
 	   
@@ -262,7 +262,7 @@ class UploadsController extends AppController {
 	   $this->User->query('UPDATE users SET banner="'.$basename.'" WHERE id='.$id);	
        $msg = array("title" => 'Image has been saved on s3.'.$id.$name.$newname,'result' => 1,'newlink'=>$newurl);
 	   }else{
-	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
+	   $msg = array("title" => $uploadtype.$name.$id.'newurl:'.$newurl.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	   }
 	
 	//Load Cover From Upload ends
