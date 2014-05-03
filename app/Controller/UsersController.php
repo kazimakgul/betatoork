@@ -648,8 +648,6 @@ WHERE user_id='.$auth_id.'');
 			
 			//remove objects from S3
 			$prefix = 'upload/users/'.$id;
-           
-  
              $opt = array(
              'prefix' => $prefix,
              );
