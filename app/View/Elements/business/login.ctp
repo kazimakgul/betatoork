@@ -306,7 +306,7 @@
         <div class="modal-dialog" style="width:800px;">
             <div>
                 <?php 
-				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','cover_image',$userid));
+				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','cover_image',$user_id));
 				$url=$avatar_image_url;
 				?>
                 <iframe id='coverframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
