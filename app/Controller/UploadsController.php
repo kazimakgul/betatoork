@@ -69,8 +69,23 @@ class UploadsController extends AppController {
 	   $this->set('uploadtype',$uploadtype);
 	   $this->set('id',$id);
 	   
+	   
 	     //get cover gallery from S3 begins
-		 /*
+	     $prefix = 'upload/users/'.$id.'/covers';
+         $opt = array(
+         'prefix' => $prefix,
+         );
+	     $bucket=Configure::read('S3.name');
+	     $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+		 foreach($objs as $key => $obj)
+		 {
+		 if(substr($obj, -1)=="/")
+		 unset($objs[$key]);
+		 }
+	     $this->set('gallery',$objs);
+		 //get cover gallery from S3 ends
+		 
+		 //get cover photos from S3 begins
 	     $prefix = 'upload/gallery/covers';
          $opt = array(
          'prefix' => $prefix,
@@ -83,8 +98,8 @@ class UploadsController extends AppController {
 		 unset($objs[$key]);
 		 }
 	     $this->set('gallery',$objs);
-		 */
-		 //get cover gallery from S3 ends
+		 //get cover photos from S3 ends
+		 
 	   }elseif($uploadtype=='game_image'){
 	   
 	   $this->set('gallery','Cover resimleri için galery içerigi');
