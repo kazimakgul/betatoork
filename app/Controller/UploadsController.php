@@ -240,6 +240,9 @@ class UploadsController extends AppController {
 	   $basename=$info["basename"];
 	   $dirname=$info["dirname"];
 	   $newname=$filename.'_original.'.$ext;
+	   
+	   $msg = array("title" => $id.$name.$newname);
+	   
 	   rename(WWW_ROOT ."/upload/users/".$id."/covers/".$name, WWW_ROOT ."/upload/users/".$id."/covers/".$newname);
 	
 	        //Upload to aws begins
