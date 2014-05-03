@@ -8,9 +8,9 @@
     <div class="showhim col-md-12">
 
                 <?php if($user['User']['banner']==null) { ?>
-                <div style="background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg)">
+                <div id="user_cover" style="background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg)">
                 <?php } else { ?>
-                <div style="background-image:url(<?php echo Configure::read('S3.url')."/upload/users/".$user['User']['id']."/".$user['User']['banner'];?>)">
+                <div id="user_cover" style="background-image:url(<?php echo Configure::read('S3.url')."/upload/users/".$user['User']['id']."/".$user['User']['banner'];?>)">
                 <?php } ?>
 
                     <?php 
@@ -29,7 +29,7 @@
                       <a class="btn btn-danger"><i class="fa fa-gamepad"></i> Games - <?php echo $gameNo;?></a>
                     </div>
 
-<a href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -150px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
+<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -150px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
 
 <?php
 $website=$user['User']['website'];
