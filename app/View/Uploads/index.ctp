@@ -211,6 +211,8 @@ $('#fileupload').click(function () {
 	});
 	
 	$('#crop_photo').click(function () {
+	  if(checkCoords())
+	  {//check selected begins
 		selected_image=$('#selected_image').val().trim();
 		//alert('photo has been cropped');
     //------
@@ -232,6 +234,7 @@ $('#fileupload').click(function () {
   });
   //------	
 
+   }//check selected ends
 
 	});
 	
@@ -280,7 +283,7 @@ $('#fileupload').click(function () {
   function checkCoords()
   {
     if (parseInt($('#w').val())) return true;
-    alert('Please select a crop region then press submit.');
+    alert('Please select a crop region then press Crop button.');
     return false;
   }
 
