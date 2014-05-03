@@ -240,9 +240,6 @@ class UploadsController extends AppController {
 	   $basename=$info["basename"];
 	   $dirname=$info["dirname"];
 	   $newname=$filename.'_original.'.$ext;
-	   
-	   $msg = array("title" => $id.$name.$newname);
-	   
 	   rename(WWW_ROOT ."/upload/users/".$id."/covers/".$name, WWW_ROOT ."/upload/users/".$id."/covers/".$newname);
 	
 	        //Upload to aws begins
@@ -263,7 +260,7 @@ class UploadsController extends AppController {
 	   //remove related id folder from users folder.
 	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/covers/'.$newname;
 	   $this->User->query('UPDATE users SET banner="'.$basename.'" WHERE id='.$id);	
-       $msg = array("title" => 'Image has been saved on s3.','result' => 1,'newlink'=>$newurl);
+       $msg = array("title" => 'Image has been saved on s3.'.$id.$name.$newname,'result' => 1,'newlink'=>$newurl);
 	   }else{
 	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	   }
