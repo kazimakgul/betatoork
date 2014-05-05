@@ -186,8 +186,8 @@ class UploadHandler
 	$this->options['upload_dir']=dirname($this->get_server_var('SCRIPT_FILENAME')).'/../upload/users/'.$_GET['id'].'/';
 	$this->options['upload_url']=$this->get_full_url().'/../upload/users/'.$_GET['id'].'/';
 	}elseif(isset($_GET['uploadtype']) && $_GET['uploadtype']=="cover_image" && isset($_GET['id'])){
-	$this->options['upload_dir']=dirname($this->get_server_var('SCRIPT_FILENAME')).'/../upload/users/'.$_GET['id'].'/covers/';
-	$this->options['upload_url']=$this->get_full_url().'/../upload/users/'.$_GET['id'].'/covers/';
+	$this->options['upload_dir']=dirname($this->get_server_var('SCRIPT_FILENAME')).'/../upload/users/'.$_GET['id'].'/';
+	$this->options['upload_url']=$this->get_full_url().'/../upload/users/'.$_GET['id'].'/';
 	}elseif(isset($_GET['uploadtype']) && $_GET['uploadtype']=="game_image" && isset($_GET['id'])){
 	$this->options['upload_dir']=dirname($this->get_server_var('SCRIPT_FILENAME')).'/../upload/games/'.$_GET['id'].'/';
 	$this->options['upload_url']=$this->get_full_url().'/../upload/games/'.$_GET['id'].'/';

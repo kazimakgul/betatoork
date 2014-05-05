@@ -137,10 +137,6 @@ class UploadsController extends AppController {
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
 	
-	$msg = array("title" => "okey");
-    $this->set('rtdata', $msg);
-    $this->set('_serialize', array('rtdata'));break;
-	
 	$uploadtype=$this->request->data['uploadtype'];
 	$name=$this->request->data['name'];
 	$id=$this->request->data['id'];
