@@ -211,7 +211,7 @@ class UploadsController extends AppController {
 	   }
 
 	//Load Avatar From Gallery ends
-	}elseif($uploadtype=='avatar_image' && $loadfrom='photos'){
+	}elseif($uploadtype=='avatar_image' && $loadfrom=='photos'){
 	//Load Avatar From Photos begins
 	$basename = basename($image_patch);
     $noextension=rtrim($basename, '.'.$this->getExtension($basename));
@@ -229,19 +229,76 @@ class UploadsController extends AppController {
 	$msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	}
 	//Load Avatar From Photos ends
-	}elseif($uploadtype=='cover_image' && $loadfrom='upload'){
+	}elseif($uploadtype=='cover_image' && $loadfrom=='upload'){
 	//Load Cover From Upload begins
 	
-	 $msg = array("title" => 'Image has been saved on s3 as cover by upload.','result' => 1,'newlink'=>'got it');
+	 $file = new File(WWW_ROOT ."/upload/users/".$id."/".$name,false);
+	   $info=$file->info();
+
+	   $filename=$info["filename"];
+	   $ext=$info["extension"];
+	   $basename=$info["basename"];
+	   $dirname=$info["dirname"];
+	   $newname=$filename.'_original.'.$ext;
+	   rename(WWW_ROOT ."/upload/users/".$id."/".$name, WWW_ROOT ."/upload/users/".$id."/".$newname);
+	
+	        //Upload to aws begins
+			$feedback=$this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/users/'.$id."/".$newname,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/users/".$id."/".$newname,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			//Upload to aws ends
+	   //s3 fuctions ends here
+	
+	   if($feedback)
+	   {
+	   //Set the picture field on db.
+	   //remove related id folder from users folder.
+	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$newname;
+	   $this->User->query('UPDATE users SET banner="'.$newname.'" WHERE id='.$id);	
+       $msg = array("title" => 'Image has been saved on s3 as cover by upload.'.$id.$name.$newname,'result' => 1,'newlink'=>$newurl);
+	   }else{
+	   $msg = array("title" => $uploadtype.$name.$id.'newurl:'.$newurl.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
+	   }
 	
 	//Load Cover From Upload ends
-	}elseif($uploadtype=='cover_image' && $loadfrom='gallery'){
+	}elseif($uploadtype=='cover_image' && $loadfrom=='gallery'){
 	//Load Cover From Gallery begins
 	
-	$msg = array("title" => 'Image has been saved on s3 as cover by cover.','result' => 1,'newlink'=>'got it');
+	$basename = basename($image_patch);
+
+	 $noextension=rtrim($basename, '.'.$this->getExtension($basename));
+	 $yesextension=$noextension.'_original.'.$this->getExtension($basename);
+
+      //Upload to aws begins
+      $feedback=$this->Amazon->S3->copy_object(
+     array('bucket'=>Configure::read('S3.name'),'filename'=>'upload/gallery/covers/'.$basename),
+     array('bucket'=>Configure::read('S3.name'),'filename'=>'upload/users/'.$id.'/'.$yesextension),
+     array( // Optional parameters
+        'acl'  => AmazonS3::ACL_PUBLIC
+    )
+      );
+      //Upload to aws ends
+
+
+	   if($feedback)
+	   {
+	   //Set the picture field on db.
+	   //remove related id folder from users folder.
+	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$yesextension;
+	   $this->User->query('UPDATE users SET banner="'.$yesextension.'" WHERE id='.$id);	
+       $msg = array("title" => 'Image has been saved on s3 by cover.','result' => 1,'newlink'=>$newurl);
+	   }else{
+	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
+	   }
+
 	
 	//Load Cover From Gallery ends
-	}elseif($uploadtype=='cover_image' && $loadfrom='photos'){
+	}elseif($uploadtype=='cover_image' && $loadfrom=='photos'){
 	//Load Cover From Photos begins
 	$basename = basename($image_patch);
     //$noextension=rtrim($basename, '.'.$this->getExtension($basename));
@@ -254,7 +311,7 @@ class UploadsController extends AppController {
 	//remove related id folder from users folder.
 	$newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$basename;
 	$this->User->query('UPDATE users SET banner="'.$basename.'" WHERE id='.$id);	
-    $msg = array("title" => 'Image has been saved on s3.','result' => 1,'newlink'=>$newurl);
+    $msg = array("title" => 'Image has been saved on s3 by photos.','result' => 1,'newlink'=>$newurl);
 	}else{
 	$msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	}
