@@ -32,6 +32,7 @@ class UploadsController extends AppController {
 	      $this->set('id',$id);
 		  
 		      //get avatar gallery from S3 begins
+			  /*
 			  $prefix = 'upload/gallery/avatars';
               $opt = array(
               'prefix' => $prefix,
@@ -59,6 +60,7 @@ class UploadsController extends AppController {
 			  unset($objs[$key]);
 			  }
 			  $this->set('photos',$objs);
+			  */
 			  //get avatar gallery from S3 by id ends
 			  
 	   
