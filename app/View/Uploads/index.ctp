@@ -191,10 +191,11 @@ $('#fileupload').click(function () {
         type: "POST",
         url: set_photo,
 		data: {uploadtype:upload_type,name: selected_image,id:user_id,from:loadfrom,image:imagepatch},
+        dataType: "json",
 		async: false,
         success: function(data){
 			
-			alert(data);
+			alert(data.rtdata.title);
 			$('#new_image_link').val(data.rtdata.newlink);
 			
 			//$title=data.rtdata.title;
