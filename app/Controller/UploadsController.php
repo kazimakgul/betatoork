@@ -232,7 +232,7 @@ class UploadsController extends AppController {
 	}elseif($uploadtype=='cover_image' && $loadfrom='upload'){
 	//Load Cover From Upload begins
 	
-	 $file = new File(WWW_ROOT ."/upload/users/".$id."/covers/".$name,false);
+	 $file = new File(WWW_ROOT ."/upload/users/".$id."/".$name,false);
 	   $info=$file->info();
 
 	   $filename=$info["filename"];
@@ -240,14 +240,14 @@ class UploadsController extends AppController {
 	   $basename=$info["basename"];
 	   $dirname=$info["dirname"];
 	   $newname=$filename.'_original.'.$ext;
-	   rename(WWW_ROOT ."/upload/users/".$id."/covers/".$name, WWW_ROOT ."/upload/users/".$id."/covers/".$newname);
+	   rename(WWW_ROOT ."/upload/users/".$id."/".$name, WWW_ROOT ."/upload/users/".$id."/".$newname);
 	
 	        //Upload to aws begins
 			$feedback=$this->Amazon->S3->create_object(
             Configure::read('S3.name'),
-            'upload/users/'.$id."/covers/".$newname,
+            'upload/users/'.$id."/".$newname,
              array(
-            'fileUpload' => WWW_ROOT ."/upload/users/".$id."/covers/".$newname,
+            'fileUpload' => WWW_ROOT ."/upload/users/".$id."/".$newname,
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
@@ -258,7 +258,7 @@ class UploadsController extends AppController {
 	   {
 	   //Set the picture field on db.
 	   //remove related id folder from users folder.
-	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/covers/'.$newname;
+	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$newname;
 	   $this->User->query('UPDATE users SET banner="'.$basename.'" WHERE id='.$id);	
        $msg = array("title" => 'Image has been saved on s3.'.$id.$name.$newname,'result' => 1,'newlink'=>$newurl);
 	   }else{
@@ -276,8 +276,8 @@ class UploadsController extends AppController {
 
       //Upload to aws begins
       $feedback=$this->Amazon->S3->copy_object(
-     array('bucket'=>Configure::read('S3.name'),'filename'=>'upload/gallery/covers/'.$basename),
-     array('bucket'=>Configure::read('S3.name'),'filename'=>'upload/users/'.$id.'/covers/'.$yesextension),
+     array('bucket'=>Configure::read('S3.name'),'filename'=>'upload/gallery/'.$basename),
+     array('bucket'=>Configure::read('S3.name'),'filename'=>'upload/users/'.$id.'/'.$yesextension),
      array( // Optional parameters
         'acl'  => AmazonS3::ACL_PUBLIC
     )
@@ -289,7 +289,7 @@ class UploadsController extends AppController {
 	   {
 	   //Set the picture field on db.
 	   //remove related id folder from users folder.
-	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/covers/'.$yesextension;
+	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$yesextension;
 	   $this->User->query('UPDATE users SET banner="'.$basename.'" WHERE id='.$id);	
        $msg = array("title" => 'Image has been saved on s3.','result' => 1,'newlink'=>$newurl);
 	   }else{
@@ -309,7 +309,7 @@ class UploadsController extends AppController {
 	{
 	//Set the picture field on db.
 	//remove related id folder from users folder.
-	$newurl=Configure::read('S3.url').'/upload/users/'.$id.'/covers/'.$basename;
+	$newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$basename;
 	$this->User->query('UPDATE users SET banner="'.$yesextension.'" WHERE id='.$id);	
     $msg = array("title" => 'Image has been saved on s3.','result' => 1,'newlink'=>$newurl);
 	}else{
