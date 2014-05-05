@@ -268,7 +268,7 @@ class UploadsController extends AppController {
 	//Load Cover From Upload ends
 	}elseif($uploadtype=='cover_image' && $loadfrom='gallery'){
 	//Load Cover From Gallery begins
-	$msg = array("title" => 'End of func.');
+	$msg = array("title" => 'Image has been saved on s3 as cover by upload.','result' => 1,'newlink'=>'this is new');
 
 	
 	//Load Cover From Gallery ends

@@ -184,7 +184,7 @@ $('#fileupload').click(function () {
 		loadfrom=$('#loadfrom').val();
 		imagepatch=$('#imagepatch').val();
 		if(selected_image!='empty' || imagepatch!='empty')
-		{alert(loadfrom+imagepatch+upload_type);
+		{
 		//do jobs for s3 upload and database save
 		//------
 		   $.ajax({
