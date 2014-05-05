@@ -71,7 +71,7 @@ class UploadsController extends AppController {
 	   
 	   
 	     //get cover photos from S3 begins
-	     $prefix = 'upload/users/'.$id.'/covers';
+	     $prefix = 'upload/users/'.$id;
          $opt = array(
          'prefix' => $prefix,
          );
