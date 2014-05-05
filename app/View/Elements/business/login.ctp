@@ -301,7 +301,7 @@
     </div>
     <!-- Avatar Change Modal ends -->
 	
-	<!-- Cover Change Modal begins 
+	<!-- Cover Change Modal begins -->
     <div class="modal fade" id="coverChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width:800px;">
             <div>
@@ -313,4 +313,4 @@
             </div>
         </div>
     </div>
-	 Cover Change Modal ends -->
+	<!-- Cover Change Modal ends -->
