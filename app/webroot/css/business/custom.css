@@ -162,3 +162,33 @@ display: none;
 .showhim:hover .showme{
 display : block;
 }
+.rating{
+	width:120px;
+	float: left;
+}
+.rating .row{
+	font-size:25px;
+}
+
+.clone{
+	width:120px;
+	float: left;	
+}
+.clone .row button i{
+	font-size:20px;
+}
+.clone .row:hover button i {
+	-webkit-animation: spin 2s infinite linear;
+	-moz-animation: spin 2s infinite linear;
+	-o-animation: spin 2s infinite linear;
+	animation: spin 2s infinite linear;
+	font-size:20px;
+}
+.favourite{
+	width:120px;
+	float:left;
+}
+.favourite .row button li{
+	font-size:17px;
+}
+
