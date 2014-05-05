@@ -231,7 +231,9 @@ class UploadsController extends AppController {
 	//Load Avatar From Photos ends
 	}elseif($uploadtype=='cover_image' && $loadfrom='upload'){
 	//Load Cover From Upload begins
-	
+	$msg = array("title" => "okey");
+$this->set('rtdata', $msg);
+       $this->set('_serialize', array('rtdata'));break;
 	 $file = new File(WWW_ROOT ."/upload/users/".$id."/".$name,false);
 	   $info=$file->info();
 
