@@ -26,7 +26,7 @@ else{
 		<div class='pull-left'>	
 			<!-- Clone Button -->
 			<div class="clone">
-				<div class="row" data-toggle="tooltip" data-original-title="Clone this game">
+				<div class="widget-button" data-toggle="tooltip" data-original-title="Clone this game">
 					<button type="button" class="btn btn-default"><i class="fa fa-cog"></i> Clone</button>
 				</div>
 			</div>
@@ -34,7 +34,7 @@ else{
 
 		<!-- Favorite Button -->
 			<div class="favourite">
-				<div class="row" data-toggle="tooltip" data-original-title="Add to favorites">
+				<div class="widget-button" data-toggle="tooltip" data-original-title="Add to favorites">
 					<button type="button" class="btn btn-default"><li class="fa fa-heart"></li> Favourite</button>
 				</div>
 			</div><!-- Favorite Button  End-->
@@ -42,7 +42,7 @@ else{
 		<div class='pull-center'>	
 			<!-- Rating Button -->
 			<div class="rating">
-			    <div class="row" data-toggle="tooltip" data-original-title="Rate this game">
+			    <div class="widget-button" data-toggle="tooltip" data-original-title="Rate this game">
 			        <div id="stars-existing" class="starrr" data-rating="<?=round($game['Game']['starsize']/20);?>"></div>
 			    </div>
 			</div><!-- Rating Button End -->
@@ -50,14 +50,14 @@ else{
 		<div class='pull-right' style='margin-right: 30px;'>	
  		<!-- Comment Button -->
 			<div class="CommentBtn">
-				<div class="row" data-toggle="tooltip" data-original-title="Comment">
+				<div class="widget-button" data-toggle="tooltip" data-original-title="Comment">
 					<button type="button" class="btn btn-default"><li class="fa fa-comment"></li> Comment</button>
 				</div>
 			</div><!-- Comment Button  End-->			
 			
  		<!-- Share Button -->
 			<div class="ShareBtn">
-				<div class="row" data-toggle="tooltip" data-original-title="Share">
+				<div class="widget-button" data-toggle="tooltip" data-original-title="Share">
 					<button type="button" class="btn btn-default"><li class="fa fa-share-square-o"></li> Share</button>
 				</div>
 			</div><!-- Share Button  End-->
