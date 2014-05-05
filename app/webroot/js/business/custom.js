@@ -54,7 +54,7 @@ $('#coverframe').load(function(){
 $('#coverframe').load(function(){
   $(this).contents().find("#set_photo").on('click', function(event) { 
    $('#coverChange').modal('toggle');
-   $('#user_cover').css('background-image','url(http://www.imageyourself.net/images/website/loading.gif)');	
+   $('#user_cover').css('background-image','url(http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif)');	
    setTimeout(function(){
 		var new_img = $('iframe[id=coverframe]').contents().find('#new_image_link').val();
         $('#user_cover').css('background-image','url('+new_img+')');		   
