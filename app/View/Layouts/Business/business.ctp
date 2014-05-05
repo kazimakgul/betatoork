@@ -20,7 +20,7 @@
 
         <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <?php echo $this->Html->script(array('business/custom.js')); ?>
+        <?php echo $this->Html->script(array('business/custom','business/business')); ?>
 
         <script>
         toorksize='<?php echo Configure::read('broken.toorksize'); ?>';
