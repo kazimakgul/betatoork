@@ -57,7 +57,7 @@ $('#coverframe').load(function(){
    $('#user_cover').css('background-image','http://www.imageyourself.net/images/website/loading.gif');
    
    setTimeout(function(){
-		var new_img = $('iframe[id=coverframe]').contents().find('#new_image_link').val();alert(new_img);
+		var new_img = $('iframe[id=coverframe]').contents().find('#new_image_link').val();$('#user_avatar').attr('src',new_img);
         $('#user_cover').css('background-image',new_img);			   
    },1000);
 
