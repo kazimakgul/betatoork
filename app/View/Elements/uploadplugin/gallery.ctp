@@ -6,19 +6,12 @@
 
 <?php  foreach($gallery as $link){ ?>
 
-<div id="thumbwrap"  onclick="select_me(this)" style="width: 140px; height: 78px;">
-<img class="Ed-Gj-re-Ui" src="https://s3.amazonaws.com/betatoorkpicstest/<?php echo $link;?>" title="Grass.jpg" style="width: 140px; height: 78px;">
+<div id="thumbwrap"  onclick="select_me(this)" style="max-height: 150px;">
+<img class="Ed-Gj-re-Ui" src="<?php echo Configure::read('S3.url').'/'.$link;?>" style="max-height: 150px;">
 </div>
 
 <?php  } ?>
 
-<div id="thumbwrap"  onclick="select_me(this)" style="width: 140px; height: 78px;">
-<img class="Ed-Gj-re-Ui" src="https://lh4.googleusercontent.com/-zDwkUkb_0oM/UTpAVEKFsLI/AAAAAAAAAZ0/ZKemOcec6xE/w140-h78-p/Grass.jpg" title="Grass.jpg" style="width: 140px; height: 78px;">
-</div>
-
-<div id="thumbwrap" onclick="select_me(this)" style="width: 140px; height: 78px;">
-<img class="Ed-Gj-re-Ui" src="https://lh3.googleusercontent.com/-jKQhqKwJEUA/UTpAUzxFn2I/AAAAAAAAAag/RwXhKJ-Aoos/w140-h78-p/Daisies.jpg" title="Grass.jpg" style="width: 140px; height: 78px;">
-</div>
 
 <!--End of wrapper-->
 </div>
@@ -26,10 +19,3 @@
 <!--End of gallery div-->
 </div>
 
-<script>
- function select_me(elm){
-   //$(elm).children(".picker-badges").remove();
-   $('.picker-badges').remove();
-   $(elm).append('<i class="glyphicon glyphicon-ok picker-badges"></i>');
-}
-</script>
