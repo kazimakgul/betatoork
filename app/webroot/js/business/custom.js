@@ -63,5 +63,5 @@ $('#coverframe').load(function(){
    });
 
 });
-
+//Controller functions for modals of covers ends
 

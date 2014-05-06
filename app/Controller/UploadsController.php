@@ -98,16 +98,16 @@ class UploadsController extends AppController {
 		 unset($objs[$key]);
 		 }
 	     $this->set('gallery',$objs);
-		 //get cover galery from S3 ends
+		 //get cover gallery from S3 ends
 		 
 	   }elseif($uploadtype=='game_image'){
 	   
-	   $this->set('gallery','Cover resimleri için galery içerigi');
+	   $this->set('gallery',0);
 	   $this->set('uploadtype',$uploadtype);
 	   $this->set('id',$id);
 	   
-	     //get cover gallery from S3 begins
-	     $prefix = 'upload/gallery/covers';
+	     //get cover photos from S3 begins
+	     $prefix = 'upload/games/'.$id;
          $opt = array(
          'prefix' => $prefix,
          );
@@ -118,8 +118,8 @@ class UploadsController extends AppController {
 		 if(substr($obj, -1)=="/")
 		 unset($objs[$key]);
 		 }
-	     $this->set('gallery',$objs);
-		 //get cover gallery from S3 ends
+	     $this->set('photos',$objs);
+		 //get cover photos from S3 ends
 	   } 
 	
 	}
@@ -316,14 +316,62 @@ class UploadsController extends AppController {
 	$msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	}
 	//Load Cover From Photos ends
-	}elseif($uploadtype=='game_image' && $loadfrom='upload'){
+	}elseif($uploadtype=='game_image' && $loadfrom=='upload'){
 	//Load Game Image From Upload begins
 	
+	$file = new File(WWW_ROOT ."/upload/games/".$id."/".$name,false);
+	   $info=$file->info();
+
+	   $filename=$info["filename"];
+	   $ext=$info["extension"];
+	   $basename=$info["basename"];
+	   $dirname=$info["dirname"];
+	   $newname=$filename.'_toorksize.'.$ext;
+	   rename(WWW_ROOT ."/upload/games/".$id."/".$name, WWW_ROOT ."/upload/games/".$id."/".$newname);
+	
+	        //Upload to aws begins
+			$feedback=$this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/games/'.$id."/".$newname,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$newname,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			//Upload to aws ends
+	   //s3 fuctions ends here
+	
+	   if($feedback)
+	   {
+	   //Set the picture field on db.
+	   //remove related id folder from users folder.
+	   $newurl=Configure::read('S3.url').'/upload/games/'.$id.'/'.$newname;
+	   $this->User->query('UPDATE games SET picture="'.$basename.'" WHERE id='.$id);	
+       $msg = array("title" => 'Image has been saved on s3 as game by upload.'.$id.$name.$newname,'result' => 1,'newlink'=>$newurl);
+	   }else{
+	   $msg = array("title" => $uploadtype.$name.$id.'newurl:'.$newurl.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
+	   }
 	
 	//Load Game Image From Upload ends
-	}elseif($uploadtype=='game_image' && $loadfrom='photos'){
+	}elseif($uploadtype=='game_image' && $loadfrom=='photos'){
 	//Load Game Image From Upload begins
 	
+	$basename = basename($image_patch);
+    $noextension=rtrim($basename, '.'.$this->getExtension($basename));
+    $noextension=substr($noextension, 0, -10);
+	$yesextension=$noextension.'.'.$this->getExtension($basename);
+	
+	if($basename)
+	{
+	//Set the picture field on db.
+	//remove related id folder from users folder.
+	$newurl=Configure::read('S3.url').'/upload/games/'.$id.'/'.$basename;
+	$this->User->query('UPDATE games SET picture="'.$yesextension.'" WHERE id='.$id);	
+    $msg = array("title" => 'Game image has been saved on s3 by photos.','result' => 1,'newlink'=>$newurl);
+	}else{
+	$msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
+	}
+
 	
 	//Load Game Image From Upload ends
 	}

@@ -28,6 +28,10 @@
 
 
 <br>
+
+
+<a id="opencheck2" data-toggle="modal" data-target="#coverChange" href="#"><span><i class="elusive-edit"></i>Change Cover</span></a>
+
 <form action="/betatoorkson/users/settings/1594" id="tab" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 
 
@@ -94,18 +98,34 @@
 
 
 <!-- Avatar Change Modal begins -->
-    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
         <div class="modal-dialog" style="width:800px;">
-            <div >
+            <div>
+                
                 <?php 
                 $avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','avatar_image',$user[0]['User']['id']));
                 $url=$avatar_image_url;
                 ?>
                 <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+                
             </div>
         </div>
     </div>
     <!-- Avatar Change Modal ends -->
+    
+    <!-- Cover Change Modal begins -->
+    <div class="modal fade" id="coverChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                <?php 
+                $avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','cover_image',$user[0]['User']['id']));
+                $url=$avatar_image_url;
+                ?>
+                <iframe id='coverframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Cover Change Modal ends -->
 
 
 

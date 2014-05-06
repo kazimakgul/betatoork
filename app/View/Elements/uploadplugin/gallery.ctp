@@ -3,6 +3,14 @@
 
 <div id=gal-wrapper" style=" padding:10px; width:100%">
 
+<!--There is no gallery item-->
+<?php if($gallery==0){ ?>
+<div style='width:100%;text-align: center;padding-top: 120px;'>
+<span class="btn btn-success" style="background-color: #C2C6C6;border-color: #C2C6C6;">
+        <i class="glyphicon glyphicon-remove" style="font-size:20px;">Gallery cannot be used for games.</i>
+    </span>
+ </div>   
+<?php  } ?>
 
 <?php  foreach($gallery as $link){ ?>
 

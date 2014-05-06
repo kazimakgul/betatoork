@@ -52,11 +52,11 @@ $username = $user['User']['seo_username'];
 	  <?php 
   if($user['User']['banner']==null) { ?>
     
-  <div style="width: 745px; height: 200px;  padding-bottom:0px;background: url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);"></div>
+  <div id='user_cover' style="width: 745px; height: 200px;  padding-bottom:0px;background: url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);"></div>
 
    <?php } else {?>
 
-<div style="width: 745px; height: 200px; padding-bottom:0px;background: url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>); "></div>
+<div id='user_cover' style="width: 745px; height: 200px; padding-bottom:0px;background: url(<?php echo Configure::read('S3.url')."/upload/users/".$userid."/".$user['User']['banner'];?>); "></div>
 
 	 <?php  }
       ?>
@@ -64,10 +64,8 @@ $username = $user['User']['seo_username'];
   </div>
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 745px; height: 200px; line-height: 20px;"></div>
   <div>
-    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">Change Background 
-        <span class="fileupload-new"><i class="elusive-edit"></i></span>
-        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[User][banner]" accept="image/gif,image/jpg,image/png,image/jpeg" size="100" /></span>
-    <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
+    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" data-toggle="modal" data-target="#coverChange" href="#" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">Change Background </span>
+
 
      <a rel="tooltip" id="imageinfo" data-toggle="popover" style="margin:-80px 30px 0px 10px;" title="Picture Specs Info" data-placement="bottom" data-original-title="Game Image Info" class="btn btn-small" data-html="true" data-content='If you want to add an image background, For the best experience try <strong>1000*300</strong>px image. You can always add a pattern background image which is going to be repeated. Try a <strong>100*100</strong>px pattern background image. Any image size is always welcome. '><i class="elusive-info-sign"></i></a>
 
@@ -305,7 +303,7 @@ $username = $user['User']['seo_username'];
 				
 				
 	<!-- Avatar Change Modal begins -->
-    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
         <div class="modal-dialog" style="width:800px;">
             <div>
                 <?php 
@@ -319,15 +317,15 @@ $username = $user['User']['seo_username'];
 	<!-- Avatar Change Modal ends -->
 	
 	<!-- Cover Change Modal begins -->
-    <div class="modal fade" id="coverChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="coverChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
         <div class="modal-dialog" style="width:800px;">
             <div>
                 <?php 
-				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','cover_image',$userid));
-				$url=$avatar_image_url;
-				?>
+        $avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','cover_image',$userid));
+        $url=$avatar_image_url;
+        ?>
                 <iframe id='coverframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
             </div>
         </div>
     </div>
-	<!-- Cover Change Modal ends -->
+  <!-- Cover Change Modal ends -->

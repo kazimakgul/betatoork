@@ -286,7 +286,7 @@
     </div>
 
     <!-- Avatar Change Modal begins -->
-    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
         <div class="modal-dialog" style="width:800px;">
             <div>
                 
@@ -302,7 +302,7 @@
     <!-- Avatar Change Modal ends -->
 	
 	<!-- Cover Change Modal begins -->
-    <div class="modal fade" id="coverChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="coverChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
         <div class="modal-dialog" style="width:800px;">
             <div>
                 <?php 
