@@ -102,7 +102,8 @@ class BusinessesController extends AppController {
 		$game['User']['adcode']=$original['User']['adcode'];
 		}
 
-	
+		
+		
 		$limit=12;
 		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$game['Game']['user_id']),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
 		$cond=$this->paginate('Game');

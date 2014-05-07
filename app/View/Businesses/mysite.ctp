@@ -1,7 +1,12 @@
 
 <div class="container">
+<?
+$controls=NULL;
+if($this->Session->read('Auth.User.id')==$user['User']['id']){
+	$controls=$user['User']['id'];
+}
 
-<?php  echo $this->element('business/ads'); ?>
+echo $this->element('business/ads',array('controls'=>$controls)); ?>
 
 <div class="col-md-12">
 
@@ -15,7 +20,7 @@
 </div>
 
   <?php  echo $this->element('business/login',array('user_id'=>$user['User']['id'])); ?>
-  <?php  echo $this->element('business/channelbanner'); ?>
+  <?php  echo $this->element('business/channelbanner',array('controls'=>$controls)); ?>
 
 
   <!--left-->
@@ -34,7 +39,7 @@
             $div = "<div class='col-xs-12' style='padding:0px;'>";
             $limit = 3;
 			$fix = 'fix';
-            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit, 'fix' =>$fix)); 
+            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit, 'fix' =>$fix, 'controls'=>$controls)); 
           ?>
 
           </div>
@@ -104,7 +109,7 @@
   </div><!--/right-->
 
 
-<?php  echo $this->element('business/ads'); ?>
+<?php  echo $this->element('business/ads',array('controls'=>$controls)); ?>
 
 
 <!--/footer-->
@@ -137,7 +142,7 @@
 
   </div><!--/footer-->
 
-<?php  echo $this->element('business/ads'); ?>
+<?php  echo $this->element('business/ads',array('controls'=>$controls)); ?>
 
 
 </div><!-- /.container -->

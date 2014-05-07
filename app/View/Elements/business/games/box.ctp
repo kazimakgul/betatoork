@@ -5,7 +5,7 @@ $playurl=$this->Html->url(array("controller" => 'businesses', "action" => 'play'
           <?php echo $div; ?>
             <div class="panel panel-default">
               <div class="imagehover">
-               <? if (isset($fix)){ ?>
+               <? if (isset($fix) && $controls==$user['User']['id']){ ?>
                <div class="caption">
                     <p><a href="" class="label label-danger" data-placement="bottom" data-toggle="tooltip" title="Change This Game">Change</a>
                     <a href="" class="label label-default" data-placement="bottom" data-toggle="tooltip" title="Play This Game">Play</a></p>

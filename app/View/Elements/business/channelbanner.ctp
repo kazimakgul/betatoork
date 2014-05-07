@@ -7,7 +7,9 @@
 
     <div class="showhim col-md-12">
 
-                <?php if($user['User']['banner']==null) { ?>
+                <?php
+                
+                if($user['User']['banner']==null) { ?>
                 <div id="user_cover" style="background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg)">
                 <?php } else { ?>
                 <div id="user_cover" style="background-image:url(<?php echo Configure::read('S3.url')."/upload/users/".$user['User']['id']."/".$user['User']['banner'];?>)">
@@ -20,22 +22,26 @@
                         } else {
                           echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'pic circular img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
-
+					<?if($controls==$user['User']['id']){?>
+					<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -150px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
+                    <?}?>
                     <div class="name">
                         <div class="showme">
+                        	<?if($controls==$user['User']['id']){?>
                             <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -125px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
+                        	<?}?>
                         </div>
                       <a class="btn btn-primary"><i class="fa fa-plus-circle"></i> Follow - <?php echo $followNo;?></a>
                       <a class="btn btn-danger"><i class="fa fa-gamepad"></i> Games - <?php echo $gameNo;?></a>
                     </div>
 
-<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -150px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
 
 <?php
 $website=$user['User']['website'];
 $facebook=$user['User']['fb_link'];
 $twitter=$user['User']['twitter_link'];
 $gplus=$user['User']['gplus_link'];
+
 if($website==NULL){
 
 }else{
