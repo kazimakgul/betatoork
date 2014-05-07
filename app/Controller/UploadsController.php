@@ -151,11 +151,7 @@ class UploadsController extends AppController {
 	  //If user is not admin or something like that.Cannot edit images of another person.Just admin can do this.
 	  if(!$this->User->isAdmin($auth_id) && !$this->User->isOwnedBy($auth_id,$id))
 	  {
-	  $msg = array('title' => 'You are not admin!You cannot edit images of another users!','result' => 0,'newlink'=>'empty url');
-	  $this->set('rtdata', $msg);
-      $this->set('_serialize', array('rtdata'));
-	  $degisken="data yasaklandi";
-      //break;
+	  $uploadtype='forbidden';
 	  }
 	}elseif($uploadtype=='game_image'){
 	//check something
@@ -309,7 +305,7 @@ class UploadsController extends AppController {
 	   //remove related id folder from users folder.
 	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$yesextension;
 	   $this->User->query('UPDATE users SET banner="'.$yesextension.'" WHERE id='.$id);	
-       $msg = array("title" => 'Image has been saved on s3 by cover.'.$degisken,'result' => 1,'newlink'=>$newurl);
+       $msg = array("title" => 'Image has been saved on s3 by cover.','result' => 1,'newlink'=>$newurl);
 	   }else{
 	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	   }
@@ -372,7 +368,7 @@ class UploadsController extends AppController {
 	
 	//Load Game Image From Upload ends
 	}elseif($uploadtype=='game_image' && $loadfrom=='photos'){
-	//Load Game Image From Upload begins
+	//Load Game Image From Photos begins
 	
 	$basename = basename($image_patch);
     $noextension=rtrim($basename, '.'.$this->getExtension($basename));
@@ -389,11 +385,13 @@ class UploadsController extends AppController {
 	}else{
 	$msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	}
-
-	
-	//Load Game Image From Upload ends
+	//Load Game Image From Photos ends
+	}elseif($uploadtype=='forbidden'){
+	//Restricted Area Begins
+	$msg = array("title" => 'You can only edit your own images!','result' => 0);
+	//Restricted Area Ends
 	}
-	   
+	
   }else{//Auth Control Ends
   $msg = array("title" => 'You have to be logged in!','result' => 0);
   }	   
