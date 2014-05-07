@@ -2131,6 +2131,25 @@ $('#coverframe').load(function(){
 });
 //Controller functions for modals of covers ends
 
+//Controller functions for modals of game image begins
+$('#gameframe').load(function(){
+  $(this).contents().find("#close_panel").on('click', function(event) { $('#gameChange').modal('toggle'); });
+});
+
+$('#gameframe').load(function(){
+  $(this).contents().find("#set_photo").on('click', function(event) { 
+   $('#gameChange').modal('toggle');
+   $('#user_cover').css('background-image','url(http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif)');	
+   setTimeout(function(){
+		var new_img = $('iframe[id=gameframe]').contents().find('#new_image_link').val();
+        $('#game_image').css('background-image','url('+new_img+')');		   
+   },1000);
+
+   });
+
+});
+//Controller functions for modals of game_image ends
+
 
 //I use some javasript here to access dynamically created iframe avatar begins
 $('#opencheck').live('click',function(){

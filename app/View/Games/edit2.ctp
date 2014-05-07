@@ -30,13 +30,14 @@ $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
     <label class="control-label" for="inputAuto"><strong>Game Picture</strong></label>
 <div class="span4 fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-new img-polaroid" style="width: 215px; height:118px;">
-    <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'500','height'=>'110','onerror'=>'imgError(this,"toorksize");')); ?></div>
+    <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'500','height'=>'110','id'=>'game_image','onerror'=>'imgError(this,"toorksize");')); ?></div>
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 215px; height: 115px; line-height: 20px;"></div>
   <div>
-    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
+    <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" data-toggle="modal" data-target="#gameChange" href="#" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
         <span class="fileupload-new"><i class="elusive-edit"></i></span>
-        <span class="fileupload-exists"><i class="elusive-edit"></i></span><input data-form="uniform" id="inputUpload" type="file" name="data[Game][edit_picture]" accept="image/gif,image/jpg,image/png,image/jpeg" size="150" /></span>
-    <a href="#" rel="tooltip" data-placement="bottom" data-original-title="Remove Image" style="margin:-80px 0px 0px 10px;" class="btn btn-small fileupload-exists" data-dismiss="fileupload"><i class="elusive-trash"></i></a>
+        </span>
+		
+    
 
      <a rel="tooltip" id="imageinfo" data-toggle="popover" style="margin:-80px 30px 0px 10px;" title="Picture Specs Info" data-placement="bottom" data-original-title="Game Image Info" class="btn btn-small" data-html="true" data-content='A good picture size is <strong>600*330</strong>px. For the best experience try to add a rectangle kind of image which is larger than <strong>200*110</strong>px. Any image size is always welcome.'><i class="elusive-info-sign"></i></a>
 
@@ -113,3 +114,18 @@ $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
                         </div><!--/content-body -->
                     </div><!-- /content -->
                 </div><!-- /span content -->
+				
+				
+	<!-- Game Image Change Modal begins -->
+    <div class="modal fade" id="gameChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                <?php 
+        $game_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','game_image',$game['Game']['id']));
+        $url=$game_image_url;
+        ?>
+                <iframe id='gameframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+  <!-- Game Image Change Modal ends -->
