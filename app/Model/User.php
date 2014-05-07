@@ -35,6 +35,19 @@ public function beforeSave() {
     return true;
 }
 
+public function isAdmin($user_id) {
+$role = $this->find(
+            'first', array(
+                'conditions' => array('User.id' => $user_id),
+                'fields' => array('User.role')
+            )
+        );
+	if($role['User']['role']==1)
+	return 1;
+	else
+	return 0;	
+}
+
 public function isOwnedBy($user1, $user) {
 		if($user1==$user){
 			return true;

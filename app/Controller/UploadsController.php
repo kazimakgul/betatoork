@@ -26,7 +26,6 @@ class UploadsController extends AppController {
 	//Kullanici yalnizca kendi idsinde degisiklik yaparken admin herkes için yapabilmeli.Güvenlik önlemi Al!!!
 	   if($uploadtype=='avatar_image')
        {//User need to be logged in.COndition ekle!!!
-	
 	      $this->set('gallery','Avatar resimleri için galery içerigi');
 	      $this->set('uploadtype',$uploadtype);
 	      $this->set('id',$id);
@@ -142,6 +141,24 @@ class UploadsController extends AppController {
 	$id=$this->request->data['id'];
 	$loadfrom=$this->request->data['from'];
 	$image_patch=$this->request->data['image'];
+	
+  if($auth_id=$this->Auth->user('id'))
+  {//Auth Control Ends
+	
+	//Permissions for avatar and cover upload
+	if($uploadtype=='avatar_image' || $uploadtype=='cover_image')
+	{
+	  //If user is not admin or something like that.Cannot edit images of another person.Just admin can do this.
+	  if(!$this->User->isAdmin($auth_id) && !$this->User->isOwnedBy($auth_id,$id))
+	  {
+	  $msg = array("title" => 'You are not admin!You cannot edit images of another users!','result' => 0);
+	  $this->set('rtdata', $msg);
+      $this->set('_serialize', array('rtdata'));
+      break;
+	  }
+	}elseif($uploadtype=='game_image'){
+	//check something
+	}
 	
 	
 	if($uploadtype=='avatar_image' && $loadfrom=='upload')
@@ -376,9 +393,13 @@ class UploadsController extends AppController {
 	//Load Game Image From Upload ends
 	}
 	   
-       $this->set('rtdata', $msg);
-       $this->set('_serialize', array('rtdata'));
-	}
+  }else{//Auth Control Ends
+  $msg = array("title" => 'You have to be logged in!','result' => 0);
+  }	   
+  
+  $this->set('rtdata', $msg);
+  $this->set('_serialize', array('rtdata'));
+	}//End of function
 	
 
 function getExtension($str) {

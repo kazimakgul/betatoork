@@ -51,8 +51,7 @@ var $uses = array('Game','Subscription','Userstat','Category','Activity','CakeEm
 	//        return true;
 	   // }
 	   
-	   
-	   
+	    
 	    if (in_array($this->action, array('edit','password','password2','settings'))) {
 	        $userId = $this->request->params['pass'][0];
 	        return $this->User->isOwnedBy($userId, $user['id']);
