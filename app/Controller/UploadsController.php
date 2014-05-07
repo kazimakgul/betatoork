@@ -148,13 +148,17 @@ class UploadsController extends AppController {
 	//Permissions for avatar and cover upload
 	if($uploadtype=='avatar_image' || $uploadtype=='cover_image')
 	{
-	  //If user is not admin or something like that.Cannot edit images of another person.Just admin can do this.
+	  //If user is not admin or something like that.Cannot edit images of another person.Just admin can do this.(Avatar&Cover)
 	  if(!$this->User->isAdmin($auth_id) && !$this->User->isOwnedBy($auth_id,$id))
 	  {
 	  $uploadtype='forbidden';
 	  }
 	}elseif($uploadtype=='game_image'){
-	//check something
+	  //If user is not admin or something like that.Cannot edit images of another person.Just admin can do this.(Games)
+	  if(!$this->User->isAdmin($auth_id) && !$this->Game->isOwnedBy($id,$auth_id))
+	  {
+	  $uploadtype='forbidden';
+	  }
 	}
 	
 	
@@ -305,7 +309,7 @@ class UploadsController extends AppController {
 	   //remove related id folder from users folder.
 	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$yesextension;
 	   $this->User->query('UPDATE users SET banner="'.$yesextension.'" WHERE id='.$id);	
-       $msg = array("title" => 'Image has been saved on s3 by cover.','result' => 1,'newlink'=>$newurl);
+       $msg = array("title" => 'Cover image has been saved on s3 by gallery.','result' => 1,'newlink'=>$newurl);
 	   }else{
 	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	   }
