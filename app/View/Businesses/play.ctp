@@ -15,10 +15,6 @@ if($username !=NULL)
 else{
   $profilepublic=$this->Html->url(array("controller" => "businesses","action" =>"profile",$game['User']['id']));
 }
-/*print_r($fav);
-
- * Array ( [Gamestat] => Array ( [favcount] => 6 ) )
- */
 ?>
 	  <div class="col-sm-12">
 		<div class="well well-sm">

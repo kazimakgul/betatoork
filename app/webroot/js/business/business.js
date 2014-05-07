@@ -125,7 +125,7 @@ $( document ).ready(function() {
   });
   
   $('#stars-existing').on('starrr:change', function(e, value){
-  	$('.rating .row').attr('data-original-title', 'Your rate is '+value);
+// mysite Hatalı  	$('.rating .widget-button').attr('data-original-title', 'Your rate is '+value);
     $('#count-existing').html(value);
   });
 });

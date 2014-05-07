@@ -9,9 +9,7 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         <?php echo $this->Html->css(array('business/custom','css2/jquery.pnotify.default')); ?>
-        <script>
-        chaingame='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
-        </script>
+
     </head>
 
     <body>
@@ -23,7 +21,7 @@
         <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
-        <?php echo $this->Html->script(array('business/custom','business/business','register','js2/jquery','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo')); ?>
+        <?php echo $this->Html->script(array('business/custom','business/business')); ?>
 
         <script>
         toorksize='<?php echo Configure::read('broken.toorksize'); ?>';

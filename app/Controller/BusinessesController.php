@@ -62,29 +62,26 @@ class BusinessesController extends AppController {
 
 		$this->layout='Business/business';
 
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
-		
+		$user	=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
 		$limit=12;
-		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
+		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
 		$cond=$this->paginate('Game');
 		$category = $this->Category->find('all');
 
 		$this->set('category',$category);
 		$this->set('games', $cond);
 		$this->set('user', $user);
-
+		
 		$this->set('title_for_layout', 'Clone Games');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
 		$this->set('author_for_layout', 'Clone');
 	}
 	
 	public function play($id=NULL) {
-	
 	//Getting Random Game Data
 		$this->layout='Business/business';
-		$game	=	$this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')))));//Recoded
+		$game	=	$this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')),'Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));//Recoded
 		$user	=	$this->User->find('first', array('conditions' => array('User.id'=>$game['Game']['user_id']),'fields'=>array('*')));
-		$fav	=	$this->Gamestat->find('first',array('conditions' => array('Gamestat.game_id'=>$id),'fields'=>array('Gamestat.favcount, Gamestat.playcount, Gamestat.totalclone, Gamestat.potential')));		
 		if($game['Game']['clone']==1)
 		{
 		$original=$this->User->find('first',array('conditions' => array('User.id'=>$game['Game']['owner_id']),'fields'=>array('User.adcode'),'contain'=>false));
@@ -93,13 +90,12 @@ class BusinessesController extends AppController {
 
 	
 		$limit=12;
-		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.id'=>$game['Game']['id']),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
+		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$game['Game']['user_id']),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
 		$cond=$this->paginate('Game');
 		
 		$this->set('games', $cond);
 		$this->set('user', $user);
 		$this->set('game',$game);
-		$this->set('fav',$fav);
 		$this->set('title_for_layout', 'Clone Games');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
 		$this->set('author_for_layout', 'Clone');

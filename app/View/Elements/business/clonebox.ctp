@@ -1,5 +1,5 @@
 <!--Clone Modal -->
-<div id="myModalclone" class="modal1 fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+<div id="myModalclone" class="modal1 fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Clone - <?php echo $game["Game"]["name"];?> ?</h3>
@@ -25,7 +25,7 @@
 
 <style>
 .modal1 {
-display:block;
+display:none;
 overflow: hidden;
 position: fixed;
 top: 10%;
