@@ -264,7 +264,7 @@
                     <?php 
                     $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
                       if($user['User']['picture']==null) { 
-                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'pic circular img-thumbnail',"alt" => "clone user image")); 
+                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'img-circle',"alt" => "clone user image")); 
                         } else {
                           echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'img-circle','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
