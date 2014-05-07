@@ -1,14 +1,14 @@
 <?php
-
+App::uses('AppController', 'Controller');
 /**
- * Games Controller
+ * Business Controller
  *
- * @property Game $Game
+ * @property Business $Game
  */
 class BusinessesController extends AppController {
 
 	public $name = 'Businesses';
-	var $uses = array('Businesses','Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Gamestat','Category','Activity','Cloneship');
+	var $uses = array('Businesses','Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Gamestat','Category','Activity','Cloneship','CakeEmail', 'Network/Email');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Time');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Common');
     
@@ -47,7 +47,21 @@ class BusinessesController extends AppController {
 		}
     //===//Eger upload adinda bir klasör varsa siler.====
 	}
-	
+	public function contactmail($user_id) {
+        $this->User->id=$user_id;
+		
+	    $email = new CakeEmail();
+		//print_r($_POST);
+	    // Set data for the "view" of the Email
+		$email->viewVars(array('username'=>$user["User"]["username"],'name'=>$_POST["firstname"],'surname'=>$_POST["lastname"],'e-mail'=>$_POST["email"],'subject'=>$_POST["subject"],'message'=>$_POST["comment"]));
+		$email->config('smtp')
+			->template('business/contact') //I'm assuming these were created
+		    ->emailFormat('html')
+		    ->to($user["User"]["email"])
+		    ->from(array('no-reply@clone.gs' => 'Clone'))
+		    ->subject($subject)
+		    ->send();
+	}
 	public function gameswitch($id = null) {
 		$gameid = $this->request->params['pass'][0];
 		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid),'fields'=>array('Game.embed'),'contain'=>false));//Recoded

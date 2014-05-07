@@ -212,7 +212,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Any questions? Feel free to contact us.</h4>
                     </div>
-                    <form action="#" method="post" accept-charset="utf-8">
+                    <form action="../contactmail/<?=$user_id?>" method="post" accept-charset="utf-8">
                     <div class="modal-body" style="padding: 25px;">
                           <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
@@ -257,22 +257,29 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title" id="myModalLabel">More About Socialesman</h4>
+                    <h4 class="modal-title" id="myModalLabel">More About <?=$user["User"]["username"];?></h4>
                     </div>
                 <div class="modal-body">
                     <center>
-                    <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/hellboy_toork_original.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-                    <h3 class="media-heading">Socialesman <small>Turkey</small></h3>
+                    <?php 
+                    $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+                      if($user['User']['picture']==null) { 
+                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'pic circular img-thumbnail',"alt" => "clone user image")); 
+                        } else {
+                          echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'img-circle','onerror'=>'imgError(this,"avatar");'));  }
+                    ?>
+
+					<h3 class="media-heading"><?=$user["User"]["username"];?> <small><?=$user["Country"]["name"];?></small></h3>
                     <span><strong>Details: </strong></span>
-                        <span class="label label-warning">177- Followers</span>
-                        <span class="label label-info">47 Clones</span>
-                        <span class="label label-danger">63 Favorites</span>
-                        <span class="label label-success">142 Games</span>
+                        <span class="label label-warning"><?=$user["Userstat"]["subscribeto"];?> Followers</span>
+                        <span class="label label-info"><?=$user["Userstat"]["subscribe"];?> Following</span>
+                        <span class="label label-danger"><?=$user["Userstat"]["favoritecount"];?>  Favorites</span>
+                        <span class="label label-success"><?=$user["Userstat"]["uploadcount"];?>  Games</span>
                     </center>
                     <hr>
                     <center>
                     <p class="text-left"><strong>Bio: </strong><br>
-                        Socialesman finds you the best games all over the world wide web. Enjoy these cool games and have fun while you are working.</p>
+                       <?=$user["User"]["description"];?> </p>
                     <br>
                     </center>
                 </div>
