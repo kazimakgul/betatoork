@@ -15,7 +15,10 @@ if($username !=NULL)
 else{
   $profilepublic=$this->Html->url(array("controller" => "businesses","action" =>"profile",$game['User']['id']));
 }
+/*print_r($fav);
 
+ * Array ( [Gamestat] => Array ( [favcount] => 6 ) )
+ */
 ?>
 	  <div class="col-sm-12">
 		<div class="well well-sm">
@@ -29,50 +32,19 @@ else{
 			<div class="panel panel-primary">
 
 			  <div class="panel-body">
-						<?php 
-						//print_r($game); 
-						echo $game['Game']['embed'] ?>
-
+				<?=$game['Game']['embed'];?>
 				<div class="col-sm-12 col-md-12">
-		            <div class='pull-left'>	
-					<!-- Clone Button -->
-					<div class="clone">
-						<div class="widget-button" data-toggle="tooltip" data-original-title="Clone this game">
-							<button type="button" class="btn btn-default"><i class="fa fa-cog"></i> Clone</button>
-						</div>
+			        <div class='pull-left'>	
+					<?php echo $this->element('business/buttons/clone');?>
+					<?php echo $this->element('business/buttons/favorite');?>
 					</div>
-					<!-- Clone Button End -->
-		
-				<!-- Favorite Button -->
-					<div class="favourite">
-						<div class="widget-button" data-toggle="tooltip" data-original-title="Add to favorites">
-							<button type="button" class="btn btn-default"><li class="fa fa-heart"></li> Favourite</button>
-						</div>
-					</div><!-- Favorite Button  End-->
-				</div>
-				<div class='pull-center'>	
-					<!-- Rating Button -->
-					<div class="rating">
-					    <div class="widget-button" data-toggle="tooltip" data-original-title="Rate this game">
-					        <div id="stars-existing" class="starrr" data-rating="<?=round($game['Game']['starsize']/20);?>"></div>
-					    </div>
-					</div><!-- Rating Button End -->
-				</div>
-				<div class='pull-right'>	
-		 		<!-- Comment Button -->
-					<div class="CommentBtn">
-						<div class="widget-button" data-toggle="tooltip" data-original-title="Comment">
-							<button type="button" class="btn btn-default"><li class="fa fa-comment"></li> Comment</button>
-						</div>
-					</div><!-- Comment Button  End-->			
-					
-		 		<!-- Share Button -->
-					<div class="ShareBtn">
-						<div class="widget-button" data-toggle="tooltip" data-original-title="Share">
-							<button type="button" class="btn btn-default"><li class="fa fa-share-square-o"></li> Share</button>
-						</div>
-					</div><!-- Share Button  End-->
-				</div>   
+					<div class='pull-center'>	
+					<?php echo $this->element('business/buttons/rate');?>
+					</div>
+					<div class='pull-right'>	
+			 		<?php echo $this->element('business/buttons/comment');?>		
+					<?php echo $this->element('business/buttons/share');?>
+					</div>   
 				</div>
 			</div>
 		  </div>
@@ -107,8 +79,6 @@ else{
 	   </div>
 	  </div>
 	<!--/footer End--> 
-
+<?php echo $this->element('business/clonebox');?>
 </div><!-- /.container -->
 
-<!--<?php  echo $this->element('business/footer'); ?>
--->
