@@ -30,7 +30,7 @@ $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
     <label class="control-label" for="inputAuto"><strong>Game Picture</strong></label>
 <div class="span4 fileupload fileupload-new" data-provides="fileupload">
   <div class="fileupload-new img-polaroid" style="width: 215px; height:118px;">
-    <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'width'=>'500','height'=>'110','id'=>'game_image','onerror'=>'imgError(this,"toorksize");')); ?></div>
+    <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'id'=>'game_image','style'=>'width:215px;height:118px;','onerror'=>'imgError(this,"toorksize");')); ?></div>
   <div class="fileupload-preview fileupload-exists thumbnail" style="width: 215px; height: 115px; line-height: 20px;"></div>
   <div>
     <span rel="tooltip" data-placement="bottom" data-original-title="Add Image" data-toggle="modal" data-target="#gameChange" href="#" style="margin:-80px 0px 0px 10px;" class="btn btn-small btn-success btn-file">
