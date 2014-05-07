@@ -154,6 +154,7 @@ class UploadsController extends AppController {
 	  $msg = array('title' => 'You are not admin!You cannot edit images of another users!','result' => 0,'newlink'=>'empty url');
 	  $this->set('rtdata', $msg);
       $this->set('_serialize', array('rtdata'));
+	  $degisken="data yasaklandi";
       //break;
 	  }
 	}elseif($uploadtype=='game_image'){
@@ -308,7 +309,7 @@ class UploadsController extends AppController {
 	   //remove related id folder from users folder.
 	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$yesextension;
 	   $this->User->query('UPDATE users SET banner="'.$yesextension.'" WHERE id='.$id);	
-       $msg = array("title" => 'Image has been saved on s3 by cover.','result' => 1,'newlink'=>$newurl);
+       $msg = array("title" => 'Image has been saved on s3 by cover.'.$degisken,'result' => 1,'newlink'=>$newurl);
 	   }else{
 	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	   }
