@@ -151,7 +151,7 @@ class UploadsController extends AppController {
 	  //If user is not admin or something like that.Cannot edit images of another person.Just admin can do this.
 	  if(!$this->User->isAdmin($auth_id) && !$this->User->isOwnedBy($auth_id,$id))
 	  {
-	  $msg = array("title" => 'You are not admin!You cannot edit images of another users!','result' => 0);
+	  $msg = array("title" => 'You are not admin!You cannot edit images of another users!','result' => 0,'newlink'=>'empty url');
 	  $this->set('rtdata', $msg);
       $this->set('_serialize', array('rtdata'));
       break;
