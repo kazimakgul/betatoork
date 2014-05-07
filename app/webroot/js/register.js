@@ -2139,10 +2139,10 @@ $('#gameframe').load(function(){
 $('#gameframe').load(function(){
   $(this).contents().find("#set_photo").on('click', function(event) { 
    $('#gameChange').modal('toggle');
-   $('#user_cover').css('background-image','url(http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif)');	
+   $('#game_image').attr('src','http://www.imageyourself.net/images/website/loading.gif');	
    setTimeout(function(){
 		var new_img = $('iframe[id=gameframe]').contents().find('#new_image_link').val();
-        $('#game_image').css('background-image','url('+new_img+')');		   
+		$('#game_image').attr('src',new_img);	
    },1000);
 
    });
