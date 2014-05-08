@@ -133,3 +133,133 @@ $( document ).ready(function() {
 //------------------Rating Functions Ends-------------------------
 //***************************************************
 
+
+//***************************************************
+//------------------Subscription Functions-------------------------
+//***************************************************
+
+function subscribe (channel_name,user_auth,id) {
+		      			
+				  
+		    if(user_auth==1)
+		    {
+		currentflw=$('#flwnumber').html();
+		currentflw=parseInt(currentflw);
+		$('#flwnumber').html(currentflw+1);
+		
+		switch_subscribe(id);
+		/*
+		$.pnotify({
+            title: 'Thanks for Following',
+            text: 'You are following <strong>'+channel_name+'</strong> now.<br>You will be notified about the updates of this channel.',
+            type: 'success'
+          });
+		*/
+		//pushActivity(null,id,1,1,2);
+		
+			}else{
+				
+			$.pnotify({
+            title: 'Sign in Please',
+            text: 'You have to sign in first to follow channels.',
+            type: 'error'
+          });	
+					
+			}
+		  
+				
+	}
+	
+	
+	function subscribeout (channel_name,user_auth,id) {
+		        
+		    if(user_auth==1)
+		    {
+		currentflw=$('#flwnumber').html();
+		currentflw=parseInt(currentflw);
+		$('#flwnumber').html(currentflw-1);
+		
+		switch_subscribe(id);
+		/*
+		$.pnotify({
+            title: 'Unfollow is done',
+            text: 'You stopped following <strong>'+channel_name+'</strong> now.<br>You will not be notified about the updates of this channel.',
+            type: 'error'
+          });
+		*/
+		
+			}else{
+				
+			$.pnotify({
+            title: 'Authentication Error',
+            text: 'You have to login first to follow channels.',
+            type: 'error'
+          });	
+					
+			}
+		  
+				
+	}
+	
+	
+    function switch_subscribe(channel_id)
+    {
+		
+    	$.get(subswitcher+'/'+channel_id,function(data) {/*success callback*/});	
+		
+    }
+	
+	
+	$('#follow_button').click(function () {
+		   if(user_auth==1)
+		    {
+		$('#follow_button').hide();
+		$('#unFollow_button').show();
+			}
+	});
+	
+	$('#unFollow_button').click(function () {
+		   if(user_auth==1)
+		    {
+		$('#unFollow_button').hide();
+		$('#follow_button').show();
+			}
+	});
+	
+	
+//Her sayfa y�klenisinde ve sadece profile sayfasinda �alismak �zere hazirlandi.	
+if($('#follow_button').attr('id')=='follow_button')
+	{
+	checkstatus();
+	}
+	
+	
+		function checkstatus(){
+		$.get(checkFollowStat+'/'+profile_id,function(data) {			  
+											if(data==1) {
+											    $('#follow_button').hide();
+		                                        $('#unFollow_button').show();
+										     } else {
+											    $('#unFollow_button').hide();
+		                                        $('#follow_button').show();				  
+											 }						  
+			                    });
+		         }
+				 
+			
+			
+	function switchfollow(id)
+	{
+	var x = id;
+    $("a[id=follow" + x + "]").hide();
+	$("a[id=unfollow" + x + "]").show();
+	}
+	function switchunfollow(id)
+	{
+	var x = id;
+    $("a[id=unfollow" + x + "]").hide();
+	$("a[id=follow" + x + "]").show();
+	}
+//***************************************************
+//------------------Favorite Functions-------------------------
+//***************************************************	

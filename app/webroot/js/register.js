@@ -386,7 +386,7 @@ $(function () {
 //***************************************************
 //------------------Settings-------------------------
 //***************************************************
-//Login Olan Userin Redirect Sayfasi(düzenlenecek)
+//Login Olan Userin Redirect Sayfasi(dÃ¼zenlenecek)
 var redirect_page='homepage';
 
 
@@ -799,7 +799,7 @@ function subscribe (channel_name,user_auth,id) {
 	});
 	
 	
-//Her sayfa yüklenisinde ve sadece profile sayfasinda çalismak üzere hazirlandi.	
+//Her sayfa yÃ¼klenisinde ve sadece profile sayfasinda Ã§alismak Ã¼zere hazirlandi.	
 if($('#follow_button').attr('id')=='follow_button')
 	{
 	checkstatus();
@@ -939,7 +939,7 @@ if($('#follow_button').attr('id')=='follow_button')
 			}
 	});
 	
-//Her sayfa yüklenisinde ve sadece game sayfasinda çalismak üzere hazirlandi.	
+//Her sayfa yÃ¼klenisinde ve sadece game sayfasinda Ã§alismak Ã¼zere hazirlandi.	
 if($('#fav_button').attr('id')=='fav_button')
 	{
 	checkstatus2();
@@ -1643,7 +1643,7 @@ $('#metacrawler').live('click',function(){
 		$graburl=$('#urlarea').val();
 		$("#fetchurl").html($graburl.substring(0,35));
 		$('#fetchloader').show();
-		if($graburl!="")//bu bölüme validation kontrolü gelecek
+		if($graburl!="")//bu bÃ¶lÃ¼me validation kontrolÃ¼ gelecek
        {
 		   
 		   //if given url ia valid url execute codes below
@@ -2283,7 +2283,7 @@ $('#notifycount').live('click',function(){
 					  getOldNotification();
 		}
 	
-	//Panelde gösterilen tüm notificationlarin idsini bir array içinde topladiktan sonra seen degerlerini 1 olarak set etmek için notifytoggle fonksiyonuna gönderiyoruz.
+	//Panelde gÃ¶sterilen tÃ¼m notificationlarin idsini bir array iÃ§inde topladiktan sonra seen degerlerini 1 olarak set etmek iÃ§in notifytoggle fonksiyonuna gÃ¶nderiyoruz.
 	var seenlist = [];
 	$('.notifyblocks.unseen').each(function() {
 	$(this).toggleClass('unseen');										

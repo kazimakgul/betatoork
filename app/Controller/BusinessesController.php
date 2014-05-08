@@ -75,12 +75,28 @@ class BusinessesController extends AppController {
 	public function mysite($userid) {
 
 		$this->layout='Business/business';
-
+		
 		$user	=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
 		$limit=12;
 		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
 		$cond=$this->paginate('Game');
 		$category = $this->Category->find('all');
+
+	   //========Get Current Subscription===============
+	   $authid = $this->Session->read('Auth.User.id');
+	   if($authid)
+	   {
+	   $subscribebefore=$this->Subscription->find("first",array("contain"=>false,"conditions"=>array("Subscription.subscriber_id"=>$authid,"Subscription.subscriber_to_id"=>$userid)));
+	       if($subscribebefore!=NULL)
+			{
+			$this->set('follow',1);
+			}else{
+			$this->set('follow',0);
+			}
+	   }else{
+	   		$this->set('follow',1);
+	   }
+	   //=======/Get Current Subscription===============
 
 		$this->set('category',$category);
 		$this->set('games', $cond);
@@ -101,7 +117,10 @@ class BusinessesController extends AppController {
 		$original=$this->User->find('first',array('conditions' => array('User.id'=>$game['Game']['owner_id']),'fields'=>array('User.adcode'),'contain'=>false));
 		$game['User']['adcode']=$original['User']['adcode'];
 		}
-
+		 //it is a game
+		 $limit=10;
+		 $activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.seo_username'  )),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url','Game.embed')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username',  'ChannelUser.seo_username'))),'fields'=>array('Activity.id','Activity.performer_id','Activity.game_id','Activity.channel_id','Activity.msg_id','Activity.seen','Activity.notify','Activity.email','Activity.type','Activity.replied','Activity.created','PerformerUser.id','PerformerUser.username','PerformerUser.seo_username','ChannelUser.id','ChannelUser.username','ChannelUser.seo_username','Game.id','Game.name','Game.seo_url','Game.embed'),'conditions'=>array('Activity.game_id'=>$game['Game']['id']),'limit'=>$limit,'order'=>'Activity.created DESC'));
+		 $this->set('tagActivities',$activityData);
 		
 		
 		$limit=12;

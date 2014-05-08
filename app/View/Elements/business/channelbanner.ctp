@@ -1,10 +1,17 @@
 <?php 
     $image = $this->requestAction( array('controller' => 'users', 'action' => 'randomPicture',62)); 
+	$suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription"));
     $followNo = $user['Userstat']['subscribeto']; 
     $gameNo = $user['Userstat']['uploadcount'];
-?>    
-
-
+?>
+<script>
+subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
+	  <?php if($this->Session->check('Auth.User') == 1){ ?>
+  user_auth=1;
+  <?php }else{?>
+  user_auth=0;
+  <?php }?>
+</script>
     <div class="showhim col-md-12">
 
                 <?php
@@ -31,8 +38,24 @@
                             <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -125px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
                         	<?}?>
                         </div>
-                      <a class="btn btn-primary"><i class="fa fa-plus-circle"></i> Follow - <?php echo $followNo;?></a>
-                      <a class="btn btn-danger"><i class="fa fa-gamepad"></i> Games - <?php echo $gameNo;?></a>
+			<?php if($follow==0){ ?>
+                <a class="btn btn-primary" id="follow_button"  onclick="subscribe('<?php echo $user['User']['username']?>',user_auth,<?php echo $user['User']['id']?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $user['User']['username']?>']);">
+                  <i class="fa fa-plus-circle"></i> Follow - <?php echo $followNo;?>
+                </a> 
+                <a class="btn btn-success" id="unFollow_button" style="display:none;" onclick="subscribeout('<?php echo $user['User']['username']?>',user_auth,<?php echo $user['User']['id']?>); _gaq.push(['_trackEvent', 'Channel', 'unFollow', '<?php echo $user['User']['username']?>']);">
+                  <i class="fa fa-foursquare"></i> Unfollow - <?php echo $followNo;?>
+                </a> 
+			<?php }else{ ?>
+			
+			<a class="btn btn-primary" id="follow_button" style="display:none;" onclick="subscribe('<?php echo $user['User']['username']?>',user_auth,<?php echo $user['User']['id']?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $user['User']['username']?>']);">
+                  <i class="fa fa-plus-circle"></i> Follow - <?php echo $followNo;?>
+                </a> 
+                <a class="btn btn-success" id="unFollow_button" onclick="subscribeout('<?php echo $user['User']['username']?>',user_auth,<?php echo $user['User']['id']?>); _gaq.push(['_trackEvent', 'Channel', 'unFollow', '<?php echo $user['User']['username']?>']);">
+                  <i class="fa fa-foursquare"></i> Unfollow - <?php echo $followNo;?>
+                </a> 
+			<?php } ?>
+                      <!--<a class="btn btn-primary"><i class="fa fa-plus-circle"></i> Follow - <?php echo $followNo;?></a>
+                      --><a class="btn btn-danger"><i class="fa fa-gamepad"></i> Games - <?php echo $gameNo;?></a>
                     </div>
 
 

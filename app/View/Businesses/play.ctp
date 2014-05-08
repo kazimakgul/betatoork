@@ -50,7 +50,27 @@ else{
 	  
 <?php  echo $this->element('business/ads'); ?>
 
-<!-- Sonra Yapılcak -->
+	<div class="row-fluid col-sm-12">
+	        <div style="padding:5px; background-color:white;" class="span5 shadow well">
+	                <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="<?php echo $hashtaglink; ?>">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
+	        </div>
+	<?php if($tagActivities!=NULL) { ?>
+	<?php echo $this->element('NewPanel/load_game_activity');?>
+	<?php }else{ ?>
+	
+	        <div style="background-color:white;" class="span5 shadow well">
+	                <h5 class="media-heading color-purple">Be the first to make an activity for this game</h5>
+	                <h6 class="media-heading"><i class="elusive-download-alt"></i> Use the rate bar down here</h6>
+	                <h4 class="media-heading color-red"><i class="elusive-heart"></i> Add this game to your favorites</h4>
+	                <h3 class="media-heading color-blue"><i class="elusive-tint"></i> Make a Clone!</h3>
+	                <h5 class="media-heading color-gold"><i class="elusive-star"></i> Rate this game please!</h5>
+	                <h4 class="media-heading color-green"><i class="elusive-comment"></i> Comment about the game!</h5>
+	                <h6 class="media-heading">Your activity will be published here</h6>
+	        </div>
+	
+	<?php } ?>
+	
+	</div>
 
 
 <?php  echo $this->element('business/ads'); ?>

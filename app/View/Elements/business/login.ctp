@@ -249,8 +249,6 @@
                 </div>
             </div>
 
-
-
     <!-- About Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -268,7 +266,6 @@
                         } else {
                           echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'img-circle','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
-
 					<h3 class="media-heading"><?=$user["User"]["username"];?> <small><?=$user["Country"]["name"];?></small></h3>
                     <span><strong>Details: </strong></span>
                         <span class="label label-warning"><?=$user["Userstat"]["subscribeto"];?> Followers</span>
@@ -321,3 +318,30 @@
         </div>
     </div>
 	<!-- Cover Change Modal ends -->
+	
+		
+	<!-- Ads Change Modal begins -->
+    <div class="modal fade" id="adsChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+			<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">Ads <?=$user["User"]["username"];?></h4>
+                    </div>
+                <div class="modal-body">
+                    <center>
+                    	Reklam tablosu yapılınca düzenlenicek.. <br />
+                    	<?
+                    	print_r($user);
+						?>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- Ads Change Modal ends -->
+
