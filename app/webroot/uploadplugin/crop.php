@@ -66,9 +66,15 @@ echo $_POST['x'].'<br>';
 echo $_POST['y'].'<br>';
 echo $_POST['w'].'<br>';
 echo $_POST['h'].'<br>';
+echo 'w_size:'.$_POST['w_size'].'<br>';
+echo 'h_size:'.$_POST['h_size'].'<br>';
 
   $it = new imagetools();
+  if($_POST['uploadtype']=='avatar_image' || $_POST['uploadtype']=='cover_image')
   $src = '../upload/users/'.$_POST['id'].'/'.$_POST['name'];
+  if($_POST['uploadtype']=='game_image')
+  $src = '../upload/games/'.$_POST['id'].'/'.$_POST['name'];
+  
   $imageinfo=$it->crop($src,$_POST['x'],$_POST['y'],$_POST['w'],$_POST['h'],$_POST['w_size'],$_POST['h_size']);
   
   
