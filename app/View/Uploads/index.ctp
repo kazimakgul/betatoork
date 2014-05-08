@@ -152,10 +152,23 @@ $(function () {
 				$('#set_photo').removeClass('disabled');
 				$('#crop_photo').removeClass('disabled');
 
+                if(upload_type=='avatar_image')
+				{
+				var ratio=1;
+				}
+				if(upload_type=='cover_image')
+				{
+				var ratio=1000/300;
+				}
+				if(upload_type=='game_image')
+				{
+				var ratio=200/110;
+				}
+
                 //get image sizes begins
                 var img = new Image();
                 img.onload = function() {
-                $('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [this.width ,this.height],aspectRatio: 1 });
+                $('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [this.width ,this.height],aspectRatio: ratio });
                 }
                 img.src = file.url;
                 //get image sizes ends
@@ -215,11 +228,30 @@ $('#fileupload').click(function () {
 	  {//check selected begins
 		selected_image=$('#selected_image').val().trim();
 		//alert('photo has been cropped');
-    //------
+       //------
+	   
+	   //-------determine cropped images sizes begins------------
+	            if(upload_type=='avatar_image')
+				{
+				var targ_w=150;
+				var targ_h=150;
+				}
+				if(upload_type=='cover_image')
+				{
+				var targ_w=1000;
+				var targ_h=300;
+				}
+				if(upload_type=='game_image')
+				{
+				var targ_w=200;
+				var targ_h=110;
+				}
+	   //----------determine cropped images sizes ends--------------
+	   
 		   $.ajax({
         type: "POST",
         url: crophandler,
-        data: {uploadtype:upload_type,name: selected_image,id:user_id,x:$('#x').val(),y:$('#y').val(),w:$('#w').val(),h:$('#h').val()},
+        data: {uploadtype:upload_type,name: selected_image,id:user_id,x:$('#x').val(),y:$('#y').val(),w:$('#w').val(),h:$('#h').val(),w_size:targ_w,h_size:targ_h},
 		async: false,
         success: function(data){
 			//alert(data);
