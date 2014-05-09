@@ -1,8 +1,8 @@
 <?php 
 	$more = '';
 foreach ($category as $as => $cat): 
-		$catName = h($cat['Category']['name']);
-		$catId = $cat['Category']['id'];
+		$catName = h($cat['categories']['name']);
+		$catId = $cat['categories']['id'];
 		$caturl=$this->Html->url(array("controller" => "games","action" =>"categorygames2",$catId));
 		
 		if ($limit > $as)

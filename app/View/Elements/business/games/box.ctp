@@ -18,8 +18,13 @@
 	                <div class="panel-footer text-center" style="padding:0px;">
 	                  <a href="<?php echo $playurl; ?>" style="padding:0px;"><h5 class="darkblue" style='width:190px; height:16px; overflow:hidden;'><?php echo $game['Game']['name']; ?></h5></a>
 	                  <div class="row">
-	                    <span class="col-md-6" style='margin-left:10px;'>
-	                      <?php $size=18; echo $this->element('business/buttons/rate',array('size'=>$size,'game'=>$game));?>
+	                    <span class="col-md-6" style='margin-left:0px;'>
+                   			<!-- Rating Button -->
+							<div class="rating">
+							    <div data-toggle="tooltip" data-original-title="<?=$game['Game']['rate_count'];?> Rates">
+							        <div id="stars-existing" class="starrr" data-rating="<?=round($game['Game']['starsize']/20);?>"></div>
+							    </div>
+							</div><!-- Rating Button End -->
 	                    </span>
 	                    <span class="col-md-5">
 	                    <i data-toggle="tooltip" title="<?php echo $game['Gamestat']['playcount']; ?> Plays" class="fa fa-play green"></i>
@@ -49,10 +54,3 @@
             </div>
           </div>
 <?php $counter++;  } ?>
-
-
-
-
-
-
-

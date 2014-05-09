@@ -74,13 +74,14 @@ class BusinessesController extends AppController {
 	
 	public function mysite($userid) {
 
-		$this->layout='Business/business';
+		$this->layout	=	'Business/business';
+		$PaginateLimit	=	12;
 		
-		$user	=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
-		$limit=12;
-		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $limit,'order' => array('Game.recommend' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
-		$cond=$this->paginate('Game');
-		$category = $this->Category->find('all');
+		$user			=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
+		$this->paginate	=	array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.recommend' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
+		$cond			=	$this->paginate('Game');
+		$category		=	$this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id='.$userid.' group by games.category_id');
+		//$category		=	$this->Game->find('all', array('conditions' => array('Game.user_id' => $userid, ),'fields'=>array('Game.category_id'),'contain'=>array('Category'=>array('fields'=>array('Category.name,Category.id')))));
 
 	   //========Get Current Subscription===============
 	   $authid = $this->Session->read('Auth.User.id');

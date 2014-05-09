@@ -106,6 +106,7 @@ $(function() {
   return $(".starrr").starrr();
 });
 
+
 $( document ).ready(function() {
 	
 	//Favourite Button class change
