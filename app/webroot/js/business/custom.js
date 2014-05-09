@@ -32,11 +32,11 @@ $('#avatarframe').load(function(){
 $('#avatarframe').load(function(){
   $(this).contents().find("#set_photo").on('click', function(event) { 
    $('#pictureChange').modal('toggle');
-   $('#user_avatar').attr('src','http://www.imageyourself.net/images/website/loading.gif');
+   $('#channel_avatar').attr('src','http://www.imageyourself.net/images/website/loading.gif');
    
    setTimeout(function(){
 		var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
-        $('#user_avatar').attr('src',new_img);			   
+        $('#channel_avatar').attr('src',new_img);			   
    },1000);
 
    });

@@ -27,7 +27,7 @@ subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','ac
                       if($user['User']['picture']==null) { 
                         echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'pic circular img-thumbnail',"alt" => "clone user image")); 
                         } else {
-                          echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'pic circular img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
+                          echo $this->Upload->image($user,'User.picture',array(),array('id'=>'channel_avatar','class'=>'pic circular img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
 					<?if($controls==$user['User']['id']){?>
 					<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -150px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
