@@ -43,12 +43,12 @@ subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','ac
                   <i class="fa fa-plus-circle"></i> Follow - <?php echo $followNo;?>
                 </a> 
                 <a class="btn btn-success" id="unFollow_button" style="display:none;" onclick="subscribeout('<?php echo $user['User']['username']?>',user_auth,<?php echo $user['User']['id']?>); _gaq.push(['_trackEvent', 'Channel', 'unFollow', '<?php echo $user['User']['username']?>']);">
-                  <i class="fa fa-foursquare"></i> Unfollow - <?php echo $followNo;?>
+                  <i class="fa fa-foursquare"></i> Unfollow - <span id='flwnumber'><?php echo $followNo;?></span>
                 </a> 
 			<?php }else{ ?>
 			
 			<a class="btn btn-primary" id="follow_button" style="display:none;" onclick="subscribe('<?php echo $user['User']['username']?>',user_auth,<?php echo $user['User']['id']?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $user['User']['username']?>']);">
-                  <i class="fa fa-plus-circle"></i> Follow - <?php echo $followNo;?>
+                  <i class="fa fa-plus-circle"></i> Follow - <span id='flwnumber'><?php echo $followNo;?></span>
                 </a> 
                 <a class="btn btn-success" id="unFollow_button" onclick="subscribeout('<?php echo $user['User']['username']?>',user_auth,<?php echo $user['User']['id']?>); _gaq.push(['_trackEvent', 'Channel', 'unFollow', '<?php echo $user['User']['username']?>']);">
                   <i class="fa fa-foursquare"></i> Unfollow - <?php echo $followNo;?>
@@ -88,13 +88,6 @@ if($twitter==NULL){
 ?>
 
 
-            
-
-
-
-
                 </div>
-                
     <br><br><br><br>
-    
     </div>

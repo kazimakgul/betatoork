@@ -13,7 +13,7 @@ else{
 }
 ?>
 <!-- Iframe Content --> 
-<iframe src="<?php echo h($game['Game']['link']); ?>" style="border: 0; position:fixed; top:40px; left:0; right:0; bottom:0; width:100%; height:100%"></iframe><!-- Iframe Content End --> 
+<iframe src="<?php echo h($game['Game']['link']); ?>" style="border: 0; position:fixed; top:50px; left:0; right:0; bottom:0; width:100%; height:95%"></iframe><!-- Iframe Content End --> 
 <div class="navbar navbar-default navbar-fixed-bottom" style="min-height:35px" role="navigation">
 	<!-- Remove Button -->
 		<button type="button" class="close pull-right" data-toggle="tooltip" data-original-title="Close" style='padding: 6px 12px;' data-dismiss="alert" aria-hidden="true"><li class="glyphicon glyphicon-remove"></li></button>

@@ -49,11 +49,17 @@ else{
 
 	  
 <?php  echo $this->element('business/ads'); ?>
-
-	<div class="row-fluid col-sm-12">
+	<div class="row-fluid col-sm-6 left">
+		</div>
+	<div class="row-fluid col-sm-6 right">
+	
+	<?php  //echo $this->element('NewPanel/gamepagecomment',array('gamename'=>$gamename,'description'=>$description)); ?>
+	
+	
 	        <div style="padding:5px; background-color:white;" class="span5 shadow well">
 	                <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="<?php echo $hashtaglink; ?>">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
 	        </div>
+	
 	<?php if($tagActivities!=NULL) { ?>
 	<?php echo $this->element('NewPanel/load_game_activity');?>
 	<?php }else{ ?>

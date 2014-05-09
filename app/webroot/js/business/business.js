@@ -227,7 +227,7 @@ function subscribe (channel_name,user_auth,id) {
 	});
 	
 	
-//Her sayfa y�klenisinde ve sadece profile sayfasinda �alismak �zere hazirlandi.	
+//Her sayfa yuklenisinde ve sadece profile sayfasinda calismak uzere hazirlandi.	
 if($('#follow_button').attr('id')=='follow_button')
 	{
 	checkstatus();
