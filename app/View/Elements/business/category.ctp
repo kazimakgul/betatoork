@@ -3,7 +3,7 @@
 foreach ($category as $as => $cat): 
 		$catName = h($cat['categories']['name']);
 		$catId = $cat['categories']['id'];
-		$caturl=$this->Html->url(array("controller" => "games","action" =>"categorygames2",$catId));
+		$caturl=$this->Html->url(array("controller" => "businesses","action" =>"category",$userid,$catId));
 		
 		if ($limit > $as)
 		{

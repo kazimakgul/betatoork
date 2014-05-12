@@ -81,7 +81,6 @@ class BusinessesController extends AppController {
 		$this->paginate	=	array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.recommend' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
 		$cond			=	$this->paginate('Game');
 		$category		=	$this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id='.$userid.' group by games.category_id');
-		//$category		=	$this->Game->find('all', array('conditions' => array('Game.user_id' => $userid, ),'fields'=>array('Game.category_id'),'contain'=>array('Category'=>array('fields'=>array('Category.name,Category.id')))));
 
 	   //========Get Current Subscription===============
 	   $authid = $this->Session->read('Auth.User.id');
@@ -140,5 +139,38 @@ class BusinessesController extends AppController {
 		}  
 	}	
 	
+		public function category($userid,$categoryid) {
+
+		$this->layout	=	'Business/business';
+		$PaginateLimit	=	12;
+		$user			=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
+		$this->paginate	=	array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid,'Game.category_id'=>$categoryid),'limit' => $PaginateLimit,'order' => array('Game.recommend' => 'desc'),'contain'=>array('Category'=>array('fields'=>array('Category.name')))));
+		$cond			=	$this->paginate('Game');
+		$category		=	$this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id='.$userid.' group by games.category_id');
+
+	   //========Get Current Subscription===============
+	   $authid = $this->Session->read('Auth.User.id');
+	   if($authid)
+	   {
+	   $subscribebefore=$this->Subscription->find("first",array("contain"=>false,"conditions"=>array("Subscription.subscriber_id"=>$authid,"Subscription.subscriber_to_id"=>$userid)));
+	       if($subscribebefore!=NULL)
+			{
+			$this->set('follow',1);
+			}else{
+			$this->set('follow',0);
+			}
+	   }else{
+	   		$this->set('follow',1);
+	   }
+	   //=======/Get Current Subscription===============
+
+		$this->set('category',$category);
+		$this->set('games', $cond);
+		$this->set('user', $user);
+		
+		$this->set('title_for_layout', 'Clone Games');
+		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+		$this->set('author_for_layout', 'Clone');
+	}
 	
 }

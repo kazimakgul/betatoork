@@ -9,14 +9,12 @@ if($this->Session->read('Auth.User.id')==$user['User']['id']){
 echo $this->element('business/ads',array('controls'=>$controls)); ?>
 
 <div class="col-md-12">
-
 <div class="btn-group" style="margin-bottom:10px;">
 <?php
 	$limit = 14;
-	echo $this->element('business/category', array('limit'=>$limit));
+	echo $this->element('business/category', array('limit'=>$limit,'userid'=>$user['User']['id']));
 ?>
   </div>
-
 </div>
 
   <?php  echo $this->element('business/login',array('user_id'=>$user['User']['id'])); ?>
@@ -25,27 +23,20 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
 
   <!--left-->
   <div class="col-xs-3">
-
      <div class="row">
       <div class="col-xs-12">
-
     	<div class="panel panel-danger">
          	<div class="panel-heading"><a href="#" class="black"><span class="glyphicon glyphicon-star"></span> Featured Games</a>
           </div>
          	<div class="panel-body">
-
-                  
           <?php  
             $div = "<div class='col-xs-12' style='padding:0px;'>";
             $limit = 3;
 			$fix = 'fix';
             echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit, 'fix' =>$fix, 'controls'=>$controls)); 
           ?>
-
           </div>
         </div>
-
-
 	   </div>
       </div>
 
@@ -62,14 +53,11 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
         <div class="panel-heading"><a href="#" class="black"><span class="fa fa-fire"></span> Hot Games!</a>
         </div>
           <div class="panel-body">
-
-      
           <?php  
             $div = "<div class='col-xs-6' style='padding:0px 15px 0px 5px;'>";
             $limit = 6;
             echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
           ?>
-
           </div>
         </div>
       </div>
@@ -129,7 +117,11 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
             $limit = 8;
             echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
           ?>
-
+	        <ul  class="pagination">
+	            <li><?php echo $this->Paginator->prev(__('Prev', true), array(), null, array('class'=>'disabled'));?></li>
+	            <li><?php echo $this->Paginator->numbers(); ?></li>
+	            <li><?php echo '  '.$this->Paginator->next(__('Next', true), array('id'=>'next'), null, array('class' => 'disabled'));?></li>
+	        </ul>
 
 
       </div>
