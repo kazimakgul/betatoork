@@ -122,11 +122,75 @@ class UploadsController extends AppController {
 	   } 
 	
 	}
+
+	public function games($uploadtype='game_upload',$id=NULL) {
+	$this->layout='uploadplugin/upload';
+	$this->set('uploadtype',$uploadtype);
+	$this->set('id',$id);
+	
+	}
 	
 	
 	public function uploadhandler() {
 	$this->layout='ajax';
 	
+	}
+
+
+	public function apply_file($uploadtype=NULL,$name=NULL,$id=NULL,$loadfrom=NULL)
+	{
+	Configure::write ( 'debug', 0 );
+	App::uses('Folder', 'Utility');
+    App::uses('File', 'Utility');
+
+    $uploadtype=$this->request->data['uploadtype'];
+	$name=$this->request->data['name'];
+	$id=$this->request->data['id'];
+	$loadfrom=$this->request->data['from'];
+	$image_patch=$this->request->data['image'];
+
+
+    if($uploadtype=='game_upload')
+	{
+    //Load Game From Upload begins
+	   $file = new File(WWW_ROOT ."/upload/gamefiles/".$id."/".$name,false);
+	   $info=$file->info();
+
+	   $filename=$info["filename"];
+	   $ext=$info["extension"];
+	   $basename=$info["basename"];
+	   $dirname=$info["dirname"];
+	   $newname=$filename.'_original.'.$ext;
+	   rename(WWW_ROOT ."/upload/gamefiles/".$id."/".$name, WWW_ROOT ."/upload/gamefiles/".$id."/".$newname);
+	
+	        //Upload to aws begins
+			$feedback=$this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/gamefiles/'.$id."/".$newname,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/gamefiles/".$id."/".$newname,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			//Upload to aws ends
+	   //s3 fuctions ends here
+	
+	   if($feedback)
+	   {
+	   //Set the picture field on db.
+	   //remove related id folder from users folder.
+	   $newurl=Configure::read('S3.url').'/upload/gamefiles/'.$id.'/'.$newname;
+	   $this->User->query('UPDATE users SET picture="'.$basename.'" WHERE id='.$id);	
+       $msg = array("title" => 'Image has been saved on s3.','result' => 1,'newlink'=>$newurl);
+	   }else{
+	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
+	   }
+    //Load Game From Upload ends
+	}
+
+
+    $this->set('rtdata', $msg);
+    $this->set('_serialize', array('rtdata'));
 	}
 	
 	

@@ -191,7 +191,10 @@ class UploadHandler
 	}elseif(isset($_GET['uploadtype']) && $_GET['uploadtype']=="game_image" && isset($_GET['id'])){
 	$this->options['upload_dir']=dirname($this->get_server_var('SCRIPT_FILENAME')).'/../upload/games/'.$_GET['id'].'/';
 	$this->options['upload_url']=$this->get_full_url().'/../upload/games/'.$_GET['id'].'/';
-	}else{
+	}elseif(isset($_GET['uploadtype']) && $_GET['uploadtype']=="game_upload" && isset($_GET['id'])){
+    $this->options['upload_dir']=dirname($this->get_server_var('SCRIPT_FILENAME')).'/../upload/gamefiles/'.$_GET['id'].'/';
+    $this->options['upload_url']=$this->get_full_url().'/../upload/gamefiles/'.$_GET['id'].'/';
+    }else{
 	$this->options['upload_dir']=dirname($this->get_server_var('SCRIPT_FILENAME')).'/../else/';
 	$this->options['upload_url']=$this->get_full_url().'/../else/';
 	}
