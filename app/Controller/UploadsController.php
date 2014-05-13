@@ -152,40 +152,13 @@ class UploadsController extends AppController {
 
     if($uploadtype=='game_upload')
 	{
-    //Load Game From Upload begins
-	   $file = new File(WWW_ROOT ."/upload/gamefiles/".$id."/".$name,false);
+	   $file = new File(WWW_ROOT ."/upload/users/".$id."/".$name,false);
 	   $info=$file->info();
-
 	   $filename=$info["filename"];
 	   $ext=$info["extension"];
 	   $basename=$info["basename"];
-	   $dirname=$info["dirname"];
-	   $newname=$filename.'_original.'.$ext;
-	   rename(WWW_ROOT ."/upload/gamefiles/".$id."/".$name, WWW_ROOT ."/upload/gamefiles/".$id."/".$newname);
-	
-	        //Upload to aws begins
-			$feedback=$this->Amazon->S3->create_object(
-            Configure::read('S3.name'),
-            'upload/gamefiles/'.$id."/".$newname,
-             array(
-            'fileUpload' => WWW_ROOT ."/upload/gamefiles/".$id."/".$newname,
-            'acl' => AmazonS3::ACL_PUBLIC
-            )
-            );
-			//Upload to aws ends
-	   //s3 fuctions ends here
-	
-	   if($feedback)
-	   {
-	   //Set the picture field on db.
-	   //remove related id folder from users folder.
-	   $newurl=Configure::read('S3.url').'/upload/gamefiles/'.$id.'/'.$newname;
-	   $this->User->query('UPDATE users SET picture="'.$basename.'" WHERE id='.$id);	
-       $msg = array("title" => 'Image has been saved on s3.','result' => 1,'newlink'=>$newurl);
-	   }else{
-	   $msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
-	   }
-    //Load Game From Upload ends
+	   $dirname=$info["dirname"];	
+    $msg = array("title" => 'Game has been saved on s3.'.$uploadtype.$id.$basename,'result' => 1,'newlink'=>'Game link');
 	}
 
 
