@@ -36,10 +36,11 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
 				    </button>
                 <ul class="dropdown-menu">
  					<li><?php echo $this->Paginator->sort('id','New Games',array('direction'=>'desc')); ?></li>
- 					<li><?php echo $this->Paginator->sort('name','Sort By Name',array('direction'=>'asc')); ?></li>
-                   	<li><?php echo $this->Paginator->sort('created','Sort by Date'); ?></li>
-					<li><?php echo $this->Paginator->sort('starsize','Sort By Rate',array('direction'=>'asc')); ?></li>
-					<li><?php echo $this->Paginator->sort('rate_caount','Sort By Rate Count',array('direction'=>'asc')); ?></li>
+ 					<li><?php echo $this->Paginator->sort('recommend','Recommended',array('direction'=>'desc')); ?></li>
+ 					<li><?php echo $this->Paginator->sort('starsize','Top Rate',array('direction'=>'desc')); ?></li>
+ 					<li><?php echo $this->Paginator->sort('playcount','Most Play',array('direction'=>'desc')); ?></li>
+ 					<li><?php echo $this->Paginator->sort('name','Name',array('direction'=>'asc')); ?></li>
+                   	<li><?php echo $this->Paginator->sort('created','Date'); ?></li>
                 </ul>
             </li>
         </ul>
