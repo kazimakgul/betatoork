@@ -74,7 +74,14 @@
 .mg-btm{
   margin-bottom:20px;
 }
-
+.ads_code iframe{
+	width:405px;
+	max-height:90px;
+	
+}
+.no_margin{
+	margin:0 !important;
+}
 </style>
 
 
@@ -325,19 +332,123 @@
         <div class="modal-dialog" style="width:800px;">
 			<div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title" id="myModalLabel">Ads <?=$user["User"]["username"];?></h4>
                     </div>
                 <div class="modal-body">
                     <center>
-                    	Reklam tablosu yapılınca düzenlenicek.. <br />
+							<div class="row">
+						        <div class="col-md-12">
+						        <div class="table-responsive">
+						              <table id="mytable" class="table table-bordred table-striped">
+						                   <thead>
+						                   <th><input type="checkbox" id="checkall" /></th>
+						                   <th width='150px'>Ads Name</th>
+						                   <th>Ads Code</th>
+						                   <th>Edit</th>
+						                   <th>Delete</th>
+						                   </thead>
+										    <tbody>
+										    <tr>
+										    <td><input type="checkbox" class="checkthis" /></td>
+										    <td>728X90 Adsense google</td>
+										    <td>
+										    	<textarea cols="60" rows="3"  readonly><iframe id="google_ads_frame1" name="google_ads_frame1" width="728" height="90" frameborder="0" src="http://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-8631770984631666&amp;output=html&amp;h=90&amp;slotname=9075184493&amp;adk=4113598055&amp;w=728&amp;lmt=1400049208&amp;flash=13.0.0&amp;url=http%3A%2F%2Flocalhost%2Fbetatoork%2Fbusinesses%2Fplay%2F3&amp;dt=1400060007848&amp;bpp=12&amp;bdt=101&amp;shv=r20140508&amp;cbv=r20140417&amp;saldr=sa&amp;correlator=1400060008304&amp;frm=20&amp;ga_vid=1113137943.1400060008&amp;ga_sid=1400060008&amp;ga_hid=1620247184&amp;ga_fc=0&amp;u_tz=180&amp;u_his=2&amp;u_java=1&amp;u_h=800&amp;u_w=1280&amp;u_ah=727&amp;u_aw=1280&amp;u_cd=24&amp;u_nplug=11&amp;u_nmime=68&amp;dff=helvetica%20neue&amp;dfs=14&amp;adx=263&amp;ady=80&amp;biw=1265&amp;bih=632&amp;eid=317150304&amp;oid=3&amp;rx=0&amp;eae=0&amp;vis=1&amp;fu=0&amp;ifi=1&amp;xpc=1lLTvMW2CP&amp;p=http%3A//localhost&amp;dtd=472" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe></textarea>
+										    </td>
+										    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+										    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+										    </tr>
+										    
+										        <tr>
+										    <td><input type="checkbox" class="checkthis" /></td>
+										    <td>728X90 Adsense google</td>
+										    <td>
+										    	<textarea cols="60" rows="3"  readonly>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</textarea></td>
+										    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+										    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+										    </tr>
+										    
+										    
+										        <tr>
+										    <td><input type="checkbox" class="checkthis" /></td>
+										    <td>728X90 Adsense google</td>
+										    <td>
+										    	<textarea cols="60" rows="3"  readonly>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</textarea></td>
+										    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+										    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+										    </tr>
+										    </tbody>
+										</table>
+					            </div>
+					        </div>
+						</div>
+					
+						<!-- Edit-->
+						<div class="modal fade modal" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+						      <div class="modal-dialog">
+						    <div class="modal-content">
+						          <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						        <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+						      </div>
+						          <div class="modal-body">
+						          <div class="form-group">
+						        <input class="form-control " type="text" placeholder="Mohsin">
+						        </div>
+						        <div class="form-group">
+						        
+						        <input class="form-control " type="text" placeholder="Irshad">
+						        </div>
+						        <div class="form-group">
+						        <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
+						        </div>
+						      </div>
+						          <div class="modal-footer ">
+						        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+						      </div>
+						        </div>
+						    <!-- /.modal-content --> 
+						  </div>
+						      <!-- /.modal-dialog --> 
+						    </div>
+						    
+						    
+					
+						<!-- Delete-->
+						    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+						      <div class="modal-dialog">
+						    <div class="modal-content">
+						          <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						        <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+						      </div>
+						          <div class="modal-body">
+						       
+						       <div class="alert alert-warning"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+						       
+						      </div>
+						        <div class="modal-footer ">
+						        <button type="button" class="btn btn-warning" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+						        <button type="button" class="btn btn-warning" ><span class="glyphicon glyphicon-remove"></span> No</button>
+						      </div>
+						        </div>
+						    <!-- /.modal-content --> 
+						  </div>
+						      <!-- /.modal-dialog --> 
+						    </div>
                     	<?
-                    	print_r($user);
+                    	//print_r($user);
 						?>
                     </center>
                 </div>
                 <div class="modal-footer">
                     <center>
+                    	<ul class="pagination no_margin">
+						  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+						  <li class="active"><a href="#">1</a></li>
+						  <li><a href="#">2</a></li>
+						  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+						</ul>
                     </center>
                 </div>
             </div>

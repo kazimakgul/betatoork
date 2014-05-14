@@ -1,6 +1,7 @@
 
 <div class="container">
 <?
+$subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
 $controls=NULL;
 if($this->Session->read('Auth.User.id')==$user['User']['id']){
 	$controls=$user['User']['id'];
@@ -50,7 +51,7 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
 
       <div class="col-xs-12">
       <div class="panel panel-info">
-        <div class="panel-heading"><a href="#" class="black"><span class="fa fa-fire"></span> Hot Games!</a>
+        <div class="panel-heading"><a href="<?=$subgameurl;?>/sort:recommend/direction:desc" class="black"><span class="fa fa-fire"></span> Hot Games!</a>
         </div>
           <div class="panel-body">
           <?php  
@@ -78,7 +79,7 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
       <div class="col-xs-12">
 
     	<div class="panel panel-success">
-         	<div class="panel-heading"><a href="#" class="black"><span class="fa fa-flash"></span> New Games!</a></div>
+         	<div class="panel-heading"><a href="<?=$subgameurl;?>/sort:id/direction:desc" class="black"><span class="fa fa-flash"></span> New Games!</a></div>
          	<div class="panel-body">
 
           <?php  

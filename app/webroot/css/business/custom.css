@@ -306,3 +306,33 @@ div .widget-button{
     opacity: 0;
   }
 }
+
+
+/*Stars for 16 px*/
+.stars2 { 
+  position: relative; 
+  float: left; 
+  background: url('../../img/rating/star_16_e.png') repeat-x left top; 
+  cursor: default; 
+}
+
+.stars2 .star2 { 
+  height: 16px; 
+  padding-left: 16px; 
+  background: transparent none repeat-x left top; 
+}
+
+
+
+/*.stars2:hover .star2 { 
+  background-image: url('../img/rating/star_16_c.png');
+}
+.stars2:hover .star2:hover {
+  background-image: url('../img/rating/star_16_h.png'); 
+}
+*/
+.stars2 .ratingbar2 { 
+  position: absolute; 
+  height: 100%; 
+  background: url('../../img/rating/star_16_h.png') repeat-x left top; 
+}

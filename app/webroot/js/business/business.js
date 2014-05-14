@@ -108,6 +108,20 @@ $(function() {
 
 
 $( document ).ready(function() {
+	//Ads Button table class
+	$("#mytable #checkall").click(function () {
+        if ($("#mytable #checkall").is(':checked')) {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", true);
+            });
+
+        } else {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+    });
+	
 	
 	//Favourite Button class change
 	$('.favourite .row button').click(function(){

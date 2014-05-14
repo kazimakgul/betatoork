@@ -17,7 +17,7 @@ $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$
 		<span class="icon-bar"></span>
 		</button>
 		<!-- Username kısmını ilerde screenname olarak değiştir -->
-		<a class="navbar-brand" rel="home" href="../mysite/<?php echo $user['User']['id']?>"><?php echo $user['User']['username']?></a>
+		<a class="navbar-brand" rel="home" href="<?=$index?>"><?php echo $user['User']['username']?></a>
 	</div>
 
 	<div class="collapse navbar-collapse">

@@ -18,14 +18,23 @@
 	                <div class="panel-footer text-center" style="padding:0px;">
 	                  <a href="<?php echo $playurl; ?>" style="padding:0px;"><h5 class="darkblue" style='width:190px; height:16px; overflow:hidden;'><?php echo $game['Game']['name']; ?></h5></a>
 	                  <div class="row">
-	                    <span class="col-md-6" style='margin-left:0px;'>
-                   			<!-- Rating Button -->
-							<div class="rating">
-							    <div data-toggle="tooltip" data-original-title="<?=$game['Game']['rate_count'];?> Rates">
-							        <div id="stars-existing" class="starrr" data-rating="<?=round($game['Game']['starsize']/20);?>"></div>
-							    </div>
-							</div><!-- Rating Button End -->
+	                  	<span class="col-md-6" style='margin-left:10px;'>
+                   			<div class= 'centerrate2'>
+								<div class="stars2"  data-toggle="tooltip" data-original-title="<?=$game['Game']['rate_count'];?> Rates">
+									<div class="ratingbar2" style="width: <?php echo $game['Game']['starsize']; ?>%;"></div>
+									<div class="star2">
+										<div class="star2">
+											<div class="star2">
+												<div class="star2">
+													<div class="star2"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 	                    </span>
+
 	                    <span class="col-md-5">
 	                    <i data-toggle="tooltip" title="<?php echo $game['Gamestat']['playcount']; ?> Plays" class="fa fa-play green"></i>
 	                    <i data-toggle="tooltip" title="<?php echo $game['Gamestat']['favcount']; ?> Favorites" class="fa fa-heart red"></i>
@@ -36,10 +45,13 @@
 	            </div>
 	          </div>
 	<?php $counter = $counter+1; 
-	      if($counter==$limit){ 
+	      if(isset($limit) && $counter==$limit){ 
 	        break; }else{continue;} ?>
 	 <?php endforeach; ?>
-<?php while ($counter < $limit){?>
+<?php 
+if(isset($limit))
+{
+while ($counter < $limit){?>
           <?php echo $div; ?>
             <div class="panel panel-default" style="background-color:silver;">
               <div style="padding:20% 0% 21% 0%;" class="text-center">
@@ -53,4 +65,5 @@
                 </div>
             </div>
           </div>
-<?php $counter++;  } ?>
+<?php $counter++;  } 
+}?>

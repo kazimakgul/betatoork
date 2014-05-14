@@ -20,7 +20,6 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
   <?php  echo $this->element('business/login',array('user_id'=>$user['User']['id'])); ?>
   <?php  echo $this->element('business/channelbanner',array('controls'=>$controls)); ?>
 
-<? if(isset($games[0]['Category'])){?>
 <!--/footer-->
   <div class="col-sm-12">
 
@@ -36,6 +35,7 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
 				      <span class="caret"></span>
 				    </button>
                 <ul class="dropdown-menu">
+ 					<li><?php echo $this->Paginator->sort('id','New Games',array('direction'=>'desc')); ?></li>
  					<li><?php echo $this->Paginator->sort('name','Sort By Name',array('direction'=>'asc')); ?></li>
                    	<li><?php echo $this->Paginator->sort('created','Sort by Date'); ?></li>
 					<li><?php echo $this->Paginator->sort('starsize','Sort By Rate',array('direction'=>'asc')); ?></li>
@@ -44,7 +44,7 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
             </li>
         </ul>
        
-         <h3 class="panel-title"><?=$games[0]['Category']['name'];?> Category Games</h3>
+         <h3 class="panel-title">Games</h3>
       </div>
       
       <div class="panel-body">
@@ -69,7 +69,6 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
 
 
   </div><!--/footer-->
-<?}?>
 <?php  echo $this->element('business/ads',array('controls'=>$controls)); ?>
 
 
