@@ -86,7 +86,7 @@ public $helpers = array('Html', 'Form','Upload');
 				    $this->requestAction( array('controller' => 'userstats', 'action' => 'togglefav'));
 					$this->Gamestat->sync_fav($game_id);
 					$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$user_id,6,1));	
-					$this->set("favMessage","The favorite has been saved.");
+					$this->set("favMessage",1);
 
 				}else{
 					$this->set("favMessage","The favorite could not be saved. Please, try again.");
@@ -100,7 +100,7 @@ public $helpers = array('Html', 'Form','Upload');
 			     $this->requestAction( array('controller' => 'userstats', 'action' => 'togglefav'));
 				 $this->Gamestat->sync_fav($game_id);
 				 //$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$game_id,$user_id,6,0)); Unfavorite postu atilmayacak.
-			     $this->set("favMessage","You removed this game from favorites.");
+			     $this->set("favMessage",0);
 			   }
 			   else
 			   {

@@ -126,7 +126,11 @@ class BusinessesController extends AppController {
 		$limit=12;
 		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$game['Game']['user_id']),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
 		$cond=$this->paginate('Game');
+		$user_id=$this->Auth->user('id');
+		$game_id = $game['Game']['id'];
+		$fav_check=$this->Game->query('SELECT id FROM favorites WHERE user_id='.$user_id.' AND game_id='.$game_id);
 		
+		$this->set('ownuser', $fav_check);
 		$this->set('games', $cond);
 		$this->set('user', $user);
 		$this->set('game',$game);

@@ -63,12 +63,8 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
 		    </div>
       </div>
     </div>
-
-
      </div>
       </div>
-
-
   </div><!--/footer-->
 <?php  echo $this->element('business/ads',array('controls'=>$controls)); ?>
 

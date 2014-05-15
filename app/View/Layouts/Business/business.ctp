@@ -27,6 +27,7 @@
         toorksize='<?php echo Configure::read('broken.toorksize'); ?>';
         avatar='<?php echo Configure::read('broken.avatar'); ?>';
         s3patch='<?php echo Configure::read('S3.url'); ?>';
+        favswitcher='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
         </script>
 
 
