@@ -2067,6 +2067,47 @@ $('#select_all').live('click',function(){
 });
 
 
+//Admin game add begins
+$('#admin_game_submit').live('click',function(){
+
+	$game_name=$('#game_name').val();
+	$game_description=$('#game_description').val();
+	$game_link=$('#game_link').val();
+	$game_width=$('#game_width').val();
+	$game_height=$('#game_height').val();
+	$game_width=$('#game_priority').val();
+	$game_height=$('#game_tags').val();
+	$game_user_id=$('#game_user_id').val();
+
+
+	if($('#game_mobile').prop('checked'))
+	{
+		$mobile_ready='great';
+	}else{
+		$mobile_ready='not great';
+	}
+											
+		//------
+		   $.ajax({
+        type: "POST",
+        url: admin_game_submit,
+		data: {game_name:$game_name,game_description: $game_description,game_user_id: $game_user_id},
+        dataType: "json",
+		async: false,
+        success: function(data){
+			
+			alert(data.rtdata.title);
+			
+			},
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+  });
+        //------	
+			
+});
+//Admin game add ends
+
 //==========================================================
 //*********Admin Functions Ends********
 //==========================================================

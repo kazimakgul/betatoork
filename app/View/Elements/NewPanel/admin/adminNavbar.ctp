@@ -52,6 +52,7 @@ $mass_pwd_change=$this->Html->url(array("controller" => "admins","action" =>"mas
                                                     </form>
                                                     <ul class="nav pull-right">
                                                         <li><a href="#">Link</a></li>
+                                                        <?php if($this->params['action']!='game_add'){ ?>
                                                         <li class="divider-vertical"></li>
                                                         <li class="dropdown">
                                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Filter/Sort <b class="caret"></b></a>
@@ -65,6 +66,7 @@ $mass_pwd_change=$this->Html->url(array("controller" => "admins","action" =>"mas
 																<li><?php echo $this->Paginator->sort('last_login','Sort By Last Login',array('direction'=>'desc')); ?></li>
                                                             </ul>
                                                         </li>
+                                                      <?php } ?>
                                                     </ul>
                                                 </div><!-- /.nav-collapse -->
                                             </div>

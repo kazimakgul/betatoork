@@ -68,6 +68,7 @@ remove_mass_session='<?php echo $this->Html->url(array('controller'=>'admins','a
 do_pwd_changes='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'do_pwd_changes')); ?>';
 remove_selections='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'remove_selections')); ?>';
 do_adcode_changes='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'do_adcode_changes')); ?>';
+admin_game_submit='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'admin_game_submit')); ?>';
 
 <?php if($this->params['action']=='mass_pwd_change'){?>
 bring_search_users='<?php echo $this->Html->url(array('controller'=>'admins','action'=>'get_search_users',2)); ?>';

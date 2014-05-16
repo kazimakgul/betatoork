@@ -62,6 +62,33 @@ public function bots() {
 	$this->Session->write('User.selectedcount', count($selectedlist));  
 	print_r($selectedlist);
 	}
+
+	public function game_add()
+    {
+        $this->layout='adminDashboard';
+
+        $authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('username',$userName);
+
+    }
+
+
+public function admin_game_submit()
+    {
+        Configure::write ( 'debug', 0 );
+
+        $game_name=$this->request->data['game_name'];
+	    $game_description=$this->request->data['game_description'];
+	    $game_user_id=$this->request->data['game_user_id'];
+
+        $msg = array("title" => 'Game has been saved on s3.'.$game_name.$game_description.$game_user_id,'result' => 1);
+        $this->set('rtdata', $msg);
+        $this->set('_serialize', array('rtdata'));
+    }
+
 	
 	public function delete_session($id)
 	{
