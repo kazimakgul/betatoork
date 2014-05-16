@@ -109,7 +109,7 @@ class BusinessesController extends AppController {
 	
 	public function play($id=NULL) {
 	//Getting Random Game Data
-		$game	=	$this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')),'Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));//Recoded
+		$game	=	$this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')),'Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));//Recoded
 		$user	=	$this->User->find('first', array('conditions' => array('User.id'=>$game['Game']['user_id']),'fields'=>array('*')));
 		$this->layout='Business/business';
 		if($game['Game']['clone']==1)
@@ -129,8 +129,10 @@ class BusinessesController extends AppController {
 		$user_id=$this->Auth->user('id');
 		$game_id = $game['Game']['id'];
 		$fav_check=$this->Game->query('SELECT id FROM favorites WHERE user_id='.$user_id.' AND game_id='.$game_id);
+		$clone_check=$this->Game->query('SELECT id FROM cloneships WHERE user_id='.$user_id.' AND game_id='.$game_id);
 		
 		$this->set('ownuser', $fav_check);
+		$this->set('ownclone', $clone_check);
 		$this->set('games', $cond);
 		$this->set('user', $user);
 		$this->set('game',$game);

@@ -22,12 +22,15 @@
         <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
         <?php echo $this->Html->script(array('business/custom','business/business')); ?>
+<? echo $game_id = $game['Game']['id'];?>
 
         <script>
-        toorksize='<?php echo Configure::read('broken.toorksize'); ?>';
-        avatar='<?php echo Configure::read('broken.avatar'); ?>';
-        s3patch='<?php echo Configure::read('S3.url'); ?>';
-        favswitcher='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
+        toorksize	='<?php echo Configure::read('broken.toorksize'); ?>';
+        avatar		='<?php echo Configure::read('broken.avatar'); ?>';
+        s3patch		='<?php echo Configure::read('S3.url'); ?>';
+        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
+		chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
+		game_id		= '<?=$game_id?>';
         </script>
 
 

@@ -346,5 +346,75 @@ $('#fav_button').click(function () {
 		});	
 		
     }
-    
+
+//***************************************************
+//------------Game Chain/Clone Functions-------------
+//***************************************************
+
+$('#chaingame').click(function () {
+    if(user_auth==1)
+    {   
+	    game_name=$('#game_name').val();
+		$.get(chaingame + '/'+game_id, function(data) {
+			if(data==1)
+			{
+				currentflw=$('#clone_count').html();
+				currentflw=parseInt(currentflw);
+				$('#clone_count').html(currentflw+1);
+				$('.fa-cog').addClass('green');
+				 $.pnotify({
+			 		title: 'You have cloned succesfully.',
+              		text: 'You have cloned. <strong>'+game_name+'</strong> game. You will be able to edit this game as you wish on your games section.',
+             		type: 'success'
+              });
+			}
+		});
+	}else{
+		 $.pnotify({
+            title: 'Sign in Please',
+            text: 'You have to sign in first to clone games.',
+            type: 'error'
+          });	
+		}
+});
+
+
+function chaingame2(game_name,user_auth,game_id)
+{
+if(user_auth==1)
+    {   
+		$.get(chaingame + '/'+game_id, function (data) {
+			
+			if(data==1)
+			{
+			  $.pnotify({
+			  title: 'You have cloned succesfully.',
+              text: 'You have cloned. <strong>'+game_name+'</strong> game. You will be able to edit this game as you wish on your games section.',
+              type: 'success'
+              });  
+			}else{
+				
+				$.pnotify({
+			  title: 'System Error',
+              text: 'There are some problems on server,please try again later.',
+              type: 'error'
+              });  
+				
+			}
+			
+		});
+		
+	}else{
+		
+		 $.pnotify({
+            title: 'Sign in Please',
+            text: 'You have to sign in first to clone games.',
+            type: 'error'
+          });	
+		
+		
+		}	
+	
+	
+}
 
