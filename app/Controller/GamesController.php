@@ -1371,38 +1371,6 @@ if(empty($favbefore))
 	}
 
 
-function seoUrlFormer($material='toork')
-{
-//Add incremental number at the end of the seo_url
-//preg_match('/^([^\d]+)([\d]*?)$/', $material, $match);
-//$material = $match[1];
-//$number = $match[2] + 1;
-//return $material.$number;
-
-$str=$material; //our original string
-$temp=explode($material,$str); //making an array of it
-$str=$material.($temp[1]+1); //the text and the number+1
-return $str;
-
-}
-
-function checkDuplicateSeoUrl($seo_url='toork')
-{
-  $authid = $this->Session->read('Auth.User.id');
-  do {
-  
-     $data=$this->Game->find('all',array('contain'=>false,'conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$authid),'fields'=>array('seo_url')));
-     if($data==NULL)
-	 {
-	 return $seo_url;
-	 }else{
-	 $seo_url=$this->seoUrlFormer($seo_url);
-	 }
-    
-  } while(1==1);
-
-}
-
 
 function secureSuperGlobalPOST($value)
     {
@@ -1506,7 +1474,7 @@ function getExtension($str) {
 	        $this->request->data['Game']['starsize']=0;
 	        $this->request->data['Game']['rate_count']=0;
 	        $this->request->data['Game']['embed']=$targetGame['Game']['embed'];
-	        $this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(str_replace('_','',Inflector::slug(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])))));
+	        $this->request->data['Game']['seo_url']=$this->Game->checkDuplicateSeoUrl($this->request->data['Game']['name']);
 	        $this->request->data['Game']['clone']=1;
 			if($targetGame['Game']['owner_id']!=NULL && $targetGame['Game']['clone']==1)
 			{
@@ -1956,7 +1924,7 @@ echo '<a href="'.$image['src'].'"><img width="130px" src="'.$image['src'].'"></a
 			
 			
 			//seourl begins
-		     $this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(str_replace('_','',Inflector::slug(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])))));
+		     $this->request->data['Game']['seo_url']=$this->Game->checkDuplicateSeoUrl($this->request->data['Game']['name']);
 		    //seourl ends
 			
 			
@@ -2126,7 +2094,7 @@ public function edit2($id = null) {
 			
 			
 			//seourl begins
-		     $this->request->data['Game']['seo_url']=$this->checkDuplicateSeoUrl(str_replace('_','',Inflector::slug(strtolower(str_replace(' ','-',$this->request->data['Game']['name'])))));
+		     $this->request->data['Game']['seo_url']=$this->Game->checkDuplicateSeoUrl($this->request->data['Game']['name']);
 		    //seourl ends
 			
 			

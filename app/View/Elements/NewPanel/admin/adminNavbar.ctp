@@ -1,6 +1,7 @@
 <?php 
 $users=$this->Html->url(array("controller" => "admins","action" =>"users"));  
 $bots=$this->Html->url(array("controller" => "admins","action" =>"bots"));
+$game_add=$this->Html->url(array("controller" => "admins","action" =>"game_add"));
 
 if($this->params['action']=='mass_pwd_change')
 {
@@ -33,7 +34,7 @@ $mass_pwd_change=$this->Html->url(array("controller" => "admins","action" =>"mas
                                                     <ul class="nav">
                                                         <li class="active"><a href="<?php echo $users; ?>">Users</a></li>
                                                         <li><a href="#">Games</a></li>
-                                                        <li><a href="#">Link</a></li>
+                                                        <li><a href="<?php echo $game_add; ?>">Game Add</a></li>
                                                         <li class="dropdown">
                                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Insights <b class="caret"></b></a>
                                                             <ul class="dropdown-menu">

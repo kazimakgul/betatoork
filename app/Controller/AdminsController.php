@@ -76,15 +76,52 @@ public function bots() {
     }
 
 
+
 public function admin_game_submit()
     {
         Configure::write ( 'debug', 0 );
 
         $game_name=$this->request->data['game_name'];
 	    $game_description=$this->request->data['game_description'];
+		$game_link=$this->request->data['game_link'];
+		$game_width=$this->request->data['game_width'];
+		$game_height=$this->request->data['game_height'];
+		$game_priority=$this->request->data['game_priority'];
+		$game_tags=$this->request->data['game_tags'];
 	    $game_user_id=$this->request->data['game_user_id'];
-
-        $msg = array("title" => 'Game has been saved on s3.'.$game_name.$game_description.$game_user_id,'result' => 1);
+		$mobileready=$this->request->data['mobile_ready'];
+		
+		
+		if($userid = $this->Session->read('Auth.User.id'))
+		{//Auth Control Begins
+		//============Save Datas To Games Database Begins================
+		//*****************************
+		//Secure data filtering begins
+		//*****************************
+		
+		$filtered_data=
+		array('Game' =>array(
+		'name' => $game_name,
+		'description' => $game_description,
+		'game_link' => $game_link,
+		'width' => $game_width,
+		'height' => $game_height,
+		'type' => $this->Game->get_game_type($game_link),
+		'priority' => $game_priority,
+		'user_id' => $game_user_id,
+		'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
+		'mobileready' => $mobileready));
+		//*****************************
+		//Secure data filtering ends
+		//*****************************
+		  if($this->Game->save($filtered_data))
+		  {
+		
+		  }
+		//============Save Datas To Games Database Ends================
+        }//Auth Control Ends
+		
+        $msg = array("title" => 'Game has been saved on s3.','result' => 1);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }

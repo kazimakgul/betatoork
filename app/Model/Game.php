@@ -60,7 +60,51 @@ public $virtualFields = array(
  	public function isOwnedBy($game, $user) {
 		return $this->field('id', array('id' => $game, 'user_id' => $user)) === $game;
 	}
-
+	
+	public function get_game_type($url)
+	{
+	  if (strpos($url, '.') !== false) {
+      $ext = substr($url, strrpos($url, '.') + 1);
+      } else {
+      $ext = 'swf';
+      }
+	  return $ext;
+	}
+	
+	//This replace forbidden characters on content
+	public function secureSuperGlobalPOST($content)
+	{
+        $string = htmlspecialchars(stripslashes($value));
+        $string = str_ireplace("script", "blocked", $string);
+        $string = mysql_escape_string($string);
+		//$string = htmlentities($string);
+        return $string;
+	}
+	
+	public function checkDuplicateSeoUrl($seo_url='toork')
+    {
+     $authid = CakeSession::read("Auth.User.id");
+	 $seo_url=str_replace('_','',Inflector::slug(strtolower(str_replace(' ','-',$seo_url))));
+     do {
+  
+          $data=$this->find('all',array('contain'=>false,'conditions'=>array('Game.seo_url'=>$seo_url,'Game.user_id'=>$authid),'fields'=>array('seo_url')));
+          if($data==NULL)
+	      {
+	      return $seo_url;
+	      }else{
+	      $seo_url=$this->seoUrlFormer($seo_url);
+	      }
+        } while(1==1);
+    }
+    
+	function seoUrlFormer($material='toork')
+    {
+    //Add incremental number at the end of the seo_url
+    preg_match('/^([^\d]+)([\d]*?)$/', $material, $match);
+    $material = $match[1];
+    $number = $match[2] + 1;
+    return $material.$number;
+    }
 
 	public $validate = array(
 		'name' => array(

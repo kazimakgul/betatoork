@@ -2075,23 +2075,23 @@ $('#admin_game_submit').live('click',function(){
 	$game_link=$('#game_link').val();
 	$game_width=$('#game_width').val();
 	$game_height=$('#game_height').val();
-	$game_width=$('#game_priority').val();
-	$game_height=$('#game_tags').val();
+	$game_priority=$('#game_priority').val();
+	$game_tags=$('#game_tags').val();
 	$game_user_id=$('#game_user_id').val();
 
 
 	if($('#game_mobile').prop('checked'))
 	{
-		$mobile_ready='great';
+		$mobile_ready=1;
 	}else{
-		$mobile_ready='not great';
+		$mobile_ready=0;
 	}
 											
 		//------
 		   $.ajax({
         type: "POST",
         url: admin_game_submit,
-		data: {game_name:$game_name,game_description: $game_description,game_user_id: $game_user_id},
+		data: {game_name:$game_name,game_description: $game_description,game_link:$game_link,game_width:$game_width,game_height:$game_height,game_priority:$game_priority,game_tags:$game_tags,game_user_id: $game_user_id,mobile_ready:$mobile_ready},
         dataType: "json",
 		async: false,
         success: function(data){
@@ -2107,6 +2107,21 @@ $('#admin_game_submit').live('click',function(){
 			
 });
 //Admin game add ends
+
+//Admin game add full screen checkbox begins
+$('#full_screen').live('click',function(){
+	if($(this).prop('checked'))
+	{
+		$('#game_width').val('100%');
+		$('#game_height').val('100%');
+		$('#game_width').attr('disabled', 'disabled');
+		$('#game_height').attr('disabled', 'disabled');
+	}else{
+		$('#game_width').removeAttr('disabled');
+		$('#game_height').removeAttr('disabled');
+	}										 
+});
+//Admin game add full screen checkbox ends
 
 //==========================================================
 //*********Admin Functions Ends********
