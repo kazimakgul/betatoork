@@ -72,6 +72,8 @@ public function bots() {
     	$userName = $user['User']['username'];
 	    $this->set('user',$user);
 		$this->set('username',$userName);
+		$categories = $this->Game->Category->find('list');
+		$this->set(compact('categories'));
 
     }
 
@@ -90,6 +92,8 @@ public function admin_game_submit()
 		$game_tags=$this->request->data['game_tags'];
 	    $game_user_id=$this->request->data['game_user_id'];
 		$mobileready=$this->request->data['mobile_ready'];
+		$image_name=$this->request->data['image_name'];
+		$category_id=$this->request->data['category_id'];
 		
 		
 		if($userid = $this->Session->read('Auth.User.id'))
@@ -101,22 +105,42 @@ public function admin_game_submit()
 		
 		$filtered_data=
 		array('Game' =>array(
-		'name' => $game_name,
-		'description' => $game_description,
+		'name' => $game_name=$this->Game->secureSuperGlobalPOST($game_name),
+		'description' => $this->Game->secureSuperGlobalPOST($game_description),
 		'game_link' => $game_link,
 		'width' => $game_width,
 		'height' => $game_height,
 		'type' => $this->Game->get_game_type($game_link),
 		'priority' => $game_priority,
 		'user_id' => $game_user_id,
+		'category_id' => $category_id,
 		'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
+		'user_id' => $game_user_id,
 		'mobileready' => $mobileready));
 		//*****************************
 		//Secure data filtering ends
 		//*****************************
 		  if($this->Game->save($filtered_data))
 		  {
-		
+		     $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
+			 $id=$this->Game->getLastInsertId();
+			 $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));
+			 
+		    //=======Upload to aws begins===========
+			$feedback=$this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/temperory/'.$userid."/".$image_name,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/games/".$id."/".$image_name,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			//========Upload to aws ends==============
+			if($feedback)
+	        {
+	        //Set the picture field on db.
+	        $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id);	
+	        }
 		  }
 		//============Save Datas To Games Database Ends================
         }//Auth Control Ends

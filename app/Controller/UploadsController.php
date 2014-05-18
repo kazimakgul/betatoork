@@ -131,6 +131,13 @@ class UploadsController extends AppController {
 	}
 	
 	
+	public function images($uploadtype='new_game',$id=NULL) {
+	$this->layout='uploadplugin/upload';
+	$this->set('uploadtype',$uploadtype);
+	$this->set('id',$id);
+	}
+	
+	
 	public function uploadhandler() {
 	$this->layout='ajax';
 	
@@ -158,7 +165,15 @@ class UploadsController extends AppController {
 	   $ext=$info["extension"];
 	   $basename=$info["basename"];
 	   $dirname=$info["dirname"];	
-    $msg = array("title" => 'Game has been saved on s3.'.$uploadtype.$id.$basename,'result' => 1,'newlink'=>'Game link');
+       $msg = array("title" => 'Game has been saved on s3 from game upload.'.$uploadtype.$id.$basename,'result' => 1,'newlink'=>'Game link by game upload');
+	}elseif($uploadtype=='new_game'){
+	   $file = new File(WWW_ROOT ."/upload/temperory/".$id."/".$name,false);
+	   $info=$file->info();
+	   $filename=$info["filename"];
+	   $ext=$info["extension"];
+	   $basename=$info["basename"];
+	   $dirname=$info["dirname"];	
+       $msg = array("title" => 'Game has been saved on s3 from game image upload.','result' => 1,'newlink'=>$image_patch);
 	}
 
 

@@ -72,7 +72,7 @@ public $virtualFields = array(
 	}
 	
 	//This replace forbidden characters on content
-	public function secureSuperGlobalPOST($content)
+	public function secureSuperGlobalPOST($value)
 	{
         $string = htmlspecialchars(stripslashes($value));
         $string = str_ireplace("script", "blocked", $string);

@@ -2078,7 +2078,9 @@ $('#admin_game_submit').live('click',function(){
 	$game_priority=$('#game_priority').val();
 	$game_tags=$('#game_tags').val();
 	$game_user_id=$('#game_user_id').val();
+	$category_id=$('#category_id').val();
 
+    $image_name=$('#game_image').attr('data-src');
 
 	if($('#game_mobile').prop('checked'))
 	{
@@ -2091,7 +2093,7 @@ $('#admin_game_submit').live('click',function(){
 		   $.ajax({
         type: "POST",
         url: admin_game_submit,
-		data: {game_name:$game_name,game_description: $game_description,game_link:$game_link,game_width:$game_width,game_height:$game_height,game_priority:$game_priority,game_tags:$game_tags,game_user_id: $game_user_id,mobile_ready:$mobile_ready},
+		data: {game_name:$game_name,game_description: $game_description,game_link:$game_link,game_width:$game_width,game_height:$game_height,game_priority:$game_priority,game_tags:$game_tags,game_user_id: $game_user_id,mobile_ready:$mobile_ready,image_name:$image_name,category_id:$category_id},
         dataType: "json",
 		async: false,
         success: function(data){
@@ -2193,12 +2195,14 @@ $('#gameframe').load(function(){
 });
 
 $('#gameframe').load(function(){
-  $(this).contents().find("#set_photo").on('click', function(event) { 
+  $(this).contents().find("#set_photo").on('click', function(event) {
    $('#gameChange').modal('toggle');
    $('#game_image').attr('src','http://www.imageyourself.net/images/website/loading.gif');	
    setTimeout(function(){
 		var new_img = $('iframe[id=gameframe]').contents().find('#new_image_link').val();
-		$('#game_image').attr('src',new_img);	
+		var img_name = $('iframe[id=gameframe]').contents().find('#selected_image').val();
+		$('#game_image').attr('src',new_img);
+		$('#game_image').attr('data-src',img_name);
    },1000);
 
    });

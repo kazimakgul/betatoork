@@ -75,6 +75,13 @@
 </div>
 
 <div class="control-group">
+<div class="controls">
+<?php echo $this->Form->input('category_id',array('label'=>'Select Category:','default'=>'18',array('id'=>'category') )); ?>
+</div>
+</div>
+
+
+<div class="control-group">
 <label class="control-label" for="url">Owner Channel Id:</label>    
 <input type="text" maxlength="100" value="<?php echo $user['User']['id']; ?>" id="game_user_id"> 
 </div>
@@ -96,8 +103,7 @@
         <div class="modal-dialog" style="width:800px;">
             <div>
                 <?php 
-        $game_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','game_image',$game['Game']['id']));
-        $url=$game_image_url;
+        $url=$this->Html->url(array('controller'=>'uploads','action'=>'images','new_game',$user['User']['id']));
         ?>
                 <iframe id='gameframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
             </div>

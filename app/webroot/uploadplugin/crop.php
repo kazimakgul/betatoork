@@ -74,6 +74,8 @@ echo 'h_size:'.$_POST['h_size'].'<br>';
   $src = '../upload/users/'.$_POST['id'].'/'.$_POST['name'];
   if($_POST['uploadtype']=='game_image')
   $src = '../upload/games/'.$_POST['id'].'/'.$_POST['name'];
+  if($_POST['uploadtype']=='new_game')
+  $src = '../upload/temporary/'.$_POST['id'].'/'.$_POST['name'];
   
   $imageinfo=$it->crop($src,$_POST['x'],$_POST['y'],$_POST['w'],$_POST['h'],$_POST['w_size'],$_POST['h_size']);
   
