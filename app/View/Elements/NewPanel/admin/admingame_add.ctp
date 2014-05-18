@@ -52,7 +52,7 @@
 <div id="top-menu">
 <a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="elusive-bookmark"></i> Link</a>
 <a href="#album" onclick="go_gallery();" data-toggle="tab" class="btn btn-default" title=""><i class="elusive-asterisk"></i> Embed</a>
-<a href="#photos" onclick="go_photos();" data-toggle="tab" class="btn btn-success" title=""><i class="elusive-upload"></i> Upload Game File</a>
+<a data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title=""><i class="elusive-upload"></i> Upload Game File</a>
 </div> 
 </div> 
 
@@ -120,3 +120,16 @@
         </div>
     </div>
   <!-- Game Image Change Modal ends -->      
+
+  <!-- Game Add Modal begins -->
+    <div class="modal fade" id="gameAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                <?php 
+        $url=$this->Html->url(array('controller'=>'uploads','action'=>'games','game_upload',$user['User']['id']));
+        ?>
+                <iframe id='gameaddframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+  <!-- Game Add Modal ends -->   
