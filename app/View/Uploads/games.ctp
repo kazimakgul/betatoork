@@ -139,7 +139,7 @@ $(function () {
             $.each(data.result.files, function (index, file) {
 			    $( "#uploadtools" ).hide();
 				$( "#viewtools" ).show();
-				$('#files').html('<img id="theImg" src="'+file.url+'" />');
+				$('#files').html('<i style="margin-top:65px; font-size:80px; color:#ffffff;" class="glyphicon glyphicon-check"></i>');
 				$('#selected_image').val(file.name);
 				$('#image_name').html(file.name);
 				$('#set_photo').removeClass('disabled');

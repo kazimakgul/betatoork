@@ -152,6 +152,7 @@ class UploadHandler
                     'max_height' => 600
                 ),
                 */
+                /*
                 'thumbnail' => array(
                     // Uncomment the following to use a defined directory for the thumbnails
                     // instead of a subdirectory based on the version identifier.
@@ -166,6 +167,7 @@ class UploadHandler
                     'max_width' => 80,
                     'max_height' => 80
                 )
+                */
             )
         );
         if ($options) {
