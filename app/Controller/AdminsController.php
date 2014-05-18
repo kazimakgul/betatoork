@@ -82,6 +82,8 @@ public function bots() {
 public function admin_game_submit()
     {
         Configure::write ( 'debug', 0 );
+        App::uses('Folder', 'Utility');
+        App::uses('File', 'Utility');
 
         $game_name=$this->request->data['game_name'];
 	    $game_description=$this->request->data['game_description'];
@@ -95,14 +97,27 @@ public function admin_game_submit()
 		$image_name=$this->request->data['image_name'];
 		$category_id=$this->request->data['category_id'];
 		
-		
+
+
 		if($userid = $this->Session->read('Auth.User.id'))
 		{//Auth Control Begins
+		
+
+        //This area should be exist for upload plugin needs-begins	
+	    $file = new File(WWW_ROOT ."/upload/temporary/".$userid."/".$image_name,false);
+	    $info=$file->info();
+	    $filename=$info["filename"];
+	    $ext=$info["extension"];
+	    $basename=$info["basename"];
+	    $dirname=$info["dirname"];
+	    $newname=$filename.'_toorksize.'.$ext;
+	    rename(WWW_ROOT ."/upload/temporary/".$userid."/".$image_name, WWW_ROOT ."/upload/temporary/".$userid."/".$newname); 
+        //This area should be exist for upload plugin needs-ends	
+
 		//============Save Datas To Games Database Begins================
 		//*****************************
 		//Secure data filtering begins
 		//*****************************
-		
 		$filtered_data=
 		array('Game' =>array(
 		'name' => $game_name=$this->Game->secureSuperGlobalPOST($game_name),
@@ -127,7 +142,7 @@ public function admin_game_submit()
 		     $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
 			 $id=$this->Game->getLastInsertId();
 			 $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));
-			 
+			
 		    //=======Upload to aws begins===========
 			$feedback=$this->Amazon->S3->create_object(
             Configure::read('S3.name'),
@@ -143,7 +158,7 @@ public function admin_game_submit()
 	        //Set the picture field on db.
 	        $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id);	
 	        }
-	        
+	       
 	    
 		  }
 		//============Save Datas To Games Database Ends================
