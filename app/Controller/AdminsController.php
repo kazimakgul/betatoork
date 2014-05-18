@@ -125,7 +125,7 @@ public function admin_game_submit()
 		     $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$userid));
 			 $id=$this->Game->getLastInsertId();
 			 $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));
-			 
+			 /*
 		    //=======Upload to aws begins===========
 			$feedback=$this->Amazon->S3->create_object(
             Configure::read('S3.name'),
@@ -141,6 +141,7 @@ public function admin_game_submit()
 	        //Set the picture field on db.
 	        $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id);	
 	        }
+	        */
 	    
 		  }
 		//============Save Datas To Games Database Ends================
