@@ -58,7 +58,9 @@
 
                                                                 <label class="control-label" for="url">Link</label>
                                                                 <div class="controls">
-<input id="game_link" type="url" pattern="(http|https)://(www.|).+" placeholder="http://www.mywebsite.com" maxlength="100" value="http://socialesman.com"> </div>
+<input id="game_link" type="url" pattern="(http|https)://(www.|).+" placeholder="http://www.mywebsite.com" maxlength="100" value="http://socialesman.com"> 
+<input id="game_file" type="hidden" value="empty"> 
+</div>
 
 <label class="control-label" for="url">Width</label>
                                                                 <div class="controls">

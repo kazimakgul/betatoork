@@ -96,6 +96,7 @@ public function admin_game_submit()
 		$mobileready=$this->request->data['mobile_ready'];
 		$image_name=$this->request->data['image_name'];
 		$category_id=$this->request->data['category_id'];
+		$game_file=$this->request->data['game_file'];
 		
 
 
@@ -164,7 +165,7 @@ public function admin_game_submit()
 		//============Save Datas To Games Database Ends================
         }//Auth Control Ends
 		
-        $msg = array("title" => 'Game has been saved on s3.'.$image_name.$id,'result' => 1);
+        $msg = array("title" => 'Game has been saved on s3.'.'game file:'.$game_file,'result' => 1);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }

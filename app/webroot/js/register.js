@@ -2081,6 +2081,7 @@ $('#admin_game_submit').live('click',function(){
 	$category_id=$('#category_id').val();
 
     $image_name=$('#game_image').attr('data-src');
+    $game_file=$('#game_file').val();
 
 	if($('#game_mobile').prop('checked'))
 	{
@@ -2093,7 +2094,7 @@ $('#admin_game_submit').live('click',function(){
 		   $.ajax({
         type: "POST",
         url: admin_game_submit,
-		data: {game_name:$game_name,game_description: $game_description,game_link:$game_link,game_width:$game_width,game_height:$game_height,game_priority:$game_priority,game_tags:$game_tags,game_user_id: $game_user_id,mobile_ready:$mobile_ready,image_name:$image_name,category_id:$category_id},
+		data: {game_name:$game_name,game_description: $game_description,game_link:$game_link,game_width:$game_width,game_height:$game_height,game_priority:$game_priority,game_tags:$game_tags,game_user_id: $game_user_id,mobile_ready:$mobile_ready,image_name:$image_name,category_id:$category_id,game_file:$game_file},
         dataType: "json",
 		async: false,
         success: function(data){
@@ -2218,12 +2219,10 @@ $('#gameaddframe').load(function(){
 $('#gameaddframe').load(function(){
   $(this).contents().find("#set_photo").on('click', function(event) {
    $('#gameAdd').modal('toggle');
-   $('#game_image').attr('src','http://www.imageyourself.net/images/website/loading.gif');	
+   $('#game_file_loader').attr('src','http://www.imageyourself.net/images/website/loading.gif');	
    setTimeout(function(){
-		var new_img = $('iframe[id=gameaddframe]').contents().find('#new_image_link').val();
 		var img_name = $('iframe[id=gameaddframe]').contents().find('#selected_image').val();
-		$('#game_image').attr('src',new_img);
-		$('#game_image').attr('data-src',img_name);
+		$('#game_file').val(img_name);
    },1000);
 
    });
