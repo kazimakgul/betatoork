@@ -124,7 +124,7 @@ public function admin_game_submit()
           $basename =$image_name;
           $noextension=rtrim($basename, '.'.$this->getExtension($basename));
 	      $yesextension=$noextension.'_toorksize.'.$this->getExtension($basename);
-	      rename(WWW_ROOT ."/upload/temporary/".$id."/".$image_name, WWW_ROOT ."/upload/temporary/".$id."/".$yesextension);
+	      rename(WWW_ROOT ."/upload/temporary/".$userid."/".$image_name, WWW_ROOT ."/upload/temporary/".$userid."/".$yesextension);
 	      $image_name=$yesextension;
 
 
