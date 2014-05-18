@@ -147,7 +147,7 @@ public function admin_game_submit()
 		//============Save Datas To Games Database Ends================
         }//Auth Control Ends
 		
-        $msg = array("title" => 'Game has been saved on s3.','result' => 1);
+        $msg = array("title" => 'Game has been saved on s3.'.$image_name.$id,'result' => 1);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }
