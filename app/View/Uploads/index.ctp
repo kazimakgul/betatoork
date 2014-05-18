@@ -39,9 +39,6 @@ user_id='<?php echo $id;?>';
 <a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-upload"></i> Upload</a>
 <a href="#album" onclick="go_gallery();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-list"></i> Gallery</a>
 <a href="#photos" onclick="go_photos();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-user"></i> Your Photos</a>
-
- 
-
 </div>
 
 <div id="main-area">

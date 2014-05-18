@@ -46,6 +46,16 @@
                                                         </div>
 
                                   <div class="well control-group">
+
+<div class="control-group" style="text-align:center;">
+<label class="control-label" for="url">Which method you want to use?</label>
+<div id="top-menu">
+<a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="elusive-bookmark"></i> Link</a>
+<a href="#album" onclick="go_gallery();" data-toggle="tab" class="btn btn-default" title=""><i class="elusive-asterisk"></i> Embed</a>
+<a href="#photos" onclick="go_photos();" data-toggle="tab" class="btn btn-success" title=""><i class="elusive-upload"></i> Upload Game File</a>
+</div> 
+</div> 
+
                                                                 <label class="control-label" for="url">Link</label>
                                                                 <div class="controls">
 <input id="game_link" type="url" pattern="(http|https)://(www.|).+" placeholder="http://www.mywebsite.com" maxlength="100" value="http://socialesman.com"> </div>

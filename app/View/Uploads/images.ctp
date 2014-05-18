@@ -36,11 +36,10 @@ user_id='<?php echo $id;?>';
 <div id="main-wrapper" class="panel panel-default">
 
 <div id="top-menu">
+<!--
 <a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-upload"></i> Upload</a>
 <a href="#photos" onclick="go_photos();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-user"></i> Your Files</a>
-
- 
-
+-->
 </div>
 
 <div id="main-area">
