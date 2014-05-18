@@ -146,9 +146,9 @@ public function admin_game_submit()
 		    //=======Upload to aws begins===========
 			$feedback=$this->Amazon->S3->create_object(
             Configure::read('S3.name'),
-            'upload/games/'.$id."/".$image_name,
+            'upload/games/'.$id."/".$newname,
              array(
-            'fileUpload' => WWW_ROOT ."/upload/temporary/".$userid."/".$image_name,
+            'fileUpload' => WWW_ROOT ."/upload/temporary/".$userid."/".$newname,
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
