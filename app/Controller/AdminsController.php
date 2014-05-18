@@ -144,7 +144,8 @@ public function admin_game_submit()
 			 $id=$this->Game->getLastInsertId();
 			 $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userid));
 			
-		    //=======Upload to aws begins===========
+			
+		    //=======Upload to aws for Game Image begins===========
 			$feedback=$this->Amazon->S3->create_object(
             Configure::read('S3.name'),
             'upload/games/'.$id."/".$newname,
@@ -153,13 +154,15 @@ public function admin_game_submit()
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
-			//========Upload to aws ends==============
+			//========Upload to aws for Game Image ends==============
 			if($feedback)
 	        {
 	        //Set the picture field on db.
 	        $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id);	
 	        }
-	       
+
+           
+	      $this->gameUpload($game_file,$id,$userid);//Check if any game upload exists 
 	    
 		  }
 		//============Save Datas To Games Database Ends================
@@ -171,6 +174,29 @@ public function admin_game_submit()
     }
 
 	
+   function gameUpload($game_file=NULL,$id=NULL,$userid=NULL)
+   {
+        if($game_file!=NULL)
+        {	
+            //=======Upload to aws for Game Upload begins===========
+			$feedback=$this->Amazon->S3->create_object(
+            Configure::read('S3-games.name'),
+            'upload/games/'.$id."/".$game_file,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/temporary/".$userid."/".$game_file,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			//========Upload to aws for Game Upload ends==============
+			if($feedback)
+	        {
+	        //Set the picture field on db.
+	        $game_link=Configure::read('S3-games.url').'/'.'upload/games/'.$id."/".$game_file;
+	        $this->Game->query('UPDATE games SET link="'.$game_link.'" WHERE id='.$id);	
+	        }
+	    }   
+   }
+
 	public function delete_session($id)
 	{
 	   $selectedlist=array();
