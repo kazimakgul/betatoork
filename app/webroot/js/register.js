@@ -2222,7 +2222,8 @@ $('#gameaddframe').load(function(){
    $('#game_file_loader').attr('src','http://www.imageyourself.net/images/website/loading.gif');	
    setTimeout(function(){
 		var img_name = $('iframe[id=gameaddframe]').contents().find('#selected_image').val();
-		$('#game_file').val(img_name);
+		$('#game_link').val(img_name);
+		$('#game_link').attr('disabled', 'disabled');
    },1000);
 
    });

@@ -185,12 +185,12 @@ $('#fileupload').click(function () {
 	});
 
 	
-	$('#set_photo').click(function () {alert('install'+apply_file);
+	$('#set_photo').click(function () {
 		selected_image=$('#selected_image').val().trim();
 		loadfrom=$('#loadfrom').val();
 		imagepatch=$('#imagepatch').val();
 		if(selected_image!='empty' || imagepatch!='empty')
-		{alert('inside'+upload_type+selected_image+user_id+loadfrom+imagepatch);
+		{//alert('inside'+upload_type+selected_image+user_id+loadfrom+imagepatch);
 		//do jobs for s3 upload and database save
 		//------
 		   $.ajax({
@@ -201,7 +201,7 @@ $('#fileupload').click(function () {
 		async: false,
         success: function(data){
 			
-			alert(data.rtdata.title);
+			//alert(data.rtdata.title);
 			$('#new_image_link').val(data.rtdata.newlink);
 			
 			//$title=data.rtdata.title;

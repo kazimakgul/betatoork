@@ -45,36 +45,39 @@
                                                             </div>
                                                         </div>
 
-                                  <div class="well control-group">
+<div class="control-group" >
+<div class="controls">
+<label class="control-label" for="url">Link</label>
 
-<div class="control-group" style="text-align:center;">
-<label class="control-label" for="url">Which method you want to use?</label>
-<div id="top-menu">
-<a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="elusive-bookmark"></i> Link</a>
-<a href="#album" onclick="go_gallery();" data-toggle="tab" class="btn btn-default" title=""><i class="elusive-asterisk"></i> Embed</a>
-<a data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title=""><i class="elusive-upload"></i> Upload Game File</a>
-</div> 
-</div> 
+<input style='float:left;' id="game_link" type="url" pattern="(http|https)://(www.|).+" placeholder="http://www.mywebsite.com" maxlength="100" value="http://socialesman.com"> 
+<a style='float:left;margin-left:5px;' data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title=""><i class="elusive-upload"></i> Upload Game File</a>
 
-                                                                <label class="control-label" for="url">Link</label>
-                                                                <div class="controls">
-<input id="game_link" type="url" pattern="(http|https)://(www.|).+" placeholder="http://www.mywebsite.com" maxlength="100" value="http://socialesman.com"> 
 <input id="game_file" type="hidden" value="empty"> 
 </div>
+ </div> 
 
+<div class="control-group" style='display: inline-block;width: 100%;'>
+
+<div class="controls" style='float:left;'>
 <label class="control-label" for="url">Width</label>
-                                                                <div class="controls">
-<input type="text" maxlength="100" value="" id="game_width"> </div>
+<input type="text" maxlength="100" value="" id="game_width"><i class='elusive-remove' style='margin:2px;font-size: 8px;'></i> 
+</div>
 
+<div class="controls" style='float:left;'>
 <label class="control-label" for="url">Height</label>
-                                                                <div class="controls">
 <input  type="text" maxlength="100" value="" id="game_height"> </div>
 
+</div>
+
+<div class="control-group" >
 <div class="controls">
 <input  type="checkbox" maxlength="100" value="dd" id="full_screen">Full Screen</div>
 <div class="controls">
 <input type="checkbox" maxlength="100" value="dd" id="game_mobile">Mobile Ready</div>
-                                                            </div>  
+ </div>                               
+
+                                 
+
 
 <div class="control-group">
 <label class="control-label" for="url">Priority:</label>	
