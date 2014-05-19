@@ -180,7 +180,7 @@ public function admin_game_submit()
         $random_number=rand(1000000,9999999);
         $new_game_file= $random_number.'_'.$game_file;
         if($game_file!=NULL)
-        {	echo 'game file detected';
+        {	
             //=======Upload to aws for Game Upload begins===========
 			$feedback=$this->Amazon->S3->create_object(
             Configure::read('S3-games.name'),
