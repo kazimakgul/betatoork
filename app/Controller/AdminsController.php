@@ -186,7 +186,7 @@ public function admin_game_submit()
             Configure::read('S3-games.name'),
             'upload/games/'.$id."/".$game_file,
              array(
-            'fileUpload' => WWW_ROOT ."/upload/gamefiles/".$userid."/".$game_file,
+            'fileUpload' => WWW_ROOT ."upload/gamefiles/".$userid."/".$game_file,
             'acl' => AmazonS3::ACL_PUBLIC
             )
             );
