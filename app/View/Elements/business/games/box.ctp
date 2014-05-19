@@ -1,6 +1,6 @@
 <?php $counter=0;?>
 <?php 
-	foreach ($games as $game): 
+	foreach ($gamedata as $game): 
 	$playurl=$this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
 ?>
 	          <?php echo $div; ?>
