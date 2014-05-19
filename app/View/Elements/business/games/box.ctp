@@ -16,7 +16,7 @@
 	                <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('class' => 'panel-image-preview','alt'=>$game['Game']['name'],'onerror'=>'imgError(this,"toorksize");')); ?></a>
 	              </div>
 	                <div class="panel-footer text-center" style="padding:0px;">
-	                  <a href="<?php echo $playurl; ?>" style="padding:0px;"><h5 class="darkblue" style='width:190px; height:16px; overflow:hidden;'><?php echo $game['Game']['name']; ?></h5></a>
+	                  <a href="<?php echo $playurl; ?>" style="padding:0px;"><h5 class="darkblue" style='height:16px; overflow:hidden;'><?php echo $game['Game']['name']; ?></h5></a>
 	                  <div class="row">
 	                  	<span class="col-md-6" style='margin-left:10px;'>
                    			<div class= 'centerrate2'>
@@ -58,7 +58,7 @@ while ($counter < $limit){?>
               <button class="btn btn-default btn-lg btn-danger"> <i class="fa fa-plus-square fa-2x"></i> </button>
               </div>
                 <div class="panel-footer text-center" style="padding:0px;">
-                  <a href="#"  style="padding:0px;"><h5 class="darkblue" >+Add Game</h5></a>
+                  <a  href="#" data-toggle="modal" data-target=".bs-modal-sm"  style="padding:0px;"><h5 class="darkblue" >+Add Game</h5></a>
                   <div class="row">
 
                     </div>

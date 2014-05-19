@@ -456,3 +456,62 @@
     </div>
 	<!-- Ads Change Modal ends -->
 
+ 
+<!-- Add Game Modal begins -->
+<!-- Modal -->
+<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xs">
+    <div class="modal-content">
+        <br>
+        <div class="bs-example bs-example-tabs">
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active"><a href="#signin" data-toggle="tab">My Games</a></li>
+              <li class=""><a href="#signup" data-toggle="tab">Clone Games</a></li>
+              <li class=""><a href="#why" data-toggle="tab">Game Add</a></li>
+            </ul>
+        </div>
+      <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in" id="why">
+        <p>We need this information so that you can receive access to the site and its content. Rest assured your information will not be sold, traded, or given to anyone.</p>
+        <p></p><br> Please contact <a mailto:href="JoeSixPack@Sixpacksrus.com"></a>JoeSixPack@Sixpacksrus.com</a> for any other inquiries.</p>
+        </div>
+        <div class="tab-pane fade active in" id="signin">
+            <form class="form-horizontal">
+            <fieldset>
+           <?php  
+		        $tt = 1;
+				echo $this->element('business/games/tutorialgame',array('tutorialgame'=>$tt)); 
+		    ?>
+            </fieldset>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="signup">
+            <form class="form-horizontal">
+            <fieldset>
+            <?php
+            	$tt = 2;
+				echo $this->element('business/games/tutorialgame',array('tutorialgame'=>$tt)); 
+			?>  
+            </fieldset>
+            </form>
+      </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+      <center>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--Add Game Modal begins -->
+
+
+

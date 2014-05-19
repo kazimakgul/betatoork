@@ -47,6 +47,37 @@ class BusinessesController extends AppController {
 		}
     //===//Eger upload adinda bir klasör varsa siler.====
 	}
+	
+	
+    //this gets game suggestions
+	public function get_game_suggestions($order)
+	{
+	$top50=$this->Game->find('all', array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => array('Game.active'=>'1'),'limit' => 100,'order' => array($order => 'desc'
+    )));
+	
+		$list50=array();
+		$i=0;
+		foreach($top50 as $oneof50)
+		{
+		$list50[$i]=$oneof50['Game']['id'];
+		$i++;
+		}
+		return $list50;
+	}
+	
+    public function lucky_number()
+	{
+	
+	 if ($this->Session->check('Dashboard.randomKey')) { 
+      $key = $this->Session->read('Dashboard.randomKey'); 
+    } 
+    else { 
+      $key = mt_rand(); 
+      $this->Session->write('Dashboard.randomKey', $key); 
+    } 
+	return $key;
+	}
+
 	public function contactmail($user_id) {
         $this->User->id=$user_id;
 		
@@ -76,7 +107,7 @@ class BusinessesController extends AppController {
 
 		$this->layout	=	'Business/business';
 		$PaginateLimit	=	12;
-		
+	
 		$user			=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
 		$this->paginate	=	array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.recommend' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
 		$cond			=	$this->paginate('Game');
@@ -98,6 +129,8 @@ class BusinessesController extends AppController {
 	   }
 	   //=======/Get Current Subscription===============
 
+		$limit = 18;
+		$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
 		$this->set('category',$category);
 		$this->set('games', $cond);
 		$this->set('user', $user);
