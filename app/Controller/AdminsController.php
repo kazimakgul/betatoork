@@ -116,6 +116,13 @@ public function admin_game_submit()
 	    rename(WWW_ROOT ."/upload/temporary/".$userid."/".$image_name, WWW_ROOT ."/upload/temporary/".$userid."/".$newname); 
         //This area should be exist for upload plugin needs-ends	
 
+       if($game_file!='empty')
+       {
+       $type=$this->Game->get_game_type($game_file);
+       }else{
+       $type=$this->Game->get_game_type($game_link);
+       }
+
 		//============Save Datas To Games Database Begins================
 		//*****************************
 		//Secure data filtering begins
@@ -127,7 +134,7 @@ public function admin_game_submit()
 		'game_link' => $game_link,
 		'width' => $game_width,
 		'height' => $game_height,
-		'type' => $this->Game->get_game_type($game_link),
+		'type' => $type,
 		'priority' => $game_priority,
 		'user_id' => $game_user_id,
 		'category_id' => $category_id,
