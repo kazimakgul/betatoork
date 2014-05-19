@@ -67,6 +67,9 @@ public function bots() {
     {
         $this->layout='adminDashboard';
 
+
+       $this->gameUpload('enemies.swf',999,682);
+
         $authid = $this->Session->read('Auth.User.id');
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
     	$userName = $user['User']['username'];
@@ -162,7 +165,7 @@ public function admin_game_submit()
 	        }
 
            
-	      $this->gameUpload($game_file,$id,$userid);//Check if any game upload exists 
+	      //$this->gameUpload($game_file,$id,$userid);//Check if any game upload exists 
 	    
 		  }
 		//============Save Datas To Games Database Ends================
@@ -177,7 +180,7 @@ public function admin_game_submit()
    function gameUpload($game_file=NULL,$id=NULL,$userid=NULL)
    {
         if($game_file!=NULL)
-        {	
+        {	echo 'game file detected';
             //=======Upload to aws for Game Upload begins===========
 			$feedback=$this->Amazon->S3->create_object(
             Configure::read('S3-games.name'),
