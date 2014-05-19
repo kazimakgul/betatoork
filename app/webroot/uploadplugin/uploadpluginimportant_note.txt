@@ -1,0 +1,23 @@
+You have to increase;
+upload_max_filesize = 2M 
+And
+max_execution_time = 60
+
+On the fly version;
+set_time_limit(100);
+
+http://stackoverflow.com/questions/3829403/how-to-increase-the-timeout-in-php
+---------------------------------------------------------------------------
+if what you need to do is specific only for 1 or 2 pages i suggest to use set_time_limit so it did not affect the whole application.
+
+set_time_limit(some_values);
+but ofcourse these 2 values (post_max_size & upload_max_filesize) are subject to investigate.
+
+you either can set it via ini_set function
+
+ini_set('post_max_size','20M');
+ini_set('upload_max_filesize','2M');
+or directly in php.ini file like response above by Hannes, or even set it iin .htaccess like below
+
+php_value upload_max_filesize 2M
+php_value post_max_size 20M
