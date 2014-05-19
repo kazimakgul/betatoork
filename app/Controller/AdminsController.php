@@ -177,12 +177,14 @@ public function admin_game_submit()
 	
    function gameUpload($game_file=NULL,$id=NULL,$userid=NULL)
    {
+        $random_number=rand(1000000,9999999);
+        $new_game_file= $random_number.'_'.$game_file;
         if($game_file!=NULL)
         {	echo 'game file detected';
             //=======Upload to aws for Game Upload begins===========
 			$feedback=$this->Amazon->S3->create_object(
             Configure::read('S3-games.name'),
-            'upload/games/'.$id."/".$game_file,
+            $new_game_file,
              array(
             'fileUpload' => WWW_ROOT ."upload/gamefiles/".$userid."/".$game_file,
             'acl' => AmazonS3::ACL_PUBLIC
@@ -192,7 +194,7 @@ public function admin_game_submit()
 			if($feedback)
 	        {
 	        //Set the picture field on db.
-	        $game_link=Configure::read('S3-games.url').'/'.'upload/games/'.$id."/".$game_file;
+	        $game_link=Configure::read('S3-games.url').'/'.$new_game_file;
 	        $this->Game->query('UPDATE games SET link="'.$game_link.'" WHERE id='.$id);	
 	        }
 	    }   
