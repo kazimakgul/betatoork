@@ -163,7 +163,7 @@ public function admin_game_submit()
 	        }
 
            
-	      //$this->gameUpload($game_file,$id,$userid);//Check if any game upload exists 
+	      $this->gameUpload($game_file,$id,$userid);//Check if any game upload exists 
 	    
 		  }
 		//============Save Datas To Games Database Ends================
@@ -348,7 +348,6 @@ public function admin_game_submit()
 	
 	public function users($role=NULL) {
 	$this->layout='adminDashboard';
-    $this->gameUpload('enemies.swf',999,682);
 
         if($role!=NULL)
         $this->paginate = array('conditions'=>array('User.role'=>$role));
