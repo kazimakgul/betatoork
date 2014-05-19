@@ -33,8 +33,9 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
           <?php  
             $div = "<div class='col-xs-12' style='padding:0px;'>";
             $limit = 3;
+			$cat = '';
 			$fix = 'fix';
-            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit, 'fix' =>$fix, 'controls'=>$controls)); 
+            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit, 'fix' =>$fix, 'controls'=>$controls, 'cat'=>$cat)); 
           ?>
           </div>
         </div>
@@ -57,7 +58,8 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
           <?php  
             $div = "<div class='col-xs-6' style='padding:0px 15px 0px 5px;'>";
             $limit = 6;
-            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
+			$cat = 'recommend';
+            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit,'cat'=>$cat)); 
           ?>
           </div>
         </div>
@@ -85,7 +87,8 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
           <?php  
             $div = "<div class='col-xs-12' style='padding:0px;'>";
             $limit = 3;
-            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
+			$cat = 'id';
+            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit,'cat'=>$cat)); 
           ?>
 
           </div>

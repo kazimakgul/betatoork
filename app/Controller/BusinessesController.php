@@ -82,7 +82,6 @@ class BusinessesController extends AppController {
         $this->User->id=$user_id;
 		
 	    $email = new CakeEmail();
-		//print_r($_POST);
 	    // Set data for the "view" of the Email
 		$email->viewVars(array('username'=>$user["User"]["username"],'name'=>$_POST["firstname"],'surname'=>$_POST["lastname"],'e-mail'=>$_POST["email"],'subject'=>$_POST["subject"],'message'=>$_POST["comment"]));
 		$email->config('smtp')
@@ -107,7 +106,6 @@ class BusinessesController extends AppController {
 
 		$this->layout	=	'Business/business';
 		$PaginateLimit	=	12;
-	
 		$user			=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
 		$this->paginate	=	array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.recommend' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
 		$cond			=	$this->paginate('Game');

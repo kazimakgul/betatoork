@@ -2,7 +2,7 @@
 <?php 
 	foreach ($games as $game): 
 	$playurl=$this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
-	?>
+?>
 	          <?php echo $div; ?>
 	            <div class="panel panel-default">
 	              <div class="imagehover">
