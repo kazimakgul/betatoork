@@ -135,6 +135,7 @@ public function admin_game_submit()
 		'width' => $game_width,
 		'height' => $game_height,
 		'type' => $type,
+		'link' => $game_link,
 		'priority' => $game_priority,
 		'user_id' => $game_user_id,
 		'category_id' => $category_id,
