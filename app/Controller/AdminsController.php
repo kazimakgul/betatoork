@@ -68,8 +68,6 @@ public function bots() {
         $this->layout='adminDashboard';
 
 
-       $this->gameUpload('enemies.swf',999,682);
-
         $authid = $this->Session->read('Auth.User.id');
 		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
     	$userName = $user['User']['username'];
@@ -348,7 +346,7 @@ public function admin_game_submit()
 	
 	public function users($role=NULL) {
 	$this->layout='adminDashboard';
-
+    $this->gameUpload('enemies.swf',999,682);
 
         if($role!=NULL)
         $this->paginate = array('conditions'=>array('User.role'=>$role));
