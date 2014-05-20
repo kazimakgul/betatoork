@@ -184,7 +184,7 @@ $(function () {
         var goUpload = true;
         var uploadFile = data.files[0];
         if (!(/\.(gif|jpg|jpeg|tiff|png)$/i).test(uploadFile.name)) {
-            alert('You must select an image file only');
+            alert('You must select an swf file only');
             goUpload = false;
         }
         if (uploadFile.size > 2000000) { // 2mb

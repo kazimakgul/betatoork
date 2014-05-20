@@ -175,7 +175,22 @@ $(function () {
                 'width',
                 progress + '%'
             );
+        },
+        add: function (e, data) {
+        var goUpload = true;
+        var uploadFile = data.files[0];
+        if (!(/\.(swf)$/i).test(uploadFile.name)) {
+            alert('You must select an game file only');
+            goUpload = false;
         }
+        if (uploadFile.size > 20000000) { // 2mb
+            alert('Please upload a smaller image, max size is 20 MB');
+            goUpload = false;
+        }
+        if (goUpload == true) {
+            data.submit();
+        }
+    }
     }).prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
 });
