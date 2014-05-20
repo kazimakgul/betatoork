@@ -55,9 +55,6 @@ else{
 		</div>
 	<div class="row-fluid col-sm-6 right">
 	
-	<?php  //echo $this->element('NewPanel/gamepagecomment',array('gamename'=>$gamename,'description'=>$description)); ?>
-	
-	
 	        <div style="padding:5px; background-color:white;" class="span5 shadow well">
 	                <h5 class="media-heading"><a style="margin-left:9px;" class="btn-link" href="<?php echo $hashtaglink; ?>">#<?php echo $game['Game']['seo_url'];?> Feed</a></h5>
 	        </div>

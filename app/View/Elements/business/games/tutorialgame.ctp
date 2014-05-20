@@ -19,8 +19,9 @@ $playurl=$this->Html->url(array("controller" => 'businesses', "action" => 'play'
 			{
 				echo '<a href="" class="btn btn-default" data-placement="bottom" data-toggle="tooltip" title="Clone This Game">Add</a>';
 			}
-			else{
-				echo '<a href="" class="btn btn-success" data-placement="bottom" data-toggle="tooltip" title="Clone This Game">Clone</a>';
+			else{?>
+				<a href="#" onclick="chaingame2('<?=$game['Game']['name'];?>',user_auth,<?=$game['Game']['id'];?>);" class="btn btn-success" data-placement="bottom" data-toggle="tooltip" title="Clone This Game">Clone</a>
+			<?php 
 			}
             ?>
         </div>

@@ -21,9 +21,11 @@ $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$
 		</ul>
 <?php if($this->Session->check('Auth.User')){ ?>
 		<div class="col-sm-3 col-md-3 navbar-right " style="margin-top:8px;">
+			
 			<div class="pull-right btn-group">
 			<a class="btn btn-default" href="<?php echo $dashboard; ?>"> 
 				<i class="glyphicon glyphicon-user"></i> <?php echo $this->Session->read('Auth.User.username'); ?>
+				
 			</a>
 			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 			    <span class="caret"></span>
@@ -36,6 +38,18 @@ $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$
 				    <li class="divider"></li>
 				    <li><a href="<?php echo $logout; ?>"><i class="fa fa-sign-out"></i> Sign Out</a></li>
 				  </ul>
+			</div>
+			<div class="pull-right btn"  style="margin-top:-4px;">
+				<a href="#" data-container="body" data-toggle="popover" id="notification" data-html="true" data-placement="bottom" 
+				data-title='
+				<li class="fa fa-globe"></li> Notification				
+				'
+				data-content='
+				
+
+				
+				
+				'><li class="fa fa-globe fa-2x" style="position: relative;"><div class="noti_bubble">2</div></li></a>
 			</div>
 		</div>
 <?php }else{ ?>

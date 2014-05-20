@@ -322,17 +322,32 @@ div .widget-button{
   background: transparent none repeat-x left top; 
 }
 
-
-
-/*.stars2:hover .star2 { 
-  background-image: url('../img/rating/star_16_c.png');
-}
-.stars2:hover .star2:hover {
-  background-image: url('../img/rating/star_16_h.png'); 
-}
-*/
 .stars2 .ratingbar2 { 
   position: absolute; 
   height: 100%; 
   background: url('../../img/rating/star_16_h.png') repeat-x left top; 
+}
+
+.ShareBtn .popover.top{
+		margin-top:-25px;
+		margin-left:-40px;
+	}
+.popover{
+	z-index: 99999;
+}
+.noti_bubble {
+    position:absolute;    /* This breaks the div from the normal HTML document. */
+    top: -6px;
+    right:-6px;
+    padding:1px 4px 1px 4px;
+    background-color:red; /* you could use a background image if you'd like as well */
+    color:white;
+    font-weight:bold;
+    font-size:0.55em;
+
+    /* The following is CSS3, but isn't crucial for this technique to work. */
+    /* Keep in mind that if a browser doesn't support CSS3, it's fine! They just won't have rounded borders and won't have a box shadow effect. */
+    /* You can always use a background image to produce the same effect if you want to, and you can use both together so browsers without CSS3 still have the rounded/shadow look. */
+    border-radius:30px;
+    box-shadow:1px 1px 1px gray;
 }

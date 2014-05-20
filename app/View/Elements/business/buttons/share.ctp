@@ -1,9 +1,4 @@
-<style>
-	.popover.top{
-		margin-top:-25px;
-		margin-left:-40px;
-	}
-</style>
+
 <!-- Share Button -->
 		<div class="ShareBtn">
 			<div class="widget-button">

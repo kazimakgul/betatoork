@@ -108,7 +108,9 @@ $(function() {
 
 
 $( document ).ready(function() {
+	$('#notification').popover();
 	$('#gameshare').popover();
+	$('#gamecomment').popover();
 	//Ads Button table class
 	$("#mytable #checkall").click(function () {
         if ($("#mytable #checkall").is(':checked')) {
