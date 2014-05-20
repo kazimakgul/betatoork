@@ -18,7 +18,9 @@ else{
 ?>
 	  <div class="col-sm-12">
 		<div class="well well-sm">
-		<h6 class="media-heading" style="margin-left:9px;" ><span class="btn-link label label-important"><a href="<?php echo $hashtaglink; ?>">#<?php echo $gamename; ?></a></span> : <?php echo $description; ?> </h6>
+		<h6 class="media-heading">
+			<span class="btn-link btn label-important"><a href="<?php echo $hashtaglink; ?>">#<?php echo $gamename; ?></a></span>: <?php echo $description; ?>
+		</h6>
 		</div>
 	  </div>
 	  
@@ -93,7 +95,7 @@ else{
 		          <?php  
 		            $div = "<div class='col-xs-3' style='padding:5px;'>";
 		            $limit = 4;
-		            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit)); 
+		            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit, 'gamedata'=>$games)); 
 		          ?>
 		      </div>
 		    </div>

@@ -39,7 +39,7 @@
 						<div class="panel-body">
 		          <?php	$div = "<div class='col-xs-3' style='padding:5px;'>";
 		          $limit = 24;
-		          echo $this->element('business/games/box',array('div'=>$div));
+		          echo $this->element('business/games/box',array('div'=>$div,'gamedata'=>$games));
 		          ?>
 	          				<div style="clear: both;">
 	          					<ul  class="pagination">

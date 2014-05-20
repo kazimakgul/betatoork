@@ -112,7 +112,7 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
         
 <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Recommended Games</h3>
+        <h3 class="panel-title"><a href="<?=$subgameurl;?>/sort:recommend/direction:desc" class="black">Recommended Games</a></h3>
       </div>
       <div class="panel-body">
 
@@ -122,15 +122,6 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
             echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit, 'gamedata'=>$games)); 
           ?>
       </div>
-      <div class="panel-footer">
-	        <center>
-	        <ul  class="pagination" style="margin:0;">
-	            <li><?php echo $this->Paginator->prev(__('Prev', true), array(), null, array('class'=>'disabled'));?></li>
-	            <li><?php echo $this->Paginator->numbers(); ?></li>
-	            <li><?php echo '  '.$this->Paginator->next(__('Next', true), array('id'=>'next'), null, array('class' => 'disabled'));?></li>
-	        </ul>
-	        </center>
-	 </div>
     </div>
 
 

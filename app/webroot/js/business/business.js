@@ -108,6 +108,7 @@ $(function() {
 
 
 $( document ).ready(function() {
+	$('#gameshare').popover();
 	//Ads Button table class
 	$("#mytable #checkall").click(function () {
         if ($("#mytable #checkall").is(':checked')) {
