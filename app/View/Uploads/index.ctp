@@ -179,7 +179,22 @@ $(function () {
                 'width',
                 progress + '%'
             );
+        },
+        add: function (e, data) {
+        var goUpload = true;
+        var uploadFile = data.files[0];
+        if (!(/\.(gif|jpg|jpeg|tiff|png)$/i).test(uploadFile.name)) {
+            alert('You must select an image file only');
+            goUpload = false;
         }
+        if (uploadFile.size > 2000000) { // 2mb
+            alert('Please upload a smaller image, max size is 2 MB');
+            goUpload = false;
+        }
+        if (goUpload == true) {
+            data.submit();
+        }
+    }
     }).prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
 });
