@@ -125,7 +125,7 @@ class BusinessesController extends AppController {
 		$this->redirect(array("controller"=>"games","action"=>"index"));
 		}
 		
-		$keys = $this->Game->query("SELECT * FROM games as Game WHERE user_id=$userid and description like '%".$param."%' or name like '%".$param."%'");
+		$keys = $this->Game->query("SELECT * FROM games as Game WHERE (description like '%".$param."%' or name like '%".$param."%') and user_id=$userid");
 		$PaginateLimit	=	30;
 		$user			=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
 		$game			=	$this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')),'Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));//Recoded
@@ -166,12 +166,9 @@ class BusinessesController extends AppController {
 	   //=======/Get Current Subscription===============
 
 		$limit = 9;
-		$this->set('top_rated_games', $this->Game->find('all', 
-		array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
-
+		$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
 		$this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.id' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
 		$this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.starsize' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
-
 		$this->set('category',$category);
 		$this->set('games', $cond);
 		$this->set('user', $user);
