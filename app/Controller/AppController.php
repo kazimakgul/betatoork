@@ -87,7 +87,7 @@ class AppController extends Controller {
             'randomAvatar','randomPicture','connect','sync','syncallusers','incgameplay','incscribe','togglefav','totalrate',
             'getgamecount','potential','message_ajax','message_ajax2','moreupdates_ajax','explore_more_feed','moreupdates_ajax2','moreupdates_ajax3','moreupdates_ajax_my',
             'comment_ajax','comment_ajax2','image_ajax','image_ajax_fly','get_userdata','delete_message_ajax','delete_comment_ajax','action_ajax','action_ajax_bot',
-            'get_gamedata','moreupdates_filter_ajax','gamefeed_ajax','view_ajax','view_ajax2',
+            'get_gamedata','moreupdates_filter_ajax','gamefeed_ajax','view_ajax','view_ajax2','play',
             'sync_recommended','profile','playgame','bestchannels2','toprated2','gameswitch','playgameframe','get_3_games',
             'categorygames2','favorite_check','game_comment_ajax','game_comments_ajax','clonegame','gamedelete','channelfavorites','profilegames',
             'channelfollowers','moreupdates_profile_ajax','moreupdates_profile_ajax_home','loadprofilefeeds','sendmail','activationmailsender','new_user',
