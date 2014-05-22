@@ -2,6 +2,7 @@
 $logout=$this->Html->url(array("controller" => "users","action" =>"logout")); 
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
+$search = $this->Html->url(array("controller" => "businesses","action" =>"search2",$user['User']['id']));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
 $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$user['User']['id'])); 
 ?>
@@ -39,18 +40,6 @@ $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$
 				    <li><a href="<?php echo $logout; ?>"><i class="fa fa-sign-out"></i> Sign Out</a></li>
 				  </ul>
 			</div>
-			<div class="pull-right btn"  style="margin-top:-4px;">
-				<a href="#" data-container="body" data-toggle="popover" id="notification" data-html="true" data-placement="bottom" 
-				data-title='
-				<li class="fa fa-globe"></li> Notification				
-				'
-				data-content='
-				
-
-				
-				
-				'><li class="fa fa-globe fa-2x" style="position: relative;"><div class="noti_bubble">2</div></li></a>
-			</div>
 		</div>
 <?php }else{ ?>
 	    <div class="col-sm-3 col-md-3 navbar-right" style="margin-top:8px;">
@@ -61,9 +50,9 @@ $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$
 	    </div>
 <?php } ?>
 		<div class="col-sm-5 col-md-5">
-		<form class="navbar-form" role="search">
+		<form class="navbar-form" action="<?php echo $search; ?>">
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Search Games ..." name="srch-term" id="srch-term">
+				<input type="text" class="form-control" placeholder="Search Games..." name="srch-term" id="srch-term">
 				<div class="input-group-btn">
 				<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 			</div>

@@ -55,7 +55,7 @@ while ($counter < $limit){?>
           <?php echo $div; ?>
             <div class="panel panel-default" style="background-color:silver;">
               <div style="padding:20% 0% 21% 0%;" class="text-center">
-              <button class="btn btn-default btn-lg btn-danger"> <i class="fa fa-plus-square fa-2x"></i> </button>
+              <button class="btn btn-default btn-lg btn-danger" data-target=".bs-modal-sm"> <i class="fa fa-plus-square fa-2x"></i> </button>
               </div>
                 <div class="panel-footer text-center" style="padding:0px;">
                   <a  href="#" data-toggle="modal" data-target=".bs-modal-sm"  style="padding:0px;"><h5 class="darkblue" >+Add Game</h5></a>

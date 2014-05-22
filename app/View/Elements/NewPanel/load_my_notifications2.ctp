@@ -28,7 +28,6 @@ else{
   $profileurl=$this->Html->url(array("controller" => "games","action" =>"profile",$followid));
 }
 
-
 						$card = $this->requestAction( array('controller' => 'games', 'action' => 'follow_card', $followid));
 						$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 						$activity_message = $this->requestAction( array('controller' => 'apis', 'action' => 'notificationMessage'),array('pass' => $lastactivity));

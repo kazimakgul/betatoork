@@ -1,3 +1,4 @@
+
 <div class="container">
 <?
 $controls=NULL;
@@ -11,13 +12,13 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
 	<div class="btn-group" style="margin-bottom:10px;">
 	<?php
 	$limit = 14;
-	echo $this->element('business/category', array('limit'=>$limit,'userid'=>$user['User']['id']));
+	echo $this->element('business/category', array('limit'=>$limit,'userid'=>$controls));
 	?>
   </div>
 
 </div>
 
-  <?php  echo $this->element('business/login',array('user_id'=>$user['User']['id'])); ?>
+  <?php  echo $this->element('business/login',array('user_id'=>$controls)); ?>
   <?php  echo $this->element('business/channelbanner',array('controls'=>$controls)); ?>
 
 <!--/footer-->
@@ -44,19 +45,17 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
                 </ul>
             </li>
         </ul>
-       
-         <h3 class="panel-title">Games <?=($this->request->params['named']['sort'])?"by  ".ucwords($this->request->params['named']['sort']):"";?></h3>
+         <h3 class="panel-title">Search Game : <?=$searchVal;?></h3>
       </div>
       
       <div class="panel-body">
-          <?php  
-            $div = "<div class='col-xs-3' style='padding:5px;'>";
-            $limit = 24;
-            echo $this->element('business/games/box',array('div'=>$div,'gamedata'=>$games));
+        <?php
+            $div = "<div class='col-xs-3' style='padding:0px 15px 0px 5px;'>";
+            echo $this->element('business/games/box',array('div'=>$div, 'gamedata'=>$query)); 
 			
 			echo $this->element('business/components/pagination'); 
-          ?>
-          	
+
+		?>
       </div>
     </div>
      </div>

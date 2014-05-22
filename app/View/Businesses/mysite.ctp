@@ -3,6 +3,7 @@
 <?
 $subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
 $controls=NULL;
+ 
 if($this->Session->read('Auth.User.id')==$user['User']['id']){
 	$controls=$user['User']['id'];
 }

@@ -3,6 +3,8 @@
 	$suburl2=$this->Html->url(array("controller" => "subscriptions","action" =>"add_subscription"));
     $followNo = $user['Userstat']['subscribeto']; 
     $gameNo = $user['Userstat']['uploadcount'];
+	$subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
+	
 ?>
 <script>
 subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
@@ -54,7 +56,7 @@ subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','ac
 		                  <i class="fa fa-foursquare"></i> Unfollow - <?php echo $followNo;?>
 		                </a> 
 					<?php } ?>
- 						<a class="btn btn-danger"><i class="fa fa-gamepad"></i> Games - <?php echo $gameNo;?></a>
+ 						<a href="<?=$subgameurl;?>/sort:recommend/direction:desc" class="btn btn-danger"><i class="fa fa-gamepad"></i> Games - <?php echo $gameNo;?></a>
                     </div>
 <?php
 $website=$user['User']['website'];

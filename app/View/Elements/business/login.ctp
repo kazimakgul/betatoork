@@ -460,8 +460,8 @@
 <!-- Add Game Modal begins -->
 <!-- Modal -->
 <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xs">
-    <div class="modal-content">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="padding:5px;">
         <br>
         <div class="bs-example bs-example-tabs">
             <ul id="myTab" class="nav nav-tabs">
@@ -481,7 +481,8 @@
             <fieldset>
            <?php  
 		        $tt = 1;
-				echo $this->element('business/games/tutorialgame',array('tutorialgame'=>$tt)); 
+				echo $this->element('business/games/tutorialgame',array('tutorialgame'=>$tt));
+				echo $this->element('business/components/pagination'); 
 		    ?>
             </fieldset>
             </form>
@@ -491,7 +492,8 @@
             <fieldset>
             <?php
             	$tt = 2;
-				echo $this->element('business/games/tutorialgame',array('tutorialgame'=>$tt)); 
+				echo $this->element('business/games/tutorialgame',array('tutorialgame'=>$tt));
+				echo $this->element('business/components/pagination'); 
 			?>  
             </fieldset>
             </form>

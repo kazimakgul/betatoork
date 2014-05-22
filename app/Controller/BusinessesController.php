@@ -92,6 +92,16 @@ class BusinessesController extends AppController {
 		    ->subject($subject)
 		    ->send();
 	}
+	
+	public function headerlogin() {
+		$userid = $this->Session->read('Auth.User.id');
+	   	$user = $this->User->find('first', array('conditions'=> array('User.id'=>$userid)));
+	   	$userName = $user['User']['username'];
+
+	    $this->set('user',$user);
+	    $this->set('username',$userName);
+	}
+	
 	public function gameswitch($id = null) {
 		$gameid = $this->request->params['pass'][0];
 		$game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid),'fields'=>array('Game.embed'),'contain'=>false));//Recoded
@@ -101,7 +111,35 @@ class BusinessesController extends AppController {
 			$this->redirect(array('controller' => 'games', 'action' => 'playgame',$gameid));
 		}
 	}
-	
+
+
+	public function search2($userid) {
+		$this->layout='Business/business';
+		if($this->request->is("GET") && isset($this->request->query['srch-term']))
+		{
+		$param =$this->request->query['srch-term'];
+		}
+		
+		if(!isset($param) || $param=="" )
+		{
+		$this->redirect(array("controller"=>"games","action"=>"index"));
+		}
+		
+		$keys = $this->Game->query("SELECT * FROM games as Game WHERE user_id=$userid and description like '%".$param."%' or name like '%".$param."%'");
+		$PaginateLimit	=	30;
+		$user			=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
+		$game			=	$this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')),'Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));//Recoded
+		$limit=12;
+		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$game['Game']['user_id']),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
+		$cond=$this->paginate('Game');
+		$this->set('title_for_layout', 'Clone - Game Search Engine');
+		$this->set('description_for_layout', 'Clone - Game Search Engine powered by Google. Clone Search is specially designed for searching games');
+		$this->set('searchVal',	$param);
+		$this->set('query',		$keys);
+		$this->set('game',		$game);
+		$this->set('user', $user);
+	}
+
 	public function mysite($userid) {
 
 		$this->layout	=	'Business/business';
@@ -127,8 +165,9 @@ class BusinessesController extends AppController {
 	   }
 	   //=======/Get Current Subscription===============
 
-		$limit = 18;
-		$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
+		$limit = 9;
+		$this->set('top_rated_games', $this->Game->find('all', 
+		array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
 
 		$this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.id' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
 		$this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.starsize' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
@@ -248,47 +287,4 @@ class BusinessesController extends AppController {
 		$this->set('author_for_layout', 'Clone');
 	}
 
-	
-	//This clone of search function fill be used for dashboard layout.
-	public function search() {
-	$this->layout='Business/business';
-	if($this->request->is("GET") && isset($this->request->params['pass'][0]))
-	{
-	$param = $this->request->params['pass'][0];
-	}
-	
-	//search icin veri girilmemisse ana sayfaya yonlendir.
-	if(!isset($param) || $param=="" )
-	{
-	$this->redirect(array("controller"=>"businesses","action"=>"mysite"));
-	}
-	else
-	{
-	        $limit=16;
-			$cond= array('AND'=>array('OR'=>array('Game.name LIKE'=>'%'.$param.'%','Game.description LIKE'=>'%'.$param.'%'),'Game.active'=>'1'));
-			$this->paginate=array('Game'=>array('contain'=>array('User'=>array('fields'=>'User.seo_username,User.username')),'conditions' => $cond,'limit' => $limit));
-			$data=$this->paginate('Game');
-	    	$this->set('search',$data);
-			
-	$this->set('mygames', $cond);
-	$this->set('title_for_layout', 'Clone - Game Search Engine');
-	$this->set('description_for_layout', 'Clone - Game Search Engine powered by Google. Clone Search is specially designed for searching games');
-	}
-//		$this->leftpanel();
-		$key=$param;
-		$this->set('myParam',$key);
-	    $userid = $this->Session->read('Auth.User.id');
-	    
-		
-		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid)));
-	    $userName = $user['User']['username'];
-		$limit=120;
-		$this->set('limit', $limit);
-	    
-	    $this->set('username', $userName);
-		$this->set('user_id', $userid);
-		//$this->set_suggested_channels();
-		
-	}
-	
 }
