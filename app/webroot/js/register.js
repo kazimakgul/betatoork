@@ -2089,12 +2089,19 @@ $('#admin_game_submit').live('click',function(){
 	}else{
 		$mobile_ready=0;
 	}
+
+	if($('#full_screen').prop('checked'))
+	{
+		$full_screen=1;
+	}else{
+		$full_screen=0;
+	}
 											
 		//------
 		   $.ajax({
         type: "POST",
         url: admin_game_submit,
-		data: {game_name:$game_name,game_description: $game_description,game_link:$game_link,game_width:$game_width,game_height:$game_height,game_priority:$game_priority,game_tags:$game_tags,game_user_id: $game_user_id,mobile_ready:$mobile_ready,image_name:$image_name,category_id:$category_id,game_file:$game_file},
+		data: {game_name:$game_name,game_description: $game_description,game_link:$game_link,game_width:$game_width,game_height:$game_height,game_priority:$game_priority,game_tags:$game_tags,game_user_id: $game_user_id,mobile_ready:$mobile_ready,image_name:$image_name,category_id:$category_id,game_file:$game_file,full_screen:$full_screen},
         dataType: "json",
 		async: false,
         success: function(data){

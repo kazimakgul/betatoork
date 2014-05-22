@@ -98,7 +98,7 @@ public function admin_game_submit()
 		$image_name=$this->request->data['image_name'];
 		$category_id=$this->request->data['category_id'];
 		$game_file=$this->request->data['game_file'];
-		
+		$fullscreen=$this->request->data['full_screen'];
 
 
 		if($userid = $this->Session->read('Auth.User.id'))
@@ -141,6 +141,7 @@ public function admin_game_submit()
 		'category_id' => $category_id,
 		'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
 		'user_id' => $game_user_id,
+		'fullscreen' => $fullscreen,
 		'mobileready' => $mobileready));
 		//*****************************
 		//Secure data filtering ends
