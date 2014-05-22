@@ -543,6 +543,8 @@ public function mygames() {
 		$this->layout='dashboard';
 		$userid = $this->Session->read('Auth.User.id');
 		$this->headerlogin();
+
+		echo $this->request->host();
 		
 		$limit=16;
 
