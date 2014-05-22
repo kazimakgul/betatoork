@@ -1,6 +1,5 @@
 <?php foreach ($top_rated_games as $game): ?>
 <?php
-
 if($game['User']['seo_username']!=NULL)
 {
   $profileurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>'')); 
@@ -11,7 +10,7 @@ else{
 
 if($game['Game']['seo_url']!=NULL)
 {
-      if($game['Game']['embed']!=NULL)
+      if($game['Game']['fullscreen']!=1)
       $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playgame'));
 	  else
 	  $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playframe'));

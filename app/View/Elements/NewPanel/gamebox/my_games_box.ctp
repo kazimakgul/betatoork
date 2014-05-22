@@ -15,15 +15,9 @@ if(isset($game['Gamestat']['potential'])){$potential=$game['Gamestat']['potentia
 if(isset($game['Game']['rate_count'])){$ratecount=$game['Game']['rate_count'];}else{$ratecount=0;}
 
 
-
-//echo 'Playcount'.$playcount.'<br>';
-//echo 'Favcount'.$favcount.'<br>';
-//echo 'Channelclone'.$channelclone.'<br>';
-//echo 'potential'.$potential.'<br>';
-
 if($game['Game']['seo_url']!=NULL)
 {
-      if($game['Game']['embed']!=NULL)
+      if($game['Game']['fullscreen']!=1)
       $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playgame'));
     else
     $playurl=$this->Html->url(array( "controller" => h($game['User']['seo_username']),"action" =>h($game['Game']['seo_url']),'playframe'));
