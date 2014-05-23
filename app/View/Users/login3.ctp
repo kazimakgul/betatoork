@@ -3,7 +3,7 @@
                 <div class="row offset3">
                   <div class="span5">
                     <div class="white-card extra-padding">
-<form id="toorkLogin">
+<form id="toorkLogin" novalidate="novalidate">
 <fieldset>
 
                 

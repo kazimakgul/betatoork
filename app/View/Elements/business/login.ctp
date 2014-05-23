@@ -96,7 +96,7 @@
       <div class="social-box">
         <div class="row mg-btm">
         <div class="col-md-12">
-          <a href="#" class="btn btn-primary btn-block">
+          <a href="#" id="facebookreg" class="btn btn-primary btn-block">
             <i class="fa fa-facebook-square"></i> Login with Facebook
           </a>
         </div>
@@ -104,8 +104,8 @@
       </div>
     <div class="main">  
         
-    <input type="text" class="form-control" placeholder="Username or Email" autofocus>
-    <input type="password" class="form-control" placeholder="Password">
+    <input type="text" class="form-control" id="txt_signusername" placeholder="Username or Email" autofocus>
+    <input type="password" class="form-control" id="txt_signpass" placeholder="Password">
      
         Are you a business? <a href=""> Get started here</a>
     <span class="clearfix"></span>  
@@ -119,7 +119,7 @@
             </div>
           </div>
         <div class="col-xs-6 col-md-6 pull-right">
-            <button type="submit" class="btn btn-large btn-primary pull-right">Login</button>
+            <button type="submit" id="t_gatekeeper_login_btn" class="btn btn-large btn-primary pull-right">Login</button>
         </div>
     </div>
     

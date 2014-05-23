@@ -137,7 +137,7 @@ class BusinessesController extends AppController {
 		$this->set('searchVal',	$param);
 		$this->set('query',		$keys);
 		$this->set('game',		$game);
-		$this->set('user', $user);
+		$this->set('user',		$user);
 	}
 
 	public function mysite($userid) {
