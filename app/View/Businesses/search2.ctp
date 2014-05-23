@@ -5,14 +5,14 @@ $controls=NULL;
 if($this->Session->read('Auth.User.id')==$user['User']['id']){
 	$controls=$user['User']['id'];
 }
-
+$userid=$user['User']['id'];
 echo $this->element('business/ads',array('controls'=>$controls)); ?>
 
 <div class="col-md-12">
 	<div class="btn-group" style="margin-bottom:10px;">
 	<?php
 	$limit = 14;
-	echo $this->element('business/category', array('limit'=>$limit,'userid'=>$controls));
+	echo $this->element('business/category', array('limit'=>$limit,'userid'=>$userid));
 	?>
   </div>
 
@@ -52,9 +52,7 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
         <?php
             $div = "<div class='col-xs-3' style='padding:0px 15px 0px 5px;'>";
             echo $this->element('business/games/box',array('div'=>$div, 'gamedata'=>$query)); 
-			
 			echo $this->element('business/components/pagination'); 
-
 		?>
       </div>
     </div>

@@ -1,9 +1,7 @@
-
 <div class="container">
-
 <?php  echo $this->element('business/ads'); ?>
-<?php // echo $this->element('business/login',array('user_id'=>$user['User']['id'])); ?>
 <?php
+$game_id = $game['Game']['id'];
 $gamename = $game['Game']['name'];
 $description = $game['Game']['description'];
 $username = $game['User']['seo_username'];
@@ -16,6 +14,7 @@ else{
   $profilepublic=$this->Html->url(array("controller" => "businesses","action" =>"profile",$game['User']['id']));
 }
 ?>
+<script>game_id='<?=$game_id?>';</script>
 	  <div class="col-sm-12">
 		<div class="well well-sm">
 		<h6 class="media-heading">

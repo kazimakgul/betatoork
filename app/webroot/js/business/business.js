@@ -108,7 +108,6 @@ $(function() {
 
 
 $( document ).ready(function() {
-	$('#notification').popover();
 	$('#gameshare').popover();
 	$('#gamecomment').popover();
 	//Ads Button table class
@@ -167,9 +166,7 @@ $('#facebookreg').click(function () {
 	
 	
 	function tlogin2(){
-		
-        $.post(remotecheck, { un: $('#txt_signusername').val(), ps: $('#txt_signpass').val(), attr: 'txt_logusername' }, function (data) {
-			alert("asdsad");
+	$.post(remotecheck, { un: $('#txt_signusername').val(), ps: $('#txt_signpass').val(), attr: 'txt_logusername' }, function (data) {
 			if(data.rtdata.msgid=='0'){
 				
 				$('#errormsg_Passwd').html(data.rtdata.msg);
@@ -194,10 +191,6 @@ $('#facebookreg').click(function () {
 //------------------Login Register Functions Begins-------------------------
 //***************************************************
 
-
-	
-	
-	
 	//Validation for login panel
 	jQuery.validator.setDefaults({
   debug: true,
@@ -354,11 +347,6 @@ $('.validateLogin').click(function() {
             }
         }
     });
-
-// $('.validateRegister').click(function() {
-// alert($("#toorkRegister").valid());
-//});
- 
  
     $('#t_facebook_registerbtn').click(function () {
 		if($("#toorkRegister").valid())
@@ -368,7 +356,6 @@ $('.validateLogin').click(function() {
     });
  
 	$('#t_landing_registerbtn').click(function () {
-	    
 		//checkusername();
 		if($("#toorkRegister").valid())
 		{

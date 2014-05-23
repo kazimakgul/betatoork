@@ -18,8 +18,6 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
 ?>
   </div>
 </div>
-
-  <?php  echo $this->element('business/login',array('user_id'=>$user['User']['id'])); ?>
   <?php  echo $this->element('business/channelbanner',array('controls'=>$controls)); ?>
 
 
