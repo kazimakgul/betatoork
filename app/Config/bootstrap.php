@@ -121,7 +121,7 @@ $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
 
 if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){   
 
-     $_GET["url"] =  $subdomain . "/" . (isset($_GET["url"]) ? $_GET["url"] : "");
+     $_GET["url"] =  "/".$subdomain . "/" . (isset($_GET["url"]) ? $_GET["url"] : "");
 
 }
 
