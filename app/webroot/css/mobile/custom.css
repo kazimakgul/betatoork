@@ -135,3 +135,49 @@
 .lighten{
     color: #000, 33.5%;
 }
+.cover {
+    background-image: url("https://s3.amazonaws.com/betatoorkpics/socials/toork-logo.jpg");
+    background-position: center;
+    height: 80px;
+    margin-bottom: -10px;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.cover .cover_dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    height: 80px;
+    margin-bottom: -10px;
+    width: 100%;
+    opacity:0.2;
+    filter:alpha(opacity=20);
+}
+.cover img {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    border: medium white solid;
+    z-index: 1;
+}
+.cover .tit1 {
+    position: absolute;
+    color: white;
+    top: 20px;
+    left: 90px;
+    font-size: 16px;
+    font-weight: bolder;
+    z-index: 1;
+}
+.cover .tit2 {
+    position: absolute;
+    color: white;
+    top: 40px;
+    left: 90px;
+    font-size: 14px;
+    z-index: 1;
+}
