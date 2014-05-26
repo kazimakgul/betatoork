@@ -101,6 +101,7 @@ class MobilesController extends AppController {
         $this->set('games', $cond);
 
         //  $keys = $this->Game->query("SELECT * FROM games as Game WHERE user_id=$userid and description like '%" . $param . "%' or name like '%" . $param . "%'");
+        
     }
 
     public function play($id = NULL) {
