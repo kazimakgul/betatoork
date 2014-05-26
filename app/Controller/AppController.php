@@ -132,5 +132,34 @@ if(substr($str, 0, 7)!="http://" && substr($str, 0, 8)!="https://")
 			}
 }
 
+public function remove_temporary($id,$type)
+   {
+   //===Alakalı tipteki klasörü siler begins.====
+    App::uses('Folder', 'Utility');
+    App::uses('File', 'Utility');
+    
+   if($type=='avatar_image')
+   {
+    $dir='upload/users/'.$id;
+   }else if($type=='cover_image'){
+   $dir='upload/users/'.$id;
+   }else if($type=='game_image'){
+   $dir='upload/games/'.$id;
+   }else if($type=='new_game'){
+   $dir='upload/temporary/'.$id;
+   }else if($type=='game_upload'){
+   $dir='upload/gamefiles/'.$id;
+   }
+
+        $upload_dir = new Folder(WWW_ROOT .$dir);
+        $updir=$upload_dir->pwd();
+        if($updir!=NULL)
+        {
+        $upload_dir->delete();
+        //print_r($upload_dir->errors());
+        }
+    //===Alakalı tipteki klasörü siler ends.====
+   }
+
 
 }
