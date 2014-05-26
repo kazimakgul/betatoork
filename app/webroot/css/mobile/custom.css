@@ -1,3 +1,24 @@
+@media (max-width: 768px) {
+    .caption h3 {
+        font-size: 16px !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .caption h3 {
+        font-size: 16px !important;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .caption h3 {
+        font-size: 18px !important;
+    }
+}
+@media (min-width: 1200px) {
+    .caption h3 {
+        font-size: 20px !important;
+    }
+}
+
 .stars2 .ratingbar2 {
     background: url("../../img/rating/star_16_h.png") repeat-x scroll left top rgba(0, 0, 0, 0);
     height: 100%;
@@ -5,29 +26,30 @@
 }
 .thumbnail {
     padding: 0;
+    border: none;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
 .thumbnail .panel-image-preview {
     -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-right-radius: 5px;    
     -moz-border-radius-topleft: 5px;
     -moz-border-radius-topright: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 #toolbar h1 {
-    margin-top: 10px;
+    margin-top: 11px;
 }
 .caption h3 {
     margin: 0;
     overflow: hidden;
     color: #428BCA;
     text-align: center;
-    font-size: 15px;
 }
-/*Colors */
+
+/* RENK */
 .white{
     color: #fff;
 }

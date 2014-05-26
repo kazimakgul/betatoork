@@ -1,12 +1,7 @@
-//***************************************************
-//------------------Rating Functions Begins---------- 
-// Rating yıldızlarının çalışmasını sağlayan Function
-//***************************************************
 var __slice = [].slice;
 
 (function($, window) {
     var Starrr;
-
     Starrr = (function() {
         Starrr.prototype.defaults = {
             rating: void 0,
@@ -14,7 +9,6 @@ var __slice = [].slice;
             change: function(e, value) {
             }
         };
-
         function Starrr($el, options) {
             var i, _, _ref,
                     _this = this;
@@ -41,7 +35,6 @@ var __slice = [].slice;
             });
             this.$el.on('starrr:change', this.options.change);
         }
-
         Starrr.prototype.createStars = function() {
             var _i, _ref, _results;
 
@@ -51,7 +44,6 @@ var __slice = [].slice;
             }
             return _results;
         };
-
         Starrr.prototype.setRating = function(rating) {
             if (this.options.rating === rating) {
                 rating = void 0;
@@ -60,7 +52,6 @@ var __slice = [].slice;
             this.syncRating();
             return this.$el.trigger('starrr:change', rating);
         };
-
         Starrr.prototype.syncRating = function(rating) {
             var i, _i, _j, _ref;
 
@@ -79,9 +70,7 @@ var __slice = [].slice;
                 return this.$el.find('span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
             }
         };
-
         return Starrr;
-
     })();
     return $.fn.extend({
         starrr: function() {
@@ -107,11 +96,35 @@ $(function() {
     return $(".starrr").starrr();
 });
 
-$('#stars').on('starrr:change', function(e, value) {
-    $('#count').html(value);
-});
-
-$('#stars-existing').on('starrr:change', function(e, value) {
-// mysite Hatalı  	$('.rating .widget-button').attr('data-original-title', 'Your rate is '+value);
-    $('#count-existing').html(value);
+$(document).ready(function() {
+    $('#gameshare').popover();
+    $('#gamecomment').popover();
+    //Ads Button table class
+    $("#mytable #checkall").click(function() {
+        if ($("#mytable #checkall").is(':checked')) {
+            $("#mytable input[type=checkbox]").each(function() {
+                $(this).prop("checked", true);
+            });
+        } else {
+            $("#mytable input[type=checkbox]").each(function() {
+                $(this).prop("checked", false);
+            });
+        }
+    });
+    //Favourite Button class change
+    $('.favourite .row button').click(function() {
+        if ($('.btn-danger').val() == 0)
+        {
+            $('.btn-danger').removeClass().addClass('btn btn-default');
+        }
+        else {
+            $('.btn-default').removeClass().addClass('btn btn-danger');
+        }
+    });
+    $('#stars').on('starrr:change', function(e, value) {
+        $('#count').html(value);
+    });
+    $('#stars-existing').on('starrr:change', function(e, value) {
+        $('#count-existing').html(value);
+    });
 });

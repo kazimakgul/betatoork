@@ -40,8 +40,8 @@
             });
             
         </script>
-        <?php echo $this->Html->script(array('mobile/demo')); ?>
-        <?php echo $this->Html->script(array('business/custom','business/business')); ?>
+        <?php echo $this->Html->script(array('mobile/demo', 'mobile/rating')); ?>
+        <?php echo $this->Html->script(array('business/custom')); ?>
         <?php $game_id = $game['Game']['id'];?>
 	<script>
         toorksize	='<?php echo Configure::read('broken.toorksize'); ?>';
