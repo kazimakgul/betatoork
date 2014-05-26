@@ -143,38 +143,26 @@ $( document ).ready(function() {
   });
   
   $('#stars-existing').on('starrr:change', function(e, value){
-// mysite Hatalı  	$('.rating .widget-button').attr('data-original-title', 'Your rate is '+value);
     $('#count-existing').html(value);
   });
-  
-  //***************************************************
-//------------------Rating Functions Ends-------------------------
-//***************************************************
+  	//***************************************************
+  	//------------------Rating Functions Ends-------------------------
+  	//***************************************************
 
   //*********Social Function********
-$('#facebookreg').click(function () {
-		
-		//alert('Login With Facebook(landingscripts)');
+	$('#facebookreg').click(function () {
 		facebooklogin();
 	});
+	
 	$('#t_gatekeeper_login_btn').click(function () {
-		
-		tlogin2();
-		
-	});
-	
-	
-	
-	function tlogin2(){
-	$.post(remotecheck, { un: $('#txt_signusername').val(), ps: $('#txt_signpass').val(), attr: 'txt_logusername' }, function (data) {
-			if(data.rtdata.msgid=='0'){
-				
-				$('#errormsg_Passwd').html(data.rtdata.msg);
-				$('#errormsg_Passwd').show();
-				
-			}
+		$.post(remotecheck,
+				{ un: $('#txt_signusername').val(), ps: $('#txt_signpass').val(), attr: 'txt_logusername'},
+				function (data) {
+					if(data.rtdata.msgid=='0'){
+						$('#errormsg_Passwd').html(data.rtdata.msg);
+						$('#errormsg_Passwd').show();
+						}
 			else if(data.rtdata.msgid=='1'){
-				
 				$('#grabloader').css("display", "block");
 				window.location = data.rtdata.msg;
 			}
@@ -182,17 +170,17 @@ $('#facebookreg').click(function () {
 				
 				$('#errormsg_Passwd').html(data.rtdata.msg);
 				$('#errormsg_Passwd').show();
-							
 			}
-        }, 'json');	
-	}
+        },  'json');
+	});
 	
+
   //***************************************************
 //------------------Login Register Functions Begins-------------------------
 //***************************************************
 
 	//Validation for login panel
-	jQuery.validator.setDefaults({
+jQuery.validator.setDefaults({
   debug: true,
   success: "valid"
 });
@@ -209,6 +197,8 @@ form.validate({
     }
   }
 });
+
+
 $('.validateLogin').click(function() {
   form.valid();
 });
@@ -223,10 +213,7 @@ $('.validateLogin').click(function() {
         $('#t_gatekeeper_login_btn').click();
     } });	
  
- 
- 
  //Register button for gatekeeper
- 
  //New Validation System For Registration
  jQuery.validator.addMethod(
         "uniqueUserName", 
@@ -239,17 +226,12 @@ $('.validateLogin').click(function() {
         dataType: "json",
 		async: false,
         success: function(data){
-			
-			if(data.rtdata==1)
-			{
-				 
-				 $( "#reg_username" ).data( "valid", true );
-				
-			}else{
-				$( "#reg_username" ).data( "valid", false );
-			
-			}
-			
+				if(data.rtdata==1)
+				{
+					$( "#reg_username" ).data( "valid", true );
+				}else{
+					$( "#reg_username" ).data( "valid", false );
+				}
 			},
         failure: function(errMsg) {
             //alert(errMsg);
@@ -264,40 +246,35 @@ $('.validateLogin').click(function() {
  jQuery.validator.addMethod(
         "uniqueEmail", 
         function(value, element) {
-          
-			$.ajax({
+	$.ajax({
         type: "POST",
         url: authcheck,
         data: {attr: 'check_email', dt: value },
         dataType: "json",
 		async: false,
         success: function(data){
-			
-			if(data.rtdata==1)
-			{
-				 
-				 $( "#reg_email" ).data( "valid", true );
-				
-			}else{
-				$( "#reg_email" ).data( "valid", false );
-			
-			}
-			
+				if(data.rtdata==1)
+				{
+					 $( "#reg_email" ).data( "valid", true );
+				}else{
+					$( "#reg_email" ).data( "valid", false );
+				}
 			},
         failure: function(errMsg) {
             //alert(errMsg);
         }
-  });
-						
+		});
             return $( "#reg_email" ).data( "valid");
         },
         "Email is already registered"
-    );
+	);
  
- jQuery.validator.addMethod("nospace", function(value, element) { 
-  return value.indexOf(" ") < 0 && value != ""; 
-}, "No space please and don't leave it empty");
- 
+	jQuery.validator.addMethod("nospace",
+		function(value, element){
+ 		return value.indexOf(" ") < 0 && value != "";
+ 		},
+		"No space please and don't leave it empty"
+	);
  
  $("#toorkRegister").validate({
         rules: {
@@ -356,35 +333,25 @@ $('.validateLogin').click(function() {
     });
  
 	$('#t_landing_registerbtn').click(function () {
-		//checkusername();
 		if($("#toorkRegister").valid())
 		{
 			checkUser2();
-			}else{
-				//Acts for no validation.
-				}
+		}else
+		{}
 		
     });
  
  function checkUser2(){
 		$.post(remotecheck2, {attr: 'fast_register', un: $('#reg_username').val(), um: $('#reg_email').val(), up: $('#reg_password').val() }, function (data) {
 			if (data.rtdata == 'true') {
-				
 				$('#grabloader').show();
-				
 				setInterval(function(){autoLogin($('#reg_username').val(),$('#reg_password').val());},2000);
-				
-				
 			}
 			else if(data.rtdata == 'false'){
-        
 				//Recaptcha Code is incorrect. Please try again.
-	
 			}
 			else
 			{
-				//alert(data.rtdata)
-				
 			}
 		}, 'json');	
 	}
@@ -392,22 +359,15 @@ $('.validateLogin').click(function() {
 	function faceUser(){
 		$.post(remotecheck2, {attr: 'facebook_register', sn: $('#reg_screenname').val(), un: $('#reg_username').val(), um: $('#reg_email').val(), up: $('#reg_password').val(), fi: $('#facebook_id').val(),at: $('#access_token').val() }, function (data) {
 			if (data.rtdata == 'true') {
-				
 				$('#grabloader').show();
-				
 				setInterval(function(){autoLogin($('#reg_username').val(),$('#reg_password').val());},2000);
-				
-				
 			}
 			else if(data.rtdata == 'false'){
-        
 				//Recaptcha Code is incorrect. Please try again.
-	
 			}
 			else
 			{
 				//alert(data.rtdata)
-				
 			}
 		}, 'json');	
 	}
@@ -429,21 +389,16 @@ $('.validateLogin').click(function() {
 				window.location = data.rtdata.msg+'/welcome';
 			}
 			else{
-				
 				$.pnotify({
-			   title:'Invalid Username or Password',
-               text: data.rtdata.msg,
-               type: 'error'
-               });
-							
+				title:'Invalid Username or Password',
+            	text: data.rtdata.msg,
+             	type: 'error'
+               	});
 			}
         }, 'json');	
 	}
  
- 
 //==========/Login Register Functions=============
-
-
 
 //*********Forget Password Function********
 $('#resetcredential').keypress(function (e) { if(e.which == 13) {
@@ -487,14 +442,6 @@ $('#forget_pass').click(function () {
 
 
 
-
-
-
-
-
-
-
-
 //***************************************************
 //------------------Subscription Functions-------------------------
 //***************************************************
@@ -532,83 +479,45 @@ function subscribe (channel_name,user_auth,id) {
 	}
 	
 	
-	function subscribeout (channel_name,user_auth,id) {
-		        
-		    if(user_auth==1)
-		    {
-		currentflw=$('#flwnumber').html();
-		currentflw=parseInt(currentflw);
-		$('#flwnumber').html(currentflw-1);
-		
-		switch_subscribe(id);
-		/*
-		$.pnotify({
-            title: 'Unfollow is done',
-            text: 'You stopped following <strong>'+channel_name+'</strong> now.<br>You will not be notified about the updates of this channel.',
-            type: 'error'
-          });
-		*/
-		
-			}else{
-				
-			$.pnotify({
-            title: 'Authentication Error',
-            text: 'You have to login first to follow channels.',
-            type: 'error'
-          });	
-					
-			}
-		  
-				
+	function subscribeout (channel_name,user_auth,id)
+	{
+		if(user_auth==1)
+		{
+			currentflw=$('#flwnumber').html();
+			currentflw=parseInt(currentflw);
+			$('#flwnumber').html(currentflw-1);
+			switch_subscribe(id);
+		}
+		else{
+			$('#login').modal('show');
+		}
 	}
-	
 	
     function switch_subscribe(channel_id)
     {
-		
     	$.get(subswitcher+'/'+channel_id,function(data) {/*success callback*/});	
-		
     }
 	
-	
-	$('#follow_button').click(function () {
-		   if(user_auth==1)
-		    {
-		$('#follow_button').hide();
-		$('#unFollow_button').show();
-			}
-	});
-	
-	$('#unFollow_button').click(function () {
-		   if(user_auth==1)
-		    {
-		$('#unFollow_button').hide();
-		$('#follow_button').show();
-			}
-	});
-	
-	
-//Her sayfa yuklenisinde ve sadece profile sayfasinda calismak uzere hazirlandi.	
-if($('#follow_button').attr('id')=='follow_button')
+	$('#follow_button').click(function ()
 	{
-	checkstatus();
-	}
-	
-	
-		function checkstatus(){
-		$.get(checkFollowStat+'/'+profile_id,function(data) {			  
-											if(data==1) {
-											    $('#follow_button').hide();
-		                                        $('#unFollow_button').show();
-										     } else {
-											    $('#unFollow_button').hide();
-		                                        $('#follow_button').show();				  
-											 }						  
-			                    });
-		         }
-				 
-			
-			
+		if(user_auth==1)
+		{
+			$('#follow_button').hide();
+			$('#unFollow_button').show();
+		}else
+		{
+			$('#login').modal('show');
+		}
+	});
+
+	$('#unFollow_button').click(function () {
+	   if(user_auth==1)
+	    {
+			$('#unFollow_button').hide();
+			$('#follow_button').show();
+		}
+	});
+			 
 	function switchfollow(id)
 	{
 	var x = id;
@@ -625,53 +534,38 @@ if($('#follow_button').attr('id')=='follow_button')
 //------------------Favorite Functions-------------------------
 //***************************************************	
 
-
 	function favorite (game_name,user_auth,id) {
 		    if(user_auth==1)
 		    {
-			switch_favorite(id);
+				switch_favorite(id);
 			}else{
-			$.pnotify({
-            title: 'Sign in Please',
-            text: 'You have to sign in first to favorite games.',
-            type: 'error'
-          });	
-					
+				$('#login').modal('show');
 			}
 	}
 	
 	function unFavorite (game_name,user_auth,id) {
 		    if(user_auth==1)
 		    {
-			switch_favorite(id);
-			}else{
-				
-			$.pnotify({
-            title: 'Sign in Please',
-            text: 'You have to sign in first to favorite games.',
-            type: 'error'
-          });	
-					
+				switch_favorite(id);
+			}else
+			{
+				$('#login').modal('show');	
 			}
 	}
 	
 $('#fav_button').click(function () {
 			if(user_auth==1)
 		    {
-		    
-
-			}else{
-				
-			$.pnotify({
-            title: 'Sign in Please',
-            text: 'You have to sign in first to favorite games.',
-            type: 'error'
-          	});	
-					
+			}else
+			{
+				$.pnotify({
+	            title: 'Sign in Please',
+	            text: 'You have to sign in first to favorite games.',
+	            type: 'error'
+	          	});	
 			}
 	});
 	
-
 	function switch_favorite(game_id)
     {
     	$.get(favswitcher+'/'+game_id,
@@ -688,9 +582,7 @@ $('#fav_button').click(function () {
 			$('#fav_count').html(currentflw-1);
 			$('.fa-heart').removeClass('red');
 			}
-		
 		});	
-		
     }
 
 //***************************************************
@@ -715,22 +607,20 @@ $('#chaingame').click(function () {
               });
 			}
 		});
-	}else{
-		 $.pnotify({
-            title: 'Sign in Please',
-            text: 'You have to sign in first to clone games.',
-            type: 'error'
-          });	
-		}
+	}else
+	{
+		$('#login').modal('show');
+	}
 });
 
 
 function chaingame2(game_name,user_auth,game_id)
 {
-if(user_auth==1)
+	if(user_auth==1)
     {   
-		$.get(chaingame + '/'+game_id, function (data) {
-			
+		$.get(chaingame + '/'+game_id, 
+		function (data)
+		{
 			if(data==1)
 			{
 			  $.pnotify({
@@ -738,27 +628,17 @@ if(user_auth==1)
               text: 'You have cloned. <strong>'+game_name+'</strong> game. You will be able to edit this game as you wish on your games section.',
               type: 'success'
               });  
-			}else{
-				
-				$.pnotify({
-			  title: 'System Error',
-              text: 'There are some problems on server,please try again later.',
-              type: 'error'
-              });  
-				
+			}else
+			{
+				$('#myModal').modal('hide');
+				$('#login').modal('show');
 			}
-			
 		});
 		
-	}else{
-		
-		 $.pnotify({
-            title: 'Sign in Please',
-            text: 'You have to sign in first to clone games.',
-            type: 'error'
-          });	
-		
-		
-		}	
+	}else
+	{
+		$('#myModal').modal('hide');
+		$('#login').modal('show');
+	}	
 }
 

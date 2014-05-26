@@ -134,14 +134,14 @@
 <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
   <div class="col-sm-offset-2">
-    <form class="form-signin mg-btm">
+    <form class="form-signin mg-btm" id="toorkRegister">
       <h3 class="heading-desc">
     <button type="button" class="close pull-right" aria-hidden="true" data-dismiss="modal">×</button>
     Register with Clone</h3>
       <div class="social-box">
         <div class="row mg-btm">
         <div class="col-md-12">
-          <a href="#" class="btn btn-primary btn-block">
+          <a href="#" id="facebookreg" class="btn btn-primary btn-block">
             <i class="fa fa-facebook-square"></i> Register with Facebook
           </a>
         </div>
@@ -149,9 +149,9 @@
       </div>
     <div class="main"> 
 
-    <input type="text" class="form-control" placeholder="Username" autofocus>
-    <input type="text" class="form-control" placeholder="Email" autofocus>
-    <input type="password" class="form-control" placeholder="Password">
+    <input type="text" class="form-control" placeholder="Username" name="reg_username" autofocus>
+    <input type="text" class="form-control" placeholder="Email" name="reg_email" autofocus>
+    <input type="password" class="form-control" placeholder="Password" name="reg_password">
      
         Are you a business? <a href="#"> Get started here</a>
     <span class="clearfix"></span>  
@@ -165,7 +165,7 @@
             </div>
           </div>
         <div class="col-xs-6 col-md-6 pull-right">
-            <button type="submit" class="btn btn-large btn-primary pull-right">Register</button>
+            <button type="submit" id="t_landing_registerbtn" class="btn btn-large btn-primary pull-right">Register</button>
         </div>
     </div>
     

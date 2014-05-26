@@ -1115,7 +1115,7 @@ public function password2($id = null) {
 	$this->layout='adminDashboard';
 	if($this->request->isPost())
 	{	
-	//iç
+	//iï¿½
 
 	$this->User->id =$this->request->data["User"]["id"];
 	$id=$this->request->data["User"]["id"];
@@ -1221,7 +1221,7 @@ public function password2($id = null) {
 				$this->request->data['User']['seo_username'] = strtolower($this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un'])));
 				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
 				$this->request->data['User']['active'] = 1;
-				//$this->request->data['User']['userstat'] = 0; //buraya bakýlacak yeni alan için
+				//$this->request->data['User']['userstat'] = 0; //buraya bakï¿½lacak yeni alan iï¿½in
 				
 				if ($this->User->save($this->request->data)) {
 				    $this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();
@@ -1266,7 +1266,9 @@ public function password2($id = null) {
 				$this->set('rtdata', 'Please Enter A Valid Email!');
 			}
 		 }
-		 else{}
+		 else{
+		 	$this->set('rtdata', 'Please Enter A Valid Email!');
+		 }
 		 
 		 $this->set('_serialize', array('rtdata'));
 		 
@@ -1364,7 +1366,7 @@ public function password2($id = null) {
 				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
 				$this->request->data['User']['active'] = 0;
 				$this->request->data['User']['last_login'] = date('Y-m-d H:i:s');
-				//$this->request->data['User']['userstat'] = 0; //buraya bakýlacak yeni alan için
+				//$this->request->data['User']['userstat'] = 0; //buraya bakï¿½lacak yeni alan iï¿½in
 				
 				if ($this->User->save($this->request->data)) {
 				
@@ -1415,7 +1417,7 @@ public function password2($id = null) {
                 //echo $parsedJson->username;
 				//-----//Get some from fb graph api--------
 				
-				//$this->request->data['User']['userstat'] = 0; //buraya bakýlacak yeni alan için
+				//$this->request->data['User']['userstat'] = 0; //buraya bakï¿½lacak yeni alan iï¿½in
 				
 				if ($this->User->save($this->request->data)) {
 				$lastinsertid=$this->User->getLastInsertID();
@@ -1513,7 +1515,7 @@ public function password2($id = null) {
 		 $accesstoken=$this->request->data['at'];
 		 $facebook_id=$this->request->data['ui'];
 		 
-		 //Accesstoken sistemde kayitlimi degilmi kayitli degilse yeni register paneline yönlendir.Kayitliysa sisteme login olmasini sagla.
+		 //Accesstoken sistemde kayitlimi degilmi kayitli degilse yeni register paneline yï¿½nlendir.Kayitliysa sisteme login olmasini sagla.
 		
 		 $user_exists=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.facebook_id'=>$facebook_id),'fields'=>array('User.id')));
 		 if($user_exists!=NULL)
@@ -1588,7 +1590,7 @@ public function password2($id = null) {
 				$this->request->data['User']['seo_username'] = strtolower($this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un'])));
 				$this->request->data['User']['confirm_password'] = $this->request->data['up'];
 				$this->request->data['User']['active'] = 1;
-				//$this->request->data['User']['userstat'] = 0; //buraya bakýlacak yeni alan için
+				//$this->request->data['User']['userstat'] = 0; //buraya bakï¿½lacak yeni alan iï¿½in
 				
 				if ($this->User->save($this->request->data)) {
 				    $this->request->data['Userstat']['user_id'] = $this->User->getLastInsertID();

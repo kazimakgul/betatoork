@@ -161,15 +161,7 @@ class BusinessesController extends AppController {
 		$user_id = $this->Auth->user('id');
 
 	   //=======/Get Current User_Id===============
-		if(!isset($userid))
-		{
-			if(isset($user_id))
-			{
-				$userid = $user_id;
-			}else{
-				$userid = 2;
-			}
-		}
+	
 
 	   //========Get Current Subscription===============
 	   if($userid)
@@ -228,8 +220,8 @@ class BusinessesController extends AppController {
 		$game_id = $game['Game']['id'];
 		if($user_id)
 		{
-			$fav_check = checkControl('favorites',$user_id,$game_id);
-			$clone_check = checkControl('cloneships',$user_id,$game_id);
+			$fav_check = $this->checkControl('favorites',$user_id,$game_id);
+			$clone_check = $this->checkControl('cloneships',$user_id,$game_id);
 		}else{
 			$fav_check = NULL;
 			$clone_check = NULL;

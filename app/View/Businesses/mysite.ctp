@@ -134,5 +134,5 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
 
 
 </div><!-- /.container -->
-
+ <?php  echo $this->element('business/components/popup',array('user_id'=>$user['User']['id'])); ?>
 <?php  echo $this->element('business/footer'); ?>
