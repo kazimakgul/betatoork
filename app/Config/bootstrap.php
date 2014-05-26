@@ -115,9 +115,8 @@ CakePlugin::load('DebugKit');
  * Inflector::rules('singular', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  * Inflector::rules('plural', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  *
- */
 
-<<<<<<< HEAD
+
 $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
 
 if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){   
@@ -129,12 +128,8 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 ini_set('session.cookie_domain', '.test.clone.gs');
 
 
+ */
 
-
-
-
-=======
->>>>>>> parent of 5679ba0... subdomain test
 /**
  * Plugins need to be loaded manually, you can either load them one by one or all of them in a single call
  * Uncomment one of the lines below, as you need. make sure you read the documentation on CakePlugin to use more
