@@ -107,6 +107,7 @@ class MobilesController extends AppController {
         $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')),'Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         
         $this->set('game_link', $game['Game']['link']);
+        $this->set('user_id', $game['Game']['user_id']);
         
         /**
          * Kullanıcı Bilgileri
