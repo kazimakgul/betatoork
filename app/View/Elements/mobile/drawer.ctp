@@ -2,11 +2,17 @@
 <div class="snap-drawers">
     <div class="snap-drawer snap-drawer-left">
         <div>
+            <div class="input-group searchbox">
+                <input type="text" value="" name="query" id="query" placeholder="Search" class="form-control">
+                <div class="input-group-btn">
+                    <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </div>
+            </div>
             <div class="cover">
                 <div class="cover_dark"></div>
                 <img class="img-circle" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="profile" width="50" height="50">
-                    <span class="tit1"><?= $screenname ?></span>
-                    <span class="tit2">@<?= $username ?></span>
+                <span class="tit1"><?= $screenname ?></span>
+                <span class="tit2">@<?= $username ?></span>
             </div>
             <div class="demo-social">
                 <span class="label label-warning">17 Followers</span>

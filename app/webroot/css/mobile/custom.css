@@ -146,7 +146,7 @@
     background-size: cover;
 }
 .cover .cover_dark {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     background-color: black;
@@ -157,7 +157,7 @@
 }
 .cover img {
     position: absolute;
-    top: 16px;
+    top: 70px;
     left: 16px;
     border: medium white solid;
     z-index: 1;
@@ -165,16 +165,17 @@
 .cover .tit1 {
     position: absolute;
     color: white;
-    top: 20px;
+    top: 73px;
     left: 90px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bolder;
     z-index: 1;
+    text-shadow: 2px 2px black;
 }
 .cover .tit2 {
     position: absolute;
     color: white;
-    top: 40px;
+    top: 96px;
     left: 90px;
     font-size: 12px;
     z-index: 1;
@@ -183,4 +184,20 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 0;
     padding: 15px;
+}
+.searchbox {
+    margin: 10px;
+}
+.searchbox input {
+    border-color: #111B32;
+}
+.searchbox button {
+    background-color: #536EA7;
+    border-color: #111B32;
+    color: #FFFFFF;
+}
+.searchbox button:hover {
+    background-color: #536EA7;
+    border-color: #111B32;
+    color: #FFFFFF;
 }
