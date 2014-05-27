@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class BusinessesController extends AppController {
 
 	public $name = 'Businesses';
-	var $uses = array('Businesses','Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Gamestat','Category','Activity','Cloneship','CakeEmail', 'Network/Email');
+	var $uses = array('Businesses','Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Gamestat','Category','Activity','Cloneship','CakeEmail', 'Network/Email','Adsetting');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Time');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Common');
     
@@ -146,11 +146,6 @@ class BusinessesController extends AppController {
 
 	public function mysite($userid=NULL) {
 		$this->layout	=	'Business/business';
-        
-        $this->loadModel('Adsetting');
-        $addata=$this->Adsetting->find('all');
-        print_r($addata);
-        echo 'roadtrain';
 
 		$user_id = $this->Auth->user('id');
 
@@ -177,6 +172,8 @@ class BusinessesController extends AppController {
 		$cond			=	$this->paginate('Game');
 		$category		=	$this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id='.$userid.' group by games.category_id');
 
+        //======Getting ads datas======
+        $addata=$this->Adsetting->find('all',array('contain'=>array('homeBannerTop','homeBannerMiddle','homeBannerBottom'),'conditions'=>array('Adsetting.user_id'=>$user_id)));
 
 		$limit = 9;
 		$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
@@ -185,6 +182,7 @@ class BusinessesController extends AppController {
 		$this->set('category',$category);
 		$this->set('games', $cond);
 		$this->set('user', $user);
+		$this->set('addata', $addata);
 		
 		$this->set('title_for_layout', 'Clone Games');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');

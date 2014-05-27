@@ -1,6 +1,6 @@
 
 <?php
-if(isset($controls) || $user['User']['adcode'] != '' && $user['User']['adcode'] != '1')
+if(isset($controls) || isset($code) && $code != '' && $code != NULL)
 {
 ?>
 <!-- Add Unit -->
@@ -11,7 +11,7 @@ if(isset($controls) || $user['User']['adcode'] != '' && $user['User']['adcode'] 
 	<span class="fa fa-pencil"></span></a>
 <?php
 	}
- echo $user['User']['adcode'] ?> 
+ echo $code; ?> 
 
 </div>
 </div>

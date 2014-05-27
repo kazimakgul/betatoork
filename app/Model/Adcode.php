@@ -6,13 +6,13 @@ App::uses('AppModel', 'Model');
  * @property User $User
  * @property Game $Game
  */
-class Adcodes extends AppModel {
+class Adcode extends AppModel {
 /**
  * Use table
  *
  * @var mixed False or table name
  */
-var $name="Adcodes";
+var $name="Adcode";
 
 
 }
