@@ -4,6 +4,7 @@
     $followNo = $user['Userstat']['subscribeto']; 
     $gameNo = $user['Userstat']['uploadcount'];
 	$subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
+	echo $this->element('business/login');
 	
 ?>
 <script>
@@ -40,7 +41,7 @@ subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','ac
                             <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -125px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
                         	<?}?>
                         </div>
-					<?php if($follow==0){ ?>
+					<?php if($follow==0 || $this->Session->check('Auth.User') == 0){ ?>
 			                <a class="btn btn-primary" id="follow_button"  onclick="subscribe('<?php echo $user['User']['username']?>',user_auth,<?php echo $user['User']['id']?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $user['User']['username']?>']);">
 			                  <i class="fa fa-plus-circle"></i> Follow - <?php echo $followNo;?>
 			                </a> 

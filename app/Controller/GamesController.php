@@ -36,21 +36,7 @@ class GamesController extends AppController {
 	 
 	
 	public function afterFilter() {
-	
-	App::uses('Folder', 'Utility');
-    App::uses('File', 'Utility');
-	
-	//===Eger upload adinda bir klas�r varsa siler.====
-        $upload_dir = new Folder(WWW_ROOT ."upload");
- 	    $updir=$upload_dir->pwd();
-		if($updir!=NULL)
-		{
-		$upload_dir->delete();
-		//print_r($upload_dir->errors());
-		}
-    //===//Eger upload adinda bir klas�r varsa siler.====
-	
-	
+	//There is no any action!
 	}
 	
 	
@@ -543,6 +529,8 @@ public function mygames() {
 		$this->layout='dashboard';
 		$userid = $this->Session->read('Auth.User.id');
 		$this->headerlogin();
+
+		//echo $this->request->host();
 		
 		$limit=16;
 

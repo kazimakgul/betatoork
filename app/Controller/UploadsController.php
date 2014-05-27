@@ -23,10 +23,10 @@ class UploadsController extends AppController {
 	public function index($uploadtype='avatar_image',$id=NULL) {
 	$this->layout='uploadplugin/upload';
 	//echo 'upload is ready';
-	//Kullanici yalnizca kendi idsinde degisiklik yaparken admin herkes için yapabilmeli.Güvenlik önlemi Al!!!
+
 	   if($uploadtype=='avatar_image')
        {//User need to be logged in.COndition ekle!!!
-	      $this->set('gallery','Avatar resimleri için galery içerigi');
+	      $this->set('gallery','Avatar resimleri iÃ§in galery iÃ§erigi');
 	      $this->set('uploadtype',$uploadtype);
 	      $this->set('id',$id);
 		  
@@ -64,7 +64,7 @@ class UploadsController extends AppController {
 	   
 	   }elseif($uploadtype=='cover_image'){
 	   
-	   $this->set('gallery','Cover resimleri için galery içerigi');
+	   $this->set('gallery','Cover resimleri iÃ§in galery iÃ§erigi');
 	   $this->set('uploadtype',$uploadtype);
 	   $this->set('id',$id);
 	   
@@ -452,6 +452,9 @@ class UploadsController extends AppController {
   $msg = array("title" => 'You have to be logged in!','result' => 0);
   }	   
   
+  //GeÃ§ici olarak yaratÄ±lan klasÃ¶rÃ¼ siler.
+  $this->remove_temporary($id,$uploadtype);
+
   $this->set('rtdata', $msg);
   $this->set('_serialize', array('rtdata'));
 	}//End of function

@@ -1,0 +1,183 @@
+@media (max-width: 768px) {
+    .caption h3 {
+        color: #428BCA;
+        font-size: 25px !important;
+        height: 30px;
+        line-height: normal;
+        margin: 0;
+        overflow: hidden;
+        text-align: center;
+    }
+    .yildiz {
+        padding-left: 20px;
+    }
+    .icon3 {
+        padding-right: 20px;
+        margin-left: 70px;
+    }
+    .stars2 {
+        margin-left: 17px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .yildiz {
+        padding-left: 20px;
+    }
+    .icon3 {
+        padding-right: 20px;
+        margin-left: 38px;
+    }
+    .stars2 {
+        margin-left: 17px;
+    }
+    .caption h3 {
+        font-size: 20px !important;
+        color: #428BCA;
+        line-height: normal;
+        margin: 0 0 -10px;
+        overflow: hidden;
+        text-align: center;
+        height: 25px;
+        overflow: hidden;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .yildiz {
+        padding-left: 20px;
+    }
+    .icon3 {
+        padding-right: 20px;
+    }
+    .caption h3 {
+        color: #428BCA;
+        font-size: 25px !important;
+        height: 30px;
+        line-height: normal;
+        margin: 0 0 10px;
+        overflow: hidden;
+        text-align: center;
+    }
+}
+@media (min-width: 1200px) {
+    .yildiz {
+        padding-left: 20px;
+    }
+    .icon3 {
+        padding-right: 20px;
+    }
+    .caption h3 {
+        color: #428BCA;
+        font-size: 25px !important;
+        height: 30px;
+        line-height: normal;
+        margin: 0 0 10px;
+        overflow: hidden;
+        text-align: center;
+    }
+}
+/*Stars for 16 px*/
+.stars2 { 
+    position: relative; 
+    float: left; 
+    background: url('../../img/rating/star_16_e.png') repeat-x left top; 
+    cursor: default; 
+}
+.stars2 .star2 { 
+    height: 16px; 
+    padding-left: 16px; 
+    background: transparent none repeat-x left top; 
+}
+.stars2 .ratingbar2 { 
+    position: absolute; 
+    height: 100%; 
+    background: url('../../img/rating/star_16_h.png') repeat-x left top; 
+}
+.thumbnail {
+    padding: 0;
+    border: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.thumbnail .panel-image-preview {
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;    
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#toolbar h1 {
+    margin-top: 11px;
+}
+/* RENK */
+.white{
+    color: #fff;
+}
+.green{
+    color: #5cb85c;
+}
+.blue{
+    color: #5bc0de;
+}
+.darkblue{
+    color: #428bca;
+}
+.orange{
+    color: #f0ad4e;
+}
+.red{
+    color: #d9534f;
+}
+.black{
+    color: #000;
+}
+.lighten{
+    color: #000, 33.5%;
+}
+.cover {
+    background-image: url("https://s3.amazonaws.com/betatoorkpics/socials/toork-logo.jpg");
+    background-position: center;
+    height: 80px;
+    margin-bottom: -10px;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.cover .cover_dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    height: 80px;
+    margin-bottom: -10px;
+    width: 100%;
+    opacity:0.2;
+    filter:alpha(opacity=20);
+}
+.cover img {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    border: medium white solid;
+    z-index: 1;
+}
+.cover .tit1 {
+    position: absolute;
+    color: white;
+    top: 20px;
+    left: 90px;
+    font-size: 16px;
+    font-weight: bolder;
+    z-index: 1;
+}
+.cover .tit2 {
+    position: absolute;
+    color: white;
+    top: 40px;
+    left: 90px;
+    font-size: 14px;
+    z-index: 1;
+}

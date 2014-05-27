@@ -93,7 +93,8 @@ class AppController extends Controller {
             'channelfollowers','moreupdates_profile_ajax','moreupdates_profile_ajax_home','loadprofilefeeds','sendmail','activationmailsender','new_user',
             'get_image_link','getscreen','cropimage','addgame_ajax','add_virtual_game','pushActivity','setPermissions','activityMessage',
             'notificationMessage','getFreshActivity','getfreshnotification','posts','getprofileactivity','followstatus','getnotificationcount',
-            'togglelast10','featuredchannels','getOldNotifications','hashtag','register2','login3','explore','faceregister','metacrawler','likeswitch','getlikestatus','sharepost','gamerepair','Add_Activity','Add_Credit','Execute_Activity','Add_Debt_Activity','set_image','set_as','apply_file','mysite','play');
+            'togglelast10','featuredchannels','getOldNotifications','hashtag','register2','login3','explore','faceregister','metacrawler','likeswitch','getlikestatus','sharepost','gamerepair','Add_Activity','Add_Credit','Execute_Activity','Add_Debt_Activity','set_image','set_as','apply_file',
+            'mysite','category','toprated');
 
 		$this->set('user',$this->Auth->user());
 		
@@ -130,6 +131,35 @@ if(substr($str, 0, 7)!="http://" && substr($str, 0, 8)!="https://")
 			return $str;
 			}
 }
+
+public function remove_temporary($id,$type)
+   {
+   //===Alakalı tipteki klasörü siler begins.====
+    App::uses('Folder', 'Utility');
+    App::uses('File', 'Utility');
+    
+   if($type=='avatar_image')
+   {
+    $dir='upload/users/'.$id;
+   }else if($type=='cover_image'){
+   $dir='upload/users/'.$id;
+   }else if($type=='game_image'){
+   $dir='upload/games/'.$id;
+   }else if($type=='new_game'){
+   $dir='upload/temporary/'.$id;
+   }else if($type=='game_upload'){
+   $dir='upload/gamefiles/'.$id;
+   }
+
+        $upload_dir = new Folder(WWW_ROOT .$dir);
+        $updir=$upload_dir->pwd();
+        if($updir!=NULL)
+        {
+        $upload_dir->delete();
+        //print_r($upload_dir->errors());
+        }
+    //===Alakalı tipteki klasörü siler ends.====
+   }
 
 
 }

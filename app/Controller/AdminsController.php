@@ -169,6 +169,7 @@ public function admin_game_submit()
 	        {
 	        //Set the picture field on db.
 	        $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id);	
+	        $this->remove_temporary($userid,'new_game');
 	        }
 
            
@@ -206,7 +207,8 @@ public function admin_game_submit()
 	        {
 	        //Set the picture field on db.
 	        $game_link=Configure::read('S3-games.url').'/'.$new_game_file;
-	        $this->Game->query('UPDATE games SET link="'.$game_link.'" WHERE id='.$id);	
+	        $this->Game->query('UPDATE games SET link="'.$game_link.'" WHERE id='.$id);
+	        $this->remove_temporary($userid,'game_upload');	
 	        }
 	    }   
    }

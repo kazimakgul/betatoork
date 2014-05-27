@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
-        <title>Socialesman Game Channel</title>
+        <title><?php echo $title_for_layout ?></title>
         <meta http-equiv="x-ua-compatible" content="IE=edge" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-touch-fullscreen" content="yes">
-        <?php echo $this->Html->css(array('mobile/snap','mobile/demo')); ?>
+        
+        
 
 
 <!-- Latest compiled and minified CSS -->
@@ -17,6 +18,9 @@
 
 <!-- FontAwsome fonts -->
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    
+    <?php echo $this->Html->css(array('mobile/snap','mobile/demo', 'mobile/custom')); ?>
 
 
     </head>
@@ -36,7 +40,17 @@
             });
             
         </script>
-        <?php echo $this->Html->script(array('mobile/demo')); ?>
+        <?php echo $this->Html->script(array('mobile/demo', 'mobile/rating')); ?>
+        <?php echo $this->Html->script(array('business/custom')); ?>
+        <?php $game_id = $game['Game']['id'];?>
+	<script>
+        toorksize	='<?php echo Configure::read('broken.toorksize'); ?>';
+        avatar		='<?php echo Configure::read('broken.avatar'); ?>';
+        s3patch		='<?php echo Configure::read('S3.url'); ?>';
+        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
+        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
+        game_id		= '<?=$game_id?>';
+        </script>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>       
     </body>
 </html>
