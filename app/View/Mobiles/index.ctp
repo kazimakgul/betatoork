@@ -2,7 +2,7 @@
 <div id="content" class="snap-content">
     <div id="toolbar">
         <a class="btn" href="#" id="open-left"><i style="color:white;" class="fa fa-bars fa-2x"></i></a>
-        <h1>Socialesman</h1>
+        <h1><?= $username ?></h1>
     </div>
     <div class="container" style="margin-top:50px;">
         <div class="row">

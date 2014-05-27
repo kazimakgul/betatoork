@@ -5,10 +5,9 @@
             <div class="cover">
                 <div class="cover_dark"></div>
                 <img class="img-circle" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="profile" width="50" height="50">
-                <span class="tit1">Kadir</span>
-                <span class="tit2">Emircan</span>
+                <span class="tit1"><?= $screenname ?></span>
+                <span class="tit2"><?= $username ?></span>
             </div>
-            <h4>Socialesman</h4>
             <div class="demo-social">
                 <span class="label label-warning">17 Followers</span>
                 <span class="label label-info">21 Following</span>
@@ -25,8 +24,8 @@
                 <li><a href="#"><i class="fa fa-desktop"></i> Desktop Version</a></li>
             </ul>
             <div>
-                <p>Welcome to socialesman game channel</p>
-                <p>About: play best online games with socialesman. you will find the top play best online games with socialesman. you will find the top play best online games with socialesman. you will find the top play best online games with socialesman.</p>
+                <p><?= $username ?></p>
+                <p><?= $description ?></p>
             </div>
         </div>
     </div>

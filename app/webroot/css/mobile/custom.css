@@ -80,7 +80,7 @@
     position: relative; 
     float: left; 
     background: url('../../img/rating/star_16_e.png') repeat-x left top; 
-    cursor: default; 
+    cursor: default;
 }
 .stars2 .star2 { 
     height: 16px; 
@@ -139,7 +139,6 @@
     background-image: url("https://s3.amazonaws.com/betatoorkpics/socials/toork-logo.jpg");
     background-position: center;
     height: 80px;
-    margin-bottom: -10px;
     width: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -152,10 +151,9 @@
     left: 0;
     background-color: black;
     height: 80px;
-    margin-bottom: -10px;
     width: 100%;
-    opacity:0.2;
-    filter:alpha(opacity=20);
+    opacity:0.4;
+    filter:alpha(opacity=40);
 }
 .cover img {
     position: absolute;
@@ -180,4 +178,9 @@
     left: 90px;
     font-size: 14px;
     z-index: 1;
+}
+.demo-social {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0;
+    padding: 15px;
 }
