@@ -144,7 +144,7 @@
 										    <td>
 										    	<textarea cols="60" rows="3"  readonly><?php echo $code['Adcode']['code'];?></textarea>
 										    </td>
-										    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#set" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+										    <td><p><button class="btn btn-success" data-title="Edit" data-toggle="modal" data-target="#set" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-ok-sign"></span></button></p></td>
 										    </tr>
 
                                             <?php } ?>
@@ -215,12 +215,8 @@
                 </div>
                 <div class="modal-footer">
                     <center>
-                    	<ul class="pagination no_margin">
-						  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-						  <li class="active"><a href="#">1</a></li>
-						  <li><a href="#">2</a></li>
-						  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-						</ul>
+                    	<button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Add New Ad Code</button>
+                        <button type="button" class="btn btn-primary" ><span class="glyphicon glyphicon-pencil"></span> Manage</button>
                     </center>
                 </div>
             </div>
