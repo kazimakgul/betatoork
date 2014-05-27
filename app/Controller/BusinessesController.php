@@ -146,6 +146,12 @@ class BusinessesController extends AppController {
 
 	public function mysite($userid=NULL) {
 		$this->layout	=	'Business/business';
+        
+        $this->loadModel('Adsetting');
+        $addata=$this->Adsetting->find('all');
+        print_r($addata);
+        echo 'roadtrain';
+
 		$user_id = $this->Auth->user('id');
 
 	   //=======/Get Current User_Id===============
