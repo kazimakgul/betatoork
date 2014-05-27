@@ -130,41 +130,25 @@
 						        <div class="table-responsive">
 						              <table id="mytable" class="table table-bordred table-striped">
 						                   <thead>
-						                   <th><input type="checkbox" id="checkall" /></th>
 						                   <th width='150px'>Ads Name</th>
 						                   <th>Ads Code</th>
-						                   <th>Edit</th>
-						                   <th>Delete</th>
+						                   <th>Set</th>
+						          
 						                   </thead>
 										    <tbody>
-										    <tr>
-										    <td><input type="checkbox" class="checkthis" /></td>
-										    <td>728X90 Adsense google</td>
+										    
+                                            <?php foreach($adcodes as $code){ ?>
+
+                                            <tr>
+										    <td><?php echo $code['Adcode']['name'];?></td>
 										    <td>
-										    	<textarea cols="60" rows="3"  readonly><iframe id="google_ads_frame1" name="google_ads_frame1" width="728" height="90" frameborder="0" src="http://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-8631770984631666&amp;output=html&amp;h=90&amp;slotname=9075184493&amp;adk=4113598055&amp;w=728&amp;lmt=1400049208&amp;flash=13.0.0&amp;url=http%3A%2F%2Flocalhost%2Fbetatoork%2Fbusinesses%2Fplay%2F3&amp;dt=1400060007848&amp;bpp=12&amp;bdt=101&amp;shv=r20140508&amp;cbv=r20140417&amp;saldr=sa&amp;correlator=1400060008304&amp;frm=20&amp;ga_vid=1113137943.1400060008&amp;ga_sid=1400060008&amp;ga_hid=1620247184&amp;ga_fc=0&amp;u_tz=180&amp;u_his=2&amp;u_java=1&amp;u_h=800&amp;u_w=1280&amp;u_ah=727&amp;u_aw=1280&amp;u_cd=24&amp;u_nplug=11&amp;u_nmime=68&amp;dff=helvetica%20neue&amp;dfs=14&amp;adx=263&amp;ady=80&amp;biw=1265&amp;bih=632&amp;eid=317150304&amp;oid=3&amp;rx=0&amp;eae=0&amp;vis=1&amp;fu=0&amp;ifi=1&amp;xpc=1lLTvMW2CP&amp;p=http%3A//localhost&amp;dtd=472" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe></textarea>
+										    	<textarea cols="60" rows="3"  readonly><?php echo $code['Adcode']['code'];?></textarea>
 										    </td>
-										    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-										    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+										    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#set" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 										    </tr>
-										    
-										        <tr>
-										    <td><input type="checkbox" class="checkthis" /></td>
-										    <td>728X90 Adsense google</td>
-										    <td>
-										    	<textarea cols="60" rows="3"  readonly>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</textarea></td>
-										    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-										    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button></p></td>
-										    </tr>
-										    
-										    
-										        <tr>
-										    <td><input type="checkbox" class="checkthis" /></td>
-										    <td>728X90 Adsense google</td>
-										    <td>
-										    	<textarea cols="60" rows="3"  readonly>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</textarea></td>
-										    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-										    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button></p></td>
-										    </tr>
+
+                                            <?php } ?>
+										   
 										    </tbody>
 										</table>
 					            </div>

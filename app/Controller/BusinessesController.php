@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class BusinessesController extends AppController {
 
 	public $name = 'Businesses';
-	var $uses = array('Businesses','Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Gamestat','Category','Activity','Cloneship','CakeEmail', 'Network/Email','Adsetting');
+	var $uses = array('Businesses','Game','User','Favorite','Subscription','Playcount','Rate','Userstat','Gamestat','Category','Activity','Cloneship','CakeEmail', 'Network/Email','Adsetting','Adcode');
     public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha','Time');
     public $components = array('Amazonsdk.Amazon','Recaptcha.Recaptcha','Common');
     
@@ -153,7 +153,7 @@ class BusinessesController extends AppController {
 	public function mysite($userid=NULL) {
 		$this->layout	=	'Business/business';
 
-		$user_id = $this->Auth->user('id');
+		$authid = $this->Auth->user('id');
 
 	   //=======/Get Current User_Id===============
 	
@@ -179,7 +179,15 @@ class BusinessesController extends AppController {
 		$category		=	$this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id='.$userid.' group by games.category_id');
 
         //======Getting ads datas======
-        $addata=$this->Adsetting->find('all',array('contain'=>array('homeBannerTop','homeBannerMiddle','homeBannerBottom'),'conditions'=>array('Adsetting.user_id'=>$user_id)));
+        $addata=$this->Adsetting->find('all',array('contain'=>array('homeBannerTop','homeBannerMiddle','homeBannerBottom'),'conditions'=>array('Adsetting.user_id'=>$userid)));
+        
+
+        if($authid==$userid)
+        {
+        //======Getting all ads codes======
+        $adcodes=$this->Adcode->find('all',array('conditions'=>array('Adcode.user_id'=>$authid)));
+        $this->set('adcodes', $adcodes);
+        }
 
 		$limit = 9;
 		$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
