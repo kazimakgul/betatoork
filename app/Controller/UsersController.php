@@ -1356,8 +1356,6 @@ public function password2($id = null) {
 			}
 		 }
 		 else if($attr == "fast_register"){
-					
-		
 				$this->User->create();
 				$this->request->data['User']['username'] = $this->secureSuperGlobalPOST(str_replace(' ','',$this->request->data['un']));
 				$this->request->data['User']['email'] = $this->request->data['um'];
@@ -1367,9 +1365,7 @@ public function password2($id = null) {
 				$this->request->data['User']['active'] = 0;
 				$this->request->data['User']['last_login'] = date('Y-m-d H:i:s');
 				//$this->request->data['User']['userstat'] = 0; //buraya bak�lacak yeni alan i�in
-				
 				if ($this->User->save($this->request->data)) {
-				
 				//userstat data for new user
 				$userstat_data=
 			array('Userstat' =>array(
@@ -1388,7 +1384,7 @@ public function password2($id = null) {
 					$this->Session->write('FirstLogin',$this->User->getLastInsertID());
 					
 				} else {
-					//$this->set('rtdata', 'Can not register. Please try again.');
+					$this->set('rtdata', 'Can not register. Please try again.');
 					$this->checkUsernameEmail($this->request->data['User']['username'],$this->request->data['User']['email']);//Check availability
 				}
 				

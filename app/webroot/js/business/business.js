@@ -153,8 +153,26 @@ $( document ).ready(function() {
 	$('#facebookreg').click(function () {
 		facebooklogin();
 	});
-	
-	$('#t_gatekeeper_login_btn').click(function () {
+	$('#t_landing_registerbtn').click(function (e) {
+			e.preventDefault();
+			var btn = $(this);
+   			btn.button('loading');
+   			$.post(remotecheck2, {attr: 'fast_register', un: $('#reg_username').val(), um: $('#reg_email').val(), up: $('#reg_password').val() }, function (data) {
+			if (data.rtdata == 'true') {
+
+				setInterval(function(){autoLogin($('#reg_username').val(),$('#reg_password').val());},2000);
+			}
+			else if(data.rtdata == 'false'){
+				//Recaptcha Code is incorrect. Please try again.
+			}
+			else
+			{
+			}
+		}, 'json');	
+		
+    });	
+	$('#t_gatekeeper_login_btn').click(function (e) {
+		e.preventDefault();
 		$.post(remotecheck,
 				{ un: $('#txt_signusername').val(), ps: $('#txt_signpass').val(), attr: 'txt_logusername'},
 				function (data) {
@@ -163,14 +181,13 @@ $( document ).ready(function() {
 						$('#errormsg_Passwd').show();
 						}
 			else if(data.rtdata.msgid=='1'){
-				$('#grabloader').css("display", "block");
-				window.location = data.rtdata.msg;
+				location.reload();
 			}
 			else{
 				
 				$('#errormsg_Passwd').html(data.rtdata.msg);
 				$('#errormsg_Passwd').show();
-			}
+			} 
         },  'json');
 	});
 	
@@ -324,7 +341,7 @@ $('.validateLogin').click(function() {
             }
         }
     });
- 
+
     $('#t_facebook_registerbtn').click(function () {
 		if($("#toorkRegister").valid())
 		{										 
@@ -332,14 +349,7 @@ $('.validateLogin').click(function() {
 		}
     });
  
-	$('#t_landing_registerbtn').click(function () {
-		if($("#toorkRegister").valid())
-		{
-			checkUser2();
-		}else
-		{}
-		
-    });
+
  
  function checkUser2(){
 		$.post(remotecheck2, {attr: 'fast_register', un: $('#reg_username').val(), um: $('#reg_email').val(), up: $('#reg_password').val() }, function (data) {
@@ -367,7 +377,6 @@ $('.validateLogin').click(function() {
 			}
 			else
 			{
-				//alert(data.rtdata)
 			}
 		}, 'json');	
 	}

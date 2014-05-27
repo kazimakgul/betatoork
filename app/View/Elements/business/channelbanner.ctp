@@ -4,7 +4,6 @@
     $followNo = $user['Userstat']['subscribeto']; 
     $gameNo = $user['Userstat']['uploadcount'];
 	$subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
-	echo $this->element('business/login');
 	
 ?>
 <script>

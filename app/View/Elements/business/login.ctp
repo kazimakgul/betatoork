@@ -149,9 +149,9 @@
       </div>
     <div class="main"> 
 
-    <input type="text" class="form-control" placeholder="Username" name="reg_username" autofocus>
-    <input type="text" class="form-control" placeholder="Email" name="reg_email" autofocus>
-    <input type="password" class="form-control" placeholder="Password" name="reg_password">
+    <input type="text" class="form-control" placeholder="Username" id="reg_username" autofocus>
+    <input type="text" class="form-control" placeholder="Email" id="reg_email" autofocus>
+    <input type="password" class="form-control" placeholder="Password" id="reg_password">
      
         Are you a business? <a href="#"> Get started here</a>
     <span class="clearfix"></span>  
@@ -165,7 +165,7 @@
             </div>
           </div>
         <div class="col-xs-6 col-md-6 pull-right">
-            <button type="submit" id="t_landing_registerbtn" class="btn btn-large btn-primary pull-right">Register</button>
+            <button type="submit" id="t_landing_registerbtn" data-loading-text="loading..." class="btn btn-large btn-primary pull-right">Register</button>
         </div>
     </div>
     

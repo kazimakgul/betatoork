@@ -53,9 +53,16 @@ class BusinessesController extends AppController {
 		return $list50;
 	}
 	
+	public function logout()
+	{
+		$userid = $this->Session->read('Auth.User.id');
+	    $this->Cookie->delete('User');
+		$this->Session->destroy();
+		$this->redirect(array('controller' => 'businesses', 'action' => 'mysite',$userid));
+	}
+	
     public function lucky_number()
 	{
-	
 	 if ($this->Session->check('Dashboard.randomKey')) { 
       $key = $this->Session->read('Dashboard.randomKey'); 
     } 
@@ -68,7 +75,6 @@ class BusinessesController extends AppController {
 
 	public function contactmail($user_id) {
         $this->User->id=$user_id;
-		
 	    $email = new CakeEmail();
 	    // Set data for the "view" of the Email
 		$email->viewVars(array('username'=>$user["User"]["username"],'name'=>$_POST["firstname"],'surname'=>$_POST["lastname"],'e-mail'=>$_POST["email"],'subject'=>$_POST["subject"],'message'=>$_POST["comment"]));

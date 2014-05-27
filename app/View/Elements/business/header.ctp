@@ -1,5 +1,5 @@
 <?php 
-$logout=$this->Html->url(array("controller" => "users","action" =>"logout")); 
+$logout=$this->Html->url(array("controller" => "businesses","action" =>"logout")); 
 $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 $search = $this->Html->url(array("controller" => "businesses","action" =>"search2",$user['User']['id']));
@@ -24,7 +24,7 @@ $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$
 		<div class="col-sm-3 col-md-3 navbar-right " style="margin-top:8px;">
 			
 			<div class="pull-right btn-group">
-			<a class="btn btn-default" href="<?php echo $dashboard; ?>"> 
+			<a class="btn btn-default" href="<?php echo $index; ?>"> 
 				<i class="glyphicon glyphicon-user"></i> <?php echo $this->Session->read('Auth.User.username'); ?>
 				
 			</a>
