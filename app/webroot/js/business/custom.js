@@ -24,6 +24,11 @@ function imgError(image,style){
 
 }
 
+//Get which type of ads window clicked
+$('.adsChangeBtn').click(function () {
+    $('#adsChange').attr('data-selected',this.id);
+  });
+
 //Controller functions for modals of avatar begins
 $('#avatarframe').load(function(){
   $(this).contents().find("#close_panel").on('click', function(event) { $('#pictureChange').modal('toggle'); });

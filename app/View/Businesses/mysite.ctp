@@ -14,7 +14,7 @@ if($this->Session->read('Auth.User.id')==$user['User']['id']){
 	$controls=$user['User']['id'];
 }
 
-echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerTop)); ?>
+echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerTop,'adtype'=>'homeBannerTop')); ?>
 
 <div class="col-md-12">
 <div class="btn-group" style="margin-bottom:10px;">
@@ -106,7 +106,7 @@ echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBann
   </div><!--/right-->
 
 
-<?php  echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerMiddle)); ?>
+<?php  echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerMiddle,'adtype'=>'homeBannerMiddle')); ?>
 
 
 <!--/footer-->
@@ -136,7 +136,7 @@ echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBann
 
   </div><!--/footer-->
 
-<?php  echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerBottom)); ?>
+<?php  echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerBottom,'adtype'=>'homeBannerBottom')); ?>
 
 
 </div><!-- /.container -->
