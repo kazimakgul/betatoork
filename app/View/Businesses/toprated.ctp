@@ -53,11 +53,12 @@ echo $this->element('business/ads',array('controls'=>$controls)); ?>
             $div = "<div class='col-xs-3' style='padding:5px;'>";
             $limit = 24;
             echo $this->element('business/games/box',array('div'=>$div,'gamedata'=>$games));
-			
-			echo $this->element('business/components/pagination'); 
           ?>
           	
       </div>
+		<div class="panel-footer">
+			<center><?php echo $this->element('business/components/pagination'); ?></center>
+		</div>
     </div>
      </div>
       </div>

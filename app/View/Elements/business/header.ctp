@@ -4,7 +4,8 @@ $dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard"
 $mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
 $search = $this->Html->url(array("controller" => "businesses","action" =>"search2",$user['User']['id']));
 $settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
-$index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$user['User']['id'])); 
+$index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$user['User']['id']));
+$mysite = $this->Html->url(array("controller" => "businesses","action" =>"mysite",$this->Session->read('Auth.User.id')));
 ?>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="navbar-header">
@@ -24,7 +25,7 @@ $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$
 		<div class="col-sm-3 col-md-3 navbar-right " style="margin-top:8px;">
 			
 			<div class="pull-right btn-group">
-			<a class="btn btn-default" href="<?php echo $index; ?>"> 
+			<a class="btn btn-default" href="<?php echo $mysite; ?>"> 
 				<i class="glyphicon glyphicon-user"></i> <?php echo $this->Session->read('Auth.User.username'); ?>
 				
 			</a>

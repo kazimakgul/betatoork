@@ -1,7 +1,12 @@
 	<div class="container">
 	<?	$controls=NULL;
 	if($this->Session->read('Auth.User.id')==$user['User']['id']){$controls=$user['User']['id'];}
-	echo $this->element('business/ads',array('controls'=>$controls));
+	$homeBannerTop=$addata[0]['homeBannerTop']['code'];
+	$homeBannerMiddle=$addata[0]['homeBannerMiddle']['code'];
+	$homeBannerBottom=$addata[0]['homeBannerBottom']['code'];
+	echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerBottom,'adtype'=>'homeBannerBottom'));
+	
+
 	?>
 		<div class="col-md-12">
 			<div class="btn-group" style="margin-bottom:10px;">
@@ -40,14 +45,14 @@
 		          <?php	$div = "<div class='col-xs-3' style='padding:5px;'>";
 		          $limit = 24;
 		          echo $this->element('business/games/box',array('div'=>$div,'gamedata'=>$games));
+		          
 		          ?>
-	          				<div style="clear: both;">
-	          					<ul  class="pagination">
-	          						<li><?php echo $this->Paginator->prev(__('Prev', true), array(), null, array('class'=>'disabled'));?></li>
-	          						<li><?php echo $this->Paginator->numbers(); ?></li>
-	          						<li><?php echo '  '.$this->Paginator->next(__('Next', true), array('id'=>'next'), null, array('class' => 'disabled'));?></li>
-	          					</ul>
-	          				</div>
+
+						</div>
+						<div class="panel-footer">
+							<center><?php
+							echo $this->element('business/components/pagination');
+							?></center>
 						</div>
 					</div>
 				</div>
@@ -55,7 +60,9 @@
 		</div>
 		<!--/footer-->
 		<?}
-		echo $this->element('business/ads',array('controls'=>$controls));
+		echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerBottom,'adtype'=>'homeBannerBottom'));
 		?>
+		 <?php  echo $this->element('business/components/popup',array('user_id'=>$user['User']['id'])); ?>
+
 	</div><!-- /.container -->
 	<?php  echo $this->element('business/footer'); ?>

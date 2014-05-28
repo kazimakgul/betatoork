@@ -178,12 +178,15 @@ $( document ).ready(function() {
     });	
 	$('#t_gatekeeper_login_btn').click(function (e) {
 		e.preventDefault();
+		var btn = $(this);
+		btn.button('loading');
 		$.post(remotecheck,
 				{ un: $('#txt_signusername').val(), ps: $('#txt_signpass').val(), attr: 'txt_logusername'},
 				function (data) {
 			if(data.rtdata.msgid=='0'){
 				$('#errormsg_Passwd').html(data.rtdata.msg);
 				$('#errormsg_Passwd').show();
+				btn.button('reset');
 				}
 			else if(data.rtdata.msgid=='1'){
 				location.reload();
@@ -191,6 +194,7 @@ $( document ).ready(function() {
 			else{
 				$('#errormsg_Passwd').html(data.rtdata.msg);
 				$('#errormsg_Passwd').show();
+				btn.button('reset');
 				} 
         },  'json');
 	});

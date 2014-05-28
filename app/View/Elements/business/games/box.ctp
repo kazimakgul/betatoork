@@ -8,7 +8,7 @@
 	              <div class="imagehover">
 	               <? if (isset($fix) && $controls==$user['User']['id']){ ?>
 	               <div class="caption">
-	                    <p><a href="" class="label label-danger" data-placement="bottom" data-toggle="tooltip" title="Change This Game">Change</a>
+	                    <p><a href="" class="label label-danger" data-placement="bottom" data-toggle="modal" data-target=".bs-modal-sm" title="Change This Game">Change</a>
 	                    <a href="" class="label label-default" data-placement="bottom" data-toggle="tooltip" title="Play This Game">Play</a></p>
 	                </div>
 	               <? } ?>
@@ -55,10 +55,10 @@ while ($counter < $limit){?>
           <?php echo $div; ?>
             <div class="panel panel-default" style="background-color:silver;">
               <div style="padding:20% 0% 21% 0%;" class="text-center">
-              <button class="btn btn-default btn-lg btn-danger" data-target=".bs-modal-sm"> <i class="fa fa-plus-square fa-2x"></i> </button>
+              <button class="btn btn-default btn-lg btn-danger" data-toggle="modal" data-target=".bs-modal-sm" > <i class="fa fa-plus-square fa-2x"></i> </button>
               </div>
                 <div class="panel-footer text-center" style="padding:0px;">
-                  <a  href="#" data-toggle="modal" data-target=".bs-modal-sm"  style="padding:0px;"><h5 class="darkblue" >+Add Game</h5></a>
+                  <a  href="#" data-toggle="modal" data-target=".bs-modal-sm" style="padding:0px;"><h5 class="darkblue" >+Add Game</h5></a>
                   <div class="row">
 
                     </div>

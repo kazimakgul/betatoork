@@ -120,7 +120,7 @@
             </div>
           </div>
         <div class="col-xs-6 col-md-6 pull-right">
-            <button type="submit" id="t_gatekeeper_login_btn" class="btn btn-large btn-primary pull-right">Login</button>
+            <button type="submit" id="t_gatekeeper_login_btn" data-loading-text="loading..." class="btn btn-large btn-primary pull-right">Login</button>
         </div>
     </div>
     
@@ -161,15 +161,15 @@
         </div>
     <div class="login-footer">
     <div class="row">
+        <div class="col-xs-6 col-md-6 pull-right">
+            <button type="submit" id="t_landing_registerbtn" data-loading-text="loading..." class="btn btn-large btn-primary pull-right">Register</button>
+        </div>
           <div class="col-xs-6 col-md-6">
             <div class="left-section">
               
               <button data-toggle="modal" data-target="#login" data-dismiss="modal" class="btn-large btn btn-default">Login Now</button>
             </div>
           </div>
-        <div class="col-xs-6 col-md-6 pull-right">
-            <button type="submit" id="t_landing_registerbtn" data-loading-text="loading..." class="btn btn-large btn-primary pull-right">Register</button>
-        </div>
     </div>
     
     </div>

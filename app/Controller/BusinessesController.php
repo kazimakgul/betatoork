@@ -134,18 +134,28 @@ class BusinessesController extends AppController {
 	   		$this->set('follow',0);
 	   }
 		$category		=	$this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id='.$userid.' group by games.category_id');
-		$keys = $this->Game->query("SELECT * FROM games as Game JOIN gamestats as Gamestat ON Gamestat.game_id = Game.id WHERE (Game.description like '%".$param."%' or Game.name like '%".$param."%') and user_id=$userid");
+		//$keys = $this->Game->query("SELECT * FROM games as Game JOIN gamestats as Gamestat ON Gamestat.game_id = Game.id WHERE (Game.description like '%".$param."%' or Game.name like '%".$param."%') and user_id=$userid");
+		//$cond=$this->paginate('Game', array('Game.description LIKE' => '$param%','Game.description LIKE' => '$param%'));
+		$this->paginate = array('Game'=>array(
+			'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))),
+		    'limit'=>12,
+		    'order'=>'Game.id DESC',
+		    'conditions' => array(
+		    'Game.active'=>'1',
+		    'Game.user_id'=>$userid,
+			'OR' => array('Game.description LIKE' => '%'.$param.'%','Game.name LIKE' => '%'.$param.'%'),
+			)));
 		$PaginateLimit	=	30;
 		$user			=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
 		$game			=	$this->Game->find('first', array('conditions' => array('Game.user_id' => $userid),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')),'Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));//Recoded
 		$limit=12;
-		$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$game['Game']['user_id']),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
+		//$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$game['Game']['user_id']),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
 		$cond=$this->paginate('Game');
 		$this->set('title_for_layout', 'Clone - Game Search Engine');
 		$this->set('description_for_layout', 'Clone - Game Search Engine powered by Google. Clone Search is specially designed for searching games');
 		$this->set('searchVal',	$param);
 		$this->set('category',$category);
-		$this->set('query',		$keys);
+		$this->set('query',		$cond);
 		$this->set('game',		$game);
 		$this->set('user',		$user);
 	}
@@ -159,9 +169,9 @@ class BusinessesController extends AppController {
 	
 
 	   //========Get Current Subscription===============
-	   if($userid)
+	   if($authid)
 	   {
-	   $subscribebefore=$this->Subscription->find("first",array("contain"=>false,"conditions"=>array("Subscription.subscriber_id"=>$userid,"Subscription.subscriber_to_id"=>$userid)));
+	   $subscribebefore=$this->Subscription->find("first",array("contain"=>false,"conditions"=>array("Subscription.subscriber_id"=>$authid,"Subscription.subscriber_to_id"=>$userid)));
 	       if($subscribebefore!=NULL)
 			{
 			$this->set('follow',1);
@@ -257,8 +267,17 @@ class BusinessesController extends AppController {
 		$cond			=	$this->paginate('Game');
 		$category		=	$this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id='.$userid.' group by games.category_id');
 
+        //======Getting ads datas======
+        $addata=$this->Adsetting->find('all',array('contain'=>array('homeBannerTop','homeBannerMiddle','homeBannerBottom'),'conditions'=>array('Adsetting.user_id'=>$userid)));
+        
+		$authid = $this->Auth->user('id');
+        if($authid==$userid)
+        {
+        //======Getting all ads codes======
+        $adcodes=$this->Adcode->find('all',array('conditions'=>array('Adcode.user_id'=>$authid)));
+        $this->set('adcodes', $adcodes);
+        }
 	   //========Get Current Subscription===============
-	   $authid = $this->Session->read('Auth.User.id');
 	   if($authid)
 	   {
 	   $subscribebefore=$this->Subscription->find("first",array("contain"=>false,"conditions"=>array("Subscription.subscriber_id"=>$authid,"Subscription.subscriber_to_id"=>$userid)));
@@ -276,6 +295,7 @@ class BusinessesController extends AppController {
 		$this->set('category',$category);
 		$this->set('games', $cond);
 		$this->set('user', $user);
+		$this->set('addata', $addata);
 		
 		$this->set('title_for_layout', 'Clone Games');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
