@@ -33,23 +33,20 @@ class MobilesController extends AppController {
     }
 
     public function afterFilter() {
-    //There is no any action!
+        //There is no any action!
     }
 
     public function index($userid) {
-
         /**
          * Kullanılan Layout
          */
         $this->layout = 'Mobile/mobile';
-
         /**
          * Layout Değişkenleri
          */
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-
         /**
          * Kullanıcı Bilgileri
          */
@@ -62,14 +59,9 @@ class MobilesController extends AppController {
             )
                 )
         );
-
-        //  print_r($user);
-        //  exit;
-
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
-
         $PaginateLimit = 6;
         $this->paginate = array(
             'Game' => array(
@@ -90,25 +82,16 @@ class MobilesController extends AppController {
                 )
             )
         );
-
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
-
-        //  $keys = $this->Game->query("SELECT * FROM games as Game WHERE user_id=$userid and description like '%" . $param . "%' or name like '%" . $param . "%'");
-        
+        $this->set('user_id', $userid);
     }
 
     public function play($id = NULL) {
-        
-        //  Getting Random Game Data
-
         $this->layout = 'Mobile/mobile';
-        
-        $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')),'Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
-        
+        $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         $this->set('game_link', $game['Game']['link']);
         $this->set('user_id', $game['Game']['user_id']);
-        
         /**
          * Kullanıcı Bilgileri
          */
@@ -121,18 +104,145 @@ class MobilesController extends AppController {
             )
                 )
         );
-
-        //  print_r($user);
-        //  exit;
-
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
-        
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-        
     }
 
+    public function search2($userid) {
+        $this->layout = 'Mobile/mobile';
+        if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
+            $param = $this->request->query['srch-term'];
+        } else {
+            $this->redirect(array("controller" => "mobiles", "action" => "index", $userid));
+        }
+        $keys = $this->Game->query("SELECT * FROM games as Game JOIN gamestats as Gamestat ON Gamestat.game_id = Game.id WHERE (Game.description like '%" . $param . "%' or Game.name like '%" . $param . "%') and user_id=$userid");
+        $PaginateLimit = 30;
+        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $limit = 12;
+        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $game['Game']['user_id']), 'limit' => $limit, 'order' => array('Game.recommend' => 'desc')));
+        $cond = $this->paginate('Game');
+        $this->set('games', $keys);
+        $this->set('user_id', $userid);
+        $this->set('screenname', $user['User']['screenname']);
+        $this->set('username', $user['User']['username']);
+        $this->set('description', $user['User']['description']);
+        $this->render('index');
+    }
+
+    public function toprated($userid) {
+        $this->layout = 'Mobile/mobile';
+        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $this->set('user_id', $userid);
+        $this->set('screenname', $user['User']['screenname']);
+        $this->set('username', $user['User']['username']);
+        $this->set('description', $user['User']['description']);
+        $PaginateLimit = 6;
+        $this->paginate = array(
+            'Game' => array(
+                'conditions' => array(
+                    'Game.active' => '1',
+                    'Game.user_id' => $userid
+                ),
+                'limit' => $PaginateLimit,
+                'order' => array(
+                    'Game.starsize' => 'desc'
+                ),
+                'contain' => array(
+                    'Category' => array(
+                        'fields' => array(
+                            'Category.name'
+                        )
+                    ),
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'
+                        )
+                    )
+                )
+            )
+        );
+        $cond = $this->paginate('Game');
+        $this->set('games', $cond);
+        $this->render('index');
+    }
+
+    public function mostplayed($userid) {
+        $this->layout = 'Mobile/mobile';
+        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $this->set('user_id', $userid);
+        $this->set('screenname', $user['User']['screenname']);
+        $this->set('username', $user['User']['username']);
+        $this->set('description', $user['User']['description']);
+        $PaginateLimit = 6;
+        $this->paginate = array(
+            'Game' => array(
+                'conditions' => array(
+                    'Game.active' => '1',
+                    'Game.user_id' => $userid
+                ),
+                'limit' => $PaginateLimit,
+                'order' => array(
+                    'Gamestat.playcount' => 'desc'
+                ),
+                'contain' => array(
+                    'Category' => array(
+                        'fields' => array(
+                            'Category.name'
+                        )
+                    ),
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'
+                        )
+                    )
+                )
+            )
+        );
+        $cond = $this->paginate('Game');
+        $this->set('games', $cond);
+        $this->render('index');
+    }
+    
+    public function newgames($userid) {
+        $this->layout = 'Mobile/mobile';
+        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $this->set('user_id', $userid);
+        $this->set('screenname', $user['User']['screenname']);
+        $this->set('username', $user['User']['username']);
+        $this->set('description', $user['User']['description']);
+        $PaginateLimit = 6;
+        $this->paginate = array(
+            'Game' => array(
+                'conditions' => array(
+                    'Game.active' => '1',
+                    'Game.user_id' => $userid
+                ),
+                'limit' => $PaginateLimit,
+                'order' => array(
+                    'Game.id' => 'desc'
+                ),
+                'contain' => array(
+                    'Category' => array(
+                        'fields' => array(
+                            'Category.name'
+                        )
+                    ),
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'
+                        )
+                    )
+                )
+            )
+        );
+        $cond = $this->paginate('Game');
+        $this->set('games', $cond);
+        $this->render('index');
+    }
+    
 }

@@ -171,6 +171,7 @@
     font-weight: bolder;
     z-index: 1;
     text-shadow: 2px 2px black;
+    text-decoration: none;
 }
 .cover .tit2 {
     position: absolute;
@@ -200,4 +201,7 @@
     background-color: #536EA7;
     border-color: #111B32;
     color: #FFFFFF;
+}
+.menu_ok li {
+    margin-left: -25px;
 }

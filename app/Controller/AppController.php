@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application level Controller
  *
@@ -20,7 +21,6 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-
 /**
  * Application Controller
  *
@@ -33,9 +33,8 @@
 // app/Controller/AppController.php
 class AppController extends Controller {
 
-
     public $components = array(
-        'Session','Cookie','DebugKit.Toolbar','RequestHandler',
+        'Session', 'Cookie', 'DebugKit.Toolbar', 'RequestHandler',
         'Auth' => array(
             'loginRedirect' => array('controller' => 'games', 'action' => 'dashboard'),
             'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
@@ -43,7 +42,6 @@ class AppController extends Controller {
             'authorize' => array('Controller')
         )
     );
-
     var $paginate = array(
         'User' => array(//List of Bestchannels on Bestchannels Page 
             'limit' => 18,
@@ -64,51 +62,31 @@ class AppController extends Controller {
             ),
         ),
         'Favorite' => array(
-		'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username')))),
+            'contain' => array('Game' => array('fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'), 'User' => array('fields' => array('User.username', 'User.seo_username')))),
             'limit' => 16,
             'order' => array(
                 'Favorite.recommend' => 'desc',
-            ), 
+            ),
         ),
         'Playcount' => array(
-		'contain'=>array('Game'=>array('fields'=>array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'),'User'=>array('fields'=>array('User.username','User.seo_username')))),
+            'contain' => array('Game' => array('fields' => array('Game.name,Game.seo_url,Game.id,Game.picture,Game.starsize'), 'User' => array('fields' => array('User.username', 'User.seo_username')))),
             'limit' => 16,
             'order' => array(
                 'Game.recommend' => 'desc',
             ),
-        ), 
+        ),
     );
 
-
     public function beforeFilter() {
-		$this->loadModel('User');
-		$this->Auth->allow('index','checkUser','checkUser2','FaceUser','gatekeeper','usernameAvailable','view','register','logout','profile','playlist',
-            'search2','display','activate','follow_card','add_subscription','sub_check','reset_now','add_play','bestChannels',
-            'randomAvatar','randomPicture','connect','sync','syncallusers','incgameplay','incscribe','togglefav','totalrate',
-            'getgamecount','potential','message_ajax','message_ajax2','moreupdates_ajax','explore_more_feed','moreupdates_ajax2','moreupdates_ajax3','moreupdates_ajax_my',
-            'comment_ajax','comment_ajax2','image_ajax','image_ajax_fly','get_userdata','delete_message_ajax','delete_comment_ajax','action_ajax','action_ajax_bot',
-            'get_gamedata','moreupdates_filter_ajax','gamefeed_ajax','view_ajax','view_ajax2','play',
-            'sync_recommended','profile','playgame','bestchannels2','toprated2','gameswitch','playgameframe','get_3_games',
-            'categorygames2','favorite_check','game_comment_ajax','game_comments_ajax','clonegame','gamedelete','channelfavorites','profilegames',
-            'channelfollowers','moreupdates_profile_ajax','moreupdates_profile_ajax_home','loadprofilefeeds','sendmail','activationmailsender','new_user',
-            'get_image_link','getscreen','cropimage','addgame_ajax','add_virtual_game','pushActivity','setPermissions','activityMessage',
-            'notificationMessage','getFreshActivity','getfreshnotification','posts','getprofileactivity','followstatus','getnotificationcount',
-            'togglelast10','featuredchannels','getOldNotifications','hashtag','register2','login3','explore','faceregister','metacrawler','likeswitch','getlikestatus','sharepost','gamerepair','Add_Activity','Add_Credit','Execute_Activity','Add_Debt_Activity','set_image','set_as','apply_file',
-            'mysite','category','toprated');
+        $this->loadModel('User');
+        $this->Auth->allow('index', 'checkUser', 'checkUser2', 'FaceUser', 'gatekeeper', 'usernameAvailable', 'view', 'register', 'logout', 'profile', 'playlist', 'search', 'search2', 'display', 'activate', 'follow_card', 'add_subscription', 'sub_check', 'reset_now', 'add_play', 'bestChannels', 'randomAvatar', 'randomPicture', 'connect', 'sync', 'syncallusers', 'incgameplay', 'incscribe', 'togglefav', 'totalrate', 'getgamecount', 'potential', 'message_ajax', 'message_ajax2', 'moreupdates_ajax', 'explore_more_feed', 'moreupdates_ajax2', 'moreupdates_ajax3', 'moreupdates_ajax_my', 'comment_ajax', 'comment_ajax2', 'image_ajax', 'image_ajax_fly', 'get_userdata', 'delete_message_ajax', 'delete_comment_ajax', 'action_ajax', 'action_ajax_bot', 'get_gamedata', 'moreupdates_filter_ajax', 'gamefeed_ajax', 'view_ajax', 'view_ajax2', 'play', 'sync_recommended', 'profile', 'playgame', 'bestchannels2', 'toprated2', 'gameswitch', 'playgameframe', 'get_3_games', 'categorygames2', 'favorite_check', 'game_comment_ajax', 'game_comments_ajax', 'clonegame', 'gamedelete', 'channelfavorites', 'profilegames', 'channelfollowers', 'moreupdates_profile_ajax', 'moreupdates_profile_ajax_home', 'loadprofilefeeds', 'sendmail', 'activationmailsender', 'new_user', 'get_image_link', 'getscreen', 'cropimage', 'addgame_ajax', 'add_virtual_game', 'pushActivity', 'setPermissions', 'activityMessage', 'notificationMessage', 'getFreshActivity', 'getfreshnotification', 'posts', 'getprofileactivity', 'followstatus', 'getnotificationcount', 'togglelast10', 'featuredchannels', 'getOldNotifications', 'hashtag', 'register2', 'login3', 'explore', 'faceregister', 'metacrawler', 'likeswitch', 'getlikestatus', 'sharepost', 'gamerepair', 'Add_Activity', 'Add_Credit', 'Execute_Activity', 'Add_Debt_Activity', 'set_image', 'set_as', 'apply_file', 'mysite', 'category', 'toprated', 'mostplayed', 'newgames');
 
-		$this->set('user',$this->Auth->user());
-		
+        $this->set('user', $this->Auth->user());
 
-			  // $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
 
+        // $null_user=$this->User->find('all',array('conditions'=>array('User.facebook_id !='=>'')));
     }
-    
 
-	
-	
-	
-	
-	
     public function isAuthorized($user) {
         if (isset($user['role']) && $user['role'] === '1') {
             return true; //Admin can access every action
@@ -116,50 +94,40 @@ class AppController extends Controller {
         return false; // The rest don't
     }
 
+    public function http_check($str) {
 
-
-public function http_check($str)
-{
-
-if(substr($str, 0, 7)!="http://" && substr($str, 0, 8)!="https://")
-			{
-		$str="http://".$str;
-		return $str;
-			}
-			else
-			{
-			return $str;
-			}
-}
-
-public function remove_temporary($id,$type)
-   {
-   //===Alakalı tipteki klasörü siler begins.====
-    App::uses('Folder', 'Utility');
-    App::uses('File', 'Utility');
-    
-   if($type=='avatar_image')
-   {
-    $dir='upload/users/'.$id;
-   }else if($type=='cover_image'){
-   $dir='upload/users/'.$id;
-   }else if($type=='game_image'){
-   $dir='upload/games/'.$id;
-   }else if($type=='new_game'){
-   $dir='upload/temporary/'.$id;
-   }else if($type=='game_upload'){
-   $dir='upload/gamefiles/'.$id;
-   }
-
-        $upload_dir = new Folder(WWW_ROOT .$dir);
-        $updir=$upload_dir->pwd();
-        if($updir!=NULL)
-        {
-        $upload_dir->delete();
-        //print_r($upload_dir->errors());
+        if (substr($str, 0, 7) != "http://" && substr($str, 0, 8) != "https://") {
+            $str = "http://" . $str;
+            return $str;
+        } else {
+            return $str;
         }
-    //===Alakalı tipteki klasörü siler ends.====
-   }
+    }
 
+    public function remove_temporary($id, $type) {
+        //===Alakalı tipteki klasörü siler begins.====
+        App::uses('Folder', 'Utility');
+        App::uses('File', 'Utility');
+
+        if ($type == 'avatar_image') {
+            $dir = 'upload/users/' . $id;
+        } else if ($type == 'cover_image') {
+            $dir = 'upload/users/' . $id;
+        } else if ($type == 'game_image') {
+            $dir = 'upload/games/' . $id;
+        } else if ($type == 'new_game') {
+            $dir = 'upload/temporary/' . $id;
+        } else if ($type == 'game_upload') {
+            $dir = 'upload/gamefiles/' . $id;
+        }
+
+        $upload_dir = new Folder(WWW_ROOT . $dir);
+        $updir = $upload_dir->pwd();
+        if ($updir != NULL) {
+            $upload_dir->delete();
+            //print_r($upload_dir->errors());
+        }
+        //===Alakalı tipteki klasörü siler ends.====
+    }
 
 }
