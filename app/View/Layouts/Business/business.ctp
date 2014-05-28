@@ -16,7 +16,7 @@
         <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<div id="fb-root"></div>
-        <?php echo $this->Html->script(array('business/custom','business/business','fbconnect')); ?>
+        <?php echo $this->Html->script(array('assets/prettify','business/custom','business/business','fbconnect')); ?>
 	<script>
         toorksize	='<?php echo Configure::read('broken.toorksize'); ?>';
         avatar		='<?php echo Configure::read('broken.avatar'); ?>';

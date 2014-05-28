@@ -163,10 +163,15 @@ $( document ).ready(function() {
 				setInterval(function(){autoLogin($('#reg_username').val(),$('#reg_password').val());},2000);
 			}
 			else if(data.rtdata == 'false'){
-				//Recaptcha Code is incorrect. Please try again.
+				$('#errormsg_Reg').html("The username-password combination you entered is incorrect.");
+				$('#errormsg_Reg').show();
+				btn.button('reset');
 			}
 			else
 			{
+				$('#errormsg_Reg').html(data.rtdata);
+				$('#errormsg_Reg').show();
+				btn.button('reset');
 			}
 		}, 'json');	
 		
@@ -176,18 +181,17 @@ $( document ).ready(function() {
 		$.post(remotecheck,
 				{ un: $('#txt_signusername').val(), ps: $('#txt_signpass').val(), attr: 'txt_logusername'},
 				function (data) {
-					if(data.rtdata.msgid=='0'){
-						$('#errormsg_Passwd').html(data.rtdata.msg);
-						$('#errormsg_Passwd').show();
-						}
+			if(data.rtdata.msgid=='0'){
+				$('#errormsg_Passwd').html(data.rtdata.msg);
+				$('#errormsg_Passwd').show();
+				}
 			else if(data.rtdata.msgid=='1'){
 				location.reload();
 			}
 			else{
-				
 				$('#errormsg_Passwd').html(data.rtdata.msg);
 				$('#errormsg_Passwd').show();
-			} 
+				} 
         },  'json');
 	});
 	
@@ -358,10 +362,13 @@ $('.validateLogin').click(function() {
 				setInterval(function(){autoLogin($('#reg_username').val(),$('#reg_password').val());},2000);
 			}
 			else if(data.rtdata == 'false'){
-				//Recaptcha Code is incorrect. Please try again.
+				$('#errormsg_Passwd').html(data.rtdata.msg);
+				$('#errormsg_Passwd').show();
 			}
 			else
 			{
+				$('#errormsg_Passwd').html(data.rtdata.msg);
+				$('#errormsg_Passwd').show();
 			}
 		}, 'json');	
 	}
@@ -373,10 +380,13 @@ $('.validateLogin').click(function() {
 				setInterval(function(){autoLogin($('#reg_username').val(),$('#reg_password').val());},2000);
 			}
 			else if(data.rtdata == 'false'){
-				//Recaptcha Code is incorrect. Please try again.
+				$('#errormsg_Passwd').html(data.rtdata.msg);
+				$('#errormsg_Passwd').show();
 			}
 			else
 			{
+				$('#errormsg_Passwd').html(data.rtdata.msg);
+				$('#errormsg_Passwd').show();
 			}
 		}, 'json');	
 	}
@@ -386,11 +396,8 @@ $('.validateLogin').click(function() {
         $.post(remotecheck, { un: username, ps: password, attr: 'txt_logusername' }, function (data) {
 			if(data.rtdata.msgid=='0'){
 				
-				$.pnotify({
-			   title:'Invalid Username or Password',
-               text: data.rtdata.msg,
-               type: 'error'
-               });
+				$('#errormsg_Passwd').html(data.rtdata.msg);
+				$('#errormsg_Passwd').show();
 				
 			}
 			else if(data.rtdata.msgid=='1'){
@@ -398,11 +405,8 @@ $('.validateLogin').click(function() {
 				window.location = data.rtdata.msg+'/welcome';
 			}
 			else{
-				$.pnotify({
-				title:'Invalid Username or Password',
-            	text: data.rtdata.msg,
-             	type: 'error'
-               	});
+				$('#errormsg_Passwd').html(data.rtdata.msg);
+				$('#errormsg_Passwd').show();
 			}
         }, 'json');	
 	}
@@ -419,10 +423,8 @@ $('#forget_pass').click(function () {
 		$.post(remotecheck, { dt: $('#resetcredential').val(), attr: 't_regbox_logemail' }, function (data) {
             if (data.rtdata != null) {
 				
-				$.pnotify({
-            text: data.rtdata,
-            type: 'error'
-          });
+				$('#errormsg_Passwd').html(data.rtdata.msg);
+				$('#errormsg_Passwd').show();
 				
             }
             else { 

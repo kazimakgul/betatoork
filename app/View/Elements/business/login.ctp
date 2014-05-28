@@ -108,7 +108,8 @@
     <input type="password" class="form-control" id="txt_signpass" placeholder="Password">
      
         Are you a business? <a href=""> Get started here</a>
-    <span class="clearfix"></span>  
+    <span class="clearfix"></span>
+    <div id="errormsg_Passwd" style="display: none; color:red;"></div>  
         </div>
     <div class="login-footer">
     <div class="row">
@@ -154,7 +155,9 @@
     <input type="password" class="form-control" placeholder="Password" id="reg_password">
      
         Are you a business? <a href="#"> Get started here</a>
-    <span class="clearfix"></span>  
+    <span class="clearfix"></span> 
+        <div id="errormsg_Reg" style="display: none; color:red;"></div>  
+
         </div>
     <div class="login-footer">
     <div class="row">
@@ -191,6 +194,8 @@
     <input type="text" class="form-control" placeholder="Username or Email" autofocus>
 
     <span class="clearfix"></span>  
+        <div id="errormsg_Passwd" style="display: none; color:red;"></div>  
+
         </div>
     <div class="login-footer">
     <div class="row">
