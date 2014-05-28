@@ -29,6 +29,11 @@ $('.adsChangeBtn').click(function () {
     $('#adsChange').attr('data-selected',this.id);
   });
 
+function set_ad_code(adcode_id){
+target_ad_area=$('#adsChange').attr('data-selected');
+alert('data has been saved for id:'+adcode_id+target_ad_area);
+}
+
 //Controller functions for modals of avatar begins
 $('#avatarframe').load(function(){
   $(this).contents().find("#close_panel").on('click', function(event) { $('#pictureChange').modal('toggle'); });

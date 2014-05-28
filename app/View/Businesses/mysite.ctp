@@ -1,6 +1,6 @@
 
 <div class="container">
-<?
+<?php
 
 $subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
 $controls=NULL;

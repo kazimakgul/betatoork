@@ -11,7 +11,8 @@ if(isset($controls) || isset($code) && $code != '' && $code != NULL)
 	<span class="fa fa-pencil"></span></a>
 <?php
 	}
- echo $code; ?> 
+   echo $code; 
+ ?> 
 
 </div>
 </div>

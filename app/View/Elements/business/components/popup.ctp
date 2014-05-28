@@ -121,7 +121,7 @@
 			<div class="modal-content">
                 <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Ads <?=$user["User"]["username"];?></h4>
+                    <h4 style="text-align:center;" class="modal-title" id="myModalLabel">Choose your Ad Code for selected area</h4>
                     </div>
                 <div class="modal-body">
                     <center>
@@ -132,11 +132,11 @@
 						                   <thead>
 						                   <th width='150px'>Ads Name</th>
 						                   <th>Ads Code</th>
-						                   <th>Set</th>
+						                   <th style="padding-left:14px">Set</th>
 						          
 						                   </thead>
 										    <tbody>
-										    
+										    <?php if($adcodes==NULL) echo '<tr><td><span class="btn btn-success" style="background-color: #C2C6C6;border-color: #C2C6C6;">You have to add an Ad Code first.</span></td></tr>'; ?>
                                             <?php foreach($adcodes as $code){ ?>
 
                                             <tr>
@@ -144,7 +144,7 @@
 										    <td>
 										    	<textarea cols="60" rows="3"  readonly><?php echo $code['Adcode']['code'];?></textarea>
 										    </td>
-										    <td><p><button class="btn btn-success" data-title="Edit" data-toggle="modal" data-target="#set" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-ok-sign"></span></button></p></td>
+										    <td style="vertical-align: middle;"><p><button class="btn btn-success" data-placement="top" rel="tooltip" onclick="set_ad_code(<?php echo $code['Adcode']['id'];?>);"><span class="glyphicon glyphicon-ok-sign"></span></button></p></td>
 										    </tr>
 
                                             <?php } ?>
