@@ -11,9 +11,11 @@ if(isset($controls) || isset($code) && $code != '' && $code != NULL)
 	<span class="fa fa-pencil"></span></a>
 <?php
 	}
-   echo $code; 
- ?> 
-
+   echo $code['code']; 
+ ?>
+ <div style='width:100%;'> 
+<?php if($channel_owner) echo $code['name']; ?>
+</div>
 </div>
 </div>
 <!-- /Add Unit -->

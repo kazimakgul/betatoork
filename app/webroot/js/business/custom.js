@@ -29,9 +29,29 @@ $('.adsChangeBtn').click(function () {
     $('#adsChange').attr('data-selected',this.id);
   });
 
+//This set selected Ad Code for selected ads area
 function set_ad_code(adcode_id){
 target_ad_area=$('#adsChange').attr('data-selected');
-alert('data has been saved for id:'+adcode_id+target_ad_area);
+
+  //------
+       $.ajax({
+        type: "POST",
+        url: set_channel_ads,
+    data: {adcode_id:adcode_id,target_ad_area:target_ad_area},
+        dataType: "json",
+    async: false,
+        success: function(data){
+      
+      //alert(data.rtdata.title);
+      location.reload(); 
+      
+      },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+  });
+  //------  
+
 }
 
 //Controller functions for modals of avatar begins

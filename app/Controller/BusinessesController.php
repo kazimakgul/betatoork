@@ -197,6 +197,7 @@ class BusinessesController extends AppController {
         //======Getting all ads codes======
         $adcodes=$this->Adcode->find('all',array('conditions'=>array('Adcode.user_id'=>$authid)));
         $this->set('adcodes', $adcodes);
+        $this->set('channel_owner', 1);
         }
 
 		$limit = 9;

@@ -6,9 +6,9 @@ $subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"topr
 $controls=NULL;
 //Getting and declaring ads datas
 
-$homeBannerTop=$addata[0]['homeBannerTop']['code'];
-$homeBannerMiddle=$addata[0]['homeBannerMiddle']['code'];
-$homeBannerBottom=$addata[0]['homeBannerBottom']['code'];
+$homeBannerTop=$addata[0]['homeBannerTop'];
+$homeBannerMiddle=$addata[0]['homeBannerMiddle'];
+$homeBannerBottom=$addata[0]['homeBannerBottom'];
 
 if($this->Session->read('Auth.User.id')==$user['User']['id']){
 	$controls=$user['User']['id'];

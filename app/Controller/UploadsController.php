@@ -146,6 +146,7 @@ class UploadsController extends AppController {
 
 	public function apply_file($uploadtype=NULL,$name=NULL,$id=NULL,$loadfrom=NULL)
 	{
+		//Guvenlik onlemleri eklenecek.User login mi yada login olan user in yetkileri nelerdir etc...
 	Configure::write ( 'debug', 0 );
 	App::uses('Folder', 'Utility');
     App::uses('File', 'Utility');
@@ -195,7 +196,7 @@ class UploadsController extends AppController {
 	$image_patch=$this->request->data['image'];
 	
   if($auth_id=$this->Auth->user('id'))
-  {//Auth Control Ends
+  {//Auth Control Begins
 	
 	//Permissions for avatar and cover upload
 	if($uploadtype=='avatar_image' || $uploadtype=='cover_image')
