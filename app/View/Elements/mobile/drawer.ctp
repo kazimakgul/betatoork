@@ -10,9 +10,9 @@ $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "newga
         <div>
             <div class="cover">
                 <div class="cover_dark"></div>
-                <img class="img-circle" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="profile" width="50" height="50">
-                    <a class="tit1" href="<?php echo $home ?>"><?php echo $screenname ?></a>
-                    <span class="tit2">@<?php echo $username ?></span>
+                <a href="<?php echo $home ?>"><img class="img-circle" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="profile" width="50" height="50"></a>
+                <a class="tit1" href="<?php echo $home ?>"><?php echo $screenname ?></a>
+                <a class="tit2" href="<?php echo $home ?>">@<?php echo $username ?></a>
             </div>
             <form action="<?php echo $search ?>">
                 <div class="input-group searchbox">
