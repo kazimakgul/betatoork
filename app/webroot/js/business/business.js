@@ -3,15 +3,25 @@
 // Rating yıldızlarının çalışmasını sağlayan Function
 //***************************************************
 var __slice = [].slice;
-
 (function($, window) {
   var Starrr;
-
+ function rate_a_game(rating,user_auth,game_id){
+ if(user_auth==1)
+ {
+	          $.post(rateurl+'/'+game_id+'/'+rating,function(data) {
+				});
+  
+   }else{
+		$('#login').modal('show');
+   }  
+}	
   Starrr = (function() {
     Starrr.prototype.defaults = {
       rating: void 0,
       numStars: 5,
-      change: function(e, value) {}
+      change: function(e, value) {
+      	 rate_a_game(value,user_auth,game_id);
+      }
     };
 
     function Starrr($el, options) {
@@ -78,7 +88,6 @@ var __slice = [].slice;
         return this.$el.find('span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
       }
     };
-
     return Starrr;
 
   })();
@@ -148,6 +157,8 @@ $( document ).ready(function() {
   	//***************************************************
   	//------------------Rating Functions Ends-------------------------
   	//***************************************************
+  	
+
 
   //*********Social Function********
 	$('#facebookreg').click(function () {
@@ -237,20 +248,55 @@ $('.validateLogin').click(function() {
  $('#txt_signpass').keypress(function (e) { if(e.which == 13) {
         $('#t_gatekeeper_login_btn').click();
     } });	
+
+//==========/Login Register Functions=============
+
+//*********Forget Password Function********
+$('#resetcredential').keypress(function (e) { if(e.which == 13) {
+        $('#forget_pass').click();
+    } });
+
+$('#forget_pass').click(function () {
+	    
+		$.post(remotecheck, { dt: $('#resetcredential').val(), attr: 't_regbox_logemail' }, function (data) {
+            if (data.rtdata != null) {
+				
+				$('#errormsg_Passwd').html(data.rtdata.msg);
+				$('#errormsg_Passwd').show();
+				
+            }
+            else { 
+				$.pnotify({
+            title: 'Reset mail has been sent.',
+            text: 'Please check your mail box.',
+            type: 'success'
+          });
+			}
+        }, 'json');	
+		
+    });
+
  
+//*********/Forget Password Function********
+
+
+//*********//Social Function********
+  //***************************************************
+//------------------Login Register Functions Ends-------------------------
+//***************************************************
+
  //Register button for gatekeeper
  //New Validation System For Registration
- jQuery.validator.addMethod(
+	 jQuery.validator.addMethod(
         "uniqueUserName", 
         function(value, element) {
-            
 			 $.ajax({
-        type: "POST",
-        url: authcheck,
-        data: {attr: 'check_username', dt: value },
-        dataType: "json",
-		async: false,
-        success: function(data){
+	        type: "POST",
+	        url: authcheck,
+	        data: {attr: 'check_username', dt: value },
+	        dataType: "json",
+			async: false,
+	        success: function(data){
 				if(data.rtdata==1)
 				{
 					$( "#reg_username" ).data( "valid", true );
@@ -258,10 +304,10 @@ $('.validateLogin').click(function() {
 					$( "#reg_username" ).data( "valid", false );
 				}
 			},
-        failure: function(errMsg) {
+        	failure: function(errMsg) {
             //alert(errMsg);
-        }
-  });			
+        	}
+		 });			
 			
             return $( "#reg_username" ).data("valid");
         },
@@ -359,6 +405,35 @@ $('.validateLogin').click(function() {
  
 
  
+$('#contact-form').validate({
+    rules: {
+        name: {
+            minlength: 2,
+            required: true
+        },
+        email: {
+            required: true,
+            email: true
+        },
+        message: {
+            minlength: 2,
+            required: true
+        }
+    },
+    highlight: function (element) {
+        $(element).closest('.control-group').removeClass('success').addClass('error');
+    },
+    success: function (element) {
+        element.text('OK!').addClass('valid')
+            .closest('.control-group').removeClass('error').addClass('success');
+    }
+});
+});
+
+
+
+ 
+
  function checkUser2(){
 		$.post(remotecheck2, {attr: 'fast_register', un: $('#reg_username').val(), um: $('#reg_email').val(), up: $('#reg_password').val() }, function (data) {
 			if (data.rtdata == 'true') {
@@ -395,7 +470,55 @@ $('.validateLogin').click(function() {
 		}, 'json');	
 	}
  
- 
+ 	function check_land_validation() {
+		 result=1;	
+	     if($('#reg_username').val().length==0 || $('#reg_username').val().length<6 || $('#reg_username').val().length>20)
+		 {
+		 //aksiyon
+		 result=0;	
+		 }	
+		 if($('#reg_email').val().length==0 || !isValidEmailAddress($('#reg_email').val()))
+		 {
+		 //aksiyon
+		 result=0;	
+		 }	
+		 if($('#reg_password').val().length==0 || $('#reg_password').val().length<6)
+		 {
+		 //aksiyon
+		 result=0;	
+		 }
+
+		 return result;
+	}
+	
+		
+	function checkvalidation() {
+	     result=1;	
+	     if($('#reg_username').val().length==0 || $('#reg_username').val().length<6 || $('#reg_username').val().length>20)
+		 {
+		 //aksiyon
+		 result=0;	
+		 }	
+		 if($('#reg_email').val().length==0 || !isValidEmailAddress($('#reg_email').val()))
+		 {
+		 //aksiyon
+		 result=0;	
+		 }	
+		 if($('#reg_password').val().length==0 || $('#reg_password').val().length<6)
+		 {
+		 //aksiyon
+		 result=0;	
+		 }
+		 if($('#reg_password_again').val().length==0 || $('#reg_password_again').val()!=$('#reg_password').val())
+		 {
+		 //aksiyon
+		 result=0;
+		 }	
+
+		 return result;
+		 
+	}
+	
  function autoLogin(username,password){
         $.post(remotecheck, { un: username, ps: password, attr: 'txt_logusername' }, function (data) {
 			if(data.rtdata.msgid=='0'){
@@ -415,47 +538,6 @@ $('.validateLogin').click(function() {
         }, 'json');	
 	}
  
-//==========/Login Register Functions=============
-
-//*********Forget Password Function********
-$('#resetcredential').keypress(function (e) { if(e.which == 13) {
-        $('#forget_pass').click();
-    } });
-
-$('#forget_pass').click(function () {
-	    
-		$.post(remotecheck, { dt: $('#resetcredential').val(), attr: 't_regbox_logemail' }, function (data) {
-            if (data.rtdata != null) {
-				
-				$('#errormsg_Passwd').html(data.rtdata.msg);
-				$('#errormsg_Passwd').show();
-				
-            }
-            else { 
-				$.pnotify({
-            title: 'Reset mail has been sent.',
-            text: 'Please check your mail box.',
-            type: 'success'
-          });
-			}
-        }, 'json');	
-		
-    });
-
- 
-//*********/Forget Password Function********
-
-
-//*********//Social Function********
-  //***************************************************
-//------------------Login Register Functions Ends-------------------------
-//***************************************************
-
-});
-
-
-
-
 
 //***************************************************
 //------------------Subscription Functions-------------------------
@@ -469,7 +551,6 @@ function subscribe (channel_name,user_auth,id) {
 		currentflw=$('#flwnumber').html();
 		currentflw=parseInt(currentflw);
 		$('#flwnumber').html(currentflw+1);
-		
 		switch_subscribe(id);
 		/*
 		$.pnotify({

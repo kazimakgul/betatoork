@@ -10,7 +10,7 @@ class UsersController extends AppController {
 
 public $components = array('AutoLogin','Email','Amazonsdk.Amazon','Recaptcha.Recaptcha','Common');
 public $helpers = array('Html', 'Form','Upload','Recaptcha.Recaptcha');
-var $uses = array('Game','Subscription','Userstat','Category','Activity','CakeEmail', 'Network/Email');
+var $uses = array('Game','Subscription','Userstat','Category','Activity','CakeEmail', 'Network/Email','Adsetting');
 
 
 	public function beforeFilter() {
@@ -408,6 +408,51 @@ function secureSuperGlobalPOST($value)
 			}
 		}
 	}
+
+    
+    public function set_channel_ads($ads_type=NULL,$ads_id=NULL)
+	{
+	Configure::write ( 'debug', 0 );
+
+	$adcode_id=$this->request->data['adcode_id'];
+	$target_ad_area=$this->request->data['target_ad_area'];
+	
+    if($auth_id=$this->Auth->user('id'))
+    {//Auth Control Begins
+    
+        $setting_exist=$this->Adsetting->find('first',array('contain'=>false,'conditions'=>array('Adsetting.user_id'=>$auth_id),'fields'=>array('Adsetting.id')));
+        if($setting_exist!=NULL)
+        {
+         $message='exist'.$setting_exist['Adsetting']['id'];
+         $this->Adsetting->id=$setting_exist['Adsetting']['id'];
+        }else{
+         $message='not exist';
+         $filtered_data['Adsetting']['user_id']=$auth_id;
+        }
+        
+        if($target_ad_area=='homeBannerTop')
+        $filtered_data['Adsetting']['home_banner_top']=$adcode_id;
+        else if($target_ad_area=='homeBannerMiddle')
+        $filtered_data['Adsetting']['home_banner_middle']=$adcode_id;
+        else if($target_ad_area=='homeBannerBottom')
+        $filtered_data['Adsetting']['home_banner_bottom']=$adcode_id;
+
+        if($this->Adsetting->save($filtered_data))
+        {
+        $msg = array("title" => 'Ads has been updated.'.$adcode_id.$target_ad_area.$message,'result' => 1);
+        }	
+        
+
+    }else{//Auth Control Ends	
+    //if user unlogged
+    $msg = array("title" => 'You have to log in first','result' => 0);
+    }//Unlogged control ends
+
+
+    $this->set('rtdata', $msg);
+    $this->set('_serialize', array('rtdata'));
+    }
+
 
 	public function register2() {
     	$this->layout = 'landing';

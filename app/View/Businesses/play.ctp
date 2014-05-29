@@ -14,7 +14,11 @@ else{
   $profilepublic=$this->Html->url(array("controller" => "businesses","action" =>"profile",$game['User']['id']));
 }
 ?>
-<script>game_id='<?=$game_id?>';</script>
+<script>
+game_id='<?=$game_id?>';
+rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add')); ?>';
+
+</script>
 	  <div class="col-sm-12">
 		<div class="well well-sm">
 		<h6 class="media-heading">

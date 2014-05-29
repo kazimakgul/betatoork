@@ -56,6 +56,10 @@
   border-radius: 5px;
   
 }
+.form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-radius: 5px;
@@ -150,15 +154,20 @@
       </div>
     <div class="main"> 
 
-    <input type="text" class="form-control" placeholder="Username" id="reg_username" autofocus>
-    <input type="text" class="form-control" placeholder="Email" id="reg_email" autofocus>
-    <input type="password" class="form-control" placeholder="Password" id="reg_password">
+    <input name="username" id="reg_username" class="form-control" placeholder="Channel Name Ex: Armorgames" type="text" autocomplete="off">
+	<label style="display:none; color:red; font-family:arial; font-size:13px;" for="reg_username" class="error">Username is already taken</label>
+
+	<input name="email" id="reg_email" class="form-control" placeholder="Email Address" type="email" autocomplete="off">
+	<label style="display:none; color:red; font-family:arial; font-size:13px;" for="reg_email" class="error">Email is already taken</label>
+
+
+    <input name="password" id="reg_password" class="form-control" placeholder="Password" type="password" autocomplete="off">
+	<label style="display:none; color:red; font-family:arial; font-size:13px;" for="reg_password" class="error">Password is wrong</label>
      
         Are you a business? <a href="#"> Get started here</a>
-    <span class="clearfix"></span> 
+    	<span class="clearfix"></span> 
         <div id="errormsg_Reg" style="display: none; color:red;"></div>  
-
-        </div>
+    </div>
     <div class="login-footer">
     <div class="row">
         <div class="col-xs-6 col-md-6 pull-right">
@@ -215,6 +224,6 @@
   </div>
 </div>
 
-
-
-
+ <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
+<script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>

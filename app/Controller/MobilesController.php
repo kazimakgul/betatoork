@@ -19,7 +19,6 @@ class MobilesController extends AppController {
         if (parent::isAuthorized($user)) {
             return true;
         }
-
         if (($this->action === 'play') || ($this->action === 'index')) {
             // All registered users can add posts
             return true;
@@ -28,7 +27,6 @@ class MobilesController extends AppController {
             $gameId = $this->request->params['pass'][0];
             return $this->Game->isOwnedBy($gameId, $user['id']);
         }
-
         return false;
     }
 
@@ -37,19 +35,10 @@ class MobilesController extends AppController {
     }
 
     public function index($userid) {
-        /**
-         * Kullanılan Layout
-         */
         $this->layout = 'Mobile/mobile';
-        /**
-         * Layout Değişkenleri
-         */
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-        /**
-         * Kullanıcı Bilgileri
-         */
         $user = $this->User->find('first', array(
             'conditions' => array(
                 'User.id' => $userid
@@ -59,10 +48,20 @@ class MobilesController extends AppController {
             )
                 )
         );
+        $this->set('user_id', $userid);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
-        $PaginateLimit = 6;
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
+        $PaginateLimit = 9;
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
@@ -84,17 +83,15 @@ class MobilesController extends AppController {
         );
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
-        $this->set('user_id', $userid);
     }
 
     public function play($id = NULL) {
         $this->layout = 'Mobile/mobile';
+        $this->set('title_for_layout', 'Clone Games');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
         $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         $this->set('game_link', $game['Game']['link']);
-        $this->set('user_id', $game['Game']['user_id']);
-        /**
-         * Kullanıcı Bilgileri
-         */
         $user = $this->User->find('first', array(
             'conditions' => array(
                 'User.id' => $game['Game']['user_id']
@@ -104,12 +101,19 @@ class MobilesController extends AppController {
             )
                 )
         );
+        $this->set('user_id', $game['Game']['user_id']);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
-        $this->set('title_for_layout', 'Clone Games');
-        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-        $this->set('author_for_layout', 'Clone');
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
     }
 
     public function search2($userid) {
@@ -120,7 +124,7 @@ class MobilesController extends AppController {
             $this->redirect(array("controller" => "mobiles", "action" => "index", $userid));
         }
         $keys = $this->Game->query("SELECT * FROM games as Game JOIN gamestats as Gamestat ON Gamestat.game_id = Game.id WHERE (Game.description like '%" . $param . "%' or Game.name like '%" . $param . "%') and user_id=$userid");
-        $PaginateLimit = 30;
+        $PaginateLimit = 9;
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         $limit = 12;
@@ -141,7 +145,16 @@ class MobilesController extends AppController {
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
-        $PaginateLimit = 6;
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
+        $PaginateLimit = 9;
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
@@ -178,7 +191,16 @@ class MobilesController extends AppController {
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
-        $PaginateLimit = 6;
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
+        $PaginateLimit = 9;
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
@@ -207,7 +229,7 @@ class MobilesController extends AppController {
         $this->set('games', $cond);
         $this->render('index');
     }
-    
+
     public function newgames($userid) {
         $this->layout = 'Mobile/mobile';
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
@@ -215,7 +237,16 @@ class MobilesController extends AppController {
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
-        $PaginateLimit = 6;
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
+        $PaginateLimit = 9;
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
@@ -244,5 +275,5 @@ class MobilesController extends AppController {
         $this->set('games', $cond);
         $this->render('index');
     }
-    
+
 }

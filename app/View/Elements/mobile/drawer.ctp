@@ -40,6 +40,25 @@ $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "newga
                 <p><?php echo $username ?></p>
                 <p><?php echo $description ?></p>
             </div>
+            <?php if (isset($facebook) || isset($twitter) || isset($googleplus)) { ?>
+                <div class="social_icon_custom">
+                    <?php if (isset($twitter)) { ?>
+                        <a href="<?php echo $twitter ?>" target="_blank" class="btn btn-social-icon btn-twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    <?php } ?>
+                    <?php if (isset($facebook)) { ?>
+                        <a href="<?php echo $facebook ?>" target="_blank" class="btn btn-social-icon btn-facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    <?php } ?>
+                    <?php if (isset($googleplus)) { ?>
+                        <a href="<?php echo $googleplus ?>" target="_blank" class="btn btn-social-icon btn-google-plus">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    <?php } ?>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </div>

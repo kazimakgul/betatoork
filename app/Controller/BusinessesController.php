@@ -33,9 +33,19 @@ class BusinessesController extends AppController {
 	}
      
 	public function afterFilter() {
-	//There is no any action!
+		if ($this->response->statusCode() == '404')
+    	{
+   		$this->redirect(array('controller' => 'businesses', 'action' => 'mysite',00));
+    	}
 	}
-	
+	public function checkUser($userid){
+		 if($this->User->find('first', array('conditions'=> array('User.id'=>$userid))))
+			{
+				return 0;
+			}else{
+			    return 1;
+			}
+	}
 	
     //this gets game suggestions
 	public function get_game_suggestions($order)
@@ -65,11 +75,11 @@ class BusinessesController extends AppController {
 	{
 	 if ($this->Session->check('Dashboard.randomKey')) { 
       $key = $this->Session->read('Dashboard.randomKey'); 
-    } 
+    }
     else { 
       $key = mt_rand(); 
       $this->Session->write('Dashboard.randomKey', $key); 
-    } 
+    }
 	return $key;
 	}
 
@@ -134,8 +144,6 @@ class BusinessesController extends AppController {
 	   		$this->set('follow',0);
 	   }
 		$category		=	$this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id='.$userid.' group by games.category_id');
-		//$keys = $this->Game->query("SELECT * FROM games as Game JOIN gamestats as Gamestat ON Gamestat.game_id = Game.id WHERE (Game.description like '%".$param."%' or Game.name like '%".$param."%') and user_id=$userid");
-		//$cond=$this->paginate('Game', array('Game.description LIKE' => '$param%','Game.description LIKE' => '$param%'));
 		$this->paginate = array('Game'=>array(
 			'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))),
 		    'limit'=>12,
@@ -149,7 +157,6 @@ class BusinessesController extends AppController {
 		$user			=	$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
 		$game			=	$this->Game->find('first', array('conditions' => array('Game.user_id' => $userid),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')),'Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));//Recoded
 		$limit=12;
-		//$this->paginate=array('Game'=>array('conditions' => array('Game.active'=>'1','Game.user_id'=>$game['Game']['user_id']),'limit' => $limit,'order' => array('Game.recommend' => 'desc')));
 		$cond=$this->paginate('Game');
 		$this->set('title_for_layout', 'Clone - Game Search Engine');
 		$this->set('description_for_layout', 'Clone - Game Search Engine powered by Google. Clone Search is specially designed for searching games');
@@ -158,15 +165,12 @@ class BusinessesController extends AppController {
 		$this->set('query',		$cond);
 		$this->set('game',		$game);
 		$this->set('user',		$user);
+		
 	}
 
 	public function mysite($userid=NULL) {
 		$this->layout	=	'Business/business';
-
 		$authid = $this->Auth->user('id');
-
-	   //=======/Get Current User_Id===============
-	
 
 	   //========Get Current Subscription===============
 	   if($authid)
@@ -197,6 +201,7 @@ class BusinessesController extends AppController {
         //======Getting all ads codes======
         $adcodes=$this->Adcode->find('all',array('conditions'=>array('Adcode.user_id'=>$authid)));
         $this->set('adcodes', $adcodes);
+        $this->set('channel_owner', 1);
         }
 
 		$limit = 9;
@@ -211,7 +216,9 @@ class BusinessesController extends AppController {
 		$this->set('title_for_layout', 'Clone Games');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
 		$this->set('author_for_layout', 'Clone');
-	}
+	
+		if($this->checkUser($userid)==1){$this->render('/Businesses/404');}
+}
 	
 	public function play($id=NULL) {
 	//Getting Random Game Data
@@ -236,6 +243,7 @@ class BusinessesController extends AppController {
 		$game_id = $game['Game']['id'];
 		if($user_id)
 		{
+			$this->set('auth_user',	$user_id);
 			$fav_check = $this->checkControl('favorites',$user_id,$game_id);
 			$clone_check = $this->checkControl('cloneships',$user_id,$game_id);
 		}else{
