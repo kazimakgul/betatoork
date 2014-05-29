@@ -59,9 +59,19 @@ class MobilesController extends AppController {
             )
                 )
         );
+        $this->set('user_id', $userid);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
         $PaginateLimit = 6;
         $this->paginate = array(
             'Game' => array(
@@ -84,7 +94,6 @@ class MobilesController extends AppController {
         );
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
-        $this->set('user_id', $userid);
     }
 
     public function play($id = NULL) {
@@ -207,7 +216,7 @@ class MobilesController extends AppController {
         $this->set('games', $cond);
         $this->render('index');
     }
-    
+
     public function newgames($userid) {
         $this->layout = 'Mobile/mobile';
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
@@ -244,5 +253,5 @@ class MobilesController extends AppController {
         $this->set('games', $cond);
         $this->render('index');
     }
-    
+
 }

@@ -20,7 +20,7 @@
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     
     
-    <?php echo $this->Html->css(array('mobile/snap','mobile/demo', 'mobile/custom')); ?>
+    <?php echo $this->Html->css(array('mobile/snap','mobile/demo', 'mobile/bootstrap-social', 'mobile/custom')); ?>
 
 
     </head>
