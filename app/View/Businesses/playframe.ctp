@@ -1,5 +1,6 @@
 <div class="container">
 <?php
+$game_id = $game['Game']['id'];
 $gamename = $game['Game']['name'];
 $description = $game['Game']['description'];
 $username = $game['User']['seo_username'];
@@ -11,7 +12,13 @@ if($username !=NULL)
 else{
   $profilepublic=$this->Html->url(array("controller" => "businesses","action" =>"profile",$game['User']['id']));
 }
+
 ?>
+<script>
+game_id='<?=$game_id?>';
+rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add')); ?>';
+
+</script>
 <!-- Iframe Content --> 
 <iframe src="<?php echo h($game['Game']['link']); ?>" style="border: 0; position:fixed; top:50px; left:0; right:0; bottom:0; width:100%; height:95%"></iframe><!-- Iframe Content End --> 
 <div class="navbar navbar-default navbar-fixed-bottom" style="min-height:35px" role="navigation">

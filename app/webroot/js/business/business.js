@@ -8,12 +8,11 @@ var __slice = [].slice;
  function rate_a_game(rating,user_auth,game_id){
  if(user_auth==1)
  {
-	          $.post(rateurl+'/'+game_id+'/'+rating,function(data) {
-				});
-  
-   }else{
-		$('#login').modal('show');
-   }  
+ 	$.post(rateurl+'/'+game_id+'/'+rating,function(data) {});
+ }else
+ {
+	$('#login').modal('show');
+ }  
 }	
   Starrr = (function() {
     Starrr.prototype.defaults = {
