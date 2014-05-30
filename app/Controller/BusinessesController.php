@@ -192,9 +192,28 @@ class BusinessesController extends AppController {
 		$cond			=	$this->paginate('Game');
 		$category		=	$this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id='.$userid.' group by games.category_id');
 
-        //======Getting ads datas======
-        $addata=$this->Adsetting->find('all',array('contain'=>array('homeBannerTop','homeBannerMiddle','homeBannerBottom'),'conditions'=>array('Adsetting.user_id'=>$userid)));
+        $this->get_ads_info($userid,$authid);
         
+		$limit = 9;
+		$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
+		$this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.id' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
+		$this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.starsize' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
+		$this->set('category',$category);
+		$this->set('games', $cond);
+		$this->set('user', $user);
+		
+		$this->set('title_for_layout', 'Clone Games');
+		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+		$this->set('author_for_layout', 'Clone');
+	
+		if($this->checkUser($userid)==1){$this->render('/Businesses/404');}
+}
+	
+    function get_ads_info($userid=NULL,$authid=NULL)
+    {
+    	//======Getting ads datas======
+        $addata=$this->Adsetting->find('all',array('contain'=>array('homeBannerTop','homeBannerMiddle','homeBannerBottom'),'conditions'=>array('Adsetting.user_id'=>$userid)));
+        $this->set('addata', $addata);
 
         if($authid==$userid)
         {
@@ -207,23 +226,8 @@ class BusinessesController extends AppController {
         {
         $this->set('channel_owner', 0);
         }
-        
-		$limit = 9;
-		$this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active'=>'1'),'limit' => $limit,'order' => array('Game.recommend' => 'desc'))));
-		$this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.id' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
-		$this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active'=>'1','Game.user_id'=>$userid),'limit' => $PaginateLimit,'order' => array('Game.starsize' => 'desc'),'contain'=>array('Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
-		$this->set('category',$category);
-		$this->set('games', $cond);
-		$this->set('user', $user);
-		$this->set('addata', $addata);
-		
-		$this->set('title_for_layout', 'Clone Games');
-		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-		$this->set('author_for_layout', 'Clone');
-	
-		if($this->checkUser($userid)==1){$this->render('/Businesses/404');}
-}
-	
+    }
+
 	public function play($id=NULL) {
 	//Getting Random Game Data
 		$game	=	$this->Game->find('first', array('conditions' => array('Game.id' => $id),'fields'=>array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'),'contain'=>array('User'=>array('fields'=>array('User.username,User.seo_username,User.adcode,User.picture')),'Gamestat'=>array('fields'=>array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));//Recoded
@@ -279,16 +283,9 @@ class BusinessesController extends AppController {
 		$cond			=	$this->paginate('Game');
 		$category		=	$this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id='.$userid.' group by games.category_id');
 
-        //======Getting ads datas======
-        $addata=$this->Adsetting->find('all',array('contain'=>array('homeBannerTop','homeBannerMiddle','homeBannerBottom'),'conditions'=>array('Adsetting.user_id'=>$userid)));
         
 		$authid = $this->Auth->user('id');
-        if($authid==$userid)
-        {
-        //======Getting all ads codes======
-        $adcodes=$this->Adcode->find('all',array('conditions'=>array('Adcode.user_id'=>$authid)));
-        $this->set('adcodes', $adcodes);
-        }
+        $this->get_ads_info($userid,$authid);
 	   //========Get Current Subscription===============
 	   if($authid)
 	   {
@@ -307,7 +304,6 @@ class BusinessesController extends AppController {
 		$this->set('category',$category);
 		$this->set('games', $cond);
 		$this->set('user', $user);
-		$this->set('addata', $addata);
 		
 		$this->set('title_for_layout', 'Clone Games');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');

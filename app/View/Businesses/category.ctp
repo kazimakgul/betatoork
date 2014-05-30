@@ -1,10 +1,10 @@
 	<div class="container">
 	<?	$controls=NULL;
 	if($this->Session->read('Auth.User.id')==$user['User']['id']){$controls=$user['User']['id'];}
-	$homeBannerTop=$addata[0]['homeBannerTop']['code'];
-	$homeBannerMiddle=$addata[0]['homeBannerMiddle']['code'];
-	$homeBannerBottom=$addata[0]['homeBannerBottom']['code'];
-	echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerBottom,'adtype'=>'homeBannerBottom'));
+	$homeBannerTop=$addata[0]['homeBannerTop'];
+	$homeBannerMiddle=$addata[0]['homeBannerMiddle'];
+	$homeBannerBottom=$addata[0]['homeBannerBottom'];
+	echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerTop,'adtype'=>'homeBannerTop'));
 	
 
 	?>
