@@ -258,6 +258,9 @@ class BusinessesController extends AppController {
 			$fav_check = NULL;
 			$clone_check = NULL;
 		}
+
+		$authid = $this->Auth->user('id');
+        $this->get_ads_info($game['Game']['user_id'],$authid);
 		
 		$this->set('ownuser', $fav_check);
 		$this->set('ownclone', $clone_check);
@@ -321,6 +324,7 @@ class BusinessesController extends AppController {
 
 	   //========Get Current Subscription===============
 	   $authid = $this->Session->read('Auth.User.id');
+       $this->get_ads_info($userid,$authid);
 	   if($authid)
 	   {
 	   $subscribebefore=$this->Subscription->find("first",array("contain"=>false,"conditions"=>array("Subscription.subscriber_id"=>$authid,"Subscription.subscriber_to_id"=>$userid)));

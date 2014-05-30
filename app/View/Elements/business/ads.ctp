@@ -16,8 +16,6 @@ if(isset($code['code']) && $code['code'] != '' && $code['code'] != NULL)
 <?php
 	}
    echo $code['code']; 
-   if($code==NULL)
-   	echo 'null';
  ?>
  <div style='width:100%;'> 
 <?php if($channel_owner) echo '<span class="label label-primary">'.$code['name'].'</span>' ?>

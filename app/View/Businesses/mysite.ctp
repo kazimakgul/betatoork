@@ -5,7 +5,6 @@
 $subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
 $controls=NULL;
 //Getting and declaring ads datas
-
 $homeBannerTop=$addata[0]['homeBannerTop'];
 $homeBannerMiddle=$addata[0]['homeBannerMiddle'];
 $homeBannerBottom=$addata[0]['homeBannerBottom'];
