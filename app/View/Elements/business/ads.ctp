@@ -1,6 +1,6 @@
 
 <?php
-if(isset($controls) || isset($code) && $code != '' && $code != NULL)
+if(isset($code) && $code != '' && $code != NULL)
 {
 ?>
 <!-- Add Unit -->
@@ -12,6 +12,8 @@ if(isset($controls) || isset($code) && $code != '' && $code != NULL)
 <?php
 	}
    echo $code['code']; 
+   if($code==NULL)
+   	echo 'null';
  ?>
  <div style='width:100%;'> 
 <?php if($channel_owner) echo $code['name']; ?>
@@ -19,4 +21,12 @@ if(isset($controls) || isset($code) && $code != '' && $code != NULL)
 </div>
 </div>
 <!-- /Add Unit -->
-<?}?>
+<?php }else if($channel_owner){?>
+<!-- Dummy Ad Unit -->
+<div class="col-xs-11">
+<div align="center" class="col-sm-offset-1 well well-sm">
+Dummy ad unit
+</div>
+</div>
+<!-- /Dummy Ad Unit -->
+<?php }?>
