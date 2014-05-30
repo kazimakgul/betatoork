@@ -27,9 +27,9 @@
 		remotecheck2='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser2')); ?>';
 		authcheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'usernameAvailable')); ?>';
 		facecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'FaceUser')); ?>';
-		<? if($auth_user){
-			echo "user_auth='1';";
-		}else{echo "user_auth='0';"; }?>
+
+		<? if($auth_user){echo "user_auth='1';";}else{echo "user_auth='0';"; }?>
+
         set_channel_ads='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>';
         </script>
     </body>
