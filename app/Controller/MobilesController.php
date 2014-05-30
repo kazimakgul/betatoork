@@ -156,7 +156,25 @@ class MobilesController extends AppController {
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.channelclone')))));
         $limit = 12;
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $game['Game']['user_id']), 'limit' => $limit, 'order' => array('Game.recommend' => 'desc')));
+        $this->paginate = array(
+            'Game' => array(
+                'contain' => array(
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'
+                        )
+                    )
+                ),
+                'limit' => 12,
+                'order' => 'Game.id DESC',
+                'conditions' => array(
+                    'Game.active' => '1',
+                    'Game.user_id' => $userid,
+                    'OR' => array(
+                        'Game.description LIKE' => '%' . $param . '%',
+                        'Game.name LIKE' => '%' . $param . '%'
+                    ),
+        )));
         $cond = $this->paginate('Game');
         $this->set('games', $keys);
         $this->set('user_id', $userid);

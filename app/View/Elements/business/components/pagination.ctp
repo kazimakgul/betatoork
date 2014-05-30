@@ -1,7 +1,13 @@
-<div style="clear: both;">
-	<ul  class="pagination">
-		<li><?php echo $this->Paginator->prev(__('Prev', false), array(), null, array('class'=>'disabled'));?></li>
-		<li><?php echo $this->Paginator->numbers(); ?></li>
-		<li><?php echo '  '.$this->Paginator->next(__('Next', false), array('id'=>'next'), null, array('class' => 'disabled'));?></li>
-	</ul>
-</div>
+<?php
+$params = $this->Paginator->params();
+$pageCount = $params['pageCount'];
+if ($pageCount > 1) {
+    ?>  
+    <div style="clear: both;">
+        <ul  class="pagination">
+            <li><?php echo $this->Paginator->prev(__('Prev', false), array(), null, array('class' => 'disabled')); ?></li>
+            <li><?php echo $this->Paginator->numbers(); ?></li>
+            <li><?php echo '  ' . $this->Paginator->next(__('Next', false), array('id' => 'next'), null, array('class' => 'disabled')); ?></li>
+        </ul>
+    </div>
+<?php } ?>
