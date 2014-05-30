@@ -35,23 +35,49 @@ class MobilesController extends AppController {
     }
 
     public function index($userid) {
+
         $this->layout = 'Mobile/mobile';
+
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
+
         $user = $this->User->find('first', array(
             'conditions' => array(
                 'User.id' => $userid
             ),
             'fields' => array(
                 '*'
-            )
+            ),
                 )
         );
+
         $this->set('user_id', $userid);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
+
+        if (empty($user['Userstat']['subscribe'])) {
+            $this->set('followers', 0);
+        } else {
+            $this->set('followers', $user['Userstat']['subscribe']);
+        }
+        if (empty($user['Userstat']['subscribeto'])) {
+            $this->set('following', 0);
+        } else {
+            $this->set('following', $user['Userstat']['subscribeto']);
+        }
+        if (empty($user['Userstat']['favoritecount'])) {
+            $this->set('favorites', 0);
+        } else {
+            $this->set('favorites', $user['Userstat']['favoritecount']);
+        }
+        if (empty($user['Userstat']['uploadcount'])) {
+            $this->set('gamescount', 0);
+        } else {
+            $this->set('gamescount', $user['Userstat']['uploadcount']);
+        }
+
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
@@ -61,6 +87,7 @@ class MobilesController extends AppController {
         if (!empty($user['User']['gplus_link'])) {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
+
         $PaginateLimit = 9;
         $this->paginate = array(
             'Game' => array(
@@ -82,6 +109,7 @@ class MobilesController extends AppController {
             )
         );
         $cond = $this->paginate('Game');
+
         $this->set('games', $cond);
     }
 

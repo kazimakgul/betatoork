@@ -23,10 +23,10 @@ $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "newga
                 </div>
             </form>
             <div class="demo-social">
-                <span class="label label-warning">17 Followers</span>
-                <span class="label label-info">21 Following</span>
-                <span class="label label-danger">34 Favorites</span>
-                <span class="label label-success">211 Games</span>
+                <span class="label label-warning"><?php echo $followers ?> Followers</span>
+                <span class="label label-info"><?php echo $following ?> Following</span>
+                <span class="label label-danger"><?php echo $favorites ?> Favorites</span>
+                <span class="label label-success"><?php echo $gamescount ?> Games</span>
             </div>
             <ul class="menu_ok">
                 <li><a href="<?php echo $home; ?>"><i class="fa fa-home"></i> Home</a></li>
