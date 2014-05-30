@@ -2,6 +2,16 @@
 $play = $this->Html->url(array("controller" => "mobiles", "action" => "play", 2));
 foreach ($games as $game) {
     $playurl = $this->Html->url(array("controller" => 'mobiles', "action" => 'play', h($game['Game']['id'])));
+    if (empty($game['Gamestat']['playcount'])) {
+        $playcount = 0;
+    } else {
+        $playcount = $game['Gamestat']['playcount'];
+    }
+    if (empty($game['Gamestat']['totalclone'])) {
+        $totalclone = 0;
+    } else {
+        $totalclone = $game['Gamestat']['totalclone'];
+    }
     ?>
     <div class="col-sm-4">
         <div class="thumbnail">
@@ -27,10 +37,10 @@ foreach ($games as $game) {
                 <div class="row text-center">
                     <div class="btn-group btn-group-justified bt_grp_pad">
                         <div class="btn-group">
-                            <label type="button" class="btn btn-success">0 Plays</label>
+                            <label type="button" class="btn btn-success"><?php echo $playcount; ?> Plays</label>
                         </div>
                         <div class="btn-group">
-                            <label type="button" class="btn btn-info">0 Clones</label>
+                            <label type="button" class="btn btn-info"><?php echo $totalclone; ?> Clones</label>
                         </div>
                     </div>
                 </div>

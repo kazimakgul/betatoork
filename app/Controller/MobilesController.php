@@ -75,7 +75,7 @@ class MobilesController extends AppController {
                 'contain' => array(
                     'Gamestat' => array(
                         'fields' => array(
-                            'Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'
+                            'Gamestat.playcount,Gamestat.totalclone'
                         )
                     )
                 )
@@ -90,7 +90,7 @@ class MobilesController extends AppController {
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-        $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.channelclone')))));
         $this->set('game_link', $game['Game']['link']);
         $user = $this->User->find('first', array(
             'conditions' => array(
@@ -126,7 +126,7 @@ class MobilesController extends AppController {
         $keys = $this->Game->query("SELECT * FROM games as Game JOIN gamestats as Gamestat ON Gamestat.game_id = Game.id WHERE (Game.description like '%" . $param . "%' or Game.name like '%" . $param . "%') and user_id=$userid");
         $PaginateLimit = 9;
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
-        $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.channelclone')))));
         $limit = 12;
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $game['Game']['user_id']), 'limit' => $limit, 'order' => array('Game.recommend' => 'desc')));
         $cond = $this->paginate('Game');
@@ -173,7 +173,7 @@ class MobilesController extends AppController {
                     ),
                     'Gamestat' => array(
                         'fields' => array(
-                            'Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'
+                            'Gamestat.playcount,Gamestat.totalclone'
                         )
                     )
                 )
@@ -219,7 +219,7 @@ class MobilesController extends AppController {
                     ),
                     'Gamestat' => array(
                         'fields' => array(
-                            'Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'
+                            'Gamestat.playcount,Gamestat.totalclone'
                         )
                     )
                 )
@@ -265,7 +265,7 @@ class MobilesController extends AppController {
                     ),
                     'Gamestat' => array(
                         'fields' => array(
-                            'Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'
+                            'Gamestat.playcount,Gamestat.totalclone'
                         )
                     )
                 )
