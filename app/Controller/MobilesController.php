@@ -102,13 +102,16 @@ class MobilesController extends AppController {
                 'contain' => array(
                     'Gamestat' => array(
                         'fields' => array(
-                            'Gamestat.playcount,Gamestat.totalclone'
+                            'Gamestat.playcount,Gamestat.channelclone'
                         )
                     )
                 )
             )
         );
         $cond = $this->paginate('Game');
+        
+        //print_r($cond);
+        //exit;
 
         $this->set('games', $cond);
     }

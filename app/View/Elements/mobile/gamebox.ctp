@@ -7,10 +7,10 @@ foreach ($games as $game) {
     } else {
         $playcount = $game['Gamestat']['playcount'];
     }
-    if (empty($game['Gamestat']['totalclone'])) {
+    if (empty($game['Gamestat']['channelclone'])) {
         $totalclone = 0;
     } else {
-        $totalclone = $game['Gamestat']['totalclone'];
+        $totalclone = $game['Gamestat']['channelclone'];
     }
     ?>
     <div class="col-sm-4">

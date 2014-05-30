@@ -251,3 +251,13 @@
 .bt_grp_pad {
     padding: 0 15px;
 }
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+    background-color: #5CB85C;
+    border-color: #4CAE4C;
+    color: #FFFFFF;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active {
+    background-color: #5BC0DE;
+    border-color: #46B8DA;
+    color: #FFFFFF;
+}
