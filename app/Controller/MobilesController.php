@@ -142,6 +142,38 @@ class MobilesController extends AppController {
         $this->set('description', $user['User']['description']);
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
+        
+        if (empty($user['Userstat']['subscribe'])) {
+            $this->set('followers', 0);
+        } else {
+            $this->set('followers', $user['Userstat']['subscribe']);
+        }
+        if (empty($user['Userstat']['subscribeto'])) {
+            $this->set('following', 0);
+        } else {
+            $this->set('following', $user['Userstat']['subscribeto']);
+        }
+        if (empty($user['Userstat']['favoritecount'])) {
+            $this->set('favorites', 0);
+        } else {
+            $this->set('favorites', $user['Userstat']['favoritecount']);
+        }
+        if (empty($user['Userstat']['uploadcount'])) {
+            $this->set('gamescount', 0);
+        } else {
+            $this->set('gamescount', $user['Userstat']['uploadcount']);
+        }
+
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
+        
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
@@ -193,6 +225,36 @@ class MobilesController extends AppController {
         $this->set('description', $user['User']['description']);
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
+        if (empty($user['Userstat']['subscribe'])) {
+            $this->set('followers', 0);
+        } else {
+            $this->set('followers', $user['Userstat']['subscribe']);
+        }
+        if (empty($user['Userstat']['subscribeto'])) {
+            $this->set('following', 0);
+        } else {
+            $this->set('following', $user['Userstat']['subscribeto']);
+        }
+        if (empty($user['Userstat']['favoritecount'])) {
+            $this->set('favorites', 0);
+        } else {
+            $this->set('favorites', $user['Userstat']['favoritecount']);
+        }
+        if (empty($user['Userstat']['uploadcount'])) {
+            $this->set('gamescount', 0);
+        } else {
+            $this->set('gamescount', $user['Userstat']['uploadcount']);
+        }
+
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
         $this->render('index');
     }
 
@@ -206,6 +268,36 @@ class MobilesController extends AppController {
         $this->set('description', $user['User']['description']);
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
+        if (empty($user['Userstat']['subscribe'])) {
+            $this->set('followers', 0);
+        } else {
+            $this->set('followers', $user['Userstat']['subscribe']);
+        }
+        if (empty($user['Userstat']['subscribeto'])) {
+            $this->set('following', 0);
+        } else {
+            $this->set('following', $user['Userstat']['subscribeto']);
+        }
+        if (empty($user['Userstat']['favoritecount'])) {
+            $this->set('favorites', 0);
+        } else {
+            $this->set('favorites', $user['Userstat']['favoritecount']);
+        }
+        if (empty($user['Userstat']['uploadcount'])) {
+            $this->set('gamescount', 0);
+        } else {
+            $this->set('gamescount', $user['Userstat']['uploadcount']);
+        }
+
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
@@ -255,6 +347,36 @@ class MobilesController extends AppController {
         $this->set('description', $user['User']['description']);
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
+        if (empty($user['Userstat']['subscribe'])) {
+            $this->set('followers', 0);
+        } else {
+            $this->set('followers', $user['Userstat']['subscribe']);
+        }
+        if (empty($user['Userstat']['subscribeto'])) {
+            $this->set('following', 0);
+        } else {
+            $this->set('following', $user['Userstat']['subscribeto']);
+        }
+        if (empty($user['Userstat']['favoritecount'])) {
+            $this->set('favorites', 0);
+        } else {
+            $this->set('favorites', $user['Userstat']['favoritecount']);
+        }
+        if (empty($user['Userstat']['uploadcount'])) {
+            $this->set('gamescount', 0);
+        } else {
+            $this->set('gamescount', $user['Userstat']['uploadcount']);
+        }
+
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
@@ -304,6 +426,36 @@ class MobilesController extends AppController {
         $this->set('description', $user['User']['description']);
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
+        if (empty($user['Userstat']['subscribe'])) {
+            $this->set('followers', 0);
+        } else {
+            $this->set('followers', $user['Userstat']['subscribe']);
+        }
+        if (empty($user['Userstat']['subscribeto'])) {
+            $this->set('following', 0);
+        } else {
+            $this->set('following', $user['Userstat']['subscribeto']);
+        }
+        if (empty($user['Userstat']['favoritecount'])) {
+            $this->set('favorites', 0);
+        } else {
+            $this->set('favorites', $user['Userstat']['favoritecount']);
+        }
+        if (empty($user['Userstat']['uploadcount'])) {
+            $this->set('gamescount', 0);
+        } else {
+            $this->set('gamescount', $user['Userstat']['uploadcount']);
+        }
+
+        if (!empty($user['User']['fb_link'])) {
+            $this->set('facebook', $user['User']['fb_link']);
+        }
+        if (!empty($user['User']['twitter_link'])) {
+            $this->set('twitter', $user['User']['twitter_link']);
+        }
+        if (!empty($user['User']['gplus_link'])) {
+            $this->set('googleplus', $user['User']['gplus_link']);
+        }
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
