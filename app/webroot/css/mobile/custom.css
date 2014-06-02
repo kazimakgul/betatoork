@@ -264,3 +264,30 @@
     background: none repeat scroll 0 0 #323949;
     border-bottom: 1px solid #474D5C;
 }
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+.hidden_submit {
+    height: 34px;
+    width: 38px;
+    -moz-opacity: 0.00;
+    -khtml-opacity: 0.00;
+    opacity: 0.00;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=0);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    filter:alpha(opacity=0);
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    margin: 0
+}
