@@ -58,12 +58,20 @@ class BusinessesController extends AppController {
 		$userid = $this->Session->read('Auth.User.id');
 		$user=$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
 		$this->set('user',$user);
-		$this->set('title_for_layout', 'Clone Business Dashboard');
+		$this->set('title_for_layout', 'Clone Business Settings');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
 		$this->set('author_for_layout', 'Clone');
 		$this->render('/Businesses/dashboard/settings');
 	}
 
+	public function followers()
+	{
+		$this->layout='Business/dashboard';
+		$this->set('title_for_layout', 'Clone Business Followers');
+		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+		$this->set('author_for_layout', 'Clone');
+		$this->render('/Businesses/dashboard/followers');
+	}
 
 
     //this gets game suggestions

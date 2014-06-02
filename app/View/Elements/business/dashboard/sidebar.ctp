@@ -1,7 +1,8 @@
 <?php
 $index = $this->Html->url(array('controller'=>'businesses','action'=>'dashboard'));
 $settings = $this->Html->url(array('controller'=>'businesses','action'=>'settings'));
-$logout=$this->Html->url(array("controller" => "businesses","action" =>"logout")); 
+$logout=$this->Html->url(array("controller" => "businesses","action" =>"logout"));
+$followers = $this->Html->url(array('controller'=>'businesses','action'=>'followers'));
 ?>
 	<div id="sidebar-default" class="main-sidebar">
 			<div class="current-user">
@@ -35,29 +36,30 @@ $logout=$this->Html->url(array("controller" => "businesses","action" =>"logout")
 				<ul>
 					<li>
 						<a href="<?=$index;?>" class="active">
-							<i class="ion-android-earth"></i> 
+							<i class="ion-ios7-speedometer"></i> 
 							<span>Dashboard</span>
 						</a>
 					</li>
 					<li>
 						<a href="users.html" data-toggle="sidebar">
-							<i class="ion-person-stalker"></i> <span>Lists & Tables</span>
+							<i class="fa fa-gamepad"></i> <span>Games</span>
 							<i class="fa fa-chevron-down"></i>
 						</a>
 						<ul class="submenu">
-							<li><a href="users.html">Customers list</a></li>
-							<li><a href="datatables.html">Orders (Datatables)</a></li>
-							<li><a href="search.html">Products (Filters)</a></li>
+							<li><a href="users.html">My Games</a></li>
+							<li><a href="datatables.html">Favorites</a></li>
+							<li><a href="search.html">Explore Games</a></li>
 						</ul>
 					</li>
 					<li>
 						<a href="users.html" data-toggle="sidebar">
-							<i class="ion-stats-bars"></i> <span>Reports</span>
+							<i class="ion-person-add"></i> <span>Follows</span>
 							<i class="fa fa-chevron-down"></i>
 						</a>
 						<ul class="submenu">
-							<li><a href="reports.html">Reports orders</a></li>
-							<li><a href="reports-alt.html">Report sales</a></li>
+							<li><a href="reports.html">Following</a></li>
+							<li><a href="<?=$followers;?>">Followers</a></li>
+							<li><a href="reports-alt.html">Explore Channels</a></li>
 						</ul>
 					</li>
 					<li>
