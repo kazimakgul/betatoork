@@ -34,7 +34,6 @@ $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "newga
                 <li><a href="<?php echo $mostplayed; ?>"><i class="fa fa-play"></i> Most Played</a></li>
                 <li><a href="<?php echo $newgames; ?>"><i class="fa fa-flash"></i> New Games</a></li>
                 <li><a href="javascript:;"><i class="fa fa-gift"></i> Mobile Apps</a></li>
-                <li><a href="javascript:;"><i class="fa fa-desktop"></i> Desktop Version</a></li>
             </ul>
             <div>
                 <p><?php echo $username ?></p>
