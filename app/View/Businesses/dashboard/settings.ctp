@@ -1,3 +1,11 @@
+<?php 
+$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+  if($user['User']['picture']==null) { 
+    $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'img-responsive img-circle',"alt" => "clone user image")); 
+    } else {
+      $img = $this->Upload->image($user,'User.picture',array(),array('class'=>'img-responsive img-circle','onerror'=>'imgError(this,"avatar");'));
+	}
+?>
 <body id="account">
 	<div id="wrapper">
 		<?php  echo $this->element('business/dashboard/sidebar');?>
@@ -41,7 +49,7 @@
 				<h3>
 					Profile settings
 				</h3>
-
+					<?// print_r($user);?>
 				<p class="intro">
 					Change your account information, avatar, login credentials, etc.
 				</p>
@@ -49,7 +57,8 @@
 				<form>
 					<div class="form-group avatar-field clearfix">
 					    <div class="col-sm-3">
-					    	<img class="img-responsive img-circle" src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/hellboy_toork_original.jpg" />
+							<?=$img;?>
+					    	<!--<img class="" width="128" src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/hellboy_toork_original.jpg" />-->
 					    </div>
 					    <div class="col-sm-9">
 					    	<label>Set up your avatar picture</label>
@@ -57,12 +66,12 @@
 					    </div>
 				  	</div>
 				  	<div class="form-group">
-						<label>Name</label>
-						<input type="email" class="form-control" placeholder="Enter email" value="John Smith Jr" />
+						<label>Username</label>
+						<input type="email" class="form-control" disabled="disabled" placeholder="Enter email" value="<?=$user['User']['username'];?>" />
 					</div>
 				  	<div class="form-group">
 						<label>Email address</label>
-						<input type="email" class="form-control" placeholder="Enter email" value="john@gmail.com" />
+						<input type="email" class="form-control" placeholder="Enter email" value="<?=$user['User']['email'];?>" />
 					</div>
 					<div class="form-group">
 						<label>Timezone</label>
@@ -92,11 +101,11 @@
 					</div>
 					<div class="form-group">
 						<label>Street & Number</label>
-						<input type="text" class="form-control" placeholder="Enter email" value="5th Avenue 3053" />
+						<input type="text" class="form-control" placeholder="Enter Street" value="5th Avenue 3053" />
 					</div>
 					<div class="form-group">
-						<label>City</label>
-						<input type="text" class="form-control" placeholder="Enter email" value="San Francisco" />
+						<label>Ülke</label>
+						<input type="text" class="form-control" placeholder="Enter Country" value="<?=$user['Country']['name'];?>"" />
 					</div>
 					<div class="form-group">
 						<label>ZIP</label>

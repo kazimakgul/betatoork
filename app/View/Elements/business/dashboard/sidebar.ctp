@@ -1,7 +1,7 @@
 <?php
 $index = $this->Html->url(array('controller'=>'businesses','action'=>'dashboard'));
 $settings = $this->Html->url(array('controller'=>'businesses','action'=>'settings'));
-
+$logout=$this->Html->url(array("controller" => "businesses","action" =>"logout")); 
 ?>
 	<div id="sidebar-default" class="main-sidebar">
 			<div class="current-user">
@@ -170,7 +170,7 @@ $settings = $this->Html->url(array('controller'=>'businesses','action'=>'setting
 							<!-- <li><a href="#">3 features added</a></li> -->
 						</ul>
 					</li>
-					<li><a href="signup.html"><i class="ion-log-out"></i></a></li>
+					<li><a href="<?=$logout;?>"><i class="ion-log-out"></i></a></li>
 				</ul>
 			</div>
 		</div>
