@@ -104,6 +104,14 @@ class AppController extends Controller {
         }
     }
 
+    
+    //This functin will get special style settings and store them in session
+    public function get_style_settings($id=NULL)
+    {
+        $style = $this->User->find('first',array('contain'=>false,'conditions'=>array('User.id'=>$id),'fields'=>array('User.bg_image,User.bg_color'))); 
+        $this->set('channel_style',$style);
+    }
+
     public function remove_temporary($id, $type) {
         //===Alakalı tipteki klasörü siler begins.====
         App::uses('Folder', 'Utility');
