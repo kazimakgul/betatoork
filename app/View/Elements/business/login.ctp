@@ -90,7 +90,7 @@
 
 
 <!-- Login Modal -->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 9999999;">
   <div class="modal-dialog">
   <div class="col-sm-offset-2">
     <form class="form-signin mg-btm">

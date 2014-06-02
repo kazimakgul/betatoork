@@ -33,10 +33,7 @@ class BusinessesController extends AppController {
 	}
      
 	public function afterFilter() {
-		if ($this->response->statusCode() == '404')
-    	{
-   		$this->redirect(array('controller' => 'businesses', 'action' => 'mysite',00));
-    	}
+
 	}
 	public function checkUser($userid){
 		 if($this->User->find('first', array('conditions'=> array('User.id'=>$userid))))
@@ -91,9 +88,22 @@ class BusinessesController extends AppController {
 
 	public function contactmail($user_id) {
         $this->User->id=$user_id;
-	    $email = new CakeEmail();
+		$user = $this->User->find('first',array('conditions' => array('User.id'=>$user_id)));
+		if ($user === false) {
+			$this->Session->setFlash('This mail is not registered.');
+			debug(__METHOD__." failed to retrieve User data for user.id: {$user_id}");
+			return false;
+		}
+		$email = new CakeEmail();
 	    // Set data for the "view" of the Email
-		$email->viewVars(array('username'=>$user["User"]["username"],'name'=>$_POST["firstname"],'surname'=>$_POST["lastname"],'e-mail'=>$_POST["email"],'subject'=>$_POST["subject"],'message'=>$_POST["comment"]));
+		$email->viewVars(array(
+							'username'=>$user['User']['username'],
+							'name'=>$this->request->data["firstname"],
+							'surname'=>$this->request->data["lastname"],
+							'e-mail'=>$this->request->data["email"],
+							'subject'=>$this->request->data["subject"],
+							'message'=>$this->request->data["comment"])
+							);
 		$email->config('smtp')
 			->template('business/contact') //I'm assuming these were created
 		    ->emailFormat('html')
