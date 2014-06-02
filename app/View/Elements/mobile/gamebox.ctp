@@ -37,10 +37,16 @@ foreach ($games as $game) {
                 <div class="row text-center">
                     <div class="btn-group btn-group-justified bt_grp_pad">
                         <div class="btn-group">
-                            <label type="button" class="btn btn-success"><?php echo $playcount; ?> Plays</label>
+                            <label type="button" class="btn btn-success">
+                                <i class="fa fa-play" title="" data-toggle="tooltip" data-original-title=" Plays"></i>
+                                <?php echo $playcount; ?> Plays
+                            </label>
                         </div>
                         <div class="btn-group">
-                            <label type="button" class="btn btn-info"><?php echo $totalclone; ?> Clones</label>
+                            <label type="button" class="btn btn-info">
+                                <i class="fa fa-plus-square" title="" data-toggle="tooltip" data-original-title=" Clones"></i>
+                                <?php echo $totalclone; ?> Clones
+                            </label>
                         </div>
                     </div>
                 </div>
