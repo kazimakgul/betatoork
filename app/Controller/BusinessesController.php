@@ -47,6 +47,12 @@ class BusinessesController extends AppController {
 			}
 	}
 	
+	public function dashboard()
+	{
+		$this->layout='Business/dashboard';
+	}
+
+
     //this gets game suggestions
 	public function get_game_suggestions($order)
 	{
