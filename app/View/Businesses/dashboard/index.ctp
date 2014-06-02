@@ -1,5 +1,5 @@
 <body id="dashboard">
-<div class="wrap">
+<div id="wrapper">
 		<?php  echo $this->element('business/dashboard/sidebar');?>
 		<div id="content">
 			<div class="menubar">

@@ -1,3 +1,8 @@
+<?php
+$index = $this->Html->url(array('controller'=>'businesses','action'=>'dashboard'));
+$settings = $this->Html->url(array('controller'=>'businesses','action'=>'settings'));
+
+?>
 	<div id="sidebar-default" class="main-sidebar">
 			<div class="current-user">
 				<a href="index.html" class="name">
@@ -29,7 +34,7 @@
 				<h3>General</h3>
 				<ul>
 					<li>
-						<a href="index.html" class="active">
+						<a href="<?=$index;?>" class="active">
 							<i class="ion-android-earth"></i> 
 							<span>Dashboard</span>
 						</a>
@@ -123,7 +128,7 @@
 							<i class="fa fa-chevron-down"></i>
 						</a>
 						<ul class="submenu">
-							<li><a href="account-profile.html">Settings</a></li>
+							<li><a href="<?=$settings;?>">Settings</a></li>
 							<li><a href="account-billing.html">Billing</a></li>
 							<li><a href="account-notifications.html">Notifications</a></li>
 							<li><a href="account-support.html">Support</a></li>
