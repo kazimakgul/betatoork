@@ -261,3 +261,7 @@
     border-color: #46B8DA;
     color: #FFFFFF;
 }
+#toolbar {
+    background: none repeat scroll 0 0 #323949;
+    border-bottom: 1px solid #474D5C;
+}
