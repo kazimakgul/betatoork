@@ -1,4 +1,8 @@
-<?php if ($this->Paginator->param('pageCount') > 1) { ?>  
+<?php
+$params = $this->Paginator->params();
+$pageCount = $params['pageCount'];
+if ($pageCount > 1) {
+    ?>
     <div style="clear: both;">
         <ul  class="pagination">
             <li><?php echo $this->Paginator->prev(__('Prev', false), array(), null, array('class' => 'disabled')); ?></li>
