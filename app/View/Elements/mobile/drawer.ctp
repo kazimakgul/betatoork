@@ -23,7 +23,6 @@ $image = $this->requestAction(array('controller' => 'users', 'action' => 'random
                         echo '<a href="' . $home . '">' . $this->Upload->image($user, 'User.picture', array(), array('id' => 'user_avatar', 'class' => 'img-circle', 'onerror' => 'imgError(this,"avatar");', 'alt' => 'profile', 'width' => '50', 'height' => '50')) . '</a>';
                     }
                     ?>
-                    <!-- <a href="<?php echo $home ?>"><img class="img-circle" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="profile" width="50" height="50"></a> -->
                     <a class="tit1" href="<?php echo $home ?>"><?php echo $screenname ?></a>
                     <a class="tit2" href="<?php echo $home ?>">@<?php echo $username ?></a>
                 </div>
