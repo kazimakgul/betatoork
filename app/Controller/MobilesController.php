@@ -51,11 +51,14 @@ class MobilesController extends AppController {
             ),
                 )
         );
-
+        
+        $this->set('user', $user);
         $this->set('user_id', $userid);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
+        $this->set('cover', $user['User']['banner']);
+        $this->set('picture', $user['User']['picture']);
 
         if (empty($user['Userstat']['subscribe'])) {
             $this->set('followers', 0);
@@ -132,10 +135,13 @@ class MobilesController extends AppController {
             )
                 )
         );
+        $this->set('user', $user);
         $this->set('user_id', $game['Game']['user_id']);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
+        $this->set('cover', $user['User']['banner']);
+        $this->set('picture', $user['User']['picture']);
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
@@ -180,20 +186,26 @@ class MobilesController extends AppController {
         )));
         $cond = $this->paginate('Game');
         $this->set('games', $keys);
+        $this->set('user', $user);
         $this->set('user_id', $userid);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
+        $this->set('cover', $user['User']['banner']);
+        $this->set('picture', $user['User']['picture']);
         $this->render('index');
     }
 
     public function toprated($userid) {
         $this->layout = 'Mobile/mobile';
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $this->set('user', $user);
         $this->set('user_id', $userid);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
+        $this->set('cover', $user['User']['banner']);
+        $this->set('picture', $user['User']['picture']);
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
@@ -236,10 +248,13 @@ class MobilesController extends AppController {
     public function mostplayed($userid) {
         $this->layout = 'Mobile/mobile';
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $this->set('user', $user);
         $this->set('user_id', $userid);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
+        $this->set('cover', $user['User']['banner']);
+        $this->set('picture', $user['User']['picture']);
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
@@ -282,10 +297,13 @@ class MobilesController extends AppController {
     public function newgames($userid) {
         $this->layout = 'Mobile/mobile';
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $this->set('user', $user);
         $this->set('user_id', $userid);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
+        $this->set('cover', $user['User']['banner']);
+        $this->set('picture', $user['User']['picture']);
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
