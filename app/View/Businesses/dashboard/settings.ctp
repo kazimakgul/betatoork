@@ -25,6 +25,12 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 						</a>
 					</li>
 					<li>
+						<a href="account-profile.html">
+							<i class="fa fa-desktop"></i>
+							Channel
+						</a>
+					</li>
+					<li>
 						<a href="account-billing.html">
 							<i class="ion-card"></i>
 							Billing

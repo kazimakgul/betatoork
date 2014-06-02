@@ -3,6 +3,7 @@ $index = $this->Html->url(array('controller'=>'businesses','action'=>'dashboard'
 $settings = $this->Html->url(array('controller'=>'businesses','action'=>'settings'));
 $logout=$this->Html->url(array("controller" => "businesses","action" =>"logout"));
 $followers = $this->Html->url(array('controller'=>'businesses','action'=>'followers'));
+$mygames = $this->Html->url(array('controller'=>'businesses','action'=>'mygames'));
 ?>
 	<div id="sidebar-default" class="main-sidebar">
 			<div class="current-user">
@@ -46,7 +47,7 @@ $followers = $this->Html->url(array('controller'=>'businesses','action'=>'follow
 							<i class="fa fa-chevron-down"></i>
 						</a>
 						<ul class="submenu">
-							<li><a href="users.html">My Games</a></li>
+							<li><a href="<?=$mygames;?>">My Games</a></li>
 							<li><a href="datatables.html">Favorites</a></li>
 							<li><a href="search.html">Explore Games</a></li>
 						</ul>

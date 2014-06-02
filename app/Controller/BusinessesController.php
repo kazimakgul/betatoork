@@ -73,6 +73,14 @@ class BusinessesController extends AppController {
 		$this->render('/Businesses/dashboard/followers');
 	}
 
+	public function mygames()
+	{
+		$this->layout='Business/dashboard';
+		$this->set('title_for_layout', 'Clone Business My Games');
+		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+		$this->set('author_for_layout', 'Clone');
+		$this->render('/Businesses/dashboard/mygames');
+	}
 
     //this gets game suggestions
 	public function get_game_suggestions($order)
