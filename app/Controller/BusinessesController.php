@@ -35,19 +35,24 @@ class BusinessesController extends AppController {
 	public function afterFilter() {
      
 	}
+	public function sideBar()
+	{
+		$userid = $this->Session->read('Auth.User.id');
+		$user=$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
+		$this->set('user',$user);
+	}
+	
+	
 	public function checkUser($userid){
-		 if($this->User->find('first', array('conditions'=> array('User.id'=>$userid))))
-			{
-				return 0;
-			}else{
-			    return 1;
-			}
+		 if($this->User->find('first', array('conditions'=> array('User.id'=>$userid)))){return 0;}
+		 else{return 1;}
 	}
     
 	
 	public function dashboard()
 	{
 		$this->layout='Business/dashboard';
+		$this->sideBar();
 		$this->set('title_for_layout', 'Clone Business Dashboard');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
 		$this->set('author_for_layout', 'Clone');
@@ -56,9 +61,7 @@ class BusinessesController extends AppController {
 	public function settings()
 	{
 		$this->layout='Business/dashboard';
-		$userid = $this->Session->read('Auth.User.id');
-		$user=$this->User->find('first', array('conditions' => array('User.id' => $userid),'fields'=>array('*')));
-		$this->set('user',$user);
+		$this->sideBar();
 		$this->set('title_for_layout', 'Clone Business Settings');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
 		$this->set('author_for_layout', 'Clone');
@@ -68,6 +71,7 @@ class BusinessesController extends AppController {
 	public function followers()
 	{
 		$this->layout='Business/dashboard';
+		$this->sideBar();
 		$this->set('title_for_layout', 'Clone Business Followers');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
 		$this->set('author_for_layout', 'Clone');
@@ -77,6 +81,7 @@ class BusinessesController extends AppController {
 	public function mygames()
 	{
 		$this->layout='Business/dashboard';
+		$this->sideBar();
 		$this->set('title_for_layout', 'Clone Business My Games');
 		$this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
 		$this->set('author_for_layout', 'Clone');

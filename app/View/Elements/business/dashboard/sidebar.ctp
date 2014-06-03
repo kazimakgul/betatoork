@@ -1,34 +1,41 @@
 <?php
-$index = $this->Html->url(array('controller'=>'businesses','action'=>'dashboard'));
-$settings = $this->Html->url(array('controller'=>'businesses','action'=>'settings'));
-$logout=$this->Html->url(array("controller" => "businesses","action" =>"logout"));
-$followers = $this->Html->url(array('controller'=>'businesses','action'=>'followers'));
-$mygames = $this->Html->url(array('controller'=>'businesses','action'=>'mygames'));
+$index		= $this->Html->url(array('controller'=>'businesses','action'=>'dashboard'));
+$settings	= $this->Html->url(array('controller'=>'businesses','action'=>'settings'));
+$logout		= $this->Html->url(array("controller" => "businesses","action" =>"logout"));
+$followers	= $this->Html->url(array('controller'=>'businesses','action'=>'followers'));
+$mygames	= $this->Html->url(array('controller'=>'businesses','action'=>'mygames'));
+
+$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+  if($user['User']['picture']==null) { 
+    	$img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'avatar circular',"alt" => "clone user image")); 
+    } else {
+    	$img = $this->Upload->image($user,'User.picture',array(),array('class'=>'avatar circular','onerror'=>'imgError(this,"avatar");'));
+	}
 ?>
 	<div id="sidebar-default" class="main-sidebar">
 			<div class="current-user">
 				<a href="index.html" class="name">
-					<img class="avatar" src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/hellboy_toork_original.jpg" />
+					<?=$img;?>
 					<span>
-						Socialesman
+						<?=$user['User']['username'];?>
 						<i class="fa fa-chevron-down"></i>
 					</span>
 				</a>
 				<ul class="menu">
 					<li>
-						<a href="account-profile.html">Account settings</a>
+						<a href="<?=$settings;?>">Account settings</a>
 					</li>
 					<li>
-						<a href="account-billing.html">Billing</a>
+						<a href="<?=$settings;?>">Billing</a>
 					</li>
 					<li>
-						<a href="account-notifications.html">Notifications</a>
+						<a href="<?=$settings;?>">Notifications</a>
 					</li>
 					<li>
-						<a href="account-support.html">Help / Support</a>
+						<a href="<?=$settings;?>">Help / Support</a>
 					</li>
 					<li>
-						<a href="signup.html">Sign out</a>
+						<a href="<?=$logout;?>">Sign out</a>
 					</li>
 				</ul>
 			</div>

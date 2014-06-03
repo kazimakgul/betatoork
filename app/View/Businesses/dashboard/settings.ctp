@@ -1,9 +1,9 @@
 <?php 
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
   if($user['User']['picture']==null) { 
-    $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'img-responsive img-circle',"alt" => "clone user image")); 
+    $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'img-responsive img-circle circular1',"alt" => "clone user image")); 
     } else {
-      $img = $this->Upload->image($user,'User.picture',array(),array('class'=>'img-responsive img-circle','onerror'=>'imgError(this,"avatar");'));
+      $img = $this->Upload->image($user,'User.picture',array(),array('class'=>'img-responsive img-circle circular1','onerror'=>'imgError(this,"avatar");'));
 	}
 ?>
 <body id="account">
