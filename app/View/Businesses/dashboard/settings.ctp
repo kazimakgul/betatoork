@@ -11,73 +11,31 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 		<?php  echo $this->element('business/dashboard/sidebar');?>
 
 		<div id="content">
-			<div id="sidebar">
-				<div class="sidebar-toggler visible-xs">
-					<i class="ion-navicon"></i>
-				</div>
-				
-				<h3>My account</h3>
-				<ul class="menu">
-					<li>
-						<a href="account-profile.html" class="active">
-							<i class="ion-ios7-person-outline"></i>
-							Profile
-						</a>
-					</li>
-					<li>
-						<a href="account-profile.html">
-							<i class="fa fa-desktop"></i>
-							Channel
-						</a>
-					</li>
-					<li>
-						<a href="account-billing.html">
-							<i class="ion-card"></i>
-							Billing
-						</a>
-					</li>
-					<li>
-						<a href="account-notifications.html">
-							<i class="ion-ios7-email-outline"></i>
-							Notifications
-						</a>
-					</li>
-					<li>
-						<a href="account-support.html">
-							<i class="ion-ios7-help-outline"></i>
-							Support
-						</a>
-					</li>
-				</ul>
-			</div>
-
+				<?php  echo $this->element('business/dashboard/sidebar_setting');?>
 			<div id="panel" class="profile">
 				<h3>
 					Profile settings
 				</h3>
-					<?// print_r($user);?>
 				<p class="intro">
 					Change your account information, avatar, login credentials, etc.
 				</p>
 
-				<form>
 					<div class="form-group avatar-field clearfix">
 					    <div class="col-sm-3">
 							<?=$img;?>
-					    	<!--<img class="" width="128" src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/hellboy_toork_original.jpg" />-->
 					    </div>
 					    <div class="col-sm-9">
 					    	<label>Set up your avatar picture</label>
-					      	<input type="file" />
+					      	<input type="file"/>
 					    </div>
 				  	</div>
 				  	<div class="form-group">
 						<label>Username</label>
-						<input type="email" class="form-control" disabled="disabled" placeholder="Enter email" value="<?=$user['User']['username'];?>" />
+						<input type="text" class="form-control" disabled="disabled" value="<?=$user['User']['username'];?>" />
 					</div>
 				  	<div class="form-group">
 						<label>Email address</label>
-						<input type="email" class="form-control" placeholder="Enter email" value="<?=$user['User']['email'];?>" />
+						<input type="email" class="form-control" disabled="disabled" value="<?=$user['User']['email'];?>" />
 					</div>
 					<div class="form-group">
 						<label>Timezone</label>
@@ -107,28 +65,28 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 					</div>
 					<div class="form-group">
 						<label>Street & Number</label>
-						<input type="text" class="form-control" placeholder="Enter Street" value="5th Avenue 3053" />
+						<input type="text" class="form-control" id="street" placeholder="Enter Street" value="5th Avenue 3053" />
 					</div>
 					<div class="form-group">
 						<label>Ülke</label>
-						<input type="text" class="form-control" placeholder="Enter Country" value="<?=$user['Country']['name'];?>"" />
+						<input type="text" class="form-control" id="country" placeholder="Enter Country" value="<?=$user['Country']['name'];?>" />
 					</div>
 					<div class="form-group">
 						<label>ZIP</label>
-						<input type="text" class="form-control" placeholder="Enter email" value="3352" />
+						<input type="text" class="form-control" id="zip" placeholder="Enter zip code" value="3352" />
 					</div>
 					<div class="form-group">
 						<label>New password</label>
-						<input type="password" class="form-control" />
+						<input type="password" id="pass" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label>Confirm new password</label>
 						<input type="password" class="form-control" />
+						<input type="hidden" id="attr" name="attr" value="profile_update" />
 					</div>
 					<div class="form-group action">
-						<input type="submit" class="btn btn-success" value="Save changes" />
+						<input type="submit" class="btn btn-success" id="updateButton" value="Save changes" />
 					</div>
-				</form>
 			</div>
 
 		</div>

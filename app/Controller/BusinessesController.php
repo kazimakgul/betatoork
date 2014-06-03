@@ -58,6 +58,25 @@ class BusinessesController extends AppController {
         }
     }
 
+
+
+	public function updateData()
+	{
+		
+		if($id)
+		{
+		$this->set('success', $id);
+		$this->set('_serialize', array('success'));			
+		}else{
+			$id=1;
+		$this->set('title', "Oğuzhanın Title'ı");
+		$this->set('_serialize', array('title'));			
+		}
+		
+
+	}
+
+
     //this gets game suggestions
     public function get_game_suggestions($order) {
         $top50 = $this->Game->find('all', array('contain' => array('User' => array('fields' => 'User.seo_username,User.username')), 'conditions' => array('Game.active' => '1'), 'limit' => 100, 'order' => array($order => 'desc'
@@ -102,7 +121,7 @@ class BusinessesController extends AppController {
 	 * Check Kontrol method
 	 *
 	 * @param $table => table name, $authUser => Logined User, $gameId => Check Game id
-	 * @return array query table
+	 * @return array table
 	 */
     public function checkControl($Table, $AuthUser, $GameId) {
         return $this->Game->query('SELECT id FROM ' . $Table . ' WHERE user_id=' . $AuthUser . ' AND game_id=' . $GameId);
