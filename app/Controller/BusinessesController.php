@@ -388,4 +388,33 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/followers');
     }
 
+    /**
+     * 
+     * 
+     * 
+     * 
+     * 
+     * asdasdsadsadd
+     * asdasdasd
+     * asd
+     * sad
+     * sad
+     * sa
+     * dsa
+     * d
+     * sad
+     * sa
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    
 }
