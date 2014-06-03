@@ -21,6 +21,14 @@
 		<?php if($auth_user){?> user_auth='1'; <?php }else{?> user_auth='0'; <?php }?>
         </script>
 
+    
+    <?php $customcss='<style type="text/css"> body {
+    color: purple;
+    background-color: #d8da3d;
+    background-image: url("http://graphicsheat.com/wp-content/uploads/2013/05/Twitter_pattern_background_by_Ainon.jpg");
+        } </style>'; ?>
+
+        <?php echo $customcss;  ?>
 
     <!--We Add User Selected Addtitional Css Here(begins) -->
     <style type="text/css">
