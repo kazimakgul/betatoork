@@ -52,6 +52,32 @@ class BusinessesController extends AppController {
         }
     }
 
+
+/*
+ * 
+ * 
+ * Volkan Celiloğlu
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * DEneme
+ * 
+ * 
+ * Test
+ * 
+ * 
+ * 
+ * 
+ * */
+
+
     public function dashboard() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
