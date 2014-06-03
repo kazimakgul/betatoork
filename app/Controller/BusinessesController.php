@@ -8,7 +8,6 @@ App::uses('AppController', 'Controller');
  * @property Business $Game
  */
 class BusinessesController extends AppController {
-
     public $name = 'Businesses';
     var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Adsetting', 'Adcode');
     public $helpers = array('Html', 'Form', 'Upload', 'Recaptcha.Recaptcha', 'Time');
@@ -39,23 +38,14 @@ class BusinessesController extends AppController {
     }
 
 
-	/**
-	 * Side Bar method
-	 *
-	 * @param 
-	 * @return array() $user
-	 */
-    public function sideBar() {
-        $userid = $this->Session->read('Auth.User.id');
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
-        $this->set('user', $user);
-    }
-
-
-
+/*********************************************************************************/
+/*********************************************************************************/
+/***************          GLOBAL FUNTIONS          *******************************/
+/*********************************************************************************/
+/*********************************************************************************/
 
 	/**
-	 * Side Bar checkUser
+	 * checkUser method
 	 *
 	 * @param user Id
 	 * @return 1=>true or 0=>false
@@ -67,42 +57,6 @@ class BusinessesController extends AppController {
             return 1;
         }
     }
-
-
-	/**
-	 * Dashboard method
-	 *
-	 * @param 
-	 * @return Dashboard Page
-	 */
-    public function dashboard() {
-        $this->layout = 'Business/dashboard';
-        $this->sideBar();
-        $this->set('title_for_layout', 'Clone Business Dashboard');
-        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-        $this->set('author_for_layout', 'Clone');
-        $this->render('/Businesses/dashboard/index');
-    }
-
-
-
-	/**
-	 * Settings method
-	 *
-	 * @param 
-	 * @return Settings Page
-	 */
-    public function settings() {
-        $this->layout = 'Business/dashboard';
-        $this->sideBar();
-        $this->set('title_for_layout', 'Clone Business Settings');
-        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-        $this->set('author_for_layout', 'Clone');
-        $this->render('/Businesses/dashboard/settings');
-    }
-
-
-
 
     //this gets game suggestions
     public function get_game_suggestions($order) {
@@ -119,7 +73,6 @@ class BusinessesController extends AppController {
     }
 
 
-
 	/**
 	 * Logout method
 	 *
@@ -133,6 +86,7 @@ class BusinessesController extends AppController {
         $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
     }
 
+
     public function lucky_number() {
         if ($this->Session->check('Dashboard.randomKey')) {
             $key = $this->Session->read('Dashboard.randomKey');
@@ -141,6 +95,17 @@ class BusinessesController extends AppController {
             $this->Session->write('Dashboard.randomKey', $key);
         }
         return $key;
+    }
+
+
+	/**
+	 * Check Kontrol method
+	 *
+	 * @param $table => table name, $authUser => Logined User, $gameId => Check Game id
+	 * @return array query table
+	 */
+    public function checkControl($Table, $AuthUser, $GameId) {
+        return $this->Game->query('SELECT id FROM ' . $Table . ' WHERE user_id=' . $AuthUser . ' AND game_id=' . $GameId);
     }
 
     public function contactmail($user_id) {
@@ -179,6 +144,60 @@ class BusinessesController extends AppController {
         $this->set('username', $userName);
     }
 
+
+/*********************************************************************************/
+/*********************************************************************************/
+/***************         DASHBOARD SECTION         *******************************/
+/*********************************************************************************/
+/*********************************************************************************/
+
+	/**
+	 * Side Bar method
+	 *
+	 * @param 
+	 * @return array() $user
+	 */
+    public function sideBar() {
+        $userid = $this->Session->read('Auth.User.id');
+        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $this->set('user', $user);
+    }
+
+
+	/**
+	 * Dashboard method
+	 *
+	 * @param 
+	 * @return Dashboard Page
+	 */
+    public function dashboard() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/index');
+    }
+
+
+
+	/**
+	 * Settings method
+	 *
+	 * @param 
+	 * @return Settings Page
+	 */
+    public function settings() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Settings');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/settings');
+    }
+
+
+
     public function gameswitch($id = null) {
         $gameid = $this->request->params['pass'][0];
         $game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid), 'fields' => array('Game.embed'), 'contain' => false)); //Recoded
@@ -189,53 +208,17 @@ class BusinessesController extends AppController {
         }
     }
 
-    public function checkControl($Table, $AuthUser, $GameId) {
-        return $this->Game->query('SELECT id FROM ' . $Table . ' WHERE user_id=' . $AuthUser . ' AND game_id=' . $GameId);
-    }
 
-    public function search2($userid) {
-        $this->layout = 'Business/business';
-        if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
-            $param = $this->request->query['srch-term'];
-        } else {
-            $this->redirect(array("controller" => "businesses", "action" => "mysite"));
-        }
 
-        //========Get Current Subscription===============
-        $authid = $this->Session->read('Auth.User.id');
-        if ($authid) {
-            $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
-            if ($subscribebefore != NULL) {
-                $this->set('follow', 1);
-            } else {
-                $this->set('follow', 0);
-            }
-        } else {
-            $this->set('follow', 0);
-        }
-        $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
-        $this->paginate = array('Game' => array(
-                'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))),
-                'limit' => 12,
-                'order' => 'Game.id DESC',
-                'conditions' => array(
-                    'Game.active' => '1',
-                    'Game.user_id' => $userid,
-                    'OR' => array('Game.description LIKE' => '%' . $param . '%', 'Game.name LIKE' => '%' . $param . '%'),
-        )));
-        $PaginateLimit = 30;
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
-        $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
-        $limit = 12;
-        $cond = $this->paginate('Game');
-        $this->set('title_for_layout', 'Clone - Game Search Engine');
-        $this->set('description_for_layout', 'Clone - Game Search Engine powered by Google. Clone Search is specially designed for searching games');
-        $this->set('searchVal', $param);
-        $this->set('category', $category);
-        $this->set('query', $cond);
-        $this->set('game', $game);
-        $this->set('user', $user);
-    }
+
+
+
+
+/*********************************************************************************/
+/*********************************************************************************/
+/***************           MYSITE SECTION          *******************************/
+/*********************************************************************************/
+/*********************************************************************************/
 
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
@@ -278,6 +261,8 @@ class BusinessesController extends AppController {
         }
     }
 
+
+
     function get_ads_info($userid = NULL, $authid = NULL) {
         //======Getting ads datas======
         $addata = $this->Adsetting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Adsetting.user_id' => $userid)));
@@ -292,6 +277,57 @@ class BusinessesController extends AppController {
         if ($_GET['mode'] == 'visitor') {
             $this->set('channel_owner', 0);
         }
+    }
+
+
+	/**
+	 * Search method
+	 *
+	 * @param $userid =>user.id
+	 * @return Search Page
+	 */
+    public function search2($userid) {
+        $this->layout = 'Business/business';
+        if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
+            $param = $this->request->query['srch-term'];
+        } else {
+            $this->redirect(array("controller" => "businesses", "action" => "mysite"));
+        }
+
+        //========Get Current Subscription===============
+        $authid = $this->Session->read('Auth.User.id');
+        if ($authid) {
+            $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
+            if ($subscribebefore != NULL) {
+                $this->set('follow', 1);
+            } else {
+                $this->set('follow', 0);
+            }
+        } else {
+            $this->set('follow', 0);
+        }
+        $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
+        $this->paginate = array('Game' => array(
+                'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))),
+                'limit' => 12,
+                'order' => 'Game.id DESC',
+                'conditions' => array(
+                    'Game.active' => '1',
+                    'Game.user_id' => $userid,
+                    'OR' => array('Game.description LIKE' => '%' . $param . '%', 'Game.name LIKE' => '%' . $param . '%'),
+        )));
+        $PaginateLimit = 30;
+        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
+        $limit = 12;
+        $cond = $this->paginate('Game');
+        $this->set('title_for_layout', 'Clone - Game Search Engine');
+        $this->set('description_for_layout', 'Clone - Game Search Engine powered by Google. Clone Search is specially designed for searching games');
+        $this->set('searchVal', $param);
+        $this->set('category', $category);
+        $this->set('query', $cond);
+        $this->set('game', $game);
+        $this->set('user', $user);
     }
 
 
@@ -345,6 +381,7 @@ class BusinessesController extends AppController {
             $this->render('/Businesses/playframe');
         }
     }
+
 
 	/**
 	 * Category method
