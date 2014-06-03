@@ -52,32 +52,6 @@ class BusinessesController extends AppController {
         }
     }
 
-
-/*
- * 
- * 
- * Volkan Celiloğlu
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * DEneme
- * 
- * 
- * Test
- * 
- * 
- * 
- * 
- * */
-
-
     public function dashboard() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -413,34 +387,5 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/followers');
     }
-
-    /**
-     * 
-     * 
-     * 
-     * 
-     * 
-     * asdasdsadsadd
-     * asdasdasd
-     * asd
-     * sad
-     * sad
-     * sa
-     * dsa
-     * d
-     * sad
-     * sa
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
     
 }
