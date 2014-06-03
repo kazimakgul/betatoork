@@ -281,7 +281,6 @@ class BusinessesController extends AppController {
     }
 
 
-
     function get_ads_info($userid = NULL, $authid = NULL) {
         //======Getting ads datas======
         $addata = $this->Adsetting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Adsetting.user_id' => $userid)));
@@ -492,6 +491,30 @@ class BusinessesController extends AppController {
     public function mygames() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+        
+        $userid = $this->Session->read('Auth.User.id');
+        $limit=16;
+        
+        $this->paginate = array(
+            'Game' => array(
+                'conditions' => array(
+                    'Game.user_id' => $userid
+                ),
+                'fields' => array(
+                    'Game.name,Game.seo_url,Game.id,Game.fullscreen,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description', 'Gamestat.playcount', 'Gamestat.favcount', 'Gamestat.channelclone', 'Gamestat.potential'
+                ),
+                'limit' => $limit,
+                'order' => array(
+                    'Game.id' => 'DESC'
+                )
+            )
+        );
+        $cond = $this->paginate('Game');
+        $this->set('games', $cond);
+        /*
+        print_r($cond);
+        exit;
+        */
         $this->set('title_for_layout', 'Clone Business My Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');

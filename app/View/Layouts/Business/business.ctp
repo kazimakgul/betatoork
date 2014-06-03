@@ -21,22 +21,27 @@
 		<?php if($auth_user){?> user_auth='1'; <?php }else{?> user_auth='0'; <?php }?>
         </script>
 
+    
+    <?php $customcss='<style type="text/css"> body {
+    color: purple;
+    background-color: #d8da3d;
+    background-image: url("http://graphicsheat.com/wp-content/uploads/2013/05/Twitter_pattern_background_by_Ainon.jpg");
+        } </style>'; ?>
+
+        <?php echo $customcss;  ?>
+
     <!--We Add User Selected Addtitional Css Here(begins) -->
     <style type="text/css">
     body {
     color: purple;
     background-color: #d8da3d;
     background-image: url("http://graphicsheat.com/wp-content/uploads/2013/05/Twitter_pattern_background_by_Ainon.jpg");
-    
-    <?php if($channel_style['User']['bg_image']!=NULL) echo 'background-image: url("'.$channel_style['User']['bg_image'].'")'; ?>;
-    <?php if($channel_style['User']['bg_color']!=NULL) echo 'background-color:'.$channel_style['User']['bg_color']; ?>;
-  
-
         }
   </style>
-  <?php print_r($channel_style); echo 'yeah'; ?>
-  <!--We Add User Selected Addtitional Css Here(ends) -->
 
+
+  <?php print_r($channel_style);?>
+  <!--We Add User Selected Addtitional Css Here(ends) -->
 
     </head>
     <body>
