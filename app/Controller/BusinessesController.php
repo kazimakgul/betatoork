@@ -38,12 +38,28 @@ class BusinessesController extends AppController {
         
     }
 
+
+	/**
+	 * Side Bar method
+	 *
+	 * @param 
+	 * @return array() $user
+	 */
     public function sideBar() {
         $userid = $this->Session->read('Auth.User.id');
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         $this->set('user', $user);
     }
 
+
+
+
+	/**
+	 * Side Bar checkUser
+	 *
+	 * @param user Id
+	 * @return 1=>true or 0=>false
+	 */
     public function checkUser($userid) {
         if ($this->User->find('first', array('conditions' => array('User.id' => $userid)))) {
             return 0;
@@ -52,6 +68,13 @@ class BusinessesController extends AppController {
         }
     }
 
+
+	/**
+	 * Dashboard method
+	 *
+	 * @param 
+	 * @return Dashboard Page
+	 */
     public function dashboard() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -61,6 +84,14 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/index');
     }
 
+
+
+	/**
+	 * Settings method
+	 *
+	 * @param 
+	 * @return Settings Page
+	 */
     public function settings() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -69,6 +100,9 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/settings');
     }
+
+
+
 
     //this gets game suggestions
     public function get_game_suggestions($order) {
@@ -84,6 +118,14 @@ class BusinessesController extends AppController {
         return $list50;
     }
 
+
+
+	/**
+	 * Logout method
+	 *
+	 * @param 
+	 * @return Logout
+	 */
     public function logout() {
         $userid = $this->Session->read('Auth.User.id');
         $this->Cookie->delete('User');
@@ -252,6 +294,13 @@ class BusinessesController extends AppController {
         }
     }
 
+
+	/**
+	 * Play method
+	 *
+	 * @param $id =>game.id
+	 * @return Play Page
+	 */
     public function play($id = NULL) {
         //Getting Random Game Data
         $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
@@ -297,6 +346,12 @@ class BusinessesController extends AppController {
         }
     }
 
+	/**
+	 * Category method
+	 *
+	 * @param $userid =>user.id, $categoryid => category.id
+	 * @return Category Page
+	 */
     public function category($userid, $categoryid) {
 
         $this->layout = 'Business/business';
@@ -331,6 +386,14 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
     }
 
+
+
+	/**
+	 * Top Rated method
+	 *
+	 * @param $userid =>user.id
+	 * @return Top Rated Page
+	 */
     public function toprated($userid) {
 
         $this->layout = 'Business/business';
