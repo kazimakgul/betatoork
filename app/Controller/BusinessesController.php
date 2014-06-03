@@ -262,7 +262,6 @@ class BusinessesController extends AppController {
     }
 
 
-
     function get_ads_info($userid = NULL, $authid = NULL) {
         //======Getting ads datas======
         $addata = $this->Adsetting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Adsetting.user_id' => $userid)));
