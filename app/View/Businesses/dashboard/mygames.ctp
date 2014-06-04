@@ -22,8 +22,8 @@
                 <div class="row page-controls">
                     <div class="col-md-12 filters">
                         <label>Filter Games:</label>
-                        <a href="#">All Games (39)</a>
-                        <a href="#" class="active">Published (32)</a>
+                        <a href="#" class="active">All Games (<?= count($games) ?>)</a>
+                        <a href="#">Published (32)</a>
                         <a href="#">Suspended (6)</a>
                         <a href="#">Draft (1)</a>
                         <div class="show-options">
@@ -35,11 +35,11 @@
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <li><a href="#">Name</a></li>
-                                    <li><a href="#">Signed up</a></li>
-                                    <li><a href="#">Last seen</a></li>
-                                    <li><a href="#">Browser</a></li>
-                                    <li><a href="#">Country</a></li>
+                                    <li><?= $this->Paginator->sort('name', 'Name') ?></li>
+                                    <li><?= $this->Paginator->sort('channelclone', 'Clones') ?></li>
+                                    <li><?= $this->Paginator->sort('favcount', 'Favorites') ?></li>
+                                    <li><?= $this->Paginator->sort('playcount', 'Plays') ?></li>
+                                    <li><?= $this->Paginator->sort('potential', 'Rates') ?></li>
                                 </ul>
                             </div>
                             <a href="#" data-grid=".users-list" class="grid-view active"><i class="fa fa-th-list"></i></a>
@@ -56,7 +56,6 @@
                                     <a data-toggle="dropdown" href="#">
                                         Bulk actions
                                         <span class="total-checked"></span>
-
                                         <i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -91,13 +90,8 @@
                 </div>
                 <div class="row users-grid">
                     <?= $this->element('business/dashboard/grid') ?>
-                    <div class="pager-wrapper">
-                        <div class="col-sm-12">
-                            <ul class="pager">
-                                <li><a href="#">Previous</a></li>
-                                <li><a href="#">Next</a></li>
-                            </ul>
-                        </div>
+                    <div class="text-center">
+                        <?= $this->element('business/components/pagination') ?>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ foreach ($games as $game) {
     $clones = empty($game['Gamestat']['channelclone']) ? 0 : $game['Gamestat']['channelclone'];
     $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
     $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
-    $rates = empty($game['Gamestat']['potential']) ? 0 : $game['Gamestat']['potential'];
+    $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
     ?>
     <div class="user col-sm-3 col-xs-6">
         <a href="#">
