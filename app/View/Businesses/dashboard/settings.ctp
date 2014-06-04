@@ -38,6 +38,13 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 						<input type="email" class="form-control" disabled="disabled" value="<?=$user['User']['email'];?>" />
 					</div>
 					<div class="form-group">
+					    <label for="inputPassword3" >Brithday</label>
+					    	<div class="input-group">
+							  	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							  	<input type="text" class="form-control datepicker" id="user_time_zone" placeholder="<?=date();?>">
+					    	</div>
+				  	</div>				
+					<!--<div class="form-group">
 						<label>Timezone</label>
 						<select id="user_time_zone" data-smart-select>
 							<option value="Hawaii">(GMT-10:00) Hawaii</option>
@@ -62,7 +69,8 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 							<option value="Mexico City">(GMT-06:00) Mexico City</option>
 							<option value="Monterrey" >(GMT-06:00) Monterrey</option>
 						</select>
-					</div>
+					</div>-->
+					
 					<div class="form-group">
 						<label>Street & Number</label>
 						<input type="text" class="form-control" id="street" placeholder="Enter Street" value="5th Avenue 3053" />
@@ -91,4 +99,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 
 		</div>
 	</div>
+<?php echo $this->Html->css(array('business/dashboard/vendor/datepicker')); ?>
+<?php echo $this->Html->script(array('business/dashboard/bootstrap/bootstrap-datepicker')); ?>
+
 </body>

@@ -62,15 +62,17 @@ class BusinessesController extends AppController {
 
 	public function updateData()
 	{
-		
-		if($id)
-		{
-		$this->set('success', $id);
-		$this->set('_serialize', array('success'));			
+		if(isset($this->request->data['attr'])){
+			$attr = $this->request->data['attr'];
+			if($attr == "profile_update"){
+				$this->request->data['User']['time']=$b;
+			}
+			$this->set('success', $id);
+			$this->set('_serialize', array('success'));			
 		}else{
 			$id=1;
-		$this->set('title', "Oğuzhanın Title'ı");
-		$this->set('_serialize', array('title'));			
+		$this->set('error', $id);
+		$this->set('_serialize', array('error'));			
 		}
 		
 
@@ -217,22 +219,6 @@ class BusinessesController extends AppController {
 
 
 
-    public function gameswitch($id = null) {
-        $gameid = $this->request->params['pass'][0];
-        $game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid), 'fields' => array('Game.embed'), 'contain' => false)); //Recoded
-        if ($game['Game']['embed'] == null) {
-            $this->redirect(array('controller' => 'games', 'action' => 'playgameframe', $gameid));
-        } else {
-            $this->redirect(array('controller' => 'games', 'action' => 'playgame', $gameid));
-        }
-    }
-
-
-
-
-
-
-
 /*********************************************************************************/
 /*********************************************************************************/
 /***************           MYSITE SECTION          *******************************/
@@ -279,6 +265,18 @@ class BusinessesController extends AppController {
             $this->render('/Businesses/404');
         }
     }
+
+
+    public function gameswitch($id = null) {
+        $gameid = $this->request->params['pass'][0];
+        $game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid), 'fields' => array('Game.embed'), 'contain' => false)); //Recoded
+        if ($game['Game']['embed'] == null) {
+            $this->redirect(array('controller' => 'games', 'action' => 'playgameframe', $gameid));
+        } else {
+            $this->redirect(array('controller' => 'games', 'action' => 'playgame', $gameid));
+        }
+    }
+
 
 
     function get_ads_info($userid = NULL, $authid = NULL) {

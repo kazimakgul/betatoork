@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+			// Datepicker
+	        $('.datepicker').datepicker({
+	        	autoclose: true,
+	        	orientation: 'left bottom',
+	        });
 
 	/*
 	 *	Update Form Post Method
