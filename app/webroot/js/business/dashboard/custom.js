@@ -7,20 +7,7 @@ $(document).ready(function() {
         startView:2,
         todayHighlight:true
     });
-	// Bootstrap wysiwyg
-	$("#summernote").summernote({
-		height: 240,
-		toolbar: [
-		    ['style', ['style']],
-		    ['style', ['bold', 'italic', 'underline', 'clear']],
-		    ['fontsize', ['fontsize']],
-		    ['para', ['ul', 'ol', 'paragraph']],
-		    ['height', ['height']],
-		    ['insert', ['picture', 'link', 'video']],
-		    ['view', ['fullscreen', 'codeview']],
-		    ['table', ['table']],
-		]
-	});
+
     /*
      *	Update Form Post Method
      * 	@param #attr.val(), link => Update controller
