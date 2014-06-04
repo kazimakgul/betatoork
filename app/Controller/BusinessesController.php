@@ -509,10 +509,12 @@ class BusinessesController extends AppController {
         );
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
-        /*
+/*
+        echo '<pre>';
         print_r($cond);
+        echo '</pre>';
         exit;
-        */
+*/
         $this->set('title_for_layout', 'Clone Business My Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
