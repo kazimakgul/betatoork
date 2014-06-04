@@ -41,7 +41,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 					    <label for="inputPassword3" >Brithday</label>
 					    	<div class="input-group">
 							  	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							  	<input type="text" class="form-control datepicker" id="user_time_zone" placeholder="<?=date();?>">
+							  	<input type="text" class="form-control datepicker" id="user_time_zone" value="" placeholder="<?=date("Y-m-d");?>">
 					    	</div>
 				  	</div>				
 					<!--<div class="form-group">
