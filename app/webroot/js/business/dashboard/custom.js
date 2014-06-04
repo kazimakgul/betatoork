@@ -2,10 +2,25 @@ $(document).ready(function() {
 
     // Datepicker
     $('.datepicker').datepicker({
-        autoclose: true,
-        orientation: 'left bottom',
+        format: 'yyyy-mm-dd',
+        todayBtn:true,
+        startView:2,
+        todayHighlight:true
     });
-
+	// Bootstrap wysiwyg
+	$("#summernote").summernote({
+		height: 240,
+		toolbar: [
+		    ['style', ['style']],
+		    ['style', ['bold', 'italic', 'underline', 'clear']],
+		    ['fontsize', ['fontsize']],
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    ['height', ['height']],
+		    ['insert', ['picture', 'link', 'video']],
+		    ['view', ['fullscreen', 'codeview']],
+		    ['table', ['table']],
+		]
+	});
     /*
      *	Update Form Post Method
      * 	@param #attr.val(), link => Update controller
@@ -18,12 +33,13 @@ $(document).ready(function() {
         if (attr == "profile_update")
         {
             $.post(link, {
-                attr: $('#attr').val(),
-                time: $('#user_time_zone').val(),
-                strt: $('#street').val(),
-                cont: $('#country').val(),
-                zip: $('#zip').val(),
-                pass: $('#pass').val()
+                attr	: $('#attr').val(),
+                screen	: $('#screen').val(),
+                time	: $('#user_time_zone').val(),
+                strt	: $('#street').val(),
+                cont	: $('#country').val(),
+                zip		: $('#zip').val(),
+                pass	: $('#pass').val()
             },
             function(data) {
                 if (data.error) {
