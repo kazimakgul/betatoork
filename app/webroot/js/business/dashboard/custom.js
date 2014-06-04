@@ -7,7 +7,9 @@ $(document).ready(function() {
         startView:2,
         todayHighlight:true
     });
-
+	
+	
+	
     /*
      *	Update Form Post Method
      * 	@param #attr.val(), link => Update controller
@@ -19,13 +21,15 @@ $(document).ready(function() {
 
         if (attr == "profile_update")
         {
+  			//validate("#account"); Function yapılcak ve gerekli dataların doğrulukları kontrol edilcek
             $.post(link, {
                 attr	: $('#attr').val(),
+                desc	: $('#desc').val(),
+                gender	: $('#gender').val(),
                 screen	: $('#screen').val(),
                 time	: $('#user_time_zone').val(),
                 strt	: $('#street').val(),
                 cont	: $('#country').val(),
-                zip		: $('#zip').val(),
                 pass	: $('#pass').val()
             },
             function(data) {
@@ -95,4 +99,7 @@ $(document).ready(function() {
     });
 
 });
+
+
+
 

@@ -62,14 +62,35 @@ class BusinessesController extends AppController {
 
 	public function updateData()
 	{
-		if(isset($this->request->data['attr'])){
-			$attr = $this->request->data['attr'];
-			if($attr == "profile_update"){
-				$this->request->data['User']['time']=$b;
+		
+		if(isset($this->request->data['attr']) && $this->Auth->user('id'))
+		{
+			$attr		= $this->request->data['attr'];
+			$user_id	= $this->Auth->user('id');
+			if($attr == "profile_update")
+			{
+				if($this->request->data['pass'] != "" && $this->request->data['pass'] != NULL){
+					$pass = ""; //Burası Oğuzla konuşulup, şifreleme yöntemi öğrenilip devam edilecek.
+				}
+				$desc = $this->request->data['desc'];
+				$gender = $this->request->data['gender'];
+				$screen = $this->request->data['screen'];
+				$time = $this->request->data['time'];
+				$cont = $this->request->data['cont'];
+				
+	  			$this->User->query('UPDATE users SET screenname="'.$screen.'", gender="'.$gender.'", birth_date="'.$time.'", country_id="'.$cont.'", description="'.$desc.'" WHERE id='.$user_id);	
+				$this->set('success', "Başarılı bir şekilde güncelleme yapıldı.");
+				$this->set('_serialize', array('success'));			
 			}
-			$this->set('success', $id);
-			$this->set('_serialize', array('success'));			
-		}else{
+			elseif($attr == "channel_update")
+			{
+			}
+			else{
+				
+			}
+
+		}else
+		{
 			$id=1;
 		$this->set('error', $id);
 		$this->set('_serialize', array('error'));			
@@ -211,6 +232,8 @@ class BusinessesController extends AppController {
     public function settings() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+		$countries = $this->User->Country->find('list');
+		$this->set(compact('countries'));
         $this->set('title_for_layout', 'Clone Business Settings');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
