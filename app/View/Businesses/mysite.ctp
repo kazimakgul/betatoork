@@ -3,6 +3,7 @@
 <?php
 
 $subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
+$channelsettings=$this->Html->url(array("controller" => "businesses","action" =>"settings"));
 $controls=NULL;
 //Getting and declaring ads datas
 $homeBannerTop=$addata[0]['homeBannerTop'];
@@ -136,6 +137,11 @@ echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBann
   </div><!--/footer-->
 
 <?php  echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerBottom,'adtype'=>'homeBannerBottom')); ?>
+
+
+<?if($controls==$user['User']['id']){?>
+          <a href="<?php echo $channelsettings; ?>" class="btn btn-xs btn-default pull-left" style="left:0px;top:60px; position:absolute;"><span class="fa fa-picture-o"></span> Change Background</a>
+<?}?>
 
 
 </div><!-- /.container -->
