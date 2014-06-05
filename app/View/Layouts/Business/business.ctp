@@ -22,25 +22,27 @@
         </script>
 
     
-    <?php $customcss='<style type="text/css"> body {
+    <?php 
+
+    
+    if($channel_style['User']['bg_color']!=NULL)
+    $bg_color=$channel_style['User']['bg_color'];
+    else
+    $bg_color='#ffffff'; 
+
+    if($channel_style['User']['bg_image']!=NULL)
+    $bg_image=$channel_style['User']['bg_image'];
+    else
+    $bg_image='';      
+
+    $customcss='<style type="text/css"> body {
     color: purple;
-    background-color: #d8da3d;
-    background-image: url("http://graphicsheat.com/wp-content/uploads/2013/05/Twitter_pattern_background_by_Ainon.jpg");
+    background-color: '.$bg_color.';
+    background-image: url("'.$bg_image.'");
         } </style>'; ?>
 
-        <?php echo $customcss;  ?>
-
     <!--We Add User Selected Addtitional Css Here(begins) -->
-    <style type="text/css">
-    body {
-    color: purple;
-    background-color: #d8da3d;
-    background-image: url("http://graphicsheat.com/wp-content/uploads/2013/05/Twitter_pattern_background_by_Ainon.jpg");
-        }
-  </style>
-
-
-  <?php print_r($channel_style);?>
+    <?php echo $customcss;  ?>
   <!--We Add User Selected Addtitional Css Here(ends) -->
 
     </head>
