@@ -2,7 +2,7 @@
 	<div id="wrapper">
 		<?php  echo $this->element('business/dashboard/sidebar');?>		
 		<div id="content">
-				<?php  echo $this->element('business/dashboard/sidebar_setting');?>
+				<?php  echo $this->element('business/dashboard/sidebar_setting', array('active'=>'notification'));?>
 			<div id="panel" class="notifications">
 				<h3>
 					Email Notification Settings

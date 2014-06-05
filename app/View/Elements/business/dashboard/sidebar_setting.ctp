@@ -1,6 +1,7 @@
 <?php
 $settings	= $this->Html->url(array('controller'=>'businesses','action'=>'settings'));
 $ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'channel_settings'));
+$notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'notifications'));
 ?>
 
 <div id="sidebar">
@@ -29,7 +30,7 @@ $ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'chan
 			</a>
 		</li>
 		<li>
-			<a href="<?=$settings;?>">
+			<a href="<?=$notifications;?>" <?php if($active=='notification')echo 'class="active"'; ?>>
 				<i class="ion-ios7-email-outline"></i>
 				Notifications
 			</a>
