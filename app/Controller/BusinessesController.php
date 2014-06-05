@@ -21,7 +21,7 @@ class BusinessesController extends AppController {
         }
 
         if (($this->action === 'add3') || ($this->action === 'add2') || ($this->action === 'dashboard') || ($this->action === 'mygames') || ($this->action === 'favorites') ||
-                ($this->action === 'start') || ($this->action === 'settings') || ($this->action === 'chains') ||
+                ($this->action === 'start') || ($this->action === 'settings') || ($this->action === 'channel_settings') || ($this->action === 'chains') ||
                 ($this->action === 'channel')) {
             // All registered users can add posts
             return true;
@@ -219,6 +219,23 @@ class BusinessesController extends AppController {
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/settings');
+    }
+
+    /**
+     * Channel_Settings method
+     *
+     * @param 
+     * @return Channel_Settings Page
+     */
+    public function channel_settings() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $countries = $this->User->Country->find('list');
+        $this->set(compact('countries'));
+        $this->set('title_for_layout', 'Clone Business Settings');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/channel_settings');
     }
 
     /*     * ****************************************************************************** */

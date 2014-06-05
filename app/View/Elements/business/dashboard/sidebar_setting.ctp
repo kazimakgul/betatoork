@@ -1,8 +1,6 @@
 <?php
 $settings	= $this->Html->url(array('controller'=>'businesses','action'=>'settings'));
-
-
-
+$ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'channel_settings'));
 ?>
 
 <div id="sidebar">
@@ -13,15 +11,15 @@ $settings	= $this->Html->url(array('controller'=>'businesses','action'=>'setting
 	<h3>My account</h3>
 	<ul class="menu">
 		<li>
-			<a href="<?=$settings;?>" class="active">
-				<i class="ion-ios7-person-outline"></i>
-				Profile
+			<a href="<?=$ch_settings;?>" <?php if($active=='channel')echo 'class="active"'; ?>>
+				<i class="fa fa-desktop"></i>
+				Channel
 			</a>
 		</li>
 		<li>
-			<a href="<?=$settings;?>">
-				<i class="fa fa-desktop"></i>
-				Channel
+			<a href="<?=$settings;?>" <?php if($active=='profile')echo 'class="active"'; ?>>
+				<i class="ion-ios7-person-outline"></i>
+				Profile
 			</a>
 		</li>
 		<li>
