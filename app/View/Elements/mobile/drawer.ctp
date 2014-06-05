@@ -1,9 +1,9 @@
 <?php
-$home = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id));
 $search = $this->Html->url(array("controller" => "mobiles", "action" => "search2", $user_id));
-$toprated = $this->Html->url(array("controller" => "mobiles", "action" => "toprated", $user_id));
-$mostplayed = $this->Html->url(array("controller" => "mobiles", "action" => "mostplayed", $user_id));
-$newgames = $this->Html->url(array("controller" => "mobiles", "action" => "newgames", $user_id));
+$home = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id));
+$toprated = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:starsize/direction:desc';
+$mostplayed = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:playcount/direction:desc';
+$newgames = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:id/direction:desc';
 $image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));
 ?>
 <div class="snap-drawers">
@@ -76,3 +76,4 @@ $image = $this->requestAction(array('controller' => 'users', 'action' => 'random
             </div>
         </div>
     </div>
+</div>
