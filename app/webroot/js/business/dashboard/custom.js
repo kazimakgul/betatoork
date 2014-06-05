@@ -7,31 +7,45 @@ $(document).ready(function() {
         startView:2,
         todayHighlight:true
     });
-
+			
+			$("[data-switch]").bootstrapSwitch({
+				"size": "small"
+			});
+	Messenger.options = {
+		extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+	    theme: 'flat'
+	}			
     /*
      *	Update Form Post Method
      * 	@param #attr.val(), link => Update controller
      *	@return data.error=> error.id or data.success=> success.id
      */
-    $('#updateButton').click(function() {
+ $('#updateButton').click(function() {
         var link = updateData; //Businesses updatedata function run.
         var attr = $('#attr').val(); //Form control value
+		var btn = $(this);
+		btn.button('loading');
 
         if (attr == "profile_update")
         {
+  			//validate("#account"); Function yapılcak ve gerekli dataların doğrulukları kontrol edilcek
             $.post(link, {
                 attr	: $('#attr').val(),
+                desc	: $('#desc').val(),
+                gender	: $('#gender').val(),
                 screen	: $('#screen').val(),
                 time	: $('#user_time_zone').val(),
                 strt	: $('#street').val(),
                 cont	: $('#country').val(),
-                zip		: $('#zip').val(),
                 pass	: $('#pass').val()
             },
             function(data) {
                 if (data.error) {
-                    alert(data.error);
-                } // error.id ye göre mesaj yazdırcak..
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                }else{
+                	Messenger().post("Data Updated!");
+                	btn.button('reset');
+                }
             }, 'json');
         }
         else if (attr == "channel_update") {
@@ -42,7 +56,6 @@ $(document).ready(function() {
 
         }
     });
-
 
     /**
      * 

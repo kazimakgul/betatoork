@@ -221,6 +221,22 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/settings');
     }
 
+    /**
+     * Notifications method
+     *
+     * @param 
+     * @return Notifications Page
+     */
+    public function notifications() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $countries = $this->User->Country->find('list');
+        $this->set(compact('countries'));
+        $this->set('title_for_layout', 'Clone Business Settings');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/notifications');
+    }
     /*     * ****************************************************************************** */
     /*     * ****************************************************************************** */
     /*     * *************           MYSITE SECTION          ****************************** */
