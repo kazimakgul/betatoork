@@ -8,6 +8,7 @@ App::uses('AppController', 'Controller');
  * @property Business $Game
  */
 class BusinessesController extends AppController {
+
     public $name = 'Businesses';
     var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Adsetting', 'Adcode');
     public $helpers = array('Html', 'Form', 'Upload', 'Recaptcha.Recaptcha', 'Time');
@@ -37,19 +38,18 @@ class BusinessesController extends AppController {
         
     }
 
+    /*     * ****************************************************************************** */
+    /*     * ****************************************************************************** */
+    /*     * *************          GLOBAL FUNTIONS          ****************************** */
+    /*     * ****************************************************************************** */
+    /*     * ****************************************************************************** */
 
-/*********************************************************************************/
-/*********************************************************************************/
-/***************          GLOBAL FUNTIONS          *******************************/
-/*********************************************************************************/
-/*********************************************************************************/
-
-	/**
-	 * checkUser method
-	 *
-	 * @param user Id
-	 * @return 1=>true or 0=>false
-	 */
+    /**
+     * checkUser method
+     *
+     * @param user Id
+     * @return 1=>true or 0=>false
+     */
     public function checkUser($userid) {
         if ($this->User->find('first', array('conditions' => array('User.id' => $userid)))) {
             return 0;
@@ -58,47 +58,35 @@ class BusinessesController extends AppController {
         }
     }
 
+    public function updateData() {
 
+        if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
+            $attr = $this->request->data['attr'];
+            $user_id = $this->Auth->user('id');
+            if ($attr == "profile_update") {
+                if ($this->request->data['pass'] != "" && $this->request->data['pass'] != NULL) {
+                    $pass = ""; //Burası Oğuzla konuşulup, şifreleme yöntemi öğrenilip devam edilecek.
+                }
+                $desc = $this->request->data['desc'];
+                $gender = $this->request->data['gender'];
+                $screen = $this->request->data['screen'];
+                $time = $this->request->data['time'];
+                $cont = $this->request->data['cont'];
 
-	public function updateData()
-	{
-		
-		if(isset($this->request->data['attr']) && $this->Auth->user('id'))
-		{
-			$attr		= $this->request->data['attr'];
-			$user_id	= $this->Auth->user('id');
-			if($attr == "profile_update")
-			{
-				if($this->request->data['pass'] != "" && $this->request->data['pass'] != NULL){
-					$pass = ""; //Burası Oğuzla konuşulup, şifreleme yöntemi öğrenilip devam edilecek.
-				}
-				$desc = $this->request->data['desc'];
-				$gender = $this->request->data['gender'];
-				$screen = $this->request->data['screen'];
-				$time = $this->request->data['time'];
-				$cont = $this->request->data['cont'];
-				
-	  			$this->User->query('UPDATE users SET screenname="'.$screen.'", gender="'.$gender.'", birth_date="'.$time.'", country_id="'.$cont.'", description="'.$desc.'" WHERE id='.$user_id);	
-				$this->set('success', "Başarılı bir şekilde güncelleme yapıldı.");
-				$this->set('_serialize', array('success'));			
-			}
-			elseif($attr == "channel_update")
-			{
-			}
-			else{
-				
-			}
-
-		}else
-		{
-			$id=1;
-		$this->set('error', $id);
-		$this->set('_serialize', array('error'));			
-		}
-		
-
-	}
-
+                $this->User->query('UPDATE users SET screenname="' . $screen . '", gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '", description="' . $desc . '" WHERE id=' . $user_id);
+                $this->set('success', "Başarılı bir şekilde güncelleme yapıldı.");
+                $this->set('_serialize', array('success'));
+            } elseif ($attr == "channel_update") {
+                
+            } else {
+                
+            }
+        } else {
+            $id = 1;
+            $this->set('error', $id);
+            $this->set('_serialize', array('error'));
+        }
+    }
 
     //this gets game suggestions
     public function get_game_suggestions($order) {
@@ -114,20 +102,18 @@ class BusinessesController extends AppController {
         return $list50;
     }
 
-
-	/**
-	 * Logout method
-	 *
-	 * @param 
-	 * @return Logout
-	 */
+    /**
+     * Logout method
+     *
+     * @param 
+     * @return Logout
+     */
     public function logout() {
         $userid = $this->Session->read('Auth.User.id');
         $this->Cookie->delete('User');
         $this->Session->destroy();
         $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
     }
-
 
     public function lucky_number() {
         if ($this->Session->check('Dashboard.randomKey')) {
@@ -139,13 +125,12 @@ class BusinessesController extends AppController {
         return $key;
     }
 
-
-	/**
-	 * Check Kontrol method
-	 *
-	 * @param $table => table name, $authUser => Logined User, $gameId => Check Game id
-	 * @return array table
-	 */
+    /**
+     * Check Kontrol method
+     *
+     * @param $table => table name, $authUser => Logined User, $gameId => Check Game id
+     * @return array table
+     */
     public function checkControl($Table, $AuthUser, $GameId) {
         return $this->Game->query('SELECT id FROM ' . $Table . ' WHERE user_id=' . $AuthUser . ' AND game_id=' . $GameId);
     }
@@ -186,32 +171,30 @@ class BusinessesController extends AppController {
         $this->set('username', $userName);
     }
 
+    /*     * ****************************************************************************** */
+    /*     * ****************************************************************************** */
+    /*     * *************         DASHBOARD SECTION         ****************************** */
+    /*     * ****************************************************************************** */
+    /*     * ****************************************************************************** */
 
-/*********************************************************************************/
-/*********************************************************************************/
-/***************         DASHBOARD SECTION         *******************************/
-/*********************************************************************************/
-/*********************************************************************************/
-
-	/**
-	 * Side Bar method
-	 *
-	 * @param 
-	 * @return array() $user
-	 */
+    /**
+     * Side Bar method
+     *
+     * @param 
+     * @return array() $user
+     */
     public function sideBar() {
         $userid = $this->Session->read('Auth.User.id');
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         $this->set('user', $user);
     }
 
-
-	/**
-	 * Dashboard method
-	 *
-	 * @param 
-	 * @return Dashboard Page
-	 */
+    /**
+     * Dashboard method
+     *
+     * @param 
+     * @return Dashboard Page
+     */
     public function dashboard() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -221,32 +204,28 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/index');
     }
 
-
-
-	/**
-	 * Settings method
-	 *
-	 * @param 
-	 * @return Settings Page
-	 */
+    /**
+     * Settings method
+     *
+     * @param 
+     * @return Settings Page
+     */
     public function settings() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-		$countries = $this->User->Country->find('list');
-		$this->set(compact('countries'));
+        $countries = $this->User->Country->find('list');
+        $this->set(compact('countries'));
         $this->set('title_for_layout', 'Clone Business Settings');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/settings');
     }
 
-
-
-/*********************************************************************************/
-/*********************************************************************************/
-/***************           MYSITE SECTION          *******************************/
-/*********************************************************************************/
-/*********************************************************************************/
+    /*     * ****************************************************************************** */
+    /*     * ****************************************************************************** */
+    /*     * *************           MYSITE SECTION          ****************************** */
+    /*     * ****************************************************************************** */
+    /*     * ****************************************************************************** */
 
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
@@ -289,7 +268,6 @@ class BusinessesController extends AppController {
         }
     }
 
-
     public function gameswitch($id = null) {
         $gameid = $this->request->params['pass'][0];
         $game = $this->Game->find('first', array('conditions' => array('Game.id' => $gameid), 'fields' => array('Game.embed'), 'contain' => false)); //Recoded
@@ -299,8 +277,6 @@ class BusinessesController extends AppController {
             $this->redirect(array('controller' => 'games', 'action' => 'playgame', $gameid));
         }
     }
-
-
 
     function get_ads_info($userid = NULL, $authid = NULL) {
         //======Getting ads datas======
@@ -318,13 +294,12 @@ class BusinessesController extends AppController {
         }
     }
 
-
-	/**
-	 * Search method
-	 *
-	 * @param $userid =>user.id
-	 * @return Search Page
-	 */
+    /**
+     * Search method
+     *
+     * @param $userid =>user.id
+     * @return Search Page
+     */
     public function search2($userid) {
         $this->layout = 'Business/business';
         if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
@@ -369,13 +344,12 @@ class BusinessesController extends AppController {
         $this->set('user', $user);
     }
 
-
-	/**
-	 * Play method
-	 *
-	 * @param $id =>game.id
-	 * @return Play Page
-	 */
+    /**
+     * Play method
+     *
+     * @param $id =>game.id
+     * @return Play Page
+     */
     public function play($id = NULL) {
         //Getting Random Game Data
         $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
@@ -421,13 +395,12 @@ class BusinessesController extends AppController {
         }
     }
 
-
-	/**
-	 * Category method
-	 *
-	 * @param $userid =>user.id, $categoryid => category.id
-	 * @return Category Page
-	 */
+    /**
+     * Category method
+     *
+     * @param $userid =>user.id, $categoryid => category.id
+     * @return Category Page
+     */
     public function category($userid, $categoryid) {
 
         $this->layout = 'Business/business';
@@ -462,14 +435,12 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
     }
 
-
-
-	/**
-	 * Top Rated method
-	 *
-	 * @param $userid =>user.id
-	 * @return Top Rated Page
-	 */
+    /**
+     * Top Rated method
+     *
+     * @param $userid =>user.id
+     * @return Top Rated Page
+     */
     public function toprated($userid) {
 
         $this->layout = 'Business/business';
@@ -513,7 +484,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $limit=16;
+        $limit = 16;
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
@@ -550,7 +521,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/mygames');
     }
-    
+
     public function mygames_search() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -601,12 +572,12 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/mygames');
     }
-    
+
     public function favorites() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $limit=16;
+        $limit = 16;
         $this->paginate = array(
             'Favorite' => array(
                 'conditions' => array(
@@ -628,7 +599,7 @@ class BusinessesController extends AppController {
                             'Game.embed'
                         ),
                         'User' => array(
-                            'fields'=> array(
+                            'fields' => array(
                                 'User.username',
                                 'User.seo_username',
                                 'User.id'
@@ -638,14 +609,14 @@ class BusinessesController extends AppController {
                 )
             )
         );
-    $cond = $this->paginate('Favorite');
+        $cond = $this->paginate('Favorite');
         $this->set('games', $cond);
         $this->set('title_for_layout', 'Clone Business My Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/favorites');
     }
-    
+
     public function favorites_search() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -655,7 +626,7 @@ class BusinessesController extends AppController {
             $this->redirect(array("controller" => "businesses", "action" => "favorites"));
         }
         $userid = $this->Session->read('Auth.User.id');
-        $limit=16;
+        $limit = 16;
         $this->paginate = array(
             'Favorite' => array(
                 'conditions' => array(
@@ -681,7 +652,7 @@ class BusinessesController extends AppController {
                             'Game.embed'
                         ),
                         'User' => array(
-                            'fields'=> array(
+                            'fields' => array(
                                 'User.username',
                                 'User.seo_username',
                                 'User.id'
@@ -691,12 +662,21 @@ class BusinessesController extends AppController {
                 )
             )
         );
-    $cond = $this->paginate('Favorite');
+        $cond = $this->paginate('Favorite');
         $this->set('games', $cond);
         $this->set('title_for_layout', 'Clone Business My Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/favorites');
+    }
+    
+    public function following() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Followers');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/followers');
     }
 
     public function followers() {
@@ -707,5 +687,5 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/followers');
     }
-    
+
 }
