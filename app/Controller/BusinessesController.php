@@ -512,17 +512,30 @@ class BusinessesController extends AppController {
     public function mygames() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        
         $userid = $this->Session->read('Auth.User.id');
         $limit=16;
-        
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
                     'Game.user_id' => $userid
                 ),
                 'fields' => array(
-                    'Game.name,Game.seo_url,Game.id,Game.fullscreen,Game.picture,Game.starsize,Game.rate_count,Game.embed,Game.clone,Game.created,User.seo_username,Game.description', 'Gamestat.playcount', 'Gamestat.favcount', 'Gamestat.channelclone', 'Gamestat.potential'
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'Game.embed',
+                    'Game.clone',
+                    'Game.created',
+                    'User.seo_username',
+                    'Game.description',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone',
+                    'Gamestat.potential'
                 ),
                 'limit' => $limit,
                 'order' => array(
@@ -532,16 +545,158 @@ class BusinessesController extends AppController {
         );
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
-/*
-        echo '<pre>';
-        print_r($cond);
-        echo '</pre>';
-        exit;
-*/
         $this->set('title_for_layout', 'Clone Business My Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/mygames');
+    }
+    
+    public function mygames_search() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        if ($this->request->is("GET") && isset($this->request->query['q'])) {
+            $query = $this->request->query['q'];
+        } else {
+            $this->redirect(array("controller" => "businesses", "action" => "mygames"));
+        }
+        $userid = $this->Session->read('Auth.User.id');
+        $limit = 16;
+        $this->paginate = array(
+            'Game' => array(
+                'conditions' => array(
+                    'Game.user_id' => $userid,
+                    'OR' => array(
+                        'Game.description LIKE' => '%' . $query . '%',
+                        'Game.name LIKE' => '%' . $query . '%'
+                    )
+                ),
+                'fields' => array(
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'Game.embed',
+                    'Game.clone',
+                    'Game.created',
+                    'User.seo_username',
+                    'Game.description',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone',
+                    'Gamestat.potential'
+                ),
+                'limit' => $limit,
+                'order' => array(
+                    'Game.id' => 'DESC'
+                )
+            )
+        );
+        $cond = $this->paginate('Game');
+        $this->set('games', $cond);
+        $this->set('title_for_layout', 'Clone Business My Games');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/mygames');
+    }
+    
+    public function favorites() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $userid = $this->Session->read('Auth.User.id');
+        $limit=16;
+        $this->paginate = array(
+            'Favorite' => array(
+                'conditions' => array(
+                    'Favorite.active' => 1,
+                    'Favorite.user_id' => $userid
+                ),
+                'limit' => $limit,
+                'order' => array(
+                    'Favorite.recommend' => 'desc'
+                ),
+                'contain' => array(
+                    'Game' => array(
+                        'fields' => array(
+                            'Game.name',
+                            'Game.seo_url',
+                            'Game.id',
+                            'Game.picture',
+                            'Game.starsize',
+                            'Game.embed'
+                        ),
+                        'User' => array(
+                            'fields'=> array(
+                                'User.username',
+                                'User.seo_username',
+                                'User.id'
+                            )
+                        )
+                    )
+                )
+            )
+        );
+    $cond = $this->paginate('Favorite');
+        $this->set('games', $cond);
+        $this->set('title_for_layout', 'Clone Business My Games');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/favorites');
+    }
+    
+    public function favorites_search() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        if ($this->request->is("GET") && isset($this->request->query['q'])) {
+            $query = $this->request->query['q'];
+        } else {
+            $this->redirect(array("controller" => "businesses", "action" => "favorites"));
+        }
+        $userid = $this->Session->read('Auth.User.id');
+        $limit=16;
+        $this->paginate = array(
+            'Favorite' => array(
+                'conditions' => array(
+                    'Favorite.active' => 1,
+                    'Favorite.user_id' => $userid,
+                    'OR' => array(
+                        'Game.description LIKE' => '%' . $query . '%',
+                        'Game.name LIKE' => '%' . $query . '%'
+                    )
+                ),
+                'limit' => $limit,
+                'order' => array(
+                    'Favorite.recommend' => 'desc'
+                ),
+                'contain' => array(
+                    'Game' => array(
+                        'fields' => array(
+                            'Game.name',
+                            'Game.seo_url',
+                            'Game.id',
+                            'Game.picture',
+                            'Game.starsize',
+                            'Game.embed'
+                        ),
+                        'User' => array(
+                            'fields'=> array(
+                                'User.username',
+                                'User.seo_username',
+                                'User.id'
+                            )
+                        )
+                    )
+                )
+            )
+        );
+    $cond = $this->paginate('Favorite');
+        $this->set('games', $cond);
+        $this->set('title_for_layout', 'Clone Business My Games');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/favorites');
     }
 
     public function followers() {

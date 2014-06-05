@@ -1,5 +1,5 @@
 <?php
-$search_action = $this->Html->url(array("controller" => "businesses", "action" => "mygames_search"));
+$search_action = $this->Html->url(array("controller" => "businesses", "action" => "favorites_search"));
 $params = $this->Paginator->params();
 $allgames = $params['count'];
 ?>
@@ -71,30 +71,33 @@ $allgames = $params['count'];
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-sm-3 header hidden-xs">
+                            <div class="col-sm-4 header hidden-xs">
                                 <label><?= $this->Paginator->sort('name', 'Name') ?></label>
+                            </div>
+                            <div class="text-right col-sm-2 header hidden-xs">
+                                <label><?= $this->Paginator->sort('channelclone', 'Owner', array('direction' => 'desc')) ?></label>
                             </div>
                             <div class="text-right col-sm-1 header hidden-xs">
                                 <label><?= $this->Paginator->sort('channelclone', 'Clones', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="text-right col-sm-1 col-md-offset-1 header hidden-xs">
+                            <div class="text-right col-sm-1 header hidden-xs">
                                 <label><?= $this->Paginator->sort('favcount', 'Favorites', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="text-right col-sm-1 col-md-offset-1 header hidden-xs">
+                            <div class="text-right col-sm-1 header hidden-xs">
                                 <label><?= $this->Paginator->sort('playcount', 'Plays', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="text-right col-sm-1 col-md-offset-1 header hidden-xs">
+                            <div class="text-right col-sm-1 header hidden-xs">
                                 <label><?= $this->Paginator->sort('rate_count', 'Rates', array('direction' => 'desc')) ?></label>
                             </div>
                         </div>
-                        <?= $this->element('business/dashboard/mygames/list') ?>
+                        <?= $this->element('business/dashboard/favorites/list') ?>
                         <div class="text-center">
                             <?= $this->element('business/components/pagination') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row users-grid">
-                    <?= $this->element('business/dashboard/mygames/grid') ?>
+                    <?= $this->element('business/dashboard/favorites/grid') ?>
                     <div class="text-center">
                         <?= $this->element('business/components/pagination') ?>
                     </div>
