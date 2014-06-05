@@ -7,7 +7,7 @@ $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "newga
 $image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));
 ?>
 <div class="snap-drawers">
-    <div class="snap-drawer snap-drawer-left">
+    <div class="snap-drawer snap-drawer-left deny-scrool-x">
         <div>
             <?php if (is_null($cover)) { ?>
                 <div class="cover" style="background-image: url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg)">

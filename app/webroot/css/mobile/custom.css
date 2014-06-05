@@ -298,3 +298,6 @@
 .search_area .form_input {
     width: 245px
 }
+.deny-scrool-x {
+    overflow-x: hidden;
+}
