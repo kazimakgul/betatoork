@@ -114,6 +114,19 @@
     </div>
 	<!-- Cover Change Modal ends -->
 	
+    <!-- Background Change Modal begins -->
+    <div class="modal fade" id="backgroundChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                <?php 
+                $background_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','background_image',$user_id));
+                $url=$background_image_url;
+                ?>
+                <iframe id='backgroundframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Background Change Modal ends -->
 		
 	<!-- Ads Change Modal begins -->
     <div class="modal fade" id="adsChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
