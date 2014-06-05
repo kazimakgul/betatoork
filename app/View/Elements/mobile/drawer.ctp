@@ -27,9 +27,9 @@ $image = $this->requestAction(array('controller' => 'users', 'action' => 'random
                     <a class="tit2" href="<?php echo $home ?>">@<?php echo $username ?></a>
                 </div>
                 <form action="<?php echo $search ?>" name="searchform" id="searchform">
-                    <div class="row" style="padding: 10px;">
+                    <div class="row search_area">
                         <div class="col-xs-12" >
-                            <div class="right-inner-addon">
+                            <div class="right-inner-addon form_input">
                                 <i class="fa fa-search black"></i>
                                 <input type="search" class="form-control" placeholder="Search" name="srch-term" name="srch-term" />
                                 <input type="submit" class="hidden_submit" value="" />

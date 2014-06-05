@@ -291,3 +291,10 @@
     padding: 0;
     margin: 0
 }
+.search_area {
+    padding: 10px;
+    width: 263px
+}
+.search_area .form_input {
+    width: 245px
+}
