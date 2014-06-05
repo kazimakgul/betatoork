@@ -71,19 +71,19 @@ $allgames = $params['count'];
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-sm-3 header hidden-xs">
+                            <div class="col-sm-6 header hidden-xs">
                                 <label><?= $this->Paginator->sort('name', 'Name') ?></label>
                             </div>
-                            <div class="text-right col-sm-1 header hidden-xs">
+                            <div class="col-sm-1 header hidden-xs text-right">
                                 <label><?= $this->Paginator->sort('channelclone', 'Clones', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="text-right col-sm-1 col-md-offset-1 header hidden-xs">
+                            <div class="col-sm-1 header hidden-xs text-right">
                                 <label><?= $this->Paginator->sort('favcount', 'Favorites', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="text-right col-sm-1 col-md-offset-1 header hidden-xs">
+                            <div class="col-sm-1 header hidden-xs text-right">
                                 <label><?= $this->Paginator->sort('playcount', 'Plays', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="text-right col-sm-1 col-md-offset-1 header hidden-xs">
+                            <div class="col-sm-1 header hidden-xs text-right">
                                 <label><?= $this->Paginator->sort('rate_count', 'Rates', array('direction' => 'desc')) ?></label>
                             </div>
                         </div>

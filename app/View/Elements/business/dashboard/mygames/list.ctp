@@ -11,7 +11,7 @@ foreach ($games as $game) {
             <input type="checkbox" name="select-user" />
             <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-6">
             <a href="user-profile.html" class="name"><?= $name ?></a>
         </div>
         <div class="col-sm-1 text-right">
@@ -19,17 +19,17 @@ foreach ($games as $game) {
                 <?= $clones ?>
             </div>
         </div>
-        <div class="col-sm-1 col-md-offset-1 text-right">
+        <div class="col-sm-1 text-right">
             <div class="total-spent">
                 <?= $favorites ?>
             </div>
         </div>
-        <div class="col-sm-1 col-md-offset-1 text-right">
+        <div class="col-sm-1 text-right">
             <div class="total-spent">
                 <?= $plays ?>
             </div>
         </div>
-        <div class="col-sm-1 col-md-offset-1 text-right">
+        <div class="col-sm-1 text-right">
             <div class="total-spent">
                 <?= $rates ?>
             </div>
