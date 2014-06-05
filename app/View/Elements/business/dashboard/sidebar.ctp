@@ -1,6 +1,6 @@
 <?php
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
-$settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'settings'));
+$settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $logout = $this->Html->url(array("controller" => "businesses", "action" => "logout"));
 $followers = $this->Html->url(array('controller' => 'businesses', 'action' => 'followers'));
 $mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));

@@ -15,7 +15,9 @@ foreach ($games as $game) {
     ?>
     <div class="col-sm-4">
         <div class="thumbnail">
-            <a href="<?= $playurl ?>"><?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");', 'width' => '100%')); ?></a>
+            <a href="<?= $playurl ?>">
+                <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");', 'width' => '100%')); ?>
+            </a>
             <div class="caption">
                 <h3><a href="<?= $playurl ?>"><?php echo $game['Game']['name']; ?></a></h3>
                 <div class="row text-center yildiz">

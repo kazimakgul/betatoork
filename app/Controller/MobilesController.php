@@ -48,8 +48,16 @@ class MobilesController extends AppController {
                 'User.id' => $userid
             ),
             'fields' => array(
-                '*'
+                'User.username',
+                'User.screenname',
+                'User.picture',
+                'User.fb_link',
+                'User.twitter_link',
+                'User.gplus_link',
+                'User.description',
+                'User.banner'
             ),
+                //'contain' => false    //  OĞUZ BAKICAK
                 )
         );
 
@@ -116,30 +124,79 @@ class MobilesController extends AppController {
                 )
             )
         );
+
         $cond = $this->paginate('Game');
 
-        //print_r($cond);
-        //exit;
-
         $this->set('games', $cond);
+        
     }
 
     public function play($id = NULL) {
+        
         $this->layout = 'Mobile/mobile';
+
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-        $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.channelclone')))));
-        $this->set('game_link', $game['Game']['link']);
-        $user = $this->User->find('first', array(
+
+        $game = $this->Game->find('first', array(
             'conditions' => array(
-                'User.id' => $game['Game']['user_id']
+                'Game.id' => $id
             ),
             'fields' => array(
-                '*'
+                'Game.name',
+                'Game.user_id',
+                'Game.link',
+                'Game.starsize',
+                'Game.rate_count',
+                'Game.embed',
+                'Game.description',
+                'Game.id',
+                'Game.active',
+                'Game.picture',
+                'Game.seo_url',
+                'Game.clone',
+                'Game.owner_id'
+            ),
+            'contain' => array(
+                'User' => array(
+                    'fields' => array(
+                        'User.username',
+                        'User.seo_username',
+                        'User.adcode',
+                        'User.picture'
+                    )
+                ),
+                'Gamestat' => array(''
+                    . 'fields' => array(
+                        'Gamestat.playcount',
+                        'Gamestat.channelclone'
+                    )
+                )
             )
                 )
         );
+
+        $this->set('game_link', $game['Game']['link']);
+
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $userid
+            ),
+            'fields' => array(
+                'User.username',
+                'User.screenname',
+                'User.picture',
+                'User.fb_link',
+                'User.twitter_link',
+                'User.gplus_link',
+                'User.description',
+                'User.banner'
+            ),
+                //'contain' => false    //  OĞUZ BAKICAK
+                )
+        );
+        
         $this->set('user', $user);
         $this->set('user_id', $game['Game']['user_id']);
         $this->set('screenname', $user['User']['screenname']);
@@ -153,16 +210,19 @@ class MobilesController extends AppController {
         } else {
             $this->set('followers', $user['Userstat']['subscribe']);
         }
+
         if (empty($user['Userstat']['subscribeto'])) {
             $this->set('following', 0);
         } else {
             $this->set('following', $user['Userstat']['subscribeto']);
         }
+
         if (empty($user['Userstat']['favoritecount'])) {
             $this->set('favorites', 0);
         } else {
             $this->set('favorites', $user['Userstat']['favoritecount']);
         }
+
         if (empty($user['Userstat']['uploadcount'])) {
             $this->set('gamescount', 0);
         } else {
@@ -172,9 +232,11 @@ class MobilesController extends AppController {
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
+
         if (!empty($user['User']['twitter_link'])) {
             $this->set('twitter', $user['User']['twitter_link']);
         }
+
         if (!empty($user['User']['gplus_link'])) {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
@@ -182,24 +244,87 @@ class MobilesController extends AppController {
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
+
         if (!empty($user['User']['twitter_link'])) {
             $this->set('twitter', $user['User']['twitter_link']);
         }
+
         if (!empty($user['User']['gplus_link'])) {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
+        
     }
 
     public function search2($userid) {
+        
         $this->layout = 'Mobile/mobile';
+        
         if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
             $param = $this->request->query['srch-term'];
         } else {
             $this->redirect(array("controller" => "mobiles", "action" => "index", $userid));
         }
+        
         $keys = $this->Game->query("SELECT * FROM games as Game JOIN gamestats as Gamestat ON Gamestat.game_id = Game.id WHERE (Game.description like '%" . $param . "%' or Game.name like '%" . $param . "%') and user_id=$userid");
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*'),'contain'=>false));
-        $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.channelclone')))));
+        
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $userid
+            ),
+            'fields' => array(
+                'User.username',
+                'User.screenname',
+                'User.picture',
+                'User.fb_link',
+                'User.twitter_link',
+                'User.gplus_link',
+                'User.description',
+                'User.banner'
+            ),
+                //'contain' => false    //  OĞUZ BAKICAK
+                )
+        );
+        
+        $game = $this->Game->find('first', array(
+            'conditions' => array(
+                'Game.user_id' => $userid
+            ),
+            'fields' => array(
+                'User.username',
+                'User.seo_username',
+                'Game.name',
+                'Game.user_id',
+                'Game.link',
+                'Game.starsize',
+                'Game.rate_count',
+                'Game.embed',
+                'Game.description',
+                'Game.id',
+                'Game.active',
+                'Game.picture',
+                'Game.seo_url',
+                'Game.clone',
+                'Game.owner_id'
+            ),
+            'contain' => array(
+                'User' => array(
+                    'fields' => array(
+                        'User.username',
+                        'User.seo_username',
+                        'User.adcode',
+                        'User.picture'
+                    )
+                ),
+                'Gamestat' => array(
+                    'fields' => array(
+                        'Gamestat.playcount',
+                        'Gamestat.channelclone'
+                    )
+                )
+            )
+                )
+        );
+        
         $this->paginate = array(
             'Game' => array(
                 'contain' => array(
@@ -219,7 +344,9 @@ class MobilesController extends AppController {
                         'Game.name LIKE' => '%' . $param . '%'
                     ),
         )));
+        
         $cond = $this->paginate('Game');
+        
         $this->set('games', $keys);
         $this->set('user', $user);
         $this->set('user_id', $userid);
@@ -228,21 +355,25 @@ class MobilesController extends AppController {
         $this->set('description', $user['User']['description']);
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
+        
         if (empty($user['Userstat']['subscribe'])) {
             $this->set('followers', 0);
         } else {
             $this->set('followers', $user['Userstat']['subscribe']);
         }
+        
         if (empty($user['Userstat']['subscribeto'])) {
             $this->set('following', 0);
         } else {
             $this->set('following', $user['Userstat']['subscribeto']);
         }
+        
         if (empty($user['Userstat']['favoritecount'])) {
             $this->set('favorites', 0);
         } else {
             $this->set('favorites', $user['Userstat']['favoritecount']);
         }
+        
         if (empty($user['Userstat']['uploadcount'])) {
             $this->set('gamescount', 0);
         } else {
@@ -252,247 +383,17 @@ class MobilesController extends AppController {
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
+        
         if (!empty($user['User']['twitter_link'])) {
             $this->set('twitter', $user['User']['twitter_link']);
         }
+        
         if (!empty($user['User']['gplus_link'])) {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
+        
         $this->render('index');
-    }
-
-    public function toprated($userid) {
-        $this->layout = 'Mobile/mobile';
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
-        $this->set('user', $user);
-        $this->set('user_id', $userid);
-        $this->set('screenname', $user['User']['screenname']);
-        $this->set('username', $user['User']['username']);
-        $this->set('description', $user['User']['description']);
-        $this->set('cover', $user['User']['banner']);
-        $this->set('picture', $user['User']['picture']);
-        if (empty($user['Userstat']['subscribe'])) {
-            $this->set('followers', 0);
-        } else {
-            $this->set('followers', $user['Userstat']['subscribe']);
-        }
-        if (empty($user['Userstat']['subscribeto'])) {
-            $this->set('following', 0);
-        } else {
-            $this->set('following', $user['Userstat']['subscribeto']);
-        }
-        if (empty($user['Userstat']['favoritecount'])) {
-            $this->set('favorites', 0);
-        } else {
-            $this->set('favorites', $user['Userstat']['favoritecount']);
-        }
-        if (empty($user['Userstat']['uploadcount'])) {
-            $this->set('gamescount', 0);
-        } else {
-            $this->set('gamescount', $user['Userstat']['uploadcount']);
-        }
-
-        if (!empty($user['User']['fb_link'])) {
-            $this->set('facebook', $user['User']['fb_link']);
-        }
-        if (!empty($user['User']['twitter_link'])) {
-            $this->set('twitter', $user['User']['twitter_link']);
-        }
-        if (!empty($user['User']['gplus_link'])) {
-            $this->set('googleplus', $user['User']['gplus_link']);
-        }
-        if (!empty($user['User']['fb_link'])) {
-            $this->set('facebook', $user['User']['fb_link']);
-        }
-        if (!empty($user['User']['twitter_link'])) {
-            $this->set('twitter', $user['User']['twitter_link']);
-        }
-        if (!empty($user['User']['gplus_link'])) {
-            $this->set('googleplus', $user['User']['gplus_link']);
-        }
-        $this->paginate = array(
-            'Game' => array(
-                'conditions' => array(
-                    'Game.active' => '1',
-                    'Game.user_id' => $userid
-                ),
-                'limit' => $this->PaginateLimit,
-                'order' => array(
-                    'Game.starsize' => 'desc'
-                ),
-                'contain' => array(
-                    'Category' => array(
-                        'fields' => array(
-                            'Category.name'
-                        )
-                    ),
-                    'Gamestat' => array(
-                        'fields' => array(
-                            'Gamestat.playcount,Gamestat.totalclone'
-                        )
-                    )
-                )
-            )
-        );
-        $cond = $this->paginate('Game');
-        $this->set('games', $cond);
-        $this->render('index');
-    }
-
-    public function mostplayed($userid) {
-        $this->layout = 'Mobile/mobile';
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
-        $this->set('user', $user);
-        $this->set('user_id', $userid);
-        $this->set('screenname', $user['User']['screenname']);
-        $this->set('username', $user['User']['username']);
-        $this->set('description', $user['User']['description']);
-        $this->set('cover', $user['User']['banner']);
-        $this->set('picture', $user['User']['picture']);
-        if (empty($user['Userstat']['subscribe'])) {
-            $this->set('followers', 0);
-        } else {
-            $this->set('followers', $user['Userstat']['subscribe']);
-        }
-        if (empty($user['Userstat']['subscribeto'])) {
-            $this->set('following', 0);
-        } else {
-            $this->set('following', $user['Userstat']['subscribeto']);
-        }
-        if (empty($user['Userstat']['favoritecount'])) {
-            $this->set('favorites', 0);
-        } else {
-            $this->set('favorites', $user['Userstat']['favoritecount']);
-        }
-        if (empty($user['Userstat']['uploadcount'])) {
-            $this->set('gamescount', 0);
-        } else {
-            $this->set('gamescount', $user['Userstat']['uploadcount']);
-        }
-
-        if (!empty($user['User']['fb_link'])) {
-            $this->set('facebook', $user['User']['fb_link']);
-        }
-        if (!empty($user['User']['twitter_link'])) {
-            $this->set('twitter', $user['User']['twitter_link']);
-        }
-        if (!empty($user['User']['gplus_link'])) {
-            $this->set('googleplus', $user['User']['gplus_link']);
-        }
-        if (!empty($user['User']['fb_link'])) {
-            $this->set('facebook', $user['User']['fb_link']);
-        }
-        if (!empty($user['User']['twitter_link'])) {
-            $this->set('twitter', $user['User']['twitter_link']);
-        }
-        if (!empty($user['User']['gplus_link'])) {
-            $this->set('googleplus', $user['User']['gplus_link']);
-        }
-        $this->paginate = array(
-            'Game' => array(
-                'conditions' => array(
-                    'Game.active' => '1',
-                    'Game.user_id' => $userid
-                ),
-                'limit' => $this->PaginateLimit,
-                'order' => array(
-                    'Gamestat.playcount' => 'desc'
-                ),
-                'contain' => array(
-                    'Category' => array(
-                        'fields' => array(
-                            'Category.name'
-                        )
-                    ),
-                    'Gamestat' => array(
-                        'fields' => array(
-                            'Gamestat.playcount,Gamestat.totalclone'
-                        )
-                    )
-                )
-            )
-        );
-        $cond = $this->paginate('Game');
-        $this->set('games', $cond);
-        $this->render('index');
-    }
-
-    public function newgames($userid) {
-        $this->layout = 'Mobile/mobile';
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
-        $this->set('user', $user);
-        $this->set('user_id', $userid);
-        $this->set('screenname', $user['User']['screenname']);
-        $this->set('username', $user['User']['username']);
-        $this->set('description', $user['User']['description']);
-        $this->set('cover', $user['User']['banner']);
-        $this->set('picture', $user['User']['picture']);
-        if (empty($user['Userstat']['subscribe'])) {
-            $this->set('followers', 0);
-        } else {
-            $this->set('followers', $user['Userstat']['subscribe']);
-        }
-        if (empty($user['Userstat']['subscribeto'])) {
-            $this->set('following', 0);
-        } else {
-            $this->set('following', $user['Userstat']['subscribeto']);
-        }
-        if (empty($user['Userstat']['favoritecount'])) {
-            $this->set('favorites', 0);
-        } else {
-            $this->set('favorites', $user['Userstat']['favoritecount']);
-        }
-        if (empty($user['Userstat']['uploadcount'])) {
-            $this->set('gamescount', 0);
-        } else {
-            $this->set('gamescount', $user['Userstat']['uploadcount']);
-        }
-
-        if (!empty($user['User']['fb_link'])) {
-            $this->set('facebook', $user['User']['fb_link']);
-        }
-        if (!empty($user['User']['twitter_link'])) {
-            $this->set('twitter', $user['User']['twitter_link']);
-        }
-        if (!empty($user['User']['gplus_link'])) {
-            $this->set('googleplus', $user['User']['gplus_link']);
-        }
-        if (!empty($user['User']['fb_link'])) {
-            $this->set('facebook', $user['User']['fb_link']);
-        }
-        if (!empty($user['User']['twitter_link'])) {
-            $this->set('twitter', $user['User']['twitter_link']);
-        }
-        if (!empty($user['User']['gplus_link'])) {
-            $this->set('googleplus', $user['User']['gplus_link']);
-        }
-        $this->paginate = array(
-            'Game' => array(
-                'conditions' => array(
-                    'Game.active' => '1',
-                    'Game.user_id' => $userid
-                ),
-                'limit' => $this->PaginateLimit,
-                'order' => array(
-                    'Game.id' => 'desc'
-                ),
-                'contain' => array(
-                    'Category' => array(
-                        'fields' => array(
-                            'Category.name'
-                        )
-                    ),
-                    'Gamestat' => array(
-                        'fields' => array(
-                            'Gamestat.playcount,Gamestat.totalclone'
-                        )
-                    )
-                )
-            )
-        );
-        $cond = $this->paginate('Game');
-        $this->set('games', $cond);
-        $this->render('index');
+        
     }
 
 }

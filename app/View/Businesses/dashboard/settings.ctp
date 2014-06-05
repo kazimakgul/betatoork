@@ -11,7 +11,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 		<?php  echo $this->element('business/dashboard/sidebar');?>
 
 		<div id="content">
-				<?php  echo $this->element('business/dashboard/sidebar_setting');?>
+				<?php  echo $this->element('business/dashboard/sidebar_setting',array('active'=>'profile'));?>
 			<div id="panel" class="profile">
 				<h3>
 					Profile settings
@@ -41,7 +41,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 						<input type="email" class="form-control" disabled="disabled" value="<?=$user['User']['email'];?>" />
 					</div>
 					<div class="form-group">
-					    <label for="inputPassword3" >Brithday</label>
+					    <label for="inputPassword3" >Birthday</label>
 					    	<div class="input-group">
 							  	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 							  	<input type="text" class="form-control datepicker" id="user_time_zone" value="<?=$user['User']['birth_date'];?>" placeholder="<?echo (date("Y")-18); echo "-".date("m-d");?>">
