@@ -221,22 +221,13 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/settings');
     }
 
-    /**
-<<<<<<< HEAD
-     * Notifications method
-     *
-     * @param 
-     * @return Notifications Page
-     */
-    public function notifications() {
-=======
-     * Channel_Settings method
+
+    /* Channel_Settings method
      *
      * @param 
      * @return Channel_Settings Page
      */
     public function channel_settings() {
->>>>>>> FETCH_HEAD
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $countries = $this->User->Country->find('list');
@@ -244,14 +235,9 @@ class BusinessesController extends AppController {
         $this->set('title_for_layout', 'Clone Business Settings');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-<<<<<<< HEAD
-        $this->render('/Businesses/dashboard/notifications');
-    }
-=======
         $this->render('/Businesses/dashboard/channel_settings');
     }
 
->>>>>>> FETCH_HEAD
     /*     * ****************************************************************************** */
     /*     * ****************************************************************************** */
     /*     * *************           MYSITE SECTION          ****************************** */
