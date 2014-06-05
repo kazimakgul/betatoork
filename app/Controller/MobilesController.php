@@ -198,7 +198,7 @@ class MobilesController extends AppController {
             $this->redirect(array("controller" => "mobiles", "action" => "index", $userid));
         }
         $keys = $this->Game->query("SELECT * FROM games as Game JOIN gamestats as Gamestat ON Gamestat.game_id = Game.id WHERE (Game.description like '%" . $param . "%' or Game.name like '%" . $param . "%') and user_id=$userid");
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*'),'contain'=>false));
         $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.channelclone')))));
         $this->paginate = array(
             'Game' => array(
