@@ -6,7 +6,7 @@ foreach ($games as $game) {
     $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
     $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
     ?>
-    <div class="user col-sm-3 col-xs-6">
+    <div class="user col-xs-6 col-sm-4 col-md-4 col-lg-3">
         <a href="#">
             <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
         </a>
