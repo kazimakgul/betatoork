@@ -27,91 +27,78 @@
 								</div>
 							</div>
 						</div>
+  <?php if(!isset($user_perms))$user_perms=array(); ?>
 
 						<div class="types">
-							<h4>
-								Types
-							</h4>
 							<section>
-								<div class="title">In-app</div>
+								<div class="title">Notify Me</div>
 
 								<div class="row">
 									<div class="col-sm-8">
-										New comments on my posts
+										I got a new follower
 									</div>
 									<div class="col-sm-4">
-										<input type="checkbox" data-switch value="3" checked />
+										<input type="checkbox" name="permission" data-switch value="2" <?php if(!in_array(2,$user_perms)) echo 'checked'; ?> />
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-8">
-										Assigned to new projects
+										Comments on a post I created
 									</div>
 									<div class="col-sm-4">
-										<input type="checkbox" data-switch value="3" />
+										<input type="checkbox" name="permission" data-switch value="6" <?php if(!in_array(6,$user_perms)) echo 'checked'; ?>/>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-8">
-										Order updates
+										Comments on one of my games
 									</div>
 									<div class="col-sm-4">
-										<input type="checkbox" data-switch value="3" checked />
+										<input type="checkbox" name="permission" data-switch value="12" <?php if(!in_array(12,$user_perms)) echo 'checked'; ?> />
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-8">
-										New invitations 
+										One of my games get rated
 									</div>
 									<div class="col-sm-4">
-										<input type="checkbox" data-switch value="3" checked />
+										<input type="checkbox" name="permission" data-switch value="4" <?php if(!in_array(4,$user_perms)) echo 'checked'; ?> />
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-8">
-										Mentions you in a comment
+										Favorite one of my games
 									</div>
 									<div class="col-sm-4">
-										<input type="checkbox" data-switch value="3" />
+										<input type="checkbox" name="permission" data-switch value="7" <?php if(!in_array(7,$user_perms)) echo 'checked'; ?>/>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-8">
-										Product is deleted
+										Clone one of my games
 									</div>
 									<div class="col-sm-4">
-										<input type="checkbox" data-switch value="3" checked />
+										<input type="checkbox" name="permission" data-switch value="3" <?php if(!in_array(3,$user_perms)) echo 'checked'; ?> />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-8">
+										Mentions me in a post
+									</div>
+									<div class="col-sm-4">
+										<input type="checkbox" name="permission" data-switch value="5" <?php if(!in_array(5,$user_perms)) echo 'checked'; ?> />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-8">
+										Someone hashtag my games
+									</div>
+									<div class="col-sm-4">
+										<input type="checkbox" name="permission" data-switch value="8" <?php if(!in_array(8,$user_perms)) echo 'checked'; ?> />
 									</div>
 								</div>
 							</section>
-							<section>
-								<div class="title">News</div>
-
-								<div class="row">
-									<div class="col-sm-8">
-										New updates
-									</div>
-									<div class="col-sm-4">
-										<input type="checkbox" data-switch value="3" checked />
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-8">
-										Recommendations & tips
-									</div>
-									<div class="col-sm-4">
-										<input type="checkbox" data-switch value="3" />
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-8">
-										Offers
-									</div>
-									<div class="col-sm-4">
-										<input type="checkbox" data-switch value="3" checked />
-									</div>
-								</div>
-							</section>
+							<input type="hidden" id="attr" name="attr" value="notification_update" />
 						</div>
 
 						<div class="actions">

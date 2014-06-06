@@ -230,8 +230,20 @@ class BusinessesController extends AppController {
     public function notifications() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        $countries = $this->User->Country->find('list');
-        $this->set(compact('countries'));
+		$userid = $this->Session->read('Auth.User.id');
+		//============Get Current Permissions=============
+		$permissions=$this->User->query('SELECT * FROM mailpermissions WHERE user_id='.$userid.'');
+		if($permissions)
+		{
+		     $user_perms=array();
+		     foreach($permissions as $permission)
+		     {
+			  array_push($user_perms,$permission['mailpermissions']['type_id']);
+		     }
+			 $this->set('user_perms', $user_perms);
+		}
+		//============/Get Current Permissions============
+		
         $this->set('title_for_layout', 'Clone Business Settings');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
