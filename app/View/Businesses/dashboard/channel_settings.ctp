@@ -64,8 +64,15 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 					
 					<div class="form-group">
 				  		<label>Description</label>
-				  		<div class="note-editor"><textarea id="desc" class="note-editable col-sm-12" style="margin-bottom: 10px; height:100px;"><?=$user['User']['description'];?></textarea></div>
+				  		<div><textarea id="desc" class="form-control" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?=$user['User']['description'];?></textarea></div>
 				  	</div>
+
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">Product Main Color</label>
+					    <div class="col-sm-10 col-md-8">
+					      	<input type="text" class="form-control minicolors" />
+					    </div>
+					</div>
 					
 					
 					<div class="form-group action">
@@ -75,6 +82,4 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 
 		</div>
 	</div>
-<?php echo $this->Html->css(array('business/dashboard/vendor/datepicker','business/dashboard/vendor/summernote')); ?>
-<?php echo $this->Html->script(array('business/dashboard/bootstrap/bootstrap-datepicker')); ?>
 </body>

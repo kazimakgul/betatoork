@@ -52,10 +52,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 							 echo $this->Form->input('gender', array('type'=>'select','options'=>array($item_list), 'id'=>'gender', 'class'=>'form-control valid', 'label'=>'Gender', 'empty'=>'Choose Gender...',)); 
 							?>
 				  	</div>
-					<div class="form-group">
-				  		<label>Description</label>
-				  		<div class="note-editor"><textarea id="desc" class="note-editable col-sm-12" style="margin-bottom: 10px; height:100px;"><?=$user['User']['description'];?></textarea></div>
-				  	</div>
+		
 					<div class="form-group">
 						 <?php $this->request->data['country_id']=$user['Country']['id'];  echo $this->Form->input('country_id',array('label'=>'Country','class'=>'form-control','id'=>'country')); ?>
 					</div>
