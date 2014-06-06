@@ -230,20 +230,18 @@ class BusinessesController extends AppController {
     public function notifications() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-		$userid = $this->Session->read('Auth.User.id');
-		//============Get Current Permissions=============
-		$permissions=$this->User->query('SELECT * FROM mailpermissions WHERE user_id='.$userid.'');
-		if($permissions)
-		{
-		     $user_perms=array();
-		     foreach($permissions as $permission)
-		     {
-			  array_push($user_perms,$permission['mailpermissions']['type_id']);
-		     }
-			 $this->set('user_perms', $user_perms);
-		}
-		//============/Get Current Permissions============
-		
+        $userid = $this->Session->read('Auth.User.id');
+        //============Get Current Permissions=============
+        $permissions = $this->User->query('SELECT * FROM mailpermissions WHERE user_id=' . $userid . '');
+        if ($permissions) {
+            $user_perms = array();
+            foreach ($permissions as $permission) {
+                array_push($user_perms, $permission['mailpermissions']['type_id']);
+            }
+            $this->set('user_perms', $user_perms);
+        }
+        //============/Get Current Permissions============
+
         $this->set('title_for_layout', 'Clone Business Settings');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
@@ -721,6 +719,16 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 18;
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_id'
+                        )
+                    )
+                )
+        );
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
@@ -738,7 +746,6 @@ class BusinessesController extends AppController {
             )
         );
         $data = $this->paginate('Subscription');
-        //  echo '<pre>'; print_r($data); echo '</pre>'; exit;
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Followers');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
@@ -751,16 +758,15 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 18;
-
-       $this->Subscription->bindModel(
-            array(
-                'belongsTo' => array(
-                    'User' => array(
-                        'className' => 'User',
-                        'foreignKey' => 'subscriber_id'
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_id'
+                        )
                     )
                 )
-            )
         );
 
         $this->paginate = array(
@@ -780,8 +786,6 @@ class BusinessesController extends AppController {
             )
         );
         $data = $this->paginate('Subscription');
-        print_r($data);
-        //  echo '<pre>'; print_r($data); echo '</pre>'; exit;
         $this->set('followers', $data);
         $this->set('title_for_layout', 'Clone Business Followers');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
