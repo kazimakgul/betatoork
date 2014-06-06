@@ -102,7 +102,7 @@
 						</div>
 
 						<div class="actions">
-							<input class="btn btn-primary" type="submit" value="Save changes" />
+							<input class="btn btn-primary" id="updateButton" value="Save changes" />
 						</div>
 					</form>
 				</div>

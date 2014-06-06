@@ -63,7 +63,8 @@ class BusinessesController extends AppController {
         if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
             $attr = $this->request->data['attr'];
             $user_id = $this->Auth->user('id');
-            if ($attr == "profile_update") {
+            if ($attr == "profile_update")
+			{
                 if ($this->request->data['pass'] != "" && $this->request->data['pass'] != NULL) {
                     $pass = ""; //Burası Oğuzla konuşulup, şifreleme yöntemi öğrenilip devam edilecek.
                 }
@@ -76,9 +77,24 @@ class BusinessesController extends AppController {
                 $this->User->query('UPDATE users SET screenname="' . $screen . '", gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '", description="' . $desc . '" WHERE id=' . $user_id);
                 $this->set('success', "Başarılı bir şekilde güncelleme yapıldı.");
                 $this->set('_serialize', array('success'));
-            } elseif ($attr == "channel_update") {
-                
-            } else {
+           
+			
+			}
+			elseif ($attr == "notification_update")
+			{
+                   if($this->request->is('post')){
+					   $permids=$this->request->data['permdata'];
+					   $this->User->Query('DELETE FROM mailpermissions WHERE user_id='.$user_id.'');
+					      foreach($permids as $permid)
+					      {
+							$this->User->Query('INSERT INTO mailpermissions (user_id,type_id) VALUES ('.$user_id.','.$permid.')');
+					      }
+					$this->set('success', "Başarılı bir şekilde güncelleme yapıldı.");
+					$this->set('_serialize', array('success'));
+				   }
+            }
+			else
+			{
                 
             }
         } else {
@@ -746,7 +762,7 @@ class BusinessesController extends AppController {
             )
         );
 
-        $data = $this->paginate('Subscription');print_r($data);
+        $data = $this->paginate('Subscription');
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Followers');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');

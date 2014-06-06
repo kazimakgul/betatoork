@@ -30,7 +30,7 @@ $(document).ready(function() {
         {
   			//validate("#account"); Function yapılcak ve gerekli dataların doğrulukları kontrol edilcek
             $.post(link, {
-                attr	: $('#attr').val(),
+                attr	: attr,
                 desc	: $('#desc').val(),
                 gender	: $('#gender').val(),
                 screen	: $('#screen').val(),
@@ -48,14 +48,31 @@ $(document).ready(function() {
                 }
             }, 'json');
         }
-        else if (attr == "channel_update") {
-            //Liste bekleniyor.
-
+        else if (attr == "notification_update") {
+        	var permarray = [];
+			$("input:checkbox[name=permission]:not(:checked)").each(function()
+				{
+					permarray.push(this.value);
+				});
+				$.post(link, {
+						attr	: attr,
+						permdata:permarray
+					},
+		            function(data) {
+		                if (data.error) {
+		                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+		                }else{
+		                	Messenger().post("Notifications Updated!");
+		                	btn.button('reset');
+		                }
+		            }, 'json');
         } else
         {
-
+			
         }
     });
+
+
 
     /**
      * 
