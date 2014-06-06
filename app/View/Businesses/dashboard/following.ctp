@@ -80,25 +80,15 @@
                             </div>
                         </div>
                         <?= $this->element('business/dashboard/following/list') ?>
-                        <div class="row pager-wrapper">
-                            <div class="col-sm-12">
-                                <ul class="pager">
-                                    <li><a href="#">Previous</a></li>
-                                    <li><a href="#">Next</a></li>
-                                </ul>
-                            </div>
+                        <div class="text-center">
+                            <?= $this->element('business/components/pagination') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row users-grid">
                     <?= $this->element('business/dashboard/following/grid') ?>
-                    <div class="pager-wrapper">
-                        <div class="col-sm-12">
-                            <ul class="pager">
-                                <li><a href="#">Previous</a></li>
-                                <li><a href="#">Next</a></li>
-                            </ul>
-                        </div>
+                    <div class="text-center">
+                        <?= $this->element('business/components/pagination') ?>
                     </div>
                 </div>
             </div>
