@@ -79,7 +79,7 @@
                                 <label class="text-right"><a href="#">Games</a></label>
                             </div>
                         </div>
-                        <?= $this->element('business/dashboard/fallowers/list') ?>
+                        <?= $this->element('business/dashboard/fallowing/list') ?>
                         <div class="row pager-wrapper">
                             <div class="col-sm-12">
                                 <ul class="pager">
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="row users-grid">
-                    <?= $this->element('business/dashboard/fallowers/grid') ?>
+                    <?= $this->element('business/dashboard/fallowing/grid') ?>
                     <div class="pager-wrapper">
                         <div class="col-sm-12">
                             <ul class="pager">

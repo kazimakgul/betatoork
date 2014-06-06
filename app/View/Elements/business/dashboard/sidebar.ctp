@@ -2,6 +2,7 @@
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $logout = $this->Html->url(array("controller" => "businesses", "action" => "logout"));
+$following = $this->Html->url(array('controller' => 'businesses', 'action' => 'following'));
 $followers = $this->Html->url(array('controller' => 'businesses', 'action' => 'followers'));
 $mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
 $favorites = $this->Html->url(array('controller' => 'businesses', 'action' => 'favorites'));
@@ -65,7 +66,7 @@ if ($user['User']['picture'] == null) {
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li><a href="reports.html">Following</a></li>
+                    <li><a href="<?= $following ?>">Following</a></li>
                     <li><a href="<?= $followers ?>">Followers</a></li>
                     <li><a href="reports-alt.html">Explore Channels</a></li>
                 </ul>

@@ -75,7 +75,7 @@ $allgames = $params['count'];
                                 <label><?= $this->Paginator->sort('name', 'Name') ?></label>
                             </div>
                             <div class="text-right col-sm-2 header hidden-xs">
-                                <label><?= $this->Paginator->sort('channelclone', 'Owner', array('direction' => 'desc')) ?></label>
+                                <label>Owner</label>
                             </div>
                             <div class="text-right col-sm-1 header hidden-xs">
                                 <label><?= $this->Paginator->sort('channelclone', 'Clones', array('direction' => 'desc')) ?></label>
