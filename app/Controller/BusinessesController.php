@@ -751,6 +751,18 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 18;
+
+       $this->Subscription->bindModel(
+            array(
+                'belongsTo' => array(
+                    'User' => array(
+                        'className' => 'User',
+                        'foreignKey' => 'subscriber_id'
+                    )
+                )
+            )
+        );
+
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
@@ -768,6 +780,7 @@ class BusinessesController extends AppController {
             )
         );
         $data = $this->paginate('Subscription');
+        print_r($data);
         //  echo '<pre>'; print_r($data); echo '</pre>'; exit;
         $this->set('followers', $data);
         $this->set('title_for_layout', 'Clone Business Followers');
