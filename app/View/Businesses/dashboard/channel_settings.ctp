@@ -68,8 +68,8 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 				  	</div>
 
 				  	<div class="form-group">
-					    <label class="col-sm-2 col-md-2 control-label">Product Main Color</label>
-					    <div class="col-sm-10 col-md-8">
+					    <label>Product Main Color</label>
+					    <div>
 					      	<input type="text" class="form-control minicolors" />
 					    </div>
 					</div>
