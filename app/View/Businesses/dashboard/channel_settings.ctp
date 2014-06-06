@@ -82,6 +82,4 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 
 		</div>
 	</div>
-<?php echo $this->Html->css(array('business/dashboard/vendor/datepicker','business/dashboard/vendor/summernote')); ?>
-<?php echo $this->Html->script(array('business/dashboard/bootstrap/bootstrap-datepicker')); ?>
 </body>

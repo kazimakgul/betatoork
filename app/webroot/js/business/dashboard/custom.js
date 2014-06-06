@@ -7,6 +7,13 @@ $(document).ready(function() {
         startView:2,
         todayHighlight:true
     });
+
+	        // Minicolors colorpicker
+	        $('input.minicolors').minicolors({
+	        	position: 'top left',
+	        	defaultValue: '#9b86d1',
+	        	theme: 'bootstrap'
+	        });
 			
 			$("[data-switch]").bootstrapSwitch({
 				"size": "small"
