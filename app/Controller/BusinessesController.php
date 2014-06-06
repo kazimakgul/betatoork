@@ -746,7 +746,7 @@ class BusinessesController extends AppController {
             )
         );
 
-        $data = $this->paginate('Subscription');print_r($data);
+        $data = $this->paginate('Subscription');
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Followers');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
