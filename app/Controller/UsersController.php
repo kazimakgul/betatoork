@@ -454,6 +454,45 @@ function secureSuperGlobalPOST($value)
     }
 
 
+    public function remove_ads_field()
+	{
+	Configure::write ( 'debug', 0 );
+
+	$target_ad_area=$this->request->data['target_ad_area'];
+	
+    if($auth_id=$this->Auth->user('id'))
+    {//Auth Control Begins
+        
+        $setting_exist=$this->Adsetting->find('first',array('contain'=>false,'conditions'=>array('Adsetting.user_id'=>$auth_id),'fields'=>array('Adsetting.id')));
+        if($setting_exist!=NULL)
+        {
+          $this->Adsetting->id=$setting_exist['Adsetting']['id'];
+         	
+          if($target_ad_area=='homeBannerTop')
+          $filtered_data['Adsetting']['home_banner_top']="";
+          else if($target_ad_area=='homeBannerMiddle')
+          $filtered_data['Adsetting']['home_banner_middle']="";
+          else if($target_ad_area=='homeBannerBottom')
+          $filtered_data['Adsetting']['home_banner_bottom']="";
+
+          if($this->Adsetting->save($filtered_data))
+          {
+          $msg = array("title" => 'Ads area has been removed.'.$adcode_id.$target_ad_area.$message,'result' => 1);
+          }	
+        }
+
+    }else{//Auth Control Ends	
+    //if user unlogged
+    $msg = array("title" => 'You have to log in first','result' => 0);
+    }//Unlogged control ends
+
+
+     $this->set('rtdata', $msg);
+     $this->set('_serialize', array('rtdata'));
+    }
+
+
+
 	public function register2() {
     	$this->layout = 'landing';
 		if ($this->request->is('post')) {

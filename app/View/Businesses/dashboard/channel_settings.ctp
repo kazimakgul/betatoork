@@ -73,6 +73,30 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 					      	<input type="text" class="form-control minicolors" />
 					    </div>
 					</div>
+
+					<div class="form-group">
+					    <label>Background Image</label>
+					    <div>
+					    	<div class="well">
+					    		<div class="pic">
+					    			<img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
+					    		</div>
+			                    
+			                    <div class="control-group" style="margin-bottom:5px;">
+				                    <label for="post_featured_image">
+				                    	Choose a picture:
+				                    </label>
+				                    <input id="post_featured_image" name="post[featured_image]" type="file">
+				                </div>
+		                        <a href="#" class="remove-image">Remove Background Image</a>
+				            </div>
+					    </div>
+				  	</div>
+
+					<div class="form-group">
+				  		<label>Analitics Code:</label>
+				  		<div><textarea id="analitics" class="form-control" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?=$user['User']['analitics'];?></textarea></div>
+				  	</div>
 					
 					
 					<div class="form-group action">

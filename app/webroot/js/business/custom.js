@@ -54,6 +54,31 @@ target_ad_area=$('#adsChange').attr('data-selected');
 
 }
 
+//This removes all Ad Code for selected ads area
+function remove_ad_area(){
+target_ad_area=$('#adsChange').attr('data-selected');
+
+  //------
+       $.ajax({
+        type: "POST",
+        url: remove_ads_field,
+    data: {target_ad_area:target_ad_area},
+        dataType: "json",
+    async: false,
+        success: function(data){
+      
+      //alert(data.rtdata.title);
+      location.reload(); 
+      
+      },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+  });
+  //------  
+
+}
+
 //Controller functions for modals of avatar begins
 $('#avatarframe').load(function(){
   $(this).contents().find("#close_panel").on('click', function(event) { $('#pictureChange').modal('toggle'); });

@@ -17,7 +17,8 @@
 		remotecheck2='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser2')); ?>';
 		authcheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'usernameAvailable')); ?>';
 		facecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'FaceUser')); ?>';
-        set_channel_ads='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>';        
+        set_channel_ads='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>'; 
+        remove_ads_field='<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_ads_field')); ?>';        
 		<?php if($auth_user){?> user_auth='1'; <?php }else{?> user_auth='0'; <?php }?>
         </script>
 
@@ -36,7 +37,6 @@
     $bg_image='';      
 
     $customcss='<style type="text/css"> body {
-    color: purple;
     background-color: '.$bg_color.';
     background-image: url("'.$bg_image.'");
         } </style>'; ?>

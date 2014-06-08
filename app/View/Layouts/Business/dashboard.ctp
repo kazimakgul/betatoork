@@ -26,7 +26,8 @@
 	<!-- javascript -->
  		<script>
 	        updateData	=	'<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'updateData')); ?>'; 
-	        set_channel_ads='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>';        
+	        set_channel_ads='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>'; 
+	        remove_ads_field='<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_ads_field')); ?>';        
 	 		var toorksize = 'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png';
 	        var avatar = 'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_manchannelavatar_default.png';
 	        function imgError(image, style) {
