@@ -221,7 +221,7 @@
 							</div>
 						</div>
 						<div class="tab orders">
-							<table id="datatable-example">
+							<table id="datatable-profile">
 			                    <thead>
 			                        <tr>
 			                            <th tabindex="0" rowspan="1" colspan="1">Order

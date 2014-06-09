@@ -4,9 +4,6 @@
 		
 		?>
 		<div id="content">
-		<pre>
-			<?php 		print_r($adcodes);?>
-			</pre>
 			<div class="menubar">
 				<div class="sidebar-toggler visible-xs">
 					<i class="ion-navicon"></i>
@@ -145,94 +142,46 @@
 					    	Bulk actions <span class="caret"></span>
 					  	</button>
 					  	<ul class="dropdown-menu" role="menu">
-					    	<li><a href="#">Edit tags</a></li>
-					    	<li><a href="#">Delete products</a></li>
-						    <li><a href="#">Export to CSV</a></li>
+					    	<li><a href="#">Edit</a></li>
+					    	<li><a href="#">Delete</a></li>
 					  	</ul>
 					</div>
 
-					<table id="datatable-example">
+					<table id="datatable-ads">
 	                    <thead>
 	                        <tr>
 	                            <th tabindex="0" rowspan="1" colspan="1">
 	                            	<input class="toggle-all" type="checkbox" />
 	                            </th>
-	                            <th tabindex="0" rowspan="1" colspan="1">Customer
+	                            <th tabindex="0" rowspan="1" colspan="1">Name
 	                            </th>
-	                            <th tabindex="0" rowspan="1" colspan="1">Date
+	                            <th tabindex="0" rowspan="1" colspan="1">Code
 	                            </th>
 	                            <th tabindex="0" rowspan="1" colspan="1">Status
-	                            </th>
-	                            <th tabindex="0" rowspan="1" colspan="1">Unit Price
 	                            </th>
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-	                        <tr>
+
+							<?php
+								foreach ($adcodes as $adcode) {
+									
+					echo '<tr>
 	                            <td>
-	                            	<input name="select-product" type="checkbox" />
+	                            	<input name="select-ads" type="checkbox" />
 	                            </td>
 	                            <td>
-	                            	<img class="img-responsive product-img" src="images/products/2.png" />
+	                            	'.$adcode["Adcode"]["name"].'
 	                            </td>
-	                            <td>Some product name</td>
+	                            <td><textarea cols="50">'.$adcode["Adcode"]["code"].'</textarea></td>
 	                            <td class=""><span class="label label-success">Available</span></td>
-	                            <td class="center">$159.99</td>
-	                        </tr>
-	                        <tr>
-	                            <td>
-	                            	<input name="select-product" type="checkbox" />
-	                            </td>
-	                            <td><img class="img-responsive product-img" src="images/products/3.jpg" /></td>
-	                            <td>Some product name</td>
-	                            <td class=""><span class="label label-success">Available</span></td>
-	                            <td class="center">$1,290.50</td> 
-							</tr>
-							<tr>
-	                            <td>
-	                            	<input name="select-product" type="checkbox" />
-	                            </td>
-	                            <td><img class="img-responsive product-img" src="images/products/4.png" /></td>
-	                            <td>Some product name</td>
-	                            <td class=""><span class="label label-info">Out of stock</span></td>
-	                            <td class="center">$400.00</td>
-	                        </tr>
-	                        <tr>
-	                            <td>
-	                            	<input name="select-product" type="checkbox" />
-	                            </td>
-	                            <td><img class="img-responsive product-img" src="images/products/5.png" /></td>
-	                            <td>Some product name</td>
-	                            <td class=""><span class="label label-success">Available</span></td>
-	                            <td class="center">$1,559.99</td>
-	                        </tr>
-	                        <tr>
-	                            <td>
-	                            	<input name="select-product" type="checkbox" />
-	                            </td>
-	                            <td><img class="img-responsive product-img" src="images/products/6.png" /></td>
-	                            <td>Some product name</td>
-	                            <td class=""><span class="label label-success">Available</span></td>
-	                            <td class="center">$195.99</td>
-	                        </tr>
-	                        <tr>
-	                            <td>
-	                            	<input name="select-product" type="checkbox" />
-	                            </td>
-	                            <td><img class="img-responsive product-img" src="images/products/7.jpg" /></td>
-	                            <td>Some product name</td>
-	                            <td class=""><span class="label label-success">Available</span></td>
-	                            <td class="center">$782.00</td>
-	                        </tr>
-	                        <tr>
-	                            <td>
-	                            	<input name="select-product" type="checkbox" />
-	                            </td>
-	                            <td><img class="img-responsive product-img" src="images/products/8.png" /></td>
-	                            <td>Some product name</td>
-	                            <td class=""><span class="label label-success">Available</span></td>
-	                            <td class="center">$2,890.00</td>
-	                        </tr>
+	                        </tr>';
+									
+								}
+							
+							
+							
+							?>
 	                   	</tbody>
 	                </table>
 				</div>
