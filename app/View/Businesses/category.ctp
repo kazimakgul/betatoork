@@ -1,12 +1,17 @@
 	<div class="container">
-	<?	$controls=NULL;
-	if($this->Session->read('Auth.User.id')==$user['User']['id']){$controls=$user['User']['id'];}
+	<?php	
+	
+	if($this->Session->read('Auth.User.id')==$user['User']['id']){
+		$controls=$user['User']['id'];
+	}else{
+		$controls=NULL;
+	}
+	
 	$homeBannerTop=$addata[0]['homeBannerTop'];
 	$homeBannerMiddle=$addata[0]['homeBannerMiddle'];
 	$homeBannerBottom=$addata[0]['homeBannerBottom'];
 	echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerTop,'adtype'=>'homeBannerTop'));
 	
-
 	?>
 		<div class="col-md-12">
 			<div class="btn-group" style="margin-bottom:10px;">
@@ -18,8 +23,7 @@
 		</div>
 	 	<?php  echo $this->element('business/login',array('user_id'=>$user['User']['id'])); ?>
 	 	<?php  echo $this->element('business/channelbanner',array('controls'=>$controls)); ?>
-		<? if(isset($games[0]['Category']))
-		{?>
+		<?php if(isset($games[0]['Category'])){?>
 		<!--/footer-->
 		<div class="col-sm-12">
 			<div class="row">
@@ -59,7 +63,7 @@
 			</div>
 		</div>
 		<!--/footer-->
-		<?}
+		<?php }
 		echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerBottom,'adtype'=>'homeBannerBottom'));
 		?>
 		 <?php  echo $this->element('business/components/popup',array('user_id'=>$user['User']['id'])); ?>

@@ -15,7 +15,7 @@ $mysite = $this->Html->url(array("controller" => "businesses","action" =>"mysite
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" rel="home" href="<?=$index?>"><?php echo $user['User']['username']?></a>
+		<a class="navbar-brand" rel="home" href="<?php echo $index?>"><?php echo $user['User']['username']?></a>
 	</div>
 	<div class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">

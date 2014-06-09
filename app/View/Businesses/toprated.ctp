@@ -1,5 +1,5 @@
 <div class="container">
-<?
+<?php
 $controls=NULL;
 //Getting and declaring ads datas
 $homeBannerTop=$addata[0]['homeBannerTop'];
@@ -50,7 +50,7 @@ echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBann
             </li>
         </ul>
        
-         <h3 class="panel-title">Games <?=($this->request->params['named']['sort'])?"by  ".ucwords($this->request->params['named']['sort']):"";?></h3>
+         <h3 class="panel-title">Games <?php echo ($this->request->params['named']['sort'])?"by  ".ucwords($this->request->params['named']['sort']):"";?></h3>
       </div>
       
       <div class="panel-body">
