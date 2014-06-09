@@ -63,13 +63,8 @@ class BusinessesController extends AppController {
         if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
             $attr = $this->request->data['attr'];
             $user_id = $this->Auth->user('id');
-<<<<<<< HEAD
             if ($attr == "profile_update")
 			{
-=======
-            if ($attr == "profile_update") {
-                $desc = $this->request->data['desc'];
->>>>>>> FETCH_HEAD
                 $gender = $this->request->data['gender'];
                 $screen = $this->request->data['screen'];
                 $time = $this->request->data['time'];
@@ -78,9 +73,6 @@ class BusinessesController extends AppController {
                 $this->User->query('UPDATE users SET screenname="' . $screen . '", gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '" WHERE id=' . $user_id);
                 $this->set('success', "Profile Settings Updated.");
                 $this->set('_serialize', array('success'));
-<<<<<<< HEAD
-           
-			
 			}
 			elseif ($attr == "notification_update")
 			{
@@ -107,25 +99,9 @@ class BusinessesController extends AppController {
                 $this->User->query('UPDATE users SET username="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '", adcode="' . $analitics . '" WHERE id=' . $user_id);
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
-           
-			
-			}
+ 			}
 			else
 			{
-=======
-            } elseif ($attr == "notification_update") {
-                if ($this->request->is('post')) {
-                    $permids = $this->request->data['permdata'];
-                    $this->User->Query('DELETE FROM mailpermissions WHERE user_id=' . $user_id . '');
-                    foreach ($permids as $permid) {
-                        $this->User->Query('INSERT INTO mailpermissions (user_id,type_id) VALUES (' . $user_id . ',' . $permid . ')');
-                    }
-                    $this->set('success', "Notifications Updated.");
-                    $this->set('_serialize', array('success'));
-                }
-            } else {
->>>>>>> FETCH_HEAD
-                
             }
         } else {
             $id = 1;

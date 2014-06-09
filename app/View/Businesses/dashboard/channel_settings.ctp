@@ -31,14 +31,14 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                         } else {
                           echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'pic circular1 img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
-					<?if($controls==$user['User']['id']){?>
+					<?php if($controls==$user['User']['id']){?>
 					<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -150px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
-                    <?}?>
+                    <?php }?>
                     <div class="name">
                         <div class="showme">
-                        	<?if($controls==$user['User']['id']){?>
+                        	<?php if($controls==$user['User']['id']){?>
                             <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -125px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
-                        	<?}?>
+                        	<?php }?>
                         </div>
                     </div>
                 </div>
@@ -47,24 +47,16 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 					<!--Channel Cover Avatar Ends -->
 				  	<div class="form-group">
 						<label>Title</label>
-<<<<<<< HEAD
-						<input type="text" class="form-control" id="title" value="<?=$user['User']['username'];?>" />
-					</div>
-					<div class="form-group">
-				  		<label>Description</label>
-				  		<div><textarea id="desc" class="form-control" id="desc" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?=$user['User']['description'];?></textarea></div>
-=======
 						<input type="text" class="form-control" value="<?php echo $user['User']['username'];?>" />
 					</div>
 					<div class="form-group">
 				  		<label>Description</label>
 				  		<div><textarea id="desc" class="form-control" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['description'];?></textarea></div>
->>>>>>> FETCH_HEAD
 				  	</div>
 				  	<div class="form-group">
 					    <label>Background Color</label>
 					    <div>
-					      	<input type="text" class="form-control minicolors" id="bgcolor" value="<?=$user['User']['bg_color'];?>"/>
+					      	<input type="text" class="form-control minicolors" id="bgcolor" value="<?php echo $user['User']['bg_color'];?>"/>
 					    </div>
 					</div>
 					<div class="form-group">
@@ -87,11 +79,8 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 				  	</div>
 					<div class="form-group">
 				  		<label>Analitics Code:</label>
-<<<<<<< HEAD
-				  		<div><textarea id="analitics" class="form-control" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?=$user['User']['adcode'];?></textarea></div>
-=======
-				  		<div><textarea id="analitics" class="form-control" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['analitics'];?></textarea></div>
->>>>>>> FETCH_HEAD
+				  		<div><textarea id="analitics" class="form-control" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['adcode'];?></textarea></div>
+
 				  	</div>
 					<div class="form-group">
 						<input type="hidden" id="attr" name="attr" value="channel_update" />
