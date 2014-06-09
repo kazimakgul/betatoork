@@ -242,6 +242,22 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/profile');
     }
 
+    /**
+     * Dummy Latest Activity function
+     * Cloned from profile method
+     *
+     * @param 
+     * @return Activities Page
+     * @author Kazim Akgul
+     */
+    public function activities() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/activities');
+    }
 
     /**
      * Settings method
