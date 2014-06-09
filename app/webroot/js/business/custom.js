@@ -89,9 +89,9 @@ $('#avatarframe').load(function(){
    $('#pictureChange').modal('toggle');
    $('#channel_avatar').attr('src','http://www.imageyourself.net/images/website/loading.gif');
    
-   setTimeout(function(){alert('ready');
+   setTimeout(function(){
 		var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
-        $('#channel_avatar').attr('src',new_img);			   
+        $('#user_avatar').attr('src',new_img);			   
    },1000);
 
    });
