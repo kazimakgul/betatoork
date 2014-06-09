@@ -1,5 +1,6 @@
 <?php
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
+$profile = $this->Html->url(array('controller'=>'businesses','action'=>'profile'));
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $logout = $this->Html->url(array("controller" => "businesses", "action" => "logout"));
 $mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
@@ -45,7 +46,7 @@ if ($user['User']['picture'] == null) {
         <h3>General</h3>
         <ul>
             <li>
-                <a href="<?= $index ?>">
+                <a href="<?= $profile ?>">
                     <i class="fa fa-user"></i> 
                     <span>Profile</span>
                 </a>
