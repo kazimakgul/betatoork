@@ -32,12 +32,12 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                           echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'pic circular1 img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
 					
-					<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -150px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
+					<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:100px 0px 10px -70px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
                     
                     <div class="name">
                         <div class="showme">
                         	
-                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -125px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
+                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:-50px 0px 10px 85px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
                         	
                         </div>
                     </div>
@@ -95,4 +95,36 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 			</div>
 		</div>
 	</div>
+
+<!-- Avatar Change Modal begins -->
+    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                
+                <?php 
+				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','avatar_image',$user['User']['id']));
+				$url=$avatar_image_url;
+				?>
+                <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+                
+            </div>
+        </div>
+    </div>
+<!-- Avatar Change Modal ends -->
+
+<!-- Cover Change Modal begins -->
+    <div class="modal fade" id="coverChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                <?php 
+				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','cover_image',$user['User']['id']));
+				$url=$avatar_image_url;
+				?>
+                <iframe id='coverframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+	<!-- Cover Change Modal ends -->
+
+
 </body>
