@@ -14,7 +14,7 @@ $allgames = $params['count'];
                 <div class="page-title">
                     Explore Games
                 </div>
-                <form class="search hidden-xs" action="<?= $search_action ?>" style="margin-left: 200px">
+                <form class="search hidden-xs" action="<?php echo $search_action ?>" style="margin-left: 200px">
                     <i class="fa fa-search"></i>
                     <input type="text" name="q" placeholder="Search games..." />
                     <input type="submit" />
@@ -27,7 +27,7 @@ $allgames = $params['count'];
                 <div class="row page-controls">
                     <div class="col-md-12 filters">
                         <label>Filter Games:</label>
-                        <a href="#" class="active">All Games (<?= $allgames ?>)</a>
+                        <a href="#" class="active">All Games (<?php echo $allgames ?>)</a>
                         <a href="#">Published (32)</a>
                         <a href="#">Suspended (6)</a>
                         <a href="#">Draft (1)</a>
@@ -72,34 +72,34 @@ $allgames = $params['count'];
                                 </div>
                             </div>
                             <div class="col-sm-4 header hidden-xs">
-                                <label><?= $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
+                                <label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
                             </div>
                             <div class="col-sm-2 header hidden-xs text-right">
                                 <label>Owner</label>
                             </div>
                             <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?= $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></label>
+                                <label><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></label>
                             </div>
                             <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?= $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></label>
+                                <label><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></label>
                             </div>
                             <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?= $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></label>
+                                <label><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></label>
                             </div>
                             <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?= $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></label>
+                                <label><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></label>
                             </div>
                         </div>
-                        <?= $this->element('business/dashboard/exploregames/list') ?>
+                        <?php echo $this->element('business/dashboard/exploregames/list') ?>
                         <div class="text-center">
-                            <?= $this->element('business/components/pagination') ?>
+                            <?php echo $this->element('business/components/pagination') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row users-grid">
-                    <?= $this->element('business/dashboard/exploregames/grid') ?>
+                    <?php echo $this->element('business/dashboard/exploregames/grid') ?>
                     <div class="text-center">
-                        <?= $this->element('business/components/pagination') ?>
+                        <?php echo $this->element('business/components/pagination') ?>
                     </div>
                 </div>
             </div>
