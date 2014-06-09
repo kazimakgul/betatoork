@@ -12,7 +12,7 @@ $allgames = $params['count'];
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Games
+                    My Games
                 </div>
                 <form class="search hidden-xs" action="<?= $search_action ?>">
                     <i class="fa fa-search"></i>
@@ -40,11 +40,11 @@ $allgames = $params['count'];
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <li><?= $this->Paginator->sort('name', 'Name') ?></li>
-                                    <li><?= $this->Paginator->sort('channelclone', 'Clones', array('direction' => 'desc')) ?></li>
-                                    <li><?= $this->Paginator->sort('favcount', 'Favorites', array('direction' => 'desc')) ?></li>
-                                    <li><?= $this->Paginator->sort('playcount', 'Plays', array('direction' => 'desc')) ?></li>
-                                    <li><?= $this->Paginator->sort('rate_count', 'Rates', array('direction' => 'desc')) ?></li>
+                                    <li><?= $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></li>
+                                    <li><?= $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></li>
+                                    <li><?= $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></li>
+                                    <li><?= $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></li>
+                                    <li><?= $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></li>
                                 </ul>
                             </div>
                             <a href="#" data-grid=".users-list" class="grid-view active"><i class="fa fa-th-list"></i></a>
@@ -72,19 +72,19 @@ $allgames = $params['count'];
                                 </div>
                             </div>
                             <div class="col-sm-6 header hidden-xs">
-                                <label><?= $this->Paginator->sort('name', 'Name') ?></label>
+                                <label><?= $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
                             </div>
                             <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?= $this->Paginator->sort('channelclone', 'Clones', array('direction' => 'desc')) ?></label>
+                                <label><?= $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></label>
                             </div>
                             <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?= $this->Paginator->sort('favcount', 'Favorites', array('direction' => 'desc')) ?></label>
+                                <label><?= $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></label>
                             </div>
                             <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?= $this->Paginator->sort('playcount', 'Plays', array('direction' => 'desc')) ?></label>
+                                <label><?= $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></label>
                             </div>
                             <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?= $this->Paginator->sort('rate_count', 'Rates', array('direction' => 'desc')) ?></label>
+                                <label><?= $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></label>
                             </div>
                         </div>
                         <?= $this->element('business/dashboard/mygames/list') ?>

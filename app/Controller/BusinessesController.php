@@ -63,8 +63,13 @@ class BusinessesController extends AppController {
         if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
             $attr = $this->request->data['attr'];
             $user_id = $this->Auth->user('id');
+<<<<<<< HEAD
             if ($attr == "profile_update")
 			{
+=======
+            if ($attr == "profile_update") {
+                $desc = $this->request->data['desc'];
+>>>>>>> FETCH_HEAD
                 $gender = $this->request->data['gender'];
                 $screen = $this->request->data['screen'];
                 $time = $this->request->data['time'];
@@ -73,6 +78,7 @@ class BusinessesController extends AppController {
                 $this->User->query('UPDATE users SET screenname="' . $screen . '", gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '" WHERE id=' . $user_id);
                 $this->set('success', "Profile Settings Updated.");
                 $this->set('_serialize', array('success'));
+<<<<<<< HEAD
            
 			
 			}
@@ -106,6 +112,19 @@ class BusinessesController extends AppController {
 			}
 			else
 			{
+=======
+            } elseif ($attr == "notification_update") {
+                if ($this->request->is('post')) {
+                    $permids = $this->request->data['permdata'];
+                    $this->User->Query('DELETE FROM mailpermissions WHERE user_id=' . $user_id . '');
+                    foreach ($permids as $permid) {
+                        $this->User->Query('INSERT INTO mailpermissions (user_id,type_id) VALUES (' . $user_id . ',' . $permid . ')');
+                    }
+                    $this->set('success', "Notifications Updated.");
+                    $this->set('_serialize', array('success'));
+                }
+            } else {
+>>>>>>> FETCH_HEAD
                 
             }
         } else {
@@ -739,6 +758,44 @@ class BusinessesController extends AppController {
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/favorites');
+    }
+
+    public function exploregames() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $limit = 16;
+        $this->paginate = array(
+            'Game' => array(
+                'fields' => array(
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'Game.embed',
+                    'Game.clone',
+                    'Game.created',
+                    'User.seo_username',
+                    'Game.description',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone',
+                    'Gamestat.potential'
+                ),
+                'limit' => $limit,
+                'order' => array(
+                    'Game.id' => 'DESC'
+                )
+            )
+        );
+        $cond = $this->paginate('Game');
+        $this->set('games', $cond);
+        $this->set('title_for_layout', 'Clone Business My Games');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/exploregames');
     }
 
     public function following() {

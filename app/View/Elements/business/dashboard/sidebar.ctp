@@ -2,10 +2,11 @@
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $logout = $this->Html->url(array("controller" => "businesses", "action" => "logout"));
-$following = $this->Html->url(array('controller' => 'businesses', 'action' => 'following'));
-$followers = $this->Html->url(array('controller' => 'businesses', 'action' => 'followers'));
 $mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
 $favorites = $this->Html->url(array('controller' => 'businesses', 'action' => 'favorites'));
+$exploregames = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames'));
+$following = $this->Html->url(array('controller' => 'businesses', 'action' => 'following'));
+$followers = $this->Html->url(array('controller' => 'businesses', 'action' => 'followers'));
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
 if ($user['User']['picture'] == null) {
     $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'avatar circular', "alt" => "clone user image"));
@@ -57,7 +58,7 @@ if ($user['User']['picture'] == null) {
                 <ul class="submenu">
                     <li><a href="<?= $mygames ?>">My Games</a></li>
                     <li><a href="<?= $favorites ?>">Favorites</a></li>
-                    <li><a href="search.html">Explore Games</a></li>
+                    <li><a href="<?= $exploregames ?>">Explore Games</a></li>
                 </ul>
             </li>
             <li>
