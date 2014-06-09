@@ -19,6 +19,7 @@
 		'business/dashboard/vendor/select2-bootstrap',
 		'business/dashboard/vendor/jquery.minicolors',
 		'business/dashboard/vendor/summernote',
+		'business/dashboard/vendor/jquery.dataTables',
 		'business/dashboard/vendor/messenger/messenger',
 		'business/dashboard/vendor/messenger/messenger-theme-flat')); ?>
 	<!-- javascript -->
@@ -51,6 +52,7 @@
 		'business/dashboard/vendor/moment.min',
 		'business/dashboard/theme',
 		'business/dashboard/vendor/select2.min',
+		'business/dashboard/vendor/jquery.dataTables.min',
 		'business/dashboard/vendor/jquery.validate.min',
 		'business/dashboard/vendor/bootstrap-datepicker',
 		'business/dashboard/vendor/summernote.min',

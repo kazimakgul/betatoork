@@ -1,7 +1,8 @@
 <?php
-$settings	= $this->Html->url(array('controller'=>'businesses','action'=>'settings'));
+$settings		= $this->Html->url(array('controller'=>'businesses','action'=>'settings'));
 $ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'channel_settings'));
 $notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'notifications'));
+$ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));
 ?>
 
 <div id="sidebar">
@@ -24,7 +25,7 @@ $notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'no
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo $settings;?>">
+			<a href="<?php echo $ads_management;?>">
 				<i class="fa fa-bar-chart-o"></i>
 				Ads Management
 			</a>
