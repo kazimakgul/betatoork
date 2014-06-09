@@ -4,7 +4,7 @@
 
 $subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
 $channelsettings=$this->Html->url(array("controller" => "businesses","action" =>"settings"));
-$controls=NULL;
+
 //Getting and declaring ads datas
 $homeBannerTop=$addata[0]['homeBannerTop'];
 $homeBannerMiddle=$addata[0]['homeBannerMiddle'];
@@ -12,6 +12,8 @@ $homeBannerBottom=$addata[0]['homeBannerBottom'];
 
 if($this->Session->read('Auth.User.id')==$user['User']['id']){
 	$controls=$user['User']['id'];
+}else{
+  $controls=NULL;
 }
 
 echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerTop,'adtype'=>'homeBannerTop')); ?>
