@@ -3,6 +3,7 @@ $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashb
 $profile = $this->Html->url(array('controller'=>'businesses','action'=>'profile'));
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $activities = $this->Html->url(array('controller'=>'businesses','action'=>'activities'));
+$app_status = $this->Html->url(array('controller'=>'businesses','action'=>'app_status'));
 $logout = $this->Html->url(array("controller" => "businesses", "action" => "logout"));
 $mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
 $favorites = $this->Html->url(array('controller' => 'businesses', 'action' => 'favorites'));
@@ -98,7 +99,7 @@ if ($user['User']['picture'] == null) {
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li><a href="status.html">App Status</a></li>
+                    <li><a href="<?php echo $app_status ?>">App Status</a></li>
                     <li><a href="projects.html">Tools & Docs</a></li>
                     <li><a href="steps.html">Steps to launch</a></li>
                     
