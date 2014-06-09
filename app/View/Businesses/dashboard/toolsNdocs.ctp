@@ -1,7 +1,11 @@
+<?php 
+$dashboard = $this->Html->url(array('controller'=>'businesses','action'=>'dashboard'));
+?>
+
 <body id="docs" data-spy="scroll" data-target="#guide">
 	<div id="guide">
 		<h1 class="logo">
-			<a href="index.html">Wolf</a>
+			<a href="<?php echo $dashboard ?>">Clone</a>
 		</h1>
 		<ul class="menu nav">
             <li>

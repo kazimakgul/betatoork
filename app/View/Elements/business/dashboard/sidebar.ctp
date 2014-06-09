@@ -1,6 +1,7 @@
 <?php
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 $profile = $this->Html->url(array('controller'=>'businesses','action'=>'profile'));
+$toolsNdocs = $this->Html->url(array('controller'=>'businesses','action'=>'toolsNdocs'));
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $activities = $this->Html->url(array('controller'=>'businesses','action'=>'activities'));
 $app_status = $this->Html->url(array('controller'=>'businesses','action'=>'app_status'));
@@ -111,7 +112,7 @@ if ($user['User']['picture'] == null) {
                 </a>
                 <ul class="submenu">
                     <li><a href="<?php echo $app_status ?>">App Status</a></li>
-                    <li><a href="projects.html">Tools & Docs</a></li>
+                    <li><a href="<?php echo $toolsNdocs ?>">Tools & Docs</a></li>
                     <li><a href="steps.html">Steps to launch</a></li>
                     
                 </ul>
