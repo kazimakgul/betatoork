@@ -31,14 +31,14 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                         } else {
                           echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'pic circular1 img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
-					<?php if($controls==$user['User']['id']){?>
+					
 					<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -150px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
-                    <?php }?>
+                    
                     <div class="name">
                         <div class="showme">
-                        	<?php if($controls==$user['User']['id']){?>
+                        	
                             <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -125px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
-                        	<?php }?>
+                        	
                         </div>
                     </div>
                 </div>
