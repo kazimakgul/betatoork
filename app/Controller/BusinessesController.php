@@ -91,7 +91,7 @@ class BusinessesController extends AppController {
 				//print_r($this->request->data);
                 $title = $this->request->data['title'];
                 $desc = $this->request->data['desc'];
-                $bgColor = $this->request->data['bg-color'];
+                $bgColor = $this->request->data['bgColor'];
                 //$bgImg = $this->request->data['bg-img'];
                 $analitics = $this->request->data['analitics'];
 				
@@ -402,7 +402,10 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-        $this->get_style_settings(2);
+        
+        //This line gets user selected channel styles
+        $this->get_style_settings($userid);
+
         //========Get Current Subscription===============
         if ($authid) {
             $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
@@ -480,6 +483,9 @@ class BusinessesController extends AppController {
             $this->redirect(array("controller" => "businesses", "action" => "mysite"));
         }
 
+        //This line gets user selected channel styles
+        $this->get_style_settings($userid);
+
         //========Get Current Subscription===============
         $authid = $this->Session->read('Auth.User.id');
         if ($authid) {
@@ -536,6 +542,8 @@ class BusinessesController extends AppController {
         $activityData = $this->Activity->find('all', array('contain' => array('PerformerUser' => array('fields' => array('PerformerUser.id', 'PerformerUser.username', 'PerformerUser.seo_username')), 'Game' => array('fields' => array('Game.id', 'Game.name', 'Game.seo_url', 'Game.embed')), 'ChannelUser' => array('fields' => array('ChannelUser.id', 'ChannelUser.username', 'ChannelUser.seo_username'))), 'fields' => array('Activity.id', 'Activity.performer_id', 'Activity.game_id', 'Activity.channel_id', 'Activity.msg_id', 'Activity.seen', 'Activity.notify', 'Activity.email', 'Activity.type', 'Activity.replied', 'Activity.created', 'PerformerUser.id', 'PerformerUser.username', 'PerformerUser.seo_username', 'ChannelUser.id', 'ChannelUser.username', 'ChannelUser.seo_username', 'Game.id', 'Game.name', 'Game.seo_url', 'Game.embed'), 'conditions' => array('Activity.game_id' => $game['Game']['id']), 'limit' => $limit, 'order' => 'Activity.created DESC'));
         $this->set('tagActivities', $activityData);
 
+        //This line gets user selected channel styles
+        $this->get_style_settings($game['User']['id']);
 
         $limit = 12;
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $game['Game']['user_id']), 'limit' => $limit, 'order' => array('Game.recommend' => 'desc')));
@@ -582,6 +590,8 @@ class BusinessesController extends AppController {
         $cond = $this->paginate('Game');
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
+        //This line gets user selected channel styles
+        $this->get_style_settings($userid);
 
         $authid = $this->Auth->user('id');
         $this->get_ads_info($userid, $authid);
@@ -621,6 +631,9 @@ class BusinessesController extends AppController {
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
         $cond = $this->paginate('Game');
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
+
+        //This line gets user selected channel styles
+        $this->get_style_settings($userid);
 
         //========Get Current Subscription===============
         $authid = $this->Session->read('Auth.User.id');
