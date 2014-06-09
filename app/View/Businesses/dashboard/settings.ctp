@@ -17,17 +17,9 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 					Profile settings
 				</h3>
 				<p class="intro">
-					Change your account information, avatar, login credentials, etc.
+					Change your account information, login credentials, etc.
 				</p>
-					<div class="form-group avatar-field clearfix">
-					    <div class="col-sm-3">
-							<?=$img;?>
-					    </div>
-					    <div class="col-sm-9">
-					    	<label>Set up your avatar picture</label>
-					      	<input type="file"/>
-					    </div>
-				  	</div>
+					
 				  	<div class="form-group">
 						<label>User Name</label>
 						<input type="text" class="form-control" disabled="disabled" value="<?=$user['User']['username'];?>" />
