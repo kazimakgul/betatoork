@@ -66,11 +66,10 @@ class BusinessesController extends AppController {
             if ($attr == "profile_update")
 			{
                 $gender = $this->request->data['gender'];
-                $screen = $this->request->data['screen'];
                 $time = $this->request->data['time'];
                 $cont = $this->request->data['cont'];
 
-                $this->User->query('UPDATE users SET screenname="' . $screen . '", gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '" WHERE id=' . $user_id);
+                $this->User->query('UPDATE users SET gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '" WHERE id=' . $user_id);
                 $this->set('success', "Profile Settings Updated.");
                 $this->set('_serialize', array('success'));
 			}
@@ -96,7 +95,7 @@ class BusinessesController extends AppController {
                 //$bgImg = $this->request->data['bg-img'];
                 $analitics = $this->request->data['analitics'];
 				
-                $this->User->query('UPDATE users SET username="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '", analitics="' . $analitics . '" WHERE id=' . $user_id);
+                $this->User->query('UPDATE users SET screenname="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '", analitics="' . $analitics . '" WHERE id=' . $user_id);
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
  			}

@@ -46,8 +46,12 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
     			</div>
 					<!--Channel Cover Avatar Ends -->
 				  	<div class="form-group">
-						<label>Title</label>
-						<input type="text" class="form-control" id="title" value="<?php echo $user['User']['username'];?>" />
+						<label>Screen Name
+                        <span class="help" data-toggle="tooltip" title="Users will see your screen name on your channel.">
+					    		<i class="fa fa-question-circle"></i>
+					    </span>
+						</label>
+						<input type="text" class="form-control" id="title" value="<?php echo $user['User']['screenname'];?>" />
 					</div>
 					<div class="form-group">
 				  		<label>Description</label>

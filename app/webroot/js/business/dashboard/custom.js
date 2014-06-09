@@ -39,7 +39,6 @@ $(document).ready(function() {
             $.post(link, {
                 attr	: attr,
                 gender	: $('#gender').val(),
-                screen	: $('#screen').val(),
                 time	: $('#user_time_zone').val(),
                 cont	: $('#country').val()
             },
