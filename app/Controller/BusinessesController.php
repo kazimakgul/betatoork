@@ -63,7 +63,8 @@ class BusinessesController extends AppController {
         if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
             $attr = $this->request->data['attr'];
             $user_id = $this->Auth->user('id');
-            if ($attr == "profile_update") {
+            if ($attr == "profile_update")
+			{
                 $gender = $this->request->data['gender'];
                 $time = $this->request->data['time'];
                 $cont = $this->request->data['cont'];
@@ -71,29 +72,35 @@ class BusinessesController extends AppController {
                 $this->User->query('UPDATE users SET gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '" WHERE id=' . $user_id);
                 $this->set('success', "Profile Settings Updated.");
                 $this->set('_serialize', array('success'));
-            } elseif ($attr == "notification_update") {
-                if ($this->request->is('post')) {
-                    $permids = $this->request->data['permdata'];
-                    $this->User->Query('DELETE FROM mailpermissions WHERE user_id=' . $user_id . '');
-                    foreach ($permids as $permid) {
-                        $this->User->Query('INSERT INTO mailpermissions (user_id,type_id) VALUES (' . $user_id . ',' . $permid . ')');
-                    }
-                    $this->set('success', "Notifications Updated.");
-                    $this->set('_serialize', array('success'));
-                }
-            } elseif ($attr == "channel_update") {
-                //print_r($this->request->data);
+			}
+			elseif ($attr == "notification_update")
+			{
+                   if($this->request->is('post')){
+					   $permids=$this->request->data['permdata'];
+					   $this->User->Query('DELETE FROM mailpermissions WHERE user_id='.$user_id.'');
+					      foreach($permids as $permid)
+					      {
+							$this->User->Query('INSERT INTO mailpermissions (user_id,type_id) VALUES ('.$user_id.','.$permid.')');
+					      }
+					$this->set('success', "Notifications Updated.");
+					$this->set('_serialize', array('success'));
+				   }
+            }
+			elseif ($attr == "channel_update")
+			{
+				//print_r($this->request->data);
                 $title = $this->request->data['title'];
                 $desc = $this->request->data['desc'];
                 $bgColor = $this->request->data['bg-color'];
                 //$bgImg = $this->request->data['bg-img'];
                 $analitics = $this->request->data['analitics'];
-
+				
                 $this->User->query('UPDATE users SET screenname="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '", analitics="' . $analitics . '" WHERE id=' . $user_id);
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
-            } else {
-                
+ 			}
+			else
+			{
             }
         } else {
             $id = 1;
@@ -236,10 +243,28 @@ class BusinessesController extends AppController {
     }
 
     /**
+     * Dummy Latest Activity function
+     * Cloned from profile method
+     *
+     * @param 
+     * @return Activities Page
+     * @author Kazim Akgul
+     */
+    public function activities() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/activities');
+    }
+
+    /**
      * Settings method
      *
      * @param 
      * @return Settings Page
+	 * @author Volkan Celiloğlu
      */
     public function settings() {
         $this->layout = 'Business/dashboard';
@@ -251,13 +276,33 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/settings');
     }
+	
+	
 
-    /* Notifications method
+    /** Ads Management method
+     *
+     * @param 
+     * @return Ads Management Page
+	 * @author Volkan Celiloğlu
+     */
+
+    public function ads_management() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+		$userid = $this->Session->read('Auth.User.id');
+		$this->get_ads_info($userid, $userid);
+        $this->set('title_for_layout', 'Clone Business Settings');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/ads_management');
+    }
+
+    /** Notifications method
      *
      * @param 
      * @return Notifications Page
+	 * @author Volkan Celiloğlu
      */
-
     public function notifications() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -279,10 +324,11 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/notifications');
     }
 
-    /* Channel_Settings method
+    /** Channel_Settings method
      *
      * @param 
      * @return Channel_Settings Page
+	 * @author Volkan Celiloğlu
      */
 
     public function channel_settings() {
@@ -787,6 +833,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
+        $limit = 18;
         $this->Subscription->bindModel(
                 array(
                     'belongsTo' => array(
@@ -797,7 +844,6 @@ class BusinessesController extends AppController {
                     )
                 )
         );
-        $limit = 18;
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
@@ -814,6 +860,7 @@ class BusinessesController extends AppController {
                 'limit' => $limit
             )
         );
+
         $data = $this->paginate('Subscription');
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Followers');
@@ -826,6 +873,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
+        $limit = 18;
         $this->Subscription->bindModel(
                 array(
                     'belongsTo' => array(
@@ -836,7 +884,7 @@ class BusinessesController extends AppController {
                     )
                 )
         );
-        $limit = 18;
+
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
@@ -860,7 +908,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/followers');
     }
-
+    
     public function explodechannels() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();

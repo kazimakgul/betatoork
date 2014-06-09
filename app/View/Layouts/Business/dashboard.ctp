@@ -19,6 +19,7 @@
 		'business/dashboard/vendor/select2-bootstrap',
 		'business/dashboard/vendor/jquery.minicolors',
 		'business/dashboard/vendor/summernote',
+		'business/dashboard/vendor/jquery.dataTables',
 		'business/dashboard/vendor/messenger/messenger',
 		'business/dashboard/vendor/messenger/messenger-theme-flat')); ?>
 	<!-- javascript -->
@@ -51,6 +52,7 @@
 		'business/dashboard/vendor/moment.min',
 		'business/dashboard/theme',
 		'business/dashboard/vendor/select2.min',
+		'business/dashboard/vendor/jquery.dataTables.min',
 		'business/dashboard/vendor/jquery.validate.min',
 		'business/dashboard/vendor/bootstrap-datepicker',
 		'business/dashboard/vendor/summernote.min',
@@ -66,5 +68,37 @@
 		'business/dashboard/vendor/messenger/messenger-theme-flat',
 		'business/dashboard/custom.js'));
 		?>
+
+	<!--
+      profile.ctp sayfası için gerekli js fonksiyonlari.
+   -->
+
+	<script type="text/javascript">
+        $(function() {
+
+        	// tabs
+        	var $tabs = $(".tabs a");
+        	var $tab_contents = $(".tab-content .tab");
+
+        	$tabs.click(function (e) {
+        		e.preventDefault();
+        		var index = $tabs.index(this);
+
+        		$tabs.removeClass("active");
+        		$tabs.eq(index).addClass("active");
+
+        		$tab_contents.removeClass("active");
+        		$tab_contents.eq(index).addClass("active");
+        	});
+
+
+        	// orders datatable 
+            $('#datatable-example').dataTable({
+                "sPaginationType": "full_numbers",
+                "iDisplayLength": 20,
+    			"aLengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]]
+            });
+        });
+    </script>
 
 </html>

@@ -2,6 +2,7 @@
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 $profile = $this->Html->url(array('controller'=>'businesses','action'=>'profile'));
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
+$activities = $this->Html->url(array('controller'=>'businesses','action'=>'activities'));
 $logout = $this->Html->url(array("controller" => "businesses", "action" => "logout"));
 $mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
 $favorites = $this->Html->url(array('controller' => 'businesses', 'action' => 'favorites'));
@@ -86,7 +87,7 @@ if ($user['User']['picture'] == null) {
         <h3>Application</h3>
         <ul>
             <li>
-                <a href="<?php echo $index ?>">
+                <a href="<?php echo $activities ?>">
                     <i class="fa fa-tasks"></i> 
                     <span>Latest activity</span>
                 </a>

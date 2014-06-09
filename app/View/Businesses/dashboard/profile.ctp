@@ -337,7 +337,7 @@
 												08 Feb, 2014
 											</div>
 										</div>
-										<img class="img-responsive" src="images/shots/1.png" />
+										<img class="img-responsive" src="http://wolfadmin.herokuapp.com/assets/shots/1-76e405dbe2539f341cbd890938dbeea2.png" />
 									</div>
 								</div>
 								<div class="col-sm-4">
@@ -352,7 +352,7 @@
 												08 Feb, 2014
 											</div>
 										</div>
-										<img class="img-responsive" src="images/shots/2.png" />
+										<img class="img-responsive" src="http://wolfadmin.herokuapp.com/assets/shots/1-76e405dbe2539f341cbd890938dbeea2.png" />
 									</div>
 								</div>
 								<div class="col-sm-4">
@@ -367,7 +367,7 @@
 												08 Feb, 2014
 											</div>
 										</div>
-										<img class="img-responsive" src="images/shots/3.png" />
+										<img class="img-responsive" src="http://wolfadmin.herokuapp.com/assets/shots/1-76e405dbe2539f341cbd890938dbeea2.png" />
 									</div>
 								</div>
 								<div class="col-sm-4">
@@ -482,77 +482,5 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="skin-switcher">
-		<div class="toggler">
-			<i class="brankic-brush"></i>
-		</div>
-		<ul class="menu">
-			<li>
-				<a class="active" data-skin="sidebar-default" href="#">
-					<span class="color default"></span> Default
-					<i class="fa fa-check"></i>
-				</a>
-			</li>
-			<li>
-				<a data-skin="sidebar-clear" href="#">
-					<span class="color clear"></span> Clear
-					<i class="fa fa-check"></i>
-				</a>
-			</li>
-			<li>
-				<a data-skin="sidebar-black" href="#">
-					<span class="color black"></span> Black
-					<i class="fa fa-check"></i>
-				</a>
-			</li>
-			<li>
-				<a data-skin="sidebar-dark" href="#">
-					<span class="color dark"></span> Dark
-					<i class="fa fa-check"></i>
-				</a>
-			</li>
-			<li>
-				<a data-skin="sidebar-flat" href="#">
-					<span class="color flat"></span> Flat
-					<i class="fa fa-check"></i>
-				</a>
-			</li>
-			<li>
-				<a data-skin="sidebar-flat-dark" href="#">
-					<span class="color flat-dark"></span> Flat dark
-					<i class="fa fa-check"></i>
-				</a>
-			</li>
-		</ul>
-	</div>
-
-	<script type="text/javascript">
-        $(function() {
-
-        	// tabs
-        	var $tabs = $(".tabs a");
-        	var $tab_contents = $(".tab-content .tab");
-
-        	$tabs.click(function (e) {
-        		e.preventDefault();
-        		var index = $tabs.index(this);
-
-        		$tabs.removeClass("active");
-        		$tabs.eq(index).addClass("active");
-
-        		$tab_contents.removeClass("active");
-        		$tab_contents.eq(index).addClass("active");
-        	});
-
-
-        	// orders datatable 
-            $('#datatable-example').dataTable({
-                "sPaginationType": "full_numbers",
-                "iDisplayLength": 20,
-    			"aLengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]]
-            });
-        });
-    </script>
 
 </body>
