@@ -17,6 +17,7 @@ $ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'chan
 $notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'notifications'));
 $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
+$gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite',$user['User']['id']));
 if ($user['User']['picture'] == null) {
     $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'avatar circular', "alt" => "clone user image"));
 } else {
@@ -67,6 +68,14 @@ if ($user['User']['picture'] == null) {
                     <span>Profile</span>
                 </a>
             </li>
+
+            <li>
+                <a href="<?php echo $gochannel ?>">
+                    <i class="fa fa-play"></i> 
+                    <span>Go to channel</span>
+                </a>
+            </li>
+
             <li>
                 <a href="<?php echo $index ?>" class="active">
                     <i class="ion-ios7-speedometer"></i> 

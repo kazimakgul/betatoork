@@ -1,9 +1,9 @@
 <?php 
 $logout=$this->Html->url(array("controller" => "businesses","action" =>"logout")); 
-$dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
-$mygames=$this->Html->url(array("controller" => "games","action" =>"mygames"));
+$dashboard=$this->Html->url(array("controller" => "businesses","action" =>"dashboard")); 
+$mygames=$this->Html->url(array("controller" => "businesses","action" =>"mygames"));
 $search = $this->Html->url(array("controller" => "businesses","action" =>"search2",$user['User']['id']));
-$settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
+$settings=$this->Html->url(array("controller" => "businesses","action" =>"channel_settings"));
 $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$user['User']['id']));
 $mysite = $this->Html->url(array("controller" => "businesses","action" =>"mysite",$this->Session->read('Auth.User.id')));
 ?>
