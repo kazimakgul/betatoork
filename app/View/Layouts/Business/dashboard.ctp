@@ -14,8 +14,6 @@
 		'business/dashboard/custom',
 		'business/dashboard/vendor/brankic',
 		'business/dashboard/vendor/datepicker',
-		'business/dashboard/vendor/ionicons.min',
-		'business/dashboard/vendor/font-awesome.min',
 		'business/dashboard/vendor/morris',
 		'business/dashboard/vendor/select2',
 		'business/dashboard/vendor/select2-bootstrap',
