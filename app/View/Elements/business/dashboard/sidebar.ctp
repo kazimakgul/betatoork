@@ -20,25 +20,25 @@ if ($user['User']['picture'] == null) {
         <a href="index.html" class="name">
             <?= $img ?>
             <span>
-                <?= $user['User']['username'] ?>
+                <?php echo $user['User']['username'] ?>
                 <i class="fa fa-chevron-down"></i>
             </span>
         </a>
         <ul class="menu">
             <li>
-                <a href="<?= $settings ?>">Account settings</a>
+                <a href="<?php echo $settings ?>">Account settings</a>
             </li>
             <li>
-                <a href="<?= $settings ?>">Billing</a>
+                <a href="<?php echo $settings ?>">Billing</a>
             </li>
             <li>
-                <a href="<?= $settings ?>">Notifications</a>
+                <a href="<?php echo $settings ?>">Notifications</a>
             </li>
             <li>
-                <a href="<?= $settings ?>">Help / Support</a>
+                <a href="<?php echo $settings ?>">Help / Support</a>
             </li>
             <li>
-                <a href="<?= $logout ?>">Sign out</a>
+                <a href="<?php echo $logout ?>">Sign out</a>
             </li>
         </ul>
     </div>
@@ -46,13 +46,13 @@ if ($user['User']['picture'] == null) {
         <h3>General</h3>
         <ul>
             <li>
-                <a href="<?= $profile ?>">
+                <a href="<?php echo $profile ?>">
                     <i class="fa fa-user"></i> 
                     <span>Profile</span>
                 </a>
             </li>
             <li>
-                <a href="<?= $index ?>" class="active">
+                <a href="<?php echo $index ?>" class="active">
                     <i class="ion-ios7-speedometer"></i> 
                     <span>Dashboard</span>
                 </a>
@@ -63,9 +63,9 @@ if ($user['User']['picture'] == null) {
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li><a href="<?= $mygames ?>">My Games</a></li>
-                    <li><a href="<?= $favorites ?>">Favorites</a></li>
-                    <li><a href="<?= $exploregames ?>">Explore Games</a></li>
+                    <li><a href="<?php echo $mygames ?>">My Games</a></li>
+                    <li><a href="<?php echo $favorites ?>">Favorites</a></li>
+                    <li><a href="<?php echo $exploregames ?>">Explore Games</a></li>
                 </ul>
             </li>
             <li>
@@ -74,8 +74,8 @@ if ($user['User']['picture'] == null) {
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li><a href="<?= $following ?>">Following</a></li>
-                    <li><a href="<?= $followers ?>">Followers</a></li>
+                    <li><a href="<?php echo $following ?>">Following</a></li>
+                    <li><a href="<?php echo $followers ?>">Followers</a></li>
                     <li><a href="reports-alt.html">Explore Channels</a></li>
                 </ul>
             </li>
@@ -86,7 +86,7 @@ if ($user['User']['picture'] == null) {
         <ul>
 
             <li>
-                <a href="<?= $index ?>">
+                <a href="<?php echo $index ?>">
                     <i class="fa fa-tasks"></i> 
                     <span>Latest activity</span>
                 </a>
@@ -125,7 +125,7 @@ if ($user['User']['picture'] == null) {
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li><a href="<?= $settings ?>">Settings</a></li>
+                    <li><a href="<?php echo $settings ?>">Settings</a></li>
                     <li><a href="account-billing.html">Billing</a></li>
                     <li><a href="account-notifications.html">Notifications</a></li>
                     <li><a href="account-support.html">Support</a></li>
@@ -146,7 +146,7 @@ if ($user['User']['picture'] == null) {
                     <!-- <li><a href="#">3 features added</a></li> -->
                 </ul>
             </li>
-            <li><a href="<?= $logout ?>"><i class="ion-log-out"></i></a></li>
+            <li><a href="<?php echo $logout ?>"><i class="ion-log-out"></i></a></li>
         </ul>
     </div>
 </div>
