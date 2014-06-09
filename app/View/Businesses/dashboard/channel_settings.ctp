@@ -47,11 +47,11 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 					<!--Channel Cover Avatar Ends -->
 				  	<div class="form-group">
 						<label>Title</label>
-						<input type="text" class="form-control" value="<?php echo $user['User']['username'];?>" />
+						<input type="text" class="form-control" id="title" value="<?php echo $user['User']['username'];?>" />
 					</div>
 					<div class="form-group">
 				  		<label>Description</label>
-				  		<div><textarea id="desc" class="form-control" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['description'];?></textarea></div>
+				  		<div><textarea id="desc" class="form-control" id="desc" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['description'];?></textarea></div>
 				  	</div>
 				  	<div class="form-group">
 					    <label>Background Color</label>
@@ -79,7 +79,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 				  	</div>
 					<div class="form-group">
 				  		<label>Analitics Code:</label>
-				  		<div><textarea id="analitics" class="form-control" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['adcode'];?></textarea></div>
+				  		<div><textarea id="analitics" class="form-control" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['analitics'];?></textarea></div>
 
 				  	</div>
 					<div class="form-group">
