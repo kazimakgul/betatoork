@@ -50,7 +50,7 @@ $(document).ready(function() {
                 if (data.error) {
                     alert(data.error); // error.id ye göre mesaj yazdırcak..
                 }else{
-                	Messenger().post("Data Updated!");
+                	Messenger().post(data.success);
                 	btn.button('reset');
                 }
             }, 'json');
@@ -69,7 +69,7 @@ $(document).ready(function() {
 		                if (data.error) {
 		                    alert(data.error); // error.id ye göre mesaj yazdırcak..
 		                }else{
-		                	Messenger().post("Notifications Updated!");
+		                	Messenger().post(data.success);
 		                	btn.button('reset');
 		                }
 		            }, 'json');

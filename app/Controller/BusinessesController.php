@@ -65,9 +65,6 @@ class BusinessesController extends AppController {
             $user_id = $this->Auth->user('id');
             if ($attr == "profile_update")
 			{
-                if ($this->request->data['pass'] != "" && $this->request->data['pass'] != NULL) {
-                    $pass = ""; //Burası Oğuzla konuşulup, şifreleme yöntemi öğrenilip devam edilecek.
-                }
                 $desc = $this->request->data['desc'];
                 $gender = $this->request->data['gender'];
                 $screen = $this->request->data['screen'];
@@ -75,7 +72,7 @@ class BusinessesController extends AppController {
                 $cont = $this->request->data['cont'];
 
                 $this->User->query('UPDATE users SET screenname="' . $screen . '", gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '", description="' . $desc . '" WHERE id=' . $user_id);
-                $this->set('success', "Başarılı bir şekilde güncelleme yapıldı.");
+                $this->set('success', "Profile Settings Updated.");
                 $this->set('_serialize', array('success'));
            
 			
@@ -89,7 +86,7 @@ class BusinessesController extends AppController {
 					      {
 							$this->User->Query('INSERT INTO mailpermissions (user_id,type_id) VALUES ('.$user_id.','.$permid.')');
 					      }
-					$this->set('success', "Başarılı bir şekilde güncelleme yapıldı.");
+					$this->set('success', "Notifications Updated.");
 					$this->set('_serialize', array('success'));
 				   }
             }
