@@ -57,7 +57,6 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 						 <?php $this->request->data['country_id']=$user['Country']['id'];  echo $this->Form->input('country_id',array('label'=>'Country','class'=>'form-control','id'=>'country')); ?>
 					</div>
 					<div class="form-group">
-
 						<input type="hidden" id="attr" name="attr" value="profile_update" />
 					</div>
 					<div class="form-group action">

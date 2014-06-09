@@ -65,13 +65,12 @@ class BusinessesController extends AppController {
             $user_id = $this->Auth->user('id');
             if ($attr == "profile_update")
 			{
-                $desc = $this->request->data['desc'];
                 $gender = $this->request->data['gender'];
                 $screen = $this->request->data['screen'];
                 $time = $this->request->data['time'];
                 $cont = $this->request->data['cont'];
 
-                $this->User->query('UPDATE users SET screenname="' . $screen . '", gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '", description="' . $desc . '" WHERE id=' . $user_id);
+                $this->User->query('UPDATE users SET screenname="' . $screen . '", gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '" WHERE id=' . $user_id);
                 $this->set('success', "Profile Settings Updated.");
                 $this->set('_serialize', array('success'));
            
@@ -90,6 +89,21 @@ class BusinessesController extends AppController {
 					$this->set('_serialize', array('success'));
 				   }
             }
+			elseif ($attr == "channel_update")
+			{
+				//print_r($this->request->data);
+                $title = $this->request->data['title'];
+                $desc = $this->request->data['desc'];
+                $bgColor = $this->request->data['bg-color'];
+                //$bgImg = $this->request->data['bg-img'];
+                $analitics = $this->request->data['analitics'];
+				
+                $this->User->query('UPDATE users SET username="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '", adcode="' . $analitics . '" WHERE id=' . $user_id);
+                $this->set('success', "Channel Settings Updated.");
+                $this->set('_serialize', array('success'));
+           
+			
+			}
 			else
 			{
                 

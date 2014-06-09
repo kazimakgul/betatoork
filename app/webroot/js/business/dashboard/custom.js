@@ -38,13 +38,10 @@ $(document).ready(function() {
   			//validate("#account"); Function yapılcak ve gerekli dataların doğrulukları kontrol edilcek
             $.post(link, {
                 attr	: attr,
-                desc	: $('#desc').val(),
                 gender	: $('#gender').val(),
                 screen	: $('#screen').val(),
                 time	: $('#user_time_zone').val(),
-                strt	: $('#street').val(),
-                cont	: $('#country').val(),
-                pass	: $('#pass').val()
+                cont	: $('#country').val()
             },
             function(data) {
                 if (data.error) {
@@ -73,8 +70,26 @@ $(document).ready(function() {
 		                	btn.button('reset');
 		                }
 		            }, 'json');
-        } else
-        {
+        }
+        else if (attr == "channel_update") {
+			$.post(link, {
+                attr	: attr,
+                title	: $('#title').val(),
+                desc	: $('#desc').val(),
+                bgColor: $('#bgcolor').val(),
+                //bgImg	: $('#post_featured_image').val(),
+                analitics: $('#analitics').val()
+ 					},
+		            function(data) {
+		                if (data.error) {
+		                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+		                }else{
+		                	Messenger().post(data.success);
+		                	btn.button('reset');
+		                }
+		            }, 'json');
+        }
+		else{
 			
         }
     });
