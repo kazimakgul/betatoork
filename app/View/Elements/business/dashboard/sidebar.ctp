@@ -2,6 +2,7 @@
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 $profile = $this->Html->url(array('controller'=>'businesses','action'=>'profile'));
 $toolsNdocs = $this->Html->url(array('controller'=>'businesses','action'=>'toolsNdocs'));
+$steps2launch = $this->Html->url(array('controller'=>'businesses','action'=>'steps2launch'));
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $activities = $this->Html->url(array('controller'=>'businesses','action'=>'activities'));
 $app_status = $this->Html->url(array('controller'=>'businesses','action'=>'app_status'));
@@ -33,18 +34,13 @@ if ($user['User']['picture'] == null) {
         </a>
         <ul class="menu">
 		<li>
-			<a href="<?php echo $ch_settings;?>" <?php if($active=='channel')echo 'class="active"'; ?>>
-				Channel
+			<a href="<?php echo $ch_settings;?>" <?php if($active=='settings')echo 'class="active"'; ?>>
+				Account Settings
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo $settings;?>" <?php if($active=='profile')echo 'class="active"'; ?>>
-				Profile
-			</a>
-		</li>
-		<li>
-			<a href="<?php echo $ads_management;?>">
-				Ads Management
+				Billing
 			</a>
 		</li>
 		<li>
@@ -52,6 +48,11 @@ if ($user['User']['picture'] == null) {
 				Notifications
 			</a>
 		</li>
+        <li>
+            <a href="<?php echo $settings;?>">
+                Help & Support
+            </a>
+        </li>
 		<li>
 			<a href="<?php echo $logout ?>">Sign out</a>
 		</li>
@@ -113,7 +114,7 @@ if ($user['User']['picture'] == null) {
                 <ul class="submenu">
                     <li><a href="<?php echo $app_status ?>">App Status</a></li>
                     <li><a href="<?php echo $toolsNdocs ?>">Tools & Docs</a></li>
-                    <li><a href="steps.html">Steps to launch</a></li>
+                    <li><a href="<?php echo $steps2launch ?>">Steps to launch</a></li>
                     
                 </ul>
             </li>
@@ -140,17 +141,12 @@ if ($user['User']['picture'] == null) {
                         <ul class="submenu">
 							<li>
 								<a href="<?php echo $ch_settings;?>" <?php if($active=='channel')echo 'class="active"'; ?>>
-									Channel
+									Settings
 								</a>
 							</li>
 							<li>
 								<a href="<?php echo $settings;?>" <?php if($active=='profile')echo 'class="active"'; ?>>
-									Profile
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo $ads_management;?>">
-									Ads Management
+									Billing
 								</a>
 							</li>
 							<li>
