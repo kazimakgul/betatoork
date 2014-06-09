@@ -9,6 +9,7 @@ $favorites = $this->Html->url(array('controller' => 'businesses', 'action' => 'f
 $exploregames = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames'));
 $following = $this->Html->url(array('controller' => 'businesses', 'action' => 'following'));
 $followers = $this->Html->url(array('controller' => 'businesses', 'action' => 'followers'));
+$explodechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explodechannels'));
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
 if ($user['User']['picture'] == null) {
     $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'avatar circular', "alt" => "clone user image"));
@@ -19,7 +20,7 @@ if ($user['User']['picture'] == null) {
 <div id="sidebar-default" class="main-sidebar">
     <div class="current-user">
         <a href="index.html" class="name">
-            <?= $img ?>
+            <?php echo $img ?>
             <span>
                 <?php echo $user['User']['username'] ?>
                 <i class="fa fa-chevron-down"></i>
@@ -77,7 +78,7 @@ if ($user['User']['picture'] == null) {
                 <ul class="submenu">
                     <li><a href="<?php echo $following ?>">Following</a></li>
                     <li><a href="<?php echo $followers ?>">Followers</a></li>
-                    <li><a href="reports-alt.html">Explore Channels</a></li>
+                    <li><a href="<?php echo $explodechannels ?>">Explore Channels</a></li>
                 </ul>
             </li>
         </ul>
@@ -85,14 +86,12 @@ if ($user['User']['picture'] == null) {
     <div class="menu-section">
         <h3>Application</h3>
         <ul>
-
             <li>
                 <a href="<?php echo $activities ?>">
                     <i class="fa fa-tasks"></i> 
                     <span>Latest activity</span>
                 </a>
             </li>
-
             <li>
                 <a href="account.html" data-toggle="sidebar">
                     <i class="ion-earth"></i> <span>App Pages</span>
