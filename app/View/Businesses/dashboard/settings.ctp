@@ -25,7 +25,11 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 						<input type="text" class="form-control" disabled="disabled" value="<?php echo $user['User']['username'];?>" />
 					</div>
 				  	<div class="form-group">
-						<label>Screen Name</label>
+						<label>Screen Name
+                        <span class="help" data-toggle="tooltip" title="Users will see your screen name on your channel.">
+					    		<i class="fa fa-question-circle"></i>
+					    </span>
+						</label>
 						<input type="text" class="form-control" id="screen" value="<?php echo $user['User']['screenname'];?>" />
 					</div>
 					<div class="form-group">
