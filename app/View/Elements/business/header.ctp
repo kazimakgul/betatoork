@@ -4,6 +4,7 @@ $dashboard=$this->Html->url(array("controller" => "businesses","action" =>"dashb
 $mygames=$this->Html->url(array("controller" => "businesses","action" =>"mygames"));
 $search = $this->Html->url(array("controller" => "businesses","action" =>"search2",$user['User']['id']));
 $settings=$this->Html->url(array("controller" => "businesses","action" =>"channel_settings"));
+$visitor_mode='?mode=visitor';
 $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$user['User']['id']));
 $mysite = $this->Html->url(array("controller" => "businesses","action" =>"mysite",$this->Session->read('Auth.User.id')));
 ?>
@@ -37,6 +38,7 @@ $mysite = $this->Html->url(array("controller" => "businesses","action" =>"mysite
 				    <li><a href="<?php echo $dashboard; ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				    <li><a href="<?php echo $mygames; ?>"><i class="fa fa-gamepad"></i> My Games</a></li>
 				    <li><a href="<?php echo $settings; ?>"><i class="fa fa-gears"></i> Settings</a></li>
+				    <li><a href="<?php echo $visitor_mode; ?>"><i class="fa fa-eye"></i> View As Visitor</a></li>
 				    <li class="divider"></li>
 				    <li><a href="<?php echo $logout; ?>"><i class="fa fa-sign-out"></i> Sign Out</a></li>
 				  </ul>
