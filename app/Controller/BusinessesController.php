@@ -869,23 +869,25 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'User' => array(
                 'fields' => array(
+                    'User.username',
                     'User.seo_username',
-                    'User.username'
+                    'User.picture'
                 ),
                 'order' => array(
                     'User.id' => 'DESC'
                 ),
-                'limit' => $limit
+                'limit' => $limit,
+                'contain' => false
             )
         );
         $data = $this->paginate('User');
-        print_r($data);
-        exit;
+        //  print_r($data);
+        //  exit;
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Followers');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-        $this->render('/Businesses/dashboard/following');
+        $this->render('/Businesses/dashboard/explodechannels');
     }
 
 }

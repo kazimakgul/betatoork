@@ -16,8 +16,8 @@ $image = $this->requestAction(array('controller' => 'users', 'action' => 'random
                     <?php } ?>
                     <div class="cover_dark"></div>
                     <?php
-                    $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
                     if (is_null($picture)) {
+                        $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
                         echo '<a href="' . $home . '">' . $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'pic circular img-thumbnail', "alt" => "clone user image")) . '</a>';
                     } else {
                         echo '<a href="' . $home . '">' . $this->Upload->image($user, 'User.picture', array(), array('id' => 'user_avatar', 'class' => 'img-circle', 'onerror' => 'imgError(this,"avatar");', 'alt' => 'profile', 'width' => '50', 'height' => '50')) . '</a>';
