@@ -1,5 +1,5 @@
 <?php
-$search_action = $this->Html->url(array("controller" => "businesses", "action" => "favorites_search"));
+$search_action = $this->Html->url(array("controller" => "businesses", "action" => "mygames_search"));
 $params = $this->Paginator->params();
 $allgames = $params['count'];
 ?>
@@ -12,9 +12,9 @@ $allgames = $params['count'];
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Favorites
+                    Explore Games
                 </div>
-                <form class="search hidden-xs" action="<?= $search_action ?>">
+                <form class="search hidden-xs" action="<?= $search_action ?>" style="margin-left: 200px">
                     <i class="fa fa-search"></i>
                     <input type="text" name="q" placeholder="Search games..." />
                     <input type="submit" />
@@ -90,14 +90,14 @@ $allgames = $params['count'];
                                 <label><?= $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></label>
                             </div>
                         </div>
-                        <?= $this->element('business/dashboard/favorites/list') ?>
+                        <?= $this->element('business/dashboard/exploregames/list') ?>
                         <div class="text-center">
                             <?= $this->element('business/components/pagination') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row users-grid">
-                    <?= $this->element('business/dashboard/favorites/grid') ?>
+                    <?= $this->element('business/dashboard/exploregames/grid') ?>
                     <div class="text-center">
                         <?= $this->element('business/components/pagination') ?>
                     </div>
