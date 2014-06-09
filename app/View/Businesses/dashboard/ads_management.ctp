@@ -5,14 +5,11 @@
 		?>
 		<div id="content">
 			<div class="menubar">
-				<div class="sidebar-toggler visible-xs">
-					<i class="ion-navicon"></i>
-				</div>
+
 				<div class="page-title">
-					Search results with filter
-					<small class="hidden-xs hidden-sm">
-						<strong>Click on the filter checkboxes!</strong>
-					</small>
+					<a href="#" onclick="history.go(-1);return false;">
+					← Return to dashboard
+					</a>
 				</div>
                 <button id="AddAdsCode" class="btn btn-success pull-right">Add Ads</button>
 			</div>
@@ -179,7 +176,7 @@
 	                            <td>
 	                            	'.$adcode["Adcode"]["name"].'
 	                            </td>
-	                            <td><textarea cols="50" disabled>'.$adcode["Adcode"]["code"].'</textarea></td>
+	                            <td><textarea cols="50" disabled readonly style="max-width:400px; max-height:100px;">'.$adcode["Adcode"]["code"].'</textarea></td>
 	                            <td>
 	                            '.$adsStatus.'
 	                            </td>

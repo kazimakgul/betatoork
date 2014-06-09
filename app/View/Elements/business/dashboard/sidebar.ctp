@@ -11,6 +11,9 @@ $exploregames = $this->Html->url(array('controller' => 'businesses', 'action' =>
 $following = $this->Html->url(array('controller' => 'businesses', 'action' => 'following'));
 $followers = $this->Html->url(array('controller' => 'businesses', 'action' => 'followers'));
 $explodechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explodechannels'));
+$ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'channel_settings'));
+$notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'notifications'));
+$ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
 if ($user['User']['picture'] == null) {
     $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'avatar circular', "alt" => "clone user image"));
@@ -28,22 +31,30 @@ if ($user['User']['picture'] == null) {
             </span>
         </a>
         <ul class="menu">
-            <li>
-                <a href="<?php echo $settings ?>">Account settings</a>
-            </li>
-            <li>
-                <a href="<?php echo $settings ?>">Billing</a>
-            </li>
-            <li>
-                <a href="<?php echo $settings ?>">Notifications</a>
-            </li>
-            <li>
-                <a href="<?php echo $settings ?>">Help / Support</a>
-            </li>
-            <li>
-                <a href="<?php echo $logout ?>">Sign out</a>
-            </li>
-        </ul>
+		<li>
+			<a href="<?php echo $ch_settings;?>" <?php if($active=='channel')echo 'class="active"'; ?>>
+				Channel
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo $settings;?>" <?php if($active=='profile')echo 'class="active"'; ?>>
+				Profile
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo $ads_management;?>">
+				Ads Management
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo $notifications;?>" <?php if($active=='notification')echo 'class="active"'; ?>>
+				Notifications
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo $logout ?>">Sign out</a>
+		</li>
+	</ul>
     </div>
     <div class="menu-section">
         <h3>General</h3>
@@ -125,12 +136,33 @@ if ($user['User']['picture'] == null) {
                     <i class="ion-person"></i> <span>My account</span>
                     <i class="fa fa-chevron-down"></i>
                 </a>
-                <ul class="submenu">
-                    <li><a href="<?php echo $settings ?>">Settings</a></li>
-                    <li><a href="account-billing.html">Billing</a></li>
-                    <li><a href="account-notifications.html">Notifications</a></li>
-                    <li><a href="account-support.html">Support</a></li>
-                </ul>
+                        <ul class="submenu">
+							<li>
+								<a href="<?php echo $ch_settings;?>" <?php if($active=='channel')echo 'class="active"'; ?>>
+									Channel
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo $settings;?>" <?php if($active=='profile')echo 'class="active"'; ?>>
+									Profile
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo $ads_management;?>">
+									Ads Management
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo $notifications;?>" <?php if($active=='notification')echo 'class="active"'; ?>>
+									Notifications
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo $settings;?>">
+									Support
+								</a>
+							</li>
+						</ul>
             </li>
         </ul>
     </div>
