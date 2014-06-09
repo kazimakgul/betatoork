@@ -22,21 +22,21 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 					
 				  	<div class="form-group">
 						<label>User Name</label>
-						<input type="text" class="form-control" disabled="disabled" value="<?=$user['User']['username'];?>" />
+						<input type="text" class="form-control" disabled="disabled" value="<?php echo $user['User']['username'];?>" />
 					</div>
 				  	<div class="form-group">
 						<label>Screen Name</label>
-						<input type="text" class="form-control" id="screen" value="<?=$user['User']['screenname'];?>" />
+						<input type="text" class="form-control" id="screen" value="<?php echo $user['User']['screenname'];?>" />
 					</div>
 					<div class="form-group">
 						<label>Email address</label>
-						<input type="email" class="form-control" disabled="disabled" value="<?=$user['User']['email'];?>" />
+						<input type="email" class="form-control" disabled="disabled" value="<?php echo $user['User']['email'];?>" />
 					</div>
 					<div class="form-group">
 					    <label for="inputPassword3" >Birthday</label>
 					    	<div class="input-group">
 							  	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							  	<input type="text" class="form-control datepicker" id="user_time_zone" value="<?=$user['User']['birth_date'];?>" placeholder="<?echo (date("Y")-18); echo "-".date("m-d");?>">
+							  	<input type="text" class="form-control datepicker" id="user_time_zone" value="<?php echo $user['User']['birth_date'];?>" placeholder="<?php echo (date("Y")-18); echo "-".date("m-d");?>">
 					    	</div>
 				  	</div>				
 					<div class="form-group">
