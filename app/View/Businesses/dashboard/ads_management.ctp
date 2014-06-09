@@ -14,10 +14,7 @@
 						<strong>Click on the filter checkboxes!</strong>
 					</small>
 				</div>
-				<div class="options pull-right">
-					<a href="#"><i class="fa fa-print"></i> Print</a>
-					<a href="#"><i class="fa fa-download"></i> Download CSV</a>
-				</div>
+                <button id="AddAdsCode" class="btn btn-success pull-right">Add Ads</button>
 			</div>
 
 			<div class="content-wrapper clearfix">
@@ -162,10 +159,19 @@
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-
 							<?php
-								foreach ($adcodes as $adcode) {
-									
+					foreach ($adcodes as $adcode) {
+						$adsStatus = NULL;
+						if (in_array($adcode["Adcode"]["id"], $addata[0]['Adsetting']))
+							{
+								$adsStatus.= ($adcode['Adcode']['id']==$addata[0]['Adsetting']['home_banner_top']?'<span class="label label-success" style="display:inline-block">Home -> Top</span>':'');
+								$adsStatus.= ($adcode['Adcode']['id']==$addata[0]['Adsetting']['home_banner_middle']?'<span class="label label-success" style="display:inline-block">Home -> Middle</span>':'');
+								$adsStatus.= ($adcode['Adcode']['id']==$addata[0]['Adsetting']['home_banner_bottom']?'<span class="label label-success" style="display:inline-block">Home -> Bottom</span>':'');
+								$adsStatus.= ($adcode['Adcode']['id']==$addata[0]['Adsetting']['game_banner_top']?'<span class="label label-success" style="display:inline-block">Game -> Top</span>':'');
+								$adsStatus.= ($adcode['Adcode']['id']==$addata[0]['Adsetting']['game_banner_bottom']?'<span class="label label-success" style="display:inline-block">Game -> Middle</span>':'');
+							}else{
+								$adsStatus = '<span class="label label-default">Not Used</span>';
+							}	
 					echo '<tr>
 	                            <td>
 	                            	<input name="select-ads" type="checkbox" />
@@ -173,8 +179,10 @@
 	                            <td>
 	                            	'.$adcode["Adcode"]["name"].'
 	                            </td>
-	                            <td><textarea cols="50">'.$adcode["Adcode"]["code"].'</textarea></td>
-	                            <td class=""><span class="label label-success">Available</span></td>
+	                            <td><textarea cols="50" disabled>'.$adcode["Adcode"]["code"].'</textarea></td>
+	                            <td>
+	                            '.$adsStatus.'
+	                            </td>
 	                        </tr>';
 									
 								}

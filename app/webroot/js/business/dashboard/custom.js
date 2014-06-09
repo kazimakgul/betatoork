@@ -76,7 +76,6 @@ $(document).ready(function() {
                 title	: $('#title').val(),
                 desc	: $('#desc').val(),
                 bgColor: $('#bgcolor').val(),
-                //bgImg	: $('#post_featured_image').val(),
                 analitics: $('#analitics').val()
  					},
 		            function(data) {
@@ -231,7 +230,7 @@ $('#coverframe').load(function(){
 
 	        $('#datatable-ads').dataTable({
                 "sPaginationType": "full_numbers",
-                "iDisplayLength": 10,
+                "iDisplayLength": 5,
     			"aLengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]]
             });
 
