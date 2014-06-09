@@ -25,6 +25,13 @@ $notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'no
 		</li>
 		<li>
 			<a href="<?php echo $settings;?>">
+				<i class="fa fa-bar-chart-o"></i>
+				Ads Management
+			</a>
+		</li>
+
+		<li>
+			<a href="<?php echo $settings;?>">
 				<i class="ion-card"></i>
 				Billing
 			</a>
