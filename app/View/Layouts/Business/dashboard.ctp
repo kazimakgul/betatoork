@@ -67,4 +67,36 @@
 		'business/dashboard/custom.js'));
 		?>
 
+	<!--
+      profile.ctp sayfası için gerekli js fonksiyonlari.
+   -->
+
+	<script type="text/javascript">
+        $(function() {
+
+        	// tabs
+        	var $tabs = $(".tabs a");
+        	var $tab_contents = $(".tab-content .tab");
+
+        	$tabs.click(function (e) {
+        		e.preventDefault();
+        		var index = $tabs.index(this);
+
+        		$tabs.removeClass("active");
+        		$tabs.eq(index).addClass("active");
+
+        		$tab_contents.removeClass("active");
+        		$tab_contents.eq(index).addClass("active");
+        	});
+
+
+        	// orders datatable 
+            $('#datatable-example').dataTable({
+                "sPaginationType": "full_numbers",
+                "iDisplayLength": 20,
+    			"aLengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]]
+            });
+        });
+    </script>
+
 </html>
