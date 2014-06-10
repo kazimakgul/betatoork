@@ -1,7 +1,7 @@
 <?php
 foreach ($games as $game) {
     $name = $game['Game']['name'];
-    $owner = empty($game['Game']['User']['username']) ? 'No Owner' : $game['Game']['User']['username'];
+    $owner = empty($game['Game']['User']['username']) ? FALSE : $game['Game']['User']['username'];
     $clones = empty($game['Gamestat']['channelclone']) ? 0 : $game['Gamestat']['channelclone'];
     $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
     $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
@@ -22,9 +22,15 @@ foreach ($games as $game) {
             </a>
         </div>
         <div class="col-sm-2 text-right">
-            <a href="<?php echo $userurl ?>"  target="_blank" class="name">
-                <?php echo $owner ?>
-            </a>
+            <?php if ($owner !== FALSE) { ?>
+                <a href="<?php echo $userurl ?>"  target="_blank" class="name">
+                    <?php echo $owner ?>
+                </a>
+            <?php } else { ?>
+                <div class="total-spent">
+                    No Owner
+                </div>
+            <?php } ?>
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">
