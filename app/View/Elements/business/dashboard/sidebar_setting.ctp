@@ -3,6 +3,7 @@ $settings		= $this->Html->url(array('controller'=>'businesses','action'=>'settin
 $ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'channel_settings'));
 $notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'notifications'));
 $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));
+$billing	= $this->Html->url(array('controller'=>'businesses','action'=>'billing'));
 ?>
 
 <div id="sidebar">
@@ -32,7 +33,7 @@ $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'a
 		</li>
 
 		<li>
-			<a href="<?php echo $settings;?>">
+			<a href="<?php echo $billing;?>"<?php if($active=='billing')echo 'class="active"'; ?>>
 				<i class="ion-card"></i>
 				Billing
 			</a>
