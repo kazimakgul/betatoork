@@ -1,3 +1,6 @@
+<?php
+$add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'));
+?>
 <body id="search">
 	<div id="wrapper">
 		<?php  echo $this->element('business/dashboard/sidebar');
@@ -11,7 +14,7 @@
 					← Return to dashboard
 					</a>
 				</div>
-                <button id="AddAdsCode" class="btn btn-success pull-right">Add Ads</button>
+                <a id="AddAdsCode" href="<?php echo $add_ads; ?>" class="btn btn-success pull-right">Add Ads</a>
 			</div>
 
 			<div class="content-wrapper clearfix">
@@ -176,7 +179,7 @@
 	                            <td>
 	                            	'.$adcode["Adcode"]["name"].'
 	                            </td>
-	                            <td><textarea cols="50" disabled readonly style="max-width:400px; max-height:100px;">'.$adcode["Adcode"]["code"].'</textarea></td>
+	                            <td><textarea cols="50" disabled readonly style="max-width:400px; max-height:100px;border: none;">'.$adcode["Adcode"]["code"].'</textarea></td>
 	                            <td>
 	                            '.$adsStatus.'
 	                            </td>

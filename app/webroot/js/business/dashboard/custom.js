@@ -22,6 +22,9 @@ $(document).ready(function() {
 		extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
 	    theme: 'flat'
 	}			
+ 
+ 
+ 
     /**
      *	Update Form Post Method
      * 	@param #attr.val(), link => Update controller
@@ -93,7 +96,37 @@ $(document).ready(function() {
     });
 
 
-
+ 
+    /**
+     *	New Form Post Method
+     * 	@param #attr.val(), link => New controller
+     *	@return data.error=> error.id or data.success=> success.id
+     */
+ $('#NewButton').click(function() {
+        var link = newData; //Businesses updatedata function run.
+        var attr = $('#attr').val(); //Form control value
+		var btn = $(this);
+		btn.button('loading');
+		if (attr == "new_ads")
+        {
+            $.post(link, {
+                attr	: attr,
+                title	: $('#title').val(),
+                desc	: $('#desc').val(),
+                category: $('#category').val()
+            },
+            function(data) {
+                if (data.error) {
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                }else{
+                	Messenger().post(data.success);
+                	btn.button('reset');
+                	setTimeout(function(){location.href=ads_management}, 2000 );
+                }
+            }, 'json');
+        }
+		
+	});
 
    //Controller functions for modals of avatar begins
 $('#avatarframe').load(function(){

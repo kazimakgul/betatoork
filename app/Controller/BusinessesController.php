@@ -58,8 +58,15 @@ class BusinessesController extends AppController {
         }
     }
 
-    public function updateData() {
 
+
+    /**
+     * Update Form Request method
+     *
+     * @param Request => array()
+     * @return success=>"Message" or Error=>id
+     */
+    public function updateData() {
         if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
             $attr = $this->request->data['attr'];
             $user_id = $this->Auth->user('id');
@@ -88,11 +95,9 @@ class BusinessesController extends AppController {
             }
 			elseif ($attr == "channel_update")
 			{
-				//print_r($this->request->data);
                 $title = $this->request->data['title'];
                 $desc = $this->request->data['desc'];
                 $bgColor = $this->request->data['bgColor'];
-                //$bgImg = $this->request->data['bg-img'];
                 $analitics = $this->request->data['analitics'];
 
                 $this->User->query('UPDATE users SET screenname="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '", analitics="' . $analitics . '" WHERE id=' . $user_id);
@@ -109,6 +114,54 @@ class BusinessesController extends AppController {
         }
     }
 
+
+
+    /**
+     * New Form Request method
+     *
+     * @param Request => array()
+     * @return success=>"Message" or Error=>id
+     */
+    public function newData() {
+        if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
+            $attr = $this->request->data['attr'];
+            $user_id = $this->Auth->user('id');
+			if($attr == "new_ads"){
+                $filtered_data['Adcode']['name'] = $this->request->data['title'];
+                $filtered_data['Adcode']['code'] = $this->request->data['desc'];
+				$filtered_data['Adcode']['user_id'] = $user_id;
+				$this->Adcode->save($filtered_data);
+
+				$category = $this->request->data['category'];
+				if($category!='0'){
+					
+				$filtered_data['Adsetting'][$category] =  $this->Adcode->getLastInsertID();
+				$id = $this->Adsetting->find('first', array('conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
+				$this->Adsetting->id=$id;
+				$this->Adsetting->save($filtered_data);
+				//$this->User->query('UPDATE adsettings SET '.$category.'="' . $id . '" WHERE user_id=' . $user_id);
+				}
+                
+                $this->set('success', "Ads Code Added");
+                $this->set('_serialize', array('success'));
+			}
+			else{
+            $id = 1;
+            $this->set('error', $id);
+            $this->set('_serialize', array('error'));
+			}
+			
+			
+			
+
+		} else {
+            $id = 1;
+            $this->set('error', $id);
+            $this->set('_serialize', array('error'));
+        }
+	}
+
+	
     //this gets game suggestions
     public function get_game_suggestions($order) {
         $top50 = $this->Game->find('all', array('contain' => array('User' => array('fields' => 'User.seo_username,User.username')), 'conditions' => array('Game.active' => '1'), 'limit' => 100, 'order' => array($order => 'desc'

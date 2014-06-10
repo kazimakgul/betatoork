@@ -16,23 +16,11 @@
 				</div>
 			</div>
 
-			<div class="content-wrapper">
-				<form id="new-product" class="form-horizontal" method="post" action="#" role="form">
+			<div class="content-wrapper form-horizontal">
 				  	<div class="form-group">
 					    <label class="col-sm-2 col-md-2 control-label">Title</label>
 					    <div class="col-sm-10 col-md-8">
-					      <input type="text" class="form-control" name="product[first_name]" />
-					    </div>
-				  	</div>
-				  	<div class="form-group">
-					    <label class="col-sm-2 col-md-2 control-label">
-					    	SKU
-					    	<span class="help" data-toggle="tooltip" title="The Stock Keeping Unit">
-					    		<i class="fa fa-question-circle"></i>
-					    	</span>
-					    </label>
-					    <div class="col-sm-10 col-md-8">
-					      <input type="text" class="form-control" name="product[email]" />
+					      <input type="text" class="form-control" id="title" name="product[first_name]" />
 					    </div>
 				  	</div>
 					<div class="form-group">
@@ -44,20 +32,24 @@
 				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Category</label>
 					    <div class="col-sm-10 col-md-8">
-					    	<select class="form-control" data-smart-select>
-					    		<option>Bicycles</option>
-					    		<option>Clothes</option>
-					    		<option>Gift Cards</option>
+					    	<select class="form-control" id="category" data-smart-select>
+					    		<option value="0">Select Category</option>
+					    		<option value="home_banner_top">Home -> Top</option>
+					    		<option value="home_banner_middle">Home -> Middle</option>
+					    		<option value="home_banner_bottom">Home -> Bottom</option>
+					    		<option value="game_banner_top">Game -> Top</option>
+					    		<option value="game_banner_bottom">Game -> Bottom</option>
+					    		<option value="0">Mobil -> Top</option>
+					    		<option value="0">Mobil -> Bottom</option>
 					    	</select>
 					    </div>
 				  	</div>
+						<input type="hidden" id="attr" name="attr" value="new_ads" />
 				  	<div class="form-group form-actions">
 				    	<div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
-				    		<a href="form.html" class="btn btn-default">Cancel</a>
-				      		<button type="submit" class="btn btn-success">Save Ads</button>
+				      		<button id="NewButton" class="btn btn-success">Save Ads</button>
 			    		</div>
 				  	</div>
-				</form>
 			</div>
 		</div>
 	</div>
