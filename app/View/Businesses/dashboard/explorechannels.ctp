@@ -1,3 +1,8 @@
+<?php
+$search_action = $this->Html->url(array("controller" => "businesses", "action" => "mygames_search"));
+$params = $this->Paginator->params();
+$allgames = $params['count'];
+?>
 <body id="users">
     <div id="wrapper">
         <?php echo $this->element('business/dashboard/sidebar'); ?>
@@ -7,25 +12,25 @@
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Channels
+                    Explore Games
                 </div>
-                <form class="search hidden-xs">
+                <form class="search hidden-xs" action="<?php echo $search_action ?>" style="margin-left: 200px">
                     <i class="fa fa-search"></i>
-                    <input type="text" name="q" placeholder="Search channels, users..." />
+                    <input type="text" name="q" placeholder="Search games..." />
                     <input type="submit" />
                 </form>
                 <a href="form.html" class="new-user btn btn-success pull-right">
-                    <span>Invite Friends</span>
+                    <span>Add Game</span>
                 </a>
             </div>
             <div class="content-wrapper">
                 <div class="row page-controls">
                     <div class="col-md-12 filters">
-                        <label>Filter Followers:</label>
-                        <a href="#" class="active">All Followers (243)</a>
-                        <a href="#">Verified (3)</a>
-                        <a href="#">High Rated (8)</a>
-                        <a href="#">Prospects</a>
+                        <label>Filter Games:</label>
+                        <a href="#" class="active">All Games (<?php echo $allgames ?>)</a>
+                        <a href="#">Published (32)</a>
+                        <a href="#">Suspended (6)</a>
+                        <a href="#">Draft (1)</a>
                         <div class="show-options">
                             <div class="dropdown">
                                 <a class="button" data-toggle="dropdown" href="#">
@@ -35,10 +40,11 @@
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <li><a href="#">Name</a></li>
-                                    <li><a href="#">Followers</a></li>
-                                    <li><a href="#">Following</a></li>
-                                    <li><a href="#">Games</a></li>
+                                    <li><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></li>
+                                    <li><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></li>
+                                    <li><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></li>
+                                    <li><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></li>
+                                    <li><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></li>
                                 </ul>
                             </div>
                             <a href="#" data-grid=".users-list" class="grid-view active"><i class="fa fa-th-list"></i></a>
@@ -55,7 +61,6 @@
                                     <a data-toggle="dropdown" href="#">
                                         Bulk actions
                                         <span class="total-checked"></span>
-
                                         <i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -66,29 +71,32 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-sm-3 header hidden-xs">
-                                <label><a href="#">Name</a></label>
+                            <div class="col-sm-6 header hidden-xs">
+                                <label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
                             </div>
-                            <div class="col-sm-3 header hidden-xs">
-                                <label><a href="#">Followers</a></label>
+                            <div class="col-sm-1 header hidden-xs text-right">
+                                <label><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="col-sm-2 header hidden-xs">
-                                <label><a href="#">Following</a></label>
+                            <div class="col-sm-1 header hidden-xs text-right">
+                                <label><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="col-sm-2 header hidden-xs">
-                                <label class="text-right"><a href="#">Games</a></label>
+                            <div class="col-sm-1 header hidden-xs text-right">
+                                <label><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></label>
+                            </div>
+                            <div class="col-sm-1 header hidden-xs text-right">
+                                <label><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></label>
                             </div>
                         </div>
-                        <?= $this->element('business/dashboard/explodechannels/list') ?>
+                        <?php echo $this->element('business/dashboard/exploregames/list') ?>
                         <div class="text-center">
-                            <?= $this->element('business/components/pagination') ?>
+                            <?php echo $this->element('business/components/pagination') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row users-grid">
-                    <?= $this->element('business/dashboard/explodechannels/grid') ?>
+                    <?php echo $this->element('business/dashboard/exploregames/grid') ?>
                     <div class="text-center">
-                        <?= $this->element('business/components/pagination') ?>
+                        <?php echo $this->element('business/components/pagination') ?>
                     </div>
                 </div>
             </div>
