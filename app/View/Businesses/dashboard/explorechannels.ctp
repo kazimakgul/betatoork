@@ -87,14 +87,14 @@ $allgames = $params['count'];
                                 <label><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></label>
                             </div>
                         </div>
-                        <?php echo $this->element('business/dashboard/exploregames/list') ?>
+                        <?php echo $this->element('business/dashboard/explorechannels/list') ?>
                         <div class="text-center">
                             <?php echo $this->element('business/components/pagination') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row users-grid">
-                    <?php echo $this->element('business/dashboard/exploregames/grid') ?>
+                    <?php echo $this->element('business/dashboard/explorechannels/grid') ?>
                     <div class="text-center">
                         <?php echo $this->element('business/components/pagination') ?>
                     </div>

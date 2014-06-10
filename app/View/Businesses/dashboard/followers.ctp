@@ -79,14 +79,14 @@
                                 <label class="text-right"><a href="#">Games</a></label>
                             </div>
                         </div>
-                        <?= $this->element('business/dashboard/fallowers/list') ?>
+                        <?= $this->element('business/dashboard/followers/list') ?>
                         <div class="text-center">
                             <?= $this->element('business/components/pagination') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row users-grid">
-                    <?= $this->element('business/dashboard/fallowers/grid') ?>
+                    <?= $this->element('business/dashboard/followers/grid') ?>
                     <div class="text-center">
                         <?= $this->element('business/components/pagination') ?>
                     </div>
