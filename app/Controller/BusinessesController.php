@@ -908,8 +908,6 @@ class BusinessesController extends AppController {
             )
         );
         $cond = $this->paginate('Game');
-        //  print_r($cond);
-        //  exit;
         $this->set('games', $cond);
         $this->set('title_for_layout', 'Clone Business My Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
@@ -948,7 +946,6 @@ class BusinessesController extends AppController {
                 'limit' => $limit
             )
         );
-
         $data = $this->paginate('Subscription');
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Followers');
@@ -972,7 +969,6 @@ class BusinessesController extends AppController {
                     )
                 )
         );
-
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
@@ -1026,8 +1022,6 @@ class BusinessesController extends AppController {
             )
         );
         $data = $this->paginate('User');
-        print_r($data);
-        exit;
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Followers');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
