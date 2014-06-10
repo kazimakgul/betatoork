@@ -1,5 +1,5 @@
 <?php foreach ($following as $value) { ?>
-    <div class="user col-sm-3 col-xs-6">
+    <div class="user col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <a href="#">
             <img src="images/avatars/1.jpg" />
         </a>
