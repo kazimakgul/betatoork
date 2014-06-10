@@ -1005,6 +1005,10 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 18;
+
+        //$this->Subscription->recursive=2;
+        //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
+
         $this->Subscription->bindModel(
                 array(
                     'belongsTo' => array(
