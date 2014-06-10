@@ -34,22 +34,22 @@ foreach ($games as $game) {
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">
-                <?= $clones ?>
+                <?php echo $clones ?>
             </div>
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">
-                <?= $favorites ?>
+                <?php echo $favorites ?>
             </div>
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">
-                <?= $plays ?>
+                <?php echo $plays ?>
             </div>
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">
-                <?= $rates ?>
+                <?php echo $rates ?>
             </div>
         </div>
     </div>
