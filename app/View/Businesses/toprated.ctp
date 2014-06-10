@@ -10,7 +10,7 @@ if($this->Session->read('Auth.User.id')==$user['User']['id']){
 }
 
 echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerTop,'adtype'=>'homeBannerTop')); ?>
-?>
+
 
 <div class="col-md-12">
 	<div class="btn-group" style="margin-bottom:10px;">

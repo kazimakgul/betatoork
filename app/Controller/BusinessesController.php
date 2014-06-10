@@ -35,7 +35,7 @@ class BusinessesController extends AppController {
     }
 
     public function afterFilter() {
-        
+
     }
 
     /*     * ****************************************************************************** */
@@ -94,7 +94,7 @@ class BusinessesController extends AppController {
                 $bgColor = $this->request->data['bgColor'];
                 //$bgImg = $this->request->data['bg-img'];
                 $analitics = $this->request->data['analitics'];
-				
+
                 $this->User->query('UPDATE users SET screenname="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '", analitics="' . $analitics . '" WHERE id=' . $user_id);
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
@@ -327,8 +327,8 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/settings');
     }
-	
-	
+
+
 
     /** Ads Management method
      *
