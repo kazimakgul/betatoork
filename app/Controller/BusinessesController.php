@@ -347,6 +347,25 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/ads_management');
     }
+ 
+ 
+    /** Ads Add method
+     *
+     * @param 
+     * @return Ads Add Page
+	 * @author Volkan Celiloğlu
+     */
+
+    public function add_ads() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+		$userid = $this->Session->read('Auth.User.id');
+		$this->get_ads_info($userid, $userid);
+        $this->set('title_for_layout', 'Clone Business Settings');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/add_ads');
+    }
 
     /** Notifications method
      *
