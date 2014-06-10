@@ -71,20 +71,17 @@ $allgames = $params['count'];
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-sm-6 header hidden-xs">
+                            <div class="col-sm-4 header hidden-xs">
                                 <label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
                             </div>
-                            <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></label>
+                            <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
+                                <label><a href="#">Followers</a></label>
                             </div>
-                            <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></label>
+                            <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
+                                <label><a href="#">Following</a></label>
                             </div>
-                            <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></label>
-                            </div>
-                            <div class="col-sm-1 header hidden-xs text-right">
-                                <label><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></label>
+                            <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
+                                <label class="text-right"><a href="#">Games</a></label>
                             </div>
                         </div>
                         <?php echo $this->element('business/dashboard/explorechannels/list') ?>
