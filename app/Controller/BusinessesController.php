@@ -243,6 +243,23 @@ class BusinessesController extends AppController {
     }
 
     /**
+     * Dummy pricing function
+     * Cloned from toolsNdocs method
+     *
+     * @param 
+     * @return pricing Page
+     * @author Kazim Akgul
+     */
+    public function pricing() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/pricing');
+    }
+
+    /**
      * Dummy tools and docs function
      * Cloned from app_status method
      *

@@ -2,6 +2,7 @@
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 $profile = $this->Html->url(array('controller'=>'businesses','action'=>'profile'));
 $toolsNdocs = $this->Html->url(array('controller'=>'businesses','action'=>'toolsNdocs'));
+$pricing = $this->Html->url(array('controller'=>'businesses','action'=>'pricing'));
 $steps2launch = $this->Html->url(array('controller'=>'businesses','action'=>'steps2launch'));
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $activities = $this->Html->url(array('controller'=>'businesses','action'=>'activities'));
@@ -128,12 +129,12 @@ if ($user['User']['picture'] == null) {
                 </ul>
             </li>
             <li>
-                <a href="account.html" data-toggle="sidebar">
+                <a href="#" data-toggle="sidebar">
                     <i class="fa fa-space-shuttle"></i> <span>Upgrade</span>
                     <i class="red fa fa-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li><a href="pricing.html">Pricing (Plans)</a></li>
+                    <li><a href="<?php echo $pricing ?>">Pricing (Plans)</a></li>
                     <li><a href="invoice.html">Invoice</a></li>
                 </ul>
             </li>
