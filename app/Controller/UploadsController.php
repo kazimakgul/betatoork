@@ -119,6 +119,43 @@ class UploadsController extends AppController {
 		 }
 	     $this->set('photos',$objs);
 		 //get cover photos from S3 ends
+	   }elseif($uploadtype=='bg_image'){
+	   
+	   $this->set('gallery','Background resimleri için galery içerigi');
+	   $this->set('uploadtype',$uploadtype);
+	   $this->set('id',$id);
+	   
+	   
+	     //get background photos from S3 begins
+	     $prefix = 'upload/users/'.$id;
+         $opt = array(
+         'prefix' => $prefix,
+         );
+	     $bucket=Configure::read('S3.name');
+	     $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+		 foreach($objs as $key => $obj)
+		 {
+		 if(substr($obj, -1)=="/")
+		 unset($objs[$key]);
+		 }
+	     $this->set('photos',$objs);
+		 //get background photos from S3 ends
+		 
+		 //get background gallery from S3 begins
+	     $prefix = 'upload/gallery/backgrounds';
+         $opt = array(
+         'prefix' => $prefix,
+         );
+	     $bucket=Configure::read('S3.name');
+	     $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+		 foreach($objs as $key => $obj)
+		 {
+		 if(substr($obj, -1)=="/")
+		 unset($objs[$key]);
+		 }
+	     $this->set('gallery',$objs);
+		 //get background gallery from S3 ends
+		 
 	   } 
 	
 	}
@@ -199,7 +236,7 @@ class UploadsController extends AppController {
   {//Auth Control Begins
 	
 	//Permissions for avatar and cover upload
-	if($uploadtype=='avatar_image' || $uploadtype=='cover_image')
+	if($uploadtype=='avatar_image' || $uploadtype=='cover_image' || $uploadtype=='bg_image')
 	{
 	  //If user is not admin or something like that.Cannot edit images of another person.Just admin can do this.(Avatar&Cover)
 	  if(!$this->User->isAdmin($auth_id) && !$this->User->isOwnedBy($auth_id,$id))
@@ -443,6 +480,43 @@ class UploadsController extends AppController {
 	$msg = array("title" => $uploadtype.$name.$id.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
 	}
 	//Load Game Image From Photos ends
+	}elseif($uploadtype=='bg_image' && $loadfrom=='upload'){
+	//Load Cover From Upload begins
+	
+	 $file = new File(WWW_ROOT ."/upload/users/".$id."/".$name,false);
+	   $info=$file->info();
+
+	   $filename=$info["filename"];
+	   $ext=$info["extension"];
+	   $basename=$info["basename"];
+	   $dirname=$info["dirname"];
+	   $newname=$filename.'_original.'.$ext;
+	   rename(WWW_ROOT ."/upload/users/".$id."/".$name, WWW_ROOT ."/upload/users/".$id."/".$newname);
+	
+	        //Upload to aws begins
+			$feedback=$this->Amazon->S3->create_object(
+            Configure::read('S3.name'),
+            'upload/users/'.$id."/".$newname,
+             array(
+            'fileUpload' => WWW_ROOT ."/upload/users/".$id."/".$newname,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+			//Upload to aws ends
+	   //s3 fuctions ends here
+	
+	   if($feedback)
+	   {
+	   //Set the picture field on db.
+	   //remove related id folder from users folder.
+	   $newurl=Configure::read('S3.url').'/upload/users/'.$id.'/'.$newname;
+	   $this->User->query('UPDATE users SET bg_image="'.$newname.'" WHERE id='.$id);	
+       $msg = array("title" => 'Image has been saved on s3 as background by upload.'.$id.$name.$newname,'result' => 1,'newlink'=>$newurl);
+	   }else{
+	   $msg = array("title" => $uploadtype.$name.$id.'newurl:'.$newurl.'bu bir basliktir.'.$newname.'has been changed','result' => 0);
+	   }
+	
+	//Load Cover From Upload ends
 	}elseif($uploadtype=='forbidden'){
 	//Restricted Area Begins
 	$msg = array("title" => 'You can only edit your own images!','result' => 0);

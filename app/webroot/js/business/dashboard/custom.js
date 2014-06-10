@@ -136,6 +136,25 @@ $('#coverframe').load(function(){
 });
 //Controller functions for modals of covers ends
 
+//Controller functions for modals of background begins
+$('#backgroundframe').load(function(){
+  $(this).contents().find("#close_panel").on('click', function(event) { $('#backgroundChange').modal('toggle'); });
+});
+
+$('#backgroundframe').load(function(){
+  $(this).contents().find("#set_photo").on('click', function(event) { 
+   $('#backgroundChange').modal('toggle');
+   $('#user_cover').attr('src','http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif');  
+   setTimeout(function(){
+        var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
+        $('#user_background').attr('src',new_img);           
+   },1000);
+
+   });
+
+});
+//Controller functions for modals of background ends
+
 
 
     /**

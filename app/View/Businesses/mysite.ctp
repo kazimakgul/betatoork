@@ -142,7 +142,7 @@ echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBann
 
 
 <?if($controls==$user['User']['id']){?>
-          <a href="<?php echo $channelsettings; ?>" class="btn btn-xs btn-default pull-left" style="left:0px;top:60px; position:absolute;"><span class="fa fa-picture-o"></span> Change Background</a>
+          <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default pull-left" style="left:0px;top:60px; position:absolute;"><span class="fa fa-picture-o"></span> Change Background</a>
 <?}?>
 
 

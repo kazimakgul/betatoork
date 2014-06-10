@@ -109,6 +109,7 @@ class AppController extends Controller {
     public function get_style_settings($id=NULL)
     {
         $style = $this->User->find('first',array('contain'=>false,'conditions'=>array('User.id'=>$id),'fields'=>array('User.bg_image,User.bg_color'))); 
+        $this->set('active_channel_id',$id);
         $this->set('channel_style',$style);
     }
 

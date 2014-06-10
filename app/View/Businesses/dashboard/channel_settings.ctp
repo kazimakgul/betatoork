@@ -68,14 +68,21 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 					    <div>
 					    	<div class="well">
 					    		<div class="pic">
-					    			<img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
+
+                           <?php if($user['User']['bg_image']!=NULL && $user['User']['bg_image']!=''){?>
+                                   <img id='user_background' src="<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>" class="img-responsive">
+                           <?php }else{?>
+					    			<img id='user_background' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
+					    	<?php }?>		
+
+
 					    		</div>
 			                    
 			                    <div class="control-group" style="margin-bottom:5px;">
-				                    <label for="post_featured_image">
+				                    <label for="post_featured_image" style='display: block;'>
 				                    	Choose a picture:
 				                    </label>
-				                    <input id="post_featured_image" name="post[featured_image]" type="file">
+				                    <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default"><span class="fa fa-picture-o"></span> Choose File</a><span style='margin-left:6px;'>No file chosen</span>
 				                </div>
 		                        <a href="#" class="remove-image">Remove Background Image</a>
 				            </div>
@@ -125,6 +132,20 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
         </div>
     </div>
 	<!-- Cover Change Modal ends -->
+
+	<!-- Background Change Modal begins -->
+    <div class="modal fade" id="backgroundChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                <?php 
+                $background_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','bg_image',$user['User']['id']));
+                $url=$background_image_url;
+                ?>
+                <iframe id='backgroundframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Background Change Modal ends -->
 
 
 </body>

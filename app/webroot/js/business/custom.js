@@ -120,3 +120,22 @@ $('#coverframe').load(function(){
 });
 //Controller functions for modals of covers ends
 
+//Controller functions for modals of background begins
+$('#backgroundframe').load(function(){
+  $(this).contents().find("#close_panel").on('click', function(event) { $('#backgroundChange').modal('toggle'); });
+});
+
+$('#backgroundframe').load(function(){
+  $(this).contents().find("#set_photo").on('click', function(event) { 
+   $('#backgroundChange').modal('toggle');
+   $('#user_background').css('background-image','http://netdna.webdesignerdepot.com/uploads/2013/04/Hursh1.gif');  
+   setTimeout(function(){
+        var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
+        $('#user_background').css('background-image','url('+new_img+')');           
+   },1000);
+
+   });
+
+});
+//Controller functions for modals of background ends
+

@@ -32,7 +32,7 @@
     $bg_color='#ffffff'; 
 
     if($channel_style['User']['bg_image']!=NULL)
-    $bg_image=$channel_style['User']['bg_image'];
+    $bg_image=Configure::read('S3.url').'/upload/users/'.$active_channel_id.'/'.$channel_style['User']['bg_image'];
     else
     $bg_image='';      
 
@@ -46,7 +46,7 @@
   <!--We Add User Selected Addtitional Css Here(ends) -->
 
     </head>
-    <body>
+    <body id='user_background'>
         <?php  echo $this->element('business/header');
         echo $this->element('business/login');
  		?>
