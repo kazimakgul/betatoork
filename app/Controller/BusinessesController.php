@@ -136,12 +136,10 @@ class BusinessesController extends AppController {
 				if($category!='0'){
 					
 				$filtered_data['Adsetting'][$category] =  $this->Adcode->getLastInsertID();
-				$id = $this->Adsetting->find('first', array('conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
+				$id = $this->Adsetting->find('first', array('contain'=>false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
 				$this->Adsetting->id=$id;
 				$this->Adsetting->save($filtered_data);
-				//$this->User->query('UPDATE adsettings SET '.$category.'="' . $id . '" WHERE user_id=' . $user_id);
 				}
-                
                 $this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
 			}

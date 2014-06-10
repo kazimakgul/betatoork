@@ -179,7 +179,7 @@ $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'
 	                            <td>
 	                            	'.$adcode["Adcode"]["name"].'
 	                            </td>
-	                            <td><textarea cols="50" disabled readonly style="max-width:400px; max-height:100px;border: none;">'.$adcode["Adcode"]["code"].'</textarea></td>
+	                            <td><textarea cols="50" disabled readonly style="max-width:350px; max-height:100px;border: none;">'.$adcode["Adcode"]["code"].'</textarea></td>
 	                            <td>
 	                            '.$adsStatus.'
 	                            </td>
