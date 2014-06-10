@@ -896,7 +896,10 @@ class BusinessesController extends AppController {
                     'Gamestat.playcount',
                     'Gamestat.favcount',
                     'Gamestat.channelclone',
-                    'Gamestat.potential'
+                    'Gamestat.potential',
+                    'User.id',
+                    'User.username',
+                    'User.seo_username'
                 ),
                 'limit' => $limit,
                 'order' => array(
@@ -905,6 +908,8 @@ class BusinessesController extends AppController {
             )
         );
         $cond = $this->paginate('Game');
+        //  print_r($cond);
+        //  exit;
         $this->set('games', $cond);
         $this->set('title_for_layout', 'Clone Business My Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
