@@ -12,7 +12,7 @@ $favorites = $this->Html->url(array('controller' => 'businesses', 'action' => 'f
 $exploregames = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames'));
 $following = $this->Html->url(array('controller' => 'businesses', 'action' => 'following'));
 $followers = $this->Html->url(array('controller' => 'businesses', 'action' => 'followers'));
-$explodechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explodechannels'));
+$explorechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explorechannels'));
 $ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'channel_settings'));
 $notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'notifications'));
 $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));
@@ -101,7 +101,7 @@ if ($user['User']['picture'] == null) {
                 <ul class="submenu">
                     <li><a href="<?php echo $following ?>">Following</a></li>
                     <li><a href="<?php echo $followers ?>">Followers</a></li>
-                    <li><a href="<?php echo $explodechannels ?>">Explore Channels</a></li>
+                    <li><a href="<?php echo $explorechannels ?>">Explore Channels</a></li>
                 </ul>
             </li>
         </ul>
