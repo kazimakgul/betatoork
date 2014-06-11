@@ -8,10 +8,10 @@ foreach ($games as $game) {
     ?>
     <div class="user col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <a href="#">
-            <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
+            <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
         </a>
         <div class="name"><?= $name ?></div>
-        <div class="email">Clones: <?= $clones ?> | Favorites: <?= $favorites ?> | Plays: <?= $plays ?> | Rates: <?= $rates ?></div>
+        <div class="email">Clones: <?php echo $clones ?> | Favorites: <?php echo $favorites ?> | Plays: <?php echo $plays ?> | Rates: <?php echo $rates ?></div>
     </div>
     <?php
 }

@@ -10,7 +10,7 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Channels
+                    Followings
                 </div>
                 <form class="search hidden-xs" action="<?php echo $search_action ?>">
                     <i class="fa fa-search"></i>
@@ -24,8 +24,8 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
             <div class="content-wrapper">
                 <div class="row page-controls">
                     <div class="col-md-12 filters">
-                        <label>Filter Followers:</label>
-                        <a href="#" class="active">All Followers (243)</a>
+                        <label>Filter Followings:</label>
+                        <a href="#" class="active">All Followings (243)</a>
                         <a href="#">Verified (3)</a>
                         <a href="#">High Rated (8)</a>
                         <a href="#">Prospects</a>
@@ -82,16 +82,16 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
                                 <label class="text-right"><a href="#">Games</a></label>
                             </div>
                         </div>
-                        <?= $this->element('business/dashboard/following/list') ?>
+                        <?php echo $this->element('business/dashboard/following/list') ?>
                         <div class="text-center">
-                            <?= $this->element('business/components/pagination') ?>
+                            <?php echo $this->element('business/components/pagination') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row users-grid">
-                    <?= $this->element('business/dashboard/following/grid') ?>
+                    <?php echo $this->element('business/dashboard/following/grid') ?>
                     <div class="text-center">
-                        <?= $this->element('business/components/pagination') ?>
+                        <?php echo $this->element('business/components/pagination') ?>
                     </div>
                 </div>
             </div>

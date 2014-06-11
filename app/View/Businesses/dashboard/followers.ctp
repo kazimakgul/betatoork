@@ -10,7 +10,7 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Channels
+                    Followers<label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
                 </div>
                 <form class="search hidden-xs" action="<?php echo $search_action ?>">
                     <i class="fa fa-search"></i>
@@ -82,16 +82,16 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
                                 <label class="text-right"><a href="#">Games</a></label>
                             </div>
                         </div>
-                        <?= $this->element('business/dashboard/followers/list') ?>
+                        <?php echo $this->element('business/dashboard/followers/list') ?>
                         <div class="text-center">
-                            <?= $this->element('business/components/pagination') ?>
+                            <?php echo $this->element('business/components/pagination') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row users-grid">
-                    <?= $this->element('business/dashboard/followers/grid') ?>
+                    <?php echo $this->element('business/dashboard/followers/grid') ?>
                     <div class="text-center">
-                        <?= $this->element('business/components/pagination') ?>
+                        <?php echo $this->element('business/components/pagination') ?>
                     </div>
                 </div>
             </div>

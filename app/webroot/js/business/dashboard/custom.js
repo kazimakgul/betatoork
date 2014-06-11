@@ -90,6 +90,23 @@ $(document).ready(function() {
 		                }
 		            }, 'json');
         }
+        else if (attr == "edit_ads") {
+			$.post(link, {
+                attr	: attr,
+                title	: $('#title').val(),
+                desc	: $('#desc').val(),
+                ad_id	: $('#ad_id').val(),
+                category: $('#category').val()
+ 					},
+		            function(data) {
+		                if (data.error) {
+		                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+		                }else{
+		                	Messenger().post(data.success);
+		                	btn.button('reset');
+		                }
+		            }, 'json');
+        }
 		else{
 			
         }
@@ -127,6 +144,20 @@ $(document).ready(function() {
         }
 		
 	});
+	
+$('#redirect').click(function() {
+        var attr = $('#attr').val(); //Form control value
+		var btn = $(this);
+		btn.button('loading');
+		
+		if(attr == "edit_ads"){
+		  id = $("[name='select-ads']:checked").val();
+          window.location.href=edit_ads+'/'+id;			
+		}else{
+			
+		}
+
+});
 
    //Controller functions for modals of avatar begins
 $('#avatarframe').load(function(){
@@ -304,7 +335,7 @@ $('#backgroundframe').load(function(){
 			});
 
 			$checkboxes.change(function () {
-				var anyChecked = $("[name='select-product']:checked");
+				var anyChecked = $("[name='select-ads']:checked");
 				toggleBulkActions(anyChecked.length);
 			});
 

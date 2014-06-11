@@ -11,32 +11,32 @@ foreach ($games as $game) {
         <div class="col-sm-2 avatar">
             <input type="checkbox" name="select-user" />
             <a href="<?php echo $playurl ?>" target="_blank"></a>
-                <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
+                <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
             </a>
         </div>
         <div class="col-sm-6">
             <a href="<?php echo $playurl ?>" class="name">
-                <?= $name ?>
+                <?php echo $name ?>
             </a>
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">
-                <?= $clones ?>
+                <?php echo $clones ?>
             </div>
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">
-                <?= $favorites ?>
+                <?php echo $favorites ?>
             </div>
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">
-                <?= $plays ?>
+                <?php echo $plays ?>
             </div>
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">
-                <?= $rates ?>
+                <?php echo $rates ?>
             </div>
         </div>
     </div>
