@@ -13,16 +13,17 @@ $billing	= $this->Html->url(array('controller'=>'businesses','action'=>'billing'
 	
 	<h3>My account</h3>
 	<ul class="menu">
-		<li>
-			<a href="<?php echo $ch_settings;?>" <?php if($active=='channel')echo 'class="active"'; ?>>
-				<i class="fa fa-desktop"></i>
-				Channel
-			</a>
-		</li>
+
 		<li>
 			<a href="<?php echo $settings;?>" <?php if($active=='profile')echo 'class="active"'; ?>>
 				<i class="ion-ios7-person-outline"></i>
 				Profile
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo $ch_settings;?>" <?php if($active=='channel')echo 'class="active"'; ?>>
+				<i class="fa fa-desktop"></i>
+				Channel
 			</a>
 		</li>
 		<li>
