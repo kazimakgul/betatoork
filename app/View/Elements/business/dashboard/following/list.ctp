@@ -2,7 +2,14 @@
     <div class="row user">
         <div class="col-sm-2 avatar">
             <input type="checkbox" name="select-user" />
-            <img src="images/avatars/1.jpg" />
+            <?php
+            if (is_null($value['User']['picture'])) {
+                $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
+                echo $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $name));
+            } else {
+                echo $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $name));
+            }
+            ?>
         </div>
         <div class="col-sm-3">
             <a href="user-profile.html" class="name"><?php echo $value['User']['username'] ?></a>
