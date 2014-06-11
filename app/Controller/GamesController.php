@@ -206,6 +206,15 @@ class GamesController extends AppController {
         $userName = $user['User']['username'];
         $isActive = $user['User']['active'];
 
+
+//**********************This functions redirect managers and admins to business area*********************************
+//Bu fonksiyon tamamen geçicidir.Yeni sisteme geçildikten sonra silinecek.
+if($user['User']['role']!=0)
+$this->redirect(array("controller" => "businesses","action" => "dashboard"));
+//*******************************************************************************************************************
+
+
+
         $limit = 16;
         $this->paginate = array('Game' => array('contain' => array('User' => array('fields' => 'User.seo_username,User.username,User.id')), 'conditions' => array('Game.active' => '1', 'Game.id' => $this->get_game_suggestions('Game.recommend')), 'limit' => $limit));
         $this->paginate = array('order' => sprintf('rand(%f)', $this->lucky_number()));
