@@ -1,5 +1,5 @@
 <?php
-$search_action = $this->Html->url(array("controller" => "businesses", "action" => "mygames_search"));
+$search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search"));
 $params = $this->Paginator->params();
 $allgames = $params['count'];
 ?>

@@ -999,6 +999,58 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/exploregames');
     }
+    
+    public function exploregames_search() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        if ($this->request->is("GET") && isset($this->request->query['q'])) {
+            $query = $this->request->query['q'];
+        } else {
+            $this->redirect(array("controller" => "businesses", "action" => "favorites"));
+        }
+        $limit = 16;
+        $this->paginate = array(
+            'Game' => array(
+                'fields' => array(
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'Game.embed',
+                    'Game.clone',
+                    'Game.created',
+                    'User.seo_username',
+                    'Game.description',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone',
+                    'Gamestat.potential',
+                    'User.id',
+                    'User.username',
+                    'User.seo_username'
+                ),
+                'limit' => $limit,
+                'order' => array(
+                    'Game.id' => 'DESC'
+                ),
+                'conditions' => array(
+                    'OR' => array(
+                        'Game.description LIKE' => '%' . $query . '%',
+                        'Game.name LIKE' => '%' . $query . '%'
+                    )
+                )
+            )
+        );
+        $cond = $this->paginate('Game');
+        $this->set('games', $cond);
+        $this->set('title_for_layout', 'Clone Business My Games');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/exploregames');
+    }
 
     public function following() {
         $this->layout = 'Business/dashboard';
