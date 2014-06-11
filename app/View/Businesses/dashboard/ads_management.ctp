@@ -11,7 +11,7 @@ $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'
 
 				<div class="page-title">
 					<a href="#" onclick="history.go(-1);return false;">
-					← Return to dashboard
+					← Return to Settings
 					</a>
 				</div>
                 <a id="AddAdsCode" href="<?php echo $add_ads; ?>" class="btn btn-success pull-right">Add Ads</a>
@@ -170,7 +170,7 @@ $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'
 								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['home_banner_middle']?'<span class="label label-success" style="display:inline-block">Home -> Middle</span>':'');
 								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['home_banner_bottom']?'<span class="label label-success" style="display:inline-block">Home -> Bottom</span>':'');
 								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['game_banner_top']?'<span class="label label-success" style="display:inline-block">Game -> Top</span>':'');
-								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['game_banner_bottom']?'<span class="label label-success" style="display:inline-block">Game -> Middle</span>':'');
+								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['game_banner_bottom']?'<span class="label label-success" style="display:inline-block">Game -> Bottom</span>':'');
 							}else{
 								$adsStatus = '<span class="label label-default">Not Used</span>';
 							}	

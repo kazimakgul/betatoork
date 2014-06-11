@@ -1,3 +1,4 @@
+<?php $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));  ?>
 <body id="form-product">
 	<div id="wrapper">
 		<?php  echo $this->element('business/dashboard/sidebar');?>
@@ -8,42 +9,57 @@
 				</div>
 
 				<div class="page-title">
-					New Ads 
+					<a href="<?php echo $ads_management;?>">
+					← Return to Ads Settings
+					</a>
 					
 					<small class="hidden-xs">
 						<strong></strong>
 					</small>
 				</div>
 			</div>
+<?php
 
+$adcodeId = $Ads['Adcode']['id'];
+$adsStatus = NULL;
+if (in_array($adcodeId, $Ads_set['Adsetting']))
+	{
+		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['home_banner_top']?'<option value="home_banner_top">Home -> Top</option>':'');
+		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['home_banner_middle']?'<option value="home_banner_middle">Home -> Middle</option>':'');
+		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['home_banner_bottom']?'<option value="home_banner_bottom">Home -> Bottom</option>':'');
+		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['game_banner_top']?'<option value="game_banner_top">Game -> Top</option>':'');
+		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['game_banner_bottom']?'<option value="game_banner_bottom">Game -> Bottom</option>':'');
+	}else{
+		$adsStatus = '<option value="0">Select Category</option>';
+	}
+?>
 			<div class="content-wrapper form-horizontal">
 				  	<div class="form-group">
 					    <label class="col-sm-2 col-md-2 control-label">Title</label>
 					    <div class="col-sm-10 col-md-8">
-					      <input type="text" class="form-control" id="title" name="product[first_name]" value="" />
+					      <input type="text" class="form-control" id="title" name="product[first_name]" value="<?php echo $Ads['Adcode']['name'];?>" />
 					    </div>
 				  	</div>
 					<div class="form-group">
 				  		<label class="col-sm-2 col-md-2 control-label">Description</label>
 					    <div class="col-sm-10 col-md-8">
-				  		<textarea id="desc" class="form-control" id="desc" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"></textarea>
+				  		<textarea id="desc" class="form-control" id="desc" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $Ads['Adcode']['code'];?></textarea>
 					    </div>
 				  	</div>
 				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Category</label>
 					    <div class="col-sm-10 col-md-8">
 					    	<select class="form-control" id="category" data-smart-select>
-					    		<option value="0">Select Category</option>
+					    		<?php echo $adsStatus; ?>
 					    		<option value="home_banner_top">Home -> Top</option>
 					    		<option value="home_banner_middle">Home -> Middle</option>
 					    		<option value="home_banner_bottom">Home -> Bottom</option>
 					    		<option value="game_banner_top">Game -> Top</option>
 					    		<option value="game_banner_bottom">Game -> Bottom</option>
-					    		<option value="0">Mobil -> Top</option>
-					    		<option value="0">Mobil -> Bottom</option>
 					    	</select>
 					    </div>
 				  	</div>
+				  		<input type="hidden" id="ad_id" value="<?php echo $adcodeId;?>" />
 						<input type="hidden" id="attr" name="attr" value="edit_ads" />
 				  	<div class="form-group form-actions">
 				    	<div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">

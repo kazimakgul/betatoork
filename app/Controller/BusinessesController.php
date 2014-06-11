@@ -104,6 +104,24 @@ class BusinessesController extends AppController {
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
  			}
+			elseif ($attr == "edit_ads")
+			{
+                $filtered_data['Adcode']['name'] = $this->request->data['title'];
+                $filtered_data['Adcode']['code'] = $this->request->data['desc'];
+				$this->Adcode->id=$this->request->data['ad_id'];
+				$this->Adcode->save($filtered_data);
+
+				$category = $this->request->data['category'];
+				if($category!='0'){
+					
+				$filtered_data['Adsetting'][$category] = $this->request->data['ad_id'];
+				$id = $this->Adsetting->find('first', array('contain'=>false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
+				$this->Adsetting->id=$id;
+				$this->Adsetting->save($filtered_data);
+				}
+                $this->set('success', "Ads Settings Updated.");
+                $this->set('_serialize', array('success'));
+ 			}
 			else
 			{
             }
@@ -158,6 +176,8 @@ class BusinessesController extends AppController {
             $this->set('_serialize', array('error'));
         }
 	}
+
+
 
 	
     //this gets game suggestions
@@ -378,6 +398,8 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/profile');
     }
 
+
+
     /**
      * Dummy Latest Activity function
      * Cloned from profile method
@@ -451,6 +473,29 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/add_ads');
     }
+
+
+    /**
+     * Edit Ads Function
+     *
+     * @param ads id
+     * @return ads edit page
+	 * @author Volkan Celiloğlu
+     */
+    public function edit_ads($id) {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+		$userid		= $this->Session->read('Auth.User.id');
+        $adcodes	= $this->Adcode->find('first', array('conditions' => array('Adcode.id' => $id),'contain' => false));
+        $adsetting	= $this->Adsetting->find('first', array('conditions' => array('Adsetting.user_id' => $userid),'contain' => false, 'fields'=>('home_banner_top,home_banner_middle,home_banner_bottom,game_banner_top,game_banner_bottom')));
+        
+        $this->set('Ads',$adcodes);
+		$this->set('Ads_set', $adsetting);
+        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/edit_ads');
+	}
 
     /** Notifications method
      *
