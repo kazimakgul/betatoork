@@ -144,6 +144,25 @@ $(document).ready(function() {
         }
 		
 	});
+
+
+
+$('#deletedata').click(function() {
+        var attr = $('#attr').val(); //Form control value
+		var btn = $(this);
+		btn.button('loading');
+		
+		if(attr == "edit_ads"){
+		  count = $("[name='select-ads']:checked").length;
+          alert(id);
+         // window.location.href=edit_ads+'/'+id;			
+		}else{
+			
+		}
+
+});
+
+
 	
 $('#redirect').click(function() {
         var attr = $('#attr').val(); //Form control value

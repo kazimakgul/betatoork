@@ -1,5 +1,6 @@
 <?php
 $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'));
+$ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'channel_settings'));
 ?>
 <body id="search">
 	<div id="wrapper">
@@ -10,7 +11,7 @@ $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'
 			<div class="menubar">
 
 				<div class="page-title">
-					<a href="#" onclick="history.go(-1);return false;">
+					<a href="<?php echo $ch_settings;?>">
 					← Return to Settings
 					</a>
 				</div>
@@ -140,7 +141,7 @@ $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'
 					  	</button>
 					  	<ul class="dropdown-menu" role="menu">
 					    	<li><a href="#" id="redirect">Edit</a></li>
-					    	<li><a href="#">Delete</a></li>
+					    	<li><a href="#" data-toggle="modal" data-target="#confirm-modal">Delete</a></li>
 					  	</ul>
 					  	<input type="hidden" id="attr" value="edit_ads" />
 					</div>
@@ -200,4 +201,26 @@ $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'
 		</div>
 	</div>
 
+	<!-- Confirm Modal -->
+	<div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog">
+	  	<div class="modal-dialog">
+		    <div class="modal-content">
+		    	<form method="post" action="#" role="form">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        	<h4 class="modal-title" id="myModalLabel">
+			        		Are you sure you want to delete this?
+			        	</h4>
+			      	</div>
+			      	<div class="modal-body">
+						Do you want to delete your account? All your info will be erased.
+			      	</div>
+			      	<div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button id="deletedata" class="btn btn-danger">Yes, delete it</button>
+			      	</div>
+			    </form>
+		    </div>
+	  	</div>
+	</div>
 </body>
