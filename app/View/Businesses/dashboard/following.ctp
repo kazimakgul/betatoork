@@ -24,8 +24,8 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
             <div class="content-wrapper">
                 <div class="row page-controls">
                     <div class="col-md-12 filters">
-                        <label>Filter Followers:</label>
-                        <a href="#" class="active">All Followers (243)</a>
+                        <label>Filter Followings:</label>
+                        <a href="#" class="active">All Followings (243)</a>
                         <a href="#">Verified (3)</a>
                         <a href="#">High Rated (8)</a>
                         <a href="#">Prospects</a>
