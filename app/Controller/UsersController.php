@@ -453,6 +453,29 @@ function secureSuperGlobalPOST($value)
     $this->set('_serialize', array('rtdata'));
     }
 
+    
+    public function remove_background()
+	{
+        Configure::write ( 'debug', 0 );
+        if($auth_id=$this->Auth->user('id'))
+        {//Auth Control Begins
+
+        $this->User->id=$auth_id;
+        $filtered_data['User']['bg_image']="";
+        if($this->User->save($filtered_data))
+        {
+         $msg = array("title" => 'Background has been removed.','result' => 1);
+        }	
+
+       	}else{//Auth Control Ends	
+        //if user unlogged
+        $msg = array("title" => 'You have to log in first','result' => 0);
+        }//Unlogged control ends
+
+        $this->set('rtdata', $msg);
+        $this->set('_serialize', array('rtdata'));
+	}
+    
 
     public function remove_ads_field()
 	{

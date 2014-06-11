@@ -176,7 +176,28 @@ $('#deletedata').click(function(e) {
 
 });
 
+$('.remove_bg_img').click(function() {
 
+     //------
+       $.ajax({
+        type: "POST",
+        url: remove_background,
+        dataType: "json",
+    async: false,
+        success: function(data){
+      
+      Messenger().post(data.rtdata.title);
+      $('#user_background').attr('src','https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png'); 
+      $('#bg_message').html('No background chosen.');
+
+      },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+  });
+     //------ 
+
+});
 	
 $('#redirect').click(function() {
         var attr = $('#attr').val(); //Form control value

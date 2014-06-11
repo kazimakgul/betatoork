@@ -71,9 +71,15 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 					    	<div class="well">
 					    		<div class="pic">
 
-                           <?php if($user['User']['bg_image']!=NULL && $user['User']['bg_image']!=''){?>
+                           <?php 
+                           if($user['User']['bg_image']!=NULL && $user['User']['bg_image']!=''){
+                            $bg_message="Background selected.";
+                           	?>
                                    <img id='user_background' src="<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>" class="img-responsive">
-                           <?php }else{?>
+                           <?php 
+                            }else{
+                            $bg_message="No background chosen.";	
+                           	?>
 					    			<img id='user_background' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
 					    	<?php }?>		
 
@@ -84,9 +90,9 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 				                    <label for="post_featured_image" style='display: block;'>
 				                    	Choose a picture:
 				                    </label>
-				                    <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default"><span class="fa fa-picture-o"></span> Choose File</a><span style='margin-left:6px;'>No file chosen</span>
+				                    <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default"><span class="fa fa-picture-o"></span> Choose File</a><span id='bg_message' style='margin-left:6px;'><?php echo $bg_message; ?></span>
 				                </div>
-		                        <a href="#" class="remove-image">Remove Background Image</a>
+		                        <a href="#" class="remove_bg_img">Remove Background Image</a>
 				            </div>
 					    </div>
 				  	</div>
