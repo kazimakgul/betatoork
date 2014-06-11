@@ -154,21 +154,21 @@ if ($user['User']['picture'] == null) {
 									Settings
 								</a>
 							</li>
-							<li>
+							<!-- -- <li>
 								<a href="<?php echo $settings;?>" <?php if(isset($active) && $active=='profile')echo 'class="active"'; ?>>
 									Billing
 								</a>
-							</li>
+							</li> -- -->
 							<li>
 								<a href="<?php echo $notifications;?>" <?php if(isset($active) && $active=='notification')echo 'class="active"'; ?>>
 									Notifications
 								</a>
 							</li>
-							<li>
+							<!-- -- <li>
 								<a href="<?php echo $settings;?>">
 									Support
 								</a>
-							</li>
+							</li> -- -->
 						</ul>
             </li>
         </ul>
