@@ -7,7 +7,7 @@
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Channels
+                    Followers
                 </div>
                 <form class="search hidden-xs">
                     <i class="fa fa-search"></i>
@@ -79,16 +79,16 @@
                                 <label class="text-right"><a href="#">Games</a></label>
                             </div>
                         </div>
-                        <?= $this->element('business/dashboard/followers/list') ?>
+                        <?php echo $this->element('business/dashboard/followers/list') ?>
                         <div class="text-center">
-                            <?= $this->element('business/components/pagination') ?>
+                            <?php echo $this->element('business/components/pagination') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row users-grid">
-                    <?= $this->element('business/dashboard/followers/grid') ?>
+                    <?php echo $this->element('business/dashboard/followers/grid') ?>
                     <div class="text-center">
-                        <?= $this->element('business/components/pagination') ?>
+                        <?php echo $this->element('business/components/pagination') ?>
                     </div>
                 </div>
             </div>

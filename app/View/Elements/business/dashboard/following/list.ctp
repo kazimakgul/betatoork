@@ -5,19 +5,19 @@
             <img src="images/avatars/1.jpg" />
         </div>
         <div class="col-sm-3">
-            <a href="user-profile.html" class="name"><?= $value['User']['username'] ?></a>
+            <a href="user-profile.html" class="name"><?php echo $value['User']['username'] ?></a>
         </div>
         <div class="col-sm-3">
-            <div class="email">john.smith@gmail.com</div>
+            <div class="followercount"><?php echo $value['User']['Userstat']['subscribeto'] ?></div>
         </div>
         <div class="col-sm-2">
-            <div class="total-spent">
-                $3,150.00
+            <div class="followingcount">
+                <?php echo $value['User']['Userstat']['subscribeto'] ?>
             </div>
         </div>
         <div class="col-sm-2">
-            <div class="created-at">
-                Feb 22, 2014
+            <div class="gamescount">
+                <?php echo $value['User']['Userstat']['uploadcount'] ?>
             </div>
         </div>
     </div>

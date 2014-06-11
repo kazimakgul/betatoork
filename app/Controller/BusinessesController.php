@@ -1058,30 +1058,30 @@ class BusinessesController extends AppController {
         $userid = $this->Session->read('Auth.User.id');
         $limit = 18;
 
-        //$this->Subscription->recursive=2;
-        //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
 
         $this->Subscription->bindModel(
                 array(
                     'belongsTo' => array(
                         'User' => array(
                             'className' => 'User',
-                            'foreignKey' => 'subscriber_id'
+                            'foreignKey' => 'subscriber_to_id'
                         )
                     )
                 )
         );
+
+
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
-                    'Subscription.subscriber_to_id' => $userid
+                    'Subscription.subscriber_id' => $userid
                 ),
                 'contain' => array(
                     'User' => array(
                         'fields' => array(
                             'User.seo_username',
                             'User.username'
-                        )
+                        ),'Userstat'
                     )
                 ),
                 'limit' => $limit
@@ -1170,7 +1170,7 @@ class BusinessesController extends AppController {
                         'fields' => array(
                             'User.seo_username',
                             'User.username'
-                        )
+                        ),'Userstat'
                     )
                 ),
                 'limit' => $limit
