@@ -12,11 +12,11 @@ $allgames = $params['count'];
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Explore Games
+                    Explore Channels
                 </div>
-                <form class="search hidden-xs" action="<?php echo $search_action ?>" style="margin-left: 200px">
+                <form class="search hidden-xs" action="<?php echo $search_action ?>" style="margin-left: 240px">
                     <i class="fa fa-search"></i>
-                    <input type="text" name="q" placeholder="Search games..." />
+                    <input type="text" name="q" placeholder="Search channels, users..." />
                     <input type="submit" />
                 </form>
                 <a href="form.html" class="new-user btn btn-success pull-right">

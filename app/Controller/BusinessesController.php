@@ -945,7 +945,7 @@ class BusinessesController extends AppController {
         );
         $cond = $this->paginate('Favorite');
         $this->set('games', $cond);
-        $this->set('title_for_layout', 'Clone Business My Games');
+        $this->set('title_for_layout', 'Clone Business Favorites');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/favorites');
@@ -998,7 +998,7 @@ class BusinessesController extends AppController {
         );
         $cond = $this->paginate('Favorite');
         $this->set('games', $cond);
-        $this->set('title_for_layout', 'Clone Business My Games');
+        $this->set('title_for_layout', 'Clone Business Favorites');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/favorites');
@@ -1039,7 +1039,7 @@ class BusinessesController extends AppController {
         );
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
-        $this->set('title_for_layout', 'Clone Business My Games');
+        $this->set('title_for_layout', 'Clone Business Explore Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/exploregames');
@@ -1091,7 +1091,7 @@ class BusinessesController extends AppController {
         );
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
-        $this->set('title_for_layout', 'Clone Business My Games');
+        $this->set('title_for_layout', 'Clone Business Explore Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/exploregames');
@@ -1134,7 +1134,7 @@ class BusinessesController extends AppController {
         );
         $data = $this->paginate('Subscription');
         $this->set('following', $data);
-        $this->set('title_for_layout', 'Clone Business Followers');
+        $this->set('title_for_layout', 'Clone Business Following');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/following');
@@ -1183,7 +1183,7 @@ class BusinessesController extends AppController {
         );
         $data = $this->paginate('Subscription');
         $this->set('following', $data);
-        $this->set('title_for_layout', 'Clone Business Followers');
+        $this->set('title_for_layout', 'Clone Business Following');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/following');
@@ -1274,51 +1274,6 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/followers');
     }
     
-  /*  public function followers_search() {
-        $this->layout = 'Business/dashboard';
-        $this->sideBar();
-        if ($this->request->is("GET") && isset($this->request->query['q'])) {
-            $query = $this->request->query['q'];
-        } else {
-            $this->redirect(array("controller" => "businesses", "action" => "followers"));
-        }
-        $userid = $this->Session->read('Auth.User.id');
-        $limit = 18;
-        $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_id'
-                        )
-                    )
-                )
-        );
-        $this->paginate = array(
-            'Subscription' => array(
-                'conditions' => array(
-                    'Subscription.subscriber_to_id' => $userid,
-                    'User.username LIKE' => '%' . $query . '%'
-                ),
-                'contain' => array(
-                    'User' => array(
-                        'fields' => array(
-                            'User.seo_username',
-                            'User.username'
-                        )
-                    )
-                ),
-                'limit' => $limit
-            )
-        );
-        $data = $this->paginate('Subscription');
-        $this->set('followers', $data);
-        $this->set('title_for_layout', 'Clone Business Followers');
-        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-        $this->set('author_for_layout', 'Clone');
-        $this->render('/Businesses/dashboard/followers');
-    }
-    */
     public function explorechannels() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -1349,7 +1304,7 @@ class BusinessesController extends AppController {
         );
         $data = $this->paginate('User');
         $this->set('following', $data);
-        $this->set('title_for_layout', 'Clone Business Followers');
+        $this->set('title_for_layout', 'Clone Business Explore Channels');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/explorechannels');
@@ -1393,7 +1348,7 @@ class BusinessesController extends AppController {
         );
         $data = $this->paginate('User');
         $this->set('following', $data);
-        $this->set('title_for_layout', 'Clone Business Followers');
+        $this->set('title_for_layout', 'Clone Business Explore Channels');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/explorechannels');

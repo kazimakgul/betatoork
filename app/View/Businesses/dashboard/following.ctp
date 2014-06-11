@@ -10,7 +10,7 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Followings
+                    Following
                 </div>
                 <form class="search hidden-xs" action="<?php echo $search_action ?>">
                     <i class="fa fa-search"></i>
