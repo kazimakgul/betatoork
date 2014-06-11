@@ -35,10 +35,8 @@ $(document).ready(function() {
         var attr = $('#attr').val(); //Form control value
 		var btn = $(this);
 		btn.button('loading');
-
-        if (attr == "profile_update")
+        if (attr == "profile_update" && $('#settings_profile').valid())
         {
-  			//validate("#account"); Function yapılcak ve gerekli dataların doğrulukları kontrol edilcek
             $.post(link, {
                 attr	: attr,
                 gender	: $('#gender').val(),
@@ -47,7 +45,7 @@ $(document).ready(function() {
             },
             function(data) {
                 if (data.error) {
-                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                    alert(data.error);
                 }else{
                 	Messenger().post(data.success);
                 	btn.button('reset');
@@ -73,7 +71,7 @@ $(document).ready(function() {
 		                }
 		            }, 'json');
         }
-        else if (attr == "channel_update") {
+        else if (attr == "channel_update" && $('#channel_profile').valid()) {
 			$.post(link, {
                 attr	: attr,
                 title	: $('#title').val(),
@@ -108,7 +106,7 @@ $(document).ready(function() {
 		            }, 'json');
         }
 		else{
-			
+			btn.button('reset');
         }
     });
 
@@ -427,5 +425,49 @@ $('#backgroundframe').load(function(){
                 "iDisplayLength": 20,
     			"aLengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]]
             });
+            
+            
+            
+            
+            
+ 			// form validation
+			$('#settings_profile').validate({
+				rules: {
+					"datepicker": {
+						required: true
+					}
+				},
+				highlight: function (element) {
+					$(element).closest('.form-group').removeClass('success').addClass('error');
+				},
+				success: function (element) {
+					element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
+				}
+			});
+			
+            
+ 			// form validation
+			$('#channel_profile').validate({
+				rules: {
+					"screenname": {
+						required: true
+					},
+					"description": {
+						required: true
+					},
+					"bgclr": {
+						required: true
+					}
+				},
+				highlight: function (element) {
+					$(element).closest('.form-group').removeClass('success').addClass('error');
+				},
+				success: function (element) {
+					element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
+				}
+			});			
+			
+			       
+            
         });
  

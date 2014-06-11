@@ -45,22 +45,24 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
     <br><br><br><br>
     			</div>
 					<!--Channel Cover Avatar Ends -->
+					
+<form id="settings_profile" role="form" novalidate="novalidate">
 				  	<div class="form-group">
 						<label>Screen Name
                         <span class="help" data-toggle="tooltip" title="Users will see your screen name on your channel.">
 					    		<i class="fa fa-question-circle"></i>
 					    </span>
 						</label>
-						<input type="text" class="form-control" id="title" value="<?php echo $user['User']['screenname'];?>" />
+						<input type="text" class="form-control" name='screenname' id="title" value="<?php echo $user['User']['screenname'];?>" />
 					</div>
 					<div class="form-group">
 				  		<label>Description</label>
-				  		<div><textarea id="desc" class="form-control" id="desc" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['description'];?></textarea></div>
+				  		<div><textarea id="desc" class="form-control" id="desc" rows="4" name="description" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['description'];?></textarea></div>
 				  	</div>
 				  	<div class="form-group">
 					    <label>Background Color</label>
 					    <div>
-					      	<input type="text" class="form-control minicolors" id="bgcolor" value="<?php echo $user['User']['bg_color'];?>"/>
+					      	<input type="text" class="form-control minicolors" name='bgclr' id="bgcolor" value="<?php echo $user['User']['bg_color'];?>"/>
 					    </div>
 					</div>
 					<div class="form-group">
@@ -90,7 +92,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 				  	</div>
 					<div class="form-group">
 				  		<label>Analitics Code:</label>
-				  		<div><textarea id="analitics" class="form-control" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['analitics'];?></textarea></div>
+				  		<div><textarea id="analitics" class="form-control" rows="4" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['analitics'];?></textarea></div>
 
 				  	</div>
 					<div class="form-group">
@@ -99,6 +101,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 					<div class="form-group action">
 						<input type="submit" class="btn btn-success" id="updateButton" value="Save changes" />
 					</div>
+</form>
 			</div>
 		</div>
 	</div>

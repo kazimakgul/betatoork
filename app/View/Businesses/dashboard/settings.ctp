@@ -19,7 +19,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 				<p class="intro">
 					Change your account information, login credentials, etc.
 				</p>
-					
+<form id="channel_profile" role="form" novalidate="novalidate">
 				  	<div class="form-group">
 						<label>User Name</label>
 						<input type="text" class="form-control" disabled="disabled" value="<?php echo $user['User']['username'];?>" />
@@ -32,7 +32,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 					    <label for="inputPassword3" >Birthday</label>
 					    	<div class="input-group">
 							  	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							  	<input type="text" class="form-control datepicker" id="user_time_zone" value="<?php echo $user['User']['birth_date'];?>" placeholder="<?php echo (date("Y")-18); echo "-".date("m-d");?>">
+							  	<input type="text" class="form-control datepicker" name='datepicker' id="user_time_zone" value="<?php echo $user['User']['birth_date'];?>" placeholder="<?php echo (date("Y")-18); echo "-".date("m-d");?>">
 					    	</div>
 				  	</div>				
 					<div class="form-group">
@@ -50,8 +50,8 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 					<div class="form-group action">
 						<input type="submit" class="btn btn-success" id="updateButton" value="Save changes" />
 					</div>
+</form>					
 			</div>
-
 		</div>
 	</div>
 <?php echo $this->Html->css(array('business/dashboard/vendor/datepicker')); ?>
