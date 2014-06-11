@@ -187,7 +187,8 @@ $('.remove_bg_img').click(function() {
         success: function(data){
       
       Messenger().post(data.rtdata.title);
-      $('#user_background').attr('src','https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png'); 
+      $('#user_background').attr('src','https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png');
+      $('#background_area').attr('src',''); 
       $('#bg_message').html('No background chosen.');
       $('.remove_bg_img').hide(); 
 
