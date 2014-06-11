@@ -201,6 +201,12 @@ $('.remove_bg_img').click(function() {
 
 });
 	
+
+$( "#bgcolor" ).blur(function() {
+  $('#background_area').css('background-color',$( "#bgcolor" ).val());
+});
+
+
 $('#redirect').click(function() {
         var attr = $('#attr').val(); //Form control value
 		var btn = $(this);
