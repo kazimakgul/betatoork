@@ -66,7 +66,7 @@ $(document).ready(function() {
 		                }
 		            }, 'json');
         }
-        else if (attr == "edit_ads" && $('#add_ads').valid()) {
+        else if (attr == "edit_ads" && $('#edit_ads').valid()) {
 			$.post(link, {
                 attr	: attr,
                 title	: $('#title').val(),
@@ -474,6 +474,23 @@ $('#backgroundframe').load(function(){
 				}
 			});	
 			
+ 			// form validation
+			$('#edit_ads').validate({
+				rules: {
+					"product[first_name]": {
+						required: true
+					},
+					"customer[notes]": {
+						required: true
+					}
+				},
+				highlight: function (element) {
+					$(element).closest('.form-group').removeClass('success').addClass('error');
+				},
+				success: function (element) {
+					element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
+				}
+			});	
 			
 						
 	

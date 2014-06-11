@@ -168,7 +168,6 @@
 				</div>
 			</div>
 		</div>
-	        <?php echo $this->Html->script('business/dashboard/chart'); ?>
 
 </div>
 </body>

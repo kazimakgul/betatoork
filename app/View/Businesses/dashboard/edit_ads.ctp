@@ -33,6 +33,7 @@ if (in_array($adcodeId, $Ads_set['Adsetting']))
 		$adsStatus = '<option value="0">Select Category</option>';
 	}
 ?>
+<form id="edit_ads" role="form" novalidate="novalidate">
 			<div class="content-wrapper form-horizontal">
 				  	<div class="form-group">
 					    <label class="col-sm-2 col-md-2 control-label">Title</label>
@@ -66,6 +67,7 @@ if (in_array($adcodeId, $Ads_set['Adsetting']))
 				      		<button id="updateButton" class="btn btn-success">Save Ads</button>
 			    		</div>
 				  	</div>
+</form>
 			</div>
 		</div>
 	</div>
