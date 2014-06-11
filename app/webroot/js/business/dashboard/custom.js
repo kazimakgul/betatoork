@@ -226,13 +226,10 @@ $('#backgroundframe').load(function(){
 
 $('#backgroundframe').load(function(){
   $(this).contents().find("#set_photo").on('click', function(event) { 
-   $('#backgroundChange').modal('toggle');
-   $('#user_cover').attr('src','http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif');  
-   setTimeout(function(){
-        var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
-        $('#user_background').attr('src',new_img);           
-   },1000);
-
+   $('#backgroundChange').modal('toggle'); 
+   
+   var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
+   $('#user_background').attr('src',new_img);           
    });
 
 });
