@@ -189,6 +189,7 @@ $('.remove_bg_img').click(function() {
       Messenger().post(data.rtdata.title);
       $('#user_background').attr('src','https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png'); 
       $('#bg_message').html('No background chosen.');
+      $('.remove_bg_img').hide(); 
 
       },
         failure: function(errMsg) {
@@ -265,7 +266,8 @@ $('#backgroundframe').load(function(){
    
    var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
    $('#user_background').attr('src',new_img); 
-   $('#background_area').attr('src',new_img);         
+   $('#background_area').attr('src',new_img);
+   $('.remove_bg_img').show();          
    });
 
 });

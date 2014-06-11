@@ -74,11 +74,13 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                            <?php 
                            if($user['User']['bg_image']!=NULL && $user['User']['bg_image']!=''){
                             $bg_message="Background selected.";
+                            $bg_exist=1;
                            	?>
                                    <img id='user_background' src="<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>" class="img-responsive">
                            <?php 
                             }else{
-                            $bg_message="No background chosen.";	
+                            $bg_message="No background chosen.";
+                            $bg_exist=0;	
                            	?>
 					    			<img id='user_background' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
 					    	<?php }?>		
@@ -92,7 +94,11 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 				                    </label>
 				                    <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default"><span class="fa fa-picture-o"></span> Choose File</a><span id='bg_message' style='margin-left:6px;'><?php echo $bg_message; ?></span>
 				                </div>
+				                <?php if($bg_exist==1){ ?>
 		                        <a href="#" class="remove_bg_img">Remove Background Image</a>
+		                        <?php }else{ ?>
+                                <a style="display:none;" href="#" class="remove_bg_img">Remove Background Image</a>
+		                        <?php } ?>
 				            </div>
 					    </div>
 				  	</div>
