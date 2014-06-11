@@ -17,6 +17,7 @@
 			</div>
 
 			<div class="content-wrapper form-horizontal">
+<form id="add_ads" role="form" novalidate="novalidate">
 				  	<div class="form-group">
 					    <label class="col-sm-2 col-md-2 control-label">Title</label>
 					    <div class="col-sm-10 col-md-8">
@@ -50,6 +51,7 @@
 				      		<button id="NewButton" class="btn btn-success">Save Ads</button>
 			    		</div>
 				  	</div>
+</form>
 			</div>
 		</div>
 	</div>

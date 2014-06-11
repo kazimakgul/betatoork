@@ -66,7 +66,7 @@ $(document).ready(function() {
 		                }
 		            }, 'json');
         }
-        else if (attr == "edit_ads") {
+        else if (attr == "edit_ads" && $('#add_ads').valid()) {
 			$.post(link, {
                 attr	: attr,
                 title	: $('#title').val(),
@@ -95,12 +95,13 @@ $(document).ready(function() {
      * 	@param #attr.val(), link => New controller
      *	@return data.error=> error.id or data.success=> success.id
      */
- $('#NewButton').click(function() {
+ $('#NewButton').click(function(e) {
+ 	e.preventDefault();
         var link = newData; //Businesses updatedata function run.
         var attr = $('#attr').val(); //Form control value
 		var btn = $(this);
 		btn.button('loading');
-		if (attr == "new_ads")
+		if (attr == "new_ads" && $('#add_ads').valid())
         {
             $.post(link, {
                 attr	: attr,
@@ -117,6 +118,8 @@ $(document).ready(function() {
                 	setTimeout(function(){location.href=ads_management}, 2000 );
                 }
             }, 'json');
+        }else{
+        	btn.button('reset');
         }
 		
 	});
@@ -450,7 +453,29 @@ $('#backgroundframe').load(function(){
 					element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
 				}
 			});			
+
+
+            
+ 			// form validation
+			$('#add_ads').validate({
+				rules: {
+					"product[first_name]": {
+						required: true
+					},
+					"customer[notes]": {
+						required: true
+					}
+				},
+				highlight: function (element) {
+					$(element).closest('.form-group').removeClass('success').addClass('error');
+				},
+				success: function (element) {
+					element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
+				}
+			});	
 			
+			
+						
 	
     // Datepicker
     $('.datepicker').datepicker({
