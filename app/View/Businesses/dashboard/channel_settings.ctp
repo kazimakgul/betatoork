@@ -18,26 +18,26 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 				</h3>
 				
             <!--Channel Cover Avatar Begins -->
-            <div class="showhim col-md-12">
+            <div style="background-image: url('<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>'); background-color:<?php echo $user['User']['bg_color'];?>;" class="well col-md-12">
                 <?php
                 if($user['User']['banner']==null) { ?>
-                <div id="user_cover" style="background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);height: 130px;">
+                <div id="user_cover" style="background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);height: 160px;">
                 <?php } else { ?>
-                <div id="user_cover" style="background-image:url(<?php echo Configure::read('S3.url')."/upload/users/".$user['User']['id']."/".$user['User']['banner'];?>);height: 130px;">
+                <div id="user_cover" style="background-image:url(<?php echo Configure::read('S3.url')."/upload/users/".$user['User']['id']."/".$user['User']['banner'];?>);height: 160px;">
                 <?php }
                 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
                       if($user['User']['picture']==null) { 
-                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('id'=>'user_avatar','class'=>'pic circular1 img-thumbnail',"alt" => "clone user image")); 
+                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('style'=>'margin-top:120px;','id'=>'user_avatar','class'=>'pic circular1 img-thumbnail',"alt" => "clone user image")); 
                         } else {
-                          echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'pic circular1 img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
+                          echo $this->Upload->image($user,'User.picture',array(),array('style'=>'margin-top:120px; width:120px; height:120px;','id'=>'user_avatar','class'=>'pic circular1 img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
 					
-					<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:100px 0px 10px -70px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
+					<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin: 10px 0px 0px -110px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
                     
                     <div class="name">
                         <div class="showme">
                         	
-                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:-50px 0px 10px 85px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
+                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:-40px 0px 10px 25px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
                         	
                         </div>
                     </div>
