@@ -150,17 +150,17 @@ if ($user['User']['picture'] == null) {
                 </a>
                         <ul class="submenu">
 							<li>
-								<a href="<?php echo $ch_settings;?>" <?php if($active=='channel')echo 'class="active"'; ?>>
+								<a href="<?php echo $ch_settings;?>" <?php if(isset($active) && $active=='channel')echo 'class="active"'; ?>>
 									Settings
 								</a>
 							</li>
 							<li>
-								<a href="<?php echo $settings;?>" <?php if($active=='profile')echo 'class="active"'; ?>>
+								<a href="<?php echo $settings;?>" <?php if(isset($active) && $active=='profile')echo 'class="active"'; ?>>
 									Billing
 								</a>
 							</li>
 							<li>
-								<a href="<?php echo $notifications;?>" <?php if($active=='notification')echo 'class="active"'; ?>>
+								<a href="<?php echo $notifications;?>" <?php if(isset($active) && $active=='notification')echo 'class="active"'; ?>>
 									Notifications
 								</a>
 							</li>

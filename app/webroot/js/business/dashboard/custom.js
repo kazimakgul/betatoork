@@ -146,15 +146,23 @@ $(document).ready(function() {
 	});
 
 
-
-$('#deletedata').click(function() {
+$('#deletedata').click(function(e) {
+		e.preventDefault();
         var attr = $('#attr').val(); //Form control value
 		var btn = $(this);
 		btn.button('loading');
 		
 		if(attr == "edit_ads"){
 		  count = $("[name='select-ads']:checked").length;
-          alert(id);
+		  if(count>1)
+		  {
+		  	id	= $("[name='select-ads']:checked").val(2);
+		  }else{
+		  	id	= $("[name='select-ads']:checked").val();
+		  }
+//          alert(id);
+          console.log(id);
+          
          // window.location.href=edit_ads+'/'+id;			
 		}else{
 			

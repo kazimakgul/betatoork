@@ -1274,7 +1274,7 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/followers');
     }
     
-    public function followers_search() {
+  /*  public function followers_search() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
@@ -1318,7 +1318,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/followers');
     }
-    
+    */
     public function explorechannels() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
