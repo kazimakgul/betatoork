@@ -1006,7 +1006,7 @@ class BusinessesController extends AppController {
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
         } else {
-            $this->redirect(array("controller" => "businesses", "action" => "favorites"));
+            $this->redirect(array("controller" => "businesses", "action" => "exploregames"));
         }
         $limit = 16;
         $this->paginate = array(
@@ -1101,7 +1101,7 @@ class BusinessesController extends AppController {
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
         } else {
-            $this->redirect(array("controller" => "businesses", "action" => "favorites"));
+            $this->redirect(array("controller" => "businesses", "action" => "following"));
         }
         $userid = $this->Session->read('Auth.User.id');
         $limit = 18;
@@ -1164,6 +1164,51 @@ class BusinessesController extends AppController {
             'Subscription' => array(
                 'conditions' => array(
                     'Subscription.subscriber_to_id' => $userid
+                ),
+                'contain' => array(
+                    'User' => array(
+                        'fields' => array(
+                            'User.seo_username',
+                            'User.username'
+                        )
+                    )
+                ),
+                'limit' => $limit
+            )
+        );
+        $data = $this->paginate('Subscription');
+        $this->set('followers', $data);
+        $this->set('title_for_layout', 'Clone Business Followers');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/followers');
+    }
+    
+    public function followers_search() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        if ($this->request->is("GET") && isset($this->request->query['q'])) {
+            $query = $this->request->query['q'];
+        } else {
+            $this->redirect(array("controller" => "businesses", "action" => "followers"));
+        }
+        $userid = $this->Session->read('Auth.User.id');
+        $limit = 18;
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_id'
+                        )
+                    )
+                )
+        );
+        $this->paginate = array(
+            'Subscription' => array(
+                'conditions' => array(
+                    'Subscription.subscriber_to_id' => $userid,
+                    'User.username LIKE' => '%' . $query . '%'
                 ),
                 'contain' => array(
                     'User' => array(
