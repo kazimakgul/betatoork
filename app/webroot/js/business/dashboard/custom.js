@@ -264,7 +264,8 @@ $('#backgroundframe').load(function(){
    $('#backgroundChange').modal('toggle'); 
    
    var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
-   $('#user_background').attr('src',new_img);           
+   $('#user_background').attr('src',new_img); 
+   $('#background_area').attr('src',new_img);         
    });
 
 });
