@@ -1,3 +1,6 @@
+<?php
+$search_action = $this->Html->url(array("controller" => "businesses", "action" => "following_search"));
+?>
 <body id="users">
     <div id="wrapper">
         <?php echo $this->element('business/dashboard/sidebar'); ?>
@@ -9,7 +12,7 @@
                 <div class="page-title">
                     Channels
                 </div>
-                <form class="search hidden-xs">
+                <form class="search hidden-xs" action="<?php echo $search_action ?>">
                     <i class="fa fa-search"></i>
                     <input type="text" name="q" placeholder="Search channels, users..." />
                     <input type="submit" />

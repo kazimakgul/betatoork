@@ -1094,6 +1094,56 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/following');
     }
+    
+    public function following_search() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        if ($this->request->is("GET") && isset($this->request->query['q'])) {
+            $query = $this->request->query['q'];
+        } else {
+            $this->redirect(array("controller" => "businesses", "action" => "favorites"));
+        }
+        $userid = $this->Session->read('Auth.User.id');
+        $limit = 18;
+
+        //$this->Subscription->recursive=2;
+        //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
+
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_id'
+                        )
+                    )
+                )
+        );
+        $this->paginate = array(
+            'Subscription' => array(
+                'conditions' => array(
+                    'Subscription.subscriber_to_id' => $userid,
+                    'User.username LIKE' => '%' . $query . '%'
+                ),
+                'contain' => array(
+                    'User' => array(
+                        'fields' => array(
+                            'User.username',
+                            'User.seo_username'
+                        )
+                    )
+                ),
+                'limit' => $limit
+            )
+        );
+        $data = $this->paginate('Subscription');
+        $this->set('following', $data);
+        $this->set('title_for_layout', 'Clone Business Followers');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/following');
+    }
+
 
     public function followers() {
         $this->layout = 'Business/dashboard';
