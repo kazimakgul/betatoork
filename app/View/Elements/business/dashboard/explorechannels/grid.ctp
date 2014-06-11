@@ -1,7 +1,8 @@
 <?php foreach ($following as $value) { ?>
-    <div class="user col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="user col-xs-12 col-sm-6 col-md-4 col-lg-2">
         <a href="#">
             <?php
+            $image['width'] = 200;
             if (is_null($value['User']['picture'])) {
                 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
                 echo $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $name));

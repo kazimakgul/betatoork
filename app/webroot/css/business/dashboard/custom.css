@@ -33,3 +33,24 @@
 #users #content .content-wrapper .users-list .user .name, #users #content .content-wrapper .users-list .user .total-spent {
     top: 15px;
 }
+
+/* GRID */
+.users-grid img {
+    min-width: 130px;
+    max-width: 130px;
+    max-height: 175px
+}
+.users-grid .game {
+    height: 180px;
+}
+.users-grid .game img {
+    border: 0 none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.users-grid .game .name {
+    font-weight: 600;
+}
+.users-grid .user {
+    height: 250px;
+}
