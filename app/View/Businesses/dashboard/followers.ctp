@@ -10,7 +10,7 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Followers
+                    Followers<label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
                 </div>
                 <form class="search hidden-xs" action="<?php echo $search_action ?>">
                     <i class="fa fa-search"></i>
