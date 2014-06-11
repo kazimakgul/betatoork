@@ -19,7 +19,7 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 				<p class="intro">
 					Change your account information, login credentials, etc.
 				</p>
-<form id="channel_profile" role="form" novalidate="novalidate">
+<form id="settings_profile" role="form" novalidate="novalidate">
 				  	<div class="form-group">
 						<label>User Name</label>
 						<input type="text" class="form-control" disabled="disabled" value="<?php echo $user['User']['username'];?>" />

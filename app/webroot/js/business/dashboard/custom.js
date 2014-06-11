@@ -1,28 +1,5 @@
 $(document).ready(function() {
 
-    // Datepicker
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        todayBtn:true,
-        startView:2,
-        todayHighlight:true
-    });
-
-	        // Minicolors colorpicker
-	        $('input.minicolors').minicolors({
-	        	position: 'top left',
-	        	defaultValue: '#9b86d1',
-	        	theme: 'bootstrap'
-	        });
-			
-			$("[data-switch]").bootstrapSwitch({
-				"size": "small"
-			});
-	Messenger.options = {
-		extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
-	    theme: 'flat'
-	}			
- 
  
  
     /**
@@ -30,7 +7,8 @@ $(document).ready(function() {
      * 	@param #attr.val(), link => Update controller
      *	@return data.error=> error.id or data.success=> success.id
      */
- $('#updateButton').click(function() {
+ $('#updateButton').click(function(e) {
+ 		e.preventDefault();
         var link = updateData; //Businesses updatedata function run.
         var attr = $('#attr').val(); //Form control value
 		var btn = $(this);
@@ -376,6 +354,7 @@ $('#backgroundframe').load(function(){
 				var checked = $toggle_all.is(":checked");
 				if (checked) {
 					$checkboxes.prop("checked", "checked");
+					$('#redirect').css("display","none");
 					toggleBulkActions(true);
 				} else {
 					$checkboxes.prop("checked", "");
@@ -385,6 +364,11 @@ $('#backgroundframe').load(function(){
 
 			$checkboxes.change(function () {
 				var anyChecked = $("[name='select-ads']:checked");
+				if(anyChecked.length>1){
+				$('#redirect').css("display","none");
+				}else{
+					$('#redirect').css("display","block");
+				}
 				toggleBulkActions(anyChecked.length);
 			});
 
@@ -467,7 +451,30 @@ $('#backgroundframe').load(function(){
 				}
 			});			
 			
-			       
+	
+    // Datepicker
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn:true,
+        startView:2,
+        todayHighlight:true
+    });
+
+	        // Minicolors colorpicker
+	        $('input.minicolors').minicolors({
+	        	position: 'top left',
+	        	defaultValue: '#9b86d1',
+	        	theme: 'bootstrap'
+	        });
+			
+			$("[data-switch]").bootstrapSwitch({
+				"size": "small"
+			});
+	Messenger.options = {
+		extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+	    theme: 'flat'
+	}			
+ 		       
             
         });
  

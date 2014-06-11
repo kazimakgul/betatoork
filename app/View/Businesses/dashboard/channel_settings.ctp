@@ -46,7 +46,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
     			</div>
 					<!--Channel Cover Avatar Ends -->
 					
-<form id="settings_profile" role="form" novalidate="novalidate">
+<form id="channel_profile" role="form" novalidate="novalidate">
 				  	<div class="form-group">
 						<label>Screen Name
                         <span class="help" data-toggle="tooltip" title="Users will see your screen name on your channel.">
