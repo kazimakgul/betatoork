@@ -40,21 +40,21 @@ if ($user['User']['picture'] == null) {
 				Account Settings
 			</a>
 		</li>
-		<li>
+		<!-- -- <li>
 			<a href="<?php echo $settings;?>" <?php if($active=='profile')echo 'class="active"'; ?>>
 				Billing
 			</a>
-		</li>
+		</li> -- -->
 		<li>
 			<a href="<?php echo $notifications;?>" <?php if($active=='notification')echo 'class="active"'; ?>>
 				Notifications
 			</a>
 		</li>
-        <li>
+        <!-- --  <li>
             <a href="<?php echo $settings;?>">
                 Help & Support
             </a>
-        </li>
+        </li> -- -->
 		<li>
 			<a href="<?php echo $logout ?>">Sign out</a>
 		</li>
