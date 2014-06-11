@@ -108,10 +108,56 @@ class AppController extends Controller {
     //This functin will get special style settings and store them in session
     public function get_style_settings($id=NULL)
     {
+
+        /********** you can change these values for sensitivity **********/ 
+        $originalColour = "#323949";  
+        $darkPercent = -10; 
+        $lightPercent = 57; 
+        $lightestPercent = 80; 
+        /*****************************************/ 
+
         $style = $this->User->find('first',array('contain'=>false,'conditions'=>array('User.id'=>$id),'fields'=>array('User.bg_image,User.bg_color'))); 
+        
+        $bg_color_darker=$this->colourCreator($style['User']['bg_color'], $darkPercent);
+        $bg_color_lighter=$this->colourCreator($style['User']['bg_color'], $lightPercent);
+
+        $this->set('color_darker',$bg_color_darker);
+        $this->set('color_lighter',$bg_color_lighter);
         $this->set('active_channel_id',$id);
         $this->set('channel_style',$style);
     }
+
+
+    function colourCreator($colour, $per) 
+{  
+    $colour = substr( $colour, 1 ); // Removes first character of hex string (#) 
+    $rgb = ''; // Empty variable 
+    $per = $per/100*255; // Creates a percentage to work with. Change the middle figure to control colour temperature
+     
+    if  ($per < 0 ) // Check to see if the percentage is a negative number 
+    { 
+        // DARKER 
+        $per =  abs($per); // Turns Neg Number to Pos Number 
+        for ($x=0;$x<3;$x++) 
+        { 
+            $c = hexdec(substr($colour,(2*$x),2)) - $per; 
+            $c = ($c < 0) ? 0 : dechex($c); 
+            $rgb .= (strlen($c) < 2) ? '0'.$c : $c; 
+        }   
+    }  
+    else 
+    { 
+        // LIGHTER         
+        for ($x=0;$x<3;$x++) 
+        {             
+            $c = hexdec(substr($colour,(2*$x),2)) + $per; 
+            $c = ($c > 255) ? 'ff' : dechex($c); 
+            $rgb .= (strlen($c) < 2) ? '0'.$c : $c; 
+        }    
+    } 
+    return '#'.$rgb; 
+} 
+
 
     public function remove_temporary($id, $type) {
         //===Alakalı tipteki klasörü siler begins.====

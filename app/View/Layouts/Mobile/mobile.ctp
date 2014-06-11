@@ -23,6 +23,33 @@
     <?php echo $this->Html->css(array('mobile/snap','mobile/demo', 'mobile/bootstrap-social', 'mobile/custom')); ?>
 
 
+    <?php 
+
+    if($channel_style['User']['bg_color']!=NULL)
+    $bg_color=$channel_style['User']['bg_color'];
+    else
+    $bg_color='#ffffff'; 
+
+    if($channel_style['User']['bg_image']!=NULL)
+    $bg_image=Configure::read('S3.url').'/upload/users/'.$active_channel_id.'/'.$channel_style['User']['bg_image'];
+    else
+    $bg_image='';      
+
+    $customcss='<style type="text/css"> #toolbar {
+    background-color: '.$bg_color.';
+    border-bottom: 1px solid '.$color_darker.';
+        }
+        .snap-drawer {
+    background-color: '.$bg_color.';
+        }
+        #content {
+    background-color: '.$color_lighter.';
+        } </style>'; ?>
+
+    <!--We Add User Selected Addtitional Css Here(begins) -->
+    <?php echo $customcss;  ?>
+  <!--We Add User Selected Addtitional Css Here(ends) -->
+
     </head>
     <body>
 

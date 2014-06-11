@@ -42,6 +42,9 @@ class MobilesController extends AppController {
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
+        
+        //This line gets user selected channel styles
+        $this->get_style_settings($userid);
 
         $user = $this->User->find('first', array(
             'conditions' => array(
