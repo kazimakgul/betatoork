@@ -63,17 +63,17 @@ if ($user['User']['picture'] == null) {
     <div class="menu-section">
         <h3>General</h3>
         <ul>
-            <li>
+           <!-- -- <li>
                 <a href="<?php echo $profile ?>">
                     <i class="fa fa-user"></i> 
                     <span>Profile</span>
                 </a>
-            </li>
+            </li> -- -->
 
             <li>
                 <a href="<?php echo $gochannel ?>">
-                    <i class="fa fa-play"></i> 
-                    <span>Go to channel</span>
+                    <i class="fa fa-desktop"></i> 
+                    <span>Go to Channel</span>
                 </a>
             </li>
 
@@ -113,7 +113,7 @@ if ($user['User']['picture'] == null) {
             <li>
                 <a href="<?php echo $activities ?>">
                     <i class="fa fa-tasks"></i> 
-                    <span>Latest activity</span>
+                    <span>Latest Activity</span>
                 </a>
             </li>
             <li>
@@ -123,12 +123,12 @@ if ($user['User']['picture'] == null) {
                 </a>
                 <ul class="submenu">
                     <li><a href="<?php echo $app_status ?>">App Status</a></li>
-                    <li><a href="<?php echo $toolsNdocs ?>">Tools & Docs</a></li>
-                    <li><a href="<?php echo $steps2launch ?>">Steps to launch</a></li>
+                    <!-- -- <li><a href="<?php echo $toolsNdocs ?>">Tools & Docs</a></li> -- -->
+                    <li><a href="<?php echo $steps2launch ?>">Steps to Launch</a></li>
                     
                 </ul>
             </li>
-            <li>
+            <!-- -- <li>
                 <a href="#" data-toggle="sidebar">
                     <i class="fa fa-space-shuttle"></i> <span>Upgrade</span>
                     <i class="red fa fa-chevron-down"></i>
@@ -137,7 +137,7 @@ if ($user['User']['picture'] == null) {
                     <li><a href="<?php echo $pricing ?>">Pricing (Plans)</a></li>
                     <li><a href="invoice.html">Invoice</a></li>
                 </ul>
-            </li>
+            </li> -- -->
         </ul>
     </div>
     <div class="menu-section">
@@ -145,7 +145,7 @@ if ($user['User']['picture'] == null) {
         <ul>
             <li>
                 <a href="account.html" data-toggle="sidebar">
-                    <i class="ion-person"></i> <span>My account</span>
+                    <i class="ion-person"></i> <span>My Account</span>
                     <i class="fa fa-chevron-down"></i>
                 </a>
                         <ul class="submenu">
