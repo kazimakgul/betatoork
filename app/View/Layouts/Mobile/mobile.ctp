@@ -25,6 +25,7 @@
 
     <?php 
 
+    /*
     if($channel_style['User']['bg_color']!=NULL)
     $bg_color=$channel_style['User']['bg_color'];
     else
@@ -44,10 +45,12 @@
         }
         #content {
     background-color: '.$color_lighter.';
-        } </style>'; ?>
+        } </style>'; 
+    */
+        ?>
 
     <!--We Add User Selected Addtitional Css Here(begins) -->
-    <?php echo $customcss;  ?>
+    <?php //echo $customcss;  ?>
   <!--We Add User Selected Addtitional Css Here(ends) -->
 
     </head>

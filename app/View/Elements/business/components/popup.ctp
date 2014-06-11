@@ -140,7 +140,7 @@
                     <center>
 							<div class="row">
 						        <div class="col-md-12">
-						        <div class="table-responsive">
+						        <div class="table-responsive adscroll" style=" width:100%; height:290px;">
 						              <table id="mytable" class="table table-bordred table-striped">
 						                   <thead>
 						                   <th width='150px'>Ads Name</th>

@@ -110,19 +110,21 @@ class AppController extends Controller {
     {
 
         /********** you can change these values for sensitivity **********/ 
+        /*
         $originalColour = "#323949";  
         $darkPercent = -10; 
         $lightPercent = 57; 
         $lightestPercent = 80; 
+        */
         /*****************************************/ 
 
         $style = $this->User->find('first',array('contain'=>false,'conditions'=>array('User.id'=>$id),'fields'=>array('User.bg_image,User.bg_color'))); 
         
-        $bg_color_darker=$this->colourCreator($style['User']['bg_color'], $darkPercent);
-        $bg_color_lighter=$this->colourCreator($style['User']['bg_color'], $lightPercent);
+        //$bg_color_darker=$this->colourCreator($style['User']['bg_color'], $darkPercent);
+        //$bg_color_lighter=$this->colourCreator($style['User']['bg_color'], $lightPercent);
 
-        $this->set('color_darker',$bg_color_darker);
-        $this->set('color_lighter',$bg_color_lighter);
+        //$this->set('color_darker',$bg_color_darker);
+        //$this->set('color_lighter',$bg_color_lighter);
         $this->set('active_channel_id',$id);
         $this->set('channel_style',$style);
     }
