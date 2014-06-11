@@ -127,6 +127,20 @@ $(document).ready(function() {
         }
 		
 	});
+	
+$('#redirect').click(function() {
+        var attr = $('#attr').val(); //Form control value
+		var btn = $(this);
+		btn.button('loading');
+		
+		if(attr == "edit_ads"){
+		  id = $("[name='select-ads']:checked").val();
+          window.location.href=edit_ads+'/'+id;			
+		}else{
+			
+		}
+
+});
 
    //Controller functions for modals of avatar begins
 $('#avatarframe').load(function(){
@@ -304,7 +318,7 @@ $('#backgroundframe').load(function(){
 			});
 
 			$checkboxes.change(function () {
-				var anyChecked = $("[name='select-product']:checked");
+				var anyChecked = $("[name='select-ads']:checked");
 				toggleBulkActions(anyChecked.length);
 			});
 

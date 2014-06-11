@@ -139,9 +139,10 @@ $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'
 					    	Bulk actions <span class="caret"></span>
 					  	</button>
 					  	<ul class="dropdown-menu" role="menu">
-					    	<li><a href="#">Edit</a></li>
+					    	<li><a href="#" id="redirect">Edit</a></li>
 					    	<li><a href="#">Delete</a></li>
 					  	</ul>
+					  	<input type="hidden" id="attr" value="edit_ads" />
 					</div>
 
 					<table id="datatable-ads">
@@ -162,19 +163,20 @@ $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'
 							<?php
 					foreach ($adcodes as $adcode) {
 						$adsStatus = NULL;
-						if (in_array($adcode["Adcode"]["id"], $addata[0]['Adsetting']))
+						$adcodeId = $adcode["Adcode"]["id"];
+						if (in_array($adcodeId, $addata[0]['Adsetting']))
 							{
-								$adsStatus.= ($adcode['Adcode']['id']==$addata[0]['Adsetting']['home_banner_top']?'<span class="label label-success" style="display:inline-block">Home -> Top</span>':'');
-								$adsStatus.= ($adcode['Adcode']['id']==$addata[0]['Adsetting']['home_banner_middle']?'<span class="label label-success" style="display:inline-block">Home -> Middle</span>':'');
-								$adsStatus.= ($adcode['Adcode']['id']==$addata[0]['Adsetting']['home_banner_bottom']?'<span class="label label-success" style="display:inline-block">Home -> Bottom</span>':'');
-								$adsStatus.= ($adcode['Adcode']['id']==$addata[0]['Adsetting']['game_banner_top']?'<span class="label label-success" style="display:inline-block">Game -> Top</span>':'');
-								$adsStatus.= ($adcode['Adcode']['id']==$addata[0]['Adsetting']['game_banner_bottom']?'<span class="label label-success" style="display:inline-block">Game -> Middle</span>':'');
+								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['home_banner_top']?'<span class="label label-success" style="display:inline-block">Home -> Top</span>':'');
+								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['home_banner_middle']?'<span class="label label-success" style="display:inline-block">Home -> Middle</span>':'');
+								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['home_banner_bottom']?'<span class="label label-success" style="display:inline-block">Home -> Bottom</span>':'');
+								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['game_banner_top']?'<span class="label label-success" style="display:inline-block">Game -> Top</span>':'');
+								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['game_banner_bottom']?'<span class="label label-success" style="display:inline-block">Game -> Middle</span>':'');
 							}else{
 								$adsStatus = '<span class="label label-default">Not Used</span>';
 							}	
 					echo '<tr>
 	                            <td>
-	                            	<input name="select-ads" type="checkbox" />
+	                            	<input name="select-ads" value="'.$adcodeId.'" type="checkbox" />
 	                            </td>
 	                            <td>
 	                            	'.$adcode["Adcode"]["name"].'
