@@ -1,7 +1,3 @@
-<?php
-//print_r($following);
-//exit;
-?>
 <?php foreach ($following as $value) { ?>
     <div class="row user">
         <div class="col-sm-2 avatar">
