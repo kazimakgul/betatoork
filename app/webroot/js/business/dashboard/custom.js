@@ -267,7 +267,7 @@ $('#backgroundframe').load(function(){
    
    var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
    $('#user_background').attr('src',new_img); 
-   $('#background_area').attr('src',new_img);
+   $('#background_area').css('background-image','url('+new_img+')');
    $('.remove_bg_img').show();          
    });
 
