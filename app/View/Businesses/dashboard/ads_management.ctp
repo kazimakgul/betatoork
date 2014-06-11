@@ -177,7 +177,7 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 							}	
 					echo '<tr>
 	                            <td>
-	                            	<input name="select-ads" value="'.$adcodeId.'" type="checkbox" />
+	                            	<input name="select-ads" value="'.$adcode["Adcode"]["id"].'" type="checkbox" />
 	                            </td>
 	                            <td>
 	                            	'.$adcode["Adcode"]["name"].'

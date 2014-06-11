@@ -179,6 +179,29 @@ class BusinessesController extends AppController {
 
 
 
+
+
+    /**
+     * Delete Form Request method
+     *
+     * @param Request => array()
+     * @return success=>"Message" or Error=>id
+     */
+    public function deleteData() {
+        	if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
+            	$attr = $this->request->data['attr'];
+            	$user_id = $this->Auth->user('id');
+				if($attr == "edit_ads"){
+				$id = $this->request->data['id'];
+				$this->Adcode->query('DELETE FROM adcodes WHERE id=' . $id . ' AND user_id=' . $user_id);
+				$this->set('success', "Ads Code Deleted");
+                $this->set('_serialize', array('success'));
+				}
+			
+			}
+		
+		}
+
 	
     //this gets game suggestions
     public function get_game_suggestions($order) {

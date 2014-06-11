@@ -148,6 +148,7 @@ $(document).ready(function() {
 
 $('#deletedata').click(function(e) {
 		e.preventDefault();
+		var link = deletedata;		
         var attr = $('#attr').val(); //Form control value
 		var btn = $(this);
 		btn.button('loading');
@@ -156,14 +157,40 @@ $('#deletedata').click(function(e) {
 		  count = $("[name='select-ads']:checked").length;
 		  if(count>1)
 		  {
-		  	id	= $("[name='select-ads']:checked").val(2);
+		  	for(i = 0; i <= count-1; i++)
+		  	{
+		  		id = $("[name='select-ads']:checked")[i].value;
+				  	$.post(link, {
+		                attr	: attr,
+		                id		: id
+		            },
+		            function(data) {
+		                if (data.error) {
+		                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+		                }else{
+		                	Messenger().post(data.success);
+		                	$('#confirm-modal').modal('hide');
+		                	setTimeout(function(){location.href=ads_management}, 2000 );
+		                }
+		            }, 'json');
+		  	}
+		  	
 		  }else{
-		  	id	= $("[name='select-ads']:checked").val();
+		  	id	= $("[name='select-ads']:checked")[0].value;
+		  	$.post(link, {
+		                attr	: attr,
+		                id		: id
+		            },
+		            function(data) {
+		                if (data.error) {
+		                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+		                }else{
+		                	Messenger().post(data.success);
+		                	$('#confirm-modal').modal('hide');
+		                	setTimeout(function(){location.href=ads_management}, 2000 );
+		                }
+		            }, 'json');
 		  }
-//          alert(id);
-          console.log(id);
-          
-         // window.location.href=edit_ads+'/'+id;			
 		}else{
 			
 		}
