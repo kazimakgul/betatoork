@@ -11,19 +11,23 @@
             }
             ?>
         </div>
-        <div class="col-sm-3">
-            <a href="user-profile.html" class="name"><?php echo $value['User']['username'] ?></a>
+        <div class="col-sm-4">
+            <a href="user-profile.html" class="name">
+                <?php echo $value['User']['username'] ?>
+            </a>
         </div>
-        <div class="col-sm-3">
-            <div class="followercount"><?php echo $value['User']['Userstat']['subscribeto'] ?></div>
-        </div>
-        <div class="col-sm-2">
-            <div class="followingcount">
+        <div class="col-sm-1 col-sm-offset-1 text-right">
+            <div class="total-spent">
                 <?php echo $value['User']['Userstat']['subscribeto'] ?>
             </div>
         </div>
-        <div class="col-sm-2">
-            <div class="gamescount">
+        <div class="col-sm-1 col-sm-offset-1 text-right">
+            <div class="total-spent">
+                <?php echo $value['User']['Userstat']['subscribeto'] ?>
+            </div>
+        </div>
+        <div class="col-sm-1 col-sm-offset-1 text-right">
+            <div class="total-spent">
                 <?php echo $value['User']['Userstat']['uploadcount'] ?>
             </div>
         </div>

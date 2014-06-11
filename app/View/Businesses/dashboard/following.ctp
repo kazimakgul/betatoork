@@ -69,16 +69,16 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-sm-3 header hidden-xs">
+                            <div class="col-sm-4 header hidden-xs">
                                 <label><a href="#">Name</a></label>
                             </div>
-                            <div class="col-sm-3 header hidden-xs">
+                            <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
                                 <label><a href="#">Followers</a></label>
                             </div>
-                            <div class="col-sm-2 header hidden-xs">
+                            <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
                                 <label><a href="#">Following</a></label>
                             </div>
-                            <div class="col-sm-2 header hidden-xs">
+                            <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
                                 <label class="text-right"><a href="#">Games</a></label>
                             </div>
                         </div>
