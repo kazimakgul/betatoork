@@ -10,6 +10,7 @@
     -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
     -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
+
 .circular1 {
     width: 80px;
     height: 80px;
@@ -22,24 +23,33 @@
     -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
     -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
+
 #users #content .content-wrapper .users-list .user .avatar img {
     border-radius: 0%;
     max-width: 100px;
     max-height: 50px;
 }
+
 #users #content .content-wrapper .users-list .headers .header label a:hover {
     background: none !important;
 }
-#users #content .content-wrapper .users-list .user .name, #users #content .content-wrapper .users-list .user .total-spent {
+
+#users #content .content-wrapper .users-list .user .name,
+#users #content .content-wrapper .users-list .user .total-spent {
     top: 15px;
 }
-.game, .user {
+
+.game,
+.user {
     margin-bottom: 20px;
 }
-.game .name, .user .name {
+
+.game .name,
+.user .name {
     height: 20px;
     overflow: hidden;
 }
+
 .users-grid img {
     width: 100%;
     border: 0 none;
