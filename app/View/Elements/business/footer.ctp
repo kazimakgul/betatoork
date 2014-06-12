@@ -3,13 +3,14 @@
      <div class="row">
       <div class="col-xs-12">
 
-      <div id="footer">
-        <div class="container">
-          <p class="text-muted">All rights reservered by Toork.com - 2014 - <a class="btn btn-link" href="#aboutModal" data-toggle="modal" data-target="#myModal">About</a> - <a class="btn btn-link" data-toggle="modal" data-target="#contact" data-original-title>
+      <div id="footer" class="text-center">
+        <div style="opacity:0.7;" class="well well-sm container">
+          <a class="btn btn-link" href="#aboutModal" data-toggle="modal" data-target="#myModal">About</a> - <a class="btn btn-link" data-toggle="modal" data-target="#contact" data-original-title>
           Contact
-        </a></p>
+        </a>
           
         </div>
+        <p style="float"class="text-muted">Desing and created with <a href="http://clone.gs">clone.gs</a> - <?php echo '&copy; 2011&ndash;'.date('Y').' Toork.com'; ?> </p>
       </div>
 
       </div>

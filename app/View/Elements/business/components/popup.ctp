@@ -8,7 +8,7 @@
                         <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Any questions? Feel free to contact us.</h4>
                     </div>
                     <form action="../contactmail/<?=$user_id?>" method="post" accept-charset="utf-8">
-                    <div class="modal-body" style="padding: 25px;">
+                    <div class="modal-body" style="padding: 35px;">
                           <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                     <input class="form-control" name="firstname" placeholder="Firstname" type="text" required autofocus />
@@ -57,9 +57,9 @@
                     <?php 
                     $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
                       if($user['User']['picture']==null) { 
-                        echo $this->Html->image("/img/avatars/".$avatarImage.".jpg", array('class'=>'img-circle',"alt" => "clone user image")); 
+                        echo $this->Html->image("/img/avatars/".$avatarImage.".jpg", array('width'=>'150px','height'=>'150px','class'=>'img-circle',"alt" => "clone user image")); 
                         } else {
-                          echo $this->Upload->image($user,'User.picture',array(),array('id'=>'user_avatar','class'=>'img-circle','onerror'=>'imgError(this,"avatar");'));  }
+                          echo $this->Upload->image($user,'User.picture',array(),array('width'=>'150px','height'=>'150px','id'=>'user_avatar','class'=>'img-circle','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
 					<h3 class="media-heading"><?=$user["User"]["username"];?> <small><?=$user["Country"]["name"];?></small></h3>
                     <span><strong>Details: </strong></span>
