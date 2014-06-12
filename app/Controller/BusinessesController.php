@@ -110,15 +110,25 @@ class BusinessesController extends AppController {
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
 				$this->Adcode->id=$this->request->data['ad_id'];
 				$this->Adcode->save($filtered_data);
-
-				$category = $this->request->data['category'];
-				if($category!='0'){
-					
-				$filtered_data['Adsetting'][$category] = $this->request->data['ad_id'];
-				$id = $this->Adsetting->find('first', array('contain'=>false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
-				$this->Adsetting->id=$id;
-				$this->Adsetting->save($filtered_data);
+				
+				
+				$category =  json_decode($this->request->data['category'], true);
+				$cat_del = array('home_banner_top','home_banner_middle','home_banner_bottom','game_banner_top','game_banner_bottom');
+				//Düzenlenicek
+				for($i=0; $i<=count($cat_del)-1; $i++){
+					$this->User->Query('UPDATE adsettings SET '.$cat_del[$i].'="NULL" WHERE user_id='.$user_id.' AND '.$cat_del[$i].'='.$this->request->data["ad_id"]);
 				}
+				
+				if(count($category)>0)
+				{
+					foreach ($category as $value) {
+						$filtered_data['Adsetting'][$value] = $this->request->data['ad_id'];
+						$id = $this->Adsetting->find('first', array('contain'=>false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
+						$this->Adsetting->id=$id;
+						$this->Adsetting->save($filtered_data);
+					}
+				}
+
                 $this->set('success', "Ads Settings Updated.");
                 $this->set('_serialize', array('success'));
  			}

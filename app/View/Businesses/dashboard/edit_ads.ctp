@@ -19,7 +19,7 @@
 				</div>
 			</div>
 <?php
-
+/*
 $adcodeId = $Ads['Adcode']['id'];
 $adsStatus = NULL;
 if (in_array($adcodeId, $Ads_set['Adsetting']))
@@ -31,7 +31,7 @@ if (in_array($adcodeId, $Ads_set['Adsetting']))
 		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['game_banner_bottom']?'<option value="game_banner_bottom">Game -> Bottom</option>':'');
 	}else{
 		$adsStatus = '<option value="0">Select Category</option>';
-	}
+	}*/
 ?>
 <form id="edit_ads" role="form" novalidate="novalidate">
 			<div class="content-wrapper form-horizontal">
@@ -50,17 +50,16 @@ if (in_array($adcodeId, $Ads_set['Adsetting']))
 				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Category</label>
 					    <div class="col-sm-10 col-md-8">
-					    	<select class="form-control" id="category" data-smart-select>
-					    		<?php echo $adsStatus; ?>
-					    		<option value="home_banner_top">Home -> Top</option>
-					    		<option value="home_banner_middle">Home -> Middle</option>
-					    		<option value="home_banner_bottom">Home -> Bottom</option>
-					    		<option value="game_banner_top">Game -> Top</option>
-					    		<option value="game_banner_bottom">Game -> Bottom</option>
+					    	<select class="form-control" id="category" multiple="multiple">
+					    		<option value="home_banner_top" <?php echo $Ads_set['Adsetting']['home_banner_top']==$Ads['Adcode']['id']?'selected':''; ?>>Home -> Top</option>
+					    		<option value="home_banner_middle" <?php echo $Ads_set['Adsetting']['home_banner_middle']==$Ads['Adcode']['id']?'selected':''; ?>>Home -> Middle</option>
+					    		<option value="home_banner_bottom" <?php echo $Ads_set['Adsetting']['home_banner_bottom']==$Ads['Adcode']['id']?'selected':''; ?>>Home -> Bottom</option>
+					    		<option value="game_banner_top" <?php echo $Ads_set['Adsetting']['game_banner_top']==$Ads['Adcode']['id']?'selected':''; ?>>Game -> Top</option>
+					    		<option value="game_banner_bottom" <?php echo $Ads_set['Adsetting']['game_banner_bottom']==$Ads['Adcode']['id']?'selected':''; ?>>Game -> Bottom</option>
 					    	</select>
 					    </div>
 				  	</div>
-				  		<input type="hidden" id="ad_id" value="<?php echo $adcodeId;?>" />
+				  		<input type="hidden" id="ad_id" value="<?php echo $Ads['Adcode']['id'];?>" />
 						<input type="hidden" id="attr" name="attr" value="edit_ads" />
 				  	<div class="form-group form-actions">
 				    	<div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">

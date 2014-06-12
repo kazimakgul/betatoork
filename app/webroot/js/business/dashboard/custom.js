@@ -67,12 +67,14 @@ $(document).ready(function() {
 		            }, 'json');
         }
         else if (attr == "edit_ads" && $('#edit_ads').valid()) {
+        	var cat_arr = JSON.stringify($('#category').val());
+  
 			$.post(link, {
                 attr	: attr,
                 title	: $('#title').val(),
                 desc	: $('#desc').val(),
                 ad_id	: $('#ad_id').val(),
-                category: $('#category').val()
+                category: cat_arr
  					},
 		            function(data) {
 		                if (data.error) {
