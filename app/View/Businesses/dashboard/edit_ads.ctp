@@ -18,21 +18,6 @@
 					</small>
 				</div>
 			</div>
-<?php
-/*
-$adcodeId = $Ads['Adcode']['id'];
-$adsStatus = NULL;
-if (in_array($adcodeId, $Ads_set['Adsetting']))
-	{
-		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['home_banner_top']?'<option value="home_banner_top">Home -> Top</option>':'');
-		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['home_banner_middle']?'<option value="home_banner_middle">Home -> Middle</option>':'');
-		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['home_banner_bottom']?'<option value="home_banner_bottom">Home -> Bottom</option>':'');
-		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['game_banner_top']?'<option value="game_banner_top">Game -> Top</option>':'');
-		$adsStatus.= ($adcodeId==$Ads_set['Adsetting']['game_banner_bottom']?'<option value="game_banner_bottom">Game -> Bottom</option>':'');
-	}else{
-		$adsStatus = '<option value="0">Select Category</option>';
-	}*/
-?>
 <form id="edit_ads" role="form" novalidate="novalidate">
 			<div class="content-wrapper form-horizontal">
 				  	<div class="form-group">
@@ -50,13 +35,11 @@ if (in_array($adcodeId, $Ads_set['Adsetting']))
 				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Category</label>
 					    <div class="col-sm-10 col-md-8">
-					    	<select class="form-control" id="category" multiple="multiple">
-					    		<option value="home_banner_top" <?php echo $Ads_set['Adsetting']['home_banner_top']==$Ads['Adcode']['id']?'selected':''; ?>>Home -> Top</option>
-					    		<option value="home_banner_middle" <?php echo $Ads_set['Adsetting']['home_banner_middle']==$Ads['Adcode']['id']?'selected':''; ?>>Home -> Middle</option>
-					    		<option value="home_banner_bottom" <?php echo $Ads_set['Adsetting']['home_banner_bottom']==$Ads['Adcode']['id']?'selected':''; ?>>Home -> Bottom</option>
-					    		<option value="game_banner_top" <?php echo $Ads_set['Adsetting']['game_banner_top']==$Ads['Adcode']['id']?'selected':''; ?>>Game -> Top</option>
-					    		<option value="game_banner_bottom" <?php echo $Ads_set['Adsetting']['game_banner_bottom']==$Ads['Adcode']['id']?'selected':''; ?>>Game -> Bottom</option>
-					    	</select>
+					    		<input type='checkbox' name='category' value="home_banner_top" <?php echo $Ads_set['Adsetting']['home_banner_top']==$Ads['Adcode']['id']?'checked':''; ?>> Home -> Top<br/>
+					    		<input type='checkbox' name='category' value="home_banner_middle" <?php echo $Ads_set['Adsetting']['home_banner_middle']==$Ads['Adcode']['id']?'checked':''; ?>> Home -> Middle<br/>
+					    		<input type='checkbox' name='category' value="home_banner_bottom" <?php echo $Ads_set['Adsetting']['home_banner_bottom']==$Ads['Adcode']['id']?'checked':''; ?>> Home -> Bottom<br/>
+					    		<input type='checkbox' name='category' value="game_banner_top" <?php echo $Ads_set['Adsetting']['game_banner_top']==$Ads['Adcode']['id']?'checked':''; ?>> Game -> Top<br/>
+					    		<input type='checkbox' name='category' value="game_banner_bottom" <?php echo $Ads_set['Adsetting']['game_banner_bottom']==$Ads['Adcode']['id']?'checked':''; ?>> Game -> Bottom<br/>
 					    </div>
 				  	</div>
 				  		<input type="hidden" id="ad_id" value="<?php echo $Ads['Adcode']['id'];?>" />

@@ -10,7 +10,7 @@ table.dataTable {
 }
 
 table.dataTable thead th {
-	padding: 10px 18px 15px 18px;
+	padding: 10px 18px 15px 9px; /*18px;*/
 	border-top: 1px solid #dee3ea;
 	font-weight: 600;
 	cursor: pointer;

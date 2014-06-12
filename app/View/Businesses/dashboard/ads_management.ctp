@@ -21,7 +21,8 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 			<div class="content-wrapper clearfix">
 
 				<div class="filters">
-					<h3 class="hidden-xs">Filters</h3>
+				<?php  echo $this->element('business/dashboard/sidebar_setting',array('active'=>'ads_management'));?>
+				<!--	<h3 class="hidden-xs">Filters</h3>
 					<form>
 						<div class="filter">
 							<label>
@@ -129,7 +130,7 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 								</div>
 							</div>
 						</div>
-					</form>
+					</form>-->
 				</div>
 
 				<div class="results">
@@ -223,4 +224,55 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 		    </div>
 	  	</div>
 	</div>
+	<style>
+		    #search #content #sidebar .menu {
+      list-style-type: none;
+      padding: 0;
+      margin: 0; }
+      @media (max-width: 767px) {
+        #search #content #sidebar .menu {
+          margin-top: 15px;
+          padding-bottom: 10px; } }
+      #search #content #sidebar .menu li a {
+        display: block;
+        padding: 13px 30px;
+        font-size: 15px;
+        color: #555;
+        text-decoration: none;
+        -webkit-transition: all 0.2s linear;
+        -moz-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        transition: all 0.2s linear; }
+        #search #content #sidebar .menu li a.active, #account #content #sidebar .menu li a:hover {
+          color: #6787DA; }
+        #search #content #sidebar .menu li a i {
+          min-width: 30px; }
+          #search #content #sidebar .menu li a i.ion-ios7-person-outline {
+            font-size: 30px;
+            position: relative;
+            top: 4px; }
+          #search #content #sidebar .menu li a i.ion-ios7-email-outline {
+            font-size: 24px;
+            position: relative;
+            top: 4px; }
+          #search #content #sidebar .menu li a i.ion-ios7-help-outline {
+            font-size: 24px;
+            position: relative;
+            top: 4px; }
+          #search #content #sidebar .menu li a i.ion-card {
+            font-size: 21px;
+            position: relative;
+            top: 3px; }
+            
+			#search #content #sidebar {
+			left: 0;
+			top: 0;
+			bottom: 0;
+			position: absolute;
+			width: 100%;
+			background: #fcfcfc;
+			border-right: 1px solid #E8ECF1;
+			}
+	</style>
 </body>

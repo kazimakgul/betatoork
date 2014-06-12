@@ -67,8 +67,14 @@ $(document).ready(function() {
 		            }, 'json');
         }
         else if (attr == "edit_ads" && $('#edit_ads').valid()) {
-        	var cat_arr = JSON.stringify($('#category').val());
-  
+        	var anyChecked = $("input:checkbox[name=category]:checked");
+		  	var category = new Array();
+		  	var countC = anyChecked.length;
+		  	for(i = 0; i <= countC-1; i++)
+		  	{
+		  		category[i] = anyChecked[i].value;
+			}  		
+        	var cat_arr = JSON.stringify(category);
 			$.post(link, {
                 attr	: attr,
                 title	: $('#title').val(),

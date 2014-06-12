@@ -27,7 +27,7 @@ $billing	= $this->Html->url(array('controller'=>'businesses','action'=>'billing'
 			</a>
 		</li>
 		<li>
-			<a href="<?php echo $ads_management;?>">
+			<a href="<?php echo $ads_management;?>" <?php if($active=='ads_management')echo 'class="active"'; ?>>
 				<i class="fa fa-bar-chart-o"></i>
 				Ads Management
 			</a>

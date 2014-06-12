@@ -6243,7 +6243,7 @@ body {
       overflow: auto; } }
   #search .content-wrapper .results {
     position: relative;
-    float: left;
+    float: right;    /* left */
     width: 77%;
     height: 100%;
     min-height: 800px;
@@ -6312,7 +6312,8 @@ body {
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 0;
+    /*right: 0;*/
+   float:left;
     width: 23%;
     border-left: 1px solid #E8EBF0; }
     @media (max-width: 767px) {
