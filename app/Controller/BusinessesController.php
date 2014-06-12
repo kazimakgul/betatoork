@@ -329,6 +329,24 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/index');
     }
 
+ 
+    /**
+     * Game add method
+     *
+     * @param 
+     * @return Game add Page
+     */
+    public function game_add() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/game_add');
+    }
+ 
+ 
+ 
     /**
      * Dummy tools and docs function
      * Cloned from app_status method
