@@ -589,7 +589,7 @@ class BusinessesController extends AppController {
         {   
             $userid=2; 
             $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
-            $user_data=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$subdomain)));
+            $user_data=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.seo_username'=>$subdomain)));
             print_r($user_data);echo 'yea';
         }    
         
