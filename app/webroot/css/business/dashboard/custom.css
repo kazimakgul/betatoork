@@ -1,4 +1,5 @@
-.circular {
+.circular
+{
     width: 40px;
     height: 40px;
     border-radius: 60px;
@@ -11,7 +12,8 @@
     -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
 
-.circular1 {
+.circular1
+{
     width: 80px;
     height: 80px;
     border-radius: 60px;
@@ -24,33 +26,39 @@
     -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
 
-#users #content .content-wrapper .users-list .user .avatar img {
+#users #content .content-wrapper .users-list .user .avatar img
+{
     border-radius: 0%;
     max-width: 100px;
     max-height: 50px;
 }
 
-#users #content .content-wrapper .users-list .headers .header label a:hover {
+#users #content .content-wrapper .users-list .headers .header label a:hover
+{
     background: none !important;
 }
 
 #users #content .content-wrapper .users-list .user .name,
-#users #content .content-wrapper .users-list .user .total-spent {
+#users #content .content-wrapper .users-list .user .total-spent
+{
     top: 15px;
 }
 
-.game,
-.user {
+.users-grid .game,
+.users-grid .user
+{
     margin-bottom: 20px;
 }
 
-.game .name,
-.user .name {
+.users-grid .game .name,
+.users-grid .user .name
+{
     height: 20px;
     overflow: hidden;
 }
 
-.users-grid img {
+.users-grid img
+{
     width: 100%;
     border: 0 none;
     border-radius: 5px;
