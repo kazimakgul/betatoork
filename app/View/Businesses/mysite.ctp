@@ -2,7 +2,7 @@
 <div class="container">
 <?php
 
-$subgameurl=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
+$subgameurl		=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
 $channelsettings=$this->Html->url(array("controller" => "businesses","action" =>"settings"));
 
 //Getting and declaring ads datas

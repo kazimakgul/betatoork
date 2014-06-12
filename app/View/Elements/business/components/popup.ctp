@@ -170,14 +170,15 @@
 					
 		
                     	<?
-                    	//print_r($user);
+							$add_code	=$this->Html->url(array("controller" => "businesses","action" =>"add_ads"));
+							$ad_manage	=$this->Html->url(array("controller" => "businesses","action" =>"ads_management"));
 						?>
                     </center>
                 </div>
                 <div class="modal-footer">
                     <center>
-                    	<button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Add New Ad Code</button>
-                        <button type="button" class="btn btn-primary" ><span class="glyphicon glyphicon-pencil"></span> Manage</button>
+                    	<a href="<?php echo $add_code;?>" type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Add New Ad Code</a>
+                        <a href="<?php echo $ad_manage;?>" type="button" class="btn btn-primary" ><span class="glyphicon glyphicon-pencil"></span> Manage</a>
                         <a href="#" onclick="remove_ad_area();" style="position: absolute; right: 9px; bottom: 6px; color: red; font-size: 11px;font-weight: bold;" class="pull-right" id="removeadsfield">(Remove ads field)</a>
                     </center>
                 </div>
