@@ -1,7 +1,13 @@
 <?php $counter=0;?>
 <?php 
 	foreach ($gamedata as $game): 
-	$playurl=$this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
+	if(Configure::read('Domain.type')=='subdomain')
+	{
+    $playurl=$this->Html->url(array("controller" => 'play', "action" => h($game['Game']['seo_url'])));
+	}else{
+	$playurl=$this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));	
+	}	
+	
 ?>
 	          <?php echo $div; ?>
 	            <div class="panel panel-default">
