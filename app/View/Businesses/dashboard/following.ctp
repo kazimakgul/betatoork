@@ -43,6 +43,9 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
                                     <li>
                                         <?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')) ?>
                                     </li>
+                                    <li>
+                                        <?php echo $this->Paginator->sort('User.created', 'Created', array('direction' => 'desc')) ?>
+                                    </li>
                                     <!--
                                     <li>
                                         <a href="#">Followers</a>
