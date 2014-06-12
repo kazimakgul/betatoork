@@ -59,7 +59,7 @@
 	
 	Router::connect('/:channel/news/:type', array('controller' => 'Wallentries', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','type' => '[-a-z0-9]+','pass' => array('channel','type')));
 	
-	
+	Router::connect('/:channel', array('controller' => 'games', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','pass' => array('channel')));
 	
 	
 	    //additonal for subdomain access:http://stackoverflow.com/questions/15065015/make-session-valid-with-all-subdomains
@@ -74,7 +74,6 @@
         Configure::write('Domain.subdomain', $subdomain);
         }else{
         Router::connect('/', array('controller' => 'games', 'action' => 'index'));
-        Router::connect('/:channel', array('controller' => 'games', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','pass' => array('channel')));
         Configure::write('Domain.type', 'normal');
         }  
 	
