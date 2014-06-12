@@ -588,8 +588,9 @@ class BusinessesController extends AppController {
 
         //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
         echo 'sundimain:'.$this->request->host();
-        echo env("HTTP_HOST");
-        $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );echo $subdomain;
+        $http_host=$this->request->host();
+        echo 'wow:'.env("HTTP_HOST");
+        $subdomain = substr( $http_host, 0, strpos($http_host, ".") );echo 'last domain:'.$subdomain;
 
 
         //This line gets user selected channel styles
