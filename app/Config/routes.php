@@ -66,8 +66,8 @@
 	
 	    //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
         $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
-        if( strlen($subdomain)>0 && $subdomain != "m" ) { echo 'great';
-        Router::connect('/',array('controller'=>'businesses','action'=>'mysite'));
+        if( strlen($subdomain)>0 && $subdomain != "m" ) { 
+        Router::connect('/naber',array('controller'=>'businesses','action'=>'mysite',2));
         Router::connect('/foo', array('controller'=>'mobiles','action'=>'foo'));
         }  
 	
