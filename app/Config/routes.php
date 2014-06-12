@@ -62,7 +62,7 @@
 	Router::connect('/:channel', array('controller' => 'games', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','pass' => array('channel')));
 	
 	
-	
+	    //additonal for subdomain access:http://stackoverflow.com/questions/15065015/make-session-valid-with-all-subdomains
 	    //additional:http://theworldinpixels.com/wildcard-subdomains-in-cakephp/
 	    //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
         $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
@@ -76,7 +76,7 @@
         Configure::write('Domain.type', 'normal');
         }  
 	
-	ini_set('session.cookie_domain', '.clone.gs');
+	
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
