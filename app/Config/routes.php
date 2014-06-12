@@ -68,7 +68,7 @@
         $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
         if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" ) { 
         Router::connect('/',array('controller'=>'businesses','action'=>'mysite'));
-        Router::connect('/foo', array('controller'=>'mobiles','action'=>'foo'));
+        Router::connect('/play/:seo_url', array('controller' => 'businesses', 'action' => 'play'),array('seo_url' => '[-a-z0-9]+','pass' => array('seo_url',1)));
         }else{
         Router::connect('/', array('controller' => 'games', 'action' => 'index'));
         }  
