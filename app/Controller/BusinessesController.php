@@ -585,6 +585,13 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
         
+        if($userid==NULL)
+        {   
+            $userid=2; 
+            $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
+            $user_data=$this->User->find('first',array('conditions'=>array('User.seo_username'=>$subdomain)));
+            print_r($user_data);echo 'yea';
+        }    
         
         //subdomain actions
         //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
