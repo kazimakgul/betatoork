@@ -26,11 +26,13 @@ $allgames = $params['count'];
             <div class="content-wrapper">
                 <div class="row page-controls">
                     <div class="col-md-12 filters">
+                        <!--
                         <label>Filter Games:</label>
                         <a href="#" class="active">All Games (<?php echo $allgames ?>)</a>
                         <a href="#">Published (32)</a>
                         <a href="#">Suspended (6)</a>
                         <a href="#">Draft (1)</a>
+                        -->
                         <div class="show-options">
                             <div class="dropdown">
                                 <a class="button" data-toggle="dropdown" href="#">
