@@ -61,7 +61,7 @@
 	
 	Router::connect('/:channel', array('controller' => 'games', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','pass' => array('channel')));
 	
-	
+	Router::connect('/naber',array('controller'=>'businesses','action'=>'mysite',2));
 	
 	
 	    //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
