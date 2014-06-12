@@ -734,6 +734,13 @@ class BusinessesController extends AppController {
             $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
             $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id'), 'contain' => false));
             $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.seo_username' => $subdomain)))));
+        
+            echo 'subdomain name:'.$subdomain;
+            echo 'user id:'.$user['User']['id'];echo '<br>';
+            print_r($user);echo '<br>';
+            print_r($game);
+            break;
+
         }else{
             $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
             $user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']), 'fields' => array('*')));
