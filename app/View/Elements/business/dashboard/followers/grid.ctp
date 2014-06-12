@@ -11,6 +11,13 @@
             ?>
         </a>
         <div class="name"><?= $value['User']['username'] ?></div>
-        <div class="email">john.smith@gmail.com</div>
+        <div class="email">
+            <?php
+            echo
+            $value['User']['Userstat']['subscribeto'] . ' Followers | ' .
+            $value['User']['Userstat']['subscribeto'] . ' Following | ' .
+            $value['User']['Userstat']['uploadcount'] . ' Gamses'
+            ?>
+        </div>
     </div>
 <?php } ?>
