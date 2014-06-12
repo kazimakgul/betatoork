@@ -6,7 +6,7 @@ foreach ($following as $value) {
     $following = $value['Userstat']['subscribeto'];
     $games = $value['Userstat']['uploadcount'];
     ?>
-    <div class="user col-xs-12 col-sm-6 col-md-4 col-lg-2">
+    <div class="user col-xs-6 col-sm-4 col-md-3 col-lg-2">
         <a href="<?php echo $userlink ?>">
             <?php
             if (is_null($value['User']['picture'])) {
@@ -17,9 +17,11 @@ foreach ($following as $value) {
             }
             ?>
         </a>
-        <a href="<?php echo $userlink ?>" class="name">
-            <?php echo $name ?>
-        </a>
+        <div class="name">
+            <a href="<?php echo $userlink ?>">
+                <?php echo $name ?>
+            </a>
+        </div>
         <div class="email">
             <?php
             echo

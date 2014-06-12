@@ -2,7 +2,7 @@
 foreach ($followers as $value) {
     $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
     ?>
-    <div class="user col-xs-12 col-sm-6 col-md-4 col-lg-2">
+    <div class="user col-xs-6 col-sm-4 col-md-3 col-lg-2">
         <a href="<?php echo $userlink ?>">
             <?php
             if (is_null($value['User']['picture'])) {
@@ -13,9 +13,11 @@ foreach ($followers as $value) {
             }
             ?>
         </a>
-        <a class="name" href="<?php echo $userlink ?>">
-            <?php echo $value['User']['username'] ?>
-        </a>
+        <div class="name">
+            <a href="<?php echo $userlink ?>">
+                <?php echo $value['User']['username'] ?>
+            </a>
+        </div>
         <div class="email">
             <?php
             echo
