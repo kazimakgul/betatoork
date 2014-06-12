@@ -36,7 +36,7 @@ if ($user['User']['picture'] == null) {
         </a>
         <ul class="menu">
 		<li>
-			<a href="<?php echo $ch_settings;?>" <?php if($active=='settings')echo 'class="active"'; ?>>
+			<a href="<?php echo $ch_settings;?>">
 				Account Settings
 			</a>
 		</li>
@@ -46,7 +46,7 @@ if ($user['User']['picture'] == null) {
 			</a>
 		</li> -- -->
 		<li>
-			<a href="<?php echo $notifications;?>" <?php if($active=='notification')echo 'class="active"'; ?>>
+			<a href="<?php echo $notifications;?>">
 				Notifications
 			</a>
 		</li>
@@ -78,31 +78,31 @@ if ($user['User']['picture'] == null) {
             </li>
 
             <li>
-                <a href="<?php echo $index ?>" class="active">
+                <a href="<?php echo $index ?>" <?php if(isset($active) && $active=='dashboard')echo 'class="active"'; ?>>
                     <i class="ion-ios7-speedometer"></i> 
                     <span>Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="users.html" data-toggle="sidebar">
+                <a href="#" data-toggle="sidebar">
                     <i class="fa fa-gamepad"></i> <span>Games</span>
                     <i class="fa fa-chevron-down"></i>
                 </a>
-                <ul class="submenu">
-                    <li><a href="<?php echo $mygames ?>">My Games</a></li>
-                    <li><a href="<?php echo $favorites ?>">Favorites</a></li>
-                    <li><a href="<?php echo $exploregames ?>">Explore Games</a></li>
+                <ul class="submenu" <?php if(isset($bar) && $bar=='Games')echo 'style="display:block"'; ?>>
+                    <li><a href="<?php echo $mygames ?>" <?php if(isset($active) && $active=='mygames')echo 'class="active"'; ?>>My Games</a></li>
+                    <li><a href="<?php echo $favorites ?>" <?php if(isset($active) && $active=='favorites')echo 'class="active"'; ?>>Favorites</a></li>
+                    <li><a href="<?php echo $exploregames ?>" <?php if(isset($active) && $active=='exploregames')echo 'class="active"'; ?>>Explore Games</a></li>
                 </ul>
             </li>
             <li>
-                <a href="users.html" data-toggle="sidebar">
+                <a href="#" data-toggle="sidebar">
                     <i class="ion-person-add"></i> <span>Follows</span>
                     <i class="fa fa-chevron-down"></i>
                 </a>
-                <ul class="submenu">
-                    <li><a href="<?php echo $following ?>">Following</a></li>
-                    <li><a href="<?php echo $followers ?>">Followers</a></li>
-                    <li><a href="<?php echo $explorechannels ?>">Explore Channels</a></li>
+                <ul class="submenu" <?php if(isset($bar) && $bar=='Follow')echo 'style="display:block"'; ?>>
+                    <li><a href="<?php echo $following ?>" <?php if(isset($active) && $active=='following')echo 'class="active"'; ?>>Following</a></li>
+                    <li><a href="<?php echo $followers ?>" <?php if(isset($active) && $active=='followers')echo 'class="active"'; ?>>Followers</a></li>
+                    <li><a href="<?php echo $explorechannels ?>" <?php if(isset($active) && $active=='explorechannels')echo 'class="active"'; ?>>Explore Channels</a></li>
                 </ul>
             </li>
         </ul>
@@ -111,20 +111,20 @@ if ($user['User']['picture'] == null) {
         <h3>Application</h3>
         <ul>
             <li>
-                <a href="<?php echo $activities ?>">
+                <a href="<?php echo $activities ?>" <?php if(isset($active) && $active=='activities')echo 'class="active"'; ?>>
                     <i class="fa fa-tasks"></i> 
                     <span>Latest Activity</span>
                 </a>
             </li>
             <li>
-                <a href="account.html" data-toggle="sidebar">
+                <a href="#" data-toggle="sidebar">
                     <i class="ion-earth"></i> <span>App Pages</span>
                     <i class="fa fa-chevron-down"></i>
                 </a>
-                <ul class="submenu">
+                <ul class="submenu" <?php if(isset($bar) && $bar=='step')echo 'style="display:block"'; ?>>
                     <li><a href="<?php echo $app_status ?>">App Status</a></li>
                     <!-- -- <li><a href="<?php echo $toolsNdocs ?>">Tools & Docs</a></li> -- -->
-                    <li><a href="<?php echo $steps2launch ?>">Steps to Launch</a></li>
+                    <li><a href="<?php echo $steps2launch ?>" <?php if(isset($active) && $active=='steps')echo 'class="active"'; ?>>Steps to Launch</a></li>
                     
                 </ul>
             </li>
@@ -144,11 +144,11 @@ if ($user['User']['picture'] == null) {
         <h3>Admin</h3>
         <ul>
             <li>
-                <a href="account.html" data-toggle="sidebar">
+                <a href="#" data-toggle="sidebar">
                     <i class="ion-person"></i> <span>My Account</span>
                     <i class="fa fa-chevron-down"></i>
                 </a>
-                        <ul class="submenu">
+                        <ul class="submenu" <?php if(isset($bar) && $bar=='setting')echo 'style="display:block"'; ?>>
 							<li>
 								<a href="<?php echo $ch_settings;?>" <?php if(isset($active) && $active=='channel')echo 'class="active"'; ?>>
 									Settings

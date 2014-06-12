@@ -662,7 +662,7 @@ class BusinessesController extends AppController {
             $this->set('adcodes', $adcodes);
             $this->set('channel_owner', 1);
         }
-        if ($_GET['mode'] == 'visitor') {
+        if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
             $this->set('channel_owner', 0);
         }
     }

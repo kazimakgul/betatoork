@@ -3,7 +3,7 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
 ?>
 <body id="users">
     <div id="wrapper">
-        <?php echo $this->element('business/dashboard/sidebar'); ?>
+        <?php echo $this->element('business/dashboard/sidebar',array('active'=>'following','bar'=>'Follow')); ?>
         <div id="content">
             <div class="menubar fixed">
                 <div class="sidebar-toggler visible-xs">

@@ -9,7 +9,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 ?>
 <body id="account">
 	<div id="wrapper">
-		<?php  echo $this->element('business/dashboard/sidebar');?>
+		<?php  echo $this->element('business/dashboard/sidebar',array('active'=>'channel','bar'=>'setting'));?>
 		<div id="content">
 				<?php  echo $this->element('business/dashboard/sidebar_setting',array('active'=>'channel'));?>
 			<div id="panel" class="channel_profile">

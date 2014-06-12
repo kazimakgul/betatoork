@@ -1,6 +1,6 @@
 <body id="dashboard">
 <div id="wrapper">
-		<?php  echo $this->element('business/dashboard/sidebar');?>
+		<?php  echo $this->element('business/dashboard/sidebar',array('active'=>'dashboard'));?>
 		<div id="content">
 			<div class="menubar">
 				<div class="sidebar-toggler visible-xs">

@@ -88,6 +88,7 @@ $(document).ready(function() {
 		                }else{
 		                	Messenger().post(data.success);
 		                	btn.button('reset');
+		                	setTimeout(function(){location.href=ads_management}, 2000 );
 		                }
 		            }, 'json');
         }

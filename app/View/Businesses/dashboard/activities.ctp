@@ -1,6 +1,6 @@
 <body id="latest-activity">
 	<div id="wrapper">
-<?php echo $this->element('business/dashboard/sidebar'); ?>
+<?php echo $this->element('business/dashboard/sidebar',array('active'=>'activities')); ?>
 
 		<div id="content">
 			<div class="menubar">

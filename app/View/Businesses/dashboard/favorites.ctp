@@ -5,7 +5,7 @@ $allgames = $params['count'];
 ?>
 <body id="users">
     <div id="wrapper">
-        <?php echo $this->element('business/dashboard/sidebar'); ?>
+        <?php echo $this->element('business/dashboard/sidebar',array('active'=>'favorites','bar'=>'Games')); ?>
         <div id="content">
             <div class="menubar fixed">
                 <div class="sidebar-toggler visible-xs">
