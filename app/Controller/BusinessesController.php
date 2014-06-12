@@ -811,10 +811,33 @@ class BusinessesController extends AppController {
      */
     public function category($userid, $categoryid) {
 
+
+
         $this->layout = 'Business/business';
         $PaginateLimit = 12;
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        //$user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        
+        
+
+
+        if(!is_numeric($userid))
+        {
+        
+        $category_name=$userid;   
+        $subdomain = Configure::read('Domain.subdomain');
+        $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*'), 'contain' => array('Userstat')));
+        
+        $cat_data=$this->Category->find('first',array('contain'=>false,'conditions'=>array('Category.name'=>$category_name),'fields'=>array('Category.id')));
+        
+        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $user['User']['id'] , 'Game.category_id' => $cat_data['Category']['id']), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
+        $userid=$user['User']['id'];
+        }else{
+
+        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*'), 'contain' => array('Userstat')));
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.category_id' => $categoryid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
+
+        }
+        
         $cond = $this->paginate('Game');
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
