@@ -587,10 +587,10 @@ class BusinessesController extends AppController {
         
         if($userid==NULL)
         {   
-            $userid=2; 
+            
             $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
             $user_data=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.seo_username'=>$subdomain),'fields'=>array('User.id')));
-            print_r($user_data);echo 'yea';
+            $userid=$user_data['User']['id']; 
         }    
         
         //subdomain actions
