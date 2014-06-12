@@ -588,7 +588,7 @@ class BusinessesController extends AppController {
         if($userid==NULL)
         {   
             
-            $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
+            $subdomain = Configure::read('Domain.subdomain');
             $user_data=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.seo_username'=>$subdomain),'fields'=>array('User.id')));
             $userid=$user_data['User']['id']; 
         }    
@@ -731,7 +731,7 @@ class BusinessesController extends AppController {
 
         if(!is_numeric($id))
         {   
-            $subdomain = Configure::read('Domain.name');
+            $subdomain = Configure::read('Domain.subdomain');
             $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id','User.username'), 'contain' => false));
             $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.seo_username' => $subdomain)),'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         

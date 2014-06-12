@@ -70,7 +70,7 @@
         Router::connect('/',array('controller'=>'businesses','action'=>'mysite'));
         Router::connect('/play/:seo_url', array('controller' => 'businesses', 'action' => 'play'),array('seo_url' => '[-a-z0-9]+','pass' => array('seo_url')));
         Configure::write('Domain.type', 'subdomain');
-        Configure::write('Domain.name', $subdomain);
+        Configure::write('Domain.subdomain', $subdomain);
         }else{
         Router::connect('/', array('controller' => 'games', 'action' => 'index'));
         Configure::write('Domain.type', 'normal');
