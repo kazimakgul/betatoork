@@ -63,7 +63,7 @@
 	
 	
 	
-	
+	    //additional:http://theworldinpixels.com/wildcard-subdomains-in-cakephp/
 	    //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
         $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
         if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" ) { 
@@ -76,7 +76,7 @@
         Configure::write('Domain.type', 'normal');
         }  
 	
-	
+	ini_set('session.cookie_domain', '.clone.gs');
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
