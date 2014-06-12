@@ -10,7 +10,7 @@ foreach ($games as $game) {
     <div class="row user">
         <div class="col-sm-2 avatar">
             <input type="checkbox" name="select-user" />
-            <a href="<?php echo $playurl ?>" target="_blank"></a>
+            <a href="<?php echo $playurl ?>" target="_blank">
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
             </a>
         </div>

@@ -1,6 +1,9 @@
-<?php foreach ($followers as $value) { ?>
+<?php
+foreach ($followers as $value) {
+    $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
+    ?>
     <div class="user col-xs-12 col-sm-6 col-md-4 col-lg-2">
-        <a href="#">
+        <a href="<?php echo $userlink ?>">
             <?php
             if (is_null($value['User']['picture'])) {
                 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
@@ -10,7 +13,9 @@
             }
             ?>
         </a>
-        <div class="name"><?= $value['User']['username'] ?></div>
+        <a class="name" href="<?php echo $userlink ?>">
+            <?php echo $value['User']['username'] ?>
+        </a>
         <div class="email">
             <?php
             echo
@@ -20,4 +25,6 @@
             ?>
         </div>
     </div>
-<?php } ?>
+    <?php
+}
+?>
