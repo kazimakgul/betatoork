@@ -1439,71 +1439,71 @@ class BusinessesController extends AppController {
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
 
-        $auth_id = $this->Session->read('Auth.User.id');
-        $limit = 15;
-        $activityData = $this->Activity->find(
-                'all', array(
-            'contain' => array(
-                'PerformerUser' => array(
-                    'fields' => array(
-                        'PerformerUser.id',
-                        'PerformerUser.username',
-                        'PerformerUser.screenname',
-                        'PerformerUser.seo_username'
+        $userid = $this->Session->read('Auth.User.id');
+        $limit = 18;
+        $this->paginate = array(
+            'Activity' => array(
+                'contain' => array(
+                    'PerformerUser' => array(
+                        'fields' => array(
+                            'PerformerUser.id',
+                            'PerformerUser.username',
+                            'PerformerUser.screenname',
+                            'PerformerUser.seo_username'
+                        )
+                    ),
+                    'Game' => array(
+                        'fields' => array(
+                            'Game.id',
+                            'Game.name',
+                            'Game.seo_url',
+                            'Game.embed'
+                        )
+                    ),
+                    'ChannelUser' => array(
+                        'fields' => array(
+                            'ChannelUser.id',
+                            'ChannelUser.username',
+                            'ChannelUser.seo_username'
+                        )
                     )
                 ),
-                'Game' => array(
-                    'fields' => array(
-                        'Game.id',
-                        'Game.name',
-                        'Game.seo_url',
-                        'Game.embed'
-                    )
+                'fields' => array(
+                    'Activity.id',
+                    'Activity.performer_id',
+                    'Activity.game_id',
+                    'Activity.channel_id',
+                    'Activity.msg_id',
+                    'Activity.seen',
+                    'Activity.notify',
+                    'Activity.email',
+                    'Activity.type',
+                    'Activity.replied',
+                    'Activity.created',
+                    'PerformerUser.id',
+                    'PerformerUser.username',
+                    'PerformerUser.seo_username',
+                    'ChannelUser.id',
+                    'ChannelUser.username',
+                    'ChannelUser.seo_username',
+                    'Game.id',
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.embed'
                 ),
-                'ChannelUser' => array(
-                    'fields' => array(
-                        'ChannelUser.id',
-                        'ChannelUser.username',
-                        'ChannelUser.seo_username'
-                    )
-                )
-            ),
-            'fields' => array(
-                'Activity.id',
-                'Activity.performer_id',
-                'Activity.game_id',
-                'Activity.channel_id',
-                'Activity.msg_id',
-                'Activity.seen',
-                'Activity.notify',
-                'Activity.email',
-                'Activity.type',
-                'Activity.replied',
-                'Activity.created',
-                'PerformerUser.id',
-                'PerformerUser.username',
-                'PerformerUser.seo_username',
-                'ChannelUser.id',
-                'ChannelUser.username',
-                'ChannelUser.seo_username',
-                'Game.id',
-                'Game.name',
-                'Game.seo_url',
-                'Game.embed'
-            ),
-            'conditions' => array(
-                'Activity.channel_id' => $auth_id,
-                'Activity.notify' => 1
-            ),
-            'limit' => $limit,
-            'order' => 'Activity.id DESC'
-                )
+                'conditions' => array(
+                    'Activity.channel_id' => $userid,
+                    'Activity.notify' => 1
+                ),
+                'limit' => $limit,
+                'order' => 'Activity.id DESC'
+            )
         );
-
-
-        print_r($activityData);
+        $data = $this->paginate('Activity');
+        /*
+        print_r($data);
         exit;
-
+        */
         $this->render('/Businesses/dashboard/activities');
     }
 
