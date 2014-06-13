@@ -343,7 +343,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
  		$categories = $this->Game->Category->find('list');
 		$this->set(compact('categories'));
-		$this->set('title_for_layout', 'Clone Business Dashboard');
+		$this->set('title_for_layout', 'Clone Business Game Add');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/game_add');
@@ -377,7 +377,7 @@ class BusinessesController extends AppController {
     public function billing() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('title_for_layout', 'Clone Business Billing');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/billing');
@@ -394,7 +394,7 @@ class BusinessesController extends AppController {
     public function pricing() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('title_for_layout', 'Clone Business Pricing');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/pricing');
@@ -428,7 +428,7 @@ class BusinessesController extends AppController {
     public function app_status() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('title_for_layout', 'Clone Business App Status');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/app_status');
@@ -445,7 +445,7 @@ class BusinessesController extends AppController {
     public function profile() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('title_for_layout', 'Clone Business Profile');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/profile');
@@ -480,7 +480,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $this->get_ads_info($userid, $userid);
-        $this->set('title_for_layout', 'Clone Business Settings');
+        $this->set('title_for_layout', 'Clone Business Add Management');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/ads_management');
@@ -497,7 +497,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $this->get_ads_info($userid, $userid);
-        $this->set('title_for_layout', 'Clone Business Settings');
+        $this->set('title_for_layout', 'Clone Business Add ads');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/add_ads');
@@ -519,7 +519,7 @@ class BusinessesController extends AppController {
 
         $this->set('Ads', $adcodes);
         $this->set('Ads_set', $adsetting);
-        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('title_for_layout', 'Clone Business Edit Ads');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/edit_ads');
@@ -546,7 +546,7 @@ class BusinessesController extends AppController {
         }
         //============/Get Current Permissions============
 
-        $this->set('title_for_layout', 'Clone Business Settings');
+        $this->set('title_for_layout', 'Clone Business Notifications');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/notifications');
@@ -563,7 +563,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $countries = $this->User->Country->find('list');
         $this->set(compact('countries'));
-        $this->set('title_for_layout', 'Clone Business Settings');
+        $this->set('title_for_layout', 'Clone Business Channel Settings');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/channel_settings');

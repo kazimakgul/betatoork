@@ -6,12 +6,11 @@
 				<div class="sidebar-toggler visible-xs">
 					<i class="ion-navicon"></i>
 				</div>
-
 				<div class="page-title">
 					New game form 
 					
 					<small class="hidden-xs">
-						<strong>Showcase of form elements</strong>
+						<strong>Add game to Clone.gs</strong>
 					</small>
 				</div>
 			</div>
@@ -19,7 +18,11 @@
 			<div class="content-wrapper">
 				<form id="game_add" class="form-horizontal" method="post" action="#" role="form">
 				  	<div class="form-group">
-					    <label class="col-sm-2 col-md-2 control-label">Display picture</label>
+					    <label class="col-sm-2 col-md-2 control-label">Picture
+					    	<span class="help" data-toggle="tooltip" title="Display game picture">
+					    		<i class="fa fa-question-circle"></i>
+					    	</span>
+					    </label>
 					    <div class="col-sm-10 col-md-8">
 					    	<div class="well">
 					    		<div class="pic">
@@ -56,20 +59,32 @@
 					    </div>
 				  	</div>
 				  	<div class="form-group">
-					    <label class="col-sm-2 col-md-2 control-label">Name</label>
+					    <label class="col-sm-2 col-md-2 control-label">Name
+					    	<span class="help" data-toggle="tooltip" title="Game name">
+					    		<i class="fa fa-question-circle"></i>
+					    	</span>
+					    </label>
 					    <div class="col-sm-10 col-md-8">
 					      <input type="text" class="form-control" id="name" name="product[name]" />
 					    </div>
 				  	</div>
 				  	<div class="form-group">
-				  		<label class="col-sm-2 col-md-2 control-label">Description</label>
+				  		<label class="col-sm-2 col-md-2 control-label">Description
+					    	<span class="help" data-toggle="tooltip" title="Game description">
+					    		<i class="fa fa-question-circle"></i>
+					    	</span>
+				  		</label>
 				  		<div class="col-sm-10 col-md-8">
 				  		<textarea id="desc" class="form-control" id="desc" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"></textarea>
 				  		</div>
 				  	</div>
 				  	<div class="address">
 				  		<div class="form-group">
-						    <label class="col-sm-2 col-md-2 control-label">Link</label>
+						    <label class="col-sm-2 col-md-2 control-label">Game link
+					    	<span class="help" data-toggle="tooltip" title="Game upload link">
+					    		<i class="fa fa-question-circle"></i>
+					    	</span>
+						    </label>
 						    <div class="col-sm-5 col-md-4">
 						      	<input type="text" class="form-control" id="link" placeholder="http://socialesman.com" name="product[address]" />
 						    </div>
@@ -80,7 +95,11 @@
 				  	</div>
 				  	<div class="address">
 				  		<div class="form-group">
-						    <label class="col-sm-2 col-md-2 control-label">Width * Height</label>
+						    <label class="col-sm-2 col-md-2 control-label">Width * Height
+					    	<span class="help" data-toggle="tooltip" title="Game frame size">
+					    		<i class="fa fa-question-circle"></i>
+					    	</span>
+						    </label>
 						    <div class="col-sm-5 col-md-4">
 						      	<input type="text" class="form-control" placeholder="Width" id="width" name="product[width]" />
 						    </div>
@@ -108,6 +127,9 @@
 					      	<div class="checkbox">
 					        	<label>
 					          		<input type="checkbox" id="fullscreen" name="product[send_marketing]" /> Full Screen
+					    	<span class="help" data-toggle="tooltip" title="game size full screen">
+					    		<i class="fa fa-question-circle"></i>
+					    	</span>
 				        		</label>
 					      	</div>
 					    </div>
@@ -117,6 +139,9 @@
 					      	<div class="checkbox">
 					        	<label>
 					          		<input type="checkbox" id="mobile" name="product[send_marketing]" /> Mobile Ready
+					    	<span class="help" data-toggle="tooltip" title="Suitable for mobile">
+					    		<i class="fa fa-question-circle"></i>
+					    	</span>
 				        		</label>
 					      	</div>
 					    </div>
