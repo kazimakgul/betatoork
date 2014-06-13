@@ -156,7 +156,6 @@ class BusinessesController extends AppController {
                 }
                 $this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
-<<<<<<< HEAD
 			}
 			elseif($attr == "game_add"){
                 $filtered_data['Game']['name'] = $this->request->data['name'];
@@ -186,14 +185,7 @@ class BusinessesController extends AppController {
 			
 
 		} else {
-=======
-            } else {
-                $id = 1;
-                $this->set('error', $id);
-                $this->set('_serialize', array('error'));
-            }
-        } else {
->>>>>>> FETCH_HEAD
+
             $id = 1;
             $this->set('error', $id);
             $this->set('_serialize', array('error'));
