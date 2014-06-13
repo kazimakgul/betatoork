@@ -164,16 +164,21 @@ class BusinessesController extends AppController {
                 $filtered_data['Game']['width'] = $this->request->data['width'];
                 $filtered_data['Game']['height'] = $this->request->data['height'];
 				$filtered_data['Game']['category_id'] = $this->request->data['category'];
-                $filtered_data['Game']['fullscreen'] = $this->request->data['fullscreen'];
-				$filtered_data['Game']['mobileready'] = $this->request->data['mobile'];
+                $filtered_data['Game']['fullscreen'] = $this->request->data['fullscreen']=='on'?1:0;
+				$filtered_data['Game']['mobileready'] = $this->request->data['mobile']=='on'?1:0;
 				$filtered_data['Game']['user_id'] = $user_id;
 				$filtered_data['Game']['created'] = date('Y-m-d H:i:s');
 				$filtered_data['Game']['owner_id'] = $user_id;
 				$filtered_data['Game']['seo_url'] = strtolower(str_replace(' ', '-', $this->request->data['name']));
-				$filtered_data['Game']['picture'] = $this->request->data['picture'];
+			//	$filtered_data['Game']['picture'] = $this->request->data['picture'];
 
-				print_r($filtered_data);
-				//$this->Adcode->save($filtered_data);
+				//print_r($filtered_data);
+				if($this->Game->save($filtered_data))
+				{
+				$this->set('success', "Game Added");
+                $this->set('_serialize', array('success'));
+				}
+				
 			}
 			else{
             $id = 1;
@@ -336,7 +341,9 @@ class BusinessesController extends AppController {
     public function game_add() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        $this->set('title_for_layout', 'Clone Business Dashboard');
+ 		$categories = $this->Game->Category->find('list');
+		$this->set(compact('categories'));
+		$this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/game_add');

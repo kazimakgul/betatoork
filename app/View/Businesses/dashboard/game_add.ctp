@@ -17,7 +17,7 @@
 			</div>
 
 			<div class="content-wrapper">
-				<form id="new-product" class="form-horizontal" method="post" action="#" role="form">
+				<form id="game_add" class="form-horizontal" method="post" action="#" role="form">
 				  	<div class="form-group">
 					    <label class="col-sm-2 col-md-2 control-label">Display picture</label>
 					    <div class="col-sm-10 col-md-8">
@@ -82,25 +82,19 @@
 				  		<div class="form-group">
 						    <label class="col-sm-2 col-md-2 control-label">Width * Height</label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" placeholder="Width" id="width" name="product[address]" />
+						      	<input type="text" class="form-control" placeholder="Width" id="width" name="product[width]" />
 						    </div>
 						    <div class="col-sm-5 col-md-4 right">
-						      	<input type="text" class="form-control" placeholder="Height" id="height" name="product[address]" />
+						      	<input type="text" class="form-control" placeholder="Height" id="height" name="product[height]" />
 						    </div>
 						</div>
 				  	</div>
 				  	<div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Select Category</label>
-					    <div class="col-sm-10 col-md-8">
-					    	<select class="form-control" id="category" data-smart-select>
-					    		<option>Upgrade</option>
-					    		<option>War</option>
-					    		<option>Zombie</option>
-					    		<option>Wacom</option>
-					    		<option>Flying</option>
-					    		<option>Race</option>
-					    		<option>Fight</option>
-					    	</select>
+						<label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Select Category</label>
+						<div class="col-sm-10 col-md-8">
+<?php echo $this->Form->input('category_id',array('label'=>'','class'=>'form-control col-sm-10','default'=>'18',array('id'=>'category') )); ?>
+
+					    	
 					    </div>
 				  	</div>
 				  	<div class="form-group">
@@ -139,75 +133,5 @@
 			</div>
 		</div>
 	</div>
-
-
-	<script type="text/javascript">
-		$(function () {
-
-			// Form validation
-			$('#new-product').validate({
-				rules: {
-					"product[first_name]": {
-						required: true
-					},
-					"product[email]": {
-						required: true,
-						email: true
-					},
-					"product[address]": {
-						required: true
-					},
-					"product[notes]": {
-						required: true
-					}
-				},
-				highlight: function (element) {
-					$(element).closest('.form-group').removeClass('success').addClass('error');
-				},
-				success: function (element) {
-					element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
-				}
-			});
-
-
-			// Bootstrap wysiwyg
-			$("#summernote").summernote({
-				height: 240,
-				toolbar: [
-				    ['style', ['style']],
-				    ['style', ['bold', 'italic', 'underline', 'clear']],
-				    ['fontsize', ['fontsize']],
-				    ['para', ['ul', 'ol', 'paragraph']],
-				    ['height', ['height']],
-				    ['insert', ['picture', 'link', 'video']],
-				    ['view', ['fullscreen', 'codeview']],
-				    ['table', ['table']],
-				]
-			});
-
-			// jQuery rating
-			$('#raty').raty({
-				path: 'images/raty',
-				score: 4
-			});
-
-			// Datepicker
-	        $('.datepicker').datepicker({
-	        	autoclose: true,
-	        	orientation: 'left bottom',
-	        });
-
-	        // Minicolors colorpicker
-	        $('input.minicolors').minicolors({
-	        	position: 'top left',
-	        	defaultValue: '#9b86d1',
-	        	theme: 'bootstrap'
-	        });
-
-	        // masked input example using phone input
-			$(".mask-phone").mask("(999) 999-9999");
-			$(".mask-cc").mask("9999 9999 9999 9999");
-		});
-	</script>
 
 </body>

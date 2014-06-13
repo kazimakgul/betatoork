@@ -128,7 +128,7 @@ $(document).ready(function() {
                 }
             }, 'json');
         }
- 		else if (attr == "game_add") // && $('#game_add').valid() eklenicek
+ 		else if (attr == "game_add" && $('#game_add').valid()) // && $('#game_add').valid() eklenicek
         {
             $.post(link, {
                 attr		: attr,
@@ -137,10 +137,9 @@ $(document).ready(function() {
                 link		: $('#link').val(),
                 width		: $('#width').val(),
                 height		: $('#height').val(),
-                category	: $('#category').val(),
+                category	: $('#category_id').val(),
                 tags		: $('#tags').val(),
                 fullscreen	: $('#fullscreen').val(),
-                picture		: $('#user_background').src(),
                 mobile		: $('#mobile').val()
             },
             function(data) {
@@ -149,7 +148,7 @@ $(document).ready(function() {
                 }else{
                 	Messenger().post(data.success);
                 	btn.button('reset');
-                	setTimeout(function(){location.href=ads_management}, 2000 );
+                	//setTimeout(function(){location.href=ads_management}, 2000 );
                 }
             }, 'json');
         }else{
@@ -521,7 +520,7 @@ $('#backgroundframe').load(function(){
 
 
             
- 			// form validation
+ 			// form validation Ads Add
 			$('#add_ads').validate({
 				rules: {
 					"product[first_name]": {
@@ -538,6 +537,41 @@ $('#backgroundframe').load(function(){
 					element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
 				}
 			});	
+			
+ 			// form validation Game add
+			$('#game_add').validate({
+				rules: {
+					"product[name]": {
+						required: true
+					},
+					"customer[notes]": {
+						required: true
+					},
+					"product[address]": {
+						required: true
+					},
+					"data[category_id]": {
+						required: true
+					},
+					"product[width]": {
+						required: true
+					},
+					"product[height]": {
+						required: true
+					},
+					"product[tags]": {
+						required: true
+					}
+				},
+				highlight: function (element) {
+					$(element).closest('.form-group').removeClass('success').addClass('error');
+				},
+				success: function (element) {
+					element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
+				}
+			});	
+			
+			
 			
  			// form validation
 			$('#edit_ads').validate({
