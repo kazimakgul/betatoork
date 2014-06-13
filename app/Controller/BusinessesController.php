@@ -35,7 +35,7 @@ class BusinessesController extends AppController {
     }
 
     public function afterFilter() {
-
+        
     }
 
     /*     * ****************************************************************************** */
@@ -58,8 +58,6 @@ class BusinessesController extends AppController {
         }
     }
 
-
-
     /**
      * Update Form Request method
      *
@@ -70,8 +68,7 @@ class BusinessesController extends AppController {
         if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
             $attr = $this->request->data['attr'];
             $user_id = $this->Auth->user('id');
-            if ($attr == "profile_update")
-			{
+            if ($attr == "profile_update") {
                 $gender = $this->request->data['gender'];
                 $time = $this->request->data['time'];
                 $cont = $this->request->data['cont'];
@@ -79,22 +76,17 @@ class BusinessesController extends AppController {
                 $this->User->query('UPDATE users SET gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '" WHERE id=' . $user_id);
                 $this->set('success', "Profile Settings Updated.");
                 $this->set('_serialize', array('success'));
-			}
-			elseif ($attr == "notification_update")
-			{
-                   if($this->request->is('post')){
-					   $permids=$this->request->data['permdata'];
-					   $this->User->Query('DELETE FROM mailpermissions WHERE user_id='.$user_id.'');
-					      foreach($permids as $permid)
-					      {
-							$this->User->Query('INSERT INTO mailpermissions (user_id,type_id) VALUES ('.$user_id.','.$permid.')');
-					      }
-					$this->set('success', "Notifications Updated.");
-					$this->set('_serialize', array('success'));
-				   }
-            }
-			elseif ($attr == "channel_update")
-			{
+            } elseif ($attr == "notification_update") {
+                if ($this->request->is('post')) {
+                    $permids = $this->request->data['permdata'];
+                    $this->User->Query('DELETE FROM mailpermissions WHERE user_id=' . $user_id . '');
+                    foreach ($permids as $permid) {
+                        $this->User->Query('INSERT INTO mailpermissions (user_id,type_id) VALUES (' . $user_id . ',' . $permid . ')');
+                    }
+                    $this->set('success', "Notifications Updated.");
+                    $this->set('_serialize', array('success'));
+                }
+            } elseif ($attr == "channel_update") {
                 $title = $this->request->data['title'];
                 $desc = $this->request->data['desc'];
                 $bgColor = $this->request->data['bgColor'];
@@ -103,37 +95,33 @@ class BusinessesController extends AppController {
                 $this->User->query('UPDATE users SET screenname="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '", analitics="' . $analitics . '" WHERE id=' . $user_id);
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
- 			}
-			elseif ($attr == "edit_ads")
-			{
+            } elseif ($attr == "edit_ads") {
                 $filtered_data['Adcode']['name'] = $this->request->data['title'];
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
-				$this->Adcode->id=$this->request->data['ad_id'];
-				$this->Adcode->save($filtered_data);
-				
-				
-				$category =  json_decode($this->request->data['category'], true);
-				$cat_del = array('home_banner_top','home_banner_middle','home_banner_bottom','game_banner_top','game_banner_bottom');
-				//Düzenlenicek
-				for($i=0; $i<=count($cat_del)-1; $i++){
-					$this->User->Query('UPDATE adsettings SET '.$cat_del[$i].'="NULL" WHERE user_id='.$user_id.' AND '.$cat_del[$i].'='.$this->request->data["ad_id"]);
-				}
-				
-				if(count($category)>0)
-				{
-					foreach ($category as $value) {
-						$filtered_data['Adsetting'][$value] = $this->request->data['ad_id'];
-						$id = $this->Adsetting->find('first', array('contain'=>false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
-						$this->Adsetting->id=$id;
-						$this->Adsetting->save($filtered_data);
-					}
-				}
+                $this->Adcode->id = $this->request->data['ad_id'];
+                $this->Adcode->save($filtered_data);
+
+
+                $category = json_decode($this->request->data['category'], true);
+                $cat_del = array('home_banner_top', 'home_banner_middle', 'home_banner_bottom', 'game_banner_top', 'game_banner_bottom');
+                //Düzenlenicek
+                for ($i = 0; $i <= count($cat_del) - 1; $i++) {
+                    $this->User->Query('UPDATE adsettings SET ' . $cat_del[$i] . '="NULL" WHERE user_id=' . $user_id . ' AND ' . $cat_del[$i] . '=' . $this->request->data["ad_id"]);
+                }
+
+                if (count($category) > 0) {
+                    foreach ($category as $value) {
+                        $filtered_data['Adsetting'][$value] = $this->request->data['ad_id'];
+                        $id = $this->Adsetting->find('first', array('contain' => false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
+                        $this->Adsetting->id = $id;
+                        $this->Adsetting->save($filtered_data);
+                    }
+                }
 
                 $this->set('success', "Ads Settings Updated.");
                 $this->set('_serialize', array('success'));
- 			}
-			else
-			{
+            } else {
+                
             }
         } else {
             $id = 1;
@@ -141,8 +129,6 @@ class BusinessesController extends AppController {
             $this->set('_serialize', array('error'));
         }
     }
-
-
 
     /**
      * New Form Request method
@@ -154,22 +140,23 @@ class BusinessesController extends AppController {
         if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
             $attr = $this->request->data['attr'];
             $user_id = $this->Auth->user('id');
-			if($attr == "new_ads"){
+            if ($attr == "new_ads") {
                 $filtered_data['Adcode']['name'] = $this->request->data['title'];
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
-				$filtered_data['Adcode']['user_id'] = $user_id;
-				$this->Adcode->save($filtered_data);
+                $filtered_data['Adcode']['user_id'] = $user_id;
+                $this->Adcode->save($filtered_data);
 
-				$category = $this->request->data['category'];
-				if($category!='0'){
-					
-				$filtered_data['Adsetting'][$category] =  $this->Adcode->getLastInsertID();
-				$id = $this->Adsetting->find('first', array('contain'=>false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
-				$this->Adsetting->id=$id;
-				$this->Adsetting->save($filtered_data);
-				}
+                $category = $this->request->data['category'];
+                if ($category != '0') {
+
+                    $filtered_data['Adsetting'][$category] = $this->Adcode->getLastInsertID();
+                    $id = $this->Adsetting->find('first', array('contain' => false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
+                    $this->Adsetting->id = $id;
+                    $this->Adsetting->save($filtered_data);
+                }
                 $this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
+<<<<<<< HEAD
 			}
 			elseif($attr == "game_add"){
                 $filtered_data['Game']['name'] = $this->request->data['name'];
@@ -199,15 +186,19 @@ class BusinessesController extends AppController {
 			
 
 		} else {
+=======
+            } else {
+                $id = 1;
+                $this->set('error', $id);
+                $this->set('_serialize', array('error'));
+            }
+        } else {
+>>>>>>> FETCH_HEAD
             $id = 1;
             $this->set('error', $id);
             $this->set('_serialize', array('error'));
         }
-	}
-
-
-
-
+    }
 
     /**
      * Delete Form Request method
@@ -216,21 +207,18 @@ class BusinessesController extends AppController {
      * @return success=>"Message" or Error=>id
      */
     public function deleteData() {
-        	if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
-            	$attr = $this->request->data['attr'];
-            	$user_id = $this->Auth->user('id');
-				if($attr == "edit_ads"){
-				$id = $this->request->data['id'];
-				$this->Adcode->query('DELETE FROM adcodes WHERE id=' . $id . ' AND user_id=' . $user_id);
-				$this->set('success', "Ads Code Deleted");
+        if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
+            $attr = $this->request->data['attr'];
+            $user_id = $this->Auth->user('id');
+            if ($attr == "edit_ads") {
+                $id = $this->request->data['id'];
+                $this->Adcode->query('DELETE FROM adcodes WHERE id=' . $id . ' AND user_id=' . $user_id);
+                $this->set('success', "Ads Code Deleted");
                 $this->set('_serialize', array('success'));
-				}
-			
-			}
-		
-		}
+            }
+        }
+    }
 
-	
     //this gets game suggestions
     public function get_game_suggestions($order) {
         $top50 = $this->Game->find('all', array('contain' => array('User' => array('fields' => 'User.seo_username,User.username')), 'conditions' => array('Game.active' => '1'), 'limit' => 100, 'order' => array($order => 'desc'
@@ -347,7 +335,6 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/index');
     }
 
- 
     /**
      * Game add method
      *
@@ -362,9 +349,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/game_add');
     }
- 
- 
- 
+
     /**
      * Dummy tools and docs function
      * Cloned from app_status method
@@ -467,31 +452,12 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/profile');
     }
 
-
-
-    /**
-     * Dummy Latest Activity function
-     * Cloned from profile method
-     *
-     * @param 
-     * @return Activities Page
-     * @author Kazim Akgul
-     */
-    public function activities() {
-        $this->layout = 'Business/dashboard';
-        $this->sideBar();
-        $this->set('title_for_layout', 'Clone Business Dashboard');
-        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-        $this->set('author_for_layout', 'Clone');
-        $this->render('/Businesses/dashboard/activities');
-    }
-
     /**
      * Settings method
      *
      * @param 
      * @return Settings Page
-	 * @author Volkan Celiloğlu
+     * @author Volkan Celiloğlu
      */
     public function settings() {
         $this->layout = 'Business/dashboard';
@@ -504,73 +470,67 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/settings');
     }
 
-
-
     /** Ads Management method
      *
      * @param 
      * @return Ads Management Page
-	 * @author Volkan Celiloğlu
+     * @author Volkan Celiloğlu
      */
-
     public function ads_management() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-		$userid = $this->Session->read('Auth.User.id');
-		$this->get_ads_info($userid, $userid);
+        $userid = $this->Session->read('Auth.User.id');
+        $this->get_ads_info($userid, $userid);
         $this->set('title_for_layout', 'Clone Business Settings');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/ads_management');
     }
- 
- 
+
     /** Ads Add method
      *
      * @param 
      * @return Ads Add Page
-	 * @author Volkan Celiloğlu
+     * @author Volkan Celiloğlu
      */
-
     public function add_ads() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-		$userid = $this->Session->read('Auth.User.id');
-		$this->get_ads_info($userid, $userid);
+        $userid = $this->Session->read('Auth.User.id');
+        $this->get_ads_info($userid, $userid);
         $this->set('title_for_layout', 'Clone Business Settings');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/add_ads');
     }
 
-
     /**
      * Edit Ads Function
      *
      * @param ads id
      * @return ads edit page
-	 * @author Volkan Celiloğlu
+     * @author Volkan Celiloğlu
      */
     public function edit_ads($id) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-		$userid		= $this->Session->read('Auth.User.id');
-        $adcodes	= $this->Adcode->find('first', array('conditions' => array('Adcode.id' => $id),'contain' => false));
-        $adsetting	= $this->Adsetting->find('first', array('conditions' => array('Adsetting.user_id' => $userid),'contain' => false, 'fields'=>('home_banner_top,home_banner_middle,home_banner_bottom,game_banner_top,game_banner_bottom')));
-        
-        $this->set('Ads',$adcodes);
-		$this->set('Ads_set', $adsetting);
+        $userid = $this->Session->read('Auth.User.id');
+        $adcodes = $this->Adcode->find('first', array('conditions' => array('Adcode.id' => $id), 'contain' => false));
+        $adsetting = $this->Adsetting->find('first', array('conditions' => array('Adsetting.user_id' => $userid), 'contain' => false, 'fields' => ('home_banner_top,home_banner_middle,home_banner_bottom,game_banner_top,game_banner_bottom')));
+
+        $this->set('Ads', $adcodes);
+        $this->set('Ads_set', $adsetting);
         $this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/edit_ads');
-	}
+    }
 
     /** Notifications method
      *
      * @param 
      * @return Notifications Page
-	 * @author Volkan Celiloğlu
+     * @author Volkan Celiloğlu
      */
     public function notifications() {
         $this->layout = 'Business/dashboard';
@@ -597,9 +557,8 @@ class BusinessesController extends AppController {
      *
      * @param 
      * @return Channel_Settings Page
-	 * @author Volkan Celiloğlu
+     * @author Volkan Celiloğlu
      */
-
     public function channel_settings() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -620,23 +579,20 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-        
-        if($userid==NULL)
-        {   
-            
+
+        if ($userid == NULL) {
+
             $subdomain = Configure::read('Domain.subdomain');
-            $user_data=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.seo_username'=>$subdomain),'fields'=>array('User.id')));
-            $userid=$user_data['User']['id']; 
-        }    
-        
+            $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
+            $userid = $user_data['User']['id'];
+        }
+
         //subdomain actions
         //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
         //echo 'sundimain:'.$this->request->host();
         //$http_host=$this->request->host();
         //echo 'wow:'.env("HTTP_HOST");
         //$subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );echo 'last domain:'.$subdomain;
-
-
         //This line gets user selected channel styles
         $this->get_style_settings($userid);
 
@@ -765,19 +721,16 @@ class BusinessesController extends AppController {
     public function play($id = NULL) {
 
 
-        if(!is_numeric($id))
-        {   
+        if (!is_numeric($id)) {
             $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id','User.username'), 'contain' => false));
-            $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.seo_username' => $subdomain)),'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
-        
-        
-        }else{
+            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id', 'User.username'), 'contain' => false));
+            $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.seo_username' => $subdomain)), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        } else {
             $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
             $user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']), 'fields' => array('*')));
         }
 
-        
+
         $this->layout = 'Business/business';
         if ($game['Game']['clone'] == 1) {
             $original = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['owner_id']), 'fields' => array('User.adcode'), 'contain' => false));
@@ -834,28 +787,26 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $PaginateLimit = 12;
         //$user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
-        
-        
 
 
-        if(!is_numeric($userid))
-        {
-        
-        $category_name=$userid;   
-        $subdomain = Configure::read('Domain.subdomain');
-        $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*'), 'contain' => array('Userstat')));
-        
-        $cat_data=$this->Category->find('first',array('contain'=>false,'conditions'=>array('Category.name'=>$category_name),'fields'=>array('Category.id')));
-        
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $user['User']['id'] , 'Game.category_id' => $cat_data['Category']['id']), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
-        $userid=$user['User']['id'];
-        }else{
 
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*'), 'contain' => array('Userstat')));
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.category_id' => $categoryid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
 
+        if (!is_numeric($userid)) {
+
+            $category_name = $userid;
+            $subdomain = Configure::read('Domain.subdomain');
+            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*'), 'contain' => array('Userstat')));
+
+            $cat_data = $this->Category->find('first', array('contain' => false, 'conditions' => array('Category.name' => $category_name), 'fields' => array('Category.id')));
+
+            $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $user['User']['id'], 'Game.category_id' => $cat_data['Category']['id']), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
+            $userid = $user['User']['id'];
+        } else {
+
+            $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*'), 'contain' => array('Userstat')));
+            $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.category_id' => $categoryid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
         }
-        
+
         $cond = $this->paginate('Game');
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
@@ -896,7 +847,15 @@ class BusinessesController extends AppController {
 
         $this->layout = 'Business/business';
         $PaginateLimit = 12;
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+
+        if (!is_numeric($userid)) {
+            $subdomain = 'socialesman';
+            $user = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*')));
+            $userid = $user['User']['id'];
+        } else {
+            $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        }
+
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
         $cond = $this->paginate('Game');
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
@@ -1164,7 +1123,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/exploregames');
     }
-    
+
     public function exploregames_search() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -1246,7 +1205,7 @@ class BusinessesController extends AppController {
                         'fields' => array(
                             'User.seo_username',
                             'User.username'
-                        ),'Userstat'
+                        ), 'Userstat'
                     )
                 ),
                 'limit' => $limit
@@ -1259,7 +1218,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/following');
     }
-    
+
     public function following_search() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -1309,7 +1268,6 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/following');
     }
 
-
     public function followers() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -1335,7 +1293,7 @@ class BusinessesController extends AppController {
                         'fields' => array(
                             'User.seo_username',
                             'User.username'
-                        ),'Userstat'
+                        ), 'Userstat'
                     )
                 ),
                 'limit' => $limit
@@ -1348,7 +1306,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/followers');
     }
-    
+
     public function followers_search() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -1393,7 +1351,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/followers');
     }
-    
+
     public function explorechannels() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -1429,7 +1387,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/explorechannels');
     }
-    
+
     public function explorechannels_search() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -1472,6 +1430,89 @@ class BusinessesController extends AppController {
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/explorechannels');
+    }
+
+    /**
+     * Dummy Latest Activity function
+     * Cloned from profile method
+     *
+     * @param 
+     * @return Activities Page
+     * @author Kazim Akgul
+     */
+    public function activities() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+
+        $auth_id = $this->Session->read('Auth.User.id');
+        $limit = 15;
+        $activityData = $this->Activity->find(
+                'all', array(
+            'contain' => array(
+                'PerformerUser' => array(
+                    'fields' => array(
+                        'PerformerUser.id',
+                        'PerformerUser.username',
+                        'PerformerUser.screenname',
+                        'PerformerUser.seo_username'
+                    )
+                ),
+                'Game' => array(
+                    'fields' => array(
+                        'Game.id',
+                        'Game.name',
+                        'Game.seo_url',
+                        'Game.embed'
+                    )
+                ),
+                'ChannelUser' => array(
+                    'fields' => array(
+                        'ChannelUser.id',
+                        'ChannelUser.username',
+                        'ChannelUser.seo_username'
+                    )
+                )
+            ),
+            'fields' => array(
+                'Activity.id',
+                'Activity.performer_id',
+                'Activity.game_id',
+                'Activity.channel_id',
+                'Activity.msg_id',
+                'Activity.seen',
+                'Activity.notify',
+                'Activity.email',
+                'Activity.type',
+                'Activity.replied',
+                'Activity.created',
+                'PerformerUser.id',
+                'PerformerUser.username',
+                'PerformerUser.seo_username',
+                'ChannelUser.id',
+                'ChannelUser.username',
+                'ChannelUser.seo_username',
+                'Game.id',
+                'Game.name',
+                'Game.seo_url',
+                'Game.embed'
+            ),
+            'conditions' => array(
+                'Activity.channel_id' => $auth_id,
+                'Activity.notify' => 1
+            ),
+            'limit' => $limit,
+            'order' => 'Activity.id DESC'
+                )
+        );
+
+
+        print_r($activityData);
+        exit;
+
+        $this->render('/Businesses/dashboard/activities');
     }
 
 }
