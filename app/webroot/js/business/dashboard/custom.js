@@ -127,6 +127,31 @@ $(document).ready(function() {
                 	setTimeout(function(){location.href=ads_management}, 2000 );
                 }
             }, 'json');
+        }
+ 		else if (attr == "game_add") // && $('#game_add').valid() eklenicek
+        {
+            $.post(link, {
+                attr		: attr,
+                name		: $('#name').val(),
+                desc		: $('#desc').val(),
+                link		: $('#link').val(),
+                width		: $('#width').val(),
+                height		: $('#height').val(),
+                category	: $('#category').val(),
+                tags		: $('#tags').val(),
+                fullscreen	: $('#fullscreen').val(),
+                picture		: $('#user_background').src(),
+                mobile		: $('#mobile').val()
+            },
+            function(data) {
+                if (data.error) {
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                }else{
+                	Messenger().post(data.success);
+                	btn.button('reset');
+                	setTimeout(function(){location.href=ads_management}, 2000 );
+                }
+            }, 'json');
         }else{
         	btn.button('reset');
         }

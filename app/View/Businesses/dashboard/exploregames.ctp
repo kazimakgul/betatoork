@@ -1,5 +1,6 @@
 <?php
 $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search"));
+$game_add = $this->Html->url(array("controller" => "businesses", "action" => "game_add"));
 $params = $this->Paginator->params();
 $allgames = $params['count'];
 ?>
@@ -19,7 +20,7 @@ $allgames = $params['count'];
                     <input type="text" name="q" placeholder="Search games..." />
                     <input type="submit" />
                 </form>
-                <a href="form.html" class="new-user btn btn-success pull-right">
+                <a href="<?php echo $game_add;?>" class="new-user btn btn-success pull-right">
                     <span>Add Game</span>
                 </a>
             </div>

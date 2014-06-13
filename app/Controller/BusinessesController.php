@@ -171,6 +171,24 @@ class BusinessesController extends AppController {
                 $this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
 			}
+			elseif($attr == "game_add"){
+                $filtered_data['Game']['name'] = $this->request->data['name'];
+                $filtered_data['Game']['description'] = $this->request->data['desc'];
+                $filtered_data['Game']['link'] = $this->request->data['link'];
+                $filtered_data['Game']['width'] = $this->request->data['width'];
+                $filtered_data['Game']['height'] = $this->request->data['height'];
+				$filtered_data['Game']['category_id'] = $this->request->data['category'];
+                $filtered_data['Game']['fullscreen'] = $this->request->data['fullscreen'];
+				$filtered_data['Game']['mobileready'] = $this->request->data['mobile'];
+				$filtered_data['Game']['user_id'] = $user_id;
+				$filtered_data['Game']['created'] = date('Y-m-d H:i:s');
+				$filtered_data['Game']['owner_id'] = $user_id;
+				$filtered_data['Game']['seo_url'] = strtolower(str_replace(' ', '-', $this->request->data['name']));
+				$filtered_data['Game']['picture'] = $this->request->data['picture'];
+
+				print_r($filtered_data);
+				//$this->Adcode->save($filtered_data);
+			}
 			else{
             $id = 1;
             $this->set('error', $id);

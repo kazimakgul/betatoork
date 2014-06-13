@@ -58,7 +58,7 @@
 				  	<div class="form-group">
 					    <label class="col-sm-2 col-md-2 control-label">Name</label>
 					    <div class="col-sm-10 col-md-8">
-					      <input type="text" class="form-control" name="product[name]" />
+					      <input type="text" class="form-control" id="name" name="product[name]" />
 					    </div>
 				  	</div>
 				  	<div class="form-group">
@@ -71,7 +71,7 @@
 				  		<div class="form-group">
 						    <label class="col-sm-2 col-md-2 control-label">Link</label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" placeholder="http://socialesman.com" name="product[address]" />
+						      	<input type="text" class="form-control" id="link" placeholder="http://socialesman.com" name="product[address]" />
 						    </div>
 						    <div class="col-sm-5 col-md-5 right">
 						      	<a data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title="">Upload Game File</a>
@@ -82,17 +82,17 @@
 				  		<div class="form-group">
 						    <label class="col-sm-2 col-md-2 control-label">Width * Height</label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" placeholder="Width" name="product[address]" />
+						      	<input type="text" class="form-control" placeholder="Width" id="width" name="product[address]" />
 						    </div>
 						    <div class="col-sm-5 col-md-4 right">
-						      	<input type="text" class="form-control" placeholder="Height" name="product[address]" />
+						      	<input type="text" class="form-control" placeholder="Height" id="height" name="product[address]" />
 						    </div>
 						</div>
 				  	</div>
 				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Select Category</label>
 					    <div class="col-sm-10 col-md-8">
-					    	<select class="form-control" data-smart-select>
+					    	<select class="form-control" id="category" data-smart-select>
 					    		<option>Upgrade</option>
 					    		<option>War</option>
 					    		<option>Zombie</option>
@@ -113,7 +113,7 @@
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 					      	<div class="checkbox">
 					        	<label>
-					          		<input type="checkbox" name="product[send_marketing]" /> Full Screen
+					          		<input type="checkbox" id="fullscreen" name="product[send_marketing]" /> Full Screen
 				        		</label>
 					      	</div>
 					    </div>
@@ -122,17 +122,17 @@
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 					      	<div class="checkbox">
 					        	<label>
-					          		<input type="checkbox" name="product[send_marketing]" /> Mobile Ready
+					          		<input type="checkbox" id="mobile" name="product[send_marketing]" /> Mobile Ready
 				        		</label>
 					      	</div>
 					    </div>
 				  	</div>
 				  	<div class="form-group">
-				  		<input type="hidden" name="" id="" value="" />
+				  		<input type="hidden" name="attr" id="attr" value="game_add" />
 					</div>
 				  	<div class="form-group form-actions">
 				    	<div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
-				      		<button type="submit" class="btn btn-success">Upload Game</button>
+				      		<button id="NewButton" class="btn btn-success">Upload Game</button>
 			    		</div>
 				  	</div>
 				</form>
