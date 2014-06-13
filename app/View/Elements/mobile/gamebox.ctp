@@ -1,7 +1,14 @@
 <?php
 $play = $this->Html->url(array("controller" => "mobiles", "action" => "play", 2));
 foreach ($games as $game) {
+    if(Configure::read('Domain.type')=='subdomain')
+    {
+    $playurl=$this->Html->url(array("controller" => 'play', "action" => h($game['Game']['seo_url'])));
+    }else{
     $playurl = $this->Html->url(array("controller" => 'mobiles', "action" => 'play', h($game['Game']['id'])));
+    }   
+
+
     if (empty($game['Gamestat']['playcount'])) {
         $playcount = 0;
     } else {

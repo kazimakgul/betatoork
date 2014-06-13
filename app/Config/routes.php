@@ -78,6 +78,7 @@
         if($preg_mobile)
         {
         Router::connect('/',array('controller'=>'mobiles','action'=>'index'));
+        Router::connect('/play/:seo_url', array('controller' => 'mobiles', 'action' => 'play'),array('seo_url' => '[-a-z0-9]+','pass' => array('seo_url')));
         }else{
         //Mobile detection ends
         Router::connect('/',array('controller'=>'businesses','action'=>'mysite'));
