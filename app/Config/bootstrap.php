@@ -127,7 +127,7 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 }
 **/
 
-ini_set('session.cookie_domain', '.clone.gs');
+//ini_set('session.cookie_domain', '.clone.gs');
 
 
 
