@@ -23,20 +23,35 @@
 					    <div class="col-sm-10 col-md-8">
 					    	<div class="well">
 					    		<div class="pic">
-					    			<img src="images/product.jpg" class="img-responsive" />
+
+                           <?php 
+                           if($user['User']['bg_image']!=NULL && $user['User']['bg_image']!=''){
+                            $bg_message="Background selected.";
+                            $bg_exist=1;
+                           	?>
+                                   <img id='user_background' src="<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>" class="img-responsive">
+                           <?php 
+                            }else{
+                            $bg_message="No background chosen.";
+                            $bg_exist=0;	
+                           	?>
+					    			<img id='user_background' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
+					    	<?php }?>		
+
+
 					    		</div>
 			                    
-			                    <div class="control-group">
-				                    <label for="post_featured_image">
+			                    <div class="control-group" style="margin-bottom:5px;">
+				                    <label for="post_featured_image" style='display: block;'>
 				                    	Choose a picture:
 				                    </label>
-				                    <input id="post_featured_image" name="post[featured_image]" type="file">
+				                    <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default"><span class="fa fa-picture-o"></span> Choose File</a><span id='bg_message' style='margin-left:6px;'><?php echo $bg_message; ?></span>
 				                </div>
-			                    <div class="control-group">
-		                            <label for="post_images_attributes_0_alt">Alt:</label>
-		                            <input class="form-control" name="post[images_attributes][0][alt]" size="30" style="width: 50%;" type="text" />
-		                        </div>
-		                        <a href="#" class="remove-image">Remove image</a>
+				                <?php if($bg_exist==1){ ?>
+		                        <a href="#" class="remove_bg_img">Remove Background Image</a>
+		                        <?php }else{ ?>
+                                <a style="display:none;" href="#" class="remove_bg_img">Remove Background Image</a>
+		                        <?php } ?>
 				            </div>
 					    </div>
 				  	</div>
@@ -55,77 +70,43 @@
 				  	<div class="address">
 				  		<div class="form-group">
 						    <label class="col-sm-2 col-md-2 control-label">Link</label>
-						    <div class="col-sm-10 col-md-8">
+						    <div class="col-sm-5 col-md-4">
 						      	<input type="text" class="form-control" placeholder="http://socialesman.com" name="product[address]" />
+						    </div>
+						    <div class="col-sm-5 col-md-5 right">
+						      	<a data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title="">Upload Game File</a>
+						    </div>
+						</div>
+				  	</div>
+				  	<div class="address">
+				  		<div class="form-group">
+						    <label class="col-sm-2 col-md-2 control-label">Width * Height</label>
+						    <div class="col-sm-5 col-md-4">
+						      	<input type="text" class="form-control" placeholder="Width" name="product[address]" />
+						    </div>
+						    <div class="col-sm-5 col-md-4 right">
+						      	<input type="text" class="form-control" placeholder="Height" name="product[address]" />
 						    </div>
 						</div>
 				  	</div>
 				  	<div class="form-group">
-					    <label class="col-sm-2 col-md-2 control-label">
-					    	SKU
-					    	<span class="help" data-toggle="tooltip" title="The Stock Keeping Unit">
-					    		<i class="fa fa-question-circle"></i>
-					    	</span>
-					    </label>
-					    <div class="col-sm-10 col-md-8">
-					      <input type="text" class="form-control" name="product[email]" />
-					    </div>
-				  	</div>
-				  	<div class="form-group">
-					    <label class="col-sm-2 col-md-2 control-label">Masked phone</label>
-					    <div class="col-sm-10 col-md-8">
-					    	<div class="has-feedback">
-								<input type="text" class="form-control mask-phone" name="customer[phone]" />
-						      	<i class="ion-information-circled form-control-feedback" data-toggle="tooltip" title="Tooltip helper example">
-						      	</i>
-							</div>
-					    </div>
-				  	</div>
-				  	<div class="form-group">
-					    <label class="col-sm-2 col-md-2 control-label">Masked Credit Card</label>
-					    <div class="col-sm-10 col-md-8">
-					    	<div class="has-feedback">
-					      		<input type="text" class="form-control mask-cc" name="customer[cc]" />
-					      		<i class="ion-information-circled form-control-feedback" data-toggle="tooltip" title="Credit card masked input example">
-						      	</i>
-							</div>
-					    </div>
-				  	</div>
-			  		<div class="form-group">
-					    <label class="col-sm-2 col-md-2 control-label">Product rating</label>
-					    <div class="col-sm-10 col-md-8">
-					      	<div id="raty"></div>
-					    </div>
-					</div>
-					<div class="form-group">
-					    <label class="col-sm-2 col-md-2 control-label">Product Main Color</label>
-					    <div class="col-sm-10 col-md-8">
-					      	<input type="text" class="form-control minicolors" />
-					    </div>
-					</div>
-				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Select Category</label>
 					    <div class="col-sm-10 col-md-8">
 					    	<select class="form-control" data-smart-select>
-					    		<option>Bicycles</option>
-					    		<option>Clothes</option>
-					    		<option>Gift Cards</option>
+					    		<option>Upgrade</option>
+					    		<option>War</option>
+					    		<option>Zombie</option>
+					    		<option>Wacom</option>
+					    		<option>Flying</option>
+					    		<option>Race</option>
+					    		<option>Fight</option>
 					    	</select>
 					    </div>
 				  	</div>
 				  	<div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Product tags</label>
+					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Game tags</label>
 					    <div class="col-sm-10 col-md-8">
-					      	<input type="hidden" id="product-tags" style="width:100%" value="ball, toy, clothes" name="product[tags]" />
-					    </div>
-				  	</div>
-				  	<div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Specific publish date</label>
-					    <div class="col-sm-10 col-md-8">
-					    	<div class="input-group">
-							  	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							  	<input type="text" class="form-control datepicker" placeholder="03/05/2014" />
-							</div>
+					      	<input type="hidden" id="tags" style="width:100%" value="War, Race, Fight" name="product[tags]" />
 					    </div>
 				  	</div>
 				  	<div class="form-group">
@@ -151,8 +132,7 @@
 					</div>
 				  	<div class="form-group form-actions">
 				    	<div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
-				    		<a href="form.html" class="btn btn-default">Cancel</a>
-				      		<button type="submit" class="btn btn-success">Save product</button>
+				      		<button type="submit" class="btn btn-success">Upload Game</button>
 			    		</div>
 				  	</div>
 				</form>
@@ -189,12 +169,6 @@
 				}
 			});
 
-			// Product tags with select2
-			$("#product-tags").select2({
-				placeholder: 'Select tags or add new ones',
-				tags:["shirt", "gloves", "socks", "sweater"],
-				tokenSeparators: [",", " "]
-			});
 
 			// Bootstrap wysiwyg
 			$("#summernote").summernote({

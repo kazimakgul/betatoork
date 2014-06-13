@@ -542,6 +542,13 @@ $('#backgroundframe').load(function(){
         todayHighlight:true
     });
 
+
+			// Product tags with select2
+			$("#tags").select2({
+				placeholder: 'Select tags or add new ones',
+				tags:["Zombie", "Flying", "Upgrade", "Wacom"],
+				tokenSeparators: [",", " "]
+			});
 	        // Minicolors colorpicker
 	        $('input.minicolors').minicolors({
 	        	position: 'top left',
