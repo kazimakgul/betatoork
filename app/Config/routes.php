@@ -63,6 +63,9 @@
 	
 
         
+        //Using Subdomain included Url Routes
+	    //http://stackoverflow.com/questions/10553055/add-a-subdomain-to-all-urls-in-cakephp
+
 
 	    //additonal for subdomain access:http://stackoverflow.com/questions/15065015/make-session-valid-with-all-subdomains
 	    //additional:http://theworldinpixels.com/wildcard-subdomains-in-cakephp/
