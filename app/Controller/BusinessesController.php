@@ -1504,6 +1504,8 @@ class BusinessesController extends AppController {
         print_r($data);
         exit;
         */
+        
+        $this->set('data', $data);
         $this->render('/Businesses/dashboard/activities');
     }
 
