@@ -126,11 +126,11 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 
 }
 **/
-
+/*
 if(Configure::write('Domain.type')=='subdomain')
 ini_set('session.cookie_domain', '.clone.gs');
 
-
+*/
 
 
 /**
