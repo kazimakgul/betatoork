@@ -42,6 +42,13 @@ class MobilesController extends AppController {
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
+
+
+        if ($userid == NULL) {
+        $subdomain = Configure::read('Domain.subdomain');
+        $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
+        $userid = $user_data['User']['id'];
+        }
         
         //This line gets user selected channel styles
         $this->get_style_settings($userid);
@@ -141,6 +148,14 @@ class MobilesController extends AppController {
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
+       
+        if (!is_numeric($id)) {
+            $subdomain = Configure::read('Domain.subdomain');
+            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id'), 'contain' => false));
+            $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('Game.id')));
+            $id=$game['Game']['id']; 
+        }
+     
 
         $game = $this->Game->find('first', array(
             'conditions' => array(
