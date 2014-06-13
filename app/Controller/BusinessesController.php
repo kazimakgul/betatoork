@@ -878,7 +878,16 @@ class BusinessesController extends AppController {
 
         $this->layout = 'Business/business';
         $PaginateLimit = 12;
+
+        if(!is_numeric($userid))
+        {
+        $subdomain = 'socialesman';
+        $user = $this->User->find('first', array('contain'=>false,'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*')));
+        $userid=$user['User']['id']; 
+        }else{
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        }
+        
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
         $cond = $this->paginate('Game');
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
