@@ -129,6 +129,7 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 
 if(Configure::read('Domain.type')=='subdomain')
 {
+echo 'subdomaın mode on';
 ini_set('session.cookie_domain', '.clone.gs');
 }
 
