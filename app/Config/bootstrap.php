@@ -126,14 +126,13 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 
 }
 **/
-echo 'general area';
-if(Configure::read('Domain.type')=='subdomain')
-{
-echo 'subdomaın mode on';
+
+
+$subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
+if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" ) { 
 ini_set('session.cookie_domain', '.clone.gs');
 }
-if(1)
-{echo 'if condition';}
+
 
 
 
