@@ -25,7 +25,7 @@ function imgError(image,style){
 }
 
 //Get which type of ads window clicked
-$('.adsChangeBtn').click(function () {
+$('.adsChangeBtn').click(function () {alert('yeah');
     $('#adsChange').attr('data-selected',this.id);
   });
 

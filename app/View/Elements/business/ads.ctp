@@ -12,7 +12,7 @@ if(isset($code['code']) && $code['code'] != '' && $code['code'] != NULL)
    echo $code['code']; 
  ?>
  <div style='width:100%;'> 
-<?php if(isset($channel_owner) && $channel_owner) echo '<span class="label label-primary">'.$code["name"].'<a data-toggle="modal" id="'.$adtype.'" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white" style="margin-left:15px; font-size:12px;">Edit</a></span>' ?>
+<?php if(isset($channel_owner) && $channel_owner) echo '<span class="label label-primary">'.$code["name"].'<a data-toggle="modal" id="'.$adtype.'" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;">Edit</a></span>' ?>
 </div>
 </div>
 </div>
