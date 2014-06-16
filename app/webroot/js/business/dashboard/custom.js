@@ -626,3 +626,91 @@ $('#backgroundframe').load(function(){
             
         });
  
+
+	
+//***************************************************
+//------------------Subscription Functions-------------------------
+//***************************************************
+
+function subscribe (channel_name,user_auth,id) {
+		    if(user_auth==1)
+		    {
+			currentflw=$('#flwnumber').html();
+			currentflw=parseInt(currentflw);
+			$('#flwnumber').html(currentflw+1);
+			switch_subscribe(id);
+			}else{
+				
+				//Sorun varsa Hata mesajı					
+			}
+		  
+				
+	}
+	
+	
+	function subscribeout (channel_name,user_auth,id) {
+		        
+		    if(user_auth==1)
+		    {
+		currentflw=$('#flwnumber').html();
+		currentflw=parseInt(currentflw);
+		$('#flwnumber').html(currentflw-1);
+		
+		switch_subscribe(id);
+		/*
+		$.pnotify({
+            title: 'Unfollow is done',
+            text: 'You stopped following <strong>'+channel_name+'</strong> now.<br>You will not be notified about the updates of this channel.',
+            type: 'error'
+          });
+		*/
+		
+			}else{
+				
+			$.pnotify({
+            title: 'Authentication Error',
+            text: 'You have to login first to follow channels.',
+            type: 'error'
+          });	
+					
+			}
+		  
+				
+	}
+	
+	
+    function switch_subscribe(channel_id)
+    {
+		
+    	$.get(subswitcher+'/'+channel_id,function(data) {/*success callback*/});	
+		
+    }
+function switchfollow(id)
+	{
+	var x = id;
+    $("a[id=follow" + x + "]").hide();
+	$("a[id=unfollow" + x + "]").show();
+	}
+	function switchunfollow(id)
+	{
+	var x = id;
+    $("a[id=unfollow" + x + "]").hide();
+	$("a[id=follow" + x + "]").show();
+	}	
+	
+	$('#follow_button').click(function () {
+		   if(user_auth==1)
+		    {
+		$('#follow_button').hide();
+		$('#unFollow_button').show();
+			}
+	});
+	
+	$('#unFollow_button').click(function () {
+		   if(user_auth==1)
+		    {
+		$('#unFollow_button').hide();
+		$('#follow_button').show();
+			}
+	});
+	
