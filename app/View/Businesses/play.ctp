@@ -33,7 +33,7 @@ rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add'
 	  <div class="col-sm-12">
 		<div class="well well-sm">
 		<h6 class="media-heading">
-			<span class="btn-link btn label label-important"><a href="#">#<?php echo $gamename; ?></a></span>: <?php echo $description; ?>
+			<span class="btn-link btn label-important"><a href="#">#<?php echo $gamename; ?></a></span>: <?php echo $description; ?>
 		</h6>
 		</div>
 	  </div>
