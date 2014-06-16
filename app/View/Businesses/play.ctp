@@ -16,7 +16,7 @@ $game_id = $game['Game']['id'];
 $gamename = $game['Game']['name'];
 $description = $game['Game']['description'];
 $username = $game['User']['seo_username'];
-$hashtaglink=$this->Html->url(array("controller" => "businesses","action" =>"hashtag",$game['Game']['seo_url']));
+
 if($username !=NULL)
 {
   $profilepublic=$this->Html->url(array( "controller" => h($username ),"action" =>'')); 
@@ -33,7 +33,7 @@ rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add'
 	  <div class="col-sm-12">
 		<div class="well well-sm">
 		<h6 class="media-heading">
-			<span class="btn-link btn label-important"><a href="<?php echo $hashtaglink; ?>">#<?php echo $gamename; ?></a></span>: <?php echo $description; ?>
+			<span class="btn-link btn label label-important"><a href="#">#<?php echo $gamename; ?></a></span>: <?php echo $description; ?>
 		</h6>
 		</div>
 	  </div>
