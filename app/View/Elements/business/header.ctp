@@ -19,9 +19,9 @@ $mysite = $this->Html->url(array("controller" => "businesses","action" =>"mysite
 		<a class="navbar-brand" rel="home" href="<?php echo $index?>"><?php echo $user['User']['username']?></a>
 	</div>
 	<div class="collapse navbar-collapse">
-		<ul class="nav navbar-nav">
+		<!-- --<ul class="nav navbar-nav">
 			<li><a href="#"><i class="fa fa-bullseye"></i> Whats New!</a></li>
-		</ul>
+		</ul> -- -->
 <?php if($this->Session->check('Auth.User')){ ?>
 		<div class="col-sm-3 col-md-3 navbar-right " style="margin-top:8px;">
 			
