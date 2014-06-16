@@ -212,6 +212,11 @@ class BusinessesController extends AppController {
                 $this->Adcode->query('DELETE FROM adcodes WHERE id=' . $id . ' AND user_id=' . $user_id);
                 $this->set('success', "Ads Code Deleted");
                 $this->set('_serialize', array('success'));
+            }elseif($attr == "edit_game"){
+                $id = $this->request->data['id'];
+                $this->Adcode->query('DELETE FROM games WHERE id=' . $id . ' AND user_id=' . $user_id);
+                $this->set('success', "Game Deleted");
+                $this->set('_serialize', array('success'));          	
             }
         }
     }

@@ -6,10 +6,10 @@ foreach ($following as $value) {
 	$followid = $follower['User']['id'];
     ?>
     <div class="row user">
-        <div class="col-sm-1">
+        <div class="col-sm-2">
 <!-- Follow button -->
-		<a id="unfollow<?php echo $userid; ?>" class="btn btn-block" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-remove-circle"></i> Unfollow</a>
-		<a id="follow<?php echo $userid; ?>" style="margin-top: 5px; display:none;" class="btn btn-block btn-success" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="elusive-plus-sign"></i> Follow</a>
+		<a id="unfollow<?php echo $userid; ?>" class="btn btn-primary" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-foursquare"></i> Unfollow</a>
+		<a id="follow<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>);switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-plus-circle"></i> Follow</a>
 <!-- Follow button end -->
 		</div>
         

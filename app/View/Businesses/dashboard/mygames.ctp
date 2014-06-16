@@ -68,7 +68,7 @@ $allgames = $params['count'];
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <li><a href="#">Add tags</a></li>
-                                        <li><a href="#">Delete users</a></li>
+                                        <li><a href="#" data-toggle="modal" data-target="#confirm-modal" >Delete users</a></li>
                                         <li><a href="#">Edit customers</a></li>
                                         <li><a href="#">Manage permissions</a></li>
                                     </ul>
@@ -105,4 +105,6 @@ $allgames = $params['count'];
             </div>
         </div>
     </div>
+    	<input type="hidden" id="attr" value="edit_game" />
+		<?php  echo $this->element('business/dashboard/modals/confirm');?>
 </body>

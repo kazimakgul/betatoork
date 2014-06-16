@@ -1,6 +1,7 @@
 <?php
 foreach ($games as $game) {
     $name = $game['Game']['name'];
+	$id = $game['Game']['id'];
     $clones = empty($game['Gamestat']['channelclone']) ? 0 : $game['Gamestat']['channelclone'];
     $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
     $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
@@ -9,7 +10,7 @@ foreach ($games as $game) {
     ?>
     <div class="row user">
         <div class="col-sm-2 avatar">
-            <input type="checkbox" name="select-user" />
+            <input type="checkbox" name="select-user" value="<?php echo $id;?>" />
             <a href="<?php echo $playurl ?>" target="_blank">
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
             </a>

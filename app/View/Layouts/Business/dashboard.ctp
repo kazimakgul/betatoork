@@ -28,6 +28,7 @@
 	        newData			=	'<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'newData')); ?>';
 	        ads_management	='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'ads_management')); ?>';
 	        edit_ads		='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'edit_ads')); ?>';
+	        mygames			='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mygames')); ?>';
 	        set_channel_ads	='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>'; 
 	        remove_ads_field='<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_ads_field')); ?>';
 	        deletedata		= '<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deleteData')); ?>';

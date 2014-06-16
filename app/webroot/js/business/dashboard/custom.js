@@ -164,7 +164,6 @@ $('#deletedata').click(function(e) {
         var attr = $('#attr').val(); //Form control value
 		var btn = $(this);
 		btn.button('loading');
-		
 		if(attr == "edit_ads"){
 		  count = $("[name='select-ads']:checked").length;
 		  if(count>1)
@@ -185,24 +184,61 @@ $('#deletedata').click(function(e) {
 		                	setTimeout(function(){location.href=ads_management}, 2000 );
 		                }
 		            }, 'json');
-		  	}
-		  	
-		  }else{
-		  	id	= $("[name='select-ads']:checked")[0].value;
-		  	$.post(link, {
-		                attr	: attr,
-		                id		: id
-		            },
-		            function(data) {
-		                if (data.error) {
-		                    alert(data.error); // error.id ye göre mesaj yazdırcak..
-		                }else{
-		                	Messenger().post(data.success);
-		                	$('#confirm-modal').modal('hide');
-		                	setTimeout(function(){location.href=ads_management}, 2000 );
-		                }
-		            }, 'json');
-		  }
+		  		}
+		  	}else{
+				  	id	= $("[name='select-ads']:checked")[0].value;
+				  	$.post(link, {
+				                attr	: attr,
+				                id		: id
+				            },
+				            function(data) {
+				                if (data.error) {
+				                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+				                }else{
+				                	Messenger().post(data.success);
+				                	$('#confirm-modal').modal('hide');
+				                	setTimeout(function(){location.href=ads_management}, 2000 );
+				                }
+				            }, 'json');
+				  }
+		  }else if(attr == "edit_game"){
+		  count = $("[name='select-user']:checked").length;
+					  if(count>1)
+					  {
+					  	for(i = 0; i <= count-1; i++)
+					  	{
+					  		id = $("[name='select-user']:checked")[i].value;
+							  	$.post(link, {
+					                attr	: attr,
+					                id		: id
+					            },
+					            function(data) {
+					                if (data.error) {
+					                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+					                }else{
+					                	Messenger().post(data.success);
+					                	$('#confirm-modal').modal('hide');
+					                	setTimeout(function(){location.href=mygames}, 2000 );
+					                }
+					            }, 'json');
+					  	}
+					  	
+					  }else{
+					  	id	= $("[name='select-user']:checked")[0].value;
+					  	$.post(link, {
+					                attr	: attr,
+					                id		: id
+					            },
+					            function(data) {
+					                if (data.error) {
+					                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+					                }else{
+					                	Messenger().post(data.success);
+					                	$('#confirm-modal').modal('hide');
+					                	setTimeout(function(){location.href=mygames}, 2000 );
+					                }
+					            }, 'json');
+					  }
 		}else{
 			
 		}
@@ -635,13 +671,9 @@ $('#backgroundframe').load(function(){
 function subscribe (channel_name,user_auth,id) {
 		    if(user_auth==1)
 		    {
-			currentflw=$('#flwnumber').html();
-			currentflw=parseInt(currentflw);
-			$('#flwnumber').html(currentflw+1);
 			switch_subscribe(id);
 			}else{
-				
-				//Sorun varsa Hata mesajı					
+					
 			}
 		  
 				
@@ -652,10 +684,6 @@ function subscribe (channel_name,user_auth,id) {
 		        
 		    if(user_auth==1)
 		    {
-		currentflw=$('#flwnumber').html();
-		currentflw=parseInt(currentflw);
-		$('#flwnumber').html(currentflw-1);
-		
 		switch_subscribe(id);
 		/*
 		$.pnotify({
@@ -681,21 +709,19 @@ function subscribe (channel_name,user_auth,id) {
 	
     function switch_subscribe(channel_id)
     {
-		
     	$.get(subswitcher+'/'+channel_id,function(data) {/*success callback*/});	
-		
     }
 function switchfollow(id)
 	{
 	var x = id;
-    $("a[id=follow" + x + "]").hide();
-	$("a[id=unfollow" + x + "]").show();
+    $("#follow" + x).hide();
+	$("#unfollow" + x).show();
 	}
 	function switchunfollow(id)
 	{
 	var x = id;
-    $("a[id=unfollow" + x + "]").hide();
-	$("a[id=follow" + x + "]").show();
+    $("#unfollow" + x).hide();
+	$("#follow" + x).show();
 	}	
 	
 	$('#follow_button').click(function () {

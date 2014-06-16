@@ -67,7 +67,7 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
                 <div class="row users-list">
                     <div class="col-md-12">
                         <div class="row headers">
-                        	<div class="col-sm-1"></div>
+                        	<div class="col-sm-2"></div>
                             <div class="col-sm-1 header select-users">
                              </div>
                             <div class="col-sm-3 header hidden-xs">
