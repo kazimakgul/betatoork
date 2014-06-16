@@ -852,8 +852,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $PaginateLimit = 12;
 
-        print_r($this->request->params);
-
+         //print_r($this->request->params);
          //Pagination with GET parameters
          //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
 
