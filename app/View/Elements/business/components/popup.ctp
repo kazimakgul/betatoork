@@ -140,20 +140,20 @@
 			<div class="modal-content">
                 <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 style="text-align:center;" class="modal-title" id="myModalLabel">Choose your Ad Code for selected area</h4>
+                    <h4 style="text-align:center;" class="modal-title" id="myModalLabel">Choose Ad Code For Selected Area</h4>
                     </div>
                 <div class="modal-body">
                     <center>
 							<div class="row">
 						        <div class="col-md-12">
-                                <?php if($adcodes==NULL) echo '<tr><td><a href="'.$add_code.'" class="btn btn-success" >You have to add an Ad Code first.</a></td></tr>'; ?>
+                                <?php if($adcodes==NULL) echo '<tr><td><a href="'.$add_code.'" class="btn btn-success" >You have to add an ad code first.</a></td></tr>'; ?>
 
 						        <div class="table-responsive adscroll" style=" width:100%; height:290px;">
 						              <table id="mytable" class="table table-bordred table-striped">
 						                   <thead>
-						                   <th width='150px'>Ads Name</th>
-						                   <th>Ads Code</th>
-						                   <th style="padding-left:14px">Set</th>
+						                   <th width='150px'>Title</th>
+						                   <th>Code Detail</th>
+						                   <th style="padding-left:14px">Action</th>
 						          
 						                   </thead>
 										    <tbody>
@@ -164,7 +164,7 @@
 										    <td>
 										    	<textarea cols="60" rows="3"  readonly><?php echo $code['Adcode']['code'];?></textarea>
 										    </td>
-										    <td style="vertical-align: middle;"><p><button class="btn btn-success" data-placement="top" rel="tooltip" onclick="set_ad_code(<?php echo $code['Adcode']['id'];?>);"><span class="glyphicon glyphicon-ok-sign"></span></button></p></td>
+										    <td style="vertical-align: middle;"><p><button class="btn btn-success" data-placement="top" rel="tooltip" onclick="set_ad_code(<?php echo $code['Adcode']['id'];?>);"><span class="glyphicon glyphicon-ok-sign"></span> Set</button></p></td>
 										    </tr>
 
                                             <?php } ?>
@@ -178,9 +178,9 @@
                 </div>
                 <div class="modal-footer">
                     <center>
-                    	<a href="<?php echo $add_code;?>" type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Add New Ad Code</a>
-                        <a href="<?php echo $ad_manage;?>" type="button" class="btn btn-primary" ><span class="glyphicon glyphicon-pencil"></span> Manage</a>
-                        <a href="#" onclick="remove_ad_area();" style="position: absolute; right: 9px; bottom: 6px; color: red; font-size: 11px;font-weight: bold;" class="pull-right" id="removeadsfield">(Remove ads field)</a>
+                    	<a href="<?php echo $add_code;?>" type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Add New</a>
+                        <a href="<?php echo $ad_manage;?>" type="button" class="btn btn-primary" ><span class="glyphicon glyphicon-pencil"></span> Manage Ads</a>
+                        <a href="#" onclick="remove_ad_area();" type="button" class="btn btn-danger" ><span class="glyphicon glyphicon-trash"></span> UnSet Ad</a>
                     </center>
                 </div>
             </div>
