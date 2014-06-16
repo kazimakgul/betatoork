@@ -128,7 +128,7 @@ echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBann
         
 <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title"><a href="<?=$subgameurl;?>/sort:recommend/direction:desc" class="black">Recommended Games</a></h3>
+        <h3 class="panel-title"><a href="<?php echo $hotgames;?>" class="black">Recommended Games</a></h3>
       </div>
       <div class="panel-body">
 

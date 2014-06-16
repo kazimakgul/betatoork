@@ -90,6 +90,12 @@
         Router::connect('/games/hot/*',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'recommend', 'direction'=>'desc'));
         Router::connect('/games/newest',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'id', 'direction'=>'desc'));
         Router::connect('/games/newest/*',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'id', 'direction'=>'desc'));
+        Router::connect('/games/oldest',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'id', 'direction'=>'asc'));
+        Router::connect('/games/oldest/*',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'id', 'direction'=>'asc'));
+        Router::connect('/games/high-rate',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'starsize', 'direction'=>'desc'));
+        Router::connect('/games/high-rate/*',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'starsize', 'direction'=>'desc'));
+        Router::connect('/games/low-rate',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'starsize', 'direction'=>'asc'));
+        Router::connect('/games/low-rate/*',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'starsize', 'direction'=>'asc'));
         }
 
        
