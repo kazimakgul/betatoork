@@ -126,7 +126,7 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 
 }
 **/
-
+echo 'general area';
 if(Configure::read('Domain.type')=='subdomain')
 {
 echo 'subdomaın mode on';
