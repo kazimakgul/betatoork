@@ -1,5 +1,6 @@
 <?php
 $search_action = $this->Html->url(array("controller" => "businesses", "action" => "following_search"));
+$following = $this->Html->url(array("controller" => "businesses", "action" => "following"));
 ?>
 <body id="users">
     <div id="wrapper">
@@ -10,7 +11,9 @@ $search_action = $this->Html->url(array("controller" => "businesses", "action" =
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Following
+                <a href="<?php echo $following;?>">
+                   Following
+				</a>
                 </div>
                 <form class="search hidden-xs" action="<?php echo $search_action ?>">
                     <i class="fa fa-search"></i>

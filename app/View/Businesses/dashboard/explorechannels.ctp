@@ -1,6 +1,7 @@
 <?php
 $search_action = $this->Html->url(array("controller" => "businesses", "action" => "explorechannels_search"));
 $game_add = $this->Html->url(array("controller" => "businesses", "action" => "game_add"));
+$exp_channel = $this->Html->url(array("controller" => "businesses", "action" => "explorechannels"));
 $params = $this->Paginator->params();
 $allgames = $params['count'];
 ?>
@@ -13,7 +14,9 @@ $allgames = $params['count'];
                     <i class="ion-navicon"></i>
                 </div>
                 <div class="page-title">
-                    Explore Channels
+                 <a href="<?php echo $exp_channel;?>">
+                   Explore Channels
+				</a>
                 </div>
                 <form class="search hidden-xs" action="<?php echo $search_action ?>" style="margin-left: 240px">
                     <i class="fa fa-search"></i>
