@@ -67,10 +67,8 @@ $allgames = $params['count'];
                                         <i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <li><a href="#">Add tags</a></li>
                                         <li><a href="#" data-toggle="modal" data-target="#confirm-modal" >Delete users</a></li>
                                         <li><a href="#">Edit customers</a></li>
-                                        <li><a href="#">Manage permissions</a></li>
                                     </ul>
                                 </div>
                             </div>
