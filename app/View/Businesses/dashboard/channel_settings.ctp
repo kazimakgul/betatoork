@@ -16,6 +16,18 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 				<h3>
 					Channel settings
 				</h3>
+
+				<p class="intro">
+					Change your channel information, customize design, etc.
+				</p>
+
+				<p class="intro">
+					<label>Custom Domain: </label> <a class="btn btn-default"> http://<?php echo $user['User']['seo_username'];?>.clone.gs </a> <a class="btn btn-default"><i class="fa fa-globe"></i> Map Domain </a>
+						<span class="help" data-toggle="tooltip" title="Map your own domain to your channel.">
+					    		<i class="fa fa-question-circle"></i>
+					    </span>
+				</p>
+
 				
             <!--Channel Cover Avatar Begins -->
             <div id='background_area' style="background-image: url('<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>'); background-color:<?php echo $user['User']['bg_color'];?>;" class="well col-md-12">

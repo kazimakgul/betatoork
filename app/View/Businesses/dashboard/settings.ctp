@@ -19,6 +19,11 @@ $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 
 				<p class="intro">
 					Change your account information, login credentials, etc.
 				</p>
+
+				<p class="intro">
+					<label>Custom Domain: </label> <a class="btn btn-default"> http://<?php echo $user['User']['seo_username'];?>.clone.gs </a>
+				</p>
+
 <form id="settings_profile" role="form" novalidate="novalidate">
 				  	<div class="form-group">
 						<label>User Name</label>
