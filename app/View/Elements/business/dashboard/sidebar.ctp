@@ -18,7 +18,8 @@ $ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'chan
 $notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'notifications'));
 $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
-$gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite',$user['User']['id']));
+$gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite',$user['User']['id']));echo '--';echo $_SERVER['HTTP_HOST'];echo '--';echo $_SERVER['SERVER_NAME'];echo '--';echo Router::url('/', true);echo '-';echo $this->Html->url('/');echo '--'; echo $this->base; echo '--';//http://stackoverflow.com/questions/8685562/proper-way-to-link-to-a-subdomain-of-the-current-url-in-drupal
+
 if ($user['User']['picture'] == null) {
     $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'avatar circular', "alt" => "clone user image"));
 } else {

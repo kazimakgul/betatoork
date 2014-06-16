@@ -5,6 +5,15 @@
 $subgameurl		=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
 $channelsettings=$this->Html->url(array("controller" => "businesses","action" =>"settings"));
 
+if(Configure::read('Domain.type')=='subdomain')
+{
+  $hotgames=$this->Html->url(array("controller" => "games","action" =>"hot"));
+  $newestgames=$this->Html->url(array("controller" => "games","action" =>"newest"));
+}else{
+  $hotgames=$subgameurl .'/sort:recommend/direction:desc';
+  $newestgames=$subgameurl .'/sort:id/direction:desc';
+}
+
 //Getting and declaring ads datas
 $homeBannerTop=$addata[0]['homeBannerTop'];
 $homeBannerMiddle=$addata[0]['homeBannerMiddle'];
@@ -59,7 +68,7 @@ echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBann
 
       <div class="col-xs-12">
       <div class="panel panel-info">
-        <div class="panel-heading"><a href="<?=$subgameurl;?>/sort:recommend/direction:desc" class="black"><span class="fa fa-fire"></span> Hot Games!</a>
+        <div class="panel-heading"><a href="<?php echo $hotgames;?>" class="black"><span class="fa fa-fire"></span> Hot Games!</a>
         </div>
           <div class="panel-body">
           <?php  
@@ -88,7 +97,7 @@ echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBann
       <div class="col-xs-12">
 
     	<div class="panel panel-success">
-         	<div class="panel-heading"><a href="<?=$subgameurl;?>/sort:id/direction:desc" class="black"><span class="fa fa-flash"></span> New Games!</a></div>
+         	<div class="panel-heading"><a href="<?php echo $newestgames;?>" class="black"><span class="fa fa-flash"></span> New Games!</a></div>
          	<div class="panel-body">
 
           <?php  

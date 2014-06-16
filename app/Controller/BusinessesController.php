@@ -847,8 +847,19 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $PaginateLimit = 12;
 
+        print_r($this->request->params);
+
+         //Pagination with GET parameters
+         //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
+
+        if($this->request->params['named']['sort']==NULL)
+        {
+            $this->request->params['named']['sort']=$this->request->params['sort'];
+            $this->request->params['named']['direction']=$this->request->params['direction'];
+        }   
+
         if (!is_numeric($userid)) {
-            $subdomain = 'socialesman';
+            $subdomain = Configure::read('Domain.subdomain');
             $user = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*')));
             $userid = $user['User']['id'];
         } else {
@@ -857,6 +868,7 @@ class BusinessesController extends AppController {
 
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
         $cond = $this->paginate('Game');
+        
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
         //This line gets user selected channel styles

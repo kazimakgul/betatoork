@@ -73,6 +73,10 @@
         $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
         if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" ) { 
         
+        Router::connect('/games/hot',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'recommend', 'direction'=>'desc'));
+        Router::connect('/games/hot/*',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'recommend', 'direction'=>'desc'));
+        Router::connect('/games/newest',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'id', 'direction'=>'desc'));
+        Router::connect('/games/newest/*',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'id', 'direction'=>'desc'));
 
         //Mobile detection begins
         
@@ -87,7 +91,7 @@
         Router::connect('/',array('controller'=>'businesses','action'=>'mysite'));
         Router::connect('/play/:seo_url', array('controller' => 'businesses', 'action' => 'play'),array('seo_url' => '[-a-z0-9]+','pass' => array('seo_url')));
         Router::connect('/category/:cat_url', array('controller' => 'businesses', 'action' => 'category'),array('cat_url' => '[-a-z0-9]+','pass' => array('cat_url')));
-	
+	    Router::connect('/games/hot',array('controller'=>'businesses','action'=>'toprated/2'));
         }
 
        
