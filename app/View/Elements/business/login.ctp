@@ -42,8 +42,9 @@
 .form-signin .form-control {
   position: relative;
   font-size: 16px;
-  height: 20px;
-  padding: 20px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 0 0 20px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
