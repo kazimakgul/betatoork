@@ -128,11 +128,11 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 **/
 
 
-$subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
-if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" ) { 
+
+//Bu condition tamamen kaldırılacak.Local de de login olabilmemizi sağlıyor.
+if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
 ini_set('session.cookie_domain', '.clone.gs');
 }
-
 
 
 
