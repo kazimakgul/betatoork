@@ -132,7 +132,7 @@ if(Configure::read('Domain.type')=='subdomain')
 echo 'subdomaın mode on';
 ini_set('session.cookie_domain', '.clone.gs');
 }
-if()
+if(1)
 {echo 'if condition';}
 
 
