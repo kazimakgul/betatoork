@@ -129,6 +129,12 @@
     <!-- Background Change Modal ends -->
 		
 	<!-- Ads Change Modal begins -->
+
+    <?php
+        $add_code   =$this->Html->url(array("controller" => "businesses","action" =>"add_ads"));
+        $ad_manage  =$this->Html->url(array("controller" => "businesses","action" =>"ads_management"));
+    ?>
+
     <div class="modal fade" id="adsChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
         <div class="modal-dialog" style="width:800px;">
 			<div class="modal-content">
@@ -140,6 +146,8 @@
                     <center>
 							<div class="row">
 						        <div class="col-md-12">
+                                <?php if($adcodes==NULL) echo '<tr><td><a href="'.$add_code.'" class="btn btn-success" >You have to add an Ad Code first.</a></td></tr>'; ?>
+
 						        <div class="table-responsive adscroll" style=" width:100%; height:290px;">
 						              <table id="mytable" class="table table-bordred table-striped">
 						                   <thead>
@@ -149,7 +157,6 @@
 						          
 						                   </thead>
 										    <tbody>
-										    <?php if($adcodes==NULL) echo '<tr><td><span class="btn btn-success" style="background-color: #C2C6C6;border-color: #C2C6C6;">You have to add an Ad Code first.</span></td></tr>'; ?>
                                             <?php foreach($adcodes as $code){ ?>
 
                                             <tr>
@@ -167,12 +174,6 @@
 					            </div>
 					        </div>
 						</div>
-					
-		
-                    	<?
-							$add_code	=$this->Html->url(array("controller" => "businesses","action" =>"add_ads"));
-							$ad_manage	=$this->Html->url(array("controller" => "businesses","action" =>"ads_management"));
-						?>
                     </center>
                 </div>
                 <div class="modal-footer">
