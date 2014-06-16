@@ -770,8 +770,8 @@ class BusinessesController extends AppController {
         $this->set('games', $cond);
         $this->set('user', $user);
         $this->set('game', $game);
-        $this->set('title_for_layout', 'Clone Games');
-        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('title_for_layout', $game['Game']['name'] . ' - ' . $game['User']['seo_username'] . ' - Clone');
+        $this->set('description_for_layout', 'Play ' . $game['Game']['name'] . ' for free: ' . $game['Game']['description']);
         $this->set('author_for_layout', 'Clone');
         if ($game['Game']['embed'] == NULL) {
             $this->render('/Businesses/playframe');
