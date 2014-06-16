@@ -8,8 +8,11 @@ foreach ($data as $value) {
     if ($x === count($data) - 1) {
         $class.= ' last';
     }
+    $x++;
     switch ($value['Activity']['type']) {
-        //  Normal Post
+        /**
+         * Normal Post
+         */
         case 0:
             ?>
             <div class="<?php echo $class ?>">
@@ -29,7 +32,9 @@ foreach ($data as $value) {
             </div>
             <?php
             break;
-        //  UNKOWN
+        /**
+         * Unknown
+         */
         case 1:
             ?>
             <div class="<?php echo $class ?>">
@@ -49,7 +54,9 @@ foreach ($data as $value) {
             </div>
             <?php
             break;
-        //  UNKOWN
+        /**
+         * Unknown
+         */
         case 2:
             ?>
             <div class="<?php echo $class ?>">
@@ -69,7 +76,9 @@ foreach ($data as $value) {
             </div>
             <?php
             break;
-        //  UNKOWN
+        /**
+         * Unknown
+         */
         case 3:
             ?>
             <div class="<?php echo $class ?>">
@@ -89,7 +98,9 @@ foreach ($data as $value) {
             </div>
             <?php
             break;
-        //  UNKOWN
+        /**
+         * Unknown
+         */
         case 4:
             ?>
             <div class="<?php echo $class ?>">
@@ -109,7 +120,9 @@ foreach ($data as $value) {
             </div>
             <?php
             break;
-        //  Follow/Unfollow
+        /**
+         * Follow/Unfollow
+         */
         case 5:
             ?>
             <div class="<?php echo $class ?>">
@@ -129,7 +142,9 @@ foreach ($data as $value) {
             </div>
             <?php
             break;
-        //  Favorite/Unfavorite
+        /**
+         * Favorite/Unfavorite
+         */
         case 6:
             ?>
             <div class="<?php echo $class ?>">
@@ -149,7 +164,9 @@ foreach ($data as $value) {
             </div>
             <?php
             break;
-        //  Clone
+        /**
+         * Clone
+         */
         case 7:
             ?>
             <div class="<?php echo $class ?>">
@@ -169,7 +186,9 @@ foreach ($data as $value) {
             </div>
             <?php
             break;
-        //  Rate
+        /**
+         * Rate
+         */
         case 8;
             ?>
             <div class="<?php echo $class ?>">
@@ -189,7 +208,9 @@ foreach ($data as $value) {
             </div>
             <?php
             break;
-        //  UNKOWN
+        /**
+         * Unknown
+         */
         case 9:
             ?>
             <div class="<?php echo $class ?>">
@@ -209,7 +230,9 @@ foreach ($data as $value) {
             </div>
             <?php
             break;
-        //  UNKOWN
+        /**
+         * Unknown
+         */
         case 10:
             ?>
             <div class="<?php echo $class ?>">
@@ -230,6 +253,5 @@ foreach ($data as $value) {
             <?php
             break;
     }
-    $x++;
 }
 ?>
