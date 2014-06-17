@@ -104,23 +104,7 @@ class AppController extends Controller {
         }
     }
 
-    public function noprefixdomain()
-    {
-          
-          //test.clone.gs/dashboard
-
-          //www.clone.gs/dasboard
-
-          //clone.gs
-
-        $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
-        if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" ) { 
-        echo $subdomain; 
-        }
-
-
     
-    }
     //This functin will get special style settings and store them in session
     public function get_style_settings($id=NULL)
     {
