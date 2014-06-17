@@ -108,7 +108,7 @@ class AppController extends Controller {
     {
           echo 'domain info';
           if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
-          $new_subdomain = $user['User']['seo_url'];
+          $new_subdomain = 'naber';
           $split_domain = explode('.',$_SERVER['HTTP_HOST']);
           $gochannel=$new_subdomain.'.'.$split_domain[count($split_domain) - 2].'.'.$split_domain[count($split_domain) - 1];
           }  
