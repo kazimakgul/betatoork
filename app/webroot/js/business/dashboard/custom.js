@@ -773,16 +773,6 @@ $('#fav_button').click(function () {
 			}
 	});
 
-	function fav_check(game_id){
-    	$.get(favswitcher+'/'+game_id,
-    	function(data) {
-			if(data == 0)
-			{
-			alert(0);
-			}		
-		});
-	}
-		
 	function switch_favorite(game_id)
     {
     	$.get(favswitcher+'/'+game_id,
