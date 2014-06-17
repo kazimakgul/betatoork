@@ -583,6 +583,7 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
+        $this->noprefixdomain();
 
         if ($userid == NULL) {
 
