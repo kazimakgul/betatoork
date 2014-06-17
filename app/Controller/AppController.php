@@ -106,13 +106,19 @@ class AppController extends Controller {
 
     public function noprefixdomain()
     {
-          $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
-          if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" ) { 
-          $str=env("HTTP_HOST");
-          $prefix = $subdomain.'.';
-          $output=str_replace($prefix,'',$str);
-          echo 'new domain'.$output;
-          }
+          
+          //test.clone.gs/dashboard
+
+          //www.clone.gs/dasboard
+
+          //clone.gs
+
+        $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
+        if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" ) { 
+        echo $subdomain; 
+        }
+
+
     
     }
     //This functin will get special style settings and store them in session
