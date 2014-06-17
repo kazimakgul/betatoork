@@ -106,7 +106,6 @@ class AppController extends Controller {
 
     public function noprefixdomain()
     {
-          echo 'noprefix function';
 
        if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
           
