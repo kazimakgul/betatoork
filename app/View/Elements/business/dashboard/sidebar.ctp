@@ -18,7 +18,17 @@ $ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'chan
 $notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'notifications'));
 $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
-$gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite',$user['User']['id']));echo '--';echo $_SERVER['HTTP_HOST'];echo '--';echo $_SERVER['SERVER_NAME'];echo '--';echo Router::url('/', true);echo '-';echo $this->Html->url('/');echo '--'; echo $this->base; echo '--';//http://stackoverflow.com/questions/8685562/proper-way-to-link-to-a-subdomain-of-the-current-url-in-drupal
+
+if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
+$new_subdomain = $user['User']['seo_url'];
+$split_domain = explode('.',$_SERVER['HTTP_HOST']);
+$gochannel=$new_subdomain.'.'.$split_domain[count($split_domain) - 2].'.'.$split_domain[count($split_domain) - 1];
+}else{
+$gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite',$user['User']['id']));    
+}    
+
+echo '--';echo $_SERVER['HTTP_HOST'];echo '--';
+echo $_SERVER['SERVER_NAME'];echo '--';echo Router::url('/', true);echo '-';echo $this->Html->url('/');echo '--'; echo $this->base; echo '--';//http://stackoverflow.com/questions/8685562/proper-way-to-link-to-a-subdomain-of-the-current-url-in-drupal
 
 if ($user['User']['picture'] == null) {
     $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'avatar circular', "alt" => "clone user image"));

@@ -334,6 +334,7 @@ class BusinessesController extends AppController {
         $this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
+        $this->noprefixdomain();
         $this->render('/Businesses/dashboard/index');
     }
 

@@ -104,7 +104,18 @@ class AppController extends Controller {
         }
     }
 
+    public function noprefixdomain()
+    {
+          echo 'domain info';
+          if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
+          $new_subdomain = $user['User']['seo_url'];
+          $split_domain = explode('.',$_SERVER['HTTP_HOST']);
+          $gochannel=$new_subdomain.'.'.$split_domain[count($split_domain) - 2].'.'.$split_domain[count($split_domain) - 1];
+          }  
+          echo 'go channel:'.$gochannel;
+    }
     
+
     //This functin will get special style settings and store them in session
     public function get_style_settings($id=NULL)
     {
