@@ -106,13 +106,13 @@ class AppController extends Controller {
 
     public function noprefixdomain()
     {
-          
+          echo 'noprefix function';
 
        if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
           
             $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
                 if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" && $subdomain != "www") {
-                $urlobj=parse_url($url);
+                $urlobj=parse_url($_SERVER['HTTP_HOST']);
                 $domain=$urlobj['host'];
                 if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
                 echo 'pure domain'.$regs['domain'];
