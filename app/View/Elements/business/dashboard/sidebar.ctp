@@ -20,7 +20,7 @@ $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'a
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
 
 if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
-$gochannel=$user['User']['seo_url'].'/'.$_SERVER['HTTP_HOST'];
+$gochannel=$this->Html->url('http://'.$user['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']); 
 }else{
 $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite',$user['User']['id']));    
 }    
