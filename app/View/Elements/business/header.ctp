@@ -10,7 +10,12 @@ $mygames=$this->Html->url(array("controller" => "businesses","action" =>"mygames
 $search = $this->Html->url(array("controller" => "businesses","action" =>"search2",$user['User']['id']));
 $settings=$this->Html->url(array("controller" => "businesses","action" =>"channel_settings"));
 $visitor_mode='?mode=visitor';
+
+if(Configure::read('Domain.type')=='subdomain' && isset($pure_domain))
+$index=$this->Html->url('http://'.$user['User']['seo_username'].'.'.$pure_domain); 
+else
 $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$user['User']['id']));
+
 $mysite = $this->Html->url(array("controller" => "businesses","action" =>"mysite",$this->Session->read('Auth.User.id')));
 ?>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">

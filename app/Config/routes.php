@@ -27,7 +27,30 @@
  */
 //	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 	
-	
+/*
+ * Routers for side bar function inside dashboard
+ * Business clone link system
+ */
+//
+	Router::connect('/dashboard',array('controller'=>'businesses','action'=>'dashboard'));
+	Router::connect('/mygames',array('controller'=>'businesses','action'=>'mygames'));
+	Router::connect('/favorites',array('controller'=>'businesses','action'=>'favorites'));
+	Router::connect('/explore/games',array('controller'=>'businesses','action'=>'exploregames'));
+	Router::connect('/following',array('controller'=>'businesses','action'=>'following'));
+	Router::connect('/followers',array('controller'=>'businesses','action'=>'followers'));
+	Router::connect('/explore/channels',array('controller'=>'businesses','action'=>'explorechannels'));
+	Router::connect('/activities',array('controller'=>'businesses','action'=>'activities'));
+	Router::connect('/settings/channel',array('controller'=>'businesses','action'=>'channel_settings'));
+	Router::connect('/settings/profile',array('controller'=>'businesses','action'=>'settings'));
+	Router::connect('/settings/notifications',array('controller'=>'businesses','action'=>'notifications'));
+	Router::connect('/settings/ads',array('controller'=>'businesses','action'=>'ads_management'));
+	Router::connect('/logout',array('controller'=>'businesses','action'=>'logout'));
+
+  /*
+ * Routers for general functions
+ * Business clone link system
+ */
+     //Router::connect('/search',array('controller'=>'businesses','action'=>'search2'));
 
 /**
  * ...and connect the rest of 'Pages' controller's urls.
@@ -107,8 +130,7 @@
         Configure::write('Domain.type', 'normal');
         }  
 	
-	    //General routing functions
-	    //Router::connect('/dashboard',array('controller'=>'businesses','action'=>'dashboard'));
+	    
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
