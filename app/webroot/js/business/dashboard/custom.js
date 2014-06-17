@@ -772,7 +772,17 @@ $('#fav_button').click(function () {
 	          	});	
 			}
 	});
-	
+
+	function fav_check(game_id){
+    	$.get(favswitcher+'/'+game_id,
+    	function(data) {
+			if(data == 0)
+			{
+			alert(0);
+			}		
+		});
+	}
+		
 	function switch_favorite(game_id)
     {
     	$.get(favswitcher+'/'+game_id,
@@ -780,8 +790,11 @@ $('#fav_button').click(function () {
 			if(data == 0)
 			{
 			$("#fav-" + game_id).removeClass('btn-danger').addClass('btn-default');
+         	Messenger().post("Game Unavorited");
+
 			}else{
 			$("#fav-" + game_id).removeClass('btn-default').addClass('btn-danger');
+		    Messenger().post("Game Favorited");
 			}
 		});	
     }

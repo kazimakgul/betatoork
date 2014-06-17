@@ -10,14 +10,6 @@ foreach ($games as $game) {
     $userurl = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
     ?>
     <div class="row user">
-            <div style="float:left;">
-		<!-- Favorite Button -->
-		<div class="favourite">
-			<div class="widget-button" data-toggle="tooltip" data-original-title="Unfavorite">
-				<button type="button"  id="fav-<?php echo $game['Game']['id'];?>" class="btn btn-danger" id="fav_button" onclick="favorite('<?php echo $name;?>',user_auth,<?php echo $game['Game']['id'];?>);"><li class="fa fa-heart"></li><span class="label label-info" id="fav_count"></span></button>
-			</div>
-		</div><!-- Favorite Button  End-->
-        </div>
  	<div class="col-sm-1">
     		<button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame2('<?php echo $name; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog "></i> Clone</button>
     	</div>
