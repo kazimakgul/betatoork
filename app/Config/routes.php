@@ -107,7 +107,8 @@
         Configure::write('Domain.type', 'normal');
         }  
 	
-	
+	    //General routing functions
+	    Router::connect('/dashboard',array('controller'=>'businesses','action'=>'dashboard'));
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 

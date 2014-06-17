@@ -1,8 +1,8 @@
 <?php 
 $logout=$this->Html->url(array("controller" => "businesses","action" =>"logout")); 
 if(isset($pure_domain))
-{
-$dashboard=$this->Html->url('http://'.$pure_domain); 
+{ 
+$dashboard=$this->Html->url('http://'.$pure_domain.'/dashboard'); 
 }else{
 $dashboard=$this->Html->url(array("controller" => "businesses","action" =>"dashboard")); 
 }
