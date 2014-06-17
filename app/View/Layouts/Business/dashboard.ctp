@@ -145,6 +145,83 @@
 		});
 	</script>
 
+	<!--[if lt IE 9]>
+      Dummy startup wizard page için gerekli. Custom.js dosyasına taşınacak
+    <![endif]-->
 
+	<script type="text/javascript">
+		$(function () {
+			var $steps = $(".form-wizard .step"),
+				$buttons = $steps.find("[data-step]"),
+				$tabs = $(".header .steps .step"),
+				active_step = 0;
+
+			$buttons.click(function (e) {
+				e.preventDefault();
+
+				var step_index = $(this).data("step") - 1;
+				var in_fade_class = (step_index > active_step) ? "fadeInRightStep" : "fadeInLeftStep";
+				var out_fade_class = (in_fade_class === "fadeInRightStep") ? "fadeOutLeftStep" : "fadeOutRightStep";
+
+				var $out_step = $steps.eq(active_step);
+				$out_step.on(utils.animation_ends(), function () {
+					$out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
+				}).addClass(out_fade_class);
+
+				active_step = step_index;
+
+				$tabs.removeClass("active").filter(":lt(" + (active_step + 1) + ")").addClass("active");
+
+				$steps.removeClass("active");
+				$steps.eq(step_index).addClass("active animated " + in_fade_class);
+			});
+
+		});
+	</script>
+
+
+	<div class="skin-switcher">
+		<div class="toggler">
+			<i class="fa fa-magic"></i>
+		</div>
+		<ul class="menu">
+			<li>
+				<a class="active" data-skin="sidebar-default" href="#">
+					<span class="color default"></span> Default
+					<i class="fa fa-check"></i>
+				</a>
+			</li>
+			<li>
+				<a data-skin="sidebar-clear" href="#">
+					<span class="color clear"></span> Clear
+					<i class="fa fa-check"></i>
+				</a>
+			</li>
+			<li>
+				<a data-skin="sidebar-black" href="#">
+					<span class="color black"></span> Black
+					<i class="fa fa-check"></i>
+				</a>
+			</li>
+			<li>
+				<a data-skin="sidebar-dark" href="#">
+					<span class="color dark"></span> Dark
+					<i class="fa fa-check"></i>
+				</a>
+			</li>
+			<li>
+				<a data-skin="sidebar-flat" href="#">
+					<span class="color flat"></span> Flat
+					<i class="fa fa-check"></i>
+				</a>
+			</li>
+			<li>
+				<a data-skin="sidebar-flat-dark" href="#">
+					<span class="color flat-dark"></span> Flat dark
+					<i class="fa fa-check"></i>
+				</a>
+			</li>
+		</ul>
+	</div>
 
 </html>
