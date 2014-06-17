@@ -12,7 +12,7 @@ $settings=$this->Html->url(array("controller" => "businesses","action" =>"channe
 $visitor_mode='?mode=visitor';
 
 if(Configure::read('Domain.type')=='subdomain' && isset($pure_domain))
-$index=$this->Html->url('http://'.$user['User']['seo_username'].'.'.$pure_domain); 
+$index=$this->Html->url('/'); 
 else
 $index=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$user['User']['id']));
 
