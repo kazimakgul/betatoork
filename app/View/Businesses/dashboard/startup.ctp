@@ -1,9 +1,15 @@
-
+<?php 
+$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+$image = $this->requestAction( array('controller' => 'users', 'action' => 'randomPicture',62));
+  if($user['User']['picture']==null) { 
+    $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class'=>'img-responsive img-circle circular1',"alt" => "clone user image")); 
+    } else {
+      $img = $this->Upload->image($user,'User.picture',array(),array('class'=>'img-responsive img-circle circular1','onerror'=>'imgError(this,"avatar");'));
+	}
+?>
 <body id="wizard">
 	<div id="wrapper">
-
 	<?php echo $this->element('business/dashboard/sidebar',array('active'=>'dashboard')); ?>
-	
 		<div id="content">
 
 			<div class="content-wrapper">
@@ -36,26 +42,105 @@
 
 					<form id="new-customer" method="post" action="#" role="form">
 						<div class="step active animated fadeInRightStep">
-							<div class="form-group">
-							    <label>Full name</label>
-							    <input type="text" class="form-control" name="customer[first_name]" />
-						  	</div>
-						  	<div class="form-group">
-							    <label>Email address</label>
-							    <input type="text" class="form-control" name="customer[email]" />
-						  	</div>
-						  	<div class="form-group">
-							    <label>Password</label>
-							   	<input type="password" class="form-control" name="customer[password]" />
-							</div>
-							<div class="form-group">
-							    <label>Confirm Password</label>
-							   	<input type="password" class="form-control" name="customer[password_confirmation]" />
-							</div>
-						  	<div class="form-group">
-							    <label for="inputPassword3">Extra notes</label>
-							    <textarea class="form-control" rows="4" name="customer[notes]"></textarea>
-						  	</div>
+				  	<div class="form-group">
+					<label>Custom Domain: </label> <a class="btn btn-default"> http://<?php echo $user['User']['seo_username'];?>.clone.gs </a> <a class="btn btn-default"><i class="fa fa-globe"></i> Map Domain </a>
+						<span class="help" data-toggle="tooltip" title="Map your own domain to your channel.">
+					    		<i class="fa fa-question-circle"></i>
+					    </span>
+					</div>
+
+            <!--Channel Cover Avatar Begins -->
+            <div id='background_area' style="background-image: url('<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>'); background-color:<?php echo $user['User']['bg_color'];?>;" class="well col-md-12">
+                <?php
+                if($user['User']['banner']==null) { ?>
+                <div id="user_cover" style="background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);height: 160px;">
+                <?php } else { ?>
+                <div id="user_cover" style="background-image:url(<?php echo Configure::read('S3.url')."/upload/users/".$user['User']['id']."/".$user['User']['banner'];?>);height: 160px;">
+                <?php }
+                $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
+                      if($user['User']['picture']==null) { 
+                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('style'=>'margin-top:120px;','id'=>'user_avatar','class'=>'pic circular1 img-thumbnail',"alt" => "clone user image")); 
+                        } else {
+                          echo $this->Upload->image($user,'User.picture',array(),array('style'=>'margin-top:120px; width:120px; height:120px;','id'=>'user_avatar','class'=>'pic circular1 img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
+                    ?>
+					
+					<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin: 10px 0px 0px -110px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
+                    
+                    <div class="name">
+                        <div class="showme">
+                        	
+                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:-40px 0px 10px 25px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
+                        	
+                        </div>
+                    </div>
+                </div>
+    <br><br><br><br>
+    			</div>
+					<!--Channel Cover Avatar Ends -->
+				  	<div class="form-group">
+						<label>Screen Name
+                        <span class="help" data-toggle="tooltip" title="Users will see your screen name on your channel.">
+					    		<i class="fa fa-question-circle"></i>
+					    </span>
+						</label>
+						<input type="text" class="form-control" name='screenname' id="title" value="<?php echo $user['User']['screenname'];?>" />
+					</div>
+					<div class="form-group">
+				  		<label>Description</label>
+				  		<div><textarea id="desc" class="form-control" id="desc" rows="4" name="description" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['description'];?></textarea></div>
+				  	</div>
+				  	<div class="form-group">
+					    <label>Background Color</label>
+					    <div>
+					      	<input type="text" class="form-control minicolors" name='bgclr' id="bgcolor" value="<?php echo $user['User']['bg_color'];?>"/>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label>Background Image</label>
+					    <div>
+					    	<div class="well">
+					    		<div class="pic">
+
+                           <?php 
+                           if($user['User']['bg_image']!=NULL && $user['User']['bg_image']!=''){
+                            $bg_message="Background selected.";
+                            $bg_exist=1;
+                           	?>
+                                   <img id='user_background' src="<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>" class="img-responsive">
+                           <?php 
+                            }else{
+                            $bg_message="No background chosen.";
+                            $bg_exist=0;	
+                           	?>
+					    			<img id='user_background' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
+					    	<?php }?>		
+
+
+					    		</div>
+			                    
+			                    <div class="control-group" style="margin-bottom:5px;">
+				                    <label for="post_featured_image" style='display: block;'>
+				                    	Choose a picture:
+				                    </label>
+				                    <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default"><span class="fa fa-picture-o"></span> Choose File</a><span id='bg_message' style='margin-left:6px;'><?php echo $bg_message; ?></span>
+				                </div>
+				                <?php if($bg_exist==1){ ?>
+		                        <a href="#" class="remove_bg_img">Remove Background Image</a>
+		                        <?php }else{ ?>
+                                <a style="display:none;" href="#" class="remove_bg_img">Remove Background Image</a>
+		                        <?php } ?>
+				            </div>
+					    </div>
+				  	</div>
+					<div class="form-group">
+				  		<label>Analitics Code:</label>
+				  		<div><textarea id="analitics" class="form-control" rows="4" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['analitics'];?></textarea></div>
+
+				  	</div>
+					<div class="form-group">
+						<input type="hidden" id="attr" name="attr" value="channel_update" />
+					</div>
+
 						  	<div class="form-group form-actions">
 					      		<button type="submit" class="button" data-step="2">
 					      			<span>Next Step <i class="fa fa-angle-double-right"></i></span>
