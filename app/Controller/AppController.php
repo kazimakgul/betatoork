@@ -106,16 +106,15 @@ class AppController extends Controller {
 
     public function noprefixdomain()
     {
-          echo 'domain info';
-          if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
-          $new_subdomain = 'naber';
-          $split_domain = explode('.',$_SERVER['HTTP_HOST']);
-          $gochannel=$new_subdomain.'.'.$split_domain[count($split_domain) - 2].'.'.$split_domain[count($split_domain) - 1];
-          }  
-          echo 'go channel:'.$gochannel;
-    }
+          $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
+          if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" ) { 
+          $str=env("HTTP_HOST");
+          $prefix = $subdomain.'.';
+          $output=str_replace($prefix,'',$str);
+          echo 'new domain'.$output;
+          }
     
-
+    }
     //This functin will get special style settings and store them in session
     public function get_style_settings($id=NULL)
     {
