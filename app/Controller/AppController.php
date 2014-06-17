@@ -112,7 +112,7 @@ class AppController extends Controller {
           
             $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
                 if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" && $subdomain != "www") {
-                $urlobj=parse_url($_SERVER['HTTP_HOST']);
+                $urlobj=parse_url('http://'.$_SERVER['HTTP_HOST']);
                 $domain=$urlobj['host'];
                 if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
                 echo 'pure domain'.$regs['domain'];
