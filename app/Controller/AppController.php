@@ -110,18 +110,16 @@ class AppController extends Controller {
 
        if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
           
-            $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
+            $subdomain = Configure::read('Domain.subdomain');
                 if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" && $subdomain != "www") {
                 
                 $pure_domain=str_replace($subdomain.'.','',$_SERVER['HTTP_HOST']);
-                echo $pure_domain;
+                $this->set('pure_domain',$pure_domain);
 
-            }else{
-                $pure_domain='http://'.$_SERVER['HTTP_HOST'];echo $pure_domain;
-            } 
- 
+            }
+        
        }
-
+       
     }
     //This functin will get special style settings and store them in session
     public function get_style_settings($id=NULL)
