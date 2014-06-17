@@ -20,12 +20,13 @@ class BusinessesController extends AppController {
             return true;
         }
 
-        if (($this->action === 'add3') || ($this->action === 'add2') || ($this->action === 'dashboard') || ($this->action === 'mygames') || ($this->action === 'favorites') ||
-                ($this->action === 'startup') || ($this->action === 'settings') || ($this->action === 'channel_settings') || ($this->action === 'chains') ||
-                ($this->action === 'channel')) {
-            // All registered users can add posts
-            return true;
+        //permissons for logged in users
+        if (in_array($this->action, array('startup', 'dashboard','mygames','favorites','exploregames','settings','channel_settings','following','followers','explorechannels','activities','app_status','steps2launch','ads_management','notifications','add_ads','game_add','mygames_search','exploregames_search','following_search','followers_search','mygames_search','favorites_search','explorechannels_search'))) {
+           return true;
         }
+
+
+        //Edit yaparken duzenle
         if (in_array($this->action, array('edit2', 'delete'))) {
             $gameId = $this->request->params['pass'][0];
             return $this->Game->isOwnedBy($gameId, $user['id']);
