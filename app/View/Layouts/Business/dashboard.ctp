@@ -34,6 +34,7 @@
 	        deletedata		= '<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deleteData')); ?>';
 	        remove_background = '<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_background')); ?>';   
 			subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
+	        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 			<?php if($this->Session->check('Auth.User')){
 			echo 'user_auth=1;';
 			}else{

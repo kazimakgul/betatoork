@@ -10,18 +10,26 @@ foreach ($games as $game) {
     $userurl = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['Game']['User']['id'])));
     ?>
     <div class="row user">
+         <div style="float:left;">
+		<!-- Favorite Button -->
+		<div class="favourite">
+			<div class="widget-button" data-toggle="tooltip" data-original-title="Unfavorite">
+				<button type="button"  id="fav-<?php echo $game['Game']['id'];?>" class="btn btn-danger" id="fav_button" onclick="favorite('<?php echo $name;?>',user_auth,<?php echo $game['Game']['id'];?>);"><li class="fa fa-heart"></li><span class="label label-info" id="fav_count"></span></button>
+			</div>
+		</div><!-- Favorite Button  End-->
+        </div>
         <div class="col-sm-2 avatar">
-            <input type="checkbox" name="select-user" />
+		
             <a href="<?php echo $playurl ?>" target="_blank">
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
             </a>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <a href="<?php echo $playurl ?>"  target="_blank" class="name">
                 <?php echo $name ?>
             </a>
         </div>
-        <div class="col-sm-2 text-right">
+        <div class="col-sm-1 text-right">
             <?php if ($owner !== FALSE) { ?>
                 <a href="<?php echo $userurl ?>"  target="_blank" class="name">
                     <?php echo $owner ?>

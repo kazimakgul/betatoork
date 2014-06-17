@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
- 
  
     /**
      *	Update Form Post Method
@@ -739,4 +737,51 @@ function switchfollow(id)
 		$('#follow_button').show();
 			}
 	});
+//***************************************************
+//------------------Favorite Functions-------------------------
+//***************************************************	
+
+	function favorite (game_name,user_auth,id) {
+		    if(user_auth==1)
+		    {
+				switch_favorite(id);
+			}else{
+				$('#login').modal('show');
+			}
+	}
 	
+	function unFavorite (game_name,user_auth,id) {
+		    if(user_auth==1)
+		    {
+				switch_favorite(id);
+			}else
+			{
+				$('#login').modal('show');	
+			}
+	}
+	
+$('#fav_button').click(function () {
+			if(user_auth==1)
+		    {
+			}else
+			{
+				$.pnotify({
+	            title: 'Sign in Please',
+	            text: 'You have to sign in first to favorite games.',
+	            type: 'error'
+	          	});	
+			}
+	});
+	
+	function switch_favorite(game_id)
+    {
+    	$.get(favswitcher+'/'+game_id,
+    	function(data) {
+			if(data == 0)
+			{
+			$("#fav-" + game_id).removeClass('btn-danger').addClass('btn-default');
+			}else{
+			$("#fav-" + game_id).removeClass('btn-default').addClass('btn-danger');
+			}
+		});	
+    }
