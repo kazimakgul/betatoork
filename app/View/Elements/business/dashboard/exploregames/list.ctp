@@ -10,13 +10,15 @@ foreach ($games as $game) {
     $userurl = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
     ?>
     <div class="row user">
+    	<div class="col-sm-1">
+    		<a href="#" onclick="chaingame2('<?php echo $name; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success" data-placement="top" data-toggle="tooltip" title="" data-original-title="Clone This Game"><i class="fa fa-cog "></i> Clone</a>
+    	</div>
         <div class="col-sm-2 avatar">
-            <input type="checkbox" name="select-user" />
             <a href="<?php echo $playurl ?>" target="_blank">
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
             </a>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
             <a href="<?php echo $playurl ?>"  target="_blank" class="name">
                 <?php echo $name ?>
             </a>

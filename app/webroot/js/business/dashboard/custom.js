@@ -785,3 +785,27 @@ $('#fav_button').click(function () {
 			}
 		});	
     }
+    
+
+	function chaingame2(game_name,user_auth,game_id)
+	{
+		if(user_auth==1)
+	    {
+			$.get(chaingame + '/'+game_id, 
+			function (data)
+			{
+				if(data==1)
+				{
+					alert("clone");
+				}else
+				{
+					alert("clone1");
+				}
+			});
+			
+		}else
+		{
+			$('#myModal').modal('hide');
+			$('#login').modal('show');
+		}	
+	}

@@ -35,6 +35,7 @@
 	        remove_background = '<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_background')); ?>';   
 			subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
 	        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
+	        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
 			<?php if($this->Session->check('Auth.User')){
 			echo 'user_auth=1;';
 			}else{
