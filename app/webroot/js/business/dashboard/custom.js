@@ -789,17 +789,21 @@ $('#fav_button').click(function () {
 
 	function chaingame2(game_name,user_auth,game_id)
 	{
+		
+		var btn = $('#clone-'+game_id);
+		btn.button('loading');
 		if(user_auth==1)
 	    {
+	    	
 			$.get(chaingame + '/'+game_id, 
 			function (data)
 			{
 				if(data==1)
 				{
-					alert("clone");
+		                	Messenger().post("Game Cloned");
+		                	btn.button('reset');
 				}else
 				{
-					alert("clone1");
 				}
 			});
 			
