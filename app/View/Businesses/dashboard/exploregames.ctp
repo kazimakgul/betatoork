@@ -61,19 +61,10 @@ $allgames = $params['count'];
                 <div class="row users-list">
                     <div class="col-md-12">
                         <div class="row headers">
+                            <div class="col-sm-1">
+							</div>
                             <div class="col-sm-2 header select-users">
-                                <input type="checkbox" />
-                                <div class="dropdown bulk-actions">
-                                    <a data-toggle="dropdown" href="#">
-                                        Bulk actions
-                                        <span class="total-checked"></span>
-                                        <i class="fa fa-chevron-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <li><a href="#">Delete game(s)</a></li>
-                                        <li><a href="#">Edit game</a></li>
-                                    </ul>
-                                </div>
+                                
                             </div>
                             <div class="col-sm-4 header hidden-xs">
                                 <label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>

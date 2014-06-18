@@ -353,6 +353,65 @@ class BusinessesController extends AppController {
     public function startup() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+        $limit = 12;
+        $this->paginate = array(
+            'Game' => array(
+                'fields' => array(
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'Game.embed',
+                    'Game.clone',
+                    'Game.created',
+                    'User.seo_username',
+                    'Game.description',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone',
+                    'Gamestat.potential',
+                    'User.id',
+                    'User.username',
+                    'User.seo_username'
+                ),
+                'limit' => $limit,
+                'order' => array(
+                    'Game.id' => 'DESC'
+                )
+            )
+        );
+        $cond = $this->paginate('Game');
+        $this->set('games', $cond);
+
+        $limit = 12;
+        $this->paginate = array(
+            'User' => array(
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.seo_username',
+                    'User.picture'
+                ),
+                'contain' => array(
+                    'Userstat' => array(
+                        'fields' => array(
+                            'Userstat.subscribe',
+                            'Userstat.subscribeto',
+                            'Userstat.uploadcount'
+                        )
+                    )
+                ),
+                'order' => array(
+                    'User.id' => 'DESC'
+                ),
+                'limit' => $limit
+            )
+        );
+        $data = $this->paginate('User');
+        $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');

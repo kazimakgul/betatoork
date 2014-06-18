@@ -148,49 +148,29 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 						  	</div>
 						</div>
 						<div class="step">
-							<div class="form-group">
-							    <label>Username</label>
-							    <input type="text" class="form-control" name="customer[username]" />
-						  	</div>
-						  	<div class="form-group">
-							    <label>Display picture</label>
-							    <div class="display-field clearfix">
-							    	<div class="display">
-								    	<span>100x100</span>
+							<?php
+								foreach ($games as $game) {
+								    $name = $game['Game']['name'];
+								    $clones = empty($game['Gamestat']['channelclone']) ? 0 : $game['Gamestat']['channelclone'];
+								    $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
+								    $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
+								    $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
+								    $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
+								    ?>
+								    <div class="game col-sm-4">
+								        <a href="<?php echo $playurl ?>">
+								            <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
+								        </a>
+								        <div class="name">
+								            <a href="<?php echo $playurl ?>">
+								                <?php echo $name ?>
+								            </a>
+								        </div>
 								    </div>
-								    <input type="file" name="customer[display]" />
-							    </div>
-						  	</div>
-						  	<div class="form-group">
-							    <label>Application name</label>
-							   	<input type="text" class="form-control" name="customer[]" />
-							</div>
-							<div class="form-group">
-							    <label>Timezone</label>
-							   	<select id="user_time_zone" data-smart-select>
-									<option value="Hawaii">(GMT-10:00) Hawaii</option>
-									<option value="Alaska">(GMT-09:00) Alaska</option>
-									<option value="Pacific Time (US &amp; Canada)">
-										(GMT-08:00) Pacific Time (US &amp; Canada)
-									</option>
-									<option value="Arizona">(GMT-07:00) Arizona</option>
-									<option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-									<option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-									<option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-									<option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-									<option value="" disabled="disabled">-------------</option>
-									<option value="American Samoa">(GMT-11:00) American Samoa</option>
-									<option value="International Date Line West">(GMT-11:00) International Date Line West</option>
-									<option value="Midway Island">(GMT-11:00) Midway Island</option>
-									<option value="Tijuana">(GMT-08:00) Tijuana</option>
-									<option value="Chihuahua">(GMT-07:00) Chihuahua</option>
-									<option value="Mazatlan">(GMT-07:00) Mazatlan</option>
-									<option value="Central America">(GMT-06:00) Central America</option>
-									<option value="Guadalajara">(GMT-06:00) Guadalajara</option>
-									<option value="Mexico City">(GMT-06:00) Mexico City</option>
-									<option value="Monterrey" >(GMT-06:00) Monterrey</option>
-								</select>
-							</div>
+								    <?php
+								}
+								?>
+								<div class="clear"></div>
 						  	<div class="form-group form-actions">
 						  		<a class="button" href="#" data-step="1">
 						  			<span><i class="fa fa-angle-double-left"></i> Back</span>
@@ -201,36 +181,45 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 						  	</div>
 						</div>
 						<div class="step">
-							<div class="form-group">
-							    <label>Add/Clone Games</label>
-							    <select data-smart-select>
-                                    <option value="1">Basic - $19.00/month (USD)</option>
-                                    <option value="2">Pro - $39.00/month (USD)</option>
-                                    <option value="3">Premium - $59.00/month (USD)</option>
-                                    <option value="4">Enterprise - $129.00/month (USD)</option>
-                                </select>
-						  	</div>
-							<div class="form-group">
-							    <label>Name on Card</label>
-							    <input type="text" class="form-control" name="customer[first_name]" />
-						  	</div>
-						  	<div class="form-group">
-							    <label>Credit Card Number</label>
-							    <input type="text" class="form-control" name="customer[email]" />
-						  	</div>
-						  	<div class="form-group clearfix">
-						  		<div class="column expiration-field">
-						  			<label>Card Expiration</label>
-								    <div class="clearfix">
-								    	<input type="text" placeholder="MM" class="form-control" name="customer[password]" />
-								   		<input type="text" placeholder="YYYY" class="form-control" name="customer[password]" />
-								    </div>
-						  		</div>
-						  		<div class="column pull-right">
-						  			<label>Card CVC Number</label>
-							   		<input type="text" class="form-control" name="customer[password_confirmation]" />
-						  		</div>
-							</div>
+<?php
+foreach ($following as $value) {
+    $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
+    $name = $value['User']['username'];
+	$userid  =$value['User']['id'];
+	$publicname = $value['User']['username'];
+	$followstatus=$this->requestAction( array('controller' => 'subscriptions', 'action' => 'followstatus'),array($userid));
+    $followers = $value['Userstat']['subscribe'];
+    $following = $value['Userstat']['subscribeto'];
+    $games = $value['Userstat']['uploadcount'];
+    ?>
+    <div class="user col-sm-2">
+        <a href="<?php echo $userlink ?>">
+            <?php
+            if (is_null($value['User']['picture'])) {
+                $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
+                echo $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $name));
+            } else {
+                echo $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $name));
+            }
+            ?>
+        </a>
+<!-- Follow button -->
+    <?php if($followstatus!=1){ ?>
+    <a id="follow<?php echo $userid; ?>" class="btn btn-primary" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-plus-circle"></i> Follow</a> 
+    <a id="unfollow<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"> <i class="fa fa-foursquare"></i> Unfollow</a>
+    <?php }else{ ?> 
+    <a id="unfollow<?php echo $userid; ?>" class="btn btn-success" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-foursquare"></i>  Unfollow</a>
+    <a id="follow<?php echo $userid; ?>" style="display:none;" class="btn btn-primary" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-plus-circle"></i> Follow</a> <?php } ?> 
+<!-- Follow button end -->
+        <div class="name">
+            <a href="<?php echo $userlink ?>">
+                <?php echo $name ?>
+            </a>
+        </div>
+    </div>
+    <?php
+}
+?>							
 						  	<div class="form-group form-actions">
 						  		<a class="button" href="#" data-step="2">
 						  			<span><i class="fa fa-angle-double-left"></i> Back</span>
