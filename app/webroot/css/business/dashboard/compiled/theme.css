@@ -7206,6 +7206,7 @@ body {
   margin: 0 auto;
   margin-top: 42px;
   width: 65%;
+  min-height: 1071px; /* Sonradan Eklendi */
   position: relative; }
   @media (max-width: 767px) {
     #wizard .form-wizard {

@@ -170,7 +170,6 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 								    <?php
 								}
 								?>
-								<div class="clear"></div>
 						  	<div class="form-group form-actions">
 						  		<a class="button" href="#" data-step="1">
 						  			<span><i class="fa fa-angle-double-left"></i> Back</span>
