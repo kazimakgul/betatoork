@@ -53,22 +53,8 @@ class MobilesController extends AppController {
         //This line gets user selected channel styles
         $this->get_style_settings($userid);
 
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $userid
-            ),
-            'fields' => array(
-                'User.username',
-                'User.screenname',
-                'User.picture',
-                'User.fb_link',
-                'User.twitter_link',
-                'User.gplus_link',
-                'User.description',
-                'User.banner'
-            ),
-             )
-        );
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+
 
         $this->set('user', $user);
         $this->set('user_id', $userid);
@@ -194,33 +180,9 @@ class MobilesController extends AppController {
                 )
         );
 
-        $this->set('game_link', $game['Game']['link']);
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']), 'fields' => array('*')));
 
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $game['Game']['user_id']
-            ),
-            'fields' => array(
-                'User.username',
-                'User.screenname',
-                'User.picture',
-                'User.fb_link',
-                'User.twitter_link',
-                'User.gplus_link',
-                'User.description',
-                'User.banner'
-            ),
-                //'contain' => false    //  OĞUZ BAKICAK
-                )
-        );
-        
-        $this->set('user', $user);
-        $this->set('user_id', $game['Game']['user_id']);
-        $this->set('screenname', $user['User']['screenname']);
-        $this->set('username', $user['User']['username']);
-        $this->set('description', $user['User']['description']);
-        $this->set('cover', $user['User']['banner']);
-        $this->set('picture', $user['User']['picture']);
+
 
         if (empty($user['Userstat']['subscribe'])) {
             $this->set('followers', 0);
@@ -269,7 +231,14 @@ class MobilesController extends AppController {
         if (!empty($user['User']['gplus_link'])) {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
-        
+        $this->set('game_link', $game['Game']['link']);
+        $this->set('user', $user);
+        $this->set('user_id', $game['Game']['user_id']);
+        $this->set('screenname', $user['User']['screenname']);
+        $this->set('username', $user['User']['username']);
+        $this->set('description', $user['User']['description']);
+        $this->set('cover', $user['User']['banner']);
+        $this->set('picture', $user['User']['picture']); 
     }
 
     public function search2($userid) {

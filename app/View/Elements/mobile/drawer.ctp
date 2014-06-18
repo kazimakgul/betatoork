@@ -5,6 +5,7 @@ $toprated = $this->Html->url(array("controller" => "mobiles", "action" => "index
 $mostplayed = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:playcount/direction:desc';
 $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:id/direction:desc';
 $image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));
+print_r($user);
 ?>
 <div class="snap-drawers">
     <div class="snap-drawer snap-drawer-left deny-scrool-x">
