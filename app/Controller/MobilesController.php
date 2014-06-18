@@ -67,8 +67,7 @@ class MobilesController extends AppController {
                 'User.description',
                 'User.banner'
             ),
-                //'contain' => false    //  OĞUZ BAKICAK
-                )
+             )
         );
 
         $this->set('user', $user);
@@ -199,7 +198,7 @@ class MobilesController extends AppController {
 
         $user = $this->User->find('first', array(
             'conditions' => array(
-                'User.id' => $userid
+                'User.id' => $game['Game']['user_id']
             ),
             'fields' => array(
                 'User.username',
