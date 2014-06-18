@@ -11,10 +11,10 @@
                     <div class="modal-body" style="padding: 35px;">
                           <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
-                                    <input class="form-control" name="firstname" placeholder="Firstname" type="text" required autofocus />
+                                    <input class="form-control" name="firstname" placeholder="First Name" type="text" required autofocus />
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
-                                    <input class="form-control" name="lastname" placeholder="Lastname" type="text" required />
+                                    <input class="form-control" name="lastname" placeholder="Last Name" type="text" required />
                                 </div>
                             </div>
                             <div class="row">
