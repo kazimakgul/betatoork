@@ -96,48 +96,6 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 					    </div>
 					</div>
 					<div class="form-group">
-					    <label>Background Image</label>
-					    <div>
-					    	<div class="well">
-					    		<div class="pic">
-
-                           <?php 
-                           if($user['User']['bg_image']!=NULL && $user['User']['bg_image']!=''){
-                            $bg_message="Background selected.";
-                            $bg_exist=1;
-                           	?>
-                                   <img id='user_background' src="<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>" class="img-responsive">
-                           <?php 
-                            }else{
-                            $bg_message="No background chosen.";
-                            $bg_exist=0;	
-                           	?>
-					    			<img id='user_background' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
-					    	<?php }?>		
-
-
-					    		</div>
-			                    
-			                    <div class="control-group" style="margin-bottom:5px;">
-				                    <label for="post_featured_image" style='display: block;'>
-				                    	Choose a picture:
-				                    </label>
-				                    <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default"><span class="fa fa-picture-o"></span> Choose File</a><span id='bg_message' style='margin-left:6px;'><?php echo $bg_message; ?></span>
-				                </div>
-				                <?php if($bg_exist==1){ ?>
-		                        <a href="#" class="remove_bg_img">Remove Background Image</a>
-		                        <?php }else{ ?>
-                                <a style="display:none;" href="#" class="remove_bg_img">Remove Background Image</a>
-		                        <?php } ?>
-				            </div>
-					    </div>
-				  	</div>
-					<div class="form-group">
-				  		<label>Analitics Code:</label>
-				  		<div><textarea id="analitics" class="form-control" rows="4" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['analitics'];?></textarea></div>
-
-				  	</div>
-					<div class="form-group">
 						<input type="hidden" id="attr" name="attr" value="channel_update" />
 					</div>
 
@@ -239,6 +197,8 @@ foreach ($following as $value) {
 								</a>
 							</div>
 						</div>
+						
+						<div style="clear: left;"></div>
 					</form>
 
 				</section>

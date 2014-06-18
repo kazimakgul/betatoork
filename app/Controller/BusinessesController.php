@@ -353,7 +353,7 @@ class BusinessesController extends AppController {
     public function startup() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        $limit = 21;
+        $limit = 12;
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
@@ -386,7 +386,7 @@ class BusinessesController extends AppController {
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
 
-        $limit = 21;
+        $limit = 12;
         $this->paginate = array(
             'User' => array(
                 'fields' => array(
