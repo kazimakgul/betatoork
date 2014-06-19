@@ -96,7 +96,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 					    </div>
 					</div>
 					<div class="form-group">
-						<input type="hidden" id="attr" name="attr" value="channel_update" />
+						<input type="hidden" id="attr" name="attr" value="channel_update_start" />
 					</div>
 
 						  	<div class="form-group form-actions">
@@ -115,7 +115,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 								    $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
 								    $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
 								    ?>
-								    <div class="game col-sm-4">
+								    <div class="game col-sm-4 panel">
 								        <a href="<?php echo $playurl ?>">
 								            <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
 								        </a>
@@ -129,10 +129,10 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 								}
 								?>
 						  	<div class="form-group form-actions">
-						  		<a class="button" href="#" data-step="1">
+						  		<a class="button" href="#" data-step="1" style="margin-top:35px;">
 						  			<span><i class="fa fa-angle-double-left"></i> Back</span>
 						  		</a>
-					      		<button type="submit" class="button" data-step="3">
+					      		<button type="submit" class="button" data-step="3" style="margin-top:35px;">
 					      			<span>Next Step <i class="fa fa-angle-double-right"></i></span>
 					      		</button>
 						  	</div>
@@ -149,30 +149,31 @@ foreach ($following as $value) {
     $following = $value['Userstat']['subscribeto'];
     $games = $value['Userstat']['uploadcount'];
     ?>
-    <div class="user col-sm-2">
+    <div class="user col-sm-2 panel">
+
         <a href="<?php echo $userlink ?>">
             <?php
             if (is_null($value['User']['picture'])) {
                 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
-                echo $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $name));
+                echo $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $name,'width'=>'90px','height'=>'120px'));
             } else {
-                echo $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $name));
+                echo $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $name,'width'=>'90px','height'=>'120px'));
             }
             ?>
         </a>
-<!-- Follow button -->
-    <?php if($followstatus!=1){ ?>
-    <a id="follow<?php echo $userid; ?>" class="btn btn-primary" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-plus-circle"></i> Follow</a> 
-    <a id="unfollow<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"> <i class="fa fa-foursquare"></i> Unfollow</a>
-    <?php }else{ ?> 
-    <a id="unfollow<?php echo $userid; ?>" class="btn btn-success" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-foursquare"></i>  Unfollow</a>
-    <a id="follow<?php echo $userid; ?>" style="display:none;" class="btn btn-primary" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-plus-circle"></i> Follow</a> <?php } ?> 
-<!-- Follow button end -->
         <div class="name">
             <a href="<?php echo $userlink ?>">
                 <?php echo $name ?>
             </a>
         </div>
+<!-- Follow button -->
+    <?php if($followstatus!=1){ ?>
+    <a id="follow<?php echo $userid; ?>" class="btn btn-primary" style="width:90px;" onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-plus-circle"></i> Follow</a> 
+    <a id="unfollow<?php echo $userid; ?>" style="display:none;width:90px;" class="btn btn-success" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"> <i class="fa fa-foursquare"></i> Unfollow</a>
+    <?php }else{ ?> 
+    <a id="unfollow<?php echo $userid; ?>" class="btn btn-success" style="width:90px;" onclick="subscribeout('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-foursquare"></i>  Unfollow</a>
+    <a id="follow<?php echo $userid; ?>" style="display:none;width:90px;" class="btn btn-primary"  onclick="subscribe('<?php echo $publicname?>',user_auth,<?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>); _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname?>']);"><i class="fa fa-plus-circle"></i> Follow</a> <?php } ?> 
+<!-- Follow button end -->
     </div>
     <?php
 }
@@ -192,7 +193,7 @@ foreach ($following as $value) {
 								<h3>
 									Your account has been configured successfully!
 								</h3>
-								<a href="#" class="button">
+								<a href="" class="button" id="updateButton">
 									<span>Go to my channel</span>
 								</a>
 							</div>
@@ -206,4 +207,48 @@ foreach ($following as $value) {
 			</div>
 		</div>
 	</div>
+	
+	<!-- Avatar Change Modal begins -->
+    <div class="modal fade" id="pictureChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                
+                <?php 
+				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','avatar_image',$user['User']['id']));
+				$url=$avatar_image_url;
+				?>
+                <iframe id='avatarframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+                
+            </div>
+        </div>
+    </div>
+<!-- Avatar Change Modal ends -->
+
+<!-- Cover Change Modal begins -->
+    <div class="modal fade" id="coverChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                <?php 
+				$avatar_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','cover_image',$user['User']['id']));
+				$url=$avatar_image_url;
+				?>
+                <iframe id='coverframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+	<!-- Cover Change Modal ends -->
+
+	<!-- Background Change Modal begins -->
+    <div class="modal fade" id="backgroundChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                <?php 
+                $background_image_url=$this->Html->url(array('controller'=>'uploads','action'=>'index','bg_image',$user['User']['id']));
+                $url=$background_image_url;
+                ?>
+                <iframe id='backgroundframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Background Change Modal ends -->
 </body>

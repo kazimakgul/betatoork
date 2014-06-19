@@ -64,6 +64,21 @@ $(document).ready(function() {
 		                }
 		            }, 'json');
         }
+        else if (attr == "channel_update_start") {
+			$.post(link, {
+                attr	: attr,
+                title	: $('#title').val(),
+                desc	: $('#desc').val(),
+                bgColor: $('#bgcolor').val()
+ 					},
+		            function(data) {
+		                if (data.error) {
+		                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+		                }else{
+		                	setTimeout(function(){location.href=mysite+'/'+userid}, 2000 );
+		                }
+		            }, 'json');
+        }
         else if (attr == "edit_ads" && $('#edit_ads').valid()) {
         	var anyChecked = $("input:checkbox[name=category]:checked");
 		  	var category = new Array();

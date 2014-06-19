@@ -36,8 +36,10 @@
 			subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
 	        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 	        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
+	        mysite			='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite')); ?>';
 			<?php if($this->Session->check('Auth.User')){
 			echo 'user_auth=1;';
+			echo 'userid='.$this->Session->read('Auth.User.id');
 			}else{
 			echo 'user_auth=0;';
 			}

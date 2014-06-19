@@ -100,6 +100,14 @@ class BusinessesController extends AppController {
                 $this->User->query('UPDATE users SET screenname="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '", analitics="' . $analitics . '" WHERE id=' . $user_id);
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
+            } elseif ($attr == "channel_update_start") {
+                $title = $this->request->data['title'];
+                $desc = $this->request->data['desc'];
+                $bgColor = $this->request->data['bgColor'];
+
+                $this->User->query('UPDATE users SET screenname="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '" WHERE id=' . $user_id);
+                $this->set('success', "Channel Settings Updated.");
+                $this->set('_serialize', array('success'));
             } elseif ($attr == "edit_ads") {
                 $filtered_data['Adcode']['name'] = $this->request->data['title'];
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
@@ -353,7 +361,7 @@ class BusinessesController extends AppController {
     public function startup() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        $limit = 12;
+        $limit = 15;
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
@@ -383,35 +391,14 @@ class BusinessesController extends AppController {
                 )
             )
         );
+
+
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
+		$limit = 18;
+        $this->set('following', $this->User->find('all', array('conditions' => array('User.active' => '1'), 'limit' => $limit, 'order' => array('User.last_login' => 'desc'))));
 
-        $limit = 12;
-        $this->paginate = array(
-            'User' => array(
-                'fields' => array(
-                    'User.id',
-                    'User.username',
-                    'User.seo_username',
-                    'User.picture'
-                ),
-                'contain' => array(
-                    'Userstat' => array(
-                        'fields' => array(
-                            'Userstat.subscribe',
-                            'Userstat.subscribeto',
-                            'Userstat.uploadcount'
-                        )
-                    )
-                ),
-                'order' => array(
-                    'User.id' => 'DESC'
-                ),
-                'limit' => $limit
-            )
-        );
-        $data = $this->paginate('User');
-        $this->set('following', $data);
+
         $this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
