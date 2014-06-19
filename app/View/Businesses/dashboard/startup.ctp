@@ -120,7 +120,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 								            <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
 								        </a>
 								        <div class="name">
-								            <a href="<?php echo $playurl ?>">
+								            <a href="<?php echo $playurl ?>" class="text-render">
 								                <?php echo $name ?>
 								            </a>
 								        </div>
@@ -162,7 +162,7 @@ foreach ($following as $value) {
             ?>
         </a>
         <div class="name">
-            <a href="<?php echo $userlink ?>">
+            <a href="<?php echo $userlink ?>" class="text-render">
                 <?php echo $name ?>
             </a>
         </div>

@@ -69,8 +69,17 @@
 	margin-top: -25px;
 	height: 25px;
 	overflow: hidden;
-	text-shadow: 0.1em 0.1em 0.2em black;
 	font-weight: 700;
 	margin-left:5px;
-	width:80px;
+}
+.text-render{
+	color:white;
+	text-rendering: optimizelegibility;
+	text-shadow: 0 0 3px rgba(0,0,0,.8);
+}
+.text-render:hover{
+	text-decoration:underline;
+	color:white;
+	text-rendering: optimizelegibility;
+	text-shadow: 0 0 3px rgba(0,0,0,.8);
 }
