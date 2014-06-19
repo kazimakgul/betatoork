@@ -36,6 +36,7 @@ class BusinessesController extends AppController {
     }
     
     public function beforeFilter() {
+      parent::beforeFilter();
       $this->noprefixdomain();
     }    
 
