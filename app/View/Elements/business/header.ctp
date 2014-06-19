@@ -3,12 +3,16 @@ $logout=$this->Html->url(array("controller" => "businesses","action" =>"logout")
 if(isset($pure_domain))
 { 
 $dashboard=$this->Html->url('http://'.$pure_domain.'/dashboard'); 
+$mygames=$this->Html->url('http://'.$pure_domain.'/mygames'); 
+$settings=$mygames=$this->Html->url('http://'.$pure_domain.'/settings/channel'); 
 }else{
-$dashboard=$this->Html->url(array("controller" => "businesses","action" =>"dashboard")); 
-}
+$dashboard=$this->Html->url(array("controller" => "businesses","action" =>"dashboard"));
 $mygames=$this->Html->url(array("controller" => "businesses","action" =>"mygames"));
+$settings=$this->Html->url(array("controller" => "businesses","action" =>"channel_settings")); 
+}
+
 $search = $this->Html->url(array("controller" => "businesses","action" =>"search2",$user['User']['id']));
-$settings=$this->Html->url(array("controller" => "businesses","action" =>"channel_settings"));
+
 $visitor_mode='?mode=visitor';
 
 if(Configure::read('Domain.type')=='subdomain' && isset($pure_domain))
