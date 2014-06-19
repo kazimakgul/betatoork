@@ -116,9 +116,8 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 								    $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
 								    ?>
 								    <div class="game col-sm-4 panel">
-								        <a href="<?php echo $playurl ?>">
+					            		<a id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame2('<?php echo $name; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success startUpClone"><i class="fa fa-cog "></i> Clone</a>
 								            <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
-								        </a>
 								        <div class="name">
 								            <a href="<?php echo $playurl ?>" class="text-render">
 								                <?php echo $name ?>
