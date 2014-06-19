@@ -58,7 +58,7 @@
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
     Router::connect('/games', array('controller' => 'games', 'action' => 'index'));
-Router::connect('/', array('controller' => 'games', 'action' => 'index'));
+
 	/**
  * ...Generatin seo url
  */
