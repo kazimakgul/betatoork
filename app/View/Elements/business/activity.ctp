@@ -12,14 +12,69 @@ foreach ($notifications as $lastactivity):
 $performername=$lastactivity['PerformerUser']['username'];
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 $followid = $lastactivity['PerformerUser']['id'];
+$card = $this->requestAction( array('controller' => 'games', 'action' => 'follow_card', $followid));
 $activity_message = $this->requestAction( array('controller' => 'apis', 'action' => 'notificationMessage'),array('pass' => $lastactivity));
+$type = $lastactivity['Activity']['type'];
+$profileurl=$this->Html->url(array("controller" => "businesses","action" =>"mysite",$followid));
+   //$a => violet, yellow, dark, purple, 
+   switch( $type )
+   {
+      case 1:
+		 $a = "";
+         $b = "comment";
+         break;
+      case 2:
+		 $a = "yellow";
+         $b = "check";
+         break;
+      case 3:
+		 $a = "purple";
+         $b = "files-o";
+         break;
+      case 4:
+		 $a = "purple";
+         $b = "quote-left";
+         break;
+      case 5:
+		 $a = "violet";
+         $b = "fa-upload";
+         break;
+      case 6:
+		 $a = "";
+         $b = "comment";
+         break;
+      case 7:
+		 $a = "";
+         $b = "quote-left";
+         break;
+      case 8:
+		 $a = "yellow";
+         $b = "fa-upload";
+         break;
+      case 9:
+		 $a = "";
+         $b = "files-o";
+         break;
+      case 10:
+		 $a = "purple";
+         $b = "fa-upload";
+         break;
+      case 11:
+		 $a = "";
+         $b = "fa-check";
+         break;
+      default:
+		 $a = "";
+         $b = "comment";
+   }
+
 ?>
   
           <div class="<?php echo $class ?>">
                 <div class="row event clearfix">
                     <div class="col-sm-1">
-                        <div class="icon">
-                            <i class="fa fa-comment"></i>
+                        <div class="icon <? echo $a; ?>">
+                            <i class="fa fa-<? echo $b; ?>"></i>
                         </div>
                     </div>
                     <div class="col-sm-11 message">
@@ -27,13 +82,13 @@ $activity_message = $this->requestAction( array('controller' => 'apis', 'action'
               if($card[6]['User']['picture']==null) { 
                 echo $this->Html->image("/img/avatars/$avatarImage.jpg", array("alt" => "toork avatar image",'width'=>'50','height'=>'50','class'=>'avatar')); 
                 } else {
-                echo $this->Upload->image($card[6],'User.picture',array('class'=>'avatar'),array('width'=>'50','height'=>'50','onerror'=>'imgError(this,"avatar");'));  }
+                echo $this->Upload->image($card[6],'User.picture',array(),array('width'=>'50','height'=>'50','onerror'=>'imgError(this,"avatar");','class'=>'avatar'));  }
               ?>
-<!--                        <img src="http://wolfadmin.herokuapp.com/assets/avatars/16-d920ead0154f6f2b29f34c811d563245.jpg" class="avatar">
--->                            <div class="content">
+                            <div class="content">
                                 <a style="margin-left:9px;" href="<?php echo $profileurl ?>"><strong><?php echo $performername; ?></strong> <?php echo $activity_message;?>
                             </div>
                     </div>
                 </div>
             </div>
 <?php endforeach; ?>
+

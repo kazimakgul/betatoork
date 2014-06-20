@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="content-wrapper">
-                <!-- Single button -->
+                <!-- Single button 
                 <div class="filter-user btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         Filter by user <span class="caret"></span>
@@ -21,14 +21,14 @@
                         <li><a href="#">Robb Stark</a></li>
                         <li><a href="#">Anna Sophia</a></li>
                     </ul>
-                </div>
-                <h3>
-                    Today
-                    <small>August 03, 2014</small>
-                </h3>
+                </div>-->
+               <h3>
+                    Activity Line
+                    <!--<small>August 03, 2014</small>-->
+               </h3>
                 <?php echo $this->element('business/activity') ?>
                 <div class="text-center">
-                    <?php echo $this->element('business/components/pagination') ?>
+                    <?php //echo $this->element('business/components/pagination') ?>
                 </div>
             </div>
         </div>
