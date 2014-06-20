@@ -253,23 +253,7 @@ class MobilesController extends AppController {
         
         $keys = $this->Game->query("SELECT * FROM games as Game JOIN gamestats as Gamestat ON Gamestat.game_id = Game.id WHERE (Game.description like '%" . $param . "%' or Game.name like '%" . $param . "%') and user_id=$userid");
         
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $userid
-            ),
-            'fields' => array(
-                'User.username',
-                'User.screenname',
-                'User.picture',
-                'User.fb_link',
-                'User.twitter_link',
-                'User.gplus_link',
-                'User.description',
-                'User.banner'
-            ),
-                //'contain' => false    //  OĞUZ BAKICAK
-                )
-        );
+        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         
         $game = $this->Game->find('first', array(
             'conditions' => array(
