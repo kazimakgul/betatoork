@@ -94,7 +94,7 @@
 	    //additional:http://theworldinpixels.com/wildcard-subdomains-in-cakephp/
 	    //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
         $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
-        if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" && $subdomain != "www") { 
+        if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" && $subdomain != "www" && $subdomain != "clone" && $subdomain != "clonegame") { 
         echo 'subdomain detected';
         echo $subdomain;
         //Mobile detection begins
@@ -107,7 +107,7 @@
         Router::connect('/play/:seo_url', array('controller' => 'mobiles', 'action' => 'play'),array('seo_url' => '[-a-z0-9]+','pass' => array('seo_url')));
         }else{
         //Mobile detection ends
-        Router::connect('/', array('controller' => 'games', 'action' => 'index'));
+        Router::connect('/',array('controller'=>'businesses','action'=>'mysite'));
         Router::connect('/play/:seo_url', array('controller' => 'businesses', 'action' => 'play'),array('seo_url' => '[-a-z0-9]+','pass' => array('seo_url')));
         Router::connect('/category/:cat_url', array('controller' => 'businesses', 'action' => 'category'),array('cat_url' => '[-a-z0-9]+','pass' => array('cat_url')));
 	    Router::connect('/games/hot',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'recommend', 'direction'=>'desc'));
