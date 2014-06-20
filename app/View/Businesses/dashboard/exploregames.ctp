@@ -66,7 +66,7 @@ $allgames = $params['count'];
                             <div class="col-sm-2 header select-users">
                                 
                             </div>
-                            <div class="col-sm-4 header hidden-xs">
+                            <div class="col-sm-3 header hidden-xs">
                                 <label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
                             </div>
                             <div class="col-sm-2 header hidden-xs text-right">

@@ -18,7 +18,7 @@ foreach ($games as $game) {
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
             </a>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <a href="<?php echo $playurl ?>"  target="_blank" class="name">
                 <?php echo $name ?>
             </a>
