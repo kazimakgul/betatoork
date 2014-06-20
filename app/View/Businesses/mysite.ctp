@@ -1,4 +1,11 @@
 
+<?php 
+//***************************************
+//this area writes times of sql processes-will be removed
+//http://blog.tersmitten.nl/how-to-debug-sql-from-a-controller-in-cakephp.html
+//echo $this->element('sql_dump');
+?>
+
 <div class="container">
 <?php
 
