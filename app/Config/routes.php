@@ -27,8 +27,19 @@
  */
 //	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 	
-	Router::connect('/', array('controller' => 'games', 'action' => 'index'));
+/*
+ * Routers for side bar function inside dashboard
+ * Business clone link system
+ */
+//
+	
 
+  /*
+ * Routers for general functions
+ * Business clone link system
+ */
+     //Router::connect('/search',array('controller'=>'businesses','action'=>'search2'));
+    Router::connect('/', array('controller' => 'games', 'action' => 'index'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
@@ -61,12 +72,10 @@
 	
 	Router::connect('/:channel', array('controller' => 'games', 'action' => 'profile'),array('channel' => '[-a-z0-9]+','pass' => array('channel')));
 	
+
+        
 	
-	
-	
-	
-	
-	
+	    
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
