@@ -1,3 +1,7 @@
+<?php 
+echo $this->element('sql_dump');
+?>
+
 <?php
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 $profile = $this->Html->url(array('controller'=>'businesses','action'=>'profile'));
