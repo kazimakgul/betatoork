@@ -1197,6 +1197,9 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $limit = 16;
+       
+        
+ /*
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
@@ -1226,6 +1229,33 @@ class BusinessesController extends AppController {
                 )
             )
         );
+  */
+
+       //Connectionun inner join kullanmasını on fly olarak sağlıyoruz.
+       $this->Game->bindModel(
+                array(
+                    'hasOne' => array(
+                        'Gamestat' => array(
+                            'className' => 'Gamestat',
+                            'foreignKey' => 'game_id',
+                            'type'=>'INNER'
+                        )
+                    )
+                )
+        );
+
+        
+        $this->paginate=array(
+            'Game'=>array(
+                'fields'=>array('*'),
+                'limit' => $limit,
+                'contain'=>array('User','Gamestat'),
+                'order' => array(
+                    'Game.id' => 'DESC'
+                )
+                )
+            );
+      
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
         $this->set('title_for_layout', 'Clone Business Explore Games');
