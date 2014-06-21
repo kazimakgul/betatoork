@@ -55,5 +55,14 @@
         <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<div id="fb-root"></div>
         <?php echo $this->Html->script(array('assets/prettify','business/custom','business/business','fbconnect','landingscripts')); ?>
+
+
+<?php 
+//***************************************
+//this area writes times of sql processes-will be removed
+//http://blog.tersmitten.nl/how-to-debug-sql-from-a-controller-in-cakephp.html
+echo $this->element('sql_dump');
+?>
+        
     </body>
 </html>

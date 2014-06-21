@@ -717,7 +717,6 @@ class BusinessesController extends AppController {
         $this->get_ads_info($userid, $authid);
 
         $limit = 9;
-        $this->set('top_rated_games', $this->Game->find('all', array('conditions' => array('Game.active' => '1'), 'limit' => $limit, 'order' => array('Game.recommend' => 'desc'))));
         $this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
         $this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.starsize' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
         $this->set('category', $category);
