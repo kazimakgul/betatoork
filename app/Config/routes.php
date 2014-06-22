@@ -32,6 +32,7 @@
  * Business clone link system
  */
 //
+	Router::connect('/', array('controller' => 'games', 'action' => 'index'));
 	Router::connect('/dashboard',array('controller'=>'businesses','action'=>'dashboard'));
 	Router::connect('/mygames',array('controller'=>'businesses','action'=>'mygames'));
 	Router::connect('/favorites',array('controller'=>'businesses','action'=>'favorites'));
