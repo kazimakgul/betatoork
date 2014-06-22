@@ -172,18 +172,20 @@ class BusinessesController extends AppController {
                 $this->set('_serialize', array('success'));
 			}
 			elseif($attr == "game_add"){
-                $filtered_data['Game']['name'] = $this->request->data['name'];
-                $filtered_data['Game']['description'] = $this->request->data['desc'];
-                $filtered_data['Game']['link'] = $this->request->data['link'];
-                $filtered_data['Game']['width'] = $this->request->data['width'];
-                $filtered_data['Game']['height'] = $this->request->data['height'];
-				$filtered_data['Game']['category_id'] = $this->request->data['category'];
-                $filtered_data['Game']['fullscreen'] = $this->request->data['fullscreen']=='on'?1:0;
-				$filtered_data['Game']['mobileready'] = $this->request->data['mobile']=='on'?1:0;
-				$filtered_data['Game']['user_id'] = $user_id;
-				$filtered_data['Game']['created'] = date('Y-m-d H:i:s');
-				$filtered_data['Game']['owner_id'] = $user_id;
+                $game_name = $this->request->data['name'];
+                $game_description = $this->request->data['desc'];
+                $game_link = $this->request->data['game_link'];
+                $game_width = $this->request->data['width'];
+                $game_height = $this->request->data['height'];
+                $game_priority=$this->request->data['game_priority'];
+				$category_id = $this->request->data['category'];
+                $fullscreen = $this->request->data['fullscreen']=='on'?1:0;
+				$mobileready = $this->request->data['mobile'];
+				$game_user_id = $user_id;
+				$created  = date('Y-m-d H:i:s');
+				$game_owner_id = $user_id;
 				$filtered_data['Game']['seo_url'] = strtolower(str_replace(' ', '-', $this->request->data['name']));
+                $game_Seo_url=$this->Game->checkDuplicateSeoUrl($game_name);
 			    
                 $image_name=$this->request->data['image_name'];
 
@@ -198,6 +200,37 @@ class BusinessesController extends AppController {
                 $newname=$filename.'_toorksize.'.$ext;
                 rename(WWW_ROOT ."/upload/temporary/".$user_id."/".$image_name, WWW_ROOT ."/upload/temporary/".$user_id."/".$newname); 
                 //This area should be exist for upload plugin needs-ends    
+
+                if($game_file!='empty')
+                {
+                $type=$this->Game->get_game_type($game_file);
+                }else{
+                $type=$this->Game->get_game_type($game_link);
+                }
+
+                //============Save Datas To Games Database Begins================
+                //*****************************
+                //Secure data filtering begins
+                //*****************************
+               $filtered_data=
+               array('Game' =>array(
+              'name' => $game_name=$this->Game->secureSuperGlobalPOST($game_name),
+              'description' => $this->Game->secureSuperGlobalPOST($game_description),
+              'game_link' => $game_link,
+              'width' => $game_width,
+              'height' => $game_height,
+              'type' => $type,
+              'link' => $game_link,
+              'priority' => $game_priority,
+              'user_id' => $game_user_id,
+              'category_id' => $category_id,
+              'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
+              'user_id' => $game_user_id,
+              'fullscreen' => $fullscreen,
+              'mobileready' => $mobileready));
+              //*****************************
+              //Secure data filtering ends
+              //*****************************
 
 				//print_r($filtered_data);
 				if($this->Game->save($filtered_data))

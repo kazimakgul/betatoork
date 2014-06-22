@@ -147,7 +147,7 @@ $(document).ready(function() {
                 attr		: attr,
                 name		: $('#name').val(),
                 desc		: $('#desc').val(),
-                link		: $('#link').val(),
+                link		: $('#game_link').val(),
                 width		: $('#width').val(),
                 height		: $('#height').val(),
                 category	: $('#category_id').val(),

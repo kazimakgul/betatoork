@@ -80,10 +80,11 @@
 					    	</span>
 						    </label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" id="link" placeholder="http://socialesman.com" name="product[address]" />
+						      	<input type="text" class="form-control" id="game_link" placeholder="http://socialesman.com" name="product[address]" />
 						    </div>
 						    <div class="col-sm-5 col-md-5 right">
 						      	<a data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title="">Upload Game File</a>
+						      	<input id="game_file" type="hidden" value="empty"> 
 						    </div>
 						</div>
 				  	</div>
