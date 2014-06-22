@@ -184,13 +184,49 @@ class BusinessesController extends AppController {
 				$filtered_data['Game']['created'] = date('Y-m-d H:i:s');
 				$filtered_data['Game']['owner_id'] = $user_id;
 				$filtered_data['Game']['seo_url'] = strtolower(str_replace(' ', '-', $this->request->data['name']));
-			//	$filtered_data['Game']['picture'] = $this->request->data['picture'];
+			    
+                $image_name=$this->request->data['image_name'];
+
+
+                //This area should be exist for upload plugin needs-begins  
+                $file = new File(WWW_ROOT ."/upload/temporary/".$user_id."/".$image_name,false);
+                $info=$file->info();
+                $filename=$info["filename"];
+                $ext=$info["extension"];
+                $basename=$info["basename"];
+                $dirname=$info["dirname"];
+                $newname=$filename.'_toorksize.'.$ext;
+                rename(WWW_ROOT ."/upload/temporary/".$user_id."/".$image_name, WWW_ROOT ."/upload/temporary/".$user_id."/".$newname); 
+                //This area should be exist for upload plugin needs-ends    
 
 				//print_r($filtered_data);
 				if($this->Game->save($filtered_data))
 				{
+                    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$user_id));
+                    $id=$this->Game->getLastInsertId();
+                    $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$user_id));
+
+                    //=======Upload to aws for Game Image begins===========
+                    $feedback=$this->Amazon->S3->create_object(
+                    Configure::read('S3.name'),
+                   'upload/games/'.$id."/".$newname,
+                    array(
+                   'fileUpload' => WWW_ROOT ."/upload/temporary/".$user_id."/".$newname,
+                   'acl' => AmazonS3::ACL_PUBLIC
+                    )
+                    );
+                   //========Upload to aws for Game Image ends==============
+                  if($feedback)
+                  {
+                  //Set the picture field on db.
+                  $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id); 
+                  $this->remove_temporary($user_id,'new_game');
+                  }
+                
+                $msg = array("title" => 'Game has been Added.'.'game file:'.$game_file,'result' => 1);//Feedback olarak bu array yapısı kullanılmalı.
+                $this->set('rtdata', $msg);
 				$this->set('success', "Game Added");
-                $this->set('_serialize', array('success'));
+                $this->set('_serialize', array('success','rtdata'));
 				}
 				
 			}

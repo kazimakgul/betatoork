@@ -10,7 +10,7 @@
 					New game form 
 					
 					<small class="hidden-xs">
-						<strong>Add game to Clone.gs</strong>
+						<strong>Add game to your channel</strong>
 					</small>
 				</div>
 			</div>
@@ -27,19 +27,13 @@
 					    	<div class="well">
 					    		<div class="pic">
 
+                           
                            <?php 
-                           if($user['User']['bg_image']!=NULL && $user['User']['bg_image']!=''){
-                            $bg_message="Background selected.";
-                            $bg_exist=1;
-                           	?>
-                                   <img id='user_background' src="<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>" class="img-responsive">
-                           <?php 
-                            }else{
-                            $bg_message="No background chosen.";
+                            $bg_message="No image chosen.";
                             $bg_exist=0;	
                            	?>
-					    			<img id='user_background' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
-					    	<?php }?>		
+					    			<img id='game_image' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
+					    		
 
 
 					    		</div>
@@ -48,7 +42,7 @@
 				                    <label for="post_featured_image" style='display: block;'>
 				                    	Choose a picture:
 				                    </label>
-				                    <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default"><span class="fa fa-picture-o"></span> Choose File</a><span id='bg_message' style='margin-left:6px;'><?php echo $bg_message; ?></span>
+				                    <a data-toggle="modal" data-target="#gameChange"  href="#" class="btn btn-xs btn-default"><span class="fa fa-picture-o"></span> Choose File</a><span id='bg_message' style='margin-left:6px;'><?php echo $bg_message; ?></span>
 				                </div>
 				                <?php if($bg_exist==1){ ?>
 		                        <a href="#" class="remove_bg_img">Remove Background Image</a>
@@ -158,5 +152,32 @@
 			</div>
 		</div>
 	</div>
+
+
+	<!-- Game Image Change Modal begins -->
+    <div class="modal fade" id="gameChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                <?php 
+        $url=$this->Html->url(array('controller'=>'uploads','action'=>'images','new_game',$user['User']['id']));
+        ?>
+                <iframe id='gameframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+  <!-- Game Image Change Modal ends -->      
+
+  <!-- Game Add Modal begins -->
+    <div class="modal fade" id="gameAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+        <div class="modal-dialog" style="width:800px;">
+            <div>
+                <?php 
+        $url=$this->Html->url(array('controller'=>'uploads','action'=>'games','game_upload',$user['User']['id']));
+        ?>
+                <iframe id='gameaddframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+  <!-- Game Add Modal ends -->   
 
 </body>

@@ -153,7 +153,8 @@ $(document).ready(function() {
                 category	: $('#category_id').val(),
                 tags		: $('#tags').val(),
                 fullscreen	: $('#fullscreen').val(),
-                mobile		: $('#mobile').val()
+                mobile		: $('#mobile').val(),
+                image_name : $('#game_image').attr('data-src')
             },
             function(data) {
                 if (data.error) {
@@ -361,6 +362,48 @@ $('#backgroundframe').load(function(){
 
 });
 //Controller functions for modals of background ends
+
+//Controller functions for modals of game image begins
+$('#gameframe').load(function(){
+  $(this).contents().find("#close_panel").on('click', function(event) { $('#gameChange').modal('toggle'); });
+});
+
+$('#gameframe').load(function(){
+  $(this).contents().find("#set_photo").on('click', function(event) {
+   $('#gameChange').modal('toggle');
+   $('#game_image').attr('src','http://www.imageyourself.net/images/website/loading.gif');  
+    
+    var new_img = $('iframe[id=gameframe]').contents().find('#new_image_link').val();
+    var img_name = $('iframe[id=gameframe]').contents().find('#selected_image').val();
+    $('#game_image').attr('src',new_img);
+    $('#game_image').attr('data-src',img_name);
+    $('#bg_message').html('Image selected.');
+
+   });
+
+});
+//Controller functions for modals of game_image ends
+
+//Controller functions for modals of game Upload begins
+$('#gameaddframe').load(function(){
+  $(this).contents().find("#close_panel").on('click', function(event) { $('#gameAdd').modal('toggle'); });
+});
+
+$('#gameaddframe').load(function(){
+  $(this).contents().find("#set_photo").on('click', function(event) {
+   $('#gameAdd').modal('toggle');
+   $('#game_file_loader').attr('src','http://www.imageyourself.net/images/website/loading.gif');  
+   setTimeout(function(){
+    var img_name = $('iframe[id=gameaddframe]').contents().find('#selected_image').val();
+    $('#game_file').val(img_name);
+    $('#game_link').val(img_name);
+    $('#game_link').attr('disabled', 'disabled');
+   },1000);
+
+   });
+
+});
+//Controller functions for modals of game Upload ends
 
 
 
