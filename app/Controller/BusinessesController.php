@@ -184,8 +184,6 @@ class BusinessesController extends AppController {
 				$game_user_id = $user_id;
 				$created  = date('Y-m-d H:i:s');
 				$game_owner_id = $user_id;
-				$filtered_data['Game']['seo_url'] = strtolower(str_replace(' ', '-', $this->request->data['name']));
-                $game_Seo_url=$this->Game->checkDuplicateSeoUrl($game_name);
 			    
                 $image_name=$this->request->data['image_name'];
 
