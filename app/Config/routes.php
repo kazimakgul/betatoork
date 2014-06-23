@@ -47,6 +47,7 @@
 	Router::connect('/settings/ads',array('controller'=>'businesses','action'=>'ads_management'));
 	Router::connect('/game/add',array('controller'=>'businesses','action'=>'game_add'));
 	Router::connect('/game/edit/:game_id', array('controller' => 'businesses', 'action' => 'game_edit'),array('game_id' => '[-a-z0-9]+','pass' => array('game_id')));
+	Router::connect('/game/edit/*', array('controller' => 'businesses', 'action' => 'game_edit'));
 	Router::connect('/logout',array('controller'=>'businesses','action'=>'logout'));
 
   /*

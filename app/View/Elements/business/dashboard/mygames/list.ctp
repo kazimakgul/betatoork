@@ -19,6 +19,7 @@ foreach ($games as $game) {
             <a href="<?php echo $playurl ?>" class="name">
                 <?php echo $name ?>
             </a>
+            <a href="<?php echo $game_edit_link.'/'.$id; ?>"><i class="fa fa-pencil"></i></a>
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">

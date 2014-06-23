@@ -2,6 +2,7 @@
 $search_action = $this->Html->url(array("controller" => "businesses", "action" => "mygames_search"));
 $mygames = $this->Html->url(array("controller" => "businesses", "action" => "mygames"));
 $game_add = $this->Html->url(array("controller" => "businesses", "action" => "game_add"));
+$game_edit = $this->Html->url(array("controller" => "businesses", "action" => "game_edit"));
 $params = $this->Paginator->params();
 $allgames = $params['count'];
 ?>
@@ -91,7 +92,7 @@ $allgames = $params['count'];
                                 <label><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></label>
                             </div>
                         </div>
-                        <?php echo $this->element('business/dashboard/mygames/list') ?>
+                        <?php echo $this->element('business/dashboard/mygames/list',array('game_edit_link'=>$game_edit)) ?>
                         <div class="text-center">
                             <?php echo $this->element('business/components/pagination') ?>
                         </div>
