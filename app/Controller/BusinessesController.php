@@ -244,7 +244,7 @@ class BusinessesController extends AppController {
                     $id=$this->Game->getLastInsertId();
                     $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$user_id));
 
-                    /*
+                    
                     //=======Upload to aws for Game Image begins===========
                     $feedback=$this->Amazon->S3->create_object(
                     Configure::read('S3.name'),
@@ -261,7 +261,7 @@ class BusinessesController extends AppController {
                   $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id); 
                   $this->remove_temporary($user_id,'new_game');
                   }
-                  */
+                  
                   
                 
                
