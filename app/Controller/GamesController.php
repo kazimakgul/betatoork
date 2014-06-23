@@ -210,7 +210,7 @@ class GamesController extends AppController {
 //**********************This functions redirect managers and admins to business area*********************************
 //Bu fonksiyon tamamen geçicidir.Yeni sisteme geçildikten sonra silinecek.
 if($user['User']['role']==1)
-//$this->redirect(array("controller" => "businesses","action" => "dashboard"));
+$this->redirect(array("controller" => "businesses","action" => "dashboard"));
 //*******************************************************************************************************************
 
 
