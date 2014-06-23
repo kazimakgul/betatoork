@@ -178,13 +178,12 @@ class BusinessesController extends AppController {
                 $game_width = $this->request->data['width'];
                 $game_height = $this->request->data['height'];
                 $game_priority=$this->request->data['game_priority'];
-				$category_id = $this->request->data['category'];
+				        $category_id = $this->request->data['category'];
                 $fullscreen = $this->request->data['fullscreen']=='on'?1:0;
-				$mobileready = $this->request->data['mobile'];
-				$game_user_id = $user_id;
-				$created  = date('Y-m-d H:i:s');
-				$game_owner_id = $user_id;
-			    
+				        $mobileready = $this->request->data['mobile'];
+				        $game_user_id = $user_id;
+				        $created  = date('Y-m-d H:i:s');
+				        $game_owner_id = $user_id;
                 $image_name=$this->request->data['image_name'];
 
 
@@ -233,10 +232,12 @@ class BusinessesController extends AppController {
 				//print_r($filtered_data);
 				if($this->Game->save($filtered_data))
 				{
+                  /*
                     $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$user_id));
                     $id=$this->Game->getLastInsertId();
                     $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$user_id));
 
+                    
                     //=======Upload to aws for Game Image begins===========
                     $feedback=$this->Amazon->S3->create_object(
                     Configure::read('S3.name'),
@@ -253,11 +254,11 @@ class BusinessesController extends AppController {
                   $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id); 
                   $this->remove_temporary($user_id,'new_game');
                   }
+                  */
                 
-                $msg = array("title" => 'Game has been Added.'.'game file:'.$game_file,'result' => 1);//Feedback olarak bu array yapısı kullanılmalı.
-                $this->set('rtdata', $msg);
-				$this->set('success', "Game Added");
-                $this->set('_serialize', array('success','rtdata'));
+               
+				        $this->set('success', "Game Added");
+                $this->set('_serialize', array('success'));
 				}
 				
 			}
