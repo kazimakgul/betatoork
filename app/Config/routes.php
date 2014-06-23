@@ -45,6 +45,7 @@
 	Router::connect('/settings/profile',array('controller'=>'businesses','action'=>'settings'));
 	Router::connect('/settings/notifications',array('controller'=>'businesses','action'=>'notifications'));
 	Router::connect('/settings/ads',array('controller'=>'businesses','action'=>'ads_management'));
+	Router::connect('/game/add',array('controller'=>'businesses','action'=>'game_add'));
 	Router::connect('/logout',array('controller'=>'businesses','action'=>'logout'));
 
   /*
