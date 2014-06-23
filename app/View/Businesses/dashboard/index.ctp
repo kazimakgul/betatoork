@@ -1,3 +1,9 @@
+<?php
+$ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));
+$mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
+$explorechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explorechannels'));
+?>
+
 <body id="dashboard">
 <div id="wrapper">
 		<?php  echo $this->element('business/dashboard/sidebar',array('active'=>'dashboard'));?>
@@ -11,8 +17,16 @@
 					Dashboard
 				</div>
 
-				<div class="period-select hidden-xs">
-					<form class="input-daterange">
+
+				<div class="pull-right hidden-xs">
+					<a href="<?php echo $mygames; ?>" class="btn btn-warning"><i class="fa fa-gamepad"></i> Game Management</a>
+					<a href="<?php echo $ads_management; ?>" class="btn btn-danger"><i class="fa fa-bar-chart-o"></i> Ads Management</a>
+					<a href="<?php echo $explorechannels; ?>" class="btn btn-info"><i class="ion-person-add"></i> Explore Channels</a>
+				</div>
+
+
+				<!-- <div class="period-select hidden-xs">
+					<form class="input-daterange ">
 						<div class="input-group input-group-sm">
 						  	<span class="input-group-addon">
 						  		<i class="fa fa-calendar-o"></i>
@@ -28,27 +42,27 @@
 						  	</span>
 						  	<input name="end" type="text" class="form-control datepicker" placeholder="02/27/2014" />
 						</div>
-					</form>
-				</div>
+					</form> 
+				</div> -->
 			</div>
 
 			<div class="content-wrapper">
 				<div class="metrics clearfix">
 					<div class="metric">
-						<span class="field">Total users</span>
-						<span class="data">24,900</span>
-					</div>
-					<div class="metric">
-						<span class="field">New sign ups</span>
-						<span class="data">108</span>
-					</div>
-					<div class="metric">
-						<span class="field">Sales this month</span>
+						<span class="field">Total Reputation</span>
 						<span class="data">$674.00</span>
 					</div>
 					<div class="metric">
-						<span class="field">Total Sales</span>
-						<span class="data">$3,823.90</span>
+						<span class="field">Total Followers</span>
+						<span class="data">108</span>
+					</div>
+					<div class="metric">
+						<span class="field">Game Clones</span>
+						<span class="data">674</span>
+					</div>
+					<div class="metric">
+						<span class="field">Game Plays</span>
+						<span class="data">3,823</span>
 					</div>
 				</div>
 
