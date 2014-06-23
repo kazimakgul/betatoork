@@ -22,6 +22,11 @@
     .stars2 {
         margin-left: 17px;
     }
+    .notfound {
+        color: #323949;
+        font-size: 30px;
+        padding-top: 50px;
+    }
 }
 @media (min-width: 480px) and (max-width: 767px) {
     .col-sm-4{
@@ -51,6 +56,11 @@
     .stars2 {
         margin-left: 17px;
     }
+    .notfound {
+        color: #323949;
+        font-size: 40px;
+        padding-top: 75px;
+    }
 }
 @media (min-width: 768px) and (max-width: 991px) {
     .yildiz {
@@ -74,6 +84,11 @@
         text-align: center;
         overflow: hidden;
     }
+    .notfound {
+        color: #323949;
+        font-size: 35px;
+        padding-top: 100px;
+    }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
     .yildiz {
@@ -92,6 +107,11 @@
         overflow: hidden;
         text-align: center;
     }
+    .notfound {
+        color: #323949;
+        font-size: 50px;
+        padding-top: 100px;
+    }
 }
 @media (min-width: 1200px) {
     .yildiz {
@@ -109,6 +129,11 @@
         margin: 0 0 5px;
         overflow: hidden;
         text-align: center;
+    }
+    .notfound {
+        color: #323949;
+        font-size: 80px;
+        padding-top: 100px;
     }
 }
 /*Stars for 16 px*/
