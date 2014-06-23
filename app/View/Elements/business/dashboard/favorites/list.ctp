@@ -10,7 +10,7 @@ foreach ($games as $game) {
     $userurl = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['Game']['User']['id'])));
     ?>
     <div class="row user">
-         <div style="float:left;">
+         <div class="col-sm-1 text-center">
 		<!-- Favorite Button -->
 		<div class="favourite">
 			<div class="widget-button" data-toggle="tooltip" data-original-title="Unfavorite">
@@ -18,18 +18,18 @@ foreach ($games as $game) {
 			</div>
 		</div><!-- Favorite Button  End-->
         </div>
-        <div class="col-sm-2 avatar">
+        <div class="col-sm-2 text-center avatar">
 		
             <a href="<?php echo $playurl ?>" target="_blank">
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
             </a>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3 text-center">
             <a href="<?php echo $playurl ?>"  target="_blank" class="name">
                 <?php echo $name ?>
             </a>
         </div>
-        <div class="col-sm-1 text-right">
+        <div class="col-sm-2 text-center">
             <?php if ($owner !== FALSE) { ?>
                 <a href="<?php echo $userurl ?>"  target="_blank" class="name">
                     <?php echo $owner ?>
@@ -40,22 +40,22 @@ foreach ($games as $game) {
                 </div>
             <?php } ?>
         </div>
-        <div class="col-sm-1 text-right">
+        <div class="col-sm-1 text-center">
             <div class="total-spent">
                 <?php echo $clones ?>
             </div>
         </div>
-        <div class="col-sm-1 text-right">
+        <div class="col-sm-1 text-center">
             <div class="total-spent">
                 <?php echo $favorites ?>
             </div>
         </div>
-        <div class="col-sm-1 text-right">
+        <div class="col-sm-1 text-center">
             <div class="total-spent">
                 <?php echo $plays ?>
             </div>
         </div>
-        <div class="col-sm-1 text-right">
+        <div class="col-sm-1 text-center">
             <div class="total-spent">
                 <?php echo $rates ?>
             </div>

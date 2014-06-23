@@ -61,24 +61,26 @@ $allgames = $params['count'];
                 <div class="row users-list">
                     <div class="col-md-12">
                         <div class="row headers">
-                            <div class="col-sm-3 header select-users">
+	             	         <div class="col-sm-1 text-center"></div>
+
+                            <div class="col-sm-2 text-center header select-users">
                             </div>
-                            <div class="col-sm-2 header hidden-xs">
+                            <div class="col-sm-3 text-center header hidden-xs">
                                 <label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
                             </div>
-                            <div class="col-sm-2 header hidden-xs text-right">
+                            <div class="col-sm-2 text-center header hidden-xs">
                                 <label>Owner</label>
                             </div>
-                            <div class="col-sm-1 header hidden-xs text-right">
+                            <div class="col-sm-1 text-center header hidden-xs">
                                 <label><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="col-sm-1 header hidden-xs text-right">
+                            <div class="col-sm-1 text-center header hidden-xs">
                                 <label><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="col-sm-1 header hidden-xs text-right">
+                            <div class="col-sm-1 text-center header hidden-xs">
                                 <label><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></label>
                             </div>
-                            <div class="col-sm-1 header hidden-xs text-right">
+                            <div class="col-sm-1 text-center header hidden-xs">
                                 <label><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></label>
                             </div>
                         </div>
