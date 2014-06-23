@@ -151,6 +151,10 @@ class BusinessesController extends AppController {
      * @return success=>"Message" or Error=>id
      */
     public function newData() {
+        Configure::write ( 'debug', 0 );
+        App::uses('Folder', 'Utility');
+        App::uses('File', 'Utility');
+
         if (isset($this->request->data['attr']) && $this->Auth->user('id')) {
             $attr = $this->request->data['attr'];
             $user_id = $this->Auth->user('id');
@@ -186,7 +190,7 @@ class BusinessesController extends AppController {
 				        $game_owner_id = $user_id;
                 $image_name=$this->request->data['image_name'];
 
-
+                
                 //This area should be exist for upload plugin needs-begins  
                 $file = new File(WWW_ROOT ."/upload/temporary/".$user_id."/".$image_name,false);
                 $info=$file->info();
@@ -197,13 +201,15 @@ class BusinessesController extends AppController {
                 $newname=$filename.'_toorksize.'.$ext;
                 rename(WWW_ROOT ."/upload/temporary/".$user_id."/".$image_name, WWW_ROOT ."/upload/temporary/".$user_id."/".$newname); 
                 //This area should be exist for upload plugin needs-ends    
-
+                
+                
                 if($game_file!='empty')
                 {
                 $type=$this->Game->get_game_type($game_file);
                 }else{
                 $type=$this->Game->get_game_type($game_link);
                 }
+                
 
                 //============Save Datas To Games Database Begins================
                 //*****************************
@@ -232,7 +238,7 @@ class BusinessesController extends AppController {
 				//print_r($filtered_data);
 				if($this->Game->save($filtered_data))
 				{
-                  /*
+                  
                     $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$user_id));
                     $id=$this->Game->getLastInsertId();
                     $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$user_id));
@@ -254,10 +260,10 @@ class BusinessesController extends AppController {
                   $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id); 
                   $this->remove_temporary($user_id,'new_game');
                   }
-                  */
+                  
                 
                
-				        $this->set('success', "Game Added");
+				        $this->set('success', $user_id.$image_name);
                 $this->set('_serialize', array('success'));
 				}
 				

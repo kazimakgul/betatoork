@@ -160,6 +160,7 @@ $(document).ready(function() {
                 if (data.error) {
                     alert(data.error); // error.id ye göre mesaj yazdırcak..
                 }else{
+                  alert('okey');
                 	Messenger().post(data.success);
                 	btn.button('reset');
                 	//setTimeout(function(){location.href=ads_management}, 2000 );
