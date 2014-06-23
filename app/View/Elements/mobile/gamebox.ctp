@@ -26,11 +26,11 @@ if (empty($games)) {
         ?>
         <div class="col-sm-4">
             <div class="thumbnail">
-                <a href="<?= $playurl ?>">
-                    <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");', 'width' => '100%')); ?>
+                <a href="<?php echo $playurl; ?>">
+                    <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");', 'width' => '100%')); ?>
                 </a>
                 <div class="caption">
-                    <h3><a href="<?= $playurl ?>"><?php echo $game['Game']['name']; ?></a></h3>
+                    <h3><a href="<?php echo $playurl;?>"><?php echo $game['Game']['name']; ?></a></h3>
                     <div class="row text-center yildiz">
                         <div class="stars2"  data-toggle="tooltip" data-original-title="<?= $game['Game']['rate_count']; ?> Rates">
                             <div class="ratingbar2" style="width: <?php echo $game['Game']['starsize']; ?>%;"></div>
@@ -49,10 +49,10 @@ if (empty($games)) {
                     <div class="row text-center">
                         <div class="btn-group btn-group-justified bt_grp_pad">
                             <div class="btn-group">
-                                <label type="button" class="btn btn-success">
+                                <a href="<?php echo $playurl; ?>" type="button" class="btn btn-success">
                                     <i class="fa fa-play" title="" data-toggle="tooltip" data-original-title=" Plays"></i>
                                     <?php echo $playcount; ?> Plays
-                                </label>
+                                </a>
                             </div>
                             <div class="btn-group">
                                 <label type="button" class="btn btn-info">
