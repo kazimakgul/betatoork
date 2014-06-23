@@ -543,7 +543,7 @@ class BusinessesController extends AppController {
             throw new NotFoundException(__('Invalid game'));
     }
 
-    $game=$this->Game->read(null, $id);
+    $game=$this->Game->find('first',array('contain'=>false,'conditions'=>array('Game.id'=>$id)));print_r($game);
     $this->set('game',$game);
 
 
