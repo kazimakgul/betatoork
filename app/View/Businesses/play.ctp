@@ -44,7 +44,11 @@ rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add'
 			<div class="panel panel-primary">
 
 			  <div class="panel-body">
-				<?=$game['Game']['embed'];?>
+
+				<!--Game Box begins-->
+                <?php  echo $this->element('business/games/game-inc'); ?>
+                <!--Game Box ends-->
+
 				<div class="col-sm-12 col-md-12">
 			        <div class='pull-left'>	
 					<?php echo $this->element('business/buttons/clone');?>
