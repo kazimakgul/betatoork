@@ -190,6 +190,14 @@ class BusinessesController extends AppController {
 				        $game_owner_id = $user_id;
                 $image_name=$this->request->data['image_name'];
                 $game_file=$this->request->data['game_file'];
+                $new_game=$this->request->data['new_game'];
+
+                if($new_game==0)
+                { 
+                  $game_id=$this->request->data['game_id'];
+                  $this->Game->id= $game_id;
+                }
+                
 
                 
                 //This area should be exist for upload plugin needs-begins  
@@ -240,7 +248,7 @@ class BusinessesController extends AppController {
 				//print_r($filtered_data);
 				if($this->Game->save($filtered_data))
 				{
-                   /**
+                   
                     $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$user_id));
                     $id=$this->Game->getLastInsertId();
                     $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$user_id));
@@ -264,7 +272,7 @@ class BusinessesController extends AppController {
                   }
                   
                 $this->gameUpload($game_file,$id,$user_id);//Check if any game upload exists
-                */
+                
                
 				        $this->set('success', "Game Added");
                 $this->set('_serialize', array('success'));
