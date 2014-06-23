@@ -143,6 +143,21 @@ $(document).ready(function() {
         }
  		else if (attr == "game_add" && $('#game_add').valid()) // && $('#game_add').valid() eklenicek
         {
+           
+            if($('#mobile').prop('checked'))
+            {
+            $mobile_ready=1;
+            }else{
+            $mobile_ready=0;
+            }
+
+            if($('#fullscreen').prop('checked'))
+            {
+            $full_screen=1;
+            }else{
+            $full_screen=0;
+            }
+
             $.post(link, {
                 attr		: attr,
                 name		: $('#name').val(),
@@ -152,15 +167,16 @@ $(document).ready(function() {
                 height		: $('#height').val(),
                 category	: $('#category_id').val(),
                 tags		: $('#tags').val(),
-                fullscreen	: $('#fullscreen').val(),
-                mobile		: $('#mobile').val(),
-                image_name : $('#game_image').attr('data-src')
+                fullscreen	: $full_screen,
+                mobile		: $mobile_ready,
+                image_name : $('#game_image').attr('data-src'),
+                game_file :  $('#game_file').val()
             },
             function(data) {
                 if (data.error) {
                     alert(data.error); // error.id ye göre mesaj yazdırcak..
                 }else{
-                  alert('okey');
+            
                 	Messenger().post(data.success);
                 	btn.button('reset');
                 	//setTimeout(function(){location.href=ads_management}, 2000 );

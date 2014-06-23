@@ -183,12 +183,13 @@ class BusinessesController extends AppController {
                 $game_height = $this->request->data['height'];
                 $game_priority=$this->request->data['game_priority'];
 				        $category_id = $this->request->data['category'];
-                $fullscreen = $this->request->data['fullscreen']=='on'?1:0;
-				        $mobileready = $this->request->data['mobile']=='on'?1:0;;
+                $fullscreen = $this->request->data['fullscreen'];
+				        $mobileready = $this->request->data['mobile'];
 				        $game_user_id = $user_id;
 				        $created  = date('Y-m-d H:i:s');
 				        $game_owner_id = $user_id;
                 $image_name=$this->request->data['image_name'];
+                $game_file=$this->request->data['game_file'];
 
                 
                 //This area should be exist for upload plugin needs-begins  
@@ -239,7 +240,7 @@ class BusinessesController extends AppController {
 				//print_r($filtered_data);
 				if($this->Game->save($filtered_data))
 				{
-                  
+                   
                     $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$user_id));
                     $id=$this->Game->getLastInsertId();
                     $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$user_id));
@@ -262,7 +263,7 @@ class BusinessesController extends AppController {
                   $this->remove_temporary($user_id,'new_game');
                   }
                   
-                  
+                $this->gameUpload($game_file,$id,$user_id);//Check if any game upload exists
                 
                
 				        $this->set('success', "Game Added");
@@ -286,6 +287,42 @@ class BusinessesController extends AppController {
             $this->set('_serialize', array('error'));
         }
     }
+
+
+  /**
+     * Game Upload method
+     *
+     * @param Request => array()
+     * @return Game upload and db data insert
+     */
+  function gameUpload($game_file=NULL,$id=NULL,$userid=NULL)
+   {
+        if($game_file!='empty')
+        {
+
+        $random_number=rand(1000000,9999999);
+        $new_game_file= $random_number.'_'.$game_file;
+          
+            //=======Upload to aws for Game Upload begins===========
+      $feedback=$this->Amazon->S3->create_object(
+            Configure::read('S3-games.name'),
+            $new_game_file,
+             array(
+            'fileUpload' => WWW_ROOT ."upload/gamefiles/".$userid."/".$game_file,
+            'acl' => AmazonS3::ACL_PUBLIC
+            )
+            );
+      //========Upload to aws for Game Upload ends==============
+      if($feedback)
+          {
+          //Set the picture field on db.
+          $game_link=Configure::read('S3-games.url').'/'.$new_game_file;
+          $this->Game->query('UPDATE games SET link="'.$game_link.'" WHERE id='.$id);
+          $this->remove_temporary($userid,'game_upload'); 
+          }
+      }   
+   }
+
 
     /**
      * Delete Form Request method
