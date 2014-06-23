@@ -21,7 +21,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard','mygames','favorites','exploregames','settings','channel_settings','following','followers','explorechannels','activities','app_status','steps2launch','ads_management','notifications','add_ads','game_add','mygames_search','exploregames_search','following_search','followers_search','mygames_search','favorites_search','explorechannels_search'))) {
+        if (in_array($this->action, array('startup', 'dashboard','mygames','favorites','exploregames','settings','channel_settings','following','followers','explorechannels','activities','app_status','steps2launch','ads_management','notifications','add_ads','game_add','game_edit','mygames_search','exploregames_search','following_search','followers_search','mygames_search','favorites_search','explorechannels_search'))) {
            return true;
         }
 
@@ -184,7 +184,7 @@ class BusinessesController extends AppController {
                 $game_priority=$this->request->data['game_priority'];
 				        $category_id = $this->request->data['category'];
                 $fullscreen = $this->request->data['fullscreen']=='on'?1:0;
-				        $mobileready = $this->request->data['mobile'];
+				        $mobileready = $this->request->data['mobile']=='on'?1:0;;
 				        $game_user_id = $user_id;
 				        $created  = date('Y-m-d H:i:s');
 				        $game_owner_id = $user_id;
@@ -219,15 +219,16 @@ class BusinessesController extends AppController {
                array('Game' =>array(
               'name' => $game_name=$this->Game->secureSuperGlobalPOST($game_name),
               'description' => $this->Game->secureSuperGlobalPOST($game_description),
-              'game_link' => $game_link,
+              'link' => $game_link,
               'width' => $game_width,
               'height' => $game_height,
               'type' => $type,
               'link' => $game_link,
-              'priority' => $game_priority,
               'user_id' => $game_user_id,
+              'priority' => 0,
               'category_id' => $category_id,
               'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
+              'owner_id' => $game_user_id,
               'user_id' => $game_user_id,
               'fullscreen' => $fullscreen,
               'mobileready' => $mobileready));
@@ -243,7 +244,7 @@ class BusinessesController extends AppController {
                     $id=$this->Game->getLastInsertId();
                     $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$user_id));
 
-                    
+                    /*
                     //=======Upload to aws for Game Image begins===========
                     $feedback=$this->Amazon->S3->create_object(
                     Configure::read('S3.name'),
@@ -260,10 +261,11 @@ class BusinessesController extends AppController {
                   $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id); 
                   $this->remove_temporary($user_id,'new_game');
                   }
+                  */
                   
                 
                
-				        $this->set('success', $user_id.$image_name);
+				        $this->set('success', "Game Added");
                 $this->set('_serialize', array('success'));
 				}
 				
@@ -522,6 +524,34 @@ class BusinessesController extends AppController {
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/game_add');
+    }
+
+
+     /**
+     * Game edit method
+     *
+     * @param 
+     * @return Game edit Page
+     */
+    public function game_edit($id=NULL) {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+    $categories = $this->Game->Category->find('list');
+
+    $this->Game->id = $id;
+    if (!$this->Game->exists()) {
+            throw new NotFoundException(__('Invalid game'));
+    }
+
+    $game=$this->Game->read(null, $id);
+    $this->set('game',$game);
+
+
+    $this->set(compact('categories'));
+    $this->set('title_for_layout', 'Clone Business Game Edit');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/game_edit');
     }
 
     /**

@@ -138,6 +138,7 @@ public function admin_game_submit()
 		'link' => $game_link,
 		'priority' => $game_priority,
 		'user_id' => $game_user_id,
+		'priority' => 0,
 		'category_id' => $category_id,
 		'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
 		'user_id' => $game_user_id,
