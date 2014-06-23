@@ -143,6 +143,14 @@ $(document).ready(function() {
         }
  		else if (attr == "game_add" && $('#game_add').valid()) // && $('#game_add').valid() eklenicek
         {
+            $new_game=$('#new_data').val();//if It is 1 so it means game add if it is not it means edit.
+
+            if($new_game==0)
+            {
+                $edited_game_id=$('#game_id').val();
+            }else{
+                $edited_game_id=0;
+            }
            
             if($('#mobile').prop('checked'))
             {
@@ -170,7 +178,9 @@ $(document).ready(function() {
                 fullscreen	: $full_screen,
                 mobile		: $mobile_ready,
                 image_name : $('#game_image').attr('data-src'),
-                game_file :  $('#game_file').val()
+                game_file :  $('#game_file').val(),
+                new_game :  $new_game,
+                game_id : $edited_game_id
             },
             function(data) {
                 if (data.error) {

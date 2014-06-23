@@ -146,6 +146,8 @@
 				  	</div>
 				  	<div class="form-group">
 				  		<input type="hidden" name="attr" id="attr" value="game_add" />
+				  		<input type="hidden" name="new_data" id="new_data" value="0" />
+				  		<input type="hidden" name="game_id" id="game_id" value="<?php echo $game['Game']['id']; ?>" />
 					</div>
 				  	<div class="form-group form-actions">
 				    	<div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
