@@ -77,13 +77,13 @@ $following = $this->Html->url(array("controller" => "businesses", "action" => "f
                                 <label><?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')) ?></label>
                             </div>
                             <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                                <label><a href="#">Followers</a></label>
+                                <label><?php echo $this->Paginator->sort('Userstat.subscribe', 'Followers', array('direction' => 'asc')) ?></label>
                             </div>
                             <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                                <label><a href="#">Following</a></label>
+                                <label><?php echo $this->Paginator->sort('Userstat.subscribeto', 'Following', array('direction' => 'asc')) ?></label>
                             </div>
                             <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                                <label class="text-right"><a href="#">Games</a></label>
+                                <label class="text-right"><?php echo $this->Paginator->sort('Userstat.uploadcount', 'Games', array('direction' => 'asc')) ?></label>
                             </div>
                         </div>
                         <?php echo $this->element('business/dashboard/following/list') ?>

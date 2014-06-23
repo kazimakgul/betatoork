@@ -33,7 +33,7 @@ foreach ($following as $value) {
         </div>
         <div class="col-sm-1 col-sm-offset-1 text-right">
             <div class="total-spent">
-                <?php echo $value['User']['Userstat']['subscribeto'] ?>
+                <?php echo $value['User']['Userstat']['subscribe'] ?>
             </div>
         </div>
         <div class="col-sm-1 col-sm-offset-1 text-right">
