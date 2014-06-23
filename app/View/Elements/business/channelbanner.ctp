@@ -19,9 +19,9 @@ subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','ac
                 <?php
                 
                 if($user['User']['banner']==null) { ?>
-                <div id="user_cover" style="background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg)">
+                <div class="panel" id="user_cover" style="background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg)">
                 <?php } else { ?>
-                <div id="user_cover" style="background-image:url(<?php echo Configure::read('S3.url')."/upload/users/".$user['User']['id']."/".$user['User']['banner'];?>)">
+                <div class="panel" id="user_cover" style="background-image:url(<?php echo Configure::read('S3.url')."/upload/users/".$user['User']['id']."/".$user['User']['banner'];?>)">
                 <?php } ?>
 
                     <?php 
