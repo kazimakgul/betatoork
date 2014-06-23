@@ -30,7 +30,7 @@ if (empty($games)) {
                     <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");', 'width' => '100%')); ?>
                 </a>
                 <div class="caption">
-                    <h3><a href="<?php echo $playurl;?>"><?php echo $game['Game']['name']; ?></a></h3>
+                    <h3><a href="<?php echo $playurl; ?>"><?php echo $game['Game']['name']; ?></a></h3>
                     <div class="row text-center yildiz">
                         <div class="stars2"  data-toggle="tooltip" data-original-title="<?= $game['Game']['rate_count']; ?> Rates">
                             <div class="ratingbar2" style="width: <?php echo $game['Game']['starsize']; ?>%;"></div>
@@ -62,6 +62,12 @@ if (empty($games)) {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="darkloader"></div>
+                <div class="loader text-center">
+                    LOADING
+                    <br>
+                    <?php echo $this->Html->image('mobile/ajax-loader.gif'); ?>
                 </div>
             </div>
         </div>
