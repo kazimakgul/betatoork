@@ -52,11 +52,6 @@
 				                    </label>
 				                    <a data-toggle="modal" data-target="#gameChange"  href="#" class="btn btn-xs btn-default"><span class="fa fa-picture-o"></span> Choose File</a><span id='bg_message' style='margin-left:6px;'><?php echo $bg_message; ?></span>
 				                </div>
-				                <?php if($bg_exist==1){ ?>
-		                        <a href="#" class="remove_bg_img">Remove Background Image</a>
-		                        <?php }else{ ?>
-                                <a style="display:none;" href="#" class="remove_bg_img">Remove Background Image</a>
-		                        <?php } ?>
 				            </div>
 					    </div>
 				  	</div>
