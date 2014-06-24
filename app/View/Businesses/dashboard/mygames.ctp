@@ -38,6 +38,10 @@ $allgames = $params['count'];
                         <a href="#">Suspended (6)</a>
                         <a href="#">Draft (1)</a>
                         -->
+                        
+                        <span style='color: gray;font-weight: bold;'><i style='color:#F7D358;font-size: 20px;vertical-align: middle;' class="fa fa-star"></i>Featured</span>
+                        
+
                         <div class="show-options">
                             <div class="dropdown">
                                 <a class="button" data-toggle="dropdown" href="#">

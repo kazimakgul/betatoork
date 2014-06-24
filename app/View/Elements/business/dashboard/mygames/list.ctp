@@ -20,6 +20,13 @@ foreach ($games as $game) {
                 <?php echo $name ?>
             </a>
             <a href="<?php echo $game_edit_link.'/'.$id; ?>"><i class="fa fa-pencil"></i></a>
+
+            <?php if($game['Game']['priority']==1){ ?>
+            <a href='#' class='featured_toggle' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#F7D358;'><i class="fa fa-star"></i></a>
+            <?php }else{?>
+            <a href='#' class='featured_toggle' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#E6E6E6;'><i class="fa fa-star"></i></a>
+            <?php }?>
+
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">

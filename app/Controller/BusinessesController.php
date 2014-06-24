@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard','mygames','favorites','exploregames','settings','channel_settings','following','followers','explorechannels','activities','app_status','steps2launch','ads_management','notifications','add_ads','game_add','game_edit','mygames_search','exploregames_search','following_search','followers_search','mygames_search','favorites_search','explorechannels_search'))) {
+        if (in_array($this->action, array('startup', 'dashboard','mygames','favorites','exploregames','settings','channel_settings','following','followers','explorechannels','activities','app_status','steps2launch','ads_management','notifications','add_ads','game_add','game_edit','mygames_search','exploregames_search','following_search','followers_search','mygames_search','favorites_search','explorechannels_search','featured_toggle'))) {
            return true;
         }
 
@@ -147,6 +147,26 @@ class BusinessesController extends AppController {
         }
     }
 
+    /**
+     * Set/Unset Featured Game Request method
+     *
+     * @param Request => game_id
+     * @return success=>"Message" or Error=>id
+     */
+    public function featured_toggle() {
+      Configure::write ( 'debug', 0 );
+
+      if ($this->Auth->user('id')) {
+
+         $msg = array("message" => 'Game set as featured.','result' => 1);
+
+       }else{
+        $msg = array("message" => 'You have to login first.','result' => 0);
+       }
+         $this->set('rtdata', $msg);
+         $this->set('_serialize', array('rtdata'));
+    }
+     
     /**
      * New Form Request method
      *
@@ -1190,6 +1210,7 @@ class BusinessesController extends AppController {
                     'Game.starsize',
                     'Game.rate_count',
                     'Game.embed',
+                    'Game.priority',
                     'Game.clone',
                     'Game.created',
                     'User.seo_username',

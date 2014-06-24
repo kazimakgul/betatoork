@@ -286,6 +286,15 @@ $('#deletedata').click(function(e) {
 
 });
 
+
+$('.featured_toggle').click(function() {
+        
+  game_id = this.id;   
+  alert(game_id);
+
+});
+
+
 $('.remove_bg_img').click(function() {
 
      //------
