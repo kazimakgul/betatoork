@@ -183,8 +183,8 @@ $(function () {
             alert('You must select an game file only');
             goUpload = false;
         }
-        if (uploadFile.size > 20000000) { // 2mb
-            alert('Please upload a smaller image, max size is 20 MB');
+        if (uploadFile.size > 50000000) { // 2mb
+            alert('Please upload a smaller file, max size is 50 MB');
             goUpload = false;
         }
         if (goUpload == true) {
