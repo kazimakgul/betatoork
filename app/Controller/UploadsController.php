@@ -24,7 +24,7 @@ class UploadsController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('images'))) {
+        if (in_array($this->action, array('images,games'))) {
            return true;
         }
 
