@@ -11,6 +11,7 @@ foreach ($games as $game) {
         <a href="<?php echo $playurl ?>">
             <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
         </a>
+		<button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame2('<?php echo $name; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success" style="margin-top: -100px;margin-left: 30px;"><i class="fa fa-cog "></i> Clone</button>
         <div class="name">
             <a href="<?php echo $playurl ?>">
                 <?php echo $name ?>

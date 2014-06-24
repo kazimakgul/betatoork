@@ -11,6 +11,12 @@ foreach ($games as $game) {
         <a href="<?php echo $playurl ?>">
             <?= $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
         </a>
+     		<!-- Favorite Button -->
+		<div class="favourite">
+			<div class="widget-button">
+				<button type="button" style="margin-top: -100px;margin-left: 50px;" id="fav-<?php echo $game['Game']['id'];?>" class="btn btn-danger" id="fav_button" onclick="favorite('<?php echo $name;?>',user_auth,<?php echo $game['Game']['id'];?>);"><li class="fa fa-heart"></li><span class="label label-info" id="fav_count"></span></button>
+			</div>
+		</div><!-- Favorite Button  End-->
         <div class="name">
             <a href="<?php echo $playurl ?>">
                 <?php echo $name ?>

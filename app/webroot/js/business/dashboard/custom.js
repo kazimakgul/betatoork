@@ -890,6 +890,8 @@ $('#fav_button').click(function () {
 		            btn.button('reset');
 				}else
 				{
+					Messenger().post("Error. Please, try again..");
+		            btn.button('reset');
 				}
 			});
 			
