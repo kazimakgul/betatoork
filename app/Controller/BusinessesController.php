@@ -250,7 +250,14 @@ class BusinessesController extends AppController {
 				{
                    
                     $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$user_id));
+                    
+                    if($new_game==0)
+                    { 
+                    $id=$game_id;
+                    }else{
                     $id=$this->Game->getLastInsertId();
+                    }
+
                     $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$user_id));
 
                     
@@ -273,8 +280,13 @@ class BusinessesController extends AppController {
                   
                 $this->gameUpload($game_file,$id,$user_id);//Check if any game upload exists
                 
-               
-				        $this->set('success', "Game Added");
+                
+                if($new_game==0)
+                { 
+				          $this->set('success', "Game Updated");
+                }else{
+                  $this->set('success', "Game Added");
+                }
                 $this->set('_serialize', array('success'));
 				}
 				
