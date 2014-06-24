@@ -166,6 +166,7 @@ $(document).ready(function() {
             $full_screen=0;
             }
 
+
             $.post(link, {
                 attr		: attr,
                 name		: $('#name').val(),

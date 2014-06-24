@@ -32,7 +32,7 @@
                             $bg_message="No image chosen.";
                             $bg_exist=0;	
                            	?>
-					    			<img id='game_image' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
+					    			<img id='game_image' data-src='empty' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
 					    		
 
 

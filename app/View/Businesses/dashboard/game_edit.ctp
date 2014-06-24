@@ -33,13 +33,13 @@
                             $bg_message="Image selected.";
                             $bg_exist=1;
                            	?>
-                                   <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'id'=>'game_image','style'=>'width:215px;height:118px;','onerror'=>'imgError(this,"toorksize");')); ?>
+                                   <?php echo $this->Upload->image($game,'Game.picture',array('style' => 'toorksize'),array('alt'=>$game['Game']['name'],'id'=>'game_image','data-src'=>'current','style'=>'width:215px;height:118px;','onerror'=>'imgError(this,"toorksize");')); ?>
                            <?php 
                             }else{
                             $bg_message="No image chosen.";
                             $bg_exist=0;	
                            	?>
-					    			<img id='game_image' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
+					    			<img id='game_image' data-src='empty' src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="img-responsive">
 					    	<?php }?>	
 					    		
 

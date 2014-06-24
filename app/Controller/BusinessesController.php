@@ -199,7 +199,8 @@ class BusinessesController extends AppController {
                 }
                 
 
-                
+                if($image_name!='current')
+                {
                 //This area should be exist for upload plugin needs-begins  
                 $file = new File(WWW_ROOT ."/upload/temporary/".$user_id."/".$image_name,false);
                 $info=$file->info();
@@ -210,7 +211,7 @@ class BusinessesController extends AppController {
                 $newname=$filename.'_toorksize.'.$ext;
                 rename(WWW_ROOT ."/upload/temporary/".$user_id."/".$image_name, WWW_ROOT ."/upload/temporary/".$user_id."/".$newname); 
                 //This area should be exist for upload plugin needs-ends    
-                
+                }
                 
                 if($game_file!='empty')
                 {
@@ -261,6 +262,8 @@ class BusinessesController extends AppController {
                     $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$user_id));
 
                     
+            if($image_name!='current')
+            {//if user didnt change the game image
                     //=======Upload to aws for Game Image begins===========
                     $feedback=$this->Amazon->S3->create_object(
                     Configure::read('S3.name'),
@@ -277,9 +280,9 @@ class BusinessesController extends AppController {
                   $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id); 
                   $this->remove_temporary($user_id,'new_game');
                   }
-                  
+            }      
                 $this->gameUpload($game_file,$id,$user_id);//Check if any game upload exists
-                
+            
                 
                 if($new_game==0)
                 { 
