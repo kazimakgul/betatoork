@@ -16,6 +16,27 @@ class UploadsController extends AppController {
  *
  * @return void
  */
+    
+    //=====Kullanici sisteme login ise=======
+    public function isAuthorized($user) {
+        if (parent::isAuthorized($user)) {
+            return true;
+        }
+
+        //permissons for logged in users
+        if (in_array($this->action, array('images'))) {
+           return true;
+        }
+
+
+        //Edit yaparken duzenle
+        if (in_array($this->action, array('edit2', 'delete'))) {
+            $gameId = $this->request->params['pass'][0];
+            return $this->Game->isOwnedBy($gameId, $user['id']);
+        }
+
+        return false;
+    }
 
 
 
