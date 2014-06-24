@@ -187,12 +187,13 @@ if ($user['User']['picture'] == null) {
             <li>
                 <a href="#">
                     <i class="ion-archive"></i>
+              <?php echo $notifycount>=1?'
                     <span class="flag"></span>
                 </a>
                 <ul class="menu">
-                    <li><a href="#">5 unread notifications</a></li>
-                    <!-- <li><a href="#">3 features added</a></li> -->
-                </ul>
+                    <li><a href="'.$activities.'">'.$notifycount.' unread activity</a></li>
+                </ul>':'</a>';
+				?>
             </li>
             <li><a href="<?php echo $logout ?>"><i class="ion-log-out"></i></a></li>
         </ul>
