@@ -36,26 +36,18 @@ class MobilesController extends AppController {
     }
 
     public function index($userid) {
-
         $this->layout = 'Mobile/mobile';
-
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-
-
         if ($userid == NULL) {
             $subdomain = Configure::read('Domain.subdomain');
             $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
             $userid = $user_data['User']['id'];
         }
-
         //This line gets user selected channel styles
         $this->get_style_settings($userid);
-
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
-
-
         $this->set('user', $user);
         $this->set('user_id', $userid);
         $this->set('screenname', $user['User']['screenname']);
@@ -63,43 +55,35 @@ class MobilesController extends AppController {
         $this->set('description', $user['User']['description']);
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
-
         if (empty($user['Userstat']['subscribeto'])) {
             $this->set('followers', 0);
         } else {
             $this->set('followers', $user['Userstat']['subscribeto']);
         }
-
         if (empty($user['Userstat']['subscribe'])) {
             $this->set('following', 0);
         } else {
             $this->set('following', $user['Userstat']['subscribe']);
         }
-
         if (empty($user['Userstat']['favoritecount'])) {
             $this->set('favorites', 0);
         } else {
             $this->set('favorites', $user['Userstat']['favoritecount']);
         }
-
         if (empty($user['Userstat']['uploadcount'])) {
             $this->set('gamescount', 0);
         } else {
             $this->set('gamescount', $user['Userstat']['uploadcount']);
         }
-
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
-
         if (!empty($user['User']['twitter_link'])) {
             $this->set('twitter', $user['User']['twitter_link']);
         }
-
         if (!empty($user['User']['gplus_link'])) {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
-
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
@@ -119,28 +103,21 @@ class MobilesController extends AppController {
                 )
             )
         );
-
         $cond = $this->paginate('Game');
-
         $this->set('games', $cond);
     }
 
     public function play($id = NULL) {
-
         $this->layout = 'Mobile/mobile';
-
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-
         if (!is_numeric($id)) {
             $subdomain = Configure::read('Domain.subdomain');
             $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id'), 'contain' => false));
             $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('Game.id')));
             $id = $game['Game']['id'];
         }
-
-
         $game = $this->Game->find('first', array(
             'conditions' => array(
                 'Game.id' => $id
@@ -178,55 +155,42 @@ class MobilesController extends AppController {
             )
                 )
         );
-
         $user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']), 'fields' => array('*')));
-
-
-
         if (empty($user['Userstat']['subscribe'])) {
             $this->set('followers', 0);
         } else {
             $this->set('followers', $user['Userstat']['subscribe']);
         }
-
         if (empty($user['Userstat']['subscribeto'])) {
             $this->set('following', 0);
         } else {
             $this->set('following', $user['Userstat']['subscribeto']);
         }
-
         if (empty($user['Userstat']['favoritecount'])) {
             $this->set('favorites', 0);
         } else {
             $this->set('favorites', $user['Userstat']['favoritecount']);
         }
-
         if (empty($user['Userstat']['uploadcount'])) {
             $this->set('gamescount', 0);
         } else {
             $this->set('gamescount', $user['Userstat']['uploadcount']);
         }
-
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
-
         if (!empty($user['User']['twitter_link'])) {
             $this->set('twitter', $user['User']['twitter_link']);
         }
-
         if (!empty($user['User']['gplus_link'])) {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
-
         if (!empty($user['User']['fb_link'])) {
             $this->set('facebook', $user['User']['fb_link']);
         }
-
         if (!empty($user['User']['twitter_link'])) {
             $this->set('twitter', $user['User']['twitter_link']);
         }
-
         if (!empty($user['User']['gplus_link'])) {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
@@ -247,6 +211,14 @@ class MobilesController extends AppController {
         } else {
             $this->redirect(array("controller" => "mobiles", "action" => "index", $userid));
         }
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $userid
+            ),
+            'fields' => array(
+                '*'
+            )
+        ));
         $this->paginate = array(
             'Game' => array(
                 'contain' => array(
