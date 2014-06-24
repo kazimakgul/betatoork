@@ -4,7 +4,7 @@ if(isset($pure_domain))
 { 
 $dashboard=$this->Html->url('http://'.$pure_domain.'/dashboard'); 
 $mygames=$this->Html->url('http://'.$pure_domain.'/mygames'); 
-$settings=$mygames=$this->Html->url('http://'.$pure_domain.'/settings/channel'); 
+$settings=$this->Html->url('http://'.$pure_domain.'/settings/channel'); 
 }else{
 $dashboard=$this->Html->url(array("controller" => "businesses","action" =>"dashboard"));
 $mygames=$this->Html->url(array("controller" => "businesses","action" =>"mygames"));
