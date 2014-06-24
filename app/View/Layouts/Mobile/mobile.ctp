@@ -69,7 +69,7 @@
                 });
 
             </script>
-            <?php echo $this->Html->script(array('assets/jquery-1.10.1.min.js', 'mobile/demo', 'mobile/custom', 'mobile/rating')); ?>
+            <?php echo $this->Html->script(array('assets/jquery-1.10.1.min.js', 'mobile/demo', 'mobile/rating', 'mobile/custom')); ?>
             <?php echo $this->Html->script(array('business/custom')); ?>
             <?php $game_id = $game['Game']['id']; ?>
             <script>
