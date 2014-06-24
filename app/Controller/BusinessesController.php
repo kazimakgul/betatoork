@@ -156,15 +156,36 @@ class BusinessesController extends AppController {
     public function featured_toggle() {
       Configure::write ( 'debug', 0 );
 
-      if ($this->Auth->user('id')) {
+      if ($auth_id=$this->Auth->user('id')) {//Auth control begins here
+      $game_id=$this->request->data['game_id'];
 
-         $msg = array("message" => 'Game set as featured.','result' => 1);
+      $game_data=$this->Game->find('first',array('contain'=>false,'conditions'=>array('Game.id'=>$game_id,'Game.user_id'=>$auth_id),'fields'=>array('Game.id','Game.priority')));
+      if($game_data!=NULL)
+      {    
+           if($game_data['Game']['priority']==0)
+           {
+               $filtered_data['Game']['priority'] = 1;
+               $this->set('success', "Game set as featured.");
+               $this->set('_serialize', array('success'));
+           }else{
+               $filtered_data['Game']['priority'] = 0;
+               $this->set('success', "Game unset from featured list.");
+               $this->set('_serialize', array('success'));
+           }
+           $this->Game->id=$game_id;
+           $this->Game->save($filtered_data);
+      }
 
-       }else{
-        $msg = array("message" => 'You have to login first.','result' => 0);
+
+
+       
+         
+       //Auth control ends here
+       }else{//if user is not logged in
+          $this->set('error', 'You have to login first.');
+          $this->set('_serialize', array('error'));
        }
-         $this->set('rtdata', $msg);
-         $this->set('_serialize', array('rtdata'));
+         
     }
      
     /**
@@ -204,7 +225,7 @@ class BusinessesController extends AppController {
                 $game_link = $this->request->data['game_link'];
                 $game_width = $this->request->data['width'];
                 $game_height = $this->request->data['height'];
-                $game_priority=$this->request->data['game_priority'];
+                $game_priority=0;
 				        $category_id = $this->request->data['category'];
                 $fullscreen = $this->request->data['fullscreen'];
 				        $mobileready = $this->request->data['mobile'];

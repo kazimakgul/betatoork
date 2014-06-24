@@ -289,7 +289,19 @@ $('#deletedata').click(function(e) {
 $('.featured_toggle').click(function() {
         
   game_id = this.id;   
-  alert(game_id);
+  var link = feat_toggle_link;  
+
+       $.post(link, {
+            game_id : game_id,
+                    },
+          function(data) {
+          if (data.error) {
+          alert(data.error); // error.id ye göre mesaj yazdırcak..
+          }else{
+          Messenger().post(data.success);
+          
+          }
+        }, 'json');            
 
 });
 

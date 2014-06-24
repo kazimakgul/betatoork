@@ -38,6 +38,7 @@
 	        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 	        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
 	        mysite			='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite')); ?>';
+	        feat_toggle_link ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'featured_toggle')); ?>';
 			<?php if($this->Session->check('Auth.User')){
 			echo 'user_auth=1;';
 			echo 'userid='.$this->Session->read('Auth.User.id');
