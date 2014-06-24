@@ -141,7 +141,7 @@ $(document).ready(function() {
                 }
             }, 'json');
         }
- 		else if (attr == "game_add" && $('#game_add').valid()) // && $('#game_add').valid() eklenicek
+ 		else if (attr == "game_add" && $('#game_add').valid())
         {
             $new_game=$('#new_data').val();//if It is 1 so it means game add if it is not it means edit.
 
@@ -186,7 +186,6 @@ $(document).ready(function() {
                 if (data.error) {
                     alert(data.error); // error.id ye göre mesaj yazdırcak..
                 }else{
-            
                 	Messenger().post(data.success);
                 	btn.button('reset');
                 	//setTimeout(function(){location.href=ads_management}, 2000 );
