@@ -24,6 +24,7 @@
 		'business/dashboard/vendor/messenger/messenger-theme-flat')); ?>
 	<!-- javascript -->
  		<script>
+ 			notifyload 		= '<?php echo $this->Html->url(array('controller'=>'activities','action'=>'togglelast10')); ?>';
 	        updateData		=	'<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'updateData')); ?>'; 
 	        newData			=	'<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'newData')); ?>';
 	        ads_management	='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'ads_management')); ?>';

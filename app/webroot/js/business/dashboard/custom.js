@@ -1,5 +1,4 @@
 $(document).ready(function() {
- 
     /**
      *	Update Form Post Method
      * 	@param #attr.val(), link => Update controller

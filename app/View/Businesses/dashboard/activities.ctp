@@ -1,4 +1,4 @@
-<body id="latest-activity">
+<body id="latest-activity" onload="notificationseen()">
     <div id="wrapper">
         <?php echo $this->element('business/dashboard/sidebar', array('active' => 'activities')); ?>
         <div id="content">
@@ -27,10 +27,9 @@
                     <!--<small>August 03, 2014</small>-->
                </h3>
                 <?php echo $this->element('business/activity') ?>
-                <div class="text-center">
-                    <?php //echo $this->element('business/components/pagination') ?>
-                </div>
+                
             </div>
         </div>
     </div>
+
 </body>

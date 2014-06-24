@@ -1,5 +1,6 @@
 <?php
 $x = 0;
+$activityseen = array();
 foreach ($notifications as $lastactivity):
 	$class = 'moment';
     if ($x === 0) {
@@ -9,6 +10,11 @@ foreach ($notifications as $lastactivity):
         $class.= ' last';
     }
     $x++;
+//print_r($lastactivity);
+if($lastactivity['Activity']['seen']==0){
+	$activityseen[] = $lastactivity['Activity']['id'];
+}
+
 $performername=$lastactivity['PerformerUser']['username'];
 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
 $followid = $lastactivity['PerformerUser']['id'];
@@ -37,7 +43,7 @@ $profileurl=$this->Html->url(array("controller" => "businesses","action" =>"mysi
          break;
       case 5:
 		 $a = "violet";
-         $b = "fa-upload";
+         $b = "upload";
          break;
       case 6:
 		 $a = "";
@@ -49,7 +55,7 @@ $profileurl=$this->Html->url(array("controller" => "businesses","action" =>"mysi
          break;
       case 8:
 		 $a = "yellow";
-         $b = "fa-upload";
+         $b = "upload";
          break;
       case 9:
 		 $a = "";
@@ -57,11 +63,11 @@ $profileurl=$this->Html->url(array("controller" => "businesses","action" =>"mysi
          break;
       case 10:
 		 $a = "purple";
-         $b = "fa-upload";
+         $b = "upload";
          break;
       case 11:
 		 $a = "";
-         $b = "fa-check";
+         $b = "check";
          break;
       default:
 		 $a = "";
@@ -90,5 +96,32 @@ $profileurl=$this->Html->url(array("controller" => "businesses","action" =>"mysi
                     </div>
                 </div>
             </div>
-<?php endforeach; ?>
+<?php endforeach;
+ 
+/**
+ * @param $activity seen = 0 olan veriler, array(), body > onload function
+ * @return Success
+ * @author Volkan Celiloğlu 
+ */
+if(count($activityseen)>0)
+{
+?>	
+<script>
+	function notificationseen(){
+		setTimeout(function () {
+		seen();
+    }, 2000);
+	}
+	function seen()
+	{
+		$.post(notifyload,{jsondata:'<?php echo json_encode($activityseen); ?>'});
+	}
+</script>
+<?php
+}else{
+	function notificationseen(){
+		//Okunmamış notification yoksa!
+	}
+}
+ ?>
 
