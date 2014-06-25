@@ -31,10 +31,14 @@
                     <div class="panel-heading">
                         <ul class="nav pull-right" style='margin-top:-8px;'>
                             <li class="dropdown">
+                                
+                               <!--
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                     Filter/Sort
                                     <span class="caret"></span>
                                 </button>
+                            -->
+
                                 <ul class="dropdown-menu">
                                     <!-- <li><?php echo $this->Paginator->sort('id', 'New Games', array('direction' => 'desc')); ?></li> -->
                                     <!-- <li><?php echo $this->Paginator->sort('recommend', 'Recommended', array('direction' => 'desc')); ?></li> -->
@@ -45,7 +49,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        <h3 class="panel-title">Games <?php echo ($this->request->params['named']['sort']) ? "by  " . ucwords($this->request->params['named']['sort']) : ""; ?></h3>
+                        <h3 class="panel-title">Featured Games</h3>
                     </div>
                     <div class="panel-body">
                         <?php
