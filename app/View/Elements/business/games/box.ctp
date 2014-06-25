@@ -1,5 +1,6 @@
 <?php
 $counter = 0;
+$mygames = $this->Html->url(array("controller" => 'businesses', "action" => 'mygames'));
 foreach ($gamedata as $game):
     $playcount = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
     $favcount = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
@@ -16,7 +17,7 @@ foreach ($gamedata as $game):
             <?php if (isset($fix) && $controls == $user['User']['id']): ?>
                 <div class="caption">
                     <p>
-                        <a href="" class="label label-danger" data-placement="bottom" data-toggle="modal" data-target=".bs-modal-sm" title="Change This Game">Change</a>
+                        <a href="<?php echo $mygames; ?>" class="label label-danger" data-placement="bottom" data-toggle="modal" title="Change This Game">Change</a>
                         <a href="" class="label label-default" data-placement="bottom" data-toggle="tooltip" title="Play This Game">Play</a>
                     </p>
                 </div>

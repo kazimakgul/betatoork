@@ -88,3 +88,12 @@
 	margin-top: 35px;
 	margin-left: 60px;
 }
+.seen{
+	background: #f6f7f8;
+}
+.size{
+	color: #A7A7A7;
+	width: 8%;
+	float: right;
+	min-width: 70px;
+}

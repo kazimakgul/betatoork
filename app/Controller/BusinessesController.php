@@ -460,25 +460,69 @@ class BusinessesController extends AppController {
 	 * @param
 	 * @return Get All Notification array
 	 */
-	public function getallnotifications($new = NULL) {
+	public function getallnotifications() {
 	  
 	       if($this->Auth->user('id'))
 		   { //openning of auth_id control
 			$auth_id=$this->Session->read('Auth.User.id');
-			if($new===NULL){
-			$limit=30;
-			$activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.screenname','PerformerUser.seo_username'  )),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username',  'ChannelUser.seo_username'))),'fields'=>array('Activity.id','Activity.performer_id','Activity.game_id','Activity.channel_id','Activity.msg_id','Activity.seen','Activity.notify','Activity.email','Activity.type','Activity.replied','Activity.created','PerformerUser.id','PerformerUser.username','PerformerUser.seo_username','ChannelUser.id','ChannelUser.username','ChannelUser.seo_username','Game.id','Game.name','Game.seo_url'),'conditions'=>array('Activity.channel_id'=>$auth_id,'Activity.notify'=>1),'limit'=>$limit,'order'=>'Activity.id DESC'));
-			}else{
-			$activityData=$this->Activity->find('all',array('contain'=>array('PerformerUser'=>array('fields'=>array('PerformerUser.id','PerformerUser.username','PerformerUser.screenname','PerformerUser.seo_username'  )),'Game'=>array('fields'=>array('Game.id','Game.name','Game.seo_url')),'ChannelUser'=>array('fields'=>array('ChannelUser.id','ChannelUser.username',  'ChannelUser.seo_username'))),'fields'=>array('Activity.id','Activity.performer_id','Activity.game_id','Activity.channel_id','Activity.msg_id','Activity.seen','Activity.notify','Activity.email','Activity.type','Activity.replied','Activity.created','PerformerUser.id','PerformerUser.username','PerformerUser.seo_username','ChannelUser.id','ChannelUser.username','ChannelUser.seo_username','Game.id','Game.name','Game.seo_url'),'conditions'=>array('Activity.channel_id'=>$auth_id,'Activity.notify'=>1,'Activity.seen'=>0),'order'=>'Activity.id DESC'));
-			}
-		       if($activityData!=NULL)
-			   {
-	           $this->set('notifications',$activityData);
-		       $this->set('message',NULL);
-			   }else{
-			   $this->set('notifications',NULL);
-		       $this->set('message','You have no any activity yet.');
-			   }
+			$limit=15;
+        $this->paginate = array(
+				'Activity' => array(
+					'contain'=>array(
+							'PerformerUser'=>array(
+									'fields'=>array(
+											'PerformerUser.id',
+											'PerformerUser.username',
+											'PerformerUser.screenname',
+											'PerformerUser.seo_username'
+													)
+												   ),
+							'Game'=>array(
+									'fields'=>array(
+											'Game.id',
+											'Game.name',
+											'Game.seo_url'
+													)
+												   ),
+							'ChannelUser'=>array(
+									'fields'=>array(
+											'ChannelUser.id',
+											'ChannelUser.username',
+											'ChannelUser.seo_username'
+													)
+												  )
+										),
+					'fields'=>array(
+							'Activity.id',
+							'Activity.performer_id',
+							'Activity.game_id',
+							'Activity.channel_id',
+							'Activity.msg_id',
+							'Activity.seen',
+							'Activity.notify',
+							'Activity.email',
+							'Activity.type',
+							'Activity.replied',
+							'Activity.created',
+							'PerformerUser.id',
+							'PerformerUser.username',
+							'PerformerUser.seo_username',
+							'ChannelUser.id',
+							'ChannelUser.username',
+							'ChannelUser.seo_username',
+							'Game.id',
+							'Game.name',
+							'Game.seo_url'
+									),
+					'conditions'=>array(
+							'Activity.channel_id'=>$auth_id,
+							'Activity.notify'=>1
+									),
+					'limit'=>$limit,
+					'order'=>'Activity.id DESC')
+        );
+        		$activityData = $this->paginate('Activity');
+        		$this->set('notifications', $activityData);
 	        }
 	}
 
@@ -1898,10 +1942,10 @@ class BusinessesController extends AppController {
      * @return Activities Page
      * @author Kazim Akgul
      */
-    public function activities($new = NULL) {
+    public function activities() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-		$this->getallnotifications($new);
+		$this->getallnotifications();
         $this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
