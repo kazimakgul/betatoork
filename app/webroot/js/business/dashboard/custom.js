@@ -298,6 +298,14 @@ $('.featured_toggle').click(function() {
           if (data.error) {
           alert(data.error); // error.id ye göre mesaj yazdırcak..
           }else{
+
+          if(data.act_type==1)
+          {
+            $('#'+game_id).css('color','#F7D358');
+          }else{
+            $('#'+game_id).css('color','#E6E6E6');
+          }
+
           Messenger().post(data.success);
           
           }

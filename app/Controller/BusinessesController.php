@@ -166,11 +166,13 @@ class BusinessesController extends AppController {
            {
                $filtered_data['Game']['priority'] = 1;
                $this->set('success', "Game set as featured.");
-               $this->set('_serialize', array('success'));
+               $this->set('act_type', 1);
+               $this->set('_serialize', array('success','act_type'));
            }else{
                $filtered_data['Game']['priority'] = 0;
                $this->set('success', "Game unset from featured list.");
-               $this->set('_serialize', array('success'));
+               $this->set('act_type', 0);
+               $this->set('_serialize', array('success','act_type'));
            }
            $this->Game->id=$game_id;
            $this->Game->save($filtered_data);

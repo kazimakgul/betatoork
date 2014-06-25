@@ -22,9 +22,9 @@ foreach ($games as $game) {
             <a href="<?php echo $game_edit_link.'/'.$id; ?>"><i class="fa fa-pencil"></i></a>
 
             <?php if($game['Game']['priority']>0){ ?>
-            <a href='#' style='display:none' class='featured_toggle unsetfeat' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#F7D358;'><i class="fa fa-star"></i></a>
+            <a href='#' class='featured_toggle' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#F7D358;'><i class="fa fa-star"></i></a>
             <?php }else{?>
-            <a href='#' style='display:none' class='featured_toggle setfeat' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#E6E6E6;'><i class="fa fa-star"></i></a>
+            <a href='#' class='featured_toggle' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#E6E6E6;'><i class="fa fa-star"></i></a>
             <?php }?>
 
 
