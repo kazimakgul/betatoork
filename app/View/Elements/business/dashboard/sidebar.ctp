@@ -191,7 +191,7 @@ if ($user['User']['picture'] == null) {
                     <span class="flag"></span>
                 </a>
                 <ul class="menu">
-                    <li><a href="'.$activities.'">'.$notifycount.' unread activity</a></li>
+                    <li><a href="'.$activities.'/New">'.$notifycount.' unread activity</a></li>
                 </ul>':'</a>';
 				?>
             </li>

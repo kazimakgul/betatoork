@@ -50,19 +50,19 @@ $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action'
 				<div class="metrics clearfix">
 					<div class="metric">
 						<span class="field">Total Reputation</span>
-						<span class="data">$674.00</span>
+						<span class="data">$<?php echo $stat['Userstat']['potential']/100;?></span>
 					</div>
 					<div class="metric">
 						<span class="field">Total Followers</span>
-						<span class="data">108</span>
+						<span class="data"><?php echo $stat['Userstat']['subscribeto'];?></span>
 					</div>
 					<div class="metric">
 						<span class="field">Game Clones</span>
-						<span class="data">674</span>
+						<span class="data"><?php echo $stat['Userstat']['uploadcount'];?></span>
 					</div>
 					<div class="metric">
 						<span class="field">Game Plays</span>
-						<span class="data">3,823</span>
+						<span class="data"><?php echo $stat['Userstat']['playcount'];?></span>
 					</div>
 				</div>
 
