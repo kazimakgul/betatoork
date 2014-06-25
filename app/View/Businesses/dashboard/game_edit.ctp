@@ -151,7 +151,7 @@
 					</div>
 				  	<div class="form-group form-actions">
 				    	<div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
-				      		<button id="NewButton" class="btn btn-success">Upload Game</button>
+				      		<button id="NewButton" class="btn btn-success">Save Changes</button>
 			    		</div>
 				  	</div>
 				</form>
