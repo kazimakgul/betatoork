@@ -1311,7 +1311,7 @@ $this->redirect(array("controller" => "businesses","action" => "dashboard"));
     public function clonegame($game_id = NULL) {
         $this->layout = "ajax";
         $userId = $this->Session->read('Auth.User.id');
-        $targetGame = $this->Game->find('first', array('conditions' => array('Game.id' => $game_id), 'fields' => array('Game.id,Game.name,Game.link,Game.description,Game.active,Game.user_id,Game.category_id,Game.picture,Game.embed,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => false));
+        $targetGame = $this->Game->find('first', array('conditions' => array('Game.id' => $game_id), 'fields' => array('Game.id,Game.name,Game.link,Game.description,Game.active,Game.user_id,Game.category_id,Game.picture,Game.width,Game.height,Game.fullscreen,Game.mobileready,Game.embed,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => false));
         $gameUser = $targetGame['Game']['user_id'];
         if ($targetGame != NULL) {
             $this->request->data['Game']['name'] = $targetGame['Game']['name'];
@@ -1320,6 +1320,10 @@ $this->redirect(array("controller" => "businesses","action" => "dashboard"));
             $this->request->data['Game']['active'] = 1;
             $this->request->data['Game']['user_id'] = $userId;
             $this->request->data['Game']['category_id'] = $targetGame['Game']['category_id'];
+            $this->request->data['Game']['width'] = $targetGame['Game']['width'];
+            $this->request->data['Game']['height'] = $targetGame['Game']['height'];
+            $this->request->data['Game']['fullscreen'] = $targetGame['Game']['fullscreen'];
+            $this->request->data['Game']['mobileready'] = $targetGame['Game']['mobileready'];
             $this->request->data['Game']['picture'] = $targetGame['Game']['picture'];
             $this->request->data['Game']['starsize'] = 0;
             $this->request->data['Game']['rate_count'] = 0;
