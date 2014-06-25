@@ -185,13 +185,13 @@ if ($user['User']['picture'] == null) {
         <ul>
             <li><a href="#"><i class="ion-help"></i></a></li>
             <li>
-                <a href="#">
+                <a href="<?php echo $activities; ?>">
                     <i class="ion-archive"></i>
               <?php echo $notifycount>=1?'
                     <span class="flag"></span>
                 </a>
                 <ul class="menu">
-                    <li><a href="'.$activities.'/New">'.$notifycount.' unread activity</a></li>
+                    <li><a href="'.$activities.'">'.$notifycount.' unread activity</a></li>
                 </ul>':'</a>';
 				?>
             </li>

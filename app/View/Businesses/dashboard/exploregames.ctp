@@ -40,8 +40,8 @@ $allgames = $params['count'];
             <div class="row page-controls">
                 <div class="col-md-12 filters">
                     <label>Filter Games:</label>
-                    <a href="<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames')); ?>" <?php echo $activefilter === 0 ? 'class="active"' : ''; ?>>All Games (<?php echo $count[0]; ?>)</a>
-                    <a href="<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'mobiles')); ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games (<?php echo $count[1]; ?>)</a>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames')); ?>" <?php echo $activefilter === 0 ? 'class="active"' : ''; ?>>All Games</a>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'mobiles')); ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games</a>
                     <div class="show-options">
                         <div class="dropdown">
                             <a class="button" data-toggle="dropdown" href="#">

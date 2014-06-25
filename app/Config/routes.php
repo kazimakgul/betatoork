@@ -34,7 +34,13 @@
 //
 	//Router::connect('/', array('controller' => 'games', 'action' => 'index'));
 	Router::connect('/dashboard',array('controller'=>'businesses','action'=>'dashboard'));
+<<<<<<< HEAD
     Router::connect('/mygames/:filter', array('controller' => 'businesses', 'action' => 'mygames'), array('pass' => array('filter'), 'filter' => 'mobiles'));
+=======
+        Router::connect('/mygames/search/:filter', array('controller' => 'businesses', 'action' => 'mygames_search'), array('pass' => array('filter'), 'filter' => 'mobiles'));
+        Router::connect('/mygames/search', array('controller' => 'businesses', 'action' => 'mygames_search'));
+        Router::connect('/mygames/:filter', array('controller' => 'businesses', 'action' => 'mygames'), array('pass' => array('filter'), 'filter' => 'mobiles'));
+>>>>>>> FETCH_HEAD
 	Router::connect('/mygames',array('controller'=>'businesses','action'=>'mygames'));
 	Router::connect('/favorites',array('controller'=>'businesses','action'=>'favorites'));
         Router::connect('/explore/games/search/:filter', array('controller' => 'businesses', 'action' => 'exploregames_search'), array('pass' => array('filter'), 'filter' => 'mobiles'));

@@ -27,7 +27,9 @@
                     <!--<small>August 03, 2014</small>-->
                </h3>
                 <?php echo $this->element('business/activity') ?>
-                
+                    <div class="text-center">
+                        <?php echo $this->element('business/components/pagination') ?>
+                    </div>
             </div>
         </div>
     </div>
