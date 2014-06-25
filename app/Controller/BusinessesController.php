@@ -1416,71 +1416,53 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/favorites');
     }
 
-    public function exploregames() {
+    public function exploregames($filter = null) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        $limit = 16;
-       
-        
- /*
-        $this->paginate = array(
-            'Game' => array(
-                'fields' => array(
-                    'Game.name',
-                    'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
-                    'Game.picture',
-                    'Game.starsize',
-                    'Game.rate_count',
-                    'Game.embed',
-                    'Game.clone',
-                    'Game.created',
-                    'User.seo_username',
-                    'Game.description',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
-                    'Gamestat.channelclone',
-                    'Gamestat.potential',
-                    'User.id',
-                    'User.username',
-                    'User.seo_username'
-                ),
-                'limit' => $limit,
-                'order' => array(
-                    'Game.id' => 'DESC'
+        $count = array(
+            $this->Game->find('count'),
+            $this->Game->find('count', array(
+                'conditions' => array(
+                    'Game.mobileready' => 1
                 )
-            )
+            ))
         );
-  */
-
-       //Connectionun inner join kullanmasını on fly olarak sağlıyoruz.
-       $this->Game->bindModel(
+        $this->set('count', $count);
+        $this->Game->bindModel(
                 array(
                     'hasOne' => array(
                         'Gamestat' => array(
                             'className' => 'Gamestat',
                             'foreignKey' => 'game_id',
-                            'type'=>'INNER'
+                            'type' => 'LEFT'
                         )
                     )
                 )
         );
-
-        
-        $this->paginate=array(
-            'Game'=>array(
-                'fields'=>array('*'),
+        $limit = 16;
+        $this->paginate = array(
+            'Game' => array(
+                'fields' => array(
+                    '*'
+                ),
                 'limit' => $limit,
-                'contain'=>array('User','Gamestat'),
+                'contain' => array(
+                    'User',
+                    'Gamestat'
+                ),
                 'order' => array(
                     'Game.id' => 'DESC'
                 )
-                )
-            );
-      
+            )
+        );
+        $activefilter = 0;
+        if ($filter === 'mobiles') {
+            $activefilter = 1;
+            $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+        }
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
+        $this->set('activefilter', $activefilter);
         $this->set('title_for_layout', 'Clone Business Explore Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');

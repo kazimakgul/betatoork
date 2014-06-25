@@ -36,7 +36,9 @@
 	Router::connect('/dashboard',array('controller'=>'businesses','action'=>'dashboard'));
 	Router::connect('/mygames',array('controller'=>'businesses','action'=>'mygames'));
 	Router::connect('/favorites',array('controller'=>'businesses','action'=>'favorites'));
+        Router::connect('/explore/games/:filter', array('controller' => 'businesses', 'action' => 'exploregames'), array('pass' => array('filter'), 'filter' => 'mobiles'));
 	Router::connect('/explore/games',array('controller'=>'businesses','action'=>'exploregames'));
+        
 	Router::connect('/following',array('controller'=>'businesses','action'=>'following'));
 	Router::connect('/followers',array('controller'=>'businesses','action'=>'followers'));
 	Router::connect('/explore/channels',array('controller'=>'businesses','action'=>'explorechannels'));
