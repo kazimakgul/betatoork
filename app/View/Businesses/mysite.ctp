@@ -50,7 +50,7 @@ echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBann
             $limit = 3;
 			$cat = '';
 			$fix = 'fix';
-            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit, 'fix' =>$fix, 'controls'=>$controls, 'cat'=>$cat, 'gamedata'=>$games)); 
+            echo $this->element('business/games/box',array('div'=>$div,'limit'=>$limit, 'fix' =>$fix, 'controls'=>$controls, 'cat'=>$cat, 'gamedata'=>$featuredgames)); 
           ?>
           </div>
         </div>
