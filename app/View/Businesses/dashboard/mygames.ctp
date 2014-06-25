@@ -31,13 +31,9 @@ $allgames = $params['count'];
             <div class="content-wrapper">
                 <div class="row page-controls">
                     <div class="col-md-12 filters">
-                        <!--
                         <label>Filter Games:</label>
-                        <a href="#" class="active">All Games (<?php echo $allgames ?>)</a>
-                        <a href="#">Published (32)</a>
-                        <a href="#">Suspended (6)</a>
-                        <a href="#">Draft (1)</a>
-                        -->
+                        <a href="<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames')); ?>" <?php echo $activefilter === 0 ? 'class="active"' : ''; ?>>All Games (<?php echo $count[0]; ?>)</a>
+                        <a href="<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'mobiles')); ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games (<?php echo $count[1]; ?>)</a>
                         
                         <span style='color: gray;font-weight: bold;'><i style='color:#F7D358;font-size: 20px;vertical-align: middle;' class="fa fa-star"></i>Featured</span>
                         

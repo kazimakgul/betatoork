@@ -1225,10 +1225,26 @@ class BusinessesController extends AppController {
      * OK
      * 
      */
-    public function mygames() {
+    public function mygames($filter = NULL) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
+        $count = array(
+            $this->Game->find('count', array(
+                'conditions' => array(
+                    'Game.user_id' => $userid
+                )
+            )),
+            $this->Game->find('count', array(
+                'conditions' => array(
+                    'Game.user_id' => $userid,
+                    'Game.mobileready' => 1
+                )
+            ))
+        );
+        //  print_r($count);
+        //  exit;
+        $this->set('count', $count);
         $limit = 16;
         $this->paginate = array(
             'Game' => array(
@@ -1260,8 +1276,14 @@ class BusinessesController extends AppController {
                 )
             )
         );
+        $activefilter = 0;
+        if ($filter === 'mobiles') {
+            $activefilter = 1;
+            $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+        }
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
+        $this->set('activefilter', $activefilter);
         $this->set('title_for_layout', 'Clone Business My Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
