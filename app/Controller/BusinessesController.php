@@ -1336,6 +1336,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
+        /*
         $count = array(
             $this->Game->find('count', array(
                 'conditions' => array(
@@ -1349,9 +1350,8 @@ class BusinessesController extends AppController {
                 )
             ))
         );
-        //  print_r($count);
-        //  exit;
         $this->set('count', $count);
+        */
         $limit = 16;
         $this->paginate = array(
             'Game' => array(
@@ -1397,15 +1397,39 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/mygames');
     }
 
-    public function mygames_search() {
+    public function mygames_search($filter = NULL) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+        $userid = $this->Session->read('Auth.User.id');
+        /*
+        $count = array(
+            $this->Game->find('count', array(
+                'conditions' => array(
+                    'Game.user_id' => $userid,
+                    'OR' => array(
+                        'Game.description LIKE' => '%' . $query . '%',
+                        'Game.name LIKE' => '%' . $query . '%'
+                    )
+                )
+            )),
+            $this->Game->find('count', array(
+                'conditions' => array(
+                    'Game.user_id' => $userid,
+                    'OR' => array(
+                        'Game.description LIKE' => '%' . $query . '%',
+                        'Game.name LIKE' => '%' . $query . '%'
+                    ),
+                    'Game.mobileready' => 1
+                )
+            ))
+        );
+        $this->set('count', $count);
+        */
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "mygames"));
         }
-        $userid = $this->Session->read('Auth.User.id');
         $limit = 16;
         $this->paginate = array(
             'Game' => array(
@@ -1440,8 +1464,14 @@ class BusinessesController extends AppController {
                 )
             )
         );
+        $activefilter = 0;
+        if ($filter === 'mobiles') {
+            $activefilter = 1;
+            $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+        }
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
+        $this->set('activefilter', $activefilter);
         $this->set('title_for_layout', 'Clone Business My Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
@@ -1548,6 +1578,7 @@ class BusinessesController extends AppController {
     public function exploregames($filter = null) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+        /*
         $count = array(
             $this->Game->find('count'),
             $this->Game->find('count', array(
@@ -1557,6 +1588,7 @@ class BusinessesController extends AppController {
             ))
         );
         $this->set('count', $count);
+        */
         $this->Game->bindModel(
                 array(
                     'hasOne' => array(
@@ -1601,6 +1633,7 @@ class BusinessesController extends AppController {
     public function exploregames_search($filter = null) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+        /*
         $count = array(
             $this->Game->find('count', array(
                 'conditions' => array(
@@ -1621,6 +1654,7 @@ class BusinessesController extends AppController {
             ))
         );
         $this->set('count', $count);
+        */
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
         } else {
