@@ -2,15 +2,18 @@
 <?php
 
 $subgameurl		=$this->Html->url(array("controller" => "businesses","action" =>"toprated",$user['User']['id']));
+$subfeaturl   =$this->Html->url(array("controller" => "businesses","action" =>"featured",$user['User']['id']));
 $channelsettings=$this->Html->url(array("controller" => "businesses","action" =>"settings"));
 
 if(Configure::read('Domain.type')=='subdomain')
 {
   $hotlink=$this->Html->url(array("controller" => "games","action" =>"hot"));
   $newestlink=$this->Html->url(array("controller" => "games","action" =>"newest"));
+  $featuredlink=$this->Html->url(array("controller" => "games","action" =>"featured"));
 }else{
   $hotlink=$subgameurl .'/sort:recommend/direction:desc';
   $newestlink=$subgameurl .'/sort:id/direction:desc';
+  $featuredlink=$subfeaturl.'/sort:id/direction:desc';
 }
 
 //Getting and declaring ads datas
@@ -42,7 +45,7 @@ echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBann
      <div class="row">
       <div class="col-xs-12">
     	<div class="panel panel-danger">
-         	<div class="panel-heading"><a href="#" class="black"><span class="glyphicon glyphicon-star"></span> Featured Games</a>
+         	<div class="panel-heading"><a href="<?php echo $featuredlink;?>" class="black"><span class="glyphicon glyphicon-star"></span> Featured Games</a>
           </div>
          	<div class="panel-body">
           <?php  
