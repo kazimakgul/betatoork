@@ -680,25 +680,16 @@ $('#gameaddframe').load(function(){
  			// form validation Game add
 			$('#game_add').validate({
 				rules: {
-					"product[name]": {
+					"name": {
 						required: true
 					},
-					"customer[notes]": {
+					"notes": {
 						required: true
-					},
-					"product[address]": {
-						required: true
-					},
+					}
 					"data[category_id]": {
 						required: true
 					},
-					"product[width]": {
-						required: true
-					},
-					"product[height]": {
-						required: true
-					},
-					"product[tags]": {
+					"tags": {
 						required: true
 					}
 				},

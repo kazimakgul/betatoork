@@ -59,7 +59,7 @@
 					    	</span>
 					    </label>
 					    <div class="col-sm-10 col-md-8">
-					      <input type="text" class="form-control" id="name" name="product[name]" />
+					      <input type="text" class="form-control" id="name" name="name" />
 					    </div>
 				  	</div>
 				  	<div class="form-group">
@@ -69,7 +69,7 @@
 					    	</span>
 				  		</label>
 				  		<div class="col-sm-10 col-md-8">
-				  		<textarea id="desc" class="form-control" id="desc" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"></textarea>
+				  		<textarea id="desc" class="form-control" id="desc" rows="4" name="notes" style="margin-bottom: 10px; height:100px;"></textarea>
 				  		</div>
 				  	</div>
 				  	<div class="address">
@@ -80,7 +80,7 @@
 					    	</span>
 						    </label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" id="game_link" placeholder="http://socialesman.com" name="product[address]" />
+						      	<input type="text" class="form-control" id="game_link" placeholder="http://socialesman.com" name="address" />
 						    </div>
 						    <div class="col-sm-5 col-md-5 right">
 						      	<a data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title="">Upload Game File</a>
@@ -96,10 +96,10 @@
 					    	</span>
 						    </label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" placeholder="Width" id="width" name="product[width]" />
+						      	<input type="text" class="form-control" placeholder="Width" id="width" name="width" />
 						    </div>
 						    <div class="col-sm-5 col-md-4 right">
-						      	<input type="text" class="form-control" placeholder="Height" id="height" name="product[height]" />
+						      	<input type="text" class="form-control" placeholder="Height" id="height" name="height" />
 						    </div>
 						</div>
 				  	</div>
@@ -114,14 +114,14 @@
 				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Game tags</label>
 					    <div class="col-sm-10 col-md-8">
-					      	<input type="hidden" id="tags" style="width:100%" value="War, Race, Fight" name="product[tags]" />
+					      	<input type="hidden" id="tags" style="width:100%" value="War, Race, Fight" name="tags" />
 					    </div>
 				  	</div>
 				  	<div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 					      	<div class="checkbox">
 					        	<label>
-					          		<input type="checkbox" id="fullscreen" name="product[send_marketing]" /> Full Screen
+					          		<input type="checkbox" id="fullscreen" name="send_marketing" /> Full Screen
 					    	<span class="help" data-toggle="tooltip" title="game size full screen">
 					    		<i class="fa fa-question-circle"></i>
 					    	</span>
@@ -133,7 +133,7 @@
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 					      	<div class="checkbox">
 					        	<label>
-					          		<input type="checkbox" id="mobile" name="product[send_marketing]" /> Mobile Ready
+					          		<input type="checkbox" id="mobile" name="send_marketing" /> Mobile Ready
 					    	<span class="help" data-toggle="tooltip" title="Suitable for mobile">
 					    		<i class="fa fa-question-circle"></i>
 					    	</span>
