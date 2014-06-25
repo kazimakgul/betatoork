@@ -42,12 +42,27 @@ class MobilesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         if ($userid == NULL) {
             $subdomain = Configure::read('Domain.subdomain');
-            $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
+            $user_data = $this->User->find('first', array(
+                'contain' => false,
+                'conditions' => array(
+                    'User.seo_username' => $subdomain
+                ),
+                'fields' => array(
+                    'User.id'
+                )
+            ));
             $userid = $user_data['User']['id'];
         }
         //This line gets user selected channel styles
         $this->get_style_settings($userid);
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $userid
+            ),
+            'fields' => array(
+                '*'
+            )
+        ));
         $this->set('user', $user);
         $this->set('user_id', $userid);
         $this->set('screenname', $user['User']['screenname']);
@@ -87,7 +102,8 @@ class MobilesController extends AppController {
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
-                    'Game.active' => '1',
+                    'Game.active' => 1,
+                    'Game.mobileready' => 1,
                     'Game.user_id' => $userid
                 ),
                 'limit' => $this->PaginateLimit,
@@ -97,7 +113,8 @@ class MobilesController extends AppController {
                 'contain' => array(
                     'Gamestat' => array(
                         'fields' => array(
-                            'Gamestat.playcount,Gamestat.channelclone'
+                            'Gamestat.playcount',
+                            'Gamestat.channelclone'
                         )
                     )
                 )
@@ -114,8 +131,24 @@ class MobilesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         if (!is_numeric($id)) {
             $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id'), 'contain' => false));
-            $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('Game.id')));
+            $user = $this->User->find('first', array(
+                'conditions' => array(
+                    'User.seo_username' => $subdomain
+                ),
+                'fields' => array(
+                    'User.id'
+                ),
+                'contain' => false
+            ));
+            $game = $this->Game->find('first', array(
+                'conditions' => array(
+                    'Game.seo_url' => $id,
+                    'Game.user_id' => $user['User']['id']
+                ),
+                'fields' => array(
+                    'Game.id'
+                )
+            ));
             $id = $game['Game']['id'];
         }
         $game = $this->Game->find('first', array(
@@ -153,9 +186,15 @@ class MobilesController extends AppController {
                     )
                 )
             )
-                )
-        );
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']), 'fields' => array('*')));
+        ));
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $game['Game']['user_id']
+            ),
+            'fields' => array(
+                '*'
+            )
+        ));
         if (empty($user['Userstat']['subscribe'])) {
             $this->set('followers', 0);
         } else {
@@ -209,7 +248,11 @@ class MobilesController extends AppController {
         if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
             $param = $this->request->query['srch-term'];
         } else {
-            $this->redirect(array("controller" => "mobiles", "action" => "index", $userid));
+            $this->redirect(array(
+                "controller" => "mobiles",
+                "action" => "index",
+                $userid
+            ));
         }
         $user = $this->User->find('first', array(
             'conditions' => array(
@@ -224,14 +267,17 @@ class MobilesController extends AppController {
                 'contain' => array(
                     'Gamestat' => array(
                         'fields' => array(
-                            'Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'
+                            'Gamestat.playcount',
+                            'Gamestat.favcount',
+                            'Gamestat.totalclone'
                         )
                     )
                 ),
                 'limit' => $this->PaginateLimit,
                 'order' => 'Game.id DESC',
                 'conditions' => array(
-                    'Game.active' => '1',
+                    'Game.active' => 1,
+                    'Game.mobileready' => 1,
                     'Game.user_id' => $userid,
                     'OR' => array(
                         'Game.description LIKE' => '%' . $param . '%',
