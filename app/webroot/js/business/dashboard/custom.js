@@ -301,8 +301,10 @@ $('.featured_toggle').click(function() {
 
           if(data.act_type==1)
           {
+            
             $('#'+game_id).css('color','#F7D358');
           }else{
+            
             $('#'+game_id).css('color','#E6E6E6');
           }
 
@@ -688,16 +690,25 @@ $('#gameaddframe').load(function(){
  			// form validation Game add
 			$('#game_add').validate({
 				rules: {
-					"name": {
+					"product[name]": {
 						required: true
 					},
-					"notes": {
+					"customer[notes]": {
 						required: true
-					}
+					},
+					"product[address]": {
+						required: true
+					},
 					"data[category_id]": {
 						required: true
 					},
-					"tags": {
+					"product[width]": {
+						required: true
+					},
+					"product[height]": {
+						required: true
+					},
+					"product[tags]": {
 						required: true
 					}
 				},
