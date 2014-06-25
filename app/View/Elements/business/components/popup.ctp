@@ -189,7 +189,7 @@
 	<!-- Ads Change Modal ends -->
  
 <!-- Add Game Modal begins -->
-<!-- Modal -->
+<!-- Modal 
 <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content" style="padding:5px;">
@@ -238,6 +238,6 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 
 

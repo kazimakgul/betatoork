@@ -16,9 +16,9 @@ foreach ($gamedata as $game):
         <div class="imagehover">
             <?php if (isset($fix) && $controls == $user['User']['id']): ?>
                 <div class="caption">
-                    <p>
+                    <p class="text-center">
                         <a href="<?php echo $mygames; ?>" class="label label-danger" data-placement="bottom" data-toggle="modal" title="Change This Game">Change</a>
-                        <a href="" class="label label-default" data-placement="bottom" data-toggle="tooltip" title="Play This Game">Play</a>
+                        <!--<a href="" class="label label-default" data-placement="bottom" data-toggle="tooltip" title="Play This Game">Play</a>-->
                     </p>
                 </div>
             <?php endif; ?>
@@ -27,7 +27,7 @@ foreach ($gamedata as $game):
             </a>
         </div>
         <div class="panel-footer text-center" style="padding:0px;">
-            <a href="<?php echo $playurl; ?>" style="padding:0px;"><h5 class="darkblue" style='height:16px; overflow:hidden;'><?php echo $game['Game']['name']; ?></h5></a>
+            <a href="<?php echo $playurl;?>" style="padding:0px;"><h5 class="darkblue" style='height:16px; overflow:hidden;'><?php echo $game['Game']['name']; ?></h5></a>
             <div class="row">
                 <span class="col-md-6" style='margin-left:10px;'>
                     <div class= 'centerrate2'>
@@ -69,13 +69,27 @@ if (isset($limit)):
         echo $div;
         ?>
         <div class="panel panel-default" style="background-color:silver;">
-            <div style="padding:20% 0% 21% 0%;" class="text-center">
-                <button class="btn btn-default btn-lg btn-danger" data-toggle="modal" id="mymodal" data-target=".bs-modal-sm" > <i class="fa fa-plus-square fa-2x"></i> </button>
-            </div>
-            <div class="panel-footer text-center" style="padding:0px;">
-                <a  href="#" data-toggle="modal" data-target=".bs-modal-sm" id="mymodal" style="padding:0px;"><h5 class="darkblue" >+Add Game</h5></a>
+        	<?php
+        	if($controls !== $user['User']['id']){?>
+        <div class="imagehover">
+            <div class="panel-image">
+			<img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="panel-image-preview" alt="Metal Slug Brutal" onerror="imgError(this,&quot;toorksize&quot;);">
+			</div>
+        </div>
+        <div class="panel-footer text-center" style="height:57px">
                 <div class="row"></div>
             </div>
+            <?php
+        	}else{
+        	?>
+            <div style="padding:20% 0% 21% 0%;" class="text-center">
+                <a href="<?php echo $mygames;?>" class="btn btn-default btn-lg btn-danger"> <i class="fa fa-plus-square fa-2x"></i> </a>
+            </div>
+            <div class="panel-footer text-center" style="padding:0px;">
+                <a  href="<?php echo $mygames;?>" style="padding:0px;"><h5 class="darkblue" >+Add Game</h5></a>
+                <div class="row"></div>
+            </div>
+            <?php }?>
         </div>
         </div>
         <?php
