@@ -1,5 +1,14 @@
 <?php
-$search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search"));
+//  echo $activefilter;
+//  exit;
+switch ($activefilter) {
+    case 0:
+        $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search"));
+        break;
+    case 1:
+        $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search", "filter" => "mobiles"));
+        break;
+}
 $game_add = $this->Html->url(array("controller" => "businesses", "action" => "game_add"));
 $explore = $this->Html->url(array("controller" => "businesses", "action" => "exploregames"));
 $params = $this->Paginator->params();
@@ -18,7 +27,7 @@ $allgames = $params['count'];
                     Explore Games
                 </a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action ?>" style="margin-left: 200px">
+            <form class="search hidden-xs" action="<?php echo $search_action; ?>" style="margin-left: 200px">
                 <i class="fa fa-search"></i>
                 <input type="text" name="q" placeholder="Search games..." />
                 <input type="submit" />

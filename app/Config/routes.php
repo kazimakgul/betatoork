@@ -37,6 +37,8 @@
         Router::connect('/mygames/:filter', array('controller' => 'businesses', 'action' => 'mygames'), array('pass' => array('filter'), 'filter' => 'mobiles'));
 	Router::connect('/mygames',array('controller'=>'businesses','action'=>'mygames'));
 	Router::connect('/favorites',array('controller'=>'businesses','action'=>'favorites'));
+        Router::connect('/explore/games/search/:filter', array('controller' => 'businesses', 'action' => 'exploregames_search'), array('pass' => array('filter'), 'filter' => 'mobiles'));
+        Router::connect('/explore/games/search', array('controller' => 'businesses', 'action' => 'exploregames_search'));
         Router::connect('/explore/games/:filter', array('controller' => 'businesses', 'action' => 'exploregames'), array('pass' => array('filter'), 'filter' => 'mobiles'));
 	Router::connect('/explore/games',array('controller'=>'businesses','action'=>'exploregames'));
         
