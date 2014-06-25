@@ -129,6 +129,7 @@
         Router::connect('/games/low-rate',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'starsize', 'direction'=>'asc'));
         Router::connect('/games/low-rate/*',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'starsize', 'direction'=>'asc'));
         Router::connect('/games/featured',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'recommend', 'direction'=>'desc'));
+        Router::connect('/games/featured/*',array('controller'=>'businesses', 'action'=>'toprated', 'sort'=>'recommend', 'direction'=>'desc'));
         }
 
        
