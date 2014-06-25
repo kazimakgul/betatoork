@@ -1519,7 +1519,7 @@ class BusinessesController extends AppController {
                         'Gamestat' => array(
                             'className' => 'Gamestat',
                             'foreignKey' => 'game_id',
-                            'type' => 'LEFT'
+                            'type' => 'INNER'
                         )
                     )
                 )
