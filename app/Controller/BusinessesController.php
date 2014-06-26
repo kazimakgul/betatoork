@@ -1294,7 +1294,7 @@ class BusinessesController extends AppController {
             $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         }
 
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
+        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
         $cond = $this->paginate('Game');
         
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
@@ -1607,6 +1607,13 @@ class BusinessesController extends AppController {
                 'fields' => array(
                     '*'
                 ),
+                'joins' => array(
+        array(
+            'table' => 'gamestats',
+            'type' => 'INNER',
+            'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
+        )
+    ),
                 'limit' => $limit,
                 'contain' => array(
                     'User',
