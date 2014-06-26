@@ -14,7 +14,7 @@ foreach ($gamedata as $game):
     ?>
     <div class="panel panel-default">
         <div class="imagehover">
-            <?php if (isset($fix) && $controls == $user['User']['id']): ?>
+            <?php if (isset($fix) && $controls == $user['User']['id'] && !isset($this->request->query['mode'])): ?>
                 <div class="caption">
                     <p class="text-center">
                         <a href="<?php echo $mygames; ?>" class="label label-danger" data-placement="bottom" data-toggle="modal" title="Change This Game">Change</a>
