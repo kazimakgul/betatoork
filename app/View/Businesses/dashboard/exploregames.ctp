@@ -1,6 +1,4 @@
 <?php
-//  echo $activefilter;
-//  exit;
 switch ($activefilter) {
     case 0:
         $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search"));
