@@ -359,7 +359,12 @@ public function admin_game_submit()
 	}
 	
 	
-	
+	/**
+     * Users Management method
+     *
+     * @param $role => which type of user will be listed,
+     * @return no return,set some values
+     */
 	public function users($role=NULL) {
 	$this->layout='adminDashboard';
 
@@ -373,10 +378,29 @@ public function admin_game_submit()
     	$userName = $user['User']['username'];
 	    $this->set('user',$user);
 		$this->set('username',$userName);
-
 	
-		
 	}
+
+
+	/**
+     * Games Management method
+     *
+     * @param $role => which type of user will be listed,
+     * @return no return,set some values
+     */
+	public function games() {
+	$this->layout='adminDashboard';
+
+		$this->Game->recursive = 0;
+		$this->set('games', $this->paginate('Game'));
+		$authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('username',$userName);
+	
+	}
+
 	
 	public function affected($id,$value)
     {

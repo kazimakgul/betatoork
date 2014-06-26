@@ -1,5 +1,6 @@
 <?php 
 $users=$this->Html->url(array("controller" => "admins","action" =>"users"));  
+$games=$this->Html->url(array("controller" => "admins","action" =>"games")); 
 $bots=$this->Html->url(array("controller" => "admins","action" =>"bots"));
 $game_add=$this->Html->url(array("controller" => "admins","action" =>"game_add"));
 
@@ -12,7 +13,7 @@ $admins=$this->Html->url(array("controller" => "admins","action" =>"users",1));
 $managers=$this->Html->url(array("controller" => "admins","action" =>"users",2));
 }
 
-
+$action=$this->params['action'];
 
 
 $orders=$this->Html->url(array("controller" => "admins","action" =>"orders"));
@@ -32,9 +33,9 @@ $mass_pwd_change=$this->Html->url(array("controller" => "admins","action" =>"mas
                                                 <a class="brand" href="<?php echo $users; ?>"></a>
                                                 <div class="nav-collapse collapse navbar-responsive-collapse">
                                                     <ul class="nav">
-                                                        <li class="active"><a href="<?php echo $users; ?>">Users</a></li>
-                                                        <li><a href="#">Games</a></li>
-                                                        <li><a href="<?php echo $game_add; ?>">Game Add</a></li>
+                                                        <li class="<?php if($action=='users') echo 'active'; ?>"><a href="<?php echo $users; ?>">Users</a></li>
+                                                        <li class="<?php if($action=='games') echo 'active'; ?>"><a href="<?php echo $games; ?>">Games</a></li>
+                                                        <li class="<?php if($action=='game_add') echo 'active'; ?>"><a href="<?php echo $game_add; ?>">Game Add</a></li>
                                                         <li class="dropdown">
                                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Insights <b class="caret"></b></a>
                                                             <ul class="dropdown-menu">
