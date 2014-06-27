@@ -1,50 +1,50 @@
 body {
-	padding-top: 70px;
-	background-image:url("http://image.naldzgraphics.net/2011/03/6-pattern.jpg"); 
+    padding-top: 70px;
+    background-image:url("http://image.naldzgraphics.net/2011/03/6-pattern.jpg"); 
 }
 
 .container{
-  max-width: none !important;
-  width: 1024px;
+    max-width: none !important;
+    width: 1024px;
 }
 .panel-body{
-	margin: 0 auto;
-	text-align: center;
+    margin: 0 auto;
+    text-align: center;
 }
 .pic
 {
-     margin-top:100px; 
-     width:120px;
-     margin-left:50px;
-     margin-bottom:-60px;
+    margin-top:100px; 
+    width:120px;
+    margin-left:50px;
+    margin-bottom:-60px;
 }
 
 
 .circular {
-  width: 120px;
-  height: 120px;
-  border-radius: 60px;
-  -webkit-border-radius: 60px;
-  -moz-border-radius: 60px;
-  -ms-border-radius: 60px;
-  -o-border-radius: 60px;
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    -ms-border-radius: 60px;
+    -o-border-radius: 60px;
 
-  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-  }
+    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
 
 
 .name
 {
     position:absolute;
-    padding-left:200px;
+    margin-left:200px;
     font-size:30px;
 }
 .pull-center{
-	text-align:center;
-	margin:0 auto;
-	width:15%;
+    text-align:center;
+    margin:0 auto;
+    width:15%;
 }
 .dropdown
 {
@@ -53,19 +53,19 @@ body {
 
 .change
 {
- position:relative; 
- bottom:20px;
- padding:1px;
- color:white;
- text-decoration:none;
+    position:relative; 
+    bottom:20px;
+    padding:1px;
+    color:white;
+    text-decoration:none;
 }
 
 
 .change:hover
 {
- text-decoration:none;
- background-color:black;
- color:white;
+    text-decoration:none;
+    background-color:black;
+    color:white;
 }
 
 
@@ -74,7 +74,7 @@ body {
 }
 .panel-image img.panel-image-preview {
     width: 100%;
-	border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
 }
 
 .panel-image label {
@@ -87,7 +87,7 @@ body {
 }
 
 .panel-heading ~ .panel-image img.panel-image-preview {
-	border-radius: 0px;
+    border-radius: 0px;
 }
 
 .panel-image ~ input[type=checkbox] {
@@ -97,52 +97,52 @@ body {
 }
 
 .panel-image ~ input[type=checkbox] ~ .panel-body {
-	height: 0px;
-	padding: 0px;
+    height: 0px;
+    padding: 0px;
 }
 
 .panel-image ~ input[type=checkbox]:checked ~ .panel-body {
     height: auto;
-	padding: 15px;
+    padding: 15px;
 }
 
 .panel-image ~ .panel-footer a {
     padding: 0px 10px;
-	font-size: 1.3em;
-	color: rgb(100, 100, 100);
+    font-size: 1.3em;
+    color: rgb(100, 100, 100);
 }
 
 /*Colors */
 .white{
-  color: #fff;
+    color: #fff;
 }
 .green{
-  color: #5cb85c;
+    color: #5cb85c;
 }
 .blue{
-  color: #5bc0de;
+    color: #5bc0de;
 }
 .darkblue{
-  color: #428bca;
+    color: #428bca;
 }
 .orange{
-  color: #f0ad4e;
+    color: #f0ad4e;
 }
 .red{
-  color: #d9534f;
+    color: #d9534f;
 }
 .black{
-  color: #000;
+    color: #000;
 }
 .lighten{
-  color: #000, 33.5%;
+    color: #000, 33.5%;
 }
 
 .imagehover {
     position:relative;
     overflow:hidden;
 }
- 
+
 .caption {
     position:absolute;
     top:0;
@@ -158,95 +158,95 @@ body {
 }
 
 .showme{ 
-display: none;
+    display: none;
 }
 .showhim:hover .showme{
-display : block;
+    display : block;
 }
 .rating{
-	width:150px;
-	float: left;
+    width:150px;
+    float: left;
 }
 .rating .widget-button{
-	font-size:25px;
+    font-size:25px;
 }
 
 .clone{
-	margin-right:10px;
-	float: left;
-	text-align: center;
+    margin-right:10px;
+    float: left;
+    text-align: center;
 }
 
 .clone .widget-button button:hover i {
-	color:green;
-	-webkit-animation: spin 2s infinite linear;
-	-moz-animation: spin 2s infinite linear;
-	-o-animation: spin 2s infinite linear;
-	animation: spin 2s infinite linear;
+    color:green;
+    -webkit-animation: spin 2s infinite linear;
+    -moz-animation: spin 2s infinite linear;
+    -o-animation: spin 2s infinite linear;
+    animation: spin 2s infinite linear;
 }
 .favourite{
-	margin-right:10px;
-	float:left;
-	text-align: center;
+    margin-right:10px;
+    float:left;
+    text-align: center;
 }
 
 .favourite .widget-button button:hover li{
-	color:red;
-  	-webkit-animation: bounce 1s;
-	-moz-animation: bounce 1s;
-	-o-animation: bounce 1s;
-	animation: bounce 1s; 
+    color:red;
+    -webkit-animation: bounce 1s;
+    -moz-animation: bounce 1s;
+    -o-animation: bounce 1s;
+    animation: bounce 1s; 
 }
 .NextBtn{
-	margin-right:10px;
-	float:left;
-	text-align: center;
+    margin-right:10px;
+    float:left;
+    text-align: center;
 }
 
 .NextBtn .widget-button button:hover li{
-  	-webkit-animation: bounce 1s;
-	-moz-animation: bounce 1s;
-	-o-animation: bounce 1s;
-	animation: bounce 1s; 
+    -webkit-animation: bounce 1s;
+    -moz-animation: bounce 1s;
+    -o-animation: bounce 1s;
+    animation: bounce 1s; 
 }
 
 .CommentBtn{
-	margin-right:10px;
-	float:left;
-	text-align: center;
+    margin-right:10px;
+    float:left;
+    text-align: center;
 }
 
 .CommentBtn .widget-button button:hover li{
-	color:green;
-  	-webkit-animation: bounce 1s;
-	-moz-animation: bounce 1s;
-	-o-animation: bounce 1s;
-	animation: bounce 1s; 
+    color:green;
+    -webkit-animation: bounce 1s;
+    -moz-animation: bounce 1s;
+    -o-animation: bounce 1s;
+    animation: bounce 1s; 
 }
 
 .ShareBtn{
-	margin-right:10px;
-	float:left;
-	text-align: center;
+    margin-right:10px;
+    float:left;
+    text-align: center;
 }
 
 .ShareBtn .widget-button button:hover li{
-	color:blue;
-  	-webkit-animation: bounce 1s;
-	-moz-animation: bounce 1s;
-	-o-animation: bounce 1s;
-	animation: bounce 1s; 
+    color:blue;
+    -webkit-animation: bounce 1s;
+    -moz-animation: bounce 1s;
+    -o-animation: bounce 1s;
+    animation: bounce 1s; 
 }
 
 div .widget-button{
-	display:table-cell;
+    display:table-cell;
 }
 
 
 .adscroll {
-   width: 200px;
-   height: 400px;
-   overflow-y: scroll;
+    width: 200px;
+    height: 400px;
+    overflow-y: scroll;
 }
 .adscroll::-webkit-scrollbar {
     width: 12px;
@@ -265,94 +265,94 @@ div .widget-button{
 /*--------------Animate.css Code ----------- */
 
 @-webkit-keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
 
-  40% {
-    -webkit-transform: translateY(-20px);
-    transform: translateY(-20px);
-  }
+    40% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
 
-  60% {
-    -webkit-transform: translateY(-10px);
-    transform: translateY(-10px);
-  }
+    60% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-  }
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
 
-  40% {
-    -webkit-transform: translateY(-20px);
-    -ms-transform: translateY(-20px);
-    transform: translateY(-20px);
-  }
+    40% {
+        -webkit-transform: translateY(-20px);
+        -ms-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
 
-  60% {
-    -webkit-transform: translateY(-10px);
-    -ms-transform: translateY(-10px);
-    transform: translateY(-10px);
-  }
+    60% {
+        -webkit-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
 }
 
 .bounce {
-  -webkit-animation-name: bounce;
-  animation-name: bounce;
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
 }
 
 @-webkit-keyframes flash {
-  0%, 50%, 100% {
-    opacity: 1;
-  }
+    0%, 50%, 100% {
+        opacity: 1;
+    }
 
-  25%, 75% {
-    opacity: 0;
-  }
+    25%, 75% {
+        opacity: 0;
+    }
 }
 
 @keyframes flash {
-  0%, 50%, 100% {
-    opacity: 1;
-  }
+    0%, 50%, 100% {
+        opacity: 1;
+    }
 
-  25%, 75% {
-    opacity: 0;
-  }
+    25%, 75% {
+        opacity: 0;
+    }
 }
 
 
 /*Stars for 16 px*/
 .stars2 { 
-  position: relative; 
-  float: left; 
-  background: url('../../img/rating/star_16_e.png') repeat-x left top; 
-  cursor: default; 
+    position: relative; 
+    float: left; 
+    background: url('../../img/rating/star_16_e.png') repeat-x left top; 
+    cursor: default; 
 }
 
 .stars2 .star2 { 
-  height: 16px; 
-  padding-left: 16px; 
-  background: transparent none repeat-x left top; 
+    height: 16px; 
+    padding-left: 16px; 
+    background: transparent none repeat-x left top; 
 }
 
 .stars2 .ratingbar2 { 
-  position: absolute; 
-  height: 100%; 
-  background: url('../../img/rating/star_16_h.png') repeat-x left top; 
+    position: absolute; 
+    height: 100%; 
+    background: url('../../img/rating/star_16_h.png') repeat-x left top; 
 }
 
 .ShareBtn .popover.top{
-		margin-top:-25px;
-		margin-left:-40px;
-	}
+    margin-top:-25px;
+    margin-left:-40px;
+}
 .popover{
-	z-index: 99999;
+    z-index: 99999;
 }
 .noti_bubble {
     position:absolute;    /* This breaks the div from the normal HTML document. */
@@ -374,20 +374,39 @@ div .widget-button{
 .pagination>li> .current,
 .pagination>li> .current:hover,
 .pagination>li> .current:focus{
-z-index: 2;
-color: #fff;
-background-color: #428bca;
-border-color: #428bca;
-cursor: default;
+    z-index: 2;
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+    cursor: default;
 }
 /** Bootstrap Edit */
 .pagination>li>a, .pagination>li>span {
-padding:0 !important;
+    padding:0 !important;
 }
 .pagination>li> .disabled, .pagination>li> .current, .pagination>li> .current:hover, .pagination>li> .current:focus {
-	padding:0px 12px !important;
+    padding:0px 12px !important;
 }
 
 .pagination>li>span>a {
-padding: 6px 12px  !important;
+    padding: 6px 12px  !important;
+}
+
+div#profilepicarea {
+    display: inline-block;
+    margin-bottom: -60px;
+    margin-left: 50px;
+    margin-top: 100px;
+    height: 120px;
+    width: 120px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+}
+
+a#changeprofilepic {
+    position: absolute;
+    top: 180px;
+    left: 90px;
+    display: none;
 }
