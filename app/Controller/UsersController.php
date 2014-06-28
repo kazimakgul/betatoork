@@ -1189,9 +1189,7 @@ WHERE user_id=' . $auth_id . '');
                 $msg = array(
                     "msgid" => '1',
                     "msg" => Router::url(array(
-                        "controller" => "businesses",
-                        "action" => "mysite",
-                        $this->User->id
+                        "controller" => "dashboard"
                     ))
                     //  "msg" => $this->webroot . $this->Auth->loginRedirect['controller'] . '/' . $this->Auth->loginRedirect['action']
                 );
