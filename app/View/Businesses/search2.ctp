@@ -1,6 +1,6 @@
 
 <div class="container">
-<?
+<?php
 $controls=NULL;
 if($this->Session->read('Auth.User.id')==$user['User']['id']){
 	$controls=$user['User']['id'];
