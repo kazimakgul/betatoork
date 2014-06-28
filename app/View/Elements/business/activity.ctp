@@ -79,8 +79,8 @@ $profileurl=$this->Html->url(array("controller" => "businesses","action" =>"mysi
           <div class="<?php echo $class ?>">
                 <div class="row event clearfix <?php echo $lastactivity['Activity']['seen']==0?'seen':'';?>">
                     <div class="col-sm-1">
-                        <div class="icon <? echo $a; ?>">
-                            <i class="fa fa-<? echo $b; ?>"></i>
+                        <div class="icon <?php echo $a; ?>">
+                            <i class="fa fa-<?php echo $b; ?>"></i>
                         </div>
                     </div>
                     <div class="col-sm-11 message">
