@@ -120,6 +120,16 @@
         {
         Router::connect('/',array('controller'=>'mobiles','action'=>'index'));
         Router::connect('/play/:seo_url', array('controller' => 'mobiles', 'action' => 'play'),array('seo_url' => '[-a-z0-9]+','pass' => array('seo_url')));
+
+        Router::connect('/games/top-rated',array('controller'=>'mobiles', 'action'=>'index', 'sort'=>'starsize', 'direction'=>'desc'));
+        Router::connect('/games/top-rated/*',array('controller'=>'mobiles', 'action'=>'index', 'sort'=>'starsize', 'direction'=>'desc'));
+
+        Router::connect('/games/most-played',array('controller'=>'mobiles', 'action'=>'index', 'sort'=>'playcount', 'direction'=>'desc'));
+        Router::connect('/games/most-played/*',array('controller'=>'mobiles', 'action'=>'index', 'sort'=>'playcount', 'direction'=>'desc'));
+
+        Router::connect('/games/newest',array('controller'=>'mobiles', 'action'=>'index', 'sort'=>'id', 'direction'=>'desc'));
+        Router::connect('/games/newest/*',array('controller'=>'mobiles', 'action'=>'index', 'sort'=>'id', 'direction'=>'desc'));
+
         }else{
         //Mobile detection ends
         Router::connect('/',array('controller'=>'businesses','action'=>'mysite'));
