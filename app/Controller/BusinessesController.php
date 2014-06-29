@@ -619,7 +619,7 @@ class BusinessesController extends AppController {
      * @author Kazim Akgul
      */
     public function startup() {
-        $this->layout = 'Business/dashboard';
+        $this->layout = 'Business/startup';
         $this->sideBar();
         $limit = 12;
         $this->paginate = array(
