@@ -316,6 +316,10 @@ $('.featured_toggle').click(function() {
 });
 
 
+$('.remove_game').click(function() {
+  alert('remove game');
+});
+
 $('.remove_bg_img').click(function() {
 
      //------

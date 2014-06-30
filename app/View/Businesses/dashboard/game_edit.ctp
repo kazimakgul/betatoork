@@ -157,7 +157,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
                    
                     <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
-					      	<a class='remove_game'><i class="fa fa-trash-o"></i> <span style='color:red;'>Delete this game!</span></a>
+					      	<a onclick="return false;" style="text-decoration:none;" href="#" class='remove_game'><i style="color: grey;" class="fa fa-trash-o"></i> <span style='color:red;'>Delete this game!</span></a>
 					    </div>
 				  	</div>
 
