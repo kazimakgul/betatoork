@@ -75,22 +75,22 @@ $subgameurl = $this->Html->url(array("controller" => "businesses", "action" => "
             if ($website == NULL) {
                 
             } else {
-                echo " <a href='$website'' class='btn btn-xs btn-success pull-right' style='margin:10px;'><span class='fa fa-globe'></span> $website</a>";
+                echo " <a href='$website'' class='btn btn-xs btn-success pull-right' style='margin:10px;' target='_blank'><span class='fa fa-globe'></span> $website</a>";
             }
             if ($facebook == NULL) {
                 
             } else {
-                echo " <a href='$facebook' class='btn btn-xs btn-primary pull-right' style='margin:10px;'><span class='fa fa-facebook-square'></span> Facebook</a>";
+                echo " <a href='$facebook' class='btn btn-xs btn-primary pull-right' style='margin:10px;' target='_blank'><span class='fa fa-facebook-square'></span> Facebook</a>";
             }
             if ($gplus == NULL) {
                 
             } else {
-                echo " <a href='$gplus' class='btn btn-xs btn-danger pull-right' style='margin:10px;'><span class='fa fa-google-plus-square'></span> Google+</a>";
+                echo " <a href='$gplus' class='btn btn-xs btn-danger pull-right' style='margin:10px;' target='_blank'><span class='fa fa-google-plus-square'></span> Google+</a>";
             }
             if ($twitter == NULL) {
                 
             } else {
-                echo " <a href='$twitter' class='btn btn-xs btn-info pull-right' style='margin:10px;'><span class='fa fa-twitter-square'></span> Twitter</a>";
+                echo " <a href='$twitter' class='btn btn-xs btn-info pull-right' style='margin:10px;' target='_blank'><span class='fa fa-twitter-square'></span> Twitter</a>";
             }
             ?>
 
