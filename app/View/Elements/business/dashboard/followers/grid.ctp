@@ -1,6 +1,10 @@
 <?php
 foreach ($followers as $value) {
-    $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
+    if (Configure::read('Domain.type') == 'subdomain') {
+        $userlink = $this->Html->url(array("controller" => '/', "action" => h($value['User']['seo_username'])));
+    } else {
+        $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
+    }
     ?>
     <div class="user col-xs-6 col-sm-4 col-md-3 col-lg-2">
         <a href="<?php echo $userlink ?>">

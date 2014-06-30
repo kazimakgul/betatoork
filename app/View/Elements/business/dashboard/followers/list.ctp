@@ -1,6 +1,12 @@
 <?php
+print_r($followers);
+exit;
 foreach ($followers as $value) {
-    $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
+    if (Configure::read('Domain.type') == 'subdomain') {
+        $userlink = $this->Html->url(array("controller" => '/', "action" => h($value['User']['seo_username'])));
+    } else {
+        $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
+    }
     ?>
     <div class="row user">
         <div class="col-sm-2 avatar">
