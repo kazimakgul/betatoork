@@ -1,6 +1,4 @@
 <?php
-print_r($followers);
-exit;
 foreach ($followers as $value) {
     if (Configure::read('Domain.type') == 'subdomain') {
         $userlink = $this->Html->url(array("controller" => '/', "action" => h($value['User']['seo_username'])));
