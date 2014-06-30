@@ -54,7 +54,7 @@ $mass_pwd_change=$this->Html->url(array("controller" => "admins","action" =>"mas
                                                     </form>
                                                     <ul class="nav pull-right">
                                                         <li><a href="#">Link</a></li>
-                                                        <?php if($this->params['action']!='game_add'){ ?>
+                                                        <?php if($action!='game_add' && $action!='game_edit'){ ?>
                                                         <li class="divider-vertical"></li>
                                                         <li class="dropdown">
                                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Filter/Sort <b class="caret"></b></a>

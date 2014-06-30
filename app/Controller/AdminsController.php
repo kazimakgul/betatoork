@@ -79,6 +79,25 @@ public function bots() {
     }
 
 
+    public function game_edit($id=NULL)
+    {
+        $this->layout='adminDashboard';
+        
+
+        $game=$this->Game->find('first',array('contain'=>false,'conditions'=>array('Game.id'=>$id)));
+        $this->set('game',$game);
+
+        $authid = $this->Session->read('Auth.User.id');
+		$user = $this->User->find('first', array('conditions' => array('User.id' => $authid)));
+    	$userName = $user['User']['username'];
+	    $this->set('user',$user);
+		$this->set('username',$userName);
+		$categories = $this->Game->Category->find('list');
+		$this->set(compact('categories'));
+
+    }
+
+
 
 public function admin_game_submit()
     {

@@ -2,53 +2,33 @@
 	foreach ($games as $game): ?>
 
 <?php 
-$adminedit=$this->Html->url(array("controller" => "admins","action" =>"adminedit",$user['User']['id']));
-$profilepublic=$this->Html->url(array( "controller" => h($user['User']['seo_username']),"action" =>''));
+$gameedit=$this->Html->url(array("controller" => "admins","action" =>"game_edit",$game['Game']['id']));
+$game_link=$this->Html->url(array( "controller" => 'businesses',"action" =>'play',h($game['Game']['id'])));
 ?>
 
 <div class="media well shadow" style="background-color:white;">
-                                                      <a class="pull-left" href="<?php echo $profilepublic; ?>">
+                                                      <a class="pull-left" href="<?php echo $game_link; ?>">
                                                        
   <?php 
   if($game['Game']['picture']==null) { ?>
-    <img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_manchannelavatar_default.png" class="img-polaroid" width="30" onerror="imgError(this,&quot;avatar&quot;);" alt="">   
+    <img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="panel-image-preview" alt="" onerror="imgError(this,&quot;toorksize&quot;);"> 
   <?php  } else {
-      echo $this->Upload->image($game,'User.picture',array(),array('class'=>'img-polaroid','align'=>'middle','title'=>'myUsername','alt'=>'myUsername','width'=>'30','onerror'=>'imgError(this,"avatar");')); }
+      echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");')); }
   ?>
                                                        </a>
 
 
 <h4 class="media-heading">
-	<a href="<?php echo $profilepublic; ?>"><?php echo h($game['Game']['name']); ?></a>
+	<a href="<?php echo $game_link; ?>"><?php echo h($game['Game']['name']); ?></a>
 	<small class="pull-right helper-font-small">
-		Created: <?php echo h($user['User']['created']); ?>
-	</small>
-	<small class="pull-right helper-font-small">
-		Last Login: <?php echo h($user['User']['last_login']); ?>
+		Created: <?php echo h($game['Game']['created']); ?>
 	</small>
 </h4>
 
 <p class="pull-right">
-<a href="#" class="btn btn-mini detailopen" id="<?php echo h($user['User']['id']); ?>"><i class="elusive-edit"></i> Quick Edit</a>
-<a href="<?php echo $adminedit; ?>" class="btn btn-mini"><i class="elusive-edit"></i> Edit</a>
-<a href="#" class="btn btn-mini commentopen" id="<?php echo $random2 = rand(); ?>"><i class="elusive-user"></i> Role</a>
+<a href="<?php echo $gameedit; ?>" class="btn btn-mini"><i class="elusive-edit"></i> Edit</a>
 </p>
                                                             
-
-<p style="margin-left:50px;">
-
-  	<?php 
-  		if($user['User']['role']==1) { 
-  			$result= "<p class='label label-important'>Admin</p>";
-  		}elseif($user['User']['role']==2) {
-  			$result= "<p class='label label-info'>Manager</p>";
-  		}else{
-  			$result= "<p class='label'>User</p>";
-  		}
-  		echo $result; 
-  	?>
-  	
-</p>
                                                                                                                         
 <hr size="1">
                                                         

@@ -1,3 +1,7 @@
+<?php 
+$delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_delete',$game['Game']['id']));
+?>
+
 <body id="form-product">
 	<div id="wrapper">
 		<?php  echo $this->element('business/dashboard/sidebar');?>
@@ -149,6 +153,15 @@
 				  		<input type="hidden" name="new_data" id="new_data" value="0" />
 				  		<input type="hidden" name="game_id" id="game_id" value="<?php echo $game['Game']['id']; ?>" />
 					</div>
+
+                   
+                    <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
+					      	<a class='remove_game'><i class="fa fa-trash-o"></i> <span style='color:red;'>Delete this game!</span></a>
+					    </div>
+				  	</div>
+
+
 				  	<div class="form-group form-actions">
 				    	<div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 				      		<button id="NewButton" class="btn btn-success">Save Changes</button>
