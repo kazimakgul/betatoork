@@ -646,6 +646,10 @@ class BusinessesController extends AppController {
                     'User.seo_username'
                 ),
                 'limit' => $limit,
+                'conditions' => array(
+                    'Game.priority != ' => NULL,
+                    'User.verify !=' => NULL
+                ),
                 'order' => array(
                     'Game.id' => 'DESC'
                 )
@@ -1619,6 +1623,9 @@ class BusinessesController extends AppController {
                     'User',
                     'Gamestat'
                 ),
+                'conditions' => array(
+                    'Game.priority != ' => NULL
+                ),
                 'order' => array(
                     'Game.id' => 'DESC'
                 )
@@ -1920,6 +1927,9 @@ class BusinessesController extends AppController {
                 'order' => array(
                     'User.id' => 'DESC'
                 ),
+                'conditions' => array(
+                    'User.verify != ' => NULL
+                ),
                 'limit' => $limit
             )
         );
@@ -1960,6 +1970,9 @@ class BusinessesController extends AppController {
                 ),
                 'order' => array(
                     'User.id' => 'DESC'
+                ),
+                'conditions' => array(
+                    'User.verify != ' => NULL
                 ),
                 'limit' => $limit,
                 'conditions' => array(
