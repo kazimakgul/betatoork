@@ -1878,6 +1878,7 @@ function submit_user($id)
    $email=$('.user_email').val();
    $role=$('.user_role').val();
    $credit=$('.user_credit').val();
+   $verify=$('.user_verify').is(':checked');
    $botmode=$('.user_botmode').is(':checked');
    if($botmode)
    {
@@ -1885,13 +1886,20 @@ function submit_user($id)
    }else{
    $bot=0; 
    }
+
+   if($verify)
+   {
+   $verify=1;
+   }else{
+   $verify=0; 
+   }
  
    
    //=============Submit User Function Starts===============
    $.ajax({
         type: "POST",
         url: edit_user_submit,
-		data: {id: $id,screenname:$screenname,username:$username,email: $email,role: $role,credit: $credit,bot: $bot },
+		data: {id: $id,screenname:$screenname,username:$username,email: $email,role: $role,credit: $credit,bot: $bot,verify:$verify },
 		async: true,
         success: function(data){
 		

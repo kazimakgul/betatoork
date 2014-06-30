@@ -81,7 +81,15 @@
                                                                 <div class="controls">
                                                                     <span class="add-on"><i class="elusive-user"></i></span>
 <input name="user_botmode" class="grd-white user_botmode" type="checkbox" <?php if($bot==1){echo 'checked';} ?>>                                                                </div>
-                                                            </div>		
+                                                            </div>	
+
+
+                                                            <div class="control-group  input-prepend">
+                                                                <label class="control-label" for="required">Verified</label>
+                                                                <div class="controls">
+                                                                    <span class="add-on"><i class="elusive-user"></i></span>
+<input name="user_verify" class="grd-white user_verify" type="checkbox" <?php if($user[0]['User']['verify']==1){echo 'checked';} ?>>                                                                </div>
+                                                            </div>  	
 															
                                                        
 

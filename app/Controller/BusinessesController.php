@@ -1928,7 +1928,7 @@ class BusinessesController extends AppController {
                     'User.id' => 'DESC'
                 ),
                 'conditions' => array(
-                    'User.verify != ' => NULL
+                    'User.verify' => 1
                 ),
                 'limit' => $limit
             )

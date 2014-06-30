@@ -53,8 +53,8 @@ Router::connect('/following', array('controller' => 'businesses', 'action' => 'f
 Router::connect('/followers', array('controller' => 'businesses', 'action' => 'followers'));
 Router::connect('/explore/channels', array('controller' => 'businesses', 'action' => 'explorechannels'));
 
-Router::connect('/activities', array('controller' => 'businesses', 'action' => 'activities'));
-Router::connect('/activities/*', array('controller' => 'businesses', 'action' => 'activities'));
+Router::connect('/activity', array('controller' => 'businesses', 'action' => 'activities'));
+Router::connect('/activity/*', array('controller' => 'businesses', 'action' => 'activities'));
 
 Router::connect('/settings/channel', array('controller' => 'businesses', 'action' => 'channel_settings'));
 Router::connect('/settings/profile', array('controller' => 'businesses', 'action' => 'settings'));

@@ -673,7 +673,7 @@ public function admin_game_submit()
     'conditions' => array(
         'User.id' => $id
     ),
-    'fields' => array('Botcred.credit', 'User.id', 'User.screenname', 'User.username', 'User.email', 'User.role', 'User.picture')
+    'fields' => array('Botcred.credit', 'User.id', 'User.screenname', 'User.username', 'User.email', 'User.role', 'User.picture', 'User.verify')
 ));
 	
 	//Is this user bot?
@@ -707,6 +707,7 @@ public function admin_game_submit()
 	$role=$_POST['role'];
 	$credit=$_POST['credit'];
 	$bot=$_POST['bot'];
+	$verify=$_POST['verify'];
 	
 	$this->User->id = $id;
 	
@@ -727,6 +728,7 @@ public function admin_game_submit()
 		  'screenname' => $screenname,
 		  'username' => $username,
 		  'email' => $email,
+		  'verify' => $verify,
 		  'role' => $role));
 		  if ($this->User->save($filtered_data)) {echo 'saved userdata';}
 		  
