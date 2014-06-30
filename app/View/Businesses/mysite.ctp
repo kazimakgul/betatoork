@@ -115,7 +115,7 @@
     <!--/footer-->
     <?php echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerBottom, 'adtype' => 'homeBannerBottom')); ?>
     <?php if ($controls == $user['User']['id']) { ?>
-        <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default pull-left" style="left:0px;top:60px; position:absolute;"><span class="fa fa-picture-o"></span> Change Background</a>
+        <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default pull-left" style="left:7px;top:60px; position:absolute;"><span class="fa fa-picture-o"></span> Change Background</a>
     <?php } ?>
 </div>
 <!-- /.container -->

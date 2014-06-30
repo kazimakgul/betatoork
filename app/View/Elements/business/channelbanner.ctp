@@ -34,7 +34,7 @@ $subgameurl = $this->Html->url(array("controller" => "businesses", "action" => "
                 <?php } ?>
             </div>
             <?php if ($controls == $user['User']['id']) { ?>
-                <a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -150px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
+                <a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -160px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
             <?php } ?>
             <div class="name">
                 <!--

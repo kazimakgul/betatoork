@@ -70,7 +70,7 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                     <div class="name">
                         <div class="showme">
                         	
-                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:-40px 0px 10px 25px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
+                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:-40px 0px 10px 27px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
                         	
                         </div>
                     </div>
