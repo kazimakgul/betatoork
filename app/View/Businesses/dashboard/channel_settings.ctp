@@ -116,7 +116,10 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 				  	</div>
 					<div class="form-group">
 				  		<label>Analitics Code:</label>
-				  		<div><textarea id="analitics" class="form-control" rows="4" style="margin-bottom: 10px; height:100px;"><?php echo $user['User']['analitics'];?></textarea></div>
+                        <span class="help" data-toggle="tooltip" title="Exp. : UA-XXXXX-X">
+					    		<i class="fa fa-question-circle"></i>
+					    </span>
+				  		<div><input type="text" id="analitics" class="form-control" maxlength="25" value="<?php echo $user['User']['analitics'];?>"></div>
 
 				  	</div>
 					<div class="form-group">
