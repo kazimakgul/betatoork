@@ -317,7 +317,9 @@ $('.featured_toggle').click(function() {
 
 
 $('.remove_game').click(function() {
-  alert('remove game');
+  game_id=$('#game_id').val();
+  
+  alert('remove game'+game_id);
 });
 
 $('.remove_bg_img').click(function() {

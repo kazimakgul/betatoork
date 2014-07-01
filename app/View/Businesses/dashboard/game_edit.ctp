@@ -157,7 +157,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
                    
                     <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
-					      	<a onclick="return false;" style="text-decoration:none;" href="#" class='remove_game'><i style="color: grey;" class="fa fa-trash-o"></i> <span style='color:red;'>Delete this game!</span></a>
+					      	<a data-toggle="modal" data-target="#confirm-modal" onclick="return false;" style="text-decoration:none;" href="#" ><i style="color: grey;" class="fa fa-trash-o"></i> <span style='color:red;'>Delete this game!</span></a>
 					    </div>
 				  	</div>
 
@@ -197,6 +197,30 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
             </div>
         </div>
     </div>
-  <!-- Game Add Modal ends -->   
+  <!-- Game Add Modal ends -->  
+
+    <!-- Confirm Modal begins -->
+    <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            Are you sure you want to delete this?
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to delete <b><?php echo $game['Game']['name']; ?></b> ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-danger remove_game">Yes, delete it</button>
+                    </div>
+                
+            </div>
+        </div>
+    </div> 
+    <!-- Confirm Modal ends -->
 
 </body>
