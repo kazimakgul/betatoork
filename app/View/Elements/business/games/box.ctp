@@ -29,7 +29,7 @@ foreach ($gamedata as $game):
         <div class="panel-footer text-center" style="padding:0px;">
             <a href="<?php echo $playurl;?>" style="padding:0px;"><h5 class="darkblue" style='height:16px; overflow:hidden;'><?php echo $game['Game']['name']; ?></h5></a>
             <div class="row">
-                <span class="col-md-6" style='margin-left:10px;'>
+                <span class="game_box_left">
                     <div class= 'centerrate2'>
                         <div class="stars2"  data-toggle="tooltip" data-original-title="<?= $game['Game']['rate_count']; ?> Rates">
                             <div class="ratingbar2" style="width: <?php echo $game['Game']['starsize']; ?>%;"></div>
@@ -45,7 +45,7 @@ foreach ($gamedata as $game):
                         </div>
                     </div>
                 </span>
-                <span class="col-md-5">
+                <span class="game_box_right">
                     <i data-toggle="tooltip" title="<?php echo $playcount; ?> Plays" class="fa fa-play green"></i>
                     <i data-toggle="tooltip" title="<?php echo $favcount; ?> Favorites" class="fa fa-heart red"></i>
                     <i data-toggle="tooltip" title="<?php echo $totalclone; ?> Clones" class="fa fa-plus-square darkblue"></i>

@@ -410,3 +410,15 @@ a#changeprofilepic {
     left: 90px;
     display: none;
 }
+
+.game_box_left
+{
+    float: left;
+    margin: 0 0 5px 25px;
+}
+
+.game_box_right
+{
+    float: right;
+    margin: 0 25px 5px 0;
+}
