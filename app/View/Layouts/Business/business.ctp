@@ -5,6 +5,13 @@
         <title><?php echo $title_for_layout?></title>
         <meta name="description" content= "<?php echo $description_for_layout?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        		<!-- OG TAGS -->
+		<meta property="og:title" content= "<?php echo $title_for_layout?>" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="<?php echo 'http://'.$_SERVER['SERVER_NAME'].Router::url('/'); ?>"/>
+        <meta property="og:image" content="<?php echo Configure::read('broken.toorksize'); ?>"/>
+        <meta property="og:site_name" content="Clone Game"/>
+        <meta property="og:description" content= "<?php echo $description_for_layout?>" />
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"><?php echo $this->Html->css(array('business/custom','css2/jquery.pnotify.default')); ?>
  		<script>
