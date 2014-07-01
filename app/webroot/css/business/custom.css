@@ -422,3 +422,14 @@ a#changeprofilepic {
     float: right;
     margin: 0 25px 5px 0;
 }
+
+.collapse
+{
+    display: block !important;
+    border: none !important;
+}
+
+.collapse form
+{
+    border: none !important;
+}

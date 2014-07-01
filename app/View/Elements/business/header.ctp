@@ -20,12 +20,14 @@ $mysite = $this->Html->url(array("controller" => "businesses", "action" => "mysi
 ?>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
+        <!--
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+        -->
         <a class="navbar-brand" rel="home" href="<?php echo $index ?>"><?php echo $user['User']['username'] ?></a>
     </div>
     <div class="collapse navbar-collapse">
@@ -35,7 +37,8 @@ $mysite = $this->Html->url(array("controller" => "businesses", "action" => "mysi
         </ul>
         -->
         <?php if ($this->Session->check('Auth.User')) { ?>
-            <div class="col-sm-3 col-md-3 navbar-right " style="margin-top:8px;">
+            <!-- <div class="col-sm-3 col-md-3 navbar-right" style="margin-top:8px;"> -->
+            <div style="margin: 8px; float: right">
                 <div class="pull-right btn-group">
                     <a class="btn btn-default" href="<?php echo $mysite; ?>"> 
                         <i class="glyphicon glyphicon-user"></i> <?php echo $this->Session->read('Auth.User.username'); ?>
@@ -55,14 +58,16 @@ $mysite = $this->Html->url(array("controller" => "businesses", "action" => "mysi
                 </div>
             </div>
         <?php } else { ?>
-            <div class="col-sm-3 col-md-3 navbar-right" style="margin-top:8px;">
+            <!-- <div class="col-sm-3 col-md-3 navbar-right" style="margin-top:8px;"> -->
+            <div style="margin: 8px; float: right">
                 <div class="pull-right btn-group">
                     <button data-toggle="modal" data-target="#login" class="btn btn-default" ><i class="glyphicon glyphicon-user"></i> Login</button>
                     <button data-toggle="modal" data-target="#register" class="btn btn-default" ><i class="glyphicon glyphicon-edit"></i> Register</button>
                 </div>
             </div>
         <?php } ?>
-        <div class="col-sm-5 col-md-5">
+        <!-- <div class="col-sm-5 col-md-5"> -->
+        <div style="max-width: 750px ! important;">
             <form id="business_search" class="navbar-form" action="<?php echo $search; ?>">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search Games..." name="srch-term" id="srch-term" <?php echo!empty($searchVal) ? 'value="' . $searchVal . '"' : '' ?>>
