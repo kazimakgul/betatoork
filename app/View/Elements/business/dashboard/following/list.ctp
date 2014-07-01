@@ -5,7 +5,7 @@ foreach ($following as $value) {
     $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($userid)));
     $followid = $follower['User']['id'];
     if (Configure::read('Domain.type') == 'subdomain') {
-        $userlink = $this->Html->url(array("controller" => '/', "action" => h($value['User']['seo_username'])));
+        $userlink = $this->Html->url('http://'.$value['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']); 
     } else {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($userid)));
     }
