@@ -320,6 +320,25 @@ $('.remove_game').click(function() {
   game_id=$('#game_id').val();
   
   alert('remove game'+game_id);
+alert(remove_game);
+   //------
+       $.ajax({
+        type: "POST",
+        url: remove_game,
+        dataType: "json",
+    async: false,
+        success: function(data){
+      
+      Messenger().post(data.rtdata.title);
+
+      },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+  });
+     //------ 
+
+
 });
 
 $('.remove_bg_img').click(function() {
