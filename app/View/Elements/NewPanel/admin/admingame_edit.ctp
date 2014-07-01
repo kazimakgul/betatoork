@@ -56,6 +56,8 @@
 <a style='float:left;margin-left:5px;' data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title=""><i class="elusive-upload"></i> Upload Game File</a>
 
 <input id="game_file" type="hidden" value="empty"> 
+<input type="hidden" name="attr" id="attr" value="game_edit" />
+<input type="hidden" name="game_id" id="game_id" value="<?php echo $game['Game']['id']; ?>" />
 </div>
  </div> 
 
