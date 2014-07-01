@@ -13,18 +13,18 @@ class BusinessesController extends AppController {
     var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Adsetting', 'Adcode');
     public $helpers = array('Html', 'Form', 'Upload', 'Recaptcha.Recaptcha', 'Time');
     public $components = array('Amazonsdk.Amazon', 'Recaptcha.Recaptcha', 'Common');
-	
+
     //=====Kullanici sisteme login ise=======
     public function isAuthorized($user) {
         if (parent::isAuthorized($user)) {
-        	 $auth_id=$this->Session->read('Auth.User.id');
-            $this->set('notifycount', $this->Activity->find('count',array('contain'=>false,'conditions'=>array('Activity.channel_id'=>$auth_id,'Activity.notify'=>1,'Activity.seen'=>0))));
+            $auth_id = $this->Session->read('Auth.User.id');
+            $this->set('notifycount', $this->Activity->find('count', array('contain' => false, 'conditions' => array('Activity.channel_id' => $auth_id, 'Activity.notify' => 1, 'Activity.seen' => 0))));
             return true;
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard','mygames','favorites','exploregames','settings','channel_settings','following','followers','explorechannels','activities','app_status','steps2launch','ads_management','notifications','add_ads','game_add','game_edit','mygames_search','exploregames_search','following_search','followers_search','mygames_search','favorites_search','explorechannels_search','featured_toggle'))) {
-           return true;
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle'))) {
+            return true;
         }
 
 
@@ -36,12 +36,11 @@ class BusinessesController extends AppController {
 
         return false;
     }
-    
+
     public function beforeFilter() {
-      parent::beforeFilter();
-      $this->noprefixdomain();
-	  
-    }    
+        parent::beforeFilter();
+        $this->noprefixdomain();
+    }
 
     public function afterFilter() {
         
@@ -154,42 +153,39 @@ class BusinessesController extends AppController {
      * @return success=>"Message" or Error=>id
      */
     public function featured_toggle() {
-      Configure::write ( 'debug', 0 );
+        Configure::write('debug', 0);
 
-      if ($auth_id=$this->Auth->user('id')) {//Auth control begins here
-      $game_id=$this->request->data['game_id'];
+        if ($auth_id = $this->Auth->user('id')) {//Auth control begins here
+            $game_id = $this->request->data['game_id'];
 
-      $game_data=$this->Game->find('first',array('contain'=>false,'conditions'=>array('Game.id'=>$game_id,'Game.user_id'=>$auth_id),'fields'=>array('Game.id','Game.priority')));
-      if($game_data!=NULL)
-      {    
-           if($game_data['Game']['priority']==0)
-           {
-               $filtered_data['Game']['priority'] = 1;
-               $this->set('success', "Game set as featured.");
-               $this->set('act_type', 1);
-               $this->set('_serialize', array('success','act_type'));
-           }else{
-               $filtered_data['Game']['priority'] = 0;
-               $this->set('success', "Game unset from featured list.");
-               $this->set('act_type', 0);
-               $this->set('_serialize', array('success','act_type'));
-           }
-           $this->Game->id=$game_id;
-           $this->Game->save($filtered_data);
-      }
+            $game_data = $this->Game->find('first', array('contain' => false, 'conditions' => array('Game.id' => $game_id, 'Game.user_id' => $auth_id), 'fields' => array('Game.id', 'Game.priority')));
+            if ($game_data != NULL) {
+                if ($game_data['Game']['priority'] == 0) {
+                    $filtered_data['Game']['priority'] = 1;
+                    $this->set('success', "Game set as featured.");
+                    $this->set('act_type', 1);
+                    $this->set('_serialize', array('success', 'act_type'));
+                } else {
+                    $filtered_data['Game']['priority'] = 0;
+                    $this->set('success', "Game unset from featured list.");
+                    $this->set('act_type', 0);
+                    $this->set('_serialize', array('success', 'act_type'));
+                }
+                $this->Game->id = $game_id;
+                $this->Game->save($filtered_data);
+            }
 
 
 
-       
-         
-       //Auth control ends here
-       }else{//if user is not logged in
-          $this->set('error', 'You have to login first.');
-          $this->set('_serialize', array('error'));
-       }
-         
+
+
+            //Auth control ends here
+        } else {//if user is not logged in
+            $this->set('error', 'You have to login first.');
+            $this->set('_serialize', array('error'));
+        }
     }
-     
+
     /**
      * New Form Request method
      *
@@ -197,7 +193,7 @@ class BusinessesController extends AppController {
      * @return success=>"Message" or Error=>id
      */
     public function newData() {
-        Configure::write ( 'debug', 0 );
+        Configure::write('debug', 0);
         App::uses('Folder', 'Utility');
         App::uses('File', 'Utility');
 
@@ -220,136 +216,117 @@ class BusinessesController extends AppController {
                 }
                 $this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
-			}
-			elseif($attr == "game_add"){
+            } elseif ($attr == "game_add") {
                 $game_name = $this->request->data['name'];
                 $game_description = $this->request->data['desc'];
                 $game_link = $this->request->data['game_link'];
                 $game_width = $this->request->data['width'];
                 $game_height = $this->request->data['height'];
-                $game_priority=0;
-				        $category_id = $this->request->data['category'];
+                $game_priority = 0;
+                $category_id = $this->request->data['category'];
                 $fullscreen = $this->request->data['fullscreen'];
-				        $mobileready = $this->request->data['mobile'];
-				        $game_user_id = $user_id;
-				        $created  = date('Y-m-d H:i:s');
-				        $game_owner_id = $user_id;
-                $image_name=$this->request->data['image_name'];
-                $game_file=$this->request->data['game_file'];
-                $new_game=$this->request->data['new_game'];
+                $mobileready = $this->request->data['mobile'];
+                $game_user_id = $user_id;
+                $created = date('Y-m-d H:i:s');
+                $game_owner_id = $user_id;
+                $image_name = $this->request->data['image_name'];
+                $game_file = $this->request->data['game_file'];
+                $new_game = $this->request->data['new_game'];
 
-                if($new_game==0)
-                { 
-                  $game_id=$this->request->data['game_id'];
-                  $this->Game->id= $game_id;
+                if ($new_game == 0) {
+                    $game_id = $this->request->data['game_id'];
+                    $this->Game->id = $game_id;
                 }
-                
 
-                if($image_name!='current')
-                {
-                //This area should be exist for upload plugin needs-begins  
-                $file = new File(WWW_ROOT ."/upload/temporary/".$user_id."/".$image_name,false);
-                $info=$file->info();
-                $filename=$info["filename"];
-                $ext=$info["extension"];
-                $basename=$info["basename"];
-                $dirname=$info["dirname"];
-                $newname=$filename.'_toorksize.'.$ext;
-                rename(WWW_ROOT ."/upload/temporary/".$user_id."/".$image_name, WWW_ROOT ."/upload/temporary/".$user_id."/".$newname); 
-                //This area should be exist for upload plugin needs-ends    
+
+                if ($image_name != 'current') {
+                    //This area should be exist for upload plugin needs-begins  
+                    $file = new File(WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $image_name, false);
+                    $info = $file->info();
+                    $filename = $info["filename"];
+                    $ext = $info["extension"];
+                    $basename = $info["basename"];
+                    $dirname = $info["dirname"];
+                    $newname = $filename . '_toorksize.' . $ext;
+                    rename(WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $image_name, WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $newname);
+                    //This area should be exist for upload plugin needs-ends    
                 }
-                
-                if($game_file!='empty')
-                {
-                $type=$this->Game->get_game_type($game_file);
-                }else{
-                $type=$this->Game->get_game_type($game_link);
+
+                if ($game_file != 'empty') {
+                    $type = $this->Game->get_game_type($game_file);
+                } else {
+                    $type = $this->Game->get_game_type($game_link);
                 }
-                
+
 
                 //============Save Datas To Games Database Begins================
                 //*****************************
                 //Secure data filtering begins
                 //*****************************
-               $filtered_data=
-               array('Game' =>array(
-              'name' => $game_name=$this->Game->secureSuperGlobalPOST($game_name),
-              'description' => $this->Game->secureSuperGlobalPOST($game_description),
-              'link' => $game_link,
-              'width' => $game_width,
-              'height' => $game_height,
-              'type' => $type,
-              'link' => $game_link,
-              'user_id' => $game_user_id,
-              'priority' => 0,
-              'category_id' => $category_id,
-              'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
-              'owner_id' => $game_user_id,
-              'user_id' => $game_user_id,
-              'fullscreen' => $fullscreen,
-              'mobileready' => $mobileready));
-              //*****************************
-              //Secure data filtering ends
-              //*****************************
+                $filtered_data = array('Game' => array(
+                        'name' => $game_name = $this->Game->secureSuperGlobalPOST($game_name),
+                        'description' => $this->Game->secureSuperGlobalPOST($game_description),
+                        'link' => $game_link,
+                        'width' => $game_width,
+                        'height' => $game_height,
+                        'type' => $type,
+                        'link' => $game_link,
+                        'user_id' => $game_user_id,
+                        'priority' => 0,
+                        'category_id' => $category_id,
+                        'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
+                        'owner_id' => $game_user_id,
+                        'user_id' => $game_user_id,
+                        'fullscreen' => $fullscreen,
+                        'mobileready' => $mobileready));
+                //*****************************
+                //Secure data filtering ends
+                //*****************************
+                //print_r($filtered_data);
+                if ($this->Game->save($filtered_data)) {
 
-				//print_r($filtered_data);
-				if($this->Game->save($filtered_data))
-				{
-                   
-                    $this->requestAction( array('controller' => 'userstats', 'action' => 'getgamecount',$user_id));
-                    
-                    if($new_game==0)
-                    { 
-                    $id=$game_id;
-                    }else{
-                    $id=$this->Game->getLastInsertId();
+                    $this->requestAction(array('controller' => 'userstats', 'action' => 'getgamecount', $user_id));
+
+                    if ($new_game == 0) {
+                        $id = $game_id;
+                    } else {
+                        $id = $this->Game->getLastInsertId();
                     }
 
-                    $this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$user_id));
+                    $this->requestAction(array('controller' => 'wallentries', 'action' => 'action_ajax', $id, $user_id));
 
-                    
-            if($image_name!='current')
-            {//if user didnt change the game image
-                    //=======Upload to aws for Game Image begins===========
-                    $feedback=$this->Amazon->S3->create_object(
-                    Configure::read('S3.name'),
-                   'upload/games/'.$id."/".$newname,
-                    array(
-                   'fileUpload' => WWW_ROOT ."/upload/temporary/".$user_id."/".$newname,
-                   'acl' => AmazonS3::ACL_PUBLIC
-                    )
-                    );
-                   //========Upload to aws for Game Image ends==============
-                  if($feedback)
-                  {
-                  //Set the picture field on db.
-                  $this->Game->query('UPDATE games SET picture="'.$image_name.'" WHERE id='.$id); 
-                  $this->remove_temporary($user_id,'new_game');
-                  }
-            }      
-                $this->gameUpload($game_file,$id,$user_id);//Check if any game upload exists
-            
-                
-                if($new_game==0)
-                { 
-				          $this->set('success', "Game Updated");
-                }else{
-                  $this->set('success', "Game Added");
+
+                    if ($image_name != 'current') {//if user didnt change the game image
+                        //=======Upload to aws for Game Image begins===========
+                        $feedback = $this->Amazon->S3->create_object(
+                                Configure::read('S3.name'), 'upload/games/' . $id . "/" . $newname, array(
+                            'fileUpload' => WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $newname,
+                            'acl' => AmazonS3::ACL_PUBLIC
+                                )
+                        );
+                        //========Upload to aws for Game Image ends==============
+                        if ($feedback) {
+                            //Set the picture field on db.
+                            $this->Game->query('UPDATE games SET picture="' . $image_name . '" WHERE id=' . $id);
+                            $this->remove_temporary($user_id, 'new_game');
+                        }
+                    }
+                    $this->gameUpload($game_file, $id, $user_id); //Check if any game upload exists
+
+
+                    if ($new_game == 0) {
+                        $this->set('success', "Game Updated");
+                    } else {
+                        $this->set('success', "Game Added");
+                    }
+                    $this->set('_serialize', array('success'));
                 }
-                $this->set('_serialize', array('success'));
-				}
-				
-			}
-			else{
-            $id = 1;
-            $this->set('error', $id);
-            $this->set('_serialize', array('error'));
-			}
-			
-			
-			
-
-		} else {
+            } else {
+                $id = 1;
+                $this->set('error', $id);
+                $this->set('_serialize', array('error'));
+            }
+        } else {
 
             $id = 1;
             $this->set('error', $id);
@@ -357,41 +334,34 @@ class BusinessesController extends AppController {
         }
     }
 
-
-  /**
+    /**
      * Game Upload method
      *
      * @param Request => array()
      * @return Game upload and db data insert
      */
-  function gameUpload($game_file=NULL,$id=NULL,$userid=NULL)
-   {
-        if($game_file!='empty')
-        {
+    function gameUpload($game_file = NULL, $id = NULL, $userid = NULL) {
+        if ($game_file != 'empty') {
 
-        $random_number=rand(1000000,9999999);
-        $new_game_file= $random_number.'_'.$game_file;
-          
+            $random_number = rand(1000000, 9999999);
+            $new_game_file = $random_number . '_' . $game_file;
+
             //=======Upload to aws for Game Upload begins===========
-      $feedback=$this->Amazon->S3->create_object(
-            Configure::read('S3-games.name'),
-            $new_game_file,
-             array(
-            'fileUpload' => WWW_ROOT ."upload/gamefiles/".$userid."/".$game_file,
-            'acl' => AmazonS3::ACL_PUBLIC
-            )
+            $feedback = $this->Amazon->S3->create_object(
+                    Configure::read('S3-games.name'), $new_game_file, array(
+                'fileUpload' => WWW_ROOT . "upload/gamefiles/" . $userid . "/" . $game_file,
+                'acl' => AmazonS3::ACL_PUBLIC
+                    )
             );
-      //========Upload to aws for Game Upload ends==============
-      if($feedback)
-          {
-          //Set the picture field on db.
-          $game_link=Configure::read('S3-games.url').'/'.$new_game_file;
-          $this->Game->query('UPDATE games SET link="'.$game_link.'" WHERE id='.$id);
-          $this->remove_temporary($userid,'game_upload'); 
-          }
-      }   
-   }
-
+            //========Upload to aws for Game Upload ends==============
+            if ($feedback) {
+                //Set the picture field on db.
+                $game_link = Configure::read('S3-games.url') . '/' . $new_game_file;
+                $this->Game->query('UPDATE games SET link="' . $game_link . '" WHERE id=' . $id);
+                $this->remove_temporary($userid, 'game_upload');
+            }
+        }
+    }
 
     /**
      * Delete Form Request method
@@ -408,11 +378,11 @@ class BusinessesController extends AppController {
                 $this->Adcode->query('DELETE FROM adcodes WHERE id=' . $id . ' AND user_id=' . $user_id);
                 $this->set('success', "Ads Code Deleted");
                 $this->set('_serialize', array('success'));
-            }elseif($attr == "edit_game"){
+            } elseif ($attr == "edit_game") {
                 $id = $this->request->data['id'];
                 $this->Adcode->query('DELETE FROM games WHERE id=' . $id . ' AND user_id=' . $user_id);
                 $this->set('success', "Game Deleted");
-                $this->set('_serialize', array('success'));          	
+                $this->set('_serialize', array('success'));
             }
         }
     }
@@ -454,78 +424,75 @@ class BusinessesController extends AppController {
         return $key;
     }
 
+    /**
+     * @author Volkan Celiloğlu
+     * @param
+     * @return Get All Notification array
+     */
+    public function getallnotifications() {
 
-	/**
-	 * @author Volkan Celiloğlu
-	 * @param
-	 * @return Get All Notification array
-	 */
-	public function getallnotifications() {
-	  
-	       if($this->Auth->user('id'))
-		   { //openning of auth_id control
-			$auth_id=$this->Session->read('Auth.User.id');
-			$limit=15;
-        $this->paginate = array(
-				'Activity' => array(
-					'contain'=>array(
-							'PerformerUser'=>array(
-									'fields'=>array(
-											'PerformerUser.id',
-											'PerformerUser.username',
-											'PerformerUser.screenname',
-											'PerformerUser.seo_username'
-													)
-												   ),
-							'Game'=>array(
-									'fields'=>array(
-											'Game.id',
-											'Game.name',
-											'Game.seo_url'
-													)
-												   ),
-							'ChannelUser'=>array(
-									'fields'=>array(
-											'ChannelUser.id',
-											'ChannelUser.username',
-											'ChannelUser.seo_username'
-													)
-												  )
-										),
-					'fields'=>array(
-							'Activity.id',
-							'Activity.performer_id',
-							'Activity.game_id',
-							'Activity.channel_id',
-							'Activity.msg_id',
-							'Activity.seen',
-							'Activity.notify',
-							'Activity.email',
-							'Activity.type',
-							'Activity.replied',
-							'Activity.created',
-							'PerformerUser.id',
-							'PerformerUser.username',
-							'PerformerUser.seo_username',
-							'ChannelUser.id',
-							'ChannelUser.username',
-							'ChannelUser.seo_username',
-							'Game.id',
-							'Game.name',
-							'Game.seo_url'
-									),
-					'conditions'=>array(
-							'Activity.channel_id'=>$auth_id,
-							'Activity.notify'=>1
-									),
-					'limit'=>$limit,
-					'order'=>'Activity.id DESC')
-        );
-        		$activityData = $this->paginate('Activity');
-        		$this->set('notifications', $activityData);
-	        }
-	}
-
+        if ($this->Auth->user('id')) { //openning of auth_id control
+            $auth_id = $this->Session->read('Auth.User.id');
+            $limit = 15;
+            $this->paginate = array(
+                'Activity' => array(
+                    'contain' => array(
+                        'PerformerUser' => array(
+                            'fields' => array(
+                                'PerformerUser.id',
+                                'PerformerUser.username',
+                                'PerformerUser.screenname',
+                                'PerformerUser.seo_username'
+                            )
+                        ),
+                        'Game' => array(
+                            'fields' => array(
+                                'Game.id',
+                                'Game.name',
+                                'Game.seo_url'
+                            )
+                        ),
+                        'ChannelUser' => array(
+                            'fields' => array(
+                                'ChannelUser.id',
+                                'ChannelUser.username',
+                                'ChannelUser.seo_username'
+                            )
+                        )
+                    ),
+                    'fields' => array(
+                        'Activity.id',
+                        'Activity.performer_id',
+                        'Activity.game_id',
+                        'Activity.channel_id',
+                        'Activity.msg_id',
+                        'Activity.seen',
+                        'Activity.notify',
+                        'Activity.email',
+                        'Activity.type',
+                        'Activity.replied',
+                        'Activity.created',
+                        'PerformerUser.id',
+                        'PerformerUser.username',
+                        'PerformerUser.seo_username',
+                        'ChannelUser.id',
+                        'ChannelUser.username',
+                        'ChannelUser.seo_username',
+                        'Game.id',
+                        'Game.name',
+                        'Game.seo_url'
+                    ),
+                    'conditions' => array(
+                        'Activity.channel_id' => $auth_id,
+                        'Activity.notify' => 1
+                    ),
+                    'limit' => $limit,
+                    'order' => 'Activity.id DESC')
+            );
+            $activityData = $this->paginate('Activity');
+            $this->set('notifications', $activityData);
+        }
+    }
 
     /**
      * Check Kontrol method
@@ -599,11 +566,11 @@ class BusinessesController extends AppController {
      */
     public function dashboard() {
         $this->layout = 'Business/dashboard';
-		
+
         $this->sideBar();
-		$userid = $this->Session->read('Auth.User.id');
-		$stat=$this->Userstat->find('first',array('contain'=>false,'conditions'=>array('Userstat.user_id'=>$userid)));
-		$this->set('stat', $stat);
+        $userid = $this->Session->read('Auth.User.id');
+        $stat = $this->Userstat->find('first', array('contain' => false, 'conditions' => array('Userstat.user_id' => $userid)));
+        $this->set('stat', $stat);
         $this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
@@ -659,7 +626,7 @@ class BusinessesController extends AppController {
 
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
-		$limit = 18;
+        $limit = 18;
         $this->set('following', $this->User->find('all', array('conditions' => array('User.active' => '1'), 'limit' => $limit, 'order' => array('User.last_login' => 'desc'))));
 
 
@@ -679,37 +646,36 @@ class BusinessesController extends AppController {
     public function game_add() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
- 		$categories = $this->Game->Category->find('list');
-		$this->set(compact('categories'));
-		$this->set('title_for_layout', 'Clone Business Game Add');
+        $categories = $this->Game->Category->find('list');
+        $this->set(compact('categories'));
+        $this->set('title_for_layout', 'Clone Business Game Add');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/game_add');
     }
 
-
-     /**
+    /**
      * Game edit method
      *
      * @param 
      * @return Game edit Page
      */
-    public function game_edit($id=NULL) {
+    public function game_edit($id = NULL) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-    $categories = $this->Game->Category->find('list');
+        $categories = $this->Game->Category->find('list');
 
-    $this->Game->id = $id;
-    if (!$this->Game->exists()) {
+        $this->Game->id = $id;
+        if (!$this->Game->exists()) {
             throw new NotFoundException(__('Invalid game'));
-    }
+        }
 
-    $game=$this->Game->find('first',array('contain'=>false,'conditions'=>array('Game.id'=>$id)));
-    $this->set('game',$game);
+        $game = $this->Game->find('first', array('contain' => false, 'conditions' => array('Game.id' => $id)));
+        $this->set('game', $game);
 
 
-    $this->set(compact('categories'));
-    $this->set('title_for_layout', 'Clone Business Game Edit');
+        $this->set(compact('categories'));
+        $this->set('title_for_layout', 'Clone Business Game Edit');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/game_edit');
@@ -993,7 +959,7 @@ class BusinessesController extends AppController {
         $this->set('user', $user);
 
         $this->set('title_for_layout', $user['User']['username'] . ' Game Channel - Clone');
-        $this->set('description_for_layout', 'Play games on ' . $user['User']['username'] . ' : ' . $user['User']['description'] );
+        $this->set('description_for_layout', 'Play games on ' . $user['User']['username'] . ' : ' . $user['User']['description']);
         $this->set('author_for_layout', 'Clone');
 
         if ($this->checkUser($userid) == 1) {
@@ -1033,12 +999,17 @@ class BusinessesController extends AppController {
      * @param $userid =>user.id
      * @return Search Page
      */
-    public function search2($userid) {
+    public function search2($userid, $searchterm = null) {
         $this->layout = 'Business/business';
-        if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
-            $param = $this->request->query['srch-term'];
+
+        if ($searchterm === null) {
+            if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
+                $param = $this->request->query['srch-term'];
+            } else {
+                $this->redirect(array("controller" => "businesses", "action" => "mysite"));
+            }
         } else {
-            $this->redirect(array("controller" => "businesses", "action" => "mysite"));
+            $param = $searchterm;
         }
 
         //This line gets user selected channel styles
@@ -1137,7 +1108,7 @@ class BusinessesController extends AppController {
         $this->set('title_for_layout', $game['Game']['name'] . ' - ' . $game['User']['seo_username'] . ' - Clone');
         $this->set('description_for_layout', 'Play ' . $game['Game']['name'] . ' for free: ' . $game['Game']['description']);
         $this->set('author_for_layout', 'Clone');
-        
+
         if ($game['Game']['fullscreen'] == 1) {
             $this->render('/Businesses/playframe');
         }
@@ -1206,7 +1177,6 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
     }
 
-
     /**
      * Featured Games method
      *
@@ -1218,15 +1188,14 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $PaginateLimit = 12;
 
-         //print_r($this->request->params);
-         //Pagination with GET parameters
-         //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
+        //print_r($this->request->params);
+        //Pagination with GET parameters
+        //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
 
-        if($this->request->params['named']['sort']==NULL)
-        {
-            $this->request->params['named']['sort']=$this->request->params['sort'];
-            $this->request->params['named']['direction']=$this->request->params['direction'];
-        }   
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
 
         if (!is_numeric($userid)) {
             $subdomain = Configure::read('Domain.subdomain');
@@ -1236,9 +1205,9 @@ class BusinessesController extends AppController {
             $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         }
 
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid,'Game.priority >' => 0), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
+        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.priority >' => 0), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
         $cond = $this->paginate('Game');
-        
+
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
         //This line gets user selected channel styles
@@ -1268,7 +1237,6 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
     }
 
-
     /**
      * Top Rated method
      *
@@ -1280,15 +1248,14 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $PaginateLimit = 12;
 
-         //print_r($this->request->params);
-         //Pagination with GET parameters
-         //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
+        //print_r($this->request->params);
+        //Pagination with GET parameters
+        //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
 
-        if($this->request->params['named']['sort']==NULL)
-        {
-            $this->request->params['named']['sort']=$this->request->params['sort'];
-            $this->request->params['named']['direction']=$this->request->params['direction'];
-        }   
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
 
         if (!is_numeric($userid)) {
             $subdomain = Configure::read('Domain.subdomain');
@@ -1300,7 +1267,7 @@ class BusinessesController extends AppController {
 
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
         $cond = $this->paginate('Game');
-        
+
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
         //This line gets user selected channel styles
@@ -1341,21 +1308,21 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         /*
-        $count = array(
-            $this->Game->find('count', array(
-                'conditions' => array(
-                    'Game.user_id' => $userid
-                )
-            )),
-            $this->Game->find('count', array(
-                'conditions' => array(
-                    'Game.user_id' => $userid,
-                    'Game.mobileready' => 1
-                )
-            ))
-        );
-        $this->set('count', $count);
-        */
+          $count = array(
+          $this->Game->find('count', array(
+          'conditions' => array(
+          'Game.user_id' => $userid
+          )
+          )),
+          $this->Game->find('count', array(
+          'conditions' => array(
+          'Game.user_id' => $userid,
+          'Game.mobileready' => 1
+          )
+          ))
+          );
+          $this->set('count', $count);
+         */
         $limit = 16;
         $this->paginate = array(
             'Game' => array(
@@ -1406,29 +1373,29 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         /*
-        $count = array(
-            $this->Game->find('count', array(
-                'conditions' => array(
-                    'Game.user_id' => $userid,
-                    'OR' => array(
-                        'Game.description LIKE' => '%' . $query . '%',
-                        'Game.name LIKE' => '%' . $query . '%'
-                    )
-                )
-            )),
-            $this->Game->find('count', array(
-                'conditions' => array(
-                    'Game.user_id' => $userid,
-                    'OR' => array(
-                        'Game.description LIKE' => '%' . $query . '%',
-                        'Game.name LIKE' => '%' . $query . '%'
-                    ),
-                    'Game.mobileready' => 1
-                )
-            ))
-        );
-        $this->set('count', $count);
-        */
+          $count = array(
+          $this->Game->find('count', array(
+          'conditions' => array(
+          'Game.user_id' => $userid,
+          'OR' => array(
+          'Game.description LIKE' => '%' . $query . '%',
+          'Game.name LIKE' => '%' . $query . '%'
+          )
+          )
+          )),
+          $this->Game->find('count', array(
+          'conditions' => array(
+          'Game.user_id' => $userid,
+          'OR' => array(
+          'Game.description LIKE' => '%' . $query . '%',
+          'Game.name LIKE' => '%' . $query . '%'
+          ),
+          'Game.mobileready' => 1
+          )
+          ))
+          );
+          $this->set('count', $count);
+         */
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
             $this->set('query', $query);
@@ -1584,16 +1551,16 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         /*
-        $count = array(
-            $this->Game->find('count'),
-            $this->Game->find('count', array(
-                'conditions' => array(
-                    'Game.mobileready' => 1
-                )
-            ))
-        );
-        $this->set('count', $count);
-        */
+          $count = array(
+          $this->Game->find('count'),
+          $this->Game->find('count', array(
+          'conditions' => array(
+          'Game.mobileready' => 1
+          )
+          ))
+          );
+          $this->set('count', $count);
+         */
         $this->Game->bindModel(
                 array(
                     'hasOne' => array(
@@ -1612,12 +1579,12 @@ class BusinessesController extends AppController {
                     '*'
                 ),
                 'joins' => array(
-        array(
-            'table' => 'gamestats',
-            'type' => 'INNER',
-            'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
-        )
-    ),
+                    array(
+                        'table' => 'gamestats',
+                        'type' => 'INNER',
+                        'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
+                    )
+                ),
                 'limit' => $limit,
                 'contain' => array(
                     'User',
@@ -1649,27 +1616,27 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         /*
-        $count = array(
-            $this->Game->find('count', array(
-                'conditions' => array(
-                    'OR' => array(
-                        'Game.description LIKE' => '%' . $query . '%',
-                        'Game.name LIKE' => '%' . $query . '%'
-                    )
-                )
-            )),
-            $this->Game->find('count', array(
-                'conditions' => array(
-                    'OR' => array(
-                        'Game.description LIKE' => '%' . $query . '%',
-                        'Game.name LIKE' => '%' . $query . '%'
-                    ),
-                    'Game.mobileready' => 1
-                )
-            ))
-        );
-        $this->set('count', $count);
-        */
+          $count = array(
+          $this->Game->find('count', array(
+          'conditions' => array(
+          'OR' => array(
+          'Game.description LIKE' => '%' . $query . '%',
+          'Game.name LIKE' => '%' . $query . '%'
+          )
+          )
+          )),
+          $this->Game->find('count', array(
+          'conditions' => array(
+          'OR' => array(
+          'Game.description LIKE' => '%' . $query . '%',
+          'Game.name LIKE' => '%' . $query . '%'
+          ),
+          'Game.mobileready' => 1
+          )
+          ))
+          );
+          $this->set('count', $count);
+         */
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
             $this->set('query', $query);
@@ -1988,8 +1955,6 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/explorechannels');
     }
 
-
-
     /**
      * Dummy Latest Activity function
      * Cloned from profile method
@@ -2001,11 +1966,11 @@ class BusinessesController extends AppController {
     public function activities() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-		$this->getallnotifications();
+        $this->getallnotifications();
         $this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-		$this->render('/Businesses/dashboard/activities');
+        $this->render('/Businesses/dashboard/activities');
     }
 
 }

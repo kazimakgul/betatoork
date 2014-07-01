@@ -103,7 +103,7 @@ Router::connect('/:channel/news/:type', array('controller' => 'Wallentries', 'ac
 
 Router::connect('/:channel', array('controller' => 'games', 'action' => 'profile'), array('channel' => '[-a-z0-9]+', 'pass' => array('channel')));
 
-
+Router::connect('/games/search/:userid/:searchterm', array('controller' => 'businesses', 'action' => 'search2'), array('pass' => array('userid', 'searchterm'), 'userid' => '[0-9]+'));
 
 //Using Subdomain included Url Routes
 //http://stackoverflow.com/questions/10553055/add-a-subdomain-to-all-urls-in-cakephp

@@ -44,14 +44,14 @@
     <!--We Add User Selected Addtitional Css Here(begins) -->
     <?php echo $customcss;  ?>
   <!--We Add User Selected Addtitional Css Here(ends) -->
-
+<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     </head>
     <body id='user_background'>
         <?php  echo $this->element('business/header');
         echo $this->element('business/login');
  		?>
         <?php echo $content_for_layout?>
-        <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+       
         <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<div id="fb-root"></div>
         <?php echo $this->Html->script(array('assets/prettify','business/custom','business/business','fbconnect','landingscripts')); ?>
