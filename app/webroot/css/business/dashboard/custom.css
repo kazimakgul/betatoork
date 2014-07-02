@@ -1,3 +1,7 @@
+body {
+    overflow: auto !important;
+}
+
 .circular
 {
     width: 40px;
@@ -96,4 +100,9 @@
 	width: 8%;
 	float: right;
 	min-width: 70px;
+}
+
+#pictureChange, #coverChange, #backgroundChange, #adsChange
+{
+    overflow: hidden;
 }

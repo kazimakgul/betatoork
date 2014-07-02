@@ -1,6 +1,7 @@
 body {
     padding-top: 70px;
-    background-image:url("http://image.naldzgraphics.net/2011/03/6-pattern.jpg"); 
+    background-image:url("http://image.naldzgraphics.net/2011/03/6-pattern.jpg");
+    overflow: auto !important;
 }
 
 .container{
@@ -432,4 +433,9 @@ a#changeprofilepic {
 .collapse form
 {
     border: none !important;
+}
+
+#pictureChange, #coverChange, #backgroundChange, #adsChange
+{
+    overflow: hidden;
 }
