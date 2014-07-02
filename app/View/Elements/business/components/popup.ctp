@@ -7,7 +7,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Any questions? Feel free to contact us.</h4>
                     </div>
-                    <form action="../contactmail/<?=$user_id?>" method="post" accept-charset="utf-8">
+                    <form action="../contactmail/<?php echo$user_id?>" method="post" accept-charset="utf-8">
                     <div class="modal-body" style="padding: 35px;">
                           <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
@@ -50,7 +50,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title" id="myModalLabel">More About <?=$user["User"]["username"];?></h4>
+                    <h4 class="modal-title" id="myModalLabel">More About <?php echo$user["User"]["username"];?></h4>
                     </div>
                 <div class="modal-body">
                     <center>
@@ -61,23 +61,23 @@
                         } else {
                           echo $this->Upload->image($user,'User.picture',array(),array('width'=>'150px','height'=>'150px','id'=>'user_avatar','class'=>'img-circle','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
-					<h3 class="media-heading"><?=$user["User"]["username"];?> <small><?=$user["Country"]["name"];?></small></h3>
+					<h3 class="media-heading"><?php echo$user["User"]["username"];?> <small><?php echo$user["Country"]["name"];?></small></h3>
                     <span><strong>Details: </strong></span>
-                        <span class="label label-warning"><?=$user["Userstat"]["subscribeto"];?> Followers</span>
-                        <span class="label label-info"><?=$user["Userstat"]["subscribe"];?> Following</span>
-                        <span class="label label-danger"><?=$user["Userstat"]["favoritecount"];?>  Favorites</span>
-                        <span class="label label-success"><?=$user["Userstat"]["uploadcount"];?>  Games</span>
+                        <span class="label label-warning"><?php echo$user["Userstat"]["subscribeto"];?> Followers</span>
+                        <span class="label label-info"><?php echo$user["Userstat"]["subscribe"];?> Following</span>
+                        <span class="label label-danger"><?php echo$user["Userstat"]["favoritecount"];?>  Favorites</span>
+                        <span class="label label-success"><?php echo$user["Userstat"]["uploadcount"];?>  Games</span>
                     </center>
                     <hr>
                     <center>
                     <p class="text-left"><strong>Bio: </strong><br>
-                       <?=$user["User"]["description"];?> </p>
+                       <?php echo$user["User"]["description"];?> </p>
                     <br>
                     </center>
                 </div>
                 <div class="modal-footer">
                     <center>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about Socialesman</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about <?php echo $user["User"]["username"];?></button>
                     </center>
                 </div>
             </div>
