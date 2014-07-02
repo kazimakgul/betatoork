@@ -315,27 +315,29 @@ $('.featured_toggle').click(function() {
 
 });
 
-
+/**
+     *  Game Delete Method
+     *  @param #attr.val(), link => New controller
+     *  @return data.error=> error.id or data.success=> success.id
+     *  Note:Will be added into Removedata function
+     */
 $('.remove_game').click(function() {
-  game_id=$('#game_id').val();
-  
-  alert('remove game'+game_id);
-alert(remove_game);
+  id=$('#game_id').val();
+  var link = remove_game;
+  var attr = 'remove_game';
    //------
-       $.ajax({
-        type: "POST",
-        url: remove_game,
-        dataType: "json",
-    async: false,
-        success: function(data){
-      
-      Messenger().post(data.rtdata.title);
-
-      },
-        failure: function(errMsg) {
-            alert(errMsg);
-        }
-  });
+       $.post(link, {
+                          attr  : attr,
+                          id    : id
+                      },
+                      function(data) {
+                          if (data.rtdata.error) {
+                              alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
+                          }else{
+                            Messenger().post(data.rtdata.success);
+                            window.location.href=mygames; 
+                          }
+                      }, 'json');
      //------ 
 
 

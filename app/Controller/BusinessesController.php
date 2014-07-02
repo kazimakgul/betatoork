@@ -383,6 +383,22 @@ class BusinessesController extends AppController {
                 $this->Adcode->query('DELETE FROM games WHERE id=' . $id . ' AND user_id=' . $user_id);
                 $this->set('success', "Game Deleted");
                 $this->set('_serialize', array('success'));
+            }elseif ($attr == "remove_game") {
+                $id = $this->request->data['id'];
+
+                $this->Game->id=$id;
+                if($this->Game->delete())
+                {
+                $msg = array("success" => 'Game has been deleted.' ,'result' => 1);
+                }else{
+                    $msg = array("error" => 'There is an internal error.Please try again later.' ,'result' => 0);
+                }
+
+
+                
+                $this->set('rtdata', $msg);
+                $this->set('_serialize', array('rtdata'));
+                
             }
         }
     }

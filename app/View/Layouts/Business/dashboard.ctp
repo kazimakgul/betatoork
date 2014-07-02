@@ -37,7 +37,7 @@
 			subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
 	        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 	        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
-	        remove_game	='<?php echo $this->Html->url(array('controller'=>'business','action'=>'remove_game')); ?>';
+	        remove_game	='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deleteData')); ?>';
 	        mysite			='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite')); ?>';
 	        feat_toggle_link ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'featured_toggle')); ?>';
 			<?php if($this->Session->check('Auth.User')){
