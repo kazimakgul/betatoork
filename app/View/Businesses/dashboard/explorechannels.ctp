@@ -23,9 +23,11 @@ $allgames = $params['count'];
                     <input type="text" name="q" placeholder="Search channels, users..." />
                     <input type="submit" />
                 </form>
+                <!--
                 <a href="<?php echo $game_add;?>" class="new-user btn btn-success pull-right">
                     <span>Add Game</span>
                 </a>
+                -->
             </div>
             <div class="content-wrapper">
                 <div class="row page-controls">

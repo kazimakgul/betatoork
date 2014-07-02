@@ -20,9 +20,11 @@ $followers = $this->Html->url(array("controller" => "businesses", "action" => "f
                     <input type="text" name="q" placeholder="Search channels, users..." />
                     <input type="submit" />
                 </form>
+                <!--
                 <a href="form.html" class="new-user btn btn-success pull-right">
                     <span>Invite Friends</span>
                 </a>
+                -->
             </div>
             <div class="content-wrapper">
                 <div class="row page-controls">
