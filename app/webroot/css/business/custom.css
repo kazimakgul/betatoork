@@ -165,8 +165,10 @@ body {
     display : block;
 }
 .rating{
-    width:150px;
     float: left;
+    width: 125px;
+    height: 30px;
+    margin-top: 3px
 }
 .rating .widget-button{
     font-size:25px;
