@@ -74,7 +74,7 @@ $(document).ready(function() {
 		                if (data.error) {
 		                    alert(data.error); // error.id ye göre mesaj yazdırcak..
 		                }else{
-		                	setTimeout(function(){location.href=mysite+'/'+userid}, 2000 );
+		                	location.href=mysite
 		                }
 		            }, 'json');
         }

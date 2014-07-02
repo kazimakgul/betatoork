@@ -37,7 +37,14 @@
 			subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
 	        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 	        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
-	        mysite			='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite')); ?>';
+
+	        <?php if (Configure::read('Domain.type') == 'subdomain') { ?>
+	        	mysite			= "<?php echo $this->Html->url('http://'.$seo_username.'.'.$_SERVER['HTTP_HOST']); ?>";
+	        <?php } else { ?>
+                mysite			=  "<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite',h($userid))); ?>";
+	        <?php } ?>
+
+
 	        feat_toggle_link ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'featured_toggle')); ?>';
 			<?php if($this->Session->check('Auth.User')){
 			echo 'user_auth=1;';

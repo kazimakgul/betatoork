@@ -91,7 +91,7 @@ if ($user['User']['picture'] == null) {
                                 <input type="hidden" id="attr" name="attr" value="channel_update_start" />
                             </div>
 
-                            <div class="form-group form-actions">
+                            <div class="form-group form-actions" style="float: left;width: 100%;">
                                 <button type="submit" class="button" data-step="2">
                                     <span>Next Step <i class="fa fa-angle-double-right"></i></span>
                                 </button>
@@ -115,7 +115,7 @@ if ($user['User']['picture'] == null) {
                                     <a id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame2('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success startUpClone"><i class="fa fa-cog "></i> Clone</a>
                                     <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '200px', 'height' => '110px')); ?>
                                     <div class="name">
-                                        <a href="<?php echo $playurl ?>" class="text-render">
+                                        <a href="<?php echo $playurl ?>" style="color:#000000">
                                             <?php echo $name ?>
                                         </a>
                                     </div>
@@ -123,7 +123,7 @@ if ($user['User']['picture'] == null) {
                                 <?php
                             }
                             ?>
-                            <div class="form-group form-actions">
+                            <div class="form-group form-actions" style="float: left;width: 100%;">
                                 <a class="button" href="#" data-step="1" style="margin-top:35px;">
                                     <span><i class="fa fa-angle-double-left"></i> Back</span>
                                 </a>
@@ -184,12 +184,12 @@ if ($user['User']['picture'] == null) {
                                 <?php
                             }
                             ?>							
-                            <div class="form-group form-actions">
+                            <div class="form-group form-actions" style="float: left;width: 100%;">
                                 <a class="button" href="#" data-step="2">
                                     <span><i class="fa fa-angle-double-left"></i> Back</span>
                                 </a>
                                 <button type="submit" class="button" data-step="4">
-                                    <span>Make payment <i class="fa fa-angle-double-right"></i></span>
+                                    <span>Next <i class="fa fa-angle-double-right"></i></span>
                                 </button>
                             </div>
                         </div>
@@ -197,7 +197,7 @@ if ($user['User']['picture'] == null) {
                             <div class="success">
                                 <i class="ion-checkmark-circled"></i>
                                 <h3>
-                                    Your account has been configured successfully!
+                                    Your channel has been created successfully!
                                 </h3>
                                 <a href="" class="button" id="updateButton">
                                     <span>Go to my channel</span>

@@ -632,7 +632,6 @@ class BusinessesController extends AppController {
                 'limit' => $limit,
                 'conditions' => array(
                     'Game.priority != ' => NULL,
-                    'User.verify !=' => NULL
                 ),
                 'order' => array(
                     'Game.id' => 'DESC'
@@ -640,13 +639,17 @@ class BusinessesController extends AppController {
             )
         );
 
+        //Get Some user data
+        $auth_id = $this->Session->read('Auth.User.id');
+        $user_data=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.id'=>$auth_id),'fields'=>array('User.seo_username')));
 
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
         $limit = 18;
-        $this->set('following', $this->User->find('all', array('conditions' => array('User.active' => '1'), 'limit' => $limit, 'order' => array('User.last_login' => 'desc'))));
+        $this->set('following', $this->User->find('all', array('conditions' => array('User.active' => '1','User.verify !=' => 0), 'limit' => $limit, 'order' => array('User.last_login' => 'desc'))));
 
-
+        $this->set('userid', $auth_id);
+        $this->set('seo_username', $user_data['User']['seo_username']);
         $this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
