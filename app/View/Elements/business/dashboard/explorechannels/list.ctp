@@ -4,8 +4,8 @@ foreach ($following as $value) {
     $userid = $value['User']['id'];
     $publicname = $value['User']['username'];
     $followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($userid));
-    $followers = $value['Userstat']['subscribe'];
-    $following = $value['Userstat']['subscribeto'];
+    $followers = $value['Userstat']['subscribeto'];
+    $following = $value['Userstat']['subscribe'];
     $games = $value['Userstat']['uploadcount'];
     if (Configure::read('Domain.type') == 'subdomain') {
         $userlink = $this->Html->url('http://'.$value['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']); 

@@ -5,9 +5,13 @@ foreach ($followers as $value) {
     } else {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
     }
+    $name = $value['User']['username'];
+    $followers = $value['User']['Userstat']['subscribeto'];
+    $following = $value['User']['Userstat']['subscribe'];
+    $games = $value['User']['Userstat']['uploadcount'];
     ?>
     <div class="user col-xs-6 col-sm-4 col-md-3 col-lg-2">
-        <a href="<?php echo $userlink ?>">
+        <a href="<?php echo $userlink; ?>">
             <?php
             if (is_null($value['User']['picture'])) {
                 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
@@ -18,16 +22,16 @@ foreach ($followers as $value) {
             ?>
         </a>
         <div class="name">
-            <a href="<?php echo $userlink ?>">
-                <?php echo $value['User']['username'] ?>
+            <a href="<?php echo $userlink; ?>">
+                <?php echo $name; ?>
             </a>
         </div>
         <div class="email">
             <?php
             echo
-            $value['User']['Userstat']['subscribeto'] . ' Followers | ' .
-            $value['User']['Userstat']['subscribeto'] . ' Following | ' .
-            $value['User']['Userstat']['uploadcount'] . ' Gamses'
+            $followers . ' Followers | ' .
+            $following . ' Following | ' .
+            $games . ' Gamses'
             ?>
         </div>
     </div>

@@ -2,13 +2,16 @@
 foreach ($following as $value) {
     $userid = $value['User']['id'];
     $publicname = $value['User']['username'];
-    $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($userid)));
     $followid = $follower['User']['id'];
     if (Configure::read('Domain.type') == 'subdomain') {
         $userlink = $this->Html->url('http://'.$value['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']); 
     } else {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($userid)));
     }
+    $name = $value['User']['username'];
+    $followers = $value['User']['Userstat']['subscribeto'];
+    $following = $value['User']['Userstat']['subscribe'];
+    $games = $value['User']['Userstat']['uploadcount'];
     ?>
     <div class="row user">
         <div class="col-sm-2">
@@ -36,22 +39,22 @@ foreach ($following as $value) {
         </div>
         <div class="col-sm-3">
             <a href="<?php echo $userlink ?>" class="name">
-                <?php echo $value['User']['username'] ?>
+                <?php echo $name; ?>
             </a>
         </div>
         <div class="col-sm-1 col-sm-offset-1 text-right">
             <div class="total-spent">
-                <?php echo $value['User']['Userstat']['subscribe'] ?>
+                <?php echo $followers; ?>
             </div>
         </div>
         <div class="col-sm-1 col-sm-offset-1 text-right">
             <div class="total-spent">
-                <?php echo $value['User']['Userstat']['subscribeto'] ?>
+                <?php echo $following; ?>
             </div>
         </div>
         <div class="col-sm-1 col-sm-offset-1 text-right">
             <div class="total-spent">
-                <?php echo $value['User']['Userstat']['uploadcount'] ?>
+                <?php echo $games; ?>
             </div>
         </div>
     </div>
