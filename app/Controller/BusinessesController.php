@@ -552,7 +552,7 @@ class BusinessesController extends AppController {
         if (Configure::read('Domain.type') == 'subdomain') {
             $this->redirect('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
         } else {
-            $this->redirect(array('controller' => 'business', 'action' => 'mysite', $user_id));
+            $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $user_id));
         }
     }
 
