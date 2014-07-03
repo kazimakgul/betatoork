@@ -1325,7 +1325,7 @@ if($user['User']['role']==1)
             $this->request->data['Game']['fullscreen'] = $targetGame['Game']['fullscreen'];
             $this->request->data['Game']['mobileready'] = $targetGame['Game']['mobileready'];
             $this->request->data['Game']['priority'] = $targetGame['Game']['priority'];
-            $this->request->data['Game']['picture'] = $targetGame['Game']['picture'];
+            //$this->request->data['Game']['picture'] = $targetGame['Game']['picture'];
             $this->request->data['Game']['starsize'] = 0;
             $this->request->data['Game']['rate_count'] = 0;
             $this->request->data['Game']['embed'] = $targetGame['Game']['embed'];
@@ -1345,6 +1345,10 @@ if($user['User']['role']==1)
             if ($this->Game->save($this->request->data)) {
                 $this->requestAction(array('controller' => 'userstats', 'action' => 'getgamecount', $userId));
                 $id = $this->Game->getLastInsertId();
+
+                //Upload plugin make some changes on image file name.This harm image path.As a solution.I will edit picture field with query.
+                $this->Game->query('UPDATE games SET picture="' . $targetGame['Game']['picture'] . '" WHERE id=' . $id);
+
                 //================Add Cloneships begins=====================
                 if ($clone)
                     $this->add_clonelog($game_id, $userId, $this->get_game_root($game_id), $id);
