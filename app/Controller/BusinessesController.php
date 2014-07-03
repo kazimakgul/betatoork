@@ -383,22 +383,20 @@ class BusinessesController extends AppController {
                 $this->Adcode->query('DELETE FROM games WHERE id=' . $id . ' AND user_id=' . $user_id);
                 $this->set('success', "Game Deleted");
                 $this->set('_serialize', array('success'));
-            }elseif ($attr == "remove_game") {
+            } elseif ($attr == "remove_game") {
                 $id = $this->request->data['id'];
 
-                $this->Game->id=$id;
-                if($this->Game->delete())
-                {
-                $msg = array("success" => 'Game has been deleted.' ,'result' => 1);
-                }else{
-                    $msg = array("error" => 'There is an internal error.Please try again later.' ,'result' => 0);
+                $this->Game->id = $id;
+                if ($this->Game->delete()) {
+                    $msg = array("success" => 'Game has been deleted.', 'result' => 1);
+                } else {
+                    $msg = array("error" => 'There is an internal error.Please try again later.', 'result' => 0);
                 }
 
 
-                
+
                 $this->set('rtdata', $msg);
                 $this->set('_serialize', array('rtdata'));
-                
             }
         }
     }
@@ -523,7 +521,11 @@ class BusinessesController extends AppController {
 
     public function contactmail($user_id) {
         $this->User->id = $user_id;
-        $user = $this->User->find('first', array('conditions' => array('User.id' => $user_id)));
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $user_id
+            )
+        ));
         if ($user === false) {
             $this->Session->setFlash('This mail is not registered.');
             debug(__METHOD__ . " failed to retrieve User data for user.id: {$user_id}");
@@ -539,13 +541,19 @@ class BusinessesController extends AppController {
             'subject' => $this->request->data["subject"],
             'message' => $this->request->data["comment"])
         );
-        $email->config('smtp')
+        $email
+                ->config('smtp')
                 ->template('business/contact') //I'm assuming these were created
                 ->emailFormat('html')
                 ->to($user["User"]["email"])
                 ->from(array('no-reply@clone.gs' => 'Clone'))
                 ->subject($subject)
                 ->send();
+        if (Configure::read('Domain.type') == 'subdomain') {
+            $this->redirect('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+        } else {
+            $this->redirect(array('controller' => 'business', 'action' => 'mysite', $user_id));
+        }
     }
 
     public function headerlogin() {
@@ -641,12 +649,12 @@ class BusinessesController extends AppController {
 
         //Get Some user data
         $auth_id = $this->Session->read('Auth.User.id');
-        $user_data=$this->User->find('first',array('contain'=>false,'conditions'=>array('User.id'=>$auth_id),'fields'=>array('User.seo_username')));
+        $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.id' => $auth_id), 'fields' => array('User.seo_username')));
 
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
         $limit = 18;
-        $this->set('following', $this->User->find('all', array('conditions' => array('User.active' => '1','User.verify !=' => 0), 'limit' => $limit, 'order' => array('User.last_login' => 'desc'))));
+        $this->set('following', $this->User->find('all', array('conditions' => array('User.active' => '1', 'User.verify !=' => 0), 'limit' => $limit, 'order' => array('User.last_login' => 'desc'))));
 
         $this->set('userid', $auth_id);
         $this->set('seo_username', $user_data['User']['seo_username']);
