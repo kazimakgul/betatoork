@@ -1612,7 +1612,7 @@ class BusinessesController extends AppController {
                 ),
                 'conditions' => array(
                     'Game.priority != ' => NULL,
-                    'Game.clone' => 1
+                    'Game.clone' => 0
                 ),
                 'order' => array(
                     'Game.id' => 'DESC'
