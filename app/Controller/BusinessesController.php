@@ -108,6 +108,9 @@ class BusinessesController extends AppController {
                 $desc = $this->request->data['desc'];
                 $bgColor = $this->request->data['bgColor'];
 
+                //we will detect this cookie if user didnt complete tutorial
+                $this->Cookie->delete('tutorial');
+
                 $this->User->query('UPDATE users SET screenname="' . $title . '", description="' . $desc . '", bg_color="' . $bgColor . '" WHERE id=' . $user_id);
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
@@ -591,7 +594,18 @@ class BusinessesController extends AppController {
     public function dashboard() {
         $this->layout = 'Business/dashboard';
 
+
+       if($this->Cookie->read('tutorial'))
+        {
+            echo '<script>location.href="dashboard/welcome"</script>';
+        } 
+
+
         $this->sideBar();
+
+
+
+
         $userid = $this->Session->read('Auth.User.id');
         $stat = $this->Userstat->find('first', array('contain' => false, 'conditions' => array('Userstat.user_id' => $userid)));
         $this->set('stat', $stat);
@@ -645,6 +659,9 @@ class BusinessesController extends AppController {
                 )
             )
         );
+        
+        //we will detect this cookie if user didnt complete tutorial
+        $this->Cookie->write('tutorial',1);
 
         //Get Some user data
         $auth_id = $this->Session->read('Auth.User.id');
