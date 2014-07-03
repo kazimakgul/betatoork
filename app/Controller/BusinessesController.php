@@ -1611,7 +1611,8 @@ class BusinessesController extends AppController {
                     'Gamestat'
                 ),
                 'conditions' => array(
-                    'Game.priority != ' => NULL
+                    'Game.priority != ' => NULL,
+                    'Game.clone' => 1
                 ),
                 'order' => array(
                     'Game.id' => 'DESC'
