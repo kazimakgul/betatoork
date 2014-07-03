@@ -14,7 +14,7 @@ foreach ($following as $value) {
     $games = $value['User']['Userstat']['uploadcount'];
     ?>
     <div class="row user">
-        <div class="col-sm-2">
+        <div class="col-sm-2 followcolumn">
             <!-- Follow button -->
             <a id="unfollow<?php echo $userid; ?>" class="btn btn-primary" onclick="subscribeout('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
                     switchunfollow(<?php echo $userid; ?>);
