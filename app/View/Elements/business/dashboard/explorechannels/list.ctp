@@ -14,7 +14,7 @@ foreach ($following as $value) {
     }
     ?>
     <div class="row user">
-        <div class="col-sm-2">
+        <div class="col-sm-2 followcolumn">
             <!-- Follow button -->
             <?php if ($followstatus != 1) { ?>
                 <a id="follow<?php echo $userid; ?>" class="btn btn-primary" onclick="subscribe('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);

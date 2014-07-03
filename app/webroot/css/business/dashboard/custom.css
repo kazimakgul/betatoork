@@ -106,3 +106,7 @@ body {
 {
     overflow: hidden;
 }
+
+.followcolumn {
+    padding-top: 9px;
+}
