@@ -133,7 +133,7 @@ class AppController extends Controller {
         */
         /*****************************************/ 
 
-        $style = $this->User->find('first',array('contain'=>false,'conditions'=>array('User.id'=>$id),'fields'=>array('User.bg_image,User.bg_color'))); 
+        $style = $this->User->find('first',array('contain'=>false,'conditions'=>array('User.id'=>$id),'fields'=>array('User.bg_image,User.bg_color,User.picture'))); 
         
         //$bg_color_darker=$this->colourCreator($style['User']['bg_color'], $darkPercent);
         //$bg_color_lighter=$this->colourCreator($style['User']['bg_color'], $lightPercent);

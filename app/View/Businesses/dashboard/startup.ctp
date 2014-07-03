@@ -199,9 +199,9 @@ if ($user['User']['picture'] == null) {
                                 <h3>
                                     Your channel has been created successfully!
                                 </h3>
-                                <a href="" class="button" id="updateButton">
+                                <button href="" class="btn btn-success" id="updateButton">
                                     <span>Go to my channel</span>
-                                </a>
+                                </button>
                             </div>
                         </div>
                         <div style="clear: left;"></div>
