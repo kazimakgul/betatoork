@@ -40,6 +40,9 @@ foreach ($following as $value) {
         <div class="col-sm-3">
             <a href="<?php echo $userlink ?>" class="name">
                 <?php echo $name; ?>
+                <?php if($value['User']['verify']==1){ ?>
+                <span class="help" data-toggle="tooltip" title="" data-original-title="Verified channel."> <i style='color:#428bca;' class="fa fa-check-circle"></i></span>
+                <?php } ?>
             </a>
         </div>
         <div class="col-sm-1 col-sm-offset-1 text-right">

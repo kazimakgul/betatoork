@@ -1766,6 +1766,7 @@ class BusinessesController extends AppController {
                     'User' => array(
                         'fields' => array(
                             'User.seo_username',
+                            'User.verify',
                             'User.username'
                         ), 'Userstat'
                     )
@@ -1854,6 +1855,7 @@ class BusinessesController extends AppController {
                     'User' => array(
                         'fields' => array(
                             'User.seo_username',
+                            'User.verify',
                             'User.username'
                         ), 'Userstat'
                     )
