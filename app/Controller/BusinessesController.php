@@ -425,8 +425,7 @@ class BusinessesController extends AppController {
         $userid = $this->Session->read('Auth.User.id');
         $this->Cookie->delete('User');
         $this->Session->destroy();
-        $this->redirect($this->referer());
-        //$this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
+        $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
     }
 
     public function lucky_number() {
