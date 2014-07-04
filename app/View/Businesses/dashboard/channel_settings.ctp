@@ -22,10 +22,12 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
 				</p>
 
 				<p class="intro">
-					<label>Custom Domain: </label> <a class="btn btn-default"> http://<?php echo $user['User']['seo_username'];?>.clone.gs </a> <a class="btn btn-default"><i class="fa fa-globe"></i> Map Domain </a>
-						<span class="help" data-toggle="tooltip" title="Map your own domain to your channel.">
-					    		<i class="fa fa-question-circle"></i>
-					    </span>
+					<label>Custom Domain: </label>
+                                        <span class="help" data-toggle="tooltip" title="Map your own domain to your channel.">
+                                            <i class="fa fa-question-circle"></i>
+                                        </span>
+                                        <a class="btn btn-default"> http://<?php echo $user['User']['seo_username'];?>.clone.gs </a>
+                                        <a class="btn btn-default"><i class="fa fa-globe"></i> Map Domain </a>
 				</p>
 
 				
