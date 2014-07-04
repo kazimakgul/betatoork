@@ -49,7 +49,7 @@ rateurl='<?php echo $this->Html->url(array('controller'=>'rates','action'=>'add'
                 <?php  echo $this->element('business/games/game-inc'); ?>
                 <!--Game Box ends-->
 
-				<div class="col-sm-12 col-md-12">
+				<div class="col-sm-12 col-md-12" style="margin-top: 15px">
 			        <div class='pull-left'>	
 					<?php echo $this->element('business/buttons/clone');?>
 					<?php echo $this->element('business/buttons/favorite');?>
