@@ -38,7 +38,7 @@
 	        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 	        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
 
-	        <?php if (Configure::read('Domain.type') == 'subdomain') { ?>
+	        <?php if ($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") { ?>
 	        	mysite			= "<?php echo $this->Html->url('http://'.$seo_username.'.'.$_SERVER['HTTP_HOST']); ?>";
 	        <?php } else { ?>
                 mysite			=  "<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite',h($userid))); ?>";

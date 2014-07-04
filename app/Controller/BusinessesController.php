@@ -428,7 +428,20 @@ class BusinessesController extends AppController {
         $userid = $this->Session->read('Auth.User.id');
         $this->Cookie->delete('User');
         $this->Session->destroy();
-        $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
+		
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $userid
+            )
+        ));
+	   if ($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
+	     $this->redirect('http://'.$user['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']);
+	   	}
+		else {
+	      $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
+		}	
+
+        
     }
 
     public function lucky_number() {
@@ -550,7 +563,7 @@ class BusinessesController extends AppController {
                 ->from(array('no-reply@clone.gs' => 'Clone'))
                 ->subject($subject)
                 ->send();
-        if (Configure::read('Domain.type') == 'subdomain') {
+        if ($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
             $this->redirect('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
         } else {
             $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $user_id));

@@ -9,7 +9,17 @@
 		<meta property="og:title" content= "<?php echo $title_for_layout?>" />
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="<?php echo 'http://'.$_SERVER['SERVER_NAME'].Router::url('/'); ?>"/>
-        <meta property="og:image" content="<?php echo $channel_style['User']['picture']; ?>"/>
+        <meta property="og:image" content="<?php
+         if(isset($channel_style['User']['picture']))
+         {
+         	$uzanti = explode('.', $channel_style['User']['picture']);
+        	$name  = $uzanti[0];
+        	$uzanti = $uzanti[1];
+			echo Configure::read('S3.url').'/upload/users/'.$active_channel_id.'/'.$name.'_original.'.$uzanti;
+		 }else{
+		 	echo Configure::read('broken.avatar'); 
+		 }
+		 ?>"/>
         <meta property="og:site_name" content="Clone"/>
         <meta property="og:description" content= "<?php echo $description_for_layout?>" />
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
