@@ -447,7 +447,6 @@ class BusinessesController extends AppController {
      * @return Get All Notification array
      */
     public function getallnotifications() {
-
         if ($this->Auth->user('id')) { //openning of auth_id control
             $auth_id = $this->Session->read('Auth.User.id');
             $limit = 15;
