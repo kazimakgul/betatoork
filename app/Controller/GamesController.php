@@ -209,13 +209,10 @@ class GamesController extends AppController {
 
 //**********************This functions redirect managers and admins to business area*********************************
 //Bu fonksiyon tamamen geçicidir.Yeni sisteme geçildikten sonra silinecek.
-if($user['User']['role']==1)
+        if ($user['User']['role'] == 1)
 //$this->redirect(array("controller" => "businesses","action" => "dashboard"));
 //*******************************************************************************************************************
-
-
-
-        $limit = 16;
+            $limit = 16;
         $this->paginate = array('Game' => array('contain' => array('User' => array('fields' => 'User.seo_username,User.username,User.id')), 'conditions' => array('Game.active' => '1', 'Game.id' => $this->get_game_suggestions('Game.recommend')), 'limit' => $limit));
         $this->paginate = array('order' => sprintf('rand(%f)', $this->lucky_number()));
         $data = $this->paginate('Game');
@@ -650,7 +647,7 @@ if($user['User']['role']==1)
 
     //  Yeni Sistem-Channel Sayfalari
     public function profile() {
-        
+
         $this->layout = 'dashboard';
         $userid = $this->request->params['pass'][0];
         $authid = $this->Session->read('Auth.User.id');
@@ -1290,10 +1287,10 @@ if($user['User']['role']==1)
 
     public function add_clonelog($game_id = NULL, $user_id = NULL, $root_id = NULL, $cloned_id = NULL) {
         $filtered_data = array('Cloneship' => array(
-                        'game_id' => $game_id,
-                        'user_id' => $user_id,
-                        'root_id' => $root_id,
-                        'cloned_id' => $cloned_id));
+                'game_id' => $game_id,
+                'user_id' => $user_id,
+                'root_id' => $root_id,
+                'cloned_id' => $cloned_id));
         $this->Cloneship->save($filtered_data);
     }
 
@@ -1749,11 +1746,11 @@ if($user['User']['role']==1)
             //Secure data filtering
             //*********************
             $filtered_data = array('Game' => array(
-                            'name' => $this->request->data['Game']['name'],
-                            'description' => $this->request->data['Game']['description'],
-                            'category_id' => $this->request->data['Game']['category_id'],
-                            'user_id' => $userid,
-                            'seo_url' => $this->request->data['Game']['seo_url']));
+                    'name' => $this->request->data['Game']['name'],
+                    'description' => $this->request->data['Game']['description'],
+                    'category_id' => $this->request->data['Game']['category_id'],
+                    'user_id' => $userid,
+                    'seo_url' => $this->request->data['Game']['seo_url']));
             //if game is not clone,submits link & embed datas otherwise not!
             if (!$clone) {
                 $filtered_data['Game']['link'] = $this->request->data['Game']['link'];
@@ -1897,10 +1894,10 @@ if($user['User']['role']==1)
             //Secure data filtering
             //*********************
             $filtered_data = array('Game' => array(
-                            'name' => $this->request->data['Game']['name'],
-                            'description' => $this->request->data['Game']['description'],
-                            'category_id' => $this->request->data['Game']['category_id'],
-                            'seo_url' => $this->request->data['Game']['seo_url']));
+                    'name' => $this->request->data['Game']['name'],
+                    'description' => $this->request->data['Game']['description'],
+                    'category_id' => $this->request->data['Game']['category_id'],
+                    'seo_url' => $this->request->data['Game']['seo_url']));
             //if game is not clone,submits link & embed datas otherwise not!
             if (!$clone) {
                 $filtered_data['Game']['link'] = $this->request->data['Game']['link'];
@@ -2174,6 +2171,26 @@ if($user['User']['role']==1)
         }
         $this->Session->setFlash(__('Game was not deleted'));
         $this->redirect(array('action' => 'index'));
+    }
+
+    /**
+     * Check Game Clone For User
+     * @param integer $userid
+     * @param integer $gameid
+     * @author Emircan Ok
+     */
+    public function checkClone($userid, $gameid) {
+        $result = $this->Cloneship->find('count', array(
+            'conditions' => array(
+                'Cloneship.game_id' => $gameid,
+                'Cloneship.user_id' => $userid
+            )
+        ));
+        if ($result > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }

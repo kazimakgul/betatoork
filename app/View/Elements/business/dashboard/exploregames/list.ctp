@@ -6,8 +6,9 @@ foreach ($games as $game) {
     $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
     $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
     $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
+    $clonestatus = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($userid, $game['Game']['id']));
     if (Configure::read('Domain.type') == 'subdomain') {
-        $userurl = $this->Html->url('http://'.$game['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']); 
+        $userurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
     } else {
         $userurl = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
     }
@@ -18,9 +19,11 @@ foreach ($games as $game) {
     }
     ?>
     <div class="row user">
- 	<div class="col-sm-1">
-    		<button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame2('<?php echo $name; ?>',user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog "></i> Clone</button>
-    	</div>
+        <div class="col-sm-1">
+            <?php if ($clonestatus === FALSE) { ?>
+                <button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame2('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog "></i> Clone</button>
+            <?php } ?>
+        </div>
         <div class="col-sm-2 avatar">
             <a href="<?php echo $playurl ?>" target="_blank">
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
@@ -40,7 +43,7 @@ foreach ($games as $game) {
                 <div class="total-spent">
                     No Owner
                 </div>
-            <?php }  ?>
+            <?php } ?>
         </div>
         <div class="col-sm-1 text-right">
             <div class="total-spent">
