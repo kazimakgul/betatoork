@@ -274,6 +274,9 @@ if ($user['User']['picture'] == null) {
             $tabs.removeClass("active").filter(":lt(" + (active_step + 1) + ")").addClass("active");
             $steps.removeClass("active");
             $steps.eq(step_index).addClass("active animated " + in_fade_class);
+            setTimeout(function(){
+                $('html').animate({scrollTop:0}, 'slow');
+            }, 500);
         });
 
     });
