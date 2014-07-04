@@ -14,16 +14,16 @@ foreach ($games as $game) {
     }
     ?>
     <div class="row user">
-         <div class="col-sm-1 text-center">
-		<!-- Favorite Button -->
-		<div class="favourite">
-			<div class="widget-button" data-toggle="tooltip" data-original-title="Unfavorite">
-				<button type="button"  id="fav-<?php echo $game['Game']['id'];?>" class="btn btn-danger" id="fav_button" onclick="favorite('<?php echo $name;?>',user_auth,<?php echo $game['Game']['id'];?>);"><li class="fa fa-heart"></li><span class="label label-info" id="fav_count"></span></button>
-			</div>
-		</div><!-- Favorite Button  End-->
+        <div class="col-sm-1 text-center followcolumn">
+            <!-- Favorite Button -->
+            <div class="favourite">
+                <div class="widget-button" data-toggle="tooltip" data-original-title="Unfavorite">
+                    <button type="button"  id="fav-<?php echo $game['Game']['id']; ?>" class="btn btn-danger" id="fav_button" onclick="favorite('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);"><li class="fa fa-heart"></li><span class="label label-info" id="fav_count"></span></button>
+                </div>
+            </div><!-- Favorite Button  End-->
         </div>
         <div class="col-sm-2 text-center avatar">
-		
+
             <a href="<?php echo $playurl ?>" target="_blank">
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
             </a>
