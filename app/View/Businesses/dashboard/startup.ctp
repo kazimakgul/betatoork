@@ -7,9 +7,13 @@ if ($user['User']['picture'] == null) {
     $img = $this->Upload->image($user, 'User.picture', array(), array('class' => 'img-responsive img-circle circular1', 'onerror' => 'imgError(this,"avatar");'));
 }
 ?>
+<style>
+	#content{
+		margin-left: 0px;
+	}
+</style>
 <body id="wizard">
 <div id="wrapper">
-    <?php echo $this->element('business/dashboard/sidebar', array('active' => 'dashboard')); ?>
     <div id="content">
         <div class="content-wrapper">
             <div class="header">
