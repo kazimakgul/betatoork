@@ -595,10 +595,9 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
 
 
-       if($this->Cookie->read('tutorial'))
-        {
+        if ($this->Cookie->read('tutorial')) {
             echo '<script>location.href="dashboard/welcome"</script>';
-        } 
+        }
 
 
         $this->sideBar();
@@ -660,9 +659,9 @@ class BusinessesController extends AppController {
                 )
             )
         );
-        
+
         //we will detect this cookie if user didnt complete tutorial
-        $this->Cookie->write('tutorial',1);
+        $this->Cookie->write('tutorial', 1);
 
         //Get Some user data
         $auth_id = $this->Session->read('Auth.User.id');
@@ -1744,8 +1743,6 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 18;
-
-
         $this->Subscription->bindModel(
                 array(
                     'belongsTo' => array(
@@ -1756,8 +1753,6 @@ class BusinessesController extends AppController {
                     )
                 )
         );
-
-
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
@@ -1793,10 +1788,8 @@ class BusinessesController extends AppController {
         }
         $userid = $this->Session->read('Auth.User.id');
         $limit = 18;
-
         //$this->Subscription->recursive=2;
         //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
-
         $this->Subscription->bindModel(
                 array(
                     'belongsTo' => array(

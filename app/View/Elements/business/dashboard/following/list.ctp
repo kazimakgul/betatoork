@@ -4,7 +4,7 @@ foreach ($following as $value) {
     $publicname = $value['User']['username'];
     $followid = $follower['User']['id'];
     if (Configure::read('Domain.type') == 'subdomain') {
-        $userlink = $this->Html->url('http://'.$value['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']); 
+        $userlink = $this->Html->url('http://' . $value['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
     } else {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($userid)));
     }
@@ -17,11 +17,11 @@ foreach ($following as $value) {
         <div class="col-sm-2 followcolumn">
             <!-- Follow button -->
             <a id="unfollow<?php echo $userid; ?>" class="btn btn-primary" onclick="subscribeout('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                    switchunfollow(<?php echo $userid; ?>);
-                    _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-foursquare"></i> Unfollow</a>
+                        switchunfollow(<?php echo $userid; ?>);
+                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-foursquare"></i> Unfollow</a>
             <a id="follow<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                    switchfollow(<?php echo $userid; ?>);
-                    _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a>
+                        switchfollow(<?php echo $userid; ?>);
+                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a>
             <!-- Follow button end -->
         </div>
         <div class="col-sm-1 avatar">
@@ -40,8 +40,8 @@ foreach ($following as $value) {
         <div class="col-sm-3">
             <a href="<?php echo $userlink ?>" class="name">
                 <?php echo $name; ?>
-                <?php if($value['User']['verify']==1){ ?>
-                <span class="help" data-toggle="tooltip" title="" data-original-title="Verified channel."> <i style='color:#428bca;' class="fa fa-check-circle"></i></span>
+                <?php if ($value['User']['verify'] == 1) { ?>
+                    <span class="help" data-toggle="tooltip" title="" data-original-title="Verified channel."> <i style='color:#428bca;' class="fa fa-check-circle"></i></span>
                 <?php } ?>
             </a>
         </div>
