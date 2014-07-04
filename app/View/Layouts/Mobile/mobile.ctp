@@ -88,6 +88,18 @@
                         js.src = "https://platform.twitter.com/widgets.js";
                         fjs.parentNode.insertBefore(js, fjs);
                     }
-                }(document, "script", "twitter-wjs");</script>     
+                }(document, "script", "twitter-wjs");</script> 
+
+
+<?php if($user['User']['analitics']!='0' && $user['User']['analitics']!=NULL) {?>
+<!--++++++++++++++++++++++++++++++++++++++++++++-->
+<!--======Analitic code for channel owner=======-->
+<!--++++++++++++++++++++++++++++++++++++++++++++-->
+<script type="text/javascript">    var _gaq = _gaq || [];   _gaq.push(['_setAccount', '<?php echo $user['User']['analitics'];?>']);   _gaq.push(['_trackPageview']);      (function() {     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);   })();  </script>
+<!--++++++++++++++++++++++++++++++++++++++++++++-->
+<!--=======//Analitic code for channel owner======-->
+<!--++++++++++++++++++++++++++++++++++++++++++++-->
+<?php } ?> 
+
             </body>
             </html>

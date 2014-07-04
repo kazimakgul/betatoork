@@ -28,7 +28,11 @@ $mysite = $this->Html->url(array("controller" => "businesses", "action" => "mysi
             <span class="icon-bar"></span>
         </button>
         -->
-        <a class="navbar-brand" rel="home" href="<?php echo $index ?>"><?php echo $user['User']['username'] ?></a>
+        <a class="navbar-brand" rel="home" href="<?php echo $index ?>"><?php echo $user['User']['username'] ?>
+        <?php if($user['User']['verify']==1){ ?>
+                <span class="help" data-toggle="tooltip" title="" data-original-title="Verified channel."> <i style='color:#428bca;' class="fa fa-check-circle"></i></span>
+                <?php } ?>
+         </a>       
     </div>
     <div class="collapse navbar-collapse">
         <!--
