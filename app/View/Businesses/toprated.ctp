@@ -45,7 +45,18 @@
                                 </ul>
                             </li>
                         </ul>
-                        <h3 class="panel-title">Games <?php echo ($this->request->params['named']['sort']) ? "by  " . ucwords($this->request->params['named']['sort']) : ""; ?></h3>
+                        <?php
+                        $name = "";
+						if($this->request->params['named']['sort']=="recommend")
+						{
+							$name = "Hot Games!";
+						}elseif($this->request->params['named']['sort']=="id")
+						{
+							$name = "New Games!";
+						}
+                        
+                        ?>
+                        <h3 class="panel-title"><?php echo $name; ?></h3>
                     </div>
                     <div class="panel-body">
                         <?php
