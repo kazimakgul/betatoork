@@ -6,7 +6,7 @@ foreach ($games as $game) {
     $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
     $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
     $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
-    $clonestatus = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($userid, $game['Game']['id']));
+    // $clonestatus = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($userid, $game['Game']['id']));
     if (Configure::read('Domain.type') == 'subdomain') {
         $userurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
     } else {
@@ -20,9 +20,9 @@ foreach ($games as $game) {
     ?>
     <div class="row user">
         <div class="col-sm-1 followcolumn">
-            <?php if ($clonestatus === FALSE) { ?>
+            <?php // if ($clonestatus === FALSE) { ?>
                 <button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame2('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog "></i> Clone</button>
-            <?php } ?>
+            <?php // } ?>
         </div>
         <div class="col-sm-2 avatar">
             <a href="<?php echo $playurl ?>" target="_blank">

@@ -1093,11 +1093,11 @@ function chaingame2(game_name, user_auth, game_id)
                     if (data == 1)
                     {
                         Messenger().post("Game Cloned");
-                        btn.hide();
+                        btn.button('reset');
                     } else
                     {
                         Messenger().post("Error. Please, try again..");
-                        btn.hide();
+                        btn.button('reset');
                     }
                 });
 
