@@ -36,9 +36,9 @@ class AppController extends Controller {
     public $components = array(
         'Session', 'Cookie', 'DebugKit.Toolbar', 'RequestHandler',
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'businesses', 'action' => 'dashboard'),
-            'logoutRedirect' => array('controller' => 'businesses', 'action' => 'dashboard'),
-            'loginAction' => array('controller' => 'businesses', 'action' => 'dashboard'),
+            'loginRedirect' => array('controller' => 'games', 'action' => 'dashboard'),
+            'logoutRedirect' => array('controller' => 'games', 'action' => 'index'),
+            'loginAction' => array('controller' => 'games', 'action' => 'index'),
             'authorize' => array('Controller')
         )
     );
