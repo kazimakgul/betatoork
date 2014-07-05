@@ -51,6 +51,7 @@ class UploadsController extends AppController {
 	      $this->set('uploadtype',$uploadtype);
 	      $this->set('id',$id);
 		  
+		    /**
 		      //get avatar gallery from S3 begins
 			  $prefix = 'upload/gallery/avatars';
               $opt = array(
@@ -80,7 +81,7 @@ class UploadsController extends AppController {
 			  }
 			  $this->set('photos',$objs);
 			  //get avatar gallery from S3 by id ends
-			  
+			 */ 
 	   
 	   
 	   }elseif($uploadtype=='cover_image'){
@@ -89,7 +90,7 @@ class UploadsController extends AppController {
 	   $this->set('uploadtype',$uploadtype);
 	   $this->set('id',$id);
 	   
-	   
+	   /**
 	     //get cover photos from S3 begins
 	     $prefix = 'upload/users/'.$id;
          $opt = array(
@@ -119,13 +120,15 @@ class UploadsController extends AppController {
 		 }
 	     $this->set('gallery',$objs);
 		 //get cover gallery from S3 ends
-		 
+		 */
+
 	   }elseif($uploadtype=='game_image'){
 	   
 	   $this->set('gallery',0);
 	   $this->set('uploadtype',$uploadtype);
 	   $this->set('id',$id);
 	   
+	   /**
 	     //get cover photos from S3 begins
 	     $prefix = 'upload/games/'.$id;
          $opt = array(
@@ -138,15 +141,18 @@ class UploadsController extends AppController {
 		 if(substr($obj, -1)=="/")
 		 unset($objs[$key]);
 		 }
+
+       
 	     $this->set('photos',$objs);
 		 //get cover photos from S3 ends
+		 */
 	   }elseif($uploadtype=='bg_image'){
 	   
 	   $this->set('gallery','Background resimleri için galery içerigi');
 	   $this->set('uploadtype',$uploadtype);
 	   $this->set('id',$id);
 	   
-	   
+	   /**
 	     //get background photos from S3 begins
 	     $prefix = 'upload/users/'.$id;
          $opt = array(
@@ -176,6 +182,7 @@ class UploadsController extends AppController {
 		 }
 	     $this->set('gallery',$objs);
 		 //get background gallery from S3 ends
+		 */
 		 
 	   } 
 	

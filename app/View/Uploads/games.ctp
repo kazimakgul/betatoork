@@ -36,11 +36,10 @@ user_id='<?php echo $id;?>';
 <div id="main-wrapper" class="panel panel-default">
 
 <div id="top-menu">
+<!--	
 <a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-upload"></i> Upload</a>
 <a href="#photos" onclick="go_photos();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-user"></i> Your Files</a>
-
- 
-
+-->
 </div>
 
 <div id="main-area">
@@ -100,9 +99,13 @@ user_id='<?php echo $id;?>';
 <!-- Main End-->
 </div>
 
+<?php 
+if($uploadtype=='game_upload')
+$btn_message='Apply Game Upload';
+?>
 
 <div id="bottom-menu">
-<a href="#comments" id="set_photo" class="btn btn-primary tip disabled" title=""><i class="glyphicon glyphicon-ok"></i> Apply</a>
+<a href="#comments" id="set_photo" class="btn btn-primary tip disabled" title=""><i class="glyphicon glyphicon-ok"></i> <?php echo $btn_message; ?></a>
 <a id='close_panel' href="#comments" class="btn btn-default tip" title="">Cancel</a>
 </div>
 

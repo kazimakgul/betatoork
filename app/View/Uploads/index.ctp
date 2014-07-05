@@ -36,9 +36,11 @@ user_id='<?php echo $id;?>';
 <div id="main-wrapper" class="panel panel-default">
 
 <div id="top-menu">
+<!--	
 <a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-upload"></i> Upload</a>
 <a href="#album" onclick="go_gallery();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-list"></i> Gallery</a>
 <a href="#photos" onclick="go_photos();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-user"></i> Your Photos</a>
+-->
 </div>
 
 <div id="main-area">
@@ -103,9 +105,19 @@ user_id='<?php echo $id;?>';
 <!-- Main End-->
 </div>
 
+<?php 
+if($uploadtype=='avatar_image')
+$btn_message='Set As Avatar Image';
+if($uploadtype=='cover_image')
+$btn_message='Set As Channel Cover';
+if($uploadtype=='game_image')
+$btn_message='Set As Game Image';
+if($uploadtype=='bg_image')
+$btn_message='Set As Background';
+?>
 
 <div id="bottom-menu">
-<a href="#comments" id="set_photo" class="btn btn-primary tip disabled" title=""><i class="glyphicon glyphicon-ok"></i> Set</a>
+<a href="#comments" id="set_photo" class="btn btn-primary tip disabled" title=""><i class="glyphicon glyphicon-ok"></i> <?php echo $btn_message; ?></a>
 <a href="#comments" id="crop_photo" class="btn btn-primary tip disabled" title="">Crop</a>
 <a id='close_panel' href="#comments" class="btn btn-default tip" title="">Cancel</a>
 </div>

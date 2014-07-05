@@ -99,9 +99,14 @@ user_id='<?php echo $id;?>';
 <!-- Main End-->
 </div>
 
+<?php 
+if($uploadtype=='new_game')
+$btn_message='Set As Game Image';
+?>
+
 
 <div id="bottom-menu">
-<a href="#comments" id="set_photo" class="btn btn-primary tip disabled" title=""><i class="glyphicon glyphicon-ok"></i> Apply</a>
+<a href="#comments" id="set_photo" class="btn btn-primary tip disabled" title=""><i class="glyphicon glyphicon-ok"></i> <?php echo $btn_message;?></a>
 <a href="#comments" id="crop_photo" class="btn btn-primary tip disabled" title="">Crop</a>
 <a id='close_panel' href="#comments" class="btn btn-default tip" title="">Cancel</a>
 </div>
