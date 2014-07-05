@@ -30,12 +30,16 @@ user_id='<?php echo $id;?>';
 			<input type="hidden" id="w" name="w" />
 			<input type="hidden" id="h" name="h" />
 			
-
+<?php 
+if($uploadtype=='new_game')
+$title_message='Select game image';
+?>
 
 
 <div id="main-wrapper" class="panel panel-default">
 
 <div id="top-menu">
+<h3 style="margin-top: 5px;margin-left: 6px;font-size: 20px;color:#585656;" class="pull-left"><?php echo $title_message; ?></h3>
 <!--
 <a href="#upload" onclick="new_upload();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-upload"></i> Upload</a>
 <a href="#photos" onclick="go_photos();" data-toggle="tab" class="btn btn-default" title=""><i class="glyphicon glyphicon-user"></i> Your Files</a>
