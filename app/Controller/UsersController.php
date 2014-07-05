@@ -1434,7 +1434,7 @@ WHERE user_id=' . $auth_id . '');
             $this->User->id = $user_exists['User']['id'];
             $this->User->saveField('last_login', date('Y-m-d H:i:s'));
 
-            $msg = array('status' => 'user exists', 'msgid' => '1', 'msg' => 'Just a moment.<br>You will be redirected to your personal channel now..', 'location' => $this->webroot . $this->Auth->loginRedirect['controller'] . '/' . $this->Auth->loginRedirect['action']);
+            $msg = array('status' => 'user exists', 'msgid' => '1', 'msg' => 'Just a moment.<br>You will be redirected to your personal channel now..', 'location' => $this->webroot . '/dashboard');
         }else {
             //redirect to social register page with facebook id and access token.
             $msg = array("status" => 'user no exists', 'msgid' => '2', 'msg' => 'Just a moment.<br>You will be redirected to register panel..', 'location' => $this->webroot . 'users/' . 'faceregister');
