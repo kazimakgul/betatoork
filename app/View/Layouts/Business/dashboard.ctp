@@ -184,7 +184,7 @@
 		});
 	</script>
 
-
+<!--Skin switcher commented out
 	<div class="skin-switcher">
 		<div class="toggler">
 			<i class="fa fa-magic"></i>
@@ -228,7 +228,7 @@
 			</li>
 		</ul>
 	</div>
-
+-->
 
 <?php 
 //***************************************
