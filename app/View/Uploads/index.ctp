@@ -187,7 +187,8 @@ $(function () {
                 //get image sizes begins
                 var img = new Image();
                 img.onload = function() {
-                $('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [this.width ,this.height],aspectRatio: ratio });
+                //$('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [this.width ,this.height],aspectRatio: ratio });
+                crop_api(ratio,this.width,this.height);
                 }
                 img.src = file.url;
                 //get image sizes ends
@@ -257,6 +258,17 @@ $('#fileupload').click(function () {
 		}
 	});
 	
+ function crop_api(ratio,imgwidth,imgheight)
+	{
+     $('#theImg').Jcrop({addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [imgwidth ,imgheight],aspectRatio: ratio},function(){
+            jcrop_api = this;
+            jcrop_api.animateTo([0,100,400,300]);
+            jcrop_api.setOptions({ allowResize: 0,allowSelect: 0 });
+		    jcrop_api.focus();
+            });
+	}
+
+
 	$('#crop_photo').click(function () {
 	  if(checkCoords())
 	  {//check selected begins
