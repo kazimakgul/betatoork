@@ -128,7 +128,7 @@ $btn_message='Set As Background';
 
 <div id="bottom-menu">
 <a href="#comments" id="set_photo" class="btn btn-primary tip disabled" title=""><i class="glyphicon glyphicon-ok"></i> <?php echo $btn_message; ?></a>
-<a href="#comments" id="crop_photo" class="btn btn-primary tip disabled" title="">Crop</a>
+<a style="display:none" href="#comments" id="crop_photo" class="btn btn-primary tip disabled" title="">Crop</a>
 <a id='close_panel' href="#comments" class="btn btn-default tip" title="">Cancel</a>
 </div>
 
@@ -228,6 +228,7 @@ $('#fileupload').click(function () {
 
 	
 	$('#set_photo').click(function () {
+		$('#crop_photo').click();
 		selected_image=$('#selected_image').val().trim();
 		loadfrom=$('#loadfrom').val();
 		imagepatch=$('#imagepatch').val();
