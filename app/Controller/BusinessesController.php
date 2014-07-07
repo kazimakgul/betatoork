@@ -428,20 +428,17 @@ class BusinessesController extends AppController {
         $userid = $this->Session->read('Auth.User.id');
         $this->Cookie->delete('User');
         $this->Session->destroy();
-		
+
         $user = $this->User->find('first', array(
             'conditions' => array(
                 'User.id' => $userid
             )
         ));
-	   if ($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
-	     $this->redirect('http://'.$user['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']);
-	   	}
-		else {
-	      $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
-		}	
-
-        
+        if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+            $this->redirect('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+        } else {
+            $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
+        }
     }
 
     public function lucky_number() {
@@ -563,7 +560,7 @@ class BusinessesController extends AppController {
                 ->from(array('no-reply@clone.gs' => 'Clone'))
                 ->subject($subject)
                 ->send();
-        if ($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
+        if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
             $this->redirect('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
         } else {
             $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $user_id));
@@ -1529,7 +1526,8 @@ class BusinessesController extends AppController {
                             'Game.id',
                             'Game.picture',
                             'Game.starsize',
-                            'Game.embed'
+                            'Game.embed',
+                            'Game.rate_count'
                         ),
                         'User' => array(
                             'fields' => array(
@@ -1537,12 +1535,22 @@ class BusinessesController extends AppController {
                                 'User.seo_username',
                                 'User.id'
                             )
+                        ),
+                        'Gamestat' => array(
+                            'fields' => array(
+                                'Gamestat.playcount',
+                                'Gamestat.favcount',
+                                'Gamestat.channelclone',
+                                'Gamestat.potential'
+                            )
                         )
                     )
                 )
             )
         );
         $cond = $this->paginate('Favorite');
+        /*print_r($cond);
+        exit;*/
         $this->set('games', $cond);
         $this->set('title_for_layout', 'Clone Business Favorites');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
@@ -1662,7 +1670,7 @@ class BusinessesController extends AppController {
         }
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
-        $this->set('userid', $this->Auth->user('id')); 
+        $this->set('userid', $this->Auth->user('id'));
         $this->set('activefilter', $activefilter);
         $this->set('title_for_layout', 'Clone Business Explore Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');

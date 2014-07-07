@@ -1,9 +1,9 @@
 <?php
 foreach ($games as $game) {
     $name = $game['Game']['name'];
-    $clones = empty($game['Gamestat']['channelclone']) ? 0 : $game['Gamestat']['channelclone'];
-    $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
-    $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
+    $clones = empty($game['Game']['Gamestat']['channelclone']) ? 0 : $game['Game']['Gamestat']['channelclone'];
+    $favorites = empty($game['Game']['Gamestat']['favcount']) ? 0 : $game['Game']['Gamestat']['favcount'];
+    $plays = empty($game['Game']['Gamestat']['playcount']) ? 0 : $game['Game']['Gamestat']['playcount'];
     $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
     if (Configure::read('Domain.type') == 'subdomain') {
         $playurl = $this->Html->url(array("controller" => 'play', "action" => h($game['Game']['seo_url'])));
