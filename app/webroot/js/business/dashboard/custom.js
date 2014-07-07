@@ -63,7 +63,7 @@ $(document).ready(function() {
                 }
             }, 'json');
         }
-        else if (attr == "channel_update_start") {
+        else if (attr == "channel_update_start" && $('#welcome_form').valid()){
             $.post(link, {
                 attr: attr,
                 title: $('#title').val(),
@@ -74,7 +74,7 @@ $(document).ready(function() {
                 if (data.error) {
                     alert(data.error); // error.id ye göre mesaj yazdırcak..
                 } else {
-                    location.href = mysite
+                	btn.button('reset');
                 }
             }, 'json');
         }
@@ -379,7 +379,6 @@ $(document).ready(function() {
         //------ 
 
     });
-
 
     $("#bgcolor").blur(function() {
         $('#background_area').css('background-color', $("#bgcolor").val());
@@ -778,6 +777,21 @@ $(function() {
                 required: true
             },
             "customer[notes]": {
+                required: true
+            }
+        },
+        highlight: function(element) {
+            $(element).closest('.form-group').removeClass('success').addClass('error');
+        },
+        success: function(element) {
+            element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
+        }
+    });
+
+    // form validation
+    $('#welcome_form').validate({
+        rules: {
+            "screenname": {
                 required: true
             }
         },

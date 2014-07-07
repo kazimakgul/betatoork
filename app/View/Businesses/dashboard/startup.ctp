@@ -6,6 +6,12 @@ if ($user['User']['picture'] == null) {
 } else {
     $img = $this->Upload->image($user, 'User.picture', array(), array('class' => 'img-responsive img-circle circular1', 'onerror' => 'imgError(this,"avatar");'));
 }
+
+if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
+$gochannel=$this->Html->url('http://'.$user['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']); 
+}else{
+$gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite',$user['User']['id']));    
+} 
 ?>
 <style>
     #content{
@@ -40,7 +46,7 @@ if ($user['User']['picture'] == null) {
                 </div>
             </div>
             <section class="form-wizard">
-                <form id="new-customer" method="post" action="#" role="form">
+                <form id="welcome_form" method="post" action="#" role="form">
                     <div class="step active animated fadeInRightStep">
                         <div class="form-group">
                             <label>Custom Domain: </label>
@@ -98,7 +104,7 @@ if ($user['User']['picture'] == null) {
                             </div>
 
                             <div class="form-group form-actions" style="float: left;width: 100%;">
-                                <button type="submit" class="button" data-step="2">
+                                <button type="submit"  id="updateButton" class="btn button" data-step="2">
                                     <span>Next Step <i class="fa fa-angle-double-right"></i></span>
                                 </button>
                             </div>
@@ -205,9 +211,9 @@ if ($user['User']['picture'] == null) {
                                 <h3>
                                     Your channel has been created successfully!
                                 </h3>
-                                <button href="" class="btn btn-success" id="updateButton">
+                                <a href="<?php echo $gochannel;?>" class="btn btn-success">
                                     <span>Go to my channel</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                         <div style="clear: left;"></div>
@@ -261,8 +267,9 @@ if ($user['User']['picture'] == null) {
                 $buttons = $steps.find("[data-step]"),
                 $tabs = $(".header .steps .step"),
                 active_step = 0;
-        $buttons.click(function(e) {
+        	$buttons.click(function(e) {
             e.preventDefault();
+            if($('#welcome_form').valid()){
             var step_index = $(this).data("step") - 1;
             var in_fade_class = (step_index > active_step) ? "fadeInRightStep" : "fadeInLeftStep";
             var out_fade_class = (in_fade_class === "fadeInRightStep") ? "fadeOutLeftStep" : "fadeOutRightStep";
@@ -277,6 +284,7 @@ if ($user['User']['picture'] == null) {
             setTimeout(function(){
                 $('html').animate({scrollTop:0}, 'slow');
             }, 500);
+        	}
         });
 
     });
