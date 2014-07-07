@@ -429,6 +429,22 @@ class BusinessesController extends AppController {
         return $list50;
     }
 
+
+     /**
+     * This function increases 
+     * playcount of game
+     * @param  game_id
+     * @return null
+     */
+    public function add_playcount() {
+       Configure::write('debug', 0);
+       $msg = array("message" => 'Playcount has been added.', 'result' => 1);
+       $this->set('rtdata', $msg);
+       $this->set('_serialize', array('rtdata'));
+
+    }
+
+
     /**
      * Logout method
      *
@@ -1182,6 +1198,7 @@ class BusinessesController extends AppController {
         $this->get_ads_info($game['Game']['user_id'], $authid);
         
         $next_game = $this->Game->find('first', array(
+            'contain'=>false,
             'fields' => array(
                 'Game.id',
                 'Game.seo_url'

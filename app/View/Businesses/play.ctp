@@ -84,3 +84,6 @@
         <?php echo $this->element('business/clonebox'); ?>
     </div><!-- /.container -->
 
+<script>
+setTimeout(function(){add_playcount();},1000);
+</script>

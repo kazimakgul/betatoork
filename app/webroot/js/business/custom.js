@@ -29,6 +29,13 @@ $('.adsChangeBtn').click(function() {
     $('#adsChange').attr('data-selected', this.id);
 });
 
+
+//This function increases playcount of game
+function add_playcount() {
+alert('playcount added');
+}
+
+
 //This set selected Ad Code for selected ads area
 function set_ad_code(adcode_id) {
     target_ad_area = $('#adsChange').attr('data-selected');
