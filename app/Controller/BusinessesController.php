@@ -1152,6 +1152,21 @@ class BusinessesController extends AppController {
 
         $authid = $this->Auth->user('id');
         $this->get_ads_info($game['Game']['user_id'], $authid);
+        
+        $next_game = $this->Game->find('first', array(
+            'fields' => array(
+                'Game.id',
+                'Game.seo_url'
+            ),
+            'conditions' => array(
+                'Game.user_id' => $game['Game']['user_id'],
+                'not' => array(
+                    'Game.id' => $id
+                )
+            ),
+            'order' => 'rand()'
+        ));
+        $this->set('next_game', $next_game);
 
         $this->set('ownuser', $fav_check);
         $this->set('ownclone', $clone_check);
@@ -1549,8 +1564,6 @@ class BusinessesController extends AppController {
             )
         );
         $cond = $this->paginate('Favorite');
-        /*print_r($cond);
-        exit;*/
         $this->set('games', $cond);
         $this->set('title_for_layout', 'Clone Business Favorites');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
