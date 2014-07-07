@@ -106,6 +106,23 @@ $(document).ready(function() {
                 }
             }, 'json');
         }
+        else if (attr == "social_management") {
+            $.post(link, {
+                attr: attr,
+                fb_link		: $('#fb_link').val(),
+                twitter_link: $('#twitter_link').val(),
+                gplus_link	: $('#gplus_link').val(),
+                website		: $('#website').val(),
+            },
+            function(data) {
+                if (data.error) {
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                } else {
+                    Messenger().post(data.success);
+                    btn.button('reset');
+                }
+            }, 'json');
+        }
         else {
             btn.button('reset');
         }
@@ -788,7 +805,7 @@ $(function() {
         }
     });
 
-    // form validation
+    // form validation startup
     $('#welcome_form').validate({
         rules: {
             "screenname": {

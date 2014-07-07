@@ -139,7 +139,18 @@ class BusinessesController extends AppController {
 
                 $this->set('success', "Ads Settings Updated.");
                 $this->set('_serialize', array('success'));
-            } else {
+            }
+            elseif ($attr == "social_management") {
+                $fb_link = $this->request->data['fb_link'];
+                $twitter_link = $this->request->data['twitter_link'];
+                $gplus_link = $this->request->data['gplus_link'];
+                $website = $this->request->data['website'];
+
+                $this->User->query('UPDATE users SET fb_link="' . $fb_link . '", twitter_link="' . $twitter_link . '", gplus_link="' . $gplus_link . '", website="' . $website . '" WHERE id=' . $user_id);
+                $this->set('success', "Social settings Updated.");
+                $this->set('_serialize', array('success'));
+            }
+			else {
                 
             }
         } else {
@@ -768,7 +779,24 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/billing');
     }
 
+
     /**
+     *
+     * @param 
+     * @return social_management Page
+     * @author Volkan Celiloğlu
+     */
+    public function social_management() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Social Management');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/social_management');
+    }
+
+
+	/**
      * Dummy pricing function
      * Cloned from toolsNdocs method
      *

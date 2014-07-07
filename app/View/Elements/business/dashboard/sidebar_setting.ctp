@@ -4,6 +4,7 @@ $ch_settings	= $this->Html->url(array('controller'=>'businesses','action'=>'chan
 $notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'notifications'));
 $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));
 $billing	= $this->Html->url(array('controller'=>'businesses','action'=>'billing'));
+$social	= $this->Html->url(array('controller'=>'businesses','action'=>'social_management'));
 ?>
 
 <div id="sidebar">
@@ -45,7 +46,12 @@ $billing	= $this->Html->url(array('controller'=>'businesses','action'=>'billing'
 				Notifications
 			</a>
 		</li>
-		<!-- -- <li>
+		<li>
+			<a href="<?php echo $social;?>" <?php if($active=='social_management')echo 'class="active"'; ?>>
+				<i class="fa fa-share-alt"></i>
+				Social Management
+			</a>
+		</li>		<!-- -- <li>
 			<a href="<?php echo $settings;?>">
 				<i class="ion-ios7-help-outline"></i>
 				Support
