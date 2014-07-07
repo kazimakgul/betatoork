@@ -127,9 +127,11 @@ if ($user['User']['picture'] == null) {
                 <ul class="submenu" <?php if(isset($bar) && $bar=='Follow')echo 'style="display:block"'; ?>>
                     <li><a href="<?php echo $following ?>" <?php if(isset($active) && $active=='following')echo 'class="active"'; ?>>Following</a></li>
                     <li><a href="<?php echo $followers ?>" <?php if(isset($active) && $active=='followers')echo 'class="active"'; ?>>Followers</a></li>
-                    <li><a href="<?php echo $explorechannels ?>" <?php if(isset($active) && $active=='explorechannels')echo 'class="active"'; ?>>Explore Channels</a></li>
                 </ul>
             </li>
+        </ul>
+        <ul>
+        	<li><a href="<?php echo $explorechannels ?>" <?php if(isset($active) && $active=='explorechannels')echo 'class="active"'; ?>><i class="fa fa-users"></i> Explore Channels</a></li>
         </ul>
     </div>
     <div class="menu-section">
