@@ -446,3 +446,13 @@ a#changeprofilepic {
 .under-image {
     min-height: 62px;
 }
+
+.nav:after, .navbar:after, .navbar-header:after, .navbar-collapse:after {
+    clear: none !important;
+}
+
+.search_form {
+    height: 34px !important;
+    padding: 0px !important;
+    margin: 8px 0 !important;
+}

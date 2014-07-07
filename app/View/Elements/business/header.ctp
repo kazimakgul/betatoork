@@ -72,7 +72,7 @@ $mysite = $this->Html->url(array("controller" => "businesses", "action" => "mysi
         <?php } ?>
         <!-- <div class="col-sm-5 col-md-5"> -->
         <div style="max-width: 750px ! important;">
-            <form id="business_search" class="navbar-form" action="<?php echo $search; ?>">
+            <form id="business_search" class="search_form" class="navbar-form" action="<?php echo $search; ?>">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search Games..." name="srch-term" id="srch-term" <?php echo!empty($searchVal) ? 'value="' . $searchVal . '"' : '' ?>>
                         <div class="input-group-btn">
