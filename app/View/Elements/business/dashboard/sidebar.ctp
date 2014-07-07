@@ -68,7 +68,24 @@ if ($user['User']['picture'] == null) {
 		</li>
 	</ul>
     </div>
-    <div class="menu-section">
+     <div class="bottom-menu hidden-sm">
+        <ul>
+            <li><a href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="Help"><i class="ion-help"></i></a></li>
+            <li>
+                <a href="<?php echo $activities; ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="Recent Activity Feed">
+                    <i class="ion-archive <?php echo $notifycount>=1?'red':'' ?>"></i>
+              <?php echo $notifycount>=1?'
+                    <span class="flag"></span>
+                </a>
+                <ul class="menu">
+                    <li><a href="'.$activities.'">'.$notifycount.' unread activity</a></li>
+                </ul>':'</a>';
+				?>
+            </li>
+            <li><a href="<?php echo $logout ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="Sign Out"><i class="ion-log-out"></i></a></li>
+        </ul>
+    </div>
+   <div class="menu-section">
         <h3>General</h3>
         <ul>
            <!-- -- <li>
@@ -179,23 +196,6 @@ if ($user['User']['picture'] == null) {
 							</li> -- -->
 						</ul>
             </li>
-        </ul>
-    </div>
-    <div class="bottom-menu hidden-sm">
-        <ul>
-            <li><a href="#"><i class="ion-help"></i></a></li>
-            <li>
-                <a href="<?php echo $activities; ?>">
-                    <i class="ion-archive"></i>
-              <?php echo $notifycount>=1?'
-                    <span class="flag"></span>
-                </a>
-                <ul class="menu">
-                    <li><a href="'.$activities.'">'.$notifycount.' unread activity</a></li>
-                </ul>':'</a>';
-				?>
-            </li>
-            <li><a href="<?php echo $logout ?>"><i class="ion-log-out"></i></a></li>
         </ul>
     </div>
 </div>

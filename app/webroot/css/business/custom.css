@@ -122,7 +122,7 @@ body {
     color: #5cb85c;
 }
 .blue{
-    color: #5bc0de;
+    color: #5bc0de !important;
 }
 .darkblue{
     color: #428bca;
