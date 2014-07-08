@@ -38,7 +38,7 @@
                                 <ul class="dropdown-menu">
                                     <!-- <li><?php echo $this->Paginator->sort('id', 'New Games', array('direction' => 'desc')); ?></li> -->
                                     <!-- <li><?php echo $this->Paginator->sort('recommend', 'Recommended', array('direction' => 'desc')); ?></li> -->
-                                    <li><?php echo $this->Paginator->sort('created', 'Date'); ?></li>	
+                                    <li><?php echo $this->Paginator->sort('created', 'Date', array('direction' => 'desc')); ?></li>	
                                     <li><?php echo $this->Paginator->sort('name', 'Name', array('direction' => 'asc')); ?></li>
                                     <li><?php echo $this->Paginator->sort('starsize', 'Top Rate', array('direction' => 'desc')); ?></li>
                                     <li><?php echo $this->Paginator->sort('playcount', 'Most Play', array('direction' => 'desc')); ?></li>
@@ -46,15 +46,18 @@
                             </li>
                         </ul>
                         <?php
-                        $name = "";
-						if($this->request->params['named']['sort']=="recommend")
-						{
-							$name = "Hot Games!";
-						}elseif($this->request->params['named']['sort']=="id")
-						{
-							$name = "New Games!";
-						}
-                        
+                        $param = $this->request->params['named']['sort'];
+                        switch ($param) {
+                            case 'recommend':
+                                $name = 'Hot Games!';
+                                break;
+                            case 'id':
+                                $name = 'New Games!';
+                                break;
+                            default:
+                                $name = ucwords($param);
+                                break;
+                        }
                         ?>
                         <h3 class="panel-title"><?php echo $name; ?></h3>
                     </div>
