@@ -7,6 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 
     <!-- Latest compiled and minified CSS -->
@@ -66,7 +67,7 @@
                     element: document.getElementById('content'),
                     disable: 'right'
                 });
-
+				setTimeout(function(){window.scrollTo(0, 1);}, 0);
             </script>
             <?php echo $this->Html->script(array('assets/jquery-1.10.1.min.js', 'mobile/demo', 'mobile/custom')); ?>
             <?php echo $this->Html->script(array('business/custom')); ?>
