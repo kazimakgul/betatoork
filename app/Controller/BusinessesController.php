@@ -438,7 +438,16 @@ class BusinessesController extends AppController {
      */
     public function add_playcount() {
        Configure::write('debug', 0);
-       $msg = array("message" => 'Playcount has been added.', 'result' => 1);
+       $game_id = $this->request->data['game_id'];
+
+       $counted=$this->Gamestat->add_playcount($game_id);
+       if($counted)
+       {
+         $msg = array("message" => 'Playcount has been added.' , 'result' => 1);
+       }else{
+         $msg = array("message" => 'There are some external problems.' , 'result' => 0);
+       } 
+       
        $this->set('rtdata', $msg);
        $this->set('_serialize', array('rtdata'));
 

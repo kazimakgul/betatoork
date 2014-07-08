@@ -31,7 +31,7 @@ public function add_playcount($game_id)
 			'playcount' => $playcount,
 			'game_id' => $game_id));
 			$this->save($filtered_data);
-		
+	    return 1;	
     }
 	
 	

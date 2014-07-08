@@ -47,3 +47,10 @@
         </div>
     </div>
     <?php echo $this->element('business/clonebox'); ?>
+
+    <script>
+        //=======Playcount==========
+        setTimeout(function() {
+            add_playcount(<?php echo $game['Game']['id']; ?>);
+        }, 10000);
+    </script>

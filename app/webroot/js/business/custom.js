@@ -31,8 +31,23 @@ $('.adsChangeBtn').click(function() {
 
 
 //This function increases playcount of game
-function add_playcount() {
-alert('playcount added');
+function add_playcount(game_id) {
+
+        link=addplaycount;
+        
+        //------
+        $.post(link, {
+            game_id: game_id
+        },
+        function(data) {
+            if (data.rtdata.error) {
+                //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
+            } else {
+                //alert(data.rtdata.message);
+            }
+        }, 'json');
+        //------ 
+
 }
 
 
