@@ -29,11 +29,11 @@ $subgameurl = $this->Html->url(array("controller" => "businesses", "action" => "
                     echo $this->Upload->image($user, 'User.picture', array(), array('id' => 'user_avatar', 'class' => 'circular img-thumbnail', 'onerror' => 'imgError(this,"avatar");'));
                 }
                 ?>
-                <?php if ($controls == $user['User']['id']) { ?>
+                <?php if ($controls == $user['User']['id'] && !isset($this->request->query['mode'])) { ?>
                     <a id="changeprofilepic" data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left"><span class="fa fa-picture-o"></span> Change</a>
                 <?php } ?>
             </div>
-            <?php if ($controls == $user['User']['id']) { ?>
+            <?php if ($controls == $user['User']['id'] && !isset($this->request->query['mode'])) { ?>
                 <a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin:10px 0px 10px -160px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
             <?php } ?>
             <div class="name">
