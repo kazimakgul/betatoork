@@ -140,8 +140,15 @@ $channel = $this->Html->url(array("controller" => "settings", "action" => "chann
 	<!-- Ads Change Modal begins -->
 
     <?php
+       
+        if (isset($pure_domain)) {
+        $add_code = $this->Html->url('http://' . $pure_domain . '/add/ads');
+        $ad_manage= $this->Html->url('http://' . $pure_domain . '/settings/ads');
+        }else{
         $add_code   =$this->Html->url(array("controller" => "businesses","action" =>"add_ads"));
         $ad_manage  =$this->Html->url(array("controller" => "businesses","action" =>"ads_management"));
+        } 
+        
     ?>
 
     <div class="modal fade" id="adsChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>

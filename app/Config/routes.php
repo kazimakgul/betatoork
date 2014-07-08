@@ -47,6 +47,8 @@ Router::connect('/explore/games', array('controller' => 'businesses', 'action' =
 Router::connect('/dashboard/welcome', array('controller' => 'businesses', 'action' => 'startup'));
 Router::connect('/following', array('controller' => 'businesses', 'action' => 'following'));
 Router::connect('/followers', array('controller' => 'businesses', 'action' => 'followers'));
+Router::connect('/add/ads', array('controller' => 'businesses', 'action' => 'add_ads'));
+Router::connect('/add/ads', array('controller' => 'businesses', 'action' => 'add_ads'));
 Router::connect('/explore/channels', array('controller' => 'businesses', 'action' => 'explorechannels'));
 Router::connect('/activity', array('controller' => 'businesses', 'action' => 'activities'));
 Router::connect('/activity/*', array('controller' => 'businesses', 'action' => 'activities'));
