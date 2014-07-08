@@ -282,7 +282,7 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
             $steps.removeClass("active");
             $steps.eq(step_index).addClass("active animated " + in_fade_class);
             setTimeout(function(){
-                $('html').animate({scrollTop:0}, 'slow');
+                $('html, body').animate({scrollTop:0}, 'slow');
             }, 500);
         	}
         });
