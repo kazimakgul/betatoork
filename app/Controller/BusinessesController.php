@@ -439,8 +439,10 @@ class BusinessesController extends AppController {
     public function add_playcount() {
        Configure::write('debug', 0);
        $game_id = $this->request->data['game_id'];
+       $user_id = $this->request->data['user_id'];
 
        $counted=$this->Gamestat->add_playcount($game_id);
+       $this->Userstat->add_playcount($user_id);
        if($counted)
        {
          $msg = array("message" => 'Playcount has been added.' , 'result' => 1);

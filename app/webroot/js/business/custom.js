@@ -31,13 +31,14 @@ $('.adsChangeBtn').click(function() {
 
 
 //This function increases playcount of game
-function add_playcount(game_id) {
+function add_playcount(game_id,user_id) {
 
         link=addplaycount;
         
         //------
         $.post(link, {
-            game_id: game_id
+            game_id: game_id,
+            user_id: user_id
         },
         function(data) {
             if (data.rtdata.error) {

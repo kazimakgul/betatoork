@@ -91,6 +91,6 @@
     <script>
         //=======Playcount==========
         setTimeout(function() {
-            add_playcount(<?php echo $game['Game']['id']; ?>);
+            add_playcount(<?php echo $game['Game']['id']; ?>,<?php echo $game['Game']['user_id']; ?>);
         }, 10000);
     </script>
