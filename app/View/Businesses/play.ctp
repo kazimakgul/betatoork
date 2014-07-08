@@ -17,7 +17,11 @@
     } else {
         $profilepublic = $this->Html->url(array("controller" => "businesses", "action" => "profile", $game['User']['id']));
     }
-    $next_game = $this->Html->url(array('controller' => 'businesses', 'action' => 'play', $next_game['Game']['id']));
+    if (Configure::read('Domain.type') == 'subdomain') {
+        $next_game = $this->Html->url(array("controller" => 'play', "action" => h($next_game['Game']['seo_url'])));
+    } else {
+        $next_game = $this->Html->url(array('controller' => 'businesses', 'action' => 'play', h($next_game['Game']['id'])));
+    }
     ?>
     <script>
         game_id = '<?= $game_id ?>';
@@ -84,6 +88,8 @@
         <?php echo $this->element('business/clonebox'); ?>
     </div><!-- /.container -->
 
-<script>
-setTimeout(function(){add_playcount();},1000);
-</script>
+    <script>
+        setTimeout(function() {
+            add_playcount();
+        }, 1000);
+    </script>
