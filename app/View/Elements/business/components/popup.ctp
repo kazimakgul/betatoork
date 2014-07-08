@@ -1,4 +1,6 @@
-
+<?php
+$channel = $this->Html->url(array("controller" => "settings", "action" => "channel"));
+?>
 <!-- Contact Modal -->
         <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -7,7 +9,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Any questions? Feel free to contact us.</h4>
                     </div>
-                    <form action="../contactmail/<?php echo$user_id?>" method="post" accept-charset="utf-8">
+                    <form action="../contactmail/<?php echo $user_id;?>" method="post" accept-charset="utf-8">
                     <div class="modal-body" style="padding: 35px;">
                           <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
@@ -71,10 +73,17 @@
                     <hr>
                     <center>
                     <p class="text-left"><strong>Bio: </strong><br>
-                       <?php echo$user["User"]["description"];?> </p>
+                       <?php echo$user["User"]["description"];?><?php
+					if($this->Session->read('Auth.User.id') == $user['User']['id'] && !isset($this->request->query['mode'])){
+
+					echo '<a href="'.$channel.'"><i class="fa fa-edit"></i></a>';
+						
+					}
+					?> </p>
                     <br>
                     </center>
-                </div>
+					
+					</div>
                 <div class="modal-footer">
                     <center>
                     <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about <?php echo $user["User"]["username"];?></button>

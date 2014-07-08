@@ -27,7 +27,7 @@
 					    </div>
 				  	</div>
 					<div class="form-group">
-				  		<label class="col-sm-2 col-md-2 control-label">Description</label>
+				  		<label class="col-sm-2 col-md-2 control-label">Code Detail</label>
 					    <div class="col-sm-10 col-md-8">
 				  		<textarea id="desc" class="form-control" id="desc" rows="4" name="customer[notes]" style="margin-bottom: 10px; height:100px;"><?php echo $Ads['Adcode']['code'];?></textarea>
 					    </div>
