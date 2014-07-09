@@ -109,7 +109,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                             </div>
                         </div>
                         <div class="step">
-                            <div id="progressbar_clone" style="width: 500px; margin: 0px auto; margin-bottom: 20px;text-align: center;"><span>Start following minimum 5 games</span></div>
+                            <div id="progressbar_clone" style="width: 500px; margin: 0px auto; margin-bottom: 20px;text-align: center;"><span>Start cloning minimum 5 games.</span></div>
                             
                             <div class="game_area">
                             <?php
@@ -149,7 +149,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                             </div>
                         </div>
                         <div class="step">
-                            <div id="progressbar_follow"></div>
+                            <div id="progressbar_follow" style="width: 500px; margin: 0px auto; margin-bottom: 20px;text-align: center;"><span>Start following minimum 5 channels.</span></div>
                             <?php
                             foreach ($following as $value) {
                                 if (Configure::read('Domain.type') == 'subdomain') {
@@ -358,11 +358,11 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                     if(clone_count>0)
                     {
                     $('#progressbar_clone span').html('Clone '+clone_count+' more games.');
-                }else if(clone_count==1){
+                    }else if(clone_count==1){
                     $('#progressbar_clone span').html('Clone '+clone_count+' more game.');
-                }else{
+                    }else{
                     $('#progressbar_clone span').html('Great! Click Next button for next step.');
-                }
+                    }
 
                     //---------
 
@@ -383,15 +383,30 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
     }
     function subscribe2(channel_name, user_auth, id) {
         if (user_auth == 1) {
-            switch_subscribe(id);
+            var follow_count=5;
+            //-------
             follow++;
-            var percent = follow * 10;
+            var percent = follow * 20;
             if (percent <= 100) {
                 follow_bar.progressbar({
-                    value: percent
+                value: percent
                 });
             }
             console.log('Follow Count => ' + follow);
+            follow_count=follow_count-follow;
+             if(clone_count>0)
+             {
+             $('#progressbar_follow span').html('Follow '+follow_count+' more channels.');
+             }else if(clone_count==1){
+             $('#progressbar_follow span').html('Clone '+clone_count+' more channels.');
+             }else{
+             $('#progressbar_follow span').html('Great! Click Next button for next step.');
+             }
+            //-------
+
+
+            switch_subscribe(id);
+            
         }
     }
 </script>
