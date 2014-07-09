@@ -1010,9 +1010,7 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-
         if ($userid == NULL) {
-
             $subdomain = Configure::read('Domain.subdomain');
             if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
                 $sql = array(
@@ -1033,20 +1031,28 @@ class BusinessesController extends AppController {
                     );
                     $userid = $user['User']['id'];
                 } else {
-                    $sql['conditions'] = array(
-                        'User.id' => $authid,
-                    );
-                    $sql['fields'] = array(
-                        'User.seo_username'
-                    );
-                    $user = $this->User->find('first', $sql);
-                    $this->redirect('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+                    if (!empty($authid)) {
+                        $sql['conditions'] = array(
+                            'User.id' => $authid,
+                        );
+                        $sql['fields'] = array(
+                            'User.seo_username'
+                        );
+                        $user = $this->User->find('first', $sql);
+                        $this->redirect('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+                    } else {
+                        $this->redirect(array('controller' => 'games', 'action' => 'index'));
+                    }
                 }
             } else {
                 if (is_null($userid)) {
-                    $userid = $authid;
+                    if (!empty($authid)) {
+                        $userid = $authid;
+                        $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
+                    } else {
+                        $this->redirect(array('controller' => 'games', 'action' => 'index'));
+                    }
                 }
-                $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
             }
         }
 
