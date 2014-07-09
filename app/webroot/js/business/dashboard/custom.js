@@ -63,7 +63,7 @@ $(document).ready(function() {
                 }
             }, 'json');
         }
-        else if (attr == "channel_update_start" && $('#welcome_form').valid()){
+        else if (attr == "channel_update_start" && $('#welcome_form').valid()) {
             $.post(link, {
                 attr: attr,
                 title: $('#title').val(),
@@ -74,7 +74,7 @@ $(document).ready(function() {
                 if (data.error) {
                     alert(data.error); // error.id ye göre mesaj yazdırcak..
                 } else {
-                	btn.button('reset');
+                    btn.button('reset');
                 }
             }, 'json');
         }
@@ -109,19 +109,19 @@ $(document).ready(function() {
         else if (attr == "social_management") {
             $.post(link, {
                 attr: attr,
-                fb_link		: $('#fb_link').val(),
+                fb_link: $('#fb_link').val(),
                 twitter_link: $('#twitter_link').val(),
-                gplus_link	: $('#gplus_link').val(),
-                website		: $('#website').val(),
+                gplus_link: $('#gplus_link').val(),
+                website: $('#website').val(),
             },
-            function(data) {
-                if (data.error) {
-                    alert(data.error); // error.id ye göre mesaj yazdırcak..
-                } else {
-                    Messenger().post(data.success);
-                    btn.button('reset');
-                }
-            }, 'json');
+                    function(data) {
+                        if (data.error) {
+                            alert(data.error); // error.id ye göre mesaj yazdırcak..
+                        } else {
+                            Messenger().post(data.success);
+                            btn.button('reset');
+                        }
+                    }, 'json');
         }
         else {
             btn.button('reset');
@@ -1114,6 +1114,8 @@ function switch_favorite(game_id)
 
 function chaingame2(game_name, user_auth, game_id)
 {
+    alert(chaingame);
+    return false;
     var btn = $('#clone-' + game_id);
     btn.button('loading');
     if (user_auth == 1)
