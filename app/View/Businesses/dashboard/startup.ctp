@@ -394,11 +394,11 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
             }
             console.log('Follow Count => ' + follow);
             follow_count=follow_count-follow;
-             if(clone_count>0)
+             if(follow_count>0)
              {
              $('#progressbar_follow span').html('Follow '+follow_count+' more channels.');
-             }else if(clone_count==1){
-             $('#progressbar_follow span').html('Clone '+clone_count+' more channels.');
+             }else if(follow_count==1){
+             $('#progressbar_follow span').html('Clone '+follow_count+' more channels.');
              }else{
              $('#progressbar_follow span').html('Great! Click Next button for next step.');
              }
