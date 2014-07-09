@@ -357,7 +357,9 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                     clone_count=clone_count-clone;
                     if(clone_count>0)
                     {
-                    $('#progressbar_clone span').html('Clone '+clone_count+' more games');
+                    $('#progressbar_clone span').html('Clone '+clone_count+' more games.');
+                }elseif(clone_count==1){
+                    $('#progressbar_clone span').html('Clone '+clone_count+' more game.');
                 }else{
                     $('#progressbar_clone span').html('Great! Click Next button for next step.');
                 }
