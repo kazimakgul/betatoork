@@ -1023,6 +1023,7 @@ class BusinessesController extends AppController {
                     $sql['fields'] = array(
                         'User.id'
                     );
+                    $user = $this->User->find('first', $sql);
                     $userid = $user['User']['id'];
                 } else {
                     if (!empty($authid)) {
