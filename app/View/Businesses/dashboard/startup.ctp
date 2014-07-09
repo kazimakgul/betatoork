@@ -109,7 +109,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                             </div>
                         </div>
                         <div class="step">
-                            <div id="progressbar_clone"></div>
+                            <div id="progressbar_clone" style="width: 500px; margin: 0px auto; margin-bottom: 20px;text-align: center;"><span>Start following minimum 5 games</span></div>
                             
                             <div class="game_area">
                             <?php
@@ -342,19 +342,33 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
     function chaingame3(game_name, user_auth, game_id) {
         var btn = $('#clone-' + game_id);
         btn.button('loading');
+        var clone_count=5;
         if (user_auth == 1) {
-            $.get(chaingame + '/' + game_id, function(data) {
-                if (data == 1) {
-                    Messenger().post("Game Cloned");
+            
+                    //---------
                     clone++;
-                    var percent = clone * 10;
+                    var percent = clone * 20;
                     if (percent <= 100) {
                         clone_bar.progressbar({
                             value: percent
                         });
                     }
                     console.log('Clone Count => ' + clone);
-                    btn.button('reset');
+                    clone_count=clone_count-clone;
+                    if(clone_count>0)
+                    {
+                    $('#progressbar_clone span').html('Clone '+clone_count+' more games');
+                }else{
+                    $('#progressbar_clone span').html('Great! Click Next button for next step.');
+                }
+
+                    //---------
+
+            $.get(chaingame + '/' + game_id, function(data) {
+                if (data == 1) {
+                    //Messenger().post("Game Cloned");
+                    
+                    //btn.button('reset');
                 } else {
                     Messenger().post("Error. Please, try again..");
                     btn.button('reset');
