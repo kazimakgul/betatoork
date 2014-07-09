@@ -70,6 +70,8 @@
     <![endif]-->
 </head>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
         <?php echo $content_for_layout?>
 		<?php echo $this->Html->script(array(
 		'business/dashboard/bootstrap/bootstrap.min',
