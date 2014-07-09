@@ -1014,13 +1014,7 @@ class BusinessesController extends AppController {
             $subdomain = Configure::read('Domain.subdomain');
             if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
                 $sql = array(
-                    'contain' => false,
-                    'conditions' => array(
-                        'User.seo_username' => $subdomain
-                    ),
-                    'fields' => array(
-                        'User.id'
-                    )
+                    'contain' => false
                 );
                 if (!empty($subdomain)) {
                     $sql['conditions'] = array(
