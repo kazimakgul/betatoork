@@ -320,7 +320,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                 if (data == 1) {
                     Messenger().post("Game Cloned");
                     clone++;
-                    alert(clone);
+                    console.log('Clone Count => ' + clone);
                     btn.button('reset');
                 } else {
                     Messenger().post("Error. Please, try again..");
@@ -336,7 +336,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
         if (user_auth == 1) {
             switch_subscribe(id);
             follow++;
-            alert(follow);
+            console.log('Follow Count => ' + follow);
         }
     }
 </script>
