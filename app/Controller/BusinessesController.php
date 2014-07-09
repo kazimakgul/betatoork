@@ -633,6 +633,7 @@ class BusinessesController extends AppController {
      * @return Dashboard Page
      */
     public function dashboard() {
+        
         $this->layout = 'Business/dashboard';
 
 
@@ -1010,45 +1011,11 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
+        
         if ($userid == NULL) {
             $subdomain = Configure::read('Domain.subdomain');
-            if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-                $sql = array(
-                    'contain' => false
-                );
-                if (!empty($subdomain)) {
-                    $sql['conditions'] = array(
-                        'User.seo_username' => $subdomain
-                    );
-                    $sql['fields'] = array(
-                        'User.id'
-                    );
-                    $user = $this->User->find('first', $sql);
-                    $userid = $user['User']['id'];
-                } else {
-                    if (!empty($authid)) {
-                        $sql['conditions'] = array(
-                            'User.id' => $authid,
-                        );
-                        $sql['fields'] = array(
-                            'User.seo_username'
-                        );
-                        $user = $this->User->find('first', $sql);
-                        $this->redirect('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
-                    } else {
-                        $this->redirect(array('controller' => 'games', 'action' => 'index'));
-                    }
-                }
-            } else {
-                if (is_null($userid)) {
-                    if (!empty($authid)) {
-                        $userid = $authid;
-                        $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
-                    } else {
-                        $this->redirect(array('controller' => 'games', 'action' => 'index'));
-                    }
-                }
-            }
+            $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
+            $userid = $user_data['User']['id'];
         }
 
         //subdomain actions
