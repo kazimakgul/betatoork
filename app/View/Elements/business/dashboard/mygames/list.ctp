@@ -25,9 +25,9 @@ foreach ($games as $game) {
             </a>
             <a class="name" href="<?php echo $game_edit_link . '/' . $id; ?>"><i class="fa fa-edit"></i></a>
             <?php if ($game['Game']['priority'] > 0) { ?>
-                <a class='btn-link name featured_toggle' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#F7D358;'><i class="fa fa-star"></i></a>
+                <a class='btn-link name featured_toggle' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#F7D358;'><i class="fa fa-star"  data-toggle="tooltip" data-original-title="Unset as Featured"></i></a>
             <?php } else { ?>
-                <a class='btn-link name featured_toggle' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#E6E6E6;'><i class="fa fa-star"></i></a>
+                <a class='btn-link name featured_toggle' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#E6E6E6;'><i class="fa fa-star" data-toggle="tooltip" data-original-title="Set as Featured"></i></a>
             <?php } ?>
         </div>
         <div class="col-sm-1 text-right">
