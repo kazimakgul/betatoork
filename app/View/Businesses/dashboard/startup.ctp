@@ -110,6 +110,8 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                         </div>
                         <div class="step">
                             <div id="progressbar_clone"></div>
+                            
+                            <div class="game_area">
                             <?php
                             foreach ($games as $game) {
                                 $name = $game['Game']['name'];
@@ -124,7 +126,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                 }
                                 ?>
                                 <div class="game col-sm-4 panel">
-                                    <a id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success startUpClone"><i class="fa fa-cog "></i> Clone</a>
+                                    <a data-dismiss="alert" id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success startUpClone get_new_game"><i class="fa fa-cog "></i> Clone</a>
                                     <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '200px', 'height' => '110px')); ?>
                                     <div class="name">
                                         <a href="<?php echo $playurl ?>" style="color:#000000">
@@ -135,6 +137,8 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                 <?php
                             }
                             ?>
+                            </div>
+
                             <div class="form-group form-actions" style="float: left;width: 100%;">
                                 <a id="back" class="button" href="#" data-step="1" style="margin-top:35px;">
                                     <span><i class="fa fa-angle-double-left"></i> Back</span>

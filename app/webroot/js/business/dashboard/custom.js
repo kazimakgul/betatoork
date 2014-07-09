@@ -315,6 +315,20 @@ $(document).ready(function() {
     });
 
 
+    $('.get_new_game').click(function() {
+    
+   
+   link=newstartupgame;
+   $.post(link,
+                function(data) {
+                    
+                 $('.game_area').append(data);
+
+                });
+
+    });
+
+
     $('.featured_toggle').click(function() {
 
         game_id = this.id;

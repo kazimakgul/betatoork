@@ -656,6 +656,49 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/index');
     }
 
+
+   
+    public function get_one_game()
+    {
+       $this->layout = 'ajax'; 
+      
+      $onegame=$this->Game->find('first',array(
+                'fields' => array(
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'Game.embed',
+                    'Game.clone',
+                    'Game.created',
+                    'User.seo_username',
+                    'Game.description',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone',
+                    'Gamestat.potential',
+                    'User.id',
+                    'User.username',
+                    'User.seo_username'
+                ),
+                'conditions' => array(
+                    'Game.priority != ' => NULL,
+                    'Game.clone' => 0
+                ),
+                'order' => 'rand()'
+            ));
+
+            
+        $this->set('game',$onegame);
+
+        $this->render('/Businesses/dashboard/get_one_game');
+
+    }
+
+
     /**
      * Dummy startup wizard function
      * Cloned from dashboard method
