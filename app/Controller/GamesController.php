@@ -39,7 +39,7 @@ class GamesController extends AppController {
     public function index() {
 
         if ($this->Session->check('Auth.User')) {
-            $this->redirect(array("controller" => "businesses", "action" => "dashboard"));
+            $this->redirect(array("controller" => "games", "action" => "dashboard"));
         }
 
         $this->layout = 'landing';
