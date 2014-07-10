@@ -690,7 +690,7 @@ function trecaptcha2(){
 			}
 			else if(data.rtdata.msgid=='1'){
 				
-				window.location = data.rtdata.msg+'/welcome';
+				window.location = data.rtdata.msg;
 			}
 			else{
 				
