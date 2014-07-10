@@ -326,7 +326,12 @@ $(document).ready(function() {
     
    
    link=newstartupgame;
-   
+   $.post(link,
+                function(data) {
+                    
+                 $('.game_area').append(data);
+
+                });
 
     });
 
