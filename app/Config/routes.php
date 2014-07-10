@@ -143,7 +143,7 @@ if (
     Configure::write('Domain.type', 'subdomain');
     Configure::write('Domain.subdomain', $subdomain);
 } else {
-    Router::connect('/', array('controller' => 'games', 'action' => 'index'));
+    Router::connect('/', array('controller' => 'businesses', 'action' => 'mysite'));
     Configure::write('Domain.type', 'normal');
 }
 
