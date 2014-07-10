@@ -7,11 +7,11 @@ if ($user['User']['picture'] == null) {
     $img = $this->Upload->image($user, 'User.picture', array(), array('class' => 'img-responsive img-circle circular1', 'onerror' => 'imgError(this,"avatar");'));
 }
 
-if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
-$gochannel=$this->Html->url('http://'.$user['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']); 
-}else{
-$gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite',$user['User']['id']));    
-} 
+if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+    $gochannel = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+} else {
+    $gochannel = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
+}
 ?>
 <style>
     #content{
@@ -82,7 +82,7 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
                             </div>
                             <!--Channel Cover Avatar Ends -->
                             <div class="form-group">
-                                <label>Screen Name
+                                <label style="text-align:left !important;">Screen Name
                                     <span class="help" data-toggle="tooltip" title="Users will see your screen name on your channel.">
                                         <i class="fa fa-question-circle"></i>
                                     </span>
@@ -102,7 +102,6 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
                             <div class="form-group">
                                 <input type="hidden" id="attr" name="attr" value="channel_update_start" />
                             </div>
-
                             <div class="form-group form-actions" style="float: left;width: 100%;">
                                 <button type="submit"  id="updateButton" class="btn button" data-step="2">
                                     <span>Next Step <i class="fa fa-angle-double-right"></i></span>
@@ -110,6 +109,9 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
                             </div>
                         </div>
                         <div class="step">
+                            <div id="progressbar_clone" style="width: 500px; margin: 0px auto; margin-bottom: 20px;text-align: center;"><span>Start cloning minimum 5 games.</span></div>
+                            
+                            <div class="game_area">
                             <?php
                             foreach ($games as $game) {
                                 $name = $game['Game']['name'];
@@ -124,7 +126,7 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
                                 }
                                 ?>
                                 <div class="game col-sm-4 panel">
-                                    <a id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame2('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success startUpClone"><i class="fa fa-cog "></i> Clone</a>
+                                    <a data-dismiss="alert" id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success startUpClone get_new_game"><i class="fa fa-cog "></i> Clone</a>
                                     <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '200px', 'height' => '110px')); ?>
                                     <div class="name">
                                         <a href="<?php echo $playurl ?>" style="color:#000000">
@@ -135,16 +137,19 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
                                 <?php
                             }
                             ?>
+                            </div>
+
                             <div class="form-group form-actions" style="float: left;width: 100%;">
-                                <a class="button" href="#" data-step="1" style="margin-top:35px;">
+                                <a id="back" class="button" href="#" data-step="1" style="margin-top:35px;">
                                     <span><i class="fa fa-angle-double-left"></i> Back</span>
                                 </a>
-                                <button type="submit" class="button" data-step="3" style="margin-top:35px;">
+                                <button id="next" type="submit" class="button" data-step="3" style="margin-top:35px;">
                                     <span>Next Step <i class="fa fa-angle-double-right"></i></span>
                                 </button>
                             </div>
                         </div>
                         <div class="step">
+                            <div id="progressbar_follow" style="width: 500px; margin: 0px auto; margin-bottom: 20px;text-align: center;"><span>Start following minimum 5 channels.</span></div>
                             <?php
                             foreach ($following as $value) {
                                 if (Configure::read('Domain.type') == 'subdomain') {
@@ -178,7 +183,7 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
                                     </div>
                                     <!-- Follow button -->
                                     <?php if ($followstatus != 1) { ?>
-                                        <a id="follow<?php echo $userid; ?>" class="btn btn-primary" style="width:90px;" onclick="subscribe('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
+                                        <a id="follow<?php echo $userid; ?>" class="btn btn-primary" style="width:90px;" onclick="subscribe2('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
                                                         switchfollow(<?php echo $userid; ?>);
                                                         _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a> 
                                         <a id="unfollow<?php echo $userid; ?>" style="display:none;width:90px;" class="btn btn-success" onclick="subscribeout('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
@@ -188,7 +193,7 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
                                         <a id="unfollow<?php echo $userid; ?>" class="btn btn-success" style="width:90px;" onclick="subscribeout('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
                                                         switchunfollow(<?php echo $userid; ?>);
                                                         _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-foursquare"></i>  Unfollow</a>
-                                        <a id="follow<?php echo $userid; ?>" style="display:none;width:90px;" class="btn btn-primary"  onclick="subscribe('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
+                                        <a id="follow<?php echo $userid; ?>" style="display:none;width:90px;" class="btn btn-primary"  onclick="subscribe2('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
                                                         switchfollow(<?php echo $userid; ?>);
                                                         _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a> <?php } ?> 
                                     <!-- Follow button end -->
@@ -197,10 +202,10 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
                             }
                             ?>							
                             <div class="form-group form-actions" style="float: left;width: 100%;">
-                                <a class="button" href="#" data-step="2">
+                                <a id="back" class="button" href="#" data-step="2">
                                     <span><i class="fa fa-angle-double-left"></i> Back</span>
                                 </a>
-                                <button type="submit" class="button" data-step="4">
+                                <button id="next" type="submit" class="button" data-step="4">
                                     <span>Next <i class="fa fa-angle-double-right"></i></span>
                                 </button>
                             </div>
@@ -211,7 +216,7 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
                                 <h3>
                                     Your channel has been created successfully!
                                 </h3>
-                                <a href="<?php echo $gochannel;?>" class="btn btn-success">
+                                <a href="<?php echo $gochannel; ?>" class="btn btn-success">
                                     <span>Go to my channel</span>
                                 </a>
                             </div>
@@ -260,33 +265,149 @@ $gochannel = $this->Html->url(array('controller'=>'businesses','action'=>'mysite
         </div>
     </div>
 </div>
+<style>
+    #progressbar_clone, #progressbar_follow {
+        margin-bottom: 20px;
+    }
+    .ui-widget-header {
+        background: none !important;
+        background-color: #5A6474 !important;
+    }
+    .ui-progressbar-value {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        background-color: #5A6474 !important;
+    }
+    .ui-widget-content {
+        border: 1px solid #94A1B8 !important;
+    }
+</style>
 <!-- Background Change Modal ends -->
 <script type="text/javascript">
-    $(function() {
-        var $steps = $(".form-wizard .step"),
-                $buttons = $steps.find("[data-step]"),
-                $tabs = $(".header .steps .step"),
-                active_step = 0;
-        	$buttons.click(function(e) {
+    var clone = 0;
+    var follow = 0;
+    var clone_bar = $('#progressbar_clone');
+    var follow_bar = $('#progressbar_follow');
+    $(document).ready(function() {
+        var active_step = 0;
+        var steps = $(".form-wizard .step");
+        var buttons = steps.find("[data-step]");
+        var tabs = $(".header .steps .step");
+        clone_bar.progressbar();
+        follow_bar.progressbar();
+        buttons.click(function(e) {
             e.preventDefault();
-            if($('#welcome_form').valid()){
-            var step_index = $(this).data("step") - 1;
-            var in_fade_class = (step_index > active_step) ? "fadeInRightStep" : "fadeInLeftStep";
-            var out_fade_class = (in_fade_class === "fadeInRightStep") ? "fadeOutLeftStep" : "fadeOutRightStep";
-            var $out_step = $steps.eq(active_step);
-            $out_step.on(utils.animation_ends(), function() {
-                $out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
-            }).addClass(out_fade_class);
-            active_step = step_index;
-            $tabs.removeClass("active").filter(":lt(" + (active_step + 1) + ")").addClass("active");
-            $steps.removeClass("active");
-            $steps.eq(step_index).addClass("active animated " + in_fade_class);
-            setTimeout(function(){
-                $('html, body').animate({scrollTop:0}, 'slow');
-            }, 500);
-        	}
+            if ($('#welcome_form').valid()) {
+                var step_index = $(this).data("step") - 1;
+                var in_fade_class = (step_index > active_step) ? "fadeInRightStep" : "fadeInLeftStep";
+                var out_fade_class = (in_fade_class === "fadeInRightStep") ? "fadeOutLeftStep" : "fadeOutRightStep";
+                var out_step = steps.eq(active_step);
+                if
+                        (
+                                (step_index == 1 && $('#welcome_form').valid())
+                                ||
+                                (step_index == 2 && clone >= 5)
+                                ||
+                                (step_index == 3 && follow >= 5)
+                                ||
+                                ($(this).attr('id') == 'back')
+                                )
+                {
+                    out_step.on(utils.animation_ends(), function() {
+                        out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
+                    }).addClass(out_fade_class);
+                    active_step = step_index;
+                    tabs.removeClass("active").filter(":lt(" + (active_step + 1) + ")").addClass("active");
+                    steps.removeClass("active");
+                    steps.eq(step_index).addClass("active animated " + in_fade_class);
+                    setTimeout(function() {
+                        $('html, body').animate({scrollTop: 0}, 'slow');
+                    }, 500);
+                } else {
+                    switch (step_index) {
+                        case 2:
+                            alert('Please Clone Least 5 Games');
+                            break;
+                        case 3:
+                            alert('Please Follow Least 5 Channels');
+                            break;
+                        default:
+                            alert('Error');
+                    }
+                }
+            }
         });
-
     });
+    function chaingame3(game_name, user_auth, game_id) {
+        var btn = $('#clone-' + game_id);
+        btn.button('loading');
+        var clone_count=5;
+        if (user_auth == 1) {
+            
+                    //---------
+                    clone++;
+                    var percent = clone * 20;
+                    if (percent <= 100) {
+                        clone_bar.progressbar({
+                            value: percent
+                        });
+                    }
+                    console.log('Clone Count => ' + clone);
+                    clone_count=clone_count-clone;
+                    if(clone_count>0)
+                    {
+                    $('#progressbar_clone span').html('Clone '+clone_count+' more games.');
+                    }else if(clone_count==1){
+                    $('#progressbar_clone span').html('Clone '+clone_count+' more game.');
+                    }else{
+                    $('#progressbar_clone span').html('Great! Click Next button for next step.');
+                    }
+
+                    //---------
+
+            $.get(chaingame + '/' + game_id, function(data) {
+                if (data == 1) {
+                    //Messenger().post("Game Cloned");
+                    
+                    //btn.button('reset');
+                } else {
+                    Messenger().post("Error. Please, try again..");
+                    btn.button('reset');
+                }
+            });
+        } else {
+            $('#myModal').modal('hide');
+            $('#login').modal('show');
+        }
+    }
+    function subscribe2(channel_name, user_auth, id) {
+        if (user_auth == 1) {
+            var follow_count=5;
+            //-------
+            follow++;
+            var percent = follow * 20;
+            if (percent <= 100) {
+                follow_bar.progressbar({
+                value: percent
+                });
+            }
+            console.log('Follow Count => ' + follow);
+            follow_count=follow_count-follow;
+             if(follow_count>0)
+             {
+             $('#progressbar_follow span').html('Follow '+follow_count+' more channels.');
+             }else if(follow_count==1){
+             $('#progressbar_follow span').html('Clone '+follow_count+' more channels.');
+             }else{
+             $('#progressbar_follow span').html('Great! Click Next button for next step.');
+             }
+            //-------
+
+
+            switch_subscribe(id);
+            
+        }
+    }
 </script>
 </body>

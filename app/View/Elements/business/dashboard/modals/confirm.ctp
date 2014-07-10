@@ -11,7 +11,7 @@
 			        	</h4>
 			      	</div>
 			      	<div class="modal-body">
-						Do you want to delete your account? All your info will be erased.
+						Do you want to delete your games? All your info will be erased.
 			      	</div>
 			      	<div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

@@ -40,7 +40,7 @@
 		<?php if($auth_user){?> user_auth='1'; <?php }else{?> user_auth='0'; <?php }?>
         </script>
 
-    
+
     <?php 
     if($channel_style['User']['bg_color']!=NULL)
     $bg_color=$channel_style['User']['bg_color'];
@@ -79,8 +79,7 @@
 //http://blog.tersmitten.nl/how-to-debug-sql-from-a-controller-in-cakephp.html
 echo $this->element('sql_dump');
 ?>
-
-<?php if($user['User']['analitics']!='0' && $user['User']['analitics']!=NULL) {?>
+  <?php if($user['User']['analitics']!='0' && $user['User']['analitics']!=NULL) {?>
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
 <!--======Analitic code for channel owner=======-->
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
@@ -88,7 +87,6 @@ echo $this->element('sql_dump');
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
 <!--=======//Analitic code for channel owner======-->
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
-<?php } ?> 
-
+<?php } ?>   
     </body>
 </html>
