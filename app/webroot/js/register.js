@@ -1781,7 +1781,7 @@ $.post(activitypath, function (data) {
 
 }
 
-setInterval(function(){getFreshActivity();getNotificationCount();},10000);
+// setInterval(function(){getFreshActivity();getNotificationCount();},10000);
 function getFreshActivity()
 {
 last_id=$('.lastactivityid').val();
@@ -1822,7 +1822,7 @@ $.post(activitypath, function (data) {
 //*********Execute Bot Activity Start********
 //==========================================================
 
-setInterval(function(){execute_order();},30000);
+//setInterval(function(){execute_order();},30000);
 
 function execute_order()
 {
