@@ -33,6 +33,7 @@ foreach ($following as $value) {
             <!-- Follow button end -->
         </div>
         <div class="col-sm-1 avatar">
+            <a href="<?php echo $userlink ?>" target="_blank">
             <?php
             if (is_null($value['User']['picture'])) {
                 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
@@ -41,6 +42,7 @@ foreach ($following as $value) {
                 echo $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $name));
             }
             ?>
+                </a>
         </div>
         <div class="col-sm-3">
             <a href="<?php echo $userlink; ?>" class="name">
