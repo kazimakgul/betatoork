@@ -74,25 +74,28 @@ Router::connect('/logout', array('controller' => 'businesses', 'action' => 'logo
  */
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 Router::connect('/games', array('controller' => 'games', 'action' => 'index'));
+Router::connect('/games/*', array('controller' => 'businesses', 'action' => 'dashboard'));
+Router::connect('/users/*', array('controller' => 'businesses', 'action' => 'dashboard'));
+Router::connect('/wallentries/*', array('controller' => 'businesses', 'action' => 'dashboard'));
 
 /**
  * ...Generatin seo url
  */
-Router::connect('/:channel/:seo_url/play', array('controller' => 'games', 'action' => 'playgameframe'), array('channel' => '[-a-z0-9]+', 'seo_url' => '[-a-z0-9]+', 'pass' => array('channel', 'seo_url')));
-Router::connect('/:channel/:seo_url/play2', array('controller' => 'games', 'action' => 'playgame'), array('channel' => '[-a-z0-9]+', 'seo_url' => '[-a-z0-9]+', 'pass' => array('channel', 'seo_url')));
+Router::connect('/:channel/:seo_url/play', array('controller' => 'businesses', 'action' => 'dashboard'), array('channel' => '[-a-z0-9]+', 'seo_url' => '[-a-z0-9]+', 'pass' => array('channel', 'seo_url')));
+Router::connect('/:channel/:seo_url/play2', array('controller' => 'businesses', 'action' => 'dashboard'), array('channel' => '[-a-z0-9]+', 'seo_url' => '[-a-z0-9]+', 'pass' => array('channel', 'seo_url')));
 
 
 //<----New Routing Actions
-Router::connect('/:channel/:seo_url/playframe', array('controller' => 'games', 'action' => 'playgameframe'), array('channel' => '[-a-z0-9]+', 'seo_url' => '[-a-z0-9]+', 'pass' => array('channel', 'seo_url')));
-Router::connect('/:channel/:seo_url/playgame', array('controller' => 'games', 'action' => 'playgame'), array('channel' => '[-a-z0-9]+', 'seo_url' => '[-a-z0-9]+', 'pass' => array('channel', 'seo_url')));
+Router::connect('/:channel/:seo_url/playframe', array('controller' => 'businesses', 'action' => 'dashboard'), array('channel' => '[-a-z0-9]+', 'seo_url' => '[-a-z0-9]+', 'pass' => array('channel', 'seo_url')));
+Router::connect('/:channel/:seo_url/playgame', array('controller' => 'businesses', 'action' => 'dashboard'), array('channel' => '[-a-z0-9]+', 'seo_url' => '[-a-z0-9]+', 'pass' => array('channel', 'seo_url')));
 Router::connect('/:channel/go', array('controller' => 'games', 'action' => 'profile'), array('channel' => '[-a-z0-9]+', 'pass' => array('channel')));
 
 //<---/New Routing Actions
 
-Router::connect('/:channel/:seo_url/playgame', array('controller' => 'games', 'action' => 'playgame'), array('channel' => '[-a-z0-9]+', 'seo_url' => '[-a-z0-9]+', 'pass' => array('channel', 'seo_url')));
-Router::connect('/:channel/news', array('controller' => 'games', 'action' => 'profile'), array('channel' => '[-a-z0-9]+', 'pass' => array('channel')));
-Router::connect('/:channel/news/:type', array('controller' => 'Wallentries', 'action' => 'profile'), array('channel' => '[-a-z0-9]+', 'type' => '[-a-z0-9]+', 'pass' => array('channel', 'type')));
-Router::connect('/:channel', array('controller' => 'games', 'action' => 'profile'), array('channel' => '[-a-z0-9]+', 'pass' => array('channel')));
+Router::connect('/:channel/:seo_url/playgame', array('controller' => 'businesses', 'action' => 'dashboard'), array('channel' => '[-a-z0-9]+', 'seo_url' => '[-a-z0-9]+', 'pass' => array('channel', 'seo_url')));
+Router::connect('/:channel/news', array('controller' => 'businesses', 'action' => 'dashboard'), array('channel' => '[-a-z0-9]+', 'pass' => array('channel')));
+Router::connect('/:channel/news/:type', array('controller' => 'businesses', 'action' => 'dashboard'), array('channel' => '[-a-z0-9]+', 'type' => '[-a-z0-9]+', 'pass' => array('channel', 'type')));
+Router::connect('/:channel', array('controller' => 'businesses', 'action' => 'dashboard'), array('channel' => '[-a-z0-9]+', 'pass' => array('channel')));
 Router::connect('/games/search/:userid/:searchterm', array('controller' => 'businesses', 'action' => 'search2'), array('pass' => array('userid', 'searchterm'), 'userid' => '[0-9]+'));
 
 //Using Subdomain included Url Routes
