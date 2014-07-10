@@ -139,7 +139,8 @@ class BusinessesController extends AppController {
 
                 $this->set('success', "Ads Settings Updated.");
                 $this->set('_serialize', array('success'));
-            } elseif ($attr == "social_management") {
+            }
+            elseif ($attr == "social_management") {
                 $fb_link = $this->request->data['fb_link'];
                 $twitter_link = $this->request->data['twitter_link'];
                 $gplus_link = $this->request->data['gplus_link'];
@@ -148,7 +149,8 @@ class BusinessesController extends AppController {
                 $this->User->query('UPDATE users SET fb_link="' . $fb_link . '", twitter_link="' . $twitter_link . '", gplus_link="' . $gplus_link . '", website="' . $website . '" WHERE id=' . $user_id);
                 $this->set('success', "Social settings Updated.");
                 $this->set('_serialize', array('success'));
-            } else {
+            }
+			else {
                 
             }
         } else {
@@ -427,28 +429,32 @@ class BusinessesController extends AppController {
         return $list50;
     }
 
-    /**
+
+     /**
      * This function increases 
      * playcount of game
      * @param  game_id
      * @return null
      */
     public function add_playcount() {
-        Configure::write('debug', 0);
-        $game_id = $this->request->data['game_id'];
-        $user_id = $this->request->data['user_id'];
+       Configure::write('debug', 0);
+       $game_id = $this->request->data['game_id'];
+       $user_id = $this->request->data['user_id'];
 
-        $counted = $this->Gamestat->add_playcount($game_id);
-        $this->Userstat->add_playcount($user_id);
-        if ($counted) {
-            $msg = array("message" => 'Playcount has been added.', 'result' => 1);
-        } else {
-            $msg = array("message" => 'There are some external problems.', 'result' => 0);
-        }
+       $counted=$this->Gamestat->add_playcount($game_id);
+       $this->Userstat->add_playcount($user_id);
+       if($counted)
+       {
+         $msg = array("message" => 'Playcount has been added.' , 'result' => 1);
+       }else{
+         $msg = array("message" => 'There are some external problems.' , 'result' => 0);
+       } 
+       
+       $this->set('rtdata', $msg);
+       $this->set('_serialize', array('rtdata'));
 
-        $this->set('rtdata', $msg);
-        $this->set('_serialize', array('rtdata'));
     }
+
 
     /**
      * Logout method
@@ -633,7 +639,6 @@ class BusinessesController extends AppController {
      * @return Dashboard Page
      */
     public function dashboard() {
-        
         $this->layout = 'Business/dashboard';
 
 
@@ -655,10 +660,6 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/index');
     }
-
-
-   
-
 
     /**
      * Dummy startup wizard function
@@ -805,6 +806,7 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/billing');
     }
 
+
     /**
      *
      * @param 
@@ -820,7 +822,8 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/social_management');
     }
 
-    /**
+
+	/**
      * Dummy pricing function
      * Cloned from toolsNdocs method
      *
@@ -1015,8 +1018,9 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-        
+
         if ($userid == NULL) {
+
             $subdomain = Configure::read('Domain.subdomain');
             $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
             $userid = $user_data['User']['id'];
@@ -1045,10 +1049,8 @@ class BusinessesController extends AppController {
 
         $PaginateLimit = 12;
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
-
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone')))));
         $cond = $this->paginate('Game');
-
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
         $this->get_ads_info($userid, $authid);
@@ -1058,7 +1060,7 @@ class BusinessesController extends AppController {
         $newlimit = 3;
         $hotlimit = 6;
         $this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $newlimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
-        $this->set('featuredgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.priority >' => 0), 'limit' => $featlimit, 'order' => 'rand()', 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
+        $this->set('featuredgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.priority >' => 0), 'limit' => $featlimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
         $this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $hotlimit, 'order' => array('Game.starsize' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.totalclone'))))));
         $this->set('category', $category);
         $this->set('games', $cond);
@@ -1205,9 +1207,9 @@ class BusinessesController extends AppController {
 
         $authid = $this->Auth->user('id');
         $this->get_ads_info($game['Game']['user_id'], $authid);
-
+        
         $next_game = $this->Game->find('first', array(
-            'contain' => false,
+            'contain'=>false,
             'fields' => array(
                 'Game.id',
                 'Game.seo_url'

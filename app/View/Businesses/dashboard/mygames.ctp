@@ -47,7 +47,7 @@ if (isset($query)) {
                     <a href="<?php echo $all; ?>" <?php echo $activefilter === 0 ? 'class="active"' : ''; ?>>All Games</a>
                     <a href="<?php echo $mobile; ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games</a>
                     <span style='color: gray;font-weight: bold;'>
-                        <i style='color:#F7D358;font-size: 20px;vertical-align: middle;' class="fa fa-star" data-toggle="tooltip" data-original-title="Set as Featured"></i>
+                        <i style='color:#F7D358;font-size: 20px;vertical-align: middle;' class="fa fa-star"></i>
                         Featured
                     </span>
                     <div class="show-options">

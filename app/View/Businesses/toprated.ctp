@@ -40,8 +40,8 @@
                                     <!-- <li><?php echo $this->Paginator->sort('recommend', 'Recommended', array('direction' => 'desc')); ?></li> -->
                                     <li><?php echo $this->Paginator->sort('created', 'Date', array('direction' => 'desc')); ?></li>	
                                     <li><?php echo $this->Paginator->sort('name', 'Name', array('direction' => 'asc')); ?></li>
-                                    <li><?php echo $this->Paginator->sort('starsize', 'Top Rated', array('direction' => 'desc')); ?></li>
-                                    <li><?php echo $this->Paginator->sort('playcount', 'Most Played', array('direction' => 'desc')); ?></li>
+                                    <li><?php echo $this->Paginator->sort('starsize', 'Top Rate', array('direction' => 'desc')); ?></li>
+                                    <li><?php echo $this->Paginator->sort('playcount', 'Most Play', array('direction' => 'desc')); ?></li>
                                 </ul>
                             </li>
                         </ul>
@@ -49,16 +49,10 @@
                         $param = $this->request->params['named']['sort'];
                         switch ($param) {
                             case 'recommend':
-                                $name = 'Hot Games';
+                                $name = 'Hot Games!';
                                 break;
                             case 'id':
-                                $name = 'New Games';
-                                break;
-                            case 'starsize':
-                                $name = 'Top Rated';
-                                break;
-                            case 'created';
-                                $name = 'Date';
+                                $name = 'New Games!';
                                 break;
                             default:
                                 $name = ucwords($param);

@@ -1,8 +1,8 @@
 $(document).ready(function() {
     /**
-     *  Update Form Post Method
-     *  @param #attr.val(), link => Update controller
-     *  @return data.error=> error.id or data.success=> success.id
+     *	Update Form Post Method
+     * 	@param #attr.val(), link => Update controller
+     *	@return data.error=> error.id or data.success=> success.id
      */
     $('#updateButton').click(function(e) {
         e.preventDefault();
@@ -63,7 +63,7 @@ $(document).ready(function() {
                 }
             }, 'json');
         }
-        else if (attr == "channel_update_start" && $('#welcome_form').valid()) {
+        else if (attr == "channel_update_start" && $('#welcome_form').valid()){
             $.post(link, {
                 attr: attr,
                 title: $('#title').val(),
@@ -74,7 +74,7 @@ $(document).ready(function() {
                 if (data.error) {
                     alert(data.error); // error.id ye göre mesaj yazdırcak..
                 } else {
-                    btn.button('reset');
+                	btn.button('reset');
                 }
             }, 'json');
         }
@@ -109,19 +109,19 @@ $(document).ready(function() {
         else if (attr == "social_management") {
             $.post(link, {
                 attr: attr,
-                fb_link: $('#fb_link').val(),
+                fb_link		: $('#fb_link').val(),
                 twitter_link: $('#twitter_link').val(),
-                gplus_link: $('#gplus_link').val(),
-                website: $('#website').val(),
+                gplus_link	: $('#gplus_link').val(),
+                website		: $('#website').val(),
             },
-                    function(data) {
-                        if (data.error) {
-                            alert(data.error); // error.id ye göre mesaj yazdırcak..
-                        } else {
-                            Messenger().post(data.success);
-                            btn.button('reset');
-                        }
-                    }, 'json');
+            function(data) {
+                if (data.error) {
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                } else {
+                    Messenger().post(data.success);
+                    btn.button('reset');
+                }
+            }, 'json');
         }
         else {
             btn.button('reset');
@@ -131,9 +131,9 @@ $(document).ready(function() {
 
 
     /**
-     *  New Form Post Method
-     *  @param #attr.val(), link => New controller
-     *  @return data.error=> error.id or data.success=> success.id
+     *	New Form Post Method
+     * 	@param #attr.val(), link => New controller
+     *	@return data.error=> error.id or data.success=> success.id
      */
     $('#NewButton').click(function(e) {
         e.preventDefault();
@@ -585,9 +585,9 @@ $(document).ready(function() {
 
 $(function() {
     /**
-     *  Filter dropdown options Method, Ads management page
-     *  @param 
-     *  @return Filter
+     *	Filter dropdown options Method, Ads management page
+     * 	@param 
+     *	@return Filter
      */
     var $filters = $(".filters .filter input:checkbox");
 
@@ -664,9 +664,9 @@ $(function() {
     //Filtered END
 
     /**
-     *  Tabs Method, Profile page
-     *  @param 
-     *  @return tabs
+     *	Tabs Method, Profile page
+     * 	@param 
+     *	@return tabs
      */
     // tabs
     var $tabs = $(".tabs a");
@@ -1061,7 +1061,7 @@ $('#unFollow_button').click(function() {
 });
 //***************************************************
 //------------------Favorite Functions-------------------------
-//***************************************************   
+//***************************************************	
 
 function favorite(game_name, user_auth, id) {
     if (user_auth == 1)
@@ -1114,8 +1114,6 @@ function switch_favorite(game_id)
 
 function chaingame2(game_name, user_auth, game_id)
 {
-    alert(chaingame);
-    return false;
     var btn = $('#clone-' + game_id);
     btn.button('loading');
     if (user_auth == 1)

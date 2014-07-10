@@ -37,7 +37,6 @@
 			subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
 	        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 	        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
-	     
 
 	        <?php if ($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") { ?>
 	        	mysite			= "<?php echo $this->Html->url('http://'.$seo_username.'.'.$_SERVER['HTTP_HOST']); ?>";
@@ -71,8 +70,6 @@
     <![endif]-->
 </head>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
         <?php echo $content_for_layout?>
 		<?php echo $this->Html->script(array(
 		'business/dashboard/bootstrap/bootstrap.min',
