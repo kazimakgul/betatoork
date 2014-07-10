@@ -82,7 +82,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                             </div>
                             <!--Channel Cover Avatar Ends -->
                             <div class="form-group">
-                                <label>Screen Name
+                                <label style="text-align:left !important;">Screen Name
                                     <span class="help" data-toggle="tooltip" title="Users will see your screen name on your channel.">
                                         <i class="fa fa-question-circle"></i>
                                     </span>
@@ -109,6 +109,9 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                             </div>
                         </div>
                         <div class="step">
+                            <div id="progressbar_clone" style="width: 500px; margin: 0px auto; margin-bottom: 20px;text-align: center;"><span>Start cloning minimum 5 games.</span></div>
+                            
+                            <div class="game_area">
                             <?php
                             foreach ($games as $game) {
                                 $name = $game['Game']['name'];
@@ -123,7 +126,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                 }
                                 ?>
                                 <div class="game col-sm-4 panel">
-                                    <a id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success startUpClone"><i class="fa fa-cog "></i> Clone</a>
+                                    <a data-dismiss="alert" id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success startUpClone get_new_game"><i class="fa fa-cog "></i> Clone</a>
                                     <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '200px', 'height' => '110px')); ?>
                                     <div class="name">
                                         <a href="<?php echo $playurl ?>" style="color:#000000">
@@ -134,6 +137,8 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                 <?php
                             }
                             ?>
+                            </div>
+
                             <div class="form-group form-actions" style="float: left;width: 100%;">
                                 <a id="back" class="button" href="#" data-step="1" style="margin-top:35px;">
                                     <span><i class="fa fa-angle-double-left"></i> Back</span>
@@ -144,6 +149,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                             </div>
                         </div>
                         <div class="step">
+                            <div id="progressbar_follow" style="width: 500px; margin: 0px auto; margin-bottom: 20px;text-align: center;"><span>Start following minimum 5 channels.</span></div>
                             <?php
                             foreach ($following as $value) {
                                 if (Configure::read('Domain.type') == 'subdomain') {
@@ -178,23 +184,23 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                     <!-- Follow button -->
                                     <?php if ($followstatus != 1) { ?>
                                         <a id="follow<?php echo $userid; ?>" class="btn btn-primary" style="width:90px;" onclick="subscribe2('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                                                switchfollow(<?php echo $userid; ?>);
-                                                _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a> 
+                                                        switchfollow(<?php echo $userid; ?>);
+                                                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a> 
                                         <a id="unfollow<?php echo $userid; ?>" style="display:none;width:90px;" class="btn btn-success" onclick="subscribeout('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                                                switchunfollow(<?php echo $userid; ?>);
-                                                _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"> <i class="fa fa-foursquare"></i> Unfollow</a>
+                                                        switchunfollow(<?php echo $userid; ?>);
+                                                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"> <i class="fa fa-foursquare"></i> Unfollow</a>
                                        <?php } else { ?> 
                                         <a id="unfollow<?php echo $userid; ?>" class="btn btn-success" style="width:90px;" onclick="subscribeout('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                                                switchunfollow(<?php echo $userid; ?>);
-                                                _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-foursquare"></i>  Unfollow</a>
+                                                        switchunfollow(<?php echo $userid; ?>);
+                                                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-foursquare"></i>  Unfollow</a>
                                         <a id="follow<?php echo $userid; ?>" style="display:none;width:90px;" class="btn btn-primary"  onclick="subscribe2('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                                                switchfollow(<?php echo $userid; ?>);
-                                                _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a> <?php } ?> 
+                                                        switchfollow(<?php echo $userid; ?>);
+                                                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a> <?php } ?> 
                                     <!-- Follow button end -->
                                 </div>
                                 <?php
                             }
-                            ?>                          
+                            ?>							
                             <div class="form-group form-actions" style="float: left;width: 100%;">
                                 <a id="back" class="button" href="#" data-step="2">
                                     <span><i class="fa fa-angle-double-left"></i> Back</span>
@@ -259,15 +265,37 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
         </div>
     </div>
 </div>
+<style>
+    #progressbar_clone, #progressbar_follow {
+        margin-bottom: 20px;
+    }
+    .ui-widget-header {
+        background: none !important;
+        background-color: #5A6474 !important;
+    }
+    .ui-progressbar-value {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        background-color: #5A6474 !important;
+    }
+    .ui-widget-content {
+        border: 1px solid #94A1B8 !important;
+    }
+</style>
 <!-- Background Change Modal ends -->
 <script type="text/javascript">
     var clone = 0;
     var follow = 0;
-    $(function() {
+    var clone_bar = $('#progressbar_clone');
+    var follow_bar = $('#progressbar_follow');
+    $(document).ready(function() {
+        var active_step = 0;
         var steps = $(".form-wizard .step");
         var buttons = steps.find("[data-step]");
         var tabs = $(".header .steps .step");
-        var active_step = 0;
+        clone_bar.progressbar();
+        follow_bar.progressbar();
         buttons.click(function(e) {
             e.preventDefault();
             if ($('#welcome_form').valid()) {
@@ -276,15 +304,15 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                 var out_fade_class = (in_fade_class === "fadeInRightStep") ? "fadeOutLeftStep" : "fadeOutRightStep";
                 var out_step = steps.eq(active_step);
                 if
-                (
-                    (step_index == 1 && $('#welcome_form').valid())
-                    ||
-                    (step_index == 2 && clone >= 5)
-                    ||
-                    (step_index == 3 && follow >= 5)
-                    ||
-                    ($(this).attr('id') == 'back')
-                )
+                        (
+                                (step_index == 1 && $('#welcome_form').valid())
+                                ||
+                                (step_index == 2 && clone >= 5)
+                                ||
+                                (step_index == 3 && follow >= 5)
+                                ||
+                                ($(this).attr('id') == 'back')
+                                )
                 {
                     out_step.on(utils.animation_ends(), function() {
                         out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
@@ -297,7 +325,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                         $('html, body').animate({scrollTop: 0}, 'slow');
                     }, 500);
                 } else {
-                    switch(step_index) {
+                    switch (step_index) {
                         case 2:
                             alert('Please Clone Least 5 Games');
                             break;
@@ -314,14 +342,35 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
     function chaingame3(game_name, user_auth, game_id) {
         var btn = $('#clone-' + game_id);
         btn.button('loading');
-        if (user_auth == 1)
-        {
+        var clone_count=5;
+        if (user_auth == 1) {
+            
+                    //---------
+                    clone++;
+                    var percent = clone * 20;
+                    if (percent <= 100) {
+                        clone_bar.progressbar({
+                            value: percent
+                        });
+                    }
+                    console.log('Clone Count => ' + clone);
+                    clone_count=clone_count-clone;
+                    if(clone_count>0)
+                    {
+                    $('#progressbar_clone span').html('Clone '+clone_count+' more games.');
+                    }else if(clone_count==1){
+                    $('#progressbar_clone span').html('Clone '+clone_count+' more game.');
+                    }else{
+                    $('#progressbar_clone span').html('Great! Click Next button for next step.');
+                    }
+
+                    //---------
+
             $.get(chaingame + '/' + game_id, function(data) {
                 if (data == 1) {
-                    Messenger().post("Game Cloned");
-                    clone++;
-                    alert(clone);
-                    btn.button('reset');
+                    //Messenger().post("Game Cloned");
+                    
+                    //btn.button('reset');
                 } else {
                     Messenger().post("Error. Please, try again..");
                     btn.button('reset');
@@ -334,9 +383,30 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
     }
     function subscribe2(channel_name, user_auth, id) {
         if (user_auth == 1) {
-            switch_subscribe(id);
+            var follow_count=5;
+            //-------
             follow++;
-            alert(follow);
+            var percent = follow * 20;
+            if (percent <= 100) {
+                follow_bar.progressbar({
+                value: percent
+                });
+            }
+            console.log('Follow Count => ' + follow);
+            follow_count=follow_count-follow;
+             if(follow_count>0)
+             {
+             $('#progressbar_follow span').html('Follow '+follow_count+' more channels.');
+             }else if(follow_count==1){
+             $('#progressbar_follow span').html('Clone '+follow_count+' more channels.');
+             }else{
+             $('#progressbar_follow span').html('Great! Click Next button for next step.');
+             }
+            //-------
+
+
+            switch_subscribe(id);
+            
         }
     }
 </script>
