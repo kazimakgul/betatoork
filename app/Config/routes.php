@@ -75,7 +75,6 @@ Router::connect('/logout', array('controller' => 'businesses', 'action' => 'logo
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 Router::connect('/games', array('controller' => 'games', 'action' => 'index'));
 Router::connect('/games/*', array('controller' => 'businesses', 'action' => 'dashboard'));
-Router::connect('/users/*', array('controller' => 'businesses', 'action' => 'dashboard'));
 Router::connect('/wallentries/*', array('controller' => 'businesses', 'action' => 'dashboard'));
 
 /**
