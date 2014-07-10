@@ -1,8 +1,8 @@
 $(document).ready(function() {
     /**
-     *	Update Form Post Method
-     * 	@param #attr.val(), link => Update controller
-     *	@return data.error=> error.id or data.success=> success.id
+     *  Update Form Post Method
+     *  @param #attr.val(), link => Update controller
+     *  @return data.error=> error.id or data.success=> success.id
      */
     $('#updateButton').click(function(e) {
         e.preventDefault();
@@ -131,9 +131,9 @@ $(document).ready(function() {
 
 
     /**
-     *	New Form Post Method
-     * 	@param #attr.val(), link => New controller
-     *	@return data.error=> error.id or data.success=> success.id
+     *  New Form Post Method
+     *  @param #attr.val(), link => New controller
+     *  @return data.error=> error.id or data.success=> success.id
      */
     $('#NewButton').click(function(e) {
         e.preventDefault();
@@ -311,27 +311,6 @@ $(document).ready(function() {
         } else {
 
         }
-
-    });
-
-
-
-    /**
-     *  New Game for Wizard Method
-     *  @param No
-     *  @return No
-     *  Note:When user clone a game on wizard,this function will put a new game.
-     */ 
-   $('.get_new_game').click(function() {
-    
-   
-   link=newstartupgame;
-   $.post(link,
-                function(data) {
-                    
-                 $('.game_area').append(data);
-
-                });
 
     });
 
@@ -606,9 +585,9 @@ $(document).ready(function() {
 
 $(function() {
     /**
-     *	Filter dropdown options Method, Ads management page
-     * 	@param 
-     *	@return Filter
+     *  Filter dropdown options Method, Ads management page
+     *  @param 
+     *  @return Filter
      */
     var $filters = $(".filters .filter input:checkbox");
 
@@ -685,9 +664,9 @@ $(function() {
     //Filtered END
 
     /**
-     *	Tabs Method, Profile page
-     * 	@param 
-     *	@return tabs
+     *  Tabs Method, Profile page
+     *  @param 
+     *  @return tabs
      */
     // tabs
     var $tabs = $(".tabs a");
@@ -1082,7 +1061,7 @@ $('#unFollow_button').click(function() {
 });
 //***************************************************
 //------------------Favorite Functions-------------------------
-//***************************************************	
+//***************************************************   
 
 function favorite(game_name, user_auth, id) {
     if (user_auth == 1)
