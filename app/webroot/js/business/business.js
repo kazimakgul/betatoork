@@ -203,7 +203,7 @@ $(document).ready(function() {
                 btn.button('reset');
             }
             else if (data.rtdata.msgid == '1') {
-                window.location.pathname = data.rtdata.msg;
+                window.location.href = window.location.protocol + '//' + window.location. host + '/' + data.rtdata.msg;
             }
             else {
                 $('#errormsg_Passwd').html(data.rtdata.msg);
