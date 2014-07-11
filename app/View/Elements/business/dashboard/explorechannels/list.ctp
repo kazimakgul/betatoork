@@ -7,7 +7,7 @@ foreach ($following as $value) {
     $followers = $value['Userstat']['subscribeto'];
     $following = $value['Userstat']['subscribe'];
     $games = $value['Userstat']['uploadcount'];
-    if (Configure::read('Domain.type') == 'subdomain') {
+    if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
         $userlink = $this->Html->url('http://'.$value['User']['seo_username'].'.'.$_SERVER['HTTP_HOST']); 
     } else {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($userid)));

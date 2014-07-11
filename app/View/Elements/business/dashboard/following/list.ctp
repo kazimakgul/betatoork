@@ -3,7 +3,7 @@ foreach ($following as $value) {
     $userid = $value['User']['id'];
     $publicname = $value['User']['username'];
     $followid = $follower['User']['id'];
-    if (Configure::read('Domain.type') == 'subdomain') {
+    if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
         $userlink = $this->Html->url('http://' . $value['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
     } else {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($userid)));
