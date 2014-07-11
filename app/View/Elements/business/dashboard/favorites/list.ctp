@@ -1,5 +1,15 @@
 <?php
-foreach ($games as $game) {
+if(isset($games)){
+$exploregames = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames'));
+	echo '<div class="row_user" style="background: #FAFAFC;">
+				<div class="no_data">
+				<h3>You do not have any favorite now!</h3>
+				<p>Click <a href="'.$exploregames.'" class="aRq">Explore Games</a> button to add new favorites</p>
+				
+				</div>
+		</div>';
+}else{
+	foreach ($games as $game) {
     $name = $game['Game']['name'];
     $owner = empty($game['Game']['User']['username']) ? FALSE : $game['Game']['User']['username'];
     $clones = empty($game['Game']['Gamestat']['channelclone']) ? 0 : $game['Game']['Gamestat']['channelclone'];
@@ -66,5 +76,6 @@ foreach ($games as $game) {
         </div>
     </div>
     <?php
+    }
 }
 ?>

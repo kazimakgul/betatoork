@@ -1,5 +1,15 @@
 <?php
-foreach ($followers as $value) {
+if(isset($followers)){
+$explorechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explorechannels'));
+	echo '<div class="row_user" style="background: #FAFAFC;">
+				<div class="no_data">
+				<h3>You do not have any followers now!</h3>
+				<p>Click <a href="'.$explorechannels.'" class="aRq">Explore Channels</a> button to add new followers</p>
+				
+				</div>
+		</div>';
+}else{
+	foreach ($followers as $value) {
     $userid = $value['User']['id'];
     $publicname = $value['User']['username'];
     $followid = $follower['User']['id'];
@@ -72,5 +82,6 @@ foreach ($followers as $value) {
         </div>
     </div>
     <?php
+    }
 }
 ?>
