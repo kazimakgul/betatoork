@@ -79,7 +79,7 @@ class AppController extends Controller {
 
     public function beforeFilter() {
         $this->loadModel('User');
-        $this->Auth->allow('index', 'checkUser', 'checkUser2', 'FaceUser', 'gatekeeper', 'usernameAvailable', 'view', 'register', 'logout', 'profile', 'playlist', 'search', 'search2', 'display', 'activate', 'follow_card', 'add_subscription', 'sub_check', 'reset_now', 'add_play', 'bestChannels', 'randomAvatar', 'randomPicture', 'connect', 'sync', 'syncallusers', 'incgameplay', 'incscribe', 'togglefav', 'totalrate', 'getgamecount', 'potential', 'message_ajax', 'message_ajax2', 'moreupdates_ajax', 'explore_more_feed', 'moreupdates_ajax2', 'moreupdates_ajax3', 'moreupdates_ajax_my', 'comment_ajax', 'comment_ajax2', 'image_ajax', 'image_ajax_fly', 'get_userdata', 'delete_message_ajax', 'delete_comment_ajax', 'action_ajax', 'action_ajax_bot', 'get_gamedata', 'moreupdates_filter_ajax', 'gamefeed_ajax', 'view_ajax', 'view_ajax2', 'play', 'sync_recommended', 'profile', 'playgame', 'bestchannels2', 'toprated2', 'gameswitch', 'playgameframe', 'get_3_games', 'categorygames2', 'favorite_check', 'game_comment_ajax', 'game_comments_ajax', 'clonegame', 'gamedelete', 'channelfavorites', 'profilegames', 'channelfollowers', 'moreupdates_profile_ajax', 'moreupdates_profile_ajax_home', 'loadprofilefeeds', 'sendmail', 'activationmailsender', 'new_user', 'get_image_link', 'getscreen', 'cropimage', 'addgame_ajax', 'add_virtual_game', 'pushActivity', 'setPermissions', 'activityMessage', 'notificationMessage', 'getFreshActivity', 'getfreshnotification', 'posts', 'getprofileactivity', 'followstatus', 'getnotificationcount', 'togglelast10', 'featuredchannels', 'getOldNotifications', 'hashtag', 'register2', 'login3', 'explore', 'faceregister', 'metacrawler', 'likeswitch', 'getlikestatus', 'sharepost', 'gamerepair', 'Add_Activity', 'Add_Credit', 'Execute_Activity', 'Add_Debt_Activity', 'set_image', 'set_as', 'apply_file', 'mysite', 'category', 'toprated','featured', 'mostplayed', 'newgames','set_channel_ads','remove_ads_field','updateData','remove_background','add_playcount','get_one_game');
+        $this->Auth->allow('index', 'checkUser', 'checkUser2', 'FaceUser', 'gatekeeper', 'usernameAvailable', 'view', 'register', 'logout', 'profile', 'playlist', 'search', 'search2', 'display', 'activate', 'follow_card', 'add_subscription', 'sub_check', 'reset_now', 'add_play', 'bestChannels', 'randomAvatar', 'randomPicture', 'connect', 'sync', 'syncallusers', 'incgameplay', 'incscribe', 'togglefav', 'totalrate', 'getgamecount', 'potential', 'message_ajax', 'message_ajax2', 'moreupdates_ajax', 'explore_more_feed', 'moreupdates_ajax2', 'moreupdates_ajax3', 'moreupdates_ajax_my', 'comment_ajax', 'comment_ajax2', 'image_ajax', 'image_ajax_fly', 'get_userdata', 'delete_message_ajax', 'delete_comment_ajax', 'action_ajax', 'action_ajax_bot', 'get_gamedata', 'moreupdates_filter_ajax', 'gamefeed_ajax', 'view_ajax', 'view_ajax2', 'play', 'sync_recommended', 'profile', 'playgame', 'bestchannels2', 'toprated2', 'gameswitch', 'playgameframe', 'get_3_games', 'categorygames2', 'favorite_check', 'game_comment_ajax', 'game_comments_ajax', 'clonegame', 'gamedelete', 'channelfavorites', 'profilegames', 'channelfollowers', 'moreupdates_profile_ajax', 'moreupdates_profile_ajax_home', 'loadprofilefeeds', 'sendmail', 'activationmailsender', 'new_user', 'get_image_link', 'getscreen', 'cropimage', 'addgame_ajax', 'add_virtual_game', 'pushActivity', 'setPermissions', 'activityMessage', 'notificationMessage', 'getFreshActivity', 'getfreshnotification', 'posts', 'getprofileactivity', 'followstatus', 'getnotificationcount', 'togglelast10', 'featuredchannels', 'getOldNotifications', 'hashtag', 'register2', 'login3', 'explore', 'faceregister', 'metacrawler', 'likeswitch', 'getlikestatus', 'sharepost', 'gamerepair', 'Add_Activity', 'Add_Credit', 'Execute_Activity', 'Add_Debt_Activity', 'set_image', 'set_as', 'apply_file', 'mysite', 'category', 'toprated', 'featured', 'mostplayed', 'newgames', 'set_channel_ads', 'remove_ads_field', 'updateData', 'remove_background', 'add_playcount', 'get_one_game');
 
         $this->set('user', $this->Auth->user());
 
@@ -104,77 +104,65 @@ class AppController extends Controller {
         }
     }
 
-    public function noprefixdomain()
-    {
-
-       if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
-          
+    public function noprefixdomain() {
+        if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+            echo $_SERVER['HTTP_HOST'];
+            exit;
+            /*
             $subdomain = Configure::read('Domain.subdomain');
-                if( strlen($subdomain)>0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" && $subdomain != "www") {
-                
-                $pure_domain=str_replace($subdomain.'.','',$_SERVER['HTTP_HOST']);
-                $this->set('pure_domain',$pure_domain);
-
+            if (strlen($subdomain) > 0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" && $subdomain != "www") {
+                $pure_domain = str_replace($subdomain . '.', '', $_SERVER['HTTP_HOST']);
+                $this->set('pure_domain', $pure_domain);
             }
-        
-       }
-       
+            */
+        }
     }
+
     //This functin will get special style settings and store them in session
-    public function get_style_settings($id=NULL)
-    {
+    public function get_style_settings($id = NULL) {
 
-        /********** you can change these values for sensitivity **********/ 
+        /*         * ******** you can change these values for sensitivity ********* */
         /*
-        $originalColour = "#323949";  
-        $darkPercent = -10; 
-        $lightPercent = 57; 
-        $lightestPercent = 80; 
-        */
-        /*****************************************/ 
+          $originalColour = "#323949";
+          $darkPercent = -10;
+          $lightPercent = 57;
+          $lightestPercent = 80;
+         */
+        /*         * ************************************** */
 
-        $style = $this->User->find('first',array('contain'=>false,'conditions'=>array('User.id'=>$id),'fields'=>array('User.bg_image,User.bg_color,User.picture'))); 
-        
+        $style = $this->User->find('first', array('contain' => false, 'conditions' => array('User.id' => $id), 'fields' => array('User.bg_image,User.bg_color,User.picture')));
+
         //$bg_color_darker=$this->colourCreator($style['User']['bg_color'], $darkPercent);
         //$bg_color_lighter=$this->colourCreator($style['User']['bg_color'], $lightPercent);
-
         //$this->set('color_darker',$bg_color_darker);
         //$this->set('color_lighter',$bg_color_lighter);
-        $this->set('active_channel_id',$id);
-        $this->set('channel_style',$style);
+        $this->set('active_channel_id', $id);
+        $this->set('channel_style', $style);
     }
 
+    function colourCreator($colour, $per) {
+        $colour = substr($colour, 1); // Removes first character of hex string (#) 
+        $rgb = ''; // Empty variable 
+        $per = $per / 100 * 255; // Creates a percentage to work with. Change the middle figure to control colour temperature
 
-    function colourCreator($colour, $per) 
-{  
-    $colour = substr( $colour, 1 ); // Removes first character of hex string (#) 
-    $rgb = ''; // Empty variable 
-    $per = $per/100*255; // Creates a percentage to work with. Change the middle figure to control colour temperature
-     
-    if  ($per < 0 ) // Check to see if the percentage is a negative number 
-    { 
-        // DARKER 
-        $per =  abs($per); // Turns Neg Number to Pos Number 
-        for ($x=0;$x<3;$x++) 
-        { 
-            $c = hexdec(substr($colour,(2*$x),2)) - $per; 
-            $c = ($c < 0) ? 0 : dechex($c); 
-            $rgb .= (strlen($c) < 2) ? '0'.$c : $c; 
-        }   
-    }  
-    else 
-    { 
-        // LIGHTER         
-        for ($x=0;$x<3;$x++) 
-        {             
-            $c = hexdec(substr($colour,(2*$x),2)) + $per; 
-            $c = ($c > 255) ? 'ff' : dechex($c); 
-            $rgb .= (strlen($c) < 2) ? '0'.$c : $c; 
-        }    
-    } 
-    return '#'.$rgb; 
-} 
-
+        if ($per < 0) { // Check to see if the percentage is a negative number 
+            // DARKER 
+            $per = abs($per); // Turns Neg Number to Pos Number 
+            for ($x = 0; $x < 3; $x++) {
+                $c = hexdec(substr($colour, (2 * $x), 2)) - $per;
+                $c = ($c < 0) ? 0 : dechex($c);
+                $rgb .= (strlen($c) < 2) ? '0' . $c : $c;
+            }
+        } else {
+            // LIGHTER         
+            for ($x = 0; $x < 3; $x++) {
+                $c = hexdec(substr($colour, (2 * $x), 2)) + $per;
+                $c = ($c > 255) ? 'ff' : dechex($c);
+                $rgb .= (strlen($c) < 2) ? '0' . $c : $c;
+            }
+        }
+        return '#' . $rgb;
+    }
 
     public function remove_temporary($id, $type) {
         //===Alakalı tipteki klasörü siler begins.====
