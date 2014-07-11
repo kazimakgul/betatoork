@@ -111,13 +111,11 @@ $('#avatarframe').load(function() {
 
 $('#avatarframe').load(function() {
     $(this).contents().find("#set_photo").on('click', function(event) {
+        
+        //$('#channel_avatar').attr('src', 'http://www.imageyourself.net/images/website/loading.gif');
+        var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
+        $('#user_avatar').attr('src', new_img);
         $('#pictureChange').modal('toggle');
-        $('#channel_avatar').attr('src', 'http://www.imageyourself.net/images/website/loading.gif');
-
-        setTimeout(function() {
-            var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
-            $('#user_avatar').attr('src', new_img);
-        }, 1000);
 
     });
 
@@ -135,12 +133,11 @@ $('#coverframe').load(function() {
 
 $('#coverframe').load(function() {
     $(this).contents().find("#set_photo").on('click', function(event) {
+        
+        //$('#user_cover').css('background-image', 'url(http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif)');
+        var new_img = $('iframe[id=coverframe]').contents().find('#new_image_link').val();
+        $('#user_cover').css('background-image', 'url(' + new_img + ')');
         $('#coverChange').modal('toggle');
-        $('#user_cover').css('background-image', 'url(http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif)');
-        setTimeout(function() {
-            var new_img = $('iframe[id=coverframe]').contents().find('#new_image_link').val();
-            $('#user_cover').css('background-image', 'url(' + new_img + ')');
-        }, 1000);
 
     });
 
