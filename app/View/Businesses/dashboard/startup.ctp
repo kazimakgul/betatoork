@@ -81,8 +81,8 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                 <br><br><br><br>
                             </div>
                             <!--Channel Cover Avatar Ends -->
-                            <div class="form-group">
-                                <label style="text-align:left !important;">Screen Name
+                            <div class="form-group" style="text-align:left !important;">
+                                <label>Screen Name
                                     <span class="help" data-toggle="tooltip" title="Users will see your screen name on your channel.">
                                         <i class="fa fa-question-circle"></i>
                                     </span>
