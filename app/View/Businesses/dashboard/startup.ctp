@@ -71,10 +71,10 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                         echo $this->Upload->image($user, 'User.picture', array(), array('style' => 'margin-top:120px; width:120px; height:120px;', 'id' => 'user_avatar', 'class' => 'pic circular1 img-thumbnail', 'onerror' => 'imgError(this,"avatar");'));
                                     }
                                     ?>
-                                    <a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin: 10px 0px 0px -110px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
+                                    <a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin: 10px 0px 0px -60px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
                                     <div class="name">
                                         <div class="showme">
-                                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:-40px 0px 10px 27px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
+                                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:-20px 0px 10px 5px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
                                         </div>
                                     </div>
                                 </div>
