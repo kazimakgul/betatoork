@@ -31,6 +31,11 @@ class GamesController extends AppController {
 
         return false;
     }
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->noprefixdomain();
+    }
 
     public function afterFilter() {
         //There is no any action!
