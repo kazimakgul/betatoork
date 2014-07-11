@@ -111,7 +111,7 @@ $btn_message='Set As Game Image';
 
 <div id="bottom-menu">
 <a href="#comments" id="set_photo" class="btn btn-primary tip disabled" title=""><i class="glyphicon glyphicon-ok"></i> <?php echo $btn_message;?></a>
-<a href="#comments" id="crop_photo" class="btn btn-primary tip disabled" title="">Crop</a>
+<a style="display:none" href="#comments" id="crop_photo" class="btn btn-primary tip disabled" title="">Crop</a>
 <a id='close_panel' href="#comments" class="btn btn-default tip" title="">Cancel</a>
 </div>
 
@@ -171,7 +171,8 @@ $(function () {
                 //get image sizes begins
                 var img = new Image();
                 img.onload = function() {
-                $('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [this.width ,this.height],aspectRatio: ratio });
+                //$('#theImg').Jcrop({ addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [this.width ,this.height],aspectRatio: ratio });
+                crop_api(ratio,this.width,this.height);
                 }
                 img.src = file.url;
                 //get image sizes ends
@@ -211,6 +212,7 @@ $('#fileupload').click(function () {
 
 	
 	$('#set_photo').click(function () {
+		$('#crop_photo').click();
 		selected_image=$('#selected_image').val().trim();
 		loadfrom=$('#loadfrom').val();
 		imagepatch=$('#imagepatch').val();
@@ -241,6 +243,18 @@ $('#fileupload').click(function () {
 		}
 	});
 	
+    
+    function crop_api(ratio,imgwidth,imgheight)
+	{
+     $('#theImg').Jcrop({addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [imgwidth ,imgheight],aspectRatio: ratio},function(){
+            jcrop_api = this;
+            jcrop_api.animateTo([110,100,400,300]);
+            jcrop_api.setOptions({ allowSelect: 0 });
+		    jcrop_api.focus();
+            });
+	}
+
+
 	$('#crop_photo').click(function () {
 	  if(checkCoords())
 	  {//check selected begins

@@ -446,13 +446,11 @@ $(document).ready(function() {
 
     $('#avatarframe').load(function() {
         $(this).contents().find("#set_photo").on('click', function(event) {
+            
+            //$('#channel_avatar').attr('src', 'http://www.imageyourself.net/images/website/loading.gif');
+            var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
+            $('#channel_avatar').attr('src', new_img);
             $('#pictureChange').modal('toggle');
-            $('#channel_avatar').attr('src', 'http://www.imageyourself.net/images/website/loading.gif');
-
-            setTimeout(function() {
-                var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
-                $('#channel_avatar').attr('src', new_img);
-            }, 1000);
 
         });
 
@@ -470,12 +468,11 @@ $(document).ready(function() {
 
     $('#coverframe').load(function() {
         $(this).contents().find("#set_photo").on('click', function(event) {
+            
+            //$('#user_cover').css('background-image', 'url(http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif)');
+            var new_img = $('iframe[id=coverframe]').contents().find('#new_image_link').val();
+            $('#user_cover').css('background-image', 'url(' + new_img + ')');
             $('#coverChange').modal('toggle');
-            $('#user_cover').css('background-image', 'url(http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif)');
-            setTimeout(function() {
-                var new_img = $('iframe[id=coverframe]').contents().find('#new_image_link').val();
-                $('#user_cover').css('background-image', 'url(' + new_img + ')');
-            }, 1000);
 
         });
 
@@ -491,12 +488,12 @@ $(document).ready(function() {
 
     $('#backgroundframe').load(function() {
         $(this).contents().find("#set_photo").on('click', function(event) {
-            $('#backgroundChange').modal('toggle');
-
+            
             var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
             $('#user_background').attr('src', new_img);
             $('#background_area').css('background-image', 'url(' + new_img + ')');
             $('.remove_bg_img').show();
+            $('#backgroundChange').modal('toggle');
         });
 
     });
@@ -511,14 +508,14 @@ $(document).ready(function() {
 
     $('#gameframe').load(function() {
         $(this).contents().find("#set_photo").on('click', function(event) {
-            $('#gameChange').modal('toggle');
-            $('#game_image').attr('src', 'http://www.imageyourself.net/images/website/loading.gif');
-
+            
+            //$('#game_image').attr('src', 'http://www.imageyourself.net/images/website/loading.gif');
             var new_img = $('iframe[id=gameframe]').contents().find('#new_image_link').val();
             var img_name = $('iframe[id=gameframe]').contents().find('#selected_image').val();
             $('#game_image').attr('src', new_img);
             $('#game_image').attr('data-src', img_name);
             $('#bg_message').html('Image selected.');
+            $('#gameChange').modal('toggle');
 
         });
 

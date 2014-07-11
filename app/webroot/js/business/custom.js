@@ -153,11 +153,12 @@ $('#backgroundframe').load(function() {
 
 $('#backgroundframe').load(function() {
     $(this).contents().find("#set_photo").on('click', function(event) {
-        $('#backgroundChange').modal('toggle');
+        
         //$('#user_background').css('background-image','http://netdna.webdesignerdepot.com/uploads/2013/04/Hursh1.gif');  
-
         var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
         $('#user_background').css('background-image', 'url(' + new_img + ')');
+        $('#backgroundChange').modal('toggle');
+        
     });
 
 });
