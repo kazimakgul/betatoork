@@ -8,8 +8,8 @@ foreach ($games as $game) {
     $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
     // $clonestatus = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($userid, $game['Game']['id']));
     if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-        $userurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
-        $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($game['Game']['seo_url']));
+        $userurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain);
+        $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
     } else {
         $userurl = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
         $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
