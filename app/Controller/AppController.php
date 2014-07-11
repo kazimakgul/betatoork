@@ -76,6 +76,8 @@ class AppController extends Controller {
             ),
         ),
     );
+    
+    public $pure_domain;
 
     public function beforeFilter() {
         $this->loadModel('User');
@@ -128,8 +130,8 @@ class AppController extends Controller {
                     );
                 }
             }
-            $pure_domain = implode('.', $parts);
-            $this->set('pure_domain', $pure_domain);
+            $this->pure_domain = implode('.', $parts);
+            $this->set('pure_domain', $this->pure_domain);
         }
     }
 
