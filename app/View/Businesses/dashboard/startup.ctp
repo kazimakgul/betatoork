@@ -109,7 +109,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                             </div>
                         </div>
                         <div class="step">
-                            <div id="progressbar_clone" style="width: 500px; margin: 0px auto; margin-bottom: 20px;text-align: center;"><span>Start cloning minimum 5 games.</span></div>
+                            <div id="progressbar_clone"><span>Start cloning minimum 5 games.</span></div>
                             
                             <div class="game_area">
                             <?php
@@ -149,7 +149,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                             </div>
                         </div>
                         <div class="step">
-                            <div id="progressbar_follow" style="width: 500px; margin: 0px auto; margin-bottom: 20px;text-align: center;"><span>Start following minimum 5 channels.</span></div>
+                            <div id="progressbar_follow"><span>Start following minimum 5 channels.</span></div>
                             <?php
                             foreach ($following as $value) {
                                 if (Configure::read('Domain.type') == 'subdomain') {
@@ -267,20 +267,30 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 </div>
 <style>
     #progressbar_clone, #progressbar_follow {
-        margin-bottom: 20px;
+        margin: 0 auto 20px auto;
+        width: 500px;
+    }
+    #progressbar_clone > span, #progressbar_follow > span {
+        width: 500px;
+        height: 2em;
+        line-height: 2em;
+        text-align: center;
+        position: absolute;
+        color: #5A6474;
+        font-weight: bold;
     }
     .ui-widget-header {
         background: none !important;
-        background-color: #5A6474 !important;
+        background-color: #94A1B8 !important;
     }
     .ui-progressbar-value {
         -webkit-box-sizing: content-box;
         -moz-box-sizing: content-box;
         box-sizing: content-box;
-        background-color: #5A6474 !important;
+        background-color: #94A1B8 !important;
     }
     .ui-widget-content {
-        border: 1px solid #94A1B8 !important;
+        border: 1px solid #5A6474 !important;
     }
 </style>
 <!-- Background Change Modal ends -->
