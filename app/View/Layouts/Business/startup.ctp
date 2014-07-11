@@ -40,7 +40,7 @@
 	        newstartupgame ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'get_one_game')); ?>';
 
 	        <?php if ($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") { ?>
-	        	mysite			= "<?php echo $this->Html->url('http://'.$seo_username.'.'.$_SERVER['HTTP_HOST']); ?>";
+	        	mysite			= "<?php echo $this->Html->url('http://'.$seo_username.'.'.$pure_domain); ?>";
 	        <?php } else { ?>
                 mysite			=  "<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite',h($userid))); ?>";
 	        <?php } ?>

@@ -467,7 +467,7 @@ class BusinessesController extends AppController {
             )
         ));
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-            $this->redirect('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+            $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
         } else {
             $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
         }
@@ -593,7 +593,7 @@ class BusinessesController extends AppController {
                 ->subject($subject)
                 ->send();
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-            $this->redirect('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+            $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
         } else {
             $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $user_id));
         }

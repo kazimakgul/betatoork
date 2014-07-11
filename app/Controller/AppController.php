@@ -76,6 +76,8 @@ class AppController extends Controller {
             ),
         ),
     );
+    
+    public $pure_domain;
 
     public function beforeFilter() {
         $this->loadModel('User');
@@ -105,16 +107,31 @@ class AppController extends Controller {
     }
 
     public function noprefixdomain() {
+        $subdomain = array(
+            'test'
+        );
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-            echo $_SERVER['HTTP_HOST'];
-            exit;
-            /*
-            $subdomain = Configure::read('Domain.subdomain');
-            if (strlen($subdomain) > 0 && $subdomain != "m" && $subdomain != "test" && $subdomain != "127" && $subdomain != "www") {
-                $pure_domain = str_replace($subdomain . '.', '', $_SERVER['HTTP_HOST']);
-                $this->set('pure_domain', $pure_domain);
+            $parts = explode('.', $_SERVER['HTTP_HOST']);
+            $count = count($parts);
+            if ($parts[0] === 'www') {
+                unset($parts[0]);
             }
-            */
+            if ($count >= 3) {
+                if (in_array($parts[$count - 3], $subdomain)) {
+                    $parts = array(
+                        $parts[$count - 3],
+                        $parts[$count - 2],
+                        end($parts)
+                    );
+                } else {
+                    $parts = array(
+                        $parts[$count - 2],
+                        end($parts)
+                    );
+                }
+            }
+            $this->pure_domain = implode('.', $parts);
+            $this->set('pure_domain', $this->pure_domain);
         }
     }
 
