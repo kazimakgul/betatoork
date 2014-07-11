@@ -17,7 +17,7 @@ if (Configure::read('Domain.type') == 'subdomain' && isset($pure_domain)) {
     $index = $this->Html->url(array("controller" => "businesses", "action" => "mysite", $user['User']['id']));
 }
 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-    $mysite = $this->Html->url('http://' . $this->Session->read('Auth.User.seo_username') . '.' . $_SERVER['HTTP_HOST']);
+    $mysite = $this->Html->url('http://' . $this->Session->read('Auth.User.seo_username') . '.' . $pure_domain);
 } else {
     $mysite = $this->Html->url(array("controller" => "businesses", "action" => "mysite", $this->Session->read('Auth.User.id')));
 }

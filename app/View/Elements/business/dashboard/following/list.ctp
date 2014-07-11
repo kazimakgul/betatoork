@@ -4,7 +4,7 @@ foreach ($following as $value) {
     $publicname = $value['User']['username'];
     $followid = $follower['User']['id'];
     if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-        $userlink = $this->Html->url('http://' . $value['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+        $userlink = $this->Html->url('http://' . $value['User']['seo_username'] . '.' . $pure_domain);
     } else {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($userid)));
     }
