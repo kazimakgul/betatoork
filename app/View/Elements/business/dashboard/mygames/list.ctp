@@ -7,7 +7,7 @@ foreach ($games as $game) {
     $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
     $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
     if (Configure::read('Domain.type') == 'subdomain') {
-        $playurl = $this->Html->url(array("controller" => 'play', "action" => h($game['Game']['seo_url'])));
+        $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($game['Game']['seo_url']));
     } else {
         $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
     }
