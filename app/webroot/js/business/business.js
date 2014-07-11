@@ -203,7 +203,13 @@ $(document).ready(function() {
                 btn.button('reset');
             }
             else if (data.rtdata.msgid == '1') {
-                window.location.href = window.location.protocol + '//' + window.location. host + '/' + data.rtdata.msg;
+                var host = window.location.host;
+                var domain = 'clone.gs';
+                if (host.match('/test/')) {
+                    window.location.href = window.location.protocol + '//test.' + domain + data.rtdata.msg;
+                } else {
+                    window.location.href = window.location.protocol + '//' + domain + data.rtdata.msg;
+                }
             }
             else {
                 $('#errormsg_Passwd').html(data.rtdata.msg);
