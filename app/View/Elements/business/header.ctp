@@ -16,7 +16,11 @@ if (Configure::read('Domain.type') == 'subdomain' && isset($pure_domain)) {
 } else {
     $index = $this->Html->url(array("controller" => "businesses", "action" => "mysite", $user['User']['id']));
 }
-$mysite = $this->Html->url(array("controller" => "businesses", "action" => "mysite", $this->Session->read('Auth.User.id')));
+if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+    $mysite = $this->Html->url('http://' . $this->Session->read('Auth.User.seo_username') . '.' . $_SERVER['HTTP_HOST']);
+} else {
+    $mysite = $this->Html->url(array("controller" => "businesses", "action" => "mysite", $this->Session->read('Auth.User.id')));
+}
 ?>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
@@ -29,10 +33,10 @@ $mysite = $this->Html->url(array("controller" => "businesses", "action" => "mysi
         </button>
         -->
         <a class="navbar-brand" rel="home" href="<?php echo $index ?>"><?php echo $user['User']['username'] ?>
-        <?php if($user['User']['verify']==1){ ?>
+            <?php if ($user['User']['verify'] == 1) { ?>
                 <span class="help" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Verified channel."> <i style='color:#428bca;' class="fa fa-check-circle"></i></span>
-                <?php } ?>
-         </a>       
+            <?php } ?>
+        </a>       
     </div>
     <div class="collapse navbar-collapse">
         <!--
