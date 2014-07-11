@@ -3,13 +3,17 @@ $params = $this->Paginator->params();
 $count = $params['count'];
 ?>
 <div class="container">
-    <?php
+
+        <?php
     $controls = NULL;
+    //  Getting and declaring ads datas
+    $homeBannerTop = $addata[0]['homeBannerTop'];
+    $homeBannerMiddle = $addata[0]['homeBannerMiddle'];
+    $homeBannerBottom = $addata[0]['homeBannerBottom'];
     if ($this->Session->read('Auth.User.id') == $user['User']['id']) {
         $controls = $user['User']['id'];
     }
-    $userid = $user['User']['id'];
-    echo $this->element('business/ads', array('controls' => $controls));
+    echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerTop, 'adtype' => 'homeBannerTop'));
     ?>
     <div class="col-md-12">
         <div class="btn-group" style="margin-bottom:10px;">
@@ -63,7 +67,7 @@ $count = $params['count'];
         </div>
     </div>
     <!--/footer-->
-    <?php echo $this->element('business/ads', array('controls' => $controls)); ?>
+    <?php echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerBottom, 'adtype' => 'homeBannerBottom')); ?>
 </div>
 <!-- /.container -->
 <?php echo $this->element('business/footer'); ?>

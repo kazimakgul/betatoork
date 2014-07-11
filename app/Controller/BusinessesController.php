@@ -1146,6 +1146,8 @@ class BusinessesController extends AppController {
      */
     public function search2($userid, $searchterm = null) {
         $this->layout = 'Business/business';
+		$authid = $this->Auth->user('id');
+        $this->get_ads_info($userid, $authid);
 
         if ($searchterm === null) {
             if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
