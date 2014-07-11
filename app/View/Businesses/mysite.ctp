@@ -1,6 +1,5 @@
 <div class="container">
     <?php
-    echo $_SERVER['HTTP_HOST'];
     $subgameurl = $this->Html->url(array("controller" => "businesses", "action" => "toprated", $user['User']['id']));
     $subfeaturl = $this->Html->url(array("controller" => "businesses", "action" => "featured", $user['User']['id']));
     $channelsettings = $this->Html->url(array("controller" => "businesses", "action" => "settings"));
