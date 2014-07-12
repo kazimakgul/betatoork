@@ -66,6 +66,130 @@ $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action'
 					</div>
 				</div>
 
+
+<div class="container-fluid">
+    <hr class="">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div style="padding:40px; background-size:contain;
+background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/users/6/rsz_1how_to_play_pool1_original.png)" class="panel-heading">
+                    
+                </div>
+					<a href="#">
+			            <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/6_original.jpg" class="img-responsive center-block avatar thumbnail" style="margin-top:-40px;" width="70px" height="70px">
+					 </a>
+                <div class="panel-body">
+					<div style="margin-top:-20px;" class="text-center">
+					<a class="btn btn-default"><i class="ion-person-add"></i> unfollow</a>
+					</div>
+					<h4><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span> <strong>MiniClip Games</strong> <br> <small>@miniclip</small></h4>
+					<span class="label label-warning">215 Followers</span>
+					<span class="label label-danger">59 Games</span>
+				</div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div style="padding:40px; background-color:#F7819F;" class="panel-heading">
+                    
+                </div>
+					<a href="#">
+			            <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/6_original.jpg" class="img-responsive center-block avatar thumbnail" style="margin-top:-40px;" width="70px" height="70px">
+					 </a>
+                <div class="panel-body">
+					<div style="margin-top:-20px;" class="text-center">
+					<a class="btn btn-info"><i class="ion-person-add"></i> Follow</a>
+					</div>
+					<h4><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span> <strong>Socialesman</strong> <br> <small>@socialesman</small></h4>
+					<span class="label label-warning">148 Followers</span>
+					<span class="label label-danger">28 Games</span>
+				</div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div style="padding:40px; background-size:contain;
+background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/users/2/gamebackground7_toork_original.gif)" class="panel-heading">
+                    
+                </div>
+					<a href="#">
+			            <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/6_original.jpg" class="img-responsive center-block avatar thumbnail" style="margin-top:-40px;" width="70px" height="70px">
+					 </a>
+                <div class="panel-body">
+					<div style="margin-top:-20px;" class="text-center">
+					<a class="btn btn-info"><i class="ion-person-add"></i> Follow</a>
+					</div>
+					<h4><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span> <strong>Socialesman</strong> <br> <small>@socialesman</small></h4>
+					<span class="label label-warning">148 Followers</span>
+					<span class="label label-danger">28 Games</span>
+				</div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="">Hello.</h3>
+                </div>
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
+                    varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                    condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
+                    nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
+                    accumsan. Aliquam in felis sit amet augue.</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="">Hello.</h3>
+                </div>
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
+                    varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                    condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
+                    nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
+                    accumsan. Aliquam in felis sit amet augue.</div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="">Hello.</h3>
+                </div>
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
+                    varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                    condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
+                    nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
+                    accumsan. Aliquam in felis sit amet augue.</div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="">Hello.</h3>
+                </div>
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
+                    varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                    condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
+                    nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
+                    accumsan. Aliquam in felis sit amet augue.</div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
 				<div class="chart">
 					<h3>
 						Concurrent visitors last 2 weeks
