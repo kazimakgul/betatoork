@@ -1,35 +1,34 @@
 
-
         <?php
           $login=$this->Html->url(array( "controller" => "users","action" =>"login3"));
           $register=$this->Html->url(array( "controller" => "users","action" =>"register2"));
           $explore=$this->Html->url(array( "controller" => "games","action" =>"explore"));
 
-          $miniclip=$this->Html->url(array( "controller" => 'miniclip',"action" =>''));
-          $newgrounds=$this->Html->url(array( "controller" => 'newgrounds',"action" =>'')); 
-          $armorgames=$this->Html->url(array( "controller" => 'armorgames',"action" =>'')); 
-          $kongregate=$this->Html->url(array( "controller" => 'kongregate',"action" =>''));
-          $zyngagames=$this->Html->url(array( "controller" => 'zyngagames',"action" =>''));
-          $eagames=$this->Html->url(array( "controller" => 'eagames',"action" =>''));
-          $popcap=$this->Html->url(array( "controller" => 'popcap',"action" =>''));
-          $woogagames=$this->Html->url(array( "controller" => 'woogagames',"action" =>''));
-          $kinggames=$this->Html->url(array( "controller" => 'kinggames',"action" =>''));
-          $playdom=$this->Html->url(array( "controller" => 'playdom',"action" =>''));
+          $miniclip="http://miniclip.clone.gs";
+          $newgrounds="http://newgrounds.clone.gs"; 
+          $armorgames="http://armorgames.clone.gs"; 
+          $kongregate="http://kongregate.clone.gs";
+          $zyngagames="http://zyngagames.clone.gs";
+          $eagames="http://eagames.clone.gs";
+          $popcap="http://popcap.clone.gs";
+          $woogagames="http://woogagames.clone.gs";
+          $kinggames="http://kinggames.clone.gs";
+          $playdom="http://playdom.clone.gs";
 
-          $cnetgames=$this->Html->url(array( "controller" => 'cnetgames',"action" =>''));
-          $mashable=$this->Html->url(array( "controller" => 'mashable',"action" =>''));
-          $flipboard=$this->Html->url(array( "controller" => 'flipboard',"action" =>''));
-          $techcrunch=$this->Html->url(array( "controller" => 'techcrunch',"action" =>''));
-          $engadget=$this->Html->url(array( "controller" => 'engadget',"action" =>''));
+          $cnetgames="http://cnetgames.clone.gs";
+          $mashable="http://mashable.clone.gs";
+          $flipboard="http://flipboard.clone.gs";
+          $techcrunch="http://techcrunch.clone.gs";
+          $engadget="http://engadget.clone.gs";
 
-          $playstation=$this->Html->url(array( "controller" => 'playstation',"action" =>''));
-          $konami=$this->Html->url(array( "controller" => 'konami',"action" =>''));
-          $xboxone=$this->Html->url(array( "controller" => 'xboxone',"action" =>''));
-          $nintendo=$this->Html->url(array( "controller" => 'nintendo',"action" =>''));
-          $dccomics=$this->Html->url(array( "controller" => 'dccomics',"action" =>''));
-          $marvel=$this->Html->url(array( "controller" => 'marvel',"action" =>''));
-          $segagames=$this->Html->url(array( "controller" => 'segagames',"action" =>''));
-          $disney=$this->Html->url(array( "controller" => 'disney',"action" =>''));
+          $playstation="http://playstation.clone.gs";
+          $konami="http://konami.clone.gs";
+          $xboxone="http://xboxone.clone.gs";
+          $nintendo="http://nintendo.clone.gs";
+          $dccomics="http://dccomics.clone.gs";
+          $marvel="http://marvel.clone.gs";
+          $segagames="http://segagames.clone.gs";
+          $disney="http://disney.clone.gs";
 
         ?>
 
