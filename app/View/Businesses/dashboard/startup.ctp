@@ -53,15 +53,15 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                             <span class="help" data-toggle="tooltip" title="Map your own domain to your channel.">
                                 <i class="fa fa-question-circle"></i>
                             </span>
-                            <a class="btn btn-default"> http://<?php echo $user['User']['seo_username']; ?>.clone.gs </a>
-                            <a class="btn btn-default"><i class="fa fa-globe"></i> Map Domain </a>
+                            <a href="<?php echo $gochannel; ?>" target="_blank" class="btn btn-default"> http://<?php echo $user['User']['seo_username']; ?>.clone.gs </a>
+                            <a class="btn btn-default" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain </a>
                         </div>
                         <!--Channel Cover Avatar Begins -->
-                        <div id='background_area' style="background-size:contain; background-position:center; background-size: 100%; background-image: url('<?php echo Configure::read('S3.url') . '/upload/users/' . $user['User']['id'] . '/' . $user['User']['bg_image']; ?>'); background-color:<?php echo $user['User']['bg_color']; ?>;" class="well col-md-12">
+                        <div id='background_area' style="background-size:contain; background-position:center; background-image: url('<?php echo Configure::read('S3.url') . '/upload/users/' . $user['User']['id'] . '/' . $user['User']['bg_image']; ?>'); background-color:<?php echo $user['User']['bg_color']; ?>;" class="well col-md-12">
                             <?php if ($user['User']['banner'] == null) { ?>
-                                <div id="user_cover" style="background-size:contain; background-position:center; background-size: 100%; background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);height: 160px;">
+                                <div id="user_cover" style="background-size:contain; background-position:center; background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);height: 160px;">
                                 <?php } else { ?>
-                                    <div id="user_cover" style="background-size:contain; background-position:center; background-size: 100%; background-image:url(<?php echo Configure::read('S3.url') . "/upload/users/" . $user['User']['id'] . "/" . $user['User']['banner']; ?>);height: 160px;">
+                                    <div id="user_cover" style="background-size:contain; background-position:center; background-image:url(<?php echo Configure::read('S3.url') . "/upload/users/" . $user['User']['id'] . "/" . $user['User']['banner']; ?>);height: 160px;">
                                         <?php
                                     }
                                     $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
@@ -71,10 +71,10 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                         echo $this->Upload->image($user, 'User.picture', array(), array('style' => 'margin-top:120px; width:120px; height:120px;', 'id' => 'user_avatar', 'class' => 'pic circular1 img-thumbnail', 'onerror' => 'imgError(this,"avatar");'));
                                     }
                                     ?>
-                                    <a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin: 10px 0px 0px -60px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
+                                    <a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin: 10px 0px 0px -110px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
                                     <div class="name">
                                         <div class="showme">
-                                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:-20px 0px 10px 5px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
+                                            <a data-toggle="modal" data-target="#pictureChange"  href="#" class="btn btn-xs btn-default pull-left" style="margin:-40px 0px 10px 25px; position:absolute;"><span class="fa fa-picture-o"></span> Change</a>
                                         </div>
                                     </div>
                                 </div>

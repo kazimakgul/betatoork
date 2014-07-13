@@ -6,6 +6,13 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
     } else {
       $img = $this->Upload->image($user,'User.picture',array(),array('class'=>'img-responsive img-circle circular1','onerror'=>'imgError(this,"avatar");'));
 	}
+
+if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+    $gochannel = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+} else {
+    $gochannel = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
+}
+	
 ?>
 <body id="account">
 	<div id="wrapper">
@@ -26,8 +33,8 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
                                         <span class="help" data-toggle="tooltip" title="Map your own domain to your channel.">
                                             <i class="fa fa-question-circle"></i>
                                         </span>
-                                        <a class="btn btn-default"> http://<?php echo $user['User']['seo_username'];?>.clone.gs </a>
-                                        <a class="btn btn-default"><i class="fa fa-globe"></i> Map Domain </a>
+                                        <a href="<?php echo $gochannel; ?>" target="_blank" class="btn btn-default"> http://<?php echo $user['User']['seo_username'];?>.clone.gs </a>
+                                        <a class="btn btn-default" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain </a>
 				</p>
 
 				
@@ -35,9 +42,9 @@ $image = $this->requestAction( array('controller' => 'users', 'action' => 'rando
             <div id='background_area' style="background-image: url('<?php echo Configure::read('S3.url').'/upload/users/'.$user['User']['id'].'/'.$user['User']['bg_image']; ?>'); background-color:<?php echo $user['User']['bg_color'];?>;" class="well col-md-12">
                 <?php
                 if($user['User']['banner']==null) { ?>
-                <div id="user_cover" style="background-size:contain; background-position:center; background-size: 100%; background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);height: 160px;">
+                <div id="user_cover" style="background-size:contain; background-position:center; background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);height: 160px;">
                 <?php } else { ?>
-                <div id="user_cover" style="background-size:contain; background-position:center; background-size: 100%; background-image:url(<?php echo Configure::read('S3.url')."/upload/users/".$user['User']['id']."/".$user['User']['banner'];?>);height: 160px;">
+                <div id="user_cover" style="background-size:contain; background-position:center; background-image:url(<?php echo Configure::read('S3.url')."/upload/users/".$user['User']['id']."/".$user['User']['banner'];?>);height: 160px;">
                 <?php }
                 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
                       if($user['User']['picture']==null) { 

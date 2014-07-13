@@ -34,7 +34,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
         -->
         <a class="navbar-brand" rel="home" href="<?php echo $index ?>"><?php echo $user['User']['username'] ?>
             <?php if ($user['User']['verify'] == 1) { ?>
-                <span class="help" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Verified channel."> <i style='color:#428bca;' class="fa fa-check-circle"></i></span>
+                <span class="help" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Verified Channel"> <i style='color:#428bca;' class="fa fa-check-circle"></i></span>
             <?php } ?>
         </a>       
     </div>
