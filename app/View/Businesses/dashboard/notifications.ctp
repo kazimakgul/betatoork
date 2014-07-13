@@ -10,6 +10,8 @@
 
 				<div class="settings">
 					<form action="#">
+						
+                      <!--
 						<div class="digest">
 							<h4>Daily digest</h4>
 							<div class="row">
@@ -27,6 +29,8 @@
 								</div>
 							</div>
 						</div>
+                        -->
+
   <?php if(!isset($user_perms))$user_perms=array(); ?>
 
 						<div class="types">
