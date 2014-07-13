@@ -63,10 +63,10 @@ Router::connect('/register', array('controller' => 'users', 'action' => 'registe
 Router::connect('/login', array('controller' => 'users', 'action' => 'login3'));
 Router::connect('/logout', array('controller' => 'businesses', 'action' => 'logout'));
 
- Router::connect('/mygames/sort/clone/desc', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.channelclone', 'direction' => 'desc'));
- Router::connect('/mygames/sort/clone/desc/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.channelclone', 'direction' => 'desc'));
- Router::connect('/mygames/sort/clone/asc', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.channelclone', 'direction' => 'asc'));
- Router::connect('/mygames/sort/clone/asc/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.channelclone', 'direction' => 'asc'));
+ Router::connect('/mygames2/sort/clone/desc', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.channelclone', 'direction' => 'desc'));
+ Router::connect('/mygames2/sort/clone/desc/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.channelclone', 'direction' => 'desc'));
+ Router::connect('/mygames2/sort/clone/asc', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.channelclone', 'direction' => 'asc'));
+ Router::connect('/mygames2/sort/clone/asc/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.channelclone', 'direction' => 'asc'));
 
 /*
  * Routers for general functions
