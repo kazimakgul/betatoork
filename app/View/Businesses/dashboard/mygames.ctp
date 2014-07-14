@@ -71,6 +71,209 @@ if (isset($query)) {
                     </div>
                 </div>
             </div>
+
+
+<div class="container-fluid">
+    <hr class="">
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/168/toork_Kamikaze_Pigs_toorksize.png)" class="panel-heading">
+                </div></a>
+                <div class="panel-body" style="padding-top:0px;">
+                    <a href="#"><h4 class="text-center"><strong>Kamikaze Pigs</strong> </h4></a>
+                        <small>
+
+                  <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="413 Rates">
+                    <i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i>
+                </div>
+                <div class="text-center"><i class="fa fa-plus-square "> 258 Clones</i> | <i class="fa fa-heart"> 46 Favorites</i> | <i class="fa fa-play"> 2K Plays</i></div>
+
+                        </small>
+                </div>
+                <div class="panel-footer">
+
+                <div class="row">
+                  <div class="col-md-4" style="margin-right:-30px;">
+                    <a href="#">
+                        <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/6_original.jpg" class="img-responsive img-thumbnail img-circle" style="width:50px; height:50px;">
+                     </a>
+
+                </div>
+
+                  <div class="col-md-8">
+
+                    <h5><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span><a href="#"><strong> Socialesman</strong></a> <br> <small>@socialesman</small></h5>
+
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/6792/super_mario_bros_3_by_ggrock70-d36fqni_toorksize.png)" class="panel-heading">
+                </div></a>
+                <div class="panel-body" style="padding-top:0px;">
+                    <a href="#"><h4 class="text-center"><strong>Super Mario Bros 3</strong> </h4></a>
+                        <small>
+
+                  <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="413 Rates">
+                    <i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i>
+                </div>
+                <div class="text-center"><i class="fa fa-plus-square "> 258 Clones</i> | <i class="fa fa-heart"> 46 Favorites</i> | <i class="fa fa-play"> 2K Plays</i></div>
+
+                    <div style="margin-top:10px;" class="text-center">
+                    <a class="btn btn-info"><strong><i class="fa fa-plus-square"></i> Clone </strong></a>
+                    </div>
+
+                        </small>
+                </div>
+                <div class="panel-footer">
+
+                <div class="row">
+                  <div class="col-md-4" style="margin-right:-30px;">
+                    <a href="#">
+                        <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/6_original.jpg" class="img-responsive img-thumbnail img-circle" style="width:50px; height:50px;">
+                     </a>
+
+                </div>
+
+                  <div class="col-md-8">
+
+                    <h5><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span><a href="#"><strong> Socialesman</strong></a> <br> <small>@socialesman</small></h5>
+
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/6954/67444675_toorksize.png)" class="panel-heading">
+                </div></a>
+                <div class="panel-body" style="padding-top:0px;">
+                    <a href="#"><h4 class="text-center"><strong>Robots Social Wars</strong> </h4></a>
+                        <small>
+
+                  <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="413 Rates">
+                    <i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i>
+                </div>
+                <div class="text-center"><i class="fa fa-plus-square "> 258 Clones</i> | <i class="fa fa-heart"> 46 Favorites</i> | <i class="fa fa-play"> 2K Plays</i></div>
+
+                    <div style="margin-top:10px;" class="text-center">
+                    <a class="btn btn-danger"><strong><i class="fa fa-heart"></i> Favorite </strong></a>
+                    </div>
+
+                        </small>
+                </div>
+                <div class="panel-footer">
+
+                <div class="row">
+                  <div class="col-md-4" style="margin-right:-30px;">
+                    <a href="#">
+                        <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/6_original.jpg" class="img-responsive img-thumbnail img-circle" style="width:50px; height:50px;">
+                     </a>
+
+                </div>
+
+                  <div class="col-md-8">
+
+                    <h5><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span><a href="#"><strong> Socialesman</strong></a> <br> <small>@socialesman</small></h5>
+
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/6954/67444675_toorksize.png)" class="panel-heading">
+                </div></a>
+                <div class="panel-body" style="padding-top:0px;">
+                    <a href="#"><h4 class="text-center"><strong>Robots Social Wars</strong> </h4></a>
+                        <small>
+
+                  <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="413 Rates">
+                    <i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i>
+                </div>
+                <div class="text-center"><i class="fa fa-plus-square "> 258 Clones</i> | <i class="fa fa-heart"> 46 Favorites</i> | <i class="fa fa-play"> 2K Plays</i></div>
+
+                    <div style="margin-top:10px;" class="text-center">
+                    <a class="btn btn-success"><strong><i class="fa fa-android"></i> Android </strong></a>
+                    </div>
+
+                        </small>
+                </div>
+                <div class="panel-footer">
+
+                <div class="row">
+                  <div class="col-md-4" style="margin-right:-30px;">
+                    <a href="#">
+                        <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/6_original.jpg" class="img-responsive img-thumbnail img-circle" style="width:50px; height:50px;">
+                     </a>
+
+                </div>
+
+                  <div class="col-md-8">
+
+                    <h5><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span><a href="#"><strong> Socialesman</strong></a> <br> <small>@socialesman</small></h5>
+
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/6954/67444675_toorksize.png)" class="panel-heading">
+                </div></a>
+                <div class="panel-body" style="padding-top:0px;">
+                    <a href="#"><h4 class="text-center"><strong>Robots Social Wars</strong> </h4></a>
+                        <small>
+
+                  <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="413 Rates">
+                    <i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i>
+                </div>
+                <div class="text-center"><i class="fa fa-plus-square "> 258 Clones</i> | <i class="fa fa-heart"> 46 Favorites</i> | <i class="fa fa-play"> 2K Plays</i></div>
+
+                    <div style="margin-top:10px;" class="text-center">
+                    <a class="btn btn-default"><strong><i class="fa fa-apple"></i> iPhone </strong></a>
+                    </div>
+
+                        </small>
+                </div>
+                <div class="panel-footer">
+
+                <div class="row">
+                  <div class="col-md-4" style="margin-right:-30px;">
+                    <a href="#">
+                        <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/6_original.jpg" class="img-responsive img-thumbnail img-circle" style="width:50px; height:50px;">
+                     </a>
+
+                </div>
+
+                  <div class="col-md-8">
+
+                    <h5><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span><a href="#"><strong> Socialesman</strong></a> <br> <small>@socialesman</small></h5>
+
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
             <div class="row users-list">
                 <div class="col-md-12">
                     <div class="row headers">
