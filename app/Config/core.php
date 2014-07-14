@@ -229,7 +229,7 @@
  * Store analitics id on constant 
  * This analitics if track whole system and can be seen by clone admins.
  */
-Configure::write('Clone.analitics_id','UA-48930510-1');
+Configure::write('Clone.analitics_id','UA-45726606-1');
 
 
 /**
