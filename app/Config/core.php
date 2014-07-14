@@ -226,6 +226,13 @@
 	Configure::write('Acl.database', 'default');
 
 /**
+ * Store analitics id on constant 
+ * This analitics if track whole system and can be seen by clone admins.
+ */
+Configure::write('Clone.analitics_id','UA-48930510-1');
+
+
+/**
  * Uncomment this line and correct your server timezone to fix 
  * any date & time related errors.
  */
