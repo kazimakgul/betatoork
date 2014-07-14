@@ -124,19 +124,27 @@ $(document).ready(function() {
                     }, 'json');
         }
         else if (attr == "password_change" && $('#password_change').valid()) {
+            if($('#new_pass').val() == $('#conf_pass').val())
+            {
             $.post(link, {
                 attr: attr,
                 old_pass: $('#old_pass').val(),
-                new_pass: $('#new_pass').val()
+                new_pass: $('#new_pass').val(),
+                conf_pass:$('#conf_pass').val()
             },
                     function(data) {
                         if (data.error) {
-                            alert(data.error); // error.id ye göre mesaj yazdırcak..
+                            Messenger().post(data.error);
+                            btn.button('reset');
                         } else {
                             Messenger().post(data.success);
                             btn.button('reset');
                         }
                     }, 'json');
+            }else{
+					 Messenger().post("Confirm password wrong");
+                    btn.button('reset');
+				}
         }
         else {
             btn.button('reset');

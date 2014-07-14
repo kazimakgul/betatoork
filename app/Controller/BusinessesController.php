@@ -149,10 +149,23 @@ class BusinessesController extends AppController {
                 $this->set('success', "Social settings Updated.");
                 $this->set('_serialize', array('success'));
             } elseif ($attr == "password_change") {
-//Password Change
-//                $this->User->query('UPDATE users SET fb_link="' . $fb_link . '", twitter_link="' . $twitter_link . '", gplus_link="' . $gplus_link . '", website="' . $website . '" WHERE id=' . $user_id);
-                $this->set('success', "Social settings Updated.");
-                $this->set('_serialize', array('success'));
+				$old_password_data = $this->User->query('SELECT password FROM users WHERE ID="'.$user_id.'" LIMIT 1');
+                $old_password =  $old_password_data[0]['users']['password'];
+                if (Security::hash(Configure::read('Security.salt') . $this->request->data['old_pass']) == $old_password) {
+                    $filtered_data["User"]["password"] = $this->request->data["new_pass"];
+                    $filtered_data["User"]["confirm_password"] = $this->request->data["new_pass"];
+					$this->User->id = $user_id;
+	                if($this->User->save($filtered_data)){
+					$this->set('success', "Password changed");
+	                $this->set('_serialize', array('success'));
+					}else{
+					$this->set('error', "Old password wrong");
+	                $this->set('_serialize', array('error'));
+					}
+				}else{
+				$this->set('error', "Old password wrong");
+                $this->set('_serialize', array('error'));
+				}
             } else {
                 
             }
