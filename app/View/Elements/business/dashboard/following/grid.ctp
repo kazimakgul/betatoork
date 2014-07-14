@@ -35,8 +35,14 @@ foreach ($following as $value) {
             <div class="panel-body">
                 <div style="margin-top:-10px;" class="text-center">
                     <!-- Follow button -->
-                    <a id="grid-unfollow-<?php echo $userid; ?>" class="btn btn-primary" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>);"><i class="fa fa-foursquare"></i> Unfollow</a>
-                    <a id="grid-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>);"><i class="fa fa-plus-circle"></i> Follow</a>
+                    <a id="grid-unfollow-<?php echo $userid; ?>" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>);">
+                        <i class="fa fa-minus-circle"></i>
+                        Unfollow
+                    </a>
+                    <a id="grid-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>);">
+                        <i class="fa fa-plus-circle"></i>
+                        Follow
+                    </a>
                     <!-- Follow button end -->
                 </div>
                 <h4>

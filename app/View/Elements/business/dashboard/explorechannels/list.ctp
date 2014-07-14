@@ -17,19 +17,24 @@ foreach ($following as $value) {
         <div class="col-sm-2 followcolumn">
             <!-- Follow button -->
             <?php if ($followstatus != 1) { ?>
-                <a id="list-follow-<?php echo $userid; ?>" class="btn btn-primary" onclick="subscribe('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                        switchfollow(<?php echo $userid; ?>);
-                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a> 
-                <a id="list-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribeout('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                        switchunfollow(<?php echo $userid; ?>);
-                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"> <i class="fa fa-foursquare"></i> Unfollow</a>
-               <?php } else { ?> 
-                <a id="list-unfollow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribeout('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                        switchunfollow(<?php echo $userid; ?>);
-                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-foursquare"></i>  Unfollow</a>
-                <a id="list-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-primary" onclick="subscribe('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                        switchfollow(<?php echo $userid; ?>);
-                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a> <?php } ?> 
+                <a id="list-follow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>);">
+                    <i class="fa fa-plus-circle"></i>
+                    Follow
+                </a> 
+                <a id="list-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>);">
+                    <i class="fa fa-minus-circle"></i>
+                    Unfollow
+                </a>
+            <?php } else { ?> 
+                <a id="list-unfollow-<?php echo $userid; ?>" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>);">
+                    <i class="fa fa-minus-circle"></i> 
+                    Unfollow
+                </a>
+                <a id="list-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>);">
+                    <i class="fa fa-plus-circle"></i>
+                    Follow
+                </a>
+            <?php } ?> 
             <!-- Follow button end -->
         </div>
         <div class="col-sm-1 avatar">
