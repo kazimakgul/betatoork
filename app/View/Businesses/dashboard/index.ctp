@@ -3,7 +3,6 @@ $ads_management = $this->Html->url(array('controller' => 'businesses', 'action' 
 $mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
 $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explorechannels'));
 ?>
-
 <body id="dashboard">
 <div id="wrapper">
     <?php echo $this->element('business/dashboard/sidebar', array('active' => 'dashboard')); ?>
@@ -22,23 +21,23 @@ $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action'
             </div>
             <!--
             <div class="period-select hidden-xs">
-                    <form class="input-daterange ">
-                            <div class="input-group input-group-sm">
-                                    <span class="input-group-addon">
-                                            <i class="fa fa-calendar-o"></i>
-                                    </span>
-                                    <input name="start" type="text" class="form-control datepicker" placeholder="02/27/2014" />
-                            </div>
-                            
-                            <p class="pull-left">to</p>
+                <form class="input-daterange ">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar-o"></i>
+                        </span>
+                        <input name="start" type="text" class="form-control datepicker" placeholder="02/27/2014" />
+                    </div>
 
-                            <div class="input-group input-group-sm">
-                                    <span class="input-group-addon">
-                                            <i class="fa fa-calendar-o"></i>
-                                    </span>
-                                    <input name="end" type="text" class="form-control datepicker" placeholder="02/27/2014" />
-                            </div>
-                    </form> 
+                    <p class="pull-left">to</p>
+
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar-o"></i>
+                        </span>
+                        <input name="end" type="text" class="form-control datepicker" placeholder="02/27/2014" />
+                    </div>
+                </form> 
             </div>
             -->
         </div>

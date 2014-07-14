@@ -5,6 +5,9 @@ foreach ($following as $value) {
     } else {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
     }
+    $userid = $value['User']['id'];
+    $publicname = $value['User']['username'];
+    $followid = $follower['User']['id'];
     $name = $value['User']['username'];
     $screenname = $value['User']['screenname'];
     $followers = $value['User']['Userstat']['subscribeto'];
@@ -32,7 +35,10 @@ foreach ($following as $value) {
             </a>
             <div class="panel-body">
                 <div style="margin-top:-10px;" class="text-center">
-                    <a class="btn btn-info"><i class="ion-person-add"></i> Follow</a>
+                    <!-- Follow button -->
+                    <a id="grid-unfollow-<?php echo $userid; ?>" class="btn btn-primary" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>);"><i class="fa fa-foursquare"></i> Unfollow</a>
+                    <a id="grid-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>);"><i class="fa fa-plus-circle"></i> Follow</a>
+                    <!-- Follow button end -->
                 </div>
                 <h4>
                     <?php if ($value['User']['verify'] == 1) { ?>

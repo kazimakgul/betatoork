@@ -1088,14 +1088,18 @@ function switch_subscribe(channel_id)
 function switchfollow(id)
 {
     var x = id;
-    $("#follow" + x).hide();
-    $("#unfollow" + x).show();
+    $("#grid-follow-" + x).hide();
+    $("#list-follow-" + x).hide();
+    $("#grid-unfollow-" + x).show();
+    $("#list-unfollow-" + x).show();
 }
 function switchunfollow(id)
 {
     var x = id;
-    $("#unfollow" + x).hide();
-    $("#follow" + x).show();
+    $("#grid-unfollow-" + x).hide();
+    $("#list-unfollow-" + x).hide();
+    $("#grid-follow-" + x).show();
+    $("#list-follow-" + x).show();
 }
 
 $('#follow_button').click(function() {
