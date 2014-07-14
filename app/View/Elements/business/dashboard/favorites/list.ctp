@@ -1,5 +1,5 @@
 <?php
-if(!isset($games)){
+if(count($games)<=0){
 $exploregames = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames'));
 	echo '<div class="row_user" style="background: #FAFAFC;">
 				<div class="no_data">
