@@ -5,6 +5,7 @@ $notifications	= $this->Html->url(array('controller'=>'businesses','action'=>'no
 $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));
 $billing	= $this->Html->url(array('controller'=>'businesses','action'=>'billing'));
 $social	= $this->Html->url(array('controller'=>'businesses','action'=>'social_management'));
+$password_change	= $this->Html->url(array('controller'=>'businesses','action'=>'password_change'));
 ?>
 
 <div id="sidebar">
@@ -51,7 +52,14 @@ $social	= $this->Html->url(array('controller'=>'businesses','action'=>'social_ma
 				<i class="fa fa-share-alt"></i>
 				Social Management
 			</a>
-		</li>		<!-- -- <li>
+		</li>
+		<li>
+			<a href="<?php echo $password_change;?>" <?php if($active=='password_change')echo 'class="active"'; ?>>
+				<i class="fa fa-lock"></i>
+				Password Change
+			</a>
+		</li>
+		<!-- -- <li>
 			<a href="<?php echo $settings;?>">
 				<i class="ion-ios7-help-outline"></i>
 				Support

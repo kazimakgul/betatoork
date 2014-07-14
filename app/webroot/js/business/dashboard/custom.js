@@ -112,7 +112,22 @@ $(document).ready(function() {
                 fb_link: $('#fb_link').val(),
                 twitter_link: $('#twitter_link').val(),
                 gplus_link: $('#gplus_link').val(),
-                website: $('#website').val(),
+                website: $('#website').val()
+            },
+                    function(data) {
+                        if (data.error) {
+                            alert(data.error); // error.id ye göre mesaj yazdırcak..
+                        } else {
+                            Messenger().post(data.success);
+                            btn.button('reset');
+                        }
+                    }, 'json');
+        }
+        else if (attr == "password_change" && $('#password_change').valid()) {
+            $.post(link, {
+                attr: attr,
+                old_pass: $('#old_pass').val(),
+                new_pass: $('#new_pass').val()
             },
                     function(data) {
                         if (data.error) {
@@ -838,6 +853,27 @@ $(function() {
         }
     });
 
+    // form validation startup
+    $('#password_change').validate({
+        rules: {
+            "old_pass": {
+                required: true
+            },
+            "new_pass": {
+                required: true
+            },
+            "conf_pass": {
+                required: true
+            }
+        },
+        highlight: function(element) {
+            $(element).closest('.form-group').removeClass('success').addClass('error');
+        },
+        success: function(element) {
+            element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
+        }
+    });
+
 
 
     // Datepicker
@@ -1132,8 +1168,6 @@ function switch_favorite(game_id)
 
 function chaingame2(game_name, user_auth, game_id)
 {
-    alert(chaingame);
-    return false;
     var btn = $('#clone-' + game_id);
     btn.button('loading');
     if (user_auth == 1)

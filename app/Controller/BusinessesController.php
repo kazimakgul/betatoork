@@ -148,6 +148,11 @@ class BusinessesController extends AppController {
                 $this->User->query('UPDATE users SET fb_link="' . $fb_link . '", twitter_link="' . $twitter_link . '", gplus_link="' . $gplus_link . '", website="' . $website . '" WHERE id=' . $user_id);
                 $this->set('success', "Social settings Updated.");
                 $this->set('_serialize', array('success'));
+            } elseif ($attr == "password_change") {
+//Password Change
+//                $this->User->query('UPDATE users SET fb_link="' . $fb_link . '", twitter_link="' . $twitter_link . '", gplus_link="' . $gplus_link . '", website="' . $website . '" WHERE id=' . $user_id);
+                $this->set('success', "Social settings Updated.");
+                $this->set('_serialize', array('success'));
             } else {
                 
             }
@@ -859,6 +864,22 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/social_management');
     }
 
+    /**
+     *
+     * @param 
+     * @return password_change Page
+     * @author Volkan Celiloğlu
+     */
+    public function password_change() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Social Management');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/password_change');
+    }
+	
+	
     /**
      * Dummy pricing function
      * Cloned from toolsNdocs method
