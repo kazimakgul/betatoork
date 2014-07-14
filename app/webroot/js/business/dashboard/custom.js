@@ -415,7 +415,6 @@ $(document).ready(function() {
 
 
     });
-
     $('.remove_bg_img').click(function() {
 
         //------
@@ -1177,7 +1176,6 @@ function switch_favorite(game_id)
             });
 }
 
-
 function chaingame2(game_name, user_auth, game_id)
 {
     var btn = $('#clone-' + game_id);
@@ -1202,5 +1200,25 @@ function chaingame2(game_name, user_auth, game_id)
     {
         $('#myModal').modal('hide');
         $('#login').modal('show');
+    }
+}
+
+
+function delete_game(user_auth, game_id)
+{
+    if (user_auth == 1)
+    {
+		$('#gamebox-'+game_id).css("display", "none");
+        $.get(delete_one_game + '/' + game_id,
+                function(data)
+                {
+                    if (data == 1)
+                    {
+                        Messenger().post("Game has been deleted.");
+                    } else
+                    {
+                        Messenger().post("Error. Please, try again..");
+                    }
+                });
     }
 }

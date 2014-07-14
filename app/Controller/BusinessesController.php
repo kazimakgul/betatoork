@@ -10,7 +10,7 @@ App::uses('AppController', 'Controller');
 class BusinessesController extends AppController {
 
     public $name = 'Businesses';
-    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Adsetting', 'Adcode');
+    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Adsetting', 'Adcode','deleteonegame');
     public $helpers = array('Html', 'Form', 'Upload', 'Recaptcha.Recaptcha', 'Time');
     public $components = array('Amazonsdk.Amazon', 'Recaptcha.Recaptcha', 'Common');
 
@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData','deleteonegame'))) {
             return true;
         }
 
@@ -444,7 +444,22 @@ class BusinessesController extends AppController {
         }
         return $list50;
     }
-
+   /**
+     * This function increases 
+     * Delete One game
+     * @param  game_id
+     * @return null
+     */
+    public function deleteonegame($game_id) {
+  		if ($this->Auth->user('id')) {
+  			$this->Game->id = $game_id;
+	    	if ($this->Game->delete()) {
+					$this->set('success', "Game has been deleted.");
+	                $this->set('_serialize', array('success'));
+	    		}
+		}
+	}
+ 
     /**
      * This function increases 
      * playcount of game
@@ -1520,7 +1535,7 @@ class BusinessesController extends AppController {
           );
           $this->set('count', $count);
          */
-        $limit = 16;
+        $limit = 15;
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
