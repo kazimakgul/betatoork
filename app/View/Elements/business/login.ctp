@@ -101,7 +101,7 @@
       <div class="social-box">
         <div class="row mg-btm">
         <div class="col-md-12">
-          <a href="#" id="facebookreg" class="btn btn-primary btn-block">
+          <a href="#" id="facebookreg" class="btn btn-primary btn-block facebookreg">
             <i class="fa fa-facebook-square"></i> Login with Facebook
           </a>
         </div>
@@ -147,7 +147,7 @@
       <div class="social-box">
         <div class="row mg-btm">
         <div class="col-md-12">
-          <a href="#" id="facebookreg" class="btn btn-primary btn-block">
+          <a href="#" id="facebookreg" class="btn btn-primary btn-block facebookreg">
             <i class="fa fa-facebook-square"></i> Register with Facebook
           </a>
         </div>

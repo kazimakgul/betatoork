@@ -161,7 +161,7 @@ $(document).ready(function() {
 
 
     //*********Social Function********
-    $('#facebookreg').click(function() {
+    $('.facebookreg').click(function() {
         facebooklogin();
     });
     $('#t_landing_registerbtn').click(function(e) {
