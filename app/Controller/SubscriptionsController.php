@@ -132,11 +132,11 @@ if ($this->request->is('get')) {
 		
 			$this->Subscription->create();
 			
-			$this->request->data["Subscription"]["subscriber_id"]=$subscriber_id;
-				$this->request->data["Subscription"]["subscriber_to_id"]=$subscriber_to_id;
+			$filtered_data['Subscription']['subscriber_id'] = $subscriber_id;
+            $filtered_data['Subscription']['subscriber_to_id'] = $subscriber_to_id;
 				
 				
-			if ($this->Subscription->save($this->request->data)) {
+			if ($this->Subscription->save($filtered_data)) {
 				$this->set('SubMessage','Subscription saved.');
 				$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$subscriber_to_id,$subscriber_id,5,1));	
 			} else {
