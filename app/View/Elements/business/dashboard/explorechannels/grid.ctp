@@ -62,13 +62,13 @@ foreach ($following as $value) {
                             <i style="color:#428bca;" class="fa fa-check-circle"></i>
                         </span>
                     <?php } ?>
-                    <strong><?php echo $name; ?></strong>
-                    <br>
                     <?php if (!empty($screenname)) { ?>
-                        <small>@<?php echo $screenname; ?></small>
+                        <strong><?php echo $screenname; ?></strong>
                     <?php } else { ?>
-                        <small>No Screen Name</small>
+                        <strong><?php echo $name; ?></strong>
                     <?php } ?>
+                    <br>
+                    <small>@<?php echo $name; ?></small>
                 </h4>
                 <span class="label label-success"><?php echo $followers; ?> Followers</span>
                 <span class="label label-warning"><?php echo $following; ?> Following</span>

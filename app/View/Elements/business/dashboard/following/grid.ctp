@@ -35,11 +35,13 @@ foreach ($following as $value) {
             <div class="panel-body">
                 <div style="margin-top:-10px;" class="text-center">
                     <!-- Follow button -->
-                    <a id="grid-unfollow-<?php echo $userid; ?>" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>);">
+                    <a id="grid-unfollow-<?php echo $userid; ?>" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
+                                switchunfollow(<?php echo $userid; ?>);">
                         <i class="fa fa-minus-circle"></i>
                         Unfollow
                     </a>
-                    <a id="grid-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>);">
+                    <a id="grid-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
+                                switchfollow(<?php echo $userid; ?>);">
                         <i class="fa fa-plus-circle"></i>
                         Follow
                     </a>
@@ -51,13 +53,13 @@ foreach ($following as $value) {
                             <i style="color:#428bca;" class="fa fa-check-circle"></i>
                         </span>
                     <?php } ?>
-                    <strong><?php echo $name; ?></strong>
-                    <br>
                     <?php if (!empty($screenname)) { ?>
-                        <small>@<?php echo $screenname; ?></small>
+                        <strong><?php echo $screenname; ?></strong>
                     <?php } else { ?>
-                        <small>No Screen Name</small>
+                        <strong><?php echo $name; ?></strong>
                     <?php } ?>
+                    <br>
+                    <small>@<?php echo $name; ?></small>
                 </h4>
                 <span class="label label-success"><?php echo $followers; ?> Followers</span>
                 <span class="label label-warning"><?php echo $following; ?> Following</span>
