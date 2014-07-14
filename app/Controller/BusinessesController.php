@@ -1931,7 +1931,8 @@ class BusinessesController extends AppController {
                             'User.screenname',
                             'User.picture',
                             'User.banner'
-                        ), 'Userstat'
+                        ),
+                        'Userstat'
                     )
                 ),
                 'limit' => $limit
@@ -1976,9 +1977,15 @@ class BusinessesController extends AppController {
                 'contain' => array(
                     'User' => array(
                         'fields' => array(
+                            'User.id',
+                            'User.seo_username',
+                            'User.verify',
                             'User.username',
-                            'User.seo_username'
-                        )
+                            'User.screenname',
+                            'User.picture',
+                            'User.banner'
+                        ),
+                        'Userstat'
                     )
                 ),
                 'limit' => $limit
@@ -2017,8 +2024,11 @@ class BusinessesController extends AppController {
                         'fields' => array(
                             'User.seo_username',
                             'User.verify',
-                            'User.username'
-                        ), 'Userstat'
+                            'User.username',
+                            'User.picture',
+                            'User.banner'
+                        ),
+                        'Userstat'
                     )
                 ),
                 'limit' => $limit
@@ -2062,8 +2072,12 @@ class BusinessesController extends AppController {
                     'User' => array(
                         'fields' => array(
                             'User.seo_username',
-                            'User.username'
-                        )
+                            'User.verify',
+                            'User.username',
+                            'User.picture',
+                            'User.banner'
+                        ),
+                        'Userstat'
                     )
                 ),
                 'limit' => $limit
@@ -2089,7 +2103,8 @@ class BusinessesController extends AppController {
                     'User.username',
                     'User.seo_username',
                     'User.verify',
-                    'User.picture'
+                    'User.picture',
+                    'User.banner'
                 ),
                 'contain' => array(
                     'Userstat' => array(
@@ -2133,7 +2148,9 @@ class BusinessesController extends AppController {
                     'User.id',
                     'User.username',
                     'User.seo_username',
-                    'User.picture'
+                    'User.verify',
+                    'User.picture',
+                    'User.banner'
                 ),
                 'contain' => array(
                     'Userstat' => array(
