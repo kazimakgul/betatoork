@@ -1890,9 +1890,13 @@ class BusinessesController extends AppController {
                 'contain' => array(
                     'User' => array(
                         'fields' => array(
+                            'User.id',
                             'User.seo_username',
                             'User.verify',
-                            'User.username'
+                            'User.username',
+                            'User.screenname',
+                            'User.picture',
+                            'User.banner'
                         ), 'Userstat'
                     )
                 ),
