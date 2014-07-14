@@ -1,5 +1,5 @@
 <?php
-if(isset($followers)){
+if(count($followers)>=0){
 $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explorechannels'));
 	echo '<div class="row_user" style="background: #FAFAFC;">
 				<div class="no_data">
