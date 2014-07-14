@@ -94,20 +94,14 @@ if (isset($query)) {
                 </div>
                 <div class="panel-footer">
 
-                <div class="row">
-                  <div class="col-md-4" style="margin-right:-30px;">
-                    <a href="#">
-                        <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/6_original.jpg" class="img-responsive img-thumbnail img-circle" style="width:50px; height:50px;">
-                     </a>
 
-                </div>
+<span>
+  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-bullseye"></i> Set Featured</button>
+  <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</button>
+  <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Delete</button>
+</span>
 
-                  <div class="col-md-8">
 
-                    <h5><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span><a href="#"><strong> Socialesman</strong></a> <br> <small>@socialesman</small></h5>
-
-                  </div>
-                </div>
                 </div>
             </div>
         </div>
