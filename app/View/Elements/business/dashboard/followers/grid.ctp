@@ -5,34 +5,64 @@ foreach ($followers as $value) {
     } else {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
     }
+    $userid = $value['User']['id'];
+    $publicname = $value['User']['username'];
     $name = $value['User']['username'];
+    $screenname = $value['User']['screenname'];
     $followers = $value['User']['Userstat']['subscribeto'];
     $following = $value['User']['Userstat']['subscribe'];
     $games = $value['User']['Userstat']['uploadcount'];
+    if (is_null($value['User']['picture'])) {
+        $avatar = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
+        $avatar = $this->Html->image('/img/avatars/' . $avatar . '.jpg', array('alt' => $name, 'class' => 'img-responsive center-block avatar img-thumbnail img-circle', 'style' => 'margin-top:-40px; width:80px; height:80px;'));
+    } else {
+        $avatar = $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $name, 'class' => 'img-responsive center-block avatar img-thumbnail img-circle', 'style' => 'margin-top:-40px; width:80px; height:80px;'));
+    }
+    if (is_null($value['User']['banner'])) {
+        $cover = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));
+        $cover = 'http://s3.amazonaws.com/betatoorkpics/banners/' . $cover . '.jpg';
+    } else {
+        $cover = Configure::read('S3.url') . "/upload/users/" . $value['User']['id'] . "/" . $value['User']['banner'];
+    }
+    $followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($userid));
     ?>
-    <div class="user col-xs-6 col-sm-4 col-md-3 col-lg-2">
-        <a href="<?php echo $userlink; ?>">
-            <?php
-            if (is_null($value['User']['picture'])) {
-                $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
-                echo $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $name));
-            } else {
-                echo $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $name));
-            }
-            ?>
-        </a>
-        <div class="name">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; background-image:url(<?php echo $cover; ?>)" class="panel-heading">
+            </div>
             <a href="<?php echo $userlink; ?>">
-                <?php echo $name; ?>
+                <?php echo $avatar; ?>
             </a>
-        </div>
-        <div class="email">
-            <?php
-            echo
-            $followers . ' Followers | ' .
-            $following . ' Following | ' .
-            $games . ' Gamses'
-            ?>
+            <div class="panel-body">
+                <div style="margin-top:-10px;" class="text-center">
+                    <!-- Follow button -->
+                    <?php if ($followstatus != 1) { ?>
+                    <a id="grid-follow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>);"><i class="fa fa-plus-circle"></i> Follow</a>
+                    <a id="grid-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-primary" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>);"><i class="fa fa-foursquare"></i> Unfollow</a>
+                    <?php } else { ?>
+                    <a id="grid-unfollow-<?php echo $userid; ?>" class="btn btn-primary" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchunfollow(<?php echo $userid; ?>);"><i class="fa fa-foursquare"></i> Unfollow</a>
+                    <a id="grid-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>); switchfollow(<?php echo $userid; ?>);"><i class="fa fa-plus-circle"></i> Follow</a>
+                    <?php } ?>
+                    <!-- Follow button end -->
+                </div>
+                <h4>
+                    <?php if ($value['User']['verify'] == 1) { ?>
+                        <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account">
+                            <i style="color:#428bca;" class="fa fa-check-circle"></i>
+                        </span>
+                    <?php } ?>
+                    <strong><?php echo $name; ?></strong>
+                    <br>
+                    <?php if (!empty($screenname)) { ?>
+                        <small>@<?php echo $screenname; ?></small>
+                    <?php } else { ?>
+                        <small>No Screen Name</small>
+                    <?php } ?>
+                </h4>
+                <span class="label label-success"><?php echo $followers; ?> Followers</span>
+                <span class="label label-warning"><?php echo $following; ?> Following</span>
+                <span class="label label-danger"><?php echo $games; ?> Games</span>
+            </div>
         </div>
     </div>
     <?php

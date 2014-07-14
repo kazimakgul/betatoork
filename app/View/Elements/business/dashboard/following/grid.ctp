@@ -7,7 +7,6 @@ foreach ($following as $value) {
     }
     $userid = $value['User']['id'];
     $publicname = $value['User']['username'];
-    $followid = $follower['User']['id'];
     $name = $value['User']['username'];
     $screenname = $value['User']['screenname'];
     $followers = $value['User']['Userstat']['subscribeto'];
