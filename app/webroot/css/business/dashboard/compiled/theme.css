@@ -3805,7 +3805,8 @@ body {
         color: #111; }
 #users #content .content-wrapper .users-list {
   margin-top: 35px;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+display:none;}
   #users #content .content-wrapper .users-list .headers {
     padding-bottom: 10px;
     min-height: 35px; }
@@ -3923,7 +3924,7 @@ body {
 #users #content .content-wrapper .users-grid {
   margin-top: 35px;
   margin-bottom: 40px;
-  display: none; }
+  /*display: none;*/ }
   #users #content .content-wrapper .users-grid .user {
     margin-bottom: 35px; }
     @media (max-width: 991px) {
