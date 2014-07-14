@@ -48,9 +48,9 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                 <?php }
                 $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
                       if($user['User']['picture']==null) { 
-                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('style'=>'margin-top:60px;width:120px; height:120px;','id'=>'user_avatar','class'=>'pic circular1 img-thumbnail',"alt" => "clone user image")); 
+                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('style'=>'margin-top:60px;width:120px; height:120px;','id'=>'channel_avatar','class'=>'pic circular1 img-thumbnail',"alt" => "clone user image")); 
                         } else {
-                          echo $this->Upload->image($user,'User.picture',array(),array('style'=>'margin-top:60px; width:120px; height:120px;','id'=>'user_avatar','class'=>'pic circular1 img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
+                          echo $this->Upload->image($user,'User.picture',array(),array('style'=>'margin-top:60px; width:120px; height:120px;','id'=>'channel_avatar','class'=>'pic circular1 img-thumbnail','onerror'=>'imgError(this,"avatar");'));  }
                     ?>
 					
 					<a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin: 10px 0px 0px -110px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
