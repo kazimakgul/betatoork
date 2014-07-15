@@ -70,7 +70,7 @@ if (isset($query)) {
                 </div>
             </div>
 
-<hr><br>
+<br>
 <div class="container-fluid">
     <div class="row">
 		<?php

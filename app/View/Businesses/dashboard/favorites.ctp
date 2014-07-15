@@ -58,7 +58,7 @@ $allgames = $params['count'];
                         </div>
                     </div>
                 </div>
-<hr><br>
+<br>
 <div class="container-fluid">
     <div class="row">
 		<?php
