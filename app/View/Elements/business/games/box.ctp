@@ -4,7 +4,7 @@ $mygames = $this->Html->url(array("controller" => 'businesses', "action" => 'myg
 foreach ($gamedata as $game):
     $playcount = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
     $favcount = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
-    $totalclone = empty($game['Gamestat']['totalclone']) ? 0 : $game['Gamestat']['totalclone'];
+    $totalclone = empty($game['Gamestat']['channelclone']) ? 0 : $game['Gamestat']['channelclone'];
     if (Configure::read('Domain.type') == 'subdomain') {
         $playurl = $this->Html->url(array("controller" => 'play', "action" => h($game['Game']['seo_url'])));
     } else {
