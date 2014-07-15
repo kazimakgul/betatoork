@@ -1563,7 +1563,7 @@ class BusinessesController extends AppController {
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
         }elseif($filter === 'featured'){
             $activefilter = 2;
-            $this->paginate['Game']['conditions']['Game.priority'] = 1;
+            $this->paginate['Game']['conditions']['Game.featured'] = 1;
 		}else{
 			$activefilter = 0;
 		}
