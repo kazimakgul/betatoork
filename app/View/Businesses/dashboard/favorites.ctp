@@ -104,7 +104,7 @@ $allgames = $params['count'];
 		<!-- Favorite Button -->
 		<div class="favourite">
 			<div class="widget-button" data-toggle="tooltip" data-original-title="Add to favorites">
-				<button type="button" class="btn btn-danger" id="fav_button" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);"><li class="fa fa-heart <?if(isset($ownuser[0]['favorites']['id'])){echo 'red';}?>"></li> Favorite <span class="label label-info" id="fav_count"><?=$game['Gamestat']['favcount'];?></span></button>
+				<button type="button" class="btn btn-danger" id="fav-<?php echo $game['Game']['id'];?>" onclick="favorite('<?php echo $game['Game']['name'];?>',user_auth,<?php echo $game['Game']['id'];?>);"><li class="fa fa-heart <?if(isset($ownuser[0]['favorites']['id'])){echo 'red';}?>"></li> Favorite <span class="label label-info" id="fav_count"><?=$game['Gamestat']['favcount'];?></span></button>
 			</div>
 		</div><!-- Favorite Button  End-->
 						</div>
