@@ -11,7 +11,9 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 					<i class="ion-navicon"></i>
 				</div>
 				<div class="page-title">
-					Edit game form 
+				<a href="#" onclick="history.go(-1);return false;">
+					← Go back
+				</a>
 					
 					<small class="hidden-xs">
 						<strong>Edit - <?php echo $game['Game']['name']; ?></strong>

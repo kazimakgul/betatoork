@@ -7,7 +7,9 @@
 					<i class="ion-navicon"></i>
 				</div>
 				<div class="page-title">
-					New game form 
+				<a href="#" onclick="history.go(-1);return false;">
+					← Go back
+				</a>
 					
 					<small class="hidden-xs">
 						<strong>Add game to your channel</strong>
