@@ -182,7 +182,7 @@ if (isset($query)) {
                     <?php echo $this->element('business/components/pagination') ?>
                 </div>
             </div>-->
-             <div class="col-md-4">
+            <!-- <div class="col-md-4">
             <div class="panel panel-default">
                 <a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/6792/super_mario_bros_3_by_ggrock70-d36fqni_toorksize.png)" class="panel-heading">
                 </div></a>
@@ -337,7 +337,7 @@ if (isset($query)) {
                 </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         </div>
     </div>
