@@ -263,7 +263,7 @@ $('#fileupload').click(function () {
 	{
      $('#theImg').Jcrop({addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [imgwidth ,imgheight],aspectRatio: ratio},function(){
             jcrop_api = this;
-            jcrop_api.animateTo([110,100,400,300]);
+            jcrop_api.animateTo([0,1000,400,300]);
             jcrop_api.setOptions({ allowSelect: 0 });
 		    jcrop_api.focus();
             });
