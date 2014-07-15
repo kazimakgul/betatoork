@@ -1535,7 +1535,7 @@ class BusinessesController extends AppController {
           );
           $this->set('count', $count);
          */
-        $limit = 15;
+        $limit = 12;
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
@@ -1614,7 +1614,7 @@ class BusinessesController extends AppController {
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "mygames"));
         }
-        $limit = 16;
+        $limit = 12;
         $this->paginate = array(
             'Game' => array(
                 'conditions' => array(
@@ -1666,7 +1666,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $limit = 16;
+        $limit = 12;
         $this->paginate = array(
             'Favorite' => array(
                 'conditions' => array(
@@ -1726,7 +1726,7 @@ class BusinessesController extends AppController {
             $this->redirect(array("controller" => "businesses", "action" => "favorites"));
         }
         $userid = $this->Session->read('Auth.User.id');
-        $limit = 16;
+        $limit = 12;
         $this->paginate = array(
             'Favorite' => array(
                 'conditions' => array(
@@ -1795,7 +1795,7 @@ class BusinessesController extends AppController {
                     )
                 )
         );
-        $limit = 16;
+        $limit = 12;
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
@@ -1868,7 +1868,7 @@ class BusinessesController extends AppController {
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "exploregames"));
         }
-        $limit = 16;
+        $limit = 12;
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
@@ -1922,7 +1922,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $limit = 18;
+        $limit = 12;
         $this->Subscription->bindModel(
                 array(
                     'belongsTo' => array(
@@ -1972,7 +1972,7 @@ class BusinessesController extends AppController {
             $this->redirect(array("controller" => "businesses", "action" => "following"));
         }
         $userid = $this->Session->read('Auth.User.id');
-        $limit = 18;
+        $limit = 12;
         //$this->Subscription->recursive=2;
         //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
         $this->Subscription->bindModel(
@@ -2020,7 +2020,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $limit = 18;
+        $limit = 12;
         $this->Subscription->bindModel(
                 array(
                     'belongsTo' => array(
@@ -2068,7 +2068,7 @@ class BusinessesController extends AppController {
             $this->redirect(array("controller" => "businesses", "action" => "followers"));
         }
         $userid = $this->Session->read('Auth.User.id');
-        $limit = 18;
+        $limit = 12;
         $this->Subscription->bindModel(
                 array(
                     'belongsTo' => array(
@@ -2112,7 +2112,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $limit = 18;
+        $limit = 12;
         $this->paginate = array(
             'User' => array(
                 'fields' => array(
@@ -2158,7 +2158,7 @@ class BusinessesController extends AppController {
             $this->redirect(array("controller" => "businesses", "action" => "followers"));
         }
         $userid = $this->Session->read('Auth.User.id');
-        $limit = 18;
+        $limit = 12;
         $this->paginate = array(
             'User' => array(
                 'fields' => array(
