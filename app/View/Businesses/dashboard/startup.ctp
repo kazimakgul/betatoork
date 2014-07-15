@@ -110,33 +110,33 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                         </div>
                         <div class="step">
                             <div id="progressbar_clone"><span>Start cloning minimum 5 games.</span></div>
-                            
+
                             <div class="game_area">
-                            <?php
-                            foreach ($games as $game) {
-                                $name = $game['Game']['name'];
-                                $clones = empty($game['Gamestat']['channelclone']) ? 0 : $game['Gamestat']['channelclone'];
-                                $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
-                                $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
-                                $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
-                                if (Configure::read('Domain.type') == 'subdomain') {
-                                    $playurl = $this->Html->url(array("controller" => 'play', "action" => h($game['Game']['seo_url'])));
-                                } else {
-                                    $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
+                                <?php
+                                foreach ($games as $game) {
+                                    $name = $game['Game']['name'];
+                                    $clones = empty($game['Gamestat']['channelclone']) ? 0 : $game['Gamestat']['channelclone'];
+                                    $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
+                                    $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
+                                    $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
+                                    if (Configure::read('Domain.type') == 'subdomain') {
+                                        $playurl = $this->Html->url(array("controller" => 'play', "action" => h($game['Game']['seo_url'])));
+                                    } else {
+                                        $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
+                                    }
+                                    ?>
+                                    <div class="game col-sm-4 panel">
+                                        <a data-dismiss="alert" id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success startUpClone get_new_game"><i class="fa fa-cog "></i> Clone</a>
+                                        <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '200px', 'height' => '110px')); ?>
+                                        <div class="name">
+                                            <a href="<?php echo $playurl ?>" style="color:#000000">
+                                                <?php echo $name ?>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <?php
                                 }
                                 ?>
-                                <div class="game col-sm-4 panel">
-                                    <a data-dismiss="alert" id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success startUpClone get_new_game"><i class="fa fa-cog "></i> Clone</a>
-                                    <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '200px', 'height' => '110px')); ?>
-                                    <div class="name">
-                                        <a href="<?php echo $playurl ?>" style="color:#000000">
-                                            <?php echo $name ?>
-                                        </a>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                            ?>
                             </div>
 
                             <div class="form-group form-actions" style="float: left;width: 100%;">
@@ -164,39 +164,60 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                 $followers = $value['Userstat']['subscribe'];
                                 $following = $value['Userstat']['subscribeto'];
                                 $games = $value['Userstat']['uploadcount'];
+                                if (is_null($value['User']['picture'])) {
+                                    $avatar = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
+                                    $avatar = $this->Html->image('/img/avatars/' . $avatar . '.jpg', array('alt' => $name, 'class' => 'img-responsive center-block avatar img-thumbnail img-circle', 'style' => 'margin-top:-40px; width:80px; height:80px;'));
+                                } else {
+                                    $avatar = $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $name, 'class' => 'img-responsive center-block avatar img-thumbnail img-circle', 'style' => 'margin-top:-40px; width:80px; height:80px;'));
+                                }
+                                if (is_null($value['User']['banner'])) {
+                                    $cover = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));
+                                    $cover = 'http://s3.amazonaws.com/betatoorkpics/banners/' . $cover . '.jpg';
+                                } else {
+                                    $cover = Configure::read('S3.url') . "/upload/users/" . $value['User']['id'] . "/" . $value['User']['banner'];
+                                }
                                 ?>
-                                <div class="user col-sm-2 panel">
-                                    <a href="<?php echo $userlink ?>">
-                                        <?php
-                                        if (is_null($value['User']['picture'])) {
-                                            $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
-                                            echo $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $name, 'width' => '90px', 'height' => '120px'));
-                                        } else {
-                                            echo $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $name, 'width' => '90px', 'height' => '120px'));
-                                        }
-                                        ?>
-                                    </a>
-                                    <div class="name">
-                                        <a href="<?php echo $userlink ?>" class="text-render">
-                                            <?php echo $name ?>
+                                <div class="col-md-4">
+                                    <div class="panel panel-default">
+                                        <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; background-image:url(<?php echo $cover; ?>)" class="panel-heading">
+                                        </div>
+                                        <a href="<?php echo $userlink; ?>">
+                                            <?php echo $avatar; ?>
                                         </a>
+                                        <div class="panel-body">
+                                            <div style="margin-top:-10px;" class="text-center">
+                                                <!-- Follow button -->
+                                                <a id="grid-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
+                                                            switchunfollow(<?php echo $userid; ?>);">
+                                                    <i class="fa fa-minus-circle"></i>
+                                                    Unfollow
+                                                </a>
+                                                <a id="grid-follow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribe2('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
+                                                            switchfollow(<?php echo $userid; ?>);">
+                                                    <i class="fa fa-plus-circle"></i>
+                                                    Follow
+                                                </a>
+                                                <!-- Follow button end -->
+                                            </div>
+                                            <h4>
+                                                <?php if ($value['User']['verify'] == 1) { ?>
+                                                    <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account">
+                                                        <i style="color:#428bca;" class="fa fa-check-circle"></i>
+                                                    </span>
+                                                <?php } ?>
+                                                <?php if (!empty($screenname)) { ?>
+                                                    <strong><?php echo $screenname; ?></strong>
+                                                <?php } else { ?>
+                                                    <strong><?php echo $name; ?></strong>
+                                                <?php } ?>
+                                                <br>
+                                                <small>@<?php echo $name; ?></small>
+                                            </h4>
+                                            <span class="label label-success"><?php echo $followers; ?> Followers</span>
+                                            <span class="label label-warning"><?php echo $following; ?> Following</span>
+                                            <span class="label label-danger"><?php echo $games; ?> Games</span>
+                                        </div>
                                     </div>
-                                    <!-- Follow button -->
-                                    <?php if ($followstatus != 1) { ?>
-                                        <a id="follow<?php echo $userid; ?>" class="btn btn-primary" style="width:90px;" onclick="subscribe2('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                                                        switchfollow(<?php echo $userid; ?>);
-                                                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a> 
-                                        <a id="unfollow<?php echo $userid; ?>" style="display:none;width:90px;" class="btn btn-success" onclick="subscribeout('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                                                        switchunfollow(<?php echo $userid; ?>);
-                                                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"> <i class="fa fa-foursquare"></i> Unfollow</a>
-                                       <?php } else { ?> 
-                                        <a id="unfollow<?php echo $userid; ?>" class="btn btn-success" style="width:90px;" onclick="subscribeout('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                                                        switchunfollow(<?php echo $userid; ?>);
-                                                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-foursquare"></i>  Unfollow</a>
-                                        <a id="follow<?php echo $userid; ?>" style="display:none;width:90px;" class="btn btn-primary"  onclick="subscribe2('<?php echo $publicname ?>', user_auth,<?php echo $userid; ?>);
-                                                        switchfollow(<?php echo $userid; ?>);
-                                                        _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $publicname ?>']);"><i class="fa fa-plus-circle"></i> Follow</a> <?php } ?> 
-                                    <!-- Follow button end -->
                                 </div>
                                 <?php
                             }
@@ -352,34 +373,34 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
     function chaingame3(game_name, user_auth, game_id) {
         var btn = $('#clone-' + game_id);
         btn.button('loading');
-        var clone_count=5;
+        var clone_count = 5;
         if (user_auth == 1) {
-            
-                    //---------
-                    clone++;
-                    var percent = clone * 20;
-                    if (percent <= 100) {
-                        clone_bar.progressbar({
-                            value: percent
-                        });
-                    }
-                    console.log('Clone Count => ' + clone);
-                    clone_count=clone_count-clone;
-                    if(clone_count>0)
-                    {
-                    $('#progressbar_clone span').html('Clone '+clone_count+' more games.');
-                    }else if(clone_count==1){
-                    $('#progressbar_clone span').html('Clone '+clone_count+' more game.');
-                    }else{
-                    $('#progressbar_clone span').html('Great! Click Next button for next step.');
-                    }
 
-                    //---------
+            //---------
+            clone++;
+            var percent = clone * 20;
+            if (percent <= 100) {
+                clone_bar.progressbar({
+                    value: percent
+                });
+            }
+            console.log('Clone Count => ' + clone);
+            clone_count = clone_count - clone;
+            if (clone_count > 0)
+            {
+                $('#progressbar_clone span').html('Clone ' + clone_count + ' more games.');
+            } else if (clone_count == 1) {
+                $('#progressbar_clone span').html('Clone ' + clone_count + ' more game.');
+            } else {
+                $('#progressbar_clone span').html('Great! Click Next button for next step.');
+            }
+
+            //---------
 
             $.get(chaingame + '/' + game_id, function(data) {
                 if (data == 1) {
                     //Messenger().post("Game Cloned");
-                    
+
                     //btn.button('reset');
                 } else {
                     Messenger().post("Error. Please, try again..");
@@ -393,30 +414,30 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
     }
     function subscribe2(channel_name, user_auth, id) {
         if (user_auth == 1) {
-            var follow_count=5;
+            var follow_count = 5;
             //-------
             follow++;
             var percent = follow * 20;
             if (percent <= 100) {
                 follow_bar.progressbar({
-                value: percent
+                    value: percent
                 });
             }
             console.log('Follow Count => ' + follow);
-            follow_count=follow_count-follow;
-             if(follow_count>0)
-             {
-             $('#progressbar_follow span').html('Follow '+follow_count+' more channels.');
-             }else if(follow_count==1){
-             $('#progressbar_follow span').html('Clone '+follow_count+' more channels.');
-             }else{
-             $('#progressbar_follow span').html('Great! Click Next button for next step.');
-             }
+            follow_count = follow_count - follow;
+            if (follow_count > 0)
+            {
+                $('#progressbar_follow span').html('Follow ' + follow_count + ' more channels.');
+            } else if (follow_count == 1) {
+                $('#progressbar_follow span').html('Clone ' + follow_count + ' more channels.');
+            } else {
+                $('#progressbar_follow span').html('Great! Click Next button for next step.');
+            }
             //-------
 
 
             switch_subscribe(id);
-            
+
         }
     }
 </script>

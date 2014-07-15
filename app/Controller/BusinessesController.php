@@ -787,7 +787,7 @@ class BusinessesController extends AppController {
 
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
-        $limit = 18;
+        $limit = 6;
         $this->set('following', $this->User->find('all', array('conditions' => array('User.active' => '1', 'User.verify !=' => 0), 'limit' => $limit, 'order' => array('User.last_login' => 'desc'))));
 
         $this->set('userid', $auth_id);
