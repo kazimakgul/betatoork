@@ -418,6 +418,9 @@ class BusinessesController extends AppController {
 
                 $this->Game->id = $id;
                 if ($this->Game->delete()) {
+                    //Remove gamestat datas
+                    $this->Game->Query('DELETE FROM gamestats WHERE game_id=' . $id);
+                    //----/----------------
                     $msg = array("success" => 'Game has been deleted.', 'result' => 1);
                 } else {
                     $msg = array("error" => 'There is an internal error.Please try again later.', 'result' => 0);
@@ -454,11 +457,17 @@ class BusinessesController extends AppController {
   		if ($this->Auth->user('id')) {
   			$this->Game->id = $game_id;
 	    	if ($this->Game->delete()) {
+
+                    //Remove gamestat datas
+                    $this->Game->Query('DELETE FROM gamestats WHERE game_id=' . $game_id);
+                    //----/----------------
+
 					$this->set('success', "Game has been deleted.");
 	                $this->set('_serialize', array('success'));
 	    		}
 		}
-	}
+    }    
+	
  
     /**
      * This function increases 
