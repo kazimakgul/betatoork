@@ -7,12 +7,12 @@ $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action'
 <div id="wrapper">
     <?php echo $this->element('business/dashboard/sidebar', array('active' => 'dashboard')); ?>
     <div id="content">
-        <div class="menubar">
+        <div class="menubar fixed">
             <div class="sidebar-toggler visible-xs">
                 <i class="ion-navicon"></i>
             </div>
             <div class="page-title">
-                Dashboard
+                <a style="margin-left:30px;">Dashboard</a>
             </div>
             <div class="pull-right hidden-xs">
                 <a href="<?php echo $mygames; ?>" class="btn btn-warning"><i class="fa fa-gamepad"></i> Game Management</a>

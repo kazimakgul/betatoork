@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData','social_management'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData','social_management','faq'))) {
 
             return true;
         }
@@ -850,6 +850,24 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/toolsNdocs');
     }
+
+    /**
+     * Dummy faq function
+     * Cloned from toolsNdocs method
+     *
+     * @param 
+     * @return faq Page
+     * @author Kazim Akgul
+     */
+    public function faq() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business FAQ');
+        $this->set('description_for_layout', 'Frequently Asked Questions. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/faq');
+    }
+
 
     /**
      * Dummy billing function

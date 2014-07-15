@@ -6,10 +6,10 @@
 				<a href="#" onclick="history.go(-1);return false;">
 					← Return to dashboard
 				</a>
-				<a href="#" class="pull-right">
+				<!-- -- <a href="#" class="pull-right">
 					<i class="fa fa-rss"></i>
 					Subscribe to notifications
-				</a>
+				</a> -- -->
 			</header>
 			<div class="row header">
 				<h3>Clone System Status</h3>
@@ -18,28 +18,25 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="current-status">
-						<span class="updated">
+						<!-- <span class="updated">
 							Updated 2 minutes ago
-						</span>
+						</span> -->
 						<div class="status">
 							<div class="color green"></div>
 							All sistems operational
 						</div>
 						<div class="help">
-							Need help? <a href="contactus.html">Contact us</a>.
+							Need help? <a href="#">Contact us</a>.
 						</div>						
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12 info">
-					<strong>What is this site?</strong>
+					<strong>What is this for?</strong>
 
 					<p>
-						In here you can show the status of your website or application to your users. You can 
-						explain if there are any interruptions or problems in any given time and all the updates.
-						You can also explain how they can get in touch if they are having some problems that
-						are not related to any problems shown here.
+						if all the system operating normally you will see a green light otherwise its going to be orange or red which will show that your application may have some operational issues. Thanks for you patience.
 					</p>
 				</div>
 				<div class="col-md-12">
@@ -52,7 +49,7 @@
 					    </li>
 					    <li class="list-group-item">
 					    	Notifications
-					    	<div class="status down">Down</div>
+					    	<div class="status down">Works with issues</div>
 					    </li>
 					    <li class="list-group-item">
 					    	Application Monitoring
@@ -81,27 +78,27 @@
 							</p>
 						</div>
 						<div class="date">
-							<div class="day">Yesterday, October 25 2013</div>
+							<div class="day">Yesterday, <?php echo date("F j, Y", strtotime("yesterday")); ?></div>
 							<p class="ok">
 								All systems operational
 							</p>
 						</div>
 						<div class="date">
-							<div class="day">October 04 2013</div>
+							<div class="day">A week ago, <?php echo date("F j, Y", strtotime("-6 days")); ?></div>
 							<p class="ok">
 								All systems operational
 							</p>
 						</div>
 						<div class="date">
-							<div class="day">October 03 2013</div>
+							<div class="day">Last month, <?php echo date("F j, Y", strtotime("-45 days")); ?></div>
 							<p class="ok">
 								All systems operational
 							</p>
 						</div>
 						<div class="date">
-							<div class="day">October 02 2013</div>
+							<div class="day">Agust 14-15 2012</div>
 							<p class="issues">
-								Application deployment issues
+								BirthDay : Application deployment issues
 							</p>
 							<p class="update">
 								<strong>Resolved:</strong>

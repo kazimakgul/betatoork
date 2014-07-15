@@ -17,6 +17,7 @@ $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action'
 $ch_settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $notifications = $this->Html->url(array('controller' => 'businesses', 'action' => 'notifications'));
 $ads_management = $this->Html->url(array('controller' => 'businesses', 'action' => 'ads_management'));
+$faq = $this->Html->url(array('controller' => 'businesses', 'action' => 'faq'));
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
 
 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
@@ -25,7 +26,6 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
     $gochannel = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
 }
 
-//http://stackoverflow.com/questions/8685562/proper-way-to-link-to-a-subdomain-of-the-current-url-in-drupal
 
 if ($user['User']['picture'] == null) {
     $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'avatar circular', "alt" => "clone user image"));
@@ -70,7 +70,7 @@ if ($user['User']['picture'] == null) {
     </div>
     <div class="bottom-menu hidden-sm">
         <ul>
-            <li><a href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="Help"><i class="ion-help"></i></a></li>
+            <li><a href="<?php echo $faq ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="Help"><i class="ion-help"></i></a></li>
             <li>
                 <a href="<?php echo $activities; ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="Recent Activity Feed">
                     <i class="ion-archive"></i>
@@ -118,17 +118,15 @@ if ($user['User']['picture'] == null) {
             </li>
             <li>
                 <a href="#" data-toggle="sidebar">
-                    <i class="ion-person-add"></i> <span>Follows</span>
+                    <i class="ion-person-add"></i> <span>Channels</span>
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 <ul class="submenu" <?php if (isset($bar) && $bar == 'Follow') echo 'style="display:block"'; ?>>
                     <li><a href="<?php echo $following ?>" <?php if (isset($active) && $active == 'following') echo 'class="active"'; ?>>Following</a></li>
                     <li><a href="<?php echo $followers ?>" <?php if (isset($active) && $active == 'followers') echo 'class="active"'; ?>>Followers</a></li>
+                    <li><a href="<?php echo $explorechannels ?>" <?php if (isset($active) && $active == 'explorechannels') echo 'class="active"'; ?>>Explore Channels</a></li>
                 </ul>
             </li>
-        </ul>
-        <ul>
-            <li><a href="<?php echo $explorechannels ?>" <?php if (isset($active) && $active == 'explorechannels') echo 'class="active"'; ?>><i class="fa fa-users"></i> Explore Channels</a></li>
         </ul>
     </div>
     <div class="menu-section">
