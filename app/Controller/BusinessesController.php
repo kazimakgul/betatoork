@@ -1480,7 +1480,7 @@ class BusinessesController extends AppController {
 
         if (!is_numeric($userid)) {
             $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*')));
+            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*')));
             $userid = $user['User']['id'];
         } else {
             $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
