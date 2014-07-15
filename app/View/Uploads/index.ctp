@@ -177,7 +177,7 @@ $(function () {
 				}
 				if(upload_type=='cover_image')
 				{
-				var ratio=1000/169;
+				var ratio=1000/171;
 				}
 				if(upload_type=='game_image')
 				{
@@ -286,7 +286,7 @@ $('#fileupload').click(function () {
 				if(upload_type=='cover_image')
 				{
 				var targ_w=1000;
-				var targ_h=169;
+				var targ_h=171;
 				}
 				if(upload_type=='game_image')
 				{
