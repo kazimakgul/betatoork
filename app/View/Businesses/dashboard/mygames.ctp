@@ -83,6 +83,7 @@ if (isset($query)) {
 		    $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
 		    $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
 		    $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
+			
 		    if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
 		        $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
 		    } else {
@@ -97,11 +98,15 @@ if (isset($query)) {
 		                <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'box_img_resize', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");','width'=>'720','height'=>'110')); ?>
 		            	</a>
 		                <div class="panel-body" style="padding-top:0px;">
-		                    <a href="<?php echo $playurl ?>"><h4 class="text-center"><strong><?php echo $name ?></strong> </h4></a>
+		                    <a href="<?php echo $playurl ?>"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong><?php echo $name ?></strong> </h4></a>
 							<small>
-							<div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo $rates ?> Rates">
-								<i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i>
-							</div>
+<!-- Rating Button -->
+<div class="rating">
+    <div class="widget-button" data-toggle="tooltip" data-original-title="<?= $game['Game']['rate_count']; ?> Rates">
+        <div id="stars-existing" class="starrr" value="<?= $game['Game']['id']; ?>" data-rating="<?= round($game['Game']['starsize'] / 20); ?>"></div>
+    </div>
+</div>
+<!-- Rating Button End -->
 			                <div class="text-center">
 			                	<i class="fa fa-plus-square "> <?php echo $clones ?> Clones</i> | 
 			                	<i class="fa fa-heart"> <?php echo $favorites ?> Favorites</i> | 
@@ -111,7 +116,7 @@ if (isset($query)) {
 		                <div class="panel-footer">
 						<span>
 								<?php if ($game['Game']['priority'] > 0) { ?>
-		                		<button type="button" class="btn btn-warning btn-sm featured_toggle" style='color: rgb(247, 211, 88); margin-left:10px;color:#E6E6E6; ' id='<?php echo $game['Game']['id']; ?>'><i class="fa fa-bullseye"></i> Unset Featured</button>
+		                		<button type="button" class="btn btn-warning btn-sm featured_toggle" id='<?php echo $game['Game']['id']; ?>'><i class="fa fa-bullseye"></i> Unset Featured</button>
 								<?php } else { ?>
 		                		<button type="button" class="btn btn-default btn-sm featured_toggle" id='<?php echo $game['Game']['id']; ?>'><i class="fa fa-bullseye"></i>Set Featured</button>
 								<?php } ?>

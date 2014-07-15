@@ -21,6 +21,7 @@
 		'business/dashboard/vendor/summernote',
 		'business/dashboard/vendor/jquery.dataTables',
 		'business/dashboard/vendor/messenger/messenger',
+		'business/dashboard/star-rating',
 		'business/dashboard/vendor/messenger/messenger-theme-flat')); ?>
 	<!-- javascript -->
  		<script>
@@ -41,6 +42,7 @@
 	        delete_one_game	='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deleteonegame')); ?>';
 	        mysite			='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite')); ?>';
 	        feat_toggle_link ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'featured_toggle')); ?>';
+	        rateurl = '<?php echo $this->Html->url(array('controller' => 'rates', 'action' => 'add')); ?>';
 			<?php if($this->Session->check('Auth.User')){
 			echo 'user_auth=1;';
 			echo 'userid='.$this->Session->read('Auth.User.id');
@@ -87,6 +89,7 @@
 		'business/dashboard/vendor/jquery.flot/jquery.flot.tooltip',
 		'business/dashboard/vendor/messenger/messenger.min',
 		'business/dashboard/vendor/messenger/messenger-theme-flat',
+		'business/dashboard/star-rating',
 		'business/dashboard/custom.js'));
 		?>
 

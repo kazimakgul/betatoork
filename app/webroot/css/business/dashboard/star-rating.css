@@ -1,0 +1,8 @@
+.rating{
+    width: 125px;
+	margin: 2px auto;
+    text-align:center;
+}
+.rating .widget-button{
+    font-size:25px;
+}

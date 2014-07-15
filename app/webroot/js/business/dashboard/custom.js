@@ -359,6 +359,15 @@ $(document).ready(function() {
     });
 
 
+    $('#stars').on('starrr:change', function(e, value) {
+        $('#count').html(value);
+    });
+
+    $('#stars-existing').on('starrr:change', function(e, value) {
+        $('#count-existing').html(value);
+    });
+
+
     $('.featured_toggle').click(function() {
 
         game_id = this.id;
@@ -374,11 +383,10 @@ $(document).ready(function() {
 
                         if (data.act_type == 1)
                         {
-
-                            $('#' + game_id).css('color', '#F7D358');
+                            $('#' + game_id).removeClass("btn-default").addClass("btn-warning");
                         } else {
 
-                            $('#' + game_id).css('color', '#E6E6E6');
+                            $('#' + game_id).removeClass("btn-warning").addClass("btn-default");
                         }
 
                         Messenger().post(data.success);
@@ -732,9 +740,6 @@ $(function() {
     });
 
 
-
-
-
     // form validation
     $('#settings_profile').validate({
         rules: {
@@ -880,7 +885,6 @@ $(function() {
             element.addClass('valid').closest('.form-group').removeClass('error').addClass('success');
         }
     });
-
 
 
     // Datepicker
@@ -1206,6 +1210,9 @@ function chaingame2(game_name, user_auth, game_id)
 
 function delete_game(user_auth, game_id)
 {
+    var x = confirm("Are you sure you want to delete?");
+    if (x)
+    {
     if (user_auth == 1)
     {
 		$('#gamebox-'+game_id).css("display", "none");
@@ -1220,5 +1227,6 @@ function delete_game(user_auth, game_id)
                         Messenger().post("Error. Please, try again..");
                     }
                 });
+    }
     }
 }
