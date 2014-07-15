@@ -114,37 +114,37 @@ $(document).ready(function() {
                 gplus_link: $('#gplus_link').val(),
                 website: $('#website').val()
             },
-                    function(data) {
-                        if (data.error) {
-                            alert(data.error); // error.id ye göre mesaj yazdırcak..
-                        } else {
-                            Messenger().post(data.success);
-                            btn.button('reset');
-                        }
-                    }, 'json');
+            function(data) {
+                if (data.error) {
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                } else {
+                    Messenger().post(data.success);
+                    btn.button('reset');
+                }
+            }, 'json');
         }
         else if (attr == "password_change" && $('#password_change').valid()) {
-            if($('#new_pass').val() == $('#conf_pass').val())
+            if ($('#new_pass').val() == $('#conf_pass').val())
             {
-            $.post(link, {
-                attr: attr,
-                old_pass: $('#old_pass').val(),
-                new_pass: $('#new_pass').val(),
-                conf_pass:$('#conf_pass').val()
-            },
-                    function(data) {
-                        if (data.error) {
-                            Messenger().post(data.error);
-                            btn.button('reset');
-                        } else {
-                            Messenger().post(data.success);
-                            btn.button('reset');
-                        }
-                    }, 'json');
-            }else{
-					 Messenger().post("Confirm password wrong");
-                    btn.button('reset');
-				}
+                $.post(link, {
+                    attr: attr,
+                    old_pass: $('#old_pass').val(),
+                    new_pass: $('#new_pass').val(),
+                    conf_pass: $('#conf_pass').val()
+                },
+                function(data) {
+                    if (data.error) {
+                        Messenger().post(data.error);
+                        btn.button('reset');
+                    } else {
+                        Messenger().post(data.success);
+                        btn.button('reset');
+                    }
+                }, 'json');
+            } else {
+                Messenger().post("Confirm password wrong");
+                btn.button('reset');
+            }
         }
         else {
             btn.button('reset');
@@ -344,15 +344,15 @@ $(document).ready(function() {
      *  @param No
      *  @return No
      *  Note:When user clone a game on wizard,this function will put a new game.
-     */ 
-   $('.get_new_game').click(function() {
-    
-   
-   link=newstartupgame;
-   $.post(link,
+     */
+    $('.get_new_game').click(function() {
+
+
+        link = newstartupgame;
+        $.post(link,
                 function(data) {
-                    
-                 $('.game_area').append(data);
+
+                    $('.game_area').append(data);
 
                 });
 
@@ -476,7 +476,7 @@ $(document).ready(function() {
 
     $('#avatarframe').load(function() {
         $(this).contents().find("#set_photo").on('click', function(event) {
-            
+
             //$('#channel_avatar').attr('src', 'http://www.imageyourself.net/images/website/loading.gif');
             var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
             $('#channel_avatar').attr('src', new_img);
@@ -498,7 +498,7 @@ $(document).ready(function() {
 
     $('#coverframe').load(function() {
         $(this).contents().find("#set_photo").on('click', function(event) {
-            
+
             //$('#user_cover').css('background-image', 'url(http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif)');
             var new_img = $('iframe[id=coverframe]').contents().find('#new_image_link').val();
             $('#user_cover').css('background-image', 'url(' + new_img + ')');
@@ -518,7 +518,7 @@ $(document).ready(function() {
 
     $('#backgroundframe').load(function() {
         $(this).contents().find("#set_photo").on('click', function(event) {
-            
+
             var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
             $('#user_background').attr('src', new_img);
             $('#background_area').css('background-image', 'url(' + new_img + ')');
@@ -538,7 +538,7 @@ $(document).ready(function() {
 
     $('#gameframe').load(function() {
         $(this).contents().find("#set_photo").on('click', function(event) {
-            
+
             //$('#game_image').attr('src', 'http://www.imageyourself.net/images/website/loading.gif');
             var new_img = $('iframe[id=gameframe]').contents().find('#new_image_link').val();
             var img_name = $('iframe[id=gameframe]').contents().find('#selected_image').val();
@@ -1066,20 +1066,20 @@ function delete_game(user_auth, game_id)
 {
     if (user_auth == 1)
     {
-		$('#gamebox-'+game_id).css("display", "none");
-         $.post(deletedata, {
-                attr: "remove_game",
-                id: game_id
-            },
-            function(data) {
-                if (data.error) {
-                     Messenger().post(data.rtdata.error);
-                     $('#confirm-modal').modal('hide');
-                } else {
-                    Messenger().post(data.rtdata.success);
-                    $('#confirm-modal').modal('hide');
-                }
-            }, 'json');
+        $('#gamebox-' + game_id).css("display", "none");
+        $.post(deletedata, {
+            attr: "remove_game",
+            id: game_id
+        },
+        function(data) {
+            if (data.error) {
+                Messenger().post(data.rtdata.error);
+                $('#confirm-modal').modal('hide');
+            } else {
+                Messenger().post(data.rtdata.success);
+                $('#confirm-modal').modal('hide');
+            }
+        }, 'json');
     }
 }
 
@@ -1199,7 +1199,7 @@ function switch_favorite(game_id)
             });
 }
 
-function chaingame2(game_name, user_auth, game_id)
+function chaingame2(game_name, user_auth, game_id, clone_status)
 {
     var btn = $('#clone-' + game_id);
     btn.button('loading');
@@ -1221,6 +1221,40 @@ function chaingame2(game_name, user_auth, game_id)
 
     } else
     {
+        $('#myModal').modal('hide');
+        $('#login').modal('show');
+    }
+}
+
+/**
+ * Explore Games Clone Button Action
+ * @param string game_name
+ * @param boolean user_auth
+ * @param integer game_id
+ * @param integer clone_status
+ * @author Emircan Ok
+ */
+function chaingame3(game_name, user_auth, game_id, clone_status) {
+    var btn = $('#clone-' + game_id);
+    btn.button('loading');
+    if (user_auth == 1) {
+        $.get(chaingame + '/' + game_id, function(data) {
+            if (data == 1) {
+                Messenger().post("Game Cloned");
+                if (clone_status == 0) {
+                    btn
+                            .html('<i class="fa fa-cog "></i> Cloned')
+                            .removeClass('btn-success')
+                            .addClass('btn-default')
+                            .button('reset');
+                }
+                //  btn.button('reset');
+            } else {
+                Messenger().post("Error. Please, try again..");
+                btn.button('reset');
+            }
+        });
+    } else {
         $('#myModal').modal('hide');
         $('#login').modal('show');
     }

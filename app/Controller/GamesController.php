@@ -31,7 +31,7 @@ class GamesController extends AppController {
 
         return false;
     }
-    
+
     public function beforeFilter() {
         parent::beforeFilter();
         $this->noprefixdomain();
@@ -2188,7 +2188,7 @@ class GamesController extends AppController {
         $result = $this->Cloneship->find('count', array(
             'conditions' => array(
                 'Cloneship.game_id' => $gameid,
-                'Cloneship.user_id' => $userid
+                'Cloneship.user_id' => $userid,
             )
         ));
         if ($result > 0) {

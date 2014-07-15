@@ -77,7 +77,7 @@ if (isset($query)) {
                         $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
                         $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
                         $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
-
+                        $clonestatus = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($userid, $game['Game']['id']));
                         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
                             $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
                             $userlink = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain);
@@ -96,7 +96,6 @@ if (isset($query)) {
                                 <div class="panel-body" style="padding-top:0px;">
                                     <a href="<?php echo $playurl ?>"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong><?php echo $name ?></strong> </h4></a>
                                     <small>
-
                                         <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo $rates; ?> Rates">
                                             <?php
                                             $star = round($game['Game']['starsize'] / 20);
@@ -110,15 +109,27 @@ if (isset($query)) {
                                                 }
                                             }
                                             ?>
-                                        </div>			                <div class="text-center">
+                                        </div>
+                                        <div class="text-center">
                                             <i class="fa fa-plus-square "> <?php echo $clones ?> Clones</i> | 
                                             <i class="fa fa-heart"> <?php echo $favorites ?> Favorites</i> | 
-                                            <i class="fa fa-play"> <?php echo $plays ?> Plays</i></div>
+                                            <i class="fa fa-play"> <?php echo $plays ?> Plays</i>
+                                        </div>
                                     </small>
                                     <!----=========================================---->
                                     <!-- Clone Button -->
                                     <div class="clone text-center">
-                                        <button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame2('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog "></i> Clone</button>
+                                        <?php if ($clonestatus == TRUE) { ?>
+                                            <button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>, 1);" class="btn btn-default" data-placement="top" data-toggle="tooltip" title="">
+                                                <i class="fa fa-cog "></i>
+                                                Cloned
+                                            </button>
+                                        <?php } else { ?>
+                                            <button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>, 0);" class="btn btn-success" data-placement="top" data-toggle="tooltip" title="">
+                                                <i class="fa fa-cog "></i>
+                                                Clone
+                                            </button>
+                                        <?php } ?>
                                     </div>
                                     <!-- Clone Button End -->
                                 </div>
@@ -131,16 +142,15 @@ if (isset($query)) {
                                         </div>
                                         <div class="col-md-8">
                                             <?php if ($game['User']['verify'] == 1) { ?>
-                                                <h5><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
-                                                <?php } ?>
-                                                <a href="<?php echo $userlink; ?>"><strong> <?php echo $game['User']['username']; ?></strong></a> 
-                                                <br> <small>@ <?php echo $game['User']['seo_username']; ?></small></h5>
+                                                <h5><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span></h5>
+                                            <?php } ?>
+                                            <a href="<?php echo $userlink; ?>"><strong> <?php echo $game['User']['username']; ?></strong></a> 
+                                            <br> <small>@ <?php echo $game['User']['seo_username']; ?></small></h5>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <?php
                     }
                     ?>
