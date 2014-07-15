@@ -23,7 +23,8 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData','social_management'))) {
+
             return true;
         }
 
@@ -188,15 +189,15 @@ class BusinessesController extends AppController {
         if ($auth_id = $this->Auth->user('id')) {//Auth control begins here
             $game_id = $this->request->data['game_id'];
 
-            $game_data = $this->Game->find('first', array('contain' => false, 'conditions' => array('Game.id' => $game_id, 'Game.user_id' => $auth_id), 'fields' => array('Game.id', 'Game.priority')));
+            $game_data = $this->Game->find('first', array('contain' => false, 'conditions' => array('Game.id' => $game_id, 'Game.user_id' => $auth_id), 'fields' => array('Game.id', 'Game.featured')));
             if ($game_data != NULL) {
-                if ($game_data['Game']['priority'] == 0) {
-                    $filtered_data['Game']['priority'] = 1;
+                if ($game_data['Game']['featured'] == 0) {
+                    $filtered_data['Game']['featured'] = 1;
                     $this->set('success', "Game set as featured.");
                     $this->set('act_type', 1);
                     $this->set('_serialize', array('success', 'act_type'));
                 } else {
-                    $filtered_data['Game']['priority'] = 0;
+                    $filtered_data['Game']['featured'] = 0;
                     $this->set('success', "Game unset from featured list.");
                     $this->set('act_type', 0);
                     $this->set('_serialize', array('success', 'act_type'));
@@ -1134,7 +1135,7 @@ class BusinessesController extends AppController {
         $newlimit = 3;
         $hotlimit = 6;
         $this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $newlimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
-        $this->set('featuredgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.priority >' => 0), 'limit' => $featlimit, 'order' => 'rand()', 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
+        $this->set('featuredgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.featured' => 1), 'limit' => $featlimit, 'order' => 'rand()', 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
         $this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $hotlimit, 'order' => array('Game.starsize' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
         $this->set('category', $category);
         $this->set('games', $cond);
@@ -1405,7 +1406,7 @@ class BusinessesController extends AppController {
             $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         }
 
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.priority >' => 0), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.featured' => 1), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         $cond = $this->paginate('Game');
 
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
@@ -1459,7 +1460,7 @@ class BusinessesController extends AppController {
 
         if (!is_numeric($userid)) {
             $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*')));
+            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*')));
             $userid = $user['User']['id'];
         } else {
             $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
@@ -1538,7 +1539,7 @@ class BusinessesController extends AppController {
                     'Game.starsize',
                     'Game.rate_count',
                     'Game.embed',
-                    'Game.priority',
+                    'Game.featured',
                     'Game.clone',
                     'Game.created',
                     'User.seo_username',

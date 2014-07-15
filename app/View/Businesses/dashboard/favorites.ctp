@@ -125,8 +125,8 @@ $allgames = $params['count'];
 		                     </a>
 		                	</div>
 		                  <div class="col-md-8">
-		                     <?php if ($game['Game']['User']['verify'] == 1) { ?>
-		                    <h5><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
+		                     <h5><?php if ($game['Game']['User']['verify'] == 1) { ?>
+		                    <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
 		                    <?php } ?>
 		                    	<a href="<?php echo $userlink;?>"><strong> <?php echo $game['Game']['User']['username'];?></strong></a> 
 		                    	<br> <small>@ <?php echo $game['Game']['User']['seo_username'];?></small></h5>

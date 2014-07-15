@@ -123,7 +123,7 @@ if (isset($query)) {
 		                </div>
 		                <div class="panel-footer">
 						<span>
-								<?php if ($game['Game']['priority'] > 0) { ?>
+								<?php if ($game['Game']['featured'] == 1) { ?>
 		                		<button type="button" class="btn btn-warning btn-sm featured_toggle" id='<?php echo $game['Game']['id']; ?>'><i class="fa fa-bullseye"></i> Unset Featured</button>
 								<?php } else { ?>
 		                		<button type="button" class="btn btn-default btn-sm featured_toggle" id='<?php echo $game['Game']['id']; ?>'><i class="fa fa-bullseye"></i>Set Featured</button>

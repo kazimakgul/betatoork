@@ -14,7 +14,6 @@ $subgameurl = $this->Html->url(array("controller" => "businesses", "action" => "
 <?php } ?>
 </script>
 <div class="showhim col-md-12">
-
     <?php if ($user['User']['banner'] == null) { ?>
         <div class="panel no-border" id="user_cover" style="background-size:contain; background-position:center; background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg)">
         <?php } else { ?>
@@ -54,7 +53,6 @@ $subgameurl = $this->Html->url(array("controller" => "businesses", "action" => "
                         <i class="fa fa-foursquare"></i> Unfollow - <span id='flwnumber'><?php echo $followNo; ?></span>
                     </a> 
                 <?php } else { ?>
-
                     <a class="btn btn-primary" id="follow_button" style="display:none;" onclick="subscribe('<?php echo $user['User']['username'] ?>', user_auth,<?php echo $user['User']['id'] ?>);
                                 _gaq.push(['_trackEvent', 'Channel', 'Follow', '<?php echo $user['User']['username'] ?>']);">
                         <i class="fa fa-plus-circle"></i> Follow - <span id='flwnumber'><?php echo $followNo; ?></span>
@@ -71,7 +69,6 @@ $subgameurl = $this->Html->url(array("controller" => "businesses", "action" => "
             $facebook = $user['User']['fb_link'];
             $twitter = $user['User']['twitter_link'];
             $gplus = $user['User']['gplus_link'];
-
             if ($website == NULL) {
                 
             } else {
@@ -93,7 +90,6 @@ $subgameurl = $this->Html->url(array("controller" => "businesses", "action" => "
                 echo " <a href='$twitter' class='btn btn-xs btn-info pull-right' style='margin:10px;' target='_blank'><span class='fa fa-twitter-square'></span> Twitter</a>";
             }
             ?>
-
         </div>
         <br><br><br><br>
     </div>
