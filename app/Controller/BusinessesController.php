@@ -754,7 +754,9 @@ class BusinessesController extends AppController {
                     'Gamestat.potential',
                     'User.id',
                     'User.username',
-                    'User.seo_username'
+                    'User.seo_username',
+                    'User.verify',
+                    'User.picture'
                 ),
                 'limit' => $limit,
                 'conditions' => array(
