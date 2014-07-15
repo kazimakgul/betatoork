@@ -1692,7 +1692,9 @@ class BusinessesController extends AppController {
                             'fields' => array(
                                 'User.username',
                                 'User.seo_username',
-                                'User.id'
+                                'User.id',
+                                'User.picture',
+                                'User.verify'
                             )
                         ),
                         'Gamestat' => array(
