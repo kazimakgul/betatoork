@@ -1648,6 +1648,9 @@ class BusinessesController extends AppController {
         if ($filter === 'mobiles') {
             $activefilter = 1;
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+        }elseif ($filter === 'featured') {
+            $activefilter = 2;
+            $this->paginate['Game']['conditions']['Game.featured'] = 1;
         }
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
