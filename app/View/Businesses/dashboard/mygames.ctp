@@ -13,9 +13,11 @@ $game_edit = $this->Html->url(array("controller" => "businesses", "action" => "g
 if (isset($query)) {
     $all = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames_search')) . '?q=' . $query;
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames_search', 'filter' => 'mobiles')) . '?q=' . $query;
+    $featured = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames_search', 'filter' => 'featured')) . '?q=' . $query;
 } else {
     $all = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'mobiles'));
+	$featured = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'featured'));
 }
 ?>
 <body id="users">
@@ -46,11 +48,7 @@ if (isset($query)) {
                     <label>Filter Games:</label>
                     <a href="<?php echo $all; ?>" <?php echo $activefilter === 0 ? 'class="active"' : ''; ?>>All Games</a>
                     <a href="<?php echo $mobile; ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games</a>
-                    <span style='color: gray;font-weight: bold;'>
-                        <i style='color:#F7D358;font-size: 20px;vertical-align: middle;' class="fa fa-star" data-toggle="tooltip" data-original-title="Set as Featured"></i>
-                        Featured
-                    </span>
-                    <div class="show-options">
+					<a href="<?php echo $featured; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Featured</a>                    <div class="show-options">
                         <div class="dropdown">
                             <a class="button" data-toggle="dropdown" href="#">
                                 <span>
