@@ -131,7 +131,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 		    }
     ?>
 		        <div class="col-md-4" style="height:406px;" id="gamebox-<?php echo $id; ?>">
-		            <div data-dismiss="alert" class="panel panel-default">
+		            <div class="panel panel-default">
 		                <!--<a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/168/toork_Kamikaze_Pigs_toorksize.png)" class="panel-heading">
 		                </div></a>-->
 		                <a href="<?php echo $playurl ?>" target="_blank">
@@ -140,7 +140,6 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 		                <div class="panel-body" style="padding-top:0px;">
 		                    <a href="<?php echo $playurl ?>"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong><?php echo $name ?></strong> </h4></a>
 							<small>
-
                   <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo $rates;?> Rates">
                     <?php 
                     $star = round($game['Game']['starsize'] / 20);
@@ -162,7 +161,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 		                	</small>
   <!----=========================================---->
 		<!-- Clone Button -->
-		<div class="clone">
+		<div class="clone text-center">
 		<a id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success"><i class="fa fa-cog "></i> Clone</a>
 </div>
 

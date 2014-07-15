@@ -177,7 +177,7 @@ $(function () {
 				}
 				if(upload_type=='cover_image')
 				{
-				var ratio=1000/169;
+				var ratio=1000/175;
 				}
 				if(upload_type=='game_image')
 				{
@@ -263,7 +263,7 @@ $('#fileupload').click(function () {
 	{
      $('#theImg').Jcrop({addClass: 'jcrop-centered',onSelect: updateCoords,trueSize: [imgwidth ,imgheight],aspectRatio: ratio},function(){
             jcrop_api = this;
-            jcrop_api.animateTo([110,100,400,300]);
+            jcrop_api.animateTo([0,1000,0,0]);
             jcrop_api.setOptions({ allowSelect: 0 });
 		    jcrop_api.focus();
             });
@@ -286,7 +286,7 @@ $('#fileupload').click(function () {
 				if(upload_type=='cover_image')
 				{
 				var targ_w=1000;
-				var targ_h=169;
+				var targ_h=175;
 				}
 				if(upload_type=='game_image')
 				{
