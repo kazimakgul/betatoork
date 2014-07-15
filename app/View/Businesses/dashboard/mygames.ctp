@@ -100,13 +100,23 @@ if (isset($query)) {
 		                <div class="panel-body" style="padding-top:0px;">
 		                    <a href="<?php echo $playurl ?>"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong><?php echo $name ?></strong> </h4></a>
 							<small>
-<!-- Rating Button -->
-<div class="rating">
-    <div class="widget-button" data-toggle="tooltip" data-original-title="<?= $game['Game']['rate_count']; ?> Rates">
-        <div id="stars-existing" class="starrr" value="<?= $game['Game']['id']; ?>" data-rating="<?= round($game['Game']['starsize'] / 20); ?>"></div>
-    </div>
-</div>
-<!-- Rating Button End -->
+
+                  <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo $rates;?> Rates">
+                    <?php 
+                    $star = round($game['Game']['starsize'] / 20);
+                    for($i=1; $i<=$star; $i++){
+                    	echo '<i class="fa fa-star fa-2x"></i>';
+                    }
+					$freestar=5-$star;
+                    if($freestar>0){
+                    	for($i=1; $i<=$freestar; $i++)
+						{
+							echo '<i class="fa fa-star-o fa-2x"></i>';
+						}
+                    }
+                    ?>
+                </div>
+
 			                <div class="text-center">
 			                	<i class="fa fa-plus-square "> <?php echo $clones ?> Clones</i> | 
 			                	<i class="fa fa-heart"> <?php echo $favorites ?> Favorites</i> | 
@@ -182,7 +192,7 @@ if (isset($query)) {
                     <?php echo $this->element('business/components/pagination') ?>
                 </div>
             </div>-->
-            <!-- <div class="col-md-4">
+             <!-- <div class="col-md-4">
             <div class="panel panel-default">
                 <a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/6792/super_mario_bros_3_by_ggrock70-d36fqni_toorksize.png)" class="panel-heading">
                 </div></a>
