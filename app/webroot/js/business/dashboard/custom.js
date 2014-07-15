@@ -1062,7 +1062,26 @@ function subscribe(channel_name, user_auth, id) {
 
 
 }
-
+function delete_game(user_auth, game_id)
+{
+    if (user_auth == 1)
+    {
+		$('#gamebox-'+game_id).css("display", "none");
+         $.post(deletedata, {
+                attr: "remove_game",
+                id: game_id
+            },
+            function(data) {
+                if (data.error) {
+                     Messenger().post(data.rtdata.error);
+                     $('#confirm-modal').modal('hide');
+                } else {
+                    Messenger().post(data.rtdata.success);
+                    $('#confirm-modal').modal('hide');
+                }
+            }, 'json');
+    }
+}
 
 function subscribeout(channel_name, user_auth, id) {
 
@@ -1170,11 +1189,11 @@ function switch_favorite(game_id)
             function(data) {
                 if (data == 0)
                 {
-                    $("#fav-" + game_id).removeClass('btn-danger').addClass('btn-default');
-                    Messenger().post("Game Unavorited");
+                    $("#fav-" + game_id).removeClass('btn-default').addClass('btn-danger');
+                    Messenger().post("Game Unfavorited");
 
                 } else {
-                    $("#fav-" + game_id).removeClass('btn-default').addClass('btn-danger');
+                    $("#fav-" + game_id).removeClass('btn-danger').addClass('btn-default');
                     Messenger().post("Game Favorited");
                 }
             });
@@ -1204,29 +1223,5 @@ function chaingame2(game_name, user_auth, game_id)
     {
         $('#myModal').modal('hide');
         $('#login').modal('show');
-    }
-}
-
-
-function delete_game(user_auth, game_id)
-{
-    var x = confirm("Are you sure you want to delete?");
-    if (x)
-    {
-    if (user_auth == 1)
-    {
-		$('#gamebox-'+game_id).css("display", "none");
-        $.get(delete_one_game + '/' + game_id,
-                function(data)
-                {
-                    if (data == 1)
-                    {
-                        Messenger().post("Game has been deleted.");
-                    } else
-                    {
-                        Messenger().post("Error. Please, try again..");
-                    }
-                });
-    }
     }
 }

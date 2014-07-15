@@ -66,7 +66,7 @@ if (isset($query)) {
                     </div>
                 </div>
             </div>
-
+<hr><br>
 <div class="container-fluid">
     <div class="row">
 		<?php
