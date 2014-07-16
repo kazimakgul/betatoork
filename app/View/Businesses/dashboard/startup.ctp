@@ -195,9 +195,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 
                                     </div>
                                 </div>
-                                <?php
-                            }
-                            ?>
+                                <?php } ?>
                             <div class="form-group form-actions" style="float: left;width: 100%;">
                                 <a id="back" class="button" href="#" data-step="1" style="margin-top:35px;">
                                     <span><i class="fa fa-angle-double-left"></i> Back</span>
@@ -442,6 +440,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
         });
     });
     function chaingame4(game_name, user_auth, game_id) {
+        get_new_game(game_id);
         var btn = $('#clone-' + game_id);
         btn.removeClass('btn-success');
         btn.addClass('btn-warning');
@@ -482,6 +481,40 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
             $('#login').modal('show');
         }
     }
+
+    
+
+    /**
+     *  New Game for Wizard Method
+     *  @param No
+     *  @return No
+     *  Note:When user clone a game on wizard,this function will put a new game.
+     */
+    function get_new_game(game_id)
+    {
+       
+       var box = $('#gamebox-' + game_id);
+       var btn = $('#clone-' + game_id);
+       //box.removeClass('#gamebox-' + game_id);
+       
+       link = newstartupgame;
+        $.post(link,
+                function(data) {
+
+                    if (data.rtdata.error) {
+                    alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
+                    } else {
+                    alert(data.rtdata.game_name);
+                    box.attr('id', '#gamebox-' + data.rtdata.game_id);
+                    btn.attr('id', '#clone-' + data.rtdata.game_id)
+                    }
+
+                }, 'json');
+
+    }
+
+
+
     function subscribe2(channel_name, user_auth, id) {
         if (user_auth == 1) {
             var follow_count = 5;

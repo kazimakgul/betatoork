@@ -339,24 +339,6 @@ $(document).ready(function() {
 
 
 
-    /**
-     *  New Game for Wizard Method
-     *  @param No
-     *  @return No
-     *  Note:When user clone a game on wizard,this function will put a new game.
-     */
-    $('.get_new_game').click(function() {
-
-
-        link = newstartupgame;
-        $.post(link,
-                function(data) {
-
-                    $('.game_area').append(data);
-
-                });
-
-    });
 
 
     $('#stars').on('starrr:change', function(e, value) {

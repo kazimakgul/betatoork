@@ -682,6 +682,7 @@ class BusinessesController extends AppController {
    
     public function get_one_game()
     {
+       Configure::write('debug', 0);
        $this->layout = 'ajax'; 
       
       $onegame=$this->Game->find('first',array(
@@ -714,9 +715,15 @@ class BusinessesController extends AppController {
             ));
 
             
-        $this->set('game',$onegame);
+        //$this->set('game',$onegame);
 
-        $this->render('/Businesses/dashboard/get_one_game');
+
+
+
+         $msg = array("game_name" => $onegame['Game']['name'],"game_id" => $onegame['Game']['id'], 'result' => 1);
+         $this->set('rtdata', $msg);
+         $this->set('_serialize', array('rtdata'));
+
 
     }
 
