@@ -127,7 +127,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                     $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
                                 }
                                 ?>
-                                <div class="col-md-4" style="height:406px;" id="gamebox-<?php echo $id; ?>">
+                                <div class="col-md-4" style="height:312px;" id="gamebox-<?php echo $id; ?>">
                                     <div class="panel panel-default">
                                         <!--<a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/168/toork_Kamikaze_Pigs_toorksize.png)" class="panel-heading">
                                         </div></a>-->
@@ -162,6 +162,9 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                             </div>
                                             <!-- Clone Button End -->
                                         </div>
+                                       
+
+                                 <!--
                                         <div class="panel-footer">
                                             <div class="row">
                                                 <div class="col-md-4" style="margin-right:-30px;">
@@ -178,6 +181,9 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                                 </div>
                                             </div>
                                         </div>
+                                    -->
+
+
                                     </div>
                                 </div>
                                 <?php
