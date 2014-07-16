@@ -107,9 +107,18 @@
 	 $.post(facecheck, { at: accessToken,ui:fb_id}, function (data) {
 			if(data.rtdata.status=='user exists'){
 				//alert(data.rtdata.msg);
-				window.location=data.rtdata.location;
+				//window.location=data.rtdata.location;
 				//$('#errormsg_Passwd').html(data.rtdata.msg);
 				//$('#errormsg_Passwd').show();
+                                var host = window.location.host;
+                var domain = 'clone.gs';
+                if (host.match('/test/')) {
+                    console.log(window.location.protocol + '//test.' + domain + 'dashboard');
+                    window.location.href = window.location.protocol + '//test.' + domain + '/dashboard';
+                } else {
+                    console.log(window.location.protocol + '//' + domain + 'dashboard');
+                    window.location.href = window.location.protocol + '//' + domain + '/dashboard';
+                }
 				
 			}
 			else if(data.rtdata.status=='user no exists'){
