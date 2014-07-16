@@ -58,7 +58,6 @@ $allgames = $params['count'];
                         </div>
                     </div>
                 </div>
-<br>
 <div class="container-fluid">
     <div class="row  users-grid">
 					<?php echo $this->element('business/dashboard/favorites/grid') ?>

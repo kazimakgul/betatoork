@@ -68,8 +68,6 @@ if (isset($query)) {
                     </div>
                 </div>
             </div>
-
-<br>
     <div class="row users-grid">
             <?php echo $this->element('business/dashboard/mygames/grid') ?>
                     <div class="text-center">
