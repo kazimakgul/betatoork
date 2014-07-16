@@ -1191,10 +1191,12 @@ function switch_favorite(game_id)
                 {
                     $("#fav-" + game_id).removeClass('btn-default').addClass('btn-danger');
                     Messenger().post("Game Unfavorited");
+                  $(this).text(text.replace('Favorite', 'UnFavorite')); 
 
                 } else {
                     $("#fav-" + game_id).removeClass('btn-danger').addClass('btn-default');
                     Messenger().post("Game Favorited");
+					$(this).text(text.replace('Favorite', 'saddsad')); 
                 }
             });
 }
@@ -1234,7 +1236,7 @@ function chaingame2(game_name, user_auth, game_id, clone_status)
  * @param integer clone_status
  * @author Emircan Ok
  */
-function chaingame3(game_name, user_auth, game_id, clone_status) {
+function chaingame3(game_name, user_auth, game_id) {
     var btn = $('#clone-' + game_id);
     btn.removeClass('btn-success');
     btn.addClass('btn-warning');
@@ -1243,16 +1245,11 @@ function chaingame3(game_name, user_auth, game_id, clone_status) {
         $.get(chaingame + '/' + game_id, function(data) {
             if (data == 1) {
                 Messenger().post("Game Cloned");
-                if (clone_status == 0) {
-                    btn
-                            .button('reset')
-                            .html('<i class="fa fa-cog"></i> Cloned')
-                            .removeClass('btn-warning')
-                            .addClass('btn-default');
-
-                } else {
-                    btn.button('reset');
-                }
+                btn
+                        .button('reset')
+                        .html('<i class="fa fa-cog"></i> Cloned')
+                        .removeClass('btn-warning')
+                        .addClass('btn-default');
             } else {
                 Messenger().post("Error. Please, try again..");
                 btn.button('reset');

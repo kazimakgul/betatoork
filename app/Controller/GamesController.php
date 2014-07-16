@@ -2197,5 +2197,28 @@ class GamesController extends AppController {
             return FALSE;
         }
     }
+    
+    /**
+     * Get 3 random game for one user
+     * @param integer $userid
+     * @return array
+     * @author Emircan Ok
+     */
+    public function random_3_game($userid) {
+        $result = $this->Game->find('all', array(
+            'fields' => array(
+                'Game.id',
+                'Game.name',
+                'Game.picture',
+                'Game.seo_url'
+            ),
+            'conditions' => array(
+                'Game.user_id' => $userid,
+            ),
+            'limit' => 3,
+            'order' => 'rand()'
+        ));
+        return $result;
+    }
 
 }

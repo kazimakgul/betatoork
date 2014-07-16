@@ -1,4 +1,5 @@
 <?php
+if(!empty($following)){
 foreach ($following as $value) {
     if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
         $userlink = $this->Html->url('http://' . $value['User']['seo_username'] . '.' . $pure_domain);
@@ -68,5 +69,9 @@ foreach ($following as $value) {
         </div>
     </div>
     <?php
+}
+}else{
+		echo $this->element('business/dashboard/nullconditions', array('link' => 'explorechannels', 'text' => 'Explore Channels'));
+	
 }
 ?>
