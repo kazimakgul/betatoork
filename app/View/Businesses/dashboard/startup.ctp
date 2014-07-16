@@ -48,6 +48,8 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
             <section class="form-wizard" style="width:63%">
                 <form id="welcome_form" method="post" action="#" role="form">
                     <div class="step active animated fadeInRightStep">
+                       
+                       <!--
                         <div class="form-group">
                             <label>Custom Domain: </label>
                             <span class="help" data-toggle="tooltip" title="Map your own domain to your channel.">
@@ -56,19 +58,21 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                             <a href="<?php echo $gochannel; ?>" target="_blank" class="btn btn-default"> http://<?php echo $user['User']['seo_username']; ?>.clone.gs </a>
                             <a class="btn btn-default" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain </a>
                         </div>
+                         -->
+
                         <!--Channel Cover Avatar Begins -->
-                        <div id='background_area' style="background-size:contain; background-position:center; background-image: url('<?php echo Configure::read('S3.url') . '/upload/users/' . $user['User']['id'] . '/' . $user['User']['bg_image']; ?>'); background-color:<?php echo $user['User']['bg_color']; ?>;" class="well col-md-12">
+                        <div id='background_area' style="background-size:contain; background-position:center; background-image: url('<?php echo Configure::read('S3.url') . '/upload/users/' . $user['User']['id'] . '/' . $user['User']['bg_image']; ?>'); background-color:<?php echo $user['User']['bg_color']; ?>; height: 203px" class="well col-md-12">
                             <?php if ($user['User']['banner'] == null) { ?>
-                                <div id="user_cover" style="background-size:contain; background-position:center; background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);height: 160px;">
+                                <div id="user_cover" style="background-size:contain; background-position:center; background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg);height: 115px;">
                                 <?php } else { ?>
-                                    <div id="user_cover" style="background-size:contain; background-position:center; background-image:url(<?php echo Configure::read('S3.url') . "/upload/users/" . $user['User']['id'] . "/" . $user['User']['banner']; ?>);height: 160px;">
+                                    <div id="user_cover" style="background-size:contain; background-position:center; background-image:url(<?php echo Configure::read('S3.url') . "/upload/users/" . $user['User']['id'] . "/" . $user['User']['banner']; ?>);height: 115px;">
                                         <?php
                                     }
                                     $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
                                     if ($user['User']['picture'] == null) {
-                                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('style' => 'margin-top:120px;', 'id' => 'channel_avatar', 'class' => 'pic circular1 img-thumbnail', "alt" => "clone user image"));
+                                        echo $this->Html->image("/img/avatars/$avatarImage.jpg", array('style' => 'margin-top:50px; width:120px; height:120px;', 'id' => 'channel_avatar', 'class' => 'pic circular1 img-thumbnail', "alt" => "clone user image"));
                                     } else {
-                                        echo $this->Upload->image($user, 'User.picture', array(), array('style' => 'margin-top:120px; width:120px; height:120px;', 'id' => 'channel_avatar', 'class' => 'pic circular1 img-thumbnail', 'onerror' => 'imgError(this,"avatar");'));
+                                        echo $this->Upload->image($user, 'User.picture', array(), array('style' => 'margin-top:50px; width:120px; height:120px;', 'id' => 'channel_avatar', 'class' => 'pic circular1 img-thumbnail', 'onerror' => 'imgError(this,"avatar");'));
                                     }
                                     ?>
                                     <a data-toggle="modal" data-target="#coverChange" href="#" class="btn btn-xs btn-default pull-left" style="margin: 10px 0px 0px -110px; position:absolute;"><span class="fa fa-picture-o"></span> Change Cover</a>
