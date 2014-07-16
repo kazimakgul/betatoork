@@ -68,7 +68,7 @@ if (isset($query)) {
             </div>
             <br>
             <div class="container-fluid">
-                <div class="row">
+                <div class="row users-grid">
                     <?php
                     foreach ($games as $game) {
                         $name = $game['Game']['name'];
@@ -88,8 +88,6 @@ if (isset($query)) {
                         ?>
                         <div class="col-md-4" style="height:406px;" id="gamebox-<?php echo $id; ?>">
                             <div class="panel panel-default">
-                                <!--<a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/168/toork_Kamikaze_Pigs_toorksize.png)" class="panel-heading">
-                                </div></a>-->
                                 <a href="<?php echo $playurl ?>" target="_blank">
                                     <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'box_img_resize', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '720', 'height' => '110')); ?>
                                 </a>
@@ -135,8 +133,8 @@ if (isset($query)) {
                                             </a>
                                         </div>
                                         <div class="col-md-8">
-                                            <?php if ($game['User']['verify'] == 1) { ?>
-                                                <h5><span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span></h5>
+                                           <h5><?php if ($game['User']['verify'] == 1) { ?>
+                                                <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
                                             <?php } ?>
                                             <a href="<?php echo $userlink; ?>"><strong> <?php echo $game['User']['username']; ?></strong></a> 
                                             <br> <small>@ <?php echo $game['User']['seo_username']; ?></small></h5>
@@ -153,12 +151,12 @@ if (isset($query)) {
                     </div>
                 </div>
             </div> 
-            <!--<div class="row users-grid">
-            <?php echo $this->element('business/dashboard/exploregames/grid') ?>
+            <div class="row users-list">
+            <?php echo $this->element('business/dashboard/exploregames/list') ?>
                 <div class="text-center">
             <?php echo $this->element('business/components/pagination') ?>
                 </div>
-            </div>-->
+            </div>
         </div>
     </div>
 </div>
