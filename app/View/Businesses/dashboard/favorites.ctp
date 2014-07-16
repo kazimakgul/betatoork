@@ -60,7 +60,7 @@ $allgames = $params['count'];
                 </div>
 <br>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row  users-grid">
 		<?php
 		foreach ($games as $game) {
 		    $name = $game['Game']['name'];
@@ -143,6 +143,13 @@ $allgames = $params['count'];
                         <?php echo $this->element('business/components/pagination') ?>
                     </div>
     </div>
+            <div class="row users-list">
+            <?php echo $this->element('business/dashboard/favorites/list') ?>
+                <div class="text-center">
+            <?php echo $this->element('business/components/pagination') ?>
+                </div>
+            </div>
+
 </div>                
 
             </div>

@@ -150,13 +150,14 @@ if (isset($query)) {
                         <?php echo $this->element('business/components/pagination') ?>
                     </div>
                 </div>
-            </div> 
             <div class="row users-list">
             <?php echo $this->element('business/dashboard/exploregames/list') ?>
                 <div class="text-center">
             <?php echo $this->element('business/components/pagination') ?>
                 </div>
             </div>
+           </div> 
+
         </div>
     </div>
 </div>

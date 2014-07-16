@@ -72,7 +72,7 @@ if (isset($query)) {
 
 <br>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row  users-grid">
 		<?php
 		foreach ($games as $game) {
 		    $name = $game['Game']['name'];
@@ -142,6 +142,12 @@ if (isset($query)) {
                         <?php echo $this->element('business/components/pagination') ?>
                     </div>
     </div>
+            <div class="row users-list">
+            <?php echo $this->element('business/dashboard/mygames/list') ?>
+                <div class="text-center">
+            <?php echo $this->element('business/components/pagination') ?>
+                </div>
+            </div>
 </div>
 
 
