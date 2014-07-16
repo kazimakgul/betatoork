@@ -1,4 +1,5 @@
 <?php
+if(!empty($following)){
 foreach ($following as $value) {
     $userid = $value['User']['id'];
     $publicname = $value['User']['username'];
@@ -64,5 +65,8 @@ foreach ($following as $value) {
         </div>
     </div>
     <?php
+}
+}else{
+	echo $this->element('business/dashboard/nullconditions', array('link' => 'explorechannels', 'text' => 'Explore Channels'));
 }
 ?>
