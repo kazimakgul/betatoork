@@ -717,10 +717,19 @@ class BusinessesController extends AppController {
             
         //$this->set('game',$onegame);
 
+        $image_url='https://s3.amazonaws.com/betatoorkpics/upload/games/7670/Screen%20Shot%202014-07-16%20at%2016.09.37%20(1)_toorksize.png';
+
+        $htmlcode='<div class="panel panel-default"><a href="/betatoork226/businesses/play/386" target="_blank"> <img src="'.$image_url.'" style="toorksize" 
+        class="box_img_resize" alt="'.$onegame['Game']['name'].'" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
+        style="padding-top:0px;"> <a href="/betatoork226/businesses/play/386"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>'.$onegame['Game']['name'].'</strong> 
+        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="0 Rates"> 
+        <i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i> </div> 
+        <div class="text-center"> <i class="fa fa-plus-square "> '.$onegame['Gamestat']['channelclone'].' Clones</i> | <i class="fa fa-heart"> '.$onegame['Gamestat']['favcount'].' Favorites</i> | <i class="fa fa-play"> '.$onegame['Gamestat']['playcount'].' Plays</i></div> </small> 
+        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-'.$onegame['Game']['id'].'" onclick="chaingame4("'.$onegame['Game']['name'].'", user_auth,'.$onegame['Game']['id'].');" 
+        class="btn btn-success"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
 
 
-
-         $msg = array("game_name" => $onegame['Game']['name'],"game_id" => $onegame['Game']['id'], 'result' => 1);
+         $msg = array("game_name" => $onegame['Game']['name'],"game_id" => $onegame['Game']['id'],"onclick" => 'chaingame4("'.$onegame['Game']['name'].'", user_auth,'.$onegame['Game']['id'].');','html' => $htmlcode, 'result' => 1);
          $this->set('rtdata', $msg);
          $this->set('_serialize', array('rtdata'));
 
