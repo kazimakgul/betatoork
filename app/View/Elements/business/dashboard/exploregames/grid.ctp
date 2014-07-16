@@ -15,7 +15,7 @@ foreach ($games as $game) {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
     }
     ?>
-    <div class="col-md-4" style="height:406px;" id="gamebox-<?php echo $id; ?>">
+    <div class="col-md-4" style="padding-bottom: 5px;" id="gamebox-<?php echo $id; ?>">
         <div class="panel panel-default">
             <a href="<?php echo $playurl ?>" target="_blank">
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'box_img_resize', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '720', 'height' => '110')); ?>
