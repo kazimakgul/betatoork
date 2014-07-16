@@ -1191,12 +1191,11 @@ function switch_favorite(game_id)
                 {
                     $("#fav-" + game_id).removeClass('btn-default').addClass('btn-danger');
                     Messenger().post("Game Unfavorited");
-                  $(this).text(text.replace('Favorite', 'UnFavorite')); 
-
+                    $("#fav-" + game_id).html('<i class="fa fa-heart "></i> Favorite');
                 } else {
                     $("#fav-" + game_id).removeClass('btn-danger').addClass('btn-default');
                     Messenger().post("Game Favorited");
-					$(this).text(text.replace('Favorite', 'saddsad')); 
+                    $("#fav-" + game_id).html('<i class="fa fa-heart "></i> Unfavorite');
                 }
             });
 }
