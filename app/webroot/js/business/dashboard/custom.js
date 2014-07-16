@@ -1236,19 +1236,23 @@ function chaingame2(game_name, user_auth, game_id, clone_status)
  */
 function chaingame3(game_name, user_auth, game_id, clone_status) {
     var btn = $('#clone-' + game_id);
-    btn.button('loading');
+    btn.removeClass('btn-success');
+    btn.addClass('btn-warning');
+    btn.html('<i class="fa fa-cog spin"></i> Cloning');
     if (user_auth == 1) {
         $.get(chaingame + '/' + game_id, function(data) {
             if (data == 1) {
                 Messenger().post("Game Cloned");
                 if (clone_status == 0) {
                     btn
-                            .html('<i class="fa fa-cog "></i> Cloned')
-                            .removeClass('btn-success')
-                            .addClass('btn-default')
-                            .button('reset');
+                            .button('reset')
+                            .html('<i class="fa fa-cog"></i> Cloned')
+                            .removeClass('btn-warning')
+                            .addClass('btn-default');
+
+                } else {
+                    btn.button('reset');
                 }
-                //  btn.button('reset');
             } else {
                 Messenger().post("Error. Please, try again..");
                 btn.button('reset');
@@ -1259,3 +1263,26 @@ function chaingame3(game_name, user_auth, game_id, clone_status) {
         $('#login').modal('show');
     }
 }
+
+/**
+ * Explore Games Hover Game Clone Button Action
+ * @author Emircan Ok
+ */
+$('div.clone button').hover(
+        function() {
+            if ($(this).html() == '<i class="fa fa-cog"></i> Cloned') {
+                $(this)
+                        .removeClass('btn-default')
+                        .addClass('btn-success')
+                        .html('<i class="fa fa-cog"></i> Re Clone');
+            }
+        },
+        function() {
+            if ($(this).html() == '<i class="fa fa-cog"></i> Re Clone') {
+                $(this)
+                        .removeClass('btn-success')
+                        .addClass('btn-default')
+                        .html('<i class="fa fa-cog"></i> Cloned');
+            }
+        }
+);
