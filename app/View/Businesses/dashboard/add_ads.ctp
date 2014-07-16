@@ -1,3 +1,4 @@
+<?php $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'ads_management'));  ?>
 <body id="form-product">
 	<div id="wrapper">
 		<?php  echo $this->element('business/dashboard/sidebar');?>
@@ -8,7 +9,9 @@
 				</div>
 
 				<div class="page-title">
-					New Ads 
+					<a href="<?php echo $ads_management;?>">
+					← Return to Ads Settings
+					</a>
 					
 					<small class="hidden-xs">
 						<strong></strong>

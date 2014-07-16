@@ -2,139 +2,14 @@
 $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'));
 $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'channel_settings'));
 ?>
-<body id="search">
+<body id="account">
 	<div id="wrapper">
 		<?php  echo $this->element('business/dashboard/sidebar');?>
 		<div id="content">
-			<div class="menubar">
-
-				<div class="page-title">
-					<a href="<?php echo $ch_settings;?>">
-					← Return to Settings
-					</a>
-				</div>
-                <a id="AddAdsCode" href="<?php echo $add_ads; ?>" class="btn btn-success pull-right">Add Ads</a>
-			</div>
-
-			<div class="content-wrapper clearfix">
-
-				<div class="filters">
 				<?php  echo $this->element('business/dashboard/sidebar_setting',array('active'=>'ads_management'));?>
-				<!--	<h3 class="hidden-xs">Filters</h3>
-					<form>
-						<div class="filter">
-							<label>
-								<input type="checkbox" checked />
-								Created date
-							</label>
-							<div class="filter-option" style="display:block;">
-								<select class="field-switch">
-									<option data-field="days">is in the last</option>
-									<option data-field="calendar">is equal to</option>
-									<option data-field="calendar">is before</option>
-									<option data-field="calendar">is after</option>
-								</select>
-								<div class="field days">
-									<input type="text" class="form-control small" value="9" />
-									days
-								</div>
-								<div class="field calendar" style="display:none;">
-									<i class="fa fa-calendar"></i>
-									<input type="text" class="form-control datepicker" />
-								</div>
-							</div>
-						</div>
-						<div class="filter">
-							<label>
-								<input type="checkbox">
-								City
-							</label>
-							<div class="filter-option">
-								<select>
-									<option>equals</option>
-									<option>contains</option>
-									<option>starts with</option>
-									<option>ends with</option>
-									<option>does not contain</option>
-								</select>
-								<div class="field">
-									<input type="text" class="form-control" />
-								</div>
-							</div>
-						</div>
-						<div class="filter">
-							<label>
-								<input type="checkbox">
-								Last seen
-							</label>
-							<div class="filter-option">
-								<select class="field-switch">
-									<option data-field="calendar">is equal to</option>
-									<option data-field="calendar">is before</option>
-									<option data-field="calendar">is after</option>
-								</select>
-								<div class="field calendar">
-									<i class="fa fa-calendar"></i>
-									<input type="text" class="form-control datepicker" />
-								</div>
-							</div>
-						</div>
-						<div class="filter">
-							<label>
-								<input type="checkbox">
-								Payment status
-							</label>
-							<div class="filter-option">
-								<select>
-									<option>Available</option>
-									<option>Abandoned</option>
-									<option>Pending</option>
-									<option>Fulfilled</option>
-									<option>Suspicious</option>
-								</select>
-							</div>
-						</div>
-						<div class="filter">
-							<label>
-								<input type="checkbox" />
-								Number of orders
-							</label>
-							<div class="filter-option">
-								<select>
-									<option>equal to</option>
-									<option>not equal to</option>
-									<option>less than</option>
-									<option>greater than</option>
-								</select>
-								<div class="field">
-									<input type="text" class="form-control" />
-								</div>
-							</div>
-						</div>
-						<div class="filter">
-							<label>
-								<input type="checkbox">
-								Price
-							</label>
-							<div class="filter-option">
-								<select>
-									<option>equal to</option>
-									<option>not equal to</option>
-									<option>less than</option>
-									<option>greater than</option>
-								</select>
-								<div class="field">
-									<input type="text" class="form-control" />
-								</div>
-							</div>
-						</div>
-					</form>-->
-				</div>
-
-				<div class="results">
-
+				<div id="panel" class="channel_profile">
 					<!-- bulk actions -->
-					<div class="btn-group bulk-actions">
+					<div class="btn-group bulk-actions" style="padding-bottom: 15px;">
 					  	<button type="button" class="btn btn-default dropdown-toggle disabled" data-toggle="dropdown">
 					    	Bulk actions <span class="caret"></span>
 					  	</button>
@@ -144,7 +19,8 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 					  	</ul>
 					  	<input type="hidden" id="attr" value="edit_ads" />
 					</div>
-
+              			<a id="AddAdsCode" href="<?php echo $add_ads; ?>" class="btn btn-success pull-right">Add Ads</a>
+					
 					<table id="datatable-ads">
 	                    <thead>
 	                        <tr>
@@ -195,8 +71,6 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 	                   	</tbody>
 	                </table>
 				</div>
-
-			</div>
 		</div>
 	</div>
 		<?php  echo $this->element('business/dashboard/modals/confirm');?>
