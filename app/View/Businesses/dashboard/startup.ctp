@@ -45,7 +45,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                     </div>
                 </div>
             </div>
-            <section class="form-wizard">
+            <section class="form-wizard" style="width:63%">
                 <form id="welcome_form" method="post" action="#" role="form">
                     <div class="step active animated fadeInRightStep">
                         <div class="form-group">
@@ -108,6 +108,11 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                 </button>
                             </div>
                         </div>
+
+
+                        <!--Other step-->
+
+
                         <div class="step">
                             <div id="progressbar_clone"><span>Start cloning minimum 5 games.</span></div>
                             <?php
@@ -198,6 +203,9 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                 </button>
                             </div>
                         </div>
+
+                        <!--Other step-->
+
                         <div class="step">
                             <div id="progressbar_follow"><span>Start following minimum 5 channels.</span></div>
                             <?php
@@ -280,6 +288,11 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                 </button>
                             </div>
                         </div>
+
+
+                        <!--Other step-->
+
+
                         <div class="step">
                             <div class="success">
                                 <i class="ion-checkmark-circled"></i>
@@ -291,6 +304,8 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                 </a>
                             </div>
                         </div>
+
+
                         <div style="clear: left;"></div>
                 </form>
             </section>
