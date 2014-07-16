@@ -113,10 +113,8 @@
                                 var host = window.location.host;
                 var domain = 'clone.gs';
                 if (host.match('/test/')) {
-                    console.log(window.location.protocol + '//test.' + domain + 'dashboard');
                     window.location.href = window.location.protocol + '//test.' + domain + '/dashboard';
                 } else {
-                    console.log(window.location.protocol + '//' + domain + 'dashboard');
                     window.location.href = window.location.protocol + '//' + domain + '/dashboard';
                 }
 				
