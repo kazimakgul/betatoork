@@ -726,7 +726,7 @@ class BusinessesController extends AppController {
         $htmlcode='<div class="panel panel-default"><a href="/betatoork226/businesses/play/386" target="_blank"> <img src="'.$image_url.'" style="toorksize" 
         class="box_img_resize" alt="'.$onegame['Game']['name'].'" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
         style="padding-top:0px;"> <a href="/betatoork226/businesses/play/386"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>'.$onegame['Game']['name'].'</strong> 
-        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="0 Rates"> 
+        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.$onegame['Game']['rate_count'].' Rates"> 
         <i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i> </div> 
         <div class="text-center"> <i class="fa fa-plus-square "> '.$onegame['Gamestat']['channelclone'].' Clones</i> | <i class="fa fa-heart"> '.$onegame['Gamestat']['favcount'].' Favorites</i> | <i class="fa fa-play"> '.$onegame['Gamestat']['playcount'].' Plays</i></div> </small> 
         <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-'.$onegame['Game']['id'].'" 
