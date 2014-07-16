@@ -720,6 +720,12 @@ class BusinessesController extends AppController {
         } else {
         $playurl = 'http://'.$_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['id']);
         }
+
+
+        $clones = empty($onegame['Gamestat']['channelclone']) ? 0 : $onegame['Gamestat']['channelclone'];
+        $favorites = empty($onegame['Gamestat']['favcount']) ? 0 : $onegame['Gamestat']['favcount'];
+        $plays = empty($onegame['Gamestat']['playcount']) ? 0 : $onegame['Gamestat']['playcount'];
+        $rates = empty($onegame['Game']['rate_count']) ? 0 : $onegame['Game']['rate_count'];
      
             
         //$this->set('game',$onegame);
@@ -733,9 +739,9 @@ class BusinessesController extends AppController {
         $htmlcode='<div class="panel panel-default"><a href="'.$playurl.'" target="_blank"> <img src="'.$image_url.'" style="toorksize" 
         class="box_img_resize" alt="'.$onegame['Game']['name'].'" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
         style="padding-top:0px;"> <a href="'.$playurl.'"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>'.$onegame['Game']['name'].'</strong> 
-        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="0 Rates"> 
+        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.$rates.' Rates"> 
         <i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i> </div> 
-        <div class="text-center"> <i class="fa fa-plus-square "> '.$onegame['Gamestat']['channelclone'].' Clones</i> | <i class="fa fa-heart"> '.$onegame['Gamestat']['favcount'].' Favorites</i> | <i class="fa fa-play"> '.$onegame['Gamestat']['playcount'].' Plays</i></div> </small> 
+        <div class="text-center"> <i class="fa fa-plus-square "> '.$clones.' Clones</i> | <i class="fa fa-heart"> '.$favorites.' Favorites</i> | <i class="fa fa-play"> '.$plays.' Plays</i></div> </small> 
         <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-'.$onegame['Game']['id'].'" 
         class="btn btn-success"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
 
