@@ -9,7 +9,6 @@ switch ($activefilter) {
 }
 $mygames = $this->Html->url(array("controller" => "businesses", "action" => "mygames"));
 $game_add = $this->Html->url(array("controller" => "businesses", "action" => "game_add"));
-$game_edit = $this->Html->url(array("controller" => "businesses", "action" => "game_edit"));
 if (isset($query)) {
     $all = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames_search')) . '?q=' . $query;
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames_search', 'filter' => 'mobiles')) . '?q=' . $query;

@@ -1,5 +1,7 @@
 <?php
 if(!empty($games)){
+$game_edit = $this->Html->url(array("controller" => "businesses", "action" => "game_edit"));
+
 		foreach ($games as $game) {
 		    $name = $game['Game']['name'];
 		    $id = $game['Game']['id'];
