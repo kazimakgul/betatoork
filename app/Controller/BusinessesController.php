@@ -729,7 +729,7 @@ class BusinessesController extends AppController {
         </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="0 Rates"> 
         <i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i> </div> 
         <div class="text-center"> <i class="fa fa-plus-square "> '.$onegame['Gamestat']['channelclone'].' Clones</i> | <i class="fa fa-heart"> '.$onegame['Gamestat']['favcount'].' Favorites</i> | <i class="fa fa-play"> '.$onegame['Gamestat']['playcount'].' Plays</i></div> </small> 
-        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-'.$onegame['Game']['id'].'" onclick="chaingame4("'.$onegame['Game']['name'].'", user_auth,'.$onegame['Game']['id'].');" 
+        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-'.$onegame['Game']['id'].'" 
         class="btn btn-success"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
 
 
