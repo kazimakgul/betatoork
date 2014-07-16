@@ -2150,7 +2150,7 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'order' => array(
-                    'User.id' => 'DESC'
+                    'Userstat.potential' => 'DESC'
                 ),
                 'conditions' => array(
                     'User.verify' => 1
