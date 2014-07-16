@@ -384,9 +384,13 @@ $(document).ready(function() {
                         if (data.act_type == 1)
                         {
                             $('#' + game_id).removeClass("btn-default").addClass("btn-warning");
+                            $("#" + game_id).html('<i class="fa fa-bullseye"></i> Unset Featured');
+
+                            
                         } else {
 
                             $('#' + game_id).removeClass("btn-warning").addClass("btn-default");
+                            $("#" + game_id).html('<i class="fa fa-bullseye"></i> Set Featured');
                         }
 
                         Messenger().post(data.success);
