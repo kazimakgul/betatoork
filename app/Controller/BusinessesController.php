@@ -714,6 +714,13 @@ class BusinessesController extends AppController {
                 'order' => 'rand()'
             ));
 
+
+        if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+        $playurl = 'http://' . $onegame['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['seo_url']);
+        } else {
+        $playurl = 'http://'.$_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['id']);
+        }
+     
             
         //$this->set('game',$onegame);
         $basename=$onegame['Game']['picture'];
@@ -733,7 +740,7 @@ class BusinessesController extends AppController {
         class="btn btn-success"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
 
 
-         $msg = array("game_name" => $onegame['Game']['name'],"game_id" => $onegame['Game']['id'],"onclick" => 'chaingame4("'.$onegame['Game']['name'].'", user_auth,'.$onegame['Game']['id'].');','html' => $htmlcode, 'result' => 1);
+         $msg = array("game_name" => $playurl,"game_id" => $onegame['Game']['id'],"onclick" => 'chaingame4("'.$onegame['Game']['name'].'", user_auth,'.$onegame['Game']['id'].');','html' => $htmlcode, 'result' => 1);
          $this->set('rtdata', $msg);
          $this->set('_serialize', array('rtdata'));
 
