@@ -93,7 +93,7 @@ foreach ($following as $value) {
                             ?>
                             <a class="col-xs-4 col-sm-4 col-md-4 col-lg-4" href="<?php echo $playurl; ?>">
                                 <!-- <img width="100%" data-original-title="<?php echo $game33['Game']['name'] ?>" data-placement="bottom" data-toggle="tooltip" src="https://s3.amazonaws.com/betatoorkpics/upload/games/6792/super_mario_bros_3_by_ggrock70-d36fqni_toorksize.png"> -->
-                                <?= $this->Upload->image($game33, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game33['Game']['name'], 'width' => '100%', 'onerror' => 'imgError(this,"toorksize");')); ?>
+                                <?= $this->Upload->image($game33, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game33['Game']['name'], 'data-original-title' => $game33['Game']['name'], 'data-placement' => 'bottom', 'data-toggle' => 'tooltip', 'width' => '100%', 'onerror' => 'imgError(this,"toorksize");')); ?>
                             </a>
                             <?php
                         }
