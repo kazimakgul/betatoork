@@ -716,8 +716,12 @@ class BusinessesController extends AppController {
 
             
         //$this->set('game',$onegame);
+        $basename=$onegame['Game']['picture'];
+        $noextension=rtrim($basename, '.'.$this->getExtension($basename));
+        $yesextension=$noextension.'_original.'.$this->getExtension($basename);
+        $target_image=$yesextension;
 
-        $image_url='https://s3.amazonaws.com/betatoorkpics/upload/games/7670/Screen%20Shot%202014-07-16%20at%2016.09.37%20(1)_toorksize.png';
+        $image_url=Configure::read('S3.url').'/upload/games/'.$onegame['Game']['id'].'/'.$target_image;
 
         $htmlcode='<div class="panel panel-default"><a href="/betatoork226/businesses/play/386" target="_blank"> <img src="'.$image_url.'" style="toorksize" 
         class="box_img_resize" alt="'.$onegame['Game']['name'].'" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
@@ -735,6 +739,16 @@ class BusinessesController extends AppController {
 
 
     }
+
+
+    //Will be moved to app controller
+    function getExtension($str) {
+     $i = strrpos($str,".");
+     if (!$i) { return ""; }
+     $l = strlen($str) - $i;
+     $ext = substr($str,$i+1,$l);
+     return $ext;
+   }
 
 
     /**
