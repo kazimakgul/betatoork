@@ -20,7 +20,7 @@ class GamesController extends AppController {
 
         if (($this->action === 'add3') || ($this->action === 'add2') || ($this->action === 'dashboard') || ($this->action === 'mygames') || ($this->action === 'favorites') ||
                 ($this->action === 'start') || ($this->action === 'settings') || ($this->action === 'chains') ||
-                ($this->action === 'channel') || ($this->action === 'random_3_game')) {
+                ($this->action === 'channel') || ($this->action === 'random_3_game') || ($this->action === 'checkClone')) {
             // All registered users can add posts
             return true;
         }
