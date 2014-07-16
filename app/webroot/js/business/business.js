@@ -206,8 +206,10 @@ $(document).ready(function() {
                 var host = window.location.host;
                 var domain = 'clone.gs';
                 if (host.match('/test/')) {
+                    alert(window.location.protocol + '//test.' + domain + data.rtdata.msg);
                     window.location.href = window.location.protocol + '//test.' + domain + data.rtdata.msg;
                 } else {
+                    alert(window.location.protocol + '//' + domain + data.rtdata.msg);
                     window.location.href = window.location.protocol + '//' + domain + data.rtdata.msg;
                 }
             }
