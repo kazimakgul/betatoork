@@ -164,15 +164,15 @@ body {
     z-index: 2;
     color: #fff;
     background-color: #428bca;
-    border-color: #428bca;
     cursor: default;
+    padding:4px !important;
 }
 /** Bootstrap Edit */
 .pagination>li>a, .pagination>li>span {
-    padding:0 !important;
+    padding:4px !important;
 }
 .pagination>li> .disabled, .pagination>li> .current, .pagination>li> .current:hover, .pagination>li> .current:focus {
-    padding:0px 12px !important;
+    padding:4px 12px !important;
 }
 
 .pagination>li>span>a {
