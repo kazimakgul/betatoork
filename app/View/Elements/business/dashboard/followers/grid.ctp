@@ -27,7 +27,7 @@ foreach ($followers as $value) {
     }
     $followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($userid));
     ?>
-    <div class="col-md-4">
+    <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="panel panel-default">
             <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; background-image:url(<?php echo $cover; ?>)" class="panel-heading">
             </div>
