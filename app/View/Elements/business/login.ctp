@@ -112,7 +112,7 @@
     <input type="text" class="form-control" id="txt_signusername" placeholder="Username or Email" autofocus>
     <input type="password" class="form-control" id="txt_signpass" placeholder="Password">
      
-        Are you a business? <a href=""> Get started here</a>
+        Are you a business? <a href="http://www.clone.gs"> Get started here</a>
     <span class="clearfix"></span>
     <div id="errormsg_Passwd" style="display: none; color:red;"></div>  
         </div>
@@ -165,7 +165,7 @@
     <input name="password" id="reg_password" class="form-control" placeholder="Password" type="password" autocomplete="off">
 	<label style="display:none; color:red; font-family:arial; font-size:13px;" for="reg_password" class="error">Password is wrong</label>
      
-        Are you a business? <a href="#"> Get started here</a>
+        Are you a business? <a href="http://www.clone.gs"> Get started here</a>
     	<span class="clearfix"></span> 
         <div id="errormsg_Reg" style="display: none; color:red;"></div>  
     </div>

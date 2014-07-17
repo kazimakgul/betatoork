@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData','social_management','faq','edit_ads'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData','social_management','faq','edit_ads','password_change','updateData'))) {
 
             return true;
         }
@@ -235,14 +235,14 @@ class BusinessesController extends AppController {
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
                 $filtered_data['Adcode']['user_id'] = $user_id;
                 $this->Adcode->save($filtered_data);
-
-                $category = $this->request->data['category'];
-                if ($category != '0') {
-
-                    $filtered_data['Adsetting'][$category] = $this->Adcode->getLastInsertID();
-                    $id = $this->Adsetting->find('first', array('contain' => false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
-                    $this->Adsetting->id = $id;
-                    $this->Adsetting->save($filtered_data);
+                
+                $category = json_decode($this->request->data['category'], true);
+                if (!empty($category)) {
+                    foreach ($category as $value) {
+                        $filtered_data['Adsetting'][$value] = $this->Adcode->getLastInsertID();
+                    }
+                    $filtered_data['Adsetting']['user_id'] = $user_id;
+					$this->Adsetting->save($filtered_data);
                 }
                 $this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
@@ -1248,7 +1248,7 @@ class BusinessesController extends AppController {
             $this->set('adcodes', $adcodes);
             $this->set('channel_owner', 1);
         }
-        if ($_GET['mode'] == 'visitor') {
+        if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
             $this->set('channel_owner', 0);
         }
     }

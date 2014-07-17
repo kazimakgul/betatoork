@@ -87,7 +87,6 @@ $(document).ready(function() {
                 category[i] = anyChecked[i].value;
             }
             var cat_arr = JSON.stringify(category);
-            //alert(cat_arr);
             $.post(link, {
                 attr: attr,
                 title: $('#title').val(),
@@ -167,11 +166,19 @@ $(document).ready(function() {
         btn.button('loading');
         if (attr == "new_ads" && $('#add_ads').valid())
         {
+        	var anyChecked = $("input:checkbox[name=category]:checked");
+            var category = new Array();
+            var countC = anyChecked.length;
+            for (i = 0; i <= countC - 1; i++)
+            {
+                category[i] = anyChecked[i].value;
+            }
+            var cat_arr = JSON.stringify(category);
             $.post(link, {
                 attr: attr,
                 title: $('#title').val(),
                 desc: $('#desc').val(),
-                category: $('#category').val()
+                category: cat_arr
             },
             function(data) {
                 if (data.error) {

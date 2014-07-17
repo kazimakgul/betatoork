@@ -40,7 +40,7 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 					foreach ($adcodes as $adcode) {
 						$adsStatus = NULL;
 						$adcodeId = $adcode["Adcode"]["id"];
-						if (in_array($adcodeId, $addata[0]['Adsetting']))
+						if (isset($addata[0]) && !is_null($addata[0]['Adsetting']) && in_array($adcodeId, $addata[0]['Adsetting']))
 							{
 								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['home_banner_top']?'<span class="label label-success" style="display:inline-block">Home -> Top</span>':'');
 								$adsStatus.= ($adcodeId==$addata[0]['Adsetting']['home_banner_middle']?'<span class="label label-success" style="display:inline-block">Home -> Middle</span>':'');

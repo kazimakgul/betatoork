@@ -36,16 +36,11 @@
 				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Category</label>
 					    <div class="col-sm-10 col-md-8">
-					    	<select class="form-control" id="category" data-smart-select>
-					    		<option value="0">Select Category</option>
-					    		<option value="home_banner_top">Home -> Top</option>
-					    		<option value="home_banner_middle">Home -> Middle</option>
-					    		<option value="home_banner_bottom">Home -> Bottom</option>
-					    		<option value="game_banner_top">Game -> Top</option>
-					    		<option value="game_banner_bottom">Game -> Bottom</option>
-					    		<option value="0">Mobil -> Top</option>
-					    		<option value="0">Mobil -> Bottom</option>
-					    	</select>
+					    		<input type='checkbox' name='category' value="home_banner_top"> Home -> Top<br/>
+					    		<input type='checkbox' name='category' value="home_banner_middle"> Home -> Middle<br/>
+					    		<input type='checkbox' name='category' value="home_banner_bottom"> Home -> Bottom<br/>
+					    		<input type='checkbox' name='category' value="game_banner_top"> Game -> Top<br/>
+					    		<input type='checkbox' name='category' value="game_banner_bottom"> Game -> Bottom<br/>
 					    </div>
 				  	</div>
 						<input type="hidden" id="attr" name="attr" value="new_ads" />

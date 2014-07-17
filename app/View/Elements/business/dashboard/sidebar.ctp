@@ -74,7 +74,7 @@ if ($user['User']['picture'] == null) {
             <li>
                 <a href="<?php echo $activities; ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="Recent Activity Feed">
                     <i class="ion-archive"></i>
-                    <?php if ($notifycount > 0) { ?>
+                    <?php if (isset($notifycount) && $notifycount > 0) { ?>
                         <span class="badge notification_count"><?php echo $notifycount; ?></span>
                     <?php } ?>
                 </a>
