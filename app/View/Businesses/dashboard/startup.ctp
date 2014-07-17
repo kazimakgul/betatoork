@@ -261,7 +261,7 @@ if ($user['User']['picture'] == null) {
      */
     function get_new_channel(user_id)
     {
-        alert(user_id);
+        //alert(user_id);
         //var box = $('#channelbox-' + user_id);
         //var btn = $('#grid-follow-' + user_id);
         //box.removeClass('#gamebox-' + game_id);
