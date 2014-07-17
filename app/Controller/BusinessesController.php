@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData','social_management','faq','edit_ads'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads'))) {
 
             return true;
         }
@@ -149,23 +149,23 @@ class BusinessesController extends AppController {
                 $this->set('success', "Social settings Updated.");
                 $this->set('_serialize', array('success'));
             } elseif ($attr == "password_change") {
-				$old_password_data = $this->User->query('SELECT password FROM users WHERE ID="'.$user_id.'" LIMIT 1');
-                $old_password =  $old_password_data[0]['users']['password'];
+                $old_password_data = $this->User->query('SELECT password FROM users WHERE ID="' . $user_id . '" LIMIT 1');
+                $old_password = $old_password_data[0]['users']['password'];
                 if (Security::hash(Configure::read('Security.salt') . $this->request->data['old_pass']) == $old_password) {
                     $filtered_data["User"]["password"] = $this->request->data["new_pass"];
                     $filtered_data["User"]["confirm_password"] = $this->request->data["new_pass"];
-					$this->User->id = $user_id;
-	                if($this->User->save($filtered_data)){
-					$this->set('success', "Password changed");
-	                $this->set('_serialize', array('success'));
-					}else{
-					$this->set('error', "Old password wrong");
-	                $this->set('_serialize', array('error'));
-					}
-				}else{
-				$this->set('error', "Old password wrong");
-                $this->set('_serialize', array('error'));
-				}
+                    $this->User->id = $user_id;
+                    if ($this->User->save($filtered_data)) {
+                        $this->set('success', "Password changed");
+                        $this->set('_serialize', array('success'));
+                    } else {
+                        $this->set('error', "Old password wrong");
+                        $this->set('_serialize', array('error'));
+                    }
+                } else {
+                    $this->set('error', "Old password wrong");
+                    $this->set('_serialize', array('error'));
+                }
             } else {
                 
             }
@@ -447,7 +447,6 @@ class BusinessesController extends AppController {
         return $list50;
     }
 
- 
     /**
      * This function increases 
      * playcount of game
@@ -654,7 +653,7 @@ class BusinessesController extends AppController {
      * @return Dashboard Page
      */
     public function dashboard() {
-        
+
         $this->layout = 'Business/dashboard';
 
 
@@ -677,47 +676,44 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/index');
     }
 
+    public function get_one_game() {
+        Configure::write('debug', 0);
+        $this->layout = 'ajax';
 
-   
-    public function get_one_game()
-    {
-       Configure::write('debug', 0);
-       $this->layout = 'ajax'; 
-      
-      $onegame=$this->Game->find('first',array(
-                'fields' => array(
-                    'Game.name',
-                    'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
-                    'Game.picture',
-                    'Game.starsize',
-                    'Game.rate_count',
-                    'Game.embed',
-                    'Game.clone',
-                    'Game.created',
-                    'User.seo_username',
-                    'Game.description',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
-                    'Gamestat.channelclone',
-                    'Gamestat.potential',
-                    'User.id',
-                    'User.username',
-                    'User.seo_username'
-                ),
-                'conditions' => array(
-                    'Game.priority != ' => NULL,
-                    'Game.clone' => 0
-                ),
-                'order' => 'rand()'
-            ));
+        $onegame = $this->Game->find('first', array(
+            'fields' => array(
+                'Game.name',
+                'Game.seo_url',
+                'Game.id',
+                'Game.fullscreen',
+                'Game.picture',
+                'Game.starsize',
+                'Game.rate_count',
+                'Game.embed',
+                'Game.clone',
+                'Game.created',
+                'User.seo_username',
+                'Game.description',
+                'Gamestat.playcount',
+                'Gamestat.favcount',
+                'Gamestat.channelclone',
+                'Gamestat.potential',
+                'User.id',
+                'User.username',
+                'User.seo_username'
+            ),
+            'conditions' => array(
+                'Game.priority != ' => NULL,
+                'Game.clone' => 0
+            ),
+            'order' => 'rand()'
+        ));
 
 
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-        $playurl = 'http://' . $onegame['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['seo_url']);
+            $playurl = 'http://' . $onegame['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['seo_url']);
         } else {
-        $playurl = 'http://'.$_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['id']);
+            $playurl = 'http://' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['id']);
         }
 
 
@@ -725,58 +721,55 @@ class BusinessesController extends AppController {
         $favorites = empty($onegame['Gamestat']['favcount']) ? 0 : $onegame['Gamestat']['favcount'];
         $plays = empty($onegame['Gamestat']['playcount']) ? 0 : $onegame['Gamestat']['playcount'];
         $rates = empty($onegame['Game']['rate_count']) ? 0 : $onegame['Game']['rate_count'];
-     
-            
-        //$this->set('game',$onegame);
-        $basename=$onegame['Game']['picture'];
-        $noextension=rtrim($basename, '.'.$this->getExtension($basename));
-        $yesextension=$noextension.'_original.'.$this->getExtension($basename);
-        $target_image=$yesextension;
 
-        $starvar=null;
+
+        //$this->set('game',$onegame);
+        $basename = $onegame['Game']['picture'];
+        $noextension = rtrim($basename, '.' . $this->getExtension($basename));
+        $yesextension = $noextension . '_original.' . $this->getExtension($basename);
+        $target_image = $yesextension;
+
+        $starvar = null;
         //generate starsize
         $star = round($onegame['Game']['starsize'] / 20);
         for ($i = 1; $i <= $star; $i++) {
-        $starvar.='<i class="fa fa-star fa-2x"></i>';
+            $starvar.='<i class="fa fa-star fa-2x"></i>';
         }
         $freestar = 5 - $star;
         if ($freestar > 0) {
-            
-            for ($i = 1; $i <= $freestar; $i++) {
-            $starvar.='<i class="fa fa-star-o fa-2x"></i>';
-            }
 
+            for ($i = 1; $i <= $freestar; $i++) {
+                $starvar.='<i class="fa fa-star-o fa-2x"></i>';
+            }
         }
 
 
-        $image_url=Configure::read('S3.url').'/upload/games/'.$onegame['Game']['id'].'/'.$target_image;
+        $image_url = Configure::read('S3.url') . '/upload/games/' . $onegame['Game']['id'] . '/' . $target_image;
 
-        $htmlcode='<div class="panel panel-default"><a href="'.$playurl.'" target="_blank"> <img src="'.$image_url.'" style="toorksize" 
-        class="box_img_resize" alt="'.$onegame['Game']['name'].'" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
-        style="padding-top:0px;"> <a href="'.$playurl.'"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>'.$onegame['Game']['name'].'</strong> 
-        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.$rates.' Rates">'.$starvar.'</div> 
-        <div class="text-center"> <i class="fa fa-plus-square "> '.$clones.' Clones</i> | <i class="fa fa-heart"> '.$favorites.' Favorites</i> | <i class="fa fa-play"> '.$plays.' Plays</i></div> </small> 
-        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-'.$onegame['Game']['id'].'" 
+        $htmlcode = '<div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize" 
+        class="box_img_resize" alt="' . $onegame['Game']['name'] . '" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
+        style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong> 
+        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div> 
+        <div class="text-center"> <i class="fa fa-plus-square "> ' . $clones . ' Clones</i> | <i class="fa fa-heart"> ' . $favorites . ' Favorites</i> | <i class="fa fa-play"> ' . $plays . ' Plays</i></div> </small> 
+        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-' . $onegame['Game']['id'] . '" 
         class="btn btn-success"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
 
 
-         $msg = array("game_name" => $onegame['Game']['name'],"game_id" => $onegame['Game']['id'],"onclick" => 'chaingame4("'.$onegame['Game']['name'].'", user_auth,'.$onegame['Game']['id'].');','html' => $htmlcode, 'result' => 1);
-         $this->set('rtdata', $msg);
-         $this->set('_serialize', array('rtdata'));
-
-
+        $msg = array("game_name" => $onegame['Game']['name'], "game_id" => $onegame['Game']['id'], "onclick" => 'chaingame4("' . $onegame['Game']['name'] . '", user_auth,' . $onegame['Game']['id'] . ');', 'html' => $htmlcode, 'result' => 1);
+        $this->set('rtdata', $msg);
+        $this->set('_serialize', array('rtdata'));
     }
-
 
     //Will be moved to app controller
     function getExtension($str) {
-     $i = strrpos($str,".");
-     if (!$i) { return ""; }
-     $l = strlen($str) - $i;
-     $ext = substr($str,$i+1,$l);
-     return $ext;
-   }
-
+        $i = strrpos($str, ".");
+        if (!$i) {
+            return "";
+        }
+        $l = strlen($str) - $i;
+        $ext = substr($str, $i + 1, $l);
+        return $ext;
+    }
 
     /**
      * Dummy startup wizard function
@@ -925,7 +918,6 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/faq');
     }
 
-
     /**
      * Dummy billing function
      * Cloned from toolsNdocs method
@@ -972,8 +964,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/password_change');
     }
-	
-	
+
     /**
      * Dummy pricing function
      * Cloned from toolsNdocs method
@@ -1169,7 +1160,7 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-        
+
         if ($userid == NULL) {
             $subdomain = Configure::read('Domain.subdomain');
             $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
@@ -1261,7 +1252,7 @@ class BusinessesController extends AppController {
      */
     public function search2($userid, $searchterm = null) {
         $this->layout = 'Business/business';
-		$authid = $this->Auth->user('id');
+        $authid = $this->Auth->user('id');
         $this->get_ads_info($userid, $authid);
 
         if ($searchterm === null) {
@@ -1477,13 +1468,50 @@ class BusinessesController extends AppController {
 
         if (!is_numeric($userid)) {
             $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*')));
+            $user = $this->User->find('first', array(
+                'contain' => false,
+                'conditions' => array(
+                    'User.seo_username' => $subdomain
+                ),
+                'fields' => array(
+                    '*'
+                )
+            ));
             $userid = $user['User']['id'];
         } else {
-            $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+            $user = $this->User->find('first', array(
+                'conditions' => array(
+                    'User.id' => $userid
+                ),
+                'fields' => array(
+                    '*'
+                )
+            ));
         }
 
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.featured' => 1), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $this->paginate = array(
+            'Game' => array(
+                'conditions' => array(
+                    'Game.active' => 1,
+                    'Game.user_id' => $userid,
+                    'Game.featured' => 1
+                ),
+                'contain' => array(
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount',
+                            'Gamestat.favcount',
+                            'Gamestat.channelclone',
+                            'Gamestat.potential'
+                        ),
+                    )
+                ),
+                'order' => array(
+                    'Gamestat.potential' => 'desc'
+                ),
+                'limit' => $PaginateLimit
+            )
+        );
         $cond = $this->paginate('Game');
 
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
@@ -1523,6 +1551,8 @@ class BusinessesController extends AppController {
      */
     public function toprated($userid) {
 
+        echo $featured;
+
         $this->layout = 'Business/business';
         $PaginateLimit = 12;
 
@@ -1543,7 +1573,27 @@ class BusinessesController extends AppController {
             $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         }
 
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $this->paginate = array(
+            'Game' => array(
+                'conditions' => array(
+                    'Game.active' => '1',
+                    'Game.user_id' => $userid
+                ),
+                'limit' => $PaginateLimit,
+                'order' => array(
+                    'Game.recommend' => 'desc'
+                ),
+                'contain' => array(
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount',
+                            'Gamestat.favcount',
+                            'Gamestat.channelclone'
+                        )
+                    )
+                )
+            )
+        );
         $cond = $this->paginate('Game');
 
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
@@ -1632,16 +1682,16 @@ class BusinessesController extends AppController {
                 )
             )
         );
-        
+
         if ($filter === 'mobiles') {
             $activefilter = 1;
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
-        }elseif($filter === 'featured'){
+        } elseif ($filter === 'featured') {
             $activefilter = 2;
             $this->paginate['Game']['conditions']['Game.featured'] = 1;
-		}else{
-			$activefilter = 0;
-		}
+        } else {
+            $activefilter = 0;
+        }
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
         $this->set('activefilter', $activefilter);
@@ -1723,7 +1773,7 @@ class BusinessesController extends AppController {
         if ($filter === 'mobiles') {
             $activefilter = 1;
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
-        }elseif ($filter === 'featured') {
+        } elseif ($filter === 'featured') {
             $activefilter = 2;
             $this->paginate['Game']['conditions']['Game.featured'] = 1;
         }

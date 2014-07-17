@@ -144,8 +144,8 @@ if (
         Router::connect('/games/high-rate/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'starsize', 'direction' => 'desc'));
         Router::connect('/games/low-rate', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'starsize', 'direction' => 'asc'));
         Router::connect('/games/low-rate/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'starsize', 'direction' => 'asc'));
-        Router::connect('/games/featured', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'recommend', 'direction' => 'desc'));
-        Router::connect('/games/featured/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'recommend', 'direction' => 'desc'));
+        Router::connect('/games/featured', array('controller' => 'businesses', 'action' => 'featured', 'sort' => 'potential', 'direction' => 'desc'));
+        Router::connect('/games/featured/*', array('controller' => 'businesses', 'action' => 'featured', 'sort' => 'potential', 'direction' => 'desc'));
         Router::connect('/following/:seo_url', array('controller' => 'businesses', 'action' => 'play'), array('seo_url' => '[-a-z0-9]+', 'pass' => array('seo_url')));
     }
     Configure::write('Domain.type', 'subdomain');
