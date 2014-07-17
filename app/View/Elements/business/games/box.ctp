@@ -1,6 +1,10 @@
 <?php
 $counter = 0;
-$mygames = $this->Html->url(array("controller" => 'businesses', "action" => 'mygames'));
+if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+    $mygames = $this->Html->url('http://' . $pure_domain . '/mygames');
+} else {
+    $mygames = $this->Html->url(array("controller" => 'businesses', "action" => 'mygames'));
+}
 foreach ($gamedata as $game):
     $playcount = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
     $favcount = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
