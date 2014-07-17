@@ -15,7 +15,7 @@ foreach ($games as $game) {
         $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
     }
     ?>
-    <div class="col-md-4" style="padding-bottom: 5px;" id="gamebox-<?php echo $id; ?>">
+    <div class="col-xs-12 col-sm-6 col-md-4" style="padding-bottom: 5px;" id="gamebox-<?php echo $id; ?>">
         <div class="panel panel-default">
             <a href="<?php echo $playurl ?>" target="_blank">
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'box_img_resize', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '720', 'height' => '110')); ?>
@@ -62,11 +62,11 @@ foreach ($games as $game) {
                         </a>
                     </div>
                     <div class="col-md-8">
-                       <h5><?php if ($game['User']['verify'] == 1) { ?>
-                            <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
-                        <?php } ?>
-                        <a href="<?php echo $userlink; ?>"><strong> <?php echo $game['User']['username']; ?></strong></a> 
-                        <br> <small>@ <?php echo $game['User']['seo_username']; ?></small></h5>
+                        <h5><?php if ($game['User']['verify'] == 1) { ?>
+                                <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
+                                <?php } ?>
+                            <a href="<?php echo $userlink; ?>"><strong> <?php echo $game['User']['username']; ?></strong></a> 
+                            <br> <small>@ <?php echo $game['User']['seo_username']; ?></small></h5>
                     </div>
                 </div>
             </div>
