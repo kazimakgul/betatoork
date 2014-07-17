@@ -73,7 +73,7 @@ if (isset($limit)):
         echo $div;
         ?>
         <div class="panel panel-default" style="background-color:silver;">
-            <?php if ($controls !== $user['User']['id']) { ?>
+            <?php if (isset($controls) && $controls !== $user['User']['id']) { ?>
                 <div class="imagehover">
                     <div class="panel-image">
                         <img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="panel-image-preview" alt="Metal Slug Brutal" onerror="imgError(this,&quot;toorksize&quot;);">

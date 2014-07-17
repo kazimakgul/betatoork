@@ -235,7 +235,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
      */
     function get_new_game(game_id)
     {
-        alert(game_id);
+        //alert(game_id);
         var box = $('#gamebox-' + game_id);
         var btn = $('#clone-' + game_id);
         //box.removeClass('#gamebox-' + game_id);
