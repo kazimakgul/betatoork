@@ -87,6 +87,7 @@ $(document).ready(function() {
                 category[i] = anyChecked[i].value;
             }
             var cat_arr = JSON.stringify(category);
+            //alert(cat_arr);
             $.post(link, {
                 attr: attr,
                 title: $('#title').val(),

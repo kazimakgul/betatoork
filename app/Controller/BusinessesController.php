@@ -128,8 +128,7 @@ class BusinessesController extends AppController {
                 for ($i = 0; $i <= count($cat_del) - 1; $i++) {
                     $this->User->Query('UPDATE adsettings SET ' . $cat_del[$i] . '="NULL" WHERE user_id=' . $user_id . ' AND ' . $cat_del[$i] . '=' . $this->request->data["ad_id"]);
                 }
-
-                if (count($category) > 0) {
+                if (!empty($category)) {
                     foreach ($category as $value) {
                         $filtered_data['Adsetting'][$value] = $this->request->data['ad_id'];
                         $id = $this->Adsetting->find('first', array('contain' => false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
