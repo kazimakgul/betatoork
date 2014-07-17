@@ -253,9 +253,42 @@ if ($user['User']['picture'] == null) {
     }
 
 
+    /**
+     *  New Channel for Wizard Method
+     *  @param No
+     *  @return No
+     *  Note:When user follow a channel on wizard,this function will put a new channel.
+     */
+    function get_new_channel(user_id)
+    {
+        alert(user_id);
+        var box = $('#channelbox-' + user_id);
+        var btn = $('#grid-follow-' + user_id);
+        //box.removeClass('#gamebox-' + game_id);
+
+        link = newstartupchannel;
+        $.post(link,
+                function(data) {
+
+                    if (data.rtdata.error) {
+                        //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
+                    } else {
+                        //alert(data.rtdata.game_name);
+                        box.attr('id', 'gamebox-' + data.rtdata.game_id);
+                        btn.attr('id', 'clone-' + data.rtdata.game_id);
+                        box.html(data.rtdata.html);
+                        $('#clone-' + data.rtdata.game_id).attr('onclick', data.rtdata.onclick);
+                    }
+
+                }, 'json');
+
+    }
+
+
 
     function subscribe2(channel_name, user_auth, id) {
         if (user_auth == 1) {
+            get_new_channel(id);
             var follow_count = 5;
             //-------
             follow++;

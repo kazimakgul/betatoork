@@ -675,7 +675,14 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/index');
     }
-
+    
+    /**
+     * Gets one new game for wizard
+     *
+     * @param  no
+     * @return json
+     * @author Ogi
+     */
     public function get_one_game() {
         Configure::write('debug', 0);
         $this->layout = 'ajax';
@@ -756,6 +763,62 @@ class BusinessesController extends AppController {
 
 
         $msg = array("game_name" => $onegame['Game']['name'], "game_id" => $onegame['Game']['id'], "onclick" => 'chaingame4("' . $onegame['Game']['name'] . '", user_auth,' . $onegame['Game']['id'] . ');', 'html' => $htmlcode, 'result' => 1);
+        $this->set('rtdata', $msg);
+        $this->set('_serialize', array('rtdata'));
+    }
+
+
+    /**
+     * Gets one new channels for wizard
+     *
+     * @param  no
+     * @return json
+     * @author Ogi
+     */
+    public function get_one_channel() {
+        Configure::write('debug', 0);
+        $this->layout = 'ajax';
+
+        $onechannel = $this->User->find('first', array(
+            'conditions' => array('User.active' => '1', 'User.verify !=' => 0), 
+            'limit' => $limit,'order' => 'rand()'));
+
+
+        if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+            $playurl = 'http://' . $onegame['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['seo_url']);
+        } else {
+            $playurl = 'http://' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['id']);
+        }
+
+        /*
+        $clones = empty($onechannel['Gamestat']['channelclone']) ? 0 : $onechannel['Gamestat']['channelclone'];
+        $favorites = empty($onechannel['Gamestat']['favcount']) ? 0 : $onechannel['Gamestat']['favcount'];
+        $plays = empty($onechannel['Gamestat']['playcount']) ? 0 : $onechannel['Gamestat']['playcount'];
+        $rates = empty($onechannel['Game']['rate_count']) ? 0 : $onechannel['Game']['rate_count'];
+        */
+
+        /*
+        //$this->set('game',$onegame);
+        $basename = $onechannel['Game']['picture'];
+        $noextension = rtrim($basename, '.' . $this->getExtension($basename));
+        $yesextension = $noextension . '_original.' . $this->getExtension($basename);
+        $target_image = $yesextension;
+        */
+
+
+
+        //$image_url = Configure::read('S3.url') . '/upload/games/' . $onechannel['Game']['id'] . '/' . $target_image;
+
+        $htmlcode = '<div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize" 
+        class="box_img_resize" alt="' . $onegame['Game']['name'] . '" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
+        style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong> 
+        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div> 
+        <div class="text-center"> <i class="fa fa-plus-square "> ' . $clones . ' Clones</i> | <i class="fa fa-heart"> ' . $favorites . ' Favorites</i> | <i class="fa fa-play"> ' . $plays . ' Plays</i></div> </small> 
+        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-' . $onegame['Game']['id'] . '" 
+        class="btn btn-success"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
+
+
+        $msg = array("game_name" => $onechannel['Game']['name'], "game_id" => $onechannel['Game']['id'], "onclick" => 'chaingame4("' . $onechannel['Game']['name'] . '", user_auth,' . $onechannel['Game']['id'] . ');', 'html' => $htmlcode, 'result' => 1);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }

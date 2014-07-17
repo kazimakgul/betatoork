@@ -38,6 +38,7 @@
 	        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 	        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
 	        newstartupgame ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'get_one_game')); ?>';
+	        newstartupchannel ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'get_one_channel')); ?>';
 
 	        <?php if ($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") { ?>
 	        	mysite			= "<?php echo $this->Html->url('http://'.$seo_username.'.'.$pure_domain); ?>";
