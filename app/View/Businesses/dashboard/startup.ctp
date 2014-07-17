@@ -8,7 +8,7 @@ if ($user['User']['picture'] == null) {
 }
 
 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-    $gochannel = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+    $gochannel = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $pure_domain);
 } else {
     $gochannel = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
 }
