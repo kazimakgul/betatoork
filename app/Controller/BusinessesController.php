@@ -23,11 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-<<<<<<< HEAD
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads'))) {
-=======
         if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData','social_management','faq','edit_ads','password_change','updateData'))) {
->>>>>>> origin/master
 
             return true;
         }
@@ -750,21 +746,12 @@ class BusinessesController extends AppController {
 
         $image_url = Configure::read('S3.url') . '/upload/games/' . $onegame['Game']['id'] . '/' . $target_image;
 
-<<<<<<< HEAD
         $htmlcode = '<div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize" 
         class="box_img_resize" alt="' . $onegame['Game']['name'] . '" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
         style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong> 
         </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div> 
         <div class="text-center"> <i class="fa fa-plus-square "> ' . $clones . ' Clones</i> | <i class="fa fa-heart"> ' . $favorites . ' Favorites</i> | <i class="fa fa-play"> ' . $plays . ' Plays</i></div> </small> 
         <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-' . $onegame['Game']['id'] . '" 
-=======
-        $htmlcode='<a onclick="get_new_game('.$onegame['Game']['id'].');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></a><div class="panel panel-default"><a href="'.$playurl.'" target="_blank"> <img src="'.$image_url.'" style="toorksize" 
-        class="box_img_resize" alt="'.$onegame['Game']['name'].'" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
-        style="padding-top:0px;"> <a href="'.$playurl.'"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>'.$onegame['Game']['name'].'</strong> 
-        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.$rates.' Rates">'.$starvar.'</div> 
-        <div class="text-center"> <i class="fa fa-plus-square "> '.$clones.' Clones</i> | <i class="fa fa-heart"> '.$favorites.' Favorites</i> | <i class="fa fa-play"> '.$plays.' Plays</i></div> </small> 
-        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-'.$onegame['Game']['id'].'" 
->>>>>>> origin/master
         class="btn btn-success"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
 
 
