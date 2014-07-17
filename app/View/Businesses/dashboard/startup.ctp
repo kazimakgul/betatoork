@@ -248,8 +248,8 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                         alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
                     } else {
                         alert(data.rtdata.game_name);
-                        box.attr('id', '#gamebox-' + data.rtdata.game_id);
-                        btn.attr('id', '#clone-' + data.rtdata.game_id);
+                        box.attr('id', 'gamebox-' + data.rtdata.game_id);
+                        btn.attr('id', 'clone-' + data.rtdata.game_id);
                         box.html(data.rtdata.html);
                         $('#clone-' + data.rtdata.game_id).attr('onclick', data.rtdata.onclick);
                     }
