@@ -262,22 +262,22 @@ if ($user['User']['picture'] == null) {
     function get_new_channel(user_id)
     {
         alert(user_id);
-        var box = $('#channelbox-' + user_id);
-        var btn = $('#grid-follow-' + user_id);
+        //var box = $('#channelbox-' + user_id);
+        //var btn = $('#grid-follow-' + user_id);
         //box.removeClass('#gamebox-' + game_id);
 
-        link = newstartupchannel;
+        link = newstartupchannel;alert(link);
         $.post(link,
                 function(data) {
 
                     if (data.rtdata.error) {
                         //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
                     } else {
-                        //alert(data.rtdata.game_name);
-                        box.attr('id', 'gamebox-' + data.rtdata.game_id);
-                        btn.attr('id', 'clone-' + data.rtdata.game_id);
-                        box.html(data.rtdata.html);
-                        $('#clone-' + data.rtdata.game_id).attr('onclick', data.rtdata.onclick);
+                        alert(data.rtdata.channel_name);
+                        //box.attr('id', 'channelbox-' + data.rtdata.channel_id);
+                        //btn.attr('id', 'grid-follow-' + data.rtdata.channel_id);
+                        //box.html(data.rtdata.html);
+                        //$('#grid-follow-' + data.rtdata.channel_id).attr('onclick', data.rtdata.onclick);
                     }
 
                 }, 'json');
