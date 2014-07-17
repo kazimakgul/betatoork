@@ -27,6 +27,7 @@
                 <div class="panel-body" style="padding-top:0px;">
                     <a href="<?php echo $playurl ?>"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong><?php echo $name ?></strong> </h4></a>
                     <small>
+                        
                         <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo $rates; ?> Rates">
                             <?php
                             $star = round($game['Game']['starsize'] / 20);
@@ -40,7 +41,9 @@
                                 }
                             }
                             ?>
-                        </div>			                <div class="text-center">
+                        </div>			                
+
+                        <div class="text-center">
                             <i class="fa fa-plus-square "> <?php echo $clones ?> Clones</i> | 
                             <i class="fa fa-heart"> <?php echo $favorites ?> Favorites</i> | 
                             <i class="fa fa-play"> <?php echo $plays ?> Plays</i></div>

@@ -733,19 +733,34 @@ class BusinessesController extends AppController {
         $yesextension=$noextension.'_original.'.$this->getExtension($basename);
         $target_image=$yesextension;
 
+        $starvar=null;
+        //generate starsize
+        $star = round($onegame['Game']['starsize'] / 20);
+        for ($i = 1; $i <= $star; $i++) {
+        $starvar.='<i class="fa fa-star fa-2x"></i>';
+        }
+        $freestar = 5 - $star;
+        if ($freestar > 0) {
+            
+            for ($i = 1; $i <= $freestar; $i++) {
+            $starvar.='<i class="fa fa-star-o fa-2x"></i>';
+            }
+
+        }
+
+
         $image_url=Configure::read('S3.url').'/upload/games/'.$onegame['Game']['id'].'/'.$target_image;
 
         $htmlcode='<div class="panel panel-default"><a href="'.$playurl.'" target="_blank"> <img src="'.$image_url.'" style="toorksize" 
         class="box_img_resize" alt="'.$onegame['Game']['name'].'" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
         style="padding-top:0px;"> <a href="'.$playurl.'"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>'.$onegame['Game']['name'].'</strong> 
-        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.$rates.' Rates"> 
-        <i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i><i class="fa fa-star-o fa-2x"></i> </div> 
+        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.$rates.' Rates">'.$starvar.'</div> 
         <div class="text-center"> <i class="fa fa-plus-square "> '.$clones.' Clones</i> | <i class="fa fa-heart"> '.$favorites.' Favorites</i> | <i class="fa fa-play"> '.$plays.' Plays</i></div> </small> 
         <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-'.$onegame['Game']['id'].'" 
         class="btn btn-success"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
 
 
-         $msg = array("game_name" => $playurl,"game_id" => $onegame['Game']['id'],"onclick" => 'chaingame4("'.$onegame['Game']['name'].'", user_auth,'.$onegame['Game']['id'].');','html' => $htmlcode, 'result' => 1);
+         $msg = array("game_name" => $onegame['Game']['name'],"game_id" => $onegame['Game']['id'],"onclick" => 'chaingame4("'.$onegame['Game']['name'].'", user_auth,'.$onegame['Game']['id'].');','html' => $htmlcode, 'result' => 1);
          $this->set('rtdata', $msg);
          $this->set('_serialize', array('rtdata'));
 
