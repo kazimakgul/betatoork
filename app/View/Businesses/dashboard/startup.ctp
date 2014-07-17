@@ -6,12 +6,6 @@ if ($user['User']['picture'] == null) {
 } else {
     $img = $this->Upload->image($user, 'User.picture', array(), array('class' => 'img-responsive img-circle circular1', 'onerror' => 'imgError(this,"avatar");'));
 }
-if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-    $gochannel = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $pure_domain);
-} else {
-    $gochannel = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
-}
-echo $gochannel;
 ?>
 <style>
     #content{

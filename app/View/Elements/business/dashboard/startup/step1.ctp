@@ -1,14 +1,4 @@
 <div class="step active animated fadeInRightStep">
-    <!--
-     <div class="form-group">
-         <label>Custom Domain: </label>
-         <span class="help" data-toggle="tooltip" title="Map your own domain to your channel.">
-             <i class="fa fa-question-circle"></i>
-         </span>
-         <a href="<?php echo $gochannel; ?>" target="_blank" class="btn btn-default"> http://<?php echo $user['User']['seo_username']; ?>.clone.gs </a>
-         <a class="btn btn-default" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain </a>
-     </div>
-    -->
     <!--Channel Cover Avatar Begins -->
     <div id='background_area' style="background-size:contain; background-position:center; background-image: url('<?php echo Configure::read('S3.url') . '/upload/users/' . $user['User']['id'] . '/' . $user['User']['bg_image']; ?>'); background-color:<?php echo $user['User']['bg_color']; ?>; height: 203px" class="well col-md-12">
         <?php if ($user['User']['banner'] == null) { ?>
