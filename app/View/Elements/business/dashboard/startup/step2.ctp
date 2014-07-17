@@ -18,7 +18,7 @@
         }
         ?>
         <div class="col-md-4" style="height:312px;" id="gamebox-<?php echo $id; ?>">
-            <div style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></div>
+            <a onclick='get_new_game(<?php echo $id; ?>);' style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></a>
             <div class="panel panel-default">
                 <!--<a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/168/toork_Kamikaze_Pigs_toorksize.png)" class="panel-heading">
                 </div></a>-->
