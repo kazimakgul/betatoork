@@ -125,9 +125,9 @@ class BusinessesController extends AppController {
                 $category = json_decode($this->request->data['category'], true);
                 $cat_del = array('home_banner_top', 'home_banner_middle', 'home_banner_bottom', 'game_banner_top', 'game_banner_bottom');
                 //Düzenlenicek
-                for ($i = 0; $i <= count($cat_del) - 1; $i++) {
+                /*for ($i = 0; $i <= count($cat_del) - 1; $i++) {
                     $this->User->Query('UPDATE adsettings SET ' . $cat_del[$i] . '="NULL" WHERE user_id=' . $user_id . ' AND ' . $cat_del[$i] . '=' . $this->request->data["ad_id"]);
-                }
+                }*/
                 if (!empty($category)) {
                     foreach ($category as $value) {
                         $filtered_data['Adsetting'][$value] = $this->request->data['ad_id'];
