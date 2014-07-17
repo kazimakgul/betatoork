@@ -753,7 +753,7 @@ class BusinessesController extends AppController {
 
         $image_url = Configure::read('S3.url') . '/upload/games/' . $onegame['Game']['id'] . '/' . $target_image;
 
-        $htmlcode = '<div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize" 
+        $htmlcode = '<a onclick="get_new_game('.$onegame['Game']['id'].');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></a><div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize" 
         class="box_img_resize" alt="' . $onegame['Game']['name'] . '" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
         style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong> 
         </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div> 
