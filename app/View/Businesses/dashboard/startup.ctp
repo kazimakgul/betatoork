@@ -154,7 +154,7 @@ if ($user['User']['picture'] == null) {
                 {
 
                     var process=$('#process').val();
-                    if(process==1)
+                    if(process==0)
                     {
                         alert('Please wait');
                     }    
