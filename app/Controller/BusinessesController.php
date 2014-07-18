@@ -661,8 +661,6 @@ class BusinessesController extends AppController {
         if ($this->Cookie->read('tutorial')) {
             echo '<script>location.href="dashboard/welcome"</script>';
         }
-
-
         $this->sideBar();
 
 
@@ -1843,7 +1841,6 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Favorite' => array(
                 'conditions' => array(
-                    'Favorite.active' => 1,
                     'Favorite.user_id' => $userid
                 ),
                 'limit' => $limit,
@@ -1860,8 +1857,7 @@ class BusinessesController extends AppController {
                             'Game.starsize',
                             'Game.embed',
                             'Game.rate_count'
-                        )
-                    ),
+                        ),
                         'User' => array(
                             'fields' => array(
                                 'User.username',
@@ -1879,6 +1875,7 @@ class BusinessesController extends AppController {
                                 'Gamestat.potential'
                             )
                         )
+                    )
                 )
             )
         );
@@ -1903,13 +1900,10 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Favorite' => array(
                 'conditions' => array(
-                    'Favorite.active' => 1,
                     'Favorite.user_id' => $userid,
                     'OR' => array(
                         'Game.description LIKE' => '%' . $query . '%',
-                        'Game.name LIKE' => '%' . $query . '%',
-                        'User.username LIKE' => '%' . $query . '%',
-                        'User.screenname LIKE' => '%' . $query . '%'
+                        'Game.name LIKE' => '%' . $query . '%'
                     )
                 ),
                 'limit' => $limit,
@@ -1925,15 +1919,15 @@ class BusinessesController extends AppController {
                             'Game.picture',
                             'Game.starsize',
                             'Game.embed'
-                        )
-                    ),
-                        'User' => array(
-                            'fields' => array(
-                                'User.username',
-                                'User.seo_username',
-                                'User.id'
-                            )
-                        )
+                        ),
+                        'User'=>array('fields'=>array(
+								'User.id',
+								'User.username',
+								'User.screenname',
+								'User.seo_username'
+								)
+							)
+                   )
                 )
             )
         );

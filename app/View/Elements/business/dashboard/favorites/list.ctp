@@ -24,14 +24,14 @@
         if (!empty($games)) {
             foreach ($games as $game) {
                 $name = $game['Game']['name'];
-                $owner = empty($game['User']['username']) ? FALSE : $game['User']['username'];
-                $clones = empty($game['Gamestat']['channelclone']) ? 0 : $game['Gamestat']['channelclone'];
-                $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
-                $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
+                $owner = empty($game['Game']['User']['username']) ? FALSE : $game['Game']['User']['username'];
+                $clones = empty($game['Game']['Gamestat']['channelclone']) ? 0 : $game['Game']['Gamestat']['channelclone'];
+                $favorites = empty($game['Game']['Gamestat']['favcount']) ? 0 : $game['Game']['Gamestat']['favcount'];
+                $plays = empty($game['Game']['Gamestat']['playcount']) ? 0 : $game['Game']['Gamestat']['playcount'];
                 $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
-                $userurl = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
+                $userurl = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['Game']['User']['id'])));
                 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-                    $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
+                    $playurl = $this->Html->url('http://' . $game['Game']['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
                 } else {
                     $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
                 }
