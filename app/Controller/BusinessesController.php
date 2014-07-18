@@ -805,6 +805,11 @@ class BusinessesController extends AppController {
                 )
             )
         );
+        
+        $follower = empty($onechannel['Userstat']['subscribe']) ? 0 : $onechannel['Userstat']['subscribe'];
+        $following = empty($onechannel['Userstat']['subscribeto']) ? 0 : $onechannel['Userstat']['subscribeto'];
+        $gamecount = empty($onechannel['Userstat']['uploadcount']) ? 0 : $onechannel['Userstat']['uploadcount'];
+
 
         $basename = $onechannel['User']['picture'];
         $noextension = rtrim($basename, '.' . $this->getExtension($basename));
@@ -825,9 +830,9 @@ class BusinessesController extends AppController {
         style="margin-top:-40px; width:80px; height:80px;"> </a> <div class="panel-body"> <div style="margin-top:-10px;" class="text-center"> 
         <!-- Follow button --> <a id="grid-follow-7" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
         <!-- Follow button end --> </div> <h4> <span class="help" data-toggle="tooltip" data-placement="top" title="" 
-        data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>Socialesman</strong> <br> 
-        <small>@Socialesman</small> </h4> <span class="label label-success">10 Followers</span> <span class="label label-warning">29 Following</span> 
-        <span class="label label-danger">144 Games</span> </div> </div>';
+        data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>'.$onechannel['User']['username'].'</strong> <br> 
+        <small>'.$onechannel['User']['seo_username'].'</small> </h4> <span class="label label-success">'.$follower.' Followers</span> <span class="label label-warning">29 '.$following.'</span> 
+        <span class="label label-danger">'.$gamecount.' Games</span> </div> </div>';
     
 
         $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode , 'result' => 1);
