@@ -820,7 +820,7 @@ class BusinessesController extends AppController {
         $image_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $target_image;
 
 
-        $htmlcode = '<div style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" 
+        $htmlcode = '<div onclick="get_new_channel('.$onechannel['User']['id'].');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" 
         data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div> <div class="panel panel-default"> 
         <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; 
         background-image:url('.$cover_url.')" class="panel-heading"></div> 
