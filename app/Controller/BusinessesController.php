@@ -2422,7 +2422,8 @@ class BusinessesController extends AppController {
                         ),
                         'limit' => $pagination_limit,
                         'order' => array(
-                            'Game.id' => 'DESC'
+                            'Game.clone' => 'ASC',
+                            'Gamestat.potential' => 'DESC'
                         ),
                         'conditions' => array(
                             'Game.priority != ' => NULL,
