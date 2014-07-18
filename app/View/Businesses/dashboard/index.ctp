@@ -69,7 +69,8 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             <div class="container-fluid">
                 <hr class="">
                 <div class="row">
-                    <div class="col-md-4">
+                     <?php echo $this->element('business/dashboard/main') ?>
+                    <!--<div class="col-md-4">
                         <div class="panel panel-default">
                             <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/users/2/gamebackground7_toork_original.gif)" class="panel-heading">
                             </div>
@@ -248,7 +249,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
