@@ -806,20 +806,21 @@ class BusinessesController extends AppController {
             )
         );
 
-        $basename = $onechannel['User']['banner'];
+        $basename = $onechannel['User']['picture'];
         $noextension = rtrim($basename, '.' . $this->getExtension($basename));
         $yesextension = $noextension . '_original.' . $this->getExtension($basename);
         $target_image = $yesextension;
 
-        $image_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $target_image;
+        $cover_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $onechannel['User']['banner'];
+        $image_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $onechannel['User']['$target_image'];
 
 
         $htmlcode = '<div style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" 
         data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div> <div class="panel panel-default"> 
         <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; 
-        background-image:url('.$image_url.')" class="panel-heading"></div> 
+        background-image:url('.$cover_url.')" class="panel-heading"></div> 
         <a href="/clone/businesses/mysite/2"> 
-        <img src="https://s3.amazonaws.com/betatoorkpics/upload/users/2/569759-98f412ec-4cb5-11e3-9491-1affab8972a4_original.jpg" 
+        <img src="'.$image_url.'" 
         onerror="imgError(this,&quot;avatar&quot;);" alt="Socialesman" class="img-responsive center-block avatar img-thumbnail img-circle" 
         style="margin-top:-40px; width:80px; height:80px;"> </a> <div class="panel-body"> <div style="margin-top:-10px;" class="text-center"> 
         <!-- Follow button --> <a id="grid-follow-7" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
