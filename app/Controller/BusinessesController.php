@@ -785,8 +785,8 @@ class BusinessesController extends AppController {
 
         $image_url = Configure::read('S3.url') . '/upload/games/' . $onegame['Game']['id'] . '/' . $target_image;
 
-        $htmlcode = '<a onclick="get_new_game(' . $onegame['Game']['id'] . ');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></a><div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize" 
-        class="box_img_resize" alt="' . $onegame['Game']['name'] . '" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
+        $htmlcode = '<a onclick="get_new_game(' . $onegame['Game']['id'] . ');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></a><div style="min-height:297px" class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="min-height:129px;max-height:129px;" 
+        class="box_img_resize" alt="' . $onegame['Game']['name'] . '" onerror="imgError(this,&quot;toorksize&quot;);" > </a> <div class="panel-body" 
         style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong> 
         </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div> 
         <div class="text-center"> <i class="fa fa-plus-square "> ' . $clones . ' Clones</i> | <i class="fa fa-heart"> ' . $favorites . ' Favorites</i> | <i class="fa fa-play"> ' . $plays . ' Plays</i></div> </small> 
@@ -853,7 +853,7 @@ class BusinessesController extends AppController {
 
         $htmlcode = '<div onclick="get_new_channel('.$onechannel['User']['id'].');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" 
         data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div> <div class="panel panel-default"> 
-        <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; 
+        <div style="min-height:81px;padding:40px; background-size:contain; background-position:center; background-size: 100%; 
         background-image:url('.$cover_url.')" class="panel-heading"></div> 
         <a href="/clone/businesses/mysite/2"> 
         <img src="'.$image_url.'" onerror="imgError(this,"avatar");" alt="'.$onechannel['User']['username'].'" class="img-responsive center-block avatar img-thumbnail img-circle" 
