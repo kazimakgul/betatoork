@@ -700,8 +700,8 @@ class BusinessesController extends AppController {
 		
 		$data = $this->User->query("SELECT  `User`.`id` ,  `User`.`username` ,  `User`.`seo_username` ,  `User`.`verify` ,  `User`.`picture` ,  `User`.`banner` ,  `Userstat`.`subscribe` ,  `Userstat`.`subscribeto` ,  `Userstat`.`uploadcount` 
 FROM  `users` AS  `User` 
-LEFT JOIN  `userstats` AS  `Userstat` ON (  `Userstat`.`user_id` =  `User`.`id` ) 
-LEFT JOIN  `activities` AS  `Activity` ON (  `Activity`.`channel_id` = `User`.`id` ) 
+INNER JOIN  `userstats` AS  `Userstat` ON (  `Userstat`.`user_id` =  `User`.`id` ) 
+INNER JOIN  `activities` AS  `Activity` ON (  `Activity`.`channel_id` = `User`.`id` ) 
 WHERE  `User`.`verify`=1 AND `Activity`.`type` =  9 OR `Activity`.`type` =  3
 GROUP BY `User`.id
 ORDER BY  `Activity`.`created` DESC 
