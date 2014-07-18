@@ -21,9 +21,9 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                 <input type="submit" />
             </form>
             <div class="pull-right hidden-xs" style="margin-top: -5px">
-                <a href="<?php echo $mygames; ?>" class="btn btn-warning"><i class="fa fa-gamepad"></i> Game Management</a>
-                <a href="<?php echo $ads_management; ?>" class="btn btn-info"><i class="fa fa-bar-chart-o"></i> Ads Management</a>
-                <a href="<?php echo $explorechannels; ?>" class="btn btn-danger"><i class="ion-person-add"></i> Explore Channels</a>
+                <a data-toggle="tooltip" data-placement="bottom" data-original-title="Game Management" href="<?php echo $mygames; ?>" class="btn btn-warning"><i class="fa fa-gamepad"></i></a>
+                <a data-toggle="tooltip" data-placement="bottom" data-original-title="Ads Management" href="<?php echo $ads_management; ?>" class="btn btn-info"><i class="fa fa-bar-chart-o"></i></a>
+                <a data-toggle="tooltip" data-placement="bottom" data-original-title="Explore Channels" href="<?php echo $explorechannels; ?>" class="btn btn-danger"><i class="ion-person-add"></i></a>
             </div>
             <!--
             <div class="period-select hidden-xs">
