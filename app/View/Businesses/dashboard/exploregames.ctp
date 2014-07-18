@@ -67,20 +67,9 @@ if (isset($query)) {
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="row users-grid">
-            <?php echo $this->element('business/dashboard/exploregames/grid') ?>
-
-                    <div class="text-center">
-                        <?php echo $this->element('business/components/pagination') ?>
-                    </div>
-                </div>
-            <div class="row users-list">
-            <?php echo $this->element('business/dashboard/exploregames/list') ?>
-                <div class="text-center">
-            <?php echo $this->element('business/components/pagination') ?>
-                </div>
+                <?php echo $this->element('business/dashboard/exploregames/grid') ?>
+                <?php echo $this->element('business/dashboard/exploregames/list') ?>
             </div>
-           </div>
         </div>
     </div>
 </div>

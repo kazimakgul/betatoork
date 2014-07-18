@@ -308,7 +308,7 @@ if ($user['User']['picture'] == null) {
             }             //-------
 
 
-            switch_subscribe(id);
+            switch_subscribe(id)
 
         }
     }

@@ -805,6 +805,11 @@ class BusinessesController extends AppController {
                 )
             )
         );
+        
+        $follower = empty($onechannel['Userstat']['subscribe']) ? 0 : $onechannel['Userstat']['subscribe'];
+        $following = empty($onechannel['Userstat']['subscribeto']) ? 0 : $onechannel['Userstat']['subscribeto'];
+        $gamecount = empty($onechannel['Userstat']['uploadcount']) ? 0 : $onechannel['Userstat']['uploadcount'];
+
 
         $basename = $onechannel['User']['picture'];
         $noextension = rtrim($basename, '.' . $this->getExtension($basename));
@@ -812,7 +817,7 @@ class BusinessesController extends AppController {
         $target_image = $yesextension;
 
         $cover_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $onechannel['User']['banner'];
-        $image_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $onechannel['User']['$target_image'];
+        $image_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $target_image;
 
 
         $htmlcode = '<div style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" 
@@ -820,17 +825,16 @@ class BusinessesController extends AppController {
         <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; 
         background-image:url('.$cover_url.')" class="panel-heading"></div> 
         <a href="/clone/businesses/mysite/2"> 
-        <img src="'.$image_url.'" 
-        onerror="imgError(this,&quot;avatar&quot;);" alt="Socialesman" class="img-responsive center-block avatar img-thumbnail img-circle" 
+        <img src="'.$image_url.'" onerror="imgError(this,"avatar");" alt="'.$onechannel['User']['username'].'" class="img-responsive center-block avatar img-thumbnail img-circle" 
         style="margin-top:-40px; width:80px; height:80px;"> </a> <div class="panel-body"> <div style="margin-top:-10px;" class="text-center"> 
         <!-- Follow button --> <a id="grid-follow-7" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
         <!-- Follow button end --> </div> <h4> <span class="help" data-toggle="tooltip" data-placement="top" title="" 
-        data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>Socialesman</strong> <br> 
-        <small>@Socialesman</small> </h4> <span class="label label-success">10 Followers</span> <span class="label label-warning">29 Following</span> 
-        <span class="label label-danger">144 Games</span> </div> </div>';
+        data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>'.$onechannel['User']['username'].'</strong> <br> 
+        <small>@'.$onechannel['User']['seo_username'].'</small> </h4> <span class="label label-success">'.$follower .' Followers</span> <span class="label label-warning">'.$following.' Following</span> 
+        <span class="label label-danger">'.$gamecount.' Games</span> </div> </div>';
     
 
-        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode , 'result' => 1);
+        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode ,"onclick" => 'subscribe2("' . $onechannel['User']['name'] . '", user_auth,' . $onechannel['User']['id'] . ');', 'result' => 1);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }

@@ -68,18 +68,8 @@ if (isset($query)) {
                     </div>
                 </div>
             </div>
-            <div class="row users-grid">
-                <?php echo $this->element('business/dashboard/mygames/grid') ?>
-                <div class="text-center">
-                    <?php echo $this->element('business/components/pagination') ?>
-                </div>
-            </div>
-            <div class="row users-list">
-                <?php echo $this->element('business/dashboard/mygames/list') ?>
-                <div class="text-center">
-                    <?php echo $this->element('business/components/pagination') ?>
-                </div>
-            </div>
+            <?php echo $this->element('business/dashboard/mygames/grid') ?>
+            <?php echo $this->element('business/dashboard/mygames/list') ?>
         </div>
     </div>
 </div>
