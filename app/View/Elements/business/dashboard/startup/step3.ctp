@@ -36,12 +36,14 @@
                 </a>
                 <div class="panel-body">
                     <div style="margin-top:-10px;" class="text-center">
-                        <!-- Follow button -->
+                        <!-- UnFollow button -->
                         <a id="grid-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
                                                         switchunfollow(<?php echo $userid; ?>);">
                             <i class="fa fa-minus-circle"></i>
                             Unfollow
                         </a>
+                        <!--  UnFollow button end -->
+                         <!-- Follow button -->
                         <a id="grid-follow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribe2('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
                                                         switchfollow(<?php echo $userid; ?>);">
                             <i class="fa fa-plus-circle"></i>
