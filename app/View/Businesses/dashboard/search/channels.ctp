@@ -4,6 +4,7 @@ $game_add = $this->Html->url(array("controller" => "businesses", "action" => "ga
 $exp_channel = $this->Html->url(array("controller" => "businesses", "action" => "explorechannels"));
 $params = $this->Paginator->params();
 $allgames = $params['count'];
+$search_action = $this->Html->url(array('controller' => 'businesses', 'action' => 'main_search', 'channels'));
 ?>
 <body id="users">
 <div id="wrapper">
@@ -20,21 +21,30 @@ $allgames = $params['count'];
             </div>
             <form class="search hidden-xs" action="<?php echo $search_action ?>">
                 <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search channels, users..." />
+                <input type="text" name="q" placeholder="Search channels, users..." value="<?php echo $query; ?>" />
                 <input type="submit" />
             </form>
-            <!--
-            <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">
-                <span>Add Game</span>
-            </a>
-            -->
         </div>
         <div class="content-wrapper">
             <div class="row page-controls">
                 <div class="col-md-12 filters">
                     <label>Filter Search:</label>
-                    <a href="#" class="active">Games</a>
-                    <a href="#">Channels</a>
+                    <?php
+                    switch ($active_filter) {
+                        case 'games':
+                            ?>
+                            <a href="javascript:;" class="active">Games</a>
+                            <a href="<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'main_search', 'channels')) . '?q=' . $query; ?>">Channels</a>
+                            <?php
+                            break;
+                        case 'channels':
+                            ?>
+                            <a href="<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'main_search', 'games')) . '?q=' . $query; ?>">Games</a>
+                            <a href="javascript:;"  class="active">Channels</a>
+                            <?php
+                            break;
+                    }
+                    ?>
                     <div class="show-options">
                         <div class="dropdown">
                             <a class="button" data-toggle="dropdown" href="#">

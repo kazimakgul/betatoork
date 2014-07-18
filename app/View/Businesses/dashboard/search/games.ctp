@@ -16,6 +16,7 @@ if (isset($query)) {
     $all = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames'));
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'mobiles'));
 }
+$search_action = $this->Html->url(array('controller' => 'businesses', 'action' => 'main_search', 'games'));
 ?>
 <body id="users">
 <div id="wrapper">
@@ -32,7 +33,7 @@ if (isset($query)) {
             </div>
             <form class="search hidden-xs" action="<?php echo $search_action; ?>">
                 <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search games..." />
+                <input type="text" name="q" placeholder="Search games..." value="<?php echo $query; ?>" />
                 <input type="submit" />
             </form>
             <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">
@@ -43,8 +44,22 @@ if (isset($query)) {
             <div class="row page-controls">
                 <div class="col-md-12 filters">
                     <label>Filter Search:</label>
-                    <a href="#" class="active">Games</a>
-                    <a href="#">Channels</a>
+                    <?php
+                    switch ($active_filter) {
+                        case 'games':
+                            ?>
+                            <a href="javascript:;" class="active">Games</a>
+                            <a href="<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'main_search', 'channels')) . '?q=' . $query; ?>">Channels</a>
+                            <?php
+                            break;
+                        case 'channels':
+                            ?>
+                            <a href="<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'main_search', 'games')) . '?q=' . $query; ?>">Games</a>
+                            <a href="javascript:;"  class="active">Channels</a>
+                            <?php
+                            break;
+                    }
+                    ?>
                     <div class="show-options">
                         <div class="dropdown">
                             <a class="button" data-toggle="dropdown" href="#">
