@@ -3031,6 +3031,7 @@ body {
     color: #fff;
     padding: 0 20px;
     height: 63px;
+    margin-bottom:20px;
    }
     #sidebar-default .current-user .name {
       color: #F0F5FA;
