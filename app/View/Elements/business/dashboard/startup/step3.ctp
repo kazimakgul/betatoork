@@ -28,7 +28,7 @@
         }
         ?>
         <div class="col-md-4" id="channelbox-<?php echo $userid; ?>">
-                        <div style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div>
+                        <div onclick='get_new_channel(<?php echo $userid; ?>);' style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div>
             <div class="panel panel-default">
                 <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; background-image:url(<?php echo $cover; ?>)" class="panel-heading"></div>
                 <a href="<?php echo $userlink; ?>">
@@ -36,12 +36,14 @@
                 </a>
                 <div class="panel-body">
                     <div style="margin-top:-10px;" class="text-center">
-                        <!-- Follow button -->
+                        <!-- UnFollow button -->
                         <a id="grid-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
                                                         switchunfollow(<?php echo $userid; ?>);">
                             <i class="fa fa-minus-circle"></i>
                             Unfollow
                         </a>
+                        <!--  UnFollow button end -->
+                         <!-- Follow button -->
                         <a id="grid-follow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribe2('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
                                                         switchfollow(<?php echo $userid; ?>);">
                             <i class="fa fa-plus-circle"></i>

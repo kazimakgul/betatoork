@@ -22,8 +22,8 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             </form>
             <div class="pull-right hidden-xs" style="margin-top: -5px">
                 <a href="<?php echo $mygames; ?>" class="btn btn-warning"><i class="fa fa-gamepad"></i> Game Management</a>
-                <a href="<?php echo $ads_management; ?>" class="btn btn-danger"><i class="fa fa-bar-chart-o"></i> Ads Management</a>
-                <a href="<?php echo $explorechannels; ?>" class="btn btn-info"><i class="ion-person-add"></i> Explore Channels</a>
+                <a href="<?php echo $ads_management; ?>" class="btn btn-info"><i class="fa fa-bar-chart-o"></i> Ads Management</a>
+                <a href="<?php echo $explorechannels; ?>" class="btn btn-danger"><i class="ion-person-add"></i> Explore Channels</a>
             </div>
             <!--
             <div class="period-select hidden-xs">
@@ -50,20 +50,20 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
         <div class="content-wrapper">
             <div class="metrics clearfix">
                 <div class="metric">
-                    <span class="field">Total Reputation</span>
-                    <span class="data">$<?php echo $stat['Userstat']['potential'] / 100; ?></span>
+                    <span class="field">Channel Worth</span>
+                    <span class="data"><i class="fa fa-usd"></i> <?php echo round(($stat['Userstat']['potential'] / 200),2); ?></span>
                 </div>
                 <div class="metric">
                     <span class="field">Total Followers</span>
-                    <span class="data"><?php echo $stat['Userstat']['subscribeto']; ?></span>
+                    <span class="data"><i class="ion-person-add"></i> <?php echo $stat['Userstat']['subscribeto']; ?></span>
                 </div>
                 <div class="metric">
                     <span class="field">Game Clones</span>
-                    <span class="data"><?php echo $stat['Userstat']['uploadcount']; ?></span>
+                    <span class="data"><i class="fa fa-plus-circle"></i> <?php echo $stat['Userstat']['uploadcount']; ?></span>
                 </div>
                 <div class="metric">
                     <span class="field">Game Plays</span>
-                    <span class="data"><?php echo $stat['Userstat']['playcount']; ?></span>
+                    <span class="data"><i class="fa fa-play"></i> <?php echo $stat['Userstat']['playcount']; ?></span>
                 </div>
             </div>
             <div class="container-fluid">
