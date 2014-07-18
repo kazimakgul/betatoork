@@ -703,6 +703,7 @@ FROM  `betatoork`.`users` AS  `User`
 INNER JOIN  `betatoork`.`userstats` AS  `Userstat` ON (  `Userstat`.`user_id` =  `User`.`id` ) 
 INNER JOIN  `betatoork`.`activities` AS  `Activity` ON (  `Activity`.`channel_id` = `User`.`id` ) 
 WHERE  `User`.`verify`=1 AND `Activity`.`type` =  9 OR `Activity`.`type` =  3
+GROUP BY `User`.id
 ORDER BY  `Activity`.`created` DESC 
 LIMIT 6");
         $stat = $this->Userstat->find('first', array('contain' => false, 'conditions' => array('Userstat.user_id' => $userid)));
