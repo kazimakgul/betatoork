@@ -2420,7 +2420,7 @@ class BusinessesController extends AppController {
                                 'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
                             )
                         ),
-                        'limit' => $limit,
+                        'limit' => $pagination_limit,
                         'order' => array(
                             'Game.id' => 'DESC'
                         ),
