@@ -44,8 +44,8 @@ $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action'
         <div class="content-wrapper">
             <div class="metrics clearfix">
                 <div class="metric">
-                    <span class="field">Total Reputation</span>
-                    <span class="data">$<?php echo $stat['Userstat']['potential'] / 100; ?></span>
+                    <span class="field">Channel Worth</span>
+                    <span class="data"><i class="fa fa-usd"></i> <?php echo round(($stat['Userstat']['potential'] / 150),2); ?></span>
                 </div>
                 <div class="metric">
                     <span class="field">Total Followers</span>
