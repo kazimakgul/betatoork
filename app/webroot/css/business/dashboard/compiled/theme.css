@@ -3031,6 +3031,7 @@ body {
     color: #fff;
     padding: 0 20px;
     height: 63px;
+    margin-bottom:20px;
    }
     #sidebar-default .current-user .name {
       color: #F0F5FA;
@@ -3338,12 +3339,9 @@ body {
                 #sidebar-default .menu-section ul li > .submenu li > .submenu li a {
                   padding-left: 10px; } }
   #sidebar-default .bottom-menu {
-/*    position: fixed;
+	position: fixed;
     bottom: 0;
- */ 
- 	margin-bottom:20px;
- 	height:40px;
- 	width: 230px;
+	width: 230px;
     z-index: 999; }
     #sidebar-default .bottom-menu > ul {
       list-style-type: none;

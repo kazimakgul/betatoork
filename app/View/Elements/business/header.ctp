@@ -24,14 +24,6 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 ?>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
-        <!--
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        -->
         <a class="navbar-brand" rel="home" href="<?php echo $index ?>"><?php echo $user['User']['username'] ?>
             <?php if ($user['User']['verify'] == 1) { ?>
                 <span class="help" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Verified Channel"> <i style='color:#428bca;' class="fa fa-check-circle"></i></span>

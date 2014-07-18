@@ -42,8 +42,8 @@ if ($user['User']['picture'] == null) {
             <section class="form-wizard" style="width:63%">
                 <form id="welcome_form" method="post" action="#" role="form">
                     <?php echo $this->element('business/dashboard/startup/step1') ?>
-                    <?php echo $this->element('business/dashboard/startup/step2') ?>
                     <?php echo $this->element('business/dashboard/startup/step3') ?>
+                    <?php echo $this->element('business/dashboard/startup/step2') ?>
                     <?php echo $this->element('business/dashboard/startup/step4') ?>
                     <div style="clear: left;"></div>
                 </form>
@@ -262,9 +262,8 @@ if ($user['User']['picture'] == null) {
     function get_new_channel(user_id)
     {
         //alert(user_id);
-        //var box = $('#channelbox-' + user_id);
-        //var btn = $('#grid-follow-' + user_id);
-        //box.removeClass('#gamebox-' + game_id);
+        var box = $('#channelbox-' + user_id);
+        var btn = $('#grid-follow-' + user_id);
 
         link = newstartupchannel;alert(link);
         $.post(link,
@@ -273,11 +272,10 @@ if ($user['User']['picture'] == null) {
                     if (data.rtdata.error) {
                         //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
                     } else {
-                        alert(data.rtdata.channel_name);
-                        //box.attr('id', 'channelbox-' + data.rtdata.channel_id);
-                        //btn.attr('id', 'grid-follow-' + data.rtdata.channel_id);
-                        //box.html(data.rtdata.html);
-                        //$('#grid-follow-' + data.rtdata.channel_id).attr('onclick', data.rtdata.onclick);
+                        box.attr('id', 'channelbox-' + data.rtdata.channel_id);
+                        btn.attr('id', 'grid-follow-' + data.rtdata.channel_id);
+                        box.html(data.rtdata.html);
+                        $('#grid-follow-' + data.rtdata.channel_id).attr('onclick', data.rtdata.onclick);
                     }
 
                 }, 'json');
