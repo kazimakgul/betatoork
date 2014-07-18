@@ -780,9 +780,35 @@ class BusinessesController extends AppController {
         $this->layout = 'ajax';
 
 
+        $onechannel=$this->User->find('first',
+                array(
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.seo_username',
+                    'User.verify',
+                    'User.picture',
+                    'User.banner'
+                ),
+                'contain' => array(
+                    'Userstat' => array(
+                        'fields' => array(
+                            'Userstat.subscribe',
+                            'Userstat.subscribeto',
+                            'Userstat.uploadcount'
+                        )
+                    )
+                ),
+                'order' => 'rand()',
+                'conditions' => array(
+                    'User.verify' => 1
+                )
+            )
+        );
 
+    
 
-        $msg = array("channel_name" => 'naber', 'result' => 1);
+        $msg = array("channel_name" => $onechannel['User']['username'], 'result' => 1);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }
