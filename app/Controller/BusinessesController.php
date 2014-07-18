@@ -667,7 +667,7 @@ class BusinessesController extends AppController {
 
 
         $userid = $this->Session->read('Auth.User.id');
-        $limit = 12;
+        $limit = 6;
         $this->paginate = array(
             'User' => array(
                 'fields' => array(
