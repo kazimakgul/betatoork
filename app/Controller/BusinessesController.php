@@ -2043,7 +2043,9 @@ class BusinessesController extends AppController {
                     'Game.clone' => 0,
                     'OR' => array(
                         'Game.description LIKE' => '%' . $query . '%',
-                        'Game.name LIKE' => '%' . $query . '%'
+                        'Game.name LIKE' => '%' . $query . '%',
+                        'User.username LIKE' => '%' . $query . '%',
+                        'User.screenname LIKE' => '%' . $query . '%'
                     )
                 )
             )
