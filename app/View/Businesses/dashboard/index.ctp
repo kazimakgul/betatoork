@@ -2,6 +2,7 @@
 $ads_management = $this->Html->url(array('controller' => 'businesses', 'action' => 'ads_management'));
 $mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
 $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explorechannels'));
+$search_action = $this->Html->url(array('controller' => 'businesses', 'action' => 'main_search', 'games'));
 ?>
 <body id="dashboard">
 <div id="wrapper">
@@ -12,9 +13,14 @@ $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action'
                 <i class="ion-navicon"></i>
             </div>
             <div class="page-title">
-                <a style="margin-left:30px;">Dashboard</a>
+                <a href="javascript:;">Dashboard</a>
             </div>
-            <div class="pull-right hidden-xs">
+            <form class="search hidden-xs" action="<?php echo $search_action; ?>">
+                <i class="fa fa-search"></i>
+                <input type="text" name="q" placeholder="Search games..." />
+                <input type="submit" />
+            </form>
+            <div class="pull-right hidden-xs" style="margin-top: -5px">
                 <a href="<?php echo $mygames; ?>" class="btn btn-warning"><i class="fa fa-gamepad"></i> Game Management</a>
                 <a href="<?php echo $ads_management; ?>" class="btn btn-danger"><i class="fa fa-bar-chart-o"></i> Ads Management</a>
                 <a href="<?php echo $explorechannels; ?>" class="btn btn-info"><i class="ion-person-add"></i> Explore Channels</a>
