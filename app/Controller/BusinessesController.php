@@ -834,7 +834,7 @@ class BusinessesController extends AppController {
         <span class="label label-danger">'.$gamecount.' Games</span> </div> </div>';
     
 
-        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode ,"onclick" => 'subscribe2("' . $onechannel['User']['name'] . '", user_auth,' . $onechannel['User']['id'] . ');', 'result' => 1);
+        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode ,"onclick" => 'subscribe2("' . $onechannel['User']['username'] . '", user_auth,' . $onechannel['User']['id'] . ');switchfollow(' . $onechannel['User']['id'] . ');', 'result' => 1);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }

@@ -275,6 +275,7 @@ if ($user['User']['picture'] == null) {
                         box.attr('id', 'channelbox-' + data.rtdata.channel_id);
                         btn.attr('id', 'grid-follow-' + data.rtdata.channel_id);
                         box.html(data.rtdata.html);
+                        alert(data.rtdata.channel_id);
                         $('#grid-follow-' + data.rtdata.channel_id).attr('onclick', data.rtdata.onclick);
                     }
 
