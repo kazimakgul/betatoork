@@ -25,11 +25,9 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
         <a class="navbar-brand" rel="home" href="<?php echo $index ?>"><?php echo $user['User']['username'] ?>
-            <pre><?php
-			print_r($user['User']);
-            if ($user['User']['verify'] == 1) { ?>
+            <?php if ($user['User']['verify'] == 1) { ?>
                 <span class="help" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Verified Channel"> <i style='color:#428bca;' class="fa fa-check-circle"></i></span>
-            <?php } ?></pre>
+            <?php } ?>
         </a>       
     </div>
     <div class="collapse navbar-collapse">
