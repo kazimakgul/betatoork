@@ -42,8 +42,8 @@ if ($user['User']['picture'] == null) {
             <section class="form-wizard" style="width:63%">
                 <form id="welcome_form" method="post" action="#" role="form">
                     <?php echo $this->element('business/dashboard/startup/step1') ?>
-                    <?php echo $this->element('business/dashboard/startup/step3') ?>
                     <?php echo $this->element('business/dashboard/startup/step2') ?>
+                    <?php echo $this->element('business/dashboard/startup/step3') ?>
                     <?php echo $this->element('business/dashboard/startup/step4') ?>
                     <div style="clear: left;"></div>
                 </form>
