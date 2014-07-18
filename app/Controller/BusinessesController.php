@@ -1856,7 +1856,8 @@ class BusinessesController extends AppController {
                             'Game.starsize',
                             'Game.embed',
                             'Game.rate_count'
-                        ),
+                        )
+                    ),
                         'User' => array(
                             'fields' => array(
                                 'User.username',
@@ -1874,7 +1875,6 @@ class BusinessesController extends AppController {
                                 'Gamestat.potential'
                             )
                         )
-                    )
                 )
             )
         );
@@ -1903,7 +1903,9 @@ class BusinessesController extends AppController {
                     'Favorite.user_id' => $userid,
                     'OR' => array(
                         'Game.description LIKE' => '%' . $query . '%',
-                        'Game.name LIKE' => '%' . $query . '%'
+                        'Game.name LIKE' => '%' . $query . '%',
+                        'User.username LIKE' => '%' . $query . '%',
+                        'User.screenname LIKE' => '%' . $query . '%'
                     )
                 ),
                 'limit' => $limit,
@@ -1919,7 +1921,8 @@ class BusinessesController extends AppController {
                             'Game.picture',
                             'Game.starsize',
                             'Game.embed'
-                        ),
+                        )
+                    ),
                         'User' => array(
                             'fields' => array(
                                 'User.username',
@@ -1927,7 +1930,6 @@ class BusinessesController extends AppController {
                                 'User.id'
                             )
                         )
-                    )
                 )
             )
         );
