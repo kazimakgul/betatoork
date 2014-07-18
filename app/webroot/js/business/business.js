@@ -189,6 +189,36 @@ $(document).ready(function() {
         }, 'json');
 
     });
+
+
+//*********Forget Password Function********
+    $('#resetcredential').keypress(function(e) {
+        if (e.which == 13) {
+            $('#forget_pass').click();
+        }
+    });
+
+    $('#forget_pass').click(function() {
+        $.post(remotecheck, {dt: $('#resetcredential').val(), attr: 't_regbox_logemail'}, function(data) {
+            if (data.rtdata != null) {
+
+                $('#errormsg_Passwd').html(data.rtdata.msg);
+                $('#errormsg_Passwd').show();
+
+            }
+            else {
+                $.pnotify({
+                    title: 'Reset mail has been sent.',
+                    text: 'Please check your mail box.',
+                    type: 'success'
+                });
+            }
+        }, 'json');
+
+    });
+
+
+//*********/Forget Password Function********
     $('#t_gatekeeper_login_btn').click(function(e) {
         e.preventDefault();
         var btn = $(this);
@@ -268,35 +298,7 @@ $(document).ready(function() {
 
 //==========/Login Register Functions=============
 
-//*********Forget Password Function********
-    $('#resetcredential').keypress(function(e) {
-        if (e.which == 13) {
-            $('#forget_pass').click();
-        }
-    });
 
-    $('#forget_pass').click(function() {
-
-        $.post(remotecheck, {dt: $('#resetcredential').val(), attr: 't_regbox_logemail'}, function(data) {
-            if (data.rtdata != null) {
-
-                $('#errormsg_Passwd').html(data.rtdata.msg);
-                $('#errormsg_Passwd').show();
-
-            }
-            else {
-                $.pnotify({
-                    title: 'Reset mail has been sent.',
-                    text: 'Please check your mail box.',
-                    type: 'success'
-                });
-            }
-        }, 'json');
-
-    });
-
-
-//*********/Forget Password Function********
 
 
 //*********//Social Function********

@@ -201,7 +201,7 @@
 
     <div class="main"> 
 
-    <input type="text" class="form-control" placeholder="Username or Email" autofocus>
+    <input type="text" class="form-control" id="resetcredential" placeholder="Username or Email" autofocus>
 
     <span class="clearfix"></span>  
         <div id="errormsg_Passwd" style="display: none; color:red;"></div>  
@@ -215,7 +215,7 @@
             </div>
           </div>
         <div class="col-xs-6 col-md-6 pull-right">
-            <button type="submit" class="btn btn-large btn-primary pull-right">Submit</button>
+            <button type="button" id="forget_pass" class="btn btn-large btn-primary pull-right">Submit</button>
         </div>
     </div>
     
