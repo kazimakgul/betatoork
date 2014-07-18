@@ -812,7 +812,7 @@ class BusinessesController extends AppController {
         $target_image = $yesextension;
 
         $cover_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $onechannel['User']['banner'];
-        $image_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $onechannel['User']['$target_image'];
+        $image_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $target_image;
 
 
         $htmlcode = '<div style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" 
@@ -821,7 +821,7 @@ class BusinessesController extends AppController {
         background-image:url('.$cover_url.')" class="panel-heading"></div> 
         <a href="/clone/businesses/mysite/2"> 
         <img src="'.$image_url.'" 
-         alt="Socialesman" class="img-responsive center-block avatar img-thumbnail img-circle" 
+             alt="Socialesman" class="img-responsive center-block avatar img-thumbnail img-circle" 
         style="margin-top:-40px; width:80px; height:80px;"> </a> <div class="panel-body"> <div style="margin-top:-10px;" class="text-center"> 
         <!-- Follow button --> <a id="grid-follow-7" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
         <!-- Follow button end --> </div> <h4> <span class="help" data-toggle="tooltip" data-placement="top" title="" 
