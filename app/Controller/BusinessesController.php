@@ -827,14 +827,14 @@ class BusinessesController extends AppController {
         <a href="/clone/businesses/mysite/2"> 
         <img src="'.$image_url.'" onerror="imgError(this,"avatar");" alt="'.$onechannel['User']['username'].'" class="img-responsive center-block avatar img-thumbnail img-circle" 
         style="margin-top:-40px; width:80px; height:80px;"> </a> <div class="panel-body"> <div style="margin-top:-10px;" class="text-center"> 
-        <!-- Follow button --> <a id="grid-follow-7" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
+        <!-- Follow button --> <a id="grid-follow-'.$onechannel['User']['id'].'" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
         <!-- Follow button end --> </div> <h4> <span class="help" data-toggle="tooltip" data-placement="top" title="" 
         data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>'.$onechannel['User']['username'].'</strong> <br> 
         <small>@'.$onechannel['User']['seo_username'].'</small> </h4> <span class="label label-success">'.$follower .' Followers</span> <span class="label label-warning">'.$following.' Following</span> 
         <span class="label label-danger">'.$gamecount.' Games</span> </div> </div>';
     
 
-        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode ,"onclick" => 'subscribe2("' . $onechannel['User']['username'] . '", user_auth,' . $onechannel['User']['id'] . ');switchfollow(' . $onechannel['User']['id'] . ');', 'result' => 1);
+        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode ,"onclick" => 'subscribe2("' . $onechannel['User']['username'] . '", user_auth,'. $onechannel['User']['id'] .');switchfollow(' . $onechannel['User']['id'] . ');', 'result' => 1);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }
