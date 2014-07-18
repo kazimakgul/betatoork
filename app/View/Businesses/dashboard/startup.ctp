@@ -265,7 +265,7 @@ if ($user['User']['picture'] == null) {
         var box = $('#channelbox-' + user_id);
         var btn = $('#grid-follow-' + user_id);
 
-        link = newstartupchannel;alert(link);
+        link = newstartupchannel;
         $.post(link,
                 function(data) {
 
@@ -275,7 +275,7 @@ if ($user['User']['picture'] == null) {
                         box.attr('id', 'channelbox-' + data.rtdata.channel_id);
                         btn.attr('id', 'grid-follow-' + data.rtdata.channel_id);
                         box.html(data.rtdata.html);
-                        alert(data.rtdata.channel_id);
+                        //alert(data.rtdata.channel_id);
                         $('#grid-follow-' + data.rtdata.channel_id).attr('onclick', data.rtdata.onclick);
                     }
 
