@@ -1,7 +1,6 @@
 <?php
 if (!empty($games)) {
     $game_edit = $this->Html->url(array("controller" => "businesses", "action" => "game_edit"));
-
     foreach ($games as $game) {
         $name = $game['Game']['name'];
         $id = $game['Game']['id'];
@@ -9,7 +8,6 @@ if (!empty($games)) {
         $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
         $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
         $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
-
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
             $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
         } else {
@@ -18,15 +16,17 @@ if (!empty($games)) {
         ?>
         <div class="col-xs-12 col-sm-6 col-md-4" id="gamebox-<?php echo $id; ?>">
             <div class="panel panel-default">
-                <!--<a href="#"><div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/168/toork_Kamikaze_Pigs_toorksize.png)" class="panel-heading">
-                </div></a>-->
+                <!--
+                <a href="#">
+                    <div style="padding:80px; background-size:contain; background-position:center; background-size: 100%; background-image:url(https://s3.amazonaws.com/betatoorkpics/upload/games/168/toork_Kamikaze_Pigs_toorksize.png)" class="panel-heading"></div>
+                </a>
+                -->
                 <a href="<?php echo $playurl ?>" target="_blank">
                     <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'box_img_resize', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '720', 'height' => '110')); ?>
                 </a>
                 <div class="panel-body" style="padding-top:0px;">
                     <a href="<?php echo $playurl ?>"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong><?php echo $name ?></strong> </h4></a>
                     <small>
-
                         <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo $rates; ?> Rates">
                             <?php
                             $star = round($game['Game']['starsize'] / 20);
@@ -61,7 +61,6 @@ if (!empty($games)) {
                 </div>
             </div>
         </div>
-
         <?php
     }
 } else {

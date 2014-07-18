@@ -1673,22 +1673,6 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        /*
-          $count = array(
-          $this->Game->find('count', array(
-          'conditions' => array(
-          'Game.user_id' => $userid
-          )
-          )),
-          $this->Game->find('count', array(
-          'conditions' => array(
-          'Game.user_id' => $userid,
-          'Game.mobileready' => 1
-          )
-          ))
-          );
-          $this->set('count', $count);
-         */
         $limit = 12;
         $this->paginate = array(
             'Game' => array(
@@ -1720,7 +1704,6 @@ class BusinessesController extends AppController {
                 )
             )
         );
-
         if ($filter === 'mobiles') {
             $activefilter = 1;
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
@@ -1743,30 +1726,6 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        /*
-          $count = array(
-          $this->Game->find('count', array(
-          'conditions' => array(
-          'Game.user_id' => $userid,
-          'OR' => array(
-          'Game.description LIKE' => '%' . $query . '%',
-          'Game.name LIKE' => '%' . $query . '%'
-          )
-          )
-          )),
-          $this->Game->find('count', array(
-          'conditions' => array(
-          'Game.user_id' => $userid,
-          'OR' => array(
-          'Game.description LIKE' => '%' . $query . '%',
-          'Game.name LIKE' => '%' . $query . '%'
-          ),
-          'Game.mobileready' => 1
-          )
-          ))
-          );
-          $this->set('count', $count);
-         */
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
             $this->set('query', $query);
@@ -1935,17 +1894,6 @@ class BusinessesController extends AppController {
     public function exploregames($filter = null) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        /*
-          $count = array(
-          $this->Game->find('count'),
-          $this->Game->find('count', array(
-          'conditions' => array(
-          'Game.mobileready' => 1
-          )
-          ))
-          );
-          $this->set('count', $count);
-         */
         $this->Game->bindModel(
                 array(
                     'hasOne' => array(
@@ -2002,63 +1950,43 @@ class BusinessesController extends AppController {
     public function exploregames_search($filter = null) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        /*
-          $count = array(
-          $this->Game->find('count', array(
-          'conditions' => array(
-          'OR' => array(
-          'Game.description LIKE' => '%' . $query . '%',
-          'Game.name LIKE' => '%' . $query . '%'
-          )
-          )
-          )),
-          $this->Game->find('count', array(
-          'conditions' => array(
-          'OR' => array(
-          'Game.description LIKE' => '%' . $query . '%',
-          'Game.name LIKE' => '%' . $query . '%'
-          ),
-          'Game.mobileready' => 1
-          )
-          ))
-          );
-          $this->set('count', $count);
-         */
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
             $this->set('query', $query);
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "exploregames"));
         }
+        $this->Game->bindModel(
+                array(
+                    'hasOne' => array(
+                        'Gamestat' => array(
+                            'className' => 'Gamestat',
+                            'foreignKey' => 'game_id',
+                            'type' => 'INNER'
+                        )
+                    )
+                )
+        );
         $limit = 12;
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
-                    'Game.name',
-                    'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
-                    'Game.picture',
-                    'Game.starsize',
-                    'Game.rate_count',
-                    'Game.embed',
-                    'Game.clone',
-                    'Game.created',
-                    'User.seo_username',
-                    'Game.description',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
-                    'Gamestat.channelclone',
-                    'Gamestat.potential',
-                    'User.id',
-                    'User.username',
-                    'User.seo_username'
+                    '*'
+                ),
+                'joins' => array(
+                    array(
+                        'table' => 'gamestats',
+                        'type' => 'INNER',
+                        'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
+                    )
                 ),
                 'limit' => $limit,
                 'order' => array(
                     'Game.id' => 'DESC'
                 ),
                 'conditions' => array(
+                    'Game.priority != ' => NULL,
+                    'Game.clone' => 0,
                     'OR' => array(
                         'Game.description LIKE' => '%' . $query . '%',
                         'Game.name LIKE' => '%' . $query . '%'
