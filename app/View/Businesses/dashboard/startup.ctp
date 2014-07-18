@@ -202,7 +202,7 @@ if ($user['User']['picture'] == null) {
             }
             $.get(chaingame + '/' + game_id, function(data) {
                 if (data == 1) {
-                    Messenger().post("Game Cloned");
+                    //Messenger().post("Game Cloned");
                     btn
                             .button('reset')
                             .html('<i class="fa fa-cog"></i> Cloned')
