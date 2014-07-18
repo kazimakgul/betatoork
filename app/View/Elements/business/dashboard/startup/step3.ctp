@@ -28,7 +28,7 @@
         }
         ?>
         <div class="col-md-4" id="channelbox-<?php echo $userid; ?>">
-                        <div style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div>
+                        <div onclick='get_new_channel(<?php echo $userid; ?>);' style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div>
             <div class="panel panel-default">
                 <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; background-image:url(<?php echo $cover; ?>)" class="panel-heading"></div>
                 <a href="<?php echo $userlink; ?>">
