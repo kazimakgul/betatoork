@@ -668,7 +668,7 @@ class BusinessesController extends AppController {
 
         $userid = $this->Session->read('Auth.User.id');
         $limit = 6;
-        $this->paginate = array(
+        /*$this->paginate = array(
             'User' => array(
                 'fields' => array(
                     'User.id',
@@ -696,8 +696,15 @@ class BusinessesController extends AppController {
                 'limit' => $limit
             )
         );
-        $data = $this->paginate('User');
-
+        $data = $this->paginate('User');*/
+		
+		$data = $this->User->query("SELECT  `User`.`id` ,  `User`.`username` ,  `User`.`seo_username` ,  `User`.`verify` ,  `User`.`picture` ,  `User`.`banner` ,  `Userstat`.`subscribe` ,  `Userstat`.`subscribeto` ,  `Userstat`.`uploadcount` 
+FROM  `betatoork`.`users` AS  `User` 
+INNER JOIN  `betatoork`.`userstats` AS  `Userstat` ON (  `Userstat`.`user_id` =  `User`.`id` ) 
+INNER JOIN  `betatoork`.`activities` AS  `Activity` ON (  `Activity`.`channel_id` = `User`.`id` ) 
+WHERE  `User`.`verify`=1 AND `Activity`.`type` =  9 OR `Activity`.`type` =  3
+ORDER BY  `Activity`.`created` DESC 
+LIMIT 6");
         $stat = $this->Userstat->find('first', array('contain' => false, 'conditions' => array('Userstat.user_id' => $userid)));
 
         $this->set('channel', $data);
@@ -2309,7 +2316,8 @@ class BusinessesController extends AppController {
                     'Userstat.potential' => 'DESC'
                 ),
                 'conditions' => array(
-                    'User.verify' => 1
+                    'User.verify' => 1,
+                    
                 ),
                 'limit' => $limit
             )
