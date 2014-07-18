@@ -2426,7 +2426,6 @@ class BusinessesController extends AppController {
                         ),
                         'conditions' => array(
                             'Game.priority != ' => NULL,
-                            'Game.clone' => 0,
                             'OR' => array(
                                 'Game.description LIKE' => '%' . $query . '%',
                                 'Game.name LIKE' => '%' . $query . '%'
