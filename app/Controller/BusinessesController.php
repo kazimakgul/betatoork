@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData'))) {
 
             return true;
         }
@@ -780,30 +780,36 @@ class BusinessesController extends AppController {
         $this->layout = 'ajax';
 
 
-        $onechannel = $this->User->find('first', array(
-            'fields' => array(
-                'User.id',
-                'User.username',
-                'User.seo_username',
-                'User.verify',
-                'User.picture',
-                'User.banner'
-            ),
-            'contain' => array(
-                'Userstat' => array(
-                    'fields' => array(
-                        'Userstat.subscribe',
-                        'Userstat.subscribeto',
-                        'Userstat.uploadcount'
+        $onechannel=$this->User->find('first',
+                array(
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.seo_username',
+                    'User.verify',
+                    'User.picture',
+                    'User.banner'
+                ),
+                'contain' => array(
+                    'Userstat' => array(
+                        'fields' => array(
+                            'Userstat.subscribe',
+                            'Userstat.subscribeto',
+                            'Userstat.uploadcount'
+                        )
                     )
+                ),
+                'order' => 'rand()',
+                'conditions' => array(
+                    'User.verify' => 1
                 )
-            ),
-            'order' => 'rand()',
-            'conditions' => array(
-                'User.verify' => 1
             )
-                )
         );
+        
+        $follower = empty($onechannel['Userstat']['subscribe']) ? 0 : $onechannel['Userstat']['subscribe'];
+        $following = empty($onechannel['Userstat']['subscribeto']) ? 0 : $onechannel['Userstat']['subscribeto'];
+        $gamecount = empty($onechannel['Userstat']['uploadcount']) ? 0 : $onechannel['Userstat']['uploadcount'];
+
 
         $basename = $onechannel['User']['picture'];
         $noextension = rtrim($basename, '.' . $this->getExtension($basename));
@@ -817,19 +823,18 @@ class BusinessesController extends AppController {
         $htmlcode = '<div style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" 
         data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div> <div class="panel panel-default"> 
         <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; 
-        background-image:url(' . $cover_url . ')" class="panel-heading"></div> 
+        background-image:url('.$cover_url.')" class="panel-heading"></div> 
         <a href="/clone/businesses/mysite/2"> 
-        <img src="' . $image_url . '" 
-             alt="Socialesman" class="img-responsive center-block avatar img-thumbnail img-circle" 
+        <img src="'.$image_url.'" onerror="imgError(this,"avatar");" alt="'.$onechannel['User']['username'].'" class="img-responsive center-block avatar img-thumbnail img-circle" 
         style="margin-top:-40px; width:80px; height:80px;"> </a> <div class="panel-body"> <div style="margin-top:-10px;" class="text-center"> 
-        <!-- Follow button --> <a id="grid-follow-7" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
+        <!-- Follow button --> <a id="grid-follow-'.$onechannel['User']['id'].'" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
         <!-- Follow button end --> </div> <h4> <span class="help" data-toggle="tooltip" data-placement="top" title="" 
-        data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>Socialesman</strong> <br> 
-        <small>@Socialesman</small> </h4> <span class="label label-success">10 Followers</span> <span class="label label-warning">29 Following</span> 
-        <span class="label label-danger">144 Games</span> </div> </div>';
+        data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>'.$onechannel['User']['username'].'</strong> <br> 
+        <small>@'.$onechannel['User']['seo_username'].'</small> </h4> <span class="label label-success">'.$follower .' Followers</span> <span class="label label-warning">'.$following.' Following</span> 
+        <span class="label label-danger">'.$gamecount.' Games</span> </div> </div>';
+    
 
-
-        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode, 'result' => 1);
+        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode ,"onclick" => 'subscribe2("' . $onechannel['User']['username'] . '", user_auth,'. $onechannel['User']['id'] .');switchfollow(' . $onechannel['User']['id'] . ');', 'result' => 1);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }
@@ -1389,7 +1394,7 @@ class BusinessesController extends AppController {
 
         if (!is_numeric($id)) {
             $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
+            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id', 'User.username','User.verify'), 'contain' => false));
             $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.seo_username' => $subdomain)), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         } else {
             $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
@@ -1855,7 +1860,8 @@ class BusinessesController extends AppController {
                             'Game.starsize',
                             'Game.embed',
                             'Game.rate_count'
-                        ),
+                        )
+                    ),
                         'User' => array(
                             'fields' => array(
                                 'User.username',
@@ -1873,7 +1879,6 @@ class BusinessesController extends AppController {
                                 'Gamestat.potential'
                             )
                         )
-                    )
                 )
             )
         );
@@ -1902,7 +1907,9 @@ class BusinessesController extends AppController {
                     'Favorite.user_id' => $userid,
                     'OR' => array(
                         'Game.description LIKE' => '%' . $query . '%',
-                        'Game.name LIKE' => '%' . $query . '%'
+                        'Game.name LIKE' => '%' . $query . '%',
+                        'User.username LIKE' => '%' . $query . '%',
+                        'User.screenname LIKE' => '%' . $query . '%'
                     )
                 ),
                 'limit' => $limit,
@@ -1918,7 +1925,8 @@ class BusinessesController extends AppController {
                             'Game.picture',
                             'Game.starsize',
                             'Game.embed'
-                        ),
+                        )
+                    ),
                         'User' => array(
                             'fields' => array(
                                 'User.username',
@@ -1926,7 +1934,6 @@ class BusinessesController extends AppController {
                                 'User.id'
                             )
                         )
-                    )
                 )
             )
         );
@@ -2036,7 +2043,9 @@ class BusinessesController extends AppController {
                     'Game.clone' => 0,
                     'OR' => array(
                         'Game.description LIKE' => '%' . $query . '%',
-                        'Game.name LIKE' => '%' . $query . '%'
+                        'Game.name LIKE' => '%' . $query . '%',
+                        'User.username LIKE' => '%' . $query . '%',
+                        'User.screenname LIKE' => '%' . $query . '%'
                     )
                 )
             )
@@ -2351,93 +2360,6 @@ class BusinessesController extends AppController {
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/activities');
-    }
-
-    public function main_search($filter) {
-        $this->layout = 'Business/dashboard';
-        $this->sideBar();
-        if ($this->request->is("GET") && isset($this->request->query['q'])) {
-            $query = $this->request->query['q'];
-        } else {
-            $this->redirect(array("controller" => "businesses", "action" => "dashboard"));
-        }
-        $pagination_limit = 12;
-        switch ($filter) {
-            case 'games':
-                $this->paginate = array(
-                    'Game' => array(
-                        'fields' => array(
-                            '*'
-                        ),
-                        'joins' => array(
-                            array(
-                                'table' => 'gamestats',
-                                'type' => 'INNER',
-                                'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
-                            )
-                        ),
-                        'limit' => $limit,
-                        'order' => array(
-                            'Game.id' => 'DESC'
-                        ),
-                        'conditions' => array(
-                            'Game.priority != ' => NULL,
-                            'Game.clone' => 0,
-                            'OR' => array(
-                                'Game.description LIKE' => '%' . $query . '%',
-                                'Game.name LIKE' => '%' . $query . '%'
-                            )
-                        )
-                    )
-                );
-                $data = $this->paginate('Game');
-                $this->set('result', $data);
-                $this->set('title_for_layout', 'Clone Business Search');
-                $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-                $this->set('author_for_layout', 'Clone');
-                $this->render('/Businesses/dashboard/search/games');
-                break;
-            case 'channels':
-                $this->paginate = array(
-                    'User' => array(
-                        'fields' => array(
-                            'User.id',
-                            'User.username',
-                            'User.seo_username',
-                            'User.verify',
-                            'User.picture',
-                            'User.banner'
-                        ),
-                        'contain' => array(
-                            'Userstat' => array(
-                                'fields' => array(
-                                    'Userstat.subscribe',
-                                    'Userstat.subscribeto',
-                                    'Userstat.uploadcount'
-                                )
-                            )
-                        ),
-                        'order' => array(
-                            'User.id' => 'DESC'
-                        ),
-                        'conditions' => array(
-                            'User.verify != ' => NULL
-                        ),
-                        'limit' => $pagination_limit,
-                        'conditions' => array(
-                            'User.username LIKE' => '%' . $query . '%'
-                        ),
-                    )
-                );
-                $data = $this->paginate('User');
-                $this->set('result', $data);
-                $this->set('following', $data);
-                $this->set('title_for_layout', 'Clone Business Search');
-                $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-                $this->set('author_for_layout', 'Clone');
-                $this->render('/Businesses/dashboard/search/channels');
-                break;
-        }
     }
 
 }
