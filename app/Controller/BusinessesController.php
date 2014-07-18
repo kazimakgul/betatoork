@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle','newData','deleteData','social_management','faq','edit_ads','password_change','updateData'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData'))) {
 
             return true;
         }
@@ -125,10 +125,10 @@ class BusinessesController extends AppController {
                 $category = json_decode($this->request->data['category'], true);
                 $cat_del = array('home_banner_top', 'home_banner_middle', 'home_banner_bottom', 'game_banner_top', 'game_banner_bottom');
                 //Düzenlenicek
-                /*for ($i = 0; $i <= count($cat_del) - 1; $i++) {
-                    $this->User->Query('UPDATE adsettings SET ' . $cat_del[$i] . '="NULL" WHERE user_id=' . $user_id . ' AND ' . $cat_del[$i] . '=' . $this->request->data["ad_id"]);
-                }*/
-                
+                /* for ($i = 0; $i <= count($cat_del) - 1; $i++) {
+                  $this->User->Query('UPDATE adsettings SET ' . $cat_del[$i] . '="NULL" WHERE user_id=' . $user_id . ' AND ' . $cat_del[$i] . '=' . $this->request->data["ad_id"]);
+                  } */
+
                 if (!empty($category)) {
                     foreach ($category as $value) {
                         $filtered_data['Adsetting'][$value] = $this->request->data['ad_id'];
@@ -236,14 +236,14 @@ class BusinessesController extends AppController {
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
                 $filtered_data['Adcode']['user_id'] = $user_id;
                 $this->Adcode->save($filtered_data);
-                
+
                 $category = json_decode($this->request->data['category'], true);
                 if (!empty($category)) {
                     foreach ($category as $value) {
                         $filtered_data['Adsetting'][$value] = $this->Adcode->getLastInsertID();
                     }
                     $filtered_data['Adsetting']['user_id'] = $user_id;
-					$this->Adsetting->save($filtered_data);
+                    $this->Adsetting->save($filtered_data);
                 }
                 $this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
@@ -676,7 +676,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/index');
     }
-    
+
     /**
      * Gets one new game for wizard
      *
@@ -754,7 +754,7 @@ class BusinessesController extends AppController {
 
         $image_url = Configure::read('S3.url') . '/upload/games/' . $onegame['Game']['id'] . '/' . $target_image;
 
-        $htmlcode = '<a onclick="get_new_game('.$onegame['Game']['id'].');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></a><div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize" 
+        $htmlcode = '<a onclick="get_new_game(' . $onegame['Game']['id'] . ');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></a><div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize" 
         class="box_img_resize" alt="' . $onegame['Game']['name'] . '" onerror="imgError(this,&quot;toorksize&quot;);" width="720" height="110"> </a> <div class="panel-body" 
         style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong> 
         </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div> 
@@ -767,7 +767,6 @@ class BusinessesController extends AppController {
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }
-
 
     /**
      * Gets one new channels for wizard
@@ -1496,9 +1495,7 @@ class BusinessesController extends AppController {
 
         if (!is_numeric($userid)) {
             $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array(
-                'contain' => false,
-                'conditions' => array(
+            $user = $this->User->find('first', array('conditions' => array(
                     'User.seo_username' => $subdomain
                 ),
                 'fields' => array(
@@ -1595,10 +1592,23 @@ class BusinessesController extends AppController {
 
         if (!is_numeric($userid)) {
             $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*')));
+            $user = $this->User->find('first', array('conditions' => array(
+                    'User.seo_username' => $subdomain
+                ),
+                'fields' => array(
+                    '*'
+                )
+            ));
             $userid = $user['User']['id'];
         } else {
-            $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+            $user = $this->User->find('first', array(
+                'conditions' => array(
+                    'User.id' => $userid
+                ),
+                'fields' => array(
+                    '*'
+                )
+            ));
         }
 
         $this->paginate = array(

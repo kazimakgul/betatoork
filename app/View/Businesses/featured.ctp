@@ -17,7 +17,6 @@
             echo $this->element('business/category', array('limit' => $limit, 'userid' => $user['User']['id']));
             ?>
         </div>
-
     </div>
     <?php
     echo $this->element('business/login', array('user_id' => $user['User']['id']));
@@ -31,14 +30,12 @@
                     <div class="panel-heading">
                         <ul class="nav pull-right" style='margin-top:-8px;'>
                             <li class="dropdown">
-                                
-                               <!--
+                                <!--
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                     Filter/Sort
                                     <span class="caret"></span>
                                 </button>
-                            -->
-
+                                -->
                                 <ul class="dropdown-menu">
                                     <!-- <li><?php echo $this->Paginator->sort('id', 'New Games', array('direction' => 'desc')); ?></li> -->
                                     <!-- <li><?php echo $this->Paginator->sort('recommend', 'Recommended', array('direction' => 'desc')); ?></li> -->
@@ -64,9 +61,11 @@
                 </div>
             </div>
         </div>
-    </div><!--/footer-->
+    </div>
+    <!--/footer-->
     <?php echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerBottom, 'adtype' => 'homeBannerBottom')); ?>
-</div><!-- /.container -->
+</div>
+<!-- /.container -->
 <?php
 echo $this->element('business/components/popup', array('user_id' => $user['User']['id']));
 echo $this->element('business/footer');
