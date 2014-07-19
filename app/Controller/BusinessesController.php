@@ -866,7 +866,9 @@ LIMIT 6");*/
         <a href="/clone/businesses/mysite/2"> 
         <img src="'.$image_url.'" onerror="imgError(this,"avatar");" alt="'.$onechannel['User']['username'].'" class="img-responsive center-block avatar img-thumbnail img-circle" 
         style="margin-top:-40px; width:80px; height:80px;"> </a> <div class="panel-body"> <div style="margin-top:-10px;" class="text-center"> 
-        <!-- Follow button --> <a id="grid-follow-'.$onechannel['User']['id'].'" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
+        <!-- Follow button --> 
+        <a id="grid-unfollow-'.$onechannel['User']['id'].'" style="display:none;" class="btn btn-default" > <i class="fa fa-minus-circle"></i> Following </a>
+        <a id="grid-follow-'.$onechannel['User']['id'].'" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
         <!-- Follow button end --> </div> <h4> <span class="help" data-toggle="tooltip" data-placement="top" title="" 
         data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>'.$onechannel['User']['username'].'</strong> <br> 
         <small>@'.$onechannel['User']['seo_username'].'</small> </h4> <span class="label label-success">'.$follower .' Followers</span> <span class="label label-warning">'.$following.' Following</span> 
