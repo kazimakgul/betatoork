@@ -46,7 +46,6 @@ if ($user['User']['picture'] == null) {
                     <?php echo $this->element('business/dashboard/startup/step3') ?>
                     <?php echo $this->element('business/dashboard/startup/step4') ?>
                     <div style="clear: left;"></div>
-                    <input type="hidden" id="process" name="process" value="0" />
                 </form>
             </section>
         </div>
@@ -151,13 +150,7 @@ if ($user['User']['picture'] == null) {
                                 ||
                                 ($(this).attr('id') == 'back')
                                 )
-                {
-
-                    var process=$('#process').val();
-                    if(process==0)
-                    {
-                        alert('Please wait');
-                    }    
+                {   
 
                     out_step.on(utils.animation_ends(), function() {
                         out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
@@ -186,7 +179,6 @@ if ($user['User']['picture'] == null) {
     });
     function chaingame4(game_name, user_auth, game_id) {
         get_new_game(game_id);
-        $('#process').val(1);
         var btn = $('#clone-' + game_id);
         btn.removeClass('btn-success');
         btn.addClass('btn-warning');
@@ -209,10 +201,9 @@ if ($user['User']['picture'] == null) {
             } else {
                 $('#progressbar_clone span').html('Great! Click Next button for next step.');
             }
-            $.get(chaingame + '/' + game_id, function(data) {
+            $.get(chaingame + '/' + game_id+ '/1', function(data) {alert(data);
                 if (data == 1) {
-                    //Messenger().post("Game Cloned");
-                    $('#process').val(0);
+                    
                     btn
                             .button('reset')
                             .html('<i class="fa fa-cog"></i> Cloned')
@@ -220,7 +211,6 @@ if ($user['User']['picture'] == null) {
                             .addClass('btn-default');
                 } else {
                     Messenger().post("Error. Please, try again..");
-                    $('#process').val(0);
                     btn.button('reset');
                 }
             });
@@ -298,7 +288,6 @@ if ($user['User']['picture'] == null) {
 
     function subscribe2(channel_name, user_auth, id) {
         if (user_auth == 1) {
-            $('#process').val(1);
             get_new_channel(id);
             var follow_count = 5;
             //-------
@@ -322,7 +311,7 @@ if ($user['User']['picture'] == null) {
 
 
             switch_subscribe(id);
-            $('#process').val(0);
+            
 
         }
     }
