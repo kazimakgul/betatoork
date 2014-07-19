@@ -1310,7 +1310,7 @@ class GamesController extends AppController {
     }
 
     //Chain functions clones game items on games table.
-    public function clonegame($game_id = NULL,$push_activity=NULL) {
+    public function clonegame($game_id = NULL) {
         $this->layout = "ajax";
         $userId = $this->Session->read('Auth.User.id');
         $targetGame = $this->Game->find('first', array('conditions' => array('Game.id' => $game_id), 'fields' => array('Game.id,Game.name,Game.link,Game.description,Game.active,Game.user_id,Game.category_id,Game.picture,Game.width,Game.height,Game.fullscreen,Game.mobileready,Game.priority,Game.embed,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => false));
@@ -1359,7 +1359,7 @@ class GamesController extends AppController {
                 //================Add Cloneships ends=====================
                 //$this->requestAction( array('controller' => 'wallentries', 'action' => 'action_ajax',$id,$userId)); Standart game publish feed
                 $this->Gamestat->sync_channel_clone($game_id);
-                //$this->requestAction(array('controller' => 'wallentries', 'action' => 'action_ajax', $game_id, $userId, 7, 1));
+                $this->requestAction(array('controller' => 'wallentries', 'action' => 'action_ajax', $game_id, $userId, 7, 1));
                 echo 1; //this means games has been clonned properly.
             }else {
                 echo 0; //this means there are some problems.
