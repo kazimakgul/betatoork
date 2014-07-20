@@ -366,9 +366,9 @@ if ($user['User']['picture'] == null) {
                 mes_index++;
 
        });
-       $('.load_message').html('Your channel has been created.');
+       //$('.load_message').html('Your channel has been created.');
 
-       },3000);
+       },500);
 
     }    
 
