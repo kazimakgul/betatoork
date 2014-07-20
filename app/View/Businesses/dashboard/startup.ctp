@@ -226,6 +226,7 @@ if ($user['User']['picture'] == null) {
                     btn.button('reset');
                 }
             });
+            alert('finish');
             //Get functions ends here
             }
 
