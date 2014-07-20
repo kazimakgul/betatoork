@@ -7,11 +7,11 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 ?>
 <div class="step">
     <div class="success">
-        <i class="ion-checkmark-circled"></i>
-        <h3>
+        <i class="ion-checkmark-circled load_icon"></i>
+        <h3 class='load_message'>
             Your channel has been created successfully!
         </h3>
-        <a href="<?php echo $gochannel; ?>" class="btn btn-success">
+        <a style="margin-top: 10px;" href="<?php echo $gochannel; ?>" class="btn btn-success">
             <span>Go to my channel</span>
         </a>
     </div>

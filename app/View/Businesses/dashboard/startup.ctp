@@ -126,6 +126,7 @@ if ($user['User']['picture'] == null) {
     var follow = 0;
     var clone_bar = $('#progressbar_clone');
     var follow_bar = $('#progressbar_follow');
+    var cloned_ids = [];
     $(document).ready(function() {
         var active_step = 0;
         var steps = $(".form-wizard .step");
@@ -151,6 +152,11 @@ if ($user['User']['picture'] == null) {
                                 ($(this).attr('id') == 'back')
                                 )
                 {   
+                    //if it is last step,start to create channel
+                    if(step_index == 3)
+                    {
+                        create_channel();
+                    }   
 
                     out_step.on(utils.animation_ends(), function() {
                         out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
@@ -179,6 +185,7 @@ if ($user['User']['picture'] == null) {
     });
     function chaingame4(game_name, user_auth, game_id) {
         get_new_game(game_id);
+        cloned_ids.push(game_id);
         var btn = $('#clone-' + game_id);
         btn.removeClass('btn-success');
         btn.addClass('btn-warning');
@@ -201,6 +208,11 @@ if ($user['User']['picture'] == null) {
             } else {
                 $('#progressbar_clone span').html('Great! Click Next button for next step.');
             }
+
+            
+            if(game_name=='mass_clone')
+            {
+            //Get functions begins here
             $.get(chaingame + '/' + game_id, function(data) {
                 if (data == 1) {
                     //Messenger().post("Game Cloned");
@@ -214,6 +226,10 @@ if ($user['User']['picture'] == null) {
                     btn.button('reset');
                 }
             });
+            //Get functions ends here
+            }
+
+
         } else {
             $('#myModal').modal('hide');
             $('#login').modal('show');
@@ -315,5 +331,18 @@ if ($user['User']['picture'] == null) {
 
         }
     }
+
+    function create_channel() {
+    
+       //alert(cloned_ids.join('\n'));
+       
+       $.each(cloned_ids, function( index, value ) {
+       
+       chaingame4('mass_clone',1, value);
+
+       });
+    }    
+
+
 </script>
 </body>
