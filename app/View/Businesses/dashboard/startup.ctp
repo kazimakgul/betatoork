@@ -239,6 +239,7 @@ if ($user['User']['picture'] == null) {
             //alert(errMsg);
         }
   });
+            alert('yyy');
 
             //Get functions ends here
             }
