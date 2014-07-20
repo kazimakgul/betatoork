@@ -183,18 +183,6 @@ if ($user['User']['picture'] == null) {
             }
         });
     });
-
-    
-    function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
-
-
     function chaingame4(game_name, user_auth, game_id) {
         get_new_game(game_id);
         cloned_ids.push(game_id);
@@ -229,7 +217,7 @@ if ($user['User']['picture'] == null) {
             $.ajax({
         type: "POST",
         url: chaingame+'/'+game_id,
-        async: false,
+        async: true,
         success: function(data){
         
         if (data == 1) {
@@ -358,7 +346,7 @@ if ($user['User']['picture'] == null) {
     }
 
     function create_channel() {
-       sleep(3000);
+    
        //alert(cloned_ids.join('\n'));
 
        var messages=[];
@@ -366,17 +354,34 @@ if ($user['User']['picture'] == null) {
            messages[0]='Please wait...';
            messages[1]='Your channel is preparing...';
            messages[2]='Files uploading to your account...';
-           messages[4]='Files uploading to your account...';
+           messages[4]='Your channel has been created successfully!';
+           clonecount=cloned_ids.length;
+           timesleep=2000*clonecount;
+
+
            var mes_index=0;
 
        $.each(cloned_ids, function( index, value ) {
        
-               //$('.load_message').html(messages[mes_index]);
+                $('.load_message').html(messages[mes_index]);
                 chaingame4('mass_clone',1, value);        
                 //mes_index++;
 
        });
-       //$('.load_message').html('Your channel has been created.');
+       
+       
+       setTimeout(function(){
+        $('.load_message').html(messages[1]);
+
+           setTimeout(function(){
+           $('.load_message').html(messages[4]);
+           $('.gotochannel').show();
+           $('.load_icon').show();
+           $('#grabloader').hide();
+           },timesleep/2);
+
+        },timesleep/2);
+       
 
        
 
