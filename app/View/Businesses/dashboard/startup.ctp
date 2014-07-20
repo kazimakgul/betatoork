@@ -219,7 +219,7 @@ if ($user['User']['picture'] == null) {
             $.ajax({
         type: "POST",
         url: chaingame+'/'+game_id,
-        async: true,
+        async: false,
         success: function(data){
         
         if (data == 1) {
