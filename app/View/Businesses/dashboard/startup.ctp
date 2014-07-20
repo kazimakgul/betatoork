@@ -340,8 +340,8 @@ if ($user['User']['picture'] == null) {
        
        chaingame4('mass_clone',1, value);
        setTimeout(function() {
-                        alert(value+ 'completed');
-                    }, 2000);
+                        
+                    }, 3000);
 
        });
     }    
