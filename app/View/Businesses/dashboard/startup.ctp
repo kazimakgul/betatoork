@@ -201,9 +201,9 @@ if ($user['User']['picture'] == null) {
             } else {
                 $('#progressbar_clone span').html('Great! Click Next button for next step.');
             }
-            $.get(chaingame + '/' + game_id+ '/1', function(data) {alert(data);
+            $.get(chaingame + '/' + game_id, function(data) {
                 if (data == 1) {
-                    
+                    //Messenger().post("Game Cloned");
                     btn
                             .button('reset')
                             .html('<i class="fa fa-cog"></i> Cloned')
