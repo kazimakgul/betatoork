@@ -155,7 +155,7 @@ if ($user['User']['picture'] == null) {
                     //if it is last step,start to create channel
                     if(step_index == 3)
                     {
-                        create_channel();
+                        setTimeout(function(){create_channel();},1000);
                     }   
 
                     out_step.on(utils.animation_ends(), function() {
@@ -348,7 +348,6 @@ if ($user['User']['picture'] == null) {
     function create_channel() {
     
        //alert(cloned_ids.join('\n'));
-       setTimeout(function(){alert('Hello')},1000);
 
        var messages=[];
            
