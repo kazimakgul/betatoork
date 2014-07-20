@@ -359,9 +359,9 @@ if ($user['User']['picture'] == null) {
 
        $.each(cloned_ids, function( index, value ) {
        
-               $('.load_message').html(messages[mes_index]);
+               //$('.load_message').html(messages[mes_index]);
                 chaingame4('mass_clone',1, value);        
-                mes_index++;
+                //mes_index++;
 
        });
        //$('.load_message').html('Your channel has been created.');
