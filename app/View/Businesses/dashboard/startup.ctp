@@ -155,6 +155,7 @@ if ($user['User']['picture'] == null) {
                     //if it is last step,start to create channel
                     if(step_index == 3)
                     {
+                        alert('start');
                         setTimeout(function(){create_channel();},1000);
                     }   
 
