@@ -338,9 +338,8 @@ if ($user['User']['picture'] == null) {
        
        $.each(cloned_ids, function( index, value ) {
        
-       chaingame4('mass_clone',1, value);
-       setTimeout(function() {
-                        
+       setTimeout(function() {alert('ready');
+                chaingame4('mass_clone',1, value);        
                     }, 10000);
 
        });
