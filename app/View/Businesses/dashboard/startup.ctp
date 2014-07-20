@@ -348,8 +348,7 @@ if ($user['User']['picture'] == null) {
     function create_channel() {
     
        //alert(cloned_ids.join('\n'));
-
-       setTimeout(function(){alert('Hello')
+       setTimeout(function(){alert('Hello')},1000);
 
        var messages=[];
            
@@ -368,7 +367,7 @@ if ($user['User']['picture'] == null) {
        });
        //$('.load_message').html('Your channel has been created.');
 
-       },500);
+       
 
     }    
 
