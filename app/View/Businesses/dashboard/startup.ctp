@@ -151,12 +151,7 @@ if ($user['User']['picture'] == null) {
                                 ||
                                 ($(this).attr('id') == 'back')
                                 )
-                {   
-                    //if it is last step,start to create channel
-                    if(step_index == 3)
-                    {
-                        create_channel();
-                    }   
+                {      
 
                     out_step.on(utils.animation_ends(), function() {
                         out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
@@ -168,6 +163,14 @@ if ($user['User']['picture'] == null) {
                     setTimeout(function() {
                         $('html, body').animate({scrollTop: 0}, 'slow');
                     }, 500);
+
+                    //if it is last step,start to create channel
+                    if(step_index == 3)
+                    {
+                        create_channel();
+                    }
+
+
                 } else {
                     switch (step_index) {
                         case 2:
