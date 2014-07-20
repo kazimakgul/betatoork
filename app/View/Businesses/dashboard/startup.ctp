@@ -151,7 +151,12 @@ if ($user['User']['picture'] == null) {
                                 ||
                                 ($(this).attr('id') == 'back')
                                 )
-                {      
+                {   
+                    //if it is last step,start to create channel
+                    if(step_index == 3)
+                    {
+                        create_channel();
+                    }   
 
                     out_step.on(utils.animation_ends(), function() {
                         out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
@@ -163,14 +168,6 @@ if ($user['User']['picture'] == null) {
                     setTimeout(function() {
                         $('html, body').animate({scrollTop: 0}, 'slow');
                     }, 500);
-
-                    //if it is last step,start to create channel
-                    if(step_index == 3)
-                    {
-                        create_channel();
-                    }
-
-
                 } else {
                     switch (step_index) {
                         case 2:
@@ -186,6 +183,18 @@ if ($user['User']['picture'] == null) {
             }
         });
     });
+
+    
+    function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
+
     function chaingame4(game_name, user_auth, game_id) {
         get_new_game(game_id);
         cloned_ids.push(game_id);
@@ -349,7 +358,7 @@ if ($user['User']['picture'] == null) {
     }
 
     function create_channel() {
-    
+       sleep(3000);
        //alert(cloned_ids.join('\n'));
 
        var messages=[];
