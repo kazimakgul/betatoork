@@ -214,8 +214,6 @@ if ($user['User']['picture'] == null) {
             {
             //Get functions begins here
             
-
-
             $.ajax({
         type: "POST",
         url: chaingame+'/'+game_id,
@@ -239,7 +237,7 @@ if ($user['User']['picture'] == null) {
             //alert(errMsg);
         }
   });
-            alert('yyy');
+            
 
             //Get functions ends here
             }
@@ -359,7 +357,7 @@ if ($user['User']['picture'] == null) {
        
                $('.load_message').html( messages[0]);
                 chaingame4('mass_clone',1, value);        
-               
+               alert('yyy');
 
        });
        $('.load_message').html('Your channel has been created.');
