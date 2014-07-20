@@ -335,14 +335,19 @@ if ($user['User']['picture'] == null) {
     function create_channel() {
     
        //alert(cloned_ids.join('\n'));
-       
+       var messages=[];
+           
+           messages[0]='Files uploading to your account...';
+           messages[1]='Your channel is preparing...';
+
        $.each(cloned_ids, function( index, value ) {
        
-       
+               $('.load_message').html( messages[0]);
                 chaingame4('mass_clone',1, value);        
                
 
        });
+       $('.load_message').html('Your channel has been created.');
     }    
 
 
