@@ -872,7 +872,7 @@ LIMIT 6");*/
         data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div> <div style="min-height:255px" class="panel panel-default"> 
         <div style="min-height:80px;padding:40px; background-size:contain; background-position:center; background-size: 100%; 
         background-image:url('.$cover_url.')" class="panel-heading"></div> 
-        <a href="'.$channelurl.'"> 
+        <a target="_blank" href="'.$channelurl.'"> 
         <img src="'.$image_url.'" onerror="imgError(this,&quot;avatar&quot;);" alt="'.$onechannel['User']['username'].'" class="img-responsive center-block avatar img-thumbnail img-circle" 
         style="margin-top:-40px; width:80px; height:80px;"> </a> <div class="panel-body"> <div style="margin-top:-10px;" class="text-center"> 
         <!-- Follow button --> 

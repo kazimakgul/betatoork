@@ -2,11 +2,13 @@
     <div id="progressbar_follow"><span>Start following minimum 5 channels.</span></div>
     <?php
     foreach ($following as $value) {
-        if (Configure::read('Domain.type') == 'subdomain') {
-            $userlink = $this->Html->url(array("controller" => '/', "action" => h($value['User']['seo_username'])));
+        
+        if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+        $userlink = $this->Html->url('http://' . $value['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
         } else {
-            $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
+        $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
         }
+
         $name = $value['User']['username'];
         $userid = $value['User']['id'];
         $publicname = $value['User']['username'];
@@ -31,7 +33,7 @@
                         <div onclick='get_new_channel(<?php echo $userid; ?>);' style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div>
             <div class="panel panel-default">
                 <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; background-image:url(<?php echo $cover; ?>)" class="panel-heading"></div>
-                <a href="<?php echo $userlink; ?>">
+                <a target="_blank" href="<?php echo $userlink; ?>">
                     <?php echo $avatar; ?>
                 </a>
                 <div class="panel-body">
