@@ -213,8 +213,16 @@ if ($user['User']['picture'] == null) {
             if(game_name=='mass_clone')
             {
             //Get functions begins here
-            $.get(chaingame + '/' + game_id, function(data) {
-                if (data == 1) {
+            
+
+
+            $.ajax({
+        type: "POST",
+        url: chaingame+'/'+game_id,
+        async: true,
+        success: function(data){
+        
+        if (data == 1) {
                     Messenger().post("Game Cloned");
                     btn
                             .button('reset')
@@ -225,8 +233,13 @@ if ($user['User']['picture'] == null) {
                     Messenger().post("Error. Please, try again..");
                     btn.button('reset');
                 }
-            });
-            alert('finish');
+            
+            },
+        failure: function(errMsg) {
+            //alert(errMsg);
+        }
+  });
+
             //Get functions ends here
             }
 
