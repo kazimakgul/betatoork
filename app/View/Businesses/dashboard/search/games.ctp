@@ -1,6 +1,6 @@
 <?php
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
-switch ($activefilter) {
+switch ($active_filter) {
     case 0:
         $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search"));
         break;

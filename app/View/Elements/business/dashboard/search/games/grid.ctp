@@ -7,7 +7,7 @@
         $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
         $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
         $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
-        $clonestatus = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($userid, $game['Game']['id']));
+        $clonestatus = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($game['User']['id'], $game['Game']['id']));
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
             $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
             $userlink = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain);
