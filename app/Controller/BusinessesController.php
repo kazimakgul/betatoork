@@ -2056,46 +2056,31 @@ LIMIT 6");*/
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "exploregames"));
         }
-        $this->Game->bindModel(
-                array(
-                    'hasOne' => array(
-                        'Gamestat' => array(
-                            'className' => 'Gamestat',
-                            'foreignKey' => 'game_id',
-                            'type' => 'INNER'
-                        )
-                    )
-                )
-        );
         $limit = 12;
         $this->paginate = array(
-            'Game' => array(
-                'fields' => array(
-                    '*'
-                ),
-                'joins' => array(
-                    array(
-                        'table' => 'gamestats',
-                        'type' => 'INNER',
-                        'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
+                    'Game' => array(
+                        'fields' => array(
+                            '*'
+                        ),
+                        'limit' => $limit,
+                        'order' => array(
+                            'Game.clone' => 'ASC',
+                            'Gamestat.potential' => 'DESC'
+                        ),
+                        'conditions' => array(
+                            'Game.priority != ' => NULL,
+                            'OR' => array(
+                                'Game.description LIKE' => '%' . $query . '%',
+                                'Game.name LIKE' => '%' . $query . '%',
+                                'User.username LIKE' => '%' . $query . '%',
+                                'User.screenname LIKE' => '%' . $query . '%'
+                            ),
+                            'NOT' => array(
+                                'Game.priority' => NULL
+                            )
+                        )
                     )
-                ),
-                'limit' => $limit,
-                'order' => array(
-                    'Game.id' => 'DESC'
-                ),
-                'conditions' => array(
-                    'Game.priority != ' => NULL,
-                    'Game.clone' => 0,
-                    'OR' => array(
-                        'Game.description LIKE' => '%' . $query . '%',
-                        'Game.name LIKE' => '%' . $query . '%',
-                        'User.username LIKE' => '%' . $query . '%',
-                        'User.screenname LIKE' => '%' . $query . '%'
-                    )
-                )
-            )
-        );
+                );
         $activefilter = 0;
         if ($filter === 'mobiles') {
             $activefilter = 1;
@@ -2439,6 +2424,7 @@ LIMIT 6");*/
                             'Gamestat.potential' => 'DESC'
                         ),
                         'conditions' => array(
+                            'Game.priority != ' => NULL,
                             'OR' => array(
                                 'Game.description LIKE' => '%' . $query . '%',
                                 'Game.name LIKE' => '%' . $query . '%',
