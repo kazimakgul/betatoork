@@ -2294,6 +2294,7 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'order' => array(
+                    'User.verify' => 'DESC',
                     'Userstat.potential' => 'DESC'
                 ),
                 'conditions' => array(
@@ -2340,7 +2341,8 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'order' => array(
-                    'User.id' => 'DESC'
+                    'User.verify' => 'DESC',
+                    'Userstat.potential' => 'DESC'
                 ),
                 'conditions' => array(
                     'User.verify != ' => NULL
@@ -2449,10 +2451,13 @@ class BusinessesController extends AppController {
                             )
                         ),
                         'order' => array(
-                            'User.id' => 'DESC'
+                            'User.verify' => 'DESC',
+                            'Userstat.potential' => 'DESC'
                         ),
                         'conditions' => array(
-                            'User.verify != ' => NULL
+                            'NOT' => array(
+                                'User.verify' => NULL
+                            )
                         ),
                         'limit' => $pagination_limit,
                         'conditions' => array(
