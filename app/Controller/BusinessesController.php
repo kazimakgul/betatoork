@@ -2421,6 +2421,7 @@ LIMIT 6");*/
                         'limit' => $pagination_limit,
                         'order' => array(
                             'Game.clone' => 'ASC',
+                            'Game.priority' => 'DESC',
                             'Gamestat.potential' => 'DESC'
                         ),
                         'conditions' => array(
