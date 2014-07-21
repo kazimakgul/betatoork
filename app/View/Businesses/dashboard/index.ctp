@@ -255,4 +255,25 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
         </div>
     </div>
 </div>
+<style>
+    .page-title {
+        position: unset !important;
+        paddding: 0 30px;
+        margin-top: -20px;
+        line-height: 63px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    form.search {
+        margin-left: 20px !important;
+    }
+    @media (max-width:780px) {
+        .page-title {
+            margin-left: -20px;
+            border: none !important;
+        }
+    }
+</style>
 </body>
