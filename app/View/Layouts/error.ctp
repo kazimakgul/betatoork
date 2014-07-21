@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
-        <title><?php echo $title_for_layout?></title>
+        <title>Clone doesnt have this page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet">
