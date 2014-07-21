@@ -234,9 +234,11 @@ class User extends AppModel {
             'conditions' => '',
             'fields' => '',
             'order' => ''
-        ),
+        )
+    );
+    public $activityto = array(
         'Activity' => array(
-            'className' =>  'Activity',
+            'className' => 'Activity',
             'foreignKey' => 'channel_id',
             'conditions' => '',
             'fields' => '',
