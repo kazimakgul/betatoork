@@ -697,15 +697,15 @@ class BusinessesController extends AppController {
             )
         );
         $data = $this->paginate('User');
-		
-		/*$data = $this->User->query("SELECT  `User`.`id` ,  `User`.`username` ,  `User`.`seo_username` ,  `User`.`verify` ,  `User`.`picture` ,  `User`.`banner` ,  `Userstat`.`subscribe` ,  `Userstat`.`subscribeto` ,  `Userstat`.`uploadcount` 
-FROM  `users` AS  `User` 
-INNER JOIN  `userstats` AS  `Userstat` ON (  `Userstat`.`user_id` =  `User`.`id` ) 
-INNER JOIN  `activities` AS  `Activity` ON (  `Activity`.`channel_id` = `User`.`id` ) 
-WHERE  `User`.`verify`=1 AND `Activity`.`type` =  9 OR `Activity`.`type` =  3
-GROUP BY `User`.id
-ORDER BY  `Activity`.`created` DESC 
-LIMIT 6");*/
+
+        /* $data = $this->User->query("SELECT  `User`.`id` ,  `User`.`username` ,  `User`.`seo_username` ,  `User`.`verify` ,  `User`.`picture` ,  `User`.`banner` ,  `Userstat`.`subscribe` ,  `Userstat`.`subscribeto` ,  `Userstat`.`uploadcount` 
+          FROM  `users` AS  `User`
+          INNER JOIN  `userstats` AS  `Userstat` ON (  `Userstat`.`user_id` =  `User`.`id` )
+          INNER JOIN  `activities` AS  `Activity` ON (  `Activity`.`channel_id` = `User`.`id` )
+          WHERE  `User`.`verify`=1 AND `Activity`.`type` =  9 OR `Activity`.`type` =  3
+          GROUP BY `User`.id
+          ORDER BY  `Activity`.`created` DESC
+          LIMIT 6"); */
         $stat = $this->Userstat->find('first', array('contain' => false, 'conditions' => array('Userstat.user_id' => $userid)));
 
         $this->set('channel', $data);
@@ -819,33 +819,32 @@ LIMIT 6");*/
         $this->layout = 'ajax';
 
 
-        $onechannel=$this->User->find('first',
-                array(
-                'fields' => array(
-                    'User.id',
-                    'User.username',
-                    'User.seo_username',
-                    'User.verify',
-                    'User.picture',
-                    'User.banner'
-                ),
-                'contain' => array(
-                    'Userstat' => array(
-                        'fields' => array(
-                            'Userstat.subscribe',
-                            'Userstat.subscribeto',
-                            'Userstat.uploadcount'
-                        )
+        $onechannel = $this->User->find('first', array(
+            'fields' => array(
+                'User.id',
+                'User.username',
+                'User.seo_username',
+                'User.verify',
+                'User.picture',
+                'User.banner'
+            ),
+            'contain' => array(
+                'Userstat' => array(
+                    'fields' => array(
+                        'Userstat.subscribe',
+                        'Userstat.subscribeto',
+                        'Userstat.uploadcount'
                     )
-                ),
-                'order' => 'rand()',
-                'conditions' => array(
-                    'User.verify' => 1
                 )
+            ),
+            'order' => 'rand()',
+            'conditions' => array(
+                'User.verify' => 1
             )
+                )
         );
-        
-        
+
+
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
             $channelurl = 'http://' . $onechannel['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'];
         } else {
@@ -868,23 +867,23 @@ LIMIT 6");*/
         $image_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $target_image;
 
 
-        $htmlcode = '<div onclick="get_new_channel('.$onechannel['User']['id'].');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" 
+        $htmlcode = '<div onclick="get_new_channel(' . $onechannel['User']['id'] . ');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" 
         data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div> <div style="min-height:255px" class="panel panel-default"> 
         <div style="min-height:80px;padding:40px; background-size:contain; background-position:center; background-size: 100%; 
-        background-image:url('.$cover_url.')" class="panel-heading"></div> 
-        <a target="_blank" href="'.$channelurl.'"> 
-        <img src="'.$image_url.'" onerror="imgError(this,&quot;avatar&quot;);" alt="'.$onechannel['User']['username'].'" class="img-responsive center-block avatar img-thumbnail img-circle" 
+        background-image:url(' . $cover_url . ')" class="panel-heading"></div> 
+        <a target="_blank" href="' . $channelurl . '"> 
+        <img src="' . $image_url . '" onerror="imgError(this,&quot;avatar&quot;);" alt="' . $onechannel['User']['username'] . '" class="img-responsive center-block avatar img-thumbnail img-circle" 
         style="margin-top:-40px; width:80px; height:80px;"> </a> <div class="panel-body"> <div style="margin-top:-10px;" class="text-center"> 
         <!-- Follow button --> 
-        <a id="grid-unfollow-'.$onechannel['User']['id'].'" style="display:none;" class="btn btn-default" > <i class="fa fa-minus-circle"></i> Following </a>
-        <a id="grid-follow-'.$onechannel['User']['id'].'" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
+        <a id="grid-unfollow-' . $onechannel['User']['id'] . '" style="display:none;" class="btn btn-default" > <i class="fa fa-minus-circle"></i> Following </a>
+        <a id="grid-follow-' . $onechannel['User']['id'] . '" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
         <!-- Follow button end --> </div> <h4> <span class="help" data-toggle="tooltip" data-placement="top" title="" 
-        data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>'.$onechannel['User']['username'].'</strong> <br> 
-        <small>@'.$onechannel['User']['seo_username'].'</small> </h4> <span class="label label-success">'.$follower .' Followers</span> <span class="label label-warning">'.$following.' Following</span> 
-        <span class="label label-danger">'.$gamecount.' Games</span> </div> </div>';
-    
+        data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>' . $onechannel['User']['username'] . '</strong> <br> 
+        <small>@' . $onechannel['User']['seo_username'] . '</small> </h4> <span class="label label-success">' . $follower . ' Followers</span> <span class="label label-warning">' . $following . ' Following</span> 
+        <span class="label label-danger">' . $gamecount . ' Games</span> </div> </div>';
 
-        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode ,"onclick" => 'subscribe2("' . $onechannel['User']['username'] . '", user_auth,'. $onechannel['User']['id'] .');switchfollow(' . $onechannel['User']['id'] . ');', 'result' => 1);
+
+        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode, "onclick" => 'subscribe2("' . $onechannel['User']['username'] . '", user_auth,' . $onechannel['User']['id'] . ');switchfollow(' . $onechannel['User']['id'] . ');', 'result' => 1);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }
@@ -1444,7 +1443,7 @@ LIMIT 6");*/
 
         if (!is_numeric($id)) {
             $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id', 'User.username','User.verify'), 'contain' => false));
+            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
             $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.seo_username' => $subdomain)), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         } else {
             $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
@@ -1972,14 +1971,14 @@ LIMIT 6");*/
                             'Game.starsize',
                             'Game.embed'
                         ),
-                        'User'=>array('fields'=>array(
-								'User.id',
-								'User.username',
-								'User.screenname',
-								'User.seo_username'
-								)
-							)
-                   )
+                        'User' => array('fields' => array(
+                                'User.id',
+                                'User.username',
+                                'User.screenname',
+                                'User.seo_username'
+                            )
+                        )
+                    )
                 )
             )
         );
@@ -2058,29 +2057,30 @@ LIMIT 6");*/
         }
         $limit = 12;
         $this->paginate = array(
-                    'Game' => array(
-                        'fields' => array(
-                            '*'
-                        ),
-                        'limit' => $limit,
-                        'order' => array(
-                            'Game.clone' => 'ASC',
-                            'Gamestat.potential' => 'DESC'
-                        ),
-                        'conditions' => array(
-                            'Game.priority != ' => NULL,
-                            'OR' => array(
-                                'Game.description LIKE' => '%' . $query . '%',
-                                'Game.name LIKE' => '%' . $query . '%',
-                                'User.username LIKE' => '%' . $query . '%',
-                                'User.screenname LIKE' => '%' . $query . '%'
-                            ),
-                            'NOT' => array(
-                                'Game.priority' => NULL
-                            )
-                        )
+            'Game' => array(
+                'fields' => array(
+                    '*'
+                ),
+                'limit' => $limit,
+                'order' => array(
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
+                ),
+                'conditions' => array(
+                    'Game.priority != ' => NULL,
+                    'OR' => array(
+                        'Game.description LIKE' => '%' . $query . '%',
+                        'Game.name LIKE' => '%' . $query . '%',
+                        'User.username LIKE' => '%' . $query . '%',
+                        'User.screenname LIKE' => '%' . $query . '%'
+                    ),
+                    'NOT' => array(
+                        'Game.priority' => NULL
                     )
-                );
+                )
+            )
+        );
         $activefilter = 0;
         if ($filter === 'mobiles') {
             $activefilter = 1;
@@ -2314,7 +2314,6 @@ LIMIT 6");*/
                 ),
                 'conditions' => array(
                     'User.verify' => 1,
-                    
                 ),
                 'limit' => $limit
             )
@@ -2393,7 +2392,7 @@ LIMIT 6");*/
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/activities');
     }
-    
+
     /**
      * Dashboard Main Search
      * 
