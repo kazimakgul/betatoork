@@ -2439,12 +2439,14 @@ LIMIT 6");*/
                             'Gamestat.potential' => 'DESC'
                         ),
                         'conditions' => array(
-                            'Game.priority != ' => NULL,
                             'OR' => array(
                                 'Game.description LIKE' => '%' . $query . '%',
                                 'Game.name LIKE' => '%' . $query . '%',
                                 'User.username LIKE' => '%' . $query . '%',
                                 'User.screenname LIKE' => '%' . $query . '%'
+                            ),
+                            'NOT' => array(
+                                'Game.priority' => NULL
                             )
                         )
                     )
