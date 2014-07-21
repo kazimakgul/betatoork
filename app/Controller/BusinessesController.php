@@ -2433,13 +2433,6 @@ LIMIT 6");*/
                         'fields' => array(
                             '*'
                         ),
-                        'joins' => array(
-                            array(
-                                'table' => 'gamestats',
-                                'type' => 'INNER',
-                                'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
-                            )
-                        ),
                         'limit' => $pagination_limit,
                         'order' => array(
                             'Game.clone' => 'ASC',
@@ -2449,7 +2442,9 @@ LIMIT 6");*/
                             'Game.priority != ' => NULL,
                             'OR' => array(
                                 'Game.description LIKE' => '%' . $query . '%',
-                                'Game.name LIKE' => '%' . $query . '%'
+                                'Game.name LIKE' => '%' . $query . '%',
+                                'User.username LIKE' => '%' . $query . '%',
+                                'User.screenname LIKE' => '%' . $query . '%'
                             )
                         )
                     )
