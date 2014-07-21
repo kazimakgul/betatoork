@@ -1,321 +1,255 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Dashboard - Toork Channel Manager</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Create your own game channel">
-        <meta name="author" content="Toork">
-
-        <!-- google font -->
-        <link href="http://fonts.googleapis.com/css?family=Aclonica:regular" rel="stylesheet" type="text/css" />
-
-        <!-- styles -->
-
-<?php echo $this->Html->css(array('css2/bootstrap','css2/bootstrap-responsive','css2/stilearn','css2/stilearn-responsive','css2/stilearn-helper','css2/stilearn-icon','css2/font-awesome','css2/animate','css2/uniform.default','css2/select2','css2/fullcalendar','css2/bootstrap-wysihtml5','css2/jquery.pnotify.default','channelwall','css2/datepicker','css2/colorpicker','css2/responsive-tables','css2/elusive-webfont')); ?>
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-    </head>
-
-    <body>
-<?php  echo $this->element('analytics'); ?>
-
-<?php
-
-if($this->Session->check('Auth.User')){
-    $index=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
-}else{
-    $index=$this->Html->url(array("controller" => "games","action" =>"index")); 
-}
-
-$logout=$this->Html->url(array("controller" => "users","action" =>"logout")); 
-$addGame=$this->Html->url(array("controller" => "games","action" =>"add2"));
-$dashboard=$this->Html->url(array("controller" => "games","action" =>"dashboard")); 
-$wall=$this->Html->url(array("controller" => "wallentries","action" =>"wall3"));
-$bestchannels=$this->Html->url(array("controller" => "games","action" =>"bestchannels2"));
-$featuredchannels=$this->Html->url(array("controller" => "games","action" =>"featuredchannels"));
-$toprated=$this->Html->url(array("controller" => "games","action" =>"toprated2"));
-$login=$this->Html->url(array("controller" => "users","action" =>"login3"));
-$register=$this->Html->url(array("controller" => "users","action" =>"register2"));
-$settings=$this->Html->url(array("controller" => "users","action" =>"settings",$this->Session->read('Auth.User.id')));
-$profilepublic=$this->Html->url(array("controller" => "games","action" =>"profile",$this->Session->read('Auth.User.id')));
-$avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
-?>
-
-
-<?php
-
-if($this->Session->check('Auth.User')){
-
-echo $this->element('NewPanel/header',array('logout'=>$logout,'addGame'=>$addGame,'dashboard'=>$dashboard,'publicprofile'=>$profilepublic,'settings'=>$settings,'index'=>$index,'avatarImage'=>$avatarImage,'wall'=>$wall,'bestchannels'=>$bestchannels,'toprated'=>$toprated));
-
-
-}else{
-    echo $this->element('NewPanel/unauthHeader',array('index'=>$index,'register'=>$register,'login'=>$login,'featuredchannels'=>$featuredchannels,'bestchannels'=>$bestchannels,'toprated'=>$toprated));
-}
-
-?>
-
-        <!-- section content -->
-        <section class="section">
-            <div class="row-fluid">
-                <!-- span side-left -->
-
-
-
-
-
-                
-<?php echo $content_for_layout?>
-        
-
-
-
-
-            </div>
-        </section>
-
-        <!-- section footer -->
-        <footer>
-            <a rel="to-top" href="#top"><i class="icofont-circle-arrow-up"></i></a>
-        </footer>
-
-        <!-- javascript
-        ================================================== -->
-
-
-        <!-- required stilearn template js, for full feature-->
-
-
-<?php echo $this->Html->script(array('js2/jquery','js2/jquery-ui.min','js2/bootstrap','js2/uniform/jquery.uniform','js2/peity/jquery.peity','js2/select2/select2','js2/knob/jquery.knob','js2/flot/jquery.flot','js2/flot/jquery.flot.resize','js2/flot/jquery.flot.categories','js2/wysihtml5/wysihtml5-0.3.0','js2/wysihtml5/bootstrap-wysihtml5','js2/calendar/fullcalendar','js2/holder','js2/stilearn-base','js2/pnotify/jquery.pnotify','js2/pnotify/jquery.pnotify.demo','js2/datepicker/bootstrap-datepicker','js2/colorpicker/bootstrap-colorpicker','js2/validate/jquery.validate','js2/validate/jquery.metadata','js2/wizard/jquery.ui.widget','js2/wizard/jquery.wizard','js2/responsive-tables/responsive-tables','wall/jquery.wallform','wall/jquery.webcam','wall/jquery.color','wall/jquery.livequery','wall/jquery.timeago','wall/jquery.tipsy','wall/facebox','wall/wall2')); ?>
-
-
-
-<!-- Js variable for wallscript begins-->
-<script>
-wallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'message_ajax2')); ?>';
-
-my_feed_var='<?php if(isset($uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax_my',$uid,$type)); }?>';
-
-morevar='<?php if(isset($profile_uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax2',$profile_uid,$type)); }
-else 
-{
-    if(isset($type))
-    {
-    echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_filter_ajax',$type));
-    }
-    else
-    {
-    echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax2'));
-    }
-} ?>';
-
-
-commentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'comment_ajax2')); ?>';
-delmessagevar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_message_ajax')); ?>';
-delcommentvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'delete_comment_ajax')); ?>';
-seeallvar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'view_ajax2')); ?>';
-
-search_query=$('.search-query').val();
-search_url='<?php echo $this->Html->url(array("controller"=>"games","action"=>"search2"));?>';
-</script>
-<!-- Js variable for wallscript ends-->
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                // try your js
-             
-                // auto complete
-                $('#inputAuto').typeahead({
-                    source : ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
-                });
-                
-                // select2
-                $('#inputTags').select2({tags:["red", "green", "blue"]});
-                $('[data-form=select2]').select2();
-                $('[data-form=select2-group]').select2();
-                
-                // this select2 on side right
-                $('#tagsSelect').select2({
-                    tags:["red", "green", "blue"],
-                    tokenSeparators: [",", " "]
-                });
-                
-                
-                // datepicker
-                $('[data-form=datepicker]').datepicker();
-
-                // coloricker
-                $('[data-form=colorpicker]').colorpicker();
-                
-                
-                // uniform
-                $('[data-form=uniform]').uniform()
-
-                // wysihtml5
-                $('[data-form=wysihtml5]').wysihtml5();
-                
-                
-                // validate form
-                $('#form-validate').validate();
-                
-                // wizard
-                $('#form-wizard').wizard({
-                    stepsWrapper: "#wrapped",
-                    submit: ".submit",
-                    beforeSelect: function( event, state ) {
-                        var inputs = $(this).wizard('state').step.find(':input');
-                        return !inputs.length || !!inputs.valid();
+<html>
+<head>
+    <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+        <title><?php echo $title_for_layout?></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet">
+    <!-- stylesheets -->
+        <?php echo $this->Html->css(array(
+        'business/dashboard/compiled/theme',
+        'business/dashboard/vendor/animate',
+        'business/dashboard/custom',
+        'business/dashboard/vendor/brankic',
+        'business/dashboard/vendor/datepicker',
+        'business/dashboard/vendor/morris',
+        'business/dashboard/vendor/select2',
+        'business/dashboard/vendor/select2-bootstrap',
+        'business/dashboard/vendor/jquery.minicolors',
+        'business/dashboard/vendor/summernote',
+        'business/dashboard/vendor/jquery.dataTables',
+        'business/dashboard/vendor/messenger/messenger',
+        'business/dashboard/star-rating',
+        'business/dashboard/vendor/messenger/messenger-theme-flat')); ?>
+    <!-- javascript -->
+        <script>
+            notifyload      = '<?php echo $this->Html->url(array('controller'=>'activities','action'=>'togglelast10')); ?>';
+            updateData      =   '<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'updateData')); ?>'; 
+            newData         =   '<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'newData')); ?>';
+            ads_management  ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'ads_management')); ?>';
+            edit_ads        ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'edit_ads')); ?>';
+            mygames         ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mygames')); ?>';
+            set_channel_ads ='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>'; 
+            remove_ads_field='<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_ads_field')); ?>';
+            deletedata      = '<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deleteData')); ?>';
+            remove_background = '<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_background')); ?>';   
+            subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
+            favswitcher ='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
+            chaingame   ='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
+            remove_game ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deleteData')); ?>';
+            delete_one_game ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deleteonegame')); ?>';
+            mysite          ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite')); ?>';
+            feat_toggle_link ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'featured_toggle')); ?>';
+            rateurl = '<?php echo $this->Html->url(array('controller' => 'rates', 'action' => 'add')); ?>';
+            <?php if($this->Session->check('Auth.User')){
+            echo 'user_auth=1;';
+            echo 'userid='.$this->Session->read('Auth.User.id');
+            }else{
+            echo 'user_auth=0;';
+            }
+            ?>          
+            var toorksize   = 'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png';
+            var avatar      = 'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_manchannelavatar_default.png';
+            function imgError(image, style) {
+                    image.onerror = "";
+                    if (style == "toorksize") {
+                        image.src = toorksize;
+                    } else if (style == "avatar") {
+                        image.src = avatar;
                     }
-                }).submit(function( event ) {
-                    event.preventDefault();
-                    alert('Form submitted!');
-                }).wizard('form').validate({
-                    errorPlacement: function(error, element) { 
-                        if ( element.is(':radio') || element.is(':checkbox') ) {
-                                $('#error-gender').html(error);
-                        } else { 
-                                error.insertAfter( element );
-                        }
-                    }
-                });
-                
-                // normalize event tab-stat, we hack something here couse the flot re-draw event is any some bugs for this case
-                $('#tab-stat > a[data-toggle="tab"]').on('shown', function(){
-                    if(sessionStorage.mode == 4){ // this hack only for mode side-only
-                        $('body,html').animate({
-                            scrollTop: 0
-                        }, 'slow');
-                    }
-                });
-                
-                // peity chart
-                $("span[data-chart=peity-bar]").peity("bar");
-                
-                // Input tags with select2
-                $('input[name=reseiver]').select2({
-                    tags:[]
-                });
-                
-                // uniform
-                $('[data-form=uniform]').uniform();
-                
-                // wysihtml5
-                $('[data-form=wysihtml5]').wysihtml5()
-                toolbar = $('[data-form=wysihtml5]').prev();
-                btn = toolbar.find('.btn');
-                
-                $.each(btn, function(k, v){
-                    $(v).addClass('btn-mini')
-                });
-                
-                // Server stat circular by knob
-                $("input[data-chart=knob]").knob();
-                
-                // system stat flot
-                d1 = [ ['jan', 231], ['feb', 243], ['mar', 323], ['apr', 352], ['maj', 354], ['jun', 467], ['jul', 429] ];
-                d2 = [ ['jan', 87], ['feb', 67], ['mar', 96], ['apr', 105], ['maj', 98], ['jun', 53], ['jul', 87] ];
-                d3 = [ ['jan', 34], ['feb', 27], ['mar', 46], ['apr', 65], ['maj', 47], ['jun', 79], ['jul', 95] ];
-                
-                var visitor = $("#visitor-stat"),
-                order = $("#order-stat"),
-                user = $("#user-stat"),
-                
-                data_visitor = [{
-                        data: d1,
-                        color: '#00A600'
-                    }],
-                data_order = [{
-                        data: d2,
-                        color: '#2E8DEF'
-                    }],
-                data_user = [{
-                        data: d3,
-                        color: '#DC572E'
-                    }],
-                 
-                
-                options_lines = {
-                    series: {
-                        lines: {
-                            show: true,
-                            fill: true
-                        },
-                        points: {
-                            show: true
-                        },
-                        hoverable: true
-                    },
-                    grid: {
-                        backgroundColor: '#FFFFFF',
-                        borderWidth: 1,
-                        borderColor: '#CDCDCD',
-                        hoverable: true
-                    },
-                    legend: {
-                        show: false
-                    },
-                    xaxis: {
-                        mode: "categories",
-                        tickLength: 0
-                    },
-                    yaxis: {
-                        autoscaleMargin: 2
-                    }
-        
-                };
-                
-                // render stat flot
-                $.plot(visitor, data_visitor, options_lines);
-                $.plot(order, data_order, options_lines);
-                $.plot(user, data_user, options_lines);
-                
-                // tootips chart
-                function showTooltip(x, y, contents) {
-                    $('<div id="tooltip" class="bg-black corner-all color-white">' + contents + '</div>').css( {
-                        position: 'absolute',
-                        display: 'none',
-                        top: y + 5,
-                        left: x + 5,
-                        border: '0px',
-                        padding: '2px 10px 2px 10px',
-                        opacity: 0.9,
-                        'font-size' : '11px'
-                    }).appendTo("body").fadeIn(200);
+                    return true;
                 }
-
-                var previousPoint = null;
-                $('#visitor-stat, #order-stat, #user-stat').bind("plothover", function (event, pos, item) {
-                    
-                    if (item) {
-                        if (previousPoint != item.dataIndex) {
-                            previousPoint = item.dataIndex;
-
-                            $("#tooltip").remove();
-                            var x = item.datapoint[0].toFixed(2),
-                            y = item.datapoint[1].toFixed(2);
-                            label = item.series.xaxis.ticks[item.datapoint[0]].label;
-                            
-                            showTooltip(item.pageX, item.pageY,
-                            label + " = " + y);
-                        }
-                    }
-                    else {
-                        $("#tooltip").remove();
-                        previousPoint = null;            
-                    }
-                    
-                });
-                // end tootips chart
-                
-            });
-      
         </script>
 
-        
-         <!-- this plugin required jquery ui-->
-        
-    </body>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+        <?php echo $content_for_layout?>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <?php echo $this->Html->script(array(
+        'business/dashboard/bootstrap/bootstrap.min',
+        'business/dashboard/vendor/bootstrap-switch.min',
+        'business/dashboard/vendor/jquery.cookie',
+        'business/dashboard/vendor/moment.min',
+        'business/dashboard/theme',
+        'business/dashboard/vendor/select2.min',
+        'business/dashboard/vendor/jquery.dataTables.min',
+        'business/dashboard/vendor/jquery.validate.min',
+        'business/dashboard/vendor/bootstrap-datepicker',
+        'business/dashboard/vendor/summernote.min',
+        'business/dashboard/vendor/jquery.minicolors.min',
+        'business/dashboard/vendor/jquery.maskedinput',
+        'business/dashboard/vendor/jquery.raty',
+        'business/dashboard/vendor/raphael-min',
+        'business/dashboard/vendor/morris.min',
+        'business/dashboard/vendor/jquery.flot/jquery.flot',
+        'business/dashboard/vendor/jquery.flot/jquery.flot.time',
+        'business/dashboard/vendor/jquery.flot/jquery.flot.tooltip',
+        'business/dashboard/vendor/messenger/messenger.min',
+        'business/dashboard/vendor/messenger/messenger-theme-flat',
+        'business/dashboard/star-rating',
+        'business/dashboard/custom.js'));
+        ?>
+
+    <!--[if lt IE 9]>
+      Dummy App Status page için gerekli. Custom.js dosyasına taşınacak
+    <![endif]-->
+
+    <script type="text/javascript">
+        $(function () {
+            // Update the status color every 2 seconds, for demo only
+            // You can remove this!
+            var $status = $(".status .color"),
+                colors = ["green", "yellow", "red"],
+                currentStatus = 0;
+
+            function updateStatus() {
+                currentStatus++;
+                if (currentStatus >= 3) {
+                    currentStatus = 0;
+                }
+                color = colors[currentStatus];
+                $status.removeClass().addClass("color").addClass(color);
+            }
+
+            setInterval(function () {
+                updateStatus();
+            }, 2000);
+        });
+    </script>
+
+
+    <!--[if lt IE 9]>
+      Dummy Pricing page için gerekli. Custom.js dosyasına taşınacak
+    <![endif]-->
+
+    <script type="text/javascript">
+        $(function () {
+            var $plans = $(".plans .plan");
+            $plans.click(function () {
+                $plans.removeClass("selected");
+                $(this).addClass("selected");
+            });
+
+            var $step_triggers = $("[data-step]");
+            var $step_panels = $(".step-panel");
+            var $tabs = $(".steps .step");
+
+            $step_triggers.click(function (e) {
+                e.preventDefault();
+                var go_to_step = $(this).data("step");
+                
+                $step_panels.removeClass("active");
+                $step_panels.eq(go_to_step).addClass("active");
+
+                $tabs.removeClass("active");
+                $tabs.eq(go_to_step).addClass("active");
+
+                if (go_to_step === 1) {
+                    $("#billing-form input:text:eq(0)").focus();
+                }
+            });
+        });
+    </script>
+
+    <!--[if lt IE 9]>
+      Dummy startup wizard page için gerekli. Custom.js dosyasına taşınacak
+    <![endif]-->
+
+    <script type="text/javascript">
+        $(function () {
+            var $steps = $(".form-wizard .step"),
+                $buttons = $steps.find("[data-step]"),
+                $tabs = $(".header .steps .step"),
+                active_step = 0;
+
+            $buttons.click(function (e) {
+                e.preventDefault();
+
+                var step_index = $(this).data("step") - 1;
+                var in_fade_class = (step_index > active_step) ? "fadeInRightStep" : "fadeInLeftStep";
+                var out_fade_class = (in_fade_class === "fadeInRightStep") ? "fadeOutLeftStep" : "fadeOutRightStep";
+
+                var $out_step = $steps.eq(active_step);
+                $out_step.on(utils.animation_ends(), function () {
+                    $out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
+                }).addClass(out_fade_class);
+
+                active_step = step_index;
+
+                $tabs.removeClass("active").filter(":lt(" + (active_step + 1) + ")").addClass("active");
+
+                $steps.removeClass("active");
+                $steps.eq(step_index).addClass("active animated " + in_fade_class);
+            });
+
+        });
+    </script>
+
+<!--Skin switcher commented out
+    <div class="skin-switcher">
+        <div class="toggler">
+            <i class="fa fa-magic"></i>
+        </div>
+        <ul class="menu">
+            <li>
+                <a class="active" data-skin="sidebar-default" href="#">
+                    <span class="color default"></span> Default
+                    <i class="fa fa-check"></i>
+                </a>
+            </li>
+            <li>
+                <a data-skin="sidebar-clear" href="#">
+                    <span class="color clear"></span> Clear
+                    <i class="fa fa-check"></i>
+                </a>
+            </li>
+            <li>
+                <a data-skin="sidebar-black" href="#">
+                    <span class="color black"></span> Black
+                    <i class="fa fa-check"></i>
+                </a>
+            </li>
+            <li>
+                <a data-skin="sidebar-dark" href="#">
+                    <span class="color dark"></span> Dark
+                    <i class="fa fa-check"></i>
+                </a>
+            </li>
+            <li>
+                <a data-skin="sidebar-flat" href="#">
+                    <span class="color flat"></span> Flat
+                    <i class="fa fa-check"></i>
+                </a>
+            </li>
+            <li>
+                <a data-skin="sidebar-flat-dark" href="#">
+                    <span class="color flat-dark"></span> Flat dark
+                    <i class="fa fa-check"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+<?php 
+//***************************************
+//this area writes times of sql processes-will be removed
+//http://blog.tersmitten.nl/how-to-debug-sql-from-a-controller-in-cakephp.html
+//echo $this->element('sql_dump');
+?>
+-->
+
+
+<!--++++++++++++++++++++++++++++++++++++++++++++-->
+<!--======Analitic code for channel owner=======-->
+<!--++++++++++++++++++++++++++++++++++++++++++++-->
+<script type="text/javascript">    var _gaq = _gaq || [];   _gaq.push( ['_setAccount', '<?php echo Configure::read('Clone.analitics_id'); ?>'], ['_trackPageview']);      (function() {     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);   })();  </script>
+<!--++++++++++++++++++++++++++++++++++++++++++++-->
+<!--=======//Analitic code for channel owner======-->
+<!--++++++++++++++++++++++++++++++++++++++++++++-->
+
 </html>
