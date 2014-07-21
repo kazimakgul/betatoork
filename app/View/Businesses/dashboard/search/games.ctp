@@ -1,4 +1,5 @@
 <?php
+$index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 switch ($activefilter) {
     case 0:
         $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search"));
@@ -27,11 +28,11 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                 <i class="ion-navicon"></i>
             </div>
             <div class="page-title">
-                <a href="<?php echo $explore; ?>">
-                    Search
+                <a href="<?php echo $index; ?>">
+                    ← Go Back To Dashboard
                 </a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action; ?>">
+            <form class="search hidden-xs" action="<?php echo $search_action; ?>" style="margin-left: 280px;">
                 <i class="fa fa-search"></i>
                 <input type="text" name="q" placeholder="Search games..." value="<?php echo $query; ?>" />
                 <input type="submit" />
@@ -83,7 +84,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             </div>
             <div class="container-fluid">
                 <?php echo $this->element('business/dashboard/search/games/grid') ?>
-                <?php echo $this->element('business/dashboard/search/games/list') ?>
+<?php echo $this->element('business/dashboard/search/games/list') ?>
             </div>
         </div>
     </div>

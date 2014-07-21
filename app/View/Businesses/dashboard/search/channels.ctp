@@ -1,4 +1,5 @@
 <?php
+$index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 $search_action = $this->Html->url(array("controller" => "businesses", "action" => "explorechannels_search"));
 $game_add = $this->Html->url(array("controller" => "businesses", "action" => "game_add"));
 $exp_channel = $this->Html->url(array("controller" => "businesses", "action" => "explorechannels"));
@@ -15,11 +16,11 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                 <i class="ion-navicon"></i>
             </div>
             <div class="page-title">
-                <a href="<?php echo $exp_channel; ?>">
-                    Search
+                <a href="<?php echo $index; ?>">
+                    ← Go Back To Dashboard
                 </a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action ?>">
+            <form class="search hidden-xs" action="<?php echo $search_action ?>" style="margin-left: 280px;">
                 <i class="fa fa-search"></i>
                 <input type="text" name="q" placeholder="Search channels, users..." value="<?php echo $query; ?>" />
                 <input type="submit" />
