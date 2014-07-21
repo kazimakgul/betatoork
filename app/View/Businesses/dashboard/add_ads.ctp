@@ -36,11 +36,11 @@
 				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Category</label>
 					    <div class="col-sm-10 col-md-8">
-					    		<input type='checkbox' name='category' value="home_banner_top"> Home -> Top<br/>
-					    		<input type='checkbox' name='category' value="home_banner_middle"> Home -> Middle<br/>
-					    		<input type='checkbox' name='category' value="home_banner_bottom"> Home -> Bottom<br/>
-					    		<input type='checkbox' name='category' value="game_banner_top"> Game -> Top<br/>
-					    		<input type='checkbox' name='category' value="game_banner_bottom"> Game -> Bottom<br/>
+					    		<input type='checkbox' name='category' value="1"> Home -> Top<br/>
+					    		<input type='checkbox' name='category' value="2"> Home -> Middle<br/>
+					    		<input type='checkbox' name='category' value="3"> Home -> Bottom<br/>
+					    		<input type='checkbox' name='category' value="4"> Game -> Top<br/>
+					    		<input type='checkbox' name='category' value="5"> Game -> Bottom<br/>
 					    </div>
 				  	</div>
 						<input type="hidden" id="attr" name="attr" value="new_ads" />

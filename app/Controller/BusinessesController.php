@@ -10,7 +10,7 @@ App::uses('AppController', 'Controller');
 class BusinessesController extends AppController {
 
     public $name = 'Businesses';
-    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Adsetting', 'Adcode');
+    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode','ad_areas');
     public $helpers = array('Html', 'Form', 'Upload', 'Recaptcha.Recaptcha', 'Time');
     public $components = array('Amazonsdk.Amazon', 'Recaptcha.Recaptcha', 'Common');
 
@@ -131,10 +131,10 @@ class BusinessesController extends AppController {
 
                 if (!empty($category)) {
                     foreach ($category as $value) {
-                        $filtered_data['Adsetting'][$value] = $this->request->data['ad_id'];
-                        $id = $this->Adsetting->find('first', array('contain' => false, 'conditions' => array('Adsetting.user_id' => $user_id), 'fields' => array('Adsetting.id')));
-                        $this->Adsetting->id = $id;
-                        $this->Adsetting->save($filtered_data);
+                        $filtered_data['Ad_setting'][$value] = $this->request->data['ad_id'];
+                        $id = $this->Ad_setting->find('first', array('contain' => false, 'conditions' => array('Ad_setting.user_id' => $user_id), 'fields' => array('Ad_setting.id')));
+                        $this->Ad_setting->id = $id;
+                        $this->Ad_setting->save($filtered_data);
                     }
                 }
 
@@ -235,18 +235,18 @@ class BusinessesController extends AppController {
                 $filtered_data['Adcode']['name'] = $this->request->data['title'];
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
                 $filtered_data['Adcode']['user_id'] = $user_id;
-                $this->Adcode->save($filtered_data);
-
+               	$this->Adcode->save($filtered_data);
                 $category = json_decode($this->request->data['category'], true);
                 if (!empty($category)) {
-                    foreach ($category as $value) {
-                        $filtered_data['Adsetting'][$value] = $this->Adcode->getLastInsertID();
+                    foreach ($category as $value)
+                    {
+                        $this->User->Query('INSERT INTO ad_settings (ad_area_id,ad_code_id,user_id,skip) VALUES (' . $value . ',' . $this->Adcode->getLastInsertID() . ',' . $user_id . ',0)');
+						
                     }
-                    $filtered_data['Adsetting']['user_id'] = $user_id;
-                    $this->Adsetting->save($filtered_data);
                 }
-                $this->set('success', "Ads Code Added");
+				$this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
+				
             } elseif ($attr == "game_add") {
                 $game_name = $this->request->data['name'];
                 $game_description = $this->request->data['desc'];
@@ -1252,7 +1252,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $this->get_ads_info($userid, $userid);
+        $this->get_ads_info($userid);
         $this->set('title_for_layout', 'Clone Business Add Management');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
@@ -1269,7 +1269,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $this->get_ads_info($userid, $userid);
+        //$this->get_ads_info($userid, $userid);
         $this->set('title_for_layout', 'Clone Business Add ads');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
@@ -1288,10 +1288,10 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $adcodes = $this->Adcode->find('first', array('conditions' => array('Adcode.id' => $id), 'contain' => false));
-        $adsetting = $this->Adsetting->find('first', array('conditions' => array('Adsetting.user_id' => $userid), 'contain' => false, 'fields' => ('home_banner_top,home_banner_middle,home_banner_bottom,game_banner_top,game_banner_bottom')));
+        $Ad_setting = $this->Ad_setting->find('first', array('conditions' => array('Ad_setting.user_id' => $userid), 'contain' => false, 'fields' => ('home_banner_top,home_banner_middle,home_banner_bottom,game_banner_top,game_banner_bottom')));
 
         $this->set('Ads', $adcodes);
-        $this->set('Ads_set', $adsetting);
+        $this->set('Ads_set', $Ad_setting);
         $this->set('title_for_layout', 'Clone Business Edit Ads');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
@@ -1419,9 +1419,45 @@ class BusinessesController extends AppController {
         }
     }
 
+	function get_ads_info($authid)
+	{
+		//$limit = 10;
+		$authid = $this->Auth->user('id');
+		
+            //======Getting all ads codes======
+        // $Ad_setting = $this->Ad_setting->find('all', array('conditions' => array('Ad_setting.user_id' => $authid)));
+		 $this->paginate = array(
+            'Adcode' => array(
+                'fields' => array(
+                'Adcode.id',
+                'Adcode.name',
+                'Adcode.code'
+                ),
+                'contain' => false,
+                //'limit' => $limit,
+                'order' => array(
+                    'Adcode.id' => 'DESC'
+                	),
+                'conditions' => array(
+                    'Adcode.user_id' =>$authid
+                 )
+            )
+       );
+	   
+		$adcodes = $this->paginate('Adcode');
+       /* $adcodes = $this->Game->query('SELECT * FROM adcodes as Adcode 
+INNER JOIN ad_settings AS Ad_setting ON Adcode.id=Ad_setting.ad_code_id
+WHERE Adcode.user_id='.$authid.'');*/
+		
+		//$this->set('Ad_setting', $Ad_setting);
+		$this->set('adcodes', $adcodes);
+		
+	}
+
+/*
     function get_ads_info($userid = NULL, $authid = NULL) {
         //======Getting ads datas======
-        $addata = $this->Adsetting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Adsetting.user_id' => $userid)));
+        $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
         $this->set('addata', $addata);
 
         if ($authid == $userid) {
@@ -1433,7 +1469,7 @@ class BusinessesController extends AppController {
         if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
             $this->set('channel_owner', 0);
         }
-    }
+    }*/
 
     /**
      * Search method
