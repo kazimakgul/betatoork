@@ -257,7 +257,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
 </div>
 <style>
     .page-title {
-        position: unset !important;
+        position: relative !important;
         paddding: 0 30px;
         margin-top: -20px;
         line-height: 63px;
