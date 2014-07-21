@@ -1993,29 +1993,11 @@ class BusinessesController extends AppController {
     public function exploregames($filter = null) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-        $this->Game->bindModel(
-                array(
-                    'hasOne' => array(
-                        'Gamestat' => array(
-                            'className' => 'Gamestat',
-                            'foreignKey' => 'game_id',
-                            'type' => 'INNER'
-                        )
-                    )
-                )
-        );
         $limit = 12;
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
                     '*'
-                ),
-                'joins' => array(
-                    array(
-                        'table' => 'gamestats',
-                        'type' => 'INNER',
-                        'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
-                    )
                 ),
                 'limit' => $limit,
                 'contain' => array(
@@ -2023,12 +2005,15 @@ class BusinessesController extends AppController {
                     'Gamestat'
                 ),
                 'conditions' => array(
-                    'Game.priority != ' => NULL,
-                    'Game.clone' => 0
+                    'NOT' => array(
+                        'Game.priority' => NULL
+                    )
                 ),
                 'order' => array(
-                    'Game.id' => 'DESC'
-                )
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
+                ),
             )
         );
         $activefilter = 0;
@@ -2068,7 +2053,6 @@ class BusinessesController extends AppController {
                     'Gamestat.potential' => 'DESC'
                 ),
                 'conditions' => array(
-                    'Game.priority != ' => NULL,
                     'OR' => array(
                         'Game.description LIKE' => '%' . $query . '%',
                         'Game.name LIKE' => '%' . $query . '%',
