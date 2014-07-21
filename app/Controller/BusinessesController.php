@@ -255,6 +255,7 @@ class BusinessesController extends AppController {
                 $game_height = $this->request->data['height'];
                 $game_priority = 0;
                 $category_id = $this->request->data['category'];
+                $tags = $this->request->data['tags'];
                 $fullscreen = $this->request->data['fullscreen'];
                 $mobileready = $this->request->data['mobile'];
                 $game_user_id = $user_id;
@@ -290,6 +291,14 @@ class BusinessesController extends AppController {
                 }
 
 
+                // Add game tags
+                if ($tags != '' && $tags != NULL) {
+                $tags = str_replace("  ", " ", $_POST['tags']);
+                $tags = str_replace(", ", ",", $_POST['tags']);
+                $tag_array = explode(",", $tags);
+                }
+            
+
                 //============Save Datas To Games Database Begins================
                 //*****************************
                 //Secure data filtering begins
@@ -322,6 +331,7 @@ class BusinessesController extends AppController {
                         $id = $game_id;
                     } else {
                         $id = $this->Game->getLastInsertId();
+                        $this->add_tags($tag_array, $id);
                     }
 
                     $this->requestAction(array('controller' => 'wallentries', 'action' => 'action_ajax', $id, $user_id));
@@ -393,6 +403,59 @@ class BusinessesController extends AppController {
             }
         }
     }
+
+
+    /**
+     * Game tags add method
+     *
+     * @param Request => tags=array(),$gameid
+     * @return no return
+     */
+    function add_tags($tags, $gameid) {
+    $this->loadModel('Tag');
+    $this->loadModel('Tagrelation');
+
+     foreach($tags as $tag_name) {
+          $tag_data=$this->Tag->find('all',array('contain'=>false,'conditions'=>array('Tag.tag_name'=>$tag_name)));
+          if($tag_data==NULL)
+          {
+              $seo_url=$tag_name;//seo url filteri eklenecek
+              $this->Tag->create();
+              $filtered_data['Tag']['tag_name']=$tag_name;
+              $filtered_data['Tag']['seo_url']=$seo_url;
+              if($this->Tag->save($filtered_data))
+              {
+                $tag_id=$this->Tag->getLastInsertID();
+              }  
+          }else{
+            $tag_id=$tag_data[0]['Tag']['id'];
+          }
+           
+           $this->Tagrelation->create();
+           $filtered_data2['Tagrelation']['game_id']=$gameid;
+           $filtered_data2['Tagrelation']['tag_id']=$tag_id;
+           $this->Tagrelation->save($filtered_data2);
+          
+     }
+
+ }
+
+/*
+ function add_tags($tags, $gameid) {echo 'add tag';
+    foreach($tags as $tag_name) {
+        $tag_count = mysql_result(mysql_query("SELECT COUNT(*) as Num FROM ava_tags WHERE tag_name = '$tag_name'"), 0);
+        if ($tag_count == 0) {
+            $seo_url = seoname($tag_name, 0, 'tag');
+            
+            mysql_query("INSERT INTO ava_tags (tag_name, seo_url) VALUES ('$tag_name', '$seo_url')") or die (mysql_error());
+        }
+        $mysql_tag = mysql_fetch_array(mysql_query("SELECT * FROM ava_tags WHERE tag_name = '$tag_name'"));
+        mysql_query("INSERT INTO ava_tag_relations (game_id, tag_id) VALUES ($gameid, $mysql_tag[id])");
+     }
+ }
+ */
+
+
 
     /**
      * Delete Form Request method
