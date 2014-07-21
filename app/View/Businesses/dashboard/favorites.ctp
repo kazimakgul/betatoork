@@ -58,18 +58,8 @@ $allgames = $params['count'];
                     </div>
                 </div>
             </div>
-            <div class="row users-list">
-                    <?php echo $this->element('business/dashboard/favorites/list') ?>
-                    <div class="text-center">
-                        <?php echo $this->element('business/components/pagination') ?>
-                    </div>
-            </div>
-            <div class="row users-grid">
-                <?php echo $this->element('business/dashboard/favorites/grid') ?>
-                <div class="text-center">
-                    <?php echo $this->element('business/components/pagination') ?>
-                </div>
-            </div>
+            <?php echo $this->element('business/dashboard/favorites/list') ?>
+            <?php echo $this->element('business/dashboard/favorites/grid') ?>
         </div>
         </div>
     </div>
