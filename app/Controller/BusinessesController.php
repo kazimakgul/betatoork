@@ -2457,7 +2457,7 @@ class BusinessesController extends AppController {
                         'limit' => $pagination_limit,
                         'conditions' => array(
                             'User.username LIKE' => '%' . $query . '%',
-                            '(SELECT count(games.id) from games where games.user_id = `User`.`id`) > ' => '0',
+                            //'(SELECT count(games.id) from games where games.user_id = `User`.`id`) > ' => '0',
                             'NOT' => array(
                                 'User.verify' => NULL
                             )
