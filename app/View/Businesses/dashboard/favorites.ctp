@@ -63,7 +63,6 @@ $allgames = $params['count'];
                     <div class="text-center">
                         <?php echo $this->element('business/components/pagination') ?>
                     </div>
-                </div>
             </div>
             <div class="row users-grid">
                 <?php echo $this->element('business/dashboard/favorites/grid') ?>
