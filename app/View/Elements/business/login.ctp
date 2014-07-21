@@ -111,6 +111,9 @@
         
     <input type="text" class="form-control" id="txt_signusername" placeholder="Username or Email" autofocus>
     <input type="password" class="form-control" id="txt_signpass" placeholder="Password">
+    <label class="span12 checkbox">
+                                   <input type="checkbox" checked="checked"> Remember me
+                                </label>
      
         Are you a business? <a href="http://www.clone.gs"> Get started here</a>
     <span class="clearfix"></span>
