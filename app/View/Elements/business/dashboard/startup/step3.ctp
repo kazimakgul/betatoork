@@ -2,13 +2,11 @@
     <div id="progressbar_follow"><span>Start following minimum 5 channels.</span></div>
     <?php
     foreach ($following as $value) {
-        
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-        $userlink = $this->Html->url('http://' . $value['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
+            $userlink = $this->Html->url('http://' . $value['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST']);
         } else {
-        $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
+            $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
         }
-
         $name = $value['User']['username'];
         $userid = $value['User']['id'];
         $publicname = $value['User']['username'];
@@ -30,7 +28,7 @@
         }
         ?>
         <div class="col-md-4" id="channelbox-<?php echo $userid; ?>">
-                        <div onclick='get_new_channel(<?php echo $userid; ?>);' style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div>
+            <div onclick='get_new_channel(<?php echo $userid; ?>);' style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div>
             <div class="panel panel-default">
                 <div style="padding:40px; background-size:contain; background-position:center; background-size: 100%; background-image:url(<?php echo $cover; ?>)" class="panel-heading"></div>
                 <a target="_blank" href="<?php echo $userlink; ?>">
@@ -38,12 +36,12 @@
                 </a>
                 <div class="panel-body">
                     <div style="margin-top:-10px;" class="text-center">
-                         <!-- Follow button -->
-                       <a id="grid-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-default"> <i class="fa fa-minus-circle"></i> Following... </a>
+                        <!-- Follow button -->
+                        <a id="grid-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-default"> <i class="fa fa-minus-circle"></i> Following... </a>
 
 
                         <a id="grid-follow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribe2('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                                        switchfollow(<?php echo $userid; ?>);">
+                                switchfollow(<?php echo $userid; ?>);">
                             <i class="fa fa-plus-circle"></i>
                             Follow
                         </a>
