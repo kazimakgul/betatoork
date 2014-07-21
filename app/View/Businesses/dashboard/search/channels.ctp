@@ -17,10 +17,10 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             </div>
             <div class="page-title">
                 <a href="<?php echo $index; ?>">
-                    ← Go Back To Dashboard
+                    ← Search
                 </a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action ?>" style="margin-left: 280px;">
+            <form class="search hidden-xs" action="<?php echo $search_action ?>" style="margin-left: 160px;">
                 <i class="fa fa-search"></i>
                 <input type="text" name="q" placeholder="Search channels, users..." value="<?php echo $query; ?>" />
                 <input type="submit" />
