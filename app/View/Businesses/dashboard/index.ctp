@@ -17,7 +17,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             </div>
             <form class="search hidden-xs" action="<?php echo $search_action; ?>">
                 <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search games..." />
+                <input type="text" name="q" placeholder="Search..." />
                 <input type="submit" />
             </form>
             <div class="pull-right hidden-xs" style="margin-top: -5px">
