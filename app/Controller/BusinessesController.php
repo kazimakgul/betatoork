@@ -663,7 +663,17 @@ class BusinessesController extends AppController {
         }
         $this->sideBar();
 
-
+        $this->User->bindModel(
+                array(
+                    'activityto' => array(
+                        'Activity' => array(
+                            'className' => 'Activity',
+                            'foreignKey' => 'channel_id',
+                            'type' => 'INNER'
+                        )
+                    )
+                )
+        );
 
 
         $userid = $this->Session->read('Auth.User.id');
@@ -913,38 +923,39 @@ LIMIT 6");*/
         $this->sideBar();
         $limit = 6;
         $this->paginate = array(
-            'Game' => array(
+            'User' => array(
                 'fields' => array(
-                    'Game.name',
-                    'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
-                    'Game.picture',
-                    'Game.starsize',
-                    'Game.rate_count',
-                    'Game.embed',
-                    'Game.clone',
-                    'Game.created',
-                    'User.seo_username',
-                    'Game.description',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
-                    'Gamestat.channelclone',
-                    'Gamestat.potential',
                     'User.id',
                     'User.username',
                     'User.seo_username',
                     'User.verify',
-                    'User.picture'
+                    'User.picture',
+                    'User.banner'
                 ),
-                'limit' => $limit,
-                'conditions' => array(
-                    'Game.priority != ' => NULL,
-                    'Game.clone' => 0
+                'contain' => array(
+                    'Userstat' => array(
+                        'fields' => array(
+                            'Userstat.subscribe',
+                            'Userstat.subscribeto',
+                            'Userstat.uploadcount'
+                        )
+                    ),
+                    'Activity' => array(
+                        'fields' => array(
+                            'Activity.type',
+                            'Activity.channel_id',
+                            'Activity.created'
+                        )
+                    )
                 ),
                 'order' => array(
-                    'Game.id' => 'DESC'
-                )
+                    'Activity.created' => 'DESC'
+                ),
+                'conditions' => array(
+                    'User.verify' => 1,
+					'Activity.type' => 9                    
+                ),
+                'limit' => $limit
             )
         );
 
