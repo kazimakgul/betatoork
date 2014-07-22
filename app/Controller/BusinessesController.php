@@ -10,7 +10,7 @@ App::uses('AppController', 'Controller');
 class BusinessesController extends AppController {
 
     public $name = 'Businesses';
-    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode','ad_areas');
+    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode', 'ad_areas');
     public $helpers = array('Html', 'Form', 'Upload', 'Recaptcha.Recaptcha', 'Time');
     public $components = array('Amazonsdk.Amazon', 'Recaptcha.Recaptcha', 'Common');
 
@@ -235,18 +235,15 @@ class BusinessesController extends AppController {
                 $filtered_data['Adcode']['name'] = $this->request->data['title'];
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
                 $filtered_data['Adcode']['user_id'] = $user_id;
-               	$this->Adcode->save($filtered_data);
+                $this->Adcode->save($filtered_data);
                 $category = json_decode($this->request->data['category'], true);
                 if (!empty($category)) {
-                    foreach ($category as $value)
-                    {
+                    foreach ($category as $value) {
                         $this->User->Query('INSERT INTO ad_settings (ad_area_id,ad_code_id,user_id,skip) VALUES (' . $value . ',' . $this->Adcode->getLastInsertID() . ',' . $user_id . ',0)');
-						
                     }
                 }
-				$this->set('success', "Ads Code Added");
+                $this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
-				
             } elseif ($attr == "game_add") {
                 $game_name = $this->request->data['name'];
                 $game_description = $this->request->data['desc'];
@@ -293,11 +290,11 @@ class BusinessesController extends AppController {
 
                 // Add game tags
                 if ($tags != '' && $tags != NULL) {
-                $tags = str_replace("  ", " ", $_POST['tags']);
-                $tags = str_replace(", ", ",", $_POST['tags']);
-                $tag_array = explode(",", $tags);
+                    $tags = str_replace("  ", " ", $_POST['tags']);
+                    $tags = str_replace(", ", ",", $_POST['tags']);
+                    $tag_array = explode(",", $tags);
                 }
-            
+
 
                 //============Save Datas To Games Database Begins================
                 //*****************************
@@ -404,7 +401,6 @@ class BusinessesController extends AppController {
         }
     }
 
-
     /**
      * Game tags add method
      *
@@ -412,50 +408,44 @@ class BusinessesController extends AppController {
      * @return no return
      */
     function add_tags($tags, $gameid) {
-    $this->loadModel('Tag');
-    $this->loadModel('Tagrelation');
+        $this->loadModel('Tag');
+        $this->loadModel('Tagrelation');
 
-     foreach($tags as $tag_name) {
-          $tag_data=$this->Tag->find('all',array('contain'=>false,'conditions'=>array('Tag.tag_name'=>$tag_name)));
-          if($tag_data==NULL)
-          {
-              $seo_url=$tag_name;//seo url filteri eklenecek
-              $this->Tag->create();
-              $filtered_data['Tag']['tag_name']=$tag_name;
-              $filtered_data['Tag']['seo_url']=$seo_url;
-              if($this->Tag->save($filtered_data))
-              {
-                $tag_id=$this->Tag->getLastInsertID();
-              }  
-          }else{
-            $tag_id=$tag_data[0]['Tag']['id'];
-          }
-           
-           $this->Tagrelation->create();
-           $filtered_data2['Tagrelation']['game_id']=$gameid;
-           $filtered_data2['Tagrelation']['tag_id']=$tag_id;
-           $this->Tagrelation->save($filtered_data2);
-          
-     }
+        foreach ($tags as $tag_name) {
+            $tag_data = $this->Tag->find('all', array('contain' => false, 'conditions' => array('Tag.tag_name' => $tag_name)));
+            if ($tag_data == NULL) {
+                $seo_url = $tag_name; //seo url filteri eklenecek
+                $this->Tag->create();
+                $filtered_data['Tag']['tag_name'] = $tag_name;
+                $filtered_data['Tag']['seo_url'] = $seo_url;
+                if ($this->Tag->save($filtered_data)) {
+                    $tag_id = $this->Tag->getLastInsertID();
+                }
+            } else {
+                $tag_id = $tag_data[0]['Tag']['id'];
+            }
 
- }
-
-/*
- function add_tags($tags, $gameid) {echo 'add tag';
-    foreach($tags as $tag_name) {
-        $tag_count = mysql_result(mysql_query("SELECT COUNT(*) as Num FROM ava_tags WHERE tag_name = '$tag_name'"), 0);
-        if ($tag_count == 0) {
-            $seo_url = seoname($tag_name, 0, 'tag');
-            
-            mysql_query("INSERT INTO ava_tags (tag_name, seo_url) VALUES ('$tag_name', '$seo_url')") or die (mysql_error());
+            $this->Tagrelation->create();
+            $filtered_data2['Tagrelation']['game_id'] = $gameid;
+            $filtered_data2['Tagrelation']['tag_id'] = $tag_id;
+            $this->Tagrelation->save($filtered_data2);
         }
-        $mysql_tag = mysql_fetch_array(mysql_query("SELECT * FROM ava_tags WHERE tag_name = '$tag_name'"));
-        mysql_query("INSERT INTO ava_tag_relations (game_id, tag_id) VALUES ($gameid, $mysql_tag[id])");
-     }
- }
- */
+    }
 
+    /*
+      function add_tags($tags, $gameid) {echo 'add tag';
+      foreach($tags as $tag_name) {
+      $tag_count = mysql_result(mysql_query("SELECT COUNT(*) as Num FROM ava_tags WHERE tag_name = '$tag_name'"), 0);
+      if ($tag_count == 0) {
+      $seo_url = seoname($tag_name, 0, 'tag');
 
+      mysql_query("INSERT INTO ava_tags (tag_name, seo_url) VALUES ('$tag_name', '$seo_url')") or die (mysql_error());
+      }
+      $mysql_tag = mysql_fetch_array(mysql_query("SELECT * FROM ava_tags WHERE tag_name = '$tag_name'"));
+      mysql_query("INSERT INTO ava_tag_relations (game_id, tag_id) VALUES ($gameid, $mysql_tag[id])");
+      }
+      }
+     */
 
     /**
      * Delete Form Request method
@@ -1419,57 +1409,55 @@ class BusinessesController extends AppController {
         }
     }
 
-	function get_ads_info($authid)
-	{
-		//$limit = 10;
-		$authid = $this->Auth->user('id');
-		
-            //======Getting all ads codes======
+    function get_ads_info($authid) {
+        //$limit = 10;
+        $authid = $this->Auth->user('id');
+
+        //======Getting all ads codes======
         // $Ad_setting = $this->Ad_setting->find('all', array('conditions' => array('Ad_setting.user_id' => $authid)));
-		 $this->paginate = array(
+        $this->paginate = array(
             'Adcode' => array(
                 'fields' => array(
-                'Adcode.id',
-                'Adcode.name',
-                'Adcode.code'
+                    'Adcode.id',
+                    'Adcode.name',
+                    'Adcode.code'
                 ),
                 'contain' => false,
                 //'limit' => $limit,
                 'order' => array(
                     'Adcode.id' => 'DESC'
-                	),
+                ),
                 'conditions' => array(
-                    'Adcode.user_id' =>$authid
-                 )
+                    'Adcode.user_id' => $authid
+                )
             )
-       );
-	   
-		$adcodes = $this->paginate('Adcode');
-       /* $adcodes = $this->Game->query('SELECT * FROM adcodes as Adcode 
-INNER JOIN ad_settings AS Ad_setting ON Adcode.id=Ad_setting.ad_code_id
-WHERE Adcode.user_id='.$authid.'');*/
-		
-		//$this->set('Ad_setting', $Ad_setting);
-		$this->set('adcodes', $adcodes);
-		
-	}
+        );
 
-/*
-    function get_ads_info($userid = NULL, $authid = NULL) {
-        //======Getting ads datas======
-        $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
-        $this->set('addata', $addata);
+        $adcodes = $this->paginate('Adcode');
+        /* $adcodes = $this->Game->query('SELECT * FROM adcodes as Adcode 
+          INNER JOIN ad_settings AS Ad_setting ON Adcode.id=Ad_setting.ad_code_id
+          WHERE Adcode.user_id='.$authid.''); */
 
-        if ($authid == $userid) {
-            //======Getting all ads codes======
-            $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
-            $this->set('adcodes', $adcodes);
-            $this->set('channel_owner', 1);
-        }
-        if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
-            $this->set('channel_owner', 0);
-        }
-    }*/
+        //$this->set('Ad_setting', $Ad_setting);
+        $this->set('adcodes', $adcodes);
+    }
+
+    /*
+      function get_ads_info($userid = NULL, $authid = NULL) {
+      //======Getting ads datas======
+      $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
+      $this->set('addata', $addata);
+
+      if ($authid == $userid) {
+      //======Getting all ads codes======
+      $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
+      $this->set('adcodes', $adcodes);
+      $this->set('channel_owner', 1);
+      }
+      if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
+      $this->set('channel_owner', 0);
+      }
+      } */
 
     /**
      * Search method
@@ -2397,7 +2385,10 @@ WHERE Adcode.user_id='.$authid.'');*/
                     'Userstat.potential' => 'DESC'
                 ),
                 'conditions' => array(
-                    'User.verify' => 1,
+                    'NOT' => array(
+                        'User.verify' => NULL
+                    ),
+                    '(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
                 ),
                 'limit' => $limit
             )
@@ -2444,12 +2435,13 @@ WHERE Adcode.user_id='.$authid.'');*/
                     'Userstat.potential' => 'DESC'
                 ),
                 'conditions' => array(
-                    'User.verify != ' => NULL
+                    'User.username LIKE' => '%' . $query . '%',
+                    'NOT' => array(
+                        'User.verify' => NULL
+                    ),
+                    '(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
                 ),
-                'limit' => $limit,
-                'conditions' => array(
-                    'User.username LIKE' => '%' . $query . '%'
-                ),
+                'limit' => $limit
             )
         );
         $data = $this->paginate('User');

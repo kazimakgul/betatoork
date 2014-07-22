@@ -9,7 +9,7 @@ foreach ($followers as $value) {
     $userid = $value['User']['id'];
     $publicname = $value['User']['username'];
     $name = $value['User']['username'];
-    $screenname = $value['User']['screenname'];
+    $screenname = @$value['User']['screenname'];
     $followers = $value['User']['Userstat']['subscribeto'];
     $following = $value['User']['Userstat']['subscribe'];
     $games = $value['User']['Userstat']['uploadcount'];
