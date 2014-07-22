@@ -35,11 +35,20 @@
 				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Category</label>
 					    <div class="col-sm-10 col-md-8">
-					    		<input type='checkbox' name='category' value="home_banner_top" <?php echo $Ads_set['Adsetting']['home_banner_top']==$Ads['Adcode']['id']?'checked':''; ?>> Home -> Top<br/>
-					    		<input type='checkbox' name='category' value="home_banner_middle" <?php echo $Ads_set['Adsetting']['home_banner_middle']==$Ads['Adcode']['id']?'checked':''; ?>> Home -> Middle<br/>
-					    		<input type='checkbox' name='category' value="home_banner_bottom" <?php echo $Ads_set['Adsetting']['home_banner_bottom']==$Ads['Adcode']['id']?'checked':''; ?>> Home -> Bottom<br/>
-					    		<input type='checkbox' name='category' value="game_banner_top" <?php echo $Ads_set['Adsetting']['game_banner_top']==$Ads['Adcode']['id']?'checked':''; ?>> Game -> Top<br/>
-					    		<input type='checkbox' name='category' value="game_banner_bottom" <?php echo $Ads_set['Adsetting']['game_banner_bottom']==$Ads['Adcode']['id']?'checked':''; ?>> Game -> Bottom<br/>
+						<?php
+					    //print_r($Ads_set);
+					    foreach ($ad_area as $value) {
+							$id = $value['ad_areas']['id'];
+							$name = $value['ad_areas']['name'];
+							$check = '';
+							foreach ($Ads_set as $ad_check) {
+								if($ad_check['ad_settings']['ad_area_id'] == $id)
+								{
+									$check = 'checked';
+								}
+							}
+						echo '<input type="checkbox" name="category" value="'.$id.'" '.$check .' > '.$name.'<br>';
+						}?>
 					    </div>
 				  	</div>
 				  		<input type="hidden" id="ad_id" value="<?php echo $Ads['Adcode']['id'];?>" />

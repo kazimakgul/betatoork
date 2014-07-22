@@ -1288,8 +1288,13 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $adcodes = $this->Adcode->find('first', array('conditions' => array('Adcode.id' => $id), 'contain' => false));
-        $Ad_setting = $this->Ad_setting->find('first', array('conditions' => array('Ad_setting.user_id' => $userid), 'contain' => false, 'fields' => ('home_banner_top,home_banner_middle,home_banner_bottom,game_banner_top,game_banner_bottom')));
-
+		$Ad_setting = $this->Game->query('SELECT ad_settings.ad_code_id,ad_settings.ad_area_id,ad_areas.name FROM ad_settings 
+		INNER JOIN ad_areas ON ad_areas.id = ad_settings.ad_area_id
+		WHERE ad_settings.user_id='.$userid.' AND ad_settings.ad_code_id='.$id.'');		
+        $Ad_area = $this->Game->query('select id,name from ad_areas');
+		
+		
+        $this->set('ad_area', $Ad_area);
         $this->set('Ads', $adcodes);
         $this->set('Ads_set', $Ad_setting);
         $this->set('title_for_layout', 'Clone Business Edit Ads');
@@ -1423,9 +1428,6 @@ class BusinessesController extends AppController {
 	{
 		//$limit = 10;
 		$authid = $this->Auth->user('id');
-		
-            //======Getting all ads codes======
-        // $Ad_setting = $this->Ad_setting->find('all', array('conditions' => array('Ad_setting.user_id' => $authid)));
 		 $this->paginate = array(
             'Adcode' => array(
                 'fields' => array(
@@ -1443,15 +1445,12 @@ class BusinessesController extends AppController {
                  )
             )
        );
-	   
 		$adcodes = $this->paginate('Adcode');
-       /* $adcodes = $this->Game->query('SELECT * FROM adcodes as Adcode 
-INNER JOIN ad_settings AS Ad_setting ON Adcode.id=Ad_setting.ad_code_id
-WHERE Adcode.user_id='.$authid.'');*/
-		
-		//$this->set('Ad_setting', $Ad_setting);
+		$Ad_setting = $this->Game->query('SELECT ad_settings.ad_code_id,ad_settings.ad_area_id,ad_areas.name FROM ad_settings 
+		INNER JOIN ad_areas ON ad_areas.id = ad_settings.ad_area_id
+		WHERE ad_settings.user_id='.$authid.'');
+		$this->set('adsettings', $Ad_setting);
 		$this->set('adcodes', $adcodes);
-		
 	}
 
 /*
