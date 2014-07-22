@@ -2415,7 +2415,8 @@ class BusinessesController extends AppController {
                 'conditions' => array(
                     'NOT' => array(
                         'User.verify' => NULL
-                    )
+                    ),
+                    '(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
                 ),
                 'limit' => $limit
             )

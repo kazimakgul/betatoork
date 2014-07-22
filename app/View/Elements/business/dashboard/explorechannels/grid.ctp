@@ -80,7 +80,26 @@ foreach ($following as $value) {
                     <span class="label label-warning"><?php echo $following; ?> Following</span>
                     <span class="label label-danger"><?php echo $games; ?> Games</span>
                 </div>
-                
+                <?php if (!empty($games_3)) { ?>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <?php
+                            foreach ($games_3 as $game33) {
+                                if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+                                    $playurl = $this->Html->url('http://' . $value['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game33['Game']['seo_url']));
+                                } else {
+                                    $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game33['Game']['id'])));
+                                }
+                                ?>
+                                <a class="col-xs-4 col-sm-4 col-md-4 col-lg-4" href="<?php echo $playurl; ?>">
+                                    <?php echo $this->Upload->image($game33, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game33['Game']['name'], 'data-original-title' => $game33['Game']['name'], 'data-placement' => 'bottom', 'data-toggle' => 'tooltip', 'width' => '100%', 'onerror' => 'imgError(this,"toorksize");')); ?>
+                                </a>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <?php
