@@ -361,7 +361,7 @@ class UsersController extends AppController {
         }
     }
 
-    public function set_channel_ads($ads_type = NULL, $ads_id = NULL) {
+   /* public function set_channel_ads($ads_type = NULL, $ads_id = NULL) {
         Configure::write('debug', 0);
 
         $adcode_id = $this->request->data['adcode_id'];
@@ -395,7 +395,7 @@ class UsersController extends AppController {
 
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
-    }
+    }*/
 
     public function remove_background() {
         Configure::write('debug', 0);

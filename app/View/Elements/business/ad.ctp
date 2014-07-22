@@ -1,7 +1,5 @@
 <script>
-
 window.onload = ad_get_code("<?php echo $location;?>","<?php echo $user_id;?>");
-
 function col_ads(location,user_id){
 var formData = {location:location,user_id:user_id};
 $.ajax({
@@ -23,7 +21,8 @@ function ad_get_code(location,user_id){
             function(data) {
                 if (data.success) {
                     $('#ad_code'+location).html(data.success.Adcode.code);
-                    $('#ad_name'+location).html(data.success.Adcode.name); 
+                    $('#ad_name'+location).html(data.success.Adcode.name);
+                    $('.verfy'+location).attr("id",data.success.Ad_setting.id);
                 } else {
                 }
             }, 'json');
@@ -39,7 +38,7 @@ function ad_get_code(location,user_id){
  ?>
  <div style='width:100%;' > 
  	<div id="ad_code<?php echo $location;?>"></div>
-<?php if($controls != NULL) echo '<span class="label label-primary"><i id="ad_name'.$location.'"></i> <a data-toggle="modal" id="'.$adtype.'" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;">Edit</a></span>' ?>
+<?php if($controls != NULL) echo '<span class="label label-primary"><i id="ad_name'.$location.'"></i> <a data-toggle="modal" class="verfy'.$location.'" id="" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;">Edit</a></span>' ?>
 </div>
 </div>
 </div>

@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','col_ads'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','col_ads','edit_set_ads'))) {
 
             return true;
         }
@@ -413,6 +413,21 @@ class BusinessesController extends AppController {
 		$this->set('success', $code);
 		$this->set('_serialize', array('success'));
 	}
+
+
+    /**
+     * Edit Set Ads Function
+     *
+     * @param set_id Code_id
+     * @return set
+     * @author Volkan Celiloğlu
+     */
+    public function edit_set_ads() {
+        $filtered_data['Ad_setting']['ad_code_id'] = $this->request->params['code_id'];
+		$filtered_data['Ad_setting']['user_id'] = $this->Session->read('Auth.User.id');
+        $filtered_data['Ad_setting']['id'] = $this->request->params['set_id'];
+        $this->Ad_setting->save($filtered_data);
+    }
 
     /**
      * Game tags add method
@@ -1313,6 +1328,8 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/edit_ads');
     }
+
+
 
     /** Notifications method
      *

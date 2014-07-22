@@ -35,7 +35,7 @@
 		authcheck			='<?php echo $this->Html->url(array('controller'=>'users','action'=>'usernameAvailable')); ?>';
 		facecheck			='<?php echo $this->Html->url(array('controller'=>'users','action'=>'FaceUser')); ?>';
         addplaycount		='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'add_playcount')); ?>';
-        set_channel_ads		='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>'; 
+        set_channel_ads		='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'edit_set_ads')); ?>'; 
         remove_ads_field	='<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_ads_field')); ?>';
         col_ads_link		='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'col_ads')); ?>';       
 		<?php if($auth_user){?> user_auth='1'; <?php }else{?> user_auth='0'; <?php }?>
