@@ -83,8 +83,15 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                 </div>
             </div>
             <div class="container-fluid">
-                <?php echo $this->element('business/dashboard/search/games/grid') ?>
-<?php echo $this->element('business/dashboard/search/games/list') ?>
+                <?php
+                if (!empty($result)) {
+                    echo
+                    $this->element('business/dashboard/search/games/grid') .
+                    $this->element('business/dashboard/search/games/list');
+                } else {
+                    echo $this->element('business/dashboard/nullconditions', array('link' => 'exploregames', 'text' => 'Explore Games'));
+                }
+                ?>
             </div>
         </div>
     </div>
