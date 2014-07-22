@@ -1402,7 +1402,7 @@ class BusinessesController extends AppController {
 
         //========Get Current Subscription===============
         if ($authid) {
-            //$subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
+            $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
             if ($subscribebefore != NULL) {
                 $this->set('follow', 1);
             } else {
@@ -1413,12 +1413,12 @@ class BusinessesController extends AppController {
         }
 
         $PaginateLimit = 12;
-        //$user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
+        $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
 
-        //$this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
-        //$cond = $this->paginate('Game');
+        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $cond = $this->paginate('Game');
 
-        //$category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
+        $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
         $this->get_ads_info($userid, $authid);
 
@@ -1426,11 +1426,11 @@ class BusinessesController extends AppController {
         $featlimit = 3;
         $newlimit = 3;
         $hotlimit = 6;
-        //$this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $newlimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
-        //$this->set('featuredgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.featured' => 1), 'limit' => $featlimit, 'order' => 'rand()', 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
-       // $this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $hotlimit, 'order' => array('Game.starsize' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
-        //$this->set('category', $category);
-        //$this->set('games', $cond);
+        $this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $newlimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
+        $this->set('featuredgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.featured' => 1), 'limit' => $featlimit, 'order' => 'rand()', 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
+        $this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $hotlimit, 'order' => array('Game.starsize' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
+        $this->set('category', $category);
+        $this->set('games', $cond);
         $this->set('user', $user);
 
         $this->set('title_for_layout', $user['User']['username'] . ' Game Channel - Clone');
@@ -1909,26 +1909,29 @@ class BusinessesController extends AppController {
         $limit = 12;
         $this->paginate = array(
             'Game' => array(
-                'fields' => array(
-                    '*'
-                ),
-                'joins' => array(
-                    array(
-                        'table' => 'gamestats',
-                        'type' => 'INNER',
-                        'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
-                    )
-                ),
-                'limit' => $limit,
-                'contain' => array(
-                    'User',
-                    'Gamestat'
-                ),
                 'conditions' => array(
-                    'Game.priority != ' => NULL,
-                    'Game.clone' => 0,
                     'Game.user_id' => $userid
                 ),
+                'fields' => array(
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'Game.embed',
+                    'Game.featured',
+                    'Game.clone',
+                    'Game.created',
+                    'User.seo_username',
+                    'Game.description',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone',
+                    'Gamestat.potential'
+                ),
+                'limit' => $limit,
                 'order' => array(
                     'Game.id' => 'DESC'
                 )
@@ -2128,25 +2131,21 @@ class BusinessesController extends AppController {
                 'fields' => array(
                     '*'
                 ),
-                'joins' => array(
-                    array(
-                        'table' => 'gamestats',
-                        'type' => 'INNER',
-                        'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
-                    )
-                ),
                 'limit' => $limit,
                 'contain' => array(
                     'User',
                     'Gamestat'
                 ),
                 'conditions' => array(
-                    'Game.priority != ' => NULL,
-                    'Game.clone' => 0
+                    'NOT' => array(
+                        'Game.priority' => NULL
+                    )
                 ),
                 'order' => array(
-                    'Game.id' => 'DESC'
-                )
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
+                ),
             )
         );
         $activefilter = 0;
