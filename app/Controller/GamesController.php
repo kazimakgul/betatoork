@@ -33,7 +33,13 @@ class GamesController extends AppController {
     }
 
     public function beforeFilter() {
+
+
+        if($this->action!='index')
+        {    
         echo 'System is under maintenance!';break;
+        }
+
         parent::beforeFilter();
         $this->noprefixdomain();
     }
