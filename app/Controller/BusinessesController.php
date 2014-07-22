@@ -38,7 +38,7 @@ class BusinessesController extends AppController {
         return false;
     }
 
-    public function beforeFilter() {echo 'this number you have called cannot be reached at the moment.';break;
+    public function beforeFilter() {echo 'System is under maintenance!';break;
         parent::beforeFilter();
         $this->noprefixdomain();
     }
@@ -1278,13 +1278,8 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $adcodes = $this->Adcode->find('first', array('conditions' => array('Adcode.id' => $id), 'contain' => false));
-		$Ad_setting = $this->Game->query('SELECT ad_settings.ad_code_id,ad_settings.ad_area_id,ad_areas.name FROM ad_settings 
-		INNER JOIN ad_areas ON ad_areas.id = ad_settings.ad_area_id
-		WHERE ad_settings.user_id='.$userid.' AND ad_settings.ad_code_id='.$id.'');		
-        $Ad_area = $this->Game->query('select id,name from ad_areas');
-		
-		
-        $this->set('ad_area', $Ad_area);
+        $Ad_setting = $this->Ad_setting->find('first', array('conditions' => array('Ad_setting.user_id' => $userid), 'contain' => false, 'fields' => ('home_banner_top,home_banner_middle,home_banner_bottom,game_banner_top,game_banner_bottom')));
+
         $this->set('Ads', $adcodes);
         $this->set('Ads_set', $Ad_setting);
         $this->set('title_for_layout', 'Clone Business Edit Ads');
@@ -1414,11 +1409,13 @@ class BusinessesController extends AppController {
         }
     }
 
-	function get_ads_info($authid)
-	{
-		//$limit = 10;
-		$authid = $this->Auth->user('id');
-		 $this->paginate = array(
+    function get_ads_info($authid) {
+        //$limit = 10;
+        $authid = $this->Auth->user('id');
+
+        //======Getting all ads codes======
+        // $Ad_setting = $this->Ad_setting->find('all', array('conditions' => array('Ad_setting.user_id' => $authid)));
+        $this->paginate = array(
             'Adcode' => array(
                 'fields' => array(
                     'Adcode.id',
@@ -1434,31 +1431,33 @@ class BusinessesController extends AppController {
                     'Adcode.user_id' => $authid
                 )
             )
-       );
-		$adcodes = $this->paginate('Adcode');
-		$Ad_setting = $this->Game->query('SELECT ad_settings.ad_code_id,ad_settings.ad_area_id,ad_areas.name FROM ad_settings 
-		INNER JOIN ad_areas ON ad_areas.id = ad_settings.ad_area_id
-		WHERE ad_settings.user_id='.$authid.'');
-		$this->set('adsettings', $Ad_setting);
-		$this->set('adcodes', $adcodes);
-	}
+        );
 
-/*
-    function get_ads_info($userid = NULL, $authid = NULL) {
-        //======Getting ads datas======
-        $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
-        $this->set('addata', $addata);
+        $adcodes = $this->paginate('Adcode');
+        /* $adcodes = $this->Game->query('SELECT * FROM adcodes as Adcode 
+          INNER JOIN ad_settings AS Ad_setting ON Adcode.id=Ad_setting.ad_code_id
+          WHERE Adcode.user_id='.$authid.''); */
 
-        if ($authid == $userid) {
-            //======Getting all ads codes======
-            $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
-            $this->set('adcodes', $adcodes);
-            $this->set('channel_owner', 1);
-        }
-        if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
-            $this->set('channel_owner', 0);
-        }
-    }*/
+        //$this->set('Ad_setting', $Ad_setting);
+        $this->set('adcodes', $adcodes);
+    }
+
+    /*
+      function get_ads_info($userid = NULL, $authid = NULL) {
+      //======Getting ads datas======
+      $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
+      $this->set('addata', $addata);
+
+      if ($authid == $userid) {
+      //======Getting all ads codes======
+      $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
+      $this->set('adcodes', $adcodes);
+      $this->set('channel_owner', 1);
+      }
+      if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
+      $this->set('channel_owner', 0);
+      }
+      } */
 
     /**
      * Search method
