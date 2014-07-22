@@ -88,7 +88,7 @@ class AppController extends Controller {
         {
             $valid=1;
         }    
-        if($this->params['controller']=='businesses' && in_array($this->action,array('mysite')))
+        if($this->params['controller']=='businesses')
         {
             $valid=1;
         }
