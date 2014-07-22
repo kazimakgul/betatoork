@@ -35,7 +35,7 @@ class GamesController extends AppController {
     public function beforeFilter() {
 
 
-        if($this->action!='index' && $this->action!='random_3_game')
+        if($this->action!='index' && $this->action!='random_3_game' && $this->action!='checkClone')
         {    
         echo 'System is under maintenance!';break;
         }
