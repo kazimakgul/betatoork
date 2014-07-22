@@ -36,14 +36,14 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-							<?php
+				<?php
 					foreach ($adcodes as $adcode) {
 						$adsStatus = NULL;
 						$adcodeId = $adcode["Adcode"]["id"];
 						foreach ($adsettings as $value) {
-							if ($adcodeId == $value['ad_settings']['ad_code_id'])
+							if ($adcodeId == $value['Ad_setting']['ad_code_id'])
 							{
-								$adsStatus.= '<span class="label label-success" style="display:inline-block">'.$value["ad_areas"]["name"].'</span>';
+								$adsStatus.= '<span class="label label-success" style="display:inline-block">'.$value["Ad_area"]["name"].'</span>';
 							}
 						}
 				

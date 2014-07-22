@@ -25,18 +25,19 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"><?php echo $this->Html->css(array('business/custom','css2/jquery.pnotify.default')); ?>
  		<script>
-        toorksize	='<?php echo Configure::read('broken.toorksize'); ?>';
-        avatar		='<?php echo Configure::read('broken.avatar'); ?>';
-        s3patch		='<?php echo Configure::read('S3.url'); ?>';
-        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
-        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
-        remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
-		remotecheck2='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser2')); ?>';
-		authcheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'usernameAvailable')); ?>';
-		facecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'FaceUser')); ?>';
-        addplaycount='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'add_playcount')); ?>';
-        set_channel_ads='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>'; 
-        remove_ads_field='<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_ads_field')); ?>';        
+        toorksize			='<?php echo Configure::read('broken.toorksize'); ?>';
+        avatar				='<?php echo Configure::read('broken.avatar'); ?>';
+        s3patch				='<?php echo Configure::read('S3.url'); ?>';
+        favswitcher			='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
+        chaingame			='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
+        remotecheck			='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
+		remotecheck2		='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser2')); ?>';
+		authcheck			='<?php echo $this->Html->url(array('controller'=>'users','action'=>'usernameAvailable')); ?>';
+		facecheck			='<?php echo $this->Html->url(array('controller'=>'users','action'=>'FaceUser')); ?>';
+        addplaycount		='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'add_playcount')); ?>';
+        set_channel_ads		='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>'; 
+        remove_ads_field	='<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_ads_field')); ?>';
+        col_ads_link		='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'col_ads')); ?>';       
 		<?php if($auth_user){?> user_auth='1'; <?php }else{?> user_auth='0'; <?php }?>
         </script>
 

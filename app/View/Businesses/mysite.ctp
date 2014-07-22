@@ -13,15 +13,12 @@
         $featuredlink = $subfeaturl . '/sort:id/direction:desc';
     }
     //  Getting and declaring ads datas
-    $homeBannerTop = $addata[0]['homeBannerTop'];
-    $homeBannerMiddle = $addata[0]['homeBannerMiddle'];
-    $homeBannerBottom = $addata[0]['homeBannerBottom'];
     if ($this->Session->read('Auth.User.id') == $user['User']['id']) {
         $controls = $user['User']['id'];
     } else {
         $controls = NULL;
     }
-    echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerTop, 'adtype' => 'homeBannerTop'));
+    echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>4));
     ?>
     <div class="col-md-12">
         <div class="btn-group" style="margin-bottom:10px;">
@@ -92,7 +89,7 @@
         </div>
     </div>
     <!--/right-->
-    <?php echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerMiddle, 'adtype' => 'homeBannerMiddle')); ?>
+    <?php     echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>2)); ?>
     <!--/footer-->
     <div class="col-sm-12">
         <div class="row">
@@ -113,7 +110,7 @@
         </div>
     </div>
     <!--/footer-->
-    <?php echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerBottom, 'adtype' => 'homeBannerBottom')); ?>
+    <?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>3)); ?>
     <?php if ($controls == $user['User']['id'] && !isset($this->request->query['mode'])) { ?>
         <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default pull-left" style="left:7px;top:60px; position:absolute;"><span class="fa fa-picture-o"></span> Change Background</a>
     <?php } ?>

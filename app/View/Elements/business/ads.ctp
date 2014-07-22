@@ -17,7 +17,7 @@ if(isset($code['code']) && $code['code'] != '' && $code['code'] != NULL)
 </div>
 </div>
 <!-- /Add Unit -->
-<?php }else if(isset($channel_owner) && $channel_owner){?>
+<?php }else if(isset($channel_owner)){?>
 <!-- Dummy Ad Unit -->
 <div class="col-xs-11">
 <div align="center" class="col-sm-offset-1 well well-sm">

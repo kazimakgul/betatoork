@@ -36,13 +36,12 @@
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Category</label>
 					    <div class="col-sm-10 col-md-8">
 						<?php
-					    //print_r($Ads_set);
 					    foreach ($ad_area as $value) {
-							$id = $value['ad_areas']['id'];
-							$name = $value['ad_areas']['name'];
+							$id = $value['Ad_area']['id'];
+							$name = $value['Ad_area']['name'];
 							$check = '';
 							foreach ($Ads_set as $ad_check) {
-								if($ad_check['ad_settings']['ad_area_id'] == $id)
+								if($ad_check['Ad_setting']['ad_area_id'] == $id)
 								{
 									$check = 'checked';
 								}
