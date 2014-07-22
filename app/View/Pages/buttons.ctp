@@ -60,7 +60,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
       </div>
       <div class="accordion-heading country" style="margin:10px;">
               <?php echo $image3; ?>
-        <a class="accordion-toggle" data-toggle="collapse" href="#country3"><i class="elusive-align-left"></i> Show Code
+        <a class="accordion-toggle" data-toggle="collapse" href="#country3"><i class="elusive-align-left"></i> Show Code </a>
         
       </div>
       <div id="country3" class="accordion-body collapse">
