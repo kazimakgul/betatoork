@@ -34,25 +34,25 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
 
     <ul class ="inline">
         <li style="display: inline;">
-    <a href="<?php echo $about; ?>" class="btn btn-link"><small>About</small></a>
+    <a target="_blank" href="<?php echo $about; ?>" class="btn btn-link"><small>About</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $terms; ?>" class="btn btn-link"><small>Terms</small></a>
+    <a target="_blank" href="<?php echo $terms; ?>" class="btn btn-link"><small>Terms</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $privacy; ?>" class="btn btn-link"><small>Privacy</small></a>
+    <a target="_blank" href="<?php echo $privacy; ?>" class="btn btn-link"><small>Privacy</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $help; ?>" class="btn btn-link"><small>Support</small></a>
+    <a target="_blank" href="<?php echo $help; ?>" class="btn btn-link"><small>Support</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $developer; ?>" class="btn btn-link"><small>Developers</small></a>
+    <a target="_blank" href="<?php echo $developer; ?>" class="btn btn-link"><small>Developers</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $advertise; ?>" class="btn btn-link"><small>Advertise</small></a>
+    <a target="_blank" href="<?php echo $advertise; ?>" class="btn btn-link"><small>Advertise</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $faq; ?>" class="btn btn-link"><small>FAQs</small></a>
+    <a target="_blank" href="<?php echo $faq; ?>" class="btn btn-link"><small>FAQs</small></a>
         </li>
     </ul>
 
