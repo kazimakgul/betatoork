@@ -88,6 +88,10 @@ class AppController extends Controller {
         {
             $valid=1;
         }    
+        if($this->params['controller']=='users')
+        {
+            $valid=1;
+        }   
         if($this->params['controller']=='businesses')
         {
             $valid=1;
