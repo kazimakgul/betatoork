@@ -24,7 +24,7 @@ foreach ($following as $value) {
     } else {
         $cover = Configure::read('S3.url') . "/upload/users/" . $value['User']['id'] . "/" . $value['User']['banner'];
     }
-    $games_3 = $this->requestAction(array('controller' => 'games', 'action' => 'random_3_game', $userid));
+    //$games_3 = $this->requestAction(array('controller' => 'games', 'action' => 'random_3_game', $userid));
     if (!empty($games_3)) {
         ?>
         <div class="col-xs-12 col-sm-6 col-md-4">
