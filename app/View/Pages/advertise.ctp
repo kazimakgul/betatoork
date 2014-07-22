@@ -1,12 +1,20 @@
-                <!-- span content -->
-                <div class="span9">
-                    <!-- content -->
-                    <div class="content">                      
-                        <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
-                          
-                          <div class="well">
-                            <h2>Advertise With Us</h2>
+<?php
+$index=$this->Html->url(array("controller" => "games","action" =>"index")); 
+?>
+
+<body id="signup" class="clear">
+
+
+    <a href="<?php echo $index; ?>" class="logo">
+        <img width="70px" height="70px" src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/clonelogo.png">
+    </a>
+
+
+
+    <div class="content">
+
+<div>
+     <h2>Advertise With Us</h2>
 
                       <p>
 We have no plans for advertising at the moment but we are always interested to hear from those wishing to advertise with us. We are currently compiling our statistics for publication on these pages.
@@ -27,10 +35,10 @@ Consider clone as a tool for marketing and promoting your games or your game act
                       <p>
 please be patient while we are developing clone. We will never stop doing what we are trying to do so keep up with us we are growing really fast. Join toor and get your spot. Dont be late.
                       </p>
+    </div>
 
-                        </div>
+    </div>
 
-                        </div><!--/content-body -->
-<?php  echo $this->element('NewPanel/dashfooter'); ?>                        
-                    </div><!-- /content -->
-                </div><!-- /span content -->
+<?php  echo $this->element('NewPanel/dashfooter'); ?>  
+
+</body>
