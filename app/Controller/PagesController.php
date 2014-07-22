@@ -187,7 +187,7 @@ public function set_suggested_channels()
 
 	public function display() {
 		$path = func_get_args();
-		$this->layout='dashboard';
+		$this->layout='Business/dashboard';
 		$this->leftpanel();
 		$this->logedin_user_panel();
 
