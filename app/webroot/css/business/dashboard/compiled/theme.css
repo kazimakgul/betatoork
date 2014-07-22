@@ -3804,7 +3804,7 @@ body.open-sidebar #wrapper #content {
 #users #content .content-wrapper .users-list {
     margin-top: 35px;
     margin-bottom: 40px;
-    display:none;}
+}
 #users #content .content-wrapper .users-list .headers {
     padding-bottom: 10px;
     min-height: 35px; }

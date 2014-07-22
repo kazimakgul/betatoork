@@ -1320,3 +1320,19 @@ $('div.clone button').hover(
             }
         }
 );
+
+/**
+ * Grid - List Cookie
+ * @author Emircan Ok
+ */
+$('a.grid-view').click(function(){
+    var view = $(this).attr('data-grid');
+    switch (view) {
+        case '.users-list':
+            document.cookie = 'view=list';
+            break;
+        case '.users-grid':
+            document.cookie = 'view=grid';
+            break;
+    }
+});

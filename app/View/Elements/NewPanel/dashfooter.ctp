@@ -10,7 +10,7 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
 
 
 
-<div class="well well-small" style="opacity:0.6; margin:0px 0px 0px 0px; text-align: center ;">
+<div style="opacity:0.6; margin:20px 0px 20px 0px; text-align: center ;">
 
 <!-- Social buttons starts --
 <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ftoork.com&amp;width=450&amp;height=21&amp;colorscheme=light&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;send=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
@@ -34,29 +34,29 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
 
     <ul class ="inline">
         <li style="display: inline;">
-    <a href="<?php echo $about; ?>" class="btn btn-link"><small>About</small></a>
+    <a target="_blank" href="<?php echo $about; ?>" class="btn btn-link"><small>About</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $terms; ?>" class="btn btn-link"><small>Terms</small></a>
+    <a target="_blank" href="<?php echo $terms; ?>" class="btn btn-link"><small>Terms</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $privacy; ?>" class="btn btn-link"><small>Privacy</small></a>
+    <a target="_blank" href="<?php echo $privacy; ?>" class="btn btn-link"><small>Privacy</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $help; ?>" class="btn btn-link"><small>Support</small></a>
+    <a target="_blank" href="<?php echo $help; ?>" class="btn btn-link"><small>Support</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $developer; ?>" class="btn btn-link"><small>Developers</small></a>
+    <a target="_blank" href="<?php echo $developer; ?>" class="btn btn-link"><small>Developers</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $advertise; ?>" class="btn btn-link"><small>Advertise</small></a>
+    <a target="_blank" href="<?php echo $advertise; ?>" class="btn btn-link"><small>Advertise</small></a>
         </li>
         <li style="display: inline;">
-    <a href="<?php echo $faq; ?>" class="btn btn-link"><small>FAQs</small></a>
+    <a target="_blank" href="<?php echo $faq; ?>" class="btn btn-link"><small>FAQs</small></a>
         </li>
     </ul>
 
-<p><small><strong>Clone</strong> © Copyright 2013. All Rights Reserved</small></p>
+<p><small><strong>Clone</strong> © Copyright 2014. All Rights Reserved</small></p>
 <a target="_blank" href="http://toork.com"><img alt="Toork Social Network Engine" width="100" src="https://s3.amazonaws.com/betatoorkpics/socials/toorklogo.png" /></a>
 
 </div>

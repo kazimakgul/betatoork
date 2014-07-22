@@ -1,12 +1,20 @@
-                <!-- span content -->
-                <div class="span9">
-                    <!-- content -->
-                    <div class="content">                      
-                        <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
-                          
-                          <div class="well">
-                            <h4>What is Clone.gs and why Clone.gs?</h4><p>
+ <?php
+$index=$this->Html->url(array("controller" => "games","action" =>"index")); 
+?>
+
+<body id="signup" class="clear">
+
+
+    <a href="<?php echo $index; ?>" class="logo">
+        <img width="70px" height="70px" src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/clonelogo.png">
+    </a>
+
+
+
+    <div class="content">
+
+<div>
+    <h4>What is Clone.gs and why Clone.gs?</h4><p>
 Clone is a social network about games, gamers, game bloggers, game developers and game sites. Clone is the right place to promote your games and build your community about games. Add one of our pre-build clone social buttons to let your visitors reach your channel. Share good stuff , make them follow you and grow your community. Have fun.</p>
 
                             <h2>How To Start</h2>
@@ -89,11 +97,10 @@ Please choose the appropriate answer for yourself.
 </ul>
 
                       </small></p>
+    </div>
 
+    </div>
 
-                        </div>
+<?php  echo $this->element('NewPanel/dashfooter'); ?>  
 
-                        </div><!--/content-body -->
-<?php  echo $this->element('NewPanel/dashfooter'); ?>                        
-                    </div><!-- /content -->
-                </div><!-- /span content -->
+</body>

@@ -1,11 +1,21 @@
-                <!-- span content -->
-                <div class="span9">
-                    <!-- content -->
-                    <div class="content">                      
-                        <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
-                          
-                          <div class="well">
+<?php
+$index=$this->Html->url(array("controller" => "games","action" =>"index")); 
+?>
+
+<body id="signup" class="clear">
+
+
+    <a href="<?php echo $index; ?>" class="logo">
+        <img width="70px" height="70px" src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/clonelogo.png">
+    </a>
+
+
+
+    <div class="content">
+
+
+
+                          <div>
                             <h2>Privacy Policy</h2>
 
                     <p><small>
@@ -68,7 +78,9 @@ As Clone we do not provide any advertising network systems but if you have a Clo
 
                         </div>
 
-                        </div><!--/content-body -->
-<?php  echo $this->element('NewPanel/dashfooter'); ?>                        
-                    </div><!-- /content -->
-                </div><!-- /span content -->
+    </div>
+
+<?php  echo $this->element('NewPanel/dashfooter'); ?>  
+
+</body>
+

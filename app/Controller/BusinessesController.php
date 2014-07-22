@@ -41,6 +41,7 @@ class BusinessesController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->noprefixdomain();
+        $this->set('view', $_COOKIE['view']);
     }
 
     public function afterFilter() {
@@ -1296,7 +1297,6 @@ class BusinessesController extends AppController {
         $userid = $this->Session->read('Auth.User.id');
         
         $adcodes = $this->Adcode->find('first', array('conditions' => array('Adcode.id' => $id), 'contain' => false));
-		
         $Ad_setting = $this->Ad_setting->find('all', array(
         		'conditions'	=> array('Ad_setting.user_id' => $userid, 'Ad_setting.ad_code_id'=>$id),
         		'contain'		=> array('Ad_area'),
@@ -1305,6 +1305,7 @@ class BusinessesController extends AppController {
         $Ad_area = $this->Ad_area->find('all',array('fields'=>array('Ad_area.id,Ad_area.name')));
 
         $this->set('ad_area', $Ad_area);
+
         $this->set('Ads', $adcodes);
         $this->set('Ads_set', $Ad_setting);
         $this->set('title_for_layout', 'Clone Business Edit Ads');
@@ -1434,11 +1435,13 @@ class BusinessesController extends AppController {
         }
     }
 
-	function get_ads_info($authid)
-	{
-		//$limit = 10;
-		$authid = $this->Auth->user('id');
-		 $this->paginate = array(
+    function get_ads_info($authid) {
+        //$limit = 10;
+        $authid = $this->Auth->user('id');
+
+        //======Getting all ads codes======
+        // $Ad_setting = $this->Ad_setting->find('all', array('conditions' => array('Ad_setting.user_id' => $authid)));
+        $this->paginate = array(
             'Adcode' => array(
                 'fields' => array(
                     'Adcode.id',

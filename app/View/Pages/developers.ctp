@@ -1,14 +1,21 @@
-<?php $tools=$this->Html->url(array("controller" => "pages","action" =>"buttons")); ?>
+<?php 
+$tools=$this->Html->url(array("controller" => "pages","action" =>"buttons"));  
+$index=$this->Html->url(array("controller" => "games","action" =>"index")); 
+?>
 
-                <!-- span content -->
-                <div class="span9">
-                    <!-- content -->
-                    <div class="content">                      
-                        <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
-                          
-                          <div class="well">
-                            <h2>Developers</h2>
+<body id="signup" class="clear">
+
+
+    <a href="<?php echo $index; ?>" class="logo">
+        <img width="70px" height="70px" src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/clonelogo.png">
+    </a>
+
+
+
+    <div class="content">
+
+<div>
+                 <h2>Developers</h2>
 
                       <p>
 if you are a game creator and you want to promote your game in clone, the only thing you should do is becoming a member and submit your game for free. By submiting your games you will be able to earn money from your own games by having your own adcode like adsense or adbright. <a class="btn-link" href="mailto:developer@clone.gs"> Contact us</a> for more details as we are in beta right now.
@@ -28,10 +35,10 @@ Clone is working so hard to become developer friendly so you will be able to use
                       <p><small>
 Clone is a social network about games, gamers, game bloggers, game developers and game sites. Clone is the right place to promote your games. Add one of our pre-build clone social buttons to let your visitors reach your channel. Share good stuff , make them follow you and grow your community. Have fun. You already can use our pre-build social buttons <a class="btn" href="<?php echo $tools;?>">Clone Buttons Page</a>
                       </small></p>
+    </div>
 
-                        </div>
+    </div>
 
-                        </div><!--/content-body -->
-<?php  echo $this->element('NewPanel/dashfooter'); ?>                        
-                    </div><!-- /content -->
-                </div><!-- /span content -->
+<?php  echo $this->element('NewPanel/dashfooter'); ?>  
+
+</body>

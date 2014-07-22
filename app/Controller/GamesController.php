@@ -33,6 +33,7 @@ class GamesController extends AppController {
     }
 
     public function beforeFilter() {
+
         parent::beforeFilter();
         $this->noprefixdomain();
     }
