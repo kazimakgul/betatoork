@@ -2494,7 +2494,7 @@ WHERE Adcode.user_id='.$authid.'');*/
         }
         $this->set('query', $query);
         $this->set('active_filter', $filter);
-        $pagination_limit = 12;
+        $limit = 12;
         switch ($filter) {
             case 'games':
                 $this->paginate = array(
@@ -2502,7 +2502,7 @@ WHERE Adcode.user_id='.$authid.'');*/
                         'fields' => array(
                             '*'
                         ),
-                        'limit' => $pagination_limit,
+                        'limit' => $limit,
                         'order' => array(
                             'Game.clone' => 'ASC',
                             'Game.priority' => 'DESC',
@@ -2554,14 +2554,13 @@ WHERE Adcode.user_id='.$authid.'');*/
                             'Userstat.potential' => 'DESC'
                         ),
                         'conditions' => array(
+                            'User.username LIKE' => '%' . $query . '%',
                             'NOT' => array(
                                 'User.verify' => NULL
-                            )
+                            ),
+                            '(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
                         ),
-                        'limit' => $pagination_limit,
-                        'conditions' => array(
-                            'User.username LIKE' => '%' . $query . '%'
-                        ),
+                        'limit' => $limit,
                     )
                 );
                 $data = $this->paginate('User');
