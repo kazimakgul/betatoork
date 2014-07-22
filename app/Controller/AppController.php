@@ -96,6 +96,10 @@ class AppController extends Controller {
         {
             $valid=1;
         }
+        if($this->params['controller']=='subscriptions' && in_array($this->action,array('followstatus')))
+        {
+            $valid=1;
+        } 
         
         
 
