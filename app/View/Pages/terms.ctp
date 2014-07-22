@@ -1,12 +1,20 @@
-              <!-- span content -->
-                <div class="span9">
-                    <!-- content -->
-                    <div class="content">                      
-                        <!-- content-body -->
-                        <div class="content-body" style="padding-top:15px;">
-                          
-                          <div class="well">
-                            <h2>Terms of Use</h2>
+           <?php
+$index=$this->Html->url(array("controller" => "games","action" =>"index")); 
+?>
+
+<body id="signup" class="clear">
+
+
+    <a href="<?php echo $index; ?>" class="logo">
+        <img width="70px" height="70px" src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/clonelogo.png">
+    </a>
+
+
+
+    <div class="content">
+
+<div>
+     <h2>Terms of Use</h2>
                     <p><small>
 PLEASE READ THESE TERMS OF USE ("AGREEMENT") CAREFULLY BEFORE USING THE SERVICES OFFERED BY CLONE INC, ("COMPANY"). THIS AGREEMENT SETS FORTH THE LEGALLY BINDING TERMS AND CONDITIONS FOR YOUR USE OF THE WEBSITE AT www.clone.gs (THE "SITE") AND THE SERVICE OWNED AND OPERATED BY COMPANY (COLLECTIVELY WITH THE SITE, THE "SERVICE"). BY USING THE SERVICE IN ANY MANNER, INCLUDING BUT NOT LIMITED TO VISITING OR BROWSING THE SITE, YOU AGREE TO BE BOUND BY THIS AGREEMENT. THIS AGREEMENT APPLIES TO ALL USERS OF THE SERVICE, INCLUDING USERS WHO ARE ALSO CONTRIBUTORS OF CONTENT, INFORMATION, AND OTHER MATERIALS OR SERVICES ON THE SITE.
                       </small></p>
@@ -285,11 +293,10 @@ The Terms of Use (and the other documents identified and incorporated by referen
 Company shall not be liable for any failure to perform its obligations hereunder where such failure results from any cause beyond Company’s reasonable control, including, without limitation, mechanical, electronic or communications failure or degradation (including "line-noise" interference). The Terms of Use are personal to you, and are not assignable, transferable or sublicensable by you except with Company's prior written consent. Company may assign, transfer or delegate any of its rights and obligations hereunder without consent. No agency, partnership, joint venture, or employment relationship is created as a result of the Terms of Use and neither party has any authority of any kind to bind the other in any respect. In any action or proceeding to enforce rights under the Terms of Use, the prevailing party will be entitled to recover costs and attorneys' fees. All notices under the Terms of Use will be in writing and will be deemed to have been duly given when received, if personally delivered or sent by certified or registered mail, return receipt requested; when receipt is electronically confirmed, if transmitted by facsimile or e-mail; or the day after it is sent, if sent for next day delivery by recognized overnight delivery service.
 
                         </small></p>
-                        </div>
+    </div>
 
+    </div>
 
+<?php  echo $this->element('NewPanel/dashfooter'); ?>  
 
-                        </div><!--/content-body -->
-<?php  echo $this->element('NewPanel/dashfooter'); ?>                        
-                    </div><!-- /content -->
-                </div><!-- /span content -->
+</body>

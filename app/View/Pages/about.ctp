@@ -1,4 +1,4 @@
-                <?php
+ <?php
 $index=$this->Html->url(array("controller" => "games","action" =>"index")); 
 ?>
 
@@ -13,15 +13,11 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
 
     <div class="content">
 
-
-
-                          <div>
-                            <h2>About Us</h2>
-
-                    <h4>We are glad that you asked</h4>
-                     <p><small>
-Clone is a social network about games, gamers, game bloggers, game developers and game sites. Clone is the right place to promote your games and build your community about games. We are a small company who are well focused on making clone the biggest community in the world. We are working really hard to make clone more advanced tool for gamers. Add one of our pre-build clone social buttons to let your visitors reach your channel. Share good stuff , make them follow you and grow your community. Have fun.
-                      </small></p>
+<div>
+    <h2>About Us</h2>
+    <h4>We are glad that you asked</h4>
+   <p><small>
+Clone is a social network about games, gamers, game bloggers, game developers and game sites. Clone is the right place to promote your games and build your community about games. We are a small company who are well focused on making clone the biggest community in the world. We are working really hard to make clone more advanced tool for gamers. Add one of our pre-build clone social buttons to let your visitors reach your channel. Share good stuff , make them follow you and grow your community. Have fun. </small></p>
                       <br />
                       <h4>Hey! I have a game site!</h4>
                       <p><small>
@@ -35,9 +31,7 @@ Clone is a social network about games, gamers, game bloggers, game developers an
                       <p><small>
                             Shoot us an email at <a class="btn-link" href="mailto:hello@clone.gs">hello@clone.gs</a>
                       </small></p>
-
-
-                        </div>
+    </div>
 
     </div>
 
