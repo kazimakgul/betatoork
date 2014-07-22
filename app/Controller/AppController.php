@@ -94,7 +94,7 @@ class AppController extends Controller {
         }
         if($valid==1)
         {
-            echo 'this action is valid';break;
+            echo 'this action is valid';
         }
         else
         {
