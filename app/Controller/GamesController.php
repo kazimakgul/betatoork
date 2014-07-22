@@ -34,12 +34,6 @@ class GamesController extends AppController {
 
     public function beforeFilter() {
 
-
-        if($this->action!='index' && $this->action!='random_3_game222' && $this->action!='checkClone222')
-        {    
-        echo 'System is under maintenance!';break;
-        }
-
         parent::beforeFilter();
         $this->noprefixdomain();
     }

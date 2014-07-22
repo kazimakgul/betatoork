@@ -12,7 +12,7 @@
         </div>
         <p style="float"class="text-muted">Designed and created with <a href="http://clone.gs">clone.gs</a> - <?php echo '&copy; 2011&ndash;'.date('Y').' Toork.com'; ?> </p>
       </div>
-
+<?php echo $this->element('sql_dump'); ?> 
       </div>
     </div>
   </div>
