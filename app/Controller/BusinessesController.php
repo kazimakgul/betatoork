@@ -38,7 +38,7 @@ class BusinessesController extends AppController {
         return false;
     }
 
-    public function beforeFilter() {
+    public function beforeFilter() {echo 'this number you have called cannot be reached at the moment.';break;
         parent::beforeFilter();
         $this->noprefixdomain();
     }
