@@ -73,7 +73,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                 $this->element('business/dashboard/search/channels/list') .
                 $this->element('business/dashboard/search/channels/grid');
             } else {
-                echo $this->element('business/dashboard/nullconditions', array('link' => 'exploregames', 'text' => 'Explore Games'));
+                echo $this->element('business/dashboard/nullconditions', array('link' => 'explorechannels', 'text' => 'Explore Channels'));
             }
             ?>
         </div>
