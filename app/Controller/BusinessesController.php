@@ -38,7 +38,7 @@ class BusinessesController extends AppController {
         return false;
     }
 
-    public function beforeFilter() {echo 'System is under maintenance!';break;
+    public function beforeFilter() {
         parent::beforeFilter();
         $this->noprefixdomain();
     }
