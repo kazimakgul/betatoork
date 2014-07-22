@@ -41,6 +41,7 @@ class BusinessesController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->noprefixdomain();
+        $this->set('view', $_COOKIE['view']);
     }
 
     public function afterFilter() {
