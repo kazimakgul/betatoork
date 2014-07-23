@@ -1476,14 +1476,14 @@ class BusinessesController extends AppController {
                     'Adcode.id' => 'DESC'
                 ),
                 'conditions' => array(
-                    'Adcode.user_id' => $authid
+                    'Adcode.user_id' => $user_id
                 )
             )
         );
         $adcodes = $this->paginate('Adcode');
 
         $Ad_setting = $this->Ad_setting->find('all', array(
-            'conditions' => array('Ad_setting.user_id' => $authid),
+            'conditions' => array('Ad_setting.user_id' => $user_id),
             'fields' => array('Ad_setting.ad_code_id'),
             'contain' => array('Ad_area' => array('fields' => array('Ad_area.name'))),
         )); //Recoded
