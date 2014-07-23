@@ -423,10 +423,13 @@ class BusinessesController extends AppController {
      * @author Volkan Celiloğlu
      */
     public function edit_set_ads() {
-        $filtered_data['Ad_setting']['ad_code_id'] = $this->request->params['code_id'];
+        $filtered_data['Ad_setting']['ad_code_id'] = $this->request->data['code_id'];
 		$filtered_data['Ad_setting']['user_id'] = $this->Session->read('Auth.User.id');
-        $filtered_data['Ad_setting']['id'] = $this->request->params['set_id'];
-        $this->Ad_setting->save($filtered_data);
+        $filtered_data['Ad_setting']['id'] = $this->request->data['set_id'];
+		
+        if($this->Ad_setting->save($filtered_data)){
+        	echo "Başarılı";
+        }
     }
 
     /**
