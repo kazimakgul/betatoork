@@ -2100,13 +2100,22 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
-                    '*'
+                    'Game.id',
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'User.username',
+                    'User.seo_username',
+                    'User.id',
+                    'User.picture',
+                    'User.verify',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone'
                 ),
                 'limit' => $limit,
-                'contain' => array(
-                    'User',
-                    'Gamestat'
-                ),
                 'conditions' => array(
                     'NOT' => array(
                         'Game.priority' => NULL
@@ -2125,6 +2134,8 @@ class BusinessesController extends AppController {
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
         }
         $cond = $this->paginate('Game');
+        //print_r($cond);
+        //exit;
         $this->set('games', $cond);
         $this->set('userid', $this->Auth->user('id'));
         $this->set('activefilter', $activefilter);
@@ -2147,7 +2158,20 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
-                    '*'
+                    'Game.id',
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'User.username',
+                    'User.seo_username',
+                    'User.id',
+                    'User.picture',
+                    'User.verify',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone'
                 ),
                 'limit' => $limit,
                 'order' => array(
