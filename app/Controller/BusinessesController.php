@@ -2128,9 +2128,6 @@ class BusinessesController extends AppController {
         $limit = 12;
 
 
-$this->Game->unbindModel(
-        array('hasOne' => array('Gamestat'))
-    );
 
 
         $this->paginate = array(
