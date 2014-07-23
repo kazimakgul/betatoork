@@ -743,18 +743,11 @@ class BusinessesController extends AppController {
      * @return Dashboard Page
      */
     public function dashboard() {
-
         $this->layout = 'Business/dashboard';
-
-
         if ($this->Cookie->read('tutorial')) {
             echo '<script>location.href="dashboard/welcome"</script>';
         }
         $this->sideBar();
-
-
-
-
         $userid = $this->Session->read('Auth.User.id');
         $limit = 6;
         $this->paginate = array(
@@ -774,27 +767,38 @@ class BusinessesController extends AppController {
                             'Userstat.subscribeto',
                             'Userstat.uploadcount'
                         )
-                    )
+                    ),
+                    'Activity'=>  array(
+                        'fields' => array(
+                            'Activity.channel_id'
+                        )
+                    ),
                 ),
                 'order' => array(
-                    'Userstat.potential' => 'DESC'
+                    'Activity.created' => 'DESC'
                 ),
                 'conditions' => array(
-                    'User.verify' => 1
+                    'User.verify' => 1,
+                    'OR' => array(
+                    'Activity.type' =>9,
+                    'Activity.type' =>4
+					)
                 ),
-                'limit' => $limit
+                'limit' => $limit,
+                'group' => array('User.id')
             )
         );
         $data = $this->paginate('User');
-
+		//$data = $this->User->find('all', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         /* $data = $this->User->query("SELECT  `User`.`id` ,  `User`.`username` ,  `User`.`seo_username` ,  `User`.`verify` ,  `User`.`picture` ,  `User`.`banner` ,  `Userstat`.`subscribe` ,  `Userstat`.`subscribeto` ,  `Userstat`.`uploadcount` 
           FROM  `users` AS  `User`
-          INNER JOIN  `userstats` AS  `Userstat` ON (  `Userstat`.`user_id` =  `User`.`id` )
-          INNER JOIN  `activities` AS  `Activity` ON (  `Activity`.`channel_id` = `User`.`id` )
+        //  INNER JOIN  `userstats` AS  `Userstat` ON (  `Userstat`.`user_id` =  `User`.`id` )
+        //  INNER JOIN  `activities` AS  `Activity` ON (  `Activity`.`channel_id` = `User`.`id` )
           WHERE  `User`.`verify`=1 AND `Activity`.`type` =  9 OR `Activity`.`type` =  3
           GROUP BY `User`.id
           ORDER BY  `Activity`.`created` DESC
-          LIMIT 6"); */
+          LIMIT 6");
+		 *  */
         $stat = $this->Userstat->find('first', array('contain' => false, 'conditions' => array('Userstat.user_id' => $userid)));
 
         $this->set('channel', $data);
