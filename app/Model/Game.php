@@ -215,7 +215,8 @@ class Game extends AppModel {
             'foreignKey' => 'game_id',
             'conditions' => '',
             'fields' => '',
-            'order' => ''
+            'order' => '',
+            'type' => 'INNER'
         )
     );
 

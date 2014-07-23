@@ -2129,11 +2129,21 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
-                    '*'
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'Game.embed',
+                    'Game.featured',
+                    'Game.clone',
+                    'Game.created'
                 ),
                 'limit' => $limit,
                 'contain' => array(
-                    'User',
+                    'User'=>array('fields'=>array('User.seo_username','User.verify','User.username','User.picture')),
                     'Gamestat'
                 ),
                 'conditions' => array(
@@ -2142,9 +2152,7 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'order' => array(
-                    'Game.clone' => 'ASC',
-                    'Game.priority' => 'DESC',
-                    'Gamestat.potential' => 'DESC'
+                    'Game.id' => 'DESC'
                 ),
             )
         );
