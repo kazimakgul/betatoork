@@ -10,7 +10,7 @@ App::uses('AppController', 'Controller');
 class BusinessesController extends AppController {
 
     public $name = 'Businesses';
-    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode','Ad_area');
+    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode', 'Ad_area');
     public $helpers = array('Html', 'Form', 'Upload', 'Recaptcha.Recaptcha', 'Time');
     public $components = array('Amazonsdk.Amazon', 'Recaptcha.Recaptcha', 'Common');
 
@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','col_ads','edit_set_ads'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search', 'col_ads', 'edit_set_ads'))) {
 
             return true;
         }
@@ -117,7 +117,7 @@ class BusinessesController extends AppController {
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
             } elseif ($attr == "edit_ads") {
-            	$ad_code_id = $this->request->data['ad_id'];
+                $ad_code_id = $this->request->data['ad_id'];
                 $filtered_data['Adcode']['name'] = $this->request->data['title'];
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
                 $this->Adcode->id = $ad_code_id;
@@ -125,13 +125,13 @@ class BusinessesController extends AppController {
 
 
                 $category = json_decode($this->request->data['category'], true);
-            	$this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id ='.$ad_code_id);
+                $this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id =' . $ad_code_id);
                 if (!empty($category)) {
                     foreach ($category as $value) {
-					 	$filtered_data1['Ad_setting']['ad_area_id'] = $value;
+                        $filtered_data1['Ad_setting']['ad_area_id'] = $value;
                         $filtered_data1['Ad_setting']['ad_code_id'] = $ad_code_id;
-						$filtered_data1['Ad_setting']['user_id'] = $user_id;
-						$this->Ad_setting->create(); //looplarda unutma
+                        $filtered_data1['Ad_setting']['user_id'] = $user_id;
+                        $this->Ad_setting->create(); //looplarda unutma
                         $this->Ad_setting->save($filtered_data1);
                     }
                 }
@@ -398,7 +398,7 @@ class BusinessesController extends AppController {
             }
         }
     }
-	
+
     /**
      * col_ads method
      *
@@ -406,14 +406,13 @@ class BusinessesController extends AppController {
      * @return ad code data 
      */
     function col_ads() {
-    	$user_id = $this->request->data['user_id'];
-		$location = $this->request->data['location'];
-		
-		$code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location,'Ad_setting.user_id'=>$user_id), 'order' => 'rand()'));
-		$this->set('success', $code);
-		$this->set('_serialize', array('success'));
-	}
+        $user_id = $this->request->data['user_id'];
+        $location = $this->request->data['location'];
 
+        $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location, 'Ad_setting.user_id' => $user_id), 'order' => 'rand()'));
+        $this->set('success', $code);
+        $this->set('_serialize', array('success'));
+    }
 
     /**
      * Edit Set Ads Function
@@ -424,11 +423,11 @@ class BusinessesController extends AppController {
      */
     public function edit_set_ads() {
         $filtered_data['Ad_setting']['ad_code_id'] = $this->request->data['code_id'];
-		$filtered_data['Ad_setting']['user_id'] = $this->Session->read('Auth.User.id');
+        $filtered_data['Ad_setting']['user_id'] = $this->Session->read('Auth.User.id');
         $filtered_data['Ad_setting']['id'] = $this->request->data['set_id'];
-		
-        if($this->Ad_setting->save($filtered_data)){
-        	echo "Başarılı";
+
+        if ($this->Ad_setting->save($filtered_data)) {
+            echo "Başarılı";
         }
     }
 
@@ -491,7 +490,7 @@ class BusinessesController extends AppController {
             if ($attr == "edit_ads") {
                 $id = $this->request->data['id'];
                 $this->Adcode->query('DELETE FROM adcodes WHERE id=' . $id . ' AND user_id=' . $user_id);
-            	$this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id ='.$id);
+                $this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id =' . $id);
                 $this->set('success', "Ads Code Deleted");
                 $this->set('_serialize', array('success'));
             } elseif ($attr == "edit_game") {
@@ -1280,11 +1279,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/ads_management');
     }
-	
-	
-	
-	
-	
+
     /** Ads Add method
      *
      * @param 
@@ -1313,14 +1308,14 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        
+
         $adcodes = $this->Adcode->find('first', array('conditions' => array('Adcode.id' => $id), 'contain' => false));
         $Ad_setting = $this->Ad_setting->find('all', array(
-        		'conditions'	=> array('Ad_setting.user_id' => $userid, 'Ad_setting.ad_code_id'=>$id),
-        		'contain'		=> array('Ad_area'),
-        		'fields'		=> array('Ad_setting.ad_code_id,Ad_setting.ad_area_id,Ad_area.name')));
+            'conditions' => array('Ad_setting.user_id' => $userid, 'Ad_setting.ad_code_id' => $id),
+            'contain' => array('Ad_area'),
+            'fields' => array('Ad_setting.ad_code_id,Ad_setting.ad_area_id,Ad_area.name')));
 
-        $Ad_area = $this->Ad_area->find('all',array('fields'=>array('Ad_area.id,Ad_area.name')));
+        $Ad_area = $this->Ad_area->find('all', array('fields' => array('Ad_area.id,Ad_area.name')));
 
         $this->set('ad_area', $Ad_area);
 
@@ -1331,8 +1326,6 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/edit_ads');
     }
-
-
 
     /** Notifications method
      *
@@ -1477,35 +1470,35 @@ class BusinessesController extends AppController {
                     'Adcode.user_id' => $authid
                 )
             )
-       );
-		$adcodes = $this->paginate('Adcode');
-        
+        );
+        $adcodes = $this->paginate('Adcode');
+
         $Ad_setting = $this->Ad_setting->find('all', array(
-        'conditions' => array('Ad_setting.user_id' => $authid), 
-        'fields' => array('Ad_setting.ad_code_id'), 
-		'contain' => array('Ad_area' => array('fields' => array('Ad_area.name'))),
-		)); //Recoded
-		
-		$this->set('adsettings', $Ad_setting);
-		$this->set('adcodes', $adcodes);
-	}
+            'conditions' => array('Ad_setting.user_id' => $authid),
+            'fields' => array('Ad_setting.ad_code_id'),
+            'contain' => array('Ad_area' => array('fields' => array('Ad_area.name'))),
+        )); //Recoded
 
-/*
-    function get_ads_info($userid = NULL, $authid = NULL) {
-        //======Getting ads datas======
-        $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
-        $this->set('addata', $addata);
+        $this->set('adsettings', $Ad_setting);
+        $this->set('adcodes', $adcodes);
+    }
 
-        if ($authid == $userid) {
-            //======Getting all ads codes======
-            $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
-            $this->set('adcodes', $adcodes);
-            $this->set('channel_owner', 1);
-        }
-        if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
-            $this->set('channel_owner', 0);
-        }
-    }*/
+    /*
+      function get_ads_info($userid = NULL, $authid = NULL) {
+      //======Getting ads datas======
+      $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
+      $this->set('addata', $addata);
+
+      if ($authid == $userid) {
+      //======Getting all ads codes======
+      $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
+      $this->set('adcodes', $adcodes);
+      $this->set('channel_owner', 1);
+      }
+      if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
+      $this->set('channel_owner', 0);
+      }
+      } */
 
     /**
      * Search method
@@ -2061,8 +2054,8 @@ class BusinessesController extends AppController {
             )
         );
         $cond = $this->paginate('Favorite');
-        /*print_r($cond);
-        exit;*/
+        /* print_r($cond);
+          exit; */
         $this->set('games', $cond);
         $this->set('title_for_layout', 'Clone Business Favorites');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
