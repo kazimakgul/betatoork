@@ -12,7 +12,9 @@ $.ajax({
    }
  });
 }
-
+function set_id_create(id) {
+        set_link_id = id;
+    }
 function ad_get_code(location,user_id){
 	            $.post(col_ads_link, {
                 location: location,

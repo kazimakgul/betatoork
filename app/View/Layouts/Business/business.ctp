@@ -39,9 +39,6 @@
         remove_ads_field	='<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_ads_field')); ?>';
         col_ads_link		='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'col_ads')); ?>';       
 		<?php if($auth_user){?> user_auth='1'; <?php }else{?> user_auth='0'; <?php }?>
-		function set_id_create(id) {
-        var set_link_id = id;
- 		}
         </script>
 
 
