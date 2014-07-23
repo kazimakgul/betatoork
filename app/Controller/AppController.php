@@ -88,7 +88,7 @@ class AppController extends Controller {
         {
             $valid=1;
         }    
-        if($this->params['controller']=='users')
+        if($this->params['controller']=='users' || $this->params['controller']=='pages')
         {
             $valid=1;
         }   
@@ -96,7 +96,7 @@ class AppController extends Controller {
         {
             $valid=1;
         }
-        if($this->params['controller']=='subscriptions' && in_array($this->action,array('followstatus')))
+        if($this->params['controller']=='subscriptions' && in_array($this->action,array('followstatus','add_subscription')))
         {
             $valid=1;
         } 
