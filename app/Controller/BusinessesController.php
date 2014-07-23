@@ -1425,7 +1425,7 @@ class BusinessesController extends AppController {
 
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
 
         $limit = 9;
         $featlimit = 3;
@@ -1457,7 +1457,7 @@ class BusinessesController extends AppController {
         }
     }
 
-    function get_ads_info($authid) {
+    function get_ads_info($user_id=NULL) {
         //$limit = 10;
         $authid = $this->Auth->user('id');
 
