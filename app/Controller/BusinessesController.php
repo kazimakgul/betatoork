@@ -1907,9 +1907,11 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-       
         $this->paginate = array(
             'Game' => array(
+                'conditions' => array(
+                    'Game.user_id' => $userid
+                ),
                 'fields' => array(
                     'Game.name',
                     'Game.seo_url',
@@ -1921,28 +1923,20 @@ class BusinessesController extends AppController {
                     'Game.embed',
                     'Game.featured',
                     'Game.clone',
-                    'Game.created'
+                    'Game.created',
+                    'User.seo_username',
+                    'Game.description',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone',
+                    'Gamestat.potential'
                 ),
-                'joins' => array(
-                    array(
-                        'table' => 'gamestats',
-                        'type' => 'INNER',
-                        'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
-                    )
-                ),
-                'contain' => array(
-                    'User',
-                    'Gamestat'
-                ),
-                'conditions' => array(
-                    'Game.user_id' => $userid,
-                ),
+                'limit' => $limit,
                 'order' => array(
                     'Game.id' => 'DESC'
                 )
             )
         );
-
         if ($filter === 'mobiles') {
             $activefilter = 1;
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
@@ -2132,24 +2126,10 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $limit = 12;
-
-
-$this->Game->unbindModel(
-        array('hasOne' => array('Gamestat'))
-    );
-
-
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
                     '*'
-                ),
-                'joins' => array(
-                    array(
-                        'table' => 'gamestats',
-                        'type' => 'INNER',
-                        'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
-                    )
                 ),
                 'limit' => $limit,
                 'contain' => array(
@@ -2157,12 +2137,15 @@ $this->Game->unbindModel(
                     'Gamestat'
                 ),
                 'conditions' => array(
-                    'Game.priority != ' => NULL,
-                    'Game.clone' => 0
+                    'NOT' => array(
+                        'Game.priority' => NULL
+                    )
                 ),
                 'order' => array(
-                    'Game.id' => 'DESC'
-                )
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
+                ),
             )
         );
         $activefilter = 0;
