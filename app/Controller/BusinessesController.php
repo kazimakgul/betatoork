@@ -2126,6 +2126,13 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $limit = 12;
+
+
+$this->Game->unbindModel(
+        array('hasOne' => array('Gamestat'))
+    );
+
+
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
