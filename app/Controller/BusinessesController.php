@@ -2144,7 +2144,7 @@ class BusinessesController extends AppController {
                 'limit' => $limit,
                 'contain' => array(
                     'User'=>array('fields'=>array('User.seo_username','User.verify','User.username','User.picture')),
-                    'Gamestat'
+                    'Gamestat'=>array('fields'=>array('Gamestat.playcount','Gamestat.favcount','Gamestat.channelclone'))
                 ),
                 'conditions' => array(
                     'NOT' => array(
