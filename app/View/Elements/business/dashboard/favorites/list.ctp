@@ -29,11 +29,12 @@
                 $favorites = empty($game['Favorite']['favcount']) ? 0 : $game['Favorite']['favcount'];
                 $plays = empty($game['Favorite']['playcount']) ? 0 : $game['Favorite']['playcount'];
                 $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
-                $userurl = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
                 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
                     $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
+                    $user_url = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain);
                 } else {
                     $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
+                    $user_url = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
                 }
                 ?>
                 <div class="row user">
@@ -67,7 +68,7 @@
                     </div>
                     <div class="col-sm-2 text-right">
                         <?php if ($owner !== FALSE) { ?>
-                            <a href="<?php echo $userurl ?>"  target="_blank" class="name">
+                            <a href="<?php echo $user_url ?>"  target="_blank" class="name">
                                 <?php echo $owner ?>
                             </a>
                         <?php } else { ?>
