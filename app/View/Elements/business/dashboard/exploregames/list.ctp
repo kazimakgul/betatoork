@@ -5,7 +5,7 @@
                 <label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
             </div>
             <div class="col-sm-2 header hidden-xs text-right">
-                <label>Owner</label>
+                <label><?php echo $this->Paginator->sort('User.username', 'Owner', array('direction' => 'asc')) ?></label>
             </div>
             <div class="col-sm-1 header hidden-xs text-right">
                 <label><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></label>
