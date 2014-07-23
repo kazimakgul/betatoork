@@ -1911,7 +1911,17 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
-                    '*'
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'Game.embed',
+                    'Game.featured',
+                    'Game.clone',
+                    'Game.created'
                 ),
                 'joins' => array(
                     array(
@@ -1932,7 +1942,7 @@ class BusinessesController extends AppController {
                 )
             )
         );
-        
+
         if ($filter === 'mobiles') {
             $activefilter = 1;
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
