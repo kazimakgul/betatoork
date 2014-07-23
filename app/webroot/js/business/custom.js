@@ -61,10 +61,9 @@ function set_ad_code(adcode_id) {
                 set_id: target_ad_area
             },
             function(data) {
-            	alert(data);
 		            $('#adsChange').modal('hide');
-                    window.location.reload();
-            }, 'json');
+                    location.reload();
+            });
 }
 
 //This removes all Ad Code for selected ads area
