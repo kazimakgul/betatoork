@@ -1908,23 +1908,15 @@ class BusinessesController extends AppController {
                     'Game.user_id' => $userid
                 ),
                 'fields' => array(
+                    'Game.id',
                     'Game.name',
                     'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
                     'Game.picture',
                     'Game.starsize',
                     'Game.rate_count',
-                    'Game.embed',
-                    'Game.featured',
-                    'Game.clone',
-                    'Game.created',
-                    'User.seo_username',
-                    'Game.description',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
                     'Gamestat.channelclone',
-                    'Gamestat.potential'
+                    'Gamestat.favcount',
+                    'Gamestat.playcount'
                 ),
                 'limit' => $limit,
                 'order' => array(
@@ -1971,22 +1963,15 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'fields' => array(
+                    'Game.id',
                     'Game.name',
                     'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
                     'Game.picture',
                     'Game.starsize',
                     'Game.rate_count',
-                    'Game.embed',
-                    'Game.clone',
-                    'Game.created',
-                    'User.seo_username',
-                    'Game.description',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
                     'Gamestat.channelclone',
-                    'Gamestat.potential'
+                    'Gamestat.favcount',
+                    'Gamestat.playcount'
                 ),
                 'limit' => $limit,
                 'order' => array(
