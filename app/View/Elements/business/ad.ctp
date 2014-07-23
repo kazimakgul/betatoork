@@ -7,7 +7,7 @@ $.ajax({
    url: col_ads_link,
    data: formData,
    success: function(data){
-   	alert(data);
+   	//alert(data);
    $('.ad_code').html(data);
    }
  });
@@ -24,7 +24,6 @@ function ad_get_code(location,user_id){
                 if (data.success) {
                     $('#ad_code'+location).html(data.success.Adcode.code);
                     $('#ad_name'+location).html(data.success.Adcode.name);
-                    $('.verfy'+location).attr("onclick",'set_id_create('+data.success.Ad_setting.id+');');
                 } else {
                 }
             }, 'json');
@@ -41,7 +40,7 @@ function ad_get_code(location,user_id){
  <div style='width:100%;' > 
  	<div id="ad_code<?php echo $location;?>"></div>
 <?php if($controls != NULL) echo '<span class="label label-primary"><i id="ad_name'.$location.'"></i>
-<a data-toggle="modal" onclick="" class="verfy'.$location.'" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;">Edit</a></span>' ?>
+<a data-toggle="modal" onclick="set_id_create('.$location.');" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;color:white;">Edit</a></span>' ?>
 </div>
 </div>
 </div>
