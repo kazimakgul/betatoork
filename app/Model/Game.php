@@ -209,14 +209,6 @@ class Game extends AppModel {
             'order' => ''
         )
     );
-    public $hasOne = array(
-        'Gamestat' => array(
-            'className' => 'Gamestat',
-            'foreignKey' => 'game_id',
-            'conditions' => '',
-            'fields' => '',
-            'order' => ''
-        )
-    );
+    
 
 }
