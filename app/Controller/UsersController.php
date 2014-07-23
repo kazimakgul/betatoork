@@ -1183,7 +1183,8 @@ WHERE user_id=' . $auth_id . '');
             $this->request->data['User']['password'] = $this->request->data['ps'];
             if ($this->Auth->login() == true) {
                 $results = $this->User->find('first', array('conditions' => array('OR' => array('User.email' => $this->request->data['User']['username'], 'User.username' => $this->request->data['User']['username'])), array('fields' => array('User.active', 'User.id'))));
-				$this->User->id = $results['User']['id'];
+
+                $this->User->id = $results['User']['id'];
                 $this->User->saveField('last_login', date('Y-m-d H:i:s'));
                 $msg = array(
                     "msgid" => '1',

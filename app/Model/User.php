@@ -226,10 +226,9 @@ class User extends AppModel {
             'fields' => '',
             'order' => '',
             'type' => 'INNER'
-    		)
-	);
+    ));
     public $belongsTo = array(
-       'Country' => array(
+        'Country' => array(
             'className' => 'Country',
             'foreignKey' => 'country_id',
             'conditions' => '',
