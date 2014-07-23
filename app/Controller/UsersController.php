@@ -1182,7 +1182,6 @@ WHERE user_id=' . $auth_id . '');
             $this->request->data['User']['username'] = $this->request->data['un'];
             $this->request->data['User']['password'] = $this->request->data['ps'];
             if ($this->Auth->login() == true) {
-            	echo "sadasd"; exit();
                 $results = $this->User->find('first', array('conditions' => array('OR' => array('User.email' => $this->request->data['User']['username'], 'User.username' => $this->request->data['User']['username'])), array('fields' => array('User.active', 'User.id'))));
 				
                 $this->User->id = $results['User']['id'];
