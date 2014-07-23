@@ -1907,36 +1907,32 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
+       
         $this->paginate = array(
             'Game' => array(
-                'conditions' => array(
-                    'Game.user_id' => $userid
-                ),
                 'fields' => array(
-                    'Game.name',
-                    'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
-                    'Game.picture',
-                    'Game.starsize',
-                    'Game.rate_count',
-                    'Game.embed',
-                    'Game.featured',
-                    'Game.clone',
-                    'Game.created',
-                    'User.seo_username',
-                    'Game.description',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
-                    'Gamestat.channelclone',
-                    'Gamestat.potential'
+                    '*'
                 ),
-                'limit' => $limit,
+                'joins' => array(
+                    array(
+                        'table' => 'gamestats',
+                        'type' => 'INNER',
+                        'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
+                    )
+                ),
+                'contain' => array(
+                    'User',
+                    'Gamestat'
+                ),
+                'conditions' => array(
+                    'Game.user_id' => $userid,
+                ),
                 'order' => array(
                     'Game.id' => 'DESC'
                 )
             )
         );
+        
         if ($filter === 'mobiles') {
             $activefilter = 1;
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
