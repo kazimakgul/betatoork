@@ -29,8 +29,8 @@ class Game extends AppModel {
         )
     );
     public $virtualFields = array(
-        'recommend' => 'SELECT potential FROM gamestats where gamestats.game_id=Game.id',
-        'playcount' => 'SELECT playcount FROM gamestats where gamestats.game_id=Game.id'
+        'recommend' => 'SELECT potential FROM gamestats where gamestats.game_id = Game.id',
+        'playcount' => 'SELECT playcount FROM gamestats where gamestats.game_id = Game.id'
     );
 
     /**

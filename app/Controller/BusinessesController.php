@@ -2024,48 +2024,45 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
+        $this->Subscription->bindModel(array(
+            'hasOne' => array(
+                'Game' => array(
+                    'className' => 'Gamestat',
+                    'foreignKey' => 'game_id'
+                )
+            )
+        ));
         $this->paginate = array(
             'Favorite' => array(
                 'conditions' => array(
                     'Favorite.user_id' => $userid
                 ),
-                'limit' => $limit,
+                'fields' => array(
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.embed',
+                    'Game.rate_count',
+                    'User.username',
+                    'User.seo_username',
+                    'User.id',
+                    'User.picture',
+                    'User.verify',
+                    'Favorite.playcount',
+                    'Favorite.favcount',
+                    'Favorite.channelclone',
+                ),
                 'order' => array(
                     'Favorite.recommend' => 'desc'
                 ),
-                'contain' => array(
-                    'Game' => array(
-                        'fields' => array(
-                            'Game.name',
-                            'Game.seo_url',
-                            'Game.id',
-                            'Game.picture',
-                            'Game.starsize',
-                            'Game.embed',
-                            'Game.rate_count'
-                        ),
-                        'User' => array(
-                            'fields' => array(
-                                'User.username',
-                                'User.seo_username',
-                                'User.id',
-                                'User.picture',
-                                'User.verify'
-                            )
-                        ),
-                        'Gamestat' => array(
-                            'fields' => array(
-                                'Gamestat.playcount',
-                                'Gamestat.favcount',
-                                'Gamestat.channelclone',
-                                'Gamestat.potential'
-                            )
-                        )
-                    )
-                )
+                'limit' => $limit
             )
         );
         $cond = $this->paginate('Favorite');
+        /*print_r($cond);
+        exit;*/
         $this->set('games', $cond);
         $this->set('title_for_layout', 'Clone Business Favorites');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
