@@ -1457,10 +1457,14 @@ class BusinessesController extends AppController {
         }
     }
 
-    function get_ads_info($authid) {
+    function get_ads_info($authid=NULL) {
         //$limit = 10;
         //$authid = $this->Auth->user('id');
-
+		if ($authid == NULL) {
+            $subdomain = Configure::read('Domain.subdomain');
+            $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
+            $authid = $user_data['User']['id'];
+        }
         //======Getting all ads codes======
         // $Ad_setting = $this->Ad_setting->find('all', array('conditions' => array('Ad_setting.user_id' => $authid)));
         $this->paginate = array(
