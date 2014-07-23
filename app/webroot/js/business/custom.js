@@ -10,8 +10,6 @@ $('.imagehover').hover(
         }
 );
 
-
-
 //Code Block for Broken Images
 function imgError(image, style) {
     image.onerror = "";
