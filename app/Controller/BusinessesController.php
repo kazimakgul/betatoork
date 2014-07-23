@@ -126,7 +126,7 @@ class BusinessesController extends AppController {
                 $category = json_decode($this->request->data['category'], true);
                 if (!empty($category)) {
                     foreach ($category as $value) {
-						$this->Ad_setting->Query('Delete FROM ad_settings WHERE ad_area_id="' . $value . '" AND user_id="'.$user_id.'"');	
+                        $this->Ad_setting->Query('Delete FROM ad_settings WHERE ad_area_id="' . $value . '" AND user_id="' . $user_id . '"');
                         $filtered_data1['Ad_setting']['ad_area_id'] = $value;
                         $filtered_data1['Ad_setting']['ad_code_id'] = $ad_code_id;
                         $filtered_data1['Ad_setting']['user_id'] = $user_id;
@@ -235,9 +235,9 @@ class BusinessesController extends AppController {
                 $this->Adcode->save($filtered_data);
                 $category = json_decode($this->request->data['category'], true);
                 if (!empty($category)) {
-                	$last_id = $this->Adcode->getLastInsertID();
+                    $last_id = $this->Adcode->getLastInsertID();
                     foreach ($category as $value) {
-						$this->Ad_setting->Query('Delete FROM ad_settings WHERE ad_area_id="' . $value . '" AND user_id="'.$user_id.'"');	
+                        $this->Ad_setting->Query('Delete FROM ad_settings WHERE ad_area_id="' . $value . '" AND user_id="' . $user_id . '"');
                         $this->Ad_setting->Query('INSERT INTO ad_settings (ad_area_id,ad_code_id,user_id,skip) VALUES (' . $value . ',' . $last_id . ',' . $user_id . ',0)');
                     }
                 }
@@ -422,11 +422,11 @@ class BusinessesController extends AppController {
      * @author Volkan Celiloğlu
      */
     public function edit_set_ads() {
-        $code_id =$this->request->data['code_id'];
-		$area_id =$this->request->data['set_id'];
-		$user_id =$this->Session->read('Auth.User.id');
-		
-		$this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND ad_code_id="'.$code_id.'" AND user_id="'.$user_id.'"');	
+        $code_id = $this->request->data['code_id'];
+        $area_id = $this->request->data['set_id'];
+        $user_id = $this->Session->read('Auth.User.id');
+
+        $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND ad_code_id="' . $code_id . '" AND user_id="' . $user_id . '"');
         $filtered_data['Ad_setting']['ad_code_id'] = $code_id;
         $filtered_data['Ad_setting']['user_id'] = $user_id;
         $filtered_data['Ad_setting']['ad_area_id'] = $area_id;
@@ -2221,34 +2221,34 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_to_id'
-                        )
-                    )
+        $this->Subscription->bindModel(array(
+            'belongsTo' => array(
+                'User' => array(
+                    'className' => 'User',
+                    'foreignKey' => 'subscriber_to_id'
                 )
-        );
+            )
+        ));
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
                     'Subscription.subscriber_id' => $userid
                 ),
-                'contain' => array(
-                    'User' => array(
-                        'fields' => array(
-                            'User.id',
-                            'User.seo_username',
-                            'User.verify',
-                            'User.username',
-                            'User.screenname',
-                            'User.picture',
-                            'User.banner'
-                        ),
-                        'Userstat'
-                    )
+                'fields' => array(
+                    'User.id',
+                    'User.seo_username',
+                    'User.verify',
+                    'User.username',
+                    'User.screenname',
+                    'User.picture',
+                    'User.banner',
+                    'totalrate',
+                    'favoritecount',
+                    'subscribe',
+                    'subscribeto',
+                    'uploadcount',
+                    'playcount',
+                    'potential'
                 ),
                 'limit' => $limit
             )
@@ -2271,37 +2271,35 @@ class BusinessesController extends AppController {
         }
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        //$this->Subscription->recursive=2;
-        //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
-        $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_id'
-                        )
-                    )
+        $this->Subscription->bindModel(array(
+            'belongsTo' => array(
+                'User' => array(
+                    'className' => 'User',
+                    'foreignKey' => 'subscriber_id'
                 )
-        );
+            )
+        ));
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
                     'Subscription.subscriber_to_id' => $userid,
                     'User.username LIKE' => '%' . $query . '%'
                 ),
-                'contain' => array(
-                    'User' => array(
-                        'fields' => array(
-                            'User.id',
-                            'User.seo_username',
-                            'User.verify',
-                            'User.username',
-                            'User.screenname',
-                            'User.picture',
-                            'User.banner'
-                        ),
-                        'Userstat'
-                    )
+                'fields' => array(
+                    'User.id',
+                    'User.seo_username',
+                    'User.verify',
+                    'User.username',
+                    'User.screenname',
+                    'User.picture',
+                    'User.banner',
+                    'totalrate',
+                    'favoritecount',
+                    'subscribe',
+                    'subscribeto',
+                    'uploadcount',
+                    'playcount',
+                    'potential'
                 ),
                 'limit' => $limit
             )
