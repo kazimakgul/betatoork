@@ -2015,12 +2015,11 @@ class BusinessesController extends AppController {
                     'Favorite.user_id' => $userid
                 ),
                 'fields' => array(
+                    'Game.id',
                     'Game.name',
                     'Game.seo_url',
-                    'Game.id',
                     'Game.picture',
                     'Game.starsize',
-                    'Game.embed',
                     'Game.rate_count',
                     'User.username',
                     'User.seo_username',
@@ -2038,8 +2037,6 @@ class BusinessesController extends AppController {
             )
         );
         $cond = $this->paginate('Favorite');
-        /* print_r($cond);
-          exit; */
         $this->set('games', $cond);
         $this->set('title_for_layout', 'Clone Business Favorites');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
@@ -2070,24 +2067,21 @@ class BusinessesController extends AppController {
                 'order' => array(
                     'Favorite.recommend' => 'desc'
                 ),
-                'contain' => array(
-                    'Game' => array(
-                        'fields' => array(
-                            'Game.name',
-                            'Game.seo_url',
-                            'Game.id',
-                            'Game.picture',
-                            'Game.starsize',
-                            'Game.embed'
-                        ),
-                        'User' => array('fields' => array(
-                                'User.id',
-                                'User.username',
-                                'User.screenname',
-                                'User.seo_username'
-                            )
-                        )
-                    )
+                'fields' => array(
+                    'Game.id',
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'User.username',
+                    'User.seo_username',
+                    'User.id',
+                    'User.picture',
+                    'User.verify',
+                    'Favorite.playcount',
+                    'Favorite.favcount',
+                    'Favorite.channelclone',
                 )
             )
         );
