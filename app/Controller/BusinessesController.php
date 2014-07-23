@@ -2131,21 +2131,25 @@ class BusinessesController extends AppController {
                 'fields' => array(
                     '*'
                 ),
+                'joins' => array(
+                    array(
+                        'table' => 'gamestats',
+                        'type' => 'INNER',
+                        'conditions' => '`gamestats`.`game_id` = `Game`.`id`'
+                    )
+                ),
                 'limit' => $limit,
                 'contain' => array(
                     'User',
                     'Gamestat'
                 ),
                 'conditions' => array(
-                    'NOT' => array(
-                        'Game.priority' => NULL
-                    )
+                    'Game.priority != ' => NULL,
+                    'Game.clone' => 0
                 ),
                 'order' => array(
-                    'Game.clone' => 'ASC',
-                    'Game.priority' => 'DESC',
-                    'Gamestat.potential' => 'DESC'
-                ),
+                    'Game.id' => 'DESC'
+                )
             )
         );
         $activefilter = 0;

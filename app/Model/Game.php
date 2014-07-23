@@ -28,10 +28,6 @@ class Game extends AppModel {
             )
         )
     );
-    public $virtualFields = array(
-        'recommend' => 'SELECT potential FROM gamestats where gamestats.game_id=Game.id',
-        'playcount' => 'SELECT playcount FROM gamestats where gamestats.game_id=Game.id'
-    );
 
     /**
      * Runs after a save and submit userstat values for zero.
@@ -213,14 +209,6 @@ class Game extends AppModel {
             'order' => ''
         )
     );
-    public $hasOne = array(
-        'Gamestat' => array(
-            'className' => 'Gamestat',
-            'foreignKey' => 'game_id',
-            'conditions' => '',
-            'fields' => '',
-            'order' => ''
-        )
-    );
+    
 
 }
