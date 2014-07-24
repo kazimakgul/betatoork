@@ -748,7 +748,20 @@ class BusinessesController extends AppController {
 
         $this->layout = 'Business/dashboard';
 
-
+		$this->Subscription->bindModel(array(
+            'hasOne' => array(
+                'Activity' => array(
+				            'className' => 'Activity',
+				            'foreignKey' => 'channel_id',
+				            'conditions' => '',
+				            'fields' => '',
+				            'order' => '',
+				            'type' => 'INNER'
+    			)
+            )
+        ));
+		
+		
         if ($this->Cookie->read('tutorial')) {
             echo '<script>location.href="dashboard/welcome"</script>';
         }

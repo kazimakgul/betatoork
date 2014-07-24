@@ -226,14 +226,6 @@ class User extends AppModel {
             'fields' => '',
             'order' => '',
             'type' => 'INNER'
-    		),
-		'Activity' => array(
-            'className' => 'Activity',
-            'foreignKey' => 'channel_id',
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'type' => 'INNER'
     		)
 	);
     public $belongsTo = array(
