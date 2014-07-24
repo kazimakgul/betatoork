@@ -429,11 +429,15 @@ class BusinessesController extends AppController {
 		$area_id =$this->request->data['set_id'];
 		$user_id =$this->Session->read('Auth.User.id');
 		
-		$this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND ad_code_id="'.$code_id.'" AND user_id="'.$user_id.'"');	
+		$this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="'.$user_id.'"');	
         $filtered_data['Ad_setting']['ad_code_id'] = $code_id;
         $filtered_data['Ad_setting']['user_id'] = $user_id;
         $filtered_data['Ad_setting']['ad_area_id'] = $area_id;
-        $this->Ad_setting->save($filtered_data);
+        if($this->Ad_setting->save($filtered_data))
+		{
+			$this->set('success', "Success");
+			$this->set('_serialize', array('success'));
+		}
     }
 
     /**
