@@ -115,7 +115,7 @@ class AppController extends Controller {
         }
         else
         {
-            //echo 'this action is not valid';break;
+            echo 'this action is not valid';break;
         }
 
         

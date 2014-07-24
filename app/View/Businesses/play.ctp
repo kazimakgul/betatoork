@@ -7,7 +7,7 @@
     if ($this->Session->read('Auth.User.id') == $user['User']['id']) {
         $controls = $user['User']['id'];
     }
-    echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>4 ));
+    echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerTop, 'adtype' => 'homeBannerTop'));
     $game_id = $game['Game']['id'];
     $gamename = $game['Game']['name'];
     $description = $game['Game']['description'];
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <?php     echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>5 )); ?>
+        <?php echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerMiddle, 'adtype' => 'homeBannerMiddle')); ?>
         <!--/footer -->
         <div class="col-sm-12">
             <div class="row">

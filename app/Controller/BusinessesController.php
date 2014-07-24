@@ -10,7 +10,7 @@ App::uses('AppController', 'Controller');
 class BusinessesController extends AppController {
 
     public $name = 'Businesses';
-    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode', 'Ad_area','remove_ads_field');
+    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode','Ad_area');
     public $helpers = array('Html', 'Form', 'Upload', 'Recaptcha.Recaptcha', 'Time');
     public $components = array('Amazonsdk.Amazon', 'Recaptcha.Recaptcha', 'Common');
 
@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search', 'col_ads', 'edit_set_ads'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','col_ads','edit_set_ads'))) {
 
             return true;
         }
@@ -117,7 +117,7 @@ class BusinessesController extends AppController {
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
             } elseif ($attr == "edit_ads") {
-                $ad_code_id = $this->request->data['ad_id'];
+            	$ad_code_id = $this->request->data['ad_id'];
                 $filtered_data['Adcode']['name'] = $this->request->data['title'];
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
                 $this->Adcode->id = $ad_code_id;
@@ -125,13 +125,13 @@ class BusinessesController extends AppController {
 
 
                 $category = json_decode($this->request->data['category'], true);
+            	$this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id ='.$ad_code_id);
                 if (!empty($category)) {
                     foreach ($category as $value) {
-                        $this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_area_id =' . $value);
-                        $filtered_data1['Ad_setting']['ad_area_id'] = $value;
+					 	$filtered_data1['Ad_setting']['ad_area_id'] = $value;
                         $filtered_data1['Ad_setting']['ad_code_id'] = $ad_code_id;
-                        $filtered_data1['Ad_setting']['user_id'] = $user_id;
-                        $this->Ad_setting->create(); //looplarda unutma
+						$filtered_data1['Ad_setting']['user_id'] = $user_id;
+						$this->Ad_setting->create(); //looplarda unutma
                         $this->Ad_setting->save($filtered_data1);
                     }
                 }
@@ -236,10 +236,8 @@ class BusinessesController extends AppController {
                 $this->Adcode->save($filtered_data);
                 $category = json_decode($this->request->data['category'], true);
                 if (!empty($category)) {
-                    $last_id = $this->Adcode->getLastInsertID();
                     foreach ($category as $value) {
-                        $this->Ad_setting->Query('Delete FROM ad_settings WHERE ad_area_id="' . $value . '" AND user_id="' . $user_id . '"');
-                        $this->Ad_setting->Query('INSERT INTO ad_settings (ad_area_id,ad_code_id,user_id,skip) VALUES (' . $value . ',' . $last_id . ',' . $user_id . ',0)');
+                        $this->User->Query('INSERT INTO ad_settings (ad_area_id,ad_code_id,user_id,skip) VALUES (' . $value . ',' . $this->Adcode->getLastInsertID() . ',' . $user_id . ',0)');
                     }
                 }
                 $this->set('success', "Ads Code Added");
@@ -400,22 +398,7 @@ class BusinessesController extends AppController {
             }
         }
     }
-
-
-    public function remove_ads_field() {
-        Configure::write('debug', 0);
-        $area_id = $this->request->data['target_ad_area'];
-        if ($auth_id = $this->Auth->user('id')) {//Auth Control Begins
-        $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="' . $auth_id . '"');
-		 $msg = array("title" => 'Success', 'result' => 1);
-        }
-		else {//Auth Control Ends	
-            //if user unlogged
-            $msg = array("title" => 'You have to log in first', 'result' => 0);
-        }//Unlogged control ends
-        $this->set('rtdata', $msg);
-        $this->set('_serialize', array('rtdata'));
-    }
+	
     /**
      * col_ads method
      *
@@ -423,13 +406,14 @@ class BusinessesController extends AppController {
      * @return ad code data 
      */
     function col_ads() {
-        $user_id = $this->request->data['user_id'];
-        $location = $this->request->data['location'];
+    	$user_id = $this->request->data['user_id'];
+		$location = $this->request->data['location'];
+		
+		$code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location,'Ad_setting.user_id'=>$user_id), 'order' => 'rand()'));
+		$this->set('success', $code);
+		$this->set('_serialize', array('success'));
+	}
 
-        $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location, 'Ad_setting.user_id' => $user_id), 'order' => 'rand()'));
-        $this->set('success', $code);
-        $this->set('_serialize', array('success'));
-    }
 
     /**
      * Edit Set Ads Function
@@ -439,18 +423,10 @@ class BusinessesController extends AppController {
      * @author Volkan Celiloğlu
      */
     public function edit_set_ads() {
-        $code_id = $this->request->data['code_id'];
-        $area_id = $this->request->data['set_id'];
-        $user_id = $this->Session->read('Auth.User.id');
-
-        $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="' . $user_id . '"');
-        $filtered_data['Ad_setting']['ad_code_id'] = $code_id;
-        $filtered_data['Ad_setting']['user_id'] = $user_id;
-        $filtered_data['Ad_setting']['ad_area_id'] = $area_id;
-        if ($this->Ad_setting->save($filtered_data)) {
-            $this->set('success', "Success");
-            $this->set('_serialize', array('success'));
-        }
+        $filtered_data['Ad_setting']['ad_code_id'] = $this->request->params['code_id'];
+		$filtered_data['Ad_setting']['user_id'] = $this->Session->read('Auth.User.id');
+        $filtered_data['Ad_setting']['id'] = $this->request->params['set_id'];
+        $this->Ad_setting->save($filtered_data);
     }
 
     /**
@@ -512,7 +488,7 @@ class BusinessesController extends AppController {
             if ($attr == "edit_ads") {
                 $id = $this->request->data['id'];
                 $this->Adcode->query('DELETE FROM adcodes WHERE id=' . $id . ' AND user_id=' . $user_id);
-                $this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id =' . $id);
+            	$this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id ='.$id);
                 $this->set('success', "Ads Code Deleted");
                 $this->set('_serialize', array('success'));
             } elseif ($attr == "edit_game") {
@@ -763,6 +739,7 @@ class BusinessesController extends AppController {
 
         $this->layout = 'Business/dashboard';
 
+
         if ($this->Cookie->read('tutorial')) {
             echo '<script>location.href="dashboard/welcome"</script>';
         }
@@ -790,22 +767,15 @@ class BusinessesController extends AppController {
                             'Userstat.subscribeto',
                             'Userstat.uploadcount'
                         )
-                    )/*,
-                    'Activity' => array(
-                        'fields' => array(
-                            'Activity.channel_id'
-                        )
-                    )*/
+                    )
                 ),
                 'order' => array(
-                    'User.id' => 'DESC'
+                    'Userstat.potential' => 'DESC'
                 ),
                 'conditions' => array(
                     'User.verify' => 1
-                    //,'Activity.type' => 9
                 ),
-                'limit' => $limit/*,
-                'group' => 'User.id'*/
+                'limit' => $limit
             )
         );
         $data = $this->paginate('User');
@@ -1307,7 +1277,11 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/ads_management');
     }
-
+	
+	
+	
+	
+	
     /** Ads Add method
      *
      * @param 
@@ -1336,14 +1310,14 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-
+        
         $adcodes = $this->Adcode->find('first', array('conditions' => array('Adcode.id' => $id), 'contain' => false));
         $Ad_setting = $this->Ad_setting->find('all', array(
-            'conditions' => array('Ad_setting.user_id' => $userid, 'Ad_setting.ad_code_id' => $id),
-            'contain' => array('Ad_area'),
-            'fields' => array('Ad_setting.ad_code_id,Ad_setting.ad_area_id,Ad_area.name')));
+        		'conditions'	=> array('Ad_setting.user_id' => $userid, 'Ad_setting.ad_code_id'=>$id),
+        		'contain'		=> array('Ad_area'),
+        		'fields'		=> array('Ad_setting.ad_code_id,Ad_setting.ad_area_id,Ad_area.name')));
 
-        $Ad_area = $this->Ad_area->find('all', array('fields' => array('Ad_area.id,Ad_area.name')));
+        $Ad_area = $this->Ad_area->find('all',array('fields'=>array('Ad_area.id,Ad_area.name')));
 
         $this->set('ad_area', $Ad_area);
 
@@ -1354,6 +1328,8 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/edit_ads');
     }
+
+
 
     /** Notifications method
      *
@@ -1444,7 +1420,7 @@ class BusinessesController extends AppController {
 
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
-        $this->get_ads_info($userid);
+        $this->get_ads_info($userid, $authid);
 
         $limit = 9;
         $featlimit = 3;
@@ -1476,44 +1452,57 @@ class BusinessesController extends AppController {
         }
     }
 
-    function get_ads_info($authid = NULL) {
+    function get_ads_info($authid) {
         //$limit = 10;
-        //$authid = $this->Auth->user('id');
-        if ($authid == NULL) {
-            $subdomain = Configure::read('Domain.subdomain');
-            $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
-            $authid = $user_data['User']['id'];
-        }
+        $authid = $this->Auth->user('id');
+
         //======Getting all ads codes======
         // $Ad_setting = $this->Ad_setting->find('all', array('conditions' => array('Ad_setting.user_id' => $authid)));
-       
-      	$adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
+        $this->paginate = array(
+            'Adcode' => array(
+                'fields' => array(
+                    'Adcode.id',
+                    'Adcode.name',
+                    'Adcode.code'
+                ),
+                'contain' => false,
+                //'limit' => $limit,
+                'order' => array(
+                    'Adcode.id' => 'DESC'
+                ),
+                'conditions' => array(
+                    'Adcode.user_id' => $authid
+                )
+            )
+       );
+		$adcodes = $this->paginate('Adcode');
+        
         $Ad_setting = $this->Ad_setting->find('all', array(
-            'conditions' => array('Ad_setting.user_id' => $authid),
-            'fields' => array('Ad_setting.ad_code_id'),
-            'contain' => array('Ad_area' => array('fields' => array('Ad_area.name'))),
-        )); //Recoded
+        'conditions' => array('Ad_setting.user_id' => $authid), 
+        'fields' => array('Ad_setting.ad_code_id'), 
+		'contain' => array('Ad_area' => array('fields' => array('Ad_area.name'))),
+		)); //Recoded
+		
+		$this->set('adsettings', $Ad_setting);
+		$this->set('adcodes', $adcodes);
+	}
 
-        $this->set('adsettings', $Ad_setting);
-        $this->set('adcodes', $adcodes);
-    }
+/*
+    function get_ads_info($userid = NULL, $authid = NULL) {
+        //======Getting ads datas======
+        $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
+        $this->set('addata', $addata);
 
-    /*
-      function get_ads_info($userid = NULL, $authid = NULL) {
-      //======Getting ads datas======
-      $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
-      $this->set('addata', $addata);
-
-      if ($authid == $userid) {
-      //======Getting all ads codes======
-      $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
-      $this->set('adcodes', $adcodes);
-      $this->set('channel_owner', 1);
-      }
-      if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
-      $this->set('channel_owner', 0);
-      }
-      } */
+        if ($authid == $userid) {
+            //======Getting all ads codes======
+            $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
+            $this->set('adcodes', $adcodes);
+            $this->set('channel_owner', 1);
+        }
+        if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
+            $this->set('channel_owner', 0);
+        }
+    }*/
 
     /**
      * Search method
@@ -1524,7 +1513,7 @@ class BusinessesController extends AppController {
     public function search2($userid, $searchterm = null) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-        $this->get_ads_info($userid);
+        $this->get_ads_info($userid, $authid);
 
         if ($searchterm === null) {
             if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
@@ -1622,7 +1611,7 @@ class BusinessesController extends AppController {
         }
 
         $authid = $this->Auth->user('id');
-        $this->get_ads_info($game['Game']['user_id']);
+        $this->get_ads_info($game['Game']['user_id'], $authid);
 
         $next_game = $this->Game->find('first', array(
             'contain' => false,
@@ -1694,7 +1683,7 @@ class BusinessesController extends AppController {
         $this->get_style_settings($userid);
 
         $authid = $this->Auth->user('id');
-        $this->get_ads_info($userid);
+        $this->get_ads_info($userid, $authid);
         //========Get Current Subscription===============
         if ($authid) {
             $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
@@ -1790,7 +1779,7 @@ class BusinessesController extends AppController {
 
         //========Get Current Subscription===============
         $authid = $this->Session->read('Auth.User.id');
-        $this->get_ads_info($userid);
+        $this->get_ads_info($userid, $authid);
         if ($authid) {
             $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
             if ($subscribebefore != NULL) {
@@ -1885,7 +1874,7 @@ class BusinessesController extends AppController {
 
         //========Get Current Subscription===============
         $authid = $this->Session->read('Auth.User.id');
-        $this->get_ads_info($userid);
+        $this->get_ads_info($userid, $authid);
         if ($authid) {
             $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
             if ($subscribebefore != NULL) {
@@ -1924,17 +1913,23 @@ class BusinessesController extends AppController {
                     'Game.user_id' => $userid
                 ),
                 'fields' => array(
-                    'Game.id',
                     'Game.name',
                     'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
                     'Game.picture',
                     'Game.starsize',
                     'Game.rate_count',
-                    'Game.priority',
+                    'Game.embed',
                     'Game.featured',
-                    'Gamestat.channelclone',
+                    'Game.clone',
+                    'Game.created',
+                    'User.seo_username',
+                    'Game.description',
+                    'Gamestat.playcount',
                     'Gamestat.favcount',
-                    'Gamestat.playcount'
+                    'Gamestat.channelclone',
+                    'Gamestat.potential'
                 ),
                 'limit' => $limit,
                 'order' => array(
@@ -1981,17 +1976,22 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'fields' => array(
-                    'Game.id',
                     'Game.name',
                     'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
                     'Game.picture',
                     'Game.starsize',
                     'Game.rate_count',
-                    'Game.priority',
-                    'Game.featured',
-                    'Gamestat.channelclone',
+                    'Game.embed',
+                    'Game.clone',
+                    'Game.created',
+                    'User.seo_username',
+                    'Game.description',
+                    'Gamestat.playcount',
                     'Gamestat.favcount',
-                    'Gamestat.playcount'
+                    'Gamestat.channelclone',
+                    'Gamestat.potential'
                 ),
                 'limit' => $limit,
                 'order' => array(
@@ -2021,39 +2021,45 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        $this->Subscription->bindModel(array(
-            'hasOne' => array(
-                'Game' => array(
-                    'className' => 'Gamestat',
-                    'foreignKey' => 'game_id'
-                )
-            )
-        ));
         $this->paginate = array(
             'Favorite' => array(
                 'conditions' => array(
                     'Favorite.user_id' => $userid
                 ),
-                'fields' => array(
-                    'Game.id',
-                    'Game.name',
-                    'Game.seo_url',
-                    'Game.picture',
-                    'Game.starsize',
-                    'Game.rate_count',
-                    'User.username',
-                    'User.seo_username',
-                    'User.id',
-                    'User.picture',
-                    'User.verify',
-                    'Favorite.playcount',
-                    'Favorite.favcount',
-                    'Favorite.channelclone',
-                ),
+                'limit' => $limit,
                 'order' => array(
                     'Favorite.recommend' => 'desc'
                 ),
-                'limit' => $limit
+                'contain' => array(
+                    'Game' => array(
+                        'fields' => array(
+                            'Game.name',
+                            'Game.seo_url',
+                            'Game.id',
+                            'Game.picture',
+                            'Game.starsize',
+                            'Game.embed',
+                            'Game.rate_count'
+                        ),
+                        'User' => array(
+                            'fields' => array(
+                                'User.username',
+                                'User.seo_username',
+                                'User.id',
+                                'User.picture',
+                                'User.verify'
+                            )
+                        ),
+                        'Gamestat' => array(
+                            'fields' => array(
+                                'Gamestat.playcount',
+                                'Gamestat.favcount',
+                                'Gamestat.channelclone',
+                                'Gamestat.potential'
+                            )
+                        )
+                    )
+                )
             )
         );
         $cond = $this->paginate('Favorite');
@@ -2087,21 +2093,24 @@ class BusinessesController extends AppController {
                 'order' => array(
                     'Favorite.recommend' => 'desc'
                 ),
-                'fields' => array(
-                    'Game.id',
-                    'Game.name',
-                    'Game.seo_url',
-                    'Game.picture',
-                    'Game.starsize',
-                    'Game.rate_count',
-                    'User.username',
-                    'User.seo_username',
-                    'User.id',
-                    'User.picture',
-                    'User.verify',
-                    'Favorite.playcount',
-                    'Favorite.favcount',
-                    'Favorite.channelclone',
+                'contain' => array(
+                    'Game' => array(
+                        'fields' => array(
+                            'Game.name',
+                            'Game.seo_url',
+                            'Game.id',
+                            'Game.picture',
+                            'Game.starsize',
+                            'Game.embed'
+                        ),
+                        'User' => array('fields' => array(
+                                'User.id',
+                                'User.username',
+                                'User.screenname',
+                                'User.seo_username'
+                            )
+                        )
+                    )
                 )
             )
         );
@@ -2120,31 +2129,31 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
-                    'Game.id',
                     'Game.name',
                     'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
                     'Game.picture',
                     'Game.starsize',
                     'Game.rate_count',
-                    'User.username',
-                    'User.seo_username',
-                    'User.id',
-                    'User.picture',
-                    'User.verify',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
-                    'Gamestat.channelclone'
+                    'Game.embed',
+                    'Game.featured',
+                    'Game.clone',
+                    'Game.created'
                 ),
                 'limit' => $limit,
+                'contain' => array(
+                    'User'=>array('fields'=>array('User.seo_username','User.verify','User.username','User.picture')),
+                    'Gamestat'=>array('fields'=>array('Gamestat.playcount','Gamestat.favcount','Gamestat.channelclone'))
+                ),
                 'conditions' => array(
                     'NOT' => array(
                         'Game.priority' => NULL
-                    )
+                    ),
+                    'Game.clone' => 0
                 ),
                 'order' => array(
-                    'Game.clone' => 'ASC',
-                    'Game.priority' => 'DESC',
-                    'Gamestat.potential' => 'DESC'
+                    'Game.id' => 'DESC'
                 ),
             )
         );
@@ -2176,20 +2185,7 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
-                    'Game.id',
-                    'Game.name',
-                    'Game.seo_url',
-                    'Game.picture',
-                    'Game.starsize',
-                    'Game.rate_count',
-                    'User.username',
-                    'User.seo_username',
-                    'User.id',
-                    'User.picture',
-                    'User.verify',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
-                    'Gamestat.channelclone'
+                    '*'
                 ),
                 'limit' => $limit,
                 'order' => array(
@@ -2228,45 +2224,37 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $this->Subscription->bindModel(array(
-            'belongsTo' => array(
-                'User' => array(
-                    'className' => 'User',
-                    'foreignKey' => 'subscriber_to_id'
+        $limit = 12;
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_to_id'
+                        )
+                    )
                 )
-            ),
-            'virtualFields' => array(
-                'totalrate' => 'SELECT totalrate FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'favoritecount' => 'SELECT favoritecount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'subscribe' => 'SELECT subscribe FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'subscribeto' => 'SELECT subscribeto FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'playcount' => 'SELECT playcount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'potential' => 'SELECT potential FROM userstats where userstats.user_id = Subscription.subscriber_to_id'
-            )
-        ));
+        );
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
                     'Subscription.subscriber_id' => $userid
                 ),
-                'fields' => array(
-                    'User.id',
-                    'User.seo_username',
-                    'User.verify',
-                    'User.username',
-                    'User.screenname',
-                    'User.picture',
-                    'User.banner',
-                    'totalrate',
-                    'favoritecount',
-                    'subscribe',
-                    'subscribeto',
-                    'uploadcount',
-                    'playcount',
-                    'potential'
+                'contain' => array(
+                    'User' => array(
+                        'fields' => array(
+                            'User.id',
+                            'User.seo_username',
+                            'User.verify',
+                            'User.username',
+                            'User.screenname',
+                            'User.picture',
+                            'User.banner'
+                        ),
+                        'Userstat'
+                    )
                 ),
-                'limit' => 12
+                'limit' => $limit
             )
         );
         $data = $this->paginate('Subscription');
@@ -2287,46 +2275,39 @@ class BusinessesController extends AppController {
         }
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        $this->Subscription->bindModel(array(
-            'belongsTo' => array(
-                'User' => array(
-                    'className' => 'User',
-                    'foreignKey' => 'subscriber_id'
+        //$this->Subscription->recursive=2;
+        //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_id'
+                        )
+                    )
                 )
-            ),
-            'virtualFields' => array(
-                'totalrate' => 'SELECT totalrate FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'favoritecount' => 'SELECT favoritecount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'subscribe' => 'SELECT subscribe FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'subscribeto' => 'SELECT subscribeto FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'playcount' => 'SELECT playcount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-                'potential' => 'SELECT potential FROM userstats where userstats.user_id = Subscription.subscriber_to_id'
-            )
-        ));
+        );
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
                     'Subscription.subscriber_to_id' => $userid,
                     'User.username LIKE' => '%' . $query . '%'
                 ),
-                'fields' => array(
-                    'User.id',
-                    'User.seo_username',
-                    'User.verify',
-                    'User.username',
-                    'User.screenname',
-                    'User.picture',
-                    'User.banner',
-                    'totalrate',
-                    'favoritecount',
-                    'subscribe',
-                    'subscribeto',
-                    'uploadcount',
-                    'playcount',
-                    'potential'
+                'contain' => array(
+                    'User' => array(
+                        'fields' => array(
+                            'User.id',
+                            'User.seo_username',
+                            'User.verify',
+                            'User.username',
+                            'User.screenname',
+                            'User.picture',
+                            'User.banner'
+                        ),
+                        'Userstat'
+                    )
                 ),
-                'limit' => 12
+                'limit' => $limit
             )
         );
         $data = $this->paginate('Subscription');
@@ -2342,43 +2323,32 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        $this->Subscription->bindModel(array(
-            'belongsTo' => array(
-                'User' => array(
-                    'className' => 'User',
-                    'foreignKey' => 'subscriber_id'
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_id'
+                        )
+                    )
                 )
-            ),
-            'virtualFields' => array(
-                'totalrate' => 'SELECT totalrate FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'favoritecount' => 'SELECT favoritecount FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'subscribe' => 'SELECT subscribe FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'subscribeto' => 'SELECT subscribeto FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'playcount' => 'SELECT playcount FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'potential' => 'SELECT potential FROM userstats where userstats.user_id = Subscription.subscriber_id'
-            )
-        ));
+        );
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
                     'Subscription.subscriber_to_id' => $userid
                 ),
-                'fields' => array(
-                    'User.id',
-                    'User.seo_username',
-                    'User.verify',
-                    'User.username',
-                    'User.screenname',
-                    'User.picture',
-                    'User.banner',
-                    'totalrate',
-                    'favoritecount',
-                    'subscribe',
-                    'subscribeto',
-                    'uploadcount',
-                    'playcount',
-                    'potential'
+                'contain' => array(
+                    'User' => array(
+                        'fields' => array(
+                            'User.seo_username',
+                            'User.verify',
+                            'User.username',
+                            'User.picture',
+                            'User.banner'
+                        ),
+                        'Userstat'
+                    )
                 ),
                 'limit' => $limit
             )
@@ -2401,44 +2371,33 @@ class BusinessesController extends AppController {
         }
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        $this->Subscription->bindModel(array(
-            'belongsTo' => array(
-                'User' => array(
-                    'className' => 'User',
-                    'foreignKey' => 'subscriber_id'
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_id'
+                        )
+                    )
                 )
-            ),
-            'virtualFields' => array(
-                'totalrate' => 'SELECT totalrate FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'favoritecount' => 'SELECT favoritecount FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'subscribe' => 'SELECT subscribe FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'subscribeto' => 'SELECT subscribeto FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'playcount' => 'SELECT playcount FROM userstats where userstats.user_id = Subscription.subscriber_id',
-                'potential' => 'SELECT potential FROM userstats where userstats.user_id = Subscription.subscriber_id'
-            )
-        ));
+        );
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
                     'Subscription.subscriber_to_id' => $userid,
                     'User.username LIKE' => '%' . $query . '%'
                 ),
-                'fields' => array(
-                    'User.id',
-                    'User.seo_username',
-                    'User.verify',
-                    'User.username',
-                    'User.screenname',
-                    'User.picture',
-                    'User.banner',
-                    'totalrate',
-                    'favoritecount',
-                    'subscribe',
-                    'subscribeto',
-                    'uploadcount',
-                    'playcount',
-                    'potential'
+                'contain' => array(
+                    'User' => array(
+                        'fields' => array(
+                            'User.seo_username',
+                            'User.verify',
+                            'User.username',
+                            'User.picture',
+                            'User.banner'
+                        ),
+                        'Userstat'
+                    )
                 ),
                 'limit' => $limit
             )
@@ -2456,11 +2415,6 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 6;
-        $this->User->unbindModel(array(
-            'hasMany' => array(
-                'Game'
-            )
-        ));
         $this->paginate = array(
             'User' => array(
                 'fields' => array(
@@ -2469,10 +2423,16 @@ class BusinessesController extends AppController {
                     'User.seo_username',
                     'User.verify',
                     'User.picture',
-                    'User.banner',
-                    'Userstat.subscribe',
-                    'Userstat.subscribeto',
-                    'Userstat.uploadcount'
+                    'User.banner'
+                ),
+                'contain' => array(
+                    'Userstat' => array(
+                        'fields' => array(
+                            'Userstat.subscribe',
+                            'Userstat.subscribeto',
+                            'Userstat.uploadcount'
+                        )
+                    )
                 ),
                 'order' => array(
                     'User.verify' => 'DESC',
@@ -2482,14 +2442,12 @@ class BusinessesController extends AppController {
                     'NOT' => array(
                         'User.verify' => NULL
                     ),
-                    //'(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
+                    '(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
                 ),
                 'limit' => $limit
             )
         );
         $data = $this->paginate('User');
-        /*print_r($data);
-        exit;*/
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Explore Channels');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
@@ -2515,10 +2473,16 @@ class BusinessesController extends AppController {
                     'User.seo_username',
                     'User.verify',
                     'User.picture',
-                    'User.banner',
-                    'Userstat.subscribe',
-                    'Userstat.subscribeto',
-                    'Userstat.uploadcount'
+                    'User.banner'
+                ),
+                'contain' => array(
+                    'Userstat' => array(
+                        'fields' => array(
+                            'Userstat.subscribe',
+                            'Userstat.subscribeto',
+                            'Userstat.uploadcount'
+                        )
+                    )
                 ),
                 'order' => array(
                     'User.verify' => 'DESC',
@@ -2529,7 +2493,7 @@ class BusinessesController extends AppController {
                     'NOT' => array(
                         'User.verify' => NULL
                     ),
-                    //'(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
+                    '(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
                 ),
                 'limit' => $limit
             )
@@ -2612,11 +2576,6 @@ class BusinessesController extends AppController {
                 $this->render('/Businesses/dashboard/search/games');
                 break;
             case 'channels':
-                $this->User->unbindModel(array(
-                    'hasMany' => array(
-                        'Game'
-                    )
-                ));
                 $this->paginate = array(
                     'User' => array(
                         'fields' => array(

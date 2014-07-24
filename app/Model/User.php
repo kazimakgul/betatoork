@@ -226,8 +226,7 @@ class User extends AppModel {
             'fields' => '',
             'order' => '',
             'type' => 'INNER'
-    		)
-	);
+    ));
     public $belongsTo = array(
         'Country' => array(
             'className' => 'Country',
