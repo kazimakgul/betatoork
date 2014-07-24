@@ -60,6 +60,12 @@ $allgames = $params['count'];
                                 <li>
                                     <?php echo $this->Paginator->sort('Userstat.uploadcount', 'Games', array('direction' => 'desc')) ?>
                                 </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('User.id', 'Date', array('direction' => 'desc')); ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('User.id', 'Recommend', array('direction' => 'desc')); ?>
+                                </li>
                             </ul>
                         </div>
                         <?php

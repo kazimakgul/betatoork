@@ -2364,17 +2364,21 @@ class BusinessesController extends AppController {
                 'conditions' => array(
                     'Subscription.subscriber_to_id' => $userid
                 ),
-                'contain' => array(
-                    'User' => array(
-                        'fields' => array(
-                            'User.seo_username',
-                            'User.verify',
-                            'User.username',
-                            'User.picture',
-                            'User.banner'
-                        ),
-                        'Userstat'
-                    )
+                'fields' => array(
+                    'User.id',
+                    'User.seo_username',
+                    'User.verify',
+                    'User.username',
+                    'User.screenname',
+                    'User.picture',
+                    'User.banner',
+                    'totalrate',
+                    'favoritecount',
+                    'subscribe',
+                    'subscribeto',
+                    'uploadcount',
+                    'playcount',
+                    'potential'
                 ),
                 'limit' => $limit
             )

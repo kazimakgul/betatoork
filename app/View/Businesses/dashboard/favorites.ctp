@@ -46,12 +46,30 @@ $allgames = $params['count'];
                                 </span>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('User.username', 'Owner', array('direction' => 'asc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Favorite.channelclone', 'Clones', array('direction' => 'desc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Favorite.favcount', 'Favorites', array('direction' => 'desc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Favorite.playcount', 'Plays', array('direction' => 'desc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('User.username', 'Owner', array('direction' => 'asc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Favorite.channelclone', 'Clones', array('direction' => 'desc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Favorite.favcount', 'Favorites', array('direction' => 'desc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Favorite.playcount', 'Plays', array('direction' => 'desc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Game.id', 'Date', array('direction' => 'desc')); ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Game.id', 'Recommend', array('direction' => 'desc')); ?>
+                                </li>
                             </ul>
                         </div>
                         <?php
