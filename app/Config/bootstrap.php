@@ -133,6 +133,7 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 //if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
 //ini_set('session.cookie_domain', '.clone.gs');
 //}
+session_set_cookie_params(0, '/', '.nishgame.com'); 
 
 
 
