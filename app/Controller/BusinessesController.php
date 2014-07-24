@@ -763,20 +763,6 @@ class BusinessesController extends AppController {
 
         $this->layout = 'Business/dashboard';
 
-		/*$this->User->bindModel(array(
-            'hasOne' => array(
-                'Activity' => array(
-				            'className' => 'Activity',
-				            'foreignKey' => 'channel_id',
-				            'conditions' => '',
-				            'fields' => '',
-				            'order' => '',
-				            'type' => 'INNER'
-    			)
-            )
-        ));*/
-		
-		
         if ($this->Cookie->read('tutorial')) {
             echo '<script>location.href="dashboard/welcome"</script>';
         }
@@ -2458,6 +2444,11 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 6;
+        $this->User->unbindModel(array(
+            'hasMany' => array(
+                'Game'
+            )
+        ));
         $this->paginate = array(
             'User' => array(
                 'fields' => array(
@@ -2466,16 +2457,10 @@ class BusinessesController extends AppController {
                     'User.seo_username',
                     'User.verify',
                     'User.picture',
-                    'User.banner'
-                ),
-                'contain' => array(
-                    'Userstat' => array(
-                        'fields' => array(
-                            'Userstat.subscribe',
-                            'Userstat.subscribeto',
-                            'Userstat.uploadcount'
-                        )
-                    )
+                    'User.banner',
+                    'Userstat.subscribe',
+                    'Userstat.subscribeto',
+                    'Userstat.uploadcount'
                 ),
                 'order' => array(
                     'User.verify' => 'DESC',
@@ -2485,12 +2470,14 @@ class BusinessesController extends AppController {
                     'NOT' => array(
                         'User.verify' => NULL
                     ),
-                    '(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
+                    //'(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
                 ),
                 'limit' => $limit
             )
         );
         $data = $this->paginate('User');
+        /*print_r($data);
+        exit;*/
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Explore Channels');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
@@ -2516,16 +2503,10 @@ class BusinessesController extends AppController {
                     'User.seo_username',
                     'User.verify',
                     'User.picture',
-                    'User.banner'
-                ),
-                'contain' => array(
-                    'Userstat' => array(
-                        'fields' => array(
-                            'Userstat.subscribe',
-                            'Userstat.subscribeto',
-                            'Userstat.uploadcount'
-                        )
-                    )
+                    'User.banner',
+                    'Userstat.subscribe',
+                    'Userstat.subscribeto',
+                    'Userstat.uploadcount'
                 ),
                 'order' => array(
                     'User.verify' => 'DESC',
@@ -2536,7 +2517,7 @@ class BusinessesController extends AppController {
                     'NOT' => array(
                         'User.verify' => NULL
                     ),
-                    '(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
+                    //'(SELECT count(games.id) from games where games.user_id = `User`.`id`)',
                 ),
                 'limit' => $limit
             )
