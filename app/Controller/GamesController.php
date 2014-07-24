@@ -48,6 +48,8 @@ class GamesController extends AppController {
             $this->redirect(array("controller" => "businesses", "action" => "dashboard"));
         }
 
+        echo 'test222';break;
+
         $this->layout = 'landing';
 
         $this->set('title_for_layout', 'Clone Games');
