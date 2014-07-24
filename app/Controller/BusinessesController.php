@@ -1385,6 +1385,9 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
 
+        echo 'get dns';
+        break;
+
         if ($userid == NULL) {
             $subdomain = Configure::read('Domain.subdomain');
             $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
