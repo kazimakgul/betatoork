@@ -140,7 +140,7 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 if(checkdnsrr(env("HTTP_HOST"), "CNAME"))
 {
            session_set_cookie_params(0, '/', '.nishgame.com'); 
-           session_start();
+          
 }else{
 	ini_set('session.cookie_domain', '.clone.gs');
 }
