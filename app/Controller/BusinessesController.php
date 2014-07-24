@@ -1387,7 +1387,7 @@ class BusinessesController extends AppController {
 
         echo 'get dns';echo '<br><br><br>';
         echo env("HTTP_HOST");echo '<br><br><br>';
-        break;
+    
 
         if ($userid == NULL) {
             $subdomain = Configure::read('Domain.subdomain');
