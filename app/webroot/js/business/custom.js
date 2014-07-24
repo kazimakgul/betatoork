@@ -51,7 +51,6 @@ function add_playcount(game_id,user_id) {
 
 }
 
-
 //This set selected Ad Code for selected ads area
 function set_ad_code(adcode_id) {
     target_ad_area = set_link_id; //Set sorunu burada id deki değeri almak gerekiyor..

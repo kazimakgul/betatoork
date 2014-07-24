@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This is core configuration file.
  *
@@ -19,6 +18,7 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+
 /**
  * CakePHP Debug Level:
  *
@@ -32,7 +32,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-Configure::write('debug', 0);
+	Configure::write('debug', 0);
 
 /**
  * Configure the Error handler used to handle errors for your application.  By default
@@ -48,11 +48,11 @@ Configure::write('debug', 0);
  *
  * @see ErrorHandler for more information on error handling and configuration.
  */
-Configure::write('Error', array(
-    'handler' => 'ErrorHandler::handleError',
-    'level' => E_ALL & ~E_DEPRECATED,
-    'trace' => true
-));
+	Configure::write('Error', array(
+		'handler' => 'ErrorHandler::handleError',
+		'level' => E_ALL & ~E_DEPRECATED,
+		'trace' => true
+	));
 
 /**
  * Configure the Exception handler used for uncaught exceptions.  By default,
@@ -70,16 +70,16 @@ Configure::write('Error', array(
  *
  * @see ErrorHandler for more information on exception handling and configuration.
  */
-Configure::write('Exception', array(
-    'handler' => 'ErrorHandler::handleException',
-    'renderer' => 'MyExceptionRenderer',
-    'log' => true
-));
+	Configure::write('Exception', array(
+		'handler' => 'ErrorHandler::handleException',
+		'renderer' => 'MyExceptionRenderer',
+		'log' => true
+	));
 
 /**
  * Application wide charset encoding
  */
-Configure::write('App.encoding', 'UTF-8');
+	Configure::write('App.encoding', 'UTF-8');
 
 /**
  * To configure CakePHP *not* to use mod_rewrite and to
@@ -92,7 +92,7 @@ Configure::write('App.encoding', 'UTF-8');
  *
  * And uncomment the App.baseUrl below:
  */
-//Configure::write('App.baseUrl', env('SCRIPT_NAME'));
+	//Configure::write('App.baseUrl', env('SCRIPT_NAME'));
 
 /**
  * Uncomment the define below to use CakePHP prefix routes.
@@ -106,17 +106,17 @@ Configure::write('App.encoding', 'UTF-8');
  * 	Routing.prefixes = array('admin', 'manager');
  *
  * Enables:
- * 	`admin_index()` and `/admin/controller/index`
- * 	`manager_index()` and `/manager/controller/index`
+ *	`admin_index()` and `/admin/controller/index`
+ *	`manager_index()` and `/manager/controller/index`
  *
  */
-//Configure::write('Routing.prefixes', array('admin'));
+	//Configure::write('Routing.prefixes', array('admin'));
 
 /**
  * Turn off all caching application-wide.
  *
  */
-//Configure::write('Cache.disable', true);
+	//Configure::write('Cache.disable', true);
 
 /**
  * Enable cache checking.
@@ -127,13 +127,13 @@ Configure::write('App.encoding', 'UTF-8');
  * or in each action using $this->cacheAction = true.
  *
  */
-//Configure::write('Cache.check', true);
+	//Configure::write('Cache.check', true);
 
 /**
  * Defines the default error type when using the log() function. Used for
  * differentiating error logging and debugging. Currently PHP supports LOG_DEBUG.
  */
-define('LOG_ERROR', 0);
+	define('LOG_ERROR', 0);
 
 /**
  * Session configuration.
@@ -172,24 +172,24 @@ define('LOG_ERROR', 0);
  * the cake shell command: cake schema create Sessions
  *
  */
-Configure::write('Session', array(
-    'defaults' => 'php'
-));
+	Configure::write('Session', array(
+		'defaults' => 'php'
+	));
 
 /**
  * The level of CakePHP security.
  */
-Configure::write('Security.level', 'medium');
+	Configure::write('Security.level', 'medium');
 
 /**
  * A random string used in security hashing methods.
  */
-Configure::write('Security.salt', 's2gDYhG93b0qyJfIxfniRuVoUubWwv2G0FgaC9mi');
+	Configure::write('Security.salt', 's2gDYhG93b0qyJfIxfniRuVoUubWwv2G0FgaC9mi');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-Configure::write('Security.cipherSeed', '65776859309967453542449683645');
+	Configure::write('Security.cipherSeed', '65776859309967453542449683645');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
@@ -199,7 +199,7 @@ Configure::write('Security.cipherSeed', '65776859309967453542449683645');
  * Set to `true` to apply timestamps when debug > 0. Set to 'force' to always enable
  * timestamping regardless of debug value.
  */
-//Configure::write('Asset.timestamp', true);
+	//Configure::write('Asset.timestamp', true);
 
 /**
  * Compress CSS output by removing comments, whitespace, repeating tags, etc.
@@ -208,7 +208,7 @@ Configure::write('Security.cipherSeed', '65776859309967453542449683645');
  *
  * To use, prefix the CSS link URL with '/ccss/' instead of '/css/' or use HtmlHelper::css().
  */
-//Configure::write('Asset.filter.css', 'css.php');
+	//Configure::write('Asset.filter.css', 'css.php');
 
 /**
  * Plug in your own custom JavaScript compressor by dropping a script in your webroot to handle the
@@ -216,67 +216,68 @@ Configure::write('Security.cipherSeed', '65776859309967453542449683645');
  *
  * To use, prefix your JavaScript link URLs with '/cjs/' instead of '/js/' or use JavaScriptHelper::link().
  */
-//Configure::write('Asset.filter.js', 'custom_javascript_output_filter.php');
+	//Configure::write('Asset.filter.js', 'custom_javascript_output_filter.php');
 
 /**
  * The classname and database used in CakePHP's
  * access control lists.
  */
-Configure::write('Acl.classname', 'DbAcl');
-Configure::write('Acl.database', 'default');
+	Configure::write('Acl.classname', 'DbAcl');
+	Configure::write('Acl.database', 'default');
 
 /**
  * Store analitics id on constant 
  * This analitics if track whole system and can be seen by clone admins.
  */
-Configure::write('Clone.analitics_id', 'UA-45726606-1');
+Configure::write('Clone.analitics_id','UA-45726606-1');
 
 
 /**
  * Uncomment this line and correct your server timezone to fix 
  * any date & time related errors.
  */
-//date_default_timezone_set('UTC');
+	//date_default_timezone_set('UTC');
 
-Configure::write('S3.url', 'https://s3.amazonaws.com/betatoorkpics');
-Configure::write('S3.name', 'betatoorkpics');
+Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpics');
+Configure::write('S3.name','betatoorkpics');
 #Configure::write('S3.name','betatoorkpicstest');
 #Configure::write('S3.url','https://s3.amazonaws.com/betatoorkpicstest');
 
-Configure::write('S3-games.name', 'games.clone.gs');
-Configure::write('S3-games.url', 'http://games.clone.gs');
+Configure::write('S3-games.name','games.clone.gs');
+Configure::write('S3-games.url','http://games.clone.gs');
 
 # test S3 path  -> https://s3.amazonaws.com/betatoorkpicstest
 # toork S3 path -> https://s3.amazonaws.com/betatoorkpics
+
 # Best Channel Settings
-$multiple = array(
-    'playcount' => 3,
-    'subscribe' => 1,
-    'subscribeto' => 10,
-    'favorite' => 2,
-    'plainrates' => 1
+$multiple=array(
+'playcount'=>3,
+'subscribe'=>1,
+'subscribeto'=>10,
+'favorite'=>2,
+'plainrates'=>1
 );
-Configure::write('multiples', $multiple);
+Configure::write('multiples',$multiple);
 
 # Best Games Settings
-$g_multiple = array(
-    'playcount' => 1,
-    'favcount' => 2,
-    'channelclone' => 4
+$g_multiple=array(
+'playcount'=>1,
+'favcount'=>2,
+'channelclone'=>4
 );
-Configure::write('g_multiples', $g_multiple);
+Configure::write('g_multiples',$g_multiple);
 
 # Channel Id of recommended channel
-Configure::write('recommended.id', 1988);
+Configure::write('recommended.id',1988);
 
 # Broken Image Settings
-$broken = array(
-    'toorksize' => 'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png',
-    'thumb' => 'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameslideavatar_default.png',
-    'slider' => 'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_slider_default.png',
-    'avatar' => 'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_manchannelavatar_default.png'
+$broken=array(
+'toorksize'=>'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png',
+'thumb'=>'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameslideavatar_default.png',
+'slider'=>'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_slider_default.png',
+'avatar'=>'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_manchannelavatar_default.png'
 );
-Configure::write('broken', $broken);
+Configure::write('broken',$broken);
 
 /**
  * Pick the caching engine to use.  If APC is enabled use it.
@@ -288,13 +289,13 @@ Configure::write('broken', $broken);
  */
 $engine = 'File';
 if (extension_loaded('apc') && function_exists('apc_dec') && (php_sapi_name() !== 'cli' || ini_get('apc.enable_cli'))) {
-    $engine = 'Apc';
+	$engine = 'Apc';
 }
 
 // In development mode, caches should expire quickly.
 $duration = '+999 days';
 if (Configure::read('debug') >= 1) {
-    $duration = '+2 weeks';
+	$duration = '+2 weeks';
 }
 
 // Prefix each application on the same server with a different string, to avoid Memcache and APC conflicts.
@@ -305,11 +306,11 @@ $prefix = 'myapp_';
  * object listings, and translation cache files are stored with this configuration.
  */
 Cache::config('_cake_core_', array(
-    'engine' => $engine,
-    'prefix' => $prefix . 'cake_core_',
-    'path' => CACHE . 'persistent' . DS,
-    'serialize' => ($engine === 'File'),
-    'duration' => $duration
+	'engine' => $engine,
+	'prefix' => $prefix . 'cake_core_',
+	'path' => CACHE . 'persistent' . DS,
+	'serialize' => ($engine === 'File'),
+	'duration' => $duration
 ));
 
 /**
@@ -317,9 +318,9 @@ Cache::config('_cake_core_', array(
  * is used to store schema descriptions, and table listings in connections.
  */
 Cache::config('_cake_model_', array(
-    'engine' => $engine,
-    'prefix' => $prefix . 'cake_model_',
-    'path' => CACHE . 'models' . DS,
-    'serialize' => ($engine === 'File'),
-    'duration' => $duration
+	'engine' => $engine,
+	'prefix' => $prefix . 'cake_model_',
+	'path' => CACHE . 'models' . DS,
+	'serialize' => ($engine === 'File'),
+	'duration' => $duration
 ));

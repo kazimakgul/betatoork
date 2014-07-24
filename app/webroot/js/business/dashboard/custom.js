@@ -1246,25 +1246,6 @@ function chaingame2(game_name, user_auth, game_id, clone_status)
     }
 }
 
-
-function ad_get_code1(location,user_id){
-	alert(user_id);
-}
-
-/*
-function col_ads(location,user_id){
-var formData = {location:location,user_id:user_id};
-alert("asd");
-$.ajax({
-  type: "POST",
-   url: col_ads_link,
-   data: formData,
-   success: function(data){
-   $('.ad_code').html(data);
-   }
- });
-}
-
 /**
  * Explore Games Clone Button Action
  * @param string game_name
