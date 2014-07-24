@@ -30,18 +30,25 @@ function ad_get_code(location,user_id){
                     $('#edit'+location).show();
                 } else {
                 	$('#ad_code'+location).show();
+                	<?php if($controls == NULL || isset($_GET['mode'])) {?>
+                	$('#edit'+location).hide();
+					$('#add'+location).hide();
+					<?php }?>
                 }
             }, 'json');
 }
 </script>
+
+<?php if($controls != NULL && !isset($_GET['mode'])) {?>
 <!-- Add Unit -->
-<div class="col-xs-11">
+<div class="col-xs-11" id="add<?php echo $location;?>">
 <div align="center" class="col-sm-offset-1 well well-sm">
 
 
 <?php
    echo $code['code']; 
  ?>
+ 
  <div style='width:100%;' > 
  	<div id="ad_code<?php echo $location;?>" style="display:none;">
  		
@@ -50,21 +57,29 @@ function ad_get_code(location,user_id){
 	<span class="fa fa-pencil"></span>Add Code</a>
  		
  	</div>
-<?php if($controls != NULL) 
+<?php 
 echo '<span class="label label-primary" id="edit'.$location.'" style="display:none;"><i id="ad_name'.$location.'"></i>
 <a data-toggle="modal" onclick="set_id_create('.$location.');" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;">Edit</a>
 </span>'; ?>
 </div>
 </div>
 </div>
-<!-- /Add Unit -->
-<!--<?php 
-//}else if(isset($channel_owner)){?>
-<!-- Dummy Ad Unit
-<div class="col-xs-11">
+<?php }else{
+?>
+
+<!-- Add Unit -->
+<div class="col-xs-11" id="add<?php echo $location;?>">
 <div align="center" class="col-sm-offset-1 well well-sm">
-	
+
+
+<?php
+   echo $code['code']; 
+ ?>
+ <div style='width:100%;' > 
+ 	<div id="ad_code<?php echo $location;?>" style="display:none;">
+ 	</div>
 </div>
 </div>
-<!-- /Dummy Ad Unit -->
-<?php // }?>
+</div>
+<?	
+}?>
