@@ -125,9 +125,9 @@ class BusinessesController extends AppController {
 
 
                 $category = json_decode($this->request->data['category'], true);
-            	$this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id ='.$ad_code_id);
                 if (!empty($category)) {
                     foreach ($category as $value) {
+            			$this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_area_id ='.$value);
 					 	$filtered_data1['Ad_setting']['ad_area_id'] = $value;
                         $filtered_data1['Ad_setting']['ad_code_id'] = $ad_code_id;
 						$filtered_data1['Ad_setting']['user_id'] = $user_id;
@@ -236,8 +236,10 @@ class BusinessesController extends AppController {
                 $this->Adcode->save($filtered_data);
                 $category = json_decode($this->request->data['category'], true);
                 if (!empty($category)) {
+                	$last_id = $this->Adcode->getLastInsertID();
                     foreach ($category as $value) {
-                        $this->User->Query('INSERT INTO ad_settings (ad_area_id,ad_code_id,user_id,skip) VALUES (' . $value . ',' . $this->Adcode->getLastInsertID() . ',' . $user_id . ',0)');
+						$this->Ad_setting->Query('Delete FROM ad_settings WHERE ad_area_id="' . $value . '" AND user_id="'.$user_id.'"');	
+                        $this->Ad_setting->Query('INSERT INTO ad_settings (ad_area_id,ad_code_id,user_id,skip) VALUES (' . $value . ',' . $last_id . ',' . $user_id . ',0)');
                     }
                 }
                 $this->set('success', "Ads Code Added");
@@ -423,9 +425,14 @@ class BusinessesController extends AppController {
      * @author Volkan Celiloğlu
      */
     public function edit_set_ads() {
-        $filtered_data['Ad_setting']['ad_code_id'] = $this->request->params['code_id'];
-		$filtered_data['Ad_setting']['user_id'] = $this->Session->read('Auth.User.id');
-        $filtered_data['Ad_setting']['id'] = $this->request->params['set_id'];
+        $code_id =$this->request->data['code_id'];
+		$area_id =$this->request->data['set_id'];
+		$user_id =$this->Session->read('Auth.User.id');
+		
+		$this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND ad_code_id="'.$code_id.'" AND user_id="'.$user_id.'"');	
+        $filtered_data['Ad_setting']['ad_code_id'] = $code_id;
+        $filtered_data['Ad_setting']['user_id'] = $user_id;
+        $filtered_data['Ad_setting']['ad_area_id'] = $area_id;
         $this->Ad_setting->save($filtered_data);
     }
 

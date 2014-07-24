@@ -18,7 +18,7 @@
     } else {
         $controls = NULL;
     }
-    echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>4));
+    echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>1 ));
     ?>
     <div class="col-md-12">
         <div class="btn-group" style="margin-bottom:10px;">

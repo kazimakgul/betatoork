@@ -12,7 +12,9 @@ $.ajax({
    }
  });
 }
-
+function set_id_create(id) {
+        set_link_id = id;
+    }
 function ad_get_code(location,user_id){
 	            $.post(col_ads_link, {
                 location: location,
@@ -38,7 +40,8 @@ function ad_get_code(location,user_id){
  ?>
  <div style='width:100%;' > 
  	<div id="ad_code<?php echo $location;?>"></div>
-<?php if($controls != NULL) echo '<span class="label label-primary"><i id="ad_name'.$location.'"></i> <a data-toggle="modal" class="verfy'.$location.'" id="" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;">Edit</a></span>' ?>
+<?php if($controls != NULL) echo '<span class="label label-primary"><i id="ad_name'.$location.'"></i>
+<a data-toggle="modal" onclick="set_id_create('.$location.');" class="verfy'.$location.'" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;">Edit</a></span>' ?>
 </div>
 </div>
 </div>
