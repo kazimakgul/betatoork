@@ -1387,7 +1387,13 @@ class BusinessesController extends AppController {
 
         echo 'get dns';echo '<br><br><br>';
         echo env("HTTP_HOST");echo '<br><br><br>';
-        echo checkdnsrr(env("HTTP_HOST"), "CNAME");
+
+        if(checkdnsrr(env("HTTP_HOST"), "CNAME"))
+        {
+            echo 'bu bir CNAMEdir!';
+        }else{
+            echo 'bu bir cname değildir!';
+        }
     
 
         if ($userid == NULL) {
