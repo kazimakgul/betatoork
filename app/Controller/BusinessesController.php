@@ -1385,7 +1385,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
 
-        echo 'get dns';
+        echo 'get dns';echo '<br><br><br>';
         echo env("HTTP_HOST");echo '<br><br><br>';
         break;
 
