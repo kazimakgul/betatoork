@@ -1488,25 +1488,8 @@ class BusinessesController extends AppController {
         }
         //======Getting all ads codes======
         // $Ad_setting = $this->Ad_setting->find('all', array('conditions' => array('Ad_setting.user_id' => $authid)));
-        $this->paginate = array(
-            'Adcode' => array(
-                'fields' => array(
-                    'Adcode.id',
-                    'Adcode.name',
-                    'Adcode.code'
-                ),
-                'contain' => false,
-                //'limit' => $limit,
-                'order' => array(
-                    'Adcode.id' => 'DESC'
-                ),
-                'conditions' => array(
-                    'Adcode.user_id' => $authid
-                )
-            )
-        );
-        $adcodes = $this->paginate('Adcode');
-
+       
+      	$adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
         $Ad_setting = $this->Ad_setting->find('all', array(
             'conditions' => array('Ad_setting.user_id' => $authid),
             'fields' => array('Ad_setting.ad_code_id'),
