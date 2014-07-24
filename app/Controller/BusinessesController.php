@@ -1386,6 +1386,7 @@ class BusinessesController extends AppController {
         $authid = $this->Auth->user('id');
 
         echo 'get dns';
+        echo env("HTTP_HOST");echo '<br><br><br>';
         break;
 
         if ($userid == NULL) {
