@@ -2231,34 +2231,34 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_to_id'
-                        )
-                    )
+        $this->Subscription->bindModel(array(
+            'belongsTo' => array(
+                'User' => array(
+                    'className' => 'User',
+                    'foreignKey' => 'subscriber_to_id'
                 )
-        );
+            )
+        ));
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
                     'Subscription.subscriber_id' => $userid
                 ),
-                'contain' => array(
-                    'User' => array(
-                        'fields' => array(
-                            'User.id',
-                            'User.seo_username',
-                            'User.verify',
-                            'User.username',
-                            'User.screenname',
-                            'User.picture',
-                            'User.banner'
-                        ),
-                        'Userstat'
-                    )
+                'fields' => array(
+                    'User.id',
+                    'User.seo_username',
+                    'User.verify',
+                    'User.username',
+                    'User.screenname',
+                    'User.picture',
+                    'User.banner',
+                    'totalrate',
+                    'favoritecount',
+                    'subscribe',
+                    'subscribeto',
+                    'uploadcount',
+                    'playcount',
+                    'potential'
                 ),
                 'limit' => $limit
             )
@@ -2281,37 +2281,35 @@ class BusinessesController extends AppController {
         }
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        //$this->Subscription->recursive=2;
-        //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
-        $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_id'
-                        )
-                    )
+        $this->Subscription->bindModel(array(
+            'belongsTo' => array(
+                'User' => array(
+                    'className' => 'User',
+                    'foreignKey' => 'subscriber_id'
                 )
-        );
+            )
+        ));
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
                     'Subscription.subscriber_to_id' => $userid,
                     'User.username LIKE' => '%' . $query . '%'
                 ),
-                'contain' => array(
-                    'User' => array(
-                        'fields' => array(
-                            'User.id',
-                            'User.seo_username',
-                            'User.verify',
-                            'User.username',
-                            'User.screenname',
-                            'User.picture',
-                            'User.banner'
-                        ),
-                        'Userstat'
-                    )
+                'fields' => array(
+                    'User.id',
+                    'User.seo_username',
+                    'User.verify',
+                    'User.username',
+                    'User.screenname',
+                    'User.picture',
+                    'User.banner',
+                    'totalrate',
+                    'favoritecount',
+                    'subscribe',
+                    'subscribeto',
+                    'uploadcount',
+                    'playcount',
+                    'potential'
                 ),
                 'limit' => $limit
             )
