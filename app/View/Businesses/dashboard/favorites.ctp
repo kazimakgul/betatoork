@@ -68,7 +68,7 @@ $allgames = $params['count'];
                                     <?php echo $this->Paginator->sort('Game.id', 'Date', array('direction' => 'desc')); ?>
                                 </li>
                                 <li>
-                                    <?php echo $this->Paginator->sort('Game.id', 'Recommend', array('direction' => 'desc')); ?>
+                                    <?php echo $this->Paginator->sort('Gamestat.potential', 'Recommend', array('direction' => 'desc')); ?>
                                 </li>
                             </ul>
                         </div>

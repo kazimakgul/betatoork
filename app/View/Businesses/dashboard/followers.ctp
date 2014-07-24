@@ -61,7 +61,7 @@ $followers = $this->Html->url(array("controller" => "businesses", "action" => "f
                                     <?php echo $this->Paginator->sort('User.id', 'Date', array('direction' => 'desc')); ?>
                                 </li>
                                 <li>
-                                    <?php echo $this->Paginator->sort('User.id', 'Recommend', array('direction' => 'desc')); ?>
+                                    <?php echo $this->Paginator->sort('Userstat.potential', 'Recommend', array('direction' => 'desc')); ?>
                                 </li>
                             </ul>
                         </div>
