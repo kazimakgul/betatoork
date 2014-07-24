@@ -748,7 +748,7 @@ class BusinessesController extends AppController {
 
         $this->layout = 'Business/dashboard';
 
-		$this->Subscription->bindModel(array(
+		$this->User->bindModel(array(
             'hasOne' => array(
                 'Activity' => array(
 				            'className' => 'Activity',
