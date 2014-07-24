@@ -2424,17 +2424,21 @@ class BusinessesController extends AppController {
                     'Subscription.subscriber_to_id' => $userid,
                     'User.username LIKE' => '%' . $query . '%'
                 ),
-                'contain' => array(
-                    'User' => array(
-                        'fields' => array(
-                            'User.seo_username',
-                            'User.verify',
-                            'User.username',
-                            'User.picture',
-                            'User.banner'
-                        ),
-                        'Userstat'
-                    )
+                'fields' => array(
+                    'User.id',
+                    'User.seo_username',
+                    'User.verify',
+                    'User.username',
+                    'User.screenname',
+                    'User.picture',
+                    'User.banner',
+                    'totalrate',
+                    'favoritecount',
+                    'subscribe',
+                    'subscribeto',
+                    'uploadcount',
+                    'playcount',
+                    'potential'
                 ),
                 'limit' => $limit
             )
@@ -2608,6 +2612,11 @@ class BusinessesController extends AppController {
                 $this->render('/Businesses/dashboard/search/games');
                 break;
             case 'channels':
+                $this->User->unbindModel(array(
+                    'hasMany' => array(
+                        'Game'
+                    )
+                ));
                 $this->paginate = array(
                     'User' => array(
                         'fields' => array(
