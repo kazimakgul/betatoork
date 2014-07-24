@@ -10,7 +10,7 @@ App::uses('AppController', 'Controller');
 class BusinessesController extends AppController {
 
     public $name = 'Businesses';
-    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode', 'Ad_area');
+    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode', 'Ad_area','remove_ads_field');
     public $helpers = array('Html', 'Form', 'Upload', 'Recaptcha.Recaptcha', 'Time');
     public $components = array('Amazonsdk.Amazon', 'Recaptcha.Recaptcha', 'Common');
 
@@ -401,6 +401,21 @@ class BusinessesController extends AppController {
         }
     }
 
+
+    public function remove_ads_field() {
+        Configure::write('debug', 0);
+        $area_id = $this->request->data['target_ad_area'];
+        if ($auth_id = $this->Auth->user('id')) {//Auth Control Begins
+        $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="' . $auth_id . '"');
+		 $msg = array("title" => 'Success', 'result' => 1);
+        }
+		else {//Auth Control Ends	
+            //if user unlogged
+            $msg = array("title" => 'You have to log in first', 'result' => 0);
+        }//Unlogged control ends
+        $this->set('rtdata', $msg);
+        $this->set('_serialize', array('rtdata'));
+    }
     /**
      * col_ads method
      *
