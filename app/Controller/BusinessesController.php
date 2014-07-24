@@ -82,7 +82,7 @@ class BusinessesController extends AppController {
                 $gender = $this->request->data['gender'];
                 $time = $this->request->data['time'];
                 $cont = $this->request->data['cont'];
-
+				
                 $this->User->query('UPDATE users SET gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '" WHERE id=' . $user_id);
                 $this->set('success', "Profile Settings Updated.");
                 $this->set('_serialize', array('success'));
