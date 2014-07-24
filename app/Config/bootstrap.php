@@ -134,11 +134,10 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 //ini_set('session.cookie_domain', '.clone.gs');
 //}
 
-if(checkdnsrr(env("HTTP_HOST"), "CNAME"))
-{
+
 session_set_cookie_params(0, '/', env("HTTP_HOST")); 
 session_start();
-}
+
 
 
 
