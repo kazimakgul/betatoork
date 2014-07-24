@@ -1930,6 +1930,8 @@ class BusinessesController extends AppController {
                     'Game.picture',
                     'Game.starsize',
                     'Game.rate_count',
+                    'Game.priority',
+                    'Game.featured',
                     'Gamestat.channelclone',
                     'Gamestat.favcount',
                     'Gamestat.playcount'
@@ -1985,6 +1987,8 @@ class BusinessesController extends AppController {
                     'Game.picture',
                     'Game.starsize',
                     'Game.rate_count',
+                    'Game.priority',
+                    'Game.featured',
                     'Gamestat.channelclone',
                     'Gamestat.favcount',
                     'Gamestat.playcount'
