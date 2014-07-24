@@ -34,7 +34,7 @@ Please choose the appropriate answer for yourself.
 
 <p class="alert alert-warning"><span class="label label-warning">Stupid</span> On the landing page of clone.gs you will see a "+ Create Channel" button where will lead you to become a member after you click it. Click “Register” or "Create Channel" or "Create Account" button and fill in the form with your real informations. Because we will be sending you a confirmation email to verify you. Otherwise you will not be able to add games to your channel.</p>
 
-<p class="alert alert-danger"><span class="label label-important">Idiot</span> Get lost !!</p>
+<p class="alert alert-danger"><span class="label label-danger">Idiot</span> Get lost !!</p>
                       </small></p>
                       
                       <h4>Add to Favorites and Clone a game</h4>
