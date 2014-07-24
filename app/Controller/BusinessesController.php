@@ -800,8 +800,8 @@ class BusinessesController extends AppController {
                     'Activity.created' => 'DESC'
                 ),
                 'conditions' => array(
-                    'User.verify' => 1,
-                        'Activity.type' => 9
+                    'User.verify' => 1
+                    //,'Activity.type' => 9
                 ),
                 'limit' => $limit,
                 'group' => 'User.id'
