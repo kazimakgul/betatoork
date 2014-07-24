@@ -138,9 +138,6 @@ if(checkdnsrr(env("HTTP_HOST"), "CNAME"))
 {
 session_set_cookie_params(0, '/', env("HTTP_HOST")); 
 session_start();
-}else{
-ini_set('session.cookie_domain', '.clone.gs');
-session_start();
 }
 
 
