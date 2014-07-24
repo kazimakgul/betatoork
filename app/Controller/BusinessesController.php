@@ -1441,7 +1441,7 @@ class BusinessesController extends AppController {
 
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
 
         $limit = 9;
         $featlimit = 3;
@@ -1473,10 +1473,14 @@ class BusinessesController extends AppController {
         }
     }
 
-    function get_ads_info($authid) {
+    function get_ads_info($authid=NULL) {
         //$limit = 10;
-        $authid = $this->Auth->user('id');
-
+        //$authid = $this->Auth->user('id');
+        if ($authid == NULL) {
+            $subdomain = Configure::read('Domain.subdomain');
+            $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
+            $authid = $user_data['User']['id'];
+        }
         //======Getting all ads codes======
         // $Ad_setting = $this->Ad_setting->find('all', array('conditions' => array('Ad_setting.user_id' => $authid)));
         $this->paginate = array(
@@ -1534,7 +1538,7 @@ class BusinessesController extends AppController {
     public function search2($userid, $searchterm = null) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
 
         if ($searchterm === null) {
             if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
@@ -1632,7 +1636,7 @@ class BusinessesController extends AppController {
         }
 
         $authid = $this->Auth->user('id');
-        $this->get_ads_info($game['Game']['user_id'], $authid);
+        $this->get_ads_info($game['Game']['user_id']);
 
         $next_game = $this->Game->find('first', array(
             'contain' => false,
@@ -1704,7 +1708,7 @@ class BusinessesController extends AppController {
         $this->get_style_settings($userid);
 
         $authid = $this->Auth->user('id');
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
         //========Get Current Subscription===============
         if ($authid) {
             $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
@@ -1800,7 +1804,7 @@ class BusinessesController extends AppController {
 
         //========Get Current Subscription===============
         $authid = $this->Session->read('Auth.User.id');
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
         if ($authid) {
             $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
             if ($subscribebefore != NULL) {
@@ -1895,7 +1899,7 @@ class BusinessesController extends AppController {
 
         //========Get Current Subscription===============
         $authid = $this->Session->read('Auth.User.id');
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
         if ($authid) {
             $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
             if ($subscribebefore != NULL) {
