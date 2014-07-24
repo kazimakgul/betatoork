@@ -1394,7 +1394,7 @@ class BusinessesController extends AppController {
         }else{
             echo 'bu bir cname değildir!';
         }
-    
+    echo substr($_SERVER['SERVER_NAME'], strpos($_SERVER['SERVER_NAME'],"."));
 
         if ($userid == NULL) {
             $subdomain = Configure::read('Domain.subdomain');
