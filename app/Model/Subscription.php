@@ -59,15 +59,5 @@ class Subscription extends AppModel {
             'order' => ''
         )
     );
-    
-    public $virtualFields = array(
-        'totalrate' => 'SELECT totalrate FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-        'favoritecount' => 'SELECT favoritecount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-        'subscribe' => 'SELECT subscribe FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-        'subscribeto' => 'SELECT subscribeto FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-        'uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-        'playcount' => 'SELECT playcount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-        'potential' => 'SELECT potential FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
-    );
 
 }

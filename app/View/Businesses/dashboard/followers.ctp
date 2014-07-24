@@ -49,19 +49,14 @@ $followers = $this->Html->url(array("controller" => "businesses", "action" => "f
                                     <?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')) ?>
                                 </li>
                                 <li>
-                                    <?php echo $this->Paginator->sort('User.created', 'Created', array('direction' => 'desc')) ?>
-                                </li>
-                                <!--
-                                <li>
-                                    <a href="#">Followers</a>
+                                    <?php echo $this->Paginator->sort('Subscription.subscribeto', 'Followers', array('direction' => 'desc')) ?>
                                 </li>
                                 <li>
-                                    <a href="#">Following</a>
+                                    <?php echo $this->Paginator->sort('Subscription.subscribe', 'Following', array('direction' => 'desc')) ?>
                                 </li>
                                 <li>
-                                    <a href="#">Games</a>
+                                    <?php echo $this->Paginator->sort('Subscription.uploadcount', 'Games', array('direction' => 'desc')) ?>
                                 </li>
-                                -->
                             </ul>
                         </div>
                         <?php
@@ -80,37 +75,8 @@ $followers = $this->Html->url(array("controller" => "businesses", "action" => "f
                     </div>
                 </div>
             </div>
-            <div class="row users-list">
-                <div class="col-md-12">
-                    <div class="row headers">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-1 header select-users">
-                        </div>
-                        <div class="col-sm-3 header hidden-xs">
-                            <label><?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')) ?></label>
-                        </div>
-                        <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                            <label><a href="#">Followers</a></label>
-                        </div>
-                        <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                            <label><a href="#">Following</a></label>
-                        </div>
-                        <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                            <label class="text-right"><a href="#">Games</a></label>
-                        </div>
-                    </div>
-                    <?php echo $this->element('business/dashboard/followers/list') ?>
-                    <div class="text-center">
-                        <?php echo $this->element('business/components/pagination') ?>
-                    </div>
-                </div>
-            </div>
-            <div class="row users-grid">
-                <?php echo $this->element('business/dashboard/followers/grid') ?>
-                <div class="text-center">
-                    <?php echo $this->element('business/components/pagination') ?>
-                </div>
-            </div>
+            <?php echo $this->element('business/dashboard/followers/list') ?>
+            <?php echo $this->element('business/dashboard/followers/grid') ?>
         </div>
     </div>
 </div>

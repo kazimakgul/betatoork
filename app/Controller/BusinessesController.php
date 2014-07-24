@@ -2238,13 +2238,21 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $limit = 12;
         $this->Subscription->bindModel(array(
             'belongsTo' => array(
                 'User' => array(
                     'className' => 'User',
                     'foreignKey' => 'subscriber_to_id'
                 )
+            ),
+            'virtualFields' => array(
+                'totalrate' => 'SELECT totalrate FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'favoritecount' => 'SELECT favoritecount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'subscribe' => 'SELECT subscribe FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'subscribeto' => 'SELECT subscribeto FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'playcount' => 'SELECT playcount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'potential' => 'SELECT potential FROM userstats where userstats.user_id = Subscription.subscriber_to_id'
             )
         ));
         $this->paginate = array(
@@ -2268,7 +2276,7 @@ class BusinessesController extends AppController {
                     'playcount',
                     'potential'
                 ),
-                'limit' => $limit
+                'limit' => 12
             )
         );
         $data = $this->paginate('Subscription');
@@ -2295,6 +2303,15 @@ class BusinessesController extends AppController {
                     'className' => 'User',
                     'foreignKey' => 'subscriber_id'
                 )
+            ),
+            'virtualFields' => array(
+                'totalrate' => 'SELECT totalrate FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'favoritecount' => 'SELECT favoritecount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'subscribe' => 'SELECT subscribe FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'subscribeto' => 'SELECT subscribeto FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'playcount' => 'SELECT playcount FROM userstats where userstats.user_id = Subscription.subscriber_to_id',
+                'potential' => 'SELECT potential FROM userstats where userstats.user_id = Subscription.subscriber_to_id'
             )
         ));
         $this->paginate = array(
@@ -2319,7 +2336,7 @@ class BusinessesController extends AppController {
                     'playcount',
                     'potential'
                 ),
-                'limit' => $limit
+                'limit' => 12
             )
         );
         $data = $this->paginate('Subscription');
@@ -2335,16 +2352,23 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_id'
-                        )
-                    )
+        $this->Subscription->bindModel(array(
+            'belongsTo' => array(
+                'User' => array(
+                    'className' => 'User',
+                    'foreignKey' => 'subscriber_id'
                 )
-        );
+            ),
+            'virtualFields' => array(
+                'totalrate' => 'SELECT totalrate FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'favoritecount' => 'SELECT favoritecount FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'subscribe' => 'SELECT subscribe FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'subscribeto' => 'SELECT subscribeto FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'playcount' => 'SELECT playcount FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'potential' => 'SELECT potential FROM userstats where userstats.user_id = Subscription.subscriber_id'
+            )
+        ));
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
@@ -2383,16 +2407,23 @@ class BusinessesController extends AppController {
         }
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_id'
-                        )
-                    )
+        $this->Subscription->bindModel(array(
+            'belongsTo' => array(
+                'User' => array(
+                    'className' => 'User',
+                    'foreignKey' => 'subscriber_id'
                 )
-        );
+            ),
+            'virtualFields' => array(
+                'totalrate' => 'SELECT totalrate FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'favoritecount' => 'SELECT favoritecount FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'subscribe' => 'SELECT subscribe FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'subscribeto' => 'SELECT subscribeto FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'uploadcount' => 'SELECT uploadcount FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'playcount' => 'SELECT playcount FROM userstats where userstats.user_id = Subscription.subscriber_id',
+                'potential' => 'SELECT potential FROM userstats where userstats.user_id = Subscription.subscriber_id'
+            )
+        ));
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
