@@ -7,10 +7,8 @@
 		$controls=NULL;
 	}
 	
-	$homeBannerTop=$addata[0]['homeBannerTop'];
-	$homeBannerMiddle=$addata[0]['homeBannerMiddle'];
-	$homeBannerBottom=$addata[0]['homeBannerBottom'];
-	echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerTop,'adtype'=>'homeBannerTop'));
+    echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>1 ));
+
 	
 	?>
 		<div class="col-md-12">
@@ -64,7 +62,7 @@
 		</div>
 		<!--/footer-->
 		<?php }
-		echo $this->element('business/ads',array('controls'=>$controls,'code'=>$homeBannerBottom,'adtype'=>'homeBannerBottom'));
+    echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>3 ));
 		?>
 		 <?php  echo $this->element('business/components/popup',array('user_id'=>$user['User']['id'])); ?>
 
