@@ -142,7 +142,7 @@ if(checkdnsrr(env("HTTP_HOST"), "CNAME"))
            session_set_cookie_params(0, '/', '.nishgame.com'); 
           
 }else{
-	ini_set('session.cookie_domain', '.clone.gs');
+	session_set_cookie_params(0, '/', '.clone.gs'); 
 }
 
 
