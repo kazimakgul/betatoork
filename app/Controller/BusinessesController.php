@@ -801,10 +801,7 @@ class BusinessesController extends AppController {
                 ),
                 'conditions' => array(
                     'User.verify' => 1,
-                    'OR' => array(
-                        'Activity.type' => 9,
-                        'Activity.type' => 4
-                    )
+                        'Activity.type' => 9
                 ),
                 'limit' => $limit,
                 'group' => 'User.id'
