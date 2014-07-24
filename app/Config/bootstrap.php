@@ -134,6 +134,7 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 //ini_set('session.cookie_domain', '.clone.gs');
 //}
 session_set_cookie_params(0, '/', 'nishgame.nishgame.com'); 
+session_start();
 
 
 
