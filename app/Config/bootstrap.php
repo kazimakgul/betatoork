@@ -134,6 +134,11 @@ if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
 ini_set('session.cookie_domain', '.clone.gs');
 }
 
+if(checkdnsrr(env("HTTP_HOST"), "CNAME"))
+        {
+            echo 'yoww!';
+        }
+
 
 
 /**
