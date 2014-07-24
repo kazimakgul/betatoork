@@ -130,22 +130,9 @@ if(strlen($subdomain)>0 && !in_array($subdomain,array('www'))){
 
 
 //Bu condition tamamen kaldırılacak.Local de de login olabilmemizi sağlıyor.
-//if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
-//ini_set('session.cookie_domain', '.clone.gs');
-//}
-
-
-
-
-if(checkdnsrr(env("HTTP_HOST"), "CNAME"))
-{
-           session_set_cookie_params(0, '/', '.nishgame.com'); 
-          
-}else{
-	session_set_cookie_params(0, '/', '.clone.gs'); 
+if($_SERVER['HTTP_HOST']!="127.0.0.1" && $_SERVER['HTTP_HOST']!="localhost") {
+ini_set('session.cookie_domain', '.clone.gs');
 }
-
-
 
 
 
