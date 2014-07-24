@@ -763,7 +763,7 @@ class BusinessesController extends AppController {
 
         $this->layout = 'Business/dashboard';
 
-		$this->User->bindModel(array(
+		/*$this->User->bindModel(array(
             'hasOne' => array(
                 'Activity' => array(
 				            'className' => 'Activity',
@@ -774,7 +774,7 @@ class BusinessesController extends AppController {
 				            'type' => 'INNER'
     			)
             )
-        ));
+        ));*/
 		
 		
         if ($this->Cookie->read('tutorial')) {
@@ -804,22 +804,22 @@ class BusinessesController extends AppController {
                             'Userstat.subscribeto',
                             'Userstat.uploadcount'
                         )
-                    ),
+                    )/*,
                     'Activity' => array(
                         'fields' => array(
                             'Activity.channel_id'
                         )
-                    )
+                    )*/
                 ),
                 'order' => array(
-                    'Activity.created' => 'DESC'
+                    'User.id' => 'DESC'
                 ),
                 'conditions' => array(
                     'User.verify' => 1
                     //,'Activity.type' => 9
                 ),
-                'limit' => $limit,
-                'group' => 'User.id'
+                'limit' => $limit/*,
+                'group' => 'User.id'*/
             )
         );
         $data = $this->paginate('User');

@@ -1,3 +1,5 @@
+
+
 <script>
 window.onload = ad_get_code("<?php echo $location;?>","<?php echo $user_id;?>");
 function col_ads(location,user_id){
