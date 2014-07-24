@@ -1920,23 +1920,15 @@ class BusinessesController extends AppController {
                     'Game.user_id' => $userid
                 ),
                 'fields' => array(
+                    'Game.id',
                     'Game.name',
                     'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
                     'Game.picture',
                     'Game.starsize',
                     'Game.rate_count',
-                    'Game.embed',
-                    'Game.featured',
-                    'Game.clone',
-                    'Game.created',
-                    'User.seo_username',
-                    'Game.description',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
                     'Gamestat.channelclone',
-                    'Gamestat.potential'
+                    'Gamestat.favcount',
+                    'Gamestat.playcount'
                 ),
                 'limit' => $limit,
                 'order' => array(
@@ -1983,22 +1975,15 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'fields' => array(
+                    'Game.id',
                     'Game.name',
                     'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
                     'Game.picture',
                     'Game.starsize',
                     'Game.rate_count',
-                    'Game.embed',
-                    'Game.clone',
-                    'Game.created',
-                    'User.seo_username',
-                    'Game.description',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
                     'Gamestat.channelclone',
-                    'Gamestat.potential'
+                    'Gamestat.favcount',
+                    'Gamestat.playcount'
                 ),
                 'limit' => $limit,
                 'order' => array(
@@ -2028,45 +2013,39 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
+        $this->Subscription->bindModel(array(
+            'hasOne' => array(
+                'Game' => array(
+                    'className' => 'Gamestat',
+                    'foreignKey' => 'game_id'
+                )
+            )
+        ));
         $this->paginate = array(
             'Favorite' => array(
                 'conditions' => array(
                     'Favorite.user_id' => $userid
                 ),
-                'limit' => $limit,
+                'fields' => array(
+                    'Game.id',
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'User.username',
+                    'User.seo_username',
+                    'User.id',
+                    'User.picture',
+                    'User.verify',
+                    'Favorite.playcount',
+                    'Favorite.favcount',
+                    'Favorite.channelclone',
+                ),
                 'order' => array(
                     'Favorite.recommend' => 'desc'
                 ),
-                'contain' => array(
-                    'Game' => array(
-                        'fields' => array(
-                            'Game.name',
-                            'Game.seo_url',
-                            'Game.id',
-                            'Game.picture',
-                            'Game.starsize',
-                            'Game.embed',
-                            'Game.rate_count'
-                        ),
-                        'User' => array(
-                            'fields' => array(
-                                'User.username',
-                                'User.seo_username',
-                                'User.id',
-                                'User.picture',
-                                'User.verify'
-                            )
-                        ),
-                        'Gamestat' => array(
-                            'fields' => array(
-                                'Gamestat.playcount',
-                                'Gamestat.favcount',
-                                'Gamestat.channelclone',
-                                'Gamestat.potential'
-                            )
-                        )
-                    )
-                )
+                'limit' => $limit
             )
         );
         $cond = $this->paginate('Favorite');
@@ -2100,24 +2079,21 @@ class BusinessesController extends AppController {
                 'order' => array(
                     'Favorite.recommend' => 'desc'
                 ),
-                'contain' => array(
-                    'Game' => array(
-                        'fields' => array(
-                            'Game.name',
-                            'Game.seo_url',
-                            'Game.id',
-                            'Game.picture',
-                            'Game.starsize',
-                            'Game.embed'
-                        ),
-                        'User' => array('fields' => array(
-                                'User.id',
-                                'User.username',
-                                'User.screenname',
-                                'User.seo_username'
-                            )
-                        )
-                    )
+                'fields' => array(
+                    'Game.id',
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'User.username',
+                    'User.seo_username',
+                    'User.id',
+                    'User.picture',
+                    'User.verify',
+                    'Favorite.playcount',
+                    'Favorite.favcount',
+                    'Favorite.channelclone',
                 )
             )
         );
@@ -2136,31 +2112,31 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
+                    'Game.id',
                     'Game.name',
                     'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
                     'Game.picture',
                     'Game.starsize',
                     'Game.rate_count',
-                    'Game.embed',
-                    'Game.featured',
-                    'Game.clone',
-                    'Game.created'
+                    'User.username',
+                    'User.seo_username',
+                    'User.id',
+                    'User.picture',
+                    'User.verify',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone'
                 ),
                 'limit' => $limit,
-                'contain' => array(
-                    'User'=>array('fields'=>array('User.seo_username','User.verify','User.username','User.picture')),
-                    'Gamestat'=>array('fields'=>array('Gamestat.playcount','Gamestat.favcount','Gamestat.channelclone'))
-                ),
                 'conditions' => array(
                     'NOT' => array(
                         'Game.priority' => NULL
-                    ),
-                    'Game.clone' => 0
+                    )
                 ),
                 'order' => array(
-                    'Game.id' => 'DESC'
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
                 ),
             )
         );
@@ -2192,7 +2168,20 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
-                    '*'
+                    'Game.id',
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'User.username',
+                    'User.seo_username',
+                    'User.id',
+                    'User.picture',
+                    'User.verify',
+                    'Gamestat.playcount',
+                    'Gamestat.favcount',
+                    'Gamestat.channelclone'
                 ),
                 'limit' => $limit,
                 'order' => array(

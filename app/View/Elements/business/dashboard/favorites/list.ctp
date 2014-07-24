@@ -5,16 +5,16 @@
                 <label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
             </div>
             <div class="col-sm-2 header hidden-xs text-right">
-                <label>Owner</label>
+                <label><?php echo $this->Paginator->sort('User.username', 'Owner', array('direction' => 'asc')) ?></label>
             </div>
             <div class="col-sm-1 header hidden-xs text-right">
-                <label><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></label>
+                <label><?php echo $this->Paginator->sort('Favorite.channelclone', 'Clones', array('direction' => 'desc')) ?></label>
             </div>
             <div class="col-sm-1 header hidden-xs text-right">
-                <label><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></label>
+                <label><?php echo $this->Paginator->sort('Favorite.favcount', 'Favorites', array('direction' => 'desc')) ?></label>
             </div>
             <div class="col-sm-1 header hidden-xs text-right">
-                <label><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></label>
+                <label><?php echo $this->Paginator->sort('Favorite.playcount', 'Plays', array('direction' => 'desc')) ?></label>
             </div>
             <div class="col-sm-1 header hidden-xs text-right">
                 <label><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></label>
@@ -24,16 +24,17 @@
         if (!empty($games)) {
             foreach ($games as $game) {
                 $name = $game['Game']['name'];
-                $owner = empty($game['Game']['User']['username']) ? FALSE : $game['Game']['User']['username'];
-                $clones = empty($game['Game']['Gamestat']['channelclone']) ? 0 : $game['Game']['Gamestat']['channelclone'];
-                $favorites = empty($game['Game']['Gamestat']['favcount']) ? 0 : $game['Game']['Gamestat']['favcount'];
-                $plays = empty($game['Game']['Gamestat']['playcount']) ? 0 : $game['Game']['Gamestat']['playcount'];
+                $owner = empty($game['User']['username']) ? FALSE : $game['User']['username'];
+                $clones = empty($game['Favorite']['channelclone']) ? 0 : $game['Favorite']['channelclone'];
+                $favorites = empty($game['Favorite']['favcount']) ? 0 : $game['Favorite']['favcount'];
+                $plays = empty($game['Favorite']['playcount']) ? 0 : $game['Favorite']['playcount'];
                 $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
-                $userurl = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['Game']['User']['id'])));
                 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-                    $playurl = $this->Html->url('http://' . $game['Game']['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
+                    $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
+                    $user_url = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain);
                 } else {
                     $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
+                    $user_url = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
                 }
                 ?>
                 <div class="row user">
@@ -67,7 +68,7 @@
                     </div>
                     <div class="col-sm-2 text-right">
                         <?php if ($owner !== FALSE) { ?>
-                            <a href="<?php echo $userurl ?>"  target="_blank" class="name">
+                            <a href="<?php echo $user_url ?>"  target="_blank" class="name">
                                 <?php echo $owner ?>
                             </a>
                         <?php } else { ?>

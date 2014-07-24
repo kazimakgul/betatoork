@@ -4,16 +4,16 @@
         foreach ($games as $game) {
             $name = $game['Game']['name'];
             $id = $game['Game']['id'];
-            $clones = empty($game['Game']['Gamestat']['channelclone']) ? 0 : $game['Game']['Gamestat']['channelclone'];
-            $favorites = empty($game['Game']['Gamestat']['favcount']) ? 0 : $game['Game']['Gamestat']['favcount'];
-            $plays = empty($game['Game']['Gamestat']['playcount']) ? 0 : $game['Game']['Gamestat']['playcount'];
+            $clones = empty($game['Favorite']['channelclone']) ? 0 : $game['Favorite']['channelclone'];
+            $favorites = empty($game['Favorite']['favcount']) ? 0 : $game['Favorite']['favcount'];
+            $plays = empty($game['Favorite']['playcount']) ? 0 : $game['Favorite']['playcount'];
             $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
             if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-                $playurl = $this->Html->url('http://' . $game['Game']['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
-                $userlink = $this->Html->url('http://' . $game['Game']['User']['seo_username'] . '.' . $pure_domain);
+                $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
+                $userlink = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain);
             } else {
                 $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
-                $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['Game']['User']['id'])));
+                $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['User']['id'])));
             }
             ?>
             <div class="col-xs-12 col-sm-6 col-md-4" id="gamebox-<?php echo $id; ?>">
@@ -76,12 +76,12 @@
                             </div>
                             <div class="col-md-8">
                                 <h5>
-                                    <?php if ($game['Game']['User']['verify'] == 1) { ?>
+                                    <?php if ($game['User']['verify'] == 1) { ?>
                                         <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
                                     <?php } ?>
-                                    <a href="<?php echo $userlink; ?>"><strong> <?php echo $game['Game']['User']['username']; ?></strong></a> 
+                                    <a href="<?php echo $userlink; ?>"><strong> <?php echo $game['User']['username']; ?></strong></a> 
                                     <br>
-                                    <small>@ <?php echo $game['Game']['User']['seo_username']; ?></small>
+                                    <small>@ <?php echo $game['User']['seo_username']; ?></small>
                                 </h5>
                             </div>
                         </div>
