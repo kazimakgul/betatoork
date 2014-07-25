@@ -1457,7 +1457,7 @@ class BusinessesController extends AppController {
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         $cond = $this->paginate('Game');
 
-        //$category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
+        $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
         $this->get_ads_info($userid);
 
@@ -1468,7 +1468,7 @@ class BusinessesController extends AppController {
         $this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $newlimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
         $this->set('featuredgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.featured' => 1), 'limit' => $featlimit, 'order' => 'rand()', 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
         $this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $hotlimit, 'order' => array('Game.starsize' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
-        //$this->set('category', $category);
+        $this->set('category', $category);
         $this->set('games', $cond);
         $this->set('user', $user);
 
