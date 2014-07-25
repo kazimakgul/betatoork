@@ -108,7 +108,7 @@ class AppController extends Controller {
     $this->Cookie->name = 'iqminds_cookie';
     $this->Cookie->time = 0;  // or ’1 hour’
     $this->Cookie->path = '/'; 
-    $this->Cookie->domain = 'nishgame.nishgame.com';
+    $this->Cookie->domain = '.clone.gs';
     $this->Cookie->secure = false;
     $this->Cookie->key = '39lbkutg1i2l0kta6785d8qki5';
     $this->Cookie->httpOnly = true;
