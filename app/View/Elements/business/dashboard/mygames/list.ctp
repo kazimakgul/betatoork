@@ -35,6 +35,7 @@
         </div>
         <?php
         if (!empty($games)) {
+            $game_edit = $this->Html->url(array("controller" => "businesses", "action" => "game_edit"));
             foreach ($games as $game) {
                 $name = $game['Game']['name'];
                 $id = $game['Game']['id'];
@@ -59,7 +60,7 @@
                         <a href="<?php echo $playurl ?>" class="name">
                             <?php echo $name ?>
                         </a>
-                        <a class="name" href="<?php echo $game_edit_link . '/' . $id; ?>"><i class="fa fa-edit"></i></a>
+                        <a class="name" href="<?php echo $game_edit . '/' . $id; ?>"><i class="fa fa-edit"></i></a>
                         <?php if ($game['Game']['priority'] > 0) { ?>
                             <a class='btn-link name featured_toggle' id='<?php echo $game['Game']['id']; ?>' style='margin-left:10px;color:#F7D358;'><i class="fa fa-star"  data-toggle="tooltip" data-original-title="Unset as Featured"></i></a>
                         <?php } else { ?>
