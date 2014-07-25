@@ -39,7 +39,7 @@ class CookieComponent extends Component {
  *
  * @var string
  */
-	public $name = 'CakeCookie';
+	public $name = 'iqminds_cookie';
 
 /**
  * The time a cookie will remain valid.
@@ -51,7 +51,7 @@ class CookieComponent extends Component {
  *
  * @var mixed
  */
-	public $time = null;
+	public $time = 0;
 
 /**
  * Cookie path.
@@ -81,7 +81,7 @@ class CookieComponent extends Component {
  *
  * @var string
  */
-	public $domain = '';
+	public $domain = 'nishgame.nishgame.com';
 
 /**
  * Secure HTTPS only cookie.
@@ -104,7 +104,7 @@ class CookieComponent extends Component {
  *
  * @var string
  */
-	public $key = null;
+	public $key = '39lbkutg1i2l0kta6785d8qki5';
 
 /**
  * HTTP only cookie
@@ -114,7 +114,7 @@ class CookieComponent extends Component {
  *
  * @var boolean
  */
-	public $httpOnly = false;
+	public $httpOnly = true;
 
 /**
  * Values stored in the cookie.
