@@ -6,6 +6,7 @@ $ads_management	= $this->Html->url(array('controller'=>'businesses','action'=>'a
 $billing	= $this->Html->url(array('controller'=>'businesses','action'=>'billing'));
 $social	= $this->Html->url(array('controller'=>'businesses','action'=>'social_management'));
 $password_change	= $this->Html->url(array('controller'=>'businesses','action'=>'password_change'));
+$support	= $this->Html->url(array('controller'=>'businesses','action'=>'support'));
 ?>
 
 <div id="sidebar">
@@ -59,11 +60,11 @@ $password_change	= $this->Html->url(array('controller'=>'businesses','action'=>'
 				Password Change
 			</a>
 		</li>
-		<!-- -- <li>
-			<a href="<?php echo $settings;?>">
+		<li>
+			<a href="<?php echo $support;?>" <?php if($active=='support')echo 'class="active"'; ?>>
 				<i class="ion-ios7-help-outline"></i>
 				Support
 			</a>
-		</li> -- -->
+		</li> 
 	</ul>
 </div>
