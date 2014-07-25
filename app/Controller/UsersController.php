@@ -1503,7 +1503,7 @@ WHERE user_id=' . $auth_id . '');
         
         //$_COOKIE['CAKEPHP']=$data;
         setcookie("CAKEPHP", $data);
-        echo 'has been set';
+        echo 'has been set'.$data;
 
 
     }
