@@ -51,65 +51,48 @@ function add_playcount(game_id,user_id) {
 
 }
 
-
-//This set selected Ad Code for selected ads area
-function set_ad_code(adcode_id) {
-    target_ad_area = set_link_id; //Set sorunu burada id deki değeri almak gerekiyor..
-			$.post(set_channel_ads, {
-                code_id: adcode_id,
-                set_id: target_ad_area
-            },
-            function(data) {
-                if (data) {
-                    location.reload();
-                } else {
-                }
-            }, 'json');
-    //------
-  /*  $.ajax({
-        type: "POST",
-        url: set_channel_ads,
-        data: {code_id: adcode_id, set_id: target_ad_area},
-        dataType: "json",
-        async: false,
-        success: function(data) {
-			alert(target_ad_area);
-            //alert(data.rtdata.title);
-            location.reload();
-
-        },
-        failure: function(errMsg) {
-            alert(errMsg);
-        }
-    });*/
-    //------  
-
-}
-
-//This removes all Ad Code for selected ads area
-function remove_ad_area() {
-    target_ad_area = set_link_id;
-
-    //------
-    $.ajax({
-        type: "POST",
-        url: remove_ads_field,
-        data: {target_ad_area: target_ad_area},
-        dataType: "json",
-        async: false,
-        success: function(data) {
-
-            //alert(data.rtdata.title);
-            location.reload();
-
-        },
-        failure: function(errMsg) {
-            alert(errMsg);
-        }
-    });
-    //------  
-
-}
+		function set_id_create(id) {
+        set_link_id = id;
+ 		}
+ 		
+		//This set selected Ad Code for selected ads area
+		function set_ad_code(adcode_id) {
+		    target_ad_area = set_link_id; //Set sorunu burada id deki değeri almak gerekiyor..
+					$.post(set_channel_ads, {
+		                code_id: adcode_id,
+		                set_id: target_ad_area
+		            },
+		            function(data) {
+		                if (data) {
+		                    location.reload();
+		                } else {
+		                }
+		            }, 'json');
+		}
+		//This removes all Ad Code for selected ads area
+		function remove_ad_area() {
+		    target_ad_area = set_link_id;
+		
+		    //------
+		    $.ajax({
+		        type: "POST",
+		        url: remove_ads_field,
+		        data: {target_ad_area: target_ad_area},
+		        dataType: "json",
+		        async: false,
+		        success: function(data) {
+		
+		            //alert(data.rtdata.title);
+		            location.reload();
+		
+		        },
+		        failure: function(errMsg) {
+		            alert(errMsg);
+		        }
+		    });
+		    //------  
+		
+		}
 
 //Controller functions for modals of avatar begins
 $('#avatarframe').load(function() {
