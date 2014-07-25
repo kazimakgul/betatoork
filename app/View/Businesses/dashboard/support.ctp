@@ -59,7 +59,7 @@ border-color: gray;
 <tbody>
 <tr><th>Domain</th><th>Configuration</th></tr>
 <tr><th>Two Levels<br> (e.g. mywebsite.com)</th>
-<td>point A-record (IP address) to <strong>66.6.44.4</strong></td>
+<td>point A-record (IP address) to <strong>54.225.85.102</strong></td>
 </tr>
 <tr><th>Three or More Levels<br>(e.g. www.mywebsite.com or game.mywebsite.com)</th>
 <td>point CNAME record to "<strong>domains.clone.gs</strong>﻿"</td>
