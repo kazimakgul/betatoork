@@ -1501,7 +1501,8 @@ WHERE user_id=' . $auth_id . '');
     public function set_cookie($data) {
         $this->layout='ajax';
         
-        $_COOKIE['CAKEPHP']=$data;
+        //$_COOKIE['CAKEPHP']=$data;
+        setcookie("CAKEPHP", $data);
         echo 'has been set';
 
 
