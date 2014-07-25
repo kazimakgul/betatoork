@@ -6,6 +6,7 @@ $about=$this->Html->url(array( "controller" => "pages","action" =>"about"));
 $developer=$this->Html->url(array( "controller" => "pages","action" =>"developers"));
 $advertise=$this->Html->url(array( "controller" => "pages","action" =>"advertise"));
 $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
+$customdomain=$this->Html->url(array( "controller" => "pages","action" =>"customdomain"));
 ?>
 
 
@@ -53,6 +54,9 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
         </li>
         <li style="display: inline;">
     <a target="_blank" href="<?php echo $faq; ?>" class="btn btn-link"><small>FAQs</small></a>
+        </li>
+        <li style="display: inline;">
+    <a target="_blank" href="<?php echo $customdomain; ?>" class="btn btn-link"><small>Custom Domain</small></a>
         </li>
     </ul>
 
