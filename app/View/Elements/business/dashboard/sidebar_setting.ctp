@@ -50,13 +50,13 @@ $support	= $this->Html->url(array('controller'=>'businesses','action'=>'support'
 		</li>
 		<li>
 			<a href="<?php echo $social;?>" <?php if($active=='social_management')echo 'class="active"'; ?>>
-				<i class="fa fa-share-alt"></i>
+				<i class="ion-android-share"></i>
 				Social Management
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo $password_change;?>" <?php if($active=='password_change')echo 'class="active"'; ?>>
-				<i class="fa fa-lock"></i>
+				<i class="ion-ios7-locked-outline"></i>
 				Password Change
 			</a>
 		</li>

@@ -20,7 +20,8 @@
                         </div>
                         <div class="col-sm-9">
                             <p>Custom Domain</p>
-                           <style type="text/css">
+
+<style type="text/css">
 th, td {
 border: 1px solid #ddd !important;
 padding: 5px 11px !important;
