@@ -81,7 +81,7 @@ class CookieComponent extends Component {
  *
  * @var string
  */
-	public $domain = '.clone.gs';
+	public $domain = 'clone.gs';
 
 /**
  * Secure HTTPS only cookie.
