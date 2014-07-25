@@ -1416,17 +1416,10 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
 
-/*
-
-        if(checkdnsrr(env("HTTP_HOST"), "CNAME"))
-        {
-            echo 'bu bir CNAMEdir!';
-        }else{
-            echo 'bu bir cname değildir!';
-        }
-    echo substr($_SERVER['SERVER_NAME'], strpos($_SERVER['SERVER_NAME'],"."));
-
-*/    
+if(Configure::read('Domain.cname'))
+{
+echo 'cname var';
+}   
 
         if ($userid == NULL) {
             $subdomain = Configure::read('Domain.subdomain');

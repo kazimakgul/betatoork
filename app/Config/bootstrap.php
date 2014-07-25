@@ -137,9 +137,10 @@ ini_set('session.cookie_domain', '.clone.gs');
 
   if(checkdnsrr(env("HTTP_HOST"), "CNAME"))
   {
-            echo 'evet lan!';
+            Configure::write('Domain.cname', 1);
+            Configure::write('Domain.c_root', env("HTTP_HOST"));
   }else{
-            echo 'hayir lan';
+            Configure::write('Domain.cname', 0);
   }
 
 
