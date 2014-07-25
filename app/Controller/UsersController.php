@@ -33,6 +33,10 @@ class UsersController extends AppController {
         }
 
         //auto login
+        $domain = '.nishgame.com';
+        //if ($_SERVER['HTTP_HOST'] !== 'clone.gs') {
+            $this->Cookie->domain = array($domain, '.clone.gs');
+        //}
     }
 
     public function isAuthorized($user) {
@@ -361,41 +365,41 @@ class UsersController extends AppController {
         }
     }
 
-   /* public function set_channel_ads($ads_type = NULL, $ads_id = NULL) {
-        Configure::write('debug', 0);
+    /* public function set_channel_ads($ads_type = NULL, $ads_id = NULL) {
+      Configure::write('debug', 0);
 
-        $adcode_id = $this->request->data['adcode_id'];
-        $target_ad_area = $this->request->data['target_ad_area'];
+      $adcode_id = $this->request->data['adcode_id'];
+      $target_ad_area = $this->request->data['target_ad_area'];
 
-        if ($auth_id = $this->Auth->user('id')) {//Auth Control Begins
-            $setting_exist = $this->Ad_setting->find('first', array('contain' => false, 'conditions' => array('Ad_setting.user_id' => $auth_id), 'fields' => array('Ad_setting.id')));
-            if ($setting_exist != NULL) {
-                $message = 'exist' . $setting_exist['Ad_setting']['id'];
-                $this->Ad_setting->id = $setting_exist['Ad_setting']['id'];
-            } else {
-                $message = 'not exist';
-                $filtered_data['Ad_setting']['user_id'] = $auth_id;
-            }
+      if ($auth_id = $this->Auth->user('id')) {//Auth Control Begins
+      $setting_exist = $this->Ad_setting->find('first', array('contain' => false, 'conditions' => array('Ad_setting.user_id' => $auth_id), 'fields' => array('Ad_setting.id')));
+      if ($setting_exist != NULL) {
+      $message = 'exist' . $setting_exist['Ad_setting']['id'];
+      $this->Ad_setting->id = $setting_exist['Ad_setting']['id'];
+      } else {
+      $message = 'not exist';
+      $filtered_data['Ad_setting']['user_id'] = $auth_id;
+      }
 
-            if ($target_ad_area == 'homeBannerTop')
-                $filtered_data['Ad_setting']['home_banner_top'] = $adcode_id;
-            else if ($target_ad_area == 'homeBannerMiddle')
-                $filtered_data['Ad_setting']['home_banner_middle'] = $adcode_id;
-            else if ($target_ad_area == 'homeBannerBottom')
-                $filtered_data['Ad_setting']['home_banner_bottom'] = $adcode_id;
+      if ($target_ad_area == 'homeBannerTop')
+      $filtered_data['Ad_setting']['home_banner_top'] = $adcode_id;
+      else if ($target_ad_area == 'homeBannerMiddle')
+      $filtered_data['Ad_setting']['home_banner_middle'] = $adcode_id;
+      else if ($target_ad_area == 'homeBannerBottom')
+      $filtered_data['Ad_setting']['home_banner_bottom'] = $adcode_id;
 
-            if ($this->Ad_setting->save($filtered_data)) {
-                $msg = array("title" => 'Ads has been updated.' . $adcode_id . $target_ad_area . $message, 'result' => 1);
-            }
-        } else {//Auth Control Ends	
-            //if user unlogged
-            $msg = array("title" => 'You have to log in first', 'result' => 0);
-        }//Unlogged control ends
+      if ($this->Ad_setting->save($filtered_data)) {
+      $msg = array("title" => 'Ads has been updated.' . $adcode_id . $target_ad_area . $message, 'result' => 1);
+      }
+      } else {//Auth Control Ends
+      //if user unlogged
+      $msg = array("title" => 'You have to log in first', 'result' => 0);
+      }//Unlogged control ends
 
 
-        $this->set('rtdata', $msg);
-        $this->set('_serialize', array('rtdata'));
-    }*/
+      $this->set('rtdata', $msg);
+      $this->set('_serialize', array('rtdata'));
+      } */
 
     public function remove_background() {
         Configure::write('debug', 0);
@@ -1160,7 +1164,7 @@ WHERE user_id=' . $auth_id . '');
                     "msg" => Router::url(array(
                         "controller" => "dashboard"
                     ))
-                    //  "msg" => $this->webroot . $this->Auth->loginRedirect['controller'] . '/' . $this->Auth->loginRedirect['action']
+                        //  "msg" => $this->webroot . $this->Auth->loginRedirect['controller'] . '/' . $this->Auth->loginRedirect['action']
                 );
                 $this->set('rtdata', $msg);
             } else {
@@ -1396,6 +1400,7 @@ WHERE user_id=' . $auth_id . '');
             $user = $this->User->find('first', array('conditions' => array('User.facebook_id' => $facebook_id)));
             if ($user != NULL)
                 $this->Auth->login($user['User']); //Variable name has to be "user" for manual login.
+
 
 
                 
