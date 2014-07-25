@@ -62,7 +62,7 @@
                                     if (isset($ownuser[0]['favorites']['id'])) {
                                         echo 'red';
                                     }
-                                    ?>"></li> Favorite <span class="label label-info" id="fav_count"><?= $game['Gamestat']['favcount']; ?></span></button>
+                                    ?>"></li> Favorite <span class="label label-info" id="fav_count"><?php echo $favorites; ?></span></button>
                             </div>
                         </div>
                         <!-- Favorite Button  End-->
