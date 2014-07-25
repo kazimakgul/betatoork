@@ -1498,17 +1498,12 @@ WHERE user_id=' . $auth_id . '');
         $this->set('_serialize', array('rtdata'));
     }
     
-    public function set_cookie() {
-        
-        Configure::write('debug', 0);
-        $cookie = $this->request->data['cakecookie'];
-
+    public function set_cookie($data) {
+        $this->layout='ajax';
         
         $_COOKIE['CAKEPHP']=$data;
+        echo 'has been set';
 
-
-        $this->set('success', $cookie);
-        $this->set('_serialize', array('success'));
 
     }
 

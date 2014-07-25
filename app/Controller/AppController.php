@@ -118,14 +118,6 @@ class AppController extends Controller {
             echo 'this action is not valid';break;
         }
 
-
-        if($this->Session->read('Ogi.cookie')==NULL)
-        {
-          $this->Session->write('Ogi.cookie', 'Naber'.rand(100,5000));
-        }
-        echo $this->Session->read('Ogi.cookie');
-        
-
         
          /*
         if($this->action!='index' && $this->action!='random_3_game222' && $this->action!='checkClone222')
