@@ -64,7 +64,7 @@ if (isset($query)) {
                             </ul>
                         </div>
                         <?php
-                        if ($view === 'list') {
+                        if (isset($view) && $view === 'list') {
                             ?>
                             <a href="#" data-grid=".users-list" class="grid-view active"><i class="fa fa-th-list"></i></a>
                             <a href="#" data-grid=".users-grid" class="grid-view"><i class="fa fa-th"></i></a>
