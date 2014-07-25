@@ -135,6 +135,14 @@ ini_set('session.cookie_domain', '.clone.gs');
 }
 
 
+  if(checkdnsrr(env("HTTP_HOST"), "CNAME"))
+  {
+            echo 'evet lan!';
+  }else{
+            echo 'hayir lan';
+  }
+
+
 
 /**
  * Plugins need to be loaded manually, you can either load them one by one or all of them in a single call
