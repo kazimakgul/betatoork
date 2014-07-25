@@ -1419,7 +1419,6 @@ class BusinessesController extends AppController {
      if(Configure::read('Domain.cname'))
     {
      $c_domain=Configure::read('Domain.c_root');
-     echo $c_domain;
 
     }else{//there is no cname   
 
