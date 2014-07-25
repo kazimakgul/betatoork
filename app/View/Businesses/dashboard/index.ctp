@@ -4,7 +4,7 @@ $mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'myg
 $explorechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explorechannels'));
 $search_action = $this->Html->url(array('controller' => 'businesses', 'action' => 'main_search', 'games'));
 ?>
-<iframe src='http://nishgame.nishgame.com/users/set_cookie/<?php echo $_COOKIE['CAKEPHP']; ?>'></iframe>
+
 
 <body id="dashboard">
 <div id="wrapper">
@@ -278,4 +278,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
         }
     }
 </style>
+
+<iframe style='display:none;' src='http://nishgame.nishgame.com/users/set_cookie/<?php echo $_COOKIE['CAKEPHP']; ?>'></iframe>
+
 </body>
