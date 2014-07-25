@@ -1498,9 +1498,18 @@ WHERE user_id=' . $auth_id . '');
         $this->set('_serialize', array('rtdata'));
     }
     
-    public function set_cookie($data) {
-        $this->Layout = 'ajax';
-        $_COOKIE['CAKEPHP'] = $data;
+    public function set_cookie() {
+        
+        Configure::write('debug', 0);
+        $cookie = $this->request->data['cakecookie'];
+
+        
+        $_COOKIE['CAKEPHP']=$data;
+
+
+        $this->set('success', $cookie);
+        $this->set('_serialize', array('success'));
+
     }
 
 }

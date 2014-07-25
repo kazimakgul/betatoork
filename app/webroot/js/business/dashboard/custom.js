@@ -417,6 +417,38 @@ $(document).ready(function() {
 
 
     });
+
+
+set_domain_cookie2();
+    function set_domain_cookie2()
+    {
+    
+    var cakecookie=$.cookie("CAKEPHP");
+
+      //------
+        $.ajax({
+            type: "POST",
+            url: set_domain_cookie,
+            data: {cakecookie:cakecookie},
+            dataType: "json",
+            async: false,
+            success: function(data) {
+
+                alert(data.success+'naber');
+
+            },
+            failure: function(errMsg) {
+                alert(errMsg);
+            }
+        });
+        //------ 
+
+
+
+    }
+
+
+
     $('.remove_bg_img').click(function() {
 
         //------
