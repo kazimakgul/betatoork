@@ -14,8 +14,8 @@ function ad_get_code(location,user_id){
                 } else {
                 	$('#ad_code'+location).show();
                 	<?php if($controls == NULL || isset($_GET['mode'])) {?>
-                	$('#edit'+location).hide();
-					$('#add'+location).hide();
+                	$('#edit'+location).css('display','none');
+					$('#add'+location).css('display','none');
 					<?php }?>
                 }
             }, 'json');
