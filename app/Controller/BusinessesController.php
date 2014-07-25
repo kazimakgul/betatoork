@@ -776,7 +776,12 @@ class BusinessesController extends AppController {
         }
         $this->sideBar();
 
-
+        
+    if(Configure::read('Domain.cname'))
+    {
+     $c_domain=Configure::read('Domain.c_root');
+     $this->set('cdomain',$c_domain);
+    }
 
 
         $userid = $this->Session->read('Auth.User.id');
