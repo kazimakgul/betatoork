@@ -1416,17 +1416,19 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
 
-if(Configure::read('Domain.cname'))
-{
-echo 'cname var';
-}   
+     if(Configure::read('Domain.cname'))
+    {
+     $c_domain=Configure::read('Domain.c_root');
+     echo $c_domain;
+
+    }else{//there is no cname   
 
         if ($userid == NULL) {
             $subdomain = Configure::read('Domain.subdomain');
             $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
             $userid = $user_data['User']['id'];
         }
-
+    }
 
 
         //subdomain actions
