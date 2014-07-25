@@ -43,7 +43,7 @@
 	        mysite			='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite')); ?>';
 	        feat_toggle_link ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'featured_toggle')); ?>';
 	        rateurl = '<?php echo $this->Html->url(array('controller' => 'rates', 'action' => 'add')); ?>';
-	        set_domain_cookie='http://nishgame.nighgame.com/users/set_cookie';
+	        set_domain_cookie='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_cookie')); ?>';
 			<?php if($this->Session->check('Auth.User')){
 			echo 'user_auth=1;';
 			echo 'userid='.$this->Session->read('Auth.User.id');
