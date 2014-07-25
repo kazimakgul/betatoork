@@ -81,7 +81,7 @@ class CookieComponent extends Component {
  *
  * @var string
  */
-	public $domain = 'nishgame.nishgame.com';
+	public $domain = '.clone.gs';
 
 /**
  * Secure HTTPS only cookie.
