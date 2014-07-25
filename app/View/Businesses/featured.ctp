@@ -2,13 +2,10 @@
     <?php
     $controls = NULL;
     //  Getting and declaring ads datas
-    $homeBannerTop = $addata[0]['homeBannerTop'];
-    $homeBannerMiddle = $addata[0]['homeBannerMiddle'];
-    $homeBannerBottom = $addata[0]['homeBannerBottom'];
     if ($this->Session->read('Auth.User.id') == $user['User']['id']) {
         $controls = $user['User']['id'];
     }
-    echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerTop, 'adtype' => 'homeBannerTop'));
+    echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>1 ));
     ?>
     <div class="col-md-12">
         <div class="btn-group" style="margin-bottom:10px;">
@@ -63,7 +60,7 @@
         </div>
     </div>
     <!--/footer-->
-    <?php echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerBottom, 'adtype' => 'homeBannerBottom')); ?>
+    <?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>3 )); ?>
 </div>
 <!-- /.container -->
 <?php

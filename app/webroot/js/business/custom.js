@@ -54,7 +54,7 @@ function add_playcount(game_id,user_id) {
 
 //This set selected Ad Code for selected ads area
 function set_ad_code(adcode_id) {
-    target_ad_area = $('#adsChange').attr('data-selected'); //Set sorunu burada id deki değeri almak gerekiyor..
+    target_ad_area = set_link_id; //Set sorunu burada id deki değeri almak gerekiyor..
 			$.post(set_channel_ads, {
                 code_id: adcode_id,
                 set_id: target_ad_area
@@ -88,7 +88,7 @@ function set_ad_code(adcode_id) {
 
 //This removes all Ad Code for selected ads area
 function remove_ad_area() {
-    target_ad_area = $('#adsChange').attr('data-selected');
+    target_ad_area = set_link_id;
 
     //------
     $.ajax({

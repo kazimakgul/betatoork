@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','col_ads','edit_set_ads'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','col_ads','edit_set_ads','remove_ads_field'))) {
 
             return true;
         }
@@ -125,9 +125,10 @@ class BusinessesController extends AppController {
 
 
                 $category = json_decode($this->request->data['category'], true);
-            	$this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id ='.$ad_code_id);
                 if (!empty($category)) {
                     foreach ($category as $value) {
+                $this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_area_id ='.$value);
+						
 					 	$filtered_data1['Ad_setting']['ad_area_id'] = $value;
                         $filtered_data1['Ad_setting']['ad_code_id'] = $ad_code_id;
 						$filtered_data1['Ad_setting']['user_id'] = $user_id;
@@ -236,9 +237,12 @@ class BusinessesController extends AppController {
                 $this->Adcode->save($filtered_data);
                 $category = json_decode($this->request->data['category'], true);
                 if (!empty($category)) {
+                $last_id = $this->Adcode->getLastInsertID();
+					
                     foreach ($category as $value) {
-                        $this->User->Query('INSERT INTO ad_settings (ad_area_id,ad_code_id,user_id,skip) VALUES (' . $value . ',' . $this->Adcode->getLastInsertID() . ',' . $user_id . ',0)');
-                    }
+						$this->Ad_setting->Query('Delete FROM ad_settings WHERE ad_area_id="' . $value . '" AND user_id="'.$user_id.'"');	
+                        $this->Ad_setting->Query('INSERT INTO ad_settings (ad_area_id,ad_code_id,user_id,skip) VALUES (' . $value . ',' . $last_id . ',' . $user_id . ',0)');
+					}
                 }
                 $this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
@@ -398,6 +402,22 @@ class BusinessesController extends AppController {
             }
         }
     }
+
+    public function remove_ads_field() {
+        Configure::write('debug', 0);
+        $area_id = $this->request->data['target_ad_area'];
+        if ($auth_id = $this->Auth->user('id')) {//Auth Control Begins
+        $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="' . $auth_id . '"');
+		 $msg = array("title" => 'Success', 'result' => 1);
+        }
+		else {//Auth Control Ends	
+            //if user unlogged
+            $msg = array("title" => 'You have to log in first', 'result' => 0);
+        }//Unlogged control ends
+        $this->set('rtdata', $msg);
+        $this->set('_serialize', array('rtdata'));
+    }	
+	
 	
     /**
      * col_ads method
@@ -423,10 +443,19 @@ class BusinessesController extends AppController {
      * @author Volkan Celiloğlu
      */
     public function edit_set_ads() {
-        $filtered_data['Ad_setting']['ad_code_id'] = $this->request->params['code_id'];
-		$filtered_data['Ad_setting']['user_id'] = $this->Session->read('Auth.User.id');
-        $filtered_data['Ad_setting']['id'] = $this->request->params['set_id'];
-        $this->Ad_setting->save($filtered_data);
+        $code_id =$this->request->data['code_id'];
+		$area_id =$this->request->data['set_id'];
+		$user_id =$this->Session->read('Auth.User.id');
+		
+		$this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="'.$user_id.'"');
+		$filtered_data['Ad_setting']['ad_code_id'] = $code_id;
+        $filtered_data['Ad_setting']['user_id'] = $user_id;
+        $filtered_data['Ad_setting']['ad_area_id'] = $area_id;
+        if($this->Ad_setting->save($filtered_data))
+		{
+			$this->set('success', "Success");
+			$this->set('_serialize', array('success'));
+		}
     }
 
     /**
@@ -1431,7 +1460,7 @@ class BusinessesController extends AppController {
 
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
 
         $limit = 9;
         $featlimit = 3;
@@ -1463,30 +1492,12 @@ class BusinessesController extends AppController {
         }
     }
 
-    function get_ads_info($authid) {
+    function get_ads_info($authid=NULL) {
         //$limit = 10;
         $authid = $this->Auth->user('id');
 
         //======Getting all ads codes======
-        // $Ad_setting = $this->Ad_setting->find('all', array('conditions' => array('Ad_setting.user_id' => $authid)));
-        $this->paginate = array(
-            'Adcode' => array(
-                'fields' => array(
-                    'Adcode.id',
-                    'Adcode.name',
-                    'Adcode.code'
-                ),
-                'contain' => false,
-                //'limit' => $limit,
-                'order' => array(
-                    'Adcode.id' => 'DESC'
-                ),
-                'conditions' => array(
-                    'Adcode.user_id' => $authid
-                )
-            )
-       );
-		$adcodes = $this->paginate('Adcode');
+       	$adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
         
         $Ad_setting = $this->Ad_setting->find('all', array(
         'conditions' => array('Ad_setting.user_id' => $authid), 
@@ -1524,7 +1535,7 @@ class BusinessesController extends AppController {
     public function search2($userid, $searchterm = null) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
 
         if ($searchterm === null) {
             if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
@@ -1622,7 +1633,7 @@ class BusinessesController extends AppController {
         }
 
         $authid = $this->Auth->user('id');
-        $this->get_ads_info($game['Game']['user_id'], $authid);
+        $this->get_ads_info($game['Game']['user_id']);
 
         $next_game = $this->Game->find('first', array(
             'contain' => false,
@@ -1694,7 +1705,7 @@ class BusinessesController extends AppController {
         $this->get_style_settings($userid);
 
         $authid = $this->Auth->user('id');
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
         //========Get Current Subscription===============
         if ($authid) {
             $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
@@ -1790,7 +1801,7 @@ class BusinessesController extends AppController {
 
         //========Get Current Subscription===============
         $authid = $this->Session->read('Auth.User.id');
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
         if ($authid) {
             $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
             if ($subscribebefore != NULL) {
@@ -1885,7 +1896,7 @@ class BusinessesController extends AppController {
 
         //========Get Current Subscription===============
         $authid = $this->Session->read('Auth.User.id');
-        $this->get_ads_info($userid, $authid);
+        $this->get_ads_info($userid);
         if ($authid) {
             $subscribebefore = $this->Subscription->find("first", array("contain" => false, "conditions" => array("Subscription.subscriber_id" => $authid, "Subscription.subscriber_to_id" => $userid)));
             if ($subscribebefore != NULL) {
