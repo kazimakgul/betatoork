@@ -1431,6 +1431,8 @@ class BusinessesController extends AppController {
             $userid = $user_data['User']['id'];
         }
 
+        print_r($_SESSION);
+
         //subdomain actions
         //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
         //echo 'sundimain:'.$this->request->host();
