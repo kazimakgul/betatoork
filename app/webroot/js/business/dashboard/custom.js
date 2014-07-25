@@ -431,6 +431,7 @@ set_domain_cookie2();
             url: set_domain_cookie,
             data: {cakecookie:cakecookie},
             dataType: "json",
+            crossDomain:true,
             async: false,
             success: function(data) {
 
