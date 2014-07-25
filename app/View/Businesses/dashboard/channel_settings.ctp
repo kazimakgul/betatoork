@@ -12,7 +12,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 } else {
     $gochannel = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
 }
-	
+$go_support = 	$this->Html->url(array('controller' => 'businesses', 'action' => 'support'));
 ?>
 <body id="account">
 	<div id="wrapper">
@@ -34,7 +34,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
                                             <i class="fa fa-question-circle"></i>
                                         </span>
                                         <a href="<?php echo $gochannel; ?>" target="_blank" class="btn btn-default"> http://<?php echo $user['User']['seo_username'];?>.clone.gs </a>
-                                        <a class="btn btn-default" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain </a>
+                                        <a href="<?php echo $go_support; ?>" class="btn btn-default" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain </a>
 				</p>
 
 				
