@@ -776,7 +776,7 @@ class BusinessesController extends AppController {
         }
         $this->sideBar();
 
-       //$this->cookie_with_curl();
+       $this->cookie_with_curl();
 
        $userid = $this->Session->read('Auth.User.id');
     
@@ -1116,6 +1116,7 @@ class BusinessesController extends AppController {
 
     
     /**
+     * Author:Ogi
      * Create a cookie for login
      * With curl request
      * @param 
@@ -1132,15 +1133,15 @@ class BusinessesController extends AppController {
       // Set some options - we are passing in a useragent too here
       curl_setopt_array($curl, array(
       CURLOPT_RETURNTRANSFER => 1,
-      CURLOPT_URL => 'http://localhost/betatoork226/users/set_cookie/naber',
-      CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+      CURLOPT_URL => 'http://localhost/betatoork226/users/set_cookie/'.$_COOKIE['CAKEPHP'],
+      CURLOPT_USERAGENT => 'Cookie Creator'
       ));
       // Send the request & save response to $resp
       $resp = curl_exec($curl);
       // Close request to clear up some resources
       curl_close($curl);
       print_r($resp);
-      break;
+      
  
     }
 
