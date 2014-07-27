@@ -776,19 +776,11 @@ class BusinessesController extends AppController {
         }
         $this->sideBar();
 
-   
+       //$this->cookie_with_curl();
 
-        $userid = $this->Session->read('Auth.User.id');
-
-      //check cname
-      $cdata=$this->Game->query('SELECT * from custom_domains WHERE user_id='+$userid);   
-      if($cdata!=NULL)
-      {
-        echo 'null degil';
-       $this->set('cdomain',$cdata[0]['custom_domains']['domain']);
-      }
+       $userid = $this->Session->read('Auth.User.id');
     
-
+       $this->check_mapping($userid);
 
         $limit = 6;
         $this->paginate = array(
@@ -837,6 +829,20 @@ class BusinessesController extends AppController {
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/index');
+    }
+
+
+    public function check_mapping($userid=NULL)
+    {
+      //check cname
+      $cdata=$this->Game->query('SELECT * from custom_domains WHERE user_id='.$userid.'');   
+      if($cdata!=NULL)
+      {
+       //echo 'null degil';
+       $this->set('cdomain',$cdata[0]['custom_domains']['domain']);
+       Configure::write('Domain.c_root', env("HTTP_HOST"));
+      }
+
     }
 
     /**
@@ -1107,6 +1113,38 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/game_add');
     }
+
+    
+    /**
+     * Create a cookie for login
+     * With curl request
+     * @param 
+     * @return Null
+     */
+    public function cookie_with_curl()
+    {
+        //Important curl documentations
+        //http://codular.com/curl-with-php
+        //http://stackoverflow.com/questions/4254645/how-to-make-https-post-request-in-cakephp
+
+      // Get cURL resource
+      $curl = curl_init();
+      // Set some options - we are passing in a useragent too here
+      curl_setopt_array($curl, array(
+      CURLOPT_RETURNTRANSFER => 1,
+      CURLOPT_URL => 'http://localhost/betatoork226/users/set_cookie/naber',
+      CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+      ));
+      // Send the request & save response to $resp
+      $resp = curl_exec($curl);
+      // Close request to clear up some resources
+      curl_close($curl);
+      print_r($resp);
+      break;
+ 
+    }
+
+
 
     /**
      * Game edit method

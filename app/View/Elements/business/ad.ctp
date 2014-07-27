@@ -59,5 +59,6 @@ echo '<span class="label label-primary" id="edit'.$location.'" style="display:no
 </div>
 </div>
 </div>
-<?	
-}?>
+<?php	
+}
+?>
