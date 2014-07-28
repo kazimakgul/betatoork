@@ -279,6 +279,6 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
     }
 </style>
 
-<iframe style='display:none;' src='http://<?php echo $cdomain; ?>/users/set_cookie/<?php echo $_COOKIE['CAKEPHP']; ?>'></iframe>
+<iframe style='display:none;' src='http://<?php echo $mapping_domain; ?>/users/set_cookie/<?php echo $_COOKIE['CAKEPHP']; ?>'></iframe>
 
 </body>

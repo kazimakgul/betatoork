@@ -776,11 +776,21 @@ class BusinessesController extends AppController {
         }
         $this->sideBar();
 
-       $this->cookie_with_curl();
+       //$this->cookie_with_curl();
 
        $userid = $this->Session->read('Auth.User.id');
     
-       $this->check_mapping($userid);
+       //----------------------
+       //Set Cname if it exists
+       //----------------------
+       if($this->Session->read('mapping'))
+       {
+       $mapping=$this->Session->read('mapping');
+       $mapping_domain=$this->Session->read('mapping_domain');
+       $this->set_cname($mapping,$mapping_domain);
+       }
+       //----------------------
+
 
         $limit = 6;
         $this->paginate = array(
@@ -832,18 +842,6 @@ class BusinessesController extends AppController {
     }
 
 
-    public function check_mapping($userid=NULL)
-    {
-      //check cname
-      $cdata=$this->Game->query('SELECT * from custom_domains WHERE user_id='.$userid.'');   
-      if($cdata!=NULL)
-      {
-       //echo 'null degil';
-       $this->set('cdomain',$cdata[0]['custom_domains']['domain']);
-       Configure::write('Domain.c_root', env("HTTP_HOST"));
-      }
-
-    }
 
     /**
      * Gets one new game for wizard
@@ -1127,21 +1125,26 @@ class BusinessesController extends AppController {
         //Important curl documentations
         //http://codular.com/curl-with-php
         //http://stackoverflow.com/questions/4254645/how-to-make-https-post-request-in-cakephp
+        //Curl fonksiyonları:http://www.r10.net/php/17372-curl-nedir.html
+        //http://localhost/betatoork226/users/set_cookie/5563333
+        //http://www.codediesel.com/tools/6-essential-curl-commands/
+        //Etkili Çözümler:http://stackoverflow.com/questions/6761415/how-to-set-a-cookie-for-another-domain
 
       // Get cURL resource
       $curl = curl_init();
       // Set some options - we are passing in a useragent too here
       curl_setopt_array($curl, array(
       CURLOPT_RETURNTRANSFER => 1,
-      CURLOPT_URL => 'http://localhost/betatoork226/users/set_cookie/'.$_COOKIE['CAKEPHP'],
-      CURLOPT_USERAGENT => 'Cookie Creator'
+      CURLOPT_URL => 'http://localhost/betatoork226/users/set_cookie/1111',
+      CURLOPT_USERAGENT => 'Cookie Creator',
+      CURLOPT_HEADER=>0//Header bilgisini döndürür.
       ));
       // Send the request & save response to $resp
       $resp = curl_exec($curl);
       // Close request to clear up some resources
       curl_close($curl);
       print_r($resp);
-      
+      break;
  
     }
 
@@ -1467,12 +1470,12 @@ class BusinessesController extends AppController {
 
      if(Configure::read('Domain.cname'))
     {
-     $c_domain=Configure::read('Domain.c_root');
-     echo $c_domain;
+     $cdomain=Configure::read('Domain.c_root');
+    
      if ($userid == NULL) {
-            $subdomain = Configure::read('Domain.subdomain');
-            $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
-            $userid = $user_data['User']['id'];
+
+            $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
+            $userid = $user_data[0]['custom_domains']['user_id'];
         }
 
 

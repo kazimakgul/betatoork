@@ -1097,9 +1097,24 @@ WHERE user_id=' . $auth_id . '');
         $this->redirect(array('action' => 'index'));
     }
 
+
+    function check_cname($userid)
+    {
+        //check cname
+        $cdata=$this->Game->query('SELECT * from custom_domains WHERE user_id='.$userid.''); 
+        if($cdata!=NULL)
+        {
+         $this->Session->write('mapping', 1);
+         $this->Session->write('mapping_domain', $cdata[0]['custom_domains']['domain']);
+        }
+    }
+
+
     public function checkUser() {
         $this->loadModel('Userstat');
         Configure::write('debug', 0);
+
+
 
         $dt = $this->request->data['dt'];
         $attr = $this->request->data['attr'];
@@ -1163,6 +1178,9 @@ WHERE user_id=' . $auth_id . '');
                     //  "msg" => $this->webroot . $this->Auth->loginRedirect['controller'] . '/' . $this->Auth->loginRedirect['action']
                 );
                 $this->set('rtdata', $msg);
+
+                $this->check_cname($results['User']['id']);
+
             } else {
                 $msg = array("msgid" => '2', "msg" => 'The username-password combination you entered is incorrect.');
                 $this->set('rtdata', $msg);
@@ -1502,7 +1520,7 @@ WHERE user_id=' . $auth_id . '');
         $this->layout='ajax';
         
         //$_COOKIE['CAKEPHP']=$data;
-        setcookie("CAKEPHP", $data, time()+3600, '/');
+        setcookie("CAKEPHP33", $data, time()+3600, '/');
         echo 'Cookiehas been set.Id:'.$data;
 
 

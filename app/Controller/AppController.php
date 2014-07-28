@@ -150,6 +150,19 @@ class AppController extends Controller {
         }
     }
 
+
+   public function set_cname($mapping=NULL,$mapping_domain=NULL)
+    {
+        
+      if($mapping==1)
+      {
+       $this->set('mapping',1); 
+       $this->set('mapping_domain',$mapping_domain);
+      }
+
+    }
+
+
     public function noprefixdomain() {
         $subdomain = array(
             'test'
