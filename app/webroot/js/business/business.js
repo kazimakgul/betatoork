@@ -238,7 +238,11 @@ $(document).ready(function() {
                 if (host.match('/test/')) {
                     window.location.href = window.location.protocol + '//test.' + domain + '/dashboard';
                 } else {
+                    if(cname==1){
+                        alert('add special redirection here!!!');
+                    }else{ 
                     window.location.href = window.location.protocol + '//' + domain + '/dashboard';
+                    }
                 }
             }
             else {
