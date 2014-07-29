@@ -1478,9 +1478,7 @@ class BusinessesController extends AppController {
             $userid = $user_data[0]['custom_domains']['user_id'];
         }
 
-
-
-    }else{//there is no cname   
+    }else{//Cname not exists. 
 
         if ($userid == NULL) {
             $subdomain = Configure::read('Domain.subdomain');
@@ -1653,14 +1651,25 @@ class BusinessesController extends AppController {
      */
     public function play($id = NULL) {
 
+       
+       if(Configure::read('Domain.cname'))
+       {
+             $cdomain=Configure::read('Domain.c_root');
+             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
+             $userid = $user_data[0]['custom_domains']['user_id'];
+             $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
+             $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.id' => $user['User']['id'])), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        }else{//if it is not cname
 
-        if (!is_numeric($id)) {
-            $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
-            $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.seo_username' => $subdomain)), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
-        } else {
-            $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
-            $user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']), 'fields' => array('*')));
+            if (!is_numeric($id)) {
+                $subdomain = Configure::read('Domain.subdomain');
+                $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
+                $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.seo_username' => $subdomain)), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+            } else {
+                $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
+                $user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']), 'fields' => array('*')));
+            }
+
         }
 
 
@@ -1739,23 +1748,37 @@ class BusinessesController extends AppController {
         //$user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
 
 
+      if(Configure::read('Domain.cname'))
+       {
+             $cdomain=Configure::read('Domain.c_root');
+             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
+             $c_userid = $user_data[0]['custom_domains']['user_id'];
+             $category_name = $userid;
+             $user = $this->User->find('first', array('conditions' => array('User.id' => $c_userid), 'fields' => array('*'), 'contain' => array('Userstat')));
+             $cat_data = $this->Category->find('first', array('contain' => false, 'conditions' => array('Category.name' => $category_name), 'fields' => array('Category.id')));
+             $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $user['User']['id'], 'Game.category_id' => $cat_data['Category']['id']), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+             $userid = $user['User']['id'];
+        }else{//if cname not exists
 
+             if (!is_numeric($userid)) {
 
-        if (!is_numeric($userid)) {
+                 $category_name = $userid;
+                 $subdomain = Configure::read('Domain.subdomain');
+                 $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*'), 'contain' => array('Userstat')));
 
-            $category_name = $userid;
-            $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*'), 'contain' => array('Userstat')));
+                 $cat_data = $this->Category->find('first', array('contain' => false, 'conditions' => array('Category.name' => $category_name), 'fields' => array('Category.id')));
 
-            $cat_data = $this->Category->find('first', array('contain' => false, 'conditions' => array('Category.name' => $category_name), 'fields' => array('Category.id')));
+                 $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $user['User']['id'], 'Game.category_id' => $cat_data['Category']['id']), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+                 $userid = $user['User']['id'];
+             } else {
 
-            $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $user['User']['id'], 'Game.category_id' => $cat_data['Category']['id']), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
-            $userid = $user['User']['id'];
-        } else {
-
-            $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*'), 'contain' => array('Userstat')));
-            $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.category_id' => $categoryid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+                 $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*'), 'contain' => array('Userstat')));
+                 $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.category_id' => $categoryid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+             }
+        
         }
+
+
 
         $cond = $this->paginate('Game');
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
@@ -1807,26 +1830,40 @@ class BusinessesController extends AppController {
             $this->request->params['named']['direction'] = $this->request->params['direction'];
         }
 
-        if (!is_numeric($userid)) {
-            $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('conditions' => array(
-                    'User.seo_username' => $subdomain
-                ),
-                'fields' => array(
-                    '*'
-                )
-            ));
-            $userid = $user['User']['id'];
-        } else {
-            $user = $this->User->find('first', array(
-                'conditions' => array(
-                    'User.id' => $userid
-                ),
-                'fields' => array(
-                    '*'
-                )
-            ));
-        }
+
+      if(Configure::read('Domain.cname'))
+       {
+             $cdomain=Configure::read('Domain.c_root');
+             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
+             $c_userid = $user_data[0]['custom_domains']['user_id'];
+             $user = $this->User->find('first', array('conditions' => array( 'User.id' => $c_userid), 'fields' => array( '*' ) ));
+             $userid = $user['User']['id'];
+        }else{//if it is not cname
+
+
+             if (!is_numeric($userid)) {
+                 $subdomain = Configure::read('Domain.subdomain');
+                 $user = $this->User->find('first', array('conditions' => array(
+                         'User.seo_username' => $subdomain
+                     ),
+                     'fields' => array(
+                         '*'
+                     )
+                 ));
+                 $userid = $user['User']['id'];
+             } else {
+                 $user = $this->User->find('first', array(
+                     'conditions' => array(
+                         'User.id' => $userid
+                     ),
+                     'fields' => array(
+                         '*'
+                     )
+                 ));
+             }
+        }     
+
+
 
         $this->paginate = array(
             'Game' => array(
@@ -1904,26 +1941,40 @@ class BusinessesController extends AppController {
             $this->request->params['named']['direction'] = $this->request->params['direction'];
         }
 
-        if (!is_numeric($userid)) {
-            $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array('conditions' => array(
-                    'User.seo_username' => $subdomain
-                ),
-                'fields' => array(
-                    '*'
-                )
-            ));
-            $userid = $user['User']['id'];
-        } else {
-            $user = $this->User->find('first', array(
-                'conditions' => array(
-                    'User.id' => $userid
-                ),
-                'fields' => array(
-                    '*'
-                )
-            ));
+        
+       if(Configure::read('Domain.cname'))
+       {
+             $cdomain=Configure::read('Domain.c_root');
+             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
+             $c_userid = $user_data[0]['custom_domains']['user_id'];
+             $user = $this->User->find('first', array('conditions' => array('User.id' => $c_userid), 'fields' => array( '*' ) ));
+             $userid = $user['User']['id'];
+        }else{//if cname not exists
+
+
+             if (!is_numeric($userid)) {
+                 $subdomain = Configure::read('Domain.subdomain');
+                 $user = $this->User->find('first', array('conditions' => array(
+                         'User.seo_username' => $subdomain
+                     ),
+                     'fields' => array(
+                         '*'
+                     )
+                 ));
+                 $userid = $user['User']['id'];
+             } else {
+                 $user = $this->User->find('first', array(
+                     'conditions' => array(
+                         'User.id' => $userid
+                     ),
+                     'fields' => array(
+                         '*'
+                     )
+                 ));
+             }
         }
+
+
 
         $this->paginate = array(
             'Game' => array(
