@@ -36,10 +36,10 @@ $go_support = 	$this->Html->url(array('controller' => 'businesses', 'action' => 
                                     
                                   <?php if(isset($mapping_domain)){ ?>      
                                   <a href="http://<?php echo $mapping_domain; ?>" target="_blank" class="btn btn-default" style=" width: 150px; "> <?php echo $mapping_domain;?> </a>
-                                  <a href="<?php echo $go_support; ?>" class="btn btn-default" data-toggle="tooltip" title="Click to remove domain mapping!"><i class="fa fa-trash-o"></i> Remove Domain</a>
+                                  <a class="btn btn-default remove_mapping" data-toggle="tooltip" title="Click to remove domain mapping!"><i class="fa fa-trash-o"></i> Remove Domain</a>
                                   <?php }else{ ?>  
                                   <input type="text" class="form-control valid" name="mapping_domain" id="mapping_domain" value="" style=" width: 150px; ">
-                                  <a class="btn btn-default" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain</a>
+                                  <a class="btn btn-default add_mapping" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain</a>
                                   <?php } ?> 
 				</p>
 
