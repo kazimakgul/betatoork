@@ -50,7 +50,7 @@ class MobilesController extends AppController {
 
             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
             $c_userid = $user_data[0]['custom_domains']['user_id'];
-            $userid = $c_userid
+            $userid = $c_userid;
         }
 
     }else{//Cname not exists. 
