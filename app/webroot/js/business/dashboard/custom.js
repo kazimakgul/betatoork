@@ -390,6 +390,17 @@ $(document).ready(function() {
 
     });
 
+   
+    $('.add_mapping').click(function() {
+    alert('add mapping');
+    });
+
+    $('.remove_mapping').click(function() {
+    alert('remove mapping');
+    });
+
+
+
     /**
      *  Game Delete Method
      *  @param #attr.val(), link => New controller
