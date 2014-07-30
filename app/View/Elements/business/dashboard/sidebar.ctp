@@ -21,7 +21,13 @@ $faq = $this->Html->url(array('controller' => 'businesses', 'action' => 'faq'));
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
 
 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-    $gochannel = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $pure_domain);
+
+    if($this->Session->read('mapping')){
+      $gochannel = $this->Html->url('http://' . $this->Session->read('mapping_domain'));    
+    }else{
+      $gochannel = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $pure_domain);
+    }
+
 } else {
     $gochannel = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
 }

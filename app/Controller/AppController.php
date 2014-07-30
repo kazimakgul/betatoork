@@ -96,6 +96,10 @@ class AppController extends Controller {
         {
             $valid=1;
         }
+        if($this->params['controller']=='mobiles')
+        {
+            $valid=1;
+        }
         if($this->params['controller']=='subscriptions' && in_array($this->action,array('followstatus','add_subscription')))
         {
             $valid=1;
@@ -188,7 +192,13 @@ class AppController extends Controller {
                 }
             }
             $this->pure_domain = implode('.', $parts);
-            $this->set('pure_domain', $this->pure_domain);
+
+            if($this->Session->read('mapping')){
+               $this->set('pure_domain', 'clone.gs');    
+            }else{
+               $this->set('pure_domain', $this->pure_domain);
+            }
+
         }
     }
 

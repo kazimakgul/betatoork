@@ -1449,8 +1449,15 @@ class BusinessesController extends AppController {
      */
     public function channel_settings() {
         $this->layout = 'Business/dashboard';
+        $this->loadModel('Custom_domain');
         $this->sideBar();
         $countries = $this->User->Country->find('list');
+
+        $authid = $this->Auth->user('id');
+        $mapping_data=$this->Custom_domain->find('first',array('conditions'=>array('Custom_domain.user_id'=>$authid,'Custom_domain.status'=>1),'fields'=>array('Custom_domain.domain')));
+        if($mapping_data!=NULL)
+        $this->set('mapping_domain',$mapping_data['Custom_domain']['domain']);
+
         $this->set(compact('countries'));
         $this->set('title_for_layout', 'Clone Business Channel Settings');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');

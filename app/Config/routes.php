@@ -111,12 +111,12 @@ Router::connect('/games/search/:userid/:searchterm', array('controller' => 'busi
 //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
 $subdomain = substr(env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), "."));
 if (
-        strlen($subdomain) > 0 &&
+        (strlen($subdomain) > 0 &&
         $subdomain != "m" &&
         $subdomain != "test" &&
         $subdomain != "127" &&
         $subdomain != "www" &&
-        $subdomain != "clone"
+        $subdomain != "clone") || checkdnsrr(env("HTTP_HOST"), "CNAME")
 ) {
     //  Mobile detection begins
     $useragent = $_SERVER['HTTP_USER_AGENT'];
