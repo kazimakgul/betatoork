@@ -28,7 +28,7 @@ function ad_get_code(location,user_id){
 
 
 <?php
-   echo $code['code']; 
+   if(!empty($code['code'])){echo $code['code'];} 
  ?>
  <div style='width:100%;' > 
   	<div id="ad_code<?php echo $location;?>" style="display:none;">

@@ -19,7 +19,7 @@ $notifications = $this->Html->url(array('controller' => 'businesses', 'action' =
 $ads_management = $this->Html->url(array('controller' => 'businesses', 'action' => 'ads_management'));
 $faq = $this->Html->url(array('controller' => 'businesses', 'action' => 'faq'));
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
-
+if(empty($notifycount)){$notifycount=0;}
 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
 
     if($this->Session->read('mapping')){
