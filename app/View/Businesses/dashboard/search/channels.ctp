@@ -63,7 +63,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                             </ul>
                         </div>
                         <?php
-                        if ($view === 'list') {
+                        if (isset($view) && $view === 'list') {
                             ?>
                             <a href="#" data-grid=".users-list" class="grid-view active"><i class="fa fa-th-list"></i></a>
                             <a href="#" data-grid=".users-grid" class="grid-view"><i class="fa fa-th"></i></a>
@@ -92,7 +92,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
 </div>
 <style>
     <?php
-    if ($view === 'list') {
+    if (isset($view) && $view === 'list') {
         echo '#users #content .content-wrapper .users-grid { display: none; }';
     } else {
         echo '#users #content .content-wrapper .users-list { display: none; }';
