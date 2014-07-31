@@ -163,7 +163,7 @@ if (isset($query)) {
         border-right: 1px solid #E8ECF1;
     }
     <?php
-    if ($view === 'list') {
+    if (isset($view) && $view === 'list') {
         echo '#users #content .content-wrapper .users-grid { display: none; }';
     } else {
         echo '#users #content .content-wrapper .users-list { display: none; }';
