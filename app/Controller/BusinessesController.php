@@ -1453,14 +1453,23 @@ class BusinessesController extends AppController {
       $this->loadModel('Custom_domain');
       $authid = $this->Auth->user('id');
       $domain=$this->request->data['domain'];
-      
+
+      $mapping_data=$this->Custom_domain->find('first',array('contain'=>false,'conditions'=>array('Custom_domain.domain'=>$domain),'fields'=>array('Custom_domain.id')));
+      if($mapping_data!=NULL)
+      {
+        $msg = array("title" => 'This domain already exists!', 'result' => 0);
+      }else{
       $map_domain['Custom_domain']['user_id']=$authid;
       $map_domain['Custom_domain']['domain']=$domain;
       $map_domain['Custom_domain']['status']=1;
 
       $this->Custom_domain->save($map_domain);
 
+      $this->Session->write('mapping', 1);
+      $this->Session->write('mapping_domain', $domain);
+
       $msg = array("title" => 'Domain been added.', 'result' => 1);
+      }
       $this->set('rtdata', $msg);
       $this->set('_serialize', array('rtdata'));
     }
@@ -1480,6 +1489,9 @@ class BusinessesController extends AppController {
       $mapping_data=$this->Custom_domain->find('first',array('contain'=>false,'conditions'=>array('Custom_domain.user_id'=>$authid),'fields'=>array('Custom_domain.id')));
       $this->Custom_domain->id=$mapping_data['Custom_domain']['id'];
       $this->Custom_domain->delete();
+
+      $this->Session->delete('mapping');
+      $this->Session->delete('mapping_domain');
 
       $msg = array("title" => 'Domain been removed.', 'result' => 1);
       $this->set('rtdata', $msg);

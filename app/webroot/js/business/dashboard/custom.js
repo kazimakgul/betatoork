@@ -405,9 +405,14 @@ $(document).ready(function() {
                 alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
             } else {
                 Messenger().post(data.rtdata.title);
-                $('#remove_domain').show();
-                $('#map_domain').hide();
-                $('.domain_label').html(domain);
+                 if(data.rtdata.result==1)
+                 {    
+                 $('#remove_domain').show();
+                 $('#map_domain').hide();
+                 $('.domain_label').html(domain);
+                 $('.domain_label').attr('href','http://'+domain);
+                 }
+
             }
         }, 'json');
         //------ 
