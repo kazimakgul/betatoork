@@ -115,9 +115,6 @@
         <a data-toggle="modal" data-target="#backgroundChange"  href="#" class="btn btn-xs btn-default pull-left" style="left:7px;top:60px; position:absolute;"><span class="fa fa-picture-o"></span> Change Background</a>
     <?php } ?>
 </div>
-
-
-
 <!-- /.container -->
 <?php echo $this->element('business/components/popup', array('user_id' => $user['User']['id'])); ?>
 <?php echo $this->element('business/footer'); ?>
