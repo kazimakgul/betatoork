@@ -238,10 +238,8 @@ $(document).ready(function() {
                 if (host.match('/test/')) {
                     window.location.href = window.location.protocol + '//test.' + domain + '/dashboard';
                 } else {
-                    if(cname==1){
-
-                    alert($.cookie("CAKEPHP"));
-                    //window.location.href = window.location.protocol + '//' + domain + '/users/set_cookie/'+cookie_login;
+                    if(cname==1){   
+                    alert('get cookie here');
                     }else{ 
                     window.location.href = window.location.protocol + '//' + domain + '/dashboard';
                     }
