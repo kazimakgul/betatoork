@@ -23,8 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','edit_set_ads','remove_ads_field'))) {
-
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','edit_set_ads','remove_ads_field','add_mapping','remove_mapping'))) {
             return true;
         }
 
@@ -1440,6 +1439,54 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/notifications');
     }
+
+
+
+     /** add_mapping method
+     *
+     * @param 
+     * @return Channel_Settings Page
+     * @author Ogi
+     */
+    public function add_mapping() {
+      Configure::write('debug', 0);
+      $this->loadModel('Custom_domain');
+      $authid = $this->Auth->user('id');
+      $domain=$this->request->data['domain'];
+      
+      $map_domain['Custom_domain']['user_id']=$authid;
+      $map_domain['Custom_domain']['domain']=$domain;
+      $map_domain['Custom_domain']['status']=1;
+
+      $this->Custom_domain->save($map_domain);
+
+      $msg = array("title" => 'Domain been added.', 'result' => 1);
+      $this->set('rtdata', $msg);
+      $this->set('_serialize', array('rtdata'));
+    }
+
+
+     /** remove_mapping method
+     *
+     * @param 
+     * @return Channel_Settings Page
+     * @author Ogi
+     */
+    public function remove_mapping() {
+      Configure::write('debug', 0);  
+      $this->loadModel('Custom_domain');
+      $authid = $this->Auth->user('id');
+
+      $mapping_data=$this->Custom_domain->find('first',array('contain'=>false,'conditions'=>array('Custom_domain.user_id'=>$authid),'fields'=>array('Custom_domain.id')));
+      $this->Custom_domain->id=$mapping_data['Custom_domain']['id'];
+      $this->Custom_domain->delete();
+
+      $msg = array("title" => 'Domain been removed.', 'result' => 1);
+      $this->set('rtdata', $msg);
+      $this->set('_serialize', array('rtdata'));    
+    }     
+
+
 
     /** Channel_Settings method
      *
