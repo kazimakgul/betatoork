@@ -116,7 +116,7 @@
     <?php } ?>
 </div>
 
-<iframe style='display:none;' src='http://<?php echo $mapping_domain; ?>/users/set_cookie/<?php echo $_COOKIE['CAKEPHP']; ?>'></iframe>
+
 
 <!-- /.container -->
 <?php echo $this->element('business/components/popup', array('user_id' => $user['User']['id'])); ?>
