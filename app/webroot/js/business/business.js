@@ -240,7 +240,7 @@ $(document).ready(function() {
                 } else {
                     if(cname==1){
 
-                    cookie_login=$.cookie("cakephp");   alert('cname detected'+cookie_login);
+                    cookie_login=$.cookie("CAKEPHP");   alert('cname detected'+cookie_login);
                     window.location.href = window.location.protocol + '//' + domain + '/users/set_cookie/'+cookie_login;
                     }else{ 
                     window.location.href = window.location.protocol + '//' + domain + '/dashboard';
