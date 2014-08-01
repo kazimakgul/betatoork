@@ -63,7 +63,7 @@
        //=======Gamebox Pre Ads==========
         setTimeout(function() {
             skip_ad();
-        }, 12000);
+        }, 13000);
         $('.game_box1').css("display", "none");
         function skip_ad()
         {
@@ -75,7 +75,7 @@
         var sure=10; 
 		var zamanIsle;
 		function Saniye() {
-		document.getElementById("dl").innerHTML = '<b>' + sure + '</b> second.';
+		document.getElementById("dl").innerHTML = 'Game is loading. Please Wait <b>' + sure + '</b> seconds.';
 		sure=sure-1; zamanIsle=setTimeout("Saniye()", 1000);
 		Kontrol();
 		}

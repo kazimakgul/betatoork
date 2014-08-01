@@ -115,7 +115,7 @@
         var sure=10; 
 		var zamanIsle;
 		function Saniye() {
-		document.getElementById("dl").innerHTML = '<b>' + sure + '</b> second.';
+		document.getElementById("dl").innerHTML = 'Game is loading. Please Wait <b>' + sure + '</b> seconds.';
 		sure=sure-1; zamanIsle=setTimeout("Saniye()", 1000);
 		Kontrol();
 		}
