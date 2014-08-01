@@ -239,7 +239,8 @@ $(document).ready(function() {
                     window.location.href = window.location.protocol + '//test.' + domain + '/dashboard';
                 } else {
                     if(cname==1){
-                        alert('add special redirection here!!!');
+                    cookie_login=$.cookie("cakephp");   
+                    window.location.href = window.location.protocol + '//' + domain + '/users/set_cookie/'+cookie_login;
                     }else{ 
                     window.location.href = window.location.protocol + '//' + domain + '/dashboard';
                     }

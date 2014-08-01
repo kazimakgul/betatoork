@@ -1516,13 +1516,14 @@ WHERE user_id=' . $auth_id . '');
         $this->set('_serialize', array('rtdata'));
     }
     
-    public function set_cookie($data) {
+    public function set_cookie($data,$redirect=NULL) {
         $this->layout='ajax';
         
         //$_COOKIE['CAKEPHP']=$data;
         setcookie("CAKEPHP", $data, time()+3600, '/');
-        echo 'Cookiehas been set.Id:'.$data;
-
+        //echo 'sCookiehas been set.Id:'.$data;
+        if($redirect!=NULL)
+        $this->redirect('http://'.$redirect);
 
     }
 
