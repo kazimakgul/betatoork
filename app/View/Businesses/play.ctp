@@ -39,17 +39,12 @@
             <div class="col-xs-12">
                 <div class="panel panel-primary">
                     <div class="panel-body">
-                    	<?php
-						 if(!empty($code['code']))
-						 {
-						 ?>
                     	<div class="game_box_pre">
                     	<div id="dl"></div> <a class="label label-warning" style="cursor: pointer;" onclick="skip_ad();">× Skip</a>
                         <!--Game Box pre -> Ads begins-->
 						<?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>6 )); ?>
                         <!--Game Box pre -> Ads ends-->
                     	</div>
-                        <?php }?>
                         <!--Game Box begins-->
                         <?php echo $this->element('business/games/game-inc'); ?>
                         <!--Game Box ends-->
@@ -104,12 +99,7 @@
         setTimeout(function() {
             add_playcount(<?php echo $game['Game']['id']; ?>,<?php echo $game['Game']['user_id']; ?>);
         }, 10000);
-    </script>
-    <?php
- if(!empty($code['code']))
- {
- ?>
-    <script>
+        
        //=======Gamebox Pre Ads==========
         setTimeout(function() {
             skip_ad();
@@ -137,4 +127,3 @@
 		}
 		window.onload=Saniye;
     </script>
-  <? }?>
