@@ -63,7 +63,7 @@
        //=======Gamebox Pre Ads==========
         setTimeout(function() {
             skip_ad();
-        }, 102000);
+        }, 12000);
         $('.game_box1').css("display", "none");
         function skip_ad()
         {
