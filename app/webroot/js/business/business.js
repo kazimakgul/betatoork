@@ -239,7 +239,7 @@ $(document).ready(function() {
                     window.location.href = window.location.protocol + '//test.' + domain + '/dashboard';
                 } else {
                     if(cname==1){   
-                    window.location.href = window.location.protocol + '//' + domain + '/users/set_cookie/'+readCookie('CAKEPHP')+'/'+domain + '/dashboard';
+                    location.reload();
                     }else{ 
                     window.location.href = window.location.protocol + '//' + domain + '/dashboard';
                     }
