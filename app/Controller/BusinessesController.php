@@ -2419,6 +2419,100 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/exploregames');
     }
+    
+    public function exploregames_sorting($field, $target) {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $limit = 12;
+        $find = array(
+            'fields' => array(
+                'Game.name',
+                'Game.seo_url',
+                'Game.id',
+                'Game.fullscreen',
+                'Game.picture',
+                'Game.starsize',
+                'Game.rate_count',
+                'Game.embed',
+                'Game.featured',
+                'Game.clone',
+                'Game.created'
+            ),
+            'limit' => $limit,
+            'contain' => array(
+                'User' => array(
+                    'fields' => array(
+                        'User.seo_username',
+                        'User.verify',
+                        'User.username',
+                        'User.picture'
+                    )
+                ),
+                'Gamestat' => array(
+                    'fields' => array(
+                        'Gamestat.playcount',
+                        'Gamestat.favcount',
+                        'Gamestat.channelclone'
+                    )
+                )
+            ),
+            'conditions' => array(
+                'NOT' => array(
+                    'Game.priority' => NULL
+                ),
+                'Game.clone' => 0
+            ),
+            'order' => array(
+                'Game.id' => 'DESC'
+            )
+        );
+        switch ($target) {
+            case 'asc':
+                $target = 'ASC';
+                break;
+            case 'desc':
+                $target = 'DESC';
+                break;
+            default :
+                exit;
+                break;
+        }
+        switch ($field) {
+            case 'name':
+                $find['order'] = array('Game.name' => $target);
+                break;
+            case 'owner':
+                $find['order'] = array('User.username' => $target);
+                break;
+            case 'clones':
+                $find['order'] = array('Game.clone' => $target);
+                break;
+            case 'favorites':
+                $find['order'] = array('Gamestat.favcount' => $target);
+                break;
+            case 'plays':
+                $find['order'] = array('Gamestat.playcount' => $target);
+                break;
+            case 'rates':
+                $find['order'] = array('Game.rate_count' => $target);
+                break;
+            default :
+                exit;
+                break;
+        }
+        $data = $this->Game->find('all', $find);
+        print_r($data);
+        exit;
+        $cond = $this->paginate($data);
+        /*print_r($cond);
+        exit;*/
+        $this->set('games', $cond);
+        $this->set('activefilter', $activefilter);
+        $this->set('title_for_layout', 'Clone Business Explore Games');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/exploregames');
+    }
 
     public function following() {
         $this->layout = 'Business/dashboard';
