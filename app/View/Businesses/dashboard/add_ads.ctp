@@ -36,11 +36,19 @@
 				  	<div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Category</label>
 					    <div class="col-sm-10 col-md-8">
-					    		<input type='checkbox' name='category' value="1"> Home -> Top<br/>
-					    		<input type='checkbox' name='category' value="2"> Home -> Middle<br/>
-					    		<input type='checkbox' name='category' value="3"> Home -> Bottom<br/>
-					    		<input type='checkbox' name='category' value="4"> Game -> Top<br/>
-					    		<input type='checkbox' name='category' value="5"> Game -> Bottom<br/>
+					    		<?php
+					    foreach ($ad_area as $value) {
+							$id = $value['Ad_area']['id'];
+							$name = $value['Ad_area']['name'];
+							$check = '';
+							foreach ($Ads_set as $ad_check) {
+								if($ad_check['Ad_setting']['ad_area_id'] == $id)
+								{
+									$check = 'checked';
+								}
+							}
+						echo '<input type="checkbox" name="category" value="'.$id.'" '.$check .' > '.$name.'<br>';
+						}?>
 					    </div>
 				  	</div>
 						<input type="hidden" id="attr" name="attr" value="new_ads" />

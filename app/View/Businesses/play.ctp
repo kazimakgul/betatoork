@@ -39,6 +39,12 @@
             <div class="col-xs-12">
                 <div class="panel panel-primary">
                     <div class="panel-body">
+                    	<div class="game_box_pre">
+                    	<div id="dl"></div> <a class="label label-warning" style="cursor: pointer;" onclick="skip_ad();">× Skip</a>
+                        <!--Game Box pre -> Ads begins-->
+						<?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>6 )); ?>
+                        <!--Game Box pre -> Ads ends-->
+                    	</div>
                         <!--Game Box begins-->
                         <?php echo $this->element('business/games/game-inc'); ?>
                         <!--Game Box ends-->
@@ -93,4 +99,31 @@
         setTimeout(function() {
             add_playcount(<?php echo $game['Game']['id']; ?>,<?php echo $game['Game']['user_id']; ?>);
         }, 10000);
+        
+       //=======Gamebox Pre Ads==========
+        setTimeout(function() {
+            skip_ad();
+        }, 12000);
+        $('.game_box').css("display", "none");
+        function skip_ad()
+        {
+        	$('.game_box_pre').css("display", "none");
+        	$('.game_box').css("display", "block");
+        }
+        
+        //Countdown
+        var sure=10; 
+		var zamanIsle;
+		function Saniye() {
+		document.getElementById("dl").innerHTML = '<b>' + sure + '</b> second.';
+		sure=sure-1; zamanIsle=setTimeout("Saniye()", 1000);
+		Kontrol();
+		}
+		function Kontrol(){
+		if(sure <= -1){
+		document.getElementById("dl").innerHTML ='<b>Loading...</b>';
+		clearTimeout(zamanIsle);
+		   }
+		}
+		window.onload=Saniye;
     </script>

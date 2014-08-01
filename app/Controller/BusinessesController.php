@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','col_ads','edit_set_ads','remove_ads_field'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','edit_set_ads','remove_ads_field'))) {
 
             return true;
         }
@@ -1375,7 +1375,8 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        //$this->get_ads_info($userid, $userid);
+        $Ad_area = $this->Ad_area->find('all',array('fields'=>array('Ad_area.id,Ad_area.name')));
+        $this->set('ad_area', $Ad_area);
         $this->set('title_for_layout', 'Clone Business Add ads');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
@@ -1401,7 +1402,6 @@ class BusinessesController extends AppController {
         		'fields'		=> array('Ad_setting.ad_code_id,Ad_setting.ad_area_id,Ad_area.name')));
 
         $Ad_area = $this->Ad_area->find('all',array('fields'=>array('Ad_area.id,Ad_area.name')));
-
         $this->set('ad_area', $Ad_area);
 
         $this->set('Ads', $adcodes);
