@@ -1520,7 +1520,7 @@ WHERE user_id=' . $auth_id . '');
         $this->layout='ajax';
         
         //$_COOKIE['CAKEPHP']=$data;
-        setcookie("CAKEPHP", $data, time()+3600, '/','.nishgame.nishgame.com');
+        setcookie("CAKEPHP", $data, time()+3600, '/',env("HTTP_HOST"));
         echo 'sCookiehas been set.Id:'.$data;
 
     }
