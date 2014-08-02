@@ -1554,6 +1554,18 @@ class BusinessesController extends AppController {
     }
 
 
+        //----------------------
+       //Set Cname if it exists
+       //----------------------
+       if($this->Session->read('mapping'))
+       {
+       $mapping=$this->Session->read('mapping');
+       $mapping_domain='clone.gs';
+       $this->set_cname($mapping,$mapping_domain);
+       }
+       //----------------------
+
+
         //subdomain actions
         //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
         //echo 'sundimain:'.$this->request->host();
