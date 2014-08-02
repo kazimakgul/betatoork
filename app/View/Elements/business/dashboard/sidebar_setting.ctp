@@ -19,7 +19,7 @@ $support	= $this->Html->url(array('controller'=>'businesses','action'=>'support'
 
 		<li>
 			<a href="<?php echo $settings;?>" <?php if($active=='profile')echo 'class="active"'; ?>>
-				<i class="ion-ios7-person-outline"></i>
+				<i class="fa fa-user"></i>
 				Profile
 			</a>
 		</li>
@@ -44,25 +44,25 @@ $support	= $this->Html->url(array('controller'=>'businesses','action'=>'support'
 		</li> -- -->
 		<li>
 			<a href="<?php echo $notifications;?>" <?php if($active=='notification')echo 'class="active"'; ?>>
-				<i class="ion-ios7-email-outline"></i>
+				<i class="fa fa-envelope"></i>
 				Notifications
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo $social;?>" <?php if($active=='social_management')echo 'class="active"'; ?>>
-				<i class="ion-android-share"></i>
+				<i class="fa fa-share-alt"></i>
 				Social Management
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo $password_change;?>" <?php if($active=='password_change')echo 'class="active"'; ?>>
-				<i class="ion-ios7-locked-outline"></i>
+				<i class="fa fa-unlock"></i>
 				Password Change
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo $support;?>" <?php if($active=='support')echo 'class="active"'; ?>>
-				<i class="ion-ios7-help-outline"></i>
+				<i class="fa fa-exclamation-circle"></i>
 				Support
 			</a>
 		</li> 

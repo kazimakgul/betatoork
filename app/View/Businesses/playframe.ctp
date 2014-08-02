@@ -20,8 +20,14 @@
         game_id = '<?= $game_id ?>';
         rateurl = '<?php echo $this->Html->url(array('controller' => 'rates', 'action' => 'add')); ?>';
     </script>
+    <div class="game_box_pre" style="text-align: center;">
+	<div id="dl"></div> <a class="label label-warning" style="cursor: pointer;" onclick="skip_ad();">× Skip</a>
+    <!--Game Box pre -> Ads begins-->
+	<?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>6 )); ?>
+    <!--Game Box pre -> Ads ends-->
+	</div>
     <!-- Iframe Content --> 
-    <iframe src="<?php echo h($game['Game']['link']); ?>" style="border: 0; position:fixed; top:50px; left:0; right:0; bottom:0; width:100%; height:95%"></iframe><!-- Iframe Content End --> 
+    <iframe class="game_box1" src="<?php echo h($game['Game']['link']); ?>" style="border: 0; position:fixed; top:50px; left:0; right:0; bottom:0; width:100%; height:95%"></iframe><!-- Iframe Content End --> 
     <div class="navbar navbar-default navbar-fixed-bottom" style="min-height:35px" role="navigation">
         <!-- Remove Button -->
         <button type="button" class="close pull-right" data-toggle="tooltip" data-original-title="Close" style='padding: 6px 12px; margin-top: 4px' data-dismiss="alert" aria-hidden="true"><li class="glyphicon glyphicon-remove"></li></button>
@@ -53,4 +59,31 @@
         setTimeout(function() {
             add_playcount(<?php echo $game['Game']['id']; ?>,<?php echo $game['Game']['user_id']; ?>);
         }, 10000);
+        
+       //=======Gamebox Pre Ads==========
+        setTimeout(function() {
+            skip_ad();
+        }, 13000);
+        $('.game_box1').css("display", "none");
+        function skip_ad()
+        {
+        	$('.game_box_pre').css("display", "none");
+        	$('.game_box1').css("display", "block");
+        }
+        
+        //Countdown
+        var sure=10; 
+		var zamanIsle;
+		function Saniye() {
+		document.getElementById("dl").innerHTML = 'Game is loading. Please Wait <b>' + sure + '</b> seconds.';
+		sure=sure-1; zamanIsle=setTimeout("Saniye()", 1000);
+		Kontrol();
+		}
+		function Kontrol(){
+		if(sure <= -1){
+		document.getElementById("dl").innerHTML ='<b>Loading...</b>';
+		clearTimeout(zamanIsle);
+		   }
+		}
+		window.onload=Saniye;
     </script>
