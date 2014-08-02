@@ -1521,7 +1521,8 @@ WHERE user_id=' . $auth_id . '');
         
         //$_COOKIE['CAKEPHP']=$data;
         setcookie("CAKEPHP", $data, time()+3600, '/');
-        echo 'sCookiehas been set.Id:'.$data;
+        echo 'Cookiehas been set.Id:'.$data;
+
 
     }
 

@@ -23,7 +23,8 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','edit_set_ads','remove_ads_field','add_mapping','remove_mapping'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','col_ads','edit_set_ads','remove_ads_field'))) {
+
             return true;
         }
 
@@ -1374,8 +1375,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $Ad_area = $this->Ad_area->find('all',array('fields'=>array('Ad_area.id,Ad_area.name')));
-        $this->set('ad_area', $Ad_area);
+        //$this->get_ads_info($userid, $userid);
         $this->set('title_for_layout', 'Clone Business Add ads');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
@@ -1401,6 +1401,7 @@ class BusinessesController extends AppController {
         		'fields'		=> array('Ad_setting.ad_code_id,Ad_setting.ad_area_id,Ad_area.name')));
 
         $Ad_area = $this->Ad_area->find('all',array('fields'=>array('Ad_area.id,Ad_area.name')));
+
         $this->set('ad_area', $Ad_area);
 
         $this->set('Ads', $adcodes);
@@ -1439,66 +1440,6 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/notifications');
     }
-
-
-
-     /** add_mapping method
-     *
-     * @param 
-     * @return Channel_Settings Page
-     * @author Ogi
-     */
-    public function add_mapping() {
-      Configure::write('debug', 0);
-      $this->loadModel('Custom_domain');
-      $authid = $this->Auth->user('id');
-      $domain=$this->request->data['domain'];
-
-      $mapping_data=$this->Custom_domain->find('first',array('contain'=>false,'conditions'=>array('Custom_domain.domain'=>$domain),'fields'=>array('Custom_domain.id')));
-      if($mapping_data!=NULL)
-      {
-        $msg = array("title" => 'This domain already exists!', 'result' => 0);
-      }else{
-      $map_domain['Custom_domain']['user_id']=$authid;
-      $map_domain['Custom_domain']['domain']=$domain;
-      $map_domain['Custom_domain']['status']=1;
-
-      $this->Custom_domain->save($map_domain);
-
-      $this->Session->write('mapping', 1);
-      $this->Session->write('mapping_domain', $domain);
-
-      $msg = array("title" => 'Domain been added.', 'result' => 1);
-      }
-      $this->set('rtdata', $msg);
-      $this->set('_serialize', array('rtdata'));
-    }
-
-
-     /** remove_mapping method
-     *
-     * @param 
-     * @return Channel_Settings Page
-     * @author Ogi
-     */
-    public function remove_mapping() {
-      Configure::write('debug', 0);  
-      $this->loadModel('Custom_domain');
-      $authid = $this->Auth->user('id');
-
-      $mapping_data=$this->Custom_domain->find('first',array('contain'=>false,'conditions'=>array('Custom_domain.user_id'=>$authid),'fields'=>array('Custom_domain.id')));
-      $this->Custom_domain->id=$mapping_data['Custom_domain']['id'];
-      $this->Custom_domain->delete();
-
-      $this->Session->delete('mapping');
-      $this->Session->delete('mapping_domain');
-
-      $msg = array("title" => 'Domain been removed.', 'result' => 1);
-      $this->set('rtdata', $msg);
-      $this->set('_serialize', array('rtdata'));    
-    }     
-
-
 
     /** Channel_Settings method
      *
@@ -2412,100 +2353,6 @@ class BusinessesController extends AppController {
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
         }
         $cond = $this->paginate('Game');
-        $this->set('games', $cond);
-        $this->set('activefilter', $activefilter);
-        $this->set('title_for_layout', 'Clone Business Explore Games');
-        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-        $this->set('author_for_layout', 'Clone');
-        $this->render('/Businesses/dashboard/exploregames');
-    }
-    
-    public function exploregames_sorting($field, $target) {
-        $this->layout = 'Business/dashboard';
-        $this->sideBar();
-        $limit = 12;
-        $find = array(
-            'fields' => array(
-                'Game.name',
-                'Game.seo_url',
-                'Game.id',
-                'Game.fullscreen',
-                'Game.picture',
-                'Game.starsize',
-                'Game.rate_count',
-                'Game.embed',
-                'Game.featured',
-                'Game.clone',
-                'Game.created'
-            ),
-            'limit' => $limit,
-            'contain' => array(
-                'User' => array(
-                    'fields' => array(
-                        'User.seo_username',
-                        'User.verify',
-                        'User.username',
-                        'User.picture'
-                    )
-                ),
-                'Gamestat' => array(
-                    'fields' => array(
-                        'Gamestat.playcount',
-                        'Gamestat.favcount',
-                        'Gamestat.channelclone'
-                    )
-                )
-            ),
-            'conditions' => array(
-                'NOT' => array(
-                    'Game.priority' => NULL
-                ),
-                'Game.clone' => 0
-            ),
-            'order' => array(
-                'Game.id' => 'DESC'
-            )
-        );
-        switch ($target) {
-            case 'asc':
-                $target = 'ASC';
-                break;
-            case 'desc':
-                $target = 'DESC';
-                break;
-            default :
-                exit;
-                break;
-        }
-        switch ($field) {
-            case 'name':
-                $find['order'] = array('Game.name' => $target);
-                break;
-            case 'owner':
-                $find['order'] = array('User.username' => $target);
-                break;
-            case 'clones':
-                $find['order'] = array('Game.clone' => $target);
-                break;
-            case 'favorites':
-                $find['order'] = array('Gamestat.favcount' => $target);
-                break;
-            case 'plays':
-                $find['order'] = array('Gamestat.playcount' => $target);
-                break;
-            case 'rates':
-                $find['order'] = array('Game.rate_count' => $target);
-                break;
-            default :
-                exit;
-                break;
-        }
-        $data = $this->Game->find('all', $find);
-        print_r($data);
-        exit;
-        $cond = $this->paginate($data);
-        /*print_r($cond);
-        exit;*/
         $this->set('games', $cond);
         $this->set('activefilter', $activefilter);
         $this->set('title_for_layout', 'Clone Business Explore Games');

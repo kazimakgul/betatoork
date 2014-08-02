@@ -392,48 +392,11 @@ $(document).ready(function() {
 
    
     $('.add_mapping').click(function() {
-    link=add_mapping;
-       domain=$('#mapping_domain').val();
-       if(domain=='')
-       {
-        Messenger().post('You have to enter a domain!');
-       }else{  
-    //------
-        $.post(link, {domain:domain},
-        function(data) {
-            if (data.rtdata.error) {
-                alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
-            } else {
-                Messenger().post(data.rtdata.title);
-                 if(data.rtdata.result==1)
-                 {    
-                 $('#remove_domain').show();
-                 $('#map_domain').hide();
-                 $('.domain_label').html(domain);
-                 $('.domain_label').attr('href','http://'+domain);
-                 }
-
-            }
-        }, 'json');
-        //------ 
-           }  
+    alert('add mapping');
     });
 
     $('.remove_mapping').click(function() {
-    link=remove_mapping;
-    //------
-        $.post(link, {},
-        function(data) {
-            if (data.rtdata.error) {
-                alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
-            } else {
-                //Messenger().post(data.rtdata.success);
-                Messenger().post(data.rtdata.title);
-                $('#remove_domain').hide();
-                $('#map_domain').show();
-            }
-        }, 'json');
-        //------ 
+    alert('remove mapping');
     });
 
 
