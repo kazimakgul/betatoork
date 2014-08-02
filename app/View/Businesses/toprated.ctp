@@ -32,9 +32,7 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <!-- <li><?php echo $this->Paginator->sort('id', 'New Games', array('direction' => 'desc')); ?></li> -->
-                                    <!-- <li><?php echo $this->Paginator->sort('recommend', 'Recommended', array('direction' => 'desc')); ?></li> -->
-                                    <li><?php echo $this->Paginator->sort('created', 'Date', array('direction' => 'desc')); ?></li>	
+                                    <li><?php echo $this->Paginator->sort('id', 'Newest', array('direction' => 'desc')); ?></li>	
                                     <li><?php echo $this->Paginator->sort('name', 'Name', array('direction' => 'asc')); ?></li>
                                     <li><?php echo $this->Paginator->sort('starsize', 'Top Rated', array('direction' => 'desc')); ?></li>
                                     <li><?php echo $this->Paginator->sort('playcount', 'Most Played', array('direction' => 'desc')); ?></li>
@@ -42,24 +40,38 @@
                             </li>
                         </ul>
                         <?php
-                        $param = $this->request->params['named']['sort'];
-                        switch ($param) {
-                            case 'recommend':
-                                $name = 'Hot Games';
-                                break;
-                            case 'id':
-                                $name = 'New Games';
-                                break;
-                            case 'starsize':
-                                $name = 'Top Rated';
-                                break;
-                            case 'created';
-                                $name = 'Date';
-                                break;
-                            default:
-                                $name = ucwords($param);
-                                break;
+                        $sort = $this->request->params['named']['sort'];
+                        $direction = $this->request->params['named']['direction'];
+
+                        if($sort=='playcount' && $direction=='desc')
+                        {
+                           $name = 'Most Played Games'; 
+                        }else if($sort=='playcount' && $direction=='asc')
+                        {
+                           $name = 'Least Played Games';
+                        }else if($sort=='id' && $direction=='desc')
+                        {
+                           $name = 'Newest Games';
+                        }else if($sort=='id' && $direction=='asc')
+                        {
+                           $name = 'Oldest Games';
+                        }else if($sort=='starsize' && $direction=='desc')
+                        {
+                           $name = 'Top Rated Games';
+                        }else if($sort=='starsize' && $direction=='asc')
+                        {
+                           $name = 'Least Rated Games';
+                        }else if($sort=='name' && $direction=='asc')
+                        {
+                           $name = 'A to Z';
+                        }else if($sort=='name' && $direction=='desc')
+                        {
+                           $name = 'Z to A';
+                        }else{
+                            $name = ucwords($param);
                         }
+
+
                         ?>
                         <h3 class="panel-title"><?php echo $name; ?></h3>
                     </div>
