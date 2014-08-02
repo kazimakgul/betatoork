@@ -162,7 +162,7 @@ $(function () {
 				}
 				if(upload_type=='game_image')
 				{
-				var ratio=217/119;
+				var ratio=360/197;
 				}
 
                 //get image sizes begins
@@ -258,8 +258,8 @@ $('#fileupload').click(function () {
 				}
 				if(upload_type=='game_image')
 				{
-				var targ_w=217;
-				var targ_h=119;
+				var targ_w=360;
+				var targ_h=197;
 				}
 	   //----------determine cropped images sizes ends--------------
 	   
