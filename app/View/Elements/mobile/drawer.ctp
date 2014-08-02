@@ -1,7 +1,7 @@
 <?php
 $search = $this->Html->url(array("controller" => "mobiles", "action" => "search2", $user_id));
 $home = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id));
-$toprated = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:starsize/direction:desc';
+$toprated = $this->Paginator->url(array("controller" => "mobiles", "action" => "index",$user_id,"sort"=>"starsize","direction"=>"desc"),false);
 $mostplayed = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:playcount/direction:desc';
 $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:id/direction:desc';
 $image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));
