@@ -112,7 +112,7 @@ class AppController extends Controller {
         
 
 
-
+        /*
         if($valid==1)
         {
     
@@ -121,14 +121,9 @@ class AppController extends Controller {
         {
             echo 'this action is not valid';break;
         }
+        */
 
         
-         /*
-        if($this->action!='index' && $this->action!='random_3_game222' && $this->action!='checkClone222')
-        {    
-        echo 'System is under maintenance!';break;
-        }
-         */
 
 
         $this->set('user', $this->Auth->user());
