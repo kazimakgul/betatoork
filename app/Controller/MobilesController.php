@@ -35,7 +35,7 @@ class MobilesController extends AppController {
         //There is no any action!
     }
 
-    public function index($userid) {
+    public function index($userid=NULL) {
         $this->layout = 'Mobile/mobile';
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
