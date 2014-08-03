@@ -35,7 +35,7 @@ class MobilesController extends AppController {
         //There is no any action!
     }
 
-    public function index($userid) {
+    public function index($userid=NULL) {
         $this->layout = 'Mobile/mobile';
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
@@ -146,6 +146,17 @@ class MobilesController extends AppController {
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
+        
+
+    if(Configure::read('Domain.cname')){
+
+             $cdomain=Configure::read('Domain.c_root');
+             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
+             $userid = $user_data[0]['custom_domains']['user_id'];
+             $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
+             $game = $this->Game->find('first', array('conditions' => array( 'Game.seo_url' => $id, 'Game.user_id' => $user['User']['id'] ), 'fields' => array( 'Game.id' ),'contain' => false));
+    }else{//if it is not cname
+
         if (!is_numeric($id)) {
             $subdomain = Configure::read('Domain.subdomain');
             $user = $this->User->find('first', array(
@@ -168,6 +179,12 @@ class MobilesController extends AppController {
             ));
             $id = $game['Game']['id'];
         }
+
+    }
+
+
+
+
         $game = $this->Game->find('first', array(
             'conditions' => array(
                 'Game.id' => $id
