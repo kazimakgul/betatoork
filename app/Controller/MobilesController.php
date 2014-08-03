@@ -155,6 +155,7 @@ class MobilesController extends AppController {
              $userid = $user_data[0]['custom_domains']['user_id'];
              $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
              $game = $this->Game->find('first', array('conditions' => array( 'Game.seo_url' => $id, 'Game.user_id' => $user['User']['id'] ), 'fields' => array( 'Game.id' ),'contain' => false));
+             $id = $game['Game']['id'];
     }else{//if it is not cname
 
         if (!is_numeric($id)) {
