@@ -3,8 +3,8 @@
 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
 $search = $this->Html->url(array("controller" => "games", "action" => "search"));
 $home = $this->Html->url('/');
-$toprated=$this->Paginator->url(array("controller" => "mobiles", "action" => "index","sort"=>"starsize","direction"=>"desc"),false);
-$mostplayed=$this->Paginator->url(array("controller" => "mobiles", "action" => "index","sort"=>"playcount","direction"=>"desc"),false);
+$toprated = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:starsize/direction:desc';
+ $mostplayed = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:playcount/direction:desc';
 $newgames=$this->Paginator->url(array("controller" => "mobiles", "action" => "index","sort"=>"id","direction"=>"desc"),false);
 $image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));  
 }else{
