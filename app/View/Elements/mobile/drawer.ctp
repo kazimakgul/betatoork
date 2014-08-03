@@ -3,19 +3,17 @@
 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
 $search = $this->Html->url(array("controller" => "games", "action" => "search"));
 $home = $this->Html->url('/');
-$toprated = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:starsize/direction:desc';
- $mostplayed = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:playcount/direction:desc';
-$newgames=$this->Paginator->url(array("controller" => "mobiles", "action" => "index","sort"=>"id","direction"=>"desc"),false);
-$image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));  
+$toprated = $this->Html->url(array("controller" => "games", "action" => "top-rated"));
+$mostplayed=$this->Html->url(array("controller" => "games", "action" => "most-played"));
+$newgames=$this->Html->url(array("controller" => "games", "action" => "newest"));  
 }else{
  $search = $this->Html->url(array("controller" => "mobiles", "action" => "search2", $user_id));
  $home = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id));
  $toprated = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:starsize/direction:desc';
  $mostplayed = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:playcount/direction:desc';
- $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:id/direction:desc';
- $image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));   
+ $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:id/direction:desc'; 
 }    
-
+$image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));
 
 ?>
 <div class="snap-drawers">
