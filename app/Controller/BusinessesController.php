@@ -1485,7 +1485,7 @@ class BusinessesController extends AppController {
            $msg = array("title" => 'Domain been added.', 'result' => 1);
 
       }else{
-           $msg = array("title" => 'You have to add a CNAME to "domains.clone.gs" ', 'result' => 0);
+           $msg = array("title" => 'You have to add a CNAME to domains.clone.gs', 'result' => 0);
       }
 
 
