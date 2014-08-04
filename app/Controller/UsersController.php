@@ -250,7 +250,16 @@ class UsersController extends AppController {
     public function logout() {
         $this->Cookie->delete('User');
         $this->Session->destroy();
-        $this->redirect($this->Auth->logout());
+        if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+            if ($this->Session->read('mapping')) {
+                $redirect = $this->Html->url('http://' . $this->Session->read('mapping_domain'));
+            } else {
+                $redirect = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $pure_domain);
+            }
+        } else {
+            $redirect = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
+        }
+        $this->redirect($this->Auth->logout($redirect));
     }
 
     public function profile() {
@@ -361,41 +370,41 @@ class UsersController extends AppController {
         }
     }
 
-   /* public function set_channel_ads($ads_type = NULL, $ads_id = NULL) {
-        Configure::write('debug', 0);
+    /* public function set_channel_ads($ads_type = NULL, $ads_id = NULL) {
+      Configure::write('debug', 0);
 
-        $adcode_id = $this->request->data['adcode_id'];
-        $target_ad_area = $this->request->data['target_ad_area'];
+      $adcode_id = $this->request->data['adcode_id'];
+      $target_ad_area = $this->request->data['target_ad_area'];
 
-        if ($auth_id = $this->Auth->user('id')) {//Auth Control Begins
-            $setting_exist = $this->Ad_setting->find('first', array('contain' => false, 'conditions' => array('Ad_setting.user_id' => $auth_id), 'fields' => array('Ad_setting.id')));
-            if ($setting_exist != NULL) {
-                $message = 'exist' . $setting_exist['Ad_setting']['id'];
-                $this->Ad_setting->id = $setting_exist['Ad_setting']['id'];
-            } else {
-                $message = 'not exist';
-                $filtered_data['Ad_setting']['user_id'] = $auth_id;
-            }
+      if ($auth_id = $this->Auth->user('id')) {//Auth Control Begins
+      $setting_exist = $this->Ad_setting->find('first', array('contain' => false, 'conditions' => array('Ad_setting.user_id' => $auth_id), 'fields' => array('Ad_setting.id')));
+      if ($setting_exist != NULL) {
+      $message = 'exist' . $setting_exist['Ad_setting']['id'];
+      $this->Ad_setting->id = $setting_exist['Ad_setting']['id'];
+      } else {
+      $message = 'not exist';
+      $filtered_data['Ad_setting']['user_id'] = $auth_id;
+      }
 
-            if ($target_ad_area == 'homeBannerTop')
-                $filtered_data['Ad_setting']['home_banner_top'] = $adcode_id;
-            else if ($target_ad_area == 'homeBannerMiddle')
-                $filtered_data['Ad_setting']['home_banner_middle'] = $adcode_id;
-            else if ($target_ad_area == 'homeBannerBottom')
-                $filtered_data['Ad_setting']['home_banner_bottom'] = $adcode_id;
+      if ($target_ad_area == 'homeBannerTop')
+      $filtered_data['Ad_setting']['home_banner_top'] = $adcode_id;
+      else if ($target_ad_area == 'homeBannerMiddle')
+      $filtered_data['Ad_setting']['home_banner_middle'] = $adcode_id;
+      else if ($target_ad_area == 'homeBannerBottom')
+      $filtered_data['Ad_setting']['home_banner_bottom'] = $adcode_id;
 
-            if ($this->Ad_setting->save($filtered_data)) {
-                $msg = array("title" => 'Ads has been updated.' . $adcode_id . $target_ad_area . $message, 'result' => 1);
-            }
-        } else {//Auth Control Ends	
-            //if user unlogged
-            $msg = array("title" => 'You have to log in first', 'result' => 0);
-        }//Unlogged control ends
+      if ($this->Ad_setting->save($filtered_data)) {
+      $msg = array("title" => 'Ads has been updated.' . $adcode_id . $target_ad_area . $message, 'result' => 1);
+      }
+      } else {//Auth Control Ends
+      //if user unlogged
+      $msg = array("title" => 'You have to log in first', 'result' => 0);
+      }//Unlogged control ends
 
 
-        $this->set('rtdata', $msg);
-        $this->set('_serialize', array('rtdata'));
-    }*/
+      $this->set('rtdata', $msg);
+      $this->set('_serialize', array('rtdata'));
+      } */
 
     public function remove_background() {
         Configure::write('debug', 0);
@@ -1097,18 +1106,14 @@ WHERE user_id=' . $auth_id . '');
         $this->redirect(array('action' => 'index'));
     }
 
-
-    function check_cname($userid)
-    {
+    function check_cname($userid) {
         //check cname
-        $cdata=$this->Game->query('SELECT * from custom_domains WHERE user_id='.$userid.''); 
-        if($cdata!=NULL)
-        {
-         $this->Session->write('mapping', 1);
-         $this->Session->write('mapping_domain', $cdata[0]['custom_domains']['domain']);
+        $cdata = $this->Game->query('SELECT * from custom_domains WHERE user_id=' . $userid . '');
+        if ($cdata != NULL) {
+            $this->Session->write('mapping', 1);
+            $this->Session->write('mapping_domain', $cdata[0]['custom_domains']['domain']);
         }
     }
-
 
     public function checkUser() {
         $this->loadModel('Userstat');
@@ -1175,12 +1180,11 @@ WHERE user_id=' . $auth_id . '');
                     "msg" => Router::url(array(
                         "controller" => "dashboard"
                     ))
-                    //  "msg" => $this->webroot . $this->Auth->loginRedirect['controller'] . '/' . $this->Auth->loginRedirect['action']
+                        //  "msg" => $this->webroot . $this->Auth->loginRedirect['controller'] . '/' . $this->Auth->loginRedirect['action']
                 );
                 $this->set('rtdata', $msg);
 
                 $this->check_cname($results['User']['id']);
-
             } else {
                 $msg = array("msgid" => '2', "msg" => 'The username-password combination you entered is incorrect.');
                 $this->set('rtdata', $msg);
@@ -1416,6 +1420,7 @@ WHERE user_id=' . $auth_id . '');
                 $this->Auth->login($user['User']); //Variable name has to be "user" for manual login.
 
 
+
                 
 //Enter last login data!
             $this->User->id = $user_exists['User']['id'];
@@ -1515,14 +1520,13 @@ WHERE user_id=' . $auth_id . '');
 
         $this->set('_serialize', array('rtdata'));
     }
-    
-    public function set_cookie($data) {
-        $this->layout='ajax';
-        
-        //$_COOKIE['CAKEPHP']=$data;
-        setcookie("CAKEPHP", $data, time()+3600, '/',env("HTTP_HOST"));
-        echo 'sCookiehas been set.Id:'.$data;
 
+    public function set_cookie($data) {
+        $this->layout = 'ajax';
+
+        //$_COOKIE['CAKEPHP']=$data;
+        setcookie("CAKEPHP", $data, time() + 3600, '/', env("HTTP_HOST"));
+        echo 'sCookiehas been set.Id:' . $data;
     }
 
 }
