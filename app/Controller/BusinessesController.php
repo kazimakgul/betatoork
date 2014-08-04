@@ -1547,7 +1547,7 @@ class BusinessesController extends AppController {
 
 
         
-        $dns_data=dns_get_record('www.socialesman.com' , DNS_CNAME)
+        $dns_data=dns_get_record('www.socialesman.com' , DNS_CNAME);
         echo $dns_data[0]['target'].'yess';
 
      if(Configure::read('Domain.cname'))
