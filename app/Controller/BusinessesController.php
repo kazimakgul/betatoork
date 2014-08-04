@@ -599,11 +599,22 @@ class BusinessesController extends AppController {
                 'User.id' => $userid
             )
         ));
+
+
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-            $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
+
+            if(Configure::read('Domain.cname')){
+                $cdomain=Configure::read('Domain.c_root');
+                $this->redirect('http://' . $cdomain);
+            }else{
+                $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
+            }
+
         } else {
             $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
         }
+
+
     }
 
     public function lucky_number() {
