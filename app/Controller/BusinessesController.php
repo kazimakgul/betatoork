@@ -1470,16 +1470,25 @@ class BusinessesController extends AppController {
       {
         $msg = array("title" => 'This domain already exists!', 'result' => 0);
       }else{
-      $map_domain['Custom_domain']['user_id']=$authid;
-      $map_domain['Custom_domain']['domain']=$domain;
-      $map_domain['Custom_domain']['status']=1;
 
-      $this->Custom_domain->save($map_domain);
+      $dns_data=dns_get_record('www.socialesman.com' , DNS_CNAME);
+      if($dns_data[0]['target']=='domains.clone.gs'){//if domain mapped to true domain.
+           
+           $map_domain['Custom_domain']['user_id']=$authid;
+           $map_domain['Custom_domain']['domain']=$domain;
+           $map_domain['Custom_domain']['status']=1;
+           $this->Custom_domain->save($map_domain);
 
-      $this->Session->write('mapping', 1);
-      $this->Session->write('mapping_domain', $domain);
+           $this->Session->write('mapping', 1);
+           $this->Session->write('mapping_domain', $domain);
 
-      $msg = array("title" => 'Domain been added.', 'result' => 1);
+           $msg = array("title" => 'Domain been added.', 'result' => 1);
+
+      }else{
+           $msg = array("title" => 'You have to add a CNAME to domains.clone.gs!', 'result' => 0);
+      }
+
+
       }
       $this->set('rtdata', $msg);
       $this->set('_serialize', array('rtdata'));
@@ -1544,11 +1553,6 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-
-
-        
-        $dns_data=dns_get_record('www.socialesman.com' , DNS_CNAME);
-        echo $dns_data[0]['target'].'yess';
 
      if(Configure::read('Domain.cname'))
     {
