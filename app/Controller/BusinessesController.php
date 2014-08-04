@@ -1471,7 +1471,7 @@ class BusinessesController extends AppController {
         $msg = array("title" => 'This domain already exists!', 'result' => 0);
       }else{
 
-      $dns_data=dns_get_record('www.socialesman.com' , DNS_CNAME);
+      $dns_data=dns_get_record($domain, DNS_CNAME);
       if($dns_data[0]['target']=='domains.clone.gs'){//if domain mapped to true domain.
            
            $map_domain['Custom_domain']['user_id']=$authid;
