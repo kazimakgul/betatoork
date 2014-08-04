@@ -1545,6 +1545,9 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
 
+
+        print_r(dns_get_record('www.binarytides.com' , DNS_CNAME));
+
      if(Configure::read('Domain.cname'))
     {
      $cdomain=Configure::read('Domain.c_root');
