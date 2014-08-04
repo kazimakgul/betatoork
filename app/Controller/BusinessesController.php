@@ -1546,7 +1546,7 @@ class BusinessesController extends AppController {
         $authid = $this->Auth->user('id');
 
 
-        print_r(dns_get_record('http://mario.nishgame.com/' , DNS_CNAME));
+        print_r(dns_get_record('www.socialesman.com' , DNS_CNAME));
         print_r(dns_get_record('www.socialesman.com' , DNS_ALL));
         $dns_data=dns_get_record('www.socialesman.com' , DNS_ALL);
         echo $dns_data[1]['target'].'yess';
