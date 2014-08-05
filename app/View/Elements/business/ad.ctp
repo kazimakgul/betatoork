@@ -10,7 +10,7 @@ function ad_get_code(location,user_id){
 			        if(location==6){
 			        $('.game_box_pre').css("display", "block");
 			        $('.game_box').css("display", "none");
-			       	setTimeout(function() {skip_ad();}, 13000);
+			       	setTimeout(function() {skip_ad();}, 12000);
 					window.onload=Saniye;
                 	}
                 	$('#ad_code'+location).show();
