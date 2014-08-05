@@ -7,11 +7,19 @@ function ad_get_code(location,user_id){
             },
             function(data) {
                 if (data.success) {
+			        if(location==6){
+			        $('.game_box_pre').css("display", "block");
+			        $('.game_box').css("display", "none");
+			       	setTimeout(function() {skip_ad();}, 14000);
+					window.onload=Saniye;
+                	}
                 	$('#ad_code'+location).show();
                 	$('#edit'+location).show();
                     $('#ad_code'+location).html(data.success.Adcode.code);
                     $('#ad_name'+location).html(data.success.Adcode.name);
+			       //=======Gamebox Pre Ads==========
                 } else {
+                	$('.game_box_pre').css("display", "none");
                 	$('#ad_code'+location).show();
                 	<?php if($controls == NULL || isset($_GET['mode'])) {?>
                 	$('#edit'+location).css('display','none');
@@ -19,6 +27,27 @@ function ad_get_code(location,user_id){
 					<?php }?>
                 }
             }, 'json');
+}
+function skip_ad()
+{
+	$('.game_box_pre').css("display", "none");
+	$('.game_box').css("display", "block");
+}
+
+//Countdown
+var sure=10; 
+var zamanIsle;
+function Saniye() {
+document.getElementById("dl").innerHTML = 'Game is loading. Please Wait <b>' + sure + '</b> seconds.';
+sure=sure-1; 
+zamanIsle=setTimeout("Saniye()", 1000);
+Kontrol();
+}
+function Kontrol(){
+if(sure <= -1){
+document.getElementById("dl").innerHTML ='<b>Loading...</b>';
+clearTimeout(zamanIsle);
+   }
 }
 </script>
 <?php if($controls != NULL && !isset($_GET['mode'])) {?>
@@ -54,8 +83,7 @@ echo '<span class="label label-primary" id="edit'.$location.'" style="display:no
    echo $code['code']; 
  ?>
  <div style='width:100%;' > 
- 	<div id="ad_code<?php echo $location;?>" style="display:none;">
- 	</div>
+ 	<div id="ad_code<?php echo $location;?>" style="display:none;"></div>
 </div>
 </div>
 </div>

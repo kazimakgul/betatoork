@@ -1658,7 +1658,7 @@ class BusinessesController extends AppController {
 
     function get_ads_info($authid=NULL) {
         //$limit = 10;
-        $authid = $this->Auth->user('id');
+        if($authid==NULL){$authid = $this->Auth->user('id');}
 
         //======Getting all ads codes======
        	$adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
