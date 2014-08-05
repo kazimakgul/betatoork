@@ -18,6 +18,11 @@ if (isset($query)) {
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'mobiles'));
     $featured = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'featured'));
 }
+
+$sort = $this->request->params['named']['sort'];
+$direction = $this->request->params['named']['direction'];
+echo 'directions:'.$sort.$direction;
+
 ?>
 <body id="users">
 <div id="wrapper">
