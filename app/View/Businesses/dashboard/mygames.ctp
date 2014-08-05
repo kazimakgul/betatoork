@@ -60,7 +60,7 @@ if (isset($query)) {
                                 <li><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></li>
                                 <li><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></li>
                                 <li><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></li>
+                                <li><?php echo $this->Paginator->sort('Game.starsize', 'Rates', array('direction' => 'desc')) ?></li>
                             </ul>
                         </div>
                         <?php
