@@ -124,12 +124,10 @@ class BusinessesController extends AppController {
                 $this->Adcode->id = $ad_code_id;
                 $this->Adcode->save($filtered_data);
 
-
                 $category = json_decode($this->request->data['category'], true);
+				$this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id ='.$ad_code_id);
                 if (!empty($category)) {
                     foreach ($category as $value) {
-                $this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_area_id ='.$value);
-						
 					 	$filtered_data1['Ad_setting']['ad_area_id'] = $value;
                         $filtered_data1['Ad_setting']['ad_code_id'] = $ad_code_id;
 						$filtered_data1['Ad_setting']['user_id'] = $user_id;
