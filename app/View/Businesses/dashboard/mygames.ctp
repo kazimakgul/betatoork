@@ -19,9 +19,10 @@ if (isset($query)) {
     $featured = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'featured'));
 }
 
-$sort = $this->request->params['named']['sort'];
-$direction = $this->request->params['named']['direction'];
-echo 'directions:'.$sort.$direction;
+//$sort = $this->request->params['named']['sort'];
+//$direction = $this->request->params['named']['direction'];
+//echo 'directions:'.$sort.$direction;
+//print_r($this->request->params);
 
 ?>
 <body id="users">

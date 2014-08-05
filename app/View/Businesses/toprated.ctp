@@ -42,6 +42,7 @@
                         <?php
                         $sort = $this->request->params['named']['sort'];
                         $direction = $this->request->params['named']['direction'];
+                        echo $sort.$direction; 
 
                         if($sort=='playcount' && $direction=='desc')
                         {
@@ -67,6 +68,9 @@
                         }else if($sort=='name' && $direction=='desc')
                         {
                            $name = 'Z to A';
+                        }else if($sort=='recommend' && $direction=='desc')
+                        {
+                           $name = 'Hot Games';
                         }else{
                             $name = ucwords($param);
                         }
