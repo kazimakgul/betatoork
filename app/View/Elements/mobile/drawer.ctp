@@ -10,7 +10,7 @@ $newgames=$this->Html->url(array("controller" => "games", "action" => "newest"))
  $search = $this->Html->url(array("controller" => "mobiles", "action" => "search2", $user_id));
  $home = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id));
  $toprated = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:starsize/direction:desc';
- $mostplayed = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:playcount/direction:desc';
+ $mostplayed = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:Gamestat.playcount/direction:desc';
  $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:id/direction:desc'; 
 }    
 $image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));

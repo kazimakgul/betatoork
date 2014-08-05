@@ -599,11 +599,22 @@ class BusinessesController extends AppController {
                 'User.id' => $userid
             )
         ));
+
+
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-            $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
+
+            if(Configure::read('Domain.cname')){
+                $cdomain=Configure::read('Domain.c_root');
+                $this->redirect('http://' . $cdomain);
+            }else{
+                $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
+            }
+
         } else {
             $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
         }
+
+
     }
 
     public function lucky_number() {
@@ -1459,16 +1470,25 @@ class BusinessesController extends AppController {
       {
         $msg = array("title" => 'This domain already exists!', 'result' => 0);
       }else{
-      $map_domain['Custom_domain']['user_id']=$authid;
-      $map_domain['Custom_domain']['domain']=$domain;
-      $map_domain['Custom_domain']['status']=1;
 
-      $this->Custom_domain->save($map_domain);
+      $dns_data=dns_get_record($domain, DNS_CNAME);
+      if($dns_data[0]['target']=='domains.clone.gs'){//if domain mapped to true domain.
+           
+           $map_domain['Custom_domain']['user_id']=$authid;
+           $map_domain['Custom_domain']['domain']=$domain;
+           $map_domain['Custom_domain']['status']=1;
+           $this->Custom_domain->save($map_domain);
 
-      $this->Session->write('mapping', 1);
-      $this->Session->write('mapping_domain', $domain);
+           $this->Session->write('mapping', 1);
+           $this->Session->write('mapping_domain', $domain);
 
-      $msg = array("title" => 'Domain been added.', 'result' => 1);
+           $msg = array("title" => 'Domain been added.', 'result' => 1);
+
+      }else{
+           $msg = array("title" => 'You have to add a CNAME to domains.clone.gs', 'result' => 0);
+      }
+
+
       }
       $this->set('rtdata', $msg);
       $this->set('_serialize', array('rtdata'));
