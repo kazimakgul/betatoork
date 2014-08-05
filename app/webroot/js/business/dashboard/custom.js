@@ -396,7 +396,10 @@ $(document).ready(function() {
        domain=$('#mapping_domain').val();
        if(domain=='')
        {
-        Messenger().post('You have to enter a domain!');
+        Messenger().post({
+ 					  	message: 'You have to enter a domain!',
+					  	type: 'error',
+					  	showCloseButton: true});
        }else{  
     //------
         $.post(link, {domain:domain},
