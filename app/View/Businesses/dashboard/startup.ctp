@@ -141,13 +141,17 @@ if ($user['User']['picture'] == null) {
     var clone_bar = $('#progressbar_clone');
     var follow_bar = $('#progressbar_follow');
     var cloned_ids = [];
+    
     $(document).ready(function() {
+        
         var active_step = 0;
         var steps = $(".form-wizard .step");
         var buttons = steps.find("[data-step]");
         var tabs = $(".header .steps .step");
+        
         clone_bar.progressbar();
         follow_bar.progressbar();
+        
         buttons.click(function(e) {
             e.preventDefault();
             if ($('#welcome_form').valid()) {
@@ -156,22 +160,21 @@ if ($user['User']['picture'] == null) {
                 var out_fade_class = (in_fade_class === "fadeInRightStep") ? "fadeOutLeftStep" : "fadeOutRightStep";
                 var out_step = steps.eq(active_step);
                 if
-                        (
-                                (step_index == 1 && $('#welcome_form').valid())
-                                ||
-                                (step_index == 2 && clone >= 5)
-                                ||
-                                (step_index == 3 && follow >= 5)
-                                ||
-                                ($(this).attr('id') == 'back')
-                                )
+                (
+                    (step_index == 1 && $('#welcome_form').valid())
+                    ||
+                    (step_index == 2 && clone >= 5)
+                    ||
+                    (step_index == 3 && follow >= 5)
+                    ||
+                    ($(this).attr('id') == 'back')
+                )
                 {
                     //if it is last step,start to create channel
                     if (step_index == 3)
                     {
                         create_channel();
                     }
-
                     out_step.on(utils.animation_ends(), function() {
                         out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
                     }).addClass(out_fade_class);
@@ -185,18 +188,19 @@ if ($user['User']['picture'] == null) {
                 } else {
                     switch (step_index) {
                         case 2:
-                            alert('Please Clone Least 5 Games');
+                            Messenger().post('Please Clone Least 5 Games');
                             break;
                         case 3:
-                            alert('Please Follow Least 5 Channels');
+                            Messenger().post('Please Follow Least 5 Channels');
                             break;
                         default:
-                            alert('Error');
+                            Messenger().post('Error');
                     }
                 }
             }
         });
     });
+    
     function chaingame4(game_name, user_auth, game_id) {
         get_new_game(game_id);
         cloned_ids.push(game_id);
@@ -222,48 +226,34 @@ if ($user['User']['picture'] == null) {
             } else {
                 $('#progressbar_clone span').html('Great! Click Next button for next step.');
             }
-
-
-            if (game_name == 'mass_clone')
-            {
-                //Get functions begins here
-
+            if (game_name == 'mass_clone') {
                 $.ajax({
                     type: "POST",
                     url: chaingame + '/' + game_id,
                     async: true,
                     success: function(data) {
-
                         if (data == 1) {
-                            //Messenger().post("Game Cloned");
+                            Messenger().post("Game Cloned");
                             btn
-                                    .button('reset')
-                                    .html('<i class="fa fa-cog"></i> Cloned')
-                                    .removeClass('btn-warning')
-                                    .addClass('btn-default');
+                                .button('reset')
+                                .html('<i class="fa fa-cog"></i> Cloned')
+                                .removeClass('btn-warning')
+                                .addClass('btn-default');
                         } else {
                             Messenger().post("Error. Please, try again..");
                             btn.button('reset');
                         }
-
                     },
                     failure: function(errMsg) {
                         //alert(errMsg);
                     }
                 });
-
-
-                //Get functions ends here
             }
-
-
         } else {
             $('#myModal').modal('hide');
             $('#login').modal('show');
         }
     }
-
-
 
     /**
      *  New Game for Wizard Method
@@ -279,23 +269,18 @@ if ($user['User']['picture'] == null) {
         //box.removeClass('#gamebox-' + game_id);
 
         link = newstartupgame;
-        $.post(link,
-                function(data) {
-
-                    if (data.rtdata.error) {
-                        //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
-                    } else {
-                        //alert(data.rtdata.game_name);
-                        box.attr('id', 'gamebox-' + data.rtdata.game_id);
-                        btn.attr('id', 'clone-' + data.rtdata.game_id);
-                        box.html(data.rtdata.html);
-                        $('#clone-' + data.rtdata.game_id).attr('onclick', data.rtdata.onclick);
-                    }
-
-                }, 'json');
-
+        $.post(link, function(data) {
+            if (data.rtdata.error) {
+                //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
+            } else {
+                //alert(data.rtdata.game_name);
+                box.attr('id', 'gamebox-' + data.rtdata.game_id);
+                btn.attr('id', 'clone-' + data.rtdata.game_id);
+                box.html(data.rtdata.html);
+                $('#clone-' + data.rtdata.game_id).attr('onclick', data.rtdata.onclick);
+            }
+        }, 'json');
     }
-
 
     /**
      *  New Channel for Wizard Method
@@ -308,26 +293,20 @@ if ($user['User']['picture'] == null) {
         //alert(user_id);
         var box = $('#channelbox-' + user_id);
         var btn = $('#grid-follow-' + user_id);
-
         link = newstartupchannel;
-        $.post(link,
-                function(data) {
-
-                    if (data.rtdata.error) {
-                        //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
-                    } else {
-                        box.attr('id', 'channelbox-' + data.rtdata.channel_id);
-                        btn.attr('id', 'grid-follow-' + data.rtdata.channel_id);
-                        box.html(data.rtdata.html);
-                        //alert(data.rtdata.channel_id);
-                        $('#grid-follow-' + data.rtdata.channel_id).attr('onclick', data.rtdata.onclick);
-                    }
-
-                }, 'json');
+        $.post(link, function(data) {
+            if (data.rtdata.error) {
+                //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
+            } else {
+                box.attr('id', 'channelbox-' + data.rtdata.channel_id);
+                btn.attr('id', 'grid-follow-' + data.rtdata.channel_id);
+                box.html(data.rtdata.html);
+                //alert(data.rtdata.channel_id);
+                $('#grid-follow-' + data.rtdata.channel_id).attr('onclick', data.rtdata.onclick);
+            }
+        }, 'json');
 
     }
-
-
 
     function subscribe2(channel_name, user_auth, id) {
         if (user_auth == 1) {
@@ -351,56 +330,34 @@ if ($user['User']['picture'] == null) {
             } else {
                 $('#progressbar_follow span').html('Great! Click Next button for next step.');
             }             //-------
-
-
             switch_subscribe(id);
-
-
         }
     }
 
     function create_channel() {
-
         //alert(cloned_ids.join('\n'));
-
         var messages = [];
-
         messages[0] = 'Please wait...';
         messages[1] = 'Your channel is preparing...';
         messages[2] = 'Files uploading to your account...';
         messages[4] = 'Your channel has been created successfully!';
         clonecount = cloned_ids.length;
         timesleep = 2000 * clonecount;
-
-
         var mes_index = 0;
-
         $.each(cloned_ids, function(index, value) {
-
             $('.load_message').html(messages[mes_index]);
             chaingame4('mass_clone', 1, value);
             //mes_index++;
-
         });
-
-
         setTimeout(function() {
             $('.load_message').html(messages[1]);
-
             setTimeout(function() {
                 $('.load_message').html(messages[4]);
                 $('.gotochannel').show();
                 $('.load_icon').show();
                 $('#grabloader').hide();
             }, timesleep / 2);
-
         }, timesleep / 2);
-
-
-
-
     }
-
-
 </script>
 </body>
