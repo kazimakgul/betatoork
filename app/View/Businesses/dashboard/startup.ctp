@@ -188,13 +188,22 @@ if ($user['User']['picture'] == null) {
                 } else {
                     switch (step_index) {
                         case 2:
-                            Messenger().post('Please Clone Least 5 Games');
+                            Messenger().post({
+                                message: 'Please Clone Least 5 Games',
+                                type: 'error'
+                            });
                             break;
                         case 3:
-                            Messenger().post('Please Follow Least 5 Channels');
+                            Messenger().post({
+                                message: 'Please Follow Least 5 Channels',
+                                type: 'error'
+                            });
                             break;
                         default:
-                            Messenger().post('Error');
+                            Messenger().post({
+                                message: 'Error',
+                                type: 'error'
+                            });
                     }
                 }
             }
@@ -233,7 +242,6 @@ if ($user['User']['picture'] == null) {
                     async: true,
                     success: function(data) {
                         if (data == 1) {
-                            Messenger().post("Game Cloned");
                             btn
                                 .button('reset')
                                 .html('<i class="fa fa-cog"></i> Cloned')
