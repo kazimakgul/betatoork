@@ -404,13 +404,21 @@ $(document).ready(function() {
             if (data.rtdata.error) {
                 alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
             } else {
-                Messenger().post(data.rtdata.title);
+                
                  if(data.rtdata.result==1)
-                 {    
+                 {
+                 Messenger().post(data.rtdata.title);
                  $('#remove_domain').show();
                  $('#map_domain').hide();
                  $('.domain_label').html(domain);
                  $('.domain_label').attr('href','http://'+domain);
+                 }else{
+                 	var msg;
+					msg = Messenger().post({
+					  	message: data.rtdata.title,
+					  	type: 'error',
+					  	showCloseButton: true
+					});
                  }
 
             }
