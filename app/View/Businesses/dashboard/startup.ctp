@@ -7,19 +7,16 @@ if ($user['User']['picture'] == null) {
     $img = $this->Upload->image($user, 'User.picture', array(), array('class' => 'img-responsive img-circle circular1', 'onerror' => 'imgError(this,"avatar");'));
 }
 ?>
-<style>
-    #content{
-        margin-left: 0px;
-    }
-</style>
 <body id="wizard">
 <div id="wrapper">
     <div id="content">
         <div class="content-wrapper">
             <div class="header">
+                <!--
                 <div class="sidebar-toggler visible-xs">
                     <i class="ion-navicon"></i>
                 </div>
+                -->
                 <div class="steps clearfix">
                     <div class="step active">
                         Setup your channel
@@ -119,6 +116,23 @@ if ($user['User']['picture'] == null) {
     .ui-widget-content {
         border: 1px solid #5A6474 !important;
     }
+    #progressbar_clone, #progressbar_follow {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    #progressbar_clone span, #progressbar_follow span {
+        width: 100% !important;
+    }
+    #content{
+        margin-left: 0px;
+    }
+    @media (max-width: 768px) {
+        #progressbar_clone > span, #progressbar_follow > span {
+            font-size: 12px;
+            height: 29px;
+            line-height: 29px;
+        }
+    }
 </style>
 <!-- Background Change Modal ends -->
 <script type="text/javascript">
@@ -151,12 +165,12 @@ if ($user['User']['picture'] == null) {
                                 ||
                                 ($(this).attr('id') == 'back')
                                 )
-                {   
+                {
                     //if it is last step,start to create channel
-                    if(step_index == 3)
+                    if (step_index == 3)
                     {
                         create_channel();
-                    }   
+                    }
 
                     out_step.on(utils.animation_ends(), function() {
                         out_step.removeClass("fadeInRightStep fadeInLeftStep fadeOutRightStep fadeOutLeftStep");
@@ -209,37 +223,37 @@ if ($user['User']['picture'] == null) {
                 $('#progressbar_clone span').html('Great! Click Next button for next step.');
             }
 
-            
-            if(game_name=='mass_clone')
-            {
-            //Get functions begins here
-            
-            $.ajax({
-        type: "POST",
-        url: chaingame+'/'+game_id,
-        async: true,
-        success: function(data){
-        
-        if (data == 1) {
-                    //Messenger().post("Game Cloned");
-                    btn
-                            .button('reset')
-                            .html('<i class="fa fa-cog"></i> Cloned')
-                            .removeClass('btn-warning')
-                            .addClass('btn-default');
-                } else {
-                    Messenger().post("Error. Please, try again..");
-                    btn.button('reset');
-                }
-            
-            },
-        failure: function(errMsg) {
-            //alert(errMsg);
-        }
-  });
-            
 
-            //Get functions ends here
+            if (game_name == 'mass_clone')
+            {
+                //Get functions begins here
+
+                $.ajax({
+                    type: "POST",
+                    url: chaingame + '/' + game_id,
+                    async: true,
+                    success: function(data) {
+
+                        if (data == 1) {
+                            //Messenger().post("Game Cloned");
+                            btn
+                                    .button('reset')
+                                    .html('<i class="fa fa-cog"></i> Cloned')
+                                    .removeClass('btn-warning')
+                                    .addClass('btn-default');
+                        } else {
+                            Messenger().post("Error. Please, try again..");
+                            btn.button('reset');
+                        }
+
+                    },
+                    failure: function(errMsg) {
+                        //alert(errMsg);
+                    }
+                });
+
+
+                //Get functions ends here
             }
 
 
@@ -340,52 +354,52 @@ if ($user['User']['picture'] == null) {
 
 
             switch_subscribe(id);
-            
+
 
         }
     }
 
     function create_channel() {
-    
-       //alert(cloned_ids.join('\n'));
 
-       var messages=[];
-           
-           messages[0]='Please wait...';
-           messages[1]='Your channel is preparing...';
-           messages[2]='Files uploading to your account...';
-           messages[4]='Your channel has been created successfully!';
-           clonecount=cloned_ids.length;
-           timesleep=2000*clonecount;
+        //alert(cloned_ids.join('\n'));
+
+        var messages = [];
+
+        messages[0] = 'Please wait...';
+        messages[1] = 'Your channel is preparing...';
+        messages[2] = 'Files uploading to your account...';
+        messages[4] = 'Your channel has been created successfully!';
+        clonecount = cloned_ids.length;
+        timesleep = 2000 * clonecount;
 
 
-           var mes_index=0;
+        var mes_index = 0;
 
-       $.each(cloned_ids, function( index, value ) {
-       
-                $('.load_message').html(messages[mes_index]);
-                chaingame4('mass_clone',1, value);        
-                //mes_index++;
+        $.each(cloned_ids, function(index, value) {
 
-       });
-       
-       
-       setTimeout(function(){
-        $('.load_message').html(messages[1]);
+            $('.load_message').html(messages[mes_index]);
+            chaingame4('mass_clone', 1, value);
+            //mes_index++;
 
-           setTimeout(function(){
-           $('.load_message').html(messages[4]);
-           $('.gotochannel').show();
-           $('.load_icon').show();
-           $('#grabloader').hide();
-           },timesleep/2);
+        });
 
-        },timesleep/2);
-       
 
-       
+        setTimeout(function() {
+            $('.load_message').html(messages[1]);
 
-    }    
+            setTimeout(function() {
+                $('.load_message').html(messages[4]);
+                $('.gotochannel').show();
+                $('.load_icon').show();
+                $('#grabloader').hide();
+            }, timesleep / 2);
+
+        }, timesleep / 2);
+
+
+
+
+    }
 
 
 </script>
