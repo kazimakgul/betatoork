@@ -6,7 +6,6 @@ $height=$game['Game']['height'];
 $link=$game['Game']['link'];
 ?>
 
-<div class='game_box' style="margin:0 auto; text-align: center; font-family:Verdana, Geneva, sans-serif; color:#000; font-size:5px;">
 <?php 
 
 if($game['Game']['embed']!=NULL)
@@ -33,4 +32,3 @@ if($game['Game']['embed']!=NULL)
 
 
 ?>
-</div>

@@ -46,7 +46,9 @@
                         <!--Game Box pre -> Ads ends-->
                     	</div>
                         <!--Game Box begins-->
+						<div class='game_box' style="margin:0 auto; text-align: center; font-family:Verdana, Geneva, sans-serif; color:#000; font-size:5px;">
                         <?php echo $this->element('business/games/game-inc'); ?>
+                       </div>
                         <!--Game Box ends-->
                         <div class="col-sm-12 col-md-12" style="margin-top: 15px">
                             <div class='pull-left'>	
