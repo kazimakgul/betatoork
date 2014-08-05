@@ -10,7 +10,7 @@ function ad_get_code(location,user_id){
 			        if(location==6){
 			        $('.game_box_pre').css("display", "block");
 			        $('.game_box').css("display", "none");
-			       	setTimeout(function() {skip_ad();}, 14000);
+			       	setTimeout(function() {skip_ad();}, 13000);
 					window.onload=Saniye;
                 	}
                 	$('#ad_code'+location).show();
@@ -19,7 +19,7 @@ function ad_get_code(location,user_id){
                     $('#ad_name'+location).html(data.success.Adcode.name);
 			       //=======Gamebox Pre Ads==========
                 } else {
-                	$('.game_box_pre').css("display", "none");
+                	//$('.game_box_pre').css("display", "none");
                 	$('#ad_code'+location).show();
                 	<?php if($controls == NULL || isset($_GET['mode'])) {?>
                 	$('#edit'+location).css('display','none');
