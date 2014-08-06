@@ -249,6 +249,7 @@ class UsersController extends AppController {
 
     public function logout() {
         $this->Cookie->delete('User');
+        $this->Cookie->delete('remember_me');
         $this->Session->destroy();
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
             if ($this->Session->read('mapping')) {
@@ -1170,9 +1171,27 @@ WHERE user_id=' . $auth_id . '');
         } else if ($attr == "txt_logusername") {
             $this->request->data['User']['username'] = $this->request->data['un'];
             $this->request->data['User']['password'] = $this->request->data['ps'];
-            if ($this->Auth->login() == true) {
-                $results = $this->User->find('first', array('conditions' => array('OR' => array('User.email' => $this->request->data['User']['username'], 'User.username' => $this->request->data['User']['username'])), array('fields' => array('User.active', 'User.id'))));
-
+            $this->request->data['User']['remember'] = $this->request->data['rm'];
+            if ($this->Auth->login()) {
+                if ($this->request->data['User']['remember'] == 1) {
+                    unset($this->request->data['User']['remember']);
+                    $this->request->data['User']['password'] = $this->Auth->password($this->request->data['User']['password']);
+                    $this->Cookie->write('remember_me', $this->request->data['User'], true, '2 weeks');
+                }
+                $results = $this->User->find('first', array(
+                    'conditions' => array(
+                        'OR' => array(
+                            'User.email' => $this->request->data['User']['username'],
+                            'User.username' => $this->request->data['User']['username']
+                        )
+                    ),
+                    array(
+                        'fields' => array(
+                            'User.active',
+                            'User.id'
+                        )
+                    )
+                ));
                 $this->User->id = $results['User']['id'];
                 $this->User->saveField('last_login', date('Y-m-d H:i:s'));
                 $msg = array(
@@ -1180,7 +1199,7 @@ WHERE user_id=' . $auth_id . '');
                     "msg" => Router::url(array(
                         "controller" => "dashboard"
                     ))
-                        //  "msg" => $this->webroot . $this->Auth->loginRedirect['controller'] . '/' . $this->Auth->loginRedirect['action']
+                    //  "msg" => $this->webroot . $this->Auth->loginRedirect['controller'] . '/' . $this->Auth->loginRedirect['action']
                 );
                 $this->set('rtdata', $msg);
 
@@ -1418,6 +1437,7 @@ WHERE user_id=' . $auth_id . '');
             $user = $this->User->find('first', array('conditions' => array('User.facebook_id' => $facebook_id)));
             if ($user != NULL)
                 $this->Auth->login($user['User']); //Variable name has to be "user" for manual login.
+
 
 
 

@@ -590,6 +590,7 @@ class BusinessesController extends AppController {
     public function logout() {
         $userid = $this->Session->read('Auth.User.id');
         $this->Cookie->delete('User');
+        $this->Cookie->delete('remember_me');
         $this->Session->destroy();
 
         $user = $this->User->find('first', array(

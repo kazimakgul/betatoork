@@ -216,17 +216,20 @@ $(document).ready(function() {
         }, 'json');
 
     });
-
-
-//*********/Forget Password Function********
+    
+    /**
+     * Login Function
+     */
     $('#t_gatekeeper_login_btn').click(function(e) {
         e.preventDefault();
+        alert('hello');
         var btn = $(this);
         btn.button('loading');
-        $.post(remotecheck,
-                {un: $('#txt_signusername').val(), ps: $('#txt_signpass').val(), attr: 'txt_logusername'},
-        function(data) {
-            //  console.log(data);
+        var attr = 'txt_logusername';
+        var un = $('#txt_signusername').val();
+        var ps = $('#txt_signpass').val();
+        var rm = $('#txt_signremember:checked').length > 0 ? 1 : 0;
+        $.post(remotecheck, {attr: attr, un: un, ps: ps, rm: rm}, function(data) {
             if (data.rtdata.msgid == '0') {
                 $('#errormsg_Passwd').html(data.rtdata.msg);
                 $('#errormsg_Passwd').show();
@@ -238,10 +241,10 @@ $(document).ready(function() {
                 if (host.match('/test/')) {
                     window.location.href = window.location.protocol + '//test.' + domain + '/dashboard';
                 } else {
-                    if(cname==1){   
-                    location.reload();
-                    }else{ 
-                    window.location.href = window.location.protocol + '//' + domain + '/dashboard';
+                    if (cname == 1) {
+                        location.reload();
+                    } else {
+                        window.location.href = window.location.protocol + '//' + domain + '/dashboard';
                     }
                 }
             }
@@ -254,16 +257,18 @@ $(document).ready(function() {
     });
 
 
-   function readCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ')
+                c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0)
+                return c.substring(nameEQ.length, c.length);
         }
+        return null;
+    }
 
 
     //***************************************************
