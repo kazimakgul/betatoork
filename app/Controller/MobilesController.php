@@ -35,42 +35,39 @@ class MobilesController extends AppController {
         //There is no any action!
     }
 
-    public function index($userid=NULL) {
+    /**
+     * Oyunları listeliyor.
+     * 
+     * @param integer $userid
+     * @author Emircan OK
+     */
+    public function index($userid = NULL) {
         $this->layout = 'Mobile/mobile';
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-        
-
-     if(Configure::read('Domain.cname'))
-     {
-     $cdomain=Configure::read('Domain.c_root');
-    
-     if ($userid == NULL) {
-
-            $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
-            $c_userid = $user_data[0]['custom_domains']['user_id'];
-            $userid = $c_userid;
+        if (Configure::read('Domain.cname')) {
+            $cdomain = Configure::read('Domain.c_root');
+            if ($userid == NULL) {
+                $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+                $c_userid = $user_data[0]['custom_domains']['user_id'];
+                $userid = $c_userid;
+            }
+        } else {//Cname not exists. 
+            if ($userid == NULL) {
+                $subdomain = Configure::read('Domain.subdomain');
+                $user_data = $this->User->find('first', array(
+                    'contain' => false,
+                    'conditions' => array(
+                        'User.seo_username' => $subdomain
+                    ),
+                    'fields' => array(
+                        'User.id'
+                    )
+                ));
+                $userid = $user_data['User']['id'];
+            }
         }
-
-    }else{//Cname not exists. 
-
-        if ($userid == NULL) {
-            $subdomain = Configure::read('Domain.subdomain');
-            $user_data = $this->User->find('first', array(
-                'contain' => false,
-                'conditions' => array(
-                    'User.seo_username' => $subdomain
-                ),
-                'fields' => array(
-                    'User.id'
-                )
-            ));
-            $userid = $user_data['User']['id'];
-        }
-    }
-
-        //This line gets user selected channel styles
         $this->get_style_settings($userid);
         $user = $this->User->find('first', array(
             'conditions' => array(
@@ -141,51 +138,48 @@ class MobilesController extends AppController {
         $this->set('games', $cond);
     }
 
+    /**
+     * Oyun sayfası
+     * 
+     * @param integer $id
+     * @author Emircan OK
+     */
     public function play($id = NULL) {
         $this->layout = 'Mobile/mobile';
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-        
-
-    if(Configure::read('Domain.cname')){
-
-             $cdomain=Configure::read('Domain.c_root');
-             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
-             $userid = $user_data[0]['custom_domains']['user_id'];
-             $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
-             $game = $this->Game->find('first', array('conditions' => array( 'Game.seo_url' => $id, 'Game.user_id' => $user['User']['id'] ), 'fields' => array( 'Game.id' ),'contain' => false));
-             $id = $game['Game']['id'];
-    }else{//if it is not cname
-
-        if (!is_numeric($id)) {
-            $subdomain = Configure::read('Domain.subdomain');
-            $user = $this->User->find('first', array(
-                'conditions' => array(
-                    'User.seo_username' => $subdomain
-                ),
-                'fields' => array(
-                    'User.id'
-                ),
-                'contain' => false
-            ));
-            $game = $this->Game->find('first', array(
-                'conditions' => array(
-                    'Game.seo_url' => $id,
-                    'Game.user_id' => $user['User']['id']
-                ),
-                'fields' => array(
-                    'Game.id'
-                )
-            ));
+        if (Configure::read('Domain.cname')) {
+            $cdomain = Configure::read('Domain.c_root');
+            $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+            $userid = $user_data[0]['custom_domains']['user_id'];
+            $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
+            $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('Game.id'), 'contain' => false));
             $id = $game['Game']['id'];
+        } else {//if it is not cname
+            if (!is_numeric($id)) {
+                $subdomain = Configure::read('Domain.subdomain');
+                $user = $this->User->find('first', array(
+                    'conditions' => array(
+                        'User.seo_username' => $subdomain
+                    ),
+                    'fields' => array(
+                        'User.id'
+                    ),
+                    'contain' => false
+                ));
+                $game = $this->Game->find('first', array(
+                    'conditions' => array(
+                        'Game.seo_url' => $id,
+                        'Game.user_id' => $user['User']['id']
+                    ),
+                    'fields' => array(
+                        'Game.id'
+                    )
+                ));
+                $id = $game['Game']['id'];
+            }
         }
-
-    }
-
-
-
-
         $game = $this->Game->find('first', array(
             'conditions' => array(
                 'Game.id' => $id
@@ -268,7 +262,6 @@ class MobilesController extends AppController {
         if (!empty($user['User']['gplus_link'])) {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
-        
         $this->set('game', $game);
         $this->set('game_link', $game['Game']['link']);
         $this->set('user', $user);
@@ -280,6 +273,12 @@ class MobilesController extends AppController {
         $this->set('picture', $user['User']['picture']);
     }
 
+    /**
+     * Arama sayfası
+     * 
+     * @param integer $userid
+     * @author Emircan OK
+     */
     public function search2($userid) {
         $this->layout = 'Mobile/mobile';
         if ($this->request->is("GET") && isset($this->request->query['srch-term'])) {
