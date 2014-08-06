@@ -36,11 +36,24 @@ $allgames = $params['count'];
                                 </span>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li><?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Gamestat.rate_count', 'Rates', array('direction' => 'desc')) ?></li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Userstat.subscribeto', 'Followers', array('direction' => 'desc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Userstat.subscribe', 'Following', array('direction' => 'desc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Userstat.uploadcount', 'Games', array('direction' => 'desc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('User.id', 'New Channels', array('direction' => 'desc')) ?>
+                                </li>
+                                <li>
+                                    <?php echo $this->Paginator->sort('Userstat.potential', 'Recommended', array('direction' => 'desc')) ?>
+                                </li>
                             </ul>
                         </div>
                         <?php
