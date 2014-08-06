@@ -7,7 +7,11 @@
     if ($this->Session->read('Auth.User.id') == $user['User']['id']) {
         $controls = $user['User']['id'];
     }
+
+
     echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>4 ));
+
+
     $game_id = $game['Game']['id'];
     $gamename = $game['Game']['name'];
     $description = $game['Game']['description'];
@@ -23,10 +27,13 @@
         $next_game = $this->Html->url(array('controller' => 'businesses', 'action' => 'play', h($next_game['Game']['id'])));
     }
     ?>
+
     <script>
         game_id = '<?= $game_id ?>';
         rateurl = '<?php echo $this->Html->url(array('controller' => 'rates', 'action' => 'add')); ?>';
     </script>
+
+
     <div class="col-sm-12">
         <div class="well well-sm">
             <h6 class="media-heading">
@@ -39,12 +46,16 @@
             <div class="col-xs-12">
                 <div class="panel panel-primary">
                     <div class="panel-body">
-                    	<div class="game_box_pre" style="display:none;">
+                    	
+                        <div class="game_box_pre" style="display:none;">
                     	<div id="dl"></div> <a class="label label-warning" style="cursor: pointer;" onclick="skip_ad();">× Skip</a>
+                        
                         <!--Game Box pre -> Ads begins-->
 						<?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>6 )); ?>
                         <!--Game Box pre -> Ads ends-->
+
                     	</div>
+                        
                         <!--Game Box begins-->
 						<div class='game_box' style="margin:0 auto; text-align: center; font-family:Verdana, Geneva, sans-serif; color:#000; font-size:5px;">
                         <?php echo $this->element('business/games/game-inc'); ?>

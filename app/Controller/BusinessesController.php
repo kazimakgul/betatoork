@@ -433,6 +433,12 @@ class BusinessesController extends AppController {
 		$this->set('_serialize', array('success'));
 	}
 
+    function get_ads_code($user_id,$location)
+    {
+      $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location,'Ad_setting.user_id'=>$user_id), 'order' => 'rand()'));
+      return $code;
+    }
+
 
     /**
      * Edit Set Ads Function

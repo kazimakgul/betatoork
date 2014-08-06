@@ -58,7 +58,7 @@ clearTimeout(zamanIsle);
 
 <?php 
 $ads_code = $this->requestAction(array('controller' => 'businesses', 'action' => 'get_ads_code',$user_id,$location));
-//echo $ads_code['Adcode']['code'];
+echo $ads_code['Adcode']['code'];
 ?>
 
 <?php if($controls != NULL && !isset($_GET['mode'])) {?>
@@ -67,43 +67,37 @@ $ads_code = $this->requestAction(array('controller' => 'businesses', 'action' =>
 <div align="center" class="col-sm-offset-1 well well-sm">
 
 
+<?php
+   if(!empty($code['code'])){echo $code['code'];} 
+ ?>
  <div style='width:100%;' > 
-  	<div id="ad_code<?php echo $location;?>">
+  	<div id="ad_code<?php echo $location;?>" style="display:none;">
  		
- 		<?php if(!empty($ads_code)){
-         echo $ads_code['Adcode']['code'];
-         echo '<br><span class="label label-primary" id="edit'.$location.'" ><i id="ad_name'.$location.'">'.$ads_code['Adcode']['name'].'</i>
-<a data-toggle="modal" onclick="set_id_create('.$location.');" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;">Edit</a>
-</span>';
-         }else{ ?>
-         You did no set any advertisement code.Your users won't see this panel.
-         <a data-toggle="modal"  onclick="set_id_create(<?php echo $location;?>);" data-target="#adsChange"  href="#" title="Change Ads Code"  class="btn btn-sm btn-default adsChangeBtn">
-         <span class="fa fa-pencil"></span>Add Code</a>
-        <?php } ?>
+ 		You did no set any advertisement code.Your users won't see this panel.
+<a data-toggle="modal"  onclick="set_id_create(<?php echo $location;?>);" data-target="#adsChange"  href="#" title="Change Ads Code"  class="btn btn-sm btn-default adsChangeBtn">
+	<span class="fa fa-pencil"></span>Add Code</a>
  		
  	</div>
-
-</div>
-
+<?php 
+echo '<span class="label label-primary" id="edit'.$location.'" style="display:none;"><i id="ad_name'.$location.'"></i>
+<a data-toggle="modal" onclick="set_id_create('.$location.');" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;">Edit</a>
+</span>'; ?></div>
 </div>
 </div>
 <?php }else{
 ?>
 
-
-<?php if(!empty($ads_code)){ ?>
 <!-- Add Unit -->
 <div class="col-xs-11" id="add<?php echo $location;?>">
 <div align="center" class="col-sm-offset-1 well well-sm">
-
+<?php
+   echo $code['code']; 
+ ?>
  <div style='width:100%;' > 
- 	<div id="ad_code<?php echo $location;?>" ><?php echo $ads_code['Adcode']['code']; ?></div>
+ 	<div id="ad_code<?php echo $location;?>" style="display:none;"></div>
 </div>
 </div>
 </div>
-<?php } ?>
-
-
 <?php	
 }
 ?>
