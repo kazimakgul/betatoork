@@ -29,7 +29,7 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 	                            </th>
 	                            <th tabindex="0" rowspan="1" colspan="1">Name
 	                            </th>
-	                            <th tabindex="0" rowspan="1" colspan="1">Code
+	                            <th tabindex="0" rowspan="1" class="hidden-xs" colspan="1">Code
 	                            </th>
 	                            <th tabindex="0" rowspan="1" colspan="1">Status
 	                            </th>
@@ -54,7 +54,7 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 	                            <td>
 	                            	'.$adcode["Adcode"]["name"].'
 	                            </td>
-	                            <td><textarea cols="50" disabled readonly style="max-width:350px; max-height:100px;border: none;">'.$adcode["Adcode"]["code"].'</textarea></td>
+	                            <td class="hidden-xs"><textarea cols="50" disabled readonly style="max-width:350px; max-height:100px;border: none;">'.$adcode["Adcode"]["code"].'</textarea></td>
 	                            <td>
 	                            '.$adsStatus.'
 	                            </td>

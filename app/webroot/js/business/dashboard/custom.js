@@ -723,7 +723,7 @@ $(function() {
     $('#datatable-ads').dataTable({
         "sPaginationType": "full_numbers",
         "iDisplayLength": 5,
-        "aLengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]]
+        "aLengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
     });
 
     // Bulk actions checkboxes

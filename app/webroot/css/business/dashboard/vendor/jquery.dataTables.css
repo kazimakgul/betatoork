@@ -6,7 +6,7 @@ table.dataTable {
 	margin: 0 auto;
 	clear: both;
 	width: 100%;
-	margin-bottom: 35px;
+	margin-bottom: 15px;
 }
 
 table.dataTable thead th {
@@ -111,7 +111,7 @@ table.dataTable tr.even td.sorting_3 { background-color: #FAFBFD; }
  * Pagination
  */
 .dataTables_paginate {
-	float: right;
+	/*float: right;*/
 	text-align: right;
 }
 
