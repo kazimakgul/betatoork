@@ -77,10 +77,8 @@ if (isset($query)) {
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
-                <?php echo $this->element('business/dashboard/exploregames/grid') ?>
-                <?php echo $this->element('business/dashboard/exploregames/list') ?>
-            </div>
+            <?php echo $this->element('business/dashboard/exploregames/list'); ?>
+            <?php echo $this->element('business/dashboard/exploregames/grid'); ?>
         </div>
     </div>
 </div>
