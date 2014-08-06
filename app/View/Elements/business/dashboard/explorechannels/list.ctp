@@ -33,7 +33,6 @@
             ?>
             <div class="row user">
                 <div class="col-sm-2 followcolumn">
-                    <!-- Follow button -->
                     <?php if ($followstatus != 1) { ?>
                         <a id="list-follow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
                                 switchfollow(<?php echo $userid; ?>);">
@@ -56,8 +55,7 @@
                             <i class="fa fa-plus-circle"></i>
                             Follow
                         </a>
-                    <?php } ?> 
-                    <!-- Follow button end -->
+                    <?php } ?>
                 </div>
                 <div class="col-sm-1 avatar">
                     <a href="<?php echo $userlink ?>" target="_blank">

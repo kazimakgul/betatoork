@@ -23,22 +23,10 @@ $allgames = $params['count'];
                 <input type="text" name="q" placeholder="Search channels, users..." />
                 <input type="submit" />
             </form>
-            <!--
-            <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">
-                <span>Add Game</span>
-            </a>
-            -->
         </div>
         <div class="content-wrapper">
             <div class="row page-controls">
                 <div class="col-md-12 filters">
-                    <!--
-                    <label>Filter Games:</label>
-                    <a href="#" class="active">All Games (<?php echo $allgames ?>)</a>
-                    <a href="#">Published (32)</a>
-                    <a href="#">Suspended (6)</a>
-                    <a href="#">Draft (1)</a>
-                    -->
                     <div class="show-options">
                         <div class="dropdown">
                             <a class="button" data-toggle="dropdown" href="#">

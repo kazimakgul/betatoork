@@ -84,7 +84,6 @@ if (isset($query)) {
 </div>
 <style>
     <?php
-
     if (isset($view) && $view === 'list') {
         echo '#users #content .content-wrapper .users-grid { display: none; }';
     } else {
