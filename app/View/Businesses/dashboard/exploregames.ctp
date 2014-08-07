@@ -6,6 +6,14 @@ switch ($activefilter) {
     case 1:
         $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search", "filter" => "mobiles"));
         break;
+    case 3:
+        $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search", "filter" => "fullscreen"));
+        break;
+    case 4:
+        $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search", "filter" => "embed"));
+        break;
+	default:
+		$search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search"));
 }
 $game_add = $this->Html->url(array("controller" => "businesses", "action" => "game_add"));
 $explore = $this->Html->url(array("controller" => "businesses", "action" => "exploregames"));
@@ -15,7 +23,9 @@ if (isset($query)) {
 } else {
     $all = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames'));
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'mobiles'));
-}
+    $fullscreen = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'fullscreen'));
+    $embed = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'embed'));
+    }
 ?>
 <body id="users">
 <div id="wrapper">
@@ -45,6 +55,8 @@ if (isset($query)) {
                     <label>Filter Games:</label>
                     <a href="<?php echo $all; ?>" <?php echo $activefilter === 0 ? 'class="active"' : ''; ?>>All Games</a>
                     <a href="<?php echo $mobile; ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games</a>
+                    <a href="<?php echo $fullscreen; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Fullscreen Games</a>
+                    <a href="<?php echo $embed; ?>" <?php echo $activefilter === 3 ? 'class="active"' : ''; ?>>Embed Games</a>
                     <div class="show-options">
                         <div class="dropdown">
                             <a class="button" data-toggle="dropdown" href="#">

@@ -776,8 +776,6 @@ class BusinessesController extends AppController {
     public function dashboard() {
 
         $this->layout = 'Business/dashboard';
-
-
         if ($this->Cookie->read('tutorial')) {
             echo '<script>location.href="dashboard/welcome"</script>';
         }
@@ -796,7 +794,6 @@ class BusinessesController extends AppController {
             $this->set_cname($mapping, $mapping_domain);
         }
         //----------------------
-
 
         $limit = 6;
         $this->paginate = array(
@@ -2369,11 +2366,28 @@ class BusinessesController extends AppController {
                 'limit' => $limit
             )
         );
-        $activefilter = 0;
-        if ($filter === 'mobiles') {
+        
+		switch ($filter) {
+		case 'mobiles':
             $activefilter = 1;
             $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
-        }
+		    break;
+		case 'fullscreen':
+            $activefilter = 2;
+            $this->paginate['Game']['conditions']['Game.fullscreen'] = 1;
+		    break;
+		case 'embed':
+            $activefilter = 3;
+            $this->paginate['Game']['conditions']['NOT']['Game.embed'] = NULL;
+		    break;
+		default:
+			$activefilter = 0;
+		}
+
+        /*if ($filter === 'mobiles') {
+            $activefilter = 1;
+            $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+        }*/
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
         $this->set('userid', $this->Auth->user('id'));
