@@ -99,24 +99,29 @@ if (isset($query)) {
                             ?>
                             <a href="#" data-grid=".users-list" class="grid-view"><i class="fa fa-th-list"></i></a>
                             <a href="#" data-grid=".users-grid" class="grid-view active"><i class="fa fa-th"></i></a>
-                            <?php
-                        }
-                        ?>
+                                <?php
+                            }
+                            ?>
                     </div>
                 </div>
             </div>
-            <?php echo $this->element('business/dashboard/exploregames/list'); ?>
-            <?php echo $this->element('business/dashboard/exploregames/grid'); ?>
+            <?php
+            foreach ($games as $key => $value) {
+                $games[$key]['clonestatus'] = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($value['User']['id'], $value['Game']['id']));
+            }
+            echo $this->element('business/dashboard/exploregames/list', array('games' => $games));
+            echo $this->element('business/dashboard/exploregames/grid', array('games' => $games));
+            ?>
         </div>
     </div>
 </div>
 <style>
-    <?php
-    if (isset($view) && $view === 'list') {
-        echo '#users #content .content-wrapper .users-grid { display: none; }';
-    } else {
-        echo '#users #content .content-wrapper .users-list { display: none; }';
-    }
-    ?>
+<?php
+if (isset($view) && $view === 'list') {
+    echo '#users #content .content-wrapper .users-grid { display: none; }';
+} else {
+    echo '#users #content .content-wrapper .users-list { display: none; }';
+}
+?>
 </style>
 </body>
