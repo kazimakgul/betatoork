@@ -10,7 +10,7 @@ App::uses('AppController', 'Controller');
 class BusinessesController extends AppController {
 
     public $name = 'Businesses';
-    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode','Ad_area');
+    var $uses = array('Businesses', 'Game', 'User', 'Favorite', 'Subscription', 'Playcount', 'Rate', 'Userstat', 'Gamestat', 'Category', 'Activity', 'Cloneship', 'CakeEmail', 'Network/Email', 'Ad_setting', 'Adcode', 'Ad_area');
     public $helpers = array('Html', 'Form', 'Upload', 'Recaptcha.Recaptcha', 'Time');
     public $components = array('Amazonsdk.Amazon', 'Recaptcha.Recaptcha', 'Common');
 
@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search','edit_set_ads','remove_ads_field','add_mapping','remove_mapping'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search', 'edit_set_ads', 'remove_ads_field', 'add_mapping', 'remove_mapping'))) {
             return true;
         }
 
@@ -83,7 +83,7 @@ class BusinessesController extends AppController {
                 $gender = $this->request->data['gender'];
                 $time = $this->request->data['time'];
                 $cont = $this->request->data['cont'];
-				
+
                 $this->User->query('UPDATE users SET gender="' . $gender . '", birth_date="' . $time . '", country_id="' . $cont . '" WHERE id=' . $user_id);
                 $this->set('success', "Profile Settings Updated.");
                 $this->set('_serialize', array('success'));
@@ -118,20 +118,20 @@ class BusinessesController extends AppController {
                 $this->set('success', "Channel Settings Updated.");
                 $this->set('_serialize', array('success'));
             } elseif ($attr == "edit_ads") {
-            	$ad_code_id = $this->request->data['ad_id'];
+                $ad_code_id = $this->request->data['ad_id'];
                 $filtered_data['Adcode']['name'] = $this->request->data['title'];
                 $filtered_data['Adcode']['code'] = $this->request->data['desc'];
                 $this->Adcode->id = $ad_code_id;
                 $this->Adcode->save($filtered_data);
 
                 $category = json_decode($this->request->data['category'], true);
-				$this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id ='.$ad_code_id);
+                $this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id =' . $ad_code_id);
                 if (!empty($category)) {
                     foreach ($category as $value) {
-					 	$filtered_data1['Ad_setting']['ad_area_id'] = $value;
+                        $filtered_data1['Ad_setting']['ad_area_id'] = $value;
                         $filtered_data1['Ad_setting']['ad_code_id'] = $ad_code_id;
-						$filtered_data1['Ad_setting']['user_id'] = $user_id;
-						$this->Ad_setting->create(); //looplarda unutma
+                        $filtered_data1['Ad_setting']['user_id'] = $user_id;
+                        $this->Ad_setting->create(); //looplarda unutma
                         $this->Ad_setting->save($filtered_data1);
                     }
                 }
@@ -236,12 +236,12 @@ class BusinessesController extends AppController {
                 $this->Adcode->save($filtered_data);
                 $category = json_decode($this->request->data['category'], true);
                 if (!empty($category)) {
-                $last_id = $this->Adcode->getLastInsertID();
-					
+                    $last_id = $this->Adcode->getLastInsertID();
+
                     foreach ($category as $value) {
-						$this->Ad_setting->Query('Delete FROM ad_settings WHERE ad_area_id="' . $value . '" AND user_id="'.$user_id.'"');	
+                        $this->Ad_setting->Query('Delete FROM ad_settings WHERE ad_area_id="' . $value . '" AND user_id="' . $user_id . '"');
                         $this->Ad_setting->Query('INSERT INTO ad_settings (ad_area_id,ad_code_id,user_id,skip) VALUES (' . $value . ',' . $last_id . ',' . $user_id . ',0)');
-					}
+                    }
                 }
                 $this->set('success', "Ads Code Added");
                 $this->set('_serialize', array('success'));
@@ -406,18 +406,16 @@ class BusinessesController extends AppController {
         Configure::write('debug', 0);
         $area_id = $this->request->data['target_ad_area'];
         if ($auth_id = $this->Auth->user('id')) {//Auth Control Begins
-        $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="' . $auth_id . '"');
-		 $msg = array("title" => 'Success', 'result' => 1);
-        }
-		else {//Auth Control Ends	
+            $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="' . $auth_id . '"');
+            $msg = array("title" => 'Success', 'result' => 1);
+        } else {//Auth Control Ends	
             //if user unlogged
             $msg = array("title" => 'You have to log in first', 'result' => 0);
         }//Unlogged control ends
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
-    }	
-	
-	
+    }
+
     /**
      * col_ads method
      *
@@ -425,20 +423,18 @@ class BusinessesController extends AppController {
      * @return ad code data 
      */
     function col_ads() {
-    	$user_id = $this->request->data['user_id'];
-		$location = $this->request->data['location'];
-		
-		$code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location,'Ad_setting.user_id'=>$user_id), 'order' => 'rand()'));
-		$this->set('success', $code);
-		$this->set('_serialize', array('success'));
-	}
+        $user_id = $this->request->data['user_id'];
+        $location = $this->request->data['location'];
 
-    function get_ads_code($user_id,$location)
-    {
-      $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location,'Ad_setting.user_id'=>$user_id), 'order' => 'rand()'));
-      return $code;
+        $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location, 'Ad_setting.user_id' => $user_id), 'order' => 'rand()'));
+        $this->set('success', $code);
+        $this->set('_serialize', array('success'));
     }
 
+    function get_ads_code($user_id, $location) {
+        $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location, 'Ad_setting.user_id' => $user_id), 'order' => 'rand()'));
+        return $code;
+    }
 
     /**
      * Edit Set Ads Function
@@ -448,19 +444,18 @@ class BusinessesController extends AppController {
      * @author Volkan Celiloğlu
      */
     public function edit_set_ads() {
-        $code_id =$this->request->data['code_id'];
-		$area_id =$this->request->data['set_id'];
-		$user_id =$this->Session->read('Auth.User.id');
-		
-		$this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="'.$user_id.'"');
-		$filtered_data['Ad_setting']['ad_code_id'] = $code_id;
+        $code_id = $this->request->data['code_id'];
+        $area_id = $this->request->data['set_id'];
+        $user_id = $this->Session->read('Auth.User.id');
+
+        $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="' . $user_id . '"');
+        $filtered_data['Ad_setting']['ad_code_id'] = $code_id;
         $filtered_data['Ad_setting']['user_id'] = $user_id;
         $filtered_data['Ad_setting']['ad_area_id'] = $area_id;
-        if($this->Ad_setting->save($filtered_data))
-		{
-			$this->set('success', "Success");
-			$this->set('_serialize', array('success'));
-		}
+        if ($this->Ad_setting->save($filtered_data)) {
+            $this->set('success', "Success");
+            $this->set('_serialize', array('success'));
+        }
     }
 
     /**
@@ -522,7 +517,7 @@ class BusinessesController extends AppController {
             if ($attr == "edit_ads") {
                 $id = $this->request->data['id'];
                 $this->Adcode->query('DELETE FROM adcodes WHERE id=' . $id . ' AND user_id=' . $user_id);
-            	$this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id ='.$id);
+                $this->Ad_setting->Query('DELETE FROM ad_settings WHERE user_id=' . $user_id . ' AND ad_code_id =' . $id);
                 $this->set('success', "Ads Code Deleted");
                 $this->set('_serialize', array('success'));
             } elseif ($attr == "edit_game") {
@@ -608,18 +603,15 @@ class BusinessesController extends AppController {
 
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
 
-            if(Configure::read('Domain.cname')){
-                $cdomain=Configure::read('Domain.c_root');
+            if (Configure::read('Domain.cname')) {
+                $cdomain = Configure::read('Domain.c_root');
                 $this->redirect('http://' . $cdomain);
-            }else{
+            } else {
                 $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
             }
-
         } else {
             $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
         }
-
-
     }
 
     public function lucky_number() {
@@ -791,20 +783,19 @@ class BusinessesController extends AppController {
         }
         $this->sideBar();
 
-       //$this->cookie_with_curl();
+        //$this->cookie_with_curl();
 
-       $userid = $this->Session->read('Auth.User.id');
-    
-       //----------------------
-       //Set Cname if it exists
-       //----------------------
-       if($this->Session->read('mapping'))
-       {
-       $mapping=$this->Session->read('mapping');
-       $mapping_domain=$this->Session->read('mapping_domain');
-       $this->set_cname($mapping,$mapping_domain);
-       }
-       //----------------------
+        $userid = $this->Session->read('Auth.User.id');
+
+        //----------------------
+        //Set Cname if it exists
+        //----------------------
+        if ($this->Session->read('mapping')) {
+            $mapping = $this->Session->read('mapping');
+            $mapping_domain = $this->Session->read('mapping_domain');
+            $this->set_cname($mapping, $mapping_domain);
+        }
+        //----------------------
 
 
         $limit = 6;
@@ -855,8 +846,6 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/index');
     }
-
-
 
     /**
      * Gets one new game for wizard
@@ -1127,7 +1116,6 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/game_add');
     }
 
-    
     /**
      * Author:Ogi
      * Create a cookie for login
@@ -1135,8 +1123,7 @@ class BusinessesController extends AppController {
      * @param 
      * @return Null
      */
-    public function cookie_with_curl()
-    {
+    public function cookie_with_curl() {
         //Important curl documentations
         //http://codular.com/curl-with-php
         //http://stackoverflow.com/questions/4254645/how-to-make-https-post-request-in-cakephp
@@ -1144,26 +1131,22 @@ class BusinessesController extends AppController {
         //http://localhost/betatoork226/users/set_cookie/5563333
         //http://www.codediesel.com/tools/6-essential-curl-commands/
         //Etkili Çözümler:http://stackoverflow.com/questions/6761415/how-to-set-a-cookie-for-another-domain
-
-      // Get cURL resource
-      $curl = curl_init();
-      // Set some options - we are passing in a useragent too here
-      curl_setopt_array($curl, array(
-      CURLOPT_RETURNTRANSFER => 1,
-      CURLOPT_URL => 'http://localhost/betatoork226/users/set_cookie/1111',
-      CURLOPT_USERAGENT => 'Cookie Creator',
-      CURLOPT_HEADER=>0//Header bilgisini döndürür.
-      ));
-      // Send the request & save response to $resp
-      $resp = curl_exec($curl);
-      // Close request to clear up some resources
-      curl_close($curl);
-      print_r($resp);
-      break;
- 
+        // Get cURL resource
+        $curl = curl_init();
+        // Set some options - we are passing in a useragent too here
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => 'http://localhost/betatoork226/users/set_cookie/1111',
+            CURLOPT_USERAGENT => 'Cookie Creator',
+            CURLOPT_HEADER => 0//Header bilgisini döndürür.
+        ));
+        // Send the request & save response to $resp
+        $resp = curl_exec($curl);
+        // Close request to clear up some resources
+        curl_close($curl);
+        print_r($resp);
+        break;
     }
-
-
 
     /**
      * Game edit method
@@ -1375,11 +1358,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/ads_management');
     }
-	
-	
-	
-	
-	
+
     /** Ads Add method
      *
      * @param 
@@ -1390,7 +1369,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $Ad_area = $this->Ad_area->find('all',array('fields'=>array('Ad_area.id,Ad_area.name')));
+        $Ad_area = $this->Ad_area->find('all', array('fields' => array('Ad_area.id,Ad_area.name')));
         $this->set('ad_area', $Ad_area);
         $this->set('title_for_layout', 'Clone Business Add ads');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
@@ -1409,14 +1388,14 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        
+
         $adcodes = $this->Adcode->find('first', array('conditions' => array('Adcode.id' => $id), 'contain' => false));
         $Ad_setting = $this->Ad_setting->find('all', array(
-        		'conditions'	=> array('Ad_setting.user_id' => $userid, 'Ad_setting.ad_code_id'=>$id),
-        		'contain'		=> array('Ad_area'),
-        		'fields'		=> array('Ad_setting.ad_code_id,Ad_setting.ad_area_id,Ad_area.name')));
+            'conditions' => array('Ad_setting.user_id' => $userid, 'Ad_setting.ad_code_id' => $id),
+            'contain' => array('Ad_area'),
+            'fields' => array('Ad_setting.ad_code_id,Ad_setting.ad_area_id,Ad_area.name')));
 
-        $Ad_area = $this->Ad_area->find('all',array('fields'=>array('Ad_area.id,Ad_area.name')));
+        $Ad_area = $this->Ad_area->find('all', array('fields' => array('Ad_area.id,Ad_area.name')));
         $this->set('ad_area', $Ad_area);
 
         $this->set('Ads', $adcodes);
@@ -1426,8 +1405,6 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/edit_ads');
     }
-
-
 
     /** Notifications method
      *
@@ -1456,74 +1433,64 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/notifications');
     }
 
-
-
-     /** add_mapping method
+    /** add_mapping method
      *
      * @param 
      * @return Channel_Settings Page
      * @author Ogi
      */
     public function add_mapping() {
-      Configure::write('debug', 0);
-      $this->loadModel('Custom_domain');
-      $authid = $this->Auth->user('id');
-      $domain=$this->request->data['domain'];
+        Configure::write('debug', 0);
+        $this->loadModel('Custom_domain');
+        $authid = $this->Auth->user('id');
+        $domain = $this->request->data['domain'];
 
-      $mapping_data=$this->Custom_domain->find('first',array('contain'=>false,'conditions'=>array('Custom_domain.domain'=>$domain),'fields'=>array('Custom_domain.id')));
-      if($mapping_data!=NULL)
-      {
-        $msg = array("title" => 'This domain already exists!', 'result' => 0);
-      }else{
+        $mapping_data = $this->Custom_domain->find('first', array('contain' => false, 'conditions' => array('Custom_domain.domain' => $domain), 'fields' => array('Custom_domain.id')));
+        if ($mapping_data != NULL) {
+            $msg = array("title" => 'This domain already exists!', 'result' => 0);
+        } else {
 
-      $dns_data=dns_get_record($domain, DNS_CNAME);
-      if($dns_data[0]['target']=='domains.clone.gs'){//if domain mapped to true domain.
-           
-           $map_domain['Custom_domain']['user_id']=$authid;
-           $map_domain['Custom_domain']['domain']=$domain;
-           $map_domain['Custom_domain']['status']=1;
-           $this->Custom_domain->save($map_domain);
+            $dns_data = dns_get_record($domain, DNS_CNAME);
+            if ($dns_data[0]['target'] == 'domains.clone.gs') {//if domain mapped to true domain.
+                $map_domain['Custom_domain']['user_id'] = $authid;
+                $map_domain['Custom_domain']['domain'] = $domain;
+                $map_domain['Custom_domain']['status'] = 1;
+                $this->Custom_domain->save($map_domain);
 
-           $this->Session->write('mapping', 1);
-           $this->Session->write('mapping_domain', $domain);
+                $this->Session->write('mapping', 1);
+                $this->Session->write('mapping_domain', $domain);
 
-           $msg = array("title" => 'Domain been added.', 'result' => 1);
-
-      }else{
-           $msg = array("title" => 'You have to add a CNAME to domains.clone.gs', 'result' => 0);
-      }
-
-
-      }
-      $this->set('rtdata', $msg);
-      $this->set('_serialize', array('rtdata'));
+                $msg = array("title" => 'Domain been added.', 'result' => 1);
+            } else {
+                $msg = array("title" => 'You have to add a CNAME to domains.clone.gs', 'result' => 0);
+            }
+        }
+        $this->set('rtdata', $msg);
+        $this->set('_serialize', array('rtdata'));
     }
 
-
-     /** remove_mapping method
+    /** remove_mapping method
      *
      * @param 
      * @return Channel_Settings Page
      * @author Ogi
      */
     public function remove_mapping() {
-      Configure::write('debug', 0);  
-      $this->loadModel('Custom_domain');
-      $authid = $this->Auth->user('id');
+        Configure::write('debug', 0);
+        $this->loadModel('Custom_domain');
+        $authid = $this->Auth->user('id');
 
-      $mapping_data=$this->Custom_domain->find('first',array('contain'=>false,'conditions'=>array('Custom_domain.user_id'=>$authid),'fields'=>array('Custom_domain.id')));
-      $this->Custom_domain->id=$mapping_data['Custom_domain']['id'];
-      $this->Custom_domain->delete();
+        $mapping_data = $this->Custom_domain->find('first', array('contain' => false, 'conditions' => array('Custom_domain.user_id' => $authid), 'fields' => array('Custom_domain.id')));
+        $this->Custom_domain->id = $mapping_data['Custom_domain']['id'];
+        $this->Custom_domain->delete();
 
-      $this->Session->delete('mapping');
-      $this->Session->delete('mapping_domain');
+        $this->Session->delete('mapping');
+        $this->Session->delete('mapping_domain');
 
-      $msg = array("title" => 'Domain been removed.', 'result' => 1);
-      $this->set('rtdata', $msg);
-      $this->set('_serialize', array('rtdata'));    
-    }     
-
-
+        $msg = array("title" => 'Domain been removed.', 'result' => 1);
+        $this->set('rtdata', $msg);
+        $this->set('_serialize', array('rtdata'));
+    }
 
     /** Channel_Settings method
      *
@@ -1538,9 +1505,9 @@ class BusinessesController extends AppController {
         $countries = $this->User->Country->find('list');
 
         $authid = $this->Auth->user('id');
-        $mapping_data=$this->Custom_domain->find('first',array('conditions'=>array('Custom_domain.user_id'=>$authid,'Custom_domain.status'=>1),'fields'=>array('Custom_domain.domain')));
-        if($mapping_data!=NULL)
-        $this->set('mapping_domain',$mapping_data['Custom_domain']['domain']);
+        $mapping_data = $this->Custom_domain->find('first', array('conditions' => array('Custom_domain.user_id' => $authid, 'Custom_domain.status' => 1), 'fields' => array('Custom_domain.domain')));
+        if ($mapping_data != NULL)
+            $this->set('mapping_domain', $mapping_data['Custom_domain']['domain']);
 
         $this->set(compact('countries'));
         $this->set('title_for_layout', 'Clone Business Channel Settings');
@@ -1559,47 +1526,41 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
 
-     if(Configure::read('Domain.cname'))
-    {
-     $cdomain=Configure::read('Domain.c_root');
-    
-     if ($userid == NULL) {
+        if (Configure::read('Domain.cname')) {
+            $cdomain = Configure::read('Domain.c_root');
 
-            $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
-            $userid = $user_data[0]['custom_domains']['user_id'];
+            if ($userid == NULL) {
+
+                $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+                $userid = $user_data[0]['custom_domains']['user_id'];
+            }
+        } else {//Cname not exists. 
+            if ($userid == NULL) {
+                $subdomain = Configure::read('Domain.subdomain');
+
+                //This conditions render special view for domains.clone.gs Gives information about how to map a domain.
+                if ($subdomain == 'domains') {
+                    //$this->layout="ajax";//You can choose which layout do you want to use!
+                    //$this->render('/Businesses/howtomap');
+                    echo 'great';
+                    break;
+                }
+
+                $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
+                $userid = $user_data['User']['id'];
+            }
         }
-
-    }else{//Cname not exists. 
-
-        if ($userid == NULL) {
-            $subdomain = Configure::read('Domain.subdomain');
-
-            //This conditions render special view for domains.clone.gs Gives information about how to map a domain.
-            if($subdomain=='domains')
-            {
-                //$this->layout="ajax";//You can choose which layout do you want to use!
-                //$this->render('/Businesses/howtomap');
-                echo 'great';break;
-            }    
-
-            $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
-            $userid = $user_data['User']['id'];
-        }
-    }
 
 
         //----------------------
-       //Set Cname if it exists
-       //----------------------
-       if($this->Session->read('mapping'))
-       {
-       $mapping=$this->Session->read('mapping');
-       $mapping_domain='clone.gs';
-       $this->set_cname($mapping,$mapping_domain);
-       }
-       //----------------------
-
-
+        //Set Cname if it exists
+        //----------------------
+        if ($this->Session->read('mapping')) {
+            $mapping = $this->Session->read('mapping');
+            $mapping_domain = 'clone.gs';
+            $this->set_cname($mapping, $mapping_domain);
+        }
+        //----------------------
         //subdomain actions
         //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
         //echo 'sundimain:'.$this->request->host();
@@ -1661,39 +1622,41 @@ class BusinessesController extends AppController {
         }
     }
 
-    function get_ads_info($authid=NULL) {
+    function get_ads_info($authid = NULL) {
         //$limit = 10;
-        if($authid==NULL){$authid = $this->Auth->user('id');}
+        if ($authid == NULL) {
+            $authid = $this->Auth->user('id');
+        }
 
         //======Getting all ads codes======
-       	$adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
-        
+        $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
+
         $Ad_setting = $this->Ad_setting->find('all', array(
-        'conditions' => array('Ad_setting.user_id' => $authid), 
-        'fields' => array('Ad_setting.ad_code_id'), 
-		'contain' => array('Ad_area' => array('fields' => array('Ad_area.name'))),
-		)); //Recoded
-		
-		$this->set('adsettings', $Ad_setting);
-		$this->set('adcodes', $adcodes);
-	}
+            'conditions' => array('Ad_setting.user_id' => $authid),
+            'fields' => array('Ad_setting.ad_code_id'),
+            'contain' => array('Ad_area' => array('fields' => array('Ad_area.name'))),
+        )); //Recoded
 
-/*
-    function get_ads_info($userid = NULL, $authid = NULL) {
-        //======Getting ads datas======
-        $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
-        $this->set('addata', $addata);
+        $this->set('adsettings', $Ad_setting);
+        $this->set('adcodes', $adcodes);
+    }
 
-        if ($authid == $userid) {
-            //======Getting all ads codes======
-            $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
-            $this->set('adcodes', $adcodes);
-            $this->set('channel_owner', 1);
-        }
-        if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
-            $this->set('channel_owner', 0);
-        }
-    }*/
+    /*
+      function get_ads_info($userid = NULL, $authid = NULL) {
+      //======Getting ads datas======
+      $addata = $this->Ad_setting->find('all', array('contain' => array('homeBannerTop', 'homeBannerMiddle', 'homeBannerBottom'), 'conditions' => array('Ad_setting.user_id' => $userid)));
+      $this->set('addata', $addata);
+
+      if ($authid == $userid) {
+      //======Getting all ads codes======
+      $adcodes = $this->Adcode->find('all', array('conditions' => array('Adcode.user_id' => $authid)));
+      $this->set('adcodes', $adcodes);
+      $this->set('channel_owner', 1);
+      }
+      if (isset($_GET['mode']) && $_GET['mode'] == 'visitor') {
+      $this->set('channel_owner', 0);
+      }
+      } */
 
     /**
      * Search method
@@ -1763,16 +1726,14 @@ class BusinessesController extends AppController {
      */
     public function play($id = NULL) {
 
-       
-       if(Configure::read('Domain.cname'))
-       {
-             $cdomain=Configure::read('Domain.c_root');
-             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
-             $userid = $user_data[0]['custom_domains']['user_id'];
-             $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
-             $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.id' => $user['User']['id'])), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
-        }else{//if it is not cname
 
+        if (Configure::read('Domain.cname')) {
+            $cdomain = Configure::read('Domain.c_root');
+            $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+            $userid = $user_data[0]['custom_domains']['user_id'];
+            $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
+            $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.id' => $user['User']['id'])), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        } else {//if it is not cname
             if (!is_numeric($id)) {
                 $subdomain = Configure::read('Domain.subdomain');
                 $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
@@ -1781,7 +1742,6 @@ class BusinessesController extends AppController {
                 $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
                 $user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']), 'fields' => array('*')));
             }
-
         }
 
 
@@ -1860,34 +1820,31 @@ class BusinessesController extends AppController {
         //$user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
 
 
-      if(Configure::read('Domain.cname'))
-       {
-             $cdomain=Configure::read('Domain.c_root');
-             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
-             $c_userid = $user_data[0]['custom_domains']['user_id'];
-             $category_name = $userid;
-             $user = $this->User->find('first', array('conditions' => array('User.id' => $c_userid), 'fields' => array('*'), 'contain' => array('Userstat')));
-             $cat_data = $this->Category->find('first', array('contain' => false, 'conditions' => array('Category.name' => $category_name), 'fields' => array('Category.id')));
-             $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $user['User']['id'], 'Game.category_id' => $cat_data['Category']['id']), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
-             $userid = $user['User']['id'];
-        }else{//if cname not exists
+        if (Configure::read('Domain.cname')) {
+            $cdomain = Configure::read('Domain.c_root');
+            $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+            $c_userid = $user_data[0]['custom_domains']['user_id'];
+            $category_name = $userid;
+            $user = $this->User->find('first', array('conditions' => array('User.id' => $c_userid), 'fields' => array('*'), 'contain' => array('Userstat')));
+            $cat_data = $this->Category->find('first', array('contain' => false, 'conditions' => array('Category.name' => $category_name), 'fields' => array('Category.id')));
+            $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $user['User']['id'], 'Game.category_id' => $cat_data['Category']['id']), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+            $userid = $user['User']['id'];
+        } else {//if cname not exists
+            if (!is_numeric($userid)) {
 
-             if (!is_numeric($userid)) {
+                $category_name = $userid;
+                $subdomain = Configure::read('Domain.subdomain');
+                $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*'), 'contain' => array('Userstat')));
 
-                 $category_name = $userid;
-                 $subdomain = Configure::read('Domain.subdomain');
-                 $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('*'), 'contain' => array('Userstat')));
+                $cat_data = $this->Category->find('first', array('contain' => false, 'conditions' => array('Category.name' => $category_name), 'fields' => array('Category.id')));
 
-                 $cat_data = $this->Category->find('first', array('contain' => false, 'conditions' => array('Category.name' => $category_name), 'fields' => array('Category.id')));
+                $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $user['User']['id'], 'Game.category_id' => $cat_data['Category']['id']), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+                $userid = $user['User']['id'];
+            } else {
 
-                 $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $user['User']['id'], 'Game.category_id' => $cat_data['Category']['id']), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
-                 $userid = $user['User']['id'];
-             } else {
-
-                 $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*'), 'contain' => array('Userstat')));
-                 $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.category_id' => $categoryid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
-             }
-        
+                $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*'), 'contain' => array('Userstat')));
+                $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.category_id' => $categoryid), 'limit' => $PaginateLimit, 'order' => array('Game.recommend' => 'desc'), 'contain' => array('Category' => array('fields' => array('Category.name')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+            }
         }
 
 
@@ -1943,37 +1900,34 @@ class BusinessesController extends AppController {
         }
 
 
-      if(Configure::read('Domain.cname'))
-       {
-             $cdomain=Configure::read('Domain.c_root');
-             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
-             $c_userid = $user_data[0]['custom_domains']['user_id'];
-             $user = $this->User->find('first', array('conditions' => array( 'User.id' => $c_userid), 'fields' => array( '*' ) ));
-             $userid = $user['User']['id'];
-        }else{//if it is not cname
-
-
-             if (!is_numeric($userid)) {
-                 $subdomain = Configure::read('Domain.subdomain');
-                 $user = $this->User->find('first', array('conditions' => array(
-                         'User.seo_username' => $subdomain
-                     ),
-                     'fields' => array(
-                         '*'
-                     )
-                 ));
-                 $userid = $user['User']['id'];
-             } else {
-                 $user = $this->User->find('first', array(
-                     'conditions' => array(
-                         'User.id' => $userid
-                     ),
-                     'fields' => array(
-                         '*'
-                     )
-                 ));
-             }
-        }     
+        if (Configure::read('Domain.cname')) {
+            $cdomain = Configure::read('Domain.c_root');
+            $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+            $c_userid = $user_data[0]['custom_domains']['user_id'];
+            $user = $this->User->find('first', array('conditions' => array('User.id' => $c_userid), 'fields' => array('*')));
+            $userid = $user['User']['id'];
+        } else {//if it is not cname
+            if (!is_numeric($userid)) {
+                $subdomain = Configure::read('Domain.subdomain');
+                $user = $this->User->find('first', array('conditions' => array(
+                        'User.seo_username' => $subdomain
+                    ),
+                    'fields' => array(
+                        '*'
+                    )
+                ));
+                $userid = $user['User']['id'];
+            } else {
+                $user = $this->User->find('first', array(
+                    'conditions' => array(
+                        'User.id' => $userid
+                    ),
+                    'fields' => array(
+                        '*'
+                    )
+                ));
+            }
+        }
 
 
 
@@ -2053,37 +2007,34 @@ class BusinessesController extends AppController {
             $this->request->params['named']['direction'] = $this->request->params['direction'];
         }
 
-        
-       if(Configure::read('Domain.cname'))
-       {
-             $cdomain=Configure::read('Domain.c_root');
-             $user_data=$this->Game->query('SELECT * from custom_domains WHERE domain ="'.$cdomain.'"');
-             $c_userid = $user_data[0]['custom_domains']['user_id'];
-             $user = $this->User->find('first', array('conditions' => array('User.id' => $c_userid), 'fields' => array( '*' ) ));
-             $userid = $user['User']['id'];
-        }else{//if cname not exists
 
-
-             if (!is_numeric($userid)) {
-                 $subdomain = Configure::read('Domain.subdomain');
-                 $user = $this->User->find('first', array('conditions' => array(
-                         'User.seo_username' => $subdomain
-                     ),
-                     'fields' => array(
-                         '*'
-                     )
-                 ));
-                 $userid = $user['User']['id'];
-             } else {
-                 $user = $this->User->find('first', array(
-                     'conditions' => array(
-                         'User.id' => $userid
-                     ),
-                     'fields' => array(
-                         '*'
-                     )
-                 ));
-             }
+        if (Configure::read('Domain.cname')) {
+            $cdomain = Configure::read('Domain.c_root');
+            $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+            $c_userid = $user_data[0]['custom_domains']['user_id'];
+            $user = $this->User->find('first', array('conditions' => array('User.id' => $c_userid), 'fields' => array('*')));
+            $userid = $user['User']['id'];
+        } else {//if cname not exists
+            if (!is_numeric($userid)) {
+                $subdomain = Configure::read('Domain.subdomain');
+                $user = $this->User->find('first', array('conditions' => array(
+                        'User.seo_username' => $subdomain
+                    ),
+                    'fields' => array(
+                        '*'
+                    )
+                ));
+                $userid = $user['User']['id'];
+            } else {
+                $user = $this->User->find('first', array(
+                    'conditions' => array(
+                        'User.id' => $userid
+                    ),
+                    'fields' => array(
+                        '*'
+                    )
+                ));
+            }
         }
 
 
@@ -2387,10 +2338,22 @@ class BusinessesController extends AppController {
                     'Game.clone',
                     'Game.created'
                 ),
-                'limit' => $limit,
                 'contain' => array(
-                    'User'=>array('fields'=>array('User.seo_username','User.verify','User.username','User.picture')),
-                    'Gamestat'=>array('fields'=>array('Gamestat.playcount','Gamestat.favcount','Gamestat.channelclone'))
+                    'User' => array(
+                        'fields' => array(
+                            'User.seo_username',
+                            'User.verify',
+                            'User.username',
+                            'User.picture'
+                        )
+                    ),
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount',
+                            'Gamestat.favcount',
+                            'Gamestat.channelclone'
+                        )
+                    )
                 ),
                 'conditions' => array(
                     'NOT' => array(
@@ -2399,8 +2362,11 @@ class BusinessesController extends AppController {
                     'Game.clone' => 0
                 ),
                 'order' => array(
-                    'Game.id' => 'DESC'
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
                 ),
+                'limit' => $limit
             )
         );
         $activefilter = 0;
@@ -2431,13 +2397,34 @@ class BusinessesController extends AppController {
         $this->paginate = array(
             'Game' => array(
                 'fields' => array(
-                    '*'
+                    'Game.name',
+                    'Game.seo_url',
+                    'Game.id',
+                    'Game.fullscreen',
+                    'Game.picture',
+                    'Game.starsize',
+                    'Game.rate_count',
+                    'Game.embed',
+                    'Game.featured',
+                    'Game.clone',
+                    'Game.created'
                 ),
-                'limit' => $limit,
-                'order' => array(
-                    'Game.clone' => 'ASC',
-                    'Game.priority' => 'DESC',
-                    'Gamestat.potential' => 'DESC'
+                'contain' => array(
+                    'User' => array(
+                        'fields' => array(
+                            'User.seo_username',
+                            'User.verify',
+                            'User.username',
+                            'User.picture'
+                        )
+                    ),
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount',
+                            'Gamestat.favcount',
+                            'Gamestat.channelclone'
+                        )
+                    )
                 ),
                 'conditions' => array(
                     'OR' => array(
@@ -2448,8 +2435,15 @@ class BusinessesController extends AppController {
                     ),
                     'NOT' => array(
                         'Game.priority' => NULL
-                    )
-                )
+                    ),
+                    'Game.clone' => 0
+                ),
+                'order' => array(
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
+                ),
+                'limit' => $limit
             )
         );
         $activefilter = 0;
@@ -2465,7 +2459,7 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/exploregames');
     }
-    
+
     public function exploregames_sorting($field, $target) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
@@ -2550,8 +2544,8 @@ class BusinessesController extends AppController {
         print_r($data);
         exit;
         $cond = $this->paginate($data);
-        /*print_r($cond);
-        exit;*/
+        /* print_r($cond);
+          exit; */
         $this->set('games', $cond);
         $this->set('activefilter', $activefilter);
         $this->set('title_for_layout', 'Clone Business Explore Games');
