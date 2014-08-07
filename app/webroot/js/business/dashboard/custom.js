@@ -1239,7 +1239,7 @@ $('#fav_button').click(function() {
 function switch_favorite(game_id)
 {
     $.get(favswitcher + '/' + game_id, function(data) {
-        var button = $('#fav-' + game_id);
+        var button = $('.fav-' + game_id);
         if (data == 0) {
             /*
             button

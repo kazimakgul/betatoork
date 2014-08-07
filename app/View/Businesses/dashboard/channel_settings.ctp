@@ -41,8 +41,8 @@ $go_support = 	$this->Html->url(array('controller' => 'businesses', 'action' => 
                                   </div>
                                  
                                   <div id="map_domain" <?php if(isset($mapping_domain)){echo 'style="display:none;"';} ?>>
-                                  <input type="text" class="form-control valid" name="mapping_domain" id="mapping_domain" value="" style=" width: 150px;display: inline; ">
-                                  <a class="btn btn-default add_mapping" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain</a>
+                                  <input type="text" class="form-control valid" name="mapping_domain" id="mapping_domain" value="" style=" width: 250px;display: inline; ">
+                                  <a class="btn btn-default add_mapping" style="vertical-align: top;" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain</a>
                                   </div>
                                   
 				</p>

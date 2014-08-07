@@ -53,12 +53,7 @@
                         <!-- Favorite Button -->
                         <div class="favourite">
                             <div class="widget-button">
-                                <!-- <button type="button" class="btn btn-default" id="fav-<?php echo $game['Game']['id']; ?>" onclick="favorite('<?php echo $game['Game']['name']; ?>', user_auth, <?php echo $game['Game']['id']; ?>);"><li class="fa fa-heart <?php
-                                if (isset($ownuser[0]['favorites']['id'])) {
-                                    echo 'red';
-                                }
-                                ?>"></li> UnFavorite <span class="label label-info" id="fav_count"><?= $game['Gamestat']['favcount']; ?></span></button> -->
-                                <button type="button" class="btn btn-danger" id="fav-<?php echo $game['Game']['id']; ?>" onclick="favorite('<?php echo $game['Game']['name']; ?>', user_auth, <?php echo $game['Game']['id']; ?>);"><li class="fa fa-heart <?php
+                                <button type="button" class="btn btn-danger fav-<?php echo $game['Game']['id']; ?>" onclick="favorite('<?php echo $game['Game']['name']; ?>', user_auth, <?php echo $game['Game']['id']; ?>);"><li class="fa fa-heart <?php
                                     if (isset($ownuser[0]['favorites']['id'])) {
                                         echo 'red';
                                     }
