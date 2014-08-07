@@ -1,24 +1,22 @@
 $(function() {
 
     //==========Login Register Functions=============
-    $('#t_gatekeeper_login_btn').click(function() {
-
-        tlogin2();
+    $('#t_gatekeeper_login_btn').click(function(e) {
+        tlogin2(e);
     });
 
-    function tlogin2() {
+    function tlogin2(e) {
+        e.preventDefault();
+        $('#grabloader').show();
         var attr = 'txt_logusername';
         var un = $('#txt_signusername').val();
         var ps = $('#txt_signpass').val();
         var rm = $('#txt_signremember:checked').length > 0 ? 1 : 0;
         $.post(remotecheck, {attr: attr, un: un, ps: ps, rm: rm}, function(data) {
-            if (data.rtdata.msgid == '0') {
-                $('#errormsg_Passwd').html(data.rtdata.msg);
-                $('#errormsg_Passwd').show();
-            } else if (data.rtdata.msgid == '1') {
-                $('#grabloader').css("display", "block");
+            if (data.rtdata.msgid == '1') {
                 window.location = data.rtdata.msg;
             } else {
+                $('#grabloader').hide();
                 $('#errormsg_Passwd').html(data.rtdata.msg);
                 $('#errormsg_Passwd').show();
             }
