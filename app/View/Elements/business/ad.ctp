@@ -1,11 +1,23 @@
 
 <?php 
-
-if($pregame==1)
-    //echo '<script>$(".fake_game_box").css("display", "block");</script>';
- ?>
+$ads_code = $this->requestAction(array('controller' => 'businesses', 'action' => 'get_ads_code',$user_id,$location));
+//echo $ads_code['Adcode']['code'];
+?>
 
 <script>
+window.onload = hide_gamebox();
+
+<?php if($pregame==1 && !empty($ads_code)){ ?>
+function hide_gamebox(){
+                    
+                    
+                    $('.game_box_pre').css("display", "block");
+                    $('.game_box').css("display", "none");
+                    setTimeout(function() {skip_ad();}, 10000);
+                    Saniye();
+                    
+}
+<?php } ?>
 
 function skip_ad()
 {
@@ -18,7 +30,6 @@ var sure=10;
 var zamanIsle;
 function Saniye() {
 document.getElementById("dl").innerHTML = 'Game is loading. Please Wait <b>' + sure + '</b> seconds.';
-document.getElementById("game_box").style.display = "none";
 sure=sure-1; 
 zamanIsle=setTimeout("Saniye()", 1000);
 Kontrol();
@@ -31,10 +42,6 @@ clearTimeout(zamanIsle);
 }
 </script>
 
-<?php 
-$ads_code = $this->requestAction(array('controller' => 'businesses', 'action' => 'get_ads_code',$user_id,$location));
-//echo $ads_code['Adcode']['code'];
-?>
 
 <?php if($controls != NULL && !isset($_GET['mode'])) {?>
 <!-- Add Unit -->
