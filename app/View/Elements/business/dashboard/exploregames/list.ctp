@@ -40,9 +40,9 @@
             <div class="row user">
                 <div class="col-sm-1 followcolumn">
                     <?php if ($clonestatus == TRUE) { ?>
-                        <button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>);" class="btn btn-default" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog"></i> Cloned</button>
+                        <button onclick="chaingame3('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>);" class="btn btn-default clone-<?php echo $game['Game']['id']; ?>" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog"></i> Cloned</button>
                     <?php } else { ?>
-                        <button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>);" class="btn btn-success" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog"></i> Clone</button>
+                        <button onclick="chaingame3('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>);" class="btn btn-success clone-<?php echo $game['Game']['id']; ?>" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog"></i> Clone</button>
                     <?php } ?>
                 </div>
                 <div class="col-sm-2 avatar">

@@ -390,60 +390,60 @@ $(document).ready(function() {
 
     });
 
-   
-    $('.add_mapping').click(function() {
-    link=add_mapping;
-       domain=$('#mapping_domain').val();
-       if(domain=='')
-       {
-        Messenger().post({
- 					  	message: 'You have to enter a domain!',
-					  	type: 'error',
-					  	showCloseButton: true});
-       }else{  
-    //------
-        $.post(link, {domain:domain},
-        function(data) {
-            if (data.rtdata.error) {
-                alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
-            } else {
-                
-                 if(data.rtdata.result==1)
-                 {
-                 Messenger().post(data.rtdata.title);
-                 $('#remove_domain').show();
-                 $('#map_domain').hide();
-                 $('.domain_label').html(domain);
-                 $('.domain_label').attr('href','http://'+domain);
-                 }else{
-                 	var msg;
-					msg = Messenger().post({
-					  	message: data.rtdata.title,
-					  	type: 'error',
-					  	showCloseButton: true
-					});
-                 }
 
-            }
-        }, 'json');
-        //------ 
-           }  
+    $('.add_mapping').click(function() {
+        link = add_mapping;
+        domain = $('#mapping_domain').val();
+        if (domain == '')
+        {
+            Messenger().post({
+                message: 'You have to enter a domain!',
+                type: 'error',
+                showCloseButton: true});
+        } else {
+            //------
+            $.post(link, {domain: domain},
+            function(data) {
+                if (data.rtdata.error) {
+                    alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
+                } else {
+
+                    if (data.rtdata.result == 1)
+                    {
+                        Messenger().post(data.rtdata.title);
+                        $('#remove_domain').show();
+                        $('#map_domain').hide();
+                        $('.domain_label').html(domain);
+                        $('.domain_label').attr('href', 'http://' + domain);
+                    } else {
+                        var msg;
+                        msg = Messenger().post({
+                            message: data.rtdata.title,
+                            type: 'error',
+                            showCloseButton: true
+                        });
+                    }
+
+                }
+            }, 'json');
+            //------ 
+        }
     });
 
     $('.remove_mapping').click(function() {
-    link=remove_mapping;
-    //------
+        link = remove_mapping;
+        //------
         $.post(link, {},
-        function(data) {
-            if (data.rtdata.error) {
-                alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
-            } else {
-                //Messenger().post(data.rtdata.success);
-                Messenger().post(data.rtdata.title);
-                $('#remove_domain').hide();
-                $('#map_domain').show();
-            }
-        }, 'json');
+                function(data) {
+                    if (data.rtdata.error) {
+                        alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
+                    } else {
+                        //Messenger().post(data.rtdata.success);
+                        Messenger().post(data.rtdata.title);
+                        $('#remove_domain').hide();
+                        $('#map_domain').show();
+                    }
+                }, 'json');
         //------ 
     });
 
@@ -1242,36 +1242,36 @@ function switch_favorite(game_id)
         var button = $('.fav-' + game_id);
         if (data == 0) {
             /*
-            button
-                    .removeClass('btn-default')
-                    .addClass('btn-danger');
-            */
+             button
+             .removeClass('btn-default')
+             .addClass('btn-danger');
+             */
             button
                     .removeClass('btn-danger')
                     .addClass('btn-default');
             Messenger()
                     .post("Game Unfavorited");
             /*
-            button
-                    .html('<i class="fa fa-heart "></i> Favorite');
-            */
+             button
+             .html('<i class="fa fa-heart "></i> Favorite');
+             */
             button
                     .html('<i class="fa fa-heart "></i> UnFavorite');
         } else {
             /*
-            $("#fav-" + game_id)
-                    .removeClass('btn-danger')
-                    .addClass('btn-default');
-            */
+             $("#fav-" + game_id)
+             .removeClass('btn-danger')
+             .addClass('btn-default');
+             */
             button
                     .removeClass('btn-default')
                     .addClass('btn-danger');
             Messenger()
                     .post("Game Favorited");
             /*
-            button
-                    .html('<i class="fa fa-heart "></i> Unfavorite');
-            */
+             button
+             .html('<i class="fa fa-heart "></i> Unfavorite');
+             */
             button
                     .html('<i class="fa fa-heart "></i> Favorite');
         }
@@ -1306,25 +1306,25 @@ function chaingame2(game_name, user_auth, game_id, clone_status)
 }
 
 
-function ad_get_code1(location,user_id){
-	alert(user_id);
+function ad_get_code1(location, user_id) {
+    alert(user_id);
 }
 
 /*
-function col_ads(location,user_id){
-var formData = {location:location,user_id:user_id};
-alert("asd");
-$.ajax({
-  type: "POST",
-   url: col_ads_link,
-   data: formData,
-   success: function(data){
-   $('.ad_code').html(data);
-   }
+ function col_ads(location,user_id){
+ var formData = {location:location,user_id:user_id};
+ alert("asd");
+ $.ajax({
+ type: "POST",
+ url: col_ads_link,
+ data: formData,
+ success: function(data){
+ $('.ad_code').html(data);
+ }
  });
-}
-
-/**
+ }
+ 
+ /**
  * Explore Games Clone Button Action
  * @param string game_name
  * @param boolean user_auth
@@ -1333,27 +1333,33 @@ $.ajax({
  * @author Emircan Ok
  */
 function chaingame3(game_name, user_auth, game_id) {
-    var btn = $('#clone-' + game_id);
-    btn.removeClass('btn-success');
-    btn.addClass('btn-warning');
-    btn.html('<i class="fa fa-cog spin"></i> Cloning');
+    var btn = $('.clone-' + game_id);
+    btn
+        .removeClass('btn-success')
+        .addClass('btn-warning')
+        .html('<i class="fa fa-cog spin"></i> Cloning');
     if (user_auth == 1) {
         $.get(chaingame + '/' + game_id, function(data) {
             if (data == 1) {
-                Messenger().post("Game Cloned");
+                Messenger()
+                    .post("Game Cloned");
                 btn
-                        .button('reset')
-                        .html('<i class="fa fa-cog"></i> Cloned')
-                        .removeClass('btn-warning')
-                        .addClass('btn-default');
+                    .button('reset')
+                    .html('<i class="fa fa-cog"></i> Cloned')
+                    .removeClass('btn-warning')
+                    .addClass('btn-default');
             } else {
-                Messenger().post("Error. Please, try again..");
-                btn.button('reset');
+                Messenger()
+                    .post("Error. Please, try again..");
+                btn
+                    .button('reset');
             }
         });
     } else {
-        $('#myModal').modal('hide');
-        $('#login').modal('show');
+        $('#myModal')
+            .modal('hide');
+        $('#login')
+            .modal('show');
     }
 }
 
@@ -1384,7 +1390,7 @@ $('div.clone button').hover(
  * Grid - List Cookie
  * @author Emircan Ok
  */
-$('a.grid-view').click(function(){
+$('a.grid-view').click(function() {
     var view = $(this).attr('data-grid');
     switch (view) {
         case '.users-list':

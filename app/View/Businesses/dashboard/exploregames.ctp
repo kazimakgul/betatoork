@@ -12,8 +12,8 @@ switch ($activefilter) {
     case 4:
         $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search", "filter" => "embed"));
         break;
-	default:
-		$search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search"));
+    default:
+        $search_action = $this->Html->url(array("controller" => "businesses", "action" => "exploregames_search"));
 }
 $game_add = $this->Html->url(array("controller" => "businesses", "action" => "game_add"));
 $explore = $this->Html->url(array("controller" => "businesses", "action" => "exploregames"));
@@ -25,7 +25,7 @@ if (isset($query)) {
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'mobiles'));
     $fullscreen = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'fullscreen'));
     $embed = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'embed'));
-    }
+}
 ?>
 <body id="users">
 <div id="wrapper">
