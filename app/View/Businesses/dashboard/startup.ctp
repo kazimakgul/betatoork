@@ -190,19 +190,22 @@ if ($user['User']['picture'] == null) {
                         case 2:
                             Messenger().post({
                                 message: 'Please Clone Least 5 Games',
-                                type: 'error'
+                                type: 'error',
+                                showCloseButton: true
                             });
                             break;
                         case 3:
                             Messenger().post({
                                 message: 'Please Follow Least 5 Channels',
-                                type: 'error'
+                                type: 'error',
+                                showCloseButton: true
                             });
                             break;
                         default:
                             Messenger().post({
                                 message: 'Error',
-                                type: 'error'
+                                type: 'error',
+                                showCloseButton: true
                             });
                     }
                 }
