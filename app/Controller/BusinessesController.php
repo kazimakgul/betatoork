@@ -436,6 +436,13 @@ class BusinessesController extends AppController {
         return $code;
     }
 
+
+    public function serve_ads_frame($user_id=NULL,$location=NULL) {
+    $this->layout='ajax';    
+    $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location,'Ad_setting.user_id'=>$user_id), 'order' => 'rand()'));
+    $this->set('code', $code);  
+    }  
+
     /**
      * Edit Set Ads Function
      *
