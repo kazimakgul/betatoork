@@ -222,7 +222,6 @@ $(document).ready(function() {
      */
     $('#t_gatekeeper_login_btn').click(function(e) {
         e.preventDefault();
-        alert('hello');
         var btn = $(this);
         btn.button('loading');
         var attr = 'txt_logusername';
