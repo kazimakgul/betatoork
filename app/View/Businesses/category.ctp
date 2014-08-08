@@ -6,7 +6,7 @@
 	}else{
 		$controls=NULL;
 	}
-	
+	print_r($this->request->params);
 	echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>1 ));
 	
 	?>
