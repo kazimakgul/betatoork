@@ -146,7 +146,7 @@ if (
         Router::connect('/', array('controller' => 'businesses', 'action' => 'mysite'));
         Router::connect('/play/:seo_url', array('controller' => 'businesses', 'action' => 'play'), array('seo_url' => '[-a-z0-9]+', 'pass' => array('seo_url')));
         Router::connect('/category/:cat_url', array('controller' => 'businesses', 'action' => 'category'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
-        Router::connect('/category/*/*', array('controller' => 'businesses', 'action' => 'category'));
+        Router::connect('/category/*', array('controller' => 'businesses', 'action' => 'category'));
         Router::connect('/category/:cat_url/newest', array('controller' => 'businesses', 'action' => 'category','sort' => 'id', 'direction' => 'desc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
         Router::connect('/category/:cat_url/newest/*', array('controller' => 'businesses', 'action' => 'category','sort' => 'id', 'direction' => 'desc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
         Router::connect('/category/:cat_url/oldest', array('controller' => 'businesses', 'action' => 'category','sort' => 'id', 'direction' => 'asc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
