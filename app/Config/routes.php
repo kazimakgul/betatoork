@@ -75,6 +75,10 @@ Router::connect('/register', array('controller' => 'users', 'action' => 'registe
 Router::connect('/login', array('controller' => 'users', 'action' => 'login3'));
 Router::connect('/logout', array('controller' => 'businesses', 'action' => 'logout'));
 
+//Router::connect('/games/high-rate', array('controller' => 'businesses', 'action' => 'toprated',2, 'sort' => 'starsize', 'direction' => 'desc'));
+//Router::connect('/games/a-z', array('controller' => 'businesses', 'action' => 'toprated',2, 'sort' => 'name', 'direction' => 'asc'));
+
+
 /*
  * Routers for general functions
  * Business clone link system
@@ -144,8 +148,14 @@ if (
         Router::connect('/games/hot/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'recommend', 'direction' => 'desc'));
         Router::connect('/games/newest', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'id', 'direction' => 'desc'));
         Router::connect('/games/newest/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'id', 'direction' => 'desc'));
+        Router::connect('/games/a-z', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'name', 'direction' => 'asc'));
+        Router::connect('/games/a-z/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'name', 'direction' => 'asc'));
+        Router::connect('/games/z-a', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'name', 'direction' => 'desc'));
+        Router::connect('/games/z-a/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'name', 'direction' => 'desc'));
         Router::connect('/games/oldest', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'id', 'direction' => 'asc'));
         Router::connect('/games/oldest/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'id', 'direction' => 'asc'));
+        Router::connect('/games/most-played', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'Gamestat.playcount', 'direction' => 'desc'));
+        Router::connect('/games/most-played/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'Gamestat.playcount', 'direction' => 'desc'));
         Router::connect('/games/high-rate', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'starsize', 'direction' => 'desc'));
         Router::connect('/games/high-rate/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'starsize', 'direction' => 'desc'));
         Router::connect('/games/low-rate', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'starsize', 'direction' => 'asc'));
