@@ -1823,6 +1823,13 @@ class BusinessesController extends AppController {
         $PaginateLimit = 12;
         //$user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
 
+        //this convert querystring parameter to named parameter for sorting.
+        //Author:Ogi
+        //==================================================================
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
 
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
