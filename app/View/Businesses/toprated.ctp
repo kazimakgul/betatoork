@@ -41,8 +41,7 @@
                         </ul>
                         <?php
                         $sort = $this->request->params['named']['sort'];
-                        $direction = $this->request->params['named']['direction'];
-                        echo $sort.$direction; 
+                        $direction = $this->request->params['named']['direction']; 
 
                         if($sort=='playcount' && $direction=='desc')
                         {
