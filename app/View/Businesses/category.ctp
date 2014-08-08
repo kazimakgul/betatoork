@@ -34,7 +34,7 @@
 					 				    <li><?php echo $this->Paginator->sort('id', 'Newest', array('direction' => 'desc')); ?></li>	
                                         <li><?php echo $this->Paginator->sort('name', 'Name', array('direction' => 'asc')); ?></li>
                                         <li><?php echo $this->Paginator->sort('starsize', 'Top Rated', array('direction' => 'desc')); ?></li>
-                                        <li><?php echo $this->Paginator->sort('playcount', 'Most Played', array('direction' => 'desc')); ?></li>
+                                        <li><?php echo $this->Paginator->sort('Gamestat.playcount', 'Most Played', array('direction' => 'desc')); ?></li>
 									</ul>
 								</li>
 							</ul>

@@ -43,7 +43,7 @@
                         $sort = $this->request->params['named']['sort'];
                         $direction = $this->request->params['named']['direction']; 
 
-                        if($sort=='playcount' && $direction=='desc')
+                        if($sort=='Gamestat.playcount' && $direction=='desc')
                         {
                            $name = 'Most Played Games'; 
                         }else if($sort=='playcount' && $direction=='asc')
