@@ -2385,7 +2385,7 @@ class BusinessesController extends AppController {
 		    break;
 		case 'embed':
             $activefilter = 3;
-            $this->paginate['Game']['conditions']['NOT']['Game.embed'] = NULL;
+            $this->paginate['Game']['conditions']['Game.fullscreen'] = 0;
 		    break;
 		default:
 			$activefilter = 0;
@@ -2478,7 +2478,7 @@ class BusinessesController extends AppController {
                 break;
             case 'embed':
                 $activefilter = 3;
-                $this->paginate['Game']['conditions']['NOT']['Game.embed'] = NULL;
+                $this->paginate['Game']['conditions']['Game.fullscreen'] = 0;
                 break;
             default:
                 $activefilter = 0;

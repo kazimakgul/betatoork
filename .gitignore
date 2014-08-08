@@ -5,3 +5,4 @@
 app/webroot/upload/games/*
 app/webroot/upload/*
 /nbproject/private/
+/.idea/*
