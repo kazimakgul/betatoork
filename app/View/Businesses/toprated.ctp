@@ -46,7 +46,7 @@
                         if($sort=='Gamestat.playcount' && $direction=='desc')
                         {
                            $name = 'Most Played Games'; 
-                        }else if($sort=='playcount' && $direction=='asc')
+                        }else if($sort=='Gamestat.playcount' && $direction=='asc')
                         {
                            $name = 'Least Played Games';
                         }else if($sort=='id' && $direction=='desc')
