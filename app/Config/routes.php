@@ -44,7 +44,7 @@ Router::connect('/mygames/:filter', array('controller' => 'businesses', 'action'
 Router::connect('/mygames', array('controller' => 'businesses', 'action' => 'mygames'));
 Router::connect('/favorites/search', array('controller' => 'businesses', 'action' => 'favorites_search'));
 Router::connect('/favorites', array('controller' => 'businesses', 'action' => 'favorites'));
-Router::connect('/explore/games/search/:filter', array('controller' => 'businesses', 'action' => 'exploregames_search'), array('pass' => array('filter'), 'filter' => 'mobiles'));
+Router::connect('/explore/games/search/:filter', array('controller' => 'businesses', 'action' => 'exploregames_search'), array('pass' => array('filter'), 'filter' => 'mobiles|fullscreen|embed'));
 Router::connect('/explore/games/search', array('controller' => 'businesses', 'action' => 'exploregames_search'));
 Router::connect('/explore/games/:filter', array('controller' => 'businesses', 'action' => 'exploregames'), array('pass' => array('filter'), 'filter' => 'mobiles|fullscreen|embed'));
 Router::connect('/explore/games', array('controller' => 'businesses', 'action' => 'exploregames'));

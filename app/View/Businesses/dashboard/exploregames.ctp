@@ -20,6 +20,8 @@ $explore = $this->Html->url(array("controller" => "businesses", "action" => "exp
 if (isset($query)) {
     $all = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames_search')) . '?q=' . $query;
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames_search', 'filter' => 'mobiles')) . '?q=' . $query;
+    $fullscreen = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames_search', 'filter' => 'fullscreen')) . '?q=' . $query;
+    $embed = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames_search', 'filter' => 'embed')) . '?q=' . $query;
 } else {
     $all = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames'));
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'mobiles'));
@@ -42,7 +44,7 @@ if (isset($query)) {
             </div>
             <form class="search hidden-xs" action="<?php echo $search_action; ?>" style="margin-left: 200px">
                 <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search games..." />
+                <input type="text" name="q" placeholder="Search games..." value="<?php if (isset($query)) { echo $query;}?>" />
                 <input type="submit" />
             </form>
             <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">

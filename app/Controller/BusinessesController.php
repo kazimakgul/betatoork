@@ -2467,10 +2467,21 @@ class BusinessesController extends AppController {
                 'limit' => $limit
             )
         );
-        $activefilter = 0;
-        if ($filter === 'mobiles') {
-            $activefilter = 1;
-            $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+        switch ($filter) {
+            case 'mobiles':
+                $activefilter = 1;
+                $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+                break;
+            case 'fullscreen':
+                $activefilter = 2;
+                $this->paginate['Game']['conditions']['Game.fullscreen'] = 1;
+                break;
+            case 'embed':
+                $activefilter = 3;
+                $this->paginate['Game']['conditions']['NOT']['Game.embed'] = NULL;
+                break;
+            default:
+                $activefilter = 0;
         }
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
