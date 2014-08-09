@@ -2238,6 +2238,16 @@ class BusinessesController extends AppController {
     public function favorites() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+
+        //this convert querystring parameter to named parameter for sorting.
+        //Author:Ogi
+        //==================================================================
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
+
+
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
         $this->paginate = array(
@@ -2344,6 +2354,15 @@ class BusinessesController extends AppController {
     public function exploregames($filter = null) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+
+        //this convert querystring parameter to named parameter for sorting.
+        //Author:Ogi
+        //==================================================================
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
+
         $limit = 12;
         $this->paginate = array(
             'Game' => array(

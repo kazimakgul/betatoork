@@ -4,6 +4,43 @@ $game_add = $this->Html->url(array("controller" => "businesses", "action" => "ga
 $favorites = $this->Html->url(array("controller" => "businesses", "action" => "favorites"));
 $params = $this->Paginator->params();
 $allgames = $params['count'];
+
+
+     //this provides titles for sorting
+     $sort = $this->request->params['named']['sort'];
+     $direction = $this->request->params['named']['direction'];
+     if($sort=='Game.name' && $direction=='asc')
+     {
+           $name = 'A to Z'; 
+     }else if($sort=='Game.name' && $direction=='desc')
+     {
+           $name = 'Z to A';
+     }else if($sort=='Game.starsize' && $direction=='desc')
+     {
+           $name = 'Highest Rating';
+     }else if($sort=='Game.starsize' && $direction=='asc')
+     {
+           $name = 'Least Rating';
+     }else if($sort=='Gamestat.channelclone' && $direction=='desc')
+     {
+           $name = 'Most Cloned';
+     }else if($sort=='Gamestat.channelclone' && $direction=='asc')
+     {
+           $name = 'Least Cloned';
+     }else if($sort=='Gamestat.favcount' && $direction=='desc')
+     {
+           $name = 'Most Favorited';
+     }else if($sort=='Gamestat.favcount' && $direction=='asc')
+     {
+           $name = 'Least Favorited';
+     }else if($sort=='Gamestat.playcount' && $direction=='desc')
+     {
+           $name = 'Most Played';
+     }else if($sort=='Gamestat.playcount' && $direction=='asc')
+     {
+           $name = 'Least Played';
+     }
+
 ?>
 <body id="users">
 <div id="wrapper">
@@ -39,6 +76,19 @@ $allgames = $params['count'];
                     -->
                     <div class="show-options">
                         <div class="dropdown">
+
+
+                         <!--Sorting Tags Start here-->
+                          <?php if(isset($name)){ ?>
+                          <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
+                             <a href="<?php echo $favorites; ?>" style="text-decoration: none !important;color: #666">
+                            <?php echo $name; ?>
+                            <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;">X</span>
+                            </a>
+                          </span>
+                          <?php } ?>
+                          <!--Sorting Tags Ends here-->
+
                             <a class="button" data-toggle="dropdown" href="#">
                                 <span>
                                     Sort by
@@ -47,7 +97,6 @@ $allgames = $params['count'];
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                 <li><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></li>
-                                <li><a href="javascript:;">Owner</a></li>
                                 <li><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></li>
                                 <li><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></li>
                                 <li><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></li>

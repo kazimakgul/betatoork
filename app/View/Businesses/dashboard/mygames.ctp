@@ -19,6 +19,7 @@ if (isset($query)) {
     $featured = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'featured'));
 }
     
+    //this provites titles for sorting
      $sort = $this->request->params['named']['sort'];
      $direction = $this->request->params['named']['direction'];
      if($sort=='Game.name' && $direction=='asc')
@@ -86,6 +87,7 @@ if (isset($query)) {
                         <div class="dropdown">
                          
                          
+                         <!--Sorting Tags Start here-->
                           <?php if(isset($name)){ ?>
                           <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
                              <a href="<?php echo $mygames; ?>" style="text-decoration: none !important;color: #666">
@@ -94,6 +96,7 @@ if (isset($query)) {
                             </a>
                           </span>
                           <?php } ?>
+                          <!--Sorting Tags Ends here-->
 
                             <a class="button" data-toggle="dropdown" href="#">
                                 <span>

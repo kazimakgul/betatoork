@@ -75,7 +75,6 @@
                             $name = ucwords($param);
                         }
 
-
                         ?>
                         <h3 class="panel-title"><?php echo $name; ?></h3>
                     </div>
