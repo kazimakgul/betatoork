@@ -2111,6 +2111,17 @@ class BusinessesController extends AppController {
     public function mygames($filter = NULL) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+
+        //print_r($this->request->params);
+        //Pagination with GET parameters
+        //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
+
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
+
+
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
         $this->paginate = array(

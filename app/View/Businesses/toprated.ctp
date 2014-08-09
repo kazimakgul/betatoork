@@ -40,6 +40,7 @@
                             </li>
                         </ul>
                         <?php
+                        //Provide true sorting names
                         $sort = $this->request->params['named']['sort'];
                         $direction = $this->request->params['named']['direction']; 
 

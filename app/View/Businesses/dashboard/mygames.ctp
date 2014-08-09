@@ -18,12 +18,40 @@ if (isset($query)) {
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'mobiles'));
     $featured = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'featured'));
 }
-
-//$sort = $this->request->params['named']['sort'];
-//$direction = $this->request->params['named']['direction'];
-//echo 'directions:'.$sort.$direction;
-//print_r($this->request->params);
-
+    
+     $sort = $this->request->params['named']['sort'];
+     $direction = $this->request->params['named']['direction'];
+     if($sort=='Game.name' && $direction=='asc')
+     {
+           $name = 'A to Z'; 
+     }else if($sort=='Game.name' && $direction=='desc')
+     {
+           $name = 'Z to A';
+     }else if($sort=='Game.starsize' && $direction=='desc')
+     {
+           $name = 'Highest Rating';
+     }else if($sort=='Game.starsize' && $direction=='asc')
+     {
+           $name = 'Least Rating';
+     }else if($sort=='Gamestat.channelclone' && $direction=='desc')
+     {
+           $name = 'Most Cloned';
+     }else if($sort=='Gamestat.channelclone' && $direction=='asc')
+     {
+           $name = 'Least Cloned';
+     }else if($sort=='Gamestat.favcount' && $direction=='desc')
+     {
+           $name = 'Most Favorited';
+     }else if($sort=='Gamestat.favcount' && $direction=='asc')
+     {
+           $name = 'Least Favorited';
+     }else if($sort=='Gamestat.playcount' && $direction=='desc')
+     {
+           $name = 'Most Played';
+     }else if($sort=='Gamestat.playcount' && $direction=='asc')
+     {
+           $name = 'Least Played';
+     }
 ?>
 <body id="users">
 <div id="wrapper">
@@ -53,8 +81,20 @@ if (isset($query)) {
                     <label>Filter Games:</label>
                     <a href="<?php echo $all; ?>" <?php echo $activefilter === 0 ? 'class="active"' : ''; ?>>All Games</a>
                     <a href="<?php echo $mobile; ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games</a>
-                    <a href="<?php echo $featured; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Featured</a>                    <div class="show-options">
+                    <a href="<?php echo $featured; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Featured</a>                    
+                    <div class="show-options">
                         <div class="dropdown">
+                         
+                         
+                          <?php if(isset($name)){ ?>
+                          <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
+                             <a href="<?php echo $mygames; ?>" style="text-decoration: none !important;color: #666">
+                            <?php echo $name; ?>
+                            <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;">X</span>
+                            </a>
+                          </span>
+                          <?php } ?>
+
                             <a class="button" data-toggle="dropdown" href="#">
                                 <span>
                                     Sort by
