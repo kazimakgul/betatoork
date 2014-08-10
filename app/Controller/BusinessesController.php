@@ -1563,8 +1563,7 @@ class BusinessesController extends AppController {
             $mapping = $this->Session->read('mapping');
             $mapping_domain = 'clone.gs';
             $this->set_cname($mapping, $mapping_domain);
-        }
-        if (Configure::read('Domain.cname')) {
+        }else if (Configure::read('Domain.cname')) {
             $mapping = 1;
             $mapping_domain = 'clone.gs';
             $this->set_cname($mapping, $mapping_domain);
