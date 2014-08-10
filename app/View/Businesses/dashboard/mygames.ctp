@@ -19,7 +19,7 @@ if (isset($query)) {
     $featured = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'featured'));
 }
     
-    //this provites titles for sorting
+     //this provides titles for sorting
      $sort = $this->request->params['named']['sort'];
      $direction = $this->request->params['named']['direction'];
      if($sort=='Game.name' && $direction=='asc')
