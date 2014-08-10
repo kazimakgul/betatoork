@@ -1564,6 +1564,11 @@ class BusinessesController extends AppController {
             $mapping_domain = 'clone.gs';
             $this->set_cname($mapping, $mapping_domain);
         }
+        if (Configure::read('Domain.cname')) {
+            $mapping = 1;
+            $mapping_domain = 'clone.gs';
+            $this->set_cname($mapping, $mapping_domain);
+        }
         //----------------------
         //subdomain actions
         //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
