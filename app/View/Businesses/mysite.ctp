@@ -116,7 +116,7 @@
     <?php } ?>
 </div>
 
-<?php if($mapping){ ?>
+<?php if(isset($mapping)){ ?>
 <iframe style='display:none;' src='http://<?php echo $mapping_domain; ?>/users/set_cookie/<?php echo $_COOKIE['CAKEPHP']; ?>'></iframe>
 <?php } ?>
 

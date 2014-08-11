@@ -40,14 +40,7 @@
 					    foreach ($ad_area as $value) {
 							$id = $value['Ad_area']['id'];
 							$name = $value['Ad_area']['name'];
-							$check = '';
-							foreach ($Ads_set as $ad_check) {
-								if($ad_check['Ad_setting']['ad_area_id'] == $id)
-								{
-									$check = 'checked';
-								}
-							}
-						echo '<input type="checkbox" name="category" value="'.$id.'" '.$check .' > '.$name.'<br>';
+						echo '<input type="checkbox" name="category" value="'.$id.'" > '.$name.'<br>';
 						}?>
 					    </div>
 				  	</div>

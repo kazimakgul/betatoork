@@ -408,7 +408,7 @@ class BusinessesController extends AppController {
         if ($auth_id = $this->Auth->user('id')) {//Auth Control Begins
             $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="' . $auth_id . '"');
             $msg = array("title" => 'Success', 'result' => 1);
-        } else {//Auth Control Ends	
+        } else {//Auth Control Ends
             //if user unlogged
             $msg = array("title" => 'You have to log in first', 'result' => 0);
         }//Unlogged control ends
@@ -1538,7 +1538,7 @@ class BusinessesController extends AppController {
                 $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
                 $userid = $user_data[0]['custom_domains']['user_id'];
             }
-        } else {//Cname not exists. 
+        } else {//Cname not exists.
             if ($userid == NULL) {
                 $subdomain = Configure::read('Domain.subdomain');
 
@@ -1721,6 +1721,7 @@ class BusinessesController extends AppController {
         $this->set('description_for_layout', 'Clone - Game Search Engine powered by Google. Clone Search is specially designed for searching games');
         $this->set('searchVal', $param);
         $this->set('category', $category);
+        $this->set('userid', $userid);
         $this->set('query', $cond);
         $this->set('game', $game);
         $this->set('user', $user);
@@ -1827,13 +1828,7 @@ class BusinessesController extends AppController {
         $PaginateLimit = 12;
         //$user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
 
-        //this convert querystring parameter to named parameter for sorting.
-        //Author:Ogi
-        //==================================================================
-        if ($this->request->params['named']['sort'] == NULL) {
-            $this->request->params['named']['sort'] = $this->request->params['sort'];
-            $this->request->params['named']['direction'] = $this->request->params['direction'];
-        }
+        $this->sync_sorting();
 
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
@@ -1909,10 +1904,7 @@ class BusinessesController extends AppController {
         //Pagination with GET parameters
         //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
 
-        if ($this->request->params['named']['sort'] == NULL) {
-            $this->request->params['named']['sort'] = $this->request->params['sort'];
-            $this->request->params['named']['direction'] = $this->request->params['direction'];
-        }
+        $this->sync_sorting();
 
 
         if (Configure::read('Domain.cname')) {
@@ -2007,9 +1999,6 @@ class BusinessesController extends AppController {
      * @return Top Rated Page
      */
     public function toprated($userid) {
-
-        echo $featured;
-
         $this->layout = 'Business/business';
         $PaginateLimit = 12;
 
@@ -2017,10 +2006,7 @@ class BusinessesController extends AppController {
         //Pagination with GET parameters
         //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
 
-        if ($this->request->params['named']['sort'] == NULL) {
-            $this->request->params['named']['sort'] = $this->request->params['sort'];
-            $this->request->params['named']['direction'] = $this->request->params['direction'];
-        }
+        $this->sync_sorting();
 
 
         if (Configure::read('Domain.cname')) {
@@ -2120,10 +2106,7 @@ class BusinessesController extends AppController {
         //Pagination with GET parameters
         //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
 
-        if ($this->request->params['named']['sort'] == NULL) {
-            $this->request->params['named']['sort'] = $this->request->params['sort'];
-            $this->request->params['named']['direction'] = $this->request->params['direction'];
-        }
+        $this->sync_sorting();
 
 
         $userid = $this->Session->read('Auth.User.id');
@@ -2243,13 +2226,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
 
-        //this convert querystring parameter to named parameter for sorting.
-        //Author:Ogi
-        //==================================================================
-        if ($this->request->params['named']['sort'] == NULL) {
-            $this->request->params['named']['sort'] = $this->request->params['sort'];
-            $this->request->params['named']['direction'] = $this->request->params['direction'];
-        }
+        $this->sync_sorting();
 
 
         $userid = $this->Session->read('Auth.User.id');
@@ -2359,13 +2336,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
 
-        //this convert querystring parameter to named parameter for sorting.
-        //Author:Ogi
-        //==================================================================
-        if ($this->request->params['named']['sort'] == NULL) {
-            $this->request->params['named']['sort'] = $this->request->params['sort'];
-            $this->request->params['named']['direction'] = $this->request->params['direction'];
-        }
+        $this->sync_sorting();
 
         $limit = 12;
         $this->paginate = array(
@@ -2821,13 +2792,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
 
-        //this convert querystring parameter to named parameter for sorting.
-        //Author:Ogi
-        //==================================================================
-        if ($this->request->params['named']['sort'] == NULL) {
-            $this->request->params['named']['sort'] = $this->request->params['sort'];
-            $this->request->params['named']['direction'] = $this->request->params['direction'];
-        }
+        $this->sync_sorting();
 
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;

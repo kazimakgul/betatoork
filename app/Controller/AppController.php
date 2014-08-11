@@ -295,6 +295,18 @@ class AppController extends Controller {
         return '#' . $rgb;
     }
 
+
+    //this convert querystring parameter to named parameter for sorting.
+    //Author:Ogi
+    //==================================================================
+   function sync_sorting(){
+       if (isset($this->request->params['named']['sort']) || $this->request->params['named']['sort'] == NULL) {
+           $this->request->params['named']['sort'] = $this->request->params['sort'];
+           $this->request->params['named']['direction'] = $this->request->params['direction'];
+       }
+   }
+
+
     public function remove_temporary($id, $type) {
         //===Alakalı tipteki klasörü siler begins.====
         App::uses('Folder', 'Utility');
