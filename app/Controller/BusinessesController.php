@@ -1563,6 +1563,10 @@ class BusinessesController extends AppController {
             $mapping = $this->Session->read('mapping');
             $mapping_domain = 'clone.gs';
             $this->set_cname($mapping, $mapping_domain);
+        }else if (Configure::read('Domain.cname')) {
+            $mapping = 1;
+            $mapping_domain = 'clone.gs';
+            $this->set_cname($mapping, $mapping_domain);
         }
         //----------------------
         //subdomain actions
@@ -1823,6 +1827,13 @@ class BusinessesController extends AppController {
         $PaginateLimit = 12;
         //$user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
 
+        //this convert querystring parameter to named parameter for sorting.
+        //Author:Ogi
+        //==================================================================
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
 
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
@@ -2104,6 +2115,17 @@ class BusinessesController extends AppController {
     public function mygames($filter = NULL) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+
+        //print_r($this->request->params);
+        //Pagination with GET parameters
+        //http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#pagination-with-get-parameters
+
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
+
+
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
         $this->paginate = array(
@@ -2220,6 +2242,16 @@ class BusinessesController extends AppController {
     public function favorites() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+
+        //this convert querystring parameter to named parameter for sorting.
+        //Author:Ogi
+        //==================================================================
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
+
+
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
         $this->paginate = array(
@@ -2326,6 +2358,15 @@ class BusinessesController extends AppController {
     public function exploregames($filter = null) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+
+        //this convert querystring parameter to named parameter for sorting.
+        //Author:Ogi
+        //==================================================================
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
+
         $limit = 12;
         $this->paginate = array(
             'Game' => array(
@@ -2779,6 +2820,15 @@ class BusinessesController extends AppController {
     public function explorechannels() {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
+
+        //this convert querystring parameter to named parameter for sorting.
+        //Author:Ogi
+        //==================================================================
+        if ($this->request->params['named']['sort'] == NULL) {
+            $this->request->params['named']['sort'] = $this->request->params['sort'];
+            $this->request->params['named']['direction'] = $this->request->params['direction'];
+        }
+
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
         $this->paginate = array(

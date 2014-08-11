@@ -9,5 +9,8 @@ if ($pageCount > 1) {
             <li><?php echo $this->Paginator->numbers(); ?></li>
             <li><?php echo '  ' . $this->Paginator->next(__('Next', false), array('id' => 'next'), null, array('class' => 'disabled')); ?></li>
         </ul>
+        <div style="opacity:0.5;">
+            <?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}, showing {:current} Items out of {:count} total')));?>
+        </div>
     </div>
 <?php } ?>
