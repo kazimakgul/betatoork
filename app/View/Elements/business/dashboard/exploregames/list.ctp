@@ -39,13 +39,9 @@
             ?>
             <div class="row user">
                 <div class="col-sm-1 followcolumn clone">
-                    <?php if ($clonestatus == TRUE) { ?>
-                        <button onclick="chaingame3('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>);" class="btn btn-default clone-<?php echo $game['Game']['id']; ?>" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog"></i> Cloned</button>
-                    <?php } else { ?>
-                        <button onclick="chaingame3('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>);" class="btn btn-success clone-<?php echo $game['Game']['id']; ?>" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog"></i> Clone</button>
-                    <?php } ?>
+                    <?php echo $this->element('buttons/clone', array('clone' => $clonestatus, 'id' => $game['Game']['id'], 'name' => $name)); ?>
                 </div>
-                <div class="col-sm-2 avatar">
+                <div class="col-sm-2 avatar" style="padding-left: 30px">
                     <a href="<?php echo $playurl ?>" target="_blank">
                         <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
                     </a>
