@@ -5,3 +5,8 @@
 app/webroot/upload/games/*
 app/webroot/upload/*
 /nbproject/private/
+<<<<<<< HEAD
+.idea/*
+=======
+/.idea/*
+>>>>>>> origin/master

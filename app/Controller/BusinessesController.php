@@ -46,7 +46,7 @@ class BusinessesController extends AppController {
     }
 
     public function afterFilter() {
-        
+
     }
 
     /*     * ****************************************************************************** */
@@ -166,7 +166,7 @@ class BusinessesController extends AppController {
                     $this->set('_serialize', array('error'));
                 }
             } else {
-                
+
             }
         } else {
             $id = 1;
@@ -302,21 +302,21 @@ class BusinessesController extends AppController {
                 //Secure data filtering begins
                 //*****************************
                 $filtered_data = array('Game' => array(
-                        'name' => $game_name = $this->Game->secureSuperGlobalPOST($game_name),
-                        'description' => $this->Game->secureSuperGlobalPOST($game_description),
-                        'link' => $game_link,
-                        'width' => $game_width,
-                        'height' => $game_height,
-                        'type' => $type,
-                        'link' => $game_link,
-                        'user_id' => $game_user_id,
-                        'priority' => 0,
-                        'category_id' => $category_id,
-                        'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
-                        'owner_id' => $game_user_id,
-                        'user_id' => $game_user_id,
-                        'fullscreen' => $fullscreen,
-                        'mobileready' => $mobileready));
+                    'name' => $game_name = $this->Game->secureSuperGlobalPOST($game_name),
+                    'description' => $this->Game->secureSuperGlobalPOST($game_description),
+                    'link' => $game_link,
+                    'width' => $game_width,
+                    'height' => $game_height,
+                    'type' => $type,
+                    'link' => $game_link,
+                    'user_id' => $game_user_id,
+                    'priority' => 0,
+                    'category_id' => $category_id,
+                    'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
+                    'owner_id' => $game_user_id,
+                    'user_id' => $game_user_id,
+                    'fullscreen' => $fullscreen,
+                    'mobileready' => $mobileready));
                 //*****************************
                 //Secure data filtering ends
                 //*****************************
@@ -338,10 +338,10 @@ class BusinessesController extends AppController {
                     if ($image_name != 'current') {//if user didnt change the game image
                         //=======Upload to aws for Game Image begins===========
                         $feedback = $this->Amazon->S3->create_object(
-                                Configure::read('S3.name'), 'upload/games/' . $id . "/" . $newname, array(
-                            'fileUpload' => WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $newname,
-                            'acl' => AmazonS3::ACL_PUBLIC
-                                )
+                            Configure::read('S3.name'), 'upload/games/' . $id . "/" . $newname, array(
+                                'fileUpload' => WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $newname,
+                                'acl' => AmazonS3::ACL_PUBLIC
+                            )
                         );
                         //========Upload to aws for Game Image ends==============
                         if ($feedback) {
@@ -387,10 +387,10 @@ class BusinessesController extends AppController {
 
             //=======Upload to aws for Game Upload begins===========
             $feedback = $this->Amazon->S3->create_object(
-                    Configure::read('S3-games.name'), $new_game_file, array(
-                'fileUpload' => WWW_ROOT . "upload/gamefiles/" . $userid . "/" . $game_file,
-                'acl' => AmazonS3::ACL_PUBLIC
-                    )
+                Configure::read('S3-games.name'), $new_game_file, array(
+                    'fileUpload' => WWW_ROOT . "upload/gamefiles/" . $userid . "/" . $game_file,
+                    'acl' => AmazonS3::ACL_PUBLIC
+                )
             );
             //========Upload to aws for Game Upload ends==============
             if ($feedback) {
@@ -420,7 +420,7 @@ class BusinessesController extends AppController {
      * col_ads method
      *
      * @param Request => location id
-     * @return ad code data 
+     * @return ad code data
      */
     function col_ads() {
         $user_id = $this->request->data['user_id'];
@@ -438,10 +438,10 @@ class BusinessesController extends AppController {
 
 
     public function serve_ads_frame($user_id=NULL,$location=NULL) {
-    $this->layout='ajax';    
-    $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location,'Ad_setting.user_id'=>$user_id), 'order' => 'rand()'));
-    $this->set('code', $code);  
-    }  
+        $this->layout='ajax';
+        $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location,'Ad_setting.user_id'=>$user_id), 'order' => 'rand()'));
+        $this->set('code', $code);
+    }
 
     /**
      * Edit Set Ads Function
@@ -567,7 +567,7 @@ class BusinessesController extends AppController {
     }
 
     /**
-     * This function increases 
+     * This function increases
      * playcount of game
      * @param  game_id
      * @return null
@@ -592,7 +592,7 @@ class BusinessesController extends AppController {
     /**
      * Logout method
      *
-     * @param 
+     * @param
      * @return Logout
      */
     public function logout() {
@@ -725,21 +725,21 @@ class BusinessesController extends AppController {
         $email = new CakeEmail();
         // Set data for the "view" of the Email
         $email->viewVars(array(
-            'username' => $user['User']['username'],
-            'name' => $this->request->data["firstname"],
-            'surname' => $this->request->data["lastname"],
-            'e-mail' => $this->request->data["email"],
-            'subject' => $this->request->data["subject"],
-            'message' => $this->request->data["comment"])
+                'username' => $user['User']['username'],
+                'name' => $this->request->data["firstname"],
+                'surname' => $this->request->data["lastname"],
+                'e-mail' => $this->request->data["email"],
+                'subject' => $this->request->data["subject"],
+                'message' => $this->request->data["comment"])
         );
         $email
-                ->config('smtp')
-                ->template('business/contact') //I'm assuming these were created
-                ->emailFormat('html')
-                ->to($user["User"]["email"])
-                ->from(array('no-reply@clone.gs' => 'Clone'))
-                ->subject($subject)
-                ->send();
+            ->config('smtp')
+            ->template('business/contact') //I'm assuming these were created
+            ->emailFormat('html')
+            ->to($user["User"]["email"])
+            ->from(array('no-reply@clone.gs' => 'Clone'))
+            ->subject($subject)
+            ->send();
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
             $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
         } else {
@@ -765,7 +765,7 @@ class BusinessesController extends AppController {
     /**
      * Side Bar method
      *
-     * @param 
+     * @param
      * @return array() $user
      */
     public function sideBar() {
@@ -777,7 +777,7 @@ class BusinessesController extends AppController {
     /**
      * Dashboard method
      *
-     * @param 
+     * @param
      * @return Dashboard Page
      */
     public function dashboard() {
@@ -955,28 +955,28 @@ class BusinessesController extends AppController {
 
 
         $onechannel = $this->User->find('first', array(
-            'fields' => array(
-                'User.id',
-                'User.username',
-                'User.seo_username',
-                'User.verify',
-                'User.picture',
-                'User.banner'
-            ),
-            'contain' => array(
-                'Userstat' => array(
-                    'fields' => array(
-                        'Userstat.subscribe',
-                        'Userstat.subscribeto',
-                        'Userstat.uploadcount'
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.seo_username',
+                    'User.verify',
+                    'User.picture',
+                    'User.banner'
+                ),
+                'contain' => array(
+                    'Userstat' => array(
+                        'fields' => array(
+                            'Userstat.subscribe',
+                            'Userstat.subscribeto',
+                            'Userstat.uploadcount'
+                        )
                     )
+                ),
+                'order' => 'rand()',
+                'conditions' => array(
+                    'User.verify' => 1
                 )
-            ),
-            'order' => 'rand()',
-            'conditions' => array(
-                'User.verify' => 1
             )
-                )
         );
 
 
@@ -1038,7 +1038,7 @@ class BusinessesController extends AppController {
      * Dummy startup wizard function
      * Cloned from dashboard method
      *
-     * @param 
+     * @param
      * @return startup Page
      * @author Kazim Akgul
      */
@@ -1106,7 +1106,7 @@ class BusinessesController extends AppController {
     /**
      * Game add method
      *
-     * @param 
+     * @param
      * @return Game add Page
      */
     public function game_add() {
@@ -1124,7 +1124,7 @@ class BusinessesController extends AppController {
      * Author:Ogi
      * Create a cookie for login
      * With curl request
-     * @param 
+     * @param
      * @return Null
      */
     public function cookie_with_curl() {
@@ -1155,7 +1155,7 @@ class BusinessesController extends AppController {
     /**
      * Game edit method
      *
-     * @param 
+     * @param
      * @return Game edit Page
      */
     public function game_edit($id = NULL) {
@@ -1183,7 +1183,7 @@ class BusinessesController extends AppController {
      * Dummy tools and docs function
      * Cloned from app_status method
      *
-     * @param 
+     * @param
      * @return toolsNdocs Page
      * @author Kazim Akgul
      */
@@ -1200,7 +1200,7 @@ class BusinessesController extends AppController {
      * Dummy faq function
      * Cloned from toolsNdocs method
      *
-     * @param 
+     * @param
      * @return faq Page
      * @author Kazim Akgul
      */
@@ -1217,7 +1217,7 @@ class BusinessesController extends AppController {
      * Dummy billing function
      * Cloned from toolsNdocs method
      *
-     * @param 
+     * @param
      * @return billing Page
      * @author Kazim Akgul
      */
@@ -1232,7 +1232,7 @@ class BusinessesController extends AppController {
 
     /**
      *
-     * @param 
+     * @param
      * @return social_management Page
      * @author Volkan Celiloğlu
      */
@@ -1247,7 +1247,7 @@ class BusinessesController extends AppController {
 
     /**
      *
-     * @param 
+     * @param
      * @return password_change Page
      * @author Volkan Celiloğlu
      */
@@ -1264,7 +1264,7 @@ class BusinessesController extends AppController {
      * Dummy pricing function
      * Cloned from toolsNdocs method
      *
-     * @param 
+     * @param
      * @return pricing Page
      * @author Kazim Akgul
      */
@@ -1281,7 +1281,7 @@ class BusinessesController extends AppController {
      * Dummy tools and docs function
      * Cloned from app_status method
      *
-     * @param 
+     * @param
      * @return steps2launch Page
      * @author Kazim Akgul
      */
@@ -1298,7 +1298,7 @@ class BusinessesController extends AppController {
      * Dummy App_Status function
      * Cloned from dashboard method
      *
-     * @param 
+     * @param
      * @return AppStatus Page
      * @author Kazim Akgul
      */
@@ -1315,7 +1315,7 @@ class BusinessesController extends AppController {
      * Dummy Profile function
      * Cloned from dashboard method
      *
-     * @param 
+     * @param
      * @return Dashboard Page
      * @author Kazim Akgul
      */
@@ -1331,7 +1331,7 @@ class BusinessesController extends AppController {
     /**
      * Settings method
      *
-     * @param 
+     * @param
      * @return Settings Page
      * @author Volkan Celiloğlu
      */
@@ -1348,7 +1348,7 @@ class BusinessesController extends AppController {
 
     /** Ads Management method
      *
-     * @param 
+     * @param
      * @return Ads Management Page
      * @author Volkan Celiloğlu
      */
@@ -1365,7 +1365,7 @@ class BusinessesController extends AppController {
 
     /** Ads Add method
      *
-     * @param 
+     * @param
      * @return Ads Add Page
      * @author Volkan Celiloğlu
      */
@@ -1412,7 +1412,7 @@ class BusinessesController extends AppController {
 
     /** Notifications method
      *
-     * @param 
+     * @param
      * @return Notifications Page
      * @author Volkan Celiloğlu
      */
@@ -1439,7 +1439,7 @@ class BusinessesController extends AppController {
 
     /** add_mapping method
      *
-     * @param 
+     * @param
      * @return Channel_Settings Page
      * @author Ogi
      */
@@ -1475,7 +1475,7 @@ class BusinessesController extends AppController {
 
     /** remove_mapping method
      *
-     * @param 
+     * @param
      * @return Channel_Settings Page
      * @author Ogi
      */
@@ -1498,7 +1498,7 @@ class BusinessesController extends AppController {
 
     /** Channel_Settings method
      *
-     * @param 
+     * @param
      * @return Channel_Settings Page
      * @author Volkan Celiloğlu
      */
@@ -1704,14 +1704,14 @@ class BusinessesController extends AppController {
         }
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
         $this->paginate = array('Game' => array(
-                'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))),
-                'limit' => 12,
-                'order' => 'Game.id DESC',
-                'conditions' => array(
-                    'Game.active' => '1',
-                    'Game.user_id' => $userid,
-                    'OR' => array('Game.description LIKE' => '%' . $param . '%', 'Game.name LIKE' => '%' . $param . '%'),
-        )));
+            'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))),
+            'limit' => 12,
+            'order' => 'Game.id DESC',
+            'conditions' => array(
+                'Game.active' => '1',
+                'Game.user_id' => $userid,
+                'OR' => array('Game.description LIKE' => '%' . $param . '%', 'Game.name LIKE' => '%' . $param . '%'),
+            )));
         $PaginateLimit = 30;
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
@@ -1925,8 +1925,8 @@ class BusinessesController extends AppController {
             if (!is_numeric($userid)) {
                 $subdomain = Configure::read('Domain.subdomain');
                 $user = $this->User->find('first', array('conditions' => array(
-                        'User.seo_username' => $subdomain
-                    ),
+                    'User.seo_username' => $subdomain
+                ),
                     'fields' => array(
                         '*'
                     )
@@ -2033,8 +2033,8 @@ class BusinessesController extends AppController {
             if (!is_numeric($userid)) {
                 $subdomain = Configure::read('Domain.subdomain');
                 $user = $this->User->find('first', array('conditions' => array(
-                        'User.seo_username' => $subdomain
-                    ),
+                    'User.seo_username' => $subdomain
+                ),
                     'fields' => array(
                         '*'
                     )
@@ -2107,10 +2107,10 @@ class BusinessesController extends AppController {
     }
 
     /**
-     * 
+     *
      * EMIRCAN
      * OK
-     * 
+     *
      */
     public function mygames($filter = NULL) {
         $this->layout = 'Business/dashboard';
@@ -2337,11 +2337,11 @@ class BusinessesController extends AppController {
                             'Game.embed'
                         ),
                         'User' => array('fields' => array(
-                                'User.id',
-                                'User.username',
-                                'User.screenname',
-                                'User.seo_username'
-                            )
+                            'User.id',
+                            'User.username',
+                            'User.screenname',
+                            'User.seo_username'
+                        )
                         )
                     )
                 )
@@ -2414,23 +2414,23 @@ class BusinessesController extends AppController {
                 'limit' => $limit
             )
         );
-        
-		switch ($filter) {
-		case 'mobiles':
-            $activefilter = 1;
-            $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
-		    break;
-		case 'fullscreen':
-            $activefilter = 2;
-            $this->paginate['Game']['conditions']['Game.fullscreen'] = 1;
-		    break;
-		case 'embed':
-            $activefilter = 3;
-            $this->paginate['Game']['conditions']['NOT']['Game.embed'] = NULL;
-		    break;
-		default:
-			$activefilter = 0;
-		}
+
+        switch ($filter) {
+            case 'mobiles':
+                $activefilter = 1;
+                $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+                break;
+            case 'fullscreen':
+                $activefilter = 2;
+                $this->paginate['Game']['conditions']['Game.fullscreen'] = 1;
+                break;
+            case 'embed':
+                $activefilter = 3;
+                $this->paginate['Game']['conditions']['Game.fullscreen'] = 0;
+                break;
+            default:
+                $activefilter = 0;
+        }
 
         /*if ($filter === 'mobiles') {
             $activefilter = 1;
@@ -2508,10 +2508,21 @@ class BusinessesController extends AppController {
                 'limit' => $limit
             )
         );
-        $activefilter = 0;
-        if ($filter === 'mobiles') {
-            $activefilter = 1;
-            $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+        switch ($filter) {
+            case 'mobiles':
+                $activefilter = 1;
+                $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+                break;
+            case 'fullscreen':
+                $activefilter = 2;
+                $this->paginate['Game']['conditions']['Game.fullscreen'] = 1;
+                break;
+            case 'embed':
+                $activefilter = 3;
+                $this->paginate['Game']['conditions']['Game.fullscreen'] = 0;
+                break;
+            default:
+                $activefilter = 0;
         }
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
@@ -2622,14 +2633,14 @@ class BusinessesController extends AppController {
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
         $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_to_id'
-                        )
+            array(
+                'belongsTo' => array(
+                    'User' => array(
+                        'className' => 'User',
+                        'foreignKey' => 'subscriber_to_id'
                     )
                 )
+            )
         );
         $this->paginate = array(
             'Subscription' => array(
@@ -2674,14 +2685,14 @@ class BusinessesController extends AppController {
         //$this->Subscription->recursive=2;
         //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
         $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_id'
-                        )
+            array(
+                'belongsTo' => array(
+                    'User' => array(
+                        'className' => 'User',
+                        'foreignKey' => 'subscriber_id'
                     )
                 )
+            )
         );
         $this->paginate = array(
             'Subscription' => array(
@@ -2720,14 +2731,14 @@ class BusinessesController extends AppController {
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
         $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_id'
-                        )
+            array(
+                'belongsTo' => array(
+                    'User' => array(
+                        'className' => 'User',
+                        'foreignKey' => 'subscriber_id'
                     )
                 )
+            )
         );
         $this->paginate = array(
             'Subscription' => array(
@@ -2768,14 +2779,14 @@ class BusinessesController extends AppController {
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
         $this->Subscription->bindModel(
-                array(
-                    'belongsTo' => array(
-                        'User' => array(
-                            'className' => 'User',
-                            'foreignKey' => 'subscriber_id'
-                        )
+            array(
+                'belongsTo' => array(
+                    'User' => array(
+                        'className' => 'User',
+                        'foreignKey' => 'subscriber_id'
                     )
                 )
+            )
         );
         $this->paginate = array(
             'Subscription' => array(
@@ -2913,7 +2924,7 @@ class BusinessesController extends AppController {
      * Dummy Latest Activity function
      * Cloned from profile method
      *
-     * @param 
+     * @param
      * @return Activities Page
      * @author Kazim Akgul
      */
@@ -2929,7 +2940,7 @@ class BusinessesController extends AppController {
 
     /**
      * Dashboard Main Search
-     * 
+     *
      * @param string $filter
      * @author Emircan Ok
      */
