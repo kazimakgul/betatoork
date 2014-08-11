@@ -1367,21 +1367,22 @@ function chaingame3(game_name, user_auth, game_id) {
  * Explore Games Hover Game Clone Button Action
  * @author Emircan Ok
  */
-$('div.clone button').hover(
+$('.clone button').hover(
         function() {
+            console.log($(this));
             if ($(this).html() == '<i class="fa fa-cog"></i> Cloned') {
                 $(this)
-                        .removeClass('btn-default')
-                        .addClass('btn-success')
-                        .html('<i class="fa fa-cog"></i> Re Clone');
+                    .removeClass('btn-default')
+                    .addClass('btn-success')
+                    .html('<i class="fa fa-cog"></i> Re Clone');
             }
         },
         function() {
             if ($(this).html() == '<i class="fa fa-cog"></i> Re Clone') {
                 $(this)
-                        .removeClass('btn-success')
-                        .addClass('btn-default')
-                        .html('<i class="fa fa-cog"></i> Cloned');
+                    .removeClass('btn-success')
+                    .addClass('btn-default')
+                    .html('<i class="fa fa-cog"></i> Cloned');
             }
         }
 );

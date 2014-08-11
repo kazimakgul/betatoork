@@ -47,11 +47,7 @@
                     <!----=========================================---->
                     <!-- Clone Button -->
                     <div class="clone text-center">
-                    <?php if ($clonestatus == TRUE) { ?>
-                        <button onclick="chaingame3('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>);" class="btn btn-default clone-<?php echo $game['Game']['id']; ?>" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog"></i> Cloned</button>
-                    <?php } else { ?>
-                        <button onclick="chaingame3('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>);" class="btn btn-success clone-<?php echo $game['Game']['id']; ?>" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog"></i> Clone</button>
-                    <?php } ?>
+                        <?php echo $this->element('buttons/clone', array('clone' => $clonestatus, 'id' => $game['Game']['id'], 'name' => $name)); ?>
                     </div>
                     <!-- Clone Button End -->
                 </div>
