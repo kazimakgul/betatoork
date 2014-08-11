@@ -1370,7 +1370,7 @@ function chaingame3(game_name, user_auth, game_id) {
  * Explore Games Hover Game Clone Button Action
  * @author Emircan Ok
  */
-$('.clone button').hover(
+$('div.clone button').hover(
         function() {
             if ($(this).html() == '<i class="fa fa-cog"></i> Cloned') {
                 $(this)
