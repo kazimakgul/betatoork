@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+
+
     /**
      *	Update Form Post Method
      * 	@param #attr.val(), link => Update controller
@@ -1369,7 +1372,6 @@ function chaingame3(game_name, user_auth, game_id) {
  */
 $('.clone button').hover(
         function() {
-            console.log($(this));
             if ($(this).html() == '<i class="fa fa-cog"></i> Cloned') {
                 $(this)
                     .removeClass('btn-default')
@@ -1386,6 +1388,8 @@ $('.clone button').hover(
             }
         }
 );
+
+
 
 /**
  * Grid - List Cookie
