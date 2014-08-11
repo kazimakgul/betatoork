@@ -42,13 +42,39 @@ Router::connect('/mygames/search', array('controller' => 'businesses', 'action' 
 Router::connect('/mygames/:filter', array('controller' => 'businesses', 'action' => 'mygames'), array('pass' => array('filter'), 'filter' => 'mobiles'));
 Router::connect('/mygames/:filter', array('controller' => 'businesses', 'action' => 'mygames'), array('pass' => array('filter'), 'filter' => 'featured'));
 Router::connect('/mygames', array('controller' => 'businesses', 'action' => 'mygames'));
+Router::connect('/mygames/sort/a-z/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Game.name', 'direction' => 'asc'));
+Router::connect('/mygames/sort/z-a/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Game.name', 'direction' => 'desc'));
+Router::connect('/mygames/sort/most-cloned/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.channelclone', 'direction' => 'desc'));
+Router::connect('/mygames/sort/least-cloned/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.channelclone', 'direction' => 'asc'));
+Router::connect('/mygames/sort/most-favorited/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.favcount', 'direction' => 'desc'));
+Router::connect('/mygames/sort/least-favorited/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.favcount', 'direction' => 'asc'));
+Router::connect('/mygames/sort/most-played/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.playcount', 'direction' => 'desc'));
+Router::connect('/mygames/sort/least-played/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Gamestat.playcount', 'direction' => 'asc'));
+Router::connect('/mygames/sort/highest-rating/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Game.starsize', 'direction' => 'desc'));
+Router::connect('/mygames/sort/least-rating/*', array('controller' => 'businesses', 'action' => 'mygames', 'sort' => 'Game.starsize', 'direction' => 'asc'));
+Router::connect('/mygames/*', array('controller' => 'businesses', 'action' => 'mygames'));
 Router::connect('/favorites/search', array('controller' => 'businesses', 'action' => 'favorites_search'));
 Router::connect('/favorites', array('controller' => 'businesses', 'action' => 'favorites'));
 Router::connect('/explore/games/search/:filter', array('controller' => 'businesses', 'action' => 'exploregames_search'), array('pass' => array('filter'), 'filter' => 'mobiles|fullscreen|embed'));
 Router::connect('/explore/games/search', array('controller' => 'businesses', 'action' => 'exploregames_search'));
 Router::connect('/explore/games/:filter', array('controller' => 'businesses', 'action' => 'exploregames'), array('pass' => array('filter'), 'filter' => 'mobiles|fullscreen|embed'));
 Router::connect('/explore/games', array('controller' => 'businesses', 'action' => 'exploregames'));
+Router::connect('/explore/games/sort/a-z/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Game.name', 'direction' => 'asc'));
+Router::connect('/explore/games/sort/z-a/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Game.name', 'direction' => 'desc'));
+Router::connect('/explore/games/sort/most-cloned/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Gamestat.channelclone', 'direction' => 'desc'));
+Router::connect('/explore/games/sort/least-cloned/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Gamestat.channelclone', 'direction' => 'asc'));
+Router::connect('/explore/games/sort/most-favorited/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Gamestat.favcount', 'direction' => 'desc'));
+Router::connect('/explore/games/sort/least-favorited/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Gamestat.favcount', 'direction' => 'asc'));
+Router::connect('/explore/games/sort/most-played/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Gamestat.playcount', 'direction' => 'desc'));
+Router::connect('/explore/games/sort/least-played/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Gamestat.playcount', 'direction' => 'asc'));
+Router::connect('/explore/games/sort/highest-rating/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Game.starsize', 'direction' => 'desc'));
+Router::connect('/explore/games/sort/least-rating/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Game.starsize', 'direction' => 'asc'));
+Router::connect('/explore/games/sort/newest/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Game.id', 'direction' => 'desc'));
+Router::connect('/explore/games/sort/oldest/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Game.id', 'direction' => 'asc'));
+Router::connect('/explore/games/sort/recommend/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Gamestat.potential', 'direction' => 'desc'));
+Router::connect('/explore/games/sort/low-score/*', array('controller' => 'businesses', 'action' => 'exploregames', 'sort' => 'Gamestat.potential', 'direction' => 'asc'));
 Router::connect('/explore/games/*', array('controller' => 'businesses', 'action' => 'exploregames'));
+
 Router::connect('/dashboard/welcome', array('controller' => 'businesses', 'action' => 'startup'));
 Router::connect('/following/search', array('controller' => 'businesses', 'action' => 'following_search'));
 Router::connect('/following', array('controller' => 'businesses', 'action' => 'following'));
@@ -58,8 +84,22 @@ Router::connect('/followers', array('controller' => 'businesses', 'action' => 'f
 Router::connect('/followers/*', array('controller' => 'businesses', 'action' => 'followers'));
 Router::connect('/add/ads', array('controller' => 'businesses', 'action' => 'add_ads'));
 Router::connect('/explore/channels/search', array('controller' => 'businesses', 'action' => 'explorechannels_search'));
+
 Router::connect('/explore/channels', array('controller' => 'businesses', 'action' => 'explorechannels'));
+Router::connect('/explore/channels/sort/a-z/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'User.username', 'direction' => 'asc'));
+Router::connect('/explore/channels/sort/z-a/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'User.username', 'direction' => 'desc'));
+Router::connect('/explore/channels/sort/most-followed/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'Userstat.subscribeto', 'direction' => 'desc'));
+Router::connect('/explore/channels/sort/least-followed/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'Userstat.subscribeto', 'direction' => 'asc'));
+Router::connect('/explore/channels/sort/most-following/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'Userstat.subscribe', 'direction' => 'desc'));
+Router::connect('/explore/channels/sort/least-following/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'Userstat.subscribe', 'direction' => 'asc'));
+Router::connect('/explore/channels/sort/most-game-added/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'Userstat.uploadcount', 'direction' => 'desc'));
+Router::connect('/explore/channels/sort/least-game-added/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'Userstat.uploadcount', 'direction' => 'asc'));
+Router::connect('/explore/channels/sort/newest/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'User.id', 'direction' => 'desc'));
+Router::connect('/explore/channels/sort/oldest/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'User.id', 'direction' => 'asc'));
+Router::connect('/explore/channels/sort/recommend/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'Userstat.potential', 'direction' => 'desc'));
+Router::connect('/explore/channels/sort/low-score/*', array('controller' => 'businesses', 'action' => 'explorechannels', 'sort' => 'Userstat.potential', 'direction' => 'asc'));
 Router::connect('/explore/channels/*', array('controller' => 'businesses', 'action' => 'explorechannels'));
+
 Router::connect('/activity', array('controller' => 'businesses', 'action' => 'activities'));
 Router::connect('/activity/*', array('controller' => 'businesses', 'action' => 'activities'));
 Router::connect('/settings/channel', array('controller' => 'businesses', 'action' => 'channel_settings'));
@@ -74,6 +114,12 @@ Router::connect('/game/edit/*', array('controller' => 'businesses', 'action' => 
 Router::connect('/register', array('controller' => 'users', 'action' => 'register2'));
 Router::connect('/login', array('controller' => 'users', 'action' => 'login3'));
 Router::connect('/logout', array('controller' => 'businesses', 'action' => 'logout'));
+
+
+//sil
+//Router::connect('/games/high-rate', array('controller' => 'businesses', 'action' => 'toprated',2, 'sort' => 'starsize', 'direction' => 'desc'));
+Router::connect('/games/a-z', array('controller' => 'businesses', 'action' => 'toprated',2, 'sort' => 'name', 'direction' => 'desc'));
+
 
 /*
  * Routers for general functions
@@ -140,12 +186,37 @@ if (
         Router::connect('/', array('controller' => 'businesses', 'action' => 'mysite'));
         Router::connect('/play/:seo_url', array('controller' => 'businesses', 'action' => 'play'), array('seo_url' => '[-a-z0-9]+', 'pass' => array('seo_url')));
         Router::connect('/category/:cat_url', array('controller' => 'businesses', 'action' => 'category'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/*', array('controller' => 'businesses', 'action' => 'category'));
+        Router::connect('/category/:cat_url/newest', array('controller' => 'businesses', 'action' => 'category','sort' => 'id', 'direction' => 'desc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/newest/*', array('controller' => 'businesses', 'action' => 'category','sort' => 'id', 'direction' => 'desc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/oldest', array('controller' => 'businesses', 'action' => 'category','sort' => 'id', 'direction' => 'asc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/oldest/*', array('controller' => 'businesses', 'action' => 'category','sort' => 'id', 'direction' => 'asc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/a-z', array('controller' => 'businesses', 'action' => 'category','sort' => 'name', 'direction' => 'asc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/a-z/*', array('controller' => 'businesses', 'action' => 'category','sort' => 'name', 'direction' => 'asc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/z-a', array('controller' => 'businesses', 'action' => 'category','sort' => 'name', 'direction' => 'desc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/z-a/*', array('controller' => 'businesses', 'action' => 'category','sort' => 'name', 'direction' => 'desc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/high-rate', array('controller' => 'businesses', 'action' => 'category','sort' => 'starsize', 'direction' => 'desc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/high-rate/*', array('controller' => 'businesses', 'action' => 'category','sort' => 'starsize', 'direction' => 'desc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/low-rate', array('controller' => 'businesses', 'action' => 'category','sort' => 'starsize', 'direction' => 'asc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/low-rate/*', array('controller' => 'businesses', 'action' => 'category','sort' => 'starsize', 'direction' => 'asc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/most-played', array('controller' => 'businesses', 'action' => 'category','sort' => 'Gamestat.playcount', 'direction' => 'desc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/most-played/*', array('controller' => 'businesses', 'action' => 'category','sort' => 'Gamestat.playcount', 'direction' => 'desc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/least-played', array('controller' => 'businesses', 'action' => 'category','sort' => 'Gamestat.playcount', 'direction' => 'asc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
+        Router::connect('/category/:cat_url/least-played/*', array('controller' => 'businesses', 'action' => 'category','sort' => 'Gamestat.playcount', 'direction' => 'asc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
         Router::connect('/games/hot', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'recommend', 'direction' => 'desc'));
         Router::connect('/games/hot/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'recommend', 'direction' => 'desc'));
         Router::connect('/games/newest', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'id', 'direction' => 'desc'));
         Router::connect('/games/newest/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'id', 'direction' => 'desc'));
+        Router::connect('/games/a-z', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'name', 'direction' => 'asc'));
+        Router::connect('/games/a-z/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'name', 'direction' => 'asc'));
+        Router::connect('/games/z-a', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'name', 'direction' => 'desc'));
+        Router::connect('/games/z-a/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'name', 'direction' => 'desc'));
         Router::connect('/games/oldest', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'id', 'direction' => 'asc'));
         Router::connect('/games/oldest/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'id', 'direction' => 'asc'));
+        Router::connect('/games/most-played', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'Gamestat.playcount', 'direction' => 'desc'));
+        Router::connect('/games/most-played/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'Gamestat.playcount', 'direction' => 'desc'));
+        Router::connect('/games/least-played', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'Gamestat.playcount', 'direction' => 'asc'));
+        Router::connect('/games/least-played/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'Gamestat.playcount', 'direction' => 'asc'));
         Router::connect('/games/high-rate', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'starsize', 'direction' => 'desc'));
         Router::connect('/games/high-rate/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'starsize', 'direction' => 'desc'));
         Router::connect('/games/low-rate', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'starsize', 'direction' => 'asc'));

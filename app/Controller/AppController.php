@@ -241,7 +241,7 @@ class AppController extends Controller {
             }
             $this->pure_domain = implode('.', $parts);
 
-            if ($this->Session->read('mapping')) {
+            if ($this->Session->read('mapping') || Configure::read('Domain.cname')) {
                 $this->set('pure_domain', 'clone.gs');
             } else {
                 $this->set('pure_domain', $this->pure_domain);
