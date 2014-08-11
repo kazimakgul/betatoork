@@ -31,10 +31,12 @@
 								<li class="dropdown">
 									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Filter/Sort <span class="caret"></span></button>
 									<ul class="dropdown-menu">
-					 				    <li><?php echo $this->Paginator->sort('id', 'Newest', array('direction' => 'desc')); ?></li>	
-                                        <li><?php echo $this->Paginator->sort('name', 'Name', array('direction' => 'asc')); ?></li>
-                                        <li><?php echo $this->Paginator->sort('starsize', 'Top Rated', array('direction' => 'desc')); ?></li>
-                                        <li><?php echo $this->Paginator->sort('Gamestat.playcount', 'Most Played', array('direction' => 'desc')); ?></li>
+					 					<li><?php echo $this->Paginator->sort('id','New Games',array('direction'=>'desc')); ?></li>
+					 					<li><?php echo $this->Paginator->sort('recommend','Recommended',array('direction'=>'desc')); ?></li>
+					 					<li><?php echo $this->Paginator->sort('starsize','Top Rate',array('direction'=>'desc')); ?></li>
+					 					<li><?php echo $this->Paginator->sort('playcount','Most Play',array('direction'=>'desc')); ?></li>
+					 					<li><?php echo $this->Paginator->sort('name','Name',array('direction'=>'asc')); ?></li>
+					                   	<li><?php echo $this->Paginator->sort('created','Date'); ?></li>
 									</ul>
 								</li>
 							</ul>

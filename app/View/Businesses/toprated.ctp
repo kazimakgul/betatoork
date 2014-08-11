@@ -35,19 +35,19 @@
                                     <li><?php echo $this->Paginator->sort('id', 'Newest', array('direction' => 'desc')); ?></li>	
                                     <li><?php echo $this->Paginator->sort('name', 'Name', array('direction' => 'asc')); ?></li>
                                     <li><?php echo $this->Paginator->sort('starsize', 'Top Rated', array('direction' => 'desc')); ?></li>
-                                    <li><?php echo $this->Paginator->sort('Gamestat.playcount', 'Most Played', array('direction' => 'desc')); ?></li>
+                                    <li><?php echo $this->Paginator->sort('playcount', 'Most Played', array('direction' => 'desc')); ?></li>
                                 </ul>
                             </li>
                         </ul>
                         <?php
-                        //Provide true sorting names
                         $sort = $this->request->params['named']['sort'];
-                        $direction = $this->request->params['named']['direction']; 
+                        $direction = $this->request->params['named']['direction'];
+                        echo $sort.$direction; 
 
-                        if($sort=='Gamestat.playcount' && $direction=='desc')
+                        if($sort=='playcount' && $direction=='desc')
                         {
                            $name = 'Most Played Games'; 
-                        }else if($sort=='Gamestat.playcount' && $direction=='asc')
+                        }else if($sort=='playcount' && $direction=='asc')
                         {
                            $name = 'Least Played Games';
                         }else if($sort=='id' && $direction=='desc')
@@ -74,6 +74,7 @@
                         }else{
                             $name = ucwords($param);
                         }
+
 
                         ?>
                         <h3 class="panel-title"><?php echo $name; ?></h3>
