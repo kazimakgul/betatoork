@@ -2414,7 +2414,6 @@ class BusinessesController extends AppController {
                 'limit' => $limit
             )
         );
-<<<<<<< HEAD
 
         switch ($filter) {
             case 'mobiles':
@@ -2432,25 +2431,6 @@ class BusinessesController extends AppController {
             default:
                 $activefilter = 0;
         }
-=======
-        
-		switch ($filter) {
-		case 'mobiles':
-            $activefilter = 1;
-            $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
-		    break;
-		case 'fullscreen':
-            $activefilter = 2;
-            $this->paginate['Game']['conditions']['Game.fullscreen'] = 1;
-		    break;
-		case 'embed':
-            $activefilter = 3;
-            $this->paginate['Game']['conditions']['Game.fullscreen'] = 0;
-		    break;
-		default:
-			$activefilter = 0;
-		}
->>>>>>> origin/master
 
         /*if ($filter === 'mobiles') {
             $activefilter = 1;
