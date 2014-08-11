@@ -55,7 +55,16 @@ Router::connect('/mygames/sort/least-rating/*', array('controller' => 'businesse
 Router::connect('/mygames/*', array('controller' => 'businesses', 'action' => 'mygames'));
 Router::connect('/favorites/search', array('controller' => 'businesses', 'action' => 'favorites_search'));
 Router::connect('/favorites', array('controller' => 'businesses', 'action' => 'favorites'));
+<<<<<<< HEAD
 Router::connect('/explore/games/search/:filter', array('controller' => 'businesses', 'action' => 'exploregames_search'), array('pass' => array('filter'), 'filter' => 'mobiles|fullscreen|embed'));
+=======
+<<<<<<< HEAD
+Router::connect('/explore/games/search/:filter', array('controller' => 'businesses', 'action' => 'exploregames_search'), array('pass' => array('filter'), 'filter' => 'mobiles|fullscreen|embed'));
+=======
+
+Router::connect('/explore/games/search/:filter', array('controller' => 'businesses', 'action' => 'exploregames_search'), array('pass' => array('filter'), 'filter' => 'mobiles'));
+>>>>>>> FETCH_HEAD
+>>>>>>> origin/master
 Router::connect('/explore/games/search', array('controller' => 'businesses', 'action' => 'exploregames_search'));
 Router::connect('/explore/games/:filter', array('controller' => 'businesses', 'action' => 'exploregames'), array('pass' => array('filter'), 'filter' => 'mobiles|fullscreen|embed'));
 Router::connect('/explore/games', array('controller' => 'businesses', 'action' => 'exploregames'));
