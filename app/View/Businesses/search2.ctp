@@ -67,4 +67,6 @@ $count = $params['count'];
     <?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>3 )); ?>
 </div>
 <!-- /.container -->
+<?php echo $this->element('business/components/popup', array('user_id' => $user['User']['id'])); ?>
+
 <?php echo $this->element('business/footer'); ?>
