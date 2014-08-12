@@ -39,7 +39,16 @@
             <div class="col-sm-11 col-md-11" style="margin-bottom: 0px; padding-top: 3px; padding-bottom: 3px">
                 <!-- center - right -->
                 <div class='pull-left'>
-                    <?php echo $this->element('business/buttons/clone'); ?>
+                    <div class="clone">
+                        <?php
+                        if (isset($ownclone[0]['cloneships']['id'])) {
+                            $clonestatus = TRUE;
+                        } else {
+                            $clonestatus = FALSE;
+                        }
+                        echo $this->element('buttons/clone', array('clone' => $clonestatus, 'name' => $gamename, 'id' => $game_id));
+                        ?>
+                    </div>
                     <?php echo $this->element('business/buttons/favorite'); ?>	
                 </div>
                 <div class='pull-center'>
