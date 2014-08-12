@@ -1243,12 +1243,13 @@ function switch_favorite(game_id) {
     var button = $('.fav-' + game_id);
     button
         .removeClass('btn-default')
+        .removeClass('btn-danger')
         .addClass('btn-warning')
-        .html('<i class="fa fa-heart heart"></i> UnFavorite');
+        .html('<i class="fa fa-heart heart"></i> Progress...');
     $.get(favswitcher + '/' + game_id, function(data) {
         if (data == 0) {
             button
-                .removeClass('btn-default')
+                .removeClass('btn-warning')
                 .addClass('btn-danger');
             Messenger()
                 .post("Game Favorited");
@@ -1256,7 +1257,7 @@ function switch_favorite(game_id) {
                 .html('<i class="fa fa-heart"></i> Favorite');
         } else {
             button
-                .removeClass('btn-danger')
+                .removeClass('btn-warning')
                 .addClass('btn-default');
             Messenger()
                 .post("Game Unfavorited");
