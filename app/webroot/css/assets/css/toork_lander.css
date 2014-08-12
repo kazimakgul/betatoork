@@ -8930,10 +8930,6 @@ li.L9 {
   margin: 0px;
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #5c8a87;
-  -webkit-box-shadow: 0px 2px 0px #95b7b5;
-  -moz-box-shadow: 0px 2px 0px #95b7b5;
-  box-shadow: 0px 2px 0px #95b7b5;
 }
 .slider-header strong {
   color: #ffecb0;
@@ -8952,7 +8948,7 @@ li.L9 {
 /* Slider styles */
 .slider-w {
   text-align: center;
-  background: #76a3a0 url('../../../img/images/toorkpattern6.jpg') top left repeat;
+  background: #76a3a0 url('../../../img/images/clonepattern.jpg') top left repeat;
   /* Slider item */
 
   /* Browser showcasing product */
