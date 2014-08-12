@@ -39,7 +39,7 @@
         remove_ads_field	='<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_ads_field')); ?>';
         col_ads_link		='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'col_ads')); ?>';
        	remove_ads_field	='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'remove_ads_field')); ?>';     
-		<?php if($auth_user){?> user_auth='1'; <?php }else{?> user_auth='0'; <?php }?>
+		<?php if(isset($auth_user)){?> user_auth='1'; <?php }else{?> user_auth='0'; <?php }?>
 
         <?php if(Configure::read('Domain.cname')){ ?>
               cname=1;
