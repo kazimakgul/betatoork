@@ -165,3 +165,62 @@ $('div#profilepicarea').hover(
             $('a#changeprofilepic').fadeOut(500);
         }
 );
+
+
+ /**
+ * Explore Games Clone Button Action
+ * @param string game_name
+ * @param boolean user_auth
+ * @param integer game_id
+ * @param integer clone_status
+ * @author Emircan Ok
+ */
+function chaingame3(game_name, user_auth, game_id) {
+    var btn = $('a.clone-' + game_id);
+    btn
+        .removeClass('btn-success')
+        .addClass('btn-warning')
+        .html('<i class="fa fa-cog spin"></i> Cloning');
+    if (user_auth == 1) {
+        $.get(chaingame + '/' + game_id, function(data) {
+            if (data == 1) {
+                btn
+                    .button('reset')
+                    .html('<i class="fa fa-cog"></i> Cloned')
+                    .removeClass('btn-warning')
+                    .addClass('btn-default');
+            } else {
+                btn
+                    .button('reset');
+            }
+        });
+    } else {
+        $('#myModal')
+            .modal('hide');
+        $('#login')
+            .modal('show');
+    }
+}
+
+/**
+ * Explore Games Hover Game Clone Button Action
+ * @author Emircan Ok
+ */
+$('div.clone a').hover(
+        function() {
+            if ($(this).html() == '<i class="fa fa-cog"></i> Cloned') {
+                $(this)
+                    .removeClass('btn-default')
+                    .addClass('btn-success')
+                    .html('<i class="fa fa-cog"></i> Re Clone');
+            }
+        },
+        function() {
+            if ($(this).html() == '<i class="fa fa-cog"></i> Re Clone') {
+                $(this)
+                    .removeClass('btn-success')
+                    .addClass('btn-default')
+                    .html('<i class="fa fa-cog"></i> Cloned');
+            }
+        }
+);
