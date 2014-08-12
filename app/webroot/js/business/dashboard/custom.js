@@ -1239,44 +1239,29 @@ $('#fav_button').click(function() {
     }
 });
 
-function switch_favorite(game_id)
-{
+function switch_favorite(game_id) {
+    var button = $('.fav-' + game_id);
+    button
+        .removeClass('btn-default')
+        .addClass('btn-warning')
+        .html('<i class="fa fa-heart heart"></i> UnFavorite');
     $.get(favswitcher + '/' + game_id, function(data) {
-        var button = $('.fav-' + game_id);
         if (data == 0) {
-            /*
-             button
-             .removeClass('btn-default')
-             .addClass('btn-danger');
-             */
             button
-                    .removeClass('btn-danger')
-                    .addClass('btn-default');
+                .removeClass('btn-default')
+                .addClass('btn-danger');
             Messenger()
-                    .post("Game Unfavorited");
-            /*
-             button
-             .html('<i class="fa fa-heart "></i> Favorite');
-             */
+                .post("Game Favorited");
             button
-                    .html('<i class="fa fa-heart "></i> UnFavorite');
+                .html('<i class="fa fa-heart"></i> Favorite');
         } else {
-            /*
-             $("#fav-" + game_id)
-             .removeClass('btn-danger')
-             .addClass('btn-default');
-             */
             button
-                    .removeClass('btn-default')
-                    .addClass('btn-danger');
+                .removeClass('btn-danger')
+                .addClass('btn-default');
             Messenger()
-                    .post("Game Favorited");
-            /*
-             button
-             .html('<i class="fa fa-heart "></i> Unfavorite');
-             */
+                .post("Game Unfavorited");
             button
-                    .html('<i class="fa fa-heart "></i> Favorite');
+                .html('<i class="fa fa-heart"></i> UnFavorite');
         }
     });
 }

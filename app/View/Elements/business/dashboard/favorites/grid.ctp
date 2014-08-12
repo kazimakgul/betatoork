@@ -1,3 +1,15 @@
+<style>
+    .heart {
+        /*font-size: 150px;
+        color: #e00;*/
+        animation: beat .25s infinite alternate;
+        transform-origin: center;
+        margin-right: 4px;
+    }
+    @keyframes beat{
+        to { transform: scale(1.4); }
+    }
+</style>
 <div class="row users-grid">
     <?php
     if (!empty($games)) {
@@ -53,11 +65,14 @@
                         <!-- Favorite Button -->
                         <div class="favourite">
                             <div class="widget-button">
+                                <!--
                                 <button type="button" class="btn btn-danger fav-<?php echo $game['Game']['id']; ?>" onclick="favorite('<?php echo $game['Game']['name']; ?>', user_auth, <?php echo $game['Game']['id']; ?>);"><li class="fa fa-heart <?php
-                                    if (isset($ownuser[0]['favorites']['id'])) {
-                                        echo 'red';
-                                    }
-                                    ?>"></li> Favorite <span class="label label-info" id="fav_count"><?php echo $favorites; ?></span></button>
+                                if (isset($ownuser[0]['favorites']['id'])) {
+                                    echo 'red';
+                                }
+                                ?>"></li> Favorite <span class="label label-info" id="fav_count"><?php echo $favorites; ?></span></button>
+                                -->
+                                <?php echo $this->element('buttons/favorite', array('favorite' => TRUE, 'id' => $game['Game']['id'], 'name' => $name)); ?>
                             </div>
                         </div>
                         <!-- Favorite Button  End-->

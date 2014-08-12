@@ -41,10 +41,13 @@
                         <!-- Favorite Button -->
                         <div class="favourite">
                             <div class="widget-button" data-toggle="tooltip" data-original-title="Unfavorite">
+                                <!--
                                 <button type="button" class="btn btn-danger fav-<?php echo $game['Game']['id']; ?>" id="fav_button" onclick="favorite('<?php echo $name; ?>', user_auth, <?php echo $game['Game']['id']; ?>);">
-                                    <li class="fa fa-heart"></li>
+                                    <i class="fa fa-heart"></i>
                                     <span class="label label-info" id="fav_count"></span>
                                 </button>
+                                -->
+                                <?php echo $this->element('buttons/favorite', array('favorite' => TRUE, 'id' => $game['Game']['id'], 'name' => $name)); ?>
                             </div>
                         </div>
                         <!-- Favorite Button  End-->
