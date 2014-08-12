@@ -9,7 +9,6 @@
                       <span class='icon-bar'></span>
                     </a>
                     <a href="<?php echo $index; ?>" class="brand">
-                      <p style="margin-top:25px; margin-left:25px; font-size:16px;">clone.games</p>
                     </a><span>beta</span>
                     <div class='nav-collapse subnav-collapse collapse pull-right' id='top-navigation'>
                       <div class=''>
