@@ -1336,7 +1336,7 @@ function ad_get_code1(location, user_id) {
  * @author Emircan Ok
  */
 function chaingame3(game_name, user_auth, game_id) {
-    var btn = $('button.clone-' + game_id);
+    var btn = $('a.clone-' + game_id);
     btn
         .removeClass('btn-success')
         .addClass('btn-warning')
@@ -1370,7 +1370,7 @@ function chaingame3(game_name, user_auth, game_id) {
  * Explore Games Hover Game Clone Button Action
  * @author Emircan Ok
  */
-$('div.clone button').hover(
+$('div.clone a').hover(
         function() {
             if ($(this).html() == '<i class="fa fa-cog"></i> Cloned') {
                 $(this)
