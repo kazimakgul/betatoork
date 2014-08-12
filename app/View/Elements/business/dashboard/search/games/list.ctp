@@ -28,7 +28,6 @@
             $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
             $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
             $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
-            // $clonestatus = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($userid, $game['Game']['id']));
             if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
                 $userurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain);
                 $playurl = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
@@ -39,9 +38,7 @@
             ?>
             <div class="row user">
                 <div class="col-sm-1 followcolumn">
-                    <?php // if ($clonestatus === FALSE) { ?>
-                    <button id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame3('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success" data-placement="top" data-toggle="tooltip" title=""><i class="fa fa-cog "></i> Clone</button>
-                    <?php // } ?>
+                    <?php echo $this->element('buttons/clone', array('clone' => $clonestatus, 'id' => $game['Game']['id'], 'name' => $name)); ?>
                 </div>
                 <div class="col-sm-2 avatar">
                     <a href="<?php echo $playurl ?>" target="_blank">

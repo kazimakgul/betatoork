@@ -29,56 +29,40 @@ if (isset($query)) {
     $embed = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'embed'));
 }
 
-     //this provides titles for sorting
-if(isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction']))
-{
-     $sort = $this->request->params['named']['sort'];
-     $direction = $this->request->params['named']['direction'];
-     if($sort=='Game.name' && $direction=='asc')
-     {
-           $name = 'A to Z'; 
-     }else if($sort=='Game.name' && $direction=='desc')
-     {
-           $name = 'Z to A';
-     }else if($sort=='Game.starsize' && $direction=='desc')
-     {
-           $name = 'Highest Rating';
-     }else if($sort=='Game.starsize' && $direction=='asc')
-     {
-           $name = 'Least Rating';
-     }else if($sort=='Gamestat.channelclone' && $direction=='desc')
-     {
-           $name = 'Most Cloned';
-     }else if($sort=='Gamestat.channelclone' && $direction=='asc')
-     {
-           $name = 'Least Cloned';
-     }else if($sort=='Gamestat.favcount' && $direction=='desc')
-     {
-           $name = 'Most Favorited';
-     }else if($sort=='Gamestat.favcount' && $direction=='asc')
-     {
-           $name = 'Least Favorited';
-     }else if($sort=='Gamestat.playcount' && $direction=='desc')
-     {
-           $name = 'Most Played';
-     }else if($sort=='Gamestat.playcount' && $direction=='asc')
-     {
-           $name = 'Least Played';
-     }else if($sort=='Game.id' && $direction=='desc')
-     {
-           $name = 'Newest';
-     }else if($sort=='Game.id' && $direction=='asc')
-     {
-           $name = 'Oldest';
-     }else if($sort=='Gamestat.potential' && $direction=='desc')
-     {
-           $name = 'Recommend';
-     }else if($sort=='Gamestat.potential' && $direction=='asc')
-     {
-           $name = 'Low Score';
-     }
+//this provides titles for sorting
+if (isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction'])) {
+    $sort = $this->request->params['named']['sort'];
+    $direction = $this->request->params['named']['direction'];
+    if ($sort == 'Game.name' && $direction == 'asc') {
+        $name = 'A to Z';
+    } else if ($sort == 'Game.name' && $direction == 'desc') {
+        $name = 'Z to A';
+    } else if ($sort == 'Game.starsize' && $direction == 'desc') {
+        $name = 'Highest Rating';
+    } else if ($sort == 'Game.starsize' && $direction == 'asc') {
+        $name = 'Least Rating';
+    } else if ($sort == 'Gamestat.channelclone' && $direction == 'desc') {
+        $name = 'Most Cloned';
+    } else if ($sort == 'Gamestat.channelclone' && $direction == 'asc') {
+        $name = 'Least Cloned';
+    } else if ($sort == 'Gamestat.favcount' && $direction == 'desc') {
+        $name = 'Most Favorited';
+    } else if ($sort == 'Gamestat.favcount' && $direction == 'asc') {
+        $name = 'Least Favorited';
+    } else if ($sort == 'Gamestat.playcount' && $direction == 'desc') {
+        $name = 'Most Played';
+    } else if ($sort == 'Gamestat.playcount' && $direction == 'asc') {
+        $name = 'Least Played';
+    } else if ($sort == 'Game.id' && $direction == 'desc') {
+        $name = 'Newest';
+    } else if ($sort == 'Game.id' && $direction == 'asc') {
+        $name = 'Oldest';
+    } else if ($sort == 'Gamestat.potential' && $direction == 'desc') {
+        $name = 'Recommend';
+    } else if ($sort == 'Gamestat.potential' && $direction == 'asc') {
+        $name = 'Low Score';
+    }
 }
-
 ?>
 <body id="users">
 <div id="wrapper">
@@ -95,7 +79,11 @@ if(isset($this->request->params['named']['sort']) && isset($this->request->param
             </div>
             <form class="search hidden-xs" action="<?php echo $search_action; ?>" style="margin-left: 200px">
                 <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search games..." value="<?php if (isset($query)) { echo $query;}?>" />
+                <input type="text" name="q" placeholder="Search games..." value="<?php
+                if (isset($query)) {
+                    echo $query;
+                }
+                ?>" />
                 <input type="submit" />
             </form>
             <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">
@@ -112,20 +100,16 @@ if(isset($this->request->params['named']['sort']) && isset($this->request->param
                     <a href="<?php echo $embed; ?>" <?php echo $activefilter === 3 ? 'class="active"' : ''; ?>>Embed Games</a>
                     <div class="show-options">
                         <div class="dropdown">
-
-
-                           <!--Sorting Tags Start here-->
-                          <?php if(isset($name)){ ?>
-                          <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
-                             <a href="<?php echo $explore; ?>" style="text-decoration: none !important;color: #666">
-                            <?php echo $name; ?>
-                            <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;">X</span>
-                            </a>
-                          </span>
-                          <?php } ?>
-                          <!--Sorting Tags Ends here-->
-
-
+                            <!--Sorting Tags Start here-->
+                            <?php if (isset($name)) { ?>
+                                <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
+                                    <a href="<?php echo $explore; ?>" style="text-decoration: none !important;color: #666">
+                                        <?php echo $name; ?>
+                                        <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;">X</span>
+                                    </a>
+                                </span>
+                            <?php } ?>
+                            <!--Sorting Tags Ends here-->
                             <a class="button" data-toggle="dropdown" href="#">
                                 <span>
                                     Sort by

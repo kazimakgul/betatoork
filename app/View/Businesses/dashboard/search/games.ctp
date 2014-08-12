@@ -96,9 +96,12 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             <div class="container-fluid">
                 <?php
                 if (!empty($result)) {
+                    foreach ($result as $key => $value) {
+                        $result[$key]['clonestatus'] = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($value['User']['id'], $value['Game']['id']));
+                    }
                     echo
-                    $this->element('business/dashboard/search/games/grid') .
-                    $this->element('business/dashboard/search/games/list');
+                    $this->element('business/dashboard/search/games/grid', array('result' => $result)) .
+                    $this->element('business/dashboard/search/games/list', array('result' => $result));
                 } else {
                     echo $this->element('business/dashboard/nullconditions', array('link' => 'exploregames', 'text' => 'Explore Games'));
                 }
@@ -108,12 +111,12 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
     </div>
 </div>
 <style>
-    <?php
-    if (isset($view) && $view === 'list') {
-        echo '#users #content .content-wrapper .users-grid { display: none; }';
-    } else {
-        echo '#users #content .content-wrapper .users-list { display: none; }';
-    }
-    ?>
+<?php
+if (isset($view) && $view === 'list') {
+    echo '#users #content .content-wrapper .users-grid { display: none; }';
+} else {
+    echo '#users #content .content-wrapper .users-list { display: none; }';
+}
+?>
 </style>
 </body>

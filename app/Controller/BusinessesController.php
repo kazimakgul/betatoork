@@ -2334,9 +2334,7 @@ class BusinessesController extends AppController {
     public function exploregames($filter = null) {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
-
         $this->sync_sorting();
-
         $limit = 12;
         $this->paginate = array(
             'Game' => array(
@@ -2384,7 +2382,6 @@ class BusinessesController extends AppController {
                 'limit' => $limit
             )
         );
-
         switch ($filter) {
             case 'mobiles':
                 $activefilter = 1;
@@ -2401,11 +2398,6 @@ class BusinessesController extends AppController {
             default:
                 $activefilter = 0;
         }
-
-        /*if ($filter === 'mobiles') {
-            $activefilter = 1;
-            $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
-        }*/
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
         $this->set('userid', $this->Auth->user('id'));
@@ -2584,11 +2576,7 @@ class BusinessesController extends AppController {
                 break;
         }
         $data = $this->Game->find('all', $find);
-        print_r($data);
-        exit;
         $cond = $this->paginate($data);
-        /* print_r($cond);
-          exit; */
         $this->set('games', $cond);
         $this->set('activefilter', $activefilter);
         $this->set('title_for_layout', 'Clone Business Explore Games');
