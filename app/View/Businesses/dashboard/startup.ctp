@@ -216,10 +216,11 @@ if ($user['User']['picture'] == null) {
     function chaingame4(game_name, user_auth, game_id) {
         get_new_game(game_id);
         cloned_ids.push(game_id);
-        var btn = $('#clone-' + game_id);
-        btn.removeClass('btn-success');
-        btn.addClass('btn-warning');
-        btn.html('<i class="fa fa-cog spin"></i> Cloning');
+        var btn = $('a.clone-' + game_id);
+        btn
+            .removeClass('btn-success')
+            .addClass('btn-warning')
+            .html('<i class="fa fa-cog spin"></i> Cloning');
         var clone_count = 5;
         if (user_auth == 1) {
             clone++;
@@ -276,7 +277,7 @@ if ($user['User']['picture'] == null) {
     {
         //alert(game_id);
         var box = $('#gamebox-' + game_id);
-        var btn = $('#clone-' + game_id);
+        var btn = $('button.clone-' + game_id);
         //box.removeClass('#gamebox-' + game_id);
 
         link = newstartupgame;

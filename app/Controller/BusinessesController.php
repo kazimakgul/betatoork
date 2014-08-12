@@ -933,8 +933,7 @@ class BusinessesController extends AppController {
         style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong> 
         </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div> 
         <div class="text-center"> <i class="fa fa-plus-square "> ' . $clones . ' Clones</i> | <i class="fa fa-heart"> ' . $favorites . ' Favorites</i> | <i class="fa fa-play"> ' . $plays . ' Plays</i></div> </small> 
-        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a id="clone-' . $onegame['Game']['id'] . '" 
-        class="btn btn-success"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
+        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a onclick="chaingame4(\''.$onegame['Game']['name'].'\', user_auth, '.$onegame['Game']['id'].')" class="btn btn-success clone-' . $onegame['Game']['id'] . '"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
 
 
         $msg = array("game_name" => $onegame['Game']['name'], "game_id" => $onegame['Game']['id'], "onclick" => 'chaingame4("' . $onegame['Game']['name'] . '", user_auth,' . $onegame['Game']['id'] . ');', 'html' => $htmlcode, 'result' => 1);

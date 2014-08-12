@@ -67,7 +67,8 @@
                         <!----=========================================---->
                         <!-- Clone Button -->
                         <div class="clone text-center">
-                            <a id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame4('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success"><i class="fa fa-cog "></i> Clone</a>
+                            <!--<a id="clone-<?php echo $game['Game']['id']; ?>" onclick="chaingame4('<?php echo $name; ?>', user_auth,<?php echo $game['Game']['id']; ?>);" class="btn btn-success"><i class="fa fa-cog "></i> Clone</a>-->
+                            <?php echo $this->element('buttons/clone', array('id' => $game['Game']['id'], 'name' => $name, 'page' => 'welcome')); ?>
                         </div>
                         <!-- Clone Button End -->
                     </div>

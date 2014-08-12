@@ -1336,7 +1336,7 @@ function ad_get_code1(location, user_id) {
  * @author Emircan Ok
  */
 function chaingame3(game_name, user_auth, game_id) {
-    var btn = $('.clone-' + game_id);
+    var btn = $('button.clone-' + game_id);
     btn
         .removeClass('btn-success')
         .addClass('btn-warning')
