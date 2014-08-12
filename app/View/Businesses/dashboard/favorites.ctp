@@ -7,6 +7,8 @@ $allgames = $params['count'];
 
 
      //this provides titles for sorting
+if(isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction']))
+{
      $sort = $this->request->params['named']['sort'];
      $direction = $this->request->params['named']['direction'];
      if($sort=='Game.name' && $direction=='asc')
@@ -40,7 +42,7 @@ $allgames = $params['count'];
      {
            $name = 'Least Played';
      }
-
+}
 ?>
 <body id="users">
 <div id="wrapper">

@@ -6,6 +6,8 @@ $params = $this->Paginator->params();
 $allgames = $params['count'];
 
      //this provides titles for sorting
+if(isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction']))
+{
      $sort = $this->request->params['named']['sort'];
      $direction = $this->request->params['named']['direction'];
      if($sort=='User.username' && $direction=='asc')
@@ -45,7 +47,7 @@ $allgames = $params['count'];
      {
            $name = 'Low Score';
      }
-
+}
 
 ?>
 <body id="users">

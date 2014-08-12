@@ -30,6 +30,8 @@ if (isset($query)) {
 }
 
      //this provides titles for sorting
+if(isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction']))
+{
      $sort = $this->request->params['named']['sort'];
      $direction = $this->request->params['named']['direction'];
      if($sort=='Game.name' && $direction=='asc')
@@ -75,7 +77,7 @@ if (isset($query)) {
      {
            $name = 'Low Score';
      }
-
+}
 
 ?>
 <body id="users">

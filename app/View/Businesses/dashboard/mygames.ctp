@@ -20,38 +20,41 @@ if (isset($query)) {
 }
     
      //this provides titles for sorting
-     $sort = $this->request->params['named']['sort'];
-     $direction = $this->request->params['named']['direction'];
-     if($sort=='Game.name' && $direction=='asc')
+     if(isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction']))
      {
-           $name = 'A to Z'; 
-     }else if($sort=='Game.name' && $direction=='desc')
-     {
-           $name = 'Z to A';
-     }else if($sort=='Game.starsize' && $direction=='desc')
-     {
-           $name = 'Highest Rating';
-     }else if($sort=='Game.starsize' && $direction=='asc')
-     {
-           $name = 'Least Rating';
-     }else if($sort=='Gamestat.channelclone' && $direction=='desc')
-     {
-           $name = 'Most Cloned';
-     }else if($sort=='Gamestat.channelclone' && $direction=='asc')
-     {
-           $name = 'Least Cloned';
-     }else if($sort=='Gamestat.favcount' && $direction=='desc')
-     {
-           $name = 'Most Favorited';
-     }else if($sort=='Gamestat.favcount' && $direction=='asc')
-     {
-           $name = 'Least Favorited';
-     }else if($sort=='Gamestat.playcount' && $direction=='desc')
-     {
-           $name = 'Most Played';
-     }else if($sort=='Gamestat.playcount' && $direction=='asc')
-     {
-           $name = 'Least Played';
+         $sort = $this->request->params['named']['sort'];
+         $direction = $this->request->params['named']['direction'];
+         if($sort=='Game.name' && $direction=='asc')
+         {
+               $name = 'A to Z';
+         }else if($sort=='Game.name' && $direction=='desc')
+         {
+               $name = 'Z to A';
+         }else if($sort=='Game.starsize' && $direction=='desc')
+         {
+               $name = 'Highest Rating';
+         }else if($sort=='Game.starsize' && $direction=='asc')
+         {
+               $name = 'Least Rating';
+         }else if($sort=='Gamestat.channelclone' && $direction=='desc')
+         {
+               $name = 'Most Cloned';
+         }else if($sort=='Gamestat.channelclone' && $direction=='asc')
+         {
+               $name = 'Least Cloned';
+         }else if($sort=='Gamestat.favcount' && $direction=='desc')
+         {
+               $name = 'Most Favorited';
+         }else if($sort=='Gamestat.favcount' && $direction=='asc')
+         {
+               $name = 'Least Favorited';
+         }else if($sort=='Gamestat.playcount' && $direction=='desc')
+         {
+               $name = 'Most Played';
+         }else if($sort=='Gamestat.playcount' && $direction=='asc')
+         {
+               $name = 'Least Played';
+         }
      }
 ?>
 <body id="users">

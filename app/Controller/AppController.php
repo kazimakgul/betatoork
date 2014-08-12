@@ -300,7 +300,7 @@ class AppController extends Controller {
     //Author:Ogi
     //==================================================================
    function sync_sorting(){
-       if (isset($this->request->params['named']['sort']) || $this->request->params['named']['sort'] == NULL) {
+       if (isset($this->request->params['sort']) && isset($this->request->params['direction']) && $this->request->params['named']['sort'] == NULL) {
            $this->request->params['named']['sort'] = $this->request->params['sort'];
            $this->request->params['named']['direction'] = $this->request->params['direction'];
        }
