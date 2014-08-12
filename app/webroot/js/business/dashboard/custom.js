@@ -1250,19 +1250,17 @@ function switch_favorite(game_id) {
         if (data == 0) {
             button
                 .removeClass('btn-warning')
-                .addClass('btn-danger');
+                .addClass('btn-danger')
+                .html('<i class="fa fa-heart"></i> Favorite');
             Messenger()
                 .post("Game Favorited");
-            button
-                .html('<i class="fa fa-heart"></i> Favorite');
         } else {
             button
                 .removeClass('btn-warning')
-                .addClass('btn-default');
+                .addClass('btn-default')
+                .html('<i class="fa fa-heart"></i> UnFavorite');
             Messenger()
                 .post("Game Unfavorited");
-            button
-                .html('<i class="fa fa-heart"></i> UnFavorite');
         }
     });
 }
