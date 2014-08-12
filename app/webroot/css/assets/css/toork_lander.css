@@ -3375,9 +3375,9 @@ input[type="submit"].btn.btn-mini {
   color: #777777;
   text-shadow: 0 1px 0 #ffffff;
   background: url(../../../img/clone.png) no-repeat center;
-  background-size:150px 45px;
-  width: 155px;
-  height: 20px
+  background-size:200px 60px;
+  width: 200px;
+  height: 33px
 }
 .navbar .brand:hover,
 .navbar .brand:focus {
