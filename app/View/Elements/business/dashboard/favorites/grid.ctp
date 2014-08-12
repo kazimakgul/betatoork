@@ -1,12 +1,22 @@
 <style>
     .heart {
-        /*font-size: 150px;
-        color: #e00;*/
         animation: beat .25s infinite alternate;
+        -webkit-animation: beat .25s infinite alternate;
+        -moz-animation: beat .25s infinite alternate;
+        -o-animation: beat .25s infinite alternate;
         transform-origin: center;
         margin-right: 4px;
     }
     @keyframes beat{
+        to { transform: scale(1.4); }
+    }
+    @-moz-keyframes beat{
+        to { transform: scale(1.4); }
+    }
+    @-o-keyframes beat{
+        to { transform: scale(1.4); }
+    }
+    @-webkit-keyframes beat{
         to { transform: scale(1.4); }
     }
 </style>
