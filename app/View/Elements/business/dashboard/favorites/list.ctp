@@ -1,10 +1,14 @@
 <div class="row users-list">
     <div class="col-md-12">
         <div class="row headers">
-            <div class="col-sm-3 col-md-offset-3 header hidden-xs">
+            <div class="col-xs-3 col-sm-2 hidden-xs  header">
+            </div>
+            <div class="col-xs-3 col-sm-2 hidden-xs  header">
+            </div>
+            <div class="col-xs-3 col-sm-2 hidden-xs  header">
                 <label><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></label>
             </div>
-            <div class="col-sm-2 header hidden-xs text-right">
+            <div class="col-sm-2 header hidden-xs  text-right">
                 <label>Owner</label>
             </div>
             <div class="col-sm-1 header hidden-xs text-right">
@@ -37,7 +41,7 @@
                 }
                 ?>
                 <div class="row user">
-                    <div class="col-sm-1 text-center followcolumn">
+                    <div class="col-xs-4 col-sm-2 text-left followcolumn">
                         <!-- Favorite Button -->
                         <div class="favourite">
                             <div class="widget-button" data-toggle="tooltip" data-original-title="Unfavorite">
@@ -52,43 +56,43 @@
                         </div>
                         <!-- Favorite Button  End-->
                     </div>
-                    <div class="col-sm-2 text-center avatar">
+                    <div class="col-xs-4 col-sm-2 text-center">
                         <a href="<?php echo $playurl ?>" target="_blank">
-                            <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
+                            <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'width: 90px;', 'class' => 'panel-image-preview', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");')); ?>
                         </a>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-xs-4 col-sm-2">
                         <a href="<?php echo $playurl ?>"  target="_blank" class="name">
                             <?php echo $name ?>
                         </a>
                     </div>
-                    <div class="col-sm-2 text-right">
+                    <div class="col-sm-2 hidden-xs  text-right">
                         <?php if ($owner !== FALSE) { ?>
                             <a href="<?php echo $userurl ?>"  target="_blank" class="name">
                                 <?php echo $owner ?>
                             </a>
                         <?php } else { ?>
-                            <div class="total-spent">
+                            <div class="total-spent col-sm-2 text-right">
                                 No Owner
                             </div>
                         <?php } ?>
                     </div>
-                    <div class="col-sm-1 text-right">
+                    <div class="col-sm-1 text-right hidden-xs">
                         <div class="total-spent">
                             <?php echo $clones ?>
                         </div>
                     </div>
-                    <div class="col-sm-1 text-right">
+                    <div class="col-sm-1 text-right hidden-xs">
                         <div class="total-spent">
                             <?php echo $favorites ?>
                         </div>
                     </div>
-                    <div class="col-sm-1 text-right">
+                    <div class="col-sm-1 text-right hidden-xs">
                         <div class="total-spent">
                             <?php echo $plays ?>
                         </div>
                     </div>
-                    <div class="col-sm-1 text-right">
+                    <div class="col-sm-1 text-right hidden-xs">
                         <div class="total-spent">
                             <?php echo $rates ?>
                         </div>
