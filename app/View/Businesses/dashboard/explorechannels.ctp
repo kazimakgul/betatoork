@@ -1,3 +1,12 @@
+<style>
+    <?php
+    if (isset($view) && $view === 'list') {
+        echo '#users #content .content-wrapper .users-grid { display: none; }';
+    } else {
+        echo '#users #content .content-wrapper .users-list { display: none; }';
+    }
+    ?>
+</style>
 <?php
 $search_action = $this->Html->url(array("controller" => "businesses", "action" => "explorechannels_search"));
 $game_add = $this->Html->url(array("controller" => "businesses", "action" => "game_add"));
@@ -134,13 +143,4 @@ if(isset($this->request->params['named']['sort']) && isset($this->request->param
         </div>
     </div>
 </div>
-<style>
-    <?php
-    if (isset($view) && $view === 'list') {
-        echo '#users #content .content-wrapper .users-grid { display: none; }';
-    } else {
-        echo '#users #content .content-wrapper .users-list { display: none; }';
-    }
-    ?>
-</style>
 </body>

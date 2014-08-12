@@ -94,10 +94,10 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
             <div class="row page-controls">
                 <div class="col-md-12 filters">
                     <label>Filter Games:</label>
-                    <a href="<?php echo $all; ?>" <?php echo $activefilter === 0 ? 'class="active"' : ''; ?>>All Games</a>
-                    <a href="<?php echo $mobile; ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games</a>
-                    <a href="<?php echo $fullscreen; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Fullscreen Games</a>
-                    <a href="<?php echo $embed; ?>" <?php echo $activefilter === 3 ? 'class="active"' : ''; ?>>Embed Games</a>
+                    <a href="<?php echo $all; ?>" <?php echo $activefilter === 0 ? 'class="active"' : ''; ?>>All</a>
+                    <a href="<?php echo $mobile; ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile</a>
+                    <a href="<?php echo $fullscreen; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Fullscreen</a>
+                    <a href="<?php echo $embed; ?>" <?php echo $activefilter === 3 ? 'class="active"' : ''; ?>>Embed</a>
                     <div class="show-options">
                         <div class="dropdown">
                             <!--Sorting Tags Start here-->

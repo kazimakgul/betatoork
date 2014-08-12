@@ -1,5 +1,6 @@
 <?php
 $add_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'add_ads'));
+$edit_ads	= $this->Html->url(array('controller'=>'businesses','action'=>'edit_ads'));
 $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'channel_settings'));
 ?>
 <body id="account">
@@ -33,6 +34,8 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 	                            </th>
 	                            <th tabindex="0" rowspan="1" colspan="1">Status
 	                            </th>
+                                <th tabindex="0" rowspan="1" class="hidden-xs hidden-sm" colspan="1">Edit
+                                </th>
 	                        </tr>
 	                    </thead>
 	                    <tbody>
@@ -57,6 +60,9 @@ $ch_settings= $this->Html->url(array('controller'=>'businesses','action'=>'chann
 	                            <td class="hidden-xs hidden-sm"><textarea cols="50" disabled readonly style="max-width:350px; max-height:100px;border: none;">'.$adcode["Adcode"]["code"].'</textarea></td>
 	                            <td>
 	                            '.$adsStatus.'
+	                            </td>
+	                            <td class="hidden-xs hidden-sm">
+	                            <a href="'.$edit_ads.'/'.$adcode["Adcode"]["id"].'" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit"><span> Edit</a>
 	                            </td>
 	                        </tr>';
 									
