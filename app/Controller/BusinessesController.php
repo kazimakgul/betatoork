@@ -2371,8 +2371,7 @@ class BusinessesController extends AppController {
                 'conditions' => array(
                     'NOT' => array(
                         'Game.priority' => NULL
-                    ),
-                    'Game.clone' => 0
+                    )
                 ),
                 'order' => array(
                     'Game.clone' => 'ASC',
@@ -2459,8 +2458,7 @@ class BusinessesController extends AppController {
                     ),
                     'NOT' => array(
                         'Game.priority' => NULL
-                    ),
-                    'Game.clone' => 0
+                    )
                 ),
                 'order' => array(
                     'Game.clone' => 'ASC',
