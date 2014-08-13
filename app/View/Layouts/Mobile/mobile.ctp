@@ -42,6 +42,9 @@
         <!--We Add User Selected Addtitional Css Here(begins) -->
         <?php //echo $customcss;   ?>
         <!--We Add User Selected Addtitional Css Here(ends) -->
+        <script>
+            addplaycount = '<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'add_playcount')); ?>';
+        </script>
     </head>
     <body>
         <?php echo $content_for_layout ?>

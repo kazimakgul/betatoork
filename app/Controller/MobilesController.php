@@ -274,6 +274,7 @@ class MobilesController extends AppController {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
         $this->set('game', $game);
+        $this->set('game_id', $game['Game']['id']);
         $this->set('game_link', $game['Game']['link']);
         $this->set('user', $user);
         $this->set('user_id', $game['Game']['user_id']);

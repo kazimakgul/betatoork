@@ -7,3 +7,8 @@
         </iframe>
     </div>
 </div>
+<script>
+    setTimeout(function() {
+        add_playcount(<?php echo $game_id; ?>, <?php echo $user_id; ?>);
+    }, 10000);
+</script>
