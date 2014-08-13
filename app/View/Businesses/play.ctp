@@ -52,14 +52,23 @@
                                 <div class="clone">
                                     <?php
                                     if (isset($ownclone[0]['cloneships']['id'])) {
-                                        $clonestatus = TRUE;
+                                        $clone_status = TRUE;
                                     } else {
-                                        $clonestatus = FALSE;
+                                        $clone_status = FALSE;
                                     }
-                                    echo $this->element('buttons/clone', array('clone' => $clonestatus, 'name' => $gamename, 'id' => $game_id));
+                                    echo $this->element('buttons/clone', array('clone' => $clone_status, 'name' => $gamename, 'id' => $game_id));
                                     ?>
                                 </div>
-                                <?php echo $this->element('business/buttons/favorite'); ?>
+                                <div class="favourite">
+                                    <?php
+                                    if (isset($ownuser[0]['favorites']['id'])) {
+                                        $favorite_status = TRUE;
+                                    } else {
+                                        $favorite_status = FALSE;
+                                    }
+                                    echo $this->element('buttons/favorite', array('favorite' => $favorite_status, 'name' => $gamename, 'id' => $game_id));
+                                    ?>
+                                </div>
                             </div>
                             <div class='pull-center'>	
                                 <?php echo $this->element('business/buttons/rate'); ?>

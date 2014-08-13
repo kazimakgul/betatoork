@@ -458,10 +458,10 @@ a#changeprofilepic {
 }
 
 #dl{
-width: 400px;
-text-align: center;
-margin: 0 auto;
-display: inline-block;
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;
 }
 
 .spin {
@@ -469,4 +469,25 @@ display: inline-block;
     -moz-animation: spin 2s infinite linear;
     -o-animation: spin 2s infinite linear;
     animation: spin 2s infinite linear;
+}
+
+.heart {
+    animation: beat .25s infinite alternate;
+    -webkit-animation: beat .25s infinite alternate;
+    -moz-animation: beat .25s infinite alternate;
+    -o-animation: beat .25s infinite alternate;
+    transform-origin: center;
+    margin-right: 4px;
+}
+@keyframes beat{
+    to { transform: scale(1.4); }
+}
+@-moz-keyframes beat{
+    to { transform: scale(1.4); }
+}
+@-o-keyframes beat{
+    to { transform: scale(1.4); }
+}
+@-webkit-keyframes beat{
+    to { transform: scale(1.4); }
 }

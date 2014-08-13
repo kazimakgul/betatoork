@@ -21,11 +21,11 @@
         rateurl = '<?php echo $this->Html->url(array('controller' => 'rates', 'action' => 'add')); ?>';
     </script>
     <div class="game_box_pre" style="text-align: center; display:none;">
-	<div id="dl"></div> <a class="label label-warning" style="cursor: pointer;" onclick="skip_ad();">× Skip</a>
-    <!--Game Box pre -> Ads begins-->
+        <div id="dl"></div> <a class="label label-warning" style="cursor: pointer;" onclick="skip_ad();">× Skip</a>
+        <!--Game Box pre -> Ads begins-->
 	<?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' =>6, 'pregame'=>1 )); ?>
-    <!--Game Box pre -> Ads ends-->
-	</div>
+        <!--Game Box pre -> Ads ends-->
+    </div>
     <!-- Iframe Content --> 
     <iframe class="game_box" src="<?php echo h($game['Game']['link']); ?>" style="border: 0; position:fixed; top:50px; left:0; right:0; bottom:0; width:100%; height:95%"></iframe><!-- Iframe Content End --> 
     <div class="navbar navbar-default navbar-fixed-bottom" style="min-height:35px" role="navigation">
@@ -49,7 +49,16 @@
                         echo $this->element('buttons/clone', array('clone' => $clonestatus, 'name' => $gamename, 'id' => $game_id));
                         ?>
                     </div>
-                    <?php echo $this->element('business/buttons/favorite'); ?>	
+                    <div class="favourite">
+                        <?php
+                        if (isset($ownuser[0]['favorites']['id'])) {
+                            $favorite_status = TRUE;
+                        } else {
+                            $favorite_status = FALSE;
+                        }
+                        echo $this->element('buttons/favorite', array('favorite' => $favorite_status, 'name' => $gamename, 'id' => $game_id));
+                        ?>
+                    </div>
                 </div>
                 <div class='pull-center'>
                     <?php echo $this->element('business/buttons/rate'); ?>

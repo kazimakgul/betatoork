@@ -31,68 +31,68 @@ $('.adsChangeBtn').click(function() {
 
 
 //This function increases playcount of game
-function add_playcount(game_id,user_id) {
+function add_playcount(game_id, user_id) {
 
-        link=addplaycount;
-        
-        //------
-        $.post(link, {
-            game_id: game_id,
-            user_id: user_id
-        },
-        function(data) {
-            if (data.rtdata.error) {
-                //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
-            } else {
-                //alert(data.rtdata.message);
-            }
-        }, 'json');
-        //------ 
+    link = addplaycount;
+
+    //------
+    $.post(link, {
+        game_id: game_id,
+        user_id: user_id
+    },
+    function(data) {
+        if (data.rtdata.error) {
+            //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
+        } else {
+            //alert(data.rtdata.message);
+        }
+    }, 'json');
+    //------ 
 
 }
 
-		function set_id_create(id) {
-        set_link_id = id;
- 		}
- 		
-		//This set selected Ad Code for selected ads area
-		function set_ad_code(adcode_id) {
-		    target_ad_area = set_link_id; //Set sorunu burada id deki değeri almak gerekiyor..
-					$.post(set_channel_ads, {
-		                code_id: adcode_id,
-		                set_id: target_ad_area
-		            },
-		            function(data) {
-		                if (data) {
-		                    location.reload();
-		                } else {
-		                }
-		            }, 'json');
-		}
-		//This removes all Ad Code for selected ads area
-		function remove_ad_area() {
-		    target_ad_area = set_link_id;
-		
-		    //------
-		    $.ajax({
-		        type: "POST",
-		        url: remove_ads_field,
-		        data: {target_ad_area: target_ad_area},
-		        dataType: "json",
-		        async: false,
-		        success: function(data) {
-		
-		            //alert(data.rtdata.title);
-		            location.reload();
-		
-		        },
-		        failure: function(errMsg) {
-		            alert(errMsg);
-		        }
-		    });
-		    //------  
-		
-		}
+function set_id_create(id) {
+    set_link_id = id;
+}
+
+//This set selected Ad Code for selected ads area
+function set_ad_code(adcode_id) {
+    target_ad_area = set_link_id; //Set sorunu burada id deki değeri almak gerekiyor..
+    $.post(set_channel_ads, {
+        code_id: adcode_id,
+        set_id: target_ad_area
+    },
+    function(data) {
+        if (data) {
+            location.reload();
+        } else {
+        }
+    }, 'json');
+}
+//This removes all Ad Code for selected ads area
+function remove_ad_area() {
+    target_ad_area = set_link_id;
+
+    //------
+    $.ajax({
+        type: "POST",
+        url: remove_ads_field,
+        data: {target_ad_area: target_ad_area},
+        dataType: "json",
+        async: false,
+        success: function(data) {
+
+            //alert(data.rtdata.title);
+            location.reload();
+
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
+    //------  
+
+}
 
 //Controller functions for modals of avatar begins
 $('#avatarframe').load(function() {
@@ -103,7 +103,7 @@ $('#avatarframe').load(function() {
 
 $('#avatarframe').load(function() {
     $(this).contents().find("#set_photo").on('click', function(event) {
-        
+
         //$('#channel_avatar').attr('src', 'http://www.imageyourself.net/images/website/loading.gif');
         var new_img = $('iframe[id=avatarframe]').contents().find('#new_image_link').val();
         $('#user_avatar').attr('src', new_img);
@@ -125,7 +125,7 @@ $('#coverframe').load(function() {
 
 $('#coverframe').load(function() {
     $(this).contents().find("#set_photo").on('click', function(event) {
-        
+
         //$('#user_cover').css('background-image', 'url(http://3.bp.blogspot.com/-13dC5LhMbMM/T6NpcCU7obI/AAAAAAAAAVE/kt0XhVIV_zU/s200/loading.gif)');
         var new_img = $('iframe[id=coverframe]').contents().find('#new_image_link').val();
         $('#user_cover').css('background-image', 'url(' + new_img + ')');
@@ -145,12 +145,12 @@ $('#backgroundframe').load(function() {
 
 $('#backgroundframe').load(function() {
     $(this).contents().find("#set_photo").on('click', function(event) {
-        
+
         //$('#user_background').css('background-image','http://netdna.webdesignerdepot.com/uploads/2013/04/Hursh1.gif');  
         var new_img = $('iframe[id=backgroundframe]').contents().find('#new_image_link').val();
         $('#user_background').css('background-image', 'url(' + new_img + ')');
         $('#backgroundChange').modal('toggle');
-        
+
     });
 
 });
@@ -167,7 +167,7 @@ $('div#profilepicarea').hover(
 );
 
 
- /**
+/**
  * Explore Games Clone Button Action
  * @param string game_name
  * @param boolean user_auth
@@ -207,20 +207,69 @@ function chaingame3(game_name, user_auth, game_id) {
  * @author Emircan Ok
  */
 $('div.clone a').hover(
-        function() {
-            if ($(this).html() == '<i class="fa fa-cog"></i> Cloned') {
-                $(this)
-                    .removeClass('btn-default')
-                    .addClass('btn-success')
-                    .html('<i class="fa fa-cog"></i> Re Clone');
-            }
-        },
-        function() {
-            if ($(this).html() == '<i class="fa fa-cog"></i> Re Clone') {
-                $(this)
-                    .removeClass('btn-success')
-                    .addClass('btn-default')
-                    .html('<i class="fa fa-cog"></i> Cloned');
-            }
+    function() {
+        if ($(this).html() == '<i class="fa fa-cog"></i> Cloned') {
+            $(this)
+                .removeClass('btn-default')
+                .addClass('btn-success')
+                .html('<i class="fa fa-cog"></i> Re Clone');
         }
+    },
+    function() {
+        if ($(this).html() == '<i class="fa fa-cog"></i> Re Clone') {
+            $(this)
+                .removeClass('btn-success')
+                .addClass('btn-default')
+                .html('<i class="fa fa-cog"></i> Cloned');
+        }
+    }
 );
+
+function favorite(game_name, user_auth, id) {
+    if (user_auth == 1) {
+        switch_favorite(id);
+    } else {
+        $('#login').modal('show');
+    }
+}
+
+function unFavorite(game_name, user_auth, id) {
+    if (user_auth == 1) {
+        switch_favorite(id);
+    } else {
+        $('#login').modal('show');
+    }
+}
+
+$('#fav_button').click(function() {
+    if (user_auth != 1) {
+        $.pnotify({
+            title: 'Sign in Please',
+            text: 'You have to sign in first to favorite games.',
+            type: 'error'
+        });
+    }
+});
+
+function switch_favorite(game_id) {
+    var button = $('a.fav-' + game_id);
+    button
+        .removeClass('btn-default')
+        .removeClass('btn-danger')
+        .addClass('btn-warning')
+        .html('<i class="fa fa-heart heart"></i> Progress...');
+    $.get(favswitcher + '/' + game_id, function(data) {
+        if (data == 0) {
+            button
+                .removeClass('btn-warning')
+                .addClass('btn-danger')
+                .html('<i class="fa fa-heart"></i> Favorite');
+        } else {
+            button
+                .removeClass('btn-warning')
+                .addClass('btn-default')
+                .html('<i class="fa fa-heart"></i> UnFavorite');
+
+        }
+    });
+}
