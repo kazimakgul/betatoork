@@ -28,8 +28,6 @@ if (isset($query)) {
     $fullscreen = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'fullscreen'));
     $embed = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'embed'));
 }
-
-//this provides titles for sorting
 if (isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction'])) {
     $sort = $this->request->params['named']['sort'];
     $direction = $this->request->params['named']['direction'];
@@ -102,12 +100,12 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                         <div class="dropdown">
                             <!--Sorting Tags Start here-->
                             <?php if (isset($name)) { ?>
-                                <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
-                                    <a href="<?php echo $explore; ?>" style="text-decoration: none !important;color: #666">
+                            <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
+                                <a href="<?php echo $explore; ?>" style="text-decoration: none !important;color: #666">
                                         <?php echo $name; ?>
-                                        <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;">X</span>
-                                    </a>
-                                </span>
+                                    <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;">X</span>
+                                </a>
+                            </span>
                             <?php } ?>
                             <!--Sorting Tags Ends here-->
                             <a class="button" data-toggle="dropdown" href="#">
@@ -143,13 +141,13 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                         <?php
                         if (isset($view) && $view === 'list') {
                             ?>
-                            <a href="#" data-grid=".users-list" class="grid-view active"><i class="fa fa-th-list"></i></a>
-                            <a href="#" data-grid=".users-grid" class="grid-view"><i class="fa fa-th"></i></a>
+                        <a href="#" data-grid=".users-list" class="grid-view active"><i class="fa fa-th-list"></i></a>
+                        <a href="#" data-grid=".users-grid" class="grid-view"><i class="fa fa-th"></i></a>
                             <?php
                         } else {
                             ?>
-                            <a href="#" data-grid=".users-list" class="grid-view"><i class="fa fa-th-list"></i></a>
-                            <a href="#" data-grid=".users-grid" class="grid-view active"><i class="fa fa-th"></i></a>
+                        <a href="#" data-grid=".users-list" class="grid-view"><i class="fa fa-th-list"></i></a>
+                        <a href="#" data-grid=".users-grid" class="grid-view active"><i class="fa fa-th"></i></a>
                                 <?php
                             }
                             ?>
@@ -158,7 +156,7 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
             </div>
             <?php
             foreach ($games as $key => $value) {
-                $games[$key]['clonestatus'] = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($value['User']['id'], $value['Game']['id']));
+                $games[$key]['clonestatus'] = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($userid, $value['Game']['id']));
             }
             echo $this->element('business/dashboard/exploregames/list', array('games' => $games));
             echo $this->element('business/dashboard/exploregames/grid', array('games' => $games));
