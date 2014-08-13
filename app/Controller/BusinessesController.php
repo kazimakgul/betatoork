@@ -2488,6 +2488,7 @@ class BusinessesController extends AppController {
         }
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
+        $this->set('userid', $this->Auth->user('id'));
         $this->set('activefilter', $activefilter);
         $this->set('title_for_layout', 'Clone Business Explore Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
