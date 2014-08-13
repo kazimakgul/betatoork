@@ -1365,7 +1365,6 @@ class GamesController extends AppController {
             }else {
                 echo 0; //this means there are some problems.
             }
-
             $this->cloneS3Folder($game_id, $id);
         }
     }
@@ -2186,19 +2185,21 @@ class GamesController extends AppController {
      * @author Emircan Ok
      */
     public function checkClone($userid, $gameid) {
-        $result = $this->Cloneship->find('count', array(
-            'conditions' => array(
-                'Cloneship.game_id' => $gameid,
-                'Cloneship.user_id' => $userid,
-            )
-        ));
-        if ($result > 0) {
-            return TRUE;
-        } else {
-            return FALSE;
+        if ($this->Auth->user('id')) {
+            $result = $this->Cloneship->find('count', array(
+                'conditions' => array(
+                    'Cloneship.game_id' => $gameid,
+                    'Cloneship.user_id' => $userid,
+                )
+            ));
+            if ($result > 0) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
         }
     }
-    
+
     /**
      * Get 3 random game for one user
      * @param integer $userid
