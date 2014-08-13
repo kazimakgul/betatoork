@@ -124,7 +124,7 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
             </div>
             <?php
             foreach ($following as $key => $value) {
-                $following[$key]['followstatus'] = $followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($value['User']['id']));
+                $following[$key]['followstatus'] = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($value['User']['id']));
             }
             echo $this->element('business/dashboard/explorechannels/list', array('following' => $following));
             echo $this->element('business/dashboard/explorechannels/grid', array('following' => $following));

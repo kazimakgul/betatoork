@@ -1,6 +1,6 @@
 <?php
 $search_action = $this->Html->url(array("controller" => "businesses", "action" => "followers_search"));
-$followers = $this->Html->url(array("controller" => "businesses", "action" => "followers"));
+$followers_url = $this->Html->url(array("controller" => "businesses", "action" => "followers"));
 ?>
 <body id="users">
 <div id="wrapper">
@@ -11,7 +11,7 @@ $followers = $this->Html->url(array("controller" => "businesses", "action" => "f
                 <i class="ion-navicon"></i>
             </div>
             <div class="page-title">
-                <a href="<?php echo $followers; ?>">
+                <a href="<?php echo $followers_url; ?>">
                     Followers
                 </a>
             </div>
@@ -80,37 +80,13 @@ $followers = $this->Html->url(array("controller" => "businesses", "action" => "f
                     </div>
                 </div>
             </div>
-            <div class="row users-list">
-                <div class="col-md-12">
-                    <div class="row headers">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-1 header select-users">
-                        </div>
-                        <div class="col-sm-3 header hidden-xs">
-                            <label><?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')) ?></label>
-                        </div>
-                        <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                            <label><a href="#">Followers</a></label>
-                        </div>
-                        <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                            <label><a href="#">Following</a></label>
-                        </div>
-                        <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                            <label class="text-right"><a href="#">Games</a></label>
-                        </div>
-                    </div>
-                    <?php echo $this->element('business/dashboard/followers/list') ?>
-                    <div class="text-center">
-                        <?php echo $this->element('business/components/pagination') ?>
-                    </div>
-                </div>
-            </div>
-            <div class="row users-grid">
-                <?php echo $this->element('business/dashboard/followers/grid') ?>
-                <div class="text-center">
-                    <?php echo $this->element('business/components/pagination') ?>
-                </div>
-            </div>
+            <?php
+            foreach ($followers as $key => $value) {
+                $followers[$key]['followstatus'] = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($value['User']['id']));
+            }
+            echo $this->element('business/dashboard/followers/list', array('followers' => $followers));
+            echo $this->element('business/dashboard/followers/grid', array('followers' => $followers));
+            ?>
         </div>
     </div>
 </div>

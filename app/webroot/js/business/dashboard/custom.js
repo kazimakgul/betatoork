@@ -1109,19 +1109,19 @@ $(function() {
 //***************************************************
 
 function subscribe(channel_name, user_auth, id) {
-    if (user_auth == 1)
-    {
+    if (user_auth == 1) {
         switch_subscribe(id);
     } else {
-
+        $.pnotify({
+            title: 'Authentication Error',
+            text: 'You have to login first to follow channels.',
+            type: 'error'
+        });
     }
-
-
 }
-function delete_game(user_auth, game_id)
-{
-    if (user_auth == 1)
-    {
+
+function delete_game(user_auth, game_id) {
+    if (user_auth == 1) {
         $('#gamebox-' + game_id).css("display", "none");
         $.post(deletedata, {
             attr: "remove_game",
@@ -1140,65 +1140,40 @@ function delete_game(user_auth, game_id)
 }
 
 function subscribeout(channel_name, user_auth, id) {
-
-    if (user_auth == 1)
-    {
+    if (user_auth == 1) {
         switch_subscribe(id);
-        /*
-         $.pnotify({
-         title: 'Unfollow is done',
-         text: 'You stopped following <strong>'+channel_name+'</strong> now.<br>You will not be notified about the updates of this channel.',
-         type: 'error'
-         });
-         */
-
     } else {
-
         $.pnotify({
             title: 'Authentication Error',
             text: 'You have to login first to follow channels.',
             type: 'error'
         });
-
     }
-
-
 }
 
+function switch_subscribe(channel_id) {
+    $.get(subswitcher + '/' + channel_id);
+}
 
-function switch_subscribe(channel_id)
-{
-    $.get(subswitcher + '/' + channel_id, function(data) {/*success callback*/
-    });
+function switchfollow(id) {
+    $(".follow-" + id).hide();
+    $(".unfollow-" + id).show();
 }
-function switchfollow(id)
-{
-    var x = id;
-    $("#grid-follow-" + x).hide();
-    $("#list-follow-" + x).hide();
-    $("#grid-unfollow-" + x).show();
-    $("#list-unfollow-" + x).show();
-}
-function switchunfollow(id)
-{
-    var x = id;
-    $("#grid-unfollow-" + x).hide();
-    $("#list-unfollow-" + x).hide();
-    $("#grid-follow-" + x).show();
-    $("#list-follow-" + x).show();
+
+function switchunfollow(id) {
+    $(".unfollow-" + id).hide();
+    $(".follow-" + id).show();
 }
 
 $('#follow_button').click(function() {
-    if (user_auth == 1)
-    {
+    if (user_auth == 1) {
         $('#follow_button').hide();
         $('#unFollow_button').show();
     }
 });
 
 $('#unFollow_button').click(function() {
-    if (user_auth == 1)
-    {
+    if (user_auth == 1) {
         $('#unFollow_button').hide();
         $('#follow_button').show();
     }
@@ -1242,25 +1217,25 @@ $('#fav_button').click(function() {
 function switch_favorite(game_id) {
     var button = $('.fav-' + game_id);
     button
-        .removeClass('btn-default')
-        .removeClass('btn-danger')
-        .addClass('btn-warning')
-        .html('<i class="fa fa-heart heart"></i> Progress...');
+            .removeClass('btn-default')
+            .removeClass('btn-danger')
+            .addClass('btn-warning')
+            .html('<i class="fa fa-heart heart"></i> Progress...');
     $.get(favswitcher + '/' + game_id, function(data) {
         if (data == 0) {
             button
-                .removeClass('btn-warning')
-                .addClass('btn-danger')
-                .html('<i class="fa fa-heart"></i> Favorite');
+                    .removeClass('btn-warning')
+                    .addClass('btn-danger')
+                    .html('<i class="fa fa-heart"></i> Favorite');
             Messenger()
-                .post("Game Favorited");
+                    .post("Game Favorited");
         } else {
             button
-                .removeClass('btn-warning')
-                .addClass('btn-default')
-                .html('<i class="fa fa-heart"></i> UnFavorite');
+                    .removeClass('btn-warning')
+                    .addClass('btn-default')
+                    .html('<i class="fa fa-heart"></i> UnFavorite');
             Messenger()
-                .post("Game Unfavorited");
+                    .post("Game Unfavorited");
         }
     });
 }
@@ -1322,31 +1297,31 @@ function ad_get_code1(location, user_id) {
 function chaingame3(game_name, user_auth, game_id) {
     var btn = $('a.clone-' + game_id);
     btn
-        .removeClass('btn-success')
-        .addClass('btn-warning')
-        .html('<i class="fa fa-cog spin"></i> Cloning');
+            .removeClass('btn-success')
+            .addClass('btn-warning')
+            .html('<i class="fa fa-cog spin"></i> Cloning');
     if (user_auth == 1) {
         $.get(chaingame + '/' + game_id, function(data) {
             if (data == 1) {
                 Messenger()
-                    .post("Game Cloned");
+                        .post("Game Cloned");
                 btn
-                    .button('reset')
-                    .html('<i class="fa fa-cog"></i> Cloned')
-                    .removeClass('btn-warning')
-                    .addClass('btn-default');
+                        .button('reset')
+                        .html('<i class="fa fa-cog"></i> Cloned')
+                        .removeClass('btn-warning')
+                        .addClass('btn-default');
             } else {
                 Messenger()
-                    .post("Error. Please, try again..");
+                        .post("Error. Please, try again..");
                 btn
-                    .button('reset');
+                        .button('reset');
             }
         });
     } else {
         $('#myModal')
-            .modal('hide');
+                .modal('hide');
         $('#login')
-            .modal('show');
+                .modal('show');
     }
 }
 
@@ -1358,17 +1333,17 @@ $('div.clone a').hover(
         function() {
             if ($(this).html() == '<i class="fa fa-cog"></i> Cloned') {
                 $(this)
-                    .removeClass('btn-default')
-                    .addClass('btn-success')
-                    .html('<i class="fa fa-cog"></i> Re Clone');
+                        .removeClass('btn-default')
+                        .addClass('btn-success')
+                        .html('<i class="fa fa-cog"></i> Re Clone');
             }
         },
         function() {
             if ($(this).html() == '<i class="fa fa-cog"></i> Re Clone') {
                 $(this)
-                    .removeClass('btn-success')
-                    .addClass('btn-default')
-                    .html('<i class="fa fa-cog"></i> Cloned');
+                        .removeClass('btn-success')
+                        .addClass('btn-default')
+                        .html('<i class="fa fa-cog"></i> Cloned');
             }
         }
 );
