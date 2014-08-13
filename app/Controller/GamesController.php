@@ -2197,6 +2197,8 @@ class GamesController extends AppController {
             } else {
                 return FALSE;
             }
+        } else {
+            return FALSE;
         }
     }
 

@@ -44,6 +44,8 @@ class SubscriptionsController extends AppController {
             } else {
                 return FALSE;
             }
+        } else {
+            return FALSE;
         }
     }
 
