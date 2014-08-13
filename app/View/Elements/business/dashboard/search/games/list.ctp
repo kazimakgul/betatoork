@@ -38,7 +38,7 @@
             ?>
             <div class="row user">
                 <div class="col-sm-1 followcolumn">
-                    <?php echo $this->element('buttons/clone', array('clone' => $clonestatus, 'id' => $game['Game']['id'], 'name' => $name)); ?>
+                    <?php echo $this->element('buttons/clone', array('clone' => $game['clonestatus'], 'id' => $game['Game']['id'], 'name' => $name)); ?>
                 </div>
                 <div class="col-sm-2 avatar">
                     <a href="<?php echo $playurl ?>" target="_blank">
