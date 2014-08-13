@@ -35,29 +35,7 @@
                 </a>
                 <div class="panel-body">
                     <div style="margin-top:-10px;" class="text-center">
-                        <?php if ($followstatus != 1) { ?>
-                            <a id="grid-follow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                    switchfollow(<?php echo $userid; ?>);">
-                                <i class="fa fa-plus-circle"></i>
-                                Follow
-                            </a>
-                            <a id="grid-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                    switchunfollow(<?php echo $userid; ?>);">
-                                <i class="fa fa-minus-circle"></i>
-                                Unfollow
-                            </a>
-                        <?php } else { ?>
-                            <a id="grid-unfollow-<?php echo $userid; ?>" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                    switchunfollow(<?php echo $userid; ?>);">
-                                <i class="fa fa-minus-circle"></i>
-                                Unfollow
-                            </a>
-                            <a id="grid-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                    switchfollow(<?php echo $userid; ?>);">
-                                <i class="fa fa-plus-circle"></i>
-                                Follow
-                            </a>
-                        <?php } ?>
+                        <?php echo $this->element('buttons/follow', array('id' => $userid, 'name' => $publicname, 'follow' => $followstatus)) ?>
                     </div>
                     <h4>
                         <?php if ($value['User']['verify'] == 1) { ?>
