@@ -4,7 +4,6 @@
         $name = $value['User']['username'];
         $userid = $value['User']['id'];
         $publicname = $value['User']['username'];
-        $followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($userid));
         $followers = $value['Userstat']['subscribeto'];
         $following = $value['Userstat']['subscribe'];
         $games = $value['Userstat']['uploadcount'];
@@ -35,7 +34,7 @@
                 </a>
                 <div class="panel-body">
                     <div style="margin-top:-10px;" class="text-center">
-                        <?php echo $this->element('buttons/follow', array('id' => $userid, 'name' => $publicname, 'follow' => $followstatus)) ?>
+                        <?php echo $this->element('buttons/follow', array('id' => $userid, 'name' => $publicname, 'follow' => $value['followstatus'])) ?>
                     </div>
                     <h4>
                         <?php if ($value['User']['verify'] == 1) { ?>

@@ -1,11 +1,11 @@
 <style>
-    <?php
-    if (isset($view) && $view === 'list') {
-        echo '#users #content .content-wrapper .users-grid { display: none; }';
-    } else {
-        echo '#users #content .content-wrapper .users-list { display: none; }';
-    }
-    ?>
+<?php
+if (isset($view) && $view === 'list') {
+    echo '#users #content .content-wrapper .users-grid { display: none; }';
+} else {
+    echo '#users #content .content-wrapper .users-list { display: none; }';
+}
+?>
 </style>
 <?php
 $search_action = $this->Html->url(array("controller" => "businesses", "action" => "explorechannels_search"));
@@ -13,51 +13,35 @@ $game_add = $this->Html->url(array("controller" => "businesses", "action" => "ga
 $exp_channel = $this->Html->url(array("controller" => "businesses", "action" => "explorechannels"));
 $params = $this->Paginator->params();
 $allgames = $params['count'];
-
-     //this provides titles for sorting
-if(isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction']))
-{
-     $sort = $this->request->params['named']['sort'];
-     $direction = $this->request->params['named']['direction'];
-     if($sort=='User.username' && $direction=='asc')
-     {
-           $name = 'A to Z'; 
-     }else if($sort=='User.username' && $direction=='desc')
-     {
-           $name = 'Z to A';
-     }else if($sort=='Userstat.subscribeto' && $direction=='desc')
-     {
-           $name = 'Most Followed';
-     }else if($sort=='Userstat.subscribeto' && $direction=='asc')
-     {
-           $name = 'Least Followed';
-     }else if($sort=='Userstat.subscribe' && $direction=='desc')
-     {
-           $name = 'Most Following';
-     }else if($sort=='Userstat.subscribe' && $direction=='asc')
-     {
-           $name = 'Least Following';
-     }else if($sort=='Userstat.uploadcount' && $direction=='desc')
-     {
-           $name = 'Most Added Game';
-     }else if($sort=='Userstat.uploadcount' && $direction=='asc')
-     {
-           $name = 'Least Added Game';
-     }else if($sort=='User.id' && $direction=='desc')
-     {
-           $name = 'Newest';
-     }else if($sort=='User.id' && $direction=='asc')
-     {
-           $name = 'Oldest';
-     }else if($sort=='Userstat.potential' && $direction=='desc')
-     {
-           $name = 'Recommend';
-     }else if($sort=='Userstat.potential' && $direction=='asc')
-     {
-           $name = 'Low Score';
-     }
+if (isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction'])) {
+    $sort = $this->request->params['named']['sort'];
+    $direction = $this->request->params['named']['direction'];
+    if ($sort == 'User.username' && $direction == 'asc') {
+        $name = 'A to Z';
+    } else if ($sort == 'User.username' && $direction == 'desc') {
+        $name = 'Z to A';
+    } else if ($sort == 'Userstat.subscribeto' && $direction == 'desc') {
+        $name = 'Most Followed';
+    } else if ($sort == 'Userstat.subscribeto' && $direction == 'asc') {
+        $name = 'Least Followed';
+    } else if ($sort == 'Userstat.subscribe' && $direction == 'desc') {
+        $name = 'Most Following';
+    } else if ($sort == 'Userstat.subscribe' && $direction == 'asc') {
+        $name = 'Least Following';
+    } else if ($sort == 'Userstat.uploadcount' && $direction == 'desc') {
+        $name = 'Most Added Game';
+    } else if ($sort == 'Userstat.uploadcount' && $direction == 'asc') {
+        $name = 'Least Added Game';
+    } else if ($sort == 'User.id' && $direction == 'desc') {
+        $name = 'Newest';
+    } else if ($sort == 'User.id' && $direction == 'asc') {
+        $name = 'Oldest';
+    } else if ($sort == 'Userstat.potential' && $direction == 'desc') {
+        $name = 'Recommend';
+    } else if ($sort == 'Userstat.potential' && $direction == 'asc') {
+        $name = 'Low Score';
+    }
 }
-
 ?>
 <body id="users">
 <div id="wrapper">
@@ -84,16 +68,16 @@ if(isset($this->request->params['named']['sort']) && isset($this->request->param
                     <div class="show-options">
                         <div class="dropdown">
 
-                          <!--Sorting Tags Start here-->
-                          <?php if(isset($name)){ ?>
-                          <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
-                             <a href="<?php echo $exp_channel; ?>" style="text-decoration: none !important;color: #666">
-                            <?php echo $name; ?>
-                            <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;">X</span>
-                            </a>
-                          </span>
-                          <?php } ?>
-                          <!--Sorting Tags Ends here-->
+                            <!--Sorting Tags Start here-->
+                            <?php if (isset($name)) { ?>
+                                <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
+                                    <a href="<?php echo $exp_channel; ?>" style="text-decoration: none !important;color: #666">
+                                        <?php echo $name; ?>
+                                        <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;">X</span>
+                                    </a>
+                                </span>
+                            <?php } ?>
+                            <!--Sorting Tags Ends here-->
 
                             <a class="button" data-toggle="dropdown" href="#">
                                 <span>
@@ -132,14 +116,19 @@ if(isset($this->request->params['named']['sort']) && isset($this->request->param
                             ?>
                             <a href="#" data-grid=".users-list" class="grid-view"><i class="fa fa-th-list"></i></a>
                             <a href="#" data-grid=".users-grid" class="grid-view active"><i class="fa fa-th"></i></a>
-                            <?php
-                        }
-                        ?>
+                                <?php
+                            }
+                            ?>
                     </div>
                 </div>
             </div>
-            <?php echo $this->element('business/dashboard/explorechannels/list'); ?>
-            <?php echo $this->element('business/dashboard/explorechannels/grid'); ?>
+            <?php
+            foreach ($following as $key => $value) {
+                $following[$key]['followstatus'] = $followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($value['User']['id']));
+            }
+            echo $this->element('business/dashboard/explorechannels/list', array('following' => $following));
+            echo $this->element('business/dashboard/explorechannels/grid', array('following' => $following));
+            ?>
         </div>
     </div>
 </div>
