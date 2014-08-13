@@ -18,8 +18,8 @@
             $userid = $value['User']['id'];
             $publicname = $value['User']['username'];
             $followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($userid));
-            $followers = $value['Userstat']['subscribe'];
-            $following = $value['Userstat']['subscribeto'];
+            $followers = $value['Userstat']['subscribeto'];
+            $following = $value['Userstat']['subscribe'];
             $games = $value['Userstat']['uploadcount'];
             if (is_null($value['User']['picture'])) {
                 $avatar = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
