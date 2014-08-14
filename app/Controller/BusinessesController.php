@@ -2228,6 +2228,24 @@ class BusinessesController extends AppController {
         $this->sync_sorting();
 
 
+        //This function allow to use belong to with custom conditions
+        //Author:Ogi
+        $this->Favorite->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'Gamestat' => array(
+                            'className' => 'Gamestat',
+                            'foreignKey' => false,
+                            'conditions' => array('Favorite.game_id = Gamestat.game_id'),
+                            'fields' => '',
+                            'dependent' => false,
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
+
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
         $this->paginate = array(
@@ -2258,6 +2276,7 @@ class BusinessesController extends AppController {
                                 'User.picture',
                                 'User.verify'
                             )
+                        )
                         ),
                         'Gamestat' => array(
                             'fields' => array(
@@ -2266,7 +2285,6 @@ class BusinessesController extends AppController {
                                 'Gamestat.channelclone',
                                 'Gamestat.potential'
                             )
-                        )
                     )
                 )
             )
@@ -2599,6 +2617,24 @@ class BusinessesController extends AppController {
                 )
             )
         );
+
+        //This function allow to use belong to with custom conditions
+        //Author:Ogi
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'Userstat' => array(
+                            'className' => 'Userstat',
+                            'foreignKey' => false,
+                            'conditions' => array('Subscription.subscriber_to_id = Userstat.user_id'),
+                            'fields' => '',
+                            'dependent' => false,
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
@@ -2614,9 +2650,8 @@ class BusinessesController extends AppController {
                             'User.screenname',
                             'User.picture',
                             'User.banner'
-                        ),
-                        'Userstat'
-                    )
+                        )
+                    ),'Userstat'
                 ),
                 'limit' => $limit
             )
@@ -2697,6 +2732,24 @@ class BusinessesController extends AppController {
                 )
             )
         );
+
+        //This function allow to use belong to with custom conditions
+        //Author:Ogi
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'Userstat' => array(
+                            'className' => 'Userstat',
+                            'foreignKey' => false,
+                            'conditions' => array('Subscription.subscriber_id = Userstat.user_id'),
+                            'fields' => '',
+                            'dependent' => false,
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
@@ -2710,9 +2763,8 @@ class BusinessesController extends AppController {
                             'User.username',
                             'User.picture',
                             'User.banner'
-                        ),
-                        'Userstat'
-                    )
+                        ) 
+                    ),'Userstat'
                 ),
                 'limit' => $limit
             )

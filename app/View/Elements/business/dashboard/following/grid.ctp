@@ -10,9 +10,9 @@ foreach ($following as $value) {
     $publicname = $value['User']['username'];
     $name = $value['User']['username'];
     $screenname = $value['User']['screenname'];
-    $followers = $value['User']['Userstat']['subscribeto'];
-    $following = $value['User']['Userstat']['subscribe'];
-    $games = $value['User']['Userstat']['uploadcount'];
+    $followers = $value['Userstat']['subscribeto'];
+    $following = $value['Userstat']['subscribe'];
+    $games = $value['Userstat']['uploadcount'];
     if (is_null($value['User']['picture'])) {
         $avatar = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
         $avatar = $this->Html->image('/img/avatars/' . $avatar . '.jpg', array('alt' => $name, 'class' => 'img-responsive center-block avatar img-thumbnail img-circle', 'style' => 'margin-top:-40px; width:80px; height:80px;'));

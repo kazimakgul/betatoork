@@ -4,9 +4,9 @@
         foreach ($games as $game) {
             $name = $game['Game']['name'];
             $id = $game['Game']['id'];
-            $clones = empty($game['Game']['Gamestat']['channelclone']) ? 0 : $game['Game']['Gamestat']['channelclone'];
-            $favorites = empty($game['Game']['Gamestat']['favcount']) ? 0 : $game['Game']['Gamestat']['favcount'];
-            $plays = empty($game['Game']['Gamestat']['playcount']) ? 0 : $game['Game']['Gamestat']['playcount'];
+            $clones = empty($game['Gamestat']['channelclone']) ? 0 : $game['Gamestat']['channelclone'];
+            $favorites = empty($game['Gamestat']['favcount']) ? 0 : $game['Gamestat']['favcount'];
+            $plays = empty($game['Gamestat']['playcount']) ? 0 : $game['Gamestat']['playcount'];
             $rates = empty($game['Game']['rate_count']) ? 0 : $game['Game']['rate_count'];
             if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
                 $playurl = $this->Html->url('http://' . $game['Game']['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
