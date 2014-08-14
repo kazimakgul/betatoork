@@ -77,6 +77,9 @@ if(isset($this->request->params['named']['sort']) && isset($this->request->param
                     <a href="#">Draft (1)</a>
                     -->
                     <div class="show-options">
+
+
+                     <?php if (!isset($query)) { ?>
                         <div class="dropdown">
 
 
@@ -105,6 +108,9 @@ if(isset($this->request->params['named']['sort']) && isset($this->request->param
                                 <li><?php echo $this->Paginator->sort('Game.starsize', 'Rates', array('direction' => 'desc')) ?></li>
                             </ul>
                         </div>
+                        <?php }?>
+
+
                         <?php
                         if (isset($view) && $view === 'list') {
                             ?>

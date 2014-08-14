@@ -97,6 +97,9 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                     <a href="<?php echo $fullscreen; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Fullscreen</a>
                     <a href="<?php echo $embed; ?>" <?php echo $activefilter === 3 ? 'class="active"' : ''; ?>>Embed</a>
                     <div class="show-options">
+
+
+                    <?php if (!isset($query)) { ?>
                         <div class="dropdown">
                             <!--Sorting Tags Start here-->
                             <?php if (isset($name)) { ?>
@@ -138,6 +141,10 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                                 </li>
                             </ul>
                         </div>
+                        <?php } ?>
+
+
+
                         <?php
                         if (isset($view) && $view === 'list') {
                             ?>

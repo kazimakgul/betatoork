@@ -87,9 +87,10 @@ if (isset($query)) {
                     <a href="<?php echo $mobile; ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games</a>
                     <a href="<?php echo $featured; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Featured</a>                    
                     <div class="show-options">
+                       
+                    <?php if (!isset($query)) { ?>
                         <div class="dropdown">
-                         
-                         
+            
                          <!--Sorting Tags Start here-->
                           <?php if(isset($name)){ ?>
                           <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
@@ -115,6 +116,8 @@ if (isset($query)) {
                                 <li><?php echo $this->Paginator->sort('Game.starsize', 'Rates', array('direction' => 'desc')) ?></li>
                             </ul>
                         </div>
+                      <?php }?>
+
                         <?php
                         if (isset($view) && $view === 'list') {
                             ?>
