@@ -1,5 +1,6 @@
 <div class="row users-grid">
     <?php
+    if (!empty($games)) {
     foreach ($games as $game) {
         $name = $game['Game']['name'];
         $id = $game['Game']['id'];
@@ -31,6 +32,9 @@
             )) ?>
     <?php
     }
+  }else{
+       echo $this->element('business/dashboard/nullconditions', array('link' => 'exploregames', 'text' => 'Explore Games'));
+     }
     ?>
     <div class="text-center">
         <?php echo $this->element('business/components/pagination') ?>
