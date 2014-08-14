@@ -37,6 +37,7 @@
                     <div class="panel-body">
                         <div style="margin-top:-10px;" class="text-center">
                             <!-- Follow button -->
+                            <!--
                             <a id="grid-unfollow-<?php echo $userid; ?>" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
                                     switchunfollow(<?php echo $userid; ?>);">
                                 <i class="fa fa-minus-circle"></i>
@@ -47,7 +48,9 @@
                                 <i class="fa fa-plus-circle"></i>
                                 Follow
                             </a>
+                            -->
                             <!-- Follow button end -->
+                            <?php echo $this->element('buttons/follow', array('id' => $userid, 'name' => $publicname, 'follow' => TRUE)) ?>
                         </div>
                         <h4>
                             <?php if ($value['User']['verify'] == 1) { ?>

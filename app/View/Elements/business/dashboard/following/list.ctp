@@ -35,6 +35,7 @@
                 <div class="row user">
                     <div class="col-sm-2 followcolumn">
                         <!-- Follow button -->
+                        <!--
                         <a id="list-unfollow-<?php echo $userid; ?>" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
                                 switchunfollow(<?php echo $userid; ?>);">
                             <i class="fa fa-minus-circle"></i>
@@ -45,7 +46,9 @@
                             <i class="fa fa-plus-circle"></i>
                             Follow
                         </a>
+                        -->
                         <!-- Follow button end -->
+                        <?php echo $this->element('buttons/follow', array('id' => $userid, 'name' => $publicname, 'follow' => TRUE)) ?>
                     </div>
                     <div class="col-sm-1 avatar">
                        <!-- <input type="checkbox" name="select-user" />-->
