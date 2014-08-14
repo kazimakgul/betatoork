@@ -2302,6 +2302,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
+            $this->set('query', $query);
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "favorites"));
         }
@@ -2607,6 +2608,9 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
+
+        $this->sync_sorting();
+
         $this->Subscription->bindModel(
             array(
                 'belongsTo' => array(
@@ -2669,6 +2673,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
+            $this->set('query',$query);
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "following"));
         }
@@ -2722,6 +2727,9 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
+
+        $this->sync_sorting();
+
         $this->Subscription->bindModel(
             array(
                 'belongsTo' => array(

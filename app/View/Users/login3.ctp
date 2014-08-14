@@ -43,7 +43,7 @@
                                     <label class="span6 checkbox">
                                         <input type="checkbox" id="txt_signremember" name="txt_signremember"> Remember me
                                     </label>      
-                                    <button id="t_gatekeeper_login_btn" class="validateLogin btn btn-success pull-right" type="button">Sign In Now</button>
+                                    <button id="t_gatekeeper_login_btn" class="validateLogin btn btn-info pull-right" type="button">Sign In Now</button>
                                 </div>
                             </div>
                         </fieldset>
