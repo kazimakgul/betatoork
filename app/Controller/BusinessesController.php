@@ -2607,6 +2607,9 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
+
+        $this->sync_sorting();
+
         $this->Subscription->bindModel(
             array(
                 'belongsTo' => array(
@@ -2722,6 +2725,9 @@ class BusinessesController extends AppController {
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
+
+        $this->sync_sorting();
+
         $this->Subscription->bindModel(
             array(
                 'belongsTo' => array(
