@@ -21,7 +21,7 @@
             $name = $value['User']['username'];
             $userid = $value['User']['id'];
             $publicname = $value['User']['username'];
-            $followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($userid));
+            //$followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($userid));
             $followers = $value['Userstat']['subscribeto'];
             $following = $value['Userstat']['subscribe'];
             $games = $value['Userstat']['uploadcount'];
@@ -33,31 +33,7 @@
             ?>
             <div class="row user">
                 <div class="col-sm-2 followcolumn">
-                    <!-- Follow button -->
-                    <?php if ($followstatus != 1) { ?>
-                        <a id="list-follow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                switchfollow(<?php echo $userid; ?>);">
-                            <i class="fa fa-plus-circle"></i>
-                            Follow
-                        </a> 
-                        <a id="list-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                switchunfollow(<?php echo $userid; ?>);">
-                            <i class="fa fa-minus-circle"></i>
-                            Unfollow
-                        </a>
-                    <?php } else { ?> 
-                        <a id="list-unfollow-<?php echo $userid; ?>" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                switchunfollow(<?php echo $userid; ?>);">
-                            <i class="fa fa-minus-circle"></i> 
-                            Unfollow
-                        </a>
-                        <a id="list-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                switchfollow(<?php echo $userid; ?>);">
-                            <i class="fa fa-plus-circle"></i>
-                            Follow
-                        </a>
-                    <?php } ?> 
-                    <!-- Follow button end -->
+                    <?php echo $this->element('buttons/follow', array('id' => $userid, 'name' => $publicname, 'follow' => $value['followstatus'])) ?>
                 </div>
                 <div class="col-sm-1 avatar">
                     <a href="<?php echo $userlink ?>" target="_blank">

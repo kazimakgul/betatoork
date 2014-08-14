@@ -4,7 +4,7 @@
         $name = $value['User']['username'];
         $userid = $value['User']['id'];
         $publicname = $value['User']['username'];
-        $followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($userid));
+        //$followstatus = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($userid));
         $followers = $value['Userstat']['subscribeto'];
         $following = $value['Userstat']['subscribe'];
         $games = $value['Userstat']['uploadcount'];
@@ -36,31 +36,7 @@
                 </a>
                 <div class="panel-body">
                     <div style="margin-top:-10px;" class="text-center">
-                        <!-- Follow button -->
-                        <?php if ($followstatus != 1) { ?>
-                            <a id="grid-follow-<?php echo $userid; ?>" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                                switchfollow(<?php echo $userid; ?>);">
-                                <i class="fa fa-plus-circle"></i>
-                                Follow
-                            </a>
-                            <a id="grid-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                                switchunfollow(<?php echo $userid; ?>);">
-                                <i class="fa fa-minus-circle"></i>
-                                Unfollow
-                            </a>
-                        <?php } else { ?>
-                            <a id="grid-unfollow-<?php echo $userid; ?>" class="btn btn-default" onclick="subscribeout('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                                switchunfollow(<?php echo $userid; ?>);">
-                                <i class="fa fa-minus-circle"></i>
-                                Unfollow
-                            </a>
-                            <a id="grid-follow-<?php echo $userid; ?>" style="display:none;" class="btn btn-success" onclick="subscribe('<?php echo $publicname ?>', user_auth, <?php echo $userid; ?>);
-                                                switchfollow(<?php echo $userid; ?>);">
-                                <i class="fa fa-plus-circle"></i>
-                                Follow
-                            </a>
-                        <?php } ?>
-                        <!-- Follow button end -->
+                        <?php echo $this->element('buttons/follow', array('id' => $userid, 'name' => $publicname, 'follow' => $value['followstatus'])) ?>
                     </div>
                     <h4>
                         <?php if ($value['User']['verify'] == 1) { ?>

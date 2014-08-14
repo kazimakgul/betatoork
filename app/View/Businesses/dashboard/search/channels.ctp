@@ -80,9 +80,11 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             </div>
             <?php
             if (!empty($result)) {
-                echo
-                $this->element('business/dashboard/search/channels/list') .
-                $this->element('business/dashboard/search/channels/grid');
+                foreach ($result as $key => $value) {
+                    $result[$key]['followstatus'] = $this->requestAction(array('controller' => 'subscriptions', 'action' => 'followstatus'), array($value['User']['id']));
+                }
+                echo $this->element('business/dashboard/search/channels/list', array('result' => $result));
+                echo $this->element('business/dashboard/search/channels/grid', array('result' => $result));
             } else {
                 echo $this->element('business/dashboard/nullconditions', array('link' => 'explorechannels', 'text' => 'Explore Channels'));
             }
