@@ -97,7 +97,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                 <?php
                 if (!empty($result)) {
                     foreach ($result as $key => $value) {
-                        $result[$key]['clonestatus'] = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($value['User']['id'], $value['Game']['id']));
+                        $result[$key]['clonestatus'] = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($userid, $value['Game']['id']));
                     }
                     echo
                     $this->element('business/dashboard/search/games/grid', array('result' => $result)) .

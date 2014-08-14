@@ -2955,6 +2955,7 @@ class BusinessesController extends AppController {
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "dashboard"));
         }
+        $this->set('userid', $this->Auth->user('id'));
         $this->set('query', $query);
         $this->set('active_filter', $filter);
         $limit = 12;
