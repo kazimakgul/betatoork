@@ -66,6 +66,7 @@ Router::connect('/favorites/sort/most-played/*', array('controller' => 'business
 Router::connect('/favorites/sort/least-played/*', array('controller' => 'businesses', 'action' => 'favorites', 'sort' => 'Gamestat.playcount', 'direction' => 'asc'));
 Router::connect('/favorites/sort/highest-rating/*', array('controller' => 'businesses', 'action' => 'favorites', 'sort' => 'Game.starsize', 'direction' => 'desc'));
 Router::connect('/favorites/sort/least-rating/*', array('controller' => 'businesses', 'action' => 'favorites', 'sort' => 'Game.starsize', 'direction' => 'asc'));
+Router::connect('/favorites/add/*', array('controller' => 'favorites', 'action' => 'add'));
 Router::connect('/favorites/*', array('controller' => 'businesses', 'action' => 'favorites'));
 
 Router::connect('/explore/games/search/:filter', array('controller' => 'businesses', 'action' => 'exploregames_search'), array('pass' => array('filter'), 'filter' => 'mobiles|fullscreen|embed'));
