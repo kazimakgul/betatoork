@@ -129,7 +129,7 @@
                             <i class="icon-upload"></i>
                           </span>
                         </a>
-                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></a>
+                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-info icon-plus-sign"> <strong>Follow</strong></a>
                       <h5>NewGrounds</h5>
                       <p>Newgrounds is an American entertainment and social media website and company. Here you will find latest news and games from newsground.com</p>
                     </div>
@@ -142,7 +142,7 @@
                             <i class="icon-upload"></i>
                           </span>
                         </a>
-                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></a>
+                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-info icon-plus-sign"> <strong>Follow</strong></a>
                       <h5>MiniClip</h5>
                       <p>Miniclip is a mobile and online games company which includes the website Miniclip.com. Here you will find latest news and games from miniclip.</p>
                     </div>
@@ -155,7 +155,7 @@
                             <i class="icon-upload"></i>
                           </span>
                         </a>
-                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></a>
+                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-info icon-plus-sign"> <strong>Follow</strong></a>
                       <h5>ArmorGames</h5>
                       <p>Armor Games, formerly Games Of Gondor, is a website, that hosts free Flash-based browser games. Here you will find latest news and games.</p>
                     </div>
@@ -168,7 +168,7 @@
                             <i class="icon-upload"></i>
                           </span>
                         </a>
-                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-success icon-plus-sign"> <strong>Follow</strong></a>
+                      </div><a href="<?php echo $login; ?>" style="margin-top:-4px;" class="pull-right btn btn-info icon-plus-sign"> <strong>Follow</strong></a>
                       <h5>KongreGate</h5>
                       <p>Kongregate is an online games hosting website, which allows users to upload user-created Adobe Flash, HTML 5/JavaScript, Shockwave, Java or Unity3D games.</p>
                     </div>
@@ -407,7 +407,7 @@
                 
                   <h3 class="section-header">Join Professionals For Free</h3>
                   <div>
-                    <a href="<?php echo $register; ?>" class="btn btn-success btn-large"><i class="icon-plus"></i> Join Clone Now</a>
+                    <a href="<?php echo $register; ?>" class="btn btn-info btn-large"><i class="icon-plus"></i> Join Clone Now</a>
                     <a href="<?php echo $explore; ?>" class="btn btn-cta btn-large"><i class="icon-compass"></i> Explore Clone</a>
                   </div>
 
@@ -429,10 +429,7 @@
                           Divan Yolu Cad. No:23<br/>
                           Fatih, Istanbul, Turkiye
                         </li>
-                        <li>
-                          <strong>Contact:</strong>
-                          <a style="color:silver; font-size:14px;" href="mailto:hello@clone.gs">hello [at] clone.gs</a>
-                        </li>
+
                       </ul>
                       <a target="_blank" href="http://toork.com"><img alt="Toork Social Network Engine" width="170" src="img/toorklogo.png" />
                         <h4>a social network engine</h4>

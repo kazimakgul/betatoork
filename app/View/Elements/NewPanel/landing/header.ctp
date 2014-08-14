@@ -12,7 +12,7 @@
                     </a><span>beta</span>
                     <div class='nav-collapse subnav-collapse collapse pull-right' id='top-navigation'>
                       <div class=''>
-                        <a href="<?php echo $register; ?>" class="btn btn-success">Create Account</a>
+                        <a href="<?php echo $register; ?>" class="btn btn-info">Create Account</a>
                         <a href="<?php echo $login; ?>" class="btn">Sign In</a>
                       </div>
                     </div>

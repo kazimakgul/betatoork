@@ -159,7 +159,7 @@
                             <div class="row-fluid">
                               <div class="span12">
                                 <div class="form-actions no-margin-bottom">
-                                  <button id="t_landing_registerbtn" style="margin-left:20px;" class="btn btn-success btn-large validateRegister" name="button" type="button">+ Join Clone Now</button><span class="offset2"><i class="icon-check"></i> By joinin clone.gs you agree to our <a href="<?php echo $terms; ?>">terms</a> and <a href="<?php echo $privacy; ?>">privacy</a> policies.</span>
+                                  <button id="t_landing_registerbtn" style="margin-left:20px;" class="btn btn-info btn-large validateRegister" name="button" type="button">+ Join Clone Now</button><span class="offset2"><i class="icon-check"></i> By joinin clone.gs you agree to our <a href="<?php echo $terms; ?>">terms</a> and <a href="<?php echo $privacy; ?>">privacy</a> policies.</span>
                                 </div>
                               </div>
                             </div>
