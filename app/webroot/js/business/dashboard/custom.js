@@ -97,7 +97,8 @@ $(document).ready(function() {
                 ad_id: $('#ad_id').val(),
                 category: cat_arr
             },
-            function(data) {
+            function
+                (data) {
                 if (data.error) {
                     alert(data.error); // error.id ye göre mesaj yazdırcak..
                 } else {
