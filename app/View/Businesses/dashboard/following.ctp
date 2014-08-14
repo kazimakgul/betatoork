@@ -1,7 +1,6 @@
 <?php
 $search_action = $this->Html->url(array("controller" => "businesses", "action" => "following_search"));
 $following = $this->Html->url(array("controller" => "businesses", "action" => "following"));
-
 if (isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction'])) {
     $sort = $this->request->params['named']['sort'];
     $direction = $this->request->params['named']['direction'];
@@ -23,7 +22,6 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
         $name = 'Least Added Game';
     }
 }
-
 ?>
 <body id="users">
 <div id="wrapper">
@@ -61,7 +59,6 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                     -->
                     <div class="show-options">
                         <div class="dropdown">
-
                            <!--Sorting Tags Start here-->
                             <?php if (isset($name)) { ?>
                                 <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
@@ -72,8 +69,6 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                                 </span>
                             <?php } ?>
                             <!--Sorting Tags Ends here-->
-                           
-
                             <a class="button" data-toggle="dropdown" href="#">
                                 <span>
                                     Sort by
@@ -111,37 +106,8 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                     </div>
                 </div>
             </div>
-            <div class="row users-list">
-                <div class="col-md-12">
-                    <div class="row headers">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-1 header select-users">
-                        </div>
-                        <div class="col-sm-3 header hidden-xs">
-                            <label><?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')) ?></label>
-                        </div>
-                        <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                            <label><?php echo $this->Paginator->sort('Userstat.subscribe', 'Followers', array('direction' => 'asc')) ?></label>
-                        </div>
-                        <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                            <label><?php echo $this->Paginator->sort('Userstat.subscribeto', 'Following', array('direction' => 'asc')) ?></label>
-                        </div>
-                        <div class="col-sm-1 col-sm-offset-1 header hidden-xs">
-                            <label class="text-right"><?php echo $this->Paginator->sort('Userstat.uploadcount', 'Games', array('direction' => 'asc')) ?></label>
-                        </div>
-                    </div>
-                    <?php echo $this->element('business/dashboard/following/list') ?>
-                    <div class="text-center">
-                        <?php echo $this->element('business/components/pagination') ?>
-                    </div>
-                </div>
-            </div>
-            <div class="row users-grid">
-                <?php echo $this->element('business/dashboard/following/grid') ?>
-                <div class="text-center">
-                    <?php echo $this->element('business/components/pagination') ?>
-                </div>
-            </div>
+            <?php echo $this->element('business/dashboard/following/list') ?>
+            <?php echo $this->element('business/dashboard/following/grid') ?>
         </div>
     </div>
 </div>
