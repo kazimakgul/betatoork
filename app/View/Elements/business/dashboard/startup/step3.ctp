@@ -44,6 +44,7 @@
                     <div class="panel-body">
                         <div style="margin-top:-10px;" class="text-center">
                             <!-- Follow button -->
+                            <!--
                             <a id="grid-unfollow-<?php echo $userid; ?>" style="display:none;" class="btn btn-default"> <i class="fa fa-minus-circle"></i> Following... </a>
 
 
@@ -52,7 +53,9 @@
                                 <i class="fa fa-plus-circle"></i>
                                 Follow
                             </a>
+                            -->
                             <!-- Follow button end -->
+                            <?php echo $this->element('buttons/follow', array('id' => $userid, 'name' => $publicname, 'follow' => FALSE, 'function' => 'subscribe2')) ?>
                         </div>
                         <h4>
                             <?php if ($value['User']['verify'] == 1) { ?>
