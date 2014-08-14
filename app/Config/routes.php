@@ -89,12 +89,31 @@ Router::connect('/explore/games/sort/low-score/*', array('controller' => 'busine
 Router::connect('/explore/games/*', array('controller' => 'businesses', 'action' => 'exploregames'));
 
 Router::connect('/dashboard/welcome', array('controller' => 'businesses', 'action' => 'startup'));
+
 Router::connect('/following/search', array('controller' => 'businesses', 'action' => 'following_search'));
 Router::connect('/following', array('controller' => 'businesses', 'action' => 'following'));
+Router::connect('/following/sort/a-z/*', array('controller' => 'businesses', 'action' => 'following', 'sort' => 'User.username', 'direction' => 'asc'));
+Router::connect('/following/sort/z-a/*', array('controller' => 'businesses', 'action' => 'following', 'sort' => 'User.username', 'direction' => 'desc'));
+Router::connect('/following/sort/most-followed/*', array('controller' => 'businesses', 'action' => 'following', 'sort' => 'Userstat.subscribeto', 'direction' => 'desc'));
+Router::connect('/following/sort/least-followed/*', array('controller' => 'businesses', 'action' => 'following', 'sort' => 'Userstat.subscribeto', 'direction' => 'asc'));
+Router::connect('/following/sort/most-following/*', array('controller' => 'businesses', 'action' => 'following', 'sort' => 'Userstat.subscribe', 'direction' => 'desc'));
+Router::connect('/following/sort/least-following/*', array('controller' => 'businesses', 'action' => 'following', 'sort' => 'Userstat.subscribe', 'direction' => 'asc'));
+Router::connect('/following/sort/most-game-added/*', array('controller' => 'businesses', 'action' => 'following', 'sort' => 'Userstat.uploadcount', 'direction' => 'desc'));
+Router::connect('/following/sort/least-game-added/*', array('controller' => 'businesses', 'action' => 'following', 'sort' => 'Userstat.uploadcount', 'direction' => 'asc'));
 Router::connect('/following/*', array('controller' => 'businesses', 'action' => 'following'));
+
 Router::connect('/followers/search', array('controller' => 'businesses', 'action' => 'followers_search'));
 Router::connect('/followers', array('controller' => 'businesses', 'action' => 'followers'));
+Router::connect('/followers/sort/a-z/*', array('controller' => 'businesses', 'action' => 'followers', 'sort' => 'User.username', 'direction' => 'asc'));
+Router::connect('/followers/sort/z-a/*', array('controller' => 'businesses', 'action' => 'followers', 'sort' => 'User.username', 'direction' => 'desc'));
+Router::connect('/followers/sort/most-followed/*', array('controller' => 'businesses', 'action' => 'followers', 'sort' => 'Userstat.subscribeto', 'direction' => 'desc'));
+Router::connect('/followers/sort/least-followed/*', array('controller' => 'businesses', 'action' => 'followers', 'sort' => 'Userstat.subscribeto', 'direction' => 'asc'));
+Router::connect('/followers/sort/most-following/*', array('controller' => 'businesses', 'action' => 'followers', 'sort' => 'Userstat.subscribe', 'direction' => 'desc'));
+Router::connect('/followers/sort/least-following/*', array('controller' => 'businesses', 'action' => 'followers', 'sort' => 'Userstat.subscribe', 'direction' => 'asc'));
+Router::connect('/followers/sort/most-game-added/*', array('controller' => 'businesses', 'action' => 'followers', 'sort' => 'Userstat.uploadcount', 'direction' => 'desc'));
+Router::connect('/followers/sort/least-game-added/*', array('controller' => 'businesses', 'action' => 'followers', 'sort' => 'Userstat.uploadcount', 'direction' => 'asc'));
 Router::connect('/followers/*', array('controller' => 'businesses', 'action' => 'followers'));
+
 Router::connect('/add/ads', array('controller' => 'businesses', 'action' => 'add_ads'));
 Router::connect('/explore/channels/search', array('controller' => 'businesses', 'action' => 'explorechannels_search'));
 
