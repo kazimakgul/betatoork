@@ -10,6 +10,9 @@
 <div class="col-xs-12 col-sm-6 col-md-4" style="padding-bottom: 5px;" id="gamebox-<?php echo $id; ?>">
     <div class="panel panel-default">
         <a href="<?php echo $playurl ?>" target="_blank">
+            <div style="right:20px; top:4px; position:absolute;"><span data-toggle="tooltip" data-placement="top" data-original-title="Compatible With" class="label label-primary" ><i class="fa fa-mobile"></i> Mobile</span></div>
+            <div style="right:20px; top:4px; position:absolute;"><span data-toggle="tooltip" data-placement="top" data-original-title="Available in" class="label label-success" ><i class="fa fa-laptop"></i> Fullscreen</span></div>
+            <div style="right:20px; top:4px; position:absolute;"><span data-toggle="tooltip" data-placement="top" data-original-title="Suitable for" class="label label-danger" ><i class="fa fa-file-code-o"></i> Embed</span></div>
             <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'box_img_resize', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '720', 'height' => '110')); ?>
         </a>
         <div class="panel-body" style="padding-top:0px;">
