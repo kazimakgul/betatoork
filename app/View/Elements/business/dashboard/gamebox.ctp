@@ -77,7 +77,7 @@
             {
             ?>
             <div class="row">
-                <div class="col-md-4" style="margin-right:-30px;">
+                <div class="col-md-4">
                     <a href="<?php echo $userlink; ?>">
                         <?php echo $this->Upload->image($game, 'User.picture', array(), array('class' => 'img-responsive img-thumbnail img-circle circular2', 'onerror' => 'imgError(this,"avatar");'));  ?>
                     </a>
@@ -94,7 +94,7 @@
             }elseif($gameboxtype == "favorite"){
             ?>
                 <div class="row">
-                    <div class="col-md-4" style="margin-right:-30px;">
+                    <div class="col-md-4">
                         <a href="<?php echo $userlink; ?>">
                             <?php echo $this->Upload->image($game['Game'], 'User.picture', array(), array('class' => 'img-responsive img-thumbnail img-circle circular2', 'onerror' => 'imgError(this,"avatar");')); //$this->Upload->image($user, 'User.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'img-responsive img-thumbnail img-circle', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");','width'=>'50','height'=>'50'));     ?>
                         </a>
