@@ -2972,6 +2972,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
+            $this->set('query',$query);
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "dashboard"));
         }

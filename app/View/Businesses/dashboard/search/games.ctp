@@ -32,11 +32,10 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                     ← Search
                 </a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action; ?>" style="margin-left: 160px;">
-                <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search games..." value="<?php echo $query; ?>" />
-                <input type="submit" />
-            </form>
+
+            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search games2...','url' => $search_action,'query'=>$query,'style'=>'margin-left: 160px;')); ?>
+
+
             <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">
                 <span>Add Game</span>
             </a>
@@ -62,6 +61,8 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                     }
                     ?>
                     <div class="show-options">
+
+                       <?php if (!isset($query)) { ?>
                         <div class="dropdown">
                             <a class="button" data-toggle="dropdown" href="#">
                                 <span>
@@ -77,6 +78,8 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                                 <li><?php echo $this->Paginator->sort('Game.rate_count', 'Rates', array('direction' => 'desc')) ?></li>
                             </ul>
                         </div>
+                        <?php } ?>
+
                         <?php
                         if (isset($view) && $view === 'list') {
                             ?>

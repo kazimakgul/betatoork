@@ -17,11 +17,11 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             <div class="page-title">
                 <a href="javascript:;">Dashboard</a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action; ?>">
-                <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search..." />
-                <input type="submit" />
-            </form>
+
+
+            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search3...','url' => $search_action)); ?>
+
+
             <div class="pull-right hidden-xs" style="margin-top: -5px">
                 <a data-toggle="tooltip" data-placement="bottom" data-original-title="Game Management" href="<?php echo $mygames; ?>" class="btn btn-warning"><i class="fa fa-gamepad"></i></a>
                 <a data-toggle="tooltip" data-placement="bottom" data-original-title="Ads Management" href="<?php echo $ads_management; ?>" class="btn btn-info"><i class="fa fa-bar-chart-o"></i></a>
