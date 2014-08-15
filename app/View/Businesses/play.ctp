@@ -86,6 +86,7 @@
             </div>
         </div>
         <?php echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerMiddle, 'adtype' => 'homeBannerMiddle')); ?>
+        </div>
         <!--/footer -->
         <div class="col-sm-12">
             <div class="row">
@@ -109,7 +110,6 @@
         <!--/footer End--> 
         <?php echo $this->element('business/components/popup', array('user_id' => $user['User']['id'])); ?>
         <?php echo $this->element('business/clonebox'); ?>
-    </div><!-- /.container -->
     <script>
         //=======Playcount==========
         setTimeout(function() {
