@@ -5,6 +5,10 @@
  * #search bar-type, #conditions
  * #author @ogi
  */
+
+$style=isset($style) ? $style : NULL;
+$query=isset($query) ? $query : NULL;
+
 ?>
 <!-- Search Bar -->
 <form class="search hidden-xs" action="<?php echo $url; ?>" style="<?php echo $style; ?>">
