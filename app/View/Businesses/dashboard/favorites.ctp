@@ -80,12 +80,11 @@ if(isset($this->request->params['named']['sort']) && isset($this->request->param
 
 
                      <?php if (!isset($query)) { ?>
-                        <div class="dropdown">
 
 
                          <!--Sorting Tags Start here-->
                           <?php if(isset($name)){ ?>
-                          <span style="text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
+                          <span style="margin-top:-16px;text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
                              <a href="<?php echo $favorites; ?>" style="text-decoration: none !important;color: #666">
                             <?php echo $name; ?>
                             <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;"><i class="fa fa-times"></i></span>
@@ -93,6 +92,7 @@ if(isset($this->request->params['named']['sort']) && isset($this->request->param
                           </span>
                           <?php } ?>
                           <!--Sorting Tags Ends here-->
+                         <div class="dropdown">
 
                             <a class="button" data-toggle="dropdown" href="#">
                                 <span>
