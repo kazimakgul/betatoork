@@ -458,12 +458,12 @@ class BusinessesController extends AppController {
         var_dump($test);
         $this->Ad_setting->query('DELETE FROM ad_settings WHERE ad_area_id = "' . $area_id . '" AND user_id = "' . $user_id . '"');
         echo 'debug 1';
-        exit;
         $filtered_data['Ad_setting']['ad_code_id'] = $code_id;
         $filtered_data['Ad_setting']['user_id'] = $user_id;
         $filtered_data['Ad_setting']['ad_area_id'] = $area_id;
         if ($this->Ad_setting->save($filtered_data)) {
             echo 'debug 2';
+            exit;
             $this->set('success', "Success");
             $this->set('_serialize', array('success'));
         }
