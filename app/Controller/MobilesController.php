@@ -46,17 +46,10 @@ class MobilesController extends AppController {
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-
-
-        //this convert querystring parameter to named parameter for sorting.
-        //Author:Ogi
-        //==================================================================
         if ($this->request->params['named']['sort'] == NULL) {
             $this->request->params['named']['sort'] = $this->request->params['sort'];
             $this->request->params['named']['direction'] = $this->request->params['direction'];
         }
-
-
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
             if ($userid == NULL) {
@@ -64,7 +57,7 @@ class MobilesController extends AppController {
                 $c_userid = $user_data[0]['custom_domains']['user_id'];
                 $userid = $c_userid;
             }
-        } else {//Cname not exists. 
+        } else {
             if ($userid == NULL) {
                 $subdomain = Configure::read('Domain.subdomain');
                 $user_data = $this->User->find('first', array(
@@ -163,10 +156,29 @@ class MobilesController extends AppController {
             $cdomain = Configure::read('Domain.c_root');
             $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
             $userid = $user_data[0]['custom_domains']['user_id'];
-            $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
-            $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('Game.id'), 'contain' => false));
+            $user = $this->User->find('first', array(
+                'conditions' => array(
+                    'User.id' => $userid
+                ),
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.verify'
+                ),
+                'contain' => false
+            ));
+            $game = $this->Game->find('first', array(
+                'conditions' => array(
+                    'Game.seo_url' => $id,
+                    'Game.user_id' => $user['User']['id']
+                ),
+                'fields' => array(
+                    'Game.id'
+                ),
+                'contain' => false
+            ));
             $id = $game['Game']['id'];
-        } else {//if it is not cname
+        } else {
             if (!is_numeric($id)) {
                 $subdomain = Configure::read('Domain.subdomain');
                 $user = $this->User->find('first', array(
@@ -301,6 +313,29 @@ class MobilesController extends AppController {
                 $userid
             ));
         }
+        if (Configure::read('Domain.cname')) {
+            $cdomain = Configure::read('Domain.c_root');
+            if ($userid == NULL) {
+                $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+                $c_userid = $user_data[0]['custom_domains']['user_id'];
+                $userid = $c_userid;
+            }
+        } else {
+            if ($userid == NULL) {
+                $subdomain = Configure::read('Domain.subdomain');
+                $user_data = $this->User->find('first', array(
+                    'contain' => false,
+                    'conditions' => array(
+                        'User.seo_username' => $subdomain
+                    ),
+                    'fields' => array(
+                        'User.id'
+                    )
+                ));
+                $userid = $user_data['User']['id'];
+            }
+        }
+        $this->get_style_settings($userid);
         $user = $this->User->find('first', array(
             'conditions' => array(
                 'User.id' => $userid
