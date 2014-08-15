@@ -26,7 +26,6 @@
                     "clones"    =>$clones,
                     "favorites" =>$favorites,
                     "plays"     =>$plays,
-                    "userlink"  =>$userlink,
                      "game_edit"=>$game_edit
                 )) ?>
             <?php
