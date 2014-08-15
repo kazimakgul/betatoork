@@ -22,6 +22,7 @@ foreach ($games as $game) {
             </small>
         </h4>
         <p class="pull-right">
+            <a href="#" class="btn btn-mini detailopen" id="<?php echo h($user['User']['id']); ?>"><i class="elusive-edit"></i> Quick Edit</a>
             <a href="<?php echo $gameedit; ?>" class="btn btn-mini"><i class="elusive-edit"></i> Edit</a>
         </p>
         <!--
