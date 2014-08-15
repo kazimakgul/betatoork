@@ -19,7 +19,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             </div>
 
 
-            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search3...','url' => $search_action)); ?>
+            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search...','url' => $search_action)); ?>
 
 
             <div class="pull-right hidden-xs" style="margin-top: -5px">

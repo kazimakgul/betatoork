@@ -22,7 +22,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             </div>
 
 
-            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search channels, users2...','url' => $search_action,'query'=>$query,'style'=>'margin-left: 160px;')); ?>
+            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search channels, users...','url' => $search_action,'query'=>$query,'style'=>'margin-left: 160px;')); ?>
 
 
         </div>

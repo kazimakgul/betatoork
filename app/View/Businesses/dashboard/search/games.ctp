@@ -33,7 +33,7 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                 </a>
             </div>
 
-            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search games2...','url' => $search_action,'query'=>$query,'style'=>'margin-left: 160px;')); ?>
+            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search games...','url' => $search_action,'query'=>$query,'style'=>'margin-left: 160px;')); ?>
 
 
             <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">
