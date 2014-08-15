@@ -1076,7 +1076,9 @@ class BusinessesController extends AppController {
                     'Game.clone' => 0
                 ),
                 'order' => array(
-                    'Game.id' => 'DESC'
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
                 )
             )
         );
