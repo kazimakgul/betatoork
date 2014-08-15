@@ -1,7 +1,3 @@
-<?php
-$index=$this->Html->url(array("controller" => "games","action" =>"index")); 
-?>
-
 <body id="signin" class="clear">
 
 
@@ -14,7 +10,7 @@ $index=$this->Html->url(array("controller" => "games","action" =>"index"));
     <div class="content">
             <h4 class="text-center">Sorry, an error has occured, Requested page not found!</h4>
             <div class="actions">
-                <a href="<?php echo $index; ?>" class="btn btn-primary btn-lg">Go Back to Clone</a>
+                <a href="http://clone.gs" class="btn btn-primary btn-lg">Go Back to Clone</a>
             </div>
     
     </div>
