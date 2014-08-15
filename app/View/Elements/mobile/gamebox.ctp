@@ -18,11 +18,6 @@ if (empty($games)) {
         } else {
             $playcount = $game['Gamestat']['playcount'];
         }
-        if (empty($game['Gamestat']['channelclone'])) {
-            $totalclone = 0;
-        } else {
-            $totalclone = $game['Gamestat']['channelclone'];
-        }
         ?>
         <div class="col-sm-4">
             <div class="thumbnail">
@@ -47,20 +42,7 @@ if (empty($games)) {
                         </div>
                     </div>
                     <div class="row text-center">
-                        <div class="btn-group btn-group-justified bt_grp_pad">
-                            <div class="btn-group">
-                                <a href="<?php echo $playurl; ?>" type="button" class="btn btn-success">
-                                    <i class="fa fa-play" title="" data-toggle="tooltip" data-original-title=" Plays"></i>
-                                    <?php echo $playcount; ?> Plays
-                                </a>
-                            </div>
-                            <div class="btn-group">
-                                <label type="button" class="btn btn-info">
-                                    <i class="fa fa-plus-square" title="" data-toggle="tooltip" data-original-title=" Clones"></i>
-                                    <?php echo $totalclone; ?> Clones
-                                </label>
-                            </div>
-                        </div>
+                        <a href="<?php echo $playurl; ?>" class="btn btn-success"><i class="fa fa-play" title="" data-toggle="tooltip" data-original-title=" Plays"></i> <?php echo $playcount; ?> Plays</a>
                     </div>
                 </div>
                 <div class="darkloader"></div>

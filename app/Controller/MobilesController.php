@@ -47,7 +47,7 @@ class MobilesController extends AppController {
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
 
-        
+
         //this convert querystring parameter to named parameter for sorting.
         //Author:Ogi
         //==================================================================
@@ -56,7 +56,7 @@ class MobilesController extends AppController {
             $this->request->params['named']['direction'] = $this->request->params['direction'];
         }
 
-        
+
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
             if ($userid == NULL) {
@@ -126,23 +126,22 @@ class MobilesController extends AppController {
         }
         $this->paginate = array(
             'Game' => array(
+                'contain' => array(
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount'
+                        )
+                    )
+                ),
                 'conditions' => array(
                     'Game.active' => 1,
                     'Game.mobileready' => 1,
                     'Game.user_id' => $userid
                 ),
-                'limit' => $this->PaginateLimit,
                 'order' => array(
                     'Game.recommend' => 'desc'
                 ),
-                'contain' => array(
-                    'Gamestat' => array(
-                        'fields' => array(
-                            'Gamestat.playcount',
-                            'Gamestat.channelclone'
-                        )
-                    )
-                )
+                'limit' => $this->PaginateLimit
             )
         );
         $cond = $this->paginate('Game');
@@ -315,23 +314,21 @@ class MobilesController extends AppController {
                 'contain' => array(
                     'Gamestat' => array(
                         'fields' => array(
-                            'Gamestat.playcount',
-                            'Gamestat.favcount',
-                            'Gamestat.totalclone'
+                            'Gamestat.playcount'
                         )
                     )
                 ),
-                'limit' => $this->PaginateLimit,
-                'order' => 'Game.id DESC',
                 'conditions' => array(
                     'Game.active' => 1,
                     'Game.mobileready' => 1,
                     'Game.user_id' => $userid,
                     'OR' => array(
-                        'Game.description LIKE' => '%' . $param . '%',
-                        'Game.name LIKE' => '%' . $param . '%'
+                        'Game.name LIKE' => '%' . $param . '%',
+                        'Game.description LIKE' => '%' . $param . '%'
                     ),
-                )
+                ),
+                'order' => 'Game.id DESC',
+                'limit' => $this->PaginateLimit
             )
         );
         $cond = $this->paginate('Game');
