@@ -456,7 +456,7 @@ class BusinessesController extends AppController {
         $user_id = $this->Session->read('Auth.User.id');
         $test = array($code_id, $area_id, $user_id);
         var_dump($test);
-        $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="' . $user_id . '"');
+        $this->Ad_setting->query('DELETE FROM ad_settings WHERE ad_area_id = "' . $area_id . '" AND user_id = "' . $user_id . '"');
         echo 'debug 1';
         exit;
         $filtered_data['Ad_setting']['ad_code_id'] = $code_id;
