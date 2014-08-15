@@ -77,12 +77,12 @@
             {
             ?>
             <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-4">
+                <div style="width: 55px;float:left; margin:0 10px">
                     <a href="<?php echo $userlink; ?>">
                         <?php echo $this->Upload->image($game, 'User.picture', array(), array('class' => 'img-responsive img-thumbnail img-circle circular2', 'onerror' => 'imgError(this,"avatar");'));  ?>
                     </a>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
+                <div class="col-md-7">
                     <h5><?php if ($game['User']['verify'] == 1) { ?>
                             <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
                         <?php } ?>
@@ -94,12 +94,12 @@
             }elseif($gameboxtype == "favorite"){
             ?>
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div style="width: 55px;float:left; margin:0 10px">
                         <a href="<?php echo $userlink; ?>">
                             <?php echo $this->Upload->image($game['Game'], 'User.picture', array(), array('class' => 'img-responsive img-thumbnail img-circle circular2', 'onerror' => 'imgError(this,"avatar");')); //$this->Upload->image($user, 'User.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'img-responsive img-thumbnail img-circle', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");','width'=>'50','height'=>'50'));     ?>
                         </a>
                     </div>
-                    <div class="col-md-8 col-sm-8 col-xs-8">
+                    <div class="col-md-7">
                         <h5>
                             <?php if ($game['Game']['User']['verify'] == 1) { ?>
                                 <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
