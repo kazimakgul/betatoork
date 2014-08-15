@@ -336,7 +336,7 @@
     background-size: cover;
 }
 .cover .cover_dark {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     background-color: black;
