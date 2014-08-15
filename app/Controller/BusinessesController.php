@@ -406,7 +406,7 @@ class BusinessesController extends AppController {
         Configure::write('debug', 0);
         $area_id = $this->request->data['target_ad_area'];
         if ($auth_id = $this->Auth->user('id')) {//Auth Control Begins
-            $this->Ad_setting->query('Delete FROM Ad_settings WHERE ad_area_id="' . $area_id . '" AND user_id="' . $auth_id . '"');
+            $this->Ad_setting->query('DELETE FROM ad_settings WHERE ad_area_id = "' . $area_id . '" AND user_id = "' . $auth_id . '"');
             $msg = array("title" => 'Success', 'result' => 1);
         } else {//Auth Control Ends
             //if user unlogged
@@ -455,15 +455,11 @@ class BusinessesController extends AppController {
         $area_id = $this->request->data['set_id'];
         $user_id = $this->Session->read('Auth.User.id');
         $test = array($code_id, $area_id, $user_id);
-        var_dump($test);
         $this->Ad_setting->query('DELETE FROM ad_settings WHERE ad_area_id = "' . $area_id . '" AND user_id = "' . $user_id . '"');
-        echo 'debug 1';
         $filtered_data['Ad_setting']['ad_code_id'] = $code_id;
         $filtered_data['Ad_setting']['user_id'] = $user_id;
         $filtered_data['Ad_setting']['ad_area_id'] = $area_id;
         if ($this->Ad_setting->save($filtered_data)) {
-            echo 'debug 2';
-            exit;
             $this->set('success', "Success");
             $this->set('_serialize', array('success'));
         }
