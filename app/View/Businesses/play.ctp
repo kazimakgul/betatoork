@@ -85,7 +85,7 @@
                 </div>
             </div>
         </div>
-        <?php echo $this->element('business/ads', array('controls' => $controls, 'code' => $homeBannerMiddle, 'adtype' => 'homeBannerMiddle')); ?>
+        <?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' => 5)); ?>
         </div>
         <!--/footer -->
         <div class="col-sm-12">
@@ -106,8 +106,7 @@
                 </div>
             </div>
         </div>
-        <?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' => 5)); ?>
-        <!--/footer End--> 
+        <!--/footer End-->
         <?php echo $this->element('business/components/popup', array('user_id' => $user['User']['id'])); ?>
         <?php echo $this->element('business/clonebox'); ?>
     <script>
