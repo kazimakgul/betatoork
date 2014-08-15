@@ -1229,14 +1229,14 @@ function switch_favorite(game_id) {
                     .addClass('btn-danger')
                     .html('<i class="fa fa-heart"></i> Favorite');
             Messenger()
-                    .post("Game Favorited");
+                    .post("Game Unfavorited");
         } else {
             button
                     .removeClass('btn-warning')
                     .addClass('btn-default')
                     .html('<i class="fa fa-heart"></i> UnFavorite');
             Messenger()
-                    .post("Game Unfavorited");
+                    .post("Game Favorited");
         }
     });
 }
