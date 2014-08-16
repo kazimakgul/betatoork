@@ -1547,7 +1547,7 @@ class BusinessesController extends AppController {
                 if ($subdomain == 'domains') {
                     //$this->layout="ajax";//You can choose which layout do you want to use!
                     $this->render('/Businesses/howtomap');
-                    break; 
+                   
                 }
 
                 $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
