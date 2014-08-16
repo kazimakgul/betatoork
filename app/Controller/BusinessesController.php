@@ -1546,9 +1546,10 @@ class BusinessesController extends AppController {
                 //This conditions render special view for domains.clone.gs Gives information about how to map a domain.
                 if ($subdomain == 'domains') {
                     //$this->layout="ajax";//You can choose which layout do you want to use!
-                    $this->render('/Businesses/howtomap');
-                   
-                }else{}
+                    //$this->render('/Businesses/howtomap');
+                    echo 'great';
+                    break;
+                }
 
                 $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
                 $userid = $user_data['User']['id'];
