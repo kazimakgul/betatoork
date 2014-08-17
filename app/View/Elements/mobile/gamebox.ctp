@@ -19,6 +19,47 @@ if (empty($games)) {
             $playcount = $game['Gamestat']['playcount'];
         }
         ?>
+        
+
+       <?php if($game['Game']['install']){ ?>
+        <div class="col-sm-4">
+            <div class="thumbnail">
+                <a target='_blank' href="<?php echo $game['Game']['link']; ?>">
+                    <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");', 'width' => '100%')); ?>
+                </a>
+                <div class="caption">
+                    <h3><a target='_blank' href="<?php echo $game['Game']['link']; ?>"><?php echo $game['Game']['name']; ?></a></h3>
+                    <div class="row text-center yildiz">
+                        <div class="stars2"  data-toggle="tooltip" data-original-title="<?= $game['Game']['rate_count']; ?> Rates">
+                            <div class="ratingbar2" style="width: <?php echo $game['Game']['starsize']; ?>%;"></div>
+                            <div class="star2">
+                                <div class="star2">
+                                    <div class="star2">
+                                        <div class="star2">
+                                            <div class="star2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row text-center">
+                        <a target='_blank' href="<?php echo $game['Game']['link']; ?>" class="btn btn-success"><i class="fa fa-download"></i> Install</a>
+                     </div>
+
+                </div>
+                <div class="darkloader"></div>
+                <div class="loader text-center">
+                    LOADING
+                    <br>
+                    <?php echo $this->Html->image('mobile/ajax-loader.gif'); ?>
+                </div>
+            </div>
+        </div>
+        <?php }else{ ?>
+        
         <div class="col-sm-4">
             <div class="thumbnail">
                 <a href="<?php echo $playurl; ?>">
@@ -42,15 +83,9 @@ if (empty($games)) {
                         </div>
                     </div>
                     
-                 <?php if($game['Game']['install']){ ?>
-                    <div class="row text-center">
-                        <a target='_blank' href="<?php echo $game['Game']['link']; ?>" class="btn btn-success"><i class="fa fa-download" title="" data-toggle="tooltip" data-original-title=" Plays"></i> Install</a>
-                     </div>
-                  <?php }else{ ?>
                     <div class="row text-center">
                         <a href="<?php echo $playurl; ?>" class="btn btn-success"><i class="fa fa-play" title="" data-toggle="tooltip" data-original-title=" Plays"></i> <?php echo $playcount; ?> Plays</a>
                     </div>
-                  <?php } ?>
 
                 </div>
                 <div class="darkloader"></div>
@@ -61,6 +96,8 @@ if (empty($games)) {
                 </div>
             </div>
         </div>
+        <?php } ?>
+
         <?php
     }
 }
