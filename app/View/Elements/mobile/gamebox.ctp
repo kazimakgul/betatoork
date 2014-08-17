@@ -61,7 +61,7 @@ if (empty($games)) {
         <?php }else{ ?>
         
         <div class="col-sm-4">
-            <div class="thumbnail">
+            <div class="thumbnail m_thumbnail">
                 <a href="<?php echo $playurl; ?>">
                     <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");', 'width' => '100%')); ?>
                 </a>

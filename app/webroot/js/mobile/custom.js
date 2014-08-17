@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('div.thumbnail a').click(function() {
+    $('div.m_thumbnail a').click(function() {
         $(this)
             .closest('div.thumbnail')
             .find('div.darkloader, div.loader')
