@@ -214,6 +214,7 @@ if (
         Router::connect('/games/most-played/*', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'playcount', 'direction' => 'desc'));
         Router::connect('/games/newest', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'id', 'direction' => 'desc'));
         Router::connect('/games/newest/*', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'id', 'direction' => 'desc'));
+        Router::connect('/games/appstore', array('controller' => 'mobiles', 'action' => 'store_games'));
         Router::connect('/games/search', array('controller' => 'mobiles', 'action' => 'search2'));
     } else {
         //  Mobile detection ends

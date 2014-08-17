@@ -6,12 +6,14 @@ $home = $this->Html->url('/');
 $toprated = $this->Html->url(array("controller" => "games", "action" => "top-rated"));
 $mostplayed=$this->Html->url(array("controller" => "games", "action" => "most-played"));
 $newgames=$this->Html->url(array("controller" => "games", "action" => "newest"));  
+$appstore=$this->Html->url(array("controller" => "games", "action" => "appstore"));  
 }else{
  $search = $this->Html->url(array("controller" => "mobiles", "action" => "search2", $user_id));
  $home = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id));
  $toprated = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:starsize/direction:desc';
  $mostplayed = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:Gamestat.playcount/direction:desc';
  $newgames = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id)) . '/sort:id/direction:desc'; 
+ $appstore=$this->Html->url(array("controller" => "mobiles", "action" => "store_games", $user_id)); 
 }    
 $image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));
 
@@ -58,7 +60,7 @@ $image = $this->requestAction(array('controller' => 'users', 'action' => 'random
                     <li><a href="<?php echo $toprated; ?>"><i class="fa fa-star"></i> Top Rated</a></li>
                     <li><a href="<?php echo $mostplayed; ?>"><i class="fa fa-play"></i> Most Played</a></li>
                     <li><a href="<?php echo $newgames; ?>"><i class="fa fa-flash"></i> New Games</a></li>
-                    <li><a href="javascript:;"><i class="fa fa-gift"></i> Mobile Apps</a></li>
+                    <li><a href="<?php echo $appstore; ?>"><i class="fa fa-gift"></i> Mobile Apps</a></li>
                 </ul>
                 <div>
                     <p><?php echo $username ?></p>

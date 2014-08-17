@@ -41,9 +41,17 @@ if (empty($games)) {
                             </div>
                         </div>
                     </div>
+                    
+                 <?php if($game['Game']['install']){ ?>
+                    <div class="row text-center">
+                        <a target='_blank' href="<?php echo $game['Game']['link']; ?>" class="btn btn-success"><i class="fa fa-download" title="" data-toggle="tooltip" data-original-title=" Plays"></i> Install</a>
+                     </div>
+                  <?php }else{ ?>
                     <div class="row text-center">
                         <a href="<?php echo $playurl; ?>" class="btn btn-success"><i class="fa fa-play" title="" data-toggle="tooltip" data-original-title=" Plays"></i> <?php echo $playcount; ?> Plays</a>
                     </div>
+                  <?php } ?>
+
                 </div>
                 <div class="darkloader"></div>
                 <div class="loader text-center">
