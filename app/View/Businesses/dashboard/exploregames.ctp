@@ -27,6 +27,7 @@ if (isset($query)) {
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'mobiles'));
     $fullscreen = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'fullscreen'));
     $embed = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames', 'filter' => 'embed'));
+    $query=NULL;
 }
 if (isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction'])) {
     $sort = $this->request->params['named']['sort'];
@@ -75,15 +76,11 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                     Explore Games
                 </a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action; ?>" style="margin-left: 200px">
-                <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search games..." value="<?php
-                if (isset($query)) {
-                    echo $query;
-                }
-                ?>" />
-                <input type="submit" />
-            </form>
+           
+
+            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'445Search games...','url' => $search_action,'query'=>$query,'style'=>'margin-left: 200px')); ?>
+
+
             <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">
                 <span>Add Game</span>
             </a>

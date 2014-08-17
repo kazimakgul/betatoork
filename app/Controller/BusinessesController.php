@@ -2692,20 +2692,39 @@ class BusinessesController extends AppController {
         $limit = 12;
         //$this->Subscription->recursive=2;
         //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
+
         $this->Subscription->bindModel(
             array(
                 'belongsTo' => array(
                     'User' => array(
                         'className' => 'User',
-                        'foreignKey' => 'subscriber_id'
+                        'foreignKey' => 'subscriber_to_id'
                     )
                 )
             )
         );
+
+        //This function allow to use belong to with custom conditions
+        //Author:Ogi
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'Userstat' => array(
+                            'className' => 'Userstat',
+                            'foreignKey' => false,
+                            'conditions' => array('Subscription.subscriber_to_id = Userstat.user_id'),
+                            'fields' => '',
+                            'dependent' => false,
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
-                    'Subscription.subscriber_to_id' => $userid,
+                    'Subscription.subscriber_id' => $userid,
                     'User.username LIKE' => '%' . $query . '%'
                 ),
                 'contain' => array(
@@ -2718,13 +2737,15 @@ class BusinessesController extends AppController {
                             'User.screenname',
                             'User.picture',
                             'User.banner'
-                        ),
-                        'Userstat'
-                    )
+                        )
+                    ),'Userstat'
                 ),
                 'limit' => $limit
             )
         );
+       
+
+
         $data = $this->paginate('Subscription');
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Following');
@@ -2802,12 +2823,14 @@ class BusinessesController extends AppController {
         $this->sideBar();
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
+            $this->set('query',$query);
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "followers"));
         }
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-        $this->Subscription->bindModel(
+       
+         $this->Subscription->bindModel(
             array(
                 'belongsTo' => array(
                     'User' => array(
@@ -2817,6 +2840,24 @@ class BusinessesController extends AppController {
                 )
             )
         );
+
+        //This function allow to use belong to with custom conditions
+        //Author:Ogi
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'Userstat' => array(
+                            'className' => 'Userstat',
+                            'foreignKey' => false,
+                            'conditions' => array('Subscription.subscriber_id = Userstat.user_id'),
+                            'fields' => '',
+                            'dependent' => false,
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
         $this->paginate = array(
             'Subscription' => array(
                 'conditions' => array(
@@ -2826,18 +2867,19 @@ class BusinessesController extends AppController {
                 'contain' => array(
                     'User' => array(
                         'fields' => array(
+                            'User.id',
                             'User.seo_username',
                             'User.verify',
                             'User.username',
                             'User.picture',
                             'User.banner'
-                        ),
-                        'Userstat'
-                    )
+                        ) 
+                    ),'Userstat'
                 ),
                 'limit' => $limit
             )
         );
+
         $data = $this->paginate('Subscription');
         $this->set('followers', $data);
         $this->set('title_for_layout', 'Clone Business Followers');
@@ -2898,6 +2940,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
+            $this->set('query',$query);
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "followers"));
         }

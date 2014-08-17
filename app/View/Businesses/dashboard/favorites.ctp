@@ -57,11 +57,11 @@ if(isset($this->request->params['named']['sort']) && isset($this->request->param
                     Favorites
                 </a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action ?>">
-                <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search games..." />
-                <input type="submit" />
-            </form>
+
+
+<?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search games...','url' => $search_action)); ?>
+
+
             <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">
                 <span>Add Game</span>
             </a>

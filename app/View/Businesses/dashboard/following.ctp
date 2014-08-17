@@ -36,11 +36,11 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                     Following
                 </a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action ?>">
-                <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search channels, users..." />
-                <input type="submit" />
-            </form>
+
+
+            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search channels, users...','url' => $search_action)); ?>
+
+
             <!--
             <a href="form.html" class="new-user btn btn-success pull-right">
                 <span>Invite Friends</span>

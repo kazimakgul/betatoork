@@ -38,11 +38,12 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                     Followers
                 </a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action ?>">
-                <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search channels, users..." />
-                <input type="submit" />
-            </form>
+            
+
+            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search channels, users...','url' => $search_action)); ?>
+
+
+
             <!--
             <a href="form.html" class="new-user btn btn-success pull-right">
                 <span>Invite Friends</span>
@@ -61,6 +62,8 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                     -->
                     <div class="show-options">
 
+                           
+                           <?php if (!isset($query)) { ?>
                            <!--Sorting Tags Start here-->
                             <?php if (isset($name)) { ?>
                                 <span style="margin-top:-16px;text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
@@ -71,6 +74,7 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                                 </span>
                             <?php } ?>
                             <!--Sorting Tags Ends here-->
+
 
                         <div class="dropdown">
 
@@ -95,6 +99,8 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                                 </li>
                             </ul>
                         </div>
+                        <?php } ?>
+
                         <?php
                         if (isset($view) && $view === 'list') {
                             ?>

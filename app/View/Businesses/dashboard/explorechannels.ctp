@@ -56,17 +56,20 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                     Explore Channels
                 </a>
             </div>
-            <form class="search hidden-xs" action="<?php echo $search_action ?>" style="margin-left: 240px">
-                <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search channels, users..." />
-                <input type="submit" />
-            </form>
+            
+
+
+<?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search channels, users...','url' => $search_action,'style'=>'margin-left: 240px;')); ?>
+
+
         </div>
         <div class="content-wrapper">
             <div class="row page-controls">
                 <div class="col-md-12 filters">
                     <div class="show-options">
 
+
+                        <?php if (!isset($query)) { ?>
                         <!--Sorting Tags Start here-->
                         <?php if (isset($name)) { ?>
                             <span style="margin-top:-16px;text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
@@ -106,6 +109,8 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                                 </li>
                             </ul>
                         </div>
+                        <?php } ?>
+
                         <?php
                         if (isset($view) && $view === 'list') {
                             ?>
