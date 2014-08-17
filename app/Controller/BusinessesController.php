@@ -256,6 +256,7 @@ class BusinessesController extends AppController {
                 $tags = $this->request->data['tags'];
                 $fullscreen = $this->request->data['fullscreen'];
                 $mobileready = $this->request->data['mobile'];
+                $installable = $this->request->data['installable'];
                 $game_user_id = $user_id;
                 $created = date('Y-m-d H:i:s');
                 $game_owner_id = $user_id;
@@ -316,6 +317,7 @@ class BusinessesController extends AppController {
                     'owner_id' => $game_user_id,
                     'user_id' => $game_user_id,
                     'fullscreen' => $fullscreen,
+                    'install' => $installable,
                     'mobileready' => $mobileready));
                 //*****************************
                 //Secure data filtering ends

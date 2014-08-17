@@ -126,30 +126,49 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 					      	<input type="hidden" id="tags" style="width:100%" value="War, Race, Fight" name="tags" />
 					    </div>
 				  	</div>
+				  	
+
 				  	<div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 					      	<div class="checkbox">
 					        	<label>
 					          		<input type="checkbox" id="fullscreen" name="send_marketing" <?php if($game['Game']['fullscreen']){echo 'checked';} ?> /> Full Screen
-					    	<span class="help" data-toggle="tooltip" title="game size full screen">
+					    	<span class="help" data-toggle="tooltip" title="Game shows in full screen.">
 					    		<i class="fa fa-question-circle"></i>
 					    	</span>
 				        		</label>
 					      	</div>
 					    </div>
 				  	</div>
+				  	
+
 				  	<div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 					      	<div class="checkbox">
 					        	<label>
 					          		<input type="checkbox" id="mobile" name="send_marketing" <?php if($game['Game']['mobileready']){echo 'checked';} ?> /> Mobile Ready
-					    	<span class="help" data-toggle="tooltip" title="Suitable for mobile">
+					    	<span class="help" data-toggle="tooltip" title="Suitable for mobile.">
 					    		<i class="fa fa-question-circle"></i>
 					    	</span>
 				        		</label>
 					      	</div>
 					    </div>
 				  	</div>
+
+				  	<div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
+					      	<div class="checkbox">
+					        	<label>
+					          		<input type="checkbox" id="installable" name="send_marketing" <?php if($game['Game']['install']){echo 'checked';} ?> /> Installable
+					    	<span class="help" data-toggle="tooltip" title="Users install this game on app stores.">
+					    		<i class="fa fa-question-circle"></i>
+					    	</span>
+				        		</label>
+					      	</div>
+					    </div>
+				  	</div>
+
+
 				  	<div class="form-group">
 				  		<input type="hidden" name="attr" id="attr" value="game_add" />
 				  		<input type="hidden" name="new_data" id="new_data" value="0" />

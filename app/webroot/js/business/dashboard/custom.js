@@ -221,6 +221,13 @@ $(document).ready(function() {
                 $full_screen = 0;
             }
 
+            if ($('#installable').prop('checked'))
+            {
+                $installable = 1;
+            } else {
+                $installable = 0;
+            }
+
 
             $.post(link, {
                 attr: attr,
@@ -233,6 +240,7 @@ $(document).ready(function() {
                 tags: $('#tags').val(),
                 fullscreen: $full_screen,
                 mobile: $mobile_ready,
+                installable: $installable,
                 image_name: $('#game_image').attr('data-src'),
                 game_file: $('#game_file').val(),
                 new_game: $new_game,
