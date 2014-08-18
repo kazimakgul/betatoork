@@ -16,8 +16,10 @@
     }
     if (Configure::read('Domain.type') == 'subdomain') {
         $next_game = $this->Html->url(array("controller" => 'play', "action" => h($next_game['Game']['seo_url'])));
+        $playurl = $this->Html->url(array("controller" => 'play', "action" => h($game['Game']['seo_url'])));
     } else {
         $next_game = $this->Html->url(array('controller' => 'businesses', 'action' => 'play', h($next_game['Game']['id'])));
+        $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
     }
     ?>
     <script>
@@ -75,7 +77,7 @@
                             </div>
                             <div class='pull-right'>	
                                 <?php echo $this->element('business/buttons/comment'); ?>		
-                                <?php echo $this->element('business/buttons/share'); ?>
+                                <?php echo $this->element('business/buttons/share', array('url'=>$playurl,'name'=>$gamename)); ?>
                             </div>
                             <!-- Next Button -->
                             <a href="<?php echo $next_game; ?>" type="button" class="close pull-right" style='padding: 6px 12px; margin-right: 50px' data-toggle="tooltip" data-original-title="Next"><li class="fa fa-fast-forward"></li></a>
