@@ -54,7 +54,7 @@
     if($channel_style['User']['bg_color']!=NULL)
     $bg_color=$channel_style['User']['bg_color'];
     else
-    $bg_color='#ffffff'; 
+    $bg_color='#E9EAED'; 
 
     if($channel_style['User']['bg_image']!=NULL)
     $bg_image=Configure::read('S3.url').'/upload/users/'.$active_channel_id.'/'.$channel_style['User']['bg_image'];
