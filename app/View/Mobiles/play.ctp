@@ -17,6 +17,7 @@
         -webkit-border-radius: 0 8px 8px 0;
         -moz-border-radius: 0 8px 8px 0;
         z-index: 9999999;
+        position: fixed;
     }
     a#open-left i {
         color: white;
