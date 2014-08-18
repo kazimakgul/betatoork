@@ -77,7 +77,9 @@
                             </div>
                             <div class='pull-right'>	
                                 <?php echo $this->element('business/buttons/comment'); ?>		
-                                <?php echo $this->element('business/buttons/share', array('url'=>$playurl,'name'=>$gamename)); ?>
+                                <?php
+                                $share_url = $_SERVER['SERVER_NAME'].$playurl;
+                                echo $this->element('business/buttons/share', array('url'=>$share_url,'name'=>$gamename.' - '.$share_url)); ?>
                             </div>
                             <!-- Next Button -->
                             <a href="<?php echo $next_game; ?>" type="button" class="close pull-right" style='padding: 6px 12px; margin-right: 50px' data-toggle="tooltip" data-original-title="Next"><li class="fa fa-fast-forward"></li></a>

@@ -17,8 +17,8 @@
                         </button>
                         <ul class="dropdown-menu clear-dropdown-menu" role="menu">
                             <li>
-                                <a data-original-title="Facebook" rel="tooltip"  href="javascript:void(0);" data-url="http://www.facebook.com/sharer.php?u=<?php echo $url; ?>&t=<?php echo $name; ?>" class="btn btn-facebook shl-share" data-placement="center">
-                                    <i class="fa fa-facebook"></i>
+                                <a data-original-title="Twitter" rel="tooltip"  href="javascript:void(0);" data-url="http://twitter.com/intent/tweet?url=<?php echo $url; ?>&text=<?php echo $name; ?>" class="btn btn-twitter shl-share" data-placement="center">
+                                    <i class="fa fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
@@ -27,8 +27,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a data-original-title="Twitter" rel="tooltip"  href="javascript:void(0);" data-url="http://twitter.com/intent/tweet?url=<?php echo $url; ?>&text=<?php echo $name; ?>" class="btn btn-twitter shl-share" data-placement="center">
-                                    <i class="fa fa-twitter"></i>
+                                <a data-original-title="Facebook" rel="tooltip"  href="javascript:void(0);" data-url="http://www.facebook.com/sharer.php?u=<?php echo $url; ?>&t=<?php echo $name; ?>" class="btn btn-facebook shl-share" data-placement="center">
+                                    <i class="fa fa-facebook"></i>
                                 </a>
                             </li>
                         </ul>
