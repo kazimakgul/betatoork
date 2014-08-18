@@ -49,7 +49,7 @@
         if(!empty($channel_style['User']['bg_color'])) {
             $bg_color = $channel_style['User']['bg_color'];
         } else {
-            $bg_color = '#ffffff';
+            $bg_color = '##BFC7D8';
         } 
 
         if(!empty($channel_style['User']['bg_image'])) {
