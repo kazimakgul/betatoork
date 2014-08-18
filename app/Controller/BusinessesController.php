@@ -267,6 +267,8 @@ class BusinessesController extends AppController {
                 if ($new_game == 0) {
                     $game_id = $this->request->data['game_id'];
                     $this->Game->id = $game_id;
+                }else{
+                    $game_id=NULL;
                 }
 
 
@@ -313,7 +315,7 @@ class BusinessesController extends AppController {
                     'user_id' => $game_user_id,
                     'priority' => 0,
                     'category_id' => $category_id,
-                    'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
+                    'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name,$game_id),
                     'owner_id' => $game_user_id,
                     'user_id' => $game_user_id,
                     'fullscreen' => $fullscreen,

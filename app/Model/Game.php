@@ -66,12 +66,16 @@ class Game extends AppModel {
         return $string;
     }
 
-    public function checkDuplicateSeoUrl($seo_url = 'toork') {
+    public function checkDuplicateSeoUrl($seo_url = 'toork',$game_id=NULL) {
         $authid = CakeSession::read("Auth.User.id");
         $seo_url = str_replace('_', '', Inflector::slug(strtolower(str_replace(' ', '-', $seo_url))));
         do {
-
+            
+            if($game_id==NULL)
             $data = $this->find('all', array('contain' => false, 'conditions' => array('Game.seo_url' => $seo_url, 'Game.user_id' => $authid), 'fields' => array('seo_url')));
+            else
+            $data = $this->find('all', array('contain' => false, 'conditions' => array('Game.seo_url' => $seo_url, 'Game.user_id' => $authid,'Game.id !='=>$game_id), 'fields' => array('seo_url')));    
+           
             if ($data == NULL) {
                 return $seo_url;
             } else {
@@ -82,9 +86,13 @@ class Game extends AppModel {
 
     function seoUrlFormer($material = 'toork') {
         //Add incremental number at the end of the seo_url
+        $buffer=$material.rand(100,300);
         preg_match('/^([^\d]+)([\d]*?)$/', $material, $match);
         $material = $match[1];
         $number = $match[2] + 1;
+        if($material==NULL)
+        return $buffer;
+        else
         return $material . $number;
     }
 
