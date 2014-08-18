@@ -108,6 +108,7 @@ class MobilesController extends AppController {
         );
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
+        $this->get_style_settings($userid);
     }
 
     /**
@@ -226,6 +227,7 @@ class MobilesController extends AppController {
         $this->set('description', $user['User']['description']);
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
+        $this->get_style_settings($game['Game']['user_id']);
     }
 
 
@@ -304,6 +306,7 @@ class MobilesController extends AppController {
         );
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
+        $this->get_style_settings($userid);
    }
 
 
@@ -390,6 +393,7 @@ class MobilesController extends AppController {
         $this->set('picture', $user['User']['picture']);
         $this->set_user_data($user);
         $this->render('index');
+        $this->get_style_settings($userid);
     }
     
     /**

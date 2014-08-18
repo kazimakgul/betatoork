@@ -45,6 +45,29 @@
         <script>
             addplaycount = '<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'add_playcount')); ?>';
         </script>
+        <?php 
+        if(!empty($channel_style['User']['bg_color'])) {
+            $bg_color = $channel_style['User']['bg_color'];
+        } else {
+            $bg_color = '#ffffff';
+        } 
+
+        if(!empty($channel_style['User']['bg_image'])) {
+            $bg_image = Configure::read('S3.url') . '/upload/users/' . $active_channel_id . '/' . $channel_style['User']['bg_image'];
+        } else {
+            $bg_image = '';
+        }  
+
+        $customcss =
+        '<style type="text/css">
+            #content, .snap-content {
+                background-color: ' . $bg_color . ';
+                background-image: url("' . $bg_image . '");
+            }
+        </style>';
+        
+        echo $customcss;
+        ?>
     </head>
     <body>
         <?php echo $content_for_layout ?>
