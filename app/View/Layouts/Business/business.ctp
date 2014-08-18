@@ -23,7 +23,7 @@
         <meta property="og:site_name" content="Clone"/>
         <meta property="og:description" content= "<?php echo $description_for_layout?>" />
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"><?php echo $this->Html->css(array('business/custom','css2/jquery.pnotify.default')); ?>
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet"><?php echo $this->Html->css(array('business/custom','css2/jquery.pnotify.default')); ?>
  		<script>
         toorksize			='<?php echo Configure::read('broken.toorksize'); ?>';
         avatar				='<?php echo Configure::read('broken.avatar'); ?>';

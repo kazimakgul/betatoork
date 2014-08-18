@@ -672,61 +672,7 @@ function switchunfollow(id)
     $("a[id=unfollow" + x + "]").hide();
     $("a[id=follow" + x + "]").show();
 }
-//***************************************************
-//------------------Favorite Functions-------------------------
-//***************************************************	
-/*
-function favorite(game_name, user_auth, id) {
-    if (user_auth == 1)
-    {
-        switch_favorite(id);
-    } else {
-        $('#login').modal('show');
-    }
-}
 
-function unFavorite(game_name, user_auth, id) {
-    if (user_auth == 1)
-    {
-        switch_favorite(id);
-    } else
-    {
-        $('#login').modal('show');
-    }
-}
-
-$('#fav_button').click(function() {
-    if (user_auth == 1)
-    {
-    } else
-    {
-        $.pnotify({
-            title: 'Sign in Please',
-            text: 'You have to sign in first to favorite games.',
-            type: 'error'
-        });
-    }
-});
-
-function switch_favorite(game_id)
-{
-    $.get(favswitcher + '/' + game_id,
-            function(data) {
-                if (data == 1)
-                {
-                    currentflw = $('#fav_count').html();
-                    currentflw = parseInt(currentflw);
-                    $('#fav_count').html(currentflw + 1);
-                    $('.fa-heart').addClass('red');
-                } else {
-                    currentflw = $('#fav_count').html();
-                    currentflw = parseInt(currentflw);
-                    $('#fav_count').html(currentflw - 1);
-                    $('.fa-heart').removeClass('red');
-                }
-            });
-}
-*/
 //***************************************************
 //------------Game Chain/Clone Functions-------------
 //***************************************************

@@ -273,3 +273,15 @@ function switch_favorite(game_id) {
         }
     });
 }
+
+/*-----------------------------------------------------------------------------------*/
+/* Open popup on post share links
+ /*-----------------------------------------------------------------------------------*/
+function shl_social_share(data) {
+    window.open( data, "Share", "height=500,width=760,resizable=0,toolbar=0,menubar=0,status=0,location=0,scrollbars=0" );
+}
+$('body').on('click','.shl-share', function(e){
+    e.preventDefault();
+    var data = $(this).attr('data-url');
+    shl_social_share(data);
+});
