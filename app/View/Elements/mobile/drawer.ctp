@@ -21,7 +21,7 @@ $image = $this->requestAction(array('controller' => 'users', 'action' => 'random
         <div>
             <?php
             if (is_null($cover)) {
-                $cover_background_image = 'url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg)';
+                $cover_background_image = 'url(http://s3.amazonaws.com/betatoorkpics/banners/' . $image . '.jpg)';
             } else {
                 $cover_background_image = 'url(' . Configure::read('S3.url') . '/upload/users/' . $user_id . '/' . $cover . ')';
             }
