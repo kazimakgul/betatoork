@@ -63,6 +63,7 @@
             #content, .snap-content {
                 background-color: ' . $bg_color . ';
                 background-image: url("' . $bg_image . '");
+                background-repeat: repeat;
             }
         </style>';
         
