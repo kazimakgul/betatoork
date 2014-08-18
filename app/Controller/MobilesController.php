@@ -106,7 +106,9 @@ class MobilesController extends AppController {
                     'Game.user_id' => $userid
                 ),
                 'order' => array(
-                    'Game.recommend' => 'desc'
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
                 ),
                 'limit' => $this->PaginateLimit
             )
@@ -307,7 +309,9 @@ class MobilesController extends AppController {
                     'Game.user_id' => $userid
                 ),
                 'order' => array(
-                    'Game.recommend' => 'desc'
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
                 ),
                 'limit' => $this->PaginateLimit
             )
@@ -383,7 +387,11 @@ class MobilesController extends AppController {
                         'Game.description LIKE' => '%' . $param . '%'
                     ),
                 ),
-                'order' => 'Game.id DESC',
+                'order' => array(
+                    'Game.clone' => 'ASC',
+                    'Game.priority' => 'DESC',
+                    'Gamestat.potential' => 'DESC'
+                ),
                 'limit' => $this->PaginateLimit
             )
         );
