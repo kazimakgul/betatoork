@@ -12,8 +12,10 @@
     }
     if (Configure::read('Domain.type') == 'subdomain') {
         $next_game = $this->Html->url(array("controller" => 'play', "action" => h($next_game['Game']['seo_url'])));
+        $playurl = $this->Html->url(array("controller" => 'play', "action" => h($game['Game']['seo_url'])));
     } else {
         $next_game = $this->Html->url(array('controller' => 'businesses', 'action' => 'play', h($next_game['Game']['id'])));
+        $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
     }
     ?>
     <script>
@@ -65,8 +67,10 @@
                 </div>
                 <div class='pull-right' style='margin-right: 30px;'>	
                     <?php echo $this->element('business/buttons/comment'); ?>
-                    <?php echo $this->element('business/buttons/share'); ?>
-                </div>   
+                    <?php
+                    $share_url = $_SERVER['SERVER_NAME'].$playurl;
+                    echo $this->element('business/buttons/share', array('url'=>$share_url,'name'=>$gamename.' - '.$share_url)); ?>
+                </div>
             </div>
         </div>
     </div>
