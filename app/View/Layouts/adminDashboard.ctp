@@ -225,7 +225,9 @@ game_comment_var='<?php echo $this->Html->url(array('controller'=>'wallentries',
 my_feed_var='<?php if(isset($uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_ajax_my',$uid,$type)); }?>';
 profile_news_var='<?php if(isset($profile_uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_profile_ajax',$profile_uid)); }?>';
 profile_news_var_home='<?php if(isset($profile_uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'moreupdates_profile_ajax_home',$profile_uid)); }?>';
+<?php if (isset($profile_uid)) { ?>
 explore_more_morevar='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'explore_more_feed',$profile_uid)); ?>';
+<?php } ?>
 game_comments_var='<?php if(isset($uid)){ echo $this->Html->url(array('controller'=>'wallentries','action'=>'game_comments_ajax',$uid,$type)); }?>';
 feedlike='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'likeswitch')); ?>';
 sharepost='<?php echo $this->Html->url(array('controller'=>'wallentries','action'=>'sharepost')); ?>';

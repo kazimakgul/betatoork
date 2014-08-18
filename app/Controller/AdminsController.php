@@ -120,7 +120,6 @@ class AdminsController extends AppController {
     }
 
     public function admin_game_submit() {
-        Configure::write('debug', 0);
         App::uses('Folder', 'Utility');
         App::uses('File', 'Utility');
         $category_id = $this->request->data['category_id'];
@@ -160,7 +159,7 @@ class AdminsController extends AppController {
             //*****************************
             $filtered_data = array(
                 'Game' => array(
-                    'name' => $game_name = $this->Game->secureSuperGlobalPOST($game_name),
+                    'name' => $this->Game->secureSuperGlobalPOST($game_name),
                     'description' => $this->Game->secureSuperGlobalPOST($game_description),
                     'game_link' => $game_link,
                     'width' => $game_width,
@@ -169,7 +168,7 @@ class AdminsController extends AppController {
                     'link' => $game_link,
                     'priority' => $game_priority,
                     'user_id' => $game_user_id,
-                    /* 'priority' => 0, */
+                    'priority' => 0,
                     'category_id' => $category_id,
                     'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
                     'user_id' => $game_user_id,
