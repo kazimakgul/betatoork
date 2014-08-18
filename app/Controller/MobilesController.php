@@ -46,12 +46,7 @@ class MobilesController extends AppController {
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-        
-        if ($this->request->params['named']['sort'] == NULL) {
-            $this->request->params['named']['sort'] = $this->request->params['sort'];
-            $this->request->params['named']['direction'] = $this->request->params['direction'];
-        }
-
+        $this->sync_sorting();
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
             if ($userid == NULL) {
@@ -245,12 +240,7 @@ class MobilesController extends AppController {
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-        
-        if ($this->request->params['named']['sort'] == NULL) {
-            $this->request->params['named']['sort'] = $this->request->params['sort'];
-            $this->request->params['named']['direction'] = $this->request->params['direction'];
-        }
-        
+        $this->sync_sorting();
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
             if ($userid == NULL) {
