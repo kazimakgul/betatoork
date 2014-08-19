@@ -1615,7 +1615,6 @@ class BusinessesController extends AppController {
         if ($this->checkUser($userid) == 1) {
             $this->render('/Businesses/404');
         }elseif ($subdomain == 'domains') {
-            $this->layout="ajax";//You can choose which layout do you want to use!
             $this->render('/Businesses/howtomap');
         }
     }
