@@ -1612,10 +1612,13 @@ class BusinessesController extends AppController {
         $this->set('description_for_layout', 'Play games on ' . $user['User']['username'] . ' : ' . $user['User']['description']);
         $this->set('author_for_layout', 'Clone');
 
-        if ($this->checkUser($userid) == 1) {
-            $this->render('/Businesses/404');
-        }elseif ($subdomain == 'domains') {
+
+        if ($subdomain == 'domains') {
+            echo '2';
             $this->render('/Businesses/howtomap');
+            break;
+        }elseif ($this->checkUser($userid) == 1) {
+            $this->render('/Businesses/404');
         }
     }
 
