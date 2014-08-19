@@ -8,9 +8,10 @@
         $newestlink = $this->Html->url(array("controller" => "games", "action" => "newest"));
         $featuredlink = $this->Html->url(array("controller" => "games", "action" => "featured"));
     } else {
-        $hotlink = $subgameurl . '/sort:recommend/direction:desc';
+        $hotlink = $subgameurl;
         $newestlink = $subgameurl . '/sort:id/direction:desc';
         $featuredlink = $subfeaturl . '/sort:id/direction:desc';
+        $recomendlink = $subgameurl . '/sort:Gamestat.playcount/direction:desc';
     }
     //  Getting and declaring ads datas
     if ($this->Session->read('Auth.User.id') == $user['User']['id']) {
@@ -96,7 +97,7 @@
             <div class="col-xs-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><a href="<?php echo $hotlink; ?>" class="black">Recommended Games</a></h3>
+                        <h3 class="panel-title"><a href="<?php echo $recomendlink; ?>" class="black">Recommended Games</a></h3>
                     </div>
                     <div class="panel-body">
                         <?php

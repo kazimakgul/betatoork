@@ -68,11 +68,8 @@
                         }else if($sort=='name' && $direction=='desc')
                         {
                            $name = 'Z to A';
-                        }else if($sort=='recommend' && $direction=='desc')
-                        {
-                           $name = 'Hot Games';
                         }else{
-                            $name = ucwords($param);
+                            $name = 'Hot Games';
                         }
 
                         ?>
@@ -85,9 +82,17 @@
                         echo $this->element('business/games/box', array('div' => $div, 'gamedata' => $games));
                         ?>
                     </div>
-                    <div class="panel-footer">
-                        <center><?php echo $this->element('business/components/pagination'); ?></center>
-                    </div>
+                    <?php
+                    $params = $this->Paginator->params();
+                    $pageCount = $params['pageCount'];
+                    if ($pageCount > 1) {
+                        ?>
+                        <div class="panel-footer">
+                            <center><?php
+                                echo $this->element('business/components/pagination',array("controller"=>FALSE));
+                                ?></center>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
