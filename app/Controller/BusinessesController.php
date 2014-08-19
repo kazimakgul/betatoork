@@ -1548,11 +1548,7 @@ class BusinessesController extends AppController {
                 $subdomain = Configure::read('Domain.subdomain');
                 if ($subdomain == 'domains') {
                     $this->layout = 'ajax';
-                    $this->set('title_for_layout',"Clone Game");
-                    $this->set('description_for_layout',"Clone Game");
-                    $this->set('author_for_layout',"Clone Game");
-                    $this->render('/Businesses/howtomap');
-                    break;
+                    $this->render('Elements/business/howtoomap');
                 }
                 $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
                 $userid = $user_data['User']['id'];
