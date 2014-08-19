@@ -89,7 +89,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 					    	</span>
 						    </label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" id="game_link" maxlength="200" placeholder="http://socialesman.com" name="address" value="<?php echo $game['Game']['link']; ?>" />
+						      	<input type="text" class="form-control" id="game_link" maxlength="200" placeholder="Ex:http://socialesman.com" name="address" value="<?php echo $game['Game']['link']; ?>" />
 						    </div>
 						    <div class="col-sm-5 col-md-5 right">
 						      	<a data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title="">Upload Game File</a>
@@ -169,7 +169,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 				  	</div>
 
 
-<div class="app_details" style='display:none;'>
+<div class="app_details" style='<?php if($game['Game']['install']){echo 'display:block';}else{echo 'display:none';} ?>'>
 		<div class="address">
             <div class="form-group">
                <label class="col-sm-2 col-md-2 control-label">Google Play link

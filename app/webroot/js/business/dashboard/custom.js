@@ -524,8 +524,11 @@ $(document).ready(function() {
             if ($('.installable').prop('checked'))
             {
                 $('.app_details').show();
+                $('#game_link').val('');
+                $('#game_link').attr('disabled', 'disabled');
             } else {
                 $('.app_details').hide();
+                $('#game_link').removeAttr('disabled');
             }
 
     }); 
