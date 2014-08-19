@@ -60,6 +60,7 @@ $mass_pwd_change = $this->Html->url(array("controller" => "admins", "action" => 
                                 <li class="divider"></li>
                                 <li><?php echo $this->Paginator->sort('created', 'Sort by Date'); ?></li>
                                 <li><?php echo $this->Paginator->sort('last_login', 'Sort By Last Login', array('direction' => 'desc')); ?></li>
+                                <li><?php echo $this->Paginator->sort('priority', 'Sort By Priority', array('direction' => 'desc')); ?></li>
                             </ul>
                         </li>
                     <?php } ?>
