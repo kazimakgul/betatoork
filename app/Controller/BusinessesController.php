@@ -1545,6 +1545,10 @@ class BusinessesController extends AppController {
             }
         } else {//Cname not exists.
             if ($userid == NULL) {
+                $subdomain = Configure::read('Domain.subdomain');
+                if ($subdomain == 'domains') {
+                    $this->render('/Businesses/howtomap');
+                }
                 $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
                 $userid = $user_data['User']['id'];
             }
@@ -1609,9 +1613,6 @@ class BusinessesController extends AppController {
         $this->set('title_for_layout', $user['User']['username'] . ' Game Channel - Clone');
         $this->set('description_for_layout', 'Play games on ' . $user['User']['username'] . ' : ' . $user['User']['description']);
         $this->set('author_for_layout', 'Clone');
-        if(isset(Configure::read('Domain.subdomain')) && Configure::read('Domain.subdomain') == 'domains'){
-            $this->render('/Businesses/howtomap');
-        }
     }
 
     public function gameswitch($id = null) {
