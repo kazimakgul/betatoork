@@ -45,9 +45,23 @@ if (empty($games)) {
                         </div>
                     </div>
                     
+                    <!-- This generate mobile app buttons -->
+                    <?php foreach ($game['Applink'] as $platforms) { ?>
+                         
+                       <?php if($platforms['platform_id']==1){ ?>
                     <div class="row text-center">
-                        <a target='_blank' href="<?php echo $game['Game']['link']; ?>" class="btn btn-success"><i class="fa fa-download"></i> Install</a>
-                     </div>
+                    <a target='_blank' href="<?php echo $platforms['link']; ?>" class="btn btn-success"><i class="fa fa-download"></i> Install on Google Play</a>
+                    </div>
+                       <?php }if($platforms['platform_id']==2) {?>
+                    <div class="row text-center">
+                    <a target='_blank' href="<?php echo $platforms['link']; ?>" class="btn btn-success"><i class="fa fa-download"></i> Install on App Store</a>
+                    </div>
+                       <?php }?>
+                        
+                           
+                    <?php } ?>
+
+                    
 
                 </div>
                 <div class="darkloader"></div>
