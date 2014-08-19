@@ -201,6 +201,7 @@ if (
         $subdomain != "test" &&
         $subdomain != "127" &&
         $subdomain != "www" &&
+        $subdomain != "domains" &&
         $subdomain != "clone") || checkdnsrr(env("HTTP_HOST"), "CNAME")
 ) {
     //  Mobile detection begins
