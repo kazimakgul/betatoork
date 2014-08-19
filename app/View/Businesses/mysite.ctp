@@ -13,6 +13,8 @@
         $featuredlink = $subfeaturl . '/sort:id/direction:desc';
         $recomendlink = $subgameurl . '/sort:Gamestat.playcount/direction:desc';
     }
+
+
     //  Getting and declaring ads datas
     if ($this->Session->read('Auth.User.id') == $user['User']['id']) {
         $controls = $user['User']['id'];

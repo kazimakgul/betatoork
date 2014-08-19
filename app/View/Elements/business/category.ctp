@@ -1,6 +1,15 @@
-<?php 
+<?php
+if(Configure::read('Domain.type')=='subdomain')
+{
+$index = $this->Html->url('/');
+}else{
+$index = $this->Html->url(array("controller" => "businesses", "action" => "mysite",$userid));
+}
+?>
+<a href="<?php echo $index; ?>" type="button" class="btn btn-default btn-sm">Home</a>
+<?php
 	$more = '';
-foreach ($category as $as => $cat): 
+foreach ($category as $as => $cat):
 		$catName = h($cat['categories']['name']);
 		$catId = $cat['categories']['id'];
 
@@ -9,7 +18,7 @@ foreach ($category as $as => $cat):
         $caturl=$this->Html->url(array("controller" => "category","action" =>strtolower($catName)));
 	    }else{
 	    $caturl=$this->Html->url(array("controller" => "businesses","action" =>"category",$userid,$catId));
-	    }	
+	    }
 
 		
 		
