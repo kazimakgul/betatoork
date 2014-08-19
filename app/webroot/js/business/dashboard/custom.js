@@ -881,15 +881,12 @@ $(function() {
                 required: true
             },
             "width": {
-                required: true,
                 maxlength: 10
             },
             "height": {
-                required: true,
                 maxlength: 10
             },
             "product[tags]": {
-                required: true
             }
         },
         highlight: function(element) {
