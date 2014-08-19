@@ -241,22 +241,6 @@ class MobilesController extends AppController {
       $this->layout = 'Mobile/mobile';
       $this->loadModel('Applink');
 
-       //Author:Ogi
-       //Bound applinks to games with hasMany
-        $this->Game->bindModel(
-                array(
-                    'hasMany' => array(
-                        'Applink' => array(
-                            'className' => 'Applink',
-                            'foreignKey' => 'game_id',
-                            'conditions' => '',
-                            'fields' => '',
-                            'order' => ''
-                        )
-                    )
-                )
-        );
-
 
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
