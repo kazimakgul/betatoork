@@ -86,6 +86,23 @@ class MobilesController extends AppController {
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
         $this->set_user_data($user);
+        
+        //Author:Ogi
+        //Bound applinks to games with hasMany
+        $this->Game->bindModel(
+                array(
+                    'hasMany' => array(
+                        'Applink' => array(
+                            'className' => 'Applink',
+                            'foreignKey' => 'game_id',
+                            'conditions' => '',
+                            'fields' => '',
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
         $this->paginate = array(
             'Game' => array(
                 'contain' => array(
@@ -93,7 +110,7 @@ class MobilesController extends AppController {
                         'fields' => array(
                             'Gamestat.playcount'
                         )
-                    )
+                    ), 'Applink'
                 ),
                 'conditions' => array(
                     'Game.active' => 1,
@@ -377,6 +394,23 @@ class MobilesController extends AppController {
                 '*'
             )
         ));
+
+        //Author:Ogi
+        //Bound applinks to games with hasMany
+        $this->Game->bindModel(
+                array(
+                    'hasMany' => array(
+                        'Applink' => array(
+                            'className' => 'Applink',
+                            'foreignKey' => 'game_id',
+                            'conditions' => '',
+                            'fields' => '',
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
         $this->paginate = array(
             'Game' => array(
                 'contain' => array(
@@ -384,7 +418,7 @@ class MobilesController extends AppController {
                         'fields' => array(
                             'Gamestat.playcount'
                         )
-                    )
+                    ), 'Applink'
                 ),
                 'conditions' => array(
                     'Game.active' => 1,

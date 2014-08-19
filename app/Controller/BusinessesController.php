@@ -300,7 +300,11 @@ class BusinessesController extends AppController {
                     $tags = str_replace(", ", ",", $_POST['tags']);
                     $tag_array = explode(",", $tags);
                 }
-
+                
+                if($installable)
+                {
+                    $game_link=$android;
+                }
 
                 //============Save Datas To Games Database Begins================
                 //*****************************
