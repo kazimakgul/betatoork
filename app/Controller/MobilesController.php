@@ -31,10 +31,6 @@ class MobilesController extends AppController {
         return false;
     }
     
-    public function beforeFilter() {
-        $this->Auth->allow('mobile_detect_js');
-    }
-    
     public function afterFilter() {
         //There is no any action!
     }
