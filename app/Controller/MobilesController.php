@@ -30,7 +30,11 @@ class MobilesController extends AppController {
         }
         return false;
     }
-
+    
+    public function beforeFilter() {
+        $this->Auth->allow('mobile_detect_js');
+    }
+    
     public function afterFilter() {
         //There is no any action!
     }
@@ -230,16 +234,15 @@ class MobilesController extends AppController {
         $this->get_style_settings($game['Game']['user_id']);
     }
 
-
-   /**
+    /**
      * This functions gets installable games.
      * 
      * @param integer $userid
      * @author Ogi
      */
-   public function store_games($userid = NULL) {
-      $this->layout = 'Mobile/mobile';
-      $this->loadModel('Applink');
+    public function store_games($userid = NULL) {
+        $this->layout = 'Mobile/mobile';
+        $this->loadModel('Applink');
 
 
         $this->set('title_for_layout', 'Clone Games');
@@ -285,7 +288,7 @@ class MobilesController extends AppController {
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
         $this->set_user_data($user);
-       
+
 
         //Author:Ogi
         //Bound applinks to games with hasMany
@@ -311,7 +314,7 @@ class MobilesController extends AppController {
                         'fields' => array(
                             'Gamestat.playcount'
                         )
-                    ),'Applink'
+                    ), 'Applink'
                 ),
                 'conditions' => array(
                     'Game.active' => 1,
@@ -328,8 +331,7 @@ class MobilesController extends AppController {
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
         $this->get_style_settings($userid);
-   }
-
+    }
 
     /**
      * Arama sayfası
@@ -416,7 +418,7 @@ class MobilesController extends AppController {
         $this->render('index');
         $this->get_style_settings($userid);
     }
-    
+
     /**
      * Sidebarda yer alan user bilgilerini oluşturur.
      * 
@@ -453,6 +455,12 @@ class MobilesController extends AppController {
         if (!empty($user['User']['gplus_link'])) {
             $this->set('googleplus', $user['User']['gplus_link']);
         }
+    }
+
+    public function mobile_detect_js($domain) {
+        header('Content-Type: text/javascript');
+        $this->layout = 'ajax';
+        $this->set('domain', $domain);
     }
 
 }
