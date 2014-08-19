@@ -148,11 +148,12 @@
 					    </div>
 				  	</div>
 
+				  	
 				  	<div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 					      	<div class="checkbox">
 					        	<label>
-					          		<input type="checkbox" id="installable" name="send_marketing" /> Installable
+					          		<input type="checkbox" id="installable" class="installable" name="send_marketing" /> Installable
 					    	<span class="help" data-toggle="tooltip" title="Users install this game on app stores.">
 					    		<i class="fa fa-question-circle"></i>
 					    	</span>
@@ -160,6 +161,37 @@
 					      	</div>
 					    </div>
 				  	</div>
+
+
+				 <div class="app_details" style='<?php if($game['Game']['install']){echo 'display:block';}else{echo 'display:none';} ?>'>
+		           <div class="address">
+                      <div class="form-group">
+                        <label class="col-sm-2 col-md-2 control-label">Google Play link
+                              <span class="help" data-toggle="tooltip" title="Link for your app on google play store.">
+		     			    		<i class="fa fa-question-circle"></i>
+				     	    	</span>
+                        </label>
+                           <div class="col-sm-5 col-md-4">
+                              <input type="text" class="form-control" id="gplay_link" placeholder="" name="gplay_link" value="<?php echo $android; ?>" />
+                            </div>
+                       </div>
+                   </div>
+
+         <div class="address">
+            <div class="form-group">
+               <label class="col-sm-2 col-md-2 control-label">App Store link
+                 <span class="help" data-toggle="tooltip" title="Link for your app on ios app store.">
+		     			    		<i class="fa fa-question-circle"></i>
+				     	    	</span>
+                </label>
+              <div class="col-sm-5 col-md-4">
+                 <input type="text" class="form-control" id="appstore_link" placeholder="" name="appstore_link" value="<?php echo $ios; ?>" />
+              </div>
+            </div>
+         </div>
+                     </div> 
+
+
 
 				  	<div class="form-group">
 				  		<input type="hidden" name="attr" id="attr" value="game_add" />
