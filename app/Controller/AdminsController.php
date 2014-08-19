@@ -113,6 +113,7 @@ class AdminsController extends AppController {
             )
         ));
         $userName = $user['User']['username'];
+        $this->set('id', $id);
         $this->set('user', $user);
         $this->set('username', $userName);
         $categories = $this->Game->Category->find('list');
@@ -120,8 +121,12 @@ class AdminsController extends AppController {
     }
 
     public function admin_game_submit() {
+
+        $this->layout = 'ajax';
+
         App::uses('Folder', 'Utility');
         App::uses('File', 'Utility');
+
         $category_id = $this->request->data['category_id'];
         $fullscreen = $this->request->data['full_screen'];
         $game_description = $this->request->data['game_description'];
@@ -134,23 +139,36 @@ class AdminsController extends AppController {
         $game_user_id = $this->request->data['game_user_id'];
         $game_width = $this->request->data['game_width'];
         $mobileready = $this->request->data['mobile_ready'];
-        $image_name = $this->request->data['image_name'];
+
+        if (isset($this->request->data['image_name'])) {
+            $image_name = $this->request->data['image_name'];
+        }
+
         if ($userid = $this->Session->read('Auth.User.id')) {
             //  This area should be exist for upload plugin needs-begins
+
             if (!empty($image_name)) {
-                $file = new File(WWW_ROOT . "/upload/temporary/" . $userid . "/" . $image_name, false);
+
+                $file = new File(WWW_ROOT . DS . 'upload' . DS . 'temporary' . DS . $userid . DS . $image_name, false);
                 $info = $file->info();
                 $filename = $info["filename"];
                 $ext = $info["extension"];
                 $basename = $info["basename"];
                 $dirname = $info["dirname"];
                 $newname = $filename . '_toorksize.' . $ext;
-                rename(WWW_ROOT . "/upload/temporary/" . $userid . "/" . $image_name, WWW_ROOT . "/upload/temporary/" . $userid . "/" . $newname);
+                $upload_dir = WWW_ROOT . DS . 'upload' . DS . 'temporary' . DS . $userid . DS;
+                rename(
+                    $upload_dir . $image_name,
+                    $upload_dir . $newname
+                );
             }
+
             //  This area should be exist for upload plugin needs-ends
             if ($game_file != 'empty') {
+
                 $type = $this->Game->get_game_type($game_file);
             } else {
+
                 $type = $this->Game->get_game_type($game_link);
             }
             //============Save Datas To Games Database Begins================
@@ -159,23 +177,36 @@ class AdminsController extends AppController {
             //*****************************
             $filtered_data = array(
                 'Game' => array(
+                    /* 'id' => 563, */
                     'name' => $this->Game->secureSuperGlobalPOST($game_name),
                     'description' => $this->Game->secureSuperGlobalPOST($game_description),
-                    'game_link' => $game_link,
+                    /* 'game_link' => $game_link, */
                     'width' => $game_width,
                     'height' => $game_height,
                     'type' => $type,
                     'link' => $game_link,
                     'priority' => $game_priority,
                     'user_id' => $game_user_id,
-                    'priority' => 0,
+                    /* 'priority' => 0, */
                     'category_id' => $category_id,
                     'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
+                    'owner_id' => $game_user_id,
                     'user_id' => $game_user_id,
                     'fullscreen' => $fullscreen,
                     'mobileready' => $mobileready
                 )
             );
+
+            $id = $this->request->data['id'];
+            if ($id > 0) {
+                $filtered_data['Game']['id'] = $id;
+            }
+
+            /*$this->Game->save($filtered_data);
+            $log = $this->Game->getDataSource()->getLog(false, false);
+            debug($log);
+            exit;*/
+
             //*****************************
             //Secure data filtering ends
             //*****************************
