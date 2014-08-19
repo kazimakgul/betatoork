@@ -61,7 +61,7 @@
 					    	</span>
 					    </label>
 					    <div class="col-sm-10 col-md-8">
-					      <input type="text" class="form-control" id="name" name="name" />
+					      <input type="text" class="form-control" id="name" name="name" maxlength="45" />
 					    </div>
 				  	</div>
 				  	<div class="form-group">
@@ -71,7 +71,7 @@
 					    	</span>
 				  		</label>
 				  		<div class="col-sm-10 col-md-8">
-				  		<textarea id="desc" class="form-control" id="desc" rows="4" name="notes" style="margin-bottom: 10px; height:100px;"></textarea>
+				  		<textarea id="desc" class="form-control" id="desc" rows="4" maxlength="500" name="notes" style="margin-bottom: 10px; height:100px;"></textarea>
 				  		</div>
 				  	</div>
 				  	<div class="address">
@@ -82,7 +82,7 @@
 					    	</span>
 						    </label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" id="game_link" placeholder="http://socialesman.com" name="address" />
+						      	<input type="text" class="form-control" maxlength="200" id="game_link" placeholder="http://socialesman.com" name="address" />
 						    </div>
 						    <div class="col-sm-5 col-md-5 right">
 						      	<a data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title="">Upload Game File</a>
@@ -98,10 +98,10 @@
 					    	</span>
 						    </label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" placeholder="Width" id="width" name="width" />
+						      	<input type="text" class="form-control" placeholder="Width" maxlength="10" id="width" name="width" />
 						    </div>
 						    <div class="col-sm-5 col-md-4 right">
-						      	<input type="text" class="form-control" placeholder="Height" id="height" name="height" />
+						      	<input type="text" class="form-control" placeholder="Height" maxlength="10" id="height" name="height" />
 						    </div>
 						</div>
 				  	</div>

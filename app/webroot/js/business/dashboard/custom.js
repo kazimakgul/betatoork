@@ -198,7 +198,7 @@ $(document).ready(function() {
         }
         else if (attr == "game_add" && $('#game_add').valid())
         {
-            $new_game = $('#new_data').val();//if It is 1 so it means game add if it is not it means edit.
+            $new_game = $('#new_data').val(); //if It is 1 so it means game add if it is not it means edit.
 
             if ($new_game == 0)
             {
@@ -865,23 +865,28 @@ $(function() {
     // form validation Game add
     $('#game_add').validate({
         rules: {
-            "product[name]": {
-                required: true
+            "name": {
+                required: true,
+                maxlength: 45
             },
-            "customer[notes]": {
-                required: true
+            "notes": {
+                required: true,
+                maxlength: 500
             },
             "product[address]": {
-                required: true
+                required: true,
+                maxlength: 200
             },
             "data[category_id]": {
                 required: true
             },
-            "product[width]": {
-                required: true
+            "width": {
+                required: true,
+                maxlength: 10
             },
-            "product[height]": {
-                required: true
+            "height": {
+                required: true,
+                maxlength: 10
             },
             "product[tags]": {
                 required: true
