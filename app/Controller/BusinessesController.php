@@ -1547,6 +1547,10 @@ class BusinessesController extends AppController {
             if ($userid == NULL) {
                 $subdomain = Configure::read('Domain.subdomain');
                 if ($subdomain == 'domains') {
+                    $this->layout = 'Business/business';
+                    $this->set('title_for_layout',"Clone Game");
+                    $this->set('description_for_layout',"Clone Game");
+                    $this->set('author_for_layout',"Clone Game");
                     $this->render('/Businesses/howtomap');
                     break;
                 }
