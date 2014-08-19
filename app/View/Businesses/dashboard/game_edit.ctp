@@ -68,7 +68,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 					    	</span>
 					    </label>
 					    <div class="col-sm-10 col-md-8">
-					      <input type="text" class="form-control" id="name" name="name" value="<?php echo $game['Game']['name']; ?>" />
+					      <input type="text" class="form-control" id="name" name="name" maxlength="45" value="<?php echo $game['Game']['name']; ?>" />
 					    </div>
 				  	</div>
 				  	<div class="form-group">
@@ -78,7 +78,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 					    	</span>
 				  		</label>
 				  		<div class="col-sm-10 col-md-8">
-				  		<textarea id="desc" class="form-control" id="desc" rows="4" name="notes" style="margin-bottom: 10px; height:100px;"><?php echo $game['Game']['description']; ?></textarea>
+				  		<textarea id="desc" class="form-control" id="desc" rows="4" maxlength="500" name="notes" style="margin-bottom: 10px; height:100px;"><?php echo $game['Game']['description']; ?></textarea>
 				  		</div>
 				  	</div>
 				  	<div class="address">
@@ -89,7 +89,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 					    	</span>
 						    </label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" id="game_link" placeholder="http://socialesman.com" name="address" value="<?php echo $game['Game']['link']; ?>" />
+						      	<input type="text" class="form-control" id="game_link" maxlength="200" placeholder="http://socialesman.com" name="address" value="<?php echo $game['Game']['link']; ?>" />
 						    </div>
 						    <div class="col-sm-5 col-md-5 right">
 						      	<a data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title="">Upload Game File</a>
@@ -105,10 +105,10 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 					    	</span>
 						    </label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" placeholder="Width" id="width" name="width" value="<?php echo $game['Game']['width']; ?>" />
+						      	<input type="text" class="form-control" placeholder="Width" maxlength="10" id="width" name="width" value="<?php echo $game['Game']['width']; ?>" />
 						    </div>
 						    <div class="col-sm-5 col-md-4 right">
-						      	<input type="text" class="form-control" placeholder="Height" id="height" name="height" value="<?php echo $game['Game']['height']; ?>" />
+						      	<input type="text" class="form-control" placeholder="Height" maxlength="10" id="height" name="height" value="<?php echo $game['Game']['height']; ?>" />
 						    </div>
 						</div>
 				  	</div>
