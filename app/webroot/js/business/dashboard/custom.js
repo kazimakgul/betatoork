@@ -523,9 +523,9 @@ $(document).ready(function() {
      
             if ($('.installable').prop('checked'))
             {
-                alert('install yow open');
+                $('.app_details').show();
             } else {
-                alert('install yow close');
+                $('.app_details').hide();
             }
 
     }); 

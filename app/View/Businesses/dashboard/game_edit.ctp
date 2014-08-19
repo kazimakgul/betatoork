@@ -169,6 +169,35 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 				  	</div>
 
 
+<div class="app_details" style='display:none;'>
+		<div class="address">
+            <div class="form-group">
+               <label class="col-sm-2 col-md-2 control-label">Google Play link
+                 <span class="help" data-toggle="tooltip" title="Link for your app on google play store.">
+		     			    		<i class="fa fa-question-circle"></i>
+				     	    	</span>
+                </label>
+              <div class="col-sm-5 col-md-4">
+                 <input type="text" class="form-control" id="g_play_link" placeholder="" name="g_play_link" value="<?php echo $game['Game']['link']; ?>" />
+              </div>
+            </div>
+         </div>
+
+         <div class="address">
+            <div class="form-group">
+               <label class="col-sm-2 col-md-2 control-label">App Store link
+                 <span class="help" data-toggle="tooltip" title="Link for your app on ios app store.">
+		     			    		<i class="fa fa-question-circle"></i>
+				     	    	</span>
+                </label>
+              <div class="col-sm-5 col-md-4">
+                 <input type="text" class="form-control" id="app_store_link" placeholder="" name="app_store_link" value="<?php echo $game['Game']['link']; ?>" />
+              </div>
+            </div>
+         </div>
+</div>         
+
+
 				  	<div class="form-group">
 				  		<input type="hidden" name="attr" id="attr" value="game_add" />
 				  		<input type="hidden" name="new_data" id="new_data" value="0" />
