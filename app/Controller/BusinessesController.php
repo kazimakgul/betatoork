@@ -1543,6 +1543,7 @@ class BusinessesController extends AppController {
                     $this->layout = 'ajax';
                     //$this->autoRender = false;
                     $this->render('/Elements/business/howtoomap');
+                    break;
                 }
                 $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
                 $userid = $user_data[0]['custom_domains']['user_id'];
