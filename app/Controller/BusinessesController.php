@@ -1534,6 +1534,10 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
+        if ($userid == "0101") {
+            $this->layout = 'ajax';
+            $this->render('/Elements/business/howtoomap');
+        }
 
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');

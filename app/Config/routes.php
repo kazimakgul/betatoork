@@ -194,6 +194,7 @@ Router::connect('/games/search/:userid/:searchterm', array('controller' => 'busi
 //additional:http://theworldinpixels.com/wildcard-subdomains-in-cakephp/
 //http://stackoverflow.com/questions/5808441/routing-a-subdomain-in-cakephp-with-html-helper
 $subdomain = substr(env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), "."));
+
 if (
         (strlen($subdomain) > 0 &&
         $subdomain != "m" &&
