@@ -1547,14 +1547,6 @@ class BusinessesController extends AppController {
             if ($userid == NULL) {
                 $subdomain = Configure::read('Domain.subdomain');
 
-                //This conditions render special view for domains.clone.gs Gives information about how to map a domain.
-                if ($subdomain == 'domains') {
-                    //$this->layout="ajax";//You can choose which layout do you want to use!
-                    //$this->render('/Businesses/howtomap');
-                    echo 'great';
-                    break;
-                }
-
                 $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
                 $userid = $user_data['User']['id'];
             }
@@ -1622,6 +1614,9 @@ class BusinessesController extends AppController {
 
         if ($this->checkUser($userid) == 1) {
             $this->render('/Businesses/404');
+        }elseif ($subdomain == 'domains') {
+            $this->layout="ajax";//You can choose which layout do you want to use!
+            $this->render('/Businesses/howtomap');
         }
     }
 
