@@ -159,7 +159,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 					      	<div class="checkbox">
 					        	<label>
-					          		<input type="checkbox" id="installable" name="send_marketing" <?php if($game['Game']['install']){echo 'checked';} ?> /> Installable
+					          		<input type="checkbox" id="installable" class="installable" name="send_marketing" <?php if($game['Game']['install']){echo 'checked';} ?> /> Installable
 					    	<span class="help" data-toggle="tooltip" title="Users install this game on app stores.">
 					    		<i class="fa fa-question-circle"></i>
 					    	</span>

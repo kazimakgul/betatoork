@@ -518,6 +518,19 @@ $(document).ready(function() {
     });
 
 
+    //trig when user click on installable check box on game add/edit
+    $('.installable').click(function() {
+     
+            if ($('.installable').prop('checked'))
+            {
+                alert('install yow open');
+            } else {
+                alert('install yow close');
+            }
+
+    }); 
+
+
     $('#redirect').click(function() {
         var attr = $('#attr').val(); //Form control value
         var btn = $(this);
