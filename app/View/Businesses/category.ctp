@@ -48,11 +48,17 @@
 		          ?>
 
 						</div>
-						<div class="panel-footer">
+                        <?php
+                        $params = $this->Paginator->params();
+                        $pageCount = $params['pageCount'];
+                        if ($pageCount > 1) {
+                        ?>
+                        <div class="panel-footer">
 							<center><?php
-							echo $this->element('business/components/pagination');
+							echo $this->element('business/components/pagination',array("controller"=>FALSE));
 							?></center>
 						</div>
+                        <?php } ?>
 					</div>
 				</div>
 			</div>
