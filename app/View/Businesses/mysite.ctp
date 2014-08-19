@@ -7,7 +7,7 @@
         $hotlink = $this->Html->url(array("controller" => "games", "action" => "hot"));
         $newestlink = $this->Html->url(array("controller" => "games", "action" => "newest"));
         $featuredlink = $this->Html->url(array("controller" => "games", "action" => "featured"));
-        $recomendlink = $this->Html->url(array("controller" => "games", "action" => "hot"));
+        $recomendlink = $this->Html->url(array("controller" => "games", "action" => "most-played"));
     } else {
         $hotlink = $subgameurl;
         $newestlink = $subgameurl . '/sort:id/direction:desc';
