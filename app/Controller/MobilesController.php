@@ -239,6 +239,25 @@ class MobilesController extends AppController {
      */
    public function store_games($userid = NULL) {
       $this->layout = 'Mobile/mobile';
+      $this->loadModel('Applink');
+
+       //Author:Ogi
+       //Bound applinks to games with hasMany
+        $this->Game->bindModel(
+                array(
+                    'hasMany' => array(
+                        'Applink' => array(
+                            'className' => 'Applink',
+                            'foreignKey' => 'game_id',
+                            'conditions' => '',
+                            'fields' => '',
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
+
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
@@ -283,6 +302,24 @@ class MobilesController extends AppController {
         $this->set('picture', $user['User']['picture']);
         $this->set_user_data($user);
        
+
+        //Author:Ogi
+        //Bound applinks to games with hasMany
+        $this->Game->bindModel(
+                array(
+                    'hasMany' => array(
+                        'Applink' => array(
+                            'className' => 'Applink',
+                            'foreignKey' => 'game_id',
+                            'conditions' => '',
+                            'fields' => '',
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
+
         $this->paginate = array(
             'Game' => array(
                 'contain' => array(
@@ -290,7 +327,7 @@ class MobilesController extends AppController {
                         'fields' => array(
                             'Gamestat.playcount'
                         )
-                    )
+                    ),'Applink'
                 ),
                 'conditions' => array(
                     'Game.active' => 1,
