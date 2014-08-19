@@ -1460,7 +1460,7 @@ class BusinessesController extends AppController {
         } else {
 
             $dns_data = dns_get_record($domain, DNS_CNAME);
-            if ($dns_data[0]['target'] == 'domains.clone.gs') {//if domain mapped to true domain.
+           /* if ($dns_data[0]['target'] == 'domains.clone.gs') {//if domain mapped to true domain.
                 $map_domain['Custom_domain']['user_id'] = $authid;
                 $map_domain['Custom_domain']['domain'] = $domain;
                 $map_domain['Custom_domain']['status'] = 1;
@@ -1472,7 +1472,7 @@ class BusinessesController extends AppController {
                 $msg = array("title" => 'Domain been added.', 'result' => 1);
             } else {
                 $msg = array("title" => 'You have to add a CNAME to domains.clone.gs', 'result' => 0);
-            }
+            }*/
         }
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
@@ -1547,7 +1547,7 @@ class BusinessesController extends AppController {
             if ($userid == NULL) {
                 $subdomain = Configure::read('Domain.subdomain');
                 if ($subdomain == 'domains') {
-                    $this->layout = 'Business/business';
+                    $this->layout = 'ajax';
                     $this->set('title_for_layout',"Clone Game");
                     $this->set('description_for_layout',"Clone Game");
                     $this->set('author_for_layout',"Clone Game");
