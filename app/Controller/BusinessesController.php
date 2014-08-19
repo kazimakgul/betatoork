@@ -1534,11 +1534,11 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-        if ($userid == "0101") {
+        $subdomain = Configure::read('Domain.subdomain');
+        if($subdomain == "domains"){
             $this->layout = 'ajax';
             $this->render('/Elements/business/howtoomap');
         }
-
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
 
@@ -1549,11 +1549,7 @@ class BusinessesController extends AppController {
             }
         } else {//Cname not exists.
             if ($userid == NULL) {
-                $subdomain = Configure::read('Domain.subdomain');
-                if($subdomain == "domains"){
-                    $this->layout = 'ajax';
-                    $this->render('/Elements/business/howtoomap');
-                }
+
                 $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
                 $userid = $user_data['User']['id'];
             }
