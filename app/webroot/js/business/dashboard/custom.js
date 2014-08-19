@@ -238,6 +238,8 @@ $(document).ready(function() {
                 height: $('#height').val(),
                 category: $('#category_id').val(),
                 tags: $('#tags').val(),
+                android: $('#gplay_link').val(),
+                ios: $('#appstore_link').val(),
                 fullscreen: $full_screen,
                 mobile: $mobile_ready,
                 installable: $installable,

@@ -254,6 +254,8 @@ class BusinessesController extends AppController {
                 $game_priority = 0;
                 $category_id = $this->request->data['category'];
                 $tags = $this->request->data['tags'];
+                $android = $this->request->data['android'];
+                $ios = $this->request->data['ios'];
                 $fullscreen = $this->request->data['fullscreen'];
                 $mobileready = $this->request->data['mobile'];
                 $installable = $this->request->data['installable'];
@@ -338,6 +340,48 @@ class BusinessesController extends AppController {
 
                     $this->requestAction(array('controller' => 'wallentries', 'action' => 'action_ajax', $id, $user_id));
 
+                    
+                    //if installable details panel opened!!
+                    if($installable)
+                    {  
+                        $this->loadModel('Applink');
+
+                        if ($new_game == 0) {
+                           $android_data=$this->Applink->find('first',array('conditions'=>array('Applink.game_id'=>$id,'Applink.platform_id'=>1)));
+                           if($android_data!=NULL)
+                           {
+                            $this->Applink->id=$android_data['Applink']['id'];
+                           }   
+                        }else{
+                            $this->Applink->create();  
+                        }
+                        
+                         
+                        $applinkdata['Applink']['game_id']=$id;
+                        $applinkdata['Applink']['platform_id']=1;
+                        $applinkdata['Applink']['link']=$android;
+                        $this->Applink->save($applinkdata);
+                        
+                        
+                        if ($new_game == 0) {
+                           $android_data2=$this->Applink->find('first',array('conditions'=>array('Applink.game_id'=>$id,'Applink.platform_id'=>2)));
+                           if($android_data2!=NULL)
+                           {
+                            $this->Applink->id=$android_data2['Applink']['id'];
+                           }   
+                        }else{
+                            $this->Applink->create();
+                        }
+
+                        
+                        $applinkdata2['Applink']['game_id']=$id;
+                        $applinkdata2['Applink']['platform_id']=2;
+                        $applinkdata2['Applink']['link']=$ios;
+                        $this->Applink->save($applinkdata2);
+                        
+                        
+                    }  
+                   //Installable details ends
 
                     if ($image_name != 'current') {//if user didnt change the game image
                         //=======Upload to aws for Game Image begins===========
@@ -1175,6 +1219,24 @@ class BusinessesController extends AppController {
 
         $game = $this->Game->find('first', array('contain' => false, 'conditions' => array('Game.id' => $id)));
         $this->set('game', $game);
+
+        if($game['Game']['install'])
+        {   
+            $android=NULL;
+            $ios=NULL;
+            $this->loadModel('Applink');
+            $app_links=$this->Applink->find('all',array('conditions'=>array('Applink.game_id'=>$id)));
+            foreach ($app_links as $platforms) {
+                 if($platforms['Applink']['platform_id']==1){
+                    $android=$platforms['Applink']['link'];
+                 }
+                 if($platforms['Applink']['platform_id']==2){
+                    $ios=$platforms['Applink']['link'];
+                 }   
+            }   
+            $this->set('android',$android); 
+            $this->set('ios',$ios); 
+        }    
 
 
         $this->set(compact('categories'));

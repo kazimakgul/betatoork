@@ -89,7 +89,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 					    	</span>
 						    </label>
 						    <div class="col-sm-5 col-md-4">
-						      	<input type="text" class="form-control" id="game_link" maxlength="200" placeholder="Ex:http://socialesman.com" name="address" value="<?php echo $game['Game']['link']; ?>" />
+						      	<input type="text" class="form-control" id="game_link" maxlength="200" placeholder="Ex:http://socialesman.com" name="address" value="<?php echo $game['Game']['link']; ?>" <?php if($game['Game']['install']){echo 'disabled="disabled"';} ?> />
 						    </div>
 						    <div class="col-sm-5 col-md-5 right">
 						      	<a data-toggle="modal" data-target="#gameAdd" href="#" class="btn btn-success" title="">Upload Game File</a>
@@ -178,7 +178,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 				     	    	</span>
                 </label>
               <div class="col-sm-5 col-md-4">
-                 <input type="text" class="form-control" id="g_play_link" placeholder="" name="g_play_link" value="<?php echo $game['Game']['link']; ?>" />
+                 <input type="text" class="form-control" id="gplay_link" placeholder="" name="gplay_link" value="<?php echo $android; ?>" />
               </div>
             </div>
          </div>
@@ -191,7 +191,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 				     	    	</span>
                 </label>
               <div class="col-sm-5 col-md-4">
-                 <input type="text" class="form-control" id="app_store_link" placeholder="" name="app_store_link" value="<?php echo $game['Game']['link']; ?>" />
+                 <input type="text" class="form-control" id="appstore_link" placeholder="" name="appstore_link" value="<?php echo $ios; ?>" />
               </div>
             </div>
          </div>
