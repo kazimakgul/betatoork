@@ -240,8 +240,8 @@ if (
         Router::connect('/category/:cat_url/least-played/*', array('controller' => 'businesses', 'action' => 'category','sort' => 'Gamestat.playcount', 'direction' => 'asc'), array('cat_url' => '[-a-z0-9]+', 'pass' => array('cat_url')));
         Router::connect('/category/*', array('controller' => 'businesses', 'action' => 'category'));
         
-        Router::connect('/games/hot', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'recommend', 'direction' => 'desc'));
-        Router::connect('/games/hot/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'recommend', 'direction' => 'desc'));
+        Router::connect('/games/hot', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'Gamestat.potential', 'direction' => 'desc'));
+        Router::connect('/games/hot/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'Gamestat.potential', 'direction' => 'desc'));
         Router::connect('/games/newest', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'id', 'direction' => 'desc'));
         Router::connect('/games/newest/*', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'id', 'direction' => 'desc'));
         Router::connect('/games/a-z', array('controller' => 'businesses', 'action' => 'toprated', 'sort' => 'name', 'direction' => 'asc'));

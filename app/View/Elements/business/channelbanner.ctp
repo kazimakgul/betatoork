@@ -17,7 +17,7 @@ $subgameurl = $this->Html->url(array("controller" => "businesses", "action" => "
     <?php if ($user['User']['banner'] == null) { ?>
         <div class="panel no-border" id="user_cover" style="background-size:contain; background-position:center; background-image:url(http://s3.amazonaws.com/betatoorkpics/banners/<?php echo $image; ?>.jpg)">
         <?php } else { ?>
-            <div class="panel no-border" id="user_cover" style="background-size:contain; background-position:center; background-image:url(<?php echo Configure::read('S3.url') . "/upload/users/" . $user['User']['id'] . "/" . $user['User']['banner']; ?>)">
+            <div class="panel no-border" id="user_cover" style="margin-bottom: 15px !important;background-size:contain; background-position:center; background-image:url(<?php echo Configure::read('S3.url') . "/upload/users/" . $user['User']['id'] . "/" . $user['User']['banner']; ?>)">
             <?php } ?>
             <div id="profilepicarea">
                 <?php
