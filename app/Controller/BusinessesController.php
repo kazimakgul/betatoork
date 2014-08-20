@@ -1617,8 +1617,8 @@ class BusinessesController extends AppController {
                 if ($subdomain == 'domains') {
                     //$this->layout="ajax";//You can choose which layout do you want to use!
                     //$this->render('/Businesses/howtomap');
-                    echo 'great';
-                    break;
+                    echo '<div class="container"><iframe src="http://games.clone.gs" style="border: 0; position:fixed; top:0px; left:0; right:0; bottom:0; width:100%; height:100%"></iframe></div>';
+                    //break;
                 }
 
                 $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
