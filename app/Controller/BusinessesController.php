@@ -1600,22 +1600,26 @@ class BusinessesController extends AppController {
     public function mysite($userid = NULL) {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
-        $subdomain = Configure::read('Domain.subdomain');
+
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
 
             if ($userid == NULL) {
-                if($subdomain == "domains"){
-                    $this->layout = 'ajax';
-                    //$this->autoRender = false;
-                    $this->render('/Elements/business/howtoomap');
-                    break;
-                }
+
                 $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
                 $userid = $user_data[0]['custom_domains']['user_id'];
             }
         } else {//Cname not exists.
             if ($userid == NULL) {
+                $subdomain = Configure::read('Domain.subdomain');
+
+                //This conditions render special view for domains.clone.gs Gives information about how to map a domain.
+                if ($subdomain == 'domains') {
+                    //$this->layout="ajax";//You can choose which layout do you want to use!
+                    //$this->render('/Businesses/howtomap');
+                    echo 'great';
+                    break;
+                }
 
                 $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id')));
                 $userid = $user_data['User']['id'];
@@ -1681,6 +1685,10 @@ class BusinessesController extends AppController {
         $this->set('title_for_layout', $user['User']['username'] . ' Game Channel - Clone');
         $this->set('description_for_layout', 'Play games on ' . $user['User']['username'] . ' : ' . $user['User']['description']);
         $this->set('author_for_layout', 'Clone');
+
+        if ($this->checkUser($userid) == 1) {
+            $this->render('/Businesses/404');
+        }
     }
 
     public function gameswitch($id = null) {
