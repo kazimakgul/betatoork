@@ -1619,8 +1619,10 @@ class BusinessesController extends AppController {
         */
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
-            if ($userid == NULL) {
-                if($subdomain == "domains") {
+            if (is_null($userid)) {
+                echo $subdomain;
+                exit;
+                if($subdomain === 'domains') {
                     $this->layout = 'ajax';
                     $this->render('howtoomap');
                 }
