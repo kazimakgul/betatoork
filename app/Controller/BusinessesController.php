@@ -1617,11 +1617,12 @@ class BusinessesController extends AppController {
             $userid = $user_data[0]['custom_domains']['user_id'];
         }
         */
+        echo 'cname ' . Configure::read('Domain.cname');
+        echo 'c_root ' . Configure::read('Domain.c_root');
+        exit;
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
             if (is_null($userid)) {
-                echo $subdomain;
-                exit;
                 if($subdomain === 'domains') {
                     $this->layout = 'ajax';
                     $this->render('howtoomap');
