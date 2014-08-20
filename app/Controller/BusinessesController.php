@@ -1603,15 +1603,12 @@ class BusinessesController extends AppController {
         $subdomain = Configure::read('Domain.subdomain');
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
-
             if ($userid == NULL) {
                 if($subdomain == "domains"){
                     $this->layout = 'ajax';
-                    //$this->autoRender = false;
-                    $this->render('/Elements/business/howtoomap');
-                    break;
+                    $this->render('Business/howtoomap');
                 }
-                $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+                $user_data = $this->Game->query('SELECT * FROM custom_domains WHERE domain = "' . $cdomain . '"');
                 $userid = $user_data[0]['custom_domains']['user_id'];
             }
         } else {//Cname not exists.
