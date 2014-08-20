@@ -1601,33 +1601,17 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/business';
         $authid = $this->Auth->user('id');
         $subdomain = Configure::read('Domain.subdomain');
-        
-        /*
-        $cdomain = Configure::read('Domain.c_root');
-        if (1) {
-            if(1) {
-                $this->layout = 'ajax';
-                $this->render('howtoomap');
-            }
-            $user_data = $this->Game->query('SELECT * FROM custom_domains WHERE domain = "' . $cdomain . '"');
-            echo $cdomain;
-            exit;
-            print_r($user_data);
-            exit;
-            $userid = $user_data[0]['custom_domains']['user_id'];
-        }
-        */
-        var_dump(Configure::read('Domain.cname'));
-        var_dump(Configure::read('Domain.c_root'));
-        exit;
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
-            if (is_null($userid)) {
-                if($subdomain === 'domains') {
+
+            if ($userid == NULL) {
+                if($subdomain == "domains"){
                     $this->layout = 'ajax';
-                    $this->render('howtoomap');
+                    //$this->autoRender = false;
+                    $this->render('/Elements/business/howtoomap');
+                    break;
                 }
-                $user_data = $this->Game->query('SELECT * FROM custom_domains WHERE domain = "' . $cdomain . '"');
+                $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
                 $userid = $user_data[0]['custom_domains']['user_id'];
             }
         } else {//Cname not exists.
