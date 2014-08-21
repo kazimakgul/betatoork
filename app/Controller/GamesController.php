@@ -1314,7 +1314,7 @@ class GamesController extends AppController {
     public function clonegame($game_id = NULL) {
         $this->layout = "ajax";
         $userId = $this->Session->read('Auth.User.id');
-        $targetGame = $this->Game->find('first', array('conditions' => array('Game.id' => $game_id), 'fields' => array('Game.id,Game.name,Game.link,Game.description,Game.active,Game.user_id,Game.category_id,Game.picture,Game.width,Game.height,Game.fullscreen,Game.mobileready,Game.priority,Game.embed,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => false));
+        $targetGame = $this->Game->find('first', array('conditions' => array('Game.id' => $game_id), 'fields' => array('Game.id,Game.name,Game.link,Game.description,Game.active,Game.user_id,Game.category_id,Game.picture,Game.width,Game.height,Game.fullscreen,Game.mobileready,Game.priority,Game.embed,Game.seo_url,Game.clone,Game.owner_id','Game.install'), 'contain' => false));
         $gameUser = $targetGame['Game']['user_id'];
         if ($targetGame != NULL) {
             $this->request->data['Game']['name'] = $targetGame['Game']['name'];
@@ -1327,6 +1327,7 @@ class GamesController extends AppController {
             $this->request->data['Game']['height'] = $targetGame['Game']['height'];
             $this->request->data['Game']['fullscreen'] = $targetGame['Game']['fullscreen'];
             $this->request->data['Game']['mobileready'] = $targetGame['Game']['mobileready'];
+            $this->request->data['Game']['install'] = $targetGame['Game']['install'];
             $this->request->data['Game']['priority'] = $targetGame['Game']['priority'];
             //$this->request->data['Game']['picture'] = $targetGame['Game']['picture'];
             $this->request->data['Game']['starsize'] = 0;
@@ -1348,6 +1349,33 @@ class GamesController extends AppController {
             if ($this->Game->save($this->request->data)) {
                 $this->requestAction(array('controller' => 'userstats', 'action' => 'getgamecount', $userId));
                 $id = $this->Game->getLastInsertId();
+
+
+
+                //======if cloned game is installable so clone applink infos==========
+                if($targetGame['Game']['install'])
+                {
+                    $android_data=$this->Applink->find('first',array('conditions'=>array('Applink.game_id'=>$game_id,'Applink.platform_id'=>1)));
+                    if($android_data!=NULL)
+                    {    
+                    $this->Applink->create();
+                    $applinkdata['Applink']['game_id']=$id;
+                    $applinkdata['Applink']['platform_id']=1;
+                    $applinkdata['Applink']['link']=$android_data['Applink']['link'];
+                    $this->Applink->save($applinkdata);
+                    }
+                    $ios_data=$this->Applink->find('first',array('conditions'=>array('Applink.game_id'=>$game_id,'Applink.platform_id'=>2)));
+                    if($ios_data!=NULL)
+                    {
+                        $applinkdata2['Applink']['game_id']=$id;
+                        $applinkdata2['Applink']['platform_id']=2;
+                        $applinkdata2['Applink']['link']=$ios_data['Applink']['link'];
+                        $this->Applink->save($applinkdata2);
+                    }    
+                }    
+                //=====//if cloned game is installable so clone applink infos==========
+
+
 
                 //Upload plugin make some changes on image file name.This harm image path.As a solution.I will edit picture field with query.
                 $this->Game->query('UPDATE games SET picture="' . $targetGame['Game']['picture'] . '" WHERE id=' . $id);
