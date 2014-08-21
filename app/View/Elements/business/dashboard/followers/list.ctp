@@ -28,9 +28,9 @@
                     $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($value['User']['id'])));
                 }
                 $name = $value['User']['username'];
-                $followers = $value['User']['Userstat']['subscribeto'];
-                $following = $value['User']['Userstat']['subscribe'];
-                $games = $value['User']['Userstat']['uploadcount'];
+                $followers = $value['Userstat']['subscribeto'];
+                $following = $value['Userstat']['subscribe'];
+                $games = $value['Userstat']['uploadcount'];
                 ?>
                 <div class="row user">
                     <div class="col-sm-2 followcolumn">
