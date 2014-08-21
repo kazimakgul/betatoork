@@ -5,6 +5,8 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
     $home = $this->Html->url(array("controller" => "mobiles", "action" => "index", $user_id));
 }
 echo $this->element('mobile/drawer');
+
+    $controls = NULL;
 ?>
 <div id="content" class="snap-content">
     <div id="toolbar">
@@ -23,7 +25,9 @@ echo $this->element('mobile/drawer');
         <div class="row">
             <?php echo $this->element('mobile/gamebox', array('games' => $games)); ?>
         </div>
-        <?php echo $this->element('business/ad', array('controls' => 1, 'user_id' => $user_id, 'location' => 1)); ?>
+
+        <?php echo $this->element('business/mobad', array('controls' => $controls, 'user_id' => $user_id, 'location' => 1)); ?>
+
         <div class="text-center">
             <?php echo $this->element('business/components/pagination'); ?>
         </div>
