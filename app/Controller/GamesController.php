@@ -1355,15 +1355,15 @@ class GamesController extends AppController {
                 //======if cloned game is installable so clone applink infos==========
                 if($targetGame['Game']['install'])
                 {
-                    $android_data=$this->Applink->find('first',array('conditions'=>array('Applink.game_id'=>$game_id,'Applink.platform_id'=>1)));
-                    if($android_data!=NULL)
-                    {    
+                    //$android_data=$this->Applink->find('first',array('conditions'=>array('Applink.game_id'=>$game_id,'Applink.platform_id'=>1)));
+                    //if($android_data!=NULL)
+                    //{    
                     $this->Applink->create();
                     $applinkdata['Applink']['game_id']=$id;
                     $applinkdata['Applink']['platform_id']=1;
-                    $applinkdata['Applink']['link']=$android_data['Applink']['link'];
+                    $applinkdata['Applink']['link']='appurllink';
                     $this->Applink->save($applinkdata);
-                    }
+                    //}
                     /*
                     $ios_data=$this->Applink->find('first',array('conditions'=>array('Applink.game_id'=>$game_id,'Applink.platform_id'=>2)));
                     if($ios_data!=NULL)
