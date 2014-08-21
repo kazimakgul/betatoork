@@ -16,8 +16,29 @@ foreach ($gamedata as $game):
     }
     echo $div;
     ?>
+
+    <?php 
+
+    if($game['Game']['install']){ 
+       $playurl=$game['Game']['link'];
+       $link_target='target="_blank"';
+    }else{
+       $link_target=NULL;
+    }    
+
+    ?>
+
     <div class="panel panel-default">
         <div class="imagehover">
+
+          
+          <?php if($game['Game']['install']){ ?>
+          <div style="right:6px; top:4px; position:absolute; z-index: 999;">
+            <span data-toggle="tooltip" data-placement="bottom" data-original-title="Available on App Store" class="label label-success" ><i class="fa fa-download"></i> Install</span>
+            </div>
+          <?php } ?>
+
+
             <?php if (isset($fix) && $controls == $user['User']['id'] && !isset($this->request->query['mode'])): ?>
                 <div class="caption">
                     <p class="text-center">
@@ -26,12 +47,12 @@ foreach ($gamedata as $game):
                     </p>
                 </div>
             <?php endif; ?>
-            <a href="<?php echo $playurl; ?>" class="panel-image">
+            <a <?php echo $link_target; ?> href="<?php echo $playurl; ?>" class="panel-image">
                 <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");')); ?>
             </a>
         </div>
         <div class="panel-footer text-center" style="padding:0px;">
-            <a href="<?php echo $playurl; ?>" style="padding:0px;"><h5 class="darkblue" style='height:16px; overflow:hidden;'><?php echo $game['Game']['name']; ?></h5></a>
+            <a <?php echo $link_target; ?>  href="<?php echo $playurl; ?>" style="padding:0px;"><h5 class="darkblue" style='height:16px; overflow:hidden;'><?php echo $game['Game']['name']; ?></h5></a>
             <div class="row">
                 <span class="game_box_left">
                     <div class= 'centerrate2'>
