@@ -1,7 +1,5 @@
 
-
 <?php 
-if(!empty($ads_code)){
 $iframe_url = $this->Html->url(array("controller" => 'businesses', "action" => 'serve_ads_frame',$user_id,$location));  
 ?>
 <!-- Add Unit -->
@@ -15,6 +13,6 @@ $iframe_url = $this->Html->url(array("controller" => 'businesses', "action" => '
 </div>
 </div>
 </div>
-<?php } ?>
+
 
 
