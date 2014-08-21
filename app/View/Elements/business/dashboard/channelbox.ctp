@@ -18,7 +18,7 @@
 <?php
 $id = $user['id'];
 $name = $user['username'];
-$screenname = $user['screenname'];
+$screenname = isset($user['screenname']) ? $user['screenname'] : NULL;
 $verify = $user['verify'];
 
 /**
@@ -76,7 +76,7 @@ $games = $userstat['uploadcount'];
                         <i style="color:#428bca;" class="fa fa-check-circle"></i>
                     </span>
                 <?php } ?>
-                <?php if (!empty($screenname)) { ?>
+                <?php if (!is_null($screenname)) { ?>
                     <strong><?php echo $screenname; ?></strong>
                 <?php } else { ?>
                     <strong><?php echo $name; ?></strong>
