@@ -78,7 +78,7 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
             </div>
            
 
-            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'445Search games...','url' => $search_action,'query'=>$query,'style'=>'margin-left: 200px')); ?>
+            <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search games...','url' => $search_action,'query'=>$query,'style'=>'margin-left: 200px')); ?>
 
 
             <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">

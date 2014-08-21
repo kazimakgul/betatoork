@@ -12,10 +12,14 @@
         <a href="<?php echo $playurl ?>" target="_blank">
          <div style="right:20px; top:4px; position:absolute;">
             <?php if($game['Game']['mobileready']==1){?>
-
              <span data-toggle="tooltip" data-placement="top" data-original-title="Compatible With" class="label label-primary" ><i class="fa fa-mobile"></i> Mobile</span>
-            <?php }
-            if($game['Game']['fullscreen']==1){ ?>
+            <?php } ?>
+
+            <?php if($game['Game']['install']==1){?>
+             <span data-toggle="tooltip" data-placement="top" data-original-title="Published on" class="label label-warning" ><i class="fa fa-download"></i> App Store</span>
+            <?php } ?>
+
+            <?php if($game['Game']['fullscreen']==1){ ?>
              <span data-toggle="tooltip" data-placement="top" data-original-title="Available in" class="label label-success" ><i class="fa fa-laptop"></i> Fullscreen</span>
             <?php } else{ ?>
              <span data-toggle="tooltip" data-placement="top" data-original-title="Suitable for" class="label label-danger" ><i class="fa fa-file-code-o"></i> Embed</span>
