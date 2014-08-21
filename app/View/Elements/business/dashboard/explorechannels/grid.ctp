@@ -1,6 +1,3 @@
-<?php
-print_r($following);
-?>
 <div class="row users-grid">
     <?php
     foreach ($following as $value) {
