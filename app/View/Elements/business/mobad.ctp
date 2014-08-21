@@ -45,7 +45,7 @@ clearTimeout(zamanIsle);
 
 <?php if($controls != NULL && !isset($_GET['mode'])) {?>
 <!-- Add Unit -->
-<div class="col-xs-11" id="add<?php echo $location;?>">
+<div  id="add<?php echo $location;?>">
 <div align="center" class="col-sm-offset-1 well well-sm">
 
 
