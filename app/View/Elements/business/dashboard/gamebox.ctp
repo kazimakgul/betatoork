@@ -7,6 +7,16 @@
  */
 ?>
 
+<?php 
+  
+  if($game['Game']['install']==1){
+    $playurl=$game['Game']['link'];
+  }
+
+?>
+
+
+
 <div class="col-xs-12 col-sm-6 col-md-4" style="padding-bottom: 5px;" id="gamebox-<?php echo $id; ?>">
     <div class="panel panel-default">
         <a href="<?php echo $playurl ?>" target="_blank">
@@ -28,7 +38,7 @@
             <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'box_img_resize', 'alt' => $name, 'onerror' => 'imgError(this,"toorksize");', 'width' => '720', 'height' => '110')); ?>
         </a>
         <div class="panel-body" style="padding-top:0px;">
-            <a href="<?php echo $playurl ?>"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong><?php echo $name ?></strong> </h4></a>
+            <a target="_blank" href="<?php echo $playurl ?>"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong><?php echo $name ?></strong> </h4></a>
             <small>
                 <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?php echo $rates; ?> Rates">
                     <?php
