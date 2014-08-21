@@ -1351,7 +1351,7 @@ class GamesController extends AppController {
                 $id = $this->Game->getLastInsertId();
 
 
-/*
+
                 //======if cloned game is installable so clone applink infos==========
                 if($targetGame['Game']['install'])
                 {
@@ -1364,6 +1364,7 @@ class GamesController extends AppController {
                     $applinkdata['Applink']['link']=$android_data['Applink']['link'];
                     $this->Applink->save($applinkdata);
                     }
+                    /*
                     $ios_data=$this->Applink->find('first',array('conditions'=>array('Applink.game_id'=>$game_id,'Applink.platform_id'=>2)));
                     if($ios_data!=NULL)
                     {   
@@ -1372,10 +1373,11 @@ class GamesController extends AppController {
                         $applinkdata2['Applink']['platform_id']=2;
                         $applinkdata2['Applink']['link']=$ios_data['Applink']['link'];
                         $this->Applink->save($applinkdata2);
-                    }    
+                    }  
+                    */  
                 }    
                 //=====//if cloned game is installable so clone applink infos==========
-*/
+
 
 
                 //Upload plugin make some changes on image file name.This harm image path.As a solution.I will edit picture field with query.
