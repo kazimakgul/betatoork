@@ -7,10 +7,9 @@
  * Explore Games
  * Welcome
  * 
- * @param integer $id Kanal kimliği
- * @param string $name Kanal adı
- * @param string $page Hangi Sayfada Çalışıyor?
- * @param boolean $followstatus Takip durumunu belirtir.
+ * @param array $user User verileri
+ * @param array $userstat Userstat verileri
+ * @param boolean $status Takip durumunu belirtir.
  * @param array $games 3 lü oyun alanı için gönderilen oyun datası
  * @author Emircan Ok <emircan@toork.com>
  */
