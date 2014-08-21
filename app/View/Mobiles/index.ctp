@@ -22,11 +22,14 @@ echo $this->element('mobile/drawer');
         ?>
     </div>
     <div class="container">
+        
+        <?php echo $this->element('business/mobad', array('controls' => $controls, 'user_id' => $user_id, 'location' => 7)); ?>
+
         <div class="row">
             <?php echo $this->element('mobile/gamebox', array('games' => $games)); ?>
         </div>
 
-        <?php echo $this->element('business/mobad', array('controls' => $controls, 'user_id' => $user_id, 'location' => 1)); ?>
+        <?php echo $this->element('business/mobad', array('controls' => $controls, 'user_id' => $user_id, 'location' => 8)); ?>
 
         <div class="text-center">
             <?php echo $this->element('business/components/pagination'); ?>
