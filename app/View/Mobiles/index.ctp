@@ -23,6 +23,7 @@ echo $this->element('mobile/drawer');
         <div class="row">
             <?php echo $this->element('mobile/gamebox', array('games' => $games)); ?>
         </div>
+        <?php echo $this->element('business/ad', array('controls' => 1, 'user_id' => $user_id, 'location' => 1)); ?>
         <div class="text-center">
             <?php echo $this->element('business/components/pagination'); ?>
         </div>
