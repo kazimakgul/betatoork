@@ -1,4 +1,5 @@
 <?php
+print_r($channel);
 foreach ($channel as $value) {
     $name = $value['User']['username'];
     $userid = $value['User']['id'];

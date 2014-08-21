@@ -1,3 +1,6 @@
+<?php
+print_r($followers);
+?>
 <div class="row users-grid">
     <?php
     if (!empty($followers)) {
