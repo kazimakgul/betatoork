@@ -1119,9 +1119,9 @@ class BusinessesController extends AppController {
                     'Game.clone' => 0
                 ),
                 'order' => array(
-                    'Game.clone' => 'ASC',
                     'Game.priority' => 'DESC',
-                    'Gamestat.potential' => 'DESC'
+                    'Gamestat.potential' => 'DESC',
+                    'Game.clone' => 'ASC'
                 )
             )
         );
@@ -2472,9 +2472,9 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'order' => array(
-                    'Game.clone' => 'ASC',
                     'Game.priority' => 'DESC',
-                    'Gamestat.potential' => 'DESC'
+                    'Gamestat.potential' => 'DESC',
+                    'Game.clone' => 'ASC'
                 ),
                 'limit' => $limit
             )
