@@ -1115,8 +1115,9 @@ class BusinessesController extends AppController {
                 ),
                 'limit' => $limit,
                 'conditions' => array(
-                    'Game.priority != ' => NULL,
-                    'Game.clone' => 0
+                    'NOT' => array(
+                        'Game.priority' => NULL
+                    )
                 ),
                 'order' => array(
                     'Game.priority' => 'DESC',
