@@ -11,6 +11,7 @@
  * @param array $userstat Userstat verileri
  * @param boolean $status Takip durumunu belirtir.
  * @param array $games 3 lü oyun alanı için gönderilen oyun datası
+ * @param string $page Alternative pages
  * @author Emircan Ok <emircan@toork.com>
  */
 ?>
@@ -19,7 +20,6 @@ $id = $user['id'];
 $name = $user['username'];
 $screenname = isset($user['screenname']) ? $user['screenname'] : NULL;
 $verify = $user['verify'];
-
 /**
  * User Link
  */
@@ -28,7 +28,6 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 } else {
     $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($id)));
 }
-
 /**
  * Avatar Photo
  */
@@ -39,7 +38,6 @@ if (is_null($picture)) {
 } else {
     $avatar = $this->Upload->image($user, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $name, 'class' => 'img-responsive center-block avatar img-thumbnail img-circle', 'style' => 'margin-top:-40px; width:80px; height:80px;'));
 }
-
 /**
  * Cover Photo
  */
@@ -50,7 +48,6 @@ if (is_null($banner)) {
 } else {
     $cover = Configure::read('S3.url') . "/upload/users/" . $id . "/" . $banner;
 }
-
 /**
  * User Stats
  */
@@ -67,7 +64,13 @@ $gamecount = $userstat['uploadcount'];
         </a>
         <div class="panel-body">
             <div style="margin-top:-10px;" class="text-center">
-                <?php echo $this->element('buttons/follow', array('id' => $id, 'name' => $name, 'follow' => $status)); ?>
+                <?php
+                $button_params = array('id' => $id, 'name' => $name, 'follow' => $status);
+                if (isset($page) && $page === 'startup') {
+                    $button_params['function'] = 'subscribe2';
+                }
+                echo $this->element('buttons/follow', array('id' => $id, 'name' => $name, 'follow' => $status));
+                ?>
             </div>
             <h4>
                 <?php if ($verify == 1) { ?>
