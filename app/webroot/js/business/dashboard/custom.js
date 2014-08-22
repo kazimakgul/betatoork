@@ -888,12 +888,11 @@ $(function() {
                 maxlength: 45
             },
             "notes": {
-                required: true,
-                maxlength: 500
+                required: true
             },
             "product[address]": {
                 required: true,
-                maxlength: 200
+                maxlength: 500
             },
             "data[category_id]": {
                 required: true
