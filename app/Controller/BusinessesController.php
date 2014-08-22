@@ -936,12 +936,29 @@ class BusinessesController extends AppController {
             'order' => 'rand()'
         ));
 
-
+/*
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
             $playurl = 'http://' . $onegame['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['seo_url']);
+            $userlink = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain);
         } else {
             $playurl = 'http://' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['id']);
-        }
+        }*/
+        
+        if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+                $playurl = Router::url('http://' . $onegame['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($onegame['Game']['seo_url']));
+                $userlink = Router::url('http://' . $onegame['User']['seo_username'] . '.' . $pure_domain);
+            } else {
+                $playurl = Router::url(array(
+                    "controller" => 'businesses',
+                    "action" => 'play',
+                    h($onegame['Game']['id'])
+                ));
+                $userlink = Router::url(array(
+                    "controller" => 'businesses',
+                    "action" => 'mysite',
+                    h($onegame['User']['id'])
+                ));
+            }
 
 
         $clones = empty($onegame['Gamestat']['channelclone']) ? 0 : $onegame['Gamestat']['channelclone'];
@@ -973,13 +990,29 @@ class BusinessesController extends AppController {
 
         $image_url = Configure::read('S3.url') . '/upload/games/' . $onegame['Game']['id'] . '/' . $target_image;
 
+        $view = new View($this, false);
+        $htmlcode = $view->element('business/dashboard/gamebox', array(
+            "gameboxtype" => "clone",
+                "id" => $onegame['Game']['id'],
+                "playurl" => $playurl,
+                "game" => $onegame,
+                "name" => $onegame['Game']['name'],
+                "rates" => $rates,
+                "clones" => $clones,
+                "favorites" => $favorites,
+                "plays" => $plays,
+                "userlink" => $userlink,
+                "function" => "welcome",
+                "refresh" => TRUE
+        ));
+        /*
         $htmlcode = '<a onclick="get_new_game(' . $onegame['Game']['id'] . ');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></a><div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize" 
         class="box_img_resize" alt="' . $onegame['Game']['name'] . '" onerror="imgError(this,&quot;toorksize&quot;);" > </a> <div class="panel-body" 
         style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong> 
         </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div> 
         <div class="text-center"> <i class="fa fa-plus-square "> ' . $clones . ' Clones</i> | <i class="fa fa-heart"> ' . $favorites . ' Favorites</i> | <i class="fa fa-play"> ' . $plays . ' Plays</i></div> </small> 
         <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a onclick="chaingame4(\'' . $onegame['Game']['name'] . '\', user_auth, ' . $onegame['Game']['id'] . ')" class="btn btn-success clone-' . $onegame['Game']['id'] . '"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
-
+*/
 
         $msg = array("game_name" => $onegame['Game']['name'], "game_id" => $onegame['Game']['id'], "onclick" => 'chaingame4("' . $onegame['Game']['name'] . '", user_auth,' . $onegame['Game']['id'] . ');', 'html' => $htmlcode, 'result' => 1);
         $this->set('rtdata', $msg);
@@ -994,7 +1027,7 @@ class BusinessesController extends AppController {
      * @author Ogi
      */
     public function get_one_channel() {
-        Configure::write('debug', 2);
+        Configure::write('debug', 0);
         $this->layout = 'ajax';
         $onechannel = $this->User->find('first', array(
             'fields' => array(

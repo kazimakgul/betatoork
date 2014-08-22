@@ -10,7 +10,9 @@ if ($game['Game']['install'] == 1) {
     $playurl = $game['Game']['link'];
 }
 ?>
+<?php if (!isset($refresh) || $refresh != TRUE) { ?>
 <div class="col-xs-12 col-sm-6 col-md-4" style="padding-bottom: 5px;" id="gamebox-<?php echo $id; ?>">
+<?php } ?>
     <div class="panel panel-default">
         <a href="<?php echo $playurl ?>" target="_blank">
             <div style="right:20px; top:4px; position:absolute;">
@@ -165,4 +167,6 @@ if ($game['Game']['install'] == 1) {
             </div>
         <?php } ?>
     </div>
+<?php if (!isset($refresh) || $refresh != TRUE) { ?>
 </div>
+<?php } ?>
