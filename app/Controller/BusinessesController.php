@@ -930,7 +930,7 @@ class BusinessesController extends AppController {
                 'User.seo_username'
             ),
             'conditions' => array(
-                'Game.priority' => NULL,
+                'Game.priority != ' => NULL,
                 'Game.clone' => 0
             ),
             'order' => 'rand()'
