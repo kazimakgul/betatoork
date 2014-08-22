@@ -77,6 +77,8 @@
     <?php echo $this->element('business/clonebox'); ?>
 
     <script>
+        window.onload = hide_gamebox();
+
         //=======Playcount==========
         setTimeout(function() {
             add_playcount(<?php echo $game['Game']['id']; ?>,<?php echo $game['Game']['user_id']; ?>);
