@@ -945,7 +945,7 @@ class BusinessesController extends AppController {
         }*/
         
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-                $playurl = Router::url('http://' . $onegame['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($onegame['Game']['seo_url']));
+                $playurl = Router::url('http://' . $onegame['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['seo_url']));
                 $userlink = Router::url('http://' . $onegame['User']['seo_username'] . '.' . $pure_domain);
             } else {
                 $playurl = Router::url(array(
