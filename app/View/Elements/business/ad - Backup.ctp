@@ -1,7 +1,7 @@
 <script>
 
 
-/*
+
 window.onload = ad_get_code("<?php echo $location;?>","<?php echo $user_id;?>");
 function ad_get_code(location,user_id){
 	            $.post(col_ads_link, {
@@ -31,7 +31,7 @@ function ad_get_code(location,user_id){
                 }
             }, 'json');
 }
-*/
+
 
 function skip_ad()
 {

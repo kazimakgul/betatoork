@@ -274,7 +274,7 @@ class BusinessesController extends AppController {
                 }
 
 
-                if ($image_name != 'current') {
+                if ($image_name != 'current' && $image_name != 'empty') {
                     //This area should be exist for upload plugin needs-begins  
                     $file = new File(WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $image_name, false);
                     $info = $file->info();
@@ -381,7 +381,7 @@ class BusinessesController extends AppController {
                     }
                     //Installable details ends
 
-                    if ($image_name != 'current') {//if user didnt change the game image
+                    if ($image_name != 'current' && $image_name != 'empty') {//if user didnt change the game image
                         //=======Upload to aws for Game Image begins===========
                         $feedback = $this->Amazon->S3->create_object(
                                 Configure::read('S3.name'), 'upload/games/' . $id . "/" . $newname, array(
