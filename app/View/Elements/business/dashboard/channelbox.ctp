@@ -130,7 +130,7 @@ $gamecount = $userstat['uploadcount'];
                     <?php
                     foreach ($games as $game) {
                         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-                            $playurl = $this->Html->url('http://' . $value['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
+                            $playurl = $this->Html->url('http://' . $user['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
                         } else {
                             $playurl = $this->Html->url(array(
                                 "controller" => 'businesses',
