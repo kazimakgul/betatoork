@@ -46,7 +46,7 @@ class BusinessesController extends AppController {
     }
 
     public function afterFilter() {
-
+        
     }
 
     /*     * ****************************************************************************** */
@@ -166,7 +166,7 @@ class BusinessesController extends AppController {
                     $this->set('_serialize', array('error'));
                 }
             } else {
-
+                
             }
         } else {
             $id = 1;
@@ -269,8 +269,8 @@ class BusinessesController extends AppController {
                 if ($new_game == 0) {
                     $game_id = $this->request->data['game_id'];
                     $this->Game->id = $game_id;
-                }else{
-                    $game_id=NULL;
+                } else {
+                    $game_id = NULL;
                 }
 
 
@@ -300,10 +300,9 @@ class BusinessesController extends AppController {
                     $tags = str_replace(", ", ",", $_POST['tags']);
                     $tag_array = explode(",", $tags);
                 }
-                
-                if($installable)
-                {
-                    $game_link=$android;
+
+                if ($installable) {
+                    $game_link = $android;
                 }
 
                 //============Save Datas To Games Database Begins================
@@ -311,22 +310,22 @@ class BusinessesController extends AppController {
                 //Secure data filtering begins
                 //*****************************
                 $filtered_data = array('Game' => array(
-                    'name' => $game_name = $this->Game->secureSuperGlobalPOST($game_name),
-                    'description' => $this->Game->secureSuperGlobalPOST($game_description),
-                    'link' => $game_link,
-                    'width' => $game_width,
-                    'height' => $game_height,
-                    'type' => $type,
-                    'link' => $game_link,
-                    'user_id' => $game_user_id,
-                    'priority' => 0,
-                    'category_id' => $category_id,
-                    'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name,$game_id),
-                    'owner_id' => $game_user_id,
-                    'user_id' => $game_user_id,
-                    'fullscreen' => $fullscreen,
-                    'install' => $installable,
-                    'mobileready' => $mobileready));
+                        'name' => $game_name = $this->Game->secureSuperGlobalPOST($game_name),
+                        'description' => $this->Game->secureSuperGlobalPOST($game_description),
+                        'link' => $game_link,
+                        'width' => $game_width,
+                        'height' => $game_height,
+                        'type' => $type,
+                        'link' => $game_link,
+                        'user_id' => $game_user_id,
+                        'priority' => 0,
+                        'category_id' => $category_id,
+                        'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name, $game_id),
+                        'owner_id' => $game_user_id,
+                        'user_id' => $game_user_id,
+                        'fullscreen' => $fullscreen,
+                        'install' => $installable,
+                        'mobileready' => $mobileready));
                 //*****************************
                 //Secure data filtering ends
                 //*****************************
@@ -344,56 +343,51 @@ class BusinessesController extends AppController {
 
                     $this->requestAction(array('controller' => 'wallentries', 'action' => 'action_ajax', $id, $user_id));
 
-                    
+
                     //if installable details panel opened!!
-                    if($installable)
-                    {  
+                    if ($installable) {
                         $this->loadModel('Applink');
 
                         if ($new_game == 0) {
-                           $android_data=$this->Applink->find('first',array('conditions'=>array('Applink.game_id'=>$id,'Applink.platform_id'=>1)));
-                           if($android_data!=NULL)
-                           {
-                            $this->Applink->id=$android_data['Applink']['id'];
-                           }   
-                        }else{
-                            $this->Applink->create();  
-                        }
-                        
-                         
-                        $applinkdata['Applink']['game_id']=$id;
-                        $applinkdata['Applink']['platform_id']=1;
-                        $applinkdata['Applink']['link']=$android;
-                        $this->Applink->save($applinkdata);
-                        
-                        
-                        if ($new_game == 0) {
-                           $android_data2=$this->Applink->find('first',array('conditions'=>array('Applink.game_id'=>$id,'Applink.platform_id'=>2)));
-                           if($android_data2!=NULL)
-                           {
-                            $this->Applink->id=$android_data2['Applink']['id'];
-                           }   
-                        }else{
+                            $android_data = $this->Applink->find('first', array('conditions' => array('Applink.game_id' => $id, 'Applink.platform_id' => 1)));
+                            if ($android_data != NULL) {
+                                $this->Applink->id = $android_data['Applink']['id'];
+                            }
+                        } else {
                             $this->Applink->create();
                         }
 
-                        
-                        $applinkdata2['Applink']['game_id']=$id;
-                        $applinkdata2['Applink']['platform_id']=2;
-                        $applinkdata2['Applink']['link']=$ios;
+
+                        $applinkdata['Applink']['game_id'] = $id;
+                        $applinkdata['Applink']['platform_id'] = 1;
+                        $applinkdata['Applink']['link'] = $android;
+                        $this->Applink->save($applinkdata);
+
+
+                        if ($new_game == 0) {
+                            $android_data2 = $this->Applink->find('first', array('conditions' => array('Applink.game_id' => $id, 'Applink.platform_id' => 2)));
+                            if ($android_data2 != NULL) {
+                                $this->Applink->id = $android_data2['Applink']['id'];
+                            }
+                        } else {
+                            $this->Applink->create();
+                        }
+
+
+                        $applinkdata2['Applink']['game_id'] = $id;
+                        $applinkdata2['Applink']['platform_id'] = 2;
+                        $applinkdata2['Applink']['link'] = $ios;
                         $this->Applink->save($applinkdata2);
-                        
-                        
-                    }  
-                   //Installable details ends
+                    }
+                    //Installable details ends
 
                     if ($image_name != 'current') {//if user didnt change the game image
                         //=======Upload to aws for Game Image begins===========
                         $feedback = $this->Amazon->S3->create_object(
-                            Configure::read('S3.name'), 'upload/games/' . $id . "/" . $newname, array(
-                                'fileUpload' => WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $newname,
-                                'acl' => AmazonS3::ACL_PUBLIC
-                            )
+                                Configure::read('S3.name'), 'upload/games/' . $id . "/" . $newname, array(
+                            'fileUpload' => WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $newname,
+                            'acl' => AmazonS3::ACL_PUBLIC
+                                )
                         );
                         //========Upload to aws for Game Image ends==============
                         if ($feedback) {
@@ -439,10 +433,10 @@ class BusinessesController extends AppController {
 
             //=======Upload to aws for Game Upload begins===========
             $feedback = $this->Amazon->S3->create_object(
-                Configure::read('S3-games.name'), $new_game_file, array(
-                    'fileUpload' => WWW_ROOT . "upload/gamefiles/" . $userid . "/" . $game_file,
-                    'acl' => AmazonS3::ACL_PUBLIC
-                )
+                    Configure::read('S3-games.name'), $new_game_file, array(
+                'fileUpload' => WWW_ROOT . "upload/gamefiles/" . $userid . "/" . $game_file,
+                'acl' => AmazonS3::ACL_PUBLIC
+                    )
             );
             //========Upload to aws for Game Upload ends==============
             if ($feedback) {
@@ -488,10 +482,9 @@ class BusinessesController extends AppController {
         return $code;
     }
 
-
-    public function serve_ads_frame($user_id=NULL,$location=NULL) {
-        $this->layout='ajax';
-        $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location,'Ad_setting.user_id'=>$user_id), 'order' => 'rand()'));
+    public function serve_ads_frame($user_id = NULL, $location = NULL) {
+        $this->layout = 'ajax';
+        $code = $this->Ad_setting->find('first', array('contain' => array('Adcode' => array('fields' => 'Adcode.code,Adcode.name')), 'conditions' => array('Ad_setting.ad_area_id' => $location, 'Ad_setting.user_id' => $user_id), 'order' => 'rand()'));
         $this->set('code', $code);
     }
 
@@ -777,21 +770,21 @@ class BusinessesController extends AppController {
         $email = new CakeEmail();
         // Set data for the "view" of the Email
         $email->viewVars(array(
-                'username' => $user['User']['username'],
-                'name' => $this->request->data["firstname"],
-                'surname' => $this->request->data["lastname"],
-                'e-mail' => $this->request->data["email"],
-                'subject' => $this->request->data["subject"],
-                'message' => $this->request->data["comment"])
+            'username' => $user['User']['username'],
+            'name' => $this->request->data["firstname"],
+            'surname' => $this->request->data["lastname"],
+            'e-mail' => $this->request->data["email"],
+            'subject' => $this->request->data["subject"],
+            'message' => $this->request->data["comment"])
         );
         $email
-            ->config('smtp')
-            ->template('business/contact') //I'm assuming these were created
-            ->emailFormat('html')
-            ->to($user["User"]["email"])
-            ->from(array('no-reply@clone.gs' => 'Clone'))
-            ->subject($subject)
-            ->send();
+                ->config('smtp')
+                ->template('business/contact') //I'm assuming these were created
+                ->emailFormat('html')
+                ->to($user["User"]["email"])
+                ->from(array('no-reply@clone.gs' => 'Clone'))
+                ->subject($subject)
+                ->send();
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
             $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
         } else {
@@ -985,7 +978,7 @@ class BusinessesController extends AppController {
         style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong> 
         </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div> 
         <div class="text-center"> <i class="fa fa-plus-square "> ' . $clones . ' Clones</i> | <i class="fa fa-heart"> ' . $favorites . ' Favorites</i> | <i class="fa fa-play"> ' . $plays . ' Plays</i></div> </small> 
-        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a onclick="chaingame4(\''.$onegame['Game']['name'].'\', user_auth, '.$onegame['Game']['id'].')" class="btn btn-success clone-' . $onegame['Game']['id'] . '"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
+        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a onclick="chaingame4(\'' . $onegame['Game']['name'] . '\', user_auth, ' . $onegame['Game']['id'] . ')" class="btn btn-success clone-' . $onegame['Game']['id'] . '"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
 
 
         $msg = array("game_name" => $onegame['Game']['name'], "game_id" => $onegame['Game']['id'], "onclick" => 'chaingame4("' . $onegame['Game']['name'] . '", user_auth,' . $onegame['Game']['id'] . ');', 'html' => $htmlcode, 'result' => 1);
@@ -1001,75 +994,40 @@ class BusinessesController extends AppController {
      * @author Ogi
      */
     public function get_one_channel() {
-        Configure::write('debug', 0);
+        Configure::write('debug', 2);
         $this->layout = 'ajax';
-
-
         $onechannel = $this->User->find('first', array(
-                'fields' => array(
-                    'User.id',
-                    'User.username',
-                    'User.seo_username',
-                    'User.verify',
-                    'User.picture',
-                    'User.banner'
-                ),
-                'contain' => array(
-                    'Userstat' => array(
-                        'fields' => array(
-                            'Userstat.subscribe',
-                            'Userstat.subscribeto',
-                            'Userstat.uploadcount'
-                        )
+            'fields' => array(
+                'User.id',
+                'User.username',
+                'User.seo_username',
+                'User.verify',
+                'User.picture',
+                'User.banner'
+            ),
+            'contain' => array(
+                'Userstat' => array(
+                    'fields' => array(
+                        'Userstat.subscribe',
+                        'Userstat.subscribeto',
+                        'Userstat.uploadcount'
                     )
-                ),
-                'order' => 'rand()',
-                'conditions' => array(
-                    'User.verify' => 1
                 )
+            ),
+            'order' => 'rand()',
+            'conditions' => array(
+                'User.verify' => 1
             )
-        );
-
-
-        if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-            $channelurl = 'http://' . $onechannel['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'];
-        } else {
-            $channelurl = 'http://' . $_SERVER['HTTP_HOST'];
-        }
-
-
-
-        $follower = empty($onechannel['Userstat']['subscribe']) ? 0 : $onechannel['Userstat']['subscribe'];
-        $following = empty($onechannel['Userstat']['subscribeto']) ? 0 : $onechannel['Userstat']['subscribeto'];
-        $gamecount = empty($onechannel['Userstat']['uploadcount']) ? 0 : $onechannel['Userstat']['uploadcount'];
-
-
-        $basename = $onechannel['User']['picture'];
-        $noextension = rtrim($basename, '.' . $this->getExtension($basename));
-        $yesextension = $noextension . '_original.' . $this->getExtension($basename);
-        $target_image = $yesextension;
-
-        $cover_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $onechannel['User']['banner'];
-        $image_url = Configure::read('S3.url') . '/upload/users/' . $onechannel['User']['id'] . '/' . $target_image;
-
-
-        $htmlcode = '<div onclick="get_new_channel(' . $onechannel['User']['id'] . ');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" 
-        data-original-title="Change Channel"><i class="btn btn-xs btn-default fa fa-recycle"></i></div> <div style="min-height:255px" class="panel panel-default"> 
-        <div style="min-height:80px;padding:40px; background-size:contain; background-position:center; background-size: 100%; 
-        background-image:url(' . $cover_url . ')" class="panel-heading"></div> 
-        <a target="_blank" href="' . $channelurl . '"> 
-        <img src="' . $image_url . '" onerror="imgError(this,&quot;avatar&quot;);" alt="' . $onechannel['User']['username'] . '" class="img-responsive center-block avatar img-thumbnail img-circle" 
-        style="margin-top:-40px; width:80px; height:80px;"> </a> <div class="panel-body"> <div style="margin-top:-10px;" class="text-center"> 
-        <!-- Follow button --> 
-        <a id="grid-unfollow-' . $onechannel['User']['id'] . '" style="display:none;" class="btn btn-default" > <i class="fa fa-minus-circle"></i> Following </a>
-        <a id="grid-follow-' . $onechannel['User']['id'] . '" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Follow </a> 
-        <!-- Follow button end --> </div> <h4> <span class="help" data-toggle="tooltip" data-placement="top" title="" 
-        data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i> </span> <strong>' . $onechannel['User']['username'] . '</strong> <br> 
-        <small>@' . $onechannel['User']['seo_username'] . '</small> </h4> <span class="label label-success">' . $follower . ' Followers</span> <span class="label label-warning">' . $following . ' Following</span> 
-        <span class="label label-danger">' . $gamecount . ' Games</span> </div> </div>';
-
-
-        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode, "onclick" => 'subscribe2("' . $onechannel['User']['username'] . '", user_auth,' . $onechannel['User']['id'] . ');switchfollow(' . $onechannel['User']['id'] . ');', 'result' => 1);
+        ));
+        $view = new View($this, false);
+        $htmlcode = $view->element('business/dashboard/channelbox', array(
+            'user' => $onechannel['User'],
+            'userstat' => $onechannel['Userstat'],
+            'status' => FALSE,
+            'page' => 'startup',
+            'refresh' => TRUE
+        ));
+        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode, /*"onclick" => 'subscribe2("' . $onechannel['User']['username'] . '", user_auth,' . $onechannel['User']['id'] . ');switchfollow(' . $onechannel['User']['id'] . ');', 'result' => 1*/);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }
@@ -1224,23 +1182,22 @@ class BusinessesController extends AppController {
         $game = $this->Game->find('first', array('contain' => false, 'conditions' => array('Game.id' => $id)));
         $this->set('game', $game);
 
-        if($game['Game']['install'])
-        {   
-            $android=NULL;
-            $ios=NULL;
+        if ($game['Game']['install']) {
+            $android = NULL;
+            $ios = NULL;
             $this->loadModel('Applink');
-            $app_links=$this->Applink->find('all',array('conditions'=>array('Applink.game_id'=>$id)));
+            $app_links = $this->Applink->find('all', array('conditions' => array('Applink.game_id' => $id)));
             foreach ($app_links as $platforms) {
-                 if($platforms['Applink']['platform_id']==1){
-                    $android=$platforms['Applink']['link'];
-                 }
-                 if($platforms['Applink']['platform_id']==2){
-                    $ios=$platforms['Applink']['link'];
-                 }   
-            }   
-            $this->set('android',$android); 
-            $this->set('ios',$ios); 
-        }    
+                if ($platforms['Applink']['platform_id'] == 1) {
+                    $android = $platforms['Applink']['link'];
+                }
+                if ($platforms['Applink']['platform_id'] == 2) {
+                    $ios = $platforms['Applink']['link'];
+                }
+            }
+            $this->set('android', $android);
+            $this->set('ios', $ios);
+        }
 
 
         $this->set(compact('categories'));
@@ -1634,7 +1591,7 @@ class BusinessesController extends AppController {
             $mapping = $this->Session->read('mapping');
             $mapping_domain = 'clone.gs';
             $this->set_cname($mapping, $mapping_domain);
-        }else if (Configure::read('Domain.cname')) {
+        } else if (Configure::read('Domain.cname')) {
             $mapping = 1;
             $mapping_domain = 'clone.gs';
             $this->set_cname($mapping, $mapping_domain);
@@ -1775,14 +1732,14 @@ class BusinessesController extends AppController {
         }
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
         $this->paginate = array('Game' => array(
-            'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))),
-            'limit' => 12,
-            'order' => 'Game.id DESC',
-            'conditions' => array(
-                'Game.active' => '1',
-                'Game.user_id' => $userid,
-                'OR' => array('Game.description LIKE' => '%' . $param . '%', 'Game.name LIKE' => '%' . $param . '%'),
-            )));
+                'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))),
+                'limit' => 12,
+                'order' => 'Game.id DESC',
+                'conditions' => array(
+                    'Game.active' => '1',
+                    'Game.user_id' => $userid,
+                    'OR' => array('Game.description LIKE' => '%' . $param . '%', 'Game.name LIKE' => '%' . $param . '%'),
+        )));
         $PaginateLimit = 30;
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
         $game = $this->Game->find('first', array('conditions' => array('Game.user_id' => $userid), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
@@ -1988,8 +1945,8 @@ class BusinessesController extends AppController {
             if (!is_numeric($userid)) {
                 $subdomain = Configure::read('Domain.subdomain');
                 $user = $this->User->find('first', array('conditions' => array(
-                    'User.seo_username' => $subdomain
-                ),
+                        'User.seo_username' => $subdomain
+                    ),
                     'fields' => array(
                         '*'
                     )
@@ -2090,8 +2047,8 @@ class BusinessesController extends AppController {
             if (!is_numeric($userid)) {
                 $subdomain = Configure::read('Domain.subdomain');
                 $user = $this->User->find('first', array('conditions' => array(
-                    'User.seo_username' => $subdomain
-                ),
+                        'User.seo_username' => $subdomain
+                    ),
                     'fields' => array(
                         '*'
                     )
@@ -2359,14 +2316,14 @@ class BusinessesController extends AppController {
                                 'User.verify'
                             )
                         )
-                        ),
-                        'Gamestat' => array(
-                            'fields' => array(
-                                'Gamestat.playcount',
-                                'Gamestat.favcount',
-                                'Gamestat.channelclone',
-                                'Gamestat.potential'
-                            )
+                    ),
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount',
+                            'Gamestat.favcount',
+                            'Gamestat.channelclone',
+                            'Gamestat.potential'
+                        )
                     )
                 )
             )
@@ -2418,11 +2375,11 @@ class BusinessesController extends AppController {
                             'Game.embed'
                         ),
                         'User' => array('fields' => array(
-                            'User.id',
-                            'User.username',
-                            'User.screenname',
-                            'User.seo_username'
-                        )
+                                'User.id',
+                                'User.username',
+                                'User.screenname',
+                                'User.seo_username'
+                            )
                         )
                     )
                 )
@@ -2705,14 +2662,14 @@ class BusinessesController extends AppController {
         $this->sync_sorting();
 
         $this->Subscription->bindModel(
-            array(
-                'belongsTo' => array(
-                    'User' => array(
-                        'className' => 'User',
-                        'foreignKey' => 'subscriber_to_id'
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_to_id'
+                        )
                     )
                 )
-            )
         );
 
         //This function allow to use belong to with custom conditions
@@ -2748,7 +2705,7 @@ class BusinessesController extends AppController {
                             'User.picture',
                             'User.banner'
                         )
-                    ),'Userstat'
+                    ), 'Userstat'
                 ),
                 'limit' => $limit
             )
@@ -2766,7 +2723,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
-            $this->set('query',$query);
+            $this->set('query', $query);
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "following"));
         }
@@ -2776,14 +2733,14 @@ class BusinessesController extends AppController {
         //$weird_datas=$this->Subscription->find('all');print_r($weird_datas);
 
         $this->Subscription->bindModel(
-            array(
-                'belongsTo' => array(
-                    'User' => array(
-                        'className' => 'User',
-                        'foreignKey' => 'subscriber_to_id'
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_to_id'
+                        )
                     )
                 )
-            )
         );
 
         //This function allow to use belong to with custom conditions
@@ -2820,12 +2777,12 @@ class BusinessesController extends AppController {
                             'User.picture',
                             'User.banner'
                         )
-                    ),'Userstat'
+                    ), 'Userstat'
                 ),
                 'limit' => $limit
             )
         );
-       
+
 
 
         $data = $this->paginate('Subscription');
@@ -2845,14 +2802,14 @@ class BusinessesController extends AppController {
         $this->sync_sorting();
 
         $this->Subscription->bindModel(
-            array(
-                'belongsTo' => array(
-                    'User' => array(
-                        'className' => 'User',
-                        'foreignKey' => 'subscriber_id'
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_id'
+                        )
                     )
                 )
-            )
         );
 
         //This function allow to use belong to with custom conditions
@@ -2886,8 +2843,8 @@ class BusinessesController extends AppController {
                             'User.username',
                             'User.picture',
                             'User.banner'
-                        ) 
-                    ),'Userstat'
+                        )
+                    ), 'Userstat'
                 ),
                 'limit' => $limit
             )
@@ -2905,22 +2862,22 @@ class BusinessesController extends AppController {
         $this->sideBar();
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
-            $this->set('query',$query);
+            $this->set('query', $query);
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "followers"));
         }
         $userid = $this->Session->read('Auth.User.id');
         $limit = 12;
-       
-         $this->Subscription->bindModel(
-            array(
-                'belongsTo' => array(
-                    'User' => array(
-                        'className' => 'User',
-                        'foreignKey' => 'subscriber_id'
+
+        $this->Subscription->bindModel(
+                array(
+                    'belongsTo' => array(
+                        'User' => array(
+                            'className' => 'User',
+                            'foreignKey' => 'subscriber_id'
+                        )
                     )
                 )
-            )
         );
 
         //This function allow to use belong to with custom conditions
@@ -2955,8 +2912,8 @@ class BusinessesController extends AppController {
                             'User.username',
                             'User.picture',
                             'User.banner'
-                        ) 
-                    ),'Userstat'
+                        )
+                    ), 'Userstat'
                 ),
                 'limit' => $limit
             )
@@ -3022,7 +2979,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
-            $this->set('query',$query);
+            $this->set('query', $query);
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "followers"));
         }
@@ -3097,7 +3054,7 @@ class BusinessesController extends AppController {
         $this->sideBar();
         if ($this->request->is("GET") && isset($this->request->query['q'])) {
             $query = $this->request->query['q'];
-            $this->set('query',$query);
+            $this->set('query', $query);
         } else {
             $this->redirect(array("controller" => "businesses", "action" => "dashboard"));
         }

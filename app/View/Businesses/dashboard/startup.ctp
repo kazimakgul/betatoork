@@ -302,19 +302,14 @@ if ($user['User']['picture'] == null) {
      */
     function get_new_channel(user_id)
     {
-        //alert(user_id);
         var box = $('#channelbox-' + user_id);
         var btn = $('#grid-follow-' + user_id);
         link = newstartupchannel;
         $.post(link, function(data) {
-            if (data.rtdata.error) {
-                //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
-            } else {
+            if (!data.rtdata.error) {
                 box.attr('id', 'channelbox-' + data.rtdata.channel_id);
                 btn.attr('id', 'grid-follow-' + data.rtdata.channel_id);
                 box.html(data.rtdata.html);
-                //alert(data.rtdata.channel_id);
-                $('#grid-follow-' + data.rtdata.channel_id).attr('onclick', data.rtdata.onclick);
             }
         }, 'json');
 
@@ -324,7 +319,6 @@ if ($user['User']['picture'] == null) {
         if (user_auth == 1) {
             get_new_channel(id);
             var follow_count = 5;
-            //-------
             follow++;
             var percent = follow * 20;
             if (percent <= 100) {
@@ -341,13 +335,12 @@ if ($user['User']['picture'] == null) {
                 $('#progressbar_follow span').html('Clone ' + follow_count + ' more channels.');
             } else {
                 $('#progressbar_follow span').html('Great! Click Next button for next step.');
-            }             //-------
+            }
             switch_subscribe(id);
         }
     }
 
     function create_channel() {
-        //alert(cloned_ids.join('\n'));
         var messages = [];
         messages[0] = 'Please wait...';
         messages[1] = 'Your channel is preparing...';

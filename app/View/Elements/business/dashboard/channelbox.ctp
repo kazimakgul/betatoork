@@ -78,7 +78,9 @@ $followers = $userstat['subscribeto'];
 $following = $userstat['subscribe'];
 $gamecount = $userstat['uploadcount'];
 ?>
+<?php if (!isset($refresh) || $refresh != TRUE) { ?>
 <div class="col-xs-12 col-sm-6 col-md-4" id="channelbox-<?php echo $id; ?>">
+<?php } ?>
     <?php if (isset($page) && $page === 'startup') { ?>
         <div data-original-title="Change Channel" title="" data-placement="top" data-toggle="tooltip" style="position:absolute; padding:5px; right:15px;" onclick="get_new_channel(<?php echo $id; ?>);">
             <i class="btn btn-xs btn-default fa fa-recycle"></i>
@@ -147,4 +149,6 @@ $gamecount = $userstat['uploadcount'];
             </div>
         <?php } ?>
     </div>
+<?php if (!isset($refresh) || $refresh != TRUE) { ?>
 </div>
+<?php } ?>
