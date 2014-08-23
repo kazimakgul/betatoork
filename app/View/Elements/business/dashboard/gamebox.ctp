@@ -24,7 +24,7 @@ if ($game['Game']['install'] == 1) {
                 <?php } ?>
                 <?php if ($game['Game']['fullscreen'] == 1) { ?>
                     <span data-toggle="tooltip" data-placement="top" data-original-title="Available in" class="label label-success" ><i class="fa fa-laptop"></i> Fullscreen</span>
-                <?php } else { ?>
+                <?php } else if($game['Game']['mobileready']!=1) { ?>
                     <span data-toggle="tooltip" data-placement="top" data-original-title="Suitable for" class="label label-danger" ><i class="fa fa-file-code-o"></i> Embed</span>
                 <?php } ?>
                 <?php if (isset($function) && !empty($function)) { ?>
