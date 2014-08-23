@@ -13,8 +13,9 @@ function hide_gamebox(){
                     
                     $('.game_box_pre').css("display", "block");
                     $('.game_box').css("display", "none");
-                    setTimeout(function() {skip_ad();}, 10000);
-                    Saniye();
+                    setTimeout(function() {skip_ad();}, 11000);
+                    
+                    countdown_start();
                     
 }
 <?php } ?>
@@ -25,21 +26,25 @@ function skip_ad()
     $('.game_box').css("display", "block");
 }
 
-//Countdown
-var sure=10; 
-var zamanIsle;
-function Saniye() {
-document.getElementById("dl").innerHTML = 'Game is loading. Please Wait <b>' + sure + '</b> seconds.';
-sure=sure-1; 
-zamanIsle=setTimeout("Saniye()", 1000);
-Kontrol();
+//Countdown timer with jquery
+//Author:Ogi
+function countdown_start()
+{
+                    var sure = 11;
+                    setInterval(function() {
+                    sure--;
+                    if (sure >= 0) {
+                    document.getElementById("dl").innerHTML = 'Game is loading. Please Wait <b>' + sure + '</b> seconds.';
+                    }
+                    // Display 'counter' wherever you want to display it.
+                    if (sure === 0) {
+                    //alert('this is where it happens');
+                    clearInterval(sure);
+                    }
+                    }, 1000);
 }
-function Kontrol(){
-if(sure <= -1){
-document.getElementById("dl").innerHTML ='<b>Loading...</b>';
-clearTimeout(zamanIsle);
-   }
-}
+
+
 </script>
 
 
