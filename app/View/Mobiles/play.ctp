@@ -5,7 +5,7 @@
     </a>
    
     <div class="game_box_pre" style="text-align: center; display:none;">
-        <div id="dl"></div> <a class="label label-warning" style="cursor: pointer;" onclick="skip_ad();">× Skip</a>
+        <div  class="well well-sm"><span id="dl"></span> <a class="label label-warning" style="cursor: pointer;" onclick="skip_ad();">× Skip</a></div>
         <!--Game Box pre -> Ads begins-->
     <?php echo $this->element('business/mobad_pregame', array('controls' => NULL, 'user_id' => $user_id, 'location' =>11, 'pregame'=>1 )); ?>
         <!--Game Box pre -> Ads ends-->

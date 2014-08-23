@@ -79,15 +79,17 @@ if(!empty($ads_code)){
 $iframe_url = $this->Html->url(array("controller" => 'businesses', "action" => 'serve_ads_frame',$user_id,$location));  
 ?>
 <!-- Add Unit -->
-<div class="col-xs-11" id="add<?php echo $location;?>">
-<div align="center" class="col-sm-offset-1 well well-sm">
+<div id="add<?php echo $location;?>" style='width:100%;'>
 
- <div style='width:100%;' > 
-    <div id="ad_code<?php echo $location;?>" >
-<?php echo '<iframe src="'.$iframe_url.'" style="border: 0px;" width="360px" height="198px" scrolling="no"></iframe>'; ?>
+ <div class="well well-sm" style='width:350px; margin: 0 auto;'>
+
+
+    <div id="ad_code<?php echo $location;?>" style='width:300px; margin: 0 auto;' >
+<?php echo '<iframe src="'.$iframe_url.'" style="border: 0px;" width="300px" height="250px" scrolling="no"></iframe>'; ?>
     </div>
-</div>
-</div>
+
+ </div>  
+
 </div>
 <?php } ?>
 
