@@ -82,9 +82,11 @@ echo $this->element('sql_dump');
 <!--===============Backskin Ads=================-->
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
 <?php 
-$ads_code = $this->requestAction(array('controller' => 'businesses', 'action' => 'get_ads_code',$user_id,$location));
+$ads_code = $this->requestAction(array('controller' => 'businesses', 'action' => 'get_ads_code',$user['User']['id'],9));
+if($ads_code!=NULL)
 echo $ads_code['Adcode']['code'];
 ?>
+
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
 <!--============//Backskin Ads==================-->
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
@@ -93,6 +95,11 @@ echo $ads_code['Adcode']['code'];
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
 <!--===============Popunder Ads=================-->
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
+<?php 
+$ads_code = $this->requestAction(array('controller' => 'businesses', 'action' => 'get_ads_code',$user['User']['id'],10));
+if($ads_code!=NULL)
+echo $ads_code['Adcode']['code'];
+?>
 
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
 <!--============//Popunder Ads==================-->
