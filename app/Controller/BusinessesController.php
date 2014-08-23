@@ -302,7 +302,13 @@ class BusinessesController extends AppController {
                 }
 
                 if ($installable) {
+                    
+                    if($android!=NULL)
                     $game_link = $android;
+                    else
+                    $game_link = $ios;    
+
+                    $mobileready=1;
                 }
 
                 //============Save Datas To Games Database Begins================

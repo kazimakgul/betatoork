@@ -889,7 +889,8 @@ $(function() {
             },
             "notes": {
                 required: true,
-                maxlength: 500
+                maxlength: 500,
+                minlength: 10
             },
             "product[address]": {
                 required: true,
@@ -905,6 +906,15 @@ $(function() {
                 maxlength: 10
             },
             "product[tags]": {
+            }
+        },
+        messages: {
+            notes: {
+                maxlength: "Description length must be betwen 10-500 chars",
+                minlength: "Description length must be betwen 10-500 chars"
+            },
+            name: {
+                maxlength: "Name length must be betwen 1-45 chars"
             }
         },
         highlight: function(element) {

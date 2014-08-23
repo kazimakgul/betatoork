@@ -1328,11 +1328,7 @@ class GamesController extends AppController {
             $this->request->data['Game']['fullscreen'] = $targetGame['Game']['fullscreen'];
             $this->request->data['Game']['mobileready'] = $targetGame['Game']['mobileready'];
             $this->request->data['Game']['install'] = $targetGame['Game']['install'];
-
-            if($targetGame['Game']['priority']==NULL)
             $this->request->data['Game']['priority'] = 0;
-            else
-            $this->request->data['Game']['priority'] = $targetGame['Game']['priority'];    
 
             //$this->request->data['Game']['picture'] = $targetGame['Game']['picture'];
             $this->request->data['Game']['starsize'] = 0;
