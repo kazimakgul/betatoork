@@ -40,7 +40,8 @@
 					    foreach ($ad_area as $value) {
 							$id = $value['Ad_area']['id'];
 							$name = $value['Ad_area']['name'];
-						echo '<input type="checkbox" name="category" value="'.$id.'" > '.$name.'<br>';
+							$description = $value['Ad_area']['description'];
+						echo '<input type="checkbox" name="category" value="'.$id.'" > '.$name.'<span class="help" data-toggle="tooltip" title="'.$description.'"> <i class="fa fa-question-circle"></i> </span><br>';
 						}?>
 					    </div>
 				  	</div>

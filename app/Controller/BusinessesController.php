@@ -1441,7 +1441,7 @@ class BusinessesController extends AppController {
         $this->layout = 'Business/dashboard';
         $this->sideBar();
         $userid = $this->Session->read('Auth.User.id');
-        $Ad_area = $this->Ad_area->find('all', array('fields' => array('Ad_area.id,Ad_area.name')));
+        $Ad_area = $this->Ad_area->find('all', array('fields' => array('Ad_area.id,Ad_area.name,Ad_area.description')));
         $this->set('ad_area', $Ad_area);
         $this->set('title_for_layout', 'Clone Business Add ads');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
