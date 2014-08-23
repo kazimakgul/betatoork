@@ -3,11 +3,21 @@
     <a href="javascript:;" id="open-left" class="btn">
         <i class="fa fa-bars fa-2x"></i>
     </a>
-    <div class="container" style="margin-top:44px;">
+   
+    <div class="game_box_pre" style="text-align: center; display:none;">
+        <div id="dl"></div> <a class="label label-warning" style="cursor: pointer;" onclick="skip_ad();">× Skip</a>
+        <!--Game Box pre -> Ads begins-->
+    <?php echo $this->element('business/mobad_pregame', array('controls' => NULL, 'user_id' => $user_id, 'location' =>6, 'pregame'=>1 )); ?>
+        <!--Game Box pre -> Ads ends-->
+    </div>
+
+    <div class="container game_box" style="margin-top:44px;">
         <iframe src="<?= $game_link ?>" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; ">
             Your browser doesn't support IFrames
         </iframe>
     </div>
+
+
 </div>
 <style>
     a#open-left {
@@ -27,6 +37,8 @@
     }
 </style>
 <script>
+    window.onload = hide_gamebox();
+
     setTimeout(function() {
         add_playcount(<?php echo $game_id; ?>, <?php echo $user_id; ?>);
     }, 10000);
