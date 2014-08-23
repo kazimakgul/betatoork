@@ -82,9 +82,12 @@ echo $this->element('sql_dump');
 <!--===============Backskin Ads=================-->
 <!--++++++++++++++++++++++++++++++++++++++++++++-->
 <?php 
+if(!Configure::read('Backskin.block'))
+{
 $ads_code = $this->requestAction(array('controller' => 'businesses', 'action' => 'get_ads_code',$user['User']['id'],9));
 if($ads_code!=NULL)
 echo $ads_code['Adcode']['code'];
+}
 ?>
 
 <!--++++++++++++++++++++++++++++++++++++++++++++-->

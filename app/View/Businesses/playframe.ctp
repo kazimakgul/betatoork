@@ -4,6 +4,7 @@
     $gamename = $game['Game']['name'];
     $description = $game['Game']['description'];
     $username = $game['User']['seo_username'];
+    Configure::write('Backskin.block', 1);
     $hashtaglink = $this->Html->url(array("controller" => "businesses", "action" => "hashtag", $game['Game']['seo_url']));
     if ($username != NULL) {
         $profilepublic = $this->Html->url(array("controller" => h($username), "action" => ''));
