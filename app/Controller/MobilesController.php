@@ -203,6 +203,7 @@ class MobilesController extends AppController {
                 'Game.embed',
                 'Game.description',
                 'Game.id',
+                'Game.install',
                 'Game.active',
                 'Game.picture',
                 'Game.seo_url',

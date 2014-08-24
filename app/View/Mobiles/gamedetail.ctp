@@ -24,7 +24,7 @@ echo $this->element('mobile/drawer');
     <div class="container">
         
 
-            <?php echo $this->element('mobile/gamedetail'); ?>
+            <?php echo $this->element('mobile/gamedetail',array('home'=>$home)); ?>
 
 
 
