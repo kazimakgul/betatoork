@@ -1,7 +1,5 @@
 <?php 
 
-print_r($game);
-
 if (empty($game)) {
     ?>
     <div class="notfound text-center">
