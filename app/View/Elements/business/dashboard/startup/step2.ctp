@@ -46,7 +46,7 @@
         }
         ?>
     </div>
-    <div class="form-group form-actions" style="float: left;width: 100%;">
+    <div class="form-group form-actions" style="margin:0px 0px 50px 0px; float: left;width: 100%;">
         <a id="back" class="button" href="#" data-step="1" style="margin-top:35px;">
             <span><i class="fa fa-angle-double-left"></i> Back</span>
         </a>
