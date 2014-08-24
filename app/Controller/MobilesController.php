@@ -128,6 +128,101 @@ class MobilesController extends AppController {
         $this->get_style_settings($userid);
     }
 
+
+ /**
+     * Game details page.
+     * 
+     * @param integer $userid
+     * @author Kazim Akgul
+     */
+    public function gamedetail($userid = NULL) {
+        $this->layout = 'Mobile/mobile';
+        $this->set('title_for_layout', 'Clone Games');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+
+        if (Configure::read('Domain.cname')) {
+            $cdomain = Configure::read('Domain.c_root');
+            if ($userid == NULL) {
+                $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+                $c_userid = $user_data[0]['custom_domains']['user_id'];
+                $userid = $c_userid;
+            }
+        } else {
+            if ($userid == NULL) {
+                $subdomain = Configure::read('Domain.subdomain');
+                $user_data = $this->User->find('first', array(
+                    'contain' => false,
+                    'conditions' => array(
+                        'User.seo_username' => $subdomain
+                    ),
+                    'fields' => array(
+                        'User.id'
+                    )
+                ));
+                $userid = $user_data['User']['id'];
+            }
+        }
+        $this->get_style_settings($userid);
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $userid
+            ),
+            'fields' => array(
+                '*'
+            )
+        ));
+        $this->set('user', $user);
+        $this->set('user_id', $userid);
+        $this->set('screenname', $user['User']['screenname']);
+        $this->set('username', $user['User']['username']);
+        $this->set('description', $user['User']['description']);
+        $this->set('cover', $user['User']['banner']);
+        $this->set('picture', $user['User']['picture']);
+        $this->set_user_data($user);
+        
+        //Author:Ogi
+        //Bound applinks to games with hasMany
+        $this->Game->bindModel(
+                array(
+                    'hasMany' => array(
+                        'Applink' => array(
+                            'className' => 'Applink',
+                            'foreignKey' => 'game_id',
+                            'conditions' => '',
+                            'fields' => '',
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
+        $this->paginate = array(
+            'Game' => array(
+                'contain' => array(
+                    'Gamestat' => array(
+                        'fields' => array(
+                            'Gamestat.playcount'
+                        )
+                    ), 'Applink'
+                ),
+                'conditions' => array(
+                    'Game.active' => 1,
+                    'Game.mobileready' => 1,
+                    'Game.user_id' => $userid
+                ),
+                'order' => array(
+                    'Gamestat.potential' => 'DESC'
+                ),
+                'limit' => $this->PaginateLimit
+            )
+        );
+        $cond = $this->paginate('Game');
+        $this->set('games', $cond);
+        $this->get_style_settings($userid);
+    }
+
+
     /**
      * Oyun sayfası
      * 

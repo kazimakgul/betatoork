@@ -26,7 +26,7 @@ if (empty($games)) {
             <div class="thumbnail">
                 <a target='_blank' href="<?php echo $game['Game']['link']; ?>">
                     <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");', 'width' => '100%')); ?>
-                </a>
+                </a><a href="#" style="position:absolute; margin:-20px 0px 0px 10px;" class="label label-primary" ><i class="fa fa-info-circle"></i> Details</a>
                 <div class="caption">
                     <h3><a target='_blank' href="<?php echo $game['Game']['link']; ?>"><?php echo $game['Game']['name']; ?></a></h3>
                     <div class="row text-center yildiz">
@@ -79,7 +79,7 @@ if (empty($games)) {
             <div class="thumbnail m_thumbnail">
                 <a href="<?php echo $playurl; ?>">
                     <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");', 'width' => '100%')); ?>
-                </a>
+                </a><a href="#" style="position:absolute; margin:-20px 0px 0px 10px;" class="label label-primary" ><i class="fa fa-info-circle"></i> Details</a>
                 <div class="caption">
                     <h3><a href="<?php echo $playurl; ?>"><?php echo $game['Game']['name']; ?></a></h3>
                     <div class="row text-center yildiz">
