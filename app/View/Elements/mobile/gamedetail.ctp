@@ -22,7 +22,7 @@ if (empty($game)) {
 <div class="panel panel-default">
 
         <a href="<?php echo $playurl; ?>">
-            <img src="https://s3.amazonaws.com/betatoorkpics/upload/games/6791/Screen Shot 2014-06-24 at 15.02.24_toorksize.png" style="toorksize" class="box_img_resize" alt="Flappy Bird" onerror="imgError(this,&quot;toorksize&quot;);" width="100%"> 
+            <?php echo $this->Upload->image($game, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $game['Game']['name'], 'onerror' => 'imgError(this,"toorksize");', 'width' => '100%')); ?> 
         </a>
         <div class="panel-body" style= "padding-bottom:0px;">
                  <div style= "margin-top:-60px; margin-bottom:20px;">
