@@ -1,3 +1,24 @@
+<?php 
+
+print_r($game);
+
+if (empty($game)) {
+    ?>
+    <div class="notfound text-center">
+        <?php echo 'Game Not Found'; ?>
+    </div>
+    <?php
+} else {
+
+        if (Configure::read('Domain.type') == 'subdomain') {
+            $playurl = $this->Html->url(array("controller" => 'play', "action" => h($game['Game']['seo_url'])));
+        } else {
+            $playurl = $this->Html->url(array("controller" => 'mobiles', "action" => 'play', h($game['Game']['id'])));
+        }
+
+
+?>
+
 <div class="panel panel-default">
 
         <a href="http://socialesman.clone.gs/play/flappybird1" target="_blank">
@@ -12,7 +33,7 @@
 
                 </div>
 
-            <p><h4><a target="_blank" href="http://socialesman.clone.gs/play/flappybird1"><strong>Flappy Bird : </strong> </a>play the famous flappy bird on your mobile without installing it and its for free </h4></p>
+            <p><h4><a target="_blank" href="http://socialesman.clone.gs/play/flappybird1"><strong><?php echo $game['Game']['name'] ?> </strong> </a>: <?php echo $game['Game']['description'] ?> </h4></p>
 
 
         </div>
@@ -36,3 +57,8 @@
                     </div>
                                 </div>
             </div>
+
+
+            <?php 
+              }
+            ?>

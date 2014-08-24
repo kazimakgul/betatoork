@@ -133,93 +133,119 @@ class MobilesController extends AppController {
      * Game details page.
      * 
      * @param integer $userid
-     * @author Kazim Akgul
+     * @author Kazim Akgul,Ogi
      */
-    public function gamedetail($userid = NULL) {
+    public function gamedetail($id = NULL) {
         $this->layout = 'Mobile/mobile';
         $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-
         if (Configure::read('Domain.cname')) {
             $cdomain = Configure::read('Domain.c_root');
-            if ($userid == NULL) {
-                $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
-                $c_userid = $user_data[0]['custom_domains']['user_id'];
-                $userid = $c_userid;
-            }
+            $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
+            $userid = $user_data[0]['custom_domains']['user_id'];
+            $user = $this->User->find('first', array(
+                'conditions' => array(
+                    'User.id' => $userid
+                ),
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.verify'
+                ),
+                'contain' => false
+            ));
+            $game = $this->Game->find('first', array(
+                'conditions' => array(
+                    'Game.seo_url' => $id,
+                    'Game.user_id' => $user['User']['id']
+                ),
+                'fields' => array(
+                    'Game.id'
+                ),
+                'contain' => false
+            ));
+            $id = $game['Game']['id'];
         } else {
-            if ($userid == NULL) {
+            if (!is_numeric($id)) {
                 $subdomain = Configure::read('Domain.subdomain');
-                $user_data = $this->User->find('first', array(
-                    'contain' => false,
+                $user = $this->User->find('first', array(
                     'conditions' => array(
                         'User.seo_username' => $subdomain
                     ),
                     'fields' => array(
                         'User.id'
+                    ),
+                    'contain' => false
+                ));
+                $game = $this->Game->find('first', array(
+                    'conditions' => array(
+                        'Game.seo_url' => $id,
+                        'Game.user_id' => $user['User']['id']
+                    ),
+                    'fields' => array(
+                        'Game.id'
                     )
                 ));
-                $userid = $user_data['User']['id'];
+                $id = $game['Game']['id'];
             }
         }
-        $this->get_style_settings($userid);
+        $game = $this->Game->find('first', array(
+            'conditions' => array(
+                'Game.id' => $id
+            ),
+            'fields' => array(
+                'Game.name',
+                'Game.user_id',
+                'Game.link',
+                'Game.starsize',
+                'Game.rate_count',
+                'Game.embed',
+                'Game.description',
+                'Game.id',
+                'Game.active',
+                'Game.picture',
+                'Game.seo_url',
+                'Game.clone',
+                'Game.owner_id'
+            ),
+            'contain' => array(
+                'User' => array(
+                    'fields' => array(
+                        'User.username',
+                        'User.seo_username',
+                        'User.adcode',
+                        'User.picture'
+                    )
+                ),
+                'Gamestat' => array(''
+                    . 'fields' => array(
+                        'Gamestat.playcount',
+                        'Gamestat.channelclone'
+                    )
+                )
+            )
+        ));
         $user = $this->User->find('first', array(
             'conditions' => array(
-                'User.id' => $userid
+                'User.id' => $game['Game']['user_id']
             ),
             'fields' => array(
                 '*'
             )
         ));
+        $this->set_user_data($user);
+        $this->set('game', $game);
+        $this->set('game_id', $game['Game']['id']);
+        $this->set('game_link', $game['Game']['link']);
         $this->set('user', $user);
-        $this->set('user_id', $userid);
+        $this->set('user_id', $game['Game']['user_id']);
         $this->set('screenname', $user['User']['screenname']);
         $this->set('username', $user['User']['username']);
         $this->set('description', $user['User']['description']);
         $this->set('cover', $user['User']['banner']);
         $this->set('picture', $user['User']['picture']);
-        $this->set_user_data($user);
-        
-        //Author:Ogi
-        //Bound applinks to games with hasMany
-        $this->Game->bindModel(
-                array(
-                    'hasMany' => array(
-                        'Applink' => array(
-                            'className' => 'Applink',
-                            'foreignKey' => 'game_id',
-                            'conditions' => '',
-                            'fields' => '',
-                            'order' => ''
-                        )
-                    )
-                )
-        );
-
-        $this->paginate = array(
-            'Game' => array(
-                'contain' => array(
-                    'Gamestat' => array(
-                        'fields' => array(
-                            'Gamestat.playcount'
-                        )
-                    ), 'Applink'
-                ),
-                'conditions' => array(
-                    'Game.active' => 1,
-                    'Game.mobileready' => 1,
-                    'Game.user_id' => $userid
-                ),
-                'order' => array(
-                    'Gamestat.potential' => 'DESC'
-                ),
-                'limit' => $this->PaginateLimit
-            )
-        );
-        $cond = $this->paginate('Game');
-        $this->set('games', $cond);
-        $this->get_style_settings($userid);
+        $this->get_style_settings($game['Game']['user_id']);
     }
 
 
