@@ -41,7 +41,7 @@ if (empty($game)) {
                                     <div class="row">
                         <div style="width: 55px;float:left; margin:0 10px">
                             <a href="<?php echo $home; ?>">
-                                <?php echo $this->Upload->image($user, 'User.picture', array(), array('id' => 'user_avatar', 'class' => 'img-responsive img-thumbnail img-circle circular2', 'onerror' => 'imgError(this,"avatar");', 'alt' => 'profile', 'width' => '35', 'height' => '35')) ?>                          </a>
+                                <?php echo $this->Upload->image($user, 'User.picture', array(), array('id' => 'user_avatar', 'class' => 'img-responsive img-thumbnail img-circle circular2', 'onerror' => 'imgError(this,"avatar");', 'alt' => 'profile', 'width' => '50', 'height' => '35')) ?>                          </a>
                         </div>
                         <div class="col-md-7">
                             <h5>
