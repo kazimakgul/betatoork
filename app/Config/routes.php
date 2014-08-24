@@ -210,11 +210,8 @@ if (
     if ($preg_mobile) {
         Router::connect('/', array('controller' => 'mobiles', 'action' => 'index'));
         Router::connect('/play/:seo_url', array('controller' => 'mobiles', 'action' => 'play'), array('seo_url' => '[-a-z0-9]+', 'pass' => array('seo_url')));
-        Router::connect('/games/top-rated', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'starsize', 'direction' => 'desc'));
         Router::connect('/games/top-rated/*', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'starsize', 'direction' => 'desc'));
-        Router::connect('/games/most-played', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'Gamestat.playcount', 'direction' => 'desc'));
         Router::connect('/games/most-played/*', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'Gamestat.playcount', 'direction' => 'desc'));
-        Router::connect('/games/newest', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'id', 'direction' => 'desc'));
         Router::connect('/games/newest/*', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'id', 'direction' => 'desc'));
         Router::connect('/games/appstore', array('controller' => 'mobiles', 'action' => 'store_games'));
         Router::connect('/games/search', array('controller' => 'mobiles', 'action' => 'search2'));
