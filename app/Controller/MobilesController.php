@@ -137,7 +137,6 @@ class MobilesController extends AppController {
      */
     public function gamedetail($id = NULL) {
         $this->layout = 'Mobile/mobile';
-        $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         if (Configure::read('Domain.cname')) {
@@ -235,6 +234,7 @@ class MobilesController extends AppController {
                 '*'
             )
         ));
+        $this->set('title_for_layout', 'Play '.$game['Game']['id'].' on '.$user['User']['username'].' Channel');
         $this->set_user_data($user);
         $this->set('game', $game);
         $this->set('game_id', $game['Game']['id']);
