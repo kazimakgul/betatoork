@@ -213,6 +213,7 @@ if (
         Router::connect('/games/top-rated/*', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'starsize', 'direction' => 'desc'));
         Router::connect('/games/most-played/*', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'Gamestat.playcount', 'direction' => 'desc'));
         Router::connect('/games/newest/*', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'id', 'direction' => 'desc'));
+        Router::connect('/games/trending/*', array('controller' => 'mobiles', 'action' => 'index', 'sort' => 'Gamestat.potential', 'direction' => 'desc'));
         Router::connect('/games/appstore/*', array('controller' => 'mobiles', 'action' => 'store_games'));
         Router::connect('/games/search', array('controller' => 'mobiles', 'action' => 'search2'));
     } else {
