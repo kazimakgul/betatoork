@@ -1,6 +1,6 @@
 <?php 
 
-print_r($game);
+
 
 if (empty($game)) {
     ?>
@@ -40,7 +40,7 @@ if (empty($game)) {
                     <div class="panel-footer">
                                     <div class="row">
                         <div style="width: 55px;float:left; margin:0 10px">
-                            <a href="http://socialesman.clone.gs">
+                            <a href="<?php echo $home; ?>">
                                 <?php echo $this->Upload->image($user, 'User.picture', array(), array('id' => 'user_avatar', 'class' => 'img-circle', 'onerror' => 'imgError(this,"avatar");', 'alt' => 'profile', 'width' => '35', 'height' => '35')) ?>                          </a>
                         </div>
                         <div class="col-md-7">
@@ -48,10 +48,11 @@ if (empty($game)) {
                                                                     <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
                                                                 <a href="<?php echo $home; ?>">
                                     <strong>
-                                        Socialesman                                    </strong>
+                                        <?php echo $game['User']['username'] ?>  
+                                    </strong>
                                 </a>
                                 <br>
-                                <small>@ socialesman</small>
+                                <small>@ <?php echo $game['User']['seo_username'] ?></small>
                             </h5>
                         </div>
                     </div>
