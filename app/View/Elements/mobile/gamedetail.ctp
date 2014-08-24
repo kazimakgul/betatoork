@@ -27,7 +27,7 @@ if (empty($game)) {
 
                     <button type="button" class="btn btn-primary"><i class="fa fa-play"></i> Play</button>
 
-                    <button type="button" class="btn btn-success"><i class="fa fa-share-alt"></i> Share</button>
+                    <!--<button type="button" class="btn btn-success"><i class="fa fa-share-alt"></i> Share</button>-->
 
                 </div>
 
