@@ -48,6 +48,10 @@ echo $this->element('NewPanel/admin/adminNavbar');
 
 <?php echo $this->Form->input('email',array('label'=>false ,'div'=>false, 'required', 'length' => 100)); ?>
 
+           <label for="website">Priority:</label>
+
+<?php echo $this->Form->input('priority',array('label'=>false ,'div'=>false, 'length' => 100)); ?>
+
 
             <label for="website">Your Website Link:</label>
 
