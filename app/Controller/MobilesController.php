@@ -251,7 +251,7 @@ class MobilesController extends AppController {
                 '*'
             )
         ));
-        $this->set('title_for_layout', 'Play '.$game['Game']['name'].' on '.$user['User']['username'].' Channel');
+        $this->set('title_for_layout', 'Play '.$game['Game']['name'].' on '.$user['User']['username']);
         $this->set_user_data($user);
         $this->set('game', $game);
         $this->set('game_id', $game['Game']['id']);
