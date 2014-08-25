@@ -4,20 +4,30 @@
     if ($this->Session->read('Auth.User.id') == $user['User']['id']) {
         $controls = $user['User']['id'];
     }
-    echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' => 1));
+    echo $this->element('business/ad', array(
+        'controls' => $controls,
+        'user_id' => $user['User']['id'],
+        'location' => 1
+    ));
     ?>
     <div class="col-md-12">
         <div class="btn-group" style="margin-bottom:10px;">
             <?php
             $limit = 14;
-            echo $this->element('business/category', array('limit' => $limit, 'userid' => $user['User']['id']));
+            echo $this->element('business/category', array(
+                'limit' => $limit,
+                'userid' => $user['User']['id']
+            ));
             ?>
         </div>
-
     </div>
     <?php
-    echo $this->element('business/login', array('user_id' => $user['User']['id']));
-    echo $this->element('business/channelbanner', array('controls' => $controls));
+    echo $this->element('business/login', array(
+        'user_id' => $user['User']['id']
+    ));
+    echo $this->element('business/channelbanner', array(
+        'controls' => $controls
+    ));
     ?>
     <div class="col-sm-12">
         <div class="row">
@@ -31,10 +41,34 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><?php echo $this->Paginator->sort('id', 'Newest', array('direction' => 'desc')); ?></li>	
-                                    <li><?php echo $this->Paginator->sort('name', 'Name', array('direction' => 'asc')); ?></li>
-                                    <li><?php echo $this->Paginator->sort('starsize', 'Top Rated', array('direction' => 'desc')); ?></li>
-                                    <li><?php echo $this->Paginator->sort('Gamestat.playcount', 'Most Played', array('direction' => 'desc')); ?></li>
+                                    <li>
+                                        <?php
+                                        echo $this->Paginator->sort('id', 'Newest', array(
+                                            'direction' => 'desc'
+                                        ));
+                                        ?>
+                                    </li>	
+                                    <li>
+                                        <?php
+                                        echo $this->Paginator->sort('name', 'Name', array(
+                                            'direction' => 'asc'
+                                        ));
+                                        ?>
+                                    </li>
+                                    <li>
+                                        <?php
+                                        echo $this->Paginator->sort('starsize', 'Top Rated', array(
+                                            'direction' => 'desc'
+                                        ));
+                                        ?>
+                                    </li>
+                                    <li>
+                                        <?php
+                                        echo $this->Paginator->sort('Gamestat.playcount', 'Most Played', array(
+                                            'direction' => 'desc'
+                                        ));
+                                        ?>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -71,7 +105,10 @@
                         <?php
                         $div = "<div class='col-xs-3' style='padding:5px;'>";
                         $limit = 24;
-                        echo $this->element('business/games/box', array('div' => $div, 'gamedata' => $games));
+                        echo $this->element('business/games/box', array(
+                            'div' => $div,
+                            'gamedata' => $games
+                        ));
                         ?>
                     </div>
                     <?php
@@ -80,18 +117,30 @@
                     if ($pageCount > 1) {
                         ?>
                         <div class="panel-footer">
-                            <center><?php
-                                echo $this->element('business/components/pagination', array("controller" => FALSE));
-                                ?></center>
+                            <center>
+                                <?php
+                                echo $this->element('business/components/pagination', array(
+                                    "controller" => FALSE
+                                ));
+                                ?>
+                            </center>
                         </div>
                     <?php } ?>
                 </div>
             </div>
         </div>
     </div>
-    <?php echo $this->element('business/ad', array('controls' => $controls, 'user_id' => $user['User']['id'], 'location' => 3)); ?>
+    <?php
+    echo $this->element('business/ad', array(
+        'controls' => $controls,
+        'user_id' => $user['User']['id'],
+        'location' => 3
+    ));
+    ?>
 </div>
 <?php
-echo $this->element('business/components/popup', array('user_id' => $user['User']['id']));
+echo $this->element('business/components/popup', array(
+    'user_id' => $user['User']['id']
+));
 echo $this->element('business/footer');
 ?>
