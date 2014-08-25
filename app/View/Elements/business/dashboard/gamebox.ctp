@@ -66,10 +66,14 @@ if ($game['Game']['install'] == 1) {
                 <div class="clone text-center">
                     <?php
                     $button_options = array(
-                        'clone' => $game['clonestatus'],
                         'id' => $game['Game']['id'],
                         'name' => $name
                     );
+                    if (isset($game['clonestatus'])) {
+                        $button_options['clone'] = $game['clonestatus'];
+                    } else {
+                        $button_options['clone'] = FALSE;
+                    }
                     if (isset($function) && !empty($function)) {
                         $button_options['page'] = $function;
                     }

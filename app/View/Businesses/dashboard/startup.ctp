@@ -219,8 +219,8 @@ if ($user['User']['picture'] == null) {
         var btn = $('a.clone-' + game_id);
         btn
             .removeClass('btn-success')
-            .addClass('btn-warning')
-            .html('<i class="fa fa-cog spin"></i> Cloning');
+            .addClass('btn-default')
+            .html('<i class="fa fa-cog"></i> Cloned');
         var clone_count = 5;
         if (user_auth == 1) {
             clone++;
@@ -282,14 +282,16 @@ if ($user['User']['picture'] == null) {
 
         link = newstartupgame;
         $.post(link, function(data) {
-            if (data.rtdata.error) {
-                //alert(data.rtdata.error); // error.id ye göre mesaj yazdırcak..
-            } else {
-                //alert(data.rtdata.game_name);
+            if (data.rtdata.result == 1) {
                 box.attr('id', 'gamebox-' + data.rtdata.game_id);
                 btn.attr('id', 'clone-' + data.rtdata.game_id);
                 box.html(data.rtdata.html);
                 $('#clone-' + data.rtdata.game_id).attr('onclick', data.rtdata.onclick);
+            } else {
+                Messenger().post({
+                    message: 'No More Games',
+                    type: 'error'
+                });
             }
         }, 'json');
     }
@@ -306,10 +308,15 @@ if ($user['User']['picture'] == null) {
         var btn = $('#grid-follow-' + user_id);
         link = newstartupchannel;
         $.post(link, function(data) {
-            if (!data.rtdata.error) {
+            if (data.rtdata.result == 1) {
                 box.attr('id', 'channelbox-' + data.rtdata.channel_id);
                 btn.attr('id', 'grid-follow-' + data.rtdata.channel_id);
                 box.html(data.rtdata.html);
+            } else {
+                Messenger().post({
+                    message: 'No More Channels',
+                    type: 'error'
+                });
             }
         }, 'json');
 
