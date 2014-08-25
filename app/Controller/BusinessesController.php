@@ -952,7 +952,11 @@ class BusinessesController extends AppController {
                     'Game.priority' => NULL
                 )
             ),
-            'order' => 'rand()'
+            'order' => array(
+                'Game.priority' => 'DESC',
+                'Gamestat.potential' => 'DESC',
+                'Game.clone' => 'ASC'
+            )
         ));
 
         if (!empty($onegame)) {
