@@ -1192,6 +1192,7 @@ class BusinessesController extends AppController {
                 'User.picture'
             ),
             'conditions' => array(
+                'Game.clone' => 0,
                 'NOT' => array(
                     'Game.priority' => NULL
                 )
