@@ -189,6 +189,23 @@ class MobilesController extends AppController {
                 $id = $game['Game']['id'];
             }
         }
+
+        //Author:Ogi
+        //Bound applinks to games with hasMany
+        $this->Game->bindModel(
+                array(
+                    'hasMany' => array(
+                        'Applink' => array(
+                            'className' => 'Applink',
+                            'foreignKey' => 'game_id',
+                            'conditions' => '',
+                            'fields' => '',
+                            'order' => ''
+                        )
+                    )
+                )
+        );
+
         $game = $this->Game->find('first', array(
             'conditions' => array(
                 'Game.id' => $id
@@ -223,7 +240,7 @@ class MobilesController extends AppController {
                         'Gamestat.playcount',
                         'Gamestat.channelclone'
                     )
-                )
+                ),'Applink'
             )
         ));
         $user = $this->User->find('first', array(
