@@ -43,7 +43,6 @@ class MobilesController extends AppController {
      */
     public function index($userid = NULL) {
         $this->layout = 'Mobile/mobile';
-        $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->sync_sorting();
@@ -123,6 +122,8 @@ class MobilesController extends AppController {
                 'limit' => $this->PaginateLimit
             )
         );
+
+        $this->set('title_for_layout', 'Play mobile games on '.$user['User']['username']);
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
         $this->get_style_settings($userid);
@@ -396,8 +397,6 @@ class MobilesController extends AppController {
         $this->layout = 'Mobile/mobile';
         $this->loadModel('Applink');
 
-
-        $this->set('title_for_layout', 'Clone Games');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
         $this->sync_sorting();
@@ -480,6 +479,8 @@ class MobilesController extends AppController {
                 'limit' => $this->PaginateLimit
             )
         );
+
+        $this->set('title_for_layout', 'App store games on '.$user['User']['username']);
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
         $this->get_style_settings($userid);
@@ -574,6 +575,7 @@ class MobilesController extends AppController {
                 'limit' => $this->PaginateLimit
             )
         );
+        $this->set('title_for_layout', 'Search results for: '.$param);
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
         $this->set('user', $user);
