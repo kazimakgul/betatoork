@@ -302,13 +302,13 @@ class BusinessesController extends AppController {
                 }
 
                 if ($installable) {
-                    
-                    if($android!=NULL)
-                    $game_link = $android;
-                    else
-                    $game_link = $ios;    
 
-                    $mobileready=1;
+                    if ($android != NULL)
+                        $game_link = $android;
+                    else
+                        $game_link = $ios;
+
+                    $mobileready = 1;
                 }
 
                 //============Save Datas To Games Database Begins================
@@ -913,6 +913,14 @@ class BusinessesController extends AppController {
         Configure::write('debug', 0);
         $this->layout = 'ajax';
 
+        /**
+         * Daha önce çekilmiş olan oyunlar
+         */
+        $welcome_games = $this->Cookie->read('welcome_games');
+
+        /**
+         * Farklı rastgele bir oyun çeki-liyor.
+         */
         $onegame = $this->Game->find('first', array(
             'fields' => array(
                 'Game.name',
@@ -938,35 +946,46 @@ class BusinessesController extends AppController {
                 'User.seo_username'
             ),
             'conditions' => array(
-                'Game.priority != ' => NULL,
-                'Game.clone' => 0
+                'Game.clone' => 0,
+                'NOT' => array(
+                    'Game.id' => $welcome_games,
+                    'Game.priority' => NULL
+                )
             ),
             'order' => 'rand()'
         ));
 
-/*
+        /**
+         * Eğer oyun gelirse cookieye ekleniyor.
+         */
+        if (!empty($onegame)) {
+            $welcome_games[] = $onegame['Game']['id'];
+            $this->Cookie->write('welcome_games', $welcome_games);
+        }
+
+        /*
+          if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
+          $playurl = 'http://' . $onegame['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['seo_url']);
+          $userlink = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain);
+          } else {
+          $playurl = 'http://' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['id']);
+          } */
+
         if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-            $playurl = 'http://' . $onegame['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['seo_url']);
-            $userlink = $this->Html->url('http://' . $game['User']['seo_username'] . '.' . $pure_domain);
+            $playurl = Router::url('http://' . $onegame['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['seo_url']));
+            $userlink = Router::url('http://' . $onegame['User']['seo_username'] . '.' . $pure_domain);
         } else {
-            $playurl = 'http://' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['id']);
-        }*/
-        
-        if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-                $playurl = Router::url('http://' . $onegame['User']['seo_username'] . '.' . $_SERVER['HTTP_HOST'] . '/play/' . h($onegame['Game']['seo_url']));
-                $userlink = Router::url('http://' . $onegame['User']['seo_username'] . '.' . $pure_domain);
-            } else {
-                $playurl = Router::url(array(
-                    "controller" => 'businesses',
-                    "action" => 'play',
-                    h($onegame['Game']['id'])
-                ));
-                $userlink = Router::url(array(
-                    "controller" => 'businesses',
-                    "action" => 'mysite',
-                    h($onegame['User']['id'])
-                ));
-            }
+            $playurl = Router::url(array(
+                        "controller" => 'businesses',
+                        "action" => 'play',
+                        h($onegame['Game']['id'])
+            ));
+            $userlink = Router::url(array(
+                        "controller" => 'businesses',
+                        "action" => 'mysite',
+                        h($onegame['User']['id'])
+            ));
+        }
 
 
         $clones = empty($onegame['Gamestat']['channelclone']) ? 0 : $onegame['Gamestat']['channelclone'];
@@ -989,7 +1008,6 @@ class BusinessesController extends AppController {
         }
         $freestar = 5 - $star;
         if ($freestar > 0) {
-
             for ($i = 1; $i <= $freestar; $i++) {
                 $starvar.='<i class="fa fa-star-o fa-2x"></i>';
             }
@@ -1001,26 +1019,26 @@ class BusinessesController extends AppController {
         $view = new View($this, false);
         $htmlcode = $view->element('business/dashboard/gamebox', array(
             "gameboxtype" => "clone",
-                "id" => $onegame['Game']['id'],
-                "playurl" => $playurl,
-                "game" => $onegame,
-                "name" => $onegame['Game']['name'],
-                "rates" => $rates,
-                "clones" => $clones,
-                "favorites" => $favorites,
-                "plays" => $plays,
-                "userlink" => $userlink,
-                "function" => "welcome",
-                "refresh" => TRUE
+            "id" => $onegame['Game']['id'],
+            "playurl" => $playurl,
+            "game" => $onegame,
+            "name" => $onegame['Game']['name'],
+            "rates" => $rates,
+            "clones" => $clones,
+            "favorites" => $favorites,
+            "plays" => $plays,
+            "userlink" => $userlink,
+            "function" => "welcome",
+            "refresh" => TRUE
         ));
         /*
-        $htmlcode = '<a onclick="get_new_game(' . $onegame['Game']['id'] . ');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></a><div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize" 
-        class="box_img_resize" alt="' . $onegame['Game']['name'] . '" onerror="imgError(this,&quot;toorksize&quot;);" > </a> <div class="panel-body" 
-        style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong> 
-        </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div> 
-        <div class="text-center"> <i class="fa fa-plus-square "> ' . $clones . ' Clones</i> | <i class="fa fa-heart"> ' . $favorites . ' Favorites</i> | <i class="fa fa-play"> ' . $plays . ' Plays</i></div> </small> 
-        <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a onclick="chaingame4(\'' . $onegame['Game']['name'] . '\', user_auth, ' . $onegame['Game']['id'] . ')" class="btn btn-success clone-' . $onegame['Game']['id'] . '"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
-*/
+          $htmlcode = '<a onclick="get_new_game(' . $onegame['Game']['id'] . ');" style="position:absolute; padding:5px; right:15px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change Game"><i class="btn btn-xs btn-default fa fa-recycle"></i></a><div class="panel panel-default"><a href="' . $playurl . '" target="_blank"> <img src="' . $image_url . '" style="toorksize"
+          class="box_img_resize" alt="' . $onegame['Game']['name'] . '" onerror="imgError(this,&quot;toorksize&quot;);" > </a> <div class="panel-body"
+          style="padding-top:0px;"> <a href="' . $playurl . '"><h4 class="text-center" style="height: 20px;overflow: hidden;"><strong>' . $onegame['Game']['name'] . '</strong>
+          </h4></a> <small> <div class="text-center" style="margin-bottom:7px; color:orange;" data-toggle="tooltip" data-placement="top" title="" data-original-title="' . $rates . ' Rates">' . $starvar . '</div>
+          <div class="text-center"> <i class="fa fa-plus-square "> ' . $clones . ' Clones</i> | <i class="fa fa-heart"> ' . $favorites . ' Favorites</i> | <i class="fa fa-play"> ' . $plays . ' Plays</i></div> </small>
+          <!----=========================================----> <!-- Clone Button --> <div class="clone text-center"> <a onclick="chaingame4(\'' . $onegame['Game']['name'] . '\', user_auth, ' . $onegame['Game']['id'] . ')" class="btn btn-success clone-' . $onegame['Game']['id'] . '"><i class="fa fa-cog "></i> Clone</a> </div> <!-- Clone Button End --> </div></div>';
+         */
 
         $msg = array("game_name" => $onegame['Game']['name'], "game_id" => $onegame['Game']['id'], "onclick" => 'chaingame4("' . $onegame['Game']['name'] . '", user_auth,' . $onegame['Game']['id'] . ');', 'html' => $htmlcode, 'result' => 1);
         $this->set('rtdata', $msg);
@@ -1068,7 +1086,7 @@ class BusinessesController extends AppController {
             'page' => 'startup',
             'refresh' => TRUE
         ));
-        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode, /*"onclick" => 'subscribe2("' . $onechannel['User']['username'] . '", user_auth,' . $onechannel['User']['id'] . ');switchfollow(' . $onechannel['User']['id'] . ');', 'result' => 1*/);
+        $msg = array("channel_id" => $onechannel['User']['id'], 'html' => $htmlcode, /* "onclick" => 'subscribe2("' . $onechannel['User']['username'] . '", user_auth,' . $onechannel['User']['id'] . ');switchfollow(' . $onechannel['User']['id'] . ');', 'result' => 1 */);
         $this->set('rtdata', $msg);
         $this->set('_serialize', array('rtdata'));
     }
@@ -1095,62 +1113,88 @@ class BusinessesController extends AppController {
     public function startup() {
         $this->layout = 'Business/startup';
         $this->sideBar();
-        $limit = 6;
-        $this->paginate = array(
-            'Game' => array(
-                'fields' => array(
-                    'Game.name',
-                    'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
-                    'Game.mobileready',
-                    'Game.install',
-                    'Game.picture',
-                    'Game.starsize',
-                    'Game.rate_count',
-                    'Game.embed',
-                    'Game.clone',
-                    'Game.created',
-                    'User.seo_username',
-                    'Game.description',
-                    'Gamestat.playcount',
-                    'Gamestat.favcount',
-                    'Gamestat.channelclone',
-                    'Gamestat.potential',
-                    'User.id',
-                    'User.username',
-                    'User.seo_username',
-                    'User.verify',
-                    'User.picture'
-                ),
-                'limit' => $limit,
-                'conditions' => array(
-                    'NOT' => array(
-                        'Game.priority' => NULL
-                    )
-                ),
-                'order' => array(
-                    'Game.priority' => 'DESC',
-                    'Gamestat.potential' => 'DESC',
-                    'Game.clone' => 'ASC'
-                )
-            )
-        );
 
-        //we will detect this cookie if user didnt complete tutorial
+        /**
+         * We will detect this cookie if user didnt complete tutorial
+         */
         $this->Cookie->write('tutorial', 1);
 
-        //Get Some user data
+        /**
+         * Get Some User Data
+         */
         $auth_id = $this->Session->read('Auth.User.id');
-        $user_data = $this->User->find('first', array('contain' => false, 'conditions' => array('User.id' => $auth_id), 'fields' => array('User.seo_username')));
-
-        $cond = $this->paginate('Game');
-        $this->set('games', $cond);
-        $limit = 6;
-        $this->set('following', $this->User->find('all', array('conditions' => array('User.active' => '1', 'User.verify !=' => 0), 'limit' => $limit, 'order' => array('User.last_login' => 'desc'))));
-
         $this->set('userid', $auth_id);
+        $user_data = $this->User->find('first', array(
+            'contain' => false,
+            'conditions' => array(
+                'User.id' => $auth_id
+            ),
+            'fields' => array(
+                'User.seo_username'
+            )
+        ));
         $this->set('seo_username', $user_data['User']['seo_username']);
+
+        /**
+         * Games
+         */
+        $games = $this->Game->find('all', array(
+            'fields' => array(
+                'Game.name',
+                'Game.seo_url',
+                'Game.id',
+                'Game.fullscreen',
+                'Game.mobileready',
+                'Game.install',
+                'Game.picture',
+                'Game.starsize',
+                'Game.rate_count',
+                'Game.embed',
+                'Game.clone',
+                'Game.created',
+                'User.seo_username',
+                'Game.description',
+                'Gamestat.playcount',
+                'Gamestat.favcount',
+                'Gamestat.channelclone',
+                'Gamestat.potential',
+                'User.id',
+                'User.username',
+                'User.seo_username',
+                'User.verify',
+                'User.picture'
+            ),
+            'conditions' => array(
+                'NOT' => array(
+                    'Game.priority' => NULL
+                )
+            ),
+            'order' => array(
+                'Game.priority' => 'DESC',
+                'Gamestat.potential' => 'DESC',
+                'Game.clone' => 'ASC'
+            ),
+            'limit' => 6
+        ));
+        $this->set('games', $games);
+
+        /**
+         * Channels
+         */
+        $following = $this->User->find('all', array(
+            'conditions' => array(
+                'User.active' => '1',
+                'NOT' => array(
+                    'User.verify' => 0
+                )
+            ),
+            'order' => array(
+                'User.last_login' => 'desc'
+            ),
+            'limit' => 6
+        ));
+        $this->set('following', $following);
+
         $this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
