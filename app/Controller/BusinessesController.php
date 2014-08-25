@@ -1152,7 +1152,6 @@ class BusinessesController extends AppController {
                 'Game.embed',
                 'Game.clone',
                 'Game.created',
-                'User.seo_username',
                 'Game.description',
                 'Gamestat.playcount',
                 'Gamestat.favcount',
