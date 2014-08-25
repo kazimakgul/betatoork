@@ -1219,17 +1219,36 @@ class BusinessesController extends AppController {
          * Channels
          */
         $following = $this->User->find('all', array(
-            'conditions' => array(
-                'User.active' => '1',
-                'NOT' => array(
-                    'User.verify' => 0
-                )
-            ),
-            'order' => array(
-                'User.last_login' => 'desc'
-            ),
-            'limit' => 6
-        ));
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.seo_username',
+                    'User.verify',
+                    'User.picture',
+                    'User.banner'
+                ),
+                'contain' => array(
+                    'Userstat' => array(
+                        'fields' => array(
+                            'Userstat.subscribe',
+                            'Userstat.subscribeto',
+                            'Userstat.uploadcount'
+                        )
+                    )
+                ),
+                'order' => array(
+                    'User.priority' => 'DESC',
+                    'Userstat.potential' => 'DESC',
+                    'User.verify' => 'DESC'
+                ),
+                'conditions' => array(
+                    'NOT' => array(
+                        'User.verify' => NULL
+                    )
+                ),
+                'limit' => 6
+            ));
+
         $this->set('following', $following);
 
         /**
