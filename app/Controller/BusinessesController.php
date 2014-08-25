@@ -3089,8 +3089,9 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'order' => array(
-                    'User.verify' => 'DESC',
-                    'Userstat.potential' => 'DESC'
+                    'User.priority' => 'DESC',
+                    'Userstat.potential' => 'DESC',
+                    'User.verify' => 'DESC'
                 ),
                 'conditions' => array(
                     'NOT' => array(
@@ -3100,6 +3101,7 @@ class BusinessesController extends AppController {
                 'limit' => $limit
             )
         );
+
         $data = $this->paginate('User');
         $this->set('following', $data);
         $this->set('title_for_layout', 'Clone Business Explore Channels');
