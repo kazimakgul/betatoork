@@ -2679,9 +2679,9 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'order' => array(
-                    'Game.clone' => 'ASC',
                     'Game.priority' => 'DESC',
-                    'Gamestat.potential' => 'DESC'
+                    'Gamestat.potential' => 'DESC',
+                    'Game.clone' => 'ASC'
                 ),
                 'limit' => $limit
             )
@@ -3157,8 +3157,9 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'order' => array(
-                    'User.verify' => 'DESC',
-                    'Userstat.potential' => 'DESC'
+                    'User.priority' => 'DESC',
+                    'Userstat.potential' => 'DESC',
+                    'User.verify' => 'DESC'
                 ),
                 'conditions' => array(
                     'User.username LIKE' => '%' . $query . '%',
