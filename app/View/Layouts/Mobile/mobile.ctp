@@ -8,7 +8,7 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-touch-fullscreen" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <!-- Latest compiled and minified CSS -->
+        <!-- Latest compiled and minified CSS by clone -->
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <!-- Latest compiled and minified JavaScript -->
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
