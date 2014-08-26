@@ -14,7 +14,7 @@ class AdminsController extends AppController {
      * @var string
      */
     public $name = 'Admins';
-    
+
     /**
      * Uses
      * @var array
@@ -34,7 +34,7 @@ class AdminsController extends AppController {
         'Message',
         'Log'
     );
-    
+
     /**
      * Helpers
      * @var array
@@ -55,7 +55,7 @@ class AdminsController extends AppController {
         'Recaptcha.Recaptcha',
         'Common'
     );
-    
+
     /**
      * Pagination Limit
      * @var integer
@@ -112,11 +112,25 @@ class AdminsController extends AppController {
     }
 
     /**
+     * Channnels Search
+     */
+    public function channels_search() {
+        
+    }
+
+    /**
      * Channel Edit
      */
-    public function channels_edit() {
+    public function channels_edit($id) {
         $this->layout = 'admin';
         $this->sideBar();
+        $data = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $id
+            ),
+            'contain' => FALSE
+        ));
+        $this->set('data', $data);
         $this->set('title_for_layout', 'Clone Admin');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
@@ -125,33 +139,69 @@ class AdminsController extends AppController {
     /**
      * Channel Delete
      */
-    public function channels_delete() {
+    public function channels_delete($id) {
         $this->layout = 'admin';
         $this->sideBar();
         $this->set('title_for_layout', 'Clone Admin');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
     }
-    
+
     /**
      * Games List
      */
     public function games() {
+        $this->layout = 'admin';
+        $this->sideBar();
+        $data = $this->paginate = array(
+            'Game' => array(
+                'fields' => array(
+                ),
+                'limit' => $this->limit,
+                'contain' => FALSE
+            )
+        );
+        $data = $this->paginate('Game');
+        $this->set('data', $data);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+    }
+
+    /**
+     * Games Search
+     */
+    public function games_search() {
         
     }
-    
+
     /**
      * Games Edit
      */
-    public function games_edit() {
-        
+    public function games_edit($id) {
+        $this->layout = 'admin';
+        $this->sideBar();
+        $data = $this->Game->find('first', array(
+            'conditions' => array(
+                'Game.id' => $id
+            ),
+            'contain' => FALSE
+        ));
+        $this->set('data', $data);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
     }
-    
+
     /**
      * Games Delete
      */
-    public function games_delete() {
-        
+    public function games_delete($id) {
+        $this->layout = 'admin';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
     }
 
 }
