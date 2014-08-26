@@ -5,7 +5,6 @@ App::uses('AppController', 'Controller');
 /**
  * Admin Controller
  *
- * @property Wallentry $Wallentry
  * @author Emircan Ok
  */
 class AdminsController extends AppController {
