@@ -946,16 +946,12 @@ class BusinessesController extends AppController {
                 'User.seo_username'
             ),
             'conditions' => array(
-                'Game.clone' => 0,
                 'NOT' => array(
-                    'Game.id' => $welcome_games,
-                    'Game.priority' => NULL
+                    'Game.id' => $welcome_games
                 )
             ),
             'order' => array(
-                'Game.priority' => 'DESC',
-                'Gamestat.potential' => 'DESC',
-                'Game.clone' => 'ASC'
+                'Game.priority' => 'DESC'
             )
         ));
 
@@ -1076,12 +1072,13 @@ class BusinessesController extends AppController {
                 )
             ),
             'conditions' => array(
-                'User.verify' => 1,
                 'NOT' => array(
                     'User.id' => $welcome_channels
                 )
             ),
-            'order' => 'rand()'
+            'order' => array(
+                'User.priority' => 'DESC'
+            )
         ));
 
         /**
