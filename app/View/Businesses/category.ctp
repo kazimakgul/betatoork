@@ -1,3 +1,13 @@
+<?php
+if (Configure::read('Domain.type') == 'subdomain') {
+    $this->Paginator->options(array(
+        'url' => array(
+            'controller' => 'category',
+            'action' => $this->params['cat_url'],
+        )
+    ));
+}
+?>
 <div class="container">
     <?php
     if ($this->Session->read('Auth.User.id') == $user['User']['id']) {
