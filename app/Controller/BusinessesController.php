@@ -853,6 +853,8 @@ class BusinessesController extends AppController {
         }
         //----------------------
 
+        $subscribed_ids = $this->Subscription->find('list', array('contain' => false, 'fields' => array('Subscription.subscriber_to_id'), 'conditions' => array('Subscription.subscriber_id' => $userid)));
+
         $limit = 6;
         $this->paginate = array(
             'User' => array(
@@ -877,7 +879,9 @@ class BusinessesController extends AppController {
                     'Userstat.potential' => 'DESC'
                 ),
                 'conditions' => array(
-                    'User.verify' => 1
+                    'NOT' => array(
+                    'User.id' => $subscribed_ids
+                     )
                 ),
                 'limit' => $limit
             )
