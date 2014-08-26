@@ -2605,55 +2605,7 @@ class BusinessesController extends AppController {
         switch ($filter) {
             case 'mobiles':
                 $activefilter = 1;
-                $this->paginate = array(
-            'Game' => array(
-                'fields' => array(
-                    'Game.name',
-                    'Game.seo_url',
-                    'Game.id',
-                    'Game.fullscreen',
-                    'Game.mobileready',
-                    'Game.install',
-                    'Game.link',
-                    'Game.picture',
-                    'Game.starsize',
-                    'Game.rate_count',
-                    'Game.embed',
-                    'Game.featured',
-                    'Game.clone',
-                    'Game.created'
-                ),
-                'contain' => array(
-                    'User' => array(
-                        'fields' => array(
-                            'User.seo_username',
-                            'User.verify',
-                            'User.username',
-                            'User.picture'
-                        )
-                    ),
-                    'Gamestat' => array(
-                        'fields' => array(
-                            'Gamestat.playcount',
-                            'Gamestat.favcount',
-                            'Gamestat.channelclone'
-                        )
-                    )
-                ),
-                'conditions' => array(
-                    'NOT' => array(
-                        'Game.priority' => NULL
-                    ),
-                    'Game.mobileready' => 1
-                ),
-                'order' => array(
-                    'Game.priority' => 'DESC',
-                    'Gamestat.potential' => 'DESC',
-                    'Game.clone' => 'ASC'
-                ),
-                'limit' => $limit
-            )
-        );
+                $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
                 break;
             case 'fullscreen':
                 $activefilter = 2;
