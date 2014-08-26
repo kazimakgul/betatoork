@@ -876,7 +876,9 @@ class BusinessesController extends AppController {
                     )
                 ),
                 'order' => array(
-                    'Userstat.potential' => 'DESC'
+                    'User.priority' => 'DESC',
+                    'Userstat.potential' => 'DESC',
+                    'User.verify' => 'DESC'
                 ),
                 'conditions' => array(
                     'NOT' => array(
