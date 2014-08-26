@@ -3,7 +3,7 @@
 App::uses('AppController', 'Controller');
 
 /**
- * Wallentries Controller
+ * Admin Controller
  *
  * @property Wallentry $Wallentry
  */
