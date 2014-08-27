@@ -348,7 +348,7 @@ class AdminsController extends AppController {
     public function games_search() {
         $this->layout = 'admin';
         $this->sideBar();
-        if ($this->request->is("GET") && isset($this->request->query['q'])) {
+        if ($this->request->is("GET") && isset($this->request->query['q']) && !empty($this->request->query['q'])) {
             $query = $this->request->query['q'];
             $this->set('query', $query);
         } else {
@@ -357,21 +357,33 @@ class AdminsController extends AppController {
                 "action" => "games"
             ));
         }
+        $this->games_model();
         $data = $this->paginate = array(
             'Game' => array(
                 'fields' => array(
+                    'Game.id',
+                    'Game.name',
+                    'Game.picture',
+                    'User.username'
                 ),
                 'conditions' => array(
+                    'OR' => array(
+                        'Game.id' => $query,
+                        'Game.priority' => $query,
+                        'Game.name LIKE' => '%' . $query . '%',
+                        'User.username LIKE' => '%' . $query . '%',
+                    )
                 ),
-                'limit' => $this->limit,
-                'contain' => FALSE
+                'limit' => $this->limit
             )
         );
+        $this->games_filter();
         $data = $this->paginate('Game');
         $this->set('data', $data);
         $this->set('title_for_layout', 'Clone Admin');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
+        $this->render('games');
     }
 
     /**
