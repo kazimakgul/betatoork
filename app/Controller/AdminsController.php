@@ -57,6 +57,16 @@ class AdminsController extends AppController {
     );
 
     /**
+     * User Roles
+     * @var array
+     */
+    private $role = array(
+        'user' => 0,
+        'admin' => 1,
+        'manager' => 2
+    );
+
+    /**
      * Pagination Limit
      * @var integer
      */
@@ -106,6 +116,31 @@ class AdminsController extends AppController {
     }
 
     /**
+     * Change SQL with filter
+     */
+    private function channels_filter() {
+        if (isset($this->request->named['filter'])) {
+            switch ($this->request->named['filter']) {
+                case 'cname':
+                    $this->paginate['User']['conditions']['NOT']['User.website'] = NULL;
+                    break;
+                case 'verify':
+                    $this->paginate['User']['conditions']['User.verify'] = 1;
+                    break;
+                case 'manager':
+                    $this->paginate['User']['conditions']['User.role'] = $this->role['manager'];
+                    break;
+                case 'active':
+                    $this->paginate['User']['conditions']['User.active'] = 1;
+                    break;
+            }
+            $this->set('active_filter', $this->request->named['filter']);
+        } else {
+            $this->set('active_filter', 'all');
+        }
+    }
+
+    /**
      * Channel List
      */
     public function channels() {
@@ -124,6 +159,7 @@ class AdminsController extends AppController {
                 'limit' => $this->limit
             )
         );
+        $this->channels_filter();
         $data = $this->paginate('User');
         $this->set('data', $data);
         $this->set('title_for_layout', 'Clone Admin');
@@ -166,6 +202,7 @@ class AdminsController extends AppController {
                 'limit' => $this->limit
             )
         );
+        $this->channels_filter();
         $data = $this->paginate('User');
         $this->set('data', $data);
         $this->set('title_for_layout', 'Clone Admin');

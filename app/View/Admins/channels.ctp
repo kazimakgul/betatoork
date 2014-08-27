@@ -1,8 +1,22 @@
 <?php
-$search = $this->Html->url(array(
-    'controller' => 'admins',
-    'action' => 'channels_search'
-        ));
+$search = $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search'));
+if (isset($query)) {
+    $filter = array(
+        'all' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search')),
+        'cname' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'cname')),
+        'verify' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'verify')),
+        'manager' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'manager')),
+        'active' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'active')),
+    );
+} else {
+    $filter = array(
+        'all' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels')),
+        'cname' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels', 'filter' => 'cname')),
+        'verify' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels', 'filter' => 'verify')),
+        'manager' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels', 'filter' => 'manager')),
+        'active' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels', 'filter' => 'active')),
+    );
+}
 ?>
 <div id="content">
     <div class="menubar fixed">
@@ -29,11 +43,11 @@ $search = $this->Html->url(array(
         <div class="row page-controls">
             <div class="col-md-12 filters">
                 <label>Filter Channels:</label>
-                <a href="#" class="active">All</a>
-                <a href="#">Cname</a>
-                <a href="#">Verify</a>
-                <a href="#">Manager</a>
-                <a href="#">Active</a>
+                <a href="<?php echo $filter['all']; ?>" <?php echo $active_filter === 'all' ? 'class="active"' : ''; ?>>All</a>
+                <a href="<?php echo $filter['cname']; ?>" <?php echo $active_filter === 'cname' ? 'class="active"' : ''; ?>>Cname</a>
+                <a href="<?php echo $filter['verify']; ?>" <?php echo $active_filter === 'verify' ? 'class="active"' : ''; ?>>Verify</a>
+                <a href="<?php echo $filter['manager']; ?>" <?php echo $active_filter === 'manager' ? 'class="active"' : ''; ?>>Manager</a>
+                <a href="<?php echo $filter['active']; ?>" <?php echo $active_filter === 'active' ? 'class="active"' : ''; ?>>Active</a>
                 <div class="show-options">
                     <div class="dropdown">
                         <a class="button" data-toggle="dropdown" href="#">
