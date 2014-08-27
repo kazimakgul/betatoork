@@ -3,10 +3,10 @@ $search = $this->Html->url(array('controller' => 'admins', 'action' => 'channels
 if (isset($query)) {
     $filter = array(
         'all' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search')),
-        'cname' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'cname')),
-        'verify' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'verify')),
-        'manager' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'manager')),
-        'active' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'active')),
+        'cname' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'cname')) . '?q=' . $query,
+        'verify' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'verify')) . '?q=' . $query,
+        'manager' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'manager')) . '?q=' . $query,
+        'active' => $this->Html->url(array('controller' => 'admins', 'action' => 'channels_search', 'filter' => 'active')) . '?q=' . $query,
     );
 } else {
     $filter = array(
@@ -116,7 +116,7 @@ if (isset($query)) {
                     </div>
                     <div class="col-sm-3 header hidden-xs">
                         <label>
-                            <?php echo $this->Paginator->sort('User.website', 'Domain', array('direction' => 'asc')); ?>
+                            <?php echo $this->Paginator->sort('Custom_domain.domain', 'Domain', array('direction' => 'asc')); ?>
                         </label>
                     </div>
                     <div class="col-sm-1 header hidden-xs">
@@ -150,7 +150,7 @@ if (isset($query)) {
                             <?php echo $value['User']['email']; ?>
                         </div>
                         <div class="col-sm-3">
-                            <?php echo $value['User']['website']; ?>
+                            <?php echo $value['Custom_domain']['domain']; ?>
                         </div>
                         <div class="col-sm-1 header hidden-xs">
                             <div class="dropdown">

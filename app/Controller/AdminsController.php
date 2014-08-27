@@ -99,6 +99,20 @@ class AdminsController extends AppController {
      * UnBindModel For Channels
      */
     private function channels_model() {
+        //  Bind
+        $this->User->BindModel(array(
+            'hasOne' => array(
+                'Custom_domain' => array(
+                    'className' => 'Custom_domain',
+                    'foreignKey' => 'user_id',
+                    'conditions' => '',
+                    'fields' => '',
+                    'order' => '',
+                    'type' => 'LEFT'
+                )
+            )
+        ), FALSE);
+        //  UnBind
         $unBindModel = array(
             'hasMany' => array(
                 'Game'
@@ -112,7 +126,7 @@ class AdminsController extends AppController {
                 'Userstat'
             );
         }
-        $this->User->unBindModel($unBindModel);
+        $this->User->unBindModel($unBindModel, FALSE);
     }
 
     /**
@@ -122,7 +136,7 @@ class AdminsController extends AppController {
         if (isset($this->request->named['filter'])) {
             switch ($this->request->named['filter']) {
                 case 'cname':
-                    $this->paginate['User']['conditions']['NOT']['User.website'] = NULL;
+                    $this->paginate['User']['conditions']['NOT']['Custom_domain.domain'] = NULL;
                     break;
                 case 'verify':
                     $this->paginate['User']['conditions']['User.verify'] = 1;
@@ -153,8 +167,8 @@ class AdminsController extends AppController {
                     'User.id',
                     'User.username',
                     'User.picture',
-                    'User.website',
-                    'User.email'
+                    'User.email',
+                    'Custom_domain.domain'
                 ),
                 'limit' => $this->limit
             )
@@ -173,7 +187,7 @@ class AdminsController extends AppController {
     public function channels_search() {
         $this->layout = 'admin';
         $this->sideBar();
-        if ($this->request->is("GET") && isset($this->request->query['q'])) {
+        if ($this->request->is("GET") && isset($this->request->query['q']) && !empty($this->request->query['q'])) {
             $query = $this->request->query['q'];
             $this->set('query', $query);
         } else {
@@ -189,8 +203,8 @@ class AdminsController extends AppController {
                     'User.id',
                     'User.username',
                     'User.picture',
-                    'User.website',
-                    'User.email'
+                    'User.email',
+                    'Custom_domain.domain'
                 ),
                 'conditions' => array(
                     'OR' => array(
