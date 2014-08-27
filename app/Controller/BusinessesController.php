@@ -293,13 +293,14 @@ class BusinessesController extends AppController {
                     $type = $this->Game->get_game_type($game_link);
                 }
 
-
+                /*
                 // Add game tags
                 if ($tags != '' && $tags != NULL) {
                     $tags = str_replace("  ", " ", $_POST['tags']);
                     $tags = str_replace(", ", ",", $_POST['tags']);
                     $tag_array = explode(",", $tags);
                 }
+                */
 
                 if ($installable) {
 
