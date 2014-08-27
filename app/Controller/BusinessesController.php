@@ -293,15 +293,13 @@ class BusinessesController extends AppController {
                     $type = $this->Game->get_game_type($game_link);
                 }
 
-                /*
+
                 // Add game tags
                 if ($tags != '' && $tags != NULL) {
                     $tags = str_replace("  ", " ", $_POST['tags']);
                     $tags = str_replace(", ", ",", $_POST['tags']);
                     $tag_array = explode(",", $tags);
                 }
-                */
-
 
                 if ($installable) {
 
@@ -326,6 +324,7 @@ class BusinessesController extends AppController {
                         'type' => $type,
                         'link' => $game_link,
                         'user_id' => $game_user_id,
+                        'priority' => 0,
                         'category_id' => $category_id,
                         'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name, $game_id),
                         'owner_id' => $game_user_id,
@@ -334,9 +333,6 @@ class BusinessesController extends AppController {
                         'install' => $installable,
                         'mobileready' => $mobileready));
                 
-                if ($new_game != 0) {
-                $filtered_data['Game']['priority']=0;
-                }
 
                 //*****************************
                 //Secure data filtering ends
@@ -350,7 +346,7 @@ class BusinessesController extends AppController {
                         $id = $game_id;
                     } else {
                         $id = $this->Game->getLastInsertId();
-                        //$this->add_tags($tag_array, $id);
+                        $this->add_tags($tag_array, $id);
                     }
 
                     $this->requestAction(array('controller' => 'wallentries', 'action' => 'action_ajax', $id, $user_id));
