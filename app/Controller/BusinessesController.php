@@ -5,7 +5,7 @@ App::uses('AppController', 'Controller');
 /**
  * Business Controller
  *
- * @property Business $Game
+ * @property Business $Business
  */
 class BusinessesController extends AppController {
 
