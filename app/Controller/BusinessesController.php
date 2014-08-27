@@ -293,13 +293,15 @@ class BusinessesController extends AppController {
                     $type = $this->Game->get_game_type($game_link);
                 }
 
-
+                /*
                 // Add game tags
                 if ($tags != '' && $tags != NULL) {
                     $tags = str_replace("  ", " ", $_POST['tags']);
                     $tags = str_replace(", ", ",", $_POST['tags']);
                     $tag_array = explode(",", $tags);
                 }
+                */
+
 
                 if ($installable) {
 
@@ -348,7 +350,7 @@ class BusinessesController extends AppController {
                         $id = $game_id;
                     } else {
                         $id = $this->Game->getLastInsertId();
-                        $this->add_tags($tag_array, $id);
+                        //$this->add_tags($tag_array, $id);
                     }
 
                     $this->requestAction(array('controller' => 'wallentries', 'action' => 'action_ajax', $id, $user_id));
