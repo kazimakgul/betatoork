@@ -344,7 +344,7 @@ class BusinessesController extends AppController {
                         $id = $game_id;
                     } else {
                         $id = $this->Game->getLastInsertId();
-                        $this->add_tags($tag_array, $id);
+                        //$this->add_tags($tag_array, $id);
                     }
 
                     $this->requestAction(array('controller' => 'wallentries', 'action' => 'action_ajax', $id, $user_id));
