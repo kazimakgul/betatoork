@@ -12,12 +12,14 @@ class AdminsController extends AppController {
     /**
      * Name
      * @var string
+     * @author Emircan Ok
      */
     public $name = 'Admins';
 
     /**
      * Uses
      * @var array
+     * @author Emircan Ok
      */
     public $uses = array(
         'Game',
@@ -38,6 +40,7 @@ class AdminsController extends AppController {
     /**
      * Helpers
      * @var array
+     * @author Emircan Ok
      */
     public $helpers = array(
         'Html',
@@ -49,6 +52,7 @@ class AdminsController extends AppController {
     /**
      * Components
      * @var array
+     * @author Emircan Ok
      */
     public $components = array(
         'Amazonsdk.Amazon',
@@ -59,6 +63,7 @@ class AdminsController extends AppController {
     /**
      * User Roles
      * @var array
+     * @author Emircan Ok
      */
     private $role = array(
         'user' => 0,
@@ -69,14 +74,13 @@ class AdminsController extends AppController {
     /**
      * Pagination Limit
      * @var integer
+     * @author Emircan Ok
      */
     private $limit = 10;
 
     /**
      * Side Bar method
-     *
-     * @param
-     * @return array() $user
+     * @author Emircan Ok
      */
     private function sideBar() {
         $userid = $this->Session->read('Auth.User.id');
@@ -96,7 +100,8 @@ class AdminsController extends AppController {
     }
 
     /**
-     * UnBindModel For Channels
+     * Bind And UnBind Model For Channels
+     * @author Emircan Ok
      */
     private function channels_model() {
         //  Bind
@@ -111,7 +116,7 @@ class AdminsController extends AppController {
                     'type' => 'LEFT'
                 )
             )
-        ), FALSE);
+                ), FALSE);
         //  UnBind
         $unBindModel = array(
             'hasMany' => array(
@@ -130,7 +135,24 @@ class AdminsController extends AppController {
     }
 
     /**
-     * Change SQL with filter
+     * Bind And UnBind Model For Games
+     * @author Emircan Ok
+     */
+    private function games_model() {
+        $unBindModel = array(
+            'hasOne' => array(
+                'Gamestat'
+            ),
+            'belongsTo' => array(
+                'Category'
+            )
+        );
+        $this->Game->unBindModel($unBindModel, FALSE);
+    }
+
+    /**
+     * Change SQL with filter for channels
+     * @author Emircan Ok
      */
     private function channels_filter() {
         if (isset($this->request->named['filter'])) {
@@ -155,7 +177,40 @@ class AdminsController extends AppController {
     }
 
     /**
+     * Change SQL with filter for games
+     * @author Emircan Ok
+     */
+    private function games_filter() {
+        if (isset($this->request->named['filter'])) {
+            switch ($this->request->named['filter']) {
+                case 'clone':
+                    $this->paginate['Game']['conditions']['Game.clone'] = 0;
+                    break;
+                case 'active':
+                    $this->paginate['Game']['conditions']['Game.active'] = 1;
+                    break;
+                case 'fullscreen':
+                    $this->paginate['Game']['conditions']['Game.fullscreen'] = 1;
+                    break;
+                case 'embed':
+                    $this->paginate['Game']['conditions']['User.embed'] = 2;
+                    break;
+                case 'install':
+                    $this->paginate['Game']['conditions']['Game.install'] = 1;
+                    break;
+                case 'mobile':
+                    $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+                    break;
+            }
+            $this->set('active_filter', $this->request->named['filter']);
+        } else {
+            $this->set('active_filter', 'all');
+        }
+    }
+
+    /**
      * Channel List
+     * @author Emircan Ok
      */
     public function channels() {
         $this->layout = 'admin';
@@ -183,6 +238,7 @@ class AdminsController extends AppController {
 
     /**
      * Channnels Search
+     * @author Emircan Ok
      */
     public function channels_search() {
         $this->layout = 'admin';
@@ -227,6 +283,8 @@ class AdminsController extends AppController {
 
     /**
      * Channel Edit
+     * @param integer $id
+     * @author Emircan Ok
      */
     public function channels_edit($id) {
         $this->layout = 'admin';
@@ -245,6 +303,8 @@ class AdminsController extends AppController {
 
     /**
      * Channel Delete
+     * @param integer $id
+     * @author Emircan Ok
      */
     public function channels_delete($id) {
         $this->layout = 'admin';
@@ -256,19 +316,26 @@ class AdminsController extends AppController {
 
     /**
      * Games List
+     * @author Emircan Ok
      */
     public function games() {
         $this->layout = 'admin';
         $this->sideBar();
+        $this->games_model();
         $data = $this->paginate = array(
             'Game' => array(
                 'fields' => array(
+                    'Game.id',
+                    'Game.name',
+                    'Game.picture',
+                    'User.username'
                 ),
-                'limit' => $this->limit,
-                'contain' => FALSE
+                'limit' => $this->limit
             )
         );
+        $this->games_filter();
         $data = $this->paginate('Game');
+        debug($data);
         $this->set('data', $data);
         $this->set('title_for_layout', 'Clone Admin');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
@@ -277,6 +344,7 @@ class AdminsController extends AppController {
 
     /**
      * Games Search
+     * @author Emircan Ok
      */
     public function games_search() {
         $this->layout = 'admin';
@@ -309,6 +377,8 @@ class AdminsController extends AppController {
 
     /**
      * Games Edit
+     * @param integer $id
+     * @author Emircan Ok
      */
     public function games_edit($id) {
         $this->layout = 'admin';
@@ -327,6 +397,8 @@ class AdminsController extends AppController {
 
     /**
      * Games Delete
+     * @param integer $id
+     * @author Emircan Ok
      */
     public function games_delete($id) {
         $this->layout = 'admin';
