@@ -11,7 +11,7 @@ echo $this->element('mobile/drawer');
 <div id="content" class="snap-content">
     <div id="toolbar">
         <a class="btn" style="background-color: transparent;" href="javascript:;" id="open-left"><i style="color:white;" class="fa fa-bars fa-2x"></i></a>
-        <h1><?= $username ?></h1>
+        <h1><?php if($screenname ==NULL) {echo $username;} else{echo $screenname; } ?></h1>
         <?php
         if (is_null($picture)) {
             $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
