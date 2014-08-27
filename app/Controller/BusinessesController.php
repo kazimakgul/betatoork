@@ -324,7 +324,6 @@ class BusinessesController extends AppController {
                         'type' => $type,
                         'link' => $game_link,
                         'user_id' => $game_user_id,
-                        'priority' => 0,
                         'category_id' => $category_id,
                         'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name, $game_id),
                         'owner_id' => $game_user_id,
@@ -332,6 +331,11 @@ class BusinessesController extends AppController {
                         'fullscreen' => $fullscreen,
                         'install' => $installable,
                         'mobileready' => $mobileready));
+                
+                if ($new_game != 0) {
+                $filtered_data['Game']['priority']=0;
+                }
+
                 //*****************************
                 //Secure data filtering ends
                 //*****************************
