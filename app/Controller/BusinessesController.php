@@ -332,8 +332,6 @@ class BusinessesController extends AppController {
                         'fullscreen' => $fullscreen,
                         'install' => $installable,
                         'mobileready' => $mobileready));
-                
-
                 //*****************************
                 //Secure data filtering ends
                 //*****************************
