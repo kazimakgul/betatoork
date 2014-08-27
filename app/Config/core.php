@@ -232,6 +232,10 @@
 Configure::write('Clone.analitics_id','UA-45726606-1');
 
 
+if ($_SERVER['HTTP_HOST'] == "test.clone.gs") {
+echo 'wow';
+}
+
 /**
  * Uncomment this line and correct your server timezone to fix 
  * any date & time related errors.
