@@ -64,16 +64,13 @@ if (isset($query)) {
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li>
-                                <?php echo $this->Paginator->sort('User.created', 'Date', array('direction' => 'desc')); ?>
+                                <?php echo $this->Paginator->sort('Game.created', 'Date', array('direction' => 'desc')); ?>
                             </li>
                             <li>
-                                <?php echo $this->Paginator->sort('Userstat.potential', 'Potential', array('direction' => 'desc')); ?>
+                                <?php echo $this->Paginator->sort('Gamestat.potential', 'Potential', array('direction' => 'desc')); ?>
                             </li>
                             <li>
-                                <?php echo $this->Paginator->sort('User.last_login', 'Last Login', array('direction' => 'desc')); ?>
-                            </li>
-                            <li>
-                                <?php echo $this->Paginator->sort('User.priority', 'Priority', array('direction' => 'desc')); ?>
+                                <?php echo $this->Paginator->sort('Game.priority', 'Priority', array('direction' => 'desc')); ?>
                             </li>
                         </ul>
                     </div>

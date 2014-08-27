@@ -335,7 +335,6 @@ class AdminsController extends AppController {
         );
         $this->games_filter();
         $data = $this->paginate('Game');
-        debug($data);
         $this->set('data', $data);
         $this->set('title_for_layout', 'Clone Admin');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
