@@ -86,11 +86,32 @@ class AdminsController extends AppController {
     }
 
     /**
+     * UnBindModel For Channels
+     */
+    private function channels_model() {
+        $unBindModel = array(
+            'hasMany' => array(
+                'Game'
+            ),
+            'belongsTo' => array(
+                'Country'
+            )
+        );
+        if (!isset($this->request->named['sort']) || $this->request->named['sort'] !== 'Userstat.potential') {
+            $unBindModel['hasOne'] = array(
+                'Userstat'
+            );
+        }
+        $this->User->unBindModel($unBindModel);
+    }
+
+    /**
      * Channel List
      */
     public function channels() {
         $this->layout = 'admin';
         $this->sideBar();
+        $this->channels_model();
         $this->paginate = array(
             'User' => array(
                 'fields' => array(
@@ -100,8 +121,7 @@ class AdminsController extends AppController {
                     'User.website',
                     'User.email'
                 ),
-                'limit' => $this->limit,
-                'contain' => FALSE
+                'limit' => $this->limit
             )
         );
         $data = $this->paginate('User');
@@ -115,7 +135,43 @@ class AdminsController extends AppController {
      * Channnels Search
      */
     public function channels_search() {
-        
+        $this->layout = 'admin';
+        $this->sideBar();
+        if ($this->request->is("GET") && isset($this->request->query['q'])) {
+            $query = $this->request->query['q'];
+            $this->set('query', $query);
+        } else {
+            $this->redirect(array(
+                "controller" => "admins",
+                "action" => "channels"
+            ));
+        }
+        $this->channels_model();
+        $this->paginate = array(
+            'User' => array(
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.picture',
+                    'User.website',
+                    'User.email'
+                ),
+                'conditions' => array(
+                    'OR' => array(
+                        'User.id' => $query,
+                        'User.priority' => $query,
+                        'User.username LIKE' => '%' . $query . '%'
+                    )
+                ),
+                'limit' => $this->limit
+            )
+        );
+        $data = $this->paginate('User');
+        $this->set('data', $data);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('channels');
     }
 
     /**
@@ -172,7 +228,32 @@ class AdminsController extends AppController {
      * Games Search
      */
     public function games_search() {
-        
+        $this->layout = 'admin';
+        $this->sideBar();
+        if ($this->request->is("GET") && isset($this->request->query['q'])) {
+            $query = $this->request->query['q'];
+            $this->set('query', $query);
+        } else {
+            $this->redirect(array(
+                "controller" => "admins",
+                "action" => "games"
+            ));
+        }
+        $data = $this->paginate = array(
+            'Game' => array(
+                'fields' => array(
+                ),
+                'conditions' => array(
+                ),
+                'limit' => $this->limit,
+                'contain' => FALSE
+            )
+        );
+        $data = $this->paginate('Game');
+        $this->set('data', $data);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
     }
 
     /**

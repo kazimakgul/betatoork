@@ -1,3 +1,9 @@
+<?php
+$search = $this->Html->url(array(
+    'controller' => 'admins',
+    'action' => 'channels_search'
+        ));
+?>
 <div id="content">
     <div class="menubar fixed">
         <div class="sidebar-toggler visible-xs">
@@ -6,9 +12,13 @@
         <div class="page-title">
             Channels
         </div>
-        <form class="search hidden-xs">
+        <form class="search hidden-xs" action="<?php echo $search; ?>">
             <i class="fa fa-search"></i>
-            <input type="text" name="q" placeholder="Search customers, clients..." />
+            <?php if (isset($query)) { ?>
+                <input type="text" name="q" placeholder="Search Channels..." value="<?php echo $query; ?>" />
+            <?php } else { ?>
+                <input type="text" name="q" placeholder="Search Channels..." />
+            <?php } ?>
             <input type="submit" />
         </form>
         <a href="form.html" class="new-user btn btn-success pull-right">
@@ -33,10 +43,18 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a href="#">Date</a></li>
-                            <li><a href="#">Potential</a></li>
-                            <li><a href="#">Last Login</a></li>
-                            <li><a href="#">Priority</a></li>
+                            <li>
+                                <?php echo $this->Paginator->sort('User.created', 'Date', array('direction' => 'desc')); ?>
+                            </li>
+                            <li>
+                                <?php echo $this->Paginator->sort('Userstat.potential', 'Potential', array('direction' => 'desc')); ?>
+                            </li>
+                            <li>
+                                <?php echo $this->Paginator->sort('User.last_login', 'Last Login', array('direction' => 'desc')); ?>
+                            </li>
+                            <li>
+                                <?php echo $this->Paginator->sort('User.priority', 'Priority', array('direction' => 'desc')); ?>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -63,22 +81,34 @@
                         </div>
                     </div>
                     <div class="col-sm-1 header hidden-xs">
-                        <label><a href="#">Id</a></label>
+                        <label>
+                            <?php echo $this->Paginator->sort('User.id', 'Id', array('direction' => 'asc')); ?>
+                        </label>
                     </div>
                     <div class="col-sm-1 header hidden-xs">
-                        <label><a href="#">Picture</a></label>
+                        <label>
+                            <a href="#">Picture</a>
+                        </label>
                     </div>
                     <div class="col-sm-2 header hidden-xs">
-                        <label><a href="#">Name</a></label>
+                        <label>
+                            <?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')); ?>
+                        </label>
                     </div>
                     <div class="col-sm-3 header hidden-xs">
-                        <label><a href="#">Email</a></label>
+                        <label>
+                            <?php echo $this->Paginator->sort('User.email', 'Email', array('direction' => 'asc')); ?>
+                        </label>
                     </div>
                     <div class="col-sm-3 header hidden-xs">
-                        <label><a href="#">Domain</a></label>
+                        <label>
+                            <?php echo $this->Paginator->sort('User.website', 'Domain', array('direction' => 'asc')); ?>
+                        </label>
                     </div>
                     <div class="col-sm-1 header hidden-xs">
-                        <label class="text-right"><a href="#">Action</a></label>
+                        <label class="text-right">
+                            <a href="#">Action</a>
+                        </label>
                     </div>
                 </div>
                 <?php foreach ($data as $value) { ?>
@@ -122,13 +152,8 @@
                         </div>
                     </div>
                 <?php } ?>
-                <div class="row pager-wrapper">
-                    <div class="col-sm-12">
-                        <ul class="pager">
-                            <li><a href="#">Previous</a></li>
-                            <li><a href="#">Next</a></li>
-                        </ul>
-                    </div>
+                <div class="text-center">
+                    <?php echo $this->element('business/components/pagination') ?>
                 </div>
             </div>
         </div>
