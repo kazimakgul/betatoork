@@ -125,32 +125,46 @@ if (isset($query)) {
                         </label>
                     </div>
                 </div>
-                <?php foreach ($data as $value) { ?>
+                <?php
+                foreach ($data as $value) {
+                    //  id
+                    $id = $value['User']['id'];
+                    //  picture
+                    if (is_null($value['User']['picture'])) {
+                        $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
+                        $picture = $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $value['User']['username']));
+                    } else {
+                        $picture = $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $value['User']['username']));
+                    }
+                    //  name
+                    $name = $value['User']['username'];
+                    //  email
+                    $email = $value['User']['email'];
+                    //  domain
+                    $domain = $value['Custom_domain']['domain'];
+                    //  edit
+                    $edit = $this->Html->url(array('controller' => 'admins', 'action' => 'channels_edit', $id));
+                    //  delete
+                    $delete = $this->Html->url(array('controller' => 'admins', 'action' => 'channels_delete', $id));
+                    ?>
                     <div class="row user">
                         <div class="col-sm-1 avatar">
                             <input type="checkbox" name="select-user" />
                         </div>
                         <div class="col-sm-1">
-                            <?php echo $value['User']['id']; ?>
+                            <?php echo $id; ?>
                         </div>
                         <div class="col-sm-1 avatar">
-                            <?php
-                            if (is_null($value['User']['picture'])) {
-                                $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
-                                echo $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $value['User']['username']));
-                            } else {
-                                echo $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $value['User']['username']));
-                            }
-                            ?>
+                            <?php echo $picture; ?>
                         </div>
                         <div class="col-sm-2">
-                            <?php echo $value['User']['username']; ?>
+                            <?php echo $name; ?>
                         </div>
                         <div class="col-sm-3">
-                            <?php echo $value['User']['email']; ?>
+                            <?php echo $email; ?>
                         </div>
                         <div class="col-sm-3">
-                            <?php echo $value['Custom_domain']['domain']; ?>
+                            <?php echo $domain; ?>
                         </div>
                         <div class="col-sm-1 header hidden-xs">
                             <div class="dropdown">
@@ -159,13 +173,19 @@ if (isset($query)) {
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="<?php echo $edit; ?>">Edit</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="<?php echo $delete; ?>">Delete</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                    <?php
+                }
+                ?>
                 <div class="text-center">
                     <?php echo $this->element('business/components/pagination') ?>
                 </div>

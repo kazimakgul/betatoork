@@ -123,22 +123,36 @@ if (isset($query)) {
                         </label>
                     </div>
                 </div>
-                <?php foreach ($data as $value) { ?>
+                <?php
+                foreach ($data as $value) {
+                    //  id
+                    $id = $value['Game']['id'];
+                    //  picture
+                    $picture = $this->Upload->image($value, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $value['Game']['name'], 'onerror' => 'imgError(this,"toorksize");'));
+                    //  name
+                    $name = $value['Game']['name'];
+                    //  owner
+                    $owner = $value['User']['username'];
+                    //  edit
+                    $edit = $this->Html->url(array('controller' => 'admins', 'action' => 'games_edit', $id));
+                    //  delete
+                    $delete = $this->Html->url(array('controller' => 'admins', 'action' => 'games_delete', $id));
+                    ?>
                     <div class="row user">
                         <div class="col-sm-1 avatar">
                             <input type="checkbox" name="select-user" />
                         </div>
                         <div class="col-sm-1">
-                            <?php echo $value['Game']['id']; ?>
+                            <?php echo $id; ?>
                         </div>
                         <div class="col-sm-2 avatar">
-                            <?php echo $this->Upload->image($value, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $value['Game']['name'], 'onerror' => 'imgError(this,"toorksize");')); ?>
+                            <?php echo $picture; ?>
                         </div>
                         <div class="col-sm-3">
-                            <?php echo $value['Game']['name']; ?>
+                            <?php echo $name; ?>
                         </div>
                         <div class="col-sm-3">
-                            <?php echo $value['User']['username']; ?>
+                            <?php echo $owner; ?>
                         </div>
                         <div class="col-sm-1 header hidden-xs">
                             <div class="dropdown">
@@ -147,13 +161,19 @@ if (isset($query)) {
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="<?php echo $edit; ?>">Edit</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="<?php echo $delete; ?>">Delete</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                    <?php
+                }
+                ?>
                 <div class="text-center">
                     <?php echo $this->element('business/components/pagination') ?>
                 </div>
