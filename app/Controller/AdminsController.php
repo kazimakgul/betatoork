@@ -104,19 +104,6 @@ class AdminsController extends AppController {
      * @author Emircan Ok
      */
     private function channels_model() {
-        //  Bind
-        $this->User->BindModel(array(
-            'hasOne' => array(
-                'Custom_domain' => array(
-                    'className' => 'Custom_domain',
-                    'foreignKey' => 'user_id',
-                    'conditions' => '',
-                    'fields' => '',
-                    'order' => '',
-                    'type' => 'LEFT'
-                )
-            )
-                ), FALSE);
         //  UnBind
         $unBindModel = array(
             'hasMany' => array(
@@ -132,6 +119,19 @@ class AdminsController extends AppController {
             );
         }
         $this->User->unBindModel($unBindModel, FALSE);
+        //  Bind
+        $this->User->BindModel(array(
+            'hasOne' => array(
+                'Custom_domain' => array(
+                    'className' => 'Custom_domain',
+                    'foreignKey' => 'user_id',
+                    'conditions' => '',
+                    'fields' => '',
+                    'order' => '',
+                    'type' => 'LEFT'
+                )
+            )
+        ), FALSE);
     }
 
     /**
@@ -139,6 +139,7 @@ class AdminsController extends AppController {
      * @author Emircan Ok
      */
     private function games_model() {
+        //  UnBind
         $unBindModel = array(
             'hasOne' => array(
                 'Gamestat'
@@ -148,6 +149,19 @@ class AdminsController extends AppController {
             )
         );
         $this->Game->unBindModel($unBindModel, FALSE);
+        //  Bind
+        $this->Game->BindModel(array(
+            'belongsTo' => array(
+                'User' => array(
+                    'className' => 'User',
+                    'foreignKey' => 'user_id',
+                    'conditions' => '',
+                    'fields' => '',
+                    'order' => '',
+                    'type' => 'INNER'
+                )
+            )
+        ), FALSE);
     }
 
     /**
@@ -193,7 +207,7 @@ class AdminsController extends AppController {
                     $this->paginate['Game']['conditions']['Game.fullscreen'] = 1;
                     break;
                 case 'embed':
-                    $this->paginate['Game']['conditions']['User.embed'] = 2;
+                    $this->paginate['Game']['conditions']['Game.embed'] = 2;
                     break;
                 case 'install':
                     $this->paginate['Game']['conditions']['Game.install'] = 1;

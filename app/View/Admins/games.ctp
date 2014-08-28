@@ -99,27 +99,22 @@ if (isset($query)) {
                     </div>
                     <div class="col-sm-1 header hidden-xs">
                         <label>
-                            <?php echo $this->Paginator->sort('User.id', 'Id', array('direction' => 'asc')); ?>
-                        </label>
-                    </div>
-                    <div class="col-sm-1 header hidden-xs">
-                        <label>
-                            <a href="#">Picture</a>
+                            <?php echo $this->Paginator->sort('Game.id', 'Id', array('direction' => 'asc')); ?>
                         </label>
                     </div>
                     <div class="col-sm-2 header hidden-xs">
                         <label>
-                            <?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')); ?>
+                            <a href="#">Picture</a>
                         </label>
                     </div>
                     <div class="col-sm-3 header hidden-xs">
                         <label>
-                            <?php echo $this->Paginator->sort('User.email', 'Email', array('direction' => 'asc')); ?>
+                            <?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')); ?>
                         </label>
                     </div>
                     <div class="col-sm-3 header hidden-xs">
                         <label>
-                            <?php echo $this->Paginator->sort('Custom_domain.domain', 'Domain', array('direction' => 'asc')); ?>
+                            <?php echo $this->Paginator->sort('User.username', 'Owner', array('direction' => 'asc')); ?>
                         </label>
                     </div>
                     <div class="col-sm-1 header hidden-xs">
@@ -134,26 +129,16 @@ if (isset($query)) {
                             <input type="checkbox" name="select-user" />
                         </div>
                         <div class="col-sm-1">
-                            <?php echo $value['User']['id']; ?>
+                            <?php echo $value['Game']['id']; ?>
                         </div>
-                        <div class="col-sm-1 avatar">
-                            <?php
-                            if (is_null($value['User']['picture'])) {
-                                $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
-                                echo $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $value['User']['username']));
-                            } else {
-                                echo $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $value['User']['username']));
-                            }
-                            ?>
+                        <div class="col-sm-2 avatar">
+                            <?php echo $this->Upload->image($value, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $value['Game']['name'], 'onerror' => 'imgError(this,"toorksize");')); ?>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
+                            <?php echo $value['Game']['name']; ?>
+                        </div>
+                        <div class="col-sm-3">
                             <?php echo $value['User']['username']; ?>
-                        </div>
-                        <div class="col-sm-3">
-                            <?php echo $value['User']['email']; ?>
-                        </div>
-                        <div class="col-sm-3">
-                            <?php echo $value['Custom_domain']['domain']; ?>
                         </div>
                         <div class="col-sm-1 header hidden-xs">
                             <div class="dropdown">
