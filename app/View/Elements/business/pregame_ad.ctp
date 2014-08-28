@@ -59,7 +59,7 @@ function countdown_start()
         
         <?php if(!empty($ads_code)){
          $iframe_url = $this->Html->url(array("controller" => 'businesses', "action" => 'serve_ads_frame',$user_id,$location));    
-         echo '<iframe src="'.$iframe_url.'" style="border: 0px;" width="728px" height="90px" scrolling="no"></iframe>';
+         echo '<iframe src="'.$iframe_url.'" style="border: 0px;" width="300px" height="250px" scrolling="no"></iframe>';
          echo '<br><span class="label label-primary" id="edit'.$location.'" ><i id="ad_name'.$location.'">'.$ads_code['Adcode']['name'].'</i>
 <a data-toggle="modal" onclick="set_id_create('.$location.');" data-target="#adsChange" data-original-title="Edit"  href="#" title="Change Ads Code"  class="fa fa-pencil white adsChangeBtn" style="margin-left:15px; font-size:12px;">Edit</a>
 </span>';
