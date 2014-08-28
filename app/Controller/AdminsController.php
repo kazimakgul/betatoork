@@ -131,7 +131,7 @@ class AdminsController extends AppController {
                     'type' => 'LEFT'
                 )
             )
-        ), FALSE);
+                ), FALSE);
     }
 
     /**
@@ -161,7 +161,7 @@ class AdminsController extends AppController {
                     'type' => 'INNER'
                 )
             )
-        ), FALSE);
+                ), FALSE);
     }
 
     /**
@@ -408,13 +408,38 @@ class AdminsController extends AppController {
     public function games_edit($id) {
         $this->layout = 'admin';
         $this->sideBar();
+        $this->games_model();
         $data = $this->Game->find('first', array(
+            'fields' => array(
+                'Game.id',
+                'Game.name',
+                'Game.link',
+                'Game.description',
+                'Game.active',
+                'Game.user_id',
+                'Game.width',
+                'Game.height',
+                'Game.priority',
+                'Game.category_id',
+                'Game.picture',
+                'Game.mobileready',
+                'Game.fullscreen',
+                'Game.featured',
+                'Game.install'
+            ),
             'conditions' => array(
                 'Game.id' => $id
-            ),
-            'contain' => FALSE
+            )
         ));
+        debug($data);
         $this->set('data', $data);
+        $categories = $this->Category->find('all', array(
+            'order' => array(
+                'Category.name' => 'asc'
+            )
+        ));
+        debug($categories);
+        $this->set('categories', $categories);
         $this->set('title_for_layout', 'Clone Admin');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');

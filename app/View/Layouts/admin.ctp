@@ -14,6 +14,7 @@
         <?php
         echo $this->Html->css(array(
             'business/dashboard/compiled/theme',
+            'business/dashboard/vendor/bootstrap-switch.min',
             'business/dashboard/vendor/animate',
             'business/dashboard/custom',
             'business/dashboard/vendor/brankic',
