@@ -215,6 +215,14 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 				  	<div class="form-group form-actions">
 				    	<div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 				      		<button id="NewButton" class="btn btn-success">Save Changes</button>
+                          
+                           <?php if($game['Game']['active']==1){ ?>
+                           <!--<span id="unpublish_game" class="btn btn-danger">UnPublish</span>-->
+                           <?php }else{?>
+				      		<!--<span id="publish_game" class="btn btn-success">Publish</span>-->
+				      		<?php }?>
+				      		
+
 			    		</div>
 				  	</div>
 				</form>

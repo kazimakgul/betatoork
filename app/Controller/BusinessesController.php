@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search', 'edit_set_ads', 'remove_ads_field', 'add_mapping', 'remove_mapping'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search', 'edit_set_ads', 'remove_ads_field', 'add_mapping', 'remove_mapping','switch_publish'))) {
             return true;
         }
 
@@ -1367,6 +1367,30 @@ class BusinessesController extends AppController {
         $this->set('author_for_layout', 'Clone');
         $this->render('/Businesses/dashboard/game_edit');
     }
+
+
+    /**
+     * Switch Publish method
+     *
+     * @param  game_id
+     * @return switch_publish Page
+     * @author Ogi
+     */
+    public function switch_publish($id=NULL) {
+      
+       Configure::write('debug', 0);
+       $auth_id = $this->Session->read('Auth.User.id');
+       if($auth_id)
+       {//beginning of auth control
+
+        $msg = array("title" => 'Game has been published2.', 'result' => 1);
+        $this->set('rtdata', $msg);
+        $this->set('_serialize', array('rtdata'));
+
+       } //end of auth control
+
+    }
+
 
     /**
      * Dummy tools and docs function
