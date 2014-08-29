@@ -324,6 +324,7 @@ class BusinessesController extends AppController {
                         'height' => $game_height,
                         'type' => $type,
                         'link' => $game_link,
+                        'active' => 1,
                         'user_id' => $game_user_id,
                         'category_id' => $category_id,
                         'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name, $game_id),
