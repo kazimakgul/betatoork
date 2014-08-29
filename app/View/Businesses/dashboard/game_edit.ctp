@@ -205,7 +205,7 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 					</div>
 
                    
-                    <div class="form-group">
+                    <div class="form-group">s
 					    <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
 					      	<a data-toggle="modal" data-target="#confirm-modal" onclick="return false;" style="text-decoration:none;" href="#" ><i style="color: grey;" class="fa fa-trash-o"></i> <span style='color:red;'>Delete this game!</span></a>
 					    </div>
@@ -217,9 +217,9 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 				      		<button id="NewButton" class="btn btn-success">Save Changes</button>
                           
                            <?php if($game['Game']['active']==1){ ?>
-                           <!--<span id="unpublish_game" class="btn btn-danger">UnPublish</span>-->
+                           <!--<span id="switch_publish" class="btn btn-danger">UnPublish</span>-->
                            <?php }else{?>
-				      		<!--<span id="publish_game" class="btn btn-success">Publish</span>-->
+				      		<!--<span id="switch_publish" class="btn btn-success">Publish</span>-->
 				      		<?php }?>
 				      		
 

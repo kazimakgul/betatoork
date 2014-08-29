@@ -1376,19 +1376,43 @@ class BusinessesController extends AppController {
      * @return switch_publish Page
      * @author Ogi
      */
-    public function switch_publish($id=NULL) {
+    public function switch_publish() {
       
        Configure::write('debug', 0);
        $auth_id = $this->Session->read('Auth.User.id');
+       $game_id = $this->request->data['game_id'];
+
        if($auth_id)
        {//beginning of auth control
 
-        $msg = array("title" => 'Game has been published2.', 'result' => 1);
-        $this->set('rtdata', $msg);
-        $this->set('_serialize', array('rtdata'));
+        if($this->Game->isOwnedBy($game_id,$auth_id))
+        {
+             $this->Game->id=$game_id;
+             $game_data=$this->Game->find('first',array('contain'=>false,'conditions'=>array('Game.id'=>$game_id),'fields'=>array('Game.id,Game.active')));
+             if($game_data['Game']['active']==1)
+             {  
+                $filtered_data['Game']['active'] = 0;
+                $this->Game->save($filtered_data);
+                $msg = array("title" => 'Game has been unpublished.', 'result' => 1);
+             }else{
+                $filtered_data['Game']['active'] = 1;
+                $this->Game->save($filtered_data);
+                $msg = array("title" => 'Game has been published.', 'result' => 1);
+             }   
+             
+
+        }else{
+
+             $msg = array("title" => 'You are not owner of this game.', 'result' => 0);
+
+        }
+
 
        } //end of auth control
 
+            $this->set('rtdata', $msg);
+            $this->set('_serialize', array('rtdata'));
+     
     }
 
 
