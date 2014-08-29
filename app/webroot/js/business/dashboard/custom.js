@@ -360,30 +360,26 @@ $(document).ready(function() {
     });
 
 
-    $('#unpublish_game').click(function() {
-      alert(switch_publish);  
+    $('#switch_publish').click(function() {
       
       var link = switch_publish;
+      var game_id = $('#game_id').val();
 
       $.post(link, {
-            game_id: 5,
+            game_id: game_id,
         },
                 function(data) {
                     if (data.error) {
                         alert(data.error); // error.id ye göre mesaj yazdırcak..
                     } else {
-                         alert(data.rtdata.title);
+                         //alert(data.rtdata.title);
                         //Messenger().post(data.success);
 
                     }
                 }, 'json');
-      
 
+          location.reload();
 
-    });
-
-    $('#publish_game').click(function() {
-      alert('game has been published');
     });
 
 
