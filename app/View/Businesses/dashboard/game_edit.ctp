@@ -217,9 +217,9 @@ $delete_url=$this->Html->url(array('controller'=>'businesses','action'=>'game_de
 				      		<button id="NewButton" class="btn btn-success">Save Changes</button>
                           
                            <?php if($game['Game']['active']==1){ ?>
-                           <!--<span id="switch_publish" class="btn btn-danger">UnPublish</span>-->
+                           <span id="switch_publish" class="btn btn-danger">UnPublish</span>
                            <?php }else{?>
-				      		<!--<span id="switch_publish" class="btn btn-success">Publish</span>-->
+				      		<span id="switch_publish" class="btn btn-success">Publish</span>
 				      		<?php }?>
 				      		
 
