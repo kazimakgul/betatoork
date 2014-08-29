@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search', 'edit_set_ads', 'remove_ads_field', 'add_mapping', 'remove_mapping'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search', 'edit_set_ads', 'remove_ads_field', 'add_mapping', 'remove_mapping','switch_publish'))) {
             return true;
         }
 
@@ -324,6 +324,7 @@ class BusinessesController extends AppController {
                         'height' => $game_height,
                         'type' => $type,
                         'link' => $game_link,
+                        'active' => 1,
                         'user_id' => $game_user_id,
                         'category_id' => $category_id,
                         'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name, $game_id),
@@ -1368,6 +1369,54 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/game_edit');
     }
 
+
+    /**
+     * Switch Publish method
+     *
+     * @param  game_id
+     * @return switch_publish Page
+     * @author Ogi
+     */
+    public function switch_publish() {
+      
+       Configure::write('debug', 0);
+       $auth_id = $this->Session->read('Auth.User.id');
+       $game_id = $this->request->data['game_id'];
+
+       if($auth_id)
+       {//beginning of auth control
+
+        if($this->Game->isOwnedBy($game_id,$auth_id))
+        {
+             $this->Game->id=$game_id;
+             $game_data=$this->Game->find('first',array('contain'=>false,'conditions'=>array('Game.id'=>$game_id),'fields'=>array('Game.id,Game.active')));
+             if($game_data['Game']['active']==1)
+             {  
+                $filtered_data['Game']['active'] = 0;
+                $this->Game->save($filtered_data);
+                $msg = array("title" => 'Game has been unpublished.', 'result' => 1);
+             }else{
+                $filtered_data['Game']['active'] = 1;
+                $this->Game->save($filtered_data);
+                $msg = array("title" => 'Game has been published.', 'result' => 1);
+             }   
+             
+
+        }else{
+
+             $msg = array("title" => 'You are not owner of this game.', 'result' => 0);
+
+        }
+
+
+       } //end of auth control
+
+            $this->set('rtdata', $msg);
+            $this->set('_serialize', array('rtdata'));
+     
+    }
+
+
     /**
      * Dummy tools and docs function
      * Cloned from app_status method
@@ -1929,16 +1978,16 @@ class BusinessesController extends AppController {
             $cdomain = Configure::read('Domain.c_root');
             $user_data = $this->Game->query('SELECT * from custom_domains WHERE domain ="' . $cdomain . '"');
             $userid = $user_data[0]['custom_domains']['user_id'];
-            $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
+            $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('User.id', 'User.username', 'User.verify','User.analitics'), 'contain' => false));
             $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.id' => $user['User']['id'])), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         } else {//if it is not cname
             if (!is_numeric($id)) {
                 $subdomain = Configure::read('Domain.subdomain');
-                $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id', 'User.username', 'User.verify'), 'contain' => false));
+                $user = $this->User->find('first', array('conditions' => array('User.seo_username' => $subdomain), 'fields' => array('User.id', 'User.username', 'User.verify','User.analitics'), 'contain' => false));
                 $game = $this->Game->find('first', array('conditions' => array('Game.seo_url' => $id, 'Game.user_id' => $user['User']['id']), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.fb_link,User.twitter_link,User.gplus_link,User.website,User.picture'), 'conditions' => array('User.seo_username' => $subdomain)), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
             } else {
                 $game = $this->Game->find('first', array('conditions' => array('Game.id' => $id), 'fields' => array('User.username,User.seo_username,Game.name,Game.user_id,Game.link,Game.starsize,Game.rate_count,Game.embed,Game.description,Game.id,Game.active,Game.picture,Game.seo_url,Game.clone,Game.owner_id,Game.fullscreen,Game.width,Game.height,Game.type'), 'contain' => array('User' => array('fields' => array('User.username,User.seo_username,User.adcode,User.picture')), 'Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))); //Recoded
-                $user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']), 'fields' => array('*')));
+                $user = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['user_id']), 'fields' => array('User.id', 'User.username', 'User.verify','User.analitics'), 'contain' => false));
             }
         }
 
