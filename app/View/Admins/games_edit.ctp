@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="content-wrapper">
-        <form id="game_add" class="form-horizontal" method="post" action="#" role="form">
+        <form id="games_edit" class="form-horizontal" method="post" role="form">
             <div class="form-group">
                 <label class="col-sm-2 col-md-2 control-label">
                     Picture
@@ -69,7 +69,7 @@
                     </span>
                 </label>
                 <div class="col-sm-10 col-md-8">
-                    <textarea id="desc" class="form-control" id="desc" rows="4" maxlength="500" name="notes" style="margin-bottom: 10px; height:100px;"><?php echo $data['Game']['description']; ?></textarea>
+                    <textarea id="description" class="form-control" rows="4" maxlength="500" name="description" style="margin-bottom: 10px; height:100px;"><?php echo $data['Game']['description']; ?></textarea>
                 </div>
             </div>
             <div class="address">
@@ -81,7 +81,7 @@
                         </span>
                     </label>
                     <div class="col-sm-5 col-md-4">
-                        <input type="text" class="form-control" id="game_link" maxlength="200" placeholder="Ex:http://socialesman.com" name="address" value="<?php echo $data['Game']['link']; ?>" <?php
+                        <input type="text" class="form-control" id="link" maxlength="200" placeholder="Ex:http://socialesman.com" name="link" value="<?php echo $data['Game']['link']; ?>" <?php
                         if ($data['Game']['install']) {
                             echo 'disabled="disabled"';
                         }
@@ -114,7 +114,7 @@
                     Category
                 </label>
                 <div class="col-sm-10 col-md-8">
-                    <select id="category_id" category="category" class="form-control col-sm-10" name="data[category_id]">
+                    <select id="category_id" category="category" class="form-control col-sm-10" name="category_id">
                         <?php foreach ($categories as $category) { ?>
                             <option value="<?php echo $category['Category']['id']; ?>" <?php if ($category['Category']['id'] == $data['Game']['category_id']) echo 'selected'; ?>><?php echo $category['Category']['name']; ?></option>
                         <?php } ?>
@@ -137,6 +137,11 @@
                     </span>
                 </label>
                 <div class="col-sm-10 col-md-8">
+                    <?php
+                    if (is_null($data['Game']['priority'])) {
+                        $data['Game']['priority'] = 0;
+                    }
+                    ?>
                     <input type="text" class="form-control" id="priority" name="priority" maxlength="45" value="<?php echo $data['Game']['priority']; ?>" />
                 </div>
             </div>
@@ -152,7 +157,7 @@
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="fullscreen" name="send_marketing" <?php
+                            <input type="checkbox" id="fullscreen" name="active" <?php
                             if ($data['Game']['active']) {
                                 echo 'checked';
                             }
@@ -169,7 +174,7 @@
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="fullscreen" name="send_marketing" <?php
+                            <input type="checkbox" id="fullscreen" name="fullscreen" <?php
                             if ($data['Game']['fullscreen']) {
                                 echo 'checked';
                             }
@@ -186,7 +191,7 @@
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="mobile" name="send_marketing" <?php
+                            <input type="checkbox" id="mobile" name="mobileready" <?php
                             if ($data['Game']['mobileready']) {
                                 echo 'checked';
                             }
@@ -203,7 +208,7 @@
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="installable" class="installable" name="send_marketing" <?php
+                            <input type="checkbox" id="installable" class="installable" name="install" <?php
                             if ($data['Game']['install']) {
                                 echo 'checked';
                             }
@@ -232,7 +237,7 @@
                             </span>
                         </label>
                         <div class="col-sm-5 col-md-4">
-                            <input type="text" class="form-control" id="gplay_link" placeholder="" name="gplay_link" value="<?php echo $android; ?>" />
+                            <input type="text" class="form-control" id="gplay_link" placeholder="" name="gplay_link" value="<?php echo $and; ?>" />
                         </div>
                     </div>
                 </div>
@@ -249,11 +254,6 @@
                         </div>
                     </div>
                 </div>
-            </div>         
-            <div class="form-group">
-                <input type="hidden" name="attr" id="attr" value="game_add" />
-                <input type="hidden" name="new_data" id="new_data" value="0" />
-                <input type="hidden" name="game_id" id="game_id" value="<?php echo $data['Game']['id']; ?>" />
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
@@ -270,3 +270,52 @@
         </form>
     </div>
 </div>
+<!-- Game Image Change Modal begins -->
+<div class="modal fade" id="gameChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+    <div class="modal-dialog" style="width:800px;">
+        <div>
+            <iframe id='gameframe' src="<?php echo $this->Html->url(array('controller' => 'uploads', 'action' => 'images', 'new_game', $user['User']['id'])); ?>" style='width:800px; height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+        </div>
+    </div>
+</div>
+<!-- Game Image Change Modal ends -->  
+<script>
+    $(document).ready(function() {
+        var form = $('form#games_edit');
+        var name = $('input#name');
+        var description = $('textarea#description');
+        var link = $('input#link');
+        var width = $('input#width');
+        var height = $('input#height');
+        var category_id = $('select#category_id');
+        var tags = $('input#tags');
+        var priority = $('input#priority');
+        var user_id = $('input#user_id');
+        var active = $('input#active');
+        var fullscreen = $('input#fullscreen');
+        var mobileready = $('input#mobileready');
+        var install = $('input#install');
+        form.validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                description: {
+                    required: true
+                },
+                active: {
+                    required: true
+                },
+                user_id: {
+                    required: true
+                },
+                priority: {
+                    required: true
+                },
+                category_id: {
+                    required: true
+                }
+            }
+        });
+    });
+</script>
