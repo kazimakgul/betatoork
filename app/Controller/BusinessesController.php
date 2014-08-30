@@ -328,7 +328,6 @@ class BusinessesController extends AppController {
                         'user_id' => $game_user_id,
                         'category_id' => $category_id,
                         'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name, $game_id),
-                        'owner_id' => $game_user_id,
                         'user_id' => $game_user_id,
                         'fullscreen' => $fullscreen,
                         'install' => $installable,
@@ -336,6 +335,7 @@ class BusinessesController extends AppController {
 
                  if ($new_game != 0) { 
                  $filtered_data['Game']['priority']=0; 
+                 $filtered_data['Game']['owner_id']=$user_id; 
                  }
 
                 //*****************************
