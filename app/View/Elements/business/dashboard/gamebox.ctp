@@ -164,8 +164,22 @@ if ($game['Game']['install'] == 1) {
                         <?php } else { ?>
                             <button type="button" class="btn btn-default btn-sm featured_toggle" id='<?php echo $game['Game']['id']; ?>'><i class="fa fa-bullseye"></i> Set Featured</button>
                         <?php } ?>
-                        <a href="<?php echo $game_edit . '/' . $id; ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                        <a data-toggle="modal" data-target="#confirm-modal" onclick="game_id_create(<?php echo $id; ?>);" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Delete</a>
+                        
+                        <!-- Publish Button -->
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-success btn-sm">Published</button>
+                          <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
+                            <span class="fa fa-cog"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="<?php echo $game_edit . '/' . $id; ?>" ><i class="fa fa-edit"></i> Edit</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#confirm-modal" onclick="game_id_create(<?php echo $id; ?>);" ><i class="fa fa-trash-o"></i> Delete</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="fa fa-info"></i> Details</a></li>
+                          </ul>
+                        </div>
+
                     </span>
                 <?php } ?>
             </div>
