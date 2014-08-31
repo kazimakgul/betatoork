@@ -960,7 +960,7 @@ class BusinessesController extends AppController {
             'conditions' => array(
                 'NOT' => array(
                     'Game.id' => $welcome_games
-                )
+                ),'Game.active'=>1
             ),
             'order' => array(
                 'Game.priority' => 'DESC'
@@ -1204,7 +1204,7 @@ class BusinessesController extends AppController {
                 'Game.clone' => 0,
                 'NOT' => array(
                     'Game.priority' => NULL
-                )
+                ),'Game.active'=>1
             ),
             'order' => array(
                 'Game.priority' => 'DESC',
@@ -2646,7 +2646,7 @@ class BusinessesController extends AppController {
                 'conditions' => array(
                     'NOT' => array(
                         'Game.priority' => NULL
-                    )
+                    ),'Game.active'=>1
                 ),
                 'order' => array(
                     'Game.priority' => 'DESC',
@@ -2736,7 +2736,7 @@ class BusinessesController extends AppController {
                     ),
                     'NOT' => array(
                         'Game.priority' => NULL
-                    )
+                    ),'Game.active'=>1
                 ),
                 'order' => array(
                     'Game.priority' => 'DESC',
