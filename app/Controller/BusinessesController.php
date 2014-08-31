@@ -1637,7 +1637,7 @@ class BusinessesController extends AppController {
             'contain' => array('Ad_area'),
             'fields' => array('Ad_setting.ad_code_id,Ad_setting.ad_area_id,Ad_area.name')));
 
-        $Ad_area = $this->Ad_area->find('all', array('fields' => array('Ad_area.id,Ad_area.name')));
+        $Ad_area = $this->Ad_area->find('all', array('fields' => array('Ad_area.id,Ad_area.name,Ad_area.description')));
         $this->set('ad_area', $Ad_area);
 
         $this->set('Ads', $adcodes);
