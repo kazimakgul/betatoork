@@ -16,6 +16,9 @@ if ($game['Game']['install'] == 1) {
     <div class="panel panel-default">
         <a href="<?php echo $playurl ?>" target="_blank" style="text-decoration: none;">
             <div style="right:20px; top:4px; position:absolute;">
+               
+
+            <?php if ($game['Game']['active'] == 1) { ?> 
                 <?php if ($game['Game']['mobileready'] == 1) { ?>
                     <span data-toggle="tooltip" data-placement="top" data-original-title="Compatible With" class="label label-primary" ><i class="fa fa-mobile"></i> Mobile</span>
                 <?php } ?>
@@ -27,6 +30,10 @@ if ($game['Game']['install'] == 1) {
                 <?php } else if($game['Game']['mobileready']!=1) { ?>
                     <span data-toggle="tooltip" data-placement="top" data-original-title="Suitable for" class="label label-danger" ><i class="fa fa-file-code-o"></i> Embed</span>
                 <?php } ?>
+            <?php }else{ ?>
+                    <span data-toggle="tooltip" data-placement="top" data-original-title="This game is no longer available!" class="label label-danger" ><i class="fa fa-times"></i> Unpublished</span>
+            <?php } ?>        
+
                 <?php if (isset($function) && !empty($function)) { ?>
                     <a style="text-decoration: none;" data-original-title="Change Game" title="" data-placement="top" data-toggle="tooltip" onclick="get_new_game(<?php echo $id; ?>);">
                         <i class="btn btn-xs btn-default fa fa-recycle"></i>
