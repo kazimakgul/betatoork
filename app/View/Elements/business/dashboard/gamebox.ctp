@@ -30,7 +30,7 @@ if ($game['Game']['install'] == 1) {
                 <?php } else if($game['Game']['mobileready']!=1) { ?>
                     <span data-toggle="tooltip" data-placement="top" data-original-title="Suitable for" class="label label-danger" ><i class="fa fa-file-code-o"></i> Embed</span>
                 <?php } ?>
-            <?php }else{ ?>
+            <?php }else if($gameboxtype == "favorite"){ ?>
                     <span data-toggle="tooltip" data-placement="top" data-original-title="This game is no longer available!" class="label label-danger" ><i class="fa fa-times"></i> Unpublished</span>
             <?php } ?>        
 
