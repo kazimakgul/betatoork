@@ -1438,6 +1438,25 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/toolsNdocs');
     }
 
+
+
+    /**
+     * Support function
+     * Cloned from toolsNdocs method
+     *
+     * @param
+     * @return Support Page
+     * @author Kazim Akgul
+     */
+    public function support() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/support');
+    }
+
     /**
      * Dummy faq function
      * Cloned from toolsNdocs method

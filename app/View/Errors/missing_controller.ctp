@@ -1,5 +1,9 @@
-<body id="signin" class="clear">
+<?php
+$index = $this->Html->url(array("controller" => "games", "action" => "index"));
+$register = $this->Html->url(array("controller" => "users", "action" => "register2"));
+?>
 
+<body id="signin" class="clear">
 
     <a href="<?php echo $index; ?>" class="logo">
         <img width="100px" height="100px" src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/clonelogo.png">
@@ -18,8 +22,8 @@
     <div class="bottom-wrapper">
         <div class="message">
             <span>Don't have an account?</span>
-            <a href="<?php echo $index; ?>">Sign up here</a>.
+            <a href="<?php echo $register; ?>">Sign up here</a>.
         </div>
     </div>
-
+    
 </body>
