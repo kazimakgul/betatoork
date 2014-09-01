@@ -2243,6 +2243,7 @@ class GamesController extends AppController {
             ),
             'conditions' => array(
                 'Game.user_id' => $userid,
+                'Game.active' => 1
             ),
             'limit' => 3,
             'order' => 'rand()'
