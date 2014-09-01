@@ -13,10 +13,12 @@ if (isset($query)) {
     $all = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames_search')) . '?q=' . $query;
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames_search', 'filter' => 'mobiles')) . '?q=' . $query;
     $featured = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames_search', 'filter' => 'featured')) . '?q=' . $query;
+    $draft = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames_search', 'filter' => 'draft')) . '?q=' . $query;
 } else {
     $all = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'mobiles'));
     $featured = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'featured'));
+    $draft = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'draft'));
 }
 //this provides titles for sorting
 if (isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction'])) {
@@ -69,7 +71,8 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
                     <label>Filter Games:</label>
                     <a href="<?php echo $all; ?>" <?php echo $activefilter === 0 ? 'class="active"' : ''; ?>>All Games</a>
                     <a href="<?php echo $mobile; ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games</a>
-                    <a href="<?php echo $featured; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Featured</a>                    
+                    <a href="<?php echo $featured; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Featured</a>
+                    <a href="<?php echo $draft; ?>" <?php echo $activefilter === 3 ? 'class="active"' : ''; ?>>Draft</a>
                     <div class="show-options">
                         <?php if (!isset($query)) { ?>
                             <!--Sorting Tags Start here-->

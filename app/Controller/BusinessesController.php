@@ -2398,6 +2398,9 @@ class BusinessesController extends AppController {
         } elseif ($filter === 'featured') {
             $activefilter = 2;
             $this->paginate['Game']['conditions']['Game.featured'] = 1;
+        } elseif ($filter === 'draft') {
+            $activefilter = 3;
+            $this->paginate['Game']['conditions']['Game.active'] = 0;
         } else {
             $activefilter = 0;
         }
