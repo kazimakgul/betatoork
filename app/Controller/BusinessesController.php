@@ -1863,11 +1863,33 @@ class BusinessesController extends AppController {
         $newlimit = 3;
         $hotlimit = 6;
         
-        $this->set('featuredgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.featured' => 1), 'limit' => $featlimit, 'order' => 'rand()', 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
-        $this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $hotlimit, 'order' => array('Gamestat.potential' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
-        $this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $newlimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
         
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid,'Game.active'=>1), 'limit' => $PaginateLimit, 'order' => array('Gamestat.playcount' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $existence = array();
+
+        $featured_data=$this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.featured' => 1), 'limit' => $featlimit, 'order' => 'rand()', 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $this->set('featuredgames',$featured_data);
+        foreach($featured_data as $data)
+        {
+            array_push($existence,$data['Game']['id']);
+        }    
+
+
+        $hotgames_data=$this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid,'NOT' => array( 'Game.id' => $existence)), 'limit' => $hotlimit, 'order' => array('Gamestat.potential' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $this->set('hotgames',$hotgames_data);
+        foreach($hotgames_data as $data)
+        {
+            array_push($existence,$data['Game']['id']);
+        }
+
+        $newgames_data=$this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid,'NOT' => array( 'Game.id' => $existence)), 'limit' => $newlimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $this->set('newgames',$newgames_data);
+        foreach($newgames_data as $data)
+        {
+            array_push($existence,$data['Game']['id']);
+        }
+
+        
+        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid,'Game.active'=>1,'NOT' => array( 'Game.id' => $existence)), 'limit' => $PaginateLimit, 'order' => array('Gamestat.playcount' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
 
