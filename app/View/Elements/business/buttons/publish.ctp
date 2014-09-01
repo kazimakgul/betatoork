@@ -1,4 +1,4 @@
-<div class="btn-group">
+<div class="btn-group pull-right">
     <?php if ($active == 1) { ?>
         <button type="button" class="btn btn-success btn-sm switch_publish1" id="<?php echo $id; ?>">Published</button>
         <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
