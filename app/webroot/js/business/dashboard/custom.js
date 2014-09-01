@@ -98,7 +98,7 @@ $(document).ready(function() {
                 category: cat_arr
             },
             function
-                (data) {
+                    (data) {
                 if (data.error) {
                     alert(data.error); // error.id ye göre mesaj yazdırcak..
                 } else {
@@ -361,18 +361,18 @@ $(document).ready(function() {
 
 
     $('#switch_publish').click(function() {
-      
-      var link = switch_publish;
-      var game_id = $('#game_id').val();
 
-      $.post(link, {
+        var link = switch_publish;
+        var game_id = $('#game_id').val();
+
+        $.post(link, {
             game_id: game_id,
         },
                 function(data) {
                     if (data.error) {
                         alert(data.error); // error.id ye göre mesaj yazdırcak..
                     } else {
-                         //alert(data.rtdata.title);
+                        //alert(data.rtdata.title);
                         //Messenger().post(data.success);
                         location.reload();
 
@@ -541,18 +541,18 @@ $(document).ready(function() {
 
     //trig when user click on installable check box on game add/edit
     $('.installable').click(function() {
-     
-            if ($('.installable').prop('checked'))
-            {
-                $('.app_details').show();
-                $('#game_link').val('');
-                $('#game_link').attr('disabled', 'disabled');
-            } else {
-                $('.app_details').hide();
-                $('#game_link').removeAttr('disabled');
-            }
 
-    }); 
+        if ($('.installable').prop('checked'))
+        {
+            $('.app_details').show();
+            $('#game_link').val('');
+            $('#game_link').attr('disabled', 'disabled');
+        } else {
+            $('.app_details').hide();
+            $('#game_link').removeAttr('disabled');
+        }
+
+    });
 
 
     $('#redirect').click(function() {
@@ -1422,4 +1422,59 @@ $('a.grid-view').click(function() {
             document.cookie = 'view=grid';
             break;
     }
+});
+
+function publish(id) {
+    $.post(publish);
+}
+
+function unpublish(id) {
+    $.post(unpublish);
+}
+
+$('.switch_publish1').click(function(e) {
+    e.preventDefault();
+    var link = switch_publish;
+    var button = $(this);
+    button
+            .removeClass('btn-success')
+            .removeClass('btn-danger')
+            .addClass('btn-warning')
+            .html('Processing')
+            .next('button')
+            .removeClass('btn-success')
+            .removeClass('btn-danger')
+            .addClass('btn-warning')
+            .find('i')
+            .addClass('spin');
+    var game_id = button.attr('id');
+    $.post(link, {
+        game_id: game_id,
+    }, function(data) {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            if (data.rtdata.title === "Game has been published.") {
+                button
+                        .removeClass('btn-warning')
+                        .addClass('btn-success')
+                        .html('Published')
+                        .next('button')
+                        .removeClass('btn-warning')
+                        .addClass('btn-success')
+                        .find('i')
+                        .removeClass('spin');
+            } else if (data.rtdata.title === "Game has been unpublished.") {
+                button
+                        .removeClass('btn-warning')
+                        .addClass('btn-danger')
+                        .html('UnPublished')
+                        .next('button')
+                        .removeClass('btn-warning')
+                        .addClass('btn-danger')
+                        .find('i')
+                        .removeClass('spin');
+            }
+        }
+    }, 'json');
 });

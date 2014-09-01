@@ -14,20 +14,22 @@
             } else {
                 $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
             }
+            $active = $game['Game']['active'];
             ?>
-            <?php echo $this->element('business/dashboard/gamebox',
-                array(
-                    "gameboxtype" => "mygames",
-                    "id"        =>$id,
-                    "playurl"   =>$playurl,
-                    "game"      =>$game,
-                    "name"      =>$name,
-                    "rates"     =>$rates,
-                    "clones"    =>$clones,
-                    "favorites" =>$favorites,
-                    "plays"     =>$plays,
-                     "game_edit"=>$game_edit
-                )) ?>
+            <?php
+            echo $this->element('business/dashboard/gamebox', array(
+                "gameboxtype" => "mygames",
+                "id" => $id,
+                "playurl" => $playurl,
+                "game" => $game,
+                "name" => $name,
+                "rates" => $rates,
+                "clones" => $clones,
+                "favorites" => $favorites,
+                "plays" => $plays,
+                "game_edit" => $game_edit
+            ))
+            ?>
             <?php
         }
     } else {
@@ -35,6 +37,6 @@
     }
     ?>
     <div class="text-center">
-        <?php echo $this->element('business/components/pagination') ?>
+<?php echo $this->element('business/components/pagination') ?>
     </div>
 </div>

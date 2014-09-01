@@ -18,44 +18,32 @@ if (isset($query)) {
     $mobile = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'mobiles'));
     $featured = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames', 'filter' => 'featured'));
 }
-    
-     //this provides titles for sorting
-     if(isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction']))
-     {
-         $sort = $this->request->params['named']['sort'];
-         $direction = $this->request->params['named']['direction'];
-         if($sort=='Game.name' && $direction=='asc')
-         {
-               $name = 'A to Z';
-         }else if($sort=='Game.name' && $direction=='desc')
-         {
-               $name = 'Z to A';
-         }else if($sort=='Game.starsize' && $direction=='desc')
-         {
-               $name = 'Highest Rating';
-         }else if($sort=='Game.starsize' && $direction=='asc')
-         {
-               $name = 'Least Rating';
-         }else if($sort=='Gamestat.channelclone' && $direction=='desc')
-         {
-               $name = 'Most Cloned';
-         }else if($sort=='Gamestat.channelclone' && $direction=='asc')
-         {
-               $name = 'Least Cloned';
-         }else if($sort=='Gamestat.favcount' && $direction=='desc')
-         {
-               $name = 'Most Favorited';
-         }else if($sort=='Gamestat.favcount' && $direction=='asc')
-         {
-               $name = 'Least Favorited';
-         }else if($sort=='Gamestat.playcount' && $direction=='desc')
-         {
-               $name = 'Most Played';
-         }else if($sort=='Gamestat.playcount' && $direction=='asc')
-         {
-               $name = 'Least Played';
-         }
-     }
+//this provides titles for sorting
+if (isset($this->request->params['named']['sort']) && isset($this->request->params['named']['direction'])) {
+    $sort = $this->request->params['named']['sort'];
+    $direction = $this->request->params['named']['direction'];
+    if ($sort == 'Game.name' && $direction == 'asc') {
+        $name = 'A to Z';
+    } else if ($sort == 'Game.name' && $direction == 'desc') {
+        $name = 'Z to A';
+    } else if ($sort == 'Game.starsize' && $direction == 'desc') {
+        $name = 'Highest Rating';
+    } else if ($sort == 'Game.starsize' && $direction == 'asc') {
+        $name = 'Least Rating';
+    } else if ($sort == 'Gamestat.channelclone' && $direction == 'desc') {
+        $name = 'Most Cloned';
+    } else if ($sort == 'Gamestat.channelclone' && $direction == 'asc') {
+        $name = 'Least Cloned';
+    } else if ($sort == 'Gamestat.favcount' && $direction == 'desc') {
+        $name = 'Most Favorited';
+    } else if ($sort == 'Gamestat.favcount' && $direction == 'asc') {
+        $name = 'Least Favorited';
+    } else if ($sort == 'Gamestat.playcount' && $direction == 'desc') {
+        $name = 'Most Played';
+    } else if ($sort == 'Gamestat.playcount' && $direction == 'asc') {
+        $name = 'Least Played';
+    }
+}
 ?>
 <body id="users">
 <div id="wrapper">
@@ -70,12 +58,7 @@ if (isset($query)) {
                     My Games
                 </a>
             </div>
-           
-
-
-      <?php echo $this->element('business/dashboard/search_bar', array('title'=>'Search games...','url' => $search_action)); ?>
-
-
+            <?php echo $this->element('business/dashboard/search_bar', array('title' => 'Search games...', 'url' => $search_action)); ?>
             <a href="<?php echo $game_add; ?>" class="new-user btn btn-success pull-right">
                 <span>Add Game</span>
             </a>
@@ -88,37 +71,33 @@ if (isset($query)) {
                     <a href="<?php echo $mobile; ?>" <?php echo $activefilter === 1 ? 'class="active"' : ''; ?>>Mobile Games</a>
                     <a href="<?php echo $featured; ?>" <?php echo $activefilter === 2 ? 'class="active"' : ''; ?>>Featured</a>                    
                     <div class="show-options">
-                       
-                    <?php if (!isset($query)) { ?>
-
-                         <!--Sorting Tags Start here-->
-                          <?php if(isset($name)){ ?>
-                          <span style="margin-top:-16px;text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
-                             <a href="<?php echo $mygames; ?>" style="text-decoration: none !important;color: #666">
-                            <?php echo $name; ?>
-                            <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;"><i class="fa fa-times"></i></span>
-                            </a>
-                          </span>
-                          <?php } ?>
-                          <!--Sorting Tags Ends here-->
-                        <div class="dropdown">
-
-                            <a class="button" data-toggle="dropdown" href="#">
-                                <span>
-                                    Sort by
-                                    <i class="fa fa-unsorted"></i>
+                        <?php if (!isset($query)) { ?>
+                            <!--Sorting Tags Start here-->
+                            <?php if (isset($name)) { ?>
+                                <span style="margin-top:-16px;text-transform: uppercase;font-family: Arial, sans-serif;cursor: pointer;font-size: 12px;margin-right:12px;background-color: #ffffff; color: #666; border: 1px solid #ccc;" class="btn btn-default">
+                                    <a href="<?php echo $mygames; ?>" style="text-decoration: none !important;color: #666">
+                                        <?php echo $name; ?>
+                                        <span style="font-family: Arial, sans-serif;color: #000; font-size: 10px;font-weight: bold; margin-left: 5px;"><i class="fa fa-times"></i></span>
+                                    </a>
                                 </span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></li>
-                                <li><?php echo $this->Paginator->sort('Game.starsize', 'Rates', array('direction' => 'desc')) ?></li>
-                            </ul>
-                        </div>
-                      <?php }?>
-
+                            <?php } ?>
+                            <!--Sorting Tags Ends here-->
+                            <div class="dropdown">
+                                <a class="button" data-toggle="dropdown" href="#">
+                                    <span>
+                                        Sort by
+                                        <i class="fa fa-unsorted"></i>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <li><?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')) ?></li>
+                                    <li><?php echo $this->Paginator->sort('Gamestat.channelclone', 'Clones', array('direction' => 'desc')) ?></li>
+                                    <li><?php echo $this->Paginator->sort('Gamestat.favcount', 'Favorites', array('direction' => 'desc')) ?></li>
+                                    <li><?php echo $this->Paginator->sort('Gamestat.playcount', 'Plays', array('direction' => 'desc')) ?></li>
+                                    <li><?php echo $this->Paginator->sort('Game.starsize', 'Rates', array('direction' => 'desc')) ?></li>
+                                </ul>
+                            </div>
+                        <?php } ?>
                         <?php
                         if (isset($view) && $view === 'list') {
                             ?>
