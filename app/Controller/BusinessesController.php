@@ -247,6 +247,10 @@ class BusinessesController extends AppController {
                 $this->set('_serialize', array('success'));
             } elseif ($attr == "game_add") {
                 $game_name = $this->request->data['name'];
+                if (isset($this->request->data['active'])) {
+                    $game_active = $this->request->data['active'];
+                }
+                
                 $game_description = $this->request->data['desc'];
                 $game_link = $this->request->data['game_link'];
                 $game_width = $this->request->data['width'];
@@ -324,7 +328,7 @@ class BusinessesController extends AppController {
                         'height' => $game_height,
                         'type' => $type,
                         'link' => $game_link,
-                        'active' => 1,
+                        'active' => isset($game_active) ? $game_active : 1,
                         'user_id' => $game_user_id,
                         'category_id' => $category_id,
                         'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name, $game_id),

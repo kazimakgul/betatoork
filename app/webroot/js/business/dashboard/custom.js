@@ -263,6 +263,113 @@ $(document).ready(function() {
 
     });
 
+    $('.NewButton').click(function(e) {
+        e.preventDefault();
+        var link = newData; //Businesses updatedata function run.
+        var attr = $('#attr').val(); //Form control value
+        var btn = $(this);
+        var id = $(this).attr('id');
+        if (id == 'NewButton1') {
+            var active = '1';
+        } else if (id == 'NewButton2') {
+            var active = '0';
+        }
+        btn.button('loading');
+        if (attr == "new_ads" && $('#add_ads').valid())
+        {
+            var anyChecked = $("input:checkbox[name=category]:checked");
+            var category = new Array();
+            var countC = anyChecked.length;
+            for (i = 0; i <= countC - 1; i++)
+            {
+                category[i] = anyChecked[i].value;
+            }
+            var cat_arr = JSON.stringify(category);
+            $.post(link, {
+                attr: attr,
+                title: $('#title').val(),
+                desc: $('#desc').val(),
+                category: cat_arr
+            },
+            function(data) {
+                if (data.error) {
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                } else {
+                    Messenger().post(data.success);
+                    btn.button('reset');
+                    setTimeout(function() {
+                        location.href = ads_management
+                    }, 2000);
+                }
+            }, 'json');
+        }
+        else if (attr == "game_add" && $('#game_add').valid())
+        {
+            $new_game = $('#new_data').val(); //if It is 1 so it means game add if it is not it means edit.
+
+            if ($new_game == 0)
+            {
+                $edited_game_id = $('#game_id').val();
+            } else {
+                $edited_game_id = 0;
+            }
+
+            if ($('#mobile').prop('checked'))
+            {
+                $mobile_ready = 1;
+            } else {
+                $mobile_ready = 0;
+            }
+
+            if ($('#fullscreen').prop('checked'))
+            {
+                $full_screen = 1;
+            } else {
+                $full_screen = 0;
+            }
+
+            if ($('#installable').prop('checked'))
+            {
+                $installable = 1;
+            } else {
+                $installable = 0;
+            }
+
+
+            $.post(link, {
+                attr: attr,
+                active: active,
+                name: $('#name').val(),
+                desc: $('#desc').val(),
+                game_link: $('#game_link').val(),
+                width: $('#width').val(),
+                height: $('#height').val(),
+                category: $('#category_id').val(),
+                tags: $('#tags').val(),
+                android: $('#gplay_link').val(),
+                ios: $('#appstore_link').val(),
+                fullscreen: $full_screen,
+                mobile: $mobile_ready,
+                installable: $installable,
+                image_name: $('#game_image').attr('data-src'),
+                game_file: $('#game_file').val(),
+                new_game: $new_game,
+                game_id: $edited_game_id
+            },
+            function(data) {
+                if (data.error) {
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                } else {
+                    Messenger().post(data.success);
+                    btn.button('reset');
+                    //setTimeout(function(){location.href=ads_management}, 2000 );
+                }
+            }, 'json');
+        } else {
+            btn.button('reset');
+        }
+
+    });
 
     $('#deletedata').click(function(e) {
         e.preventDefault();
