@@ -328,7 +328,6 @@ class BusinessesController extends AppController {
                         'user_id' => $game_user_id,
                         'category_id' => $category_id,
                         'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name, $game_id),
-                        'owner_id' => $game_user_id,
                         'user_id' => $game_user_id,
                         'fullscreen' => $fullscreen,
                         'install' => $installable,
@@ -336,6 +335,7 @@ class BusinessesController extends AppController {
 
                  if ($new_game != 0) { 
                  $filtered_data['Game']['priority']=0; 
+                 $filtered_data['Game']['owner_id']=$user_id; 
                  }
 
                 //*****************************
@@ -960,7 +960,7 @@ class BusinessesController extends AppController {
             'conditions' => array(
                 'NOT' => array(
                     'Game.id' => $welcome_games
-                )
+                ),'Game.active'=>1
             ),
             'order' => array(
                 'Game.priority' => 'DESC'
@@ -1204,7 +1204,7 @@ class BusinessesController extends AppController {
                 'Game.clone' => 0,
                 'NOT' => array(
                     'Game.priority' => NULL
-                )
+                ),'Game.active'=>1
             ),
             'order' => array(
                 'Game.priority' => 'DESC',
@@ -1637,7 +1637,7 @@ class BusinessesController extends AppController {
             'contain' => array('Ad_area'),
             'fields' => array('Ad_setting.ad_code_id,Ad_setting.ad_area_id,Ad_area.name')));
 
-        $Ad_area = $this->Ad_area->find('all', array('fields' => array('Ad_area.id,Ad_area.name')));
+        $Ad_area = $this->Ad_area->find('all', array('fields' => array('Ad_area.id,Ad_area.name,Ad_area.description')));
         $this->set('ad_area', $Ad_area);
 
         $this->set('Ads', $adcodes);
@@ -1831,7 +1831,7 @@ class BusinessesController extends AppController {
         $PaginateLimit = 12;
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
 
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $PaginateLimit, 'order' => array('Gamestat.playcount' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid,'Game.active'=>1), 'limit' => $PaginateLimit, 'order' => array('Gamestat.playcount' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
         $cond = $this->paginate('Game');
 
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
@@ -2365,6 +2365,7 @@ class BusinessesController extends AppController {
                     'Game.rate_count',
                     'Game.embed',
                     'Game.featured',
+                    'Game.active',
                     'Game.clone',
                     'Game.created',
                     'Game.priority',
@@ -2512,6 +2513,7 @@ class BusinessesController extends AppController {
                             'Game.id',
                             'Game.link',
                             'Game.install',
+                            'Game.active',
                             'Game.picture',
                             'Game.starsize',
                             'Game.embed',
@@ -2646,7 +2648,7 @@ class BusinessesController extends AppController {
                 'conditions' => array(
                     'NOT' => array(
                         'Game.priority' => NULL
-                    )
+                    ),'Game.active'=>1
                 ),
                 'order' => array(
                     'Game.priority' => 'DESC',
@@ -2736,7 +2738,7 @@ class BusinessesController extends AppController {
                     ),
                     'NOT' => array(
                         'Game.priority' => NULL
-                    )
+                    ),'Game.active'=>1
                 ),
                 'order' => array(
                     'Game.priority' => 'DESC',

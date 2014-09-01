@@ -374,11 +374,10 @@ $(document).ready(function() {
                     } else {
                          //alert(data.rtdata.title);
                         //Messenger().post(data.success);
+                        location.reload();
 
                     }
                 }, 'json');
-
-          location.reload();
 
     });
 
