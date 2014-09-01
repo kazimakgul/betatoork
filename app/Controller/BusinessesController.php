@@ -2501,7 +2501,7 @@ class BusinessesController extends AppController {
                 ),
                 'limit' => $limit,
                 'order' => array(
-                    'Favorite.recommend' => 'desc'
+                    'Favorite.id' => 'desc'
                 ),
                 'contain' => array(
                     'Game' => array(
