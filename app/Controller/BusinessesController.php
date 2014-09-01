@@ -1993,6 +1993,14 @@ class BusinessesController extends AppController {
 
 
         $this->layout = 'Business/business';
+        $user_id = $this->Auth->user('id');
+
+        if($game['Game']['active']==0 && $game['Game']['user_id']!=$user_id)
+        {
+        $this->render('/Businesses/404');
+        }
+
+
         if ($game['Game']['clone'] == 1) {
             $original = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['owner_id']), 'fields' => array('User.adcode'), 'contain' => false));
             $game['User']['adcode'] = $original['User']['adcode'];
@@ -2008,7 +2016,7 @@ class BusinessesController extends AppController {
         $limit = 12;
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $game['Game']['user_id']), 'limit' => $limit, 'order' => array('Game.recommend' => 'desc')));
         $cond = $this->paginate('Game');
-        $user_id = $this->Auth->user('id');
+        
         $game_id = $game['Game']['id'];
         if ($user_id) {
             $this->set('auth_user', $user_id);

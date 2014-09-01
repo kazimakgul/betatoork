@@ -1,3 +1,9 @@
+<?php
+if($game['Game']['active']==0)
+{
+    echo 'game is not active';
+}
+ ?>
 <div class="container">
     <?php
     $controls = NULL;
