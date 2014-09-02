@@ -56,9 +56,14 @@
             'business/dashboard/vendor/messenger/messenger.min',
             'business/dashboard/vendor/messenger/messenger-theme-flat',
             'business/dashboard/star-rating',
+            'admins/channels',
+            'admins/games',
             'business/dashboard/custom.js'
         ));
         ?>
+        <script>
+            var games_edit_post = '<?php echo $this->Html->url(array('controller' => 'admins', 'action' => 'games_edit_post')); ?>';
+        </script>
         <script>
             var toorksize   =   'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png';
             var avatar      =   'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_manchannelavatar_default.png';

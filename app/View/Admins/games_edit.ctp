@@ -15,6 +15,7 @@
     </div>
     <div class="content-wrapper">
         <form id="games_edit" class="form-horizontal" method="post" role="form">
+            <input type="hidden" id="id" value="<?php echo $data['Game']['id'] ?>"> 
             <div class="form-group">
                 <label class="col-sm-2 col-md-2 control-label">
                     Picture
@@ -153,11 +154,12 @@
                     <input type="text" class="form-control" id="user_id" name="user_id" maxlength="45" value="<?php echo $data['Game']['user_id']; ?>" />
                 </div>
             </div>
+            <!--
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="fullscreen" name="active" <?php
+                            <input type="checkbox" id="active" name="active" <?php
                             if ($data['Game']['active']) {
                                 echo 'checked';
                             }
@@ -170,6 +172,7 @@
                     </div>
                 </div>
             </div>
+            -->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
                     <div class="checkbox">
@@ -191,7 +194,7 @@
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="mobile" name="mobileready" <?php
+                            <input type="checkbox" id="mobileready" name="mobileready" <?php
                             if ($data['Game']['mobileready']) {
                                 echo 'checked';
                             }
@@ -255,16 +258,18 @@
                     </div>
                 </div>
             </div>
+            <!--
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
                     <a data-toggle="modal" data-target="#confirm-modal" onclick="return false;" style="text-decoration:none;" href="#" ><i style="color: grey;" class="fa fa-trash-o"></i> <span style='color:red;'>Delete this game!</span></a>
                 </div>
             </div>
+            -->
             <div class="form-group form-actions">
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
-                    <button id="NewButton" class="btn btn-success">
-                        Save Changes
-                    </button>
+                    <button id="button_1" class="btn btn-success games_edit">Save And Publish</button>
+                    <button id="button_2" class="btn btn-warning games_edit">Save As Draft</button>
+                    <a data-toggle="modal" data-target="#confirm-modal" onclick="return false;" id="NewButton" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </form>
@@ -279,43 +284,3 @@
     </div>
 </div>
 <!-- Game Image Change Modal ends -->  
-<script>
-    $(document).ready(function() {
-        var form = $('form#games_edit');
-        var name = $('input#name');
-        var description = $('textarea#description');
-        var link = $('input#link');
-        var width = $('input#width');
-        var height = $('input#height');
-        var category_id = $('select#category_id');
-        var tags = $('input#tags');
-        var priority = $('input#priority');
-        var user_id = $('input#user_id');
-        var active = $('input#active');
-        var fullscreen = $('input#fullscreen');
-        var mobileready = $('input#mobileready');
-        var install = $('input#install');
-        form.validate({
-            rules: {
-                name: {
-                    required: true
-                },
-                description: {
-                    required: true
-                },
-                active: {
-                    required: true
-                },
-                user_id: {
-                    required: true
-                },
-                priority: {
-                    required: true
-                },
-                category_id: {
-                    required: true
-                }
-            }
-        });
-    });
-</script>

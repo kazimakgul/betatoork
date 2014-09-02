@@ -406,82 +406,173 @@ class AdminsController extends AppController {
      * @author Emircan Ok
      */
     public function games_edit($id) {
-        if (empty($this->request->data)) {
-            $this->layout = 'admin';
-            $this->sideBar();
-            $this->games_model();
-            $data = $this->Game->find('first', array(
-                'fields' => array(
-                    'Game.id',
-                    'Game.name',
-                    'Game.link',
-                    'Game.description',
-                    'Game.active',
-                    'Game.user_id',
-                    'Game.width',
-                    'Game.height',
-                    'Game.priority',
-                    'Game.category_id',
-                    'Game.picture',
-                    'Game.mobileready',
-                    'Game.fullscreen',
-                    'Game.featured',
-                    'Game.install'
-                ),
-                'conditions' => array(
-                    'Game.id' => $id
-                )
-            ));
-            debug($data);
-            if ($data['Game']['install']) {
-                $this->loadModel('Applink');
-                $and = NULL;
-                $ios = NULL;
-                $app = $this->Applink->find('all', array('conditions' => array('Applink.game_id' => $id)));
-                foreach ($app as $platform) {
-                    if ($platform['Applink']['platform_id'] == 1) {
-                        $and = $platform['Applink']['link'];
-                    }
-                    if ($platform['Applink']['platform_id'] == 2) {
-                        $ios = $platform['Applink']['link'];
-                    }
+        $this->layout = 'admin';
+        $this->sideBar();
+        $this->games_model();
+        $data = $this->Game->find('first', array(
+            'fields' => array(
+                'Game.id',
+                'Game.name',
+                'Game.link',
+                'Game.description',
+                'Game.active',
+                'Game.user_id',
+                'Game.width',
+                'Game.height',
+                'Game.priority',
+                'Game.category_id',
+                'Game.picture',
+                'Game.mobileready',
+                'Game.fullscreen',
+                'Game.featured',
+                'Game.install'
+            ),
+            'conditions' => array(
+                'Game.id' => $id
+            )
+        ));
+        debug($data);
+        if ($data['Game']['install']) {
+            $this->loadModel('Applink');
+            $and = NULL;
+            $ios = NULL;
+            $app = $this->Applink->find('all', array('conditions' => array('Applink.game_id' => $id)));
+            foreach ($app as $platform) {
+                if ($platform['Applink']['platform_id'] == 1) {
+                    $and = $platform['Applink']['link'];
                 }
-                $this->set('and', $and);
-                $this->set('ios', $ios);
+                if ($platform['Applink']['platform_id'] == 2) {
+                    $ios = $platform['Applink']['link'];
+                }
             }
-            $this->set('data', $data);
-            $categories = $this->Category->find('all', array(
-                'order' => array(
-                    'Category.name' => 'asc'
-                )
-            ));
-            debug($categories);
-            $this->set('categories', $categories);
-            $this->set('title_for_layout', 'Clone Admin');
-            $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-            $this->set('author_for_layout', 'Clone');
+            $this->set('and', $and);
+            $this->set('ios', $ios);
+        }
+        $this->set('data', $data);
+        $categories = $this->Category->find('all', array(
+            'order' => array(
+                'Category.name' => 'asc'
+            )
+        ));
+        debug($categories);
+        $this->set('categories', $categories);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+    }
+
+    /**
+     * Save Game Edit Data
+     */
+    public function games_edit_post() {
+        //debug($this->request->data);
+        $this->layout = 'ajax';
+        if ($image_name != 'current' && $image_name != 'empty') {
+            $file = new File(WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $image_name, false);
+            $info = $file->info();
+            $filename = $info["filename"];
+            $ext = $info["extension"];
+            $basename = $info["basename"];
+            $dirname = $info["dirname"];
+            $newname = $filename . '_toorksize.' . $ext;
+            rename(WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $image_name, WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $newname);
+        }
+
+        if ($game_file != 'empty') {
+            $type = $this->Game->get_game_type($game_file);
         } else {
-            debug($this->request->data);
-            $data = array(
-                'Game' => array(
-                    'id' => $id,
-                    'name' => $this->Game->secureSuperGlobalPOST($this->request->data['name']),
-                    'description' => $this->Game->secureSuperGlobalPOST($this->request->data['description']),
-                    'link' => empty($this->request->data['link']) ? NULL : $this->request->data['link'],
-                    'width' => empty($this->request->data['width']) ? NULL : $this->request->data['width'],
-                    'height' => empty($this->request->data['height']) ? NULL : $this->request->data['height'],
-                    'category_id' => $this->request->data['category_id'],
-                    'priority' => empty($this->request->data['priority']) ? 0 : $this->request->data['priority'],
-                    'user_id' => $this->request->data['user_id'],
-                    'active' => isset($this->request->data['active']) ? 1 : 0,
-                    'fullscreen' => isset($this->request->data['fullscreen']) ? 1 : 0,
-                    'mobileready' => isset($this->request->data['mobileready']) ? 1 : 0,
-                    'install' => isset($this->request->data['install']) ? 1 : 0,
-                    'seo_url' => $this->Game->checkDuplicateSeoUrl($this->request->data['name'], $id)
-                )
-            );
-            $this->Game->save($data);
-            exit;
+            $type = $this->Game->get_game_type($game_link);
+        }
+        $installable = $this->request->data['installable'];
+        if ($installable === '1') {
+            $installable = '0';
+            if (!is_null($this->request->data['android'])) {
+                $game_link = $this->request->data['android'];
+                $installable = '1';
+            }
+            if (!is_null($this->request->data['ios'])) {
+                $game_link = $this->request->data['ios'];
+                $installable = '1';
+            }
+            $mobileready = 1;
+        }
+        $data = array(
+            'Game' => array(
+                'id' => $this->request->data['id'],
+                'name' => $this->Game->secureSuperGlobalPOST($this->request->data['name']),
+                'description' => $this->Game->secureSuperGlobalPOST($this->request->data['description']),
+                'link' => empty($this->request->data['link']) ? NULL : $this->request->data['link'],
+                'width' => empty($this->request->data['width']) ? NULL : $this->request->data['width'],
+                'height' => empty($this->request->data['height']) ? NULL : $this->request->data['height'],
+                'category_id' => $this->request->data['category_id'],
+                'priority' => empty($this->request->data['priority']) ? 0 : $this->request->data['priority'],
+                'user_id' => $this->request->data['user_id'],
+                'active' => $this->request->data['active'],
+                'fullscreen' => $this->request->data['fullscreen'],
+                'mobileready' => isset($mobileready) ? $mobileready : $this->request->data['mobileready'],
+                'install' => $installable,
+                'seo_url' => $this->Game->checkDuplicateSeoUrl($this->request->data['name'], $id),
+                'type' => $type,
+            )
+        );
+        if ($this->Game->save($data)) {
+
+            //if installable details panel opened!!
+            if ($installable) {
+                $this->loadModel('Applink');
+
+                if ($new_game == 0) {
+                    $android_data = $this->Applink->find('first', array('conditions' => array('Applink.game_id' => $id, 'Applink.platform_id' => 1)));
+                    if ($android_data != NULL) {
+                        $this->Applink->id = $android_data['Applink']['id'];
+                    }
+                } else {
+                    $this->Applink->create();
+                }
+
+
+                $applinkdata['Applink']['game_id'] = $id;
+                $applinkdata['Applink']['platform_id'] = 1;
+                $applinkdata['Applink']['link'] = $android;
+                $this->Applink->save($applinkdata);
+
+
+                if ($new_game == 0) {
+                    $android_data2 = $this->Applink->find('first', array('conditions' => array('Applink.game_id' => $id, 'Applink.platform_id' => 2)));
+                    if ($android_data2 != NULL) {
+                        $this->Applink->id = $android_data2['Applink']['id'];
+                    }
+                } else {
+                    $this->Applink->create();
+                }
+
+
+                $applinkdata2['Applink']['game_id'] = $id;
+                $applinkdata2['Applink']['platform_id'] = 2;
+                $applinkdata2['Applink']['link'] = $ios;
+                $this->Applink->save($applinkdata2);
+            }
+            //Installable details ends
+
+
+            if ($image_name != 'current' && $image_name != 'empty') {//if user didnt change the game image
+                //=======Upload to aws for Game Image begins===========
+                $feedback = $this->Amazon->S3->create_object(
+                        Configure::read('S3.name'), 'upload/games/' . $id . "/" . $newname, array(
+                    'fileUpload' => WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $newname,
+                    'acl' => AmazonS3::ACL_PUBLIC
+                        )
+                );
+                //========Upload to aws for Game Image ends==============
+                if ($feedback) {
+                    //Set the picture field on db.
+                    $this->Game->query('UPDATE games SET picture="' . $image_name . '" WHERE id=' . $id);
+                    $this->remove_temporary($user_id, 'new_game');
+                }
+            }
+            $this->gameUpload($game_file, $id, $user_id); //Check if any game upload exists
+            $this->set('success', "Game Updated");
+            $this->set('_serialize', array('success'));
         }
     }
 
