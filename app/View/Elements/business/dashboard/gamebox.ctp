@@ -11,14 +11,11 @@ if ($game['Game']['install'] == 1) {
 }
 ?>
 <?php if (!isset($refresh) || $refresh != TRUE) { ?>
-<div class="col-xs-12 col-sm-6 col-md-4" style="padding-bottom: 5px;" id="gamebox-<?php echo $id; ?>">
-<?php } ?>
+    <div class="col-xs-12 col-sm-6 col-md-4" style="padding-bottom: 5px;" id="gamebox-<?php echo $id; ?>">
+    <?php } ?>
     <div class="panel panel-default">
         <a href="<?php echo $playurl ?>" target="_blank" style="text-decoration: none;">
             <div style="right:20px; top:4px; position:absolute;">
-               
-
-
                 <?php if ($game['Game']['mobileready'] == 1) { ?>
                     <span data-toggle="tooltip" data-placement="top" data-original-title="Compatible With" class="label label-primary" ><i class="fa fa-mobile"></i> Mobile</span>
                 <?php } ?>
@@ -27,15 +24,12 @@ if ($game['Game']['install'] == 1) {
                 <?php } ?>
                 <?php if ($game['Game']['fullscreen'] == 1) { ?>
                     <span data-toggle="tooltip" data-placement="top" data-original-title="Available in" class="label label-success" ><i class="fa fa-laptop"></i> Fullscreen</span>
-                <?php } else if($game['Game']['mobileready']!=1) { ?>
+                <?php } else if ($game['Game']['mobileready'] != 1) { ?>
                     <span data-toggle="tooltip" data-placement="top" data-original-title="Suitable for" class="label label-danger" ><i class="fa fa-file-code-o"></i> Embed</span>
                 <?php } ?>
-
-                <?php if($gameboxtype == "favorite" && $game['Game']['active']==0){ ?>
+                <?php if ($gameboxtype == "favorite" && $game['Game']['active'] == 0) { ?>
                     <span data-toggle="tooltip" data-placement="top" data-original-title="This game is no longer available!" class="label label-danger" ><i class="fa fa-times"></i> Unpublished</span>
                 <?php } ?>
-
-
                 <?php if (isset($function) && !empty($function)) { ?>
                     <a style="text-decoration: none;" data-original-title="Change Game" title="" data-placement="top" data-toggle="tooltip" onclick="get_new_game(<?php echo $id; ?>);">
                         <i class="btn btn-xs btn-default fa fa-recycle"></i>
@@ -173,27 +167,12 @@ if ($game['Game']['install'] == 1) {
                         <?php } else { ?>
                             <button type="button" class="btn btn-default btn-sm featured_toggle" id='<?php echo $game['Game']['id']; ?>'><i class="fa fa-bullseye"></i> Set Featured</button>
                         <?php } ?>
-                        
-                        <!-- Publish Button -->
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-success btn-sm">Published</button>
-                          <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
-                            <span class="fa fa-cog"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                          </button>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="<?php echo $game_edit . '/' . $id; ?>" ><i class="fa fa-edit"></i> Edit</a></li>
-                            <li><a href="#" data-toggle="modal" data-target="#confirm-modal" onclick="game_id_create(<?php echo $id; ?>);" ><i class="fa fa-trash-o"></i> Delete</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-info"></i> Details</a></li>
-                          </ul>
-                        </div>
-
+                        <?php echo $this->element('business/buttons/publish', array('active' => $game['Game']['active'], 'id' => $id, 'game_edit' => $game_edit)); ?>
                     </span>
                 <?php } ?>
             </div>
         <?php } ?>
     </div>
-<?php if (!isset($refresh) || $refresh != TRUE) { ?>
-</div>
+    <?php if (!isset($refresh) || $refresh != TRUE) { ?>
+    </div>
 <?php } ?>

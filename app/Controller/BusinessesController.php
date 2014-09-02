@@ -247,6 +247,10 @@ class BusinessesController extends AppController {
                 $this->set('_serialize', array('success'));
             } elseif ($attr == "game_add") {
                 $game_name = $this->request->data['name'];
+                if (isset($this->request->data['active'])) {
+                    $game_active = $this->request->data['active'];
+                }
+                
                 $game_description = $this->request->data['desc'];
                 $game_link = $this->request->data['game_link'];
                 $game_width = $this->request->data['width'];
@@ -324,7 +328,7 @@ class BusinessesController extends AppController {
                         'height' => $game_height,
                         'type' => $type,
                         'link' => $game_link,
-                        'active' => 1,
+                        'active' => isset($game_active) ? $game_active : 1,
                         'user_id' => $game_user_id,
                         'category_id' => $category_id,
                         'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name, $game_id),
@@ -1434,6 +1438,25 @@ class BusinessesController extends AppController {
         $this->render('/Businesses/dashboard/toolsNdocs');
     }
 
+
+
+    /**
+     * Support function
+     * Cloned from toolsNdocs method
+     *
+     * @param
+     * @return Support Page
+     * @author Kazim Akgul
+     */
+    public function support() {
+        $this->layout = 'Business/dashboard';
+        $this->sideBar();
+        $this->set('title_for_layout', 'Clone Business Dashboard');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/support');
+    }
+
     /**
      * Dummy faq function
      * Cloned from toolsNdocs method
@@ -1831,9 +1854,6 @@ class BusinessesController extends AppController {
         $PaginateLimit = 12;
         $user = $this->User->find('first', array('conditions' => array('User.id' => $userid), 'fields' => array('*')));
 
-        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid,'Game.active'=>1), 'limit' => $PaginateLimit, 'order' => array('Gamestat.playcount' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
-        $cond = $this->paginate('Game');
-
         $category = $this->Game->query('SELECT categories.id as id, categories.name FROM games join categories ON games.category_id = categories.id WHERE user_id=' . $userid . ' group by games.category_id');
 
         $this->get_ads_info($userid);
@@ -1842,11 +1862,38 @@ class BusinessesController extends AppController {
         $featlimit = 3;
         $newlimit = 3;
         $hotlimit = 6;
-        $this->set('newgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $newlimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
-        $this->set('featuredgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.featured' => 1), 'limit' => $featlimit, 'order' => 'rand()', 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
-        $this->set('hotgames', $this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid), 'limit' => $hotlimit, 'order' => array('Gamestat.potential' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone'))))));
-        $this->set('category', $category);
+        
+        
+        $existence = array();
+
+        $featured_data=$this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid, 'Game.featured' => 1), 'limit' => $featlimit, 'order' => 'rand()', 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $this->set('featuredgames',$featured_data);
+        foreach($featured_data as $data)
+        {
+            array_push($existence,$data['Game']['id']);
+        }    
+
+
+        $hotgames_data=$this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid,'NOT' => array( 'Game.id' => $existence)), 'limit' => $hotlimit, 'order' => array('Gamestat.potential' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $this->set('hotgames',$hotgames_data);
+        foreach($hotgames_data as $data)
+        {
+            array_push($existence,$data['Game']['id']);
+        }
+
+        $newgames_data=$this->Game->find('all', array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid,'NOT' => array( 'Game.id' => $existence)), 'limit' => $newlimit, 'order' => array('Game.id' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $this->set('newgames',$newgames_data);
+        foreach($newgames_data as $data)
+        {
+            array_push($existence,$data['Game']['id']);
+        }
+
+        
+        $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $userid,'Game.active'=>1,'NOT' => array( 'Game.id' => $existence)), 'limit' => $PaginateLimit, 'order' => array('Gamestat.playcount' => 'desc'), 'contain' => array('Gamestat' => array('fields' => array('Gamestat.playcount,Gamestat.favcount,Gamestat.channelclone')))));
+        $cond = $this->paginate('Game');
         $this->set('games', $cond);
+
+        $this->set('category', $category);
         $this->set('user', $user);
 
         $this->set('title_for_layout', $user['User']['username'] . ' Game Channel - Clone');
@@ -1993,14 +2040,23 @@ class BusinessesController extends AppController {
 
 
         $this->layout = 'Business/business';
+        $user_id = $this->Auth->user('id');
+
+        if($game['Game']['active']==0 && $game['Game']['user_id']!=$user_id)
+        {
+        $this->render('/Businesses/404');
+        }
+
+
         if ($game['Game']['clone'] == 1) {
             $original = $this->User->find('first', array('conditions' => array('User.id' => $game['Game']['owner_id']), 'fields' => array('User.adcode'), 'contain' => false));
             $game['User']['adcode'] = $original['User']['adcode'];
         }
         //it is a game
         $limit = 10;
-        $activityData = $this->Activity->find('all', array('contain' => array('PerformerUser' => array('fields' => array('PerformerUser.id', 'PerformerUser.username', 'PerformerUser.seo_username')), 'Game' => array('fields' => array('Game.id', 'Game.name', 'Game.seo_url', 'Game.embed')), 'ChannelUser' => array('fields' => array('ChannelUser.id', 'ChannelUser.username', 'ChannelUser.seo_username'))), 'fields' => array('Activity.id', 'Activity.performer_id', 'Activity.game_id', 'Activity.channel_id', 'Activity.msg_id', 'Activity.seen', 'Activity.notify', 'Activity.email', 'Activity.type', 'Activity.replied', 'Activity.created', 'PerformerUser.id', 'PerformerUser.username', 'PerformerUser.seo_username', 'ChannelUser.id', 'ChannelUser.username', 'ChannelUser.seo_username', 'Game.id', 'Game.name', 'Game.seo_url', 'Game.embed'), 'conditions' => array('Activity.game_id' => $game['Game']['id']), 'limit' => $limit, 'order' => 'Activity.created DESC'));
-        $this->set('tagActivities', $activityData);
+        
+        //$activityData = $this->Activity->find('all', array('contain' => array('PerformerUser' => array('fields' => array('PerformerUser.id', 'PerformerUser.username', 'PerformerUser.seo_username')), 'Game' => array('fields' => array('Game.id', 'Game.name', 'Game.seo_url', 'Game.embed')), 'ChannelUser' => array('fields' => array('ChannelUser.id', 'ChannelUser.username', 'ChannelUser.seo_username'))), 'fields' => array('Activity.id', 'Activity.performer_id', 'Activity.game_id', 'Activity.channel_id', 'Activity.msg_id', 'Activity.seen', 'Activity.notify', 'Activity.email', 'Activity.type', 'Activity.replied', 'Activity.created', 'PerformerUser.id', 'PerformerUser.username', 'PerformerUser.seo_username', 'ChannelUser.id', 'ChannelUser.username', 'ChannelUser.seo_username', 'Game.id', 'Game.name', 'Game.seo_url', 'Game.embed'), 'conditions' => array('Activity.game_id' => $game['Game']['id']), 'limit' => $limit, 'order' => 'Activity.created DESC'));
+        //$this->set('tagActivities', $activityData);
 
         //This line gets user selected channel styles
         $this->get_style_settings($game['User']['id']);
@@ -2008,7 +2064,7 @@ class BusinessesController extends AppController {
         $limit = 12;
         $this->paginate = array('Game' => array('conditions' => array('Game.active' => '1', 'Game.user_id' => $game['Game']['user_id']), 'limit' => $limit, 'order' => array('Game.recommend' => 'desc')));
         $cond = $this->paginate('Game');
-        $user_id = $this->Auth->user('id');
+        
         $game_id = $game['Game']['id'];
         if ($user_id) {
             $this->set('auth_user', $user_id);
@@ -2390,6 +2446,9 @@ class BusinessesController extends AppController {
         } elseif ($filter === 'featured') {
             $activefilter = 2;
             $this->paginate['Game']['conditions']['Game.featured'] = 1;
+        } elseif ($filter === 'draft') {
+            $activefilter = 3;
+            $this->paginate['Game']['conditions']['Game.active'] = 0;
         } else {
             $activefilter = 0;
         }
@@ -2457,6 +2516,11 @@ class BusinessesController extends AppController {
         } elseif ($filter === 'featured') {
             $activefilter = 2;
             $this->paginate['Game']['conditions']['Game.featured'] = 1;
+        } elseif ($filter === 'draft') {
+            $activefilter = 3;
+            $this->paginate['Game']['conditions']['Game.active'] = 0;
+        } else {
+            $activefilter = 0;
         }
         $cond = $this->paginate('Game');
         $this->set('games', $cond);
@@ -2501,7 +2565,7 @@ class BusinessesController extends AppController {
                 ),
                 'limit' => $limit,
                 'order' => array(
-                    'Favorite.recommend' => 'desc'
+                    'Favorite.id' => 'desc'
                 ),
                 'contain' => array(
                     'Game' => array(
@@ -3292,6 +3356,7 @@ class BusinessesController extends AppController {
                         ),
                         'conditions' => array(
                             'Game.priority != ' => NULL,
+                            'Game.active' => '1',
                             'OR' => array(
                                 'Game.description LIKE' => '%' . $query . '%',
                                 'Game.name LIKE' => '%' . $query . '%',

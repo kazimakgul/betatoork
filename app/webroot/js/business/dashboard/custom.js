@@ -98,7 +98,7 @@ $(document).ready(function() {
                 category: cat_arr
             },
             function
-                (data) {
+                    (data) {
                 if (data.error) {
                     alert(data.error); // error.id ye göre mesaj yazdırcak..
                 } else {
@@ -263,6 +263,113 @@ $(document).ready(function() {
 
     });
 
+    $('.NewButton').click(function(e) {
+        e.preventDefault();
+        var link = newData; //Businesses updatedata function run.
+        var attr = $('#attr').val(); //Form control value
+        var btn = $(this);
+        var id = $(this).attr('id');
+        if (id == 'NewButton1') {
+            var active = '1';
+        } else if (id == 'NewButton2') {
+            var active = '0';
+        }
+        btn.button('loading');
+        if (attr == "new_ads" && $('#add_ads').valid())
+        {
+            var anyChecked = $("input:checkbox[name=category]:checked");
+            var category = new Array();
+            var countC = anyChecked.length;
+            for (i = 0; i <= countC - 1; i++)
+            {
+                category[i] = anyChecked[i].value;
+            }
+            var cat_arr = JSON.stringify(category);
+            $.post(link, {
+                attr: attr,
+                title: $('#title').val(),
+                desc: $('#desc').val(),
+                category: cat_arr
+            },
+            function(data) {
+                if (data.error) {
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                } else {
+                    Messenger().post(data.success);
+                    btn.button('reset');
+                    setTimeout(function() {
+                        location.href = ads_management
+                    }, 2000);
+                }
+            }, 'json');
+        }
+        else if (attr == "game_add" && $('#game_add').valid())
+        {
+            $new_game = $('#new_data').val(); //if It is 1 so it means game add if it is not it means edit.
+
+            if ($new_game == 0)
+            {
+                $edited_game_id = $('#game_id').val();
+            } else {
+                $edited_game_id = 0;
+            }
+
+            if ($('#mobile').prop('checked'))
+            {
+                $mobile_ready = 1;
+            } else {
+                $mobile_ready = 0;
+            }
+
+            if ($('#fullscreen').prop('checked'))
+            {
+                $full_screen = 1;
+            } else {
+                $full_screen = 0;
+            }
+
+            if ($('#installable').prop('checked'))
+            {
+                $installable = 1;
+            } else {
+                $installable = 0;
+            }
+
+
+            $.post(link, {
+                attr: attr,
+                active: active,
+                name: $('#name').val(),
+                desc: $('#desc').val(),
+                game_link: $('#game_link').val(),
+                width: $('#width').val(),
+                height: $('#height').val(),
+                category: $('#category_id').val(),
+                tags: $('#tags').val(),
+                android: $('#gplay_link').val(),
+                ios: $('#appstore_link').val(),
+                fullscreen: $full_screen,
+                mobile: $mobile_ready,
+                installable: $installable,
+                image_name: $('#game_image').attr('data-src'),
+                game_file: $('#game_file').val(),
+                new_game: $new_game,
+                game_id: $edited_game_id
+            },
+            function(data) {
+                if (data.error) {
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                } else {
+                    Messenger().post(data.success);
+                    btn.button('reset');
+                    //setTimeout(function(){location.href=ads_management}, 2000 );
+                }
+            }, 'json');
+        } else {
+            btn.button('reset');
+        }
+
+    });
 
     $('#deletedata').click(function(e) {
         e.preventDefault();
@@ -361,18 +468,18 @@ $(document).ready(function() {
 
 
     $('#switch_publish').click(function() {
-      
-      var link = switch_publish;
-      var game_id = $('#game_id').val();
 
-      $.post(link, {
+        var link = switch_publish;
+        var game_id = $('#game_id').val();
+
+        $.post(link, {
             game_id: game_id,
         },
                 function(data) {
                     if (data.error) {
                         alert(data.error); // error.id ye göre mesaj yazdırcak..
                     } else {
-                         //alert(data.rtdata.title);
+                        //alert(data.rtdata.title);
                         //Messenger().post(data.success);
                         location.reload();
 
@@ -541,18 +648,18 @@ $(document).ready(function() {
 
     //trig when user click on installable check box on game add/edit
     $('.installable').click(function() {
-     
-            if ($('.installable').prop('checked'))
-            {
-                $('.app_details').show();
-                $('#game_link').val('');
-                $('#game_link').attr('disabled', 'disabled');
-            } else {
-                $('.app_details').hide();
-                $('#game_link').removeAttr('disabled');
-            }
 
-    }); 
+        if ($('.installable').prop('checked'))
+        {
+            $('.app_details').show();
+            $('#game_link').val('');
+            $('#game_link').attr('disabled', 'disabled');
+        } else {
+            $('.app_details').hide();
+            $('#game_link').removeAttr('disabled');
+        }
+
+    });
 
 
     $('#redirect').click(function() {
@@ -1422,4 +1529,59 @@ $('a.grid-view').click(function() {
             document.cookie = 'view=grid';
             break;
     }
+});
+
+function publish(id) {
+    $.post(publish);
+}
+
+function unpublish(id) {
+    $.post(unpublish);
+}
+
+$('.switch_publish1').click(function(e) {
+    e.preventDefault();
+    var link = switch_publish;
+    var button = $(this);
+    button
+            .removeClass('btn-success')
+            .removeClass('btn-danger')
+            .addClass('btn-warning')
+            .html('Processing')
+            .next('button')
+            .removeClass('btn-success')
+            .removeClass('btn-danger')
+            .addClass('btn-warning')
+            .find('i')
+            .addClass('spin');
+    var game_id = button.attr('id');
+    $.post(link, {
+        game_id: game_id,
+    }, function(data) {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            if (data.rtdata.title === "Game has been published.") {
+                button
+                        .removeClass('btn-warning')
+                        .addClass('btn-success')
+                        .html('Published')
+                        .next('button')
+                        .removeClass('btn-warning')
+                        .addClass('btn-success')
+                        .find('i')
+                        .removeClass('spin');
+            } else if (data.rtdata.title === "Game has been unpublished.") {
+                button
+                        .removeClass('btn-warning')
+                        .addClass('btn-danger')
+                        .html('UnPublished')
+                        .next('button')
+                        .removeClass('btn-warning')
+                        .addClass('btn-danger')
+                        .find('i')
+                        .removeClass('spin');
+            }
+        }
+    }, 'json');
 });

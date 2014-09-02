@@ -41,9 +41,6 @@ border-color: gray;
 </style>
 <body id="signup" class="clear">
 
-
-
-
     <div class="content">
 
 <div>
@@ -59,52 +56,46 @@ border-color: gray;
 <table>
 <tbody>
 <tr><th>Domain</th><th>Configuration</th></tr>
-<tr><th>Two Levels<br> (e.g. mywebsite.com)</th>
-<td>point A-record (IP address) to <strong>54.225.85.102</strong></td>
-</tr>
-<tr><th>Three or More Levels<br>(e.g. www.mywebsite.com or game.mywebsite.com)</th>
+<tr><th>Three or More Levels<br>(e.g. www.mysite.com or game.mysite.com)</th>
 <td>point CNAME record to "<strong>domains.clone.gs</strong>﻿"</td>
 </tr>
+<tr><th>Two Levels<br> (e.g. mysite.com)</th>
+<td>forward this to your subdomain. <strong>forward your root domain to your subdomain (e.g. www.mysite.com or game.mysite.com)</strong></td>
+</tr>
+
 </tbody>
 </table>
 
  <p>Post-login steps:</p> 
   <p><small> 
-1) Click Settings (the gear icon) at the top of your Dashboard.
+1) Go to channel settings (the gear icon) at the top of your Dashboard.
  </small></p>
 <p><small> 
-2) Click the blog you’d like to update on the right side of the page.
+2) write your subdomain you’d like to add near 'map domain' button and click it.
 </small></p>
   <p><small> 
-3) Click the pencil to the right of the ﻿username﻿ section and enable "Use a custom domain."
+3) if you added the cname "domains.clone.gs" and its done.
  </small></p>
    <p><small> 
-4) Enter your domain (e.g. mywebsite.com) or subdomain (e.g. game.mywebsite.com).
+4) Otherwise go to your domain registrar (godaddy,hostgator,Domainr etc) and add a CNAME to your subdomain nad try again.
  </small></p>
-   <p><small> 
-5) Click “Test your domain.”
- </small></p>
-   <p><small> 
-6) Correct problems if the test finds any, and click “Test your domain” until the test is successful.
- </small></p>
- <p><small> 
-7) Hit “Save.”
- </small></p>
+
+
  <h4>Do I need to change the nameservers for my domain?</h4>
    <p><small> 
-Nope, just the A-record or CNAME record depending on levels in your domain.
+Nope, just the CNAME record and a root forwarding depending on levels in your domain.
  </small></p>
  <h4>How do I know if I set up my domain properly?</h4>
    <p><small> 
-After re-configuring your domain, you must wait up to 72 hours for the changes to take effect. When you visit the subdomain or domain, you should see a Clone.gs error page — this means that the domain is correctly pointing to Clone.gs, but that your blog hasn’t been configured to use it yet.
+After re-configuring your domain, you must wait up to 72 hours for the changes to take effect. When you visit the subdomain or domain, you should see a Clone.gs error page — this means that the domain is correctly pointing to Clone.gs, but that your game site hasn’t been configured to use it yet.
  </small></p>
  <h4>What happens when someone visits my Clone.gs URL?</h4>
    <p><small> 
-They will automatically be redirected to your new custom domain (i.e. david.clone.gs --> davidslog.com).
+They will automatically be redirected to your new custom domain (i.e. socialesman.clone.gs --> socialesman.com).
  </small></p>
  <h4>What if I’m having trouble setting up a custom domain?</h4>
    <p><small> 
-We’re unable to support many of the issues that crop up, so it’s best if you ask a friend who has done this before.
+Shoot us an emain to domains@clone.gs.
  </small></p>
     </div>
 

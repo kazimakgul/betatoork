@@ -10,7 +10,7 @@ $channel = $this->Html->url(array("controller" => "settings", "action" => "chann
                         <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Any questions? Feel free to contact us.</h4>
                     </div>
                     <form action="../contactmail/<?php echo $user_id;?>" method="post" accept-charset="utf-8">
-                    <div class="modal-body" style="padding: 35px;">
+                    <div class="modal-body" style="background-color:#e9eaed; padding: 35px;">
                           <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
                                     <input class="form-control" name="firstname" placeholder="First Name" type="text" required autofocus />
@@ -54,7 +54,7 @@ $channel = $this->Html->url(array("controller" => "settings", "action" => "chann
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title" id="myModalLabel">More About <?php echo$user["User"]["username"];?></h4>
                     </div>
-                <div class="modal-body">
+                <div class="modal-body" style="background-color:#e9eaed;">
                     <center>
                     <?php 
                     $avatarImage = $this->requestAction( array('controller' => 'users', 'action' => 'randomAvatar'));
@@ -76,7 +76,7 @@ $channel = $this->Html->url(array("controller" => "settings", "action" => "chann
                        <?php echo$user["User"]["description"];?><?php
 					if($this->Session->read('Auth.User.id') == $user['User']['id'] && !isset($this->request->query['mode'])){
 
-					echo '<a href="'.$channel.'"><i class="fa fa-edit"></i></a>';
+					echo '<a href="'.$channel. '"> <span class="label label-info"><i class="fa fa-edit"> Edit</i></span></a>';
 						
 					}
 					?> </p>
@@ -84,7 +84,7 @@ $channel = $this->Html->url(array("controller" => "settings", "action" => "chann
                     </center>
 					
 					</div>
-                <div class="modal-footer">
+                <div class="panel-footer">
                     <center>
                     <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about <?php echo $user["User"]["username"];?></button>
                     </center>

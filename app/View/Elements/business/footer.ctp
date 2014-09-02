@@ -4,7 +4,7 @@
       <div class="col-xs-12">
 
       <div id="footer" class="text-center">
-        <div style="opacity:0.7;" class="well well-sm container">
+        <div style="opacity:0.7;" class="well well-sm">
           <a class="btn btn-link" href="#aboutModal" data-toggle="modal" data-target="#myModal">About</a> - <a class="btn btn-link" data-toggle="modal" data-target="#contact" data-original-title>
           Contact
         </a>
