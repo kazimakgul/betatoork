@@ -107,7 +107,7 @@ if (isset($query)) {
                             <a href="#">Picture</a>
                         </label>
                     </div>
-                    <div class="col-sm-3 header hidden-xs">
+                    <div class="col-sm-4 header hidden-xs">
                         <label>
                             <?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')); ?>
                         </label>
@@ -148,14 +148,14 @@ if (isset($query)) {
                         <div class="col-sm-2 avatar">
                             <?php echo $picture; ?>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <?php echo $name; ?>
                         </div>
                         <div class="col-sm-3">
                             <?php echo $owner; ?>
                         </div>
                         <div class="col-sm-1 header hidden-xs">
-                            <div class="dropdown">
+                            <div class="dropdown pull-right">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                                     Action
                                     <span class="caret"></span>

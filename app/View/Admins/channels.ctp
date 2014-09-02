@@ -167,8 +167,8 @@ if (isset($query)) {
                             <?php echo $domain; ?>
                         </div>
                         <div class="col-sm-1 header hidden-xs">
-                            <div class="dropdown">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            <div class="dropdown pull-right">
+                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                                     Action
                                     <span class="caret"></span>
                                 </button>
