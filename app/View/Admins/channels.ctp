@@ -35,9 +35,7 @@ if (isset($query)) {
             <?php } ?>
             <input type="submit" />
         </form>
-        <a href="form.html" class="new-user btn btn-success pull-right">
-            <span>New Channel</span>
-        </a>
+        <?php echo $this->element('admin/header_buttons'); ?>
     </div>
     <div class="content-wrapper">
         <div class="row page-controls">
