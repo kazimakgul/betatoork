@@ -30,9 +30,7 @@
                             if ($data['Game']['picture'] != NULL && $data['Game']['picture'] != '') {
                                 $bg_message = "Image selected.";
                                 $bg_exist = 1;
-                                ?>
-                                <?php echo $this->Upload->image($data, 'Game.picture', array('style' => 'toorksize'), array('alt' => $data['Game']['name'], 'id' => 'game_image', 'data-src' => 'current', 'style' => 'width:215px;height:118px;', 'onerror' => 'imgError(this,"toorksize");')); ?>
-                                <?php
+                                echo $this->Upload->image($data, 'Game.picture', array('style' => 'toorksize'), array('alt' => $data['Game']['name'], 'id' => 'game_image', 'data-src' => 'current', 'style' => 'width:215px;height:118px;', 'onerror' => 'imgError(this,"toorksize");'));
                             } else {
                                 $bg_message = "No image chosen.";
                                 $bg_exist = 0;
@@ -240,7 +238,7 @@
                             </span>
                         </label>
                         <div class="col-sm-5 col-md-4">
-                            <input type="text" class="form-control" id="gplay_link" placeholder="" name="gplay_link" value="<?php echo $and; ?>" />
+                            <input type="text" class="form-control" id="gplay_link" placeholder="" name="gplay_link" value="<?php if (isset($and)) echo $and; ?>" />
                         </div>
                     </div>
                 </div>
@@ -253,7 +251,7 @@
                             </span>
                         </label>
                         <div class="col-sm-5 col-md-4">
-                            <input type="text" class="form-control" id="appstore_link" placeholder="" name="appstore_link" value="<?php echo $ios; ?>" />
+                            <input type="text" class="form-control" id="appstore_link" placeholder="" name="appstore_link" value="<?php if (isset($ios)) echo $ios; ?>" />
                         </div>
                     </div>
                 </div>
