@@ -471,6 +471,7 @@ class AdminsController extends AppController {
           App::uses('Folder', 'Utility');
           App::uses('File', 'Utility');
          */
+        Configure::write('debug', 2);
         $user_id = $this->Auth->user('id');
         $id = $this->request->data['id'];
         $game_link = $this->request->data['link'];
