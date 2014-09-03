@@ -467,11 +467,8 @@ class AdminsController extends AppController {
      * Save Game Edit Data
      */
     public function games_edit_post() {
-        /*
-          App::uses('Folder', 'Utility');*/
-          App::uses('File', 'Utility');
-         
-        Configure::write('debug', 2);
+        App::uses('Folder', 'Utility');
+        App::uses('File', 'Utility');
         $user_id = $this->Auth->user('id');
         $id = $this->request->data['id'];
         $game_link = $this->request->data['link'];
