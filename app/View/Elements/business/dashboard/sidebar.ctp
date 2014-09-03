@@ -19,20 +19,18 @@ $notifications = $this->Html->url(array('controller' => 'businesses', 'action' =
 $ads_management = $this->Html->url(array('controller' => 'businesses', 'action' => 'ads_management'));
 $faq = $this->Html->url(array('controller' => 'businesses', 'action' => 'faq'));
 $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
-if(empty($notifycount)){$notifycount=0;}
+if (empty($notifycount)) {
+    $notifycount = 0;
+}
 if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-
-    if($this->Session->read('mapping')){
-      $gochannel = $this->Html->url('http://' . $this->Session->read('mapping_domain'));    
-    }else{
-      $gochannel = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $pure_domain);
+    if ($this->Session->read('mapping')) {
+        $gochannel = $this->Html->url('http://' . $this->Session->read('mapping_domain'));
+    } else {
+        $gochannel = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $pure_domain);
     }
-
 } else {
     $gochannel = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
 }
-
-
 if ($user['User']['picture'] == null) {
     $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'avatar circular', "alt" => "clone user image"));
 } else {
@@ -49,6 +47,13 @@ if ($user['User']['picture'] == null) {
             </span>
         </a>
         <ul class="menu">
+            <?php if ($user['User']['role'] == 1) { ?>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'admins', 'action' => 'games')); ?>">
+                        Admin
+                    </a>
+                </li>
+            <?php } ?>
             <li>
                 <a href="<?php echo $ch_settings; ?>">
                     Account Settings
@@ -80,9 +85,9 @@ if ($user['User']['picture'] == null) {
             <li>
                 <a href="<?php echo $activities; ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="Recent Activity Feed">
                     <i class="ion-archive"></i>
-                    <?php if (isset($notifycount) && $notifycount > 0) { ?>
-                        <span class="badge notification_count"><?php echo $notifycount; ?></span>
-                    <?php } ?>
+    <?php if (isset($notifycount) && $notifycount > 0) { ?>
+                                        <span class="badge notification_count"><?php echo $notifycount; ?></span>
+    <?php } ?>
                 </a>
             </li>
             <li><a href="<?php echo $logout ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="Sign Out"><i class="ion-log-out"></i></a></li>
@@ -177,6 +182,13 @@ if ($user['User']['picture'] == null) {
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 <ul class="submenu" <?php if (isset($bar) && $bar == 'setting') echo 'style="display:block"'; ?>>
+                    <?php if ($user['User']['role'] == 1) { ?>
+                        <li>
+                            <a href="<?php echo $this->Html->url(array('controller' => 'admins', 'action' => 'games')); ?>">
+                                Admin
+                            </a>
+                        </li>
+                    <?php } ?>
                     <li>
                         <a href="<?php echo $ch_settings; ?>" <?php if (isset($active) && $active == 'channel') echo 'class="active"'; ?>>
                             Settings
@@ -201,23 +213,21 @@ if ($user['User']['picture'] == null) {
             </li>
         </ul>
     </div>
-
-<div class="bottom-menu hidden-sm">
+    <div class="bottom-menu hidden-sm">
         <ul>
             <li><a href="#"><i class="ion-help"></i></a></li>
             <li>
                 <a href="<?php echo $activities; ?>">
                     <i class="ion-archive"></i>
-              <?php echo $notifycount>=1?'
+                    <?php echo $notifycount >= 1 ? '
                     <span class="flag"></span>
                 </a>
                 <ul class="menu">
-                    <li><a href="'.$activities.'">'.$notifycount.' unread activity</a></li>
-                </ul>':'</a>';
-				?>
+                    <li><a href="' . $activities . '">' . $notifycount . ' unread activity</a></li>
+                </ul>' : '</a>';
+                    ?>
             </li>
             <li><a href="<?php echo $logout ?>"><i class="ion-log-out"></i></a></li>
         </ul>
     </div>
-
 </div>

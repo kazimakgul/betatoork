@@ -89,7 +89,8 @@ class AdminsController extends AppController {
                 'User.id',
                 'User.username',
                 'User.seo_username',
-                'User.picture'
+                'User.picture',
+                'User.role'
             ),
             'conditions' => array(
                 'User.id' => $userid
