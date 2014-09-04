@@ -34,7 +34,8 @@ class AdminsController extends AppController {
         'Order',
         'Activity',
         'Message',
-        'Log'
+        'Log',
+        'Country'
     );
 
     /**
@@ -302,8 +303,11 @@ class AdminsController extends AppController {
      * @author Emircan Ok
      */
     public function channels_edit($id) {
+        
         $this->layout = 'admin';
         $this->sideBar();
+        
+        //  User Data
         $data = $this->User->find('first', array(
             'conditions' => array(
                 'User.id' => $id
@@ -311,9 +315,24 @@ class AdminsController extends AppController {
             'contain' => FALSE
         ));
         $this->set('data', $data);
+        
+        //  Countries Data
+        $this->Country->unBindModel(array(
+            'hasMany' => array(
+                'User'
+            )
+        ));
+        $countries = $this->Country->find('all', array(
+            'order' => array(
+                'Country.name' => 'asc'
+            )
+        ));
+        $this->set('countries', $countries);
+        
         $this->set('title_for_layout', 'Clone Admin');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
+        
     }
 
     /**
