@@ -28,7 +28,7 @@ $(document).ready(function() {
                 url: true
             },
             password: {
-                min: 6
+                minlength: 6
             },
             passwordagain: {
                 equalTo: "#password"
