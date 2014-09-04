@@ -103,7 +103,7 @@ $(document).ready(function() {
                             message: data.message
                         });
                         setTimeout(function() {
-                            location.reload(true);
+                            location.reload();
                         }, 1000);
                         break;
                     case false:
