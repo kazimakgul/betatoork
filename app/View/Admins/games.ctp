@@ -194,7 +194,7 @@ if (isset($query)) {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a href="javascript:;" id="games_edit_confirm" class="btn btn-danger">Yes, delete it</a>
+                <button type="button" id="games_edit_confirm" class="btn btn-danger">Yes, delete it</a>
             </div>
         </div>
     </div>

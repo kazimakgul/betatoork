@@ -89,10 +89,32 @@ $(document).ready(function() {
     /**
      * Delete
      */
-    $('a.games_delete').click(function(e) {
-        e.preventDefault;
+    $('a.games_delete').click(function(a) {
+        a.preventDefault;
         var url = $(this).attr('value');
-        $('a#games_edit_confirm').attr('href', url);
+        $('button#games_edit_confirm').click(function(b) {
+            b.preventDefault;
+            $.post(url, null, function(data) {
+                $('div#confirm-modal').modal('hide');
+                switch (data.result) {
+                    case true:
+                        Messenger().post({
+                            type: 'success',
+                            message: data.message
+                        });
+                        setTimeout(function() {
+                            location.reload(true);
+                        }, 1000);
+                        break;
+                    case false:
+                        Messenger().post({
+                            type: 'error',
+                            message: data.message
+                        });
+                        break;
+                }
+            }, 'json');
+        });
     });
 
 });
