@@ -85,10 +85,36 @@ if (isset($query)) {
                                 <i class="fa fa-chevron-down"></i>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li><a href="#">Add tags</a></li>
-                                <li><a href="#">Delete users</a></li>
-                                <li><a href="#">Edit customers</a></li>
-                                <li><a href="#">Manage permissions</a></li>
+                                <li>
+                                    <a href="#">
+                                        Status
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Verify
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Priority
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Role
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Password
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Delete
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
