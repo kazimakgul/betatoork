@@ -85,7 +85,7 @@
     <body id="users">
         <div id="wrapper">
             <?php
-            echo $this->element('business/dashboard/sidebar');
+            echo $this->element('business/dashboard/sidebar', array('active' => NULL));
             echo $content_for_layout;
             ?>
         </div>

@@ -601,6 +601,8 @@ class AdminsController extends AppController {
     public function games_delete($id) {
         $this->layout = 'admin';
         $this->sideBar();
+        $this->Game->delete($id);
+        $this->redirect(array('controller' => 'admins', 'action' => 'games'));
         $this->set('title_for_layout', 'Clone Admin');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');

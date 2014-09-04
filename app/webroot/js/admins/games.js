@@ -86,4 +86,13 @@ $(document).ready(function() {
         }
     });
 
+    /**
+     * Delete
+     */
+    $('a.games_delete').click(function(e) {
+        e.preventDefault;
+        var url = $(this).attr('value');
+        $('a#games_edit_confirm').attr('href', url);
+    });
+
 });
