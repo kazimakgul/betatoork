@@ -1,4 +1,41 @@
 $(document).ready(function() {
+    
+    /**
+     * Validation
+     */
+    $('form#channels_edit').validate({
+        rules: {
+            screenname: {
+                required: true
+            },
+            username: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            fb_link: {
+                url: true
+            },
+            twitter_link: {
+                url: true
+            },
+            gplus_link: {
+                url: true
+            },
+            website: {
+                url: true
+            },
+            password: {
+                min: 6
+            },
+            passwordagain: {
+                equalTo: "#password"
+            }
+        }
+    });
+    
     /**
      * Channel Edit
      */
@@ -12,4 +49,5 @@ $(document).ready(function() {
                 break;
         }
     });
+    
 });

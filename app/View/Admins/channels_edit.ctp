@@ -98,18 +98,21 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                 </div>
                 <!--Channel Cover Avatar Ends -->
 
-                <form id="channel_profile" role="form" novalidate="novalidate">
+                <form id="channels_edit" role="form">
                     <div class="form-group">
-                        <label>Screen Name
+                        <label>
+                            Screen Name
                             <span class="help" data-toggle="tooltip" title="Users will see your screen name on your channel.">
                                 <i class="fa fa-question-circle"></i>
                             </span>
                         </label>
-                        <input type="text" class="form-control" name='screenname' id="title" value="<?php echo $data['User']['screenname']; ?>" />
+                        <input type="text" class="form-control" name='screenname' id="screenname" value="<?php echo $data['User']['screenname']; ?>" />
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
-                        <div><textarea id="desc" class="form-control" id="desc" rows="4" name="description" style="margin-bottom: 10px; height:100px;"><?php echo $data['User']['description']; ?></textarea></div>
+                        <label>
+                            Description
+                        </label>
+                        <textarea id="description" class="form-control" id="desc" rows="4" name="description" style="margin-bottom: 10px; height:100px;"><?php echo $data['User']['description']; ?></textarea>
                     </div>
                     <div class="form-group">
                         <label>Background Color</label>
@@ -164,11 +167,11 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                             </div>
                                             <div class="form-group">
                                                 <label>User Name</label>
-                                                <input type="text" class="form-control" value="<?php echo $data['User']['username']; ?>" />
+                                                <input id="username" name="username" type="text" class="form-control" value="<?php echo $data['User']['username']; ?>" />
                                             </div>
                                             <div class="form-group">
                                                 <label>Email Address</label>
-                                                <input type="email" class="form-control" value="<?php echo $data['User']['email']; ?>" />
+                                                <input id="email" name="email" type="email" class="form-control" value="<?php echo $data['User']['email']; ?>" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" >Birthday</label>
@@ -202,7 +205,9 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Country</label>
+                                                <label>
+                                                    Country
+                                                </label>
                                                 <select id="country" name="country" class="form-control">
                                                     <?php foreach ($countries as $country) { ?>
                                                         <option value="<?php echo $country['Country']['id'] ?>"><?php echo $country['Country']['name'] ?></option>
@@ -210,34 +215,48 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Role</label>
+                                                <label>
+                                                    Role
+                                                </label>
                                                 <select id="role" name="role" class="form-control">
                                                     <option value="0">User</option>
                                                     <option value="2">Manager</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Facebook Page</label>
+                                                <label>
+                                                    Facebook Page
+                                                </label>
                                                 <input type="text" class="form-control" id="fb_link" name="fb_link" value="<?php echo $data['User']['fb_link']; ?>" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Twitter page</label>
+                                                <label>
+                                                    Twitter page
+                                                </label>
                                                 <input type="text" class="form-control" id="twitter_link" name="twitter_link" value="<?php echo $data['User']['twitter_link']; ?>" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Google +</label>
+                                                <label>
+                                                    Google +
+                                                </label>
                                                 <input type="text" class="form-control" id="gplus_link" name="gplus_link" value="<?php echo $data['User']['gplus_link']; ?>" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Web Site</label>
+                                                <label>
+                                                    Web Site
+                                                </label>
                                                 <input type="text" class="form-control" id="website" name="website" value="<?php echo $data['User']['website']; ?>" />
                                             </div>
                                             <div class="form-group">
-                                                <label>New Password</label>
+                                                <label>
+                                                    New Password
+                                                </label>
                                                 <input id="password" name="password" type="password" class="form-control" />
                                             </div>
                                             <div class="form-group">
-                                                <label>New Password Again</label>
+                                                <label>
+                                                    New Password Again
+                                                </label>
                                                 <input id="passwordagain" name="passwordagain" type="password" class="form-control" />
                                             </div>
                                             <div class="form-group">
