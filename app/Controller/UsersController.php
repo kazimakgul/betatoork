@@ -76,6 +76,18 @@ class UsersController extends AppController {
         // Activation failed, render '/views/user/activate.ctp' which should tell the user.
     }
 
+    public function email_test()
+    {
+        $this->layout = 'Emails/html/default';
+        $user = $this->User->findById(2);
+        $userName = $user['User']['username'];
+        $this->set('user', $user);
+        $this->set('userid', $userid);
+        $this->set('username', $userName);
+        return $this->render('/Emails/html/forgot_password');
+    }
+
+
     public function reset_now($user_id = null, $in_hash = null) {
 
         $this->layout = 'dashboard';
