@@ -6,10 +6,14 @@ $(document).ready(function() {
     $('form#channels_edit').validate({
         rules: {
             screenname: {
-                required: true
+                required: true,
+                minlength: 4,
+                maxlength: 20
             },
             username: {
-                required: true
+                required: true,
+                minlength: 6,
+                maxlength: 20
             },
             email: {
                 required: true,
@@ -28,7 +32,8 @@ $(document).ready(function() {
                 url: true
             },
             password: {
-                minlength: 6
+                minlength: 6,
+                maxlength: 20
             },
             passwordagain: {
                 equalTo: "#password"
