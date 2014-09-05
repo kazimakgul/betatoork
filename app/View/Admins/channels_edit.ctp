@@ -186,22 +186,16 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                             <div class="form-group">
                                                 <label>Gender</label>
                                                 <select id="gender" name="gender" class="form-control valid">
-                                                    <?php
-                                                    switch ($data['User']['gender']) {
-                                                        case 'f':
-                                                            ?>
-                                                            <option value="f" selected>Female</option>
-                                                            <option value="m">Male</option>
-                                                            <?php
-                                                            break;
-                                                        case 'm':
-                                                            ?>
-                                                            <option value="f">Female</option>
-                                                            <option value="m" selected>Male</option>
-                                                            <?php
-                                                            break;
+                                                    <option value="f" <?php
+                                                    if ($data['User']['gender'] === 'f') {
+                                                        echo 'selected';
                                                     }
-                                                    ?>
+                                                    ?>>Female</option>
+                                                    <option value="m" <?php
+                                                    if ($data['User']['gender'] === 'm') {
+                                                        echo 'selected';
+                                                    }
+                                                    ?>>Male</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
