@@ -102,6 +102,7 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                 <!--Channel Cover Avatar Ends -->
 
                 <form id="channels_edit" role="form">
+                    <input type="hidden" id="id" name="id" value="<?php echo $data['User']['id']; ?>">
                     <div class="form-group">
                         <label>
                             Screen Name

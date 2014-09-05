@@ -49,6 +49,7 @@ $(document).ready(function() {
         if ($('form#channels_edit').valid()) {
             console.log('Valid');
             var form = {
+                id: $('#id').val(),
                 screenname: $('#screenname').val(),
                 description: $('#description').val(),
                 bg_color: $('#bg_color').val(),

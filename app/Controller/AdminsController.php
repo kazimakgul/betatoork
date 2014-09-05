@@ -339,11 +339,13 @@ class AdminsController extends AppController {
      */
     public function channels_edit_post() {
         $data = array(
+            'id' => $this->request->data['id'],
             'screenname' => $this->request->data['screenname'],
             'description' => $this->request->data['description'],
             'bg_color' => $this->request->data['bg_color'],
             'analitics' => $this->request->data['analitics'],
-            'username' => $this->request->data['username'],
+            'username' => $this->secureSuperGlobalPOST(str_replace(' ', '', $this->request->data['username'])),
+            'seo_username' => strtolower($this->secureSuperGlobalPOST(str_replace(' ', '', $this->request->data['username']))),
             'email' => $this->request->data['email'],
             'birth_date' => $this->request->data['birth_date'],
             'gender' => $this->request->data['gender'],
@@ -689,6 +691,16 @@ class AdminsController extends AppController {
                 $this->remove_temporary($userid, 'game_upload');
             }
         }
+    }
+
+    private function secureSuperGlobalPOST($value) {
+        $string = preg_replace('/[^\w\d_ -]/si', '', $value);
+        $string = htmlspecialchars(stripslashes($string));
+        $string = str_replace("script", "blocked", $string);
+        $string = mysql_escape_string($string);
+        $string = htmlentities($string);
+        $string = str_replace("_", "", $string);
+        return $string;
     }
 
 }
