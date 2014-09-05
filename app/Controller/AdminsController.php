@@ -377,11 +377,14 @@ class AdminsController extends AppController {
      * @author Emircan Ok
      */
     public function channels_delete($id) {
-        $this->layout = 'admin';
-        $this->sideBar();
-        $this->set('title_for_layout', 'Clone Admin');
-        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
-        $this->set('author_for_layout', 'Clone');
+        if ($this->User->delete($id)) {
+            $this->set('result', TRUE);
+            $this->set('message', 'Channel Deleted');
+        } else {
+            $this->set('result', FALSE);
+            $this->set('message', 'Channel Not Deleted');
+        }
+        $this->set('_serialize', array('result', 'message'));
     }
 
     /**

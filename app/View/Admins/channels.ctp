@@ -201,7 +201,7 @@ if (isset($query)) {
                                         <a role="menuitem" tabindex="-1" href="<?php echo $edit; ?>">Edit</a>
                                     </li>
                                     <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="<?php echo $delete; ?>">Delete</a>
+                                        <a class="channels_delete" role="menuitem" data-toggle="modal" data-target="#confirm-modal" tabindex="-1" href="javascript: return false;" value="<?php echo $delete; ?>">Delete</a>
                                     </li>
                                 </ul>
                             </div>
@@ -217,3 +217,24 @@ if (isset($query)) {
         </div>
     </div>
 </div>
+<!-- Channel Delete Confirm Begin -->
+<div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Are you sure you want to delete this?
+                </h4>
+            </div>
+            <div class="modal-body">
+                Do you want to delete channel?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" id="channels_delete_confirm" class="btn btn-danger">Yes, delete it</button>
+            </div>
+        </div>
+    </div>
+</div> 
+<!-- Channel Delete Confirm End -->

@@ -210,7 +210,7 @@ if (isset($query)) {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" id="games_edit_confirm" class="btn btn-danger">Yes, delete it</button>
+                <button type="button" id="games_delete_confirm" class="btn btn-danger">Yes, delete it</button>
             </div>
         </div>
     </div>

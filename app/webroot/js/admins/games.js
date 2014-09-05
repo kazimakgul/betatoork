@@ -92,7 +92,7 @@ $(document).ready(function() {
     $('a.games_delete').click(function(a) {
         a.preventDefault;
         var url = $(this).attr('value');
-        $('button#games_edit_confirm').click(function(b) {
+        $('button#games_delete_confirm').click(function(b) {
             b.preventDefault;
             $.post(url, null, function(data) {
                 $('div#confirm-modal').modal('hide');

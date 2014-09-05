@@ -130,5 +130,36 @@ $(document).ready(function() {
             }, 'json');
         }
     });
+    
+    /**
+     * Delete
+     */
+    $('a.channels_delete').click(function(a) {
+        a.preventDefault;
+        var url = $(this).attr('value');
+        $('button#channels_delete_confirm').click(function(b) {
+            b.preventDefault;
+            $.post(url, null, function(data) {
+                $('div#confirm-modal').modal('hide');
+                switch (data.result) {
+                    case true:
+                        Messenger().post({
+                            type: 'success',
+                            message: data.message
+                        });
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
+                        break;
+                    case false:
+                        Messenger().post({
+                            type: 'error',
+                            message: data.message
+                        });
+                        break;
+                }
+            }, 'json');
+        });
+    });
 
 });
