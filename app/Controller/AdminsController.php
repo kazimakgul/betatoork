@@ -338,7 +338,35 @@ class AdminsController extends AppController {
      * Save Channel Edit Data
      */
     public function channels_edit_post() {
-        
+        $data = array(
+            'screenname' => $this->request->data['screenname'],
+            'description' => $this->request->data['description'],
+            'bg_color' => $this->request->data['bg_color'],
+            'analitics' => $this->request->data['analitics'],
+            'username' => $this->request->data['username'],
+            'email' => $this->request->data['email'],
+            'birth_date' => $this->request->data['birth_date'],
+            'gender' => $this->request->data['gender'],
+            'country' => $this->request->data['country'],
+            'role' => $this->request->data['role'],
+            'fb_link' => $this->request->data['fb_link'],
+            'twitter_link' => $this->request->data['twitter_link'],
+            'gplus_link' => $this->request->data['gplus_link'],
+            'website' => $this->request->data['website'],
+            'active' => $this->request->data['active'],
+            'verify' => $this->request->data['verify']
+        );
+        if (!empty($this->request->data['password']) && !empty($this->request->data['password_again']) && $this->request->data['password'] === $this->request->data['password_again']) {
+            $data['password'] = $this->request->data['password'];
+        }
+        if ($this->User->save($data)) {
+            $this->set('result', TRUE);
+            $this->set('message', 'Channel Updated');
+        } else {
+            $this->set('result', FALSE);
+            $this->set('message', 'Channel Not Updated');
+        }
+        $this->set('_serialize', array('result', 'message'));
     }
 
     /**
