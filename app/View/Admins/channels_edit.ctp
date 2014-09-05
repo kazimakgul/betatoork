@@ -62,7 +62,10 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
             }
             ?>>
                 <input type="text" class="form-control valid" name="mapping_domain" id="mapping_domain" placeholder="www.mygamesite.com" value="" style=" width: 250px;display: inline; ">
-                    <a class="btn btn-default add_mapping" style="vertical-align: top;" data-toggle="tooltip" title="You need to upgrade"><i class="fa fa-globe"></i> Map Domain</a>
+                    <button id="add_mapping" class="btn btn-default" style="vertical-align: top;" data-toggle="tooltip" title="You need to upgrade">
+                        <i class="fa fa-globe"></i>
+                        Map Domain
+                    </button>
             </div>
 
             </p>
@@ -277,7 +280,7 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                                 <input type="hidden" id="attr" name="attr" value="profile_update" />
                                             </div>
                                             <div class="form-group action">
-                                                <input type="submit" class="btn btn-success" id="updateButton" value="Save changes" />
+                                                <button id="channels_edit" class="btn btn-success">Save Changes</button>
                                             </div>
                                             </form>
                                             </div>

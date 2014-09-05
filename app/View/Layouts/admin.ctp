@@ -7,12 +7,10 @@
         <meta name="description" content="<?php echo $description_for_layout; ?>">
         <meta name="author" content="<?php echo $author_for_layout; ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <!-- stylesheets -->
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet">
         <?php
         echo $this->Html->css(array(
+            'http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',
+            'http://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css',
             'business/dashboard/compiled/theme',
             'business/dashboard/vendor/bootstrap-switch.min',
             'business/dashboard/vendor/animate',
@@ -29,12 +27,8 @@
             'business/dashboard/star-rating',
             'business/dashboard/vendor/messenger/messenger-theme-flat'
         ));
-        ?>
-
-        <!-- javascript -->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-        <?php
         echo $this->Html->script(array(
+            'http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js',
             'business/dashboard/bootstrap/bootstrap.min',
             'business/dashboard/vendor/bootstrap-switch.min',
             'business/dashboard/vendor/jquery.cookie',
@@ -62,7 +56,9 @@
         ));
         ?>
         <script>
-            var games_edit_post = '<?php echo $this->Html->url(array('controller' => 'admins', 'action' => 'games_edit_post')); ?>';
+            var games_edit_post     = '<?php echo $this->Html->url(array('controller' => 'admins', 'action' => 'games_edit_post')); ?>';
+            var channels_edit_post  = '<?php echo $this->Html->url(array('controller' => 'admins', 'action' => 'channels_edit_post')); ?>';
+            var add_mapping         = '<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'add_mapping')); ?>';
         </script>
         <script>
             var toorksize   =   'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png';
