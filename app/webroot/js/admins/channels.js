@@ -42,26 +42,29 @@ $(document).ready(function() {
     $('button#channels_edit').click(function(e) {
         e.preventDefault();
         if ($('form#channels_edit').valid()) {
+            console.log('Valid');
             var form = {
-                id: $('#id').val(),
-                name: $('#name').val(),
+                screenname: $('#screenname').val(),
                 description: $('#description').val(),
-                link: $('#link').val(),
-                width: $('#width').val(),
-                height: $('#height').val(),
-                category_id: $('#category_id').val(),
-                tags: $('#tags').val(),
-                priority: $('#priority').val(),
-                user_id: $('#user_id').val(),
-                image_name: $('#game_image').attr('data-src'),
-                game_file: $('#game_file').val(),
-                android: $('#gplay_link').val(),
-                ios: $('#appstore_link').val(),
-                fullscreen: $('#fullscreen').prop('checked') ? '1' : '0',
-                mobileready: $('#mobileready').prop('checked') ? '1' : '0',
-                installable: $('#installable').prop('checked') ? '1' : '0'
+                bg_color: $('#bg_color').val(),
+                analitics: $('#analitics').val(),
+                username: $('#username').val(),
+                email: $('#email').val(),
+                birth_date: $('#birth_date').val(),
+                gender: $('#gender').val(),
+                country: $('#country').val(),
+                role: $('#role').val(),
+                fb_link: $('#fb_link').val(),
+                twitter_link: $('#twitter_link').val(),
+                gplus_link: $('#gplus_link').val(),
+                website: $('#website').val(),
+                password: $('#password').val(),
+                password_again: $('#password_again').val(),
+                active: $('#active').prop('checked') ? '1' : '0',
+                verify: $('#verify').prop('checked') ? '1' : '0'
             };
-            $.post(games_edit_post, form, function(data) {
+            console.log(form);
+            $.post(channels_edit_post, form, function(data) {
                 switch (data.result) {
                     case true:
                         Messenger().post({
@@ -73,10 +76,12 @@ $(document).ready(function() {
                         Messenger().post({
                             type: 'error',
                             message: data.message
-                        });
+                        })
                         break;
                 }
             }, 'json');
+        } else {
+            console.log('Not Valid');
         }
     });
 

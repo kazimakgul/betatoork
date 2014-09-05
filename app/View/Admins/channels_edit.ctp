@@ -120,7 +120,7 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                     <div class="form-group">
                         <label>Background Color</label>
                         <div>
-                            <input type="text" class="form-control minicolors" name='bgclr' id="bgcolor" value="<?php echo $data['User']['bg_color']; ?>"/>
+                            <input type="text" class="form-control minicolors" name='bg_color' id="bg_color" value="<?php echo $data['User']['bg_color']; ?>"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -180,7 +180,7 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                                 <label for="inputPassword3" >Birthday</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control datepicker" name='datepicker' id="user_time_zone" value="<?php echo $data['User']['birth_date']; ?>" placeholder="<?php
+                                                    <input type="text" class="form-control datepicker" name='birth_date' id="birth_date" value="<?php echo $data['User']['birth_date']; ?>" placeholder="<?php
                                                     echo (date("Y") - 18);
                                                     echo "-" . date("m-d");
                                                     ?>">
@@ -254,10 +254,10 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                                 <label>
                                                     New Password Again
                                                 </label>
-                                                <input id="passwordagain" name="passwordagain" type="password" class="form-control" />
+                                                <input id="password_again" name="password_again" type="password" class="form-control" />
                                             </div>
                                             <div class="form-group">
-                                                <input type="checkbox" id="mobileready" name="mobileready" <?php
+                                                <input type="checkbox" id="active" name="active" <?php
                                                 if ($data['User']['active']) {
                                                     echo 'checked';
                                                 }
