@@ -31,7 +31,7 @@
     }
     a#open-left i {
         color: white;
-        position: fixed;
+        position: absolute;
         z-index: 9999999;
         margin-left: -13px;
     }
