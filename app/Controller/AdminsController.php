@@ -356,7 +356,8 @@ class AdminsController extends AppController {
             'gplus_link' => $this->request->data['gplus_link'],
             'website' => $this->request->data['website'],
             'active' => $this->request->data['active'],
-            'verify' => $this->request->data['verify']
+            'verify' => $this->request->data['verify'],
+            'priority' => $this->request->data['priority']
         );
         if (!empty($this->request->data['password']) && !empty($this->request->data['password_again']) && $this->request->data['password'] === $this->request->data['password_again']) {
             $data['password'] = $this->request->data['password'];

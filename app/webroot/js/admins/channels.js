@@ -37,7 +37,11 @@ $(document).ready(function() {
             },
             passwordagain: {
                 equalTo: "#password"
-            }
+            },
+            priority: {
+                required: true,
+                number: true
+            },
         }
     });
 
@@ -67,7 +71,8 @@ $(document).ready(function() {
                 password: $('#password').val(),
                 password_again: $('#password_again').val(),
                 active: $('#active').prop('checked') ? '1' : '0',
-                verify: $('#verify').prop('checked') ? '1' : '0'
+                verify: $('#verify').prop('checked') ? '1' : '0',
+                priority: $('#priority').val()
             };
             console.log(form);
             $.post(channels_edit_post, form, function(data) {
