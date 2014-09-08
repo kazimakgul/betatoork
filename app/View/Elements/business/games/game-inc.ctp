@@ -7,7 +7,7 @@ $link=$game['Game']['link'];
 ?>
 
 <?php 
-
+echo $game['Game']['type'].'naber';
 if($game['Game']['embed']!=NULL)
 {
   echo $game['Game']['embed']; 
