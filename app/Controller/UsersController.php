@@ -90,7 +90,7 @@ class UsersController extends AppController {
 
     public function reset_now($user_id = null, $in_hash = null) {
 
-        $this->layout = 'dashboard';
+        $this->layout='Business/dashboard';
         $userid = $user_id;
         $this->User->id = $user_id;
 
