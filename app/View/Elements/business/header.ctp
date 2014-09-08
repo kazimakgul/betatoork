@@ -24,7 +24,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 ?>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
-        <a class="navbar-brand" rel="home" href="<?php echo $index ?>"><?php echo $user['User']['username'] ?>
+        <a class="navbar-brand" rel="home" href="<?php echo $index ?>"><?php if($user['User']['screenname']  ==NULL) {echo $user['User']['username'] ;} else{echo $user['User']['screenname'] ; } ?>
             <?php if ($user['User']['verify'] == 1) { ?>
                 <span class="help" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Verified Channel"> <i style='color:#428bca;' class="fa fa-check-circle"></i></span>
             <?php } ?>
