@@ -4,10 +4,11 @@ $type=$game['Game']['type'];
 $width=$game['Game']['width'];
 $height=$game['Game']['height'];
 $link=$game['Game']['link'];
+echo 'wuuuuu';
 ?>
 
 <?php 
-echo $game['Game']['type'].'naber';
+
 if($game['Game']['embed']!=NULL)
 {
   echo $game['Game']['embed']; 
