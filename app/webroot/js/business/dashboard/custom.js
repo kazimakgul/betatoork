@@ -1036,11 +1036,11 @@ $(function() {
         },
         messages: {
             notes: {
-                maxlength: "Description length must be betwen 10-500 chars",
-                minlength: "Description length must be betwen 10-500 chars"
+                maxlength: "Description length must be between 10-500 chars",
+                minlength: "Description length must be between 10-500 chars"
             },
             name: {
-                maxlength: "Name length must be betwen 1-45 chars"
+                maxlength: "Name length must be between 1-45 chars"
             }
         },
         highlight: function(element) {
