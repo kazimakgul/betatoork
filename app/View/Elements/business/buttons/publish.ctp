@@ -2,12 +2,12 @@
     <?php if ($active == 1) { ?>
         <button type="button" class="btn btn-success btn-sm switch_publish1" id="<?php echo $id; ?>">Published</button>
         <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-cog"></i>
+            <i class="fa fa-caret-down"></i>
         </button>
     <?php } else { ?>
         <button type="button" class="btn btn-danger btn-sm switch_publish1" id="<?php echo $id; ?>">UnPublished</button>
         <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-cog"></i>
+            <i class="fa fa-caret-down"></i>
         </button>
     <?php } ?>
     <ul class="dropdown-menu" role="menu">
