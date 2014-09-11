@@ -15,8 +15,6 @@
                 $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
             }
             $active = $game['Game']['active'];
-            ?>
-            <?php
             echo $this->element('business/dashboard/gamebox', array(
                 "gameboxtype" => "mygames",
                 "id" => $id,
@@ -28,15 +26,13 @@
                 "favorites" => $favorites,
                 "plays" => $plays,
                 "game_edit" => $game_edit
-            ))
-            ?>
-            <?php
+            ));
         }
     } else {
         echo $this->element('business/dashboard/nullconditions', array('link' => 'exploregames', 'text' => 'Explore Games'));
     }
     ?>
     <div class="text-center">
-<?php echo $this->element('business/components/pagination') ?>
+        <?php echo $this->element('business/components/pagination') ?>
     </div>
 </div>

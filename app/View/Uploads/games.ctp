@@ -186,8 +186,8 @@ $(function () {
         add: function (e, data) {
         var goUpload = true;
         var uploadFile = data.files[0];
-        if (!(/\.(swf)$/i).test(uploadFile.name)) {
-            alert('You must select an game file only');
+        if (!(/\.(swf|unity3d)$/i).test(uploadFile.name)) {
+            alert('You must select a game file only');
             goUpload = false;
         }
         if (uploadFile.size > 50000000) { // 2mb

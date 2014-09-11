@@ -1036,11 +1036,11 @@ $(function() {
         },
         messages: {
             notes: {
-                maxlength: "Description length must be betwen 10-500 chars",
-                minlength: "Description length must be betwen 10-500 chars"
+                maxlength: "Description length must be between 10-500 chars",
+                minlength: "Description length must be between 10-500 chars"
             },
             name: {
-                maxlength: "Name length must be betwen 1-45 chars"
+                maxlength: "Name length must be between 1-45 chars"
             }
         },
         highlight: function(element) {
@@ -1541,47 +1541,79 @@ function unpublish(id) {
 
 $('.switch_publish1').click(function(e) {
     e.preventDefault();
-    var link = switch_publish;
-    var button = $(this);
-    button
-            .removeClass('btn-success')
-            .removeClass('btn-danger')
-            .addClass('btn-warning')
-            .html('Processing')
-            .next('button')
-            .removeClass('btn-success')
-            .removeClass('btn-danger')
-            .addClass('btn-warning')
-            .find('i')
-            .addClass('spin');
-    var game_id = button.attr('id');
-    $.post(link, {
-        game_id: game_id,
-    }, function(data) {
-        if (data.error) {
-            alert(data.error);
-        } else {
-            if (data.rtdata.title === "Game has been published.") {
-                button
+    var link        =   switch_publish;
+    var game_id     =   $(this).attr('id');
+    var lbutton     =   $(this).closest('div').find('a').first();
+    var rbutton     =   lbutton.next('button');
+    if (lbutton.hasClass('btn-success')) {
+        var status = true;
+    } else {
+        var status = false;
+    }
+    lbutton
+        .removeClass('btn-success')
+        .removeClass('btn-danger')
+        .addClass('btn-warning')
+        .html('Processing');
+    rbutton
+        .removeClass('btn-success')
+        .removeClass('btn-danger')
+        .addClass('btn-warning');
+    $.post(
+        link,
+        {
+            game_id: game_id,
+        },
+        function(data) {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                if (data.rtdata.result === 1) {
+                    Messenger().post(data.rtdata.title);
+                    switch (data.rtdata.title) {
+                        case 'Game has been published.':
+                            lbutton
+                                .removeClass('btn-warning')
+                                .addClass('btn-success')
+                                .html('<i class="fa fa-edit"></i> Edit');
+                            rbutton
+                                .removeClass('btn-warning')
+                                .addClass('btn-success');
+                            break;
+                        case 'Game has been unpublished.':
+                            lbutton
+                                .removeClass('btn-warning')
+                                .addClass('btn-danger')
+                                .html('<i class="fa fa-edit"></i> Edit');
+                            rbutton
+                                .removeClass('btn-warning')
+                                .addClass('btn-danger');
+                            break;
+                    }
+                } else {
+                    Messenger().post(
+                        {
+                            message: 'Error!',
+                            type: 'error',
+                            showCloseButton: true
+                        }
+                    );
+                    lbutton.removeClass('btn-warning');
+                    switch (status) {
+                        case true:
+                            lbutton.addClass('btn-success');
+                            break;
+                        case false:
+                            lbutton.addClass('btn-danger');
+                            break;
+                    }
+                    lbutton.html('<i class="fa fa-edit"></i> Edit');
+                    rbutton
                         .removeClass('btn-warning')
-                        .addClass('btn-success')
-                        .html('Published')
-                        .next('button')
-                        .removeClass('btn-warning')
-                        .addClass('btn-success')
-                        .find('i')
-                        .removeClass('spin');
-            } else if (data.rtdata.title === "Game has been unpublished.") {
-                button
-                        .removeClass('btn-warning')
-                        .addClass('btn-danger')
-                        .html('UnPublished')
-                        .next('button')
-                        .removeClass('btn-warning')
-                        .addClass('btn-danger')
-                        .find('i')
-                        .removeClass('spin');
+                        .addClass('btn-danger');
+                }
             }
-        }
-    }, 'json');
+        },
+        'json'
+    );
 });

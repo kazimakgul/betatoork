@@ -139,8 +139,8 @@ class Game extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'between' => array(
-                'rule' => array('between', 0, 500),
-                'message' => 'The description length must be betwen 10-500 chars',
+                'rule' => array('between', 0, 1000),
+                'message' => 'The description length must be between 10-1000 chars',
             ),
         ),
         'user_id' => array(
