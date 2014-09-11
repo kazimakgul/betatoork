@@ -29,9 +29,9 @@ $go_support = 	$this->Html->url(array('controller' => 'businesses', 'action' => 
 				</p>
 
 				<p class="intro">
-					<label>Custom Domain: </label>
+					<label>Custom Domain </label>
                                         <span class="help" data-toggle="tooltip" title="Map your own domain to your channel.">
-                                            <i class="fa fa-question-circle"></i>
+                                            <a href="<?php echo $go_support;?>" class="badge badge-info"><i class="fa fa-question-circle"> help</i></a>
                                         </span>
                                     
                                         

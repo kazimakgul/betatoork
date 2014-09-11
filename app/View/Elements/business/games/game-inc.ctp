@@ -18,9 +18,9 @@ if($game['Game']['embed']!=NULL)
 
    echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'.$width.'" height="'.$height.'" id="ieID"> <param name="movie" value="'.$link.'" /> <!--[if !IE]>--> <object type="application/x-shockwave-flash" data="'.$link.'" width="'.$width.'" height="'.$height.'" id="eID"> <!--<![endif]--> <!--[if !IE]>--> </object> <!--<![endif]--> </object>';
 
-   }else if($game['Game']['type']=='unity.3d'){
+   }else if($game['Game']['type']=='unity3d'){
 
-   echo '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'.$width.'" height="'.$height.'" id="ieID"> <param name="movie" value="'.$link.'" /> <!--[if !IE]>--> <object type="application/x-shockwave-flash" data="'.$link.'" width="'.$width.'" height="'.$height.'" id="eID"> <!--<![endif]--> <!--[if !IE]>--> </object> <!--<![endif]--> </object>';
+   echo '<object id="UnityObject" type="application/vnd.unity" classid="clsid:444785F1-DE89-4295-863A-D46C3A781394" width="'.$width.'" height="'.$height.'" codebase="http://webplayer.unity3d.com/download_webplayer/UnityWebPlayer.cab#version=2,0,0,0"> <param name="src" value="'.$link.'" /> <param name="logoimage" value="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png"> <param name="backgroundcolor" value="000000"> <param name="bordercolor" value="000000"> <embed id="UnityEmbed" src="'.$link.'" width="'.$width.'" height="'.$height.'" backgroundcolor="000000" bordercolor="000000" logoimage="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" type="application/vnd.unity" pluginspage="http://www.unity3d.com/unity-web-player-2.x" /> </object>';
 
    }else{
 
