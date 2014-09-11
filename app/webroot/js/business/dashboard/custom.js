@@ -1542,8 +1542,9 @@ function unpublish(id) {
 $('.switch_publish1').click(function(e) {
     e.preventDefault();
     var link        =   switch_publish;
-    var game_id     =   $(this).attr('id');
-    var lbutton     =   $(this).closest('div').find('a').first();
+    var button      =   $(this);
+    var game_id     =   button.attr('id');
+    var lbutton     =   button.closest('div').find('a').first();
     var rbutton     =   lbutton.next('button');
     if (lbutton.hasClass('btn-success')) {
         var status = true;
@@ -1579,6 +1580,7 @@ $('.switch_publish1').click(function(e) {
                             rbutton
                                 .removeClass('btn-warning')
                                 .addClass('btn-success');
+                            button.html('<i class="fa fa-cog"></i> UnPublish');
                             break;
                         case 'Game has been unpublished.':
                             lbutton
@@ -1588,6 +1590,7 @@ $('.switch_publish1').click(function(e) {
                             rbutton
                                 .removeClass('btn-warning')
                                 .addClass('btn-danger');
+                            button.html('<i class="fa fa-cog"></i> Publish');
                             break;
                     }
                 } else {
