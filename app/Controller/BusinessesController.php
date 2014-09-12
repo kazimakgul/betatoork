@@ -2491,6 +2491,8 @@ class BusinessesController extends AppController {
                     'Game.starsize',
                     'Game.rate_count',
                     'Game.embed',
+                    'Game.featured',
+                    'Game.active',
                     'Game.clone',
                     'Game.created',
                     'Game.priority',
