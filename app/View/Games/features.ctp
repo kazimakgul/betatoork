@@ -94,7 +94,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 feature">
-					<i class="fa fa-cloud fa-2x"></i>
+					<i class="fa fa-cloud fa-2x"></i> <i class="fa fa-code fa-2x"></i>
 					<strong>Everything happens in the cloud</strong>
 					<p>Clone is full cloud arcade script. You dont have to install anything or configure anything to run your arcade business. Clone is the fastest, most secure and upto date platform on the market. Clone just made for everyone. </p>
 				</div>
@@ -104,24 +104,24 @@
 					<p>Clone is a cross platform solution to your arcade business needs. It's mobile and desktop compatible, it just magicly works on all major browsers and devices such as iPhone, android and tablets.</p>
 				</div>
 				<div class="col-md-4 feature">
-					<i class="fa fa-gamepad fa-2x"></i>
+					<i class="fa fa-gamepad fa-2x"></i> <i class="fa fa-cloud-upload fa-2x"></i>
 					<strong>Its a game machine</strong>
 					<p>Any kind of games are welcome. You can easily upload .swf and .unity3d games and you will be able to add android and iOS affiliate links as new games.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-4 feature">
-					<i class="fa fa-share-alt fa-2x"></i>
-					<strong>Modern, social admin panel</strong>
+					<i class="fa fa-dashboard fa-2x"></i> <i class="fa fa-share-alt fa-2x"></i>
+					<strong>Connected, social admin panel</strong>
 					<p>Clone's powerful admin panel is not just for managing games and platform, its also a very strong social tool where you can find new hot games and new best arcade sites and channels. Clone's natural architecture design helps you gain more traffic and network to grow your business.</p>
 				</div>
 				<div class="col-md-4 feature">
-					<i class="fa fa-money fa-2x"></i>
+					<i class="fa fa-money fa-2x"></i> <i class="fa fa-credit-card fa-2x"></i>
 					<strong>Monetization in mind</strong>
 					<p>Money is what we all work for so clone has all modern solutions for arcade games, such as ads (banners, pre-game ads, siteskin, pop-under, mobile ad types, affiliate links, iOS and android CPI).</p>
 				</div>
 				<div class="col-md-4 feature">
-					<i class="fa fa-plug fa-2x"></i>
+					<i class="fa fa-puzzle-piece fa-2x"></i> <i class="fa fa-plug fa-2x"></i>
 					<strong>Modern templates and plugins</strong>
 					<p>With clone's powerfull backbone you can install templates and plugins with a single click of a button. Clone marketplace is the ecosystem for the arcade script industry</p>
 				</div>

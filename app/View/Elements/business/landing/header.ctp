@@ -46,8 +46,8 @@
 							<li><a href="charts.html">Comparison tables</a></li>
 				        </ul>
         			</li>
-        			-->
-        			<li><a href="<?php echo $help; ?>">Support</a></li>
+        			
+        			<li><a href="<?php echo $help; ?>">Support</a></li> -->
               <li><a href="<?php echo $login; ?>">Login</a></li>
 
         			<!--MorePage	

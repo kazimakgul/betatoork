@@ -13,8 +13,8 @@
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo $features; ?>">Features</a></li>
-            <!--<li><a href="portfolio.html">Success Stories</a></li> -->
-              <li><a href="<?php echo $help; ?>">Support</a></li>
+            <!--<li><a href="portfolio.html">Success Stories</a></li> 
+              <li><a href="<?php echo $help; ?>">Support</a></li> -->
               <li><a href="<?php echo $login; ?>">Login</a></li> 
             </ul>
         </nav>

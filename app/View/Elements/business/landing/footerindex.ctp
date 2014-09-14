@@ -6,6 +6,7 @@ $about=$this->Html->url(array( "controller" => "pages","action" =>"about"));
 $developer=$this->Html->url(array( "controller" => "pages","action" =>"developers"));
 $advertise=$this->Html->url(array( "controller" => "pages","action" =>"advertise"));
 $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
+$features=$this->Html->url(array( "controller" => "games","action" =>"features"));
 ?>
 
 	<div id="footer-white">
@@ -32,7 +33,7 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
 					<h3>Menu</h3>
 					<ul>
 	      				<li>
-	          				<a href="<?php echo $about;?>">Features</a>
+	          				<a href="<?php echo $features;?>">Features</a>
 	        			</li>
 
 	        			<li>
