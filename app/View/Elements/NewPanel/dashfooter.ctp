@@ -36,7 +36,7 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
         </li>
     </ul>
 
-<p><small><strong>Clone</strong> © Copyright 2014. All Rights Reserved</small></p>
+<p><small><strong>Clone</strong> © Copyright <?php echo date("Y"); ?>. All Rights Reserved</small></p>
 <a target="_blank" href="http://toork.com"><img alt="Toork Social Network Engine" width="100" src="https://s3.amazonaws.com/betatoorkpics/socials/toorklogo.png" /></a>
 
 </div>
