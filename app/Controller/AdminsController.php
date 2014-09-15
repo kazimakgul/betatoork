@@ -402,6 +402,7 @@ class AdminsController extends AppController {
                 'fields' => array(
                     'Game.id',
                     'Game.priority',
+                    'Game.seo_url',
                     'Game.name',
                     'Game.picture',
                     'User.username'

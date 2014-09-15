@@ -189,16 +189,16 @@ if (isset($query)) {
                             <?php echo $priority; ?>
                         </div>
                         <div class="col-sm-1 avatar">
-                            <?php echo $picture; ?>
+                            <a target="_blank" href='http://<?php echo $name; ?>.clone.gs'><?php echo $picture; ?></a>
                         </div>
                         <div class="col-sm-2">
-                            <?php echo $name; ?>
+                            <a target="_blank" href='http://<?php echo $name; ?>.clone.gs'><?php echo $name; ?></a>
                         </div>
                         <div class="col-sm-2">
                             <?php echo $email; ?>
                         </div>
                         <div class="col-sm-3">
-                            <?php echo $domain; ?>
+                            <a target="_blank" href='http://<?php echo $domain; ?>'><?php echo $domain; ?></a>
                         </div>
                         <div class="col-sm-1 header">
                             <div class="dropdown pull-right">

@@ -155,6 +155,8 @@ if (isset($query)) {
                     $name = $value['Game']['name'];
                     //  owner
                     $owner = $value['User']['username'];
+                    //  owner
+                    $seourl = $value['Game']['seo_url'];
                     //  edit
                     $edit = $this->Html->url(array('controller' => 'admins', 'action' => 'games_edit', $id));
                     //  delete
@@ -171,13 +173,13 @@ if (isset($query)) {
                             <?php echo $priority; ?>
                         </div>
                         <div class="col-sm-2 avatar">
-                            <?php echo $picture; ?>
+                            <a target="_blank" href='http://<?php echo $owner; ?>.clone.gs/play/<?php echo $seourl; ?>'><?php echo $picture; ?></a>
                         </div>
                         <div class="col-sm-3">
-                            <?php echo $name; ?>
+                            <a target="_blank" href='http://<?php echo $owner; ?>.clone.gs/play/<?php echo $seourl; ?>'><?php echo $name; ?></a>
                         </div>
                         <div class="col-sm-3">
-                            <?php echo $owner; ?>
+                            <a target="_blank" href='http://<?php echo $owner; ?>.clone.gs'><?php echo $owner; ?></a>
                         </div>
                         <div class="col-sm-1 header">
                             <div class="dropdown pull-right">
