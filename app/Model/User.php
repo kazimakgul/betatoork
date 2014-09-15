@@ -217,7 +217,8 @@ class User extends AppModel {
             'conditions' => '',
             'fields' => '',
             'order' => ''
-    ));
+        )
+    );
     public $hasOne = array(
         'Userstat' => array(
             'className' => 'Userstat',
@@ -225,8 +226,9 @@ class User extends AppModel {
             'conditions' => '',
             'fields' => '',
             'order' => '',
-            'type' => 'INNER'
-    ));
+            'type' => 'INNER',
+        )
+    );
     public $belongsTo = array(
         'Country' => array(
             'className' => 'Country',

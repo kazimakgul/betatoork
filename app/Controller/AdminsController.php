@@ -3,14 +3,25 @@
 App::uses('AppController', 'Controller');
 
 /**
- * Wallentries Controller
+ * Admin Controller
  *
- * @property Wallentry $Wallentry
+ * @author Emircan Ok
  */
 class AdminsController extends AppController {
 
+    /**
+     * Name
+     * @var string
+     * @author Emircan Ok
+     */
     public $name = 'Admins';
-    var $uses = array(
+
+    /**
+     * Uses
+     * @var array
+     * @author Emircan Ok
+     */
+    public $uses = array(
         'Game',
         'User',
         'Favorite',
@@ -23,239 +34,659 @@ class AdminsController extends AppController {
         'Order',
         'Activity',
         'Message',
-        'Log'
+        'Log',
+        'Country'
     );
+
+    /**
+     * Helpers
+     * @var array
+     * @author Emircan Ok
+     */
     public $helpers = array(
         'Html',
         'Form',
         'Upload',
         'Recaptcha.Recaptcha'
     );
+
+    /**
+     * Components
+     * @var array
+     * @author Emircan Ok
+     */
     public $components = array(
         'Amazonsdk.Amazon',
         'Recaptcha.Recaptcha',
         'Common'
     );
 
-    public function index() {
-        $this->layout = 'ajax';
-        echo 'ready';
-        if ($_GET['task'] == 'deleteorders') {
-            $this->deleteallorders();
-        }
-        //$this->add_session(245);
-        //$this->delete_session(15);
-    }
+    /**
+     * User Roles
+     * @var array
+     * @author Emircan Ok
+     */
+    private $role = array(
+        'user' => 0,
+        'admin' => 1,
+        'manager' => 2
+    );
 
-    public function bots() {
-        $this->layout = 'adminDashboard';
-        $this->set('users', $this->paginate('Clonebot'));
-        $authid = $this->Session->read('Auth.User.id');
+    /**
+     * Pagination Limit
+     * @var integer
+     * @author Emircan Ok
+     */
+    private $limit = 10;
+
+    /**
+     * Side Bar method
+     * @author Emircan Ok
+     */
+    private function sideBar() {
+        $userid = $this->Session->read('Auth.User.id');
         $user = $this->User->find('first', array(
+            'fields' => array(
+                'User.id',
+                'User.username',
+                'User.seo_username',
+                'User.picture',
+                'User.role'
+            ),
             'conditions' => array(
-                'User.id' => $authid
-            )
+                'User.id' => $userid
+            ),
+            'contain' => FALSE
         ));
-        $userName = $user['User']['username'];
         $this->set('user', $user);
-        $this->set('username', $userName);
     }
 
-    public function deleteallorders() {
-        $this->Order->query('DELETE FROM `orders` WHERE 1');
-        echo 'deleted orders';
+    /**
+     * Bind And UnBind Model For Channels
+     * @author Emircan Ok
+     */
+    private function channels_model() {
+        //  UnBind
+        $unBindModel = array(
+            'hasMany' => array(
+                'Game'
+            ),
+            'belongsTo' => array(
+                'Country'
+            )
+        );
+        if (!isset($this->request->named['sort']) || $this->request->named['sort'] !== 'Userstat.potential') {
+            $unBindModel['hasOne'] = array(
+                'Userstat'
+            );
+        }
+        $this->User->unBindModel($unBindModel, FALSE);
+        //  Bind
+        $this->User->BindModel(array(
+            'hasOne' => array(
+                'Custom_domain' => array(
+                    'className' => 'Custom_domain',
+                    'foreignKey' => 'user_id',
+                    'conditions' => '',
+                    'fields' => '',
+                    'order' => '',
+                    'type' => 'LEFT'
+                )
+            )
+                ), FALSE);
     }
 
-    public function add_session($id) {
-        $selectedlist = array();
-        $arr = $this->Session->read('User.selectedlst');
-        if ($arr != NULL) {
-            $selectedlist = $arr;
-            array_push($selectedlist, $id);
-            $this->Session->write('User.selectedlst', $selectedlist);
+    /**
+     * Bind And UnBind Model For Games
+     * @author Emircan Ok
+     */
+    private function games_model() {
+        //  UnBind
+        $unBindModel = array(
+            'hasOne' => array(
+                'Gamestat'
+            ),
+            'belongsTo' => array(
+                'Category'
+            )
+        );
+        $this->Game->unBindModel($unBindModel, FALSE);
+        //  Bind
+        $this->Game->BindModel(array(
+            'belongsTo' => array(
+                'User' => array(
+                    'className' => 'User',
+                    'foreignKey' => 'user_id',
+                    'conditions' => '',
+                    'fields' => '',
+                    'order' => '',
+                    'type' => 'INNER'
+                )
+            )
+                ), FALSE);
+    }
+
+    /**
+     * Change SQL with filter for channels
+     * @author Emircan Ok
+     */
+    private function channels_filter() {
+        if (isset($this->request->named['filter'])) {
+            switch ($this->request->named['filter']) {
+                case 'cname':
+                    $this->paginate['User']['conditions']['NOT']['Custom_domain.domain'] = NULL;
+                    break;
+                case 'verify':
+                    $this->paginate['User']['conditions']['User.verify'] = 1;
+                    break;
+                case 'manager':
+                    $this->paginate['User']['conditions']['User.role'] = $this->role['manager'];
+                    break;
+                case 'active':
+                    $this->paginate['User']['conditions']['User.active'] = 1;
+                    break;
+            }
+            $this->set('active_filter', $this->request->named['filter']);
         } else {
-            array_push($selectedlist, $id);
-            $this->Session->write('User.selectedlst', $selectedlist);
+            $this->set('active_filter', 'all');
         }
-
-        $this->Session->write('User.selectedcount', count($selectedlist));
-        print_r($selectedlist);
     }
 
-    public function game_add() {
-        $this->layout = 'adminDashboard';
-        $authid = $this->Session->read('Auth.User.id');
-        $user = $this->User->find('first', array(
+    /**
+     * Change SQL with filter for games
+     * @author Emircan Ok
+     */
+    private function games_filter() {
+        if (isset($this->request->named['filter'])) {
+            switch ($this->request->named['filter']) {
+                case 'clone':
+                    $this->paginate['Game']['conditions']['Game.clone'] = 0;
+                    break;
+                case 'active':
+                    $this->paginate['Game']['conditions']['Game.active'] = 1;
+                    break;
+                case 'fullscreen':
+                    $this->paginate['Game']['conditions']['Game.fullscreen'] = 1;
+                    break;
+                case 'embed':
+                    $this->paginate['Game']['conditions']['Game.embed'] = 2;
+                    break;
+                case 'install':
+                    $this->paginate['Game']['conditions']['Game.install'] = 1;
+                    break;
+                case 'mobile':
+                    $this->paginate['Game']['conditions']['Game.mobileready'] = 1;
+                    break;
+            }
+            $this->set('active_filter', $this->request->named['filter']);
+        } else {
+            $this->set('active_filter', 'all');
+        }
+    }
+
+    /**
+     * Channel List
+     * @author Emircan Ok
+     */
+    public function channels() {
+        $this->layout = 'admin';
+        $this->sideBar();
+        $this->channels_model();
+        $this->paginate = array(
+            'User' => array(
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.picture',
+                    'User.email',
+                    'Custom_domain.domain'
+                ),
+                'limit' => $this->limit
+            )
+        );
+        $this->channels_filter();
+        $data = $this->paginate('User');
+        $this->set('data', $data);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+    }
+
+    /**
+     * Channnels Search
+     * @author Emircan Ok
+     */
+    public function channels_search() {
+        $this->layout = 'admin';
+        $this->sideBar();
+        if ($this->request->is("GET") && isset($this->request->query['q']) && !empty($this->request->query['q'])) {
+            $query = $this->request->query['q'];
+            $this->set('query', $query);
+        } else {
+            $this->redirect(array(
+                "controller" => "admins",
+                "action" => "channels"
+            ));
+        }
+        $this->channels_model();
+        $this->paginate = array(
+            'User' => array(
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.picture',
+                    'User.email',
+                    'Custom_domain.domain'
+                ),
+                'conditions' => array(
+                    'OR' => array(
+                        'User.id' => $query,
+                        'User.priority' => $query,
+                        'User.username LIKE' => '%' . $query . '%'
+                    )
+                ),
+                'limit' => $this->limit
+            )
+        );
+        $this->channels_filter();
+        $data = $this->paginate('User');
+        $this->set('data', $data);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('channels');
+    }
+
+    /**
+     * Channel Edit
+     * @param integer $id
+     * @author Emircan Ok
+     */
+    public function channels_edit($id) {
+
+        $this->layout = 'admin';
+        $this->sideBar();
+
+        //  User Data
+        $data = $this->User->find('first', array(
             'conditions' => array(
-                'User.id' => $authid
+                'User.id' => $id
+            ),
+            'contain' => FALSE
+        ));
+        $this->set('data', $data);
+
+        //  Countries Data
+        $this->Country->unBindModel(array(
+            'hasMany' => array(
+                'User'
             )
         ));
-        $userName = $user['User']['username'];
-        $this->set('user', $user);
-        $this->set('username', $userName);
-        $categories = $this->Game->Category->find('list');
-        $this->set(compact('categories'));
+        $countries = $this->Country->find('all', array(
+            'order' => array(
+                'Country.name' => 'asc'
+            )
+        ));
+        $this->set('countries', $countries);
+
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
     }
 
-    public function game_edit($id = NULL) {
-        $this->layout = 'adminDashboard';
-        $game = $this->Game->find('first', array(
-            'contain' => false,
+    /**
+     * Save Channel Edit Data
+     */
+    public function channels_edit_post() {
+        $data = array(
+            'id' => $this->request->data['id'],
+            'screenname' => $this->request->data['screenname'],
+            'description' => $this->request->data['description'],
+            'bg_color' => $this->request->data['bg_color'],
+            'analitics' => $this->request->data['analitics'],
+            'username' => $this->secureSuperGlobalPOST(str_replace(' ', '', $this->request->data['username'])),
+            'seo_username' => strtolower($this->secureSuperGlobalPOST(str_replace(' ', '', $this->request->data['username']))),
+            'email' => $this->request->data['email'],
+            'birth_date' => $this->request->data['birth_date'],
+            'gender' => $this->request->data['gender'],
+            'country' => $this->request->data['country'],
+            'role' => $this->request->data['role'],
+            'fb_link' => $this->request->data['fb_link'],
+            'twitter_link' => $this->request->data['twitter_link'],
+            'gplus_link' => $this->request->data['gplus_link'],
+            'website' => $this->request->data['website'],
+            'active' => $this->request->data['active'],
+            'verify' => $this->request->data['verify'],
+            'priority' => $this->request->data['priority']
+        );
+        if (!empty($this->request->data['password']) && !empty($this->request->data['password_again']) && $this->request->data['password'] === $this->request->data['password_again']) {
+            $data['password'] = $this->request->data['password'];
+        }
+        if ($this->User->save($data)) {
+            $this->set('result', TRUE);
+            $this->set('message', 'Channel Updated');
+        } else {
+            $this->set('result', FALSE);
+            $this->set('message', 'Channel Not Updated');
+        }
+        $this->set('_serialize', array('result', 'message'));
+    }
+
+    /**
+     * Channel Delete
+     * @param integer $id
+     * @author Emircan Ok
+     */
+    public function channels_delete($id) {
+        if ($this->User->delete($id)) {
+            $this->set('result', TRUE);
+            $this->set('message', 'Channel Deleted');
+        } else {
+            $this->set('result', FALSE);
+            $this->set('message', 'Channel Not Deleted');
+        }
+        $this->set('_serialize', array('result', 'message'));
+    }
+
+    /**
+     * Games List
+     * @author Emircan Ok
+     */
+    public function games() {
+        $this->layout = 'admin';
+        $this->sideBar();
+        $this->games_model();
+        $data = $this->paginate = array(
+            'Game' => array(
+                'fields' => array(
+                    'Game.id',
+                    'Game.name',
+                    'Game.picture',
+                    'User.username'
+                ),
+                'limit' => $this->limit
+            )
+        );
+        $this->games_filter();
+        $data = $this->paginate('Game');
+        $this->set('data', $data);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+    }
+
+    /**
+     * Games Search
+     * @author Emircan Ok
+     */
+    public function games_search() {
+        $this->layout = 'admin';
+        $this->sideBar();
+        if ($this->request->is("GET") && isset($this->request->query['q']) && !empty($this->request->query['q'])) {
+            $query = $this->request->query['q'];
+            $this->set('query', $query);
+        } else {
+            $this->redirect(array(
+                "controller" => "admins",
+                "action" => "games"
+            ));
+        }
+        $this->games_model();
+        $data = $this->paginate = array(
+            'Game' => array(
+                'fields' => array(
+                    'Game.id',
+                    'Game.name',
+                    'Game.picture',
+                    'User.username'
+                ),
+                'conditions' => array(
+                    'OR' => array(
+                        'Game.id' => $query,
+                        'Game.priority' => $query,
+                        'Game.name LIKE' => '%' . $query . '%',
+                        'User.username LIKE' => '%' . $query . '%',
+                    )
+                ),
+                'limit' => $this->limit
+            )
+        );
+        $this->games_filter();
+        $data = $this->paginate('Game');
+        $this->set('data', $data);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('games');
+    }
+
+    /**
+     * Games Edit
+     * @param integer $id
+     * @author Emircan Ok
+     */
+    public function games_edit($id) {
+        $this->layout = 'admin';
+        $this->sideBar();
+        $this->games_model();
+        $data = $this->Game->find('first', array(
+            'fields' => array(
+                'Game.id',
+                'Game.name',
+                'Game.link',
+                'Game.description',
+                'Game.active',
+                'Game.user_id',
+                'Game.width',
+                'Game.height',
+                'Game.priority',
+                'Game.category_id',
+                'Game.picture',
+                'Game.mobileready',
+                'Game.fullscreen',
+                'Game.featured',
+                'Game.install'
+            ),
             'conditions' => array(
                 'Game.id' => $id
             )
         ));
-        $this->set('game', $game);
-        $authid = $this->Session->read('Auth.User.id');
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $authid
+        debug($data);
+        if ($data['Game']['install']) {
+            $this->loadModel('Applink');
+            $and = NULL;
+            $ios = NULL;
+            $app = $this->Applink->find('all', array('conditions' => array('Applink.game_id' => $id)));
+            foreach ($app as $platform) {
+                if ($platform['Applink']['platform_id'] == 1) {
+                    $and = $platform['Applink']['link'];
+                }
+                if ($platform['Applink']['platform_id'] == 2) {
+                    $ios = $platform['Applink']['link'];
+                }
+            }
+            $this->set('and', $and);
+            $this->set('ios', $ios);
+            debug($and);
+            debug($ios);
+        }
+        $this->set('data', $data);
+        $categories = $this->Category->find('all', array(
+            'order' => array(
+                'Category.name' => 'asc'
             )
         ));
-        $userName = $user['User']['username'];
-        $this->set('id', $id);
-        $this->set('user', $user);
-        $this->set('username', $userName);
-        $categories = $this->Game->Category->find('list');
-        $this->set(compact('categories'));
+        debug($categories);
+        $this->set('categories', $categories);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
     }
 
-    public function admin_game_submit() {
-
-        $this->layout = 'ajax';
-
+    /**
+     * Save Game Edit Data
+     */
+    public function games_edit_post() {
         App::uses('Folder', 'Utility');
         App::uses('File', 'Utility');
-
-        $category_id = $this->request->data['category_id'];
-        $fullscreen = $this->request->data['full_screen'];
-        $game_description = $this->request->data['game_description'];
+        $user_id = $this->Auth->user('id');
+        $id = $this->request->data['id'];
+        $game_link = $this->request->data['link'];
+        $image_name = $this->request->data['image_name'];
         $game_file = $this->request->data['game_file'];
-        $game_height = $this->request->data['game_height'];
-        $game_link = $this->request->data['game_link'];
-        $game_name = $this->request->data['game_name'];
-        $game_priority = $this->request->data['game_priority'];
-        $game_tags = $this->request->data['game_tags'];
-        $game_user_id = $this->request->data['game_user_id'];
-        $game_width = $this->request->data['game_width'];
-        $mobileready = $this->request->data['mobile_ready'];
-
-        if (isset($this->request->data['image_name'])) {
-            $image_name = $this->request->data['image_name'];
+        if ($image_name != 'current' && $image_name != 'empty') {
+            $file = new File(WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $image_name, false);
+            $info = $file->info();
+            $filename = $info["filename"];
+            $ext = $info["extension"];
+            $basename = $info["basename"];
+            $dirname = $info["dirname"];
+            $newname = $filename . '_toorksize.' . $ext;
+            rename(WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $image_name, WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $newname);
+        }
+        if ($game_file != 'empty') {
+            $type = $this->Game->get_game_type($game_file);
+        } else {
+            $type = $this->Game->get_game_type($game_link);
         }
 
-        if ($userid = $this->Session->read('Auth.User.id')) {
-            //  This area should be exist for upload plugin needs-begins
-
-            if (!empty($image_name)) {
-
-                $file = new File(WWW_ROOT . DS . 'upload' . DS . 'temporary' . DS . $userid . DS . $image_name, false);
-                $info = $file->info();
-                $filename = $info["filename"];
-                $ext = $info["extension"];
-                $basename = $info["basename"];
-                $dirname = $info["dirname"];
-                $newname = $filename . '_toorksize.' . $ext;
-                $upload_dir = WWW_ROOT . DS . 'upload' . DS . 'temporary' . DS . $userid . DS;
-                rename(
-                    $upload_dir . $image_name,
-                    $upload_dir . $newname
-                );
+        //  SET INSTALLABLE
+        $installable = $this->request->data['installable'];
+        if ($installable == 1) {
+            $installable = 0;
+            if (!empty($this->request->data['android'])) {
+                $game_link = $this->request->data['android'];
+                $installable = 1;
             }
-
-            //  This area should be exist for upload plugin needs-ends
-            if ($game_file != 'empty') {
-
-                $type = $this->Game->get_game_type($game_file);
-            } else {
-
-                $type = $this->Game->get_game_type($game_link);
+            if (!empty($this->request->data['ios'])) {
+                $game_link = $this->request->data['ios'];
+                $installable = 1;
             }
-            //============Save Datas To Games Database Begins================
-            //*****************************
-            //Secure data filtering begins
-            //*****************************
-            $filtered_data = array(
-                'Game' => array(
-                    /* 'id' => 563, */
-                    'name' => $this->Game->secureSuperGlobalPOST($game_name),
-                    'description' => $this->Game->secureSuperGlobalPOST($game_description),
-                    /* 'game_link' => $game_link, */
-                    'width' => $game_width,
-                    'height' => $game_height,
-                    'type' => $type,
-                    'link' => $game_link,
-                    'priority' => $game_priority,
-                    'user_id' => $game_user_id,
-                    /* 'priority' => 0, */
-                    'category_id' => $category_id,
-                    'seo_url' => $this->Game->checkDuplicateSeoUrl($game_name),
-                    'owner_id' => $game_user_id,
-                    'user_id' => $game_user_id,
-                    'fullscreen' => $fullscreen,
-                    'mobileready' => $mobileready
-                )
-            );
+            $mobileready = 1;
+        }
 
-            $id = $this->request->data['id'];
-            if ($id > 0) {
-                $filtered_data['Game']['id'] = $id;
-            }
+        //  GAME UPDATE DATA
+        $data = array(
+            'Game' => array(
+                'id' => $id,
+                'name' => $this->Game->secureSuperGlobalPOST($this->request->data['name']),
+                'description' => $this->Game->secureSuperGlobalPOST($this->request->data['description']),
+                'link' => empty($this->request->data['link']) ? NULL : $this->request->data['link'],
+                'width' => empty($this->request->data['width']) ? NULL : $this->request->data['width'],
+                'height' => empty($this->request->data['height']) ? NULL : $this->request->data['height'],
+                'category_id' => $this->request->data['category_id'],
+                'priority' => empty($this->request->data['priority']) ? 0 : $this->request->data['priority'],
+                'user_id' => $this->request->data['user_id'],
+                'active' => $this->request->data['active'],
+                'fullscreen' => $this->request->data['fullscreen'],
+                'mobileready' => isset($mobileready) ? $mobileready : $this->request->data['mobileready'],
+                'install' => $installable,
+                'seo_url' => $this->Game->checkDuplicateSeoUrl($this->request->data['name'], $id),
+                'type' => $type,
+            )
+        );
 
-            /*$this->Game->save($filtered_data);
-            $log = $this->Game->getDataSource()->getLog(false, false);
-            debug($log);
-            exit;*/
+        //  GAME UPDATE
+        if ($this->Game->save($data)) {
 
-            //*****************************
-            //Secure data filtering ends
-            //*****************************
-            if ($this->Game->save($filtered_data)) {
-                $this->requestAction(array(
-                    'controller' => 'userstats',
-                    'action' => 'getgamecount',
-                    $userid
-                ));
-                $id = $this->Game->getLastInsertId();
-                $this->requestAction(array(
-                    'controller' => 'wallentries',
-                    'action' => 'action_ajax',
-                    $id,
-                    $userid
-                ));
-                if (!empty($image_name)) {
-                    //=======Upload to aws for Game Image begins===========
-                    $feedback = $this->Amazon->S3->create_object(Configure::read('S3.name'), 'upload/games/' . $id . "/" . $newname, array(
-                        'fileUpload' => WWW_ROOT . "/upload/temporary/" . $userid . "/" . $newname,
-                        'acl' => AmazonS3::ACL_PUBLIC
+            //  INSTALLABLE DATA
+            if ($installable) {
+                $android = $this->request->data['android'];
+                $ios = $this->request->data['ios'];
+                $this->loadModel('Applink');
+                //  ANDROID
+                if (!empty($and)) {
+                    $android_data = $this->Applink->find('first', array(
+                        'conditions' => array(
+                            'Applink.game_id' => $id,
+                            'Applink.platform_id' => 1
+                        )
                     ));
-                    //========Upload to aws for Game Image ends==============
-                    if ($feedback) {
-                        //Set the picture field on db.
-                        $this->Game->query('UPDATE games SET picture="' . $image_name . '" WHERE id=' . $id);
-                        $this->remove_temporary($userid, 'new_game');
+                    if (!is_null($android_data)) {
+                        $this->Applink->id = $android_data['Applink']['id'];
                     }
+                    $applinkdata['Applink']['game_id'] = $id;
+                    $applinkdata['Applink']['platform_id'] = 1;
+                    $applinkdata['Applink']['link'] = $android;
+                    $this->Applink->save($applinkdata);
                 }
-                $this->gameUpload($game_file, $id, $userid); //Check if any game upload exists 
+                //  IOS
+                if (!empty($ios)) {
+                    $ios_data = $this->Applink->find('first', array(
+                        'conditions' => array(
+                            'Applink.game_id' => $id,
+                            'Applink.platform_id' => 2
+                        )
+                    ));
+                    if (!is_null($ios_data)) {
+                        $this->Applink->id = $ios_data['Applink']['id'];
+                    }
+                    $applinkdata['Applink']['game_id'] = $id;
+                    $applinkdata['Applink']['platform_id'] = 2;
+                    $applinkdata['Applink']['link'] = $ios;
+                    $this->Applink->save($applinkdata);
+                }
             }
-            //============Save Datas To Games Database Ends================
+
+            //  AMAZON S3
+            if ($image_name != 'current' && $image_name != 'empty') {
+                $feedback = $this->Amazon->S3->create_object(
+                        Configure::read('S3.name'), 'upload/games/' . $id . "/" . $newname, array(
+                    'fileUpload' => WWW_ROOT . "/upload/temporary/" . $user_id . "/" . $newname,
+                    'acl' => AmazonS3::ACL_PUBLIC
+                        )
+                );
+                if ($feedback) {
+                    $this->Game->query('UPDATE games SET picture="' . $image_name . '" WHERE id=' . $id);
+                    $this->remove_temporary($user_id, 'new_game');
+                }
+            }
+
+            $this->gameUpload($game_file, $id, $user_id);
+            $this->set('result', TRUE);
+            $this->set('message', "Game Updated");
+        } else {
+            $this->set('result', FALSE);
+            $this->set('message', "Game Not Updated");
         }
-        $msg = array("title" => 'Game has been saved on s3.' . 'game file:' . $game_file, 'result' => 1);
-        $this->set('rtdata', $msg);
-        $this->set('_serialize', array('rtdata'));
+        $this->set('_serialize', array('result', 'message'));
     }
 
-    function gameUpload($game_file = NULL, $id = NULL, $userid = NULL) {
+    /**
+     * Games Delete
+     * @param integer $id
+     * @author Emircan Ok
+     */
+    public function games_delete($id) {
+        if ($this->Game->delete($id)) {
+            $this->set('result', TRUE);
+            $this->set('message', 'Game Deleted');
+        } else {
+            $this->set('result', FALSE);
+            $this->set('message', 'Game Not Deleted');
+        }
+        $this->set('_serialize', array('result', 'message'));
+    }
+
+    /**
+     * Game Upload method
+     *
+     * @param Request => array()
+     * @return Game upload and db data insert
+     */
+    private function gameUpload($game_file = NULL, $id = NULL, $userid = NULL) {
         if ($game_file != 'empty') {
 
             $random_number = rand(1000000, 9999999);
             $new_game_file = $random_number . '_' . $game_file;
 
             //=======Upload to aws for Game Upload begins===========
-            $feedback = $this->Amazon->S3->create_object(Configure::read('S3-games.name'), $new_game_file, array(
+            $feedback = $this->Amazon->S3->create_object(
+                    Configure::read('S3-games.name'), $new_game_file, array(
                 'fileUpload' => WWW_ROOT . "upload/gamefiles/" . $userid . "/" . $game_file,
                 'acl' => AmazonS3::ACL_PUBLIC
-            ));
+                    )
+            );
             //========Upload to aws for Game Upload ends==============
             if ($feedback) {
                 //Set the picture field on db.
@@ -266,158 +697,6 @@ class AdminsController extends AppController {
         }
     }
 
-    public function delete_session($id) {
-        $selectedlist = array();
-
-        $arr = $this->Session->read('User.selectedlst');
-        if ($arr != NULL) {
-            foreach ($arr as $key => $value) {
-                if ($value == $id) {
-                    unset($arr[$key]);
-                }
-            }
-        }
-        $this->Session->write('User.selectedlst', $arr);
-        $this->Session->write('User.selectedcount', count($arr));
-        print_r($arr);
-    }
-
-    public function do_pwd_changes() {
-        $this->layout = 'ajax';
-
-        $password = $_POST['password'];
-
-        if ($password != NULL) {
-
-            $arr = $this->Session->read('User.selectedlst');
-            if ($arr != NULL) {
-                foreach ($arr as $ar) {
-                    $this->User->id = $ar;
-                    if ($this->User->saveField('password', $password)) {
-                        //echo '<br>Password changed for '.$ar;
-                    }
-                }
-            }//Arr is not null
-            //Get usernames for ids.
-            $userinfos = $this->User->find('all', array(
-                'contain' => false,
-                'fields' => array(
-                    'User.username',
-                    'User.id'
-                ),
-                'conditions' => array(
-                    'User.id' => $arr
-                )
-            ));
-            echo '<ul>';
-            foreach ($userinfos as $userinfo) {
-                echo '<li>' . $userinfo['User']['username'] . '(' . $userinfo['User']['id'] . ')</li>';
-            }
-            echo '<ul>';
-
-
-            //Remove Sessions
-            $this->Session->delete('User.selectedlst');
-            $this->Session->delete('User.selectedcount');
-        } else {//End of null control
-            echo 'Error:You have to enter password in field!';
-        }
-    }
-
-    public function filepicker() {
-        $this->layout = 'adminDashboard';
-        echo 'filepicker ready';
-    }
-
-    public function do_adcode_changes() {
-        $this->layout = 'ajax';
-
-        $adcode = $_POST['adcode'];
-
-        if ($adcode != NULL) {
-
-            $arr = $this->Session->read('User.selectedlst');
-            if ($arr != NULL) {
-                foreach ($arr as $ar) {
-                    $this->User->id = $ar;
-                    if ($this->User->saveField('adcode', $adcode)) {
-                        //echo '<br>Password changed for '.$ar;
-                    }
-                }
-            }//Arr is not null
-            //Get usernames for ids.
-            $userinfos = $this->User->find('all', array(
-                'contain' => false,
-                'fields' => array(
-                    'User.username',
-                    'User.id'
-                ),
-                'conditions' => array(
-                    'User.id' => $arr
-                )
-            ));
-            echo '<ul>';
-            foreach ($userinfos as $userinfo) {
-                echo '<li>' . $userinfo['User']['username'] . '(' . $userinfo['User']['id'] . ')</li>';
-            }
-            echo '<ul>';
-
-
-            //Remove Sessions
-            $this->Session->delete('User.selectedlst');
-            $this->Session->delete('User.selectedcount');
-        } else {//End of null control
-            echo 'Error:You have to enter ad code in field!';
-        }
-    }
-
-    public function remove_selections() {
-        //Remove Sessions
-        $this->Session->delete('User.selectedlst');
-        $this->Session->delete('User.selectedcount');
-        echo 'All removed';
-    }
-
-    public function mass_pwd_change($role = NULL) {
-        $this->layout = 'adminDashboard';
-
-
-        $arr = $this->Session->read('User.selectedlst');
-        if ($arr != NULL) {
-            $this->set('checkedlist', $arr);
-        }
-
-        $selectedcount = $this->Session->read('User.selectedcount');
-        if ($selectedcount != NULL) {
-            $this->set('selectedcount', $selectedcount);
-        }
-
-        if ($role != NULL)
-            $this->paginate = array(
-                'conditions' => array(
-                    'User.role' => $role
-                )
-            );
-
-        $this->User->recursive = 0;
-        $this->set('users', $this->paginate('User'));
-        $authid = $this->Session->read('Auth.User.id');
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $authid
-            )
-        ));
-        $userName = $user['User']['username'];
-        $this->set('user', $user);
-        $this->set('username', $userName);
-    }
-
-    /**
-     * Users Management method
-     *
-     * @param $role => which type of user will be listed,
-     * @return no return,set some values
-     */
     public function users($role = NULL) {
         $this->layout = 'adminDashboard';
 
@@ -440,429 +719,17 @@ class AdminsController extends AppController {
         $this->set('username', $userName);
     }
 
-    /**
-     * Games Management method
-     *
-     * @param $role => which type of user will be listed,
-     * @return no return,set some values
-     */
-    public function games() {
-        $this->layout = 'adminDashboard';
 
-        $this->Game->recursive = 0;
-        $this->set('games', $this->paginate('Game'));
-        $authid = $this->Session->read('Auth.User.id');
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $authid
-            )
-        ));
-        $userName = $user['User']['username'];
-        $this->set('user', $user);
-        $this->set('username', $userName);
+
+
+    private function secureSuperGlobalPOST($value) {
+        $string = preg_replace('/[^\w\d_ -]/si', '', $value);
+        $string = htmlspecialchars(stripslashes($string));
+        $string = str_replace("script", "blocked", $string);
+        $string = mysql_escape_string($string);
+        $string = htmlentities($string);
+        $string = str_replace("_", "", $string);
+        return $string;
     }
 
-    public function affected($id, $value) {
-        $this->User->Game->updateAll(array('active' => $value), array('user_id' => $id));
-        $this->Session->setFlash(__('The user has been updated all games of this user has been affected'));
-    }
-
-    //<<<<<<<<<<Logs function begins>>>>>>>>>
-    public function logs() {
-        $this->layout = 'adminDashboard';
-        $orderdata = $this->paginate('Log');
-        $this->set('logs', $orderdata);
-        $authid = $this->Session->read('Auth.User.id');
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $authid
-            )
-        ));
-        $userName = $user['User']['username'];
-        $this->set('user', $user);
-        $this->set('username', $userName);
-    }
-
-    //<<<<<<<<<<Logs function ends>>>>>>>>>
-    //<<<<<<<<<<Orders function begins>>>>>>>>>
-    public function orders() {
-        $this->layout = 'adminDashboard';
-        $orderdata = $this->paginate('Order');
-        $this->set('orders', $orderdata);
-        $authid = $this->Session->read('Auth.User.id');
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $authid
-            )
-        ));
-        $userName = $user['User']['username'];
-        $this->set('user', $user);
-        $this->set('username', $userName);
-    }
-
-    //<<<<<<<<<<Orders function ends>>>>>>>>>
-    //<<<<<<<<<<Activities function begins>>>>>>>>>
-    public function activities() {
-        $this->layout = 'adminDashboard';
-        $orderdata = $this->paginate('Activity');
-        $this->set('activities', $orderdata);
-        $authid = $this->Session->read('Auth.User.id');
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $authid
-            )
-        ));
-        $userName = $user['User']['username'];
-        $this->set('user', $user);
-        $this->set('username', $userName);
-    }
-
-    //<<<<<<<<<<Activities function ends>>>>>>>>>
-    //<<<<<<<<<<Messages function begins>>>>>>>>>
-    public function messages() {
-        $this->layout = 'adminDashboard';
-        $orderdata = $this->paginate('Message');
-        $this->set('messages', $orderdata);
-        $authid = $this->Session->read('Auth.User.id');
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $authid
-            )
-        ));
-        $userName = $user['User']['username'];
-        $this->set('user', $user);
-        $this->set('username', $userName);
-    }
-
-    //<<<<<<<<<<Messages function ends>>>>>>>>>
-    //<<<<<<<<<<useredit function begins>>>>>>>>>
-    public function useredit() {
-        $this->layout = 'adminDashboard';
-        if ($this->request->isPost()) {
-            //iç
-
-            $this->User->id = $this->request->data["User"]["id"];
-            $id = $this->request->data["User"]["id"];
-            if (!$this->User->exists()) {
-                throw new NotFoundException(__('Invalid user'));
-            }
-            if ($this->request->is('post') || $this->request->is('put')) {
-                if ($this->User->save($this->request->data)) {
-
-                    if ($this->request->data["User"]["affect"] == 1) {
-                        $value = $this->request->data["User"]["active"];
-                        $this->affected($id, $value);
-                    } else {
-                        $this->Session->setFlash(__('The user has been updated'));
-                    }
-
-
-                    $this->redirect(array('action' => 'useredit'));
-                } else {
-                    $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-                }
-            } else {
-                $this->request->data = $this->User->read(null, $id);
-            }
-
-            //dis
-        }
-        $this->User->recursive = 0;
-        $this->set('users', $this->paginate('User'));
-        $authid = $this->Session->read('Auth.User.id');
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $authid
-            )
-        ));
-        $userName = $user['User']['username'];
-        $this->set('user', $user);
-        $this->set('username', $userName);
-    }
-
-    //<<<<<<<<<<useredit function ends>>>>>>>>>
-    //<<<<<<<<<<adminedit function begins>>>>>>>>>>>>
-    public function adminedit($id = null) {
-
-        App::uses('Folder', 'Utility');
-        App::uses('File', 'Utility');
-
-        $this->layout = 'adminDashboard';
-        $userid = $id;
-        $this->User->id = $id;
-        if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
-        }
-        if ($this->request->is('post') || $this->request->is('put')) {
-
-            $this->request->data['User']['username'] = $this->Common->secureSuperGlobalPOST($this->request->data['User']['username']);
-            $this->request->data['User']['username'] = str_replace(' ', '', $this->request->data['User']['username']);
-            $myval = $this->request->data["User"]["edit_picture"]["name"];
-
-            if ($myval != "") {
-                //remove objects from S3
-                $prefix = 'upload/users/' . $id;
-
-
-                $opt = array(
-                    'prefix' => $prefix,
-                );
-                $bucket = Configure::read('S3.name');
-                $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
-                foreach ($objs as $obj) {
-                    $response = $this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
-                    //print_r($response);
-                }
-                //remove objects from S3
-                //Folder Formatting begins
-                $dir = new Folder(WWW_ROOT . "/upload/users/" . $id);
-                $files = $dir->find('.*');
-                foreach ($files as $file) {
-                    $file = new File($dir->pwd() . DS . $file);
-                    $file->delete();
-                    $file->close();
-                }
-                //Folder Formatting ends
-
-                $this->request->data["User"]["picture"] = $this->request->data["User"]["edit_picture"];
-            }
-
-            //seousername begins
-            //$this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
-            //seousername ends
-
-
-            if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('You successfully updated your channel'));
-
-
-                //Upload to aws begins
-                $dir = new Folder(WWW_ROOT . "/upload/users/" . $id);
-                $files = $dir->find('.*');
-                foreach ($files as $file) {
-                    $file = new File($dir->pwd() . DS . $file);
-                    $info = $file->info();
-                    $basename = $info["basename"];
-                    $dirname = $info["dirname"];
-                    //echo $file;
-                    $this->Amazon->S3->create_object(Configure::read('S3.name'), 'upload/users/' . $id . "/" . $basename, array(
-                        'fileUpload' => WWW_ROOT . "/upload/users/" . $id . "/" . $basename,
-                        'acl' => AmazonS3::ACL_PUBLIC
-                    ));
-                }
-                //Upload to aws ends
-
-
-                $this->redirect(array(
-                    'action' => 'useredit',
-                    $this->Session->read('Auth.User.id')
-                ));
-            } else {
-                $validationErrors = $this->User->invalidFields();
-                $value = key($validationErrors);
-                $this->Session->setFlash($validationErrors[$value][0]);
-                $this->redirect(array(
-                    'action' => 'useredit',
-                    $this->Session->read('Auth.User.id')
-                ));
-            }
-        } else {
-
-            $this->request->data = $this->User->read(null, $id);
-            $this->request->data["User"]["password"] = "";
-        }
-        $countries = $this->User->Country->find('list');
-        $this->set(compact('countries'));
-
-
-        $user = $this->User->find('first', array(
-            'conditions' => array(
-                'User.id' => $userid
-            )
-        ));
-        $userName = $user['User']['username'];
-        $this->set('user', $user);
-        $this->set('users', $this->paginate());
-        $this->set('userid', $userid);
-        $this->set('username', $userName);
-        $subscribe = $this->Subscription->find('count', array(
-            'conditions' => array(
-                'Subscription.subscriber_id' => $userid
-            )
-        ));
-        $subscribeto = $this->Subscription->find('count', array(
-            'conditions' => array(
-                'Subscription.subscriber_to_id' => $userid
-            )
-        ));
-        $this->set('subscribe', $subscribe);
-        $this->set('subscribeto', $subscribeto);
-    }
-
-    //<<<<<<<<<<adminedit function ends>>>>>>>>>>>>
-    //<<<<<<<<<<adminview function ends>>>>>>>>>>>>
-    public function view($id = null) {
-        $this->layout = 'adminDashboard';
-        $this->User->id = $id;
-        if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
-        }
-        $this->set('user', $this->User->read(null, $id));
-    }
-
-    //<<<<<<<<<<adminview function ends>>>>>>>>>>>>
-    //<<<<<<<<<<Remote functions starts>>>>>>>>>>>>
-    //<<<<<<<<<<edit user form function starts>>>>>>>>>>>>
-    public function edit_user_form($id = null) {
-        $this->layout = 'ajax';
-
-        $user = $this->User->find('all', array(
-            'joins' => array(
-                array(
-                    'table' => 'botcredits',
-                    'alias' => 'Botcred',
-                    'type' => 'LEFT',
-                    'conditions' => array(
-                        'Botcred.user_id' => 'User.id'
-                    )
-                )
-            ),
-            'conditions' => array(
-                'User.id' => $id
-            ),
-            'fields' => array(
-                'Botcred.credit',
-                'User.id',
-                'User.screenname',
-                'User.username',
-                'User.email',
-                'User.role',
-                'User.picture',
-                'User.verify'
-            )
-        ));
-
-        //Is this user bot?
-        $bot_info = $this->User->query('SELECT user_id from clonebots WHERE user_id=' . $id . '');
-        if ($bot_info != NULL)
-            $bot = 1;
-        else
-            $bot = 0;
-
-
-        if ($bot == 1)
-            $this->set('bot', 1);
-        else
-            $this->set('bot', 0);
-
-        $this->set('user', $user);
-    }
-
-    //<<<<<<<<<<edit user form function ends>>>>>>>>>>>>
-    //<<<<<<<<<<edit user submit function starts>>>>>>>>>>>>
-    public function edit_user_submit() {
-        $this->layout = 'ajax';
-        echo 'submit ready';
-
-        $id = $_POST['id'];
-        $screenname = $_POST['screenname'];
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $role = $_POST['role'];
-        $credit = $_POST['credit'];
-        $bot = $_POST['bot'];
-        $verify = $_POST['verify'];
-
-        $this->User->id = $id;
-
-        echo 'id:' . $id . '<br>';
-        echo 'screenname:' . $screenname . '<br>';
-        echo 'username:' . $username . '<br>';
-        echo 'email:' . $email . '<br>';
-        echo 'role:' . $role . '<br>';
-        echo 'credit:' . $credit . '<br>';
-        echo 'bot:' . $bot . '<br>';
-
-        //Screenname cannot be null
-        if ($screenname == NULL)
-            $screenname = $username;
-
-        $filtered_data = array(
-            'User' => array(
-                'screenname' => $screenname,
-                'username' => $username,
-                'email' => $email,
-                'verify' => $verify,
-                'role' => $role
-            )
-        );
-        if ($this->User->save($filtered_data)) {
-            echo 'saved userdata';
-        }
-
-        //Is there any data on credit table before
-        $creditbefore = $this->User->query('SELECT * FROM botcredits WHERE user_id=' . $id . '');
-        if ($creditbefore != NULL) {
-            //If user already has credit data before.
-            $this->User->query('UPDATE botcredits SET credit=' . $credit . ' WHERE user_id=' . $id . '');
-        } else {
-            //If user has no credit data before.
-            $this->User->Query('INSERT INTO botcredits (user_id,credit) VALUES (' . $id . ',' . $credit . ')');
-        }
-
-        //Check bot status from clonebots table
-        $clonebot_data = $this->User->query('SELECT * FROM clonebots WHERE user_id=' . $id . '');
-        if ($bot == 1) {
-            if ($clonebot_data != NULL) {
-                //is already bot,we are okey,go ahaed!
-            } else {
-                //Add this user as bot!
-                $this->User->Query('INSERT INTO clonebots (user_id) VALUES (' . $id . ')');
-            }
-        } else {
-
-            if ($clonebot_data != NULL) {
-                //we have to remove it here!
-                $this->User->Query('DELETE FROM clonebots WHERE user_id=' . $id . '');
-            } else {
-                //We'r okey here,go ahaed!
-            }
-        }//bot variable control ends here.	
-    }
-
-    //<<<<<<<<<<edit user submit function ends>>>>>>>>>>>>
-    //<<<<<<<<<<get search users function begins>>>>>>>>>>>>
-    public function get_search_users($rendertype = 1, $keywords = NULL) {
-        $this->layout = 'ajax';
-
-        $users = $this->User->find('all', array(
-            'contain' => false,
-            'conditions' => array(
-                'User.username LIKE' => '%' . $keywords . '%'
-            ),
-            'fields' => array(
-                'User.username',
-                'User.id',
-                'User.screenname',
-                'User.created',
-                'User.picture',
-                'User.seo_username',
-                'User.email',
-                'User.role',
-                'User.last_login'
-            )
-        ));
-        $this->set('users', $users);
-
-        if ($rendertype == 2) {
-            $arr = $this->Session->read('User.selectedlst');
-            if ($arr != NULL) {
-                $this->set('checkedlist', $arr);
-            }
-            $this->render('mass_users_change');
-        }
-    }
-
-    //<<<<<<<<<<get search users function ends>>>>>>>>>>>>
-    //<<<<<<<<<<Remote functions ends>>>>>>>>>>>>
 }
