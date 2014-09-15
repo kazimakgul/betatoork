@@ -1620,3 +1620,80 @@ $('.switch_publish1').click(function(e) {
         'json'
     );
 });
+
+$('.NewButtonGame').click(function(e){
+    e.preventDefault();
+    var link = newData; //Businesses updatedata function run.
+    var attr = 'game_add'; //Form control value
+    var btn = $(this);
+    btn.button('loading');
+    /*$new_game = $('#new_data').val(); //if It is 1 so it means game add if it is not it means edit.
+
+            if ($new_game == 0)
+            {
+                $edited_game_id = $('#game_id').val();
+            } else {
+                $edited_game_id = 0;
+            }*/
+    
+    switch ($(this).attr('id')) {
+        case 'NewButton1':
+            var active = 1;
+            break;
+        case 'NewButton2':
+            var active = 0;
+            break;
+    }
+
+            if ($('#mobile').prop('checked'))
+            {
+                $mobile_ready = 1;
+            } else {
+                $mobile_ready = 0;
+            }
+
+            if ($('#fullscreen').prop('checked'))
+            {
+                $full_screen = 1;
+            } else {
+                $full_screen = 0;
+            }
+
+            if ($('#installable').prop('checked'))
+            {
+                $installable = 1;
+            } else {
+                $installable = 0;
+            }
+
+
+            $.post(link, {
+                attr: attr,
+                name: $('#name').val(),
+                desc: $('#desc').val(),
+                game_link: $('#game_link').val(),
+                width: $('#width').val(),
+                height: $('#height').val(),
+                category: $('#category_id').val(),
+                tags: $('#tags').val(),
+                android: $('#gplay_link').val(),
+                ios: $('#appstore_link').val(),
+                fullscreen: $full_screen,
+                mobile: $mobile_ready,
+                installable: $installable,
+                image_name: $('#game_image').attr('data-src'),
+                game_file: $('#game_file').val(),
+                /*new_game: $new_game,*/
+                /*game_id: $edited_game_id*/
+                active: active
+            },
+            function(data) {
+                if (data.error) {
+                    alert(data.error); // error.id ye göre mesaj yazdırcak..
+                } else {
+                    Messenger().post(data.success);
+                    btn.button('reset');
+                    //setTimeout(function(){location.href=ads_management}, 2000 );
+                }
+            }, 'json');
+});
