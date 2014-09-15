@@ -11,7 +11,7 @@
             <li>
                 <a href="#" class="switch_publish1" id="<?php echo $id; ?>">
                     <i class="fa fa-cog"></i>
-                    Published
+                    UnPublish
                 </a>
             </li>
             <li>
@@ -40,7 +40,7 @@
             <li>
                 <a href="#" class="switch_publish1" id="<?php echo $id; ?>">
                     <i class="fa fa-cog"></i>
-                    UnPublished
+                    Publish
                 </a>
             </li>
             <li>
