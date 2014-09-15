@@ -197,7 +197,7 @@
     </a>
   </div>
 
-<!----
+
   <div id="clients">
     <div class="container">
       <div class="row">
@@ -207,16 +207,16 @@
             These are some of our popular channels that are made by Clone team.
           </p>
           <div class="logos">
-            <img src="img/landing/google.png">
-            <img src="img/landing/facebook.png">
-            <img src="img/landing/apple.png">
-            <img src="img/landing/stripe.png">
-            <img src="img/landing/yahoo.png">
+            <a target="_blank" href="http://armorgames.clone.gs"><img src="img/landing/1armorgames.png"></a>
+            <a target="_blank" href="http://miniclip.clone.gs"><img src="img/landing/2miniclip.png"></a>
+            <a target="_blank" href="http://angrybirds.clone.gs"><img src="img/landing/3angry.png"></a>
+            <a target="_blank" href="http://marvel.clone.gs"><img src="img/landing/4marvel.png"></a>
+            <a target="_blank" href="http://kongregate.clone.gs"><img src="img/landing/5kongre.png"></a>
           </div>
         </div>
       </div>
     </div>
-  </div> ---->
+  </div>
 
 <?php echo $this->element('business/landing/footerindex',array('help'=>$help)); ?> 
 
