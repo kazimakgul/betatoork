@@ -125,6 +125,11 @@ if (isset($query)) {
                     </div>
                     <div class="col-sm-1 header hidden-xs">
                         <label>
+                            <?php echo $this->Paginator->sort('User.priority', 'Priority', array('direction' => 'desc')); ?>
+                        </label>
+                    </div>
+                    <div class="col-sm-1 header hidden-xs">
+                        <label>
                             <a href="#">Picture</a>
                         </label>
                     </div>
@@ -133,7 +138,7 @@ if (isset($query)) {
                             <?php echo $this->Paginator->sort('User.username', 'Name', array('direction' => 'asc')); ?>
                         </label>
                     </div>
-                    <div class="col-sm-3 header hidden-xs">
+                    <div class="col-sm-2 header hidden-xs">
                         <label>
                             <?php echo $this->Paginator->sort('User.email', 'Email', array('direction' => 'asc')); ?>
                         </label>
@@ -166,6 +171,8 @@ if (isset($query)) {
                     $email = $value['User']['email'];
                     //  domain
                     $domain = $value['Custom_domain']['domain'];
+                    //  priority
+                    $priority = $value['User']['priority'];
                     //  edit
                     $edit = $this->Html->url(array('controller' => 'admins', 'action' => 'channels_edit', $id));
                     //  delete
@@ -178,19 +185,22 @@ if (isset($query)) {
                         <div class="col-sm-1">
                             <?php echo $id; ?>
                         </div>
+                         <div class="col-sm-1">
+                            <?php echo $priority; ?>
+                        </div>
                         <div class="col-sm-1 avatar">
                             <?php echo $picture; ?>
                         </div>
                         <div class="col-sm-2">
                             <?php echo $name; ?>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-2">
                             <?php echo $email; ?>
                         </div>
                         <div class="col-sm-3">
                             <?php echo $domain; ?>
                         </div>
-                        <div class="col-sm-1 header hidden-xs">
+                        <div class="col-sm-1 header">
                             <div class="dropdown pull-right">
                                 <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                                     Action

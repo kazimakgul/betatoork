@@ -116,12 +116,18 @@ if (isset($query)) {
                             <?php echo $this->Paginator->sort('Game.id', 'Id', array('direction' => 'asc')); ?>
                         </label>
                     </div>
+                    <div class="col-sm-1 header hidden-xs">
+                        <label>
+                            <?php echo $this->Paginator->sort('Game.priority', 'Priority', array('direction' => 'desc')); ?>
+                        </label>
+                    </div>
+
                     <div class="col-sm-2 header hidden-xs">
                         <label>
                             <a href="#">Picture</a>
                         </label>
                     </div>
-                    <div class="col-sm-4 header hidden-xs">
+                    <div class="col-sm-3 header hidden-xs">
                         <label>
                             <?php echo $this->Paginator->sort('Game.name', 'Name', array('direction' => 'asc')); ?>
                         </label>
@@ -141,6 +147,8 @@ if (isset($query)) {
                 foreach ($data as $value) {
                     //  id
                     $id = $value['Game']['id'];
+                    //  priority
+                    $priority = $value['Game']['priority'];
                     //  picture
                     $picture = $this->Upload->image($value, 'Game.picture', array('style' => 'toorksize'), array('style' => 'toorksize', 'class' => 'panel-image-preview', 'alt' => $value['Game']['name'], 'onerror' => 'imgError(this,"toorksize");'));
                     //  name
@@ -159,16 +167,19 @@ if (isset($query)) {
                         <div class="col-sm-1">
                             <?php echo $id; ?>
                         </div>
+                        <div class="col-sm-1">
+                            <?php echo $priority; ?>
+                        </div>
                         <div class="col-sm-2 avatar">
                             <?php echo $picture; ?>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <?php echo $name; ?>
                         </div>
                         <div class="col-sm-3">
                             <?php echo $owner; ?>
                         </div>
-                        <div class="col-sm-1 header hidden-xs">
+                        <div class="col-sm-1 header">
                             <div class="dropdown pull-right">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                                     Action

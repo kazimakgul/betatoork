@@ -239,6 +239,7 @@ class AdminsController extends AppController {
                     'User.username',
                     'User.picture',
                     'User.email',
+                    'User.priority',
                     'Custom_domain.domain'
                 ),
                 'limit' => $this->limit
@@ -400,6 +401,7 @@ class AdminsController extends AppController {
             'Game' => array(
                 'fields' => array(
                     'Game.id',
+                    'Game.priority',
                     'Game.name',
                     'Game.picture',
                     'User.username'
