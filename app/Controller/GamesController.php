@@ -48,10 +48,23 @@ class GamesController extends AppController {
             $this->redirect(array("controller" => "businesses", "action" => "dashboard"));
         }
 
-        $this->layout = 'landing';
+        $this->layout = 'Business/landing';
 
-        $this->set('title_for_layout', 'Clone Games');
-        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('title_for_layout', 'Cloud Arcade Script by Clone');
+        $this->set('description_for_layout', 'Clone is a cloud based powerful, full mobile compatible arcade script for games. Add all games to your site including HTML5, android, iOS, unity, and flash .swf');
+        $this->set('author_for_layout', 'Clone');
+    }
+
+    public function features() {
+
+        if ($this->Session->check('Auth.User')) {
+            $this->redirect(array("controller" => "businesses", "action" => "dashboard"));
+        }
+
+        $this->layout = 'Business/landing';
+
+        $this->set('title_for_layout', 'Features of the cloud arcade script by Clone');
+        $this->set('description_for_layout', 'Clone is a cloud based powerful, full mobile compatible arcade script for games. Add all games to your site including HTML5, android, iOS, unity, and flash .swf');
         $this->set('author_for_layout', 'Clone');
     }
 

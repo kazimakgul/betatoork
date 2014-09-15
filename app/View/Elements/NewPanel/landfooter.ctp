@@ -1,7 +1,6 @@
  <?php 
 $terms=$this->Html->url(array( "controller" => "pages","action" =>"terms"));
 $privacy=$this->Html->url(array( "controller" => "pages","action" =>"privacy"));
-$help=$this->Html->url(array( "controller" => "pages","action" =>"help"));
 $about=$this->Html->url(array( "controller" => "pages","action" =>"about"));
 $developer=$this->Html->url(array( "controller" => "pages","action" =>"developers"));
 $advertise=$this->Html->url(array( "controller" => "pages","action" =>"advertise"));
@@ -12,7 +11,7 @@ $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
     <div class='container'>
       <div class='row'>
         <div class='span6'>
-          <div class='copyright'>Copyright &copy; 2013 Clone. All rights reserved.</div>
+          <div class='copyright'>Copyright &copy; <?php echo date("Y"); ?> Clone. All rights reserved.</div>
         </div>
         <div class='span6'>
           
