@@ -697,6 +697,31 @@ class AdminsController extends AppController {
         }
     }
 
+    public function users($role = NULL) {
+        $this->layout = 'adminDashboard';
+
+        if ($role != NULL)
+            $this->paginate = array(
+                'conditions' => array(
+                    'User.role' => $role
+            ));
+
+        $this->User->recursive = 0;
+        $this->set('users', $this->paginate('User'));
+        $authid = $this->Session->read('Auth.User.id');
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $authid
+            )
+        ));
+        $userName = $user['User']['username'];
+        $this->set('user', $user);
+        $this->set('username', $userName);
+    }
+
+
+
+
     private function secureSuperGlobalPOST($value) {
         $string = preg_replace('/[^\w\d_ -]/si', '', $value);
         $string = htmlspecialchars(stripslashes($string));
