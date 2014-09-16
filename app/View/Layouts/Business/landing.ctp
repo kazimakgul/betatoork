@@ -58,5 +58,9 @@
 
 <?php echo $content_for_layout?>
 
+<?php 
+echo $this->Session->flash('flash', array('element' => 'info'));
+echo $this->Session->flash('auth', array('element' => 'info'));
+?>
  
 </html>

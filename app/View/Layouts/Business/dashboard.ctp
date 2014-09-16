@@ -11,6 +11,7 @@
 		<?php echo $this->Html->css(array(
 		'business/dashboard/compiled/theme',
 		'business/dashboard/vendor/animate',
+		'business/dashboard/vendor/offline.chrome',
 		'business/dashboard/custom',
 		'business/dashboard/vendor/brankic',
 		'business/dashboard/vendor/datepicker',
@@ -78,6 +79,7 @@
 		'business/dashboard/vendor/jquery.cookie',
 		'business/dashboard/vendor/moment.min',
 		'business/dashboard/theme',
+		'business/dashboard/vendor/offline.min',
 		'business/dashboard/vendor/select2.min',
 		'business/dashboard/vendor/jquery.dataTables.min',
 		'business/dashboard/vendor/jquery.validate.min',
@@ -190,6 +192,26 @@
 			});
 
 		});
+
+		(function () {
+		    var a, b;
+		    if ("undefined" == typeof Offline || null === Offline) throw new Error("Offline simulate UI brought in without Offline.js");
+		    console.info("The offline.simulate.ui.js module is a development-only resource. Make sure to remove offline.simulate.ui.js in production."), 
+		    Offline.options.reconnect = {
+		        initialDelay: 10
+		    }, 
+		    a = function () {
+		        var a;
+		        return document.getElementById("offline-simulate-check").addEventListener("click", function () {
+					var a;
+			        return null == (a = Offline.options).checks && (a.checks = {}), Offline.options.checks.active = this.checked ? "down" : "up", Offline.check()
+				})
+		    }, 
+		    "interactive" === (b = document.readyState) || "complete" === b ? a() : document.addEventListener("DOMContentLoaded", a)
+		}).call(this);
+
+
+		
 	</script>
 
 <!--Skin switcher commented out

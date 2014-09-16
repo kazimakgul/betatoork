@@ -97,7 +97,7 @@ if (isset($limit)):
             <?php if (isset($controls) && $controls !== $user['User']['id']) { ?>
                 <div class="imagehover">
                     <div class="panel-image">
-                        <img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="panel-image-preview" alt="Metal Slug Brutal" onerror="imgError(this,&quot;toorksize&quot;);">
+                        <img src="https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png" class="panel-image-preview" alt="Clone Game Pic" onerror="imgError(this,&quot;toorksize&quot;);">
                     </div>
                 </div>
                 <div class="panel-footer text-center under-image">

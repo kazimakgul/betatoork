@@ -50,6 +50,26 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
             -->
         </div>
         <div class="content-wrapper">
+
+                <section class="offline">
+                    <h4>
+                        Offline Notification
+                        <small>
+                            Include <code>offline.chrome.css</code> and <code>offline.min.js</code> and automatically detects when your users lose connection and a message is shown.
+                        </small>
+                    </h4>
+
+                    <div class="checkbox tour-third-step">
+                        <label>
+                            <input type="checkbox" id="offline-simulate-check" /> 
+                            Click on the checkbox to start a simulation of a connectivity problem and un-check to connect again.
+                        </label>
+                    </div>
+                </section>
+
+
+
+            <div class="container-fluid">
             <div class="metrics clearfix">
                 <div class="metric">
                     <span class="field">Channel Worth</span>
@@ -68,7 +88,6 @@ $search_action = $this->Html->url(array('controller' => 'businesses', 'action' =
                     <span class="data"><i class="fa fa-play"></i> <?php echo $stat['Userstat']['playcount']; ?></span>
                 </div>
             </div>
-            <div class="container-fluid">
                 <hr class="">
                 <div class="row">
                      <?php echo $this->element('business/dashboard/main') ?>
