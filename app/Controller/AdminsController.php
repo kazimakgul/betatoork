@@ -735,4 +735,225 @@ class AdminsController extends AppController {
         return $string;
     }
 
+
+    //<<<<<<<<<<adminedit function begins>>>>>>>>>>>>
+    public function adminedit($id = null) {
+
+        App::uses('Folder', 'Utility');
+        App::uses('File', 'Utility');
+
+        $this->layout = 'adminDashboard';
+        $userid = $id;
+        $this->User->id = $id;
+        if (!$this->User->exists()) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        if ($this->request->is('post') || $this->request->is('put')) {
+
+            $this->request->data['User']['username'] = $this->Common->secureSuperGlobalPOST($this->request->data['User']['username']);
+            $this->request->data['User']['username'] = str_replace(' ', '', $this->request->data['User']['username']);
+            $myval = $this->request->data["User"]["edit_picture"]["name"];
+
+            if ($myval != "") {
+                //remove objects from S3
+                $prefix = 'upload/users/' . $id;
+
+
+                $opt = array(
+                    'prefix' => $prefix,
+                );
+                $bucket = Configure::read('S3.name');
+                $objs = $this->Amazon->S3->get_object_list($bucket, $opt);
+                foreach ($objs as $obj) {
+                    $response = $this->Amazon->S3->delete_object(Configure::read('S3.name'), $obj);
+                    //print_r($response);
+                }
+                //remove objects from S3
+                //Folder Formatting begins
+                $dir = new Folder(WWW_ROOT . "/upload/users/" . $id);
+                $files = $dir->find('.*');
+                foreach ($files as $file) {
+                    $file = new File($dir->pwd() . DS . $file);
+                    $file->delete();
+                    $file->close();
+                }
+                //Folder Formatting ends
+
+                $this->request->data["User"]["picture"] = $this->request->data["User"]["edit_picture"];
+            }
+
+            //seousername begins
+            //$this->request->data['User']['seo_username']=str_replace('.','',strtolower($this->request->data['User']['username']));
+            //seousername ends
+
+
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('You successfully updated your channel'));
+
+
+                //Upload to aws begins
+                $dir = new Folder(WWW_ROOT . "/upload/users/" . $id);
+                $files = $dir->find('.*');
+                foreach ($files as $file) {
+                    $file = new File($dir->pwd() . DS . $file);
+                    $info = $file->info();
+                    $basename = $info["basename"];
+                    $dirname = $info["dirname"];
+                    //echo $file;
+                    $this->Amazon->S3->create_object(Configure::read('S3.name'), 'upload/users/' . $id . "/" . $basename, array(
+                        'fileUpload' => WWW_ROOT . "/upload/users/" . $id . "/" . $basename,
+                        'acl' => AmazonS3::ACL_PUBLIC
+                    ));
+                }
+                //Upload to aws ends
+
+
+                $this->redirect(array(
+                    'action' => 'useredit',
+                    $this->Session->read('Auth.User.id')
+                ));
+            } else {
+                $validationErrors = $this->User->invalidFields();
+                $value = key($validationErrors);
+                $this->Session->setFlash($validationErrors[$value][0]);
+                $this->redirect(array(
+                    'action' => 'useredit',
+                    $this->Session->read('Auth.User.id')
+                ));
+            }
+        } else {
+
+            $this->request->data = $this->User->read(null, $id);
+            $this->request->data["User"]["password"] = "";
+        }
+        $countries = $this->User->Country->find('list');
+        $this->set(compact('countries'));
+
+
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $userid
+            )
+        ));
+        $userName = $user['User']['username'];
+        $this->set('user', $user);
+        $this->set('users', $this->paginate());
+        $this->set('userid', $userid);
+        $this->set('username', $userName);
+        $subscribe = $this->Subscription->find('count', array(
+            'conditions' => array(
+                'Subscription.subscriber_id' => $userid
+            )
+        ));
+        $subscribeto = $this->Subscription->find('count', array(
+            'conditions' => array(
+                'Subscription.subscriber_to_id' => $userid
+            )
+        ));
+        $this->set('subscribe', $subscribe);
+        $this->set('subscribeto', $subscribeto);
+    }
+
+    //<<<<<<<<<<adminedit function ends>>>>>>>>>>>>
+
+    public function mass_pwd_change($role = NULL) {
+        $this->layout = 'adminDashboard';
+
+
+        $arr = $this->Session->read('User.selectedlst');
+        if ($arr != NULL) {
+            $this->set('checkedlist', $arr);
+        }
+
+        $selectedcount = $this->Session->read('User.selectedcount');
+        if ($selectedcount != NULL) {
+            $this->set('selectedcount', $selectedcount);
+        }
+
+        if ($role != NULL)
+            $this->paginate = array(
+                'conditions' => array(
+                    'User.role' => $role
+                )
+            );
+
+        $this->User->recursive = 0;
+        $this->set('users', $this->paginate('User'));
+        $authid = $this->Session->read('Auth.User.id');
+        $user = $this->User->find('first', array(
+            'conditions' => array(
+                'User.id' => $authid
+            )
+        ));
+        $userName = $user['User']['username'];
+        $this->set('user', $user);
+        $this->set('username', $userName);
+    }
+
+    public function do_pwd_changes() {
+        $this->layout = 'ajax';
+
+        $password = $_POST['password'];
+
+        if ($password != NULL) {
+
+            $arr = $this->Session->read('User.selectedlst');
+            if ($arr != NULL) {
+                foreach ($arr as $ar) {
+                    $this->User->id = $ar;
+                    if ($this->User->saveField('password', $password)) {
+                        //echo '<br>Password changed for '.$ar;
+                    }
+                }
+            }//Arr is not null
+            //Get usernames for ids.
+            $userinfos = $this->User->find('all', array(
+                'contain' => false,
+                'fields' => array(
+                    'User.username',
+                    'User.id'
+                ),
+                'conditions' => array(
+                    'User.id' => $arr
+                )
+            ));
+            echo '<ul>';
+            foreach ($userinfos as $userinfo) {
+                echo '<li>' . $userinfo['User']['username'] . '(' . $userinfo['User']['id'] . ')</li>';
+            }
+            echo '<ul>';
+
+
+            //Remove Sessions
+            $this->Session->delete('User.selectedlst');
+            $this->Session->delete('User.selectedcount');
+        } else {//End of null control
+            echo 'Error:You have to enter password in field!';
+        }
+
+    }
+
+
+    public function add_session($id) {
+        $selectedlist = array();
+        $arr = $this->Session->read('User.selectedlst');
+        if ($arr != NULL) {
+            $selectedlist = $arr;
+            array_push($selectedlist, $id);
+            $this->Session->write('User.selectedlst', $selectedlist);
+        } else {
+            array_push($selectedlist, $id);
+            $this->Session->write('User.selectedlst', $selectedlist);
+        }
+
+        $this->Session->write('User.selectedcount', count($selectedlist));
+        print_r($selectedlist);
+    }
+
+
+
+
+
+
+
 }
