@@ -35,6 +35,7 @@ class AdminsController extends AppController {
         'Activity',
         'Message',
         'Log',
+        'Role',
         'Country'
     );
 
@@ -222,6 +223,59 @@ class AdminsController extends AppController {
         } else {
             $this->set('active_filter', 'all');
         }
+    }
+
+
+    /**
+     * Channel List
+     * @author Ogi
+     */
+    public function roles() {
+        $this->layout = 'admin';
+        $this->sideBar();
+        $this->channels_model();
+        $this->paginate = array(
+            'Role' => array(
+                'fields' => array(
+                    'Role.id',
+                    'Role.name'
+                ),
+                'limit' => $this->limit
+            )
+        );
+        $this->channels_filter();
+        $data = $this->paginate('Role');
+        $this->set('data', $data);
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+    }
+
+    /**
+     * Channel List
+     * @author Ogi
+     */
+    public function add_role() {
+        $this->layout = 'admin';
+        $this->sideBar();
+        $this->channels_model();
+        
+        if ($this->request->is('post')) {
+                
+            $this->Role->create();
+            if ($this->Role->save($this->request->data)) {
+                $this->Session->setFlash(__('The Role has been created'));
+                $this->redirect(array('action' => 'roles'));
+            } else {
+                $this->Session->setFlash(__('The user could not be created. Please, try again.'));
+            }   
+        }
+
+
+        $this->channels_filter();
+        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
     }
 
     /**

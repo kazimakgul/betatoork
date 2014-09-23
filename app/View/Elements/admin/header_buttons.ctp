@@ -1,6 +1,7 @@
 <?php
 $games_url = $this->Html->url(array('controller' => 'admins', 'action' => 'games'));
 $channels_url = $this->Html->url(array('controller' => 'admins', 'action' => 'channels'));
+$roles_url = $this->Html->url(array('controller' => 'admins', 'action' => 'roles'));
 ?>
 <div class="pull-right hidden-xs" style="margin-top: -5px">
     <a href="<?php echo $games_url; ?>" class="btn btn-default">
@@ -10,5 +11,9 @@ $channels_url = $this->Html->url(array('controller' => 'admins', 'action' => 'ch
     <a href="<?php echo $channels_url; ?>" class="btn btn-default">
         <i class="ion-person-add"></i>
         Channels
+    </a>
+    <a href="<?php echo $roles_url; ?>" class="btn btn-default">
+        <i class="ion-person-add"></i>
+        Roles
     </a>
 </div>
