@@ -132,7 +132,7 @@
 	<div id="slider">
 		<div class="container">
 			<div class="row header">
-				<h3>Includes all pages that a complete theme should have</h3>
+				<h3>A wonderful piece of work for arcade game sites</h3>
 			</div>
 			<div class="row">
 				<div class="col-md-12 slide-wrapper">
@@ -159,36 +159,36 @@
 			</div>
 		</div>
 	</div>
-<!--
+
 	<div id="showcase">
 		<div class="container">
 			<div class="row header">
-				<h3>Showcasing some blog posts</h3>
+				<h3>Check out these awsome clone channels</h3>
 			</div>
 			<div class="row">
 				<div class="col-md-12 pics">
-					<a class="pic" href="blogpost.html">
-						<img src="images/blog1.png" alt="blog1" />
+					<a class="pic" href="http://batman.clone.gs">
+						<img src="https://s3.amazonaws.com/clonegames/assets/batman.png" alt="batman" />
 						<div class="bg">
-							<p>How to survive in the big city</p>
+							<p> <span class="btn btn-success btn-xs"><i class="fa fa-plus"></i> follow</span> batman.clone.gs</p>
 						</div>
 					</a>
-					<a class="pic" href="blogpost.html">
-						<img src="images/blog2.png" alt="blog2" />
+					<a class="pic" href="http://zombies.clone.gs">
+						<img src="https://s3.amazonaws.com/clonegames/assets/zombies.png" alt="zombies" />
 						<div class="bg">
-							<p>How to develop scalable Rails apps</p>
+							<p> <span class="btn btn-success btn-xs"><i class="fa fa-plus"></i> follow</span> zombies.clone.gs</p>
 						</div>
 					</a>
-					<a class="pic" href="blogpost.html">
-						<img src="images/blog3.png" alt="blog3" />
+					<a class="pic" href="http://simpsons.clone.gs">
+						<img src="https://s3.amazonaws.com/clonegames/assets/simpsons.png" alt="simpsons" />
 						<div class="bg">
-							<p>Enjoy your life at the beach</p>
+							<p> <span class="btn btn-success btn-xs"><i class="fa fa-plus"></i> follow</span> simpsons.clone.gs</p>
 						</div>
 					</a>
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 
 	<div id="footer">
 		<div class="container">
