@@ -39,7 +39,7 @@ if ($user['User']['picture'] == null) {
 ?>
 <div id="sidebar-default" class="main-sidebar">
     <div class="current-user">
-        <a href="index.html" class="name">
+        <a href="#" class="name">
             <?php echo $img ?>
             <span>
                 <?php echo $user['User']['username'] ?>
