@@ -12,8 +12,16 @@
                 $playurl = $this->Html->url('http://' . $game['Game']['User']['seo_username'] . '.' . $pure_domain . '/play/' . h($game['Game']['seo_url']));
                 $userlink = $this->Html->url('http://' . $game['Game']['User']['seo_username'] . '.' . $pure_domain);
             } else {
-                $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
-                $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['Game']['User']['id'])));
+                if(isset($game['Game']['id'])){
+                    $playurl = $this->Html->url(array("controller" => 'businesses', "action" => 'play', h($game['Game']['id'])));
+                }else{
+                    $playurl = $this->Html->url(array("controller" => 'games', "action" => 'index'));
+                }
+                if(isset($game['Game']['User']['id'])){
+                    $userlink = $this->Html->url(array("controller" => 'businesses', "action" => 'mysite', h($game['Game']['User']['id'])));
+                }else{
+                    $userlink = $this->Html->url(array("controller" => 'games', "action" => 'index'));
+                }
             }
             ?>
             <?php echo $this->element('business/dashboard/gamebox',

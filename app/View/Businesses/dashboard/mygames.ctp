@@ -6,6 +6,14 @@ switch ($activefilter) {
     case 1:
         $search_action = $this->Html->url(array("controller" => "businesses", "action" => "mygames_search", "filter" => "mobiles"));
         break;
+    case 2:
+        $search_action = $this->Html->url(array("controller" => "businesses", "action" => "mygames_search", "filter" => "featured"));
+        break;
+    case 3:
+        $search_action = $this->Html->url(array("controller" => "businesses", "action" => "mygames_search", "filter" => "draft"));
+        break;
+
+
 }
 $mygames = $this->Html->url(array("controller" => "businesses", "action" => "mygames"));
 $game_add = $this->Html->url(array("controller" => "businesses", "action" => "game_add"));

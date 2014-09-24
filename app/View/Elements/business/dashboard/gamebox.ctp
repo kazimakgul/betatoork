@@ -149,12 +149,19 @@ if ($game['Game']['install'] == 1) {
                         </div>
                         <div class="col-md-7">
                             <h5>
-                                <?php if ($game['Game']['User']['verify'] == 1) { ?>
+                                <?php if (isset($game['Game']['User']['verify']) && $game['Game']['User']['verify'] == 1) { ?>
                                     <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified Account"> <i style="color:#428bca;" class="fa fa-check-circle"></i></span>
                                 <?php } ?>
+                                <?php if (isset($game['Game']['User']['username'])) { ?>
                                 <a href="<?php echo $userlink; ?>"><strong> <?php echo $game['Game']['User']['username']; ?></strong></a>
                                 <br>
                                 <small>@ <?php echo $game['Game']['User']['seo_username']; ?></small>
+                                <?php }else{?>
+                                <span class="help" data-toggle="tooltip" data-placement="top" title="" data-original-title="Suspended Account"> <i style="color:#428bca;" class="fa fa-ban"></i></span>
+                                <a href="#"><strong> Suspended User</strong></a>
+                                <br>
+                                <small>This user is suspended</small>
+                                <?php }?>
                             </h5>
                         </div>
                     </div>
