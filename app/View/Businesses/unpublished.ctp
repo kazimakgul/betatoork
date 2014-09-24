@@ -19,7 +19,7 @@ $register = $this->Html->url(array("controller" => "users", "action" => "registe
   <i class="fa fa-ban fa-stack-2x text-danger"></i>
 </span>
 
-                <br>Sorry, this game has may be removed or unpubished by the owner or may be suspended by Clone team!</h4>
+                <br>Sorry, this game may be removed or unpubished by the owner or may be suspended by Clone team!</h4>
             <div class="actions">
                 <a href="http://clone.gs" class="btn btn-primary btn-lg">Go Back to Clone</a>
             </div>
