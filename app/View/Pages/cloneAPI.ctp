@@ -63,11 +63,11 @@
 					</div>
 					<div class="method-example">
 <pre>
-<code class="ruby"># All this beauty is your after you become a registered clone developer
+<code class="ruby"># Become a verified developer to be able to use API.
 
-Clone.api_key = "In here goes your api key!"</code><code class="python"># All this beauty is your after you become a registered clone developer
+Clone.api_key = "In here goes your api key!"</code><code class="python"># Become a verified developer to be able to use API.
 
-Clone.api_key = "In here goes your api key!"</code><code class="php"># All this beauty is your after you become a registered clone developer
+Clone.api_key = "In here goes your api key!"</code><code class="php"># Become a verified developer to be able to use API.
 
 Clone::setApiKey("In here goes your api key!");</code>
 </pre>
