@@ -2044,7 +2044,8 @@ class BusinessesController extends AppController {
 
         if($game['Game']['active']==0 && $game['Game']['user_id']!=$user_id)
         {
-        $this->render('/Businesses/404');
+            $this->layout = 'Business/dashboard';
+        $this->render('/Businesses/unpublished');
         }
 
 

@@ -1,8 +1,35 @@
 <?php
 if($game['Game']['active']==0)
-{
-    echo 'game is not active';
-}
+{ 
+    $mygames = $this->Html->url(array("controller" => 'businesses', "action" => 'mygames', 'draft'));
+?>
+
+
+<div align="center" class="alert alert-danger">
+
+
+ <div style="width:100%;"> 
+
+                
+        <span class="fa-stack fa-lg fa-3x" style="opacity:0.5;">
+          <i class="fa fa-gamepad fa-stack-1x"></i>
+          <i class="fa fa-ban fa-stack-2x text-danger"></i>
+        </span>
+
+        <h3>This game is unpublished so only you can see it.</h3>
+         <a href="<?php echo $mygames; ?>" title="Go to MyGames" class="btn btn-sm btn-danger">
+         <span class="fa fa-gamepad"></span> Go to MyGames</a>
+                
+
+
+</div>
+
+</div>
+
+
+
+
+<?php }
  ?>
  
 <div class="container">
