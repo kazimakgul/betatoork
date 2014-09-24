@@ -23,6 +23,7 @@
 		'business/dashboard/vendor/jquery.dataTables',
 		'business/dashboard/vendor/messenger/messenger',
 		'business/dashboard/star-rating',
+		'business/dashboard/vendor/highlight',
 		'business/dashboard/vendor/messenger/messenger-theme-flat')); ?>
 	<!-- javascript -->
  		<script>
@@ -95,6 +96,7 @@
 		'business/dashboard/vendor/jquery.flot/jquery.flot.tooltip',
 		'business/dashboard/vendor/messenger/messenger.min',
 		'business/dashboard/vendor/messenger/messenger-theme-flat',
+		'business/dashboard/vendor/highlight.min.js',
 		'business/dashboard/star-rating',
 		'business/dashboard/custom.js'));
 		?>

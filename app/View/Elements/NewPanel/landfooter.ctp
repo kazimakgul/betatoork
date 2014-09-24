@@ -5,6 +5,7 @@ $about=$this->Html->url(array( "controller" => "pages","action" =>"about"));
 $developer=$this->Html->url(array( "controller" => "pages","action" =>"developers"));
 $advertise=$this->Html->url(array( "controller" => "pages","action" =>"advertise"));
 $faq=$this->Html->url(array( "controller" => "pages","action" =>"faq"));
+$help=$this->Html->url(array( "controller" => "pages","action" =>"help"));
 ?>
 
   <div class='deep-footer'>

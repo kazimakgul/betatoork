@@ -1,4 +1,4 @@
-
+<?php $index=$this->Html->url(array("controller" => "games","action" =>"index")); ?>
   <header class="navbar navbar-inverse hero" role="banner">
       <div class="container">
         <div class="navbar-header">
@@ -8,7 +8,7 @@
               <span class="icon-bar"></span>
             </button>
             
-            <a href="<?php echo $index; ?>" class="navbar-brand"> <img src="https://s3.amazonaws.com/betatoorkpics/logos/clonelogo40.png"/>&nbsp&nbsp <span>arcade script</span></a>
+            <a style="margin-top:-5px;" href="<?php echo $index; ?>" class="navbar-brand"> <img width="30px" src="https://s3.amazonaws.com/betatoorkpics/logos/clonelogo40.png"/>&nbsp&nbsp <span>arcade script</span></a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav navbar-right">
