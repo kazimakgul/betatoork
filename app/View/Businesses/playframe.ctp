@@ -4,10 +4,9 @@ if($game['Game']['active']==0)
     $mygames = $this->Html->url(array("controller" => 'businesses', "action" => 'mygames', 'draft'));
 ?>
 
-
 <div style="position:absolute; width:100%; z-index:9999;" align="center" class="alert alert-danger">
-<button type="button" class="close pull-right" data-toggle="tooltip" data-original-title="Close" style="padding: 6px 12px; margin-top: 4px" data-dismiss="alert" aria-hidden="true"><li class="glyphicon glyphicon-remove"></li></button>
-    
+<button type="button" class="close pull-right" data-toggle="tooltip" data-original-title="Close" data-dismiss="alert" aria-hidden="true"><li class="glyphicon glyphicon-remove"></li></button>
+
         <span class="fa-stack fa-lg fa-2x" style="opacity:0.5;">
           <i class="fa fa-gamepad fa-stack-1x"></i>
           <i class="fa fa-ban fa-stack-2x text-danger"></i>
@@ -18,8 +17,6 @@ if($game['Game']['active']==0)
          <span class="fa fa-gamepad"></span> Go to MyGames</a>
 
 </div>
-
-
 
 
 <?php }
