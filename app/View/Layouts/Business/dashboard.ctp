@@ -96,7 +96,7 @@
 		'business/dashboard/vendor/jquery.flot/jquery.flot.tooltip',
 		'business/dashboard/vendor/messenger/messenger.min',
 		'business/dashboard/vendor/messenger/messenger-theme-flat',
-		'business/dashboard/vendor/highlight.min.js',
+		'business/dashboard/vendor/highlight.min',
 		'business/dashboard/star-rating',
 		'business/dashboard/custom.js'));
 		?>
@@ -195,6 +195,34 @@
 
 		});
 	</script>
+
+	<!--[if lt IE 9]>
+      CloneAPI page için gerekli. Custom.js dosyasına taşınacak
+    <![endif]-->
+
+	<script type="text/javascript">
+		$(function () {
+			hljs.configure({
+			  tabReplace: '  ',
+			  classPrefix: ''
+			})
+			hljs.initHighlightingOnLoad();
+
+
+			// language toggle
+			var $languages = $(".languages .language");
+			$languages.click(function (e) {
+				e.preventDefault();
+				var lang = $(this).data("lang");
+				$languages.removeClass("selected");
+				$(this).addClass("selected");
+
+				$("pre code").hide();
+				$("pre code." + lang).css("display", "block");
+			});
+		});
+	</script>
+
 
 <!--Skin switcher commented out
 	<div class="skin-switcher">

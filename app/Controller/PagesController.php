@@ -208,7 +208,7 @@ public function set_suggested_channels()
 		}
 		$this->set_suggested_channels();
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->set('description_for_layout', 'Toork is a social network for online gamers. With Toork, you will be able to create your own game channel.');
+		$this->set('description_for_layout', 'Clone is a cloud arcade script for games.');
 		$this->render(implode('/', $path));
 	}
 }

@@ -409,26 +409,4 @@ end
 		</div>
 	</div>
 
-	<script type="text/javascript">
-		$(function () {
-			hljs.configure({
-			  tabReplace: '  ',
-			  classPrefix: ''
-			})
-			hljs.initHighlightingOnLoad();
-
-
-			// language toggle
-			var $languages = $(".languages .language");
-			$languages.click(function (e) {
-				e.preventDefault();
-				var lang = $(this).data("lang");
-				$languages.removeClass("selected");
-				$(this).addClass("selected");
-
-				$("pre code").hide();
-				$("pre code." + lang).css("display", "block");
-			});
-		});
-	</script>
 </body>
