@@ -1,7 +1,7 @@
 <?php
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 $profile = $this->Html->url(array('controller' => 'businesses', 'action' => 'profile'));
-$toolsNdocs = $this->Html->url(array('controller' => 'businesses', 'action' => 'toolsNdocs'));
+$cloneapi = $this->Html->url(array('controller' => 'pages', 'action' => 'cloneapi'));
 $pricing = $this->Html->url(array('controller' => 'businesses', 'action' => 'pricing'));
 $steps2launch = $this->Html->url(array('controller' => 'businesses', 'action' => 'steps2launch'));
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
@@ -156,7 +156,7 @@ if ($user['User']['picture'] == null) {
                 </a>
                 <ul class="submenu" <?php if (isset($bar) && $bar == 'step') echo 'style="display:block"'; ?>>
                     <li><a href="<?php echo $app_status ?>">App Status</a></li>
-                    <!-- -- <li><a href="<?php echo $toolsNdocs ?>">Tools & Docs</a></li> -- -->
+                    <li><a href="<?php echo $cloneapi ?>">Clone API</a></li>
                     <li><a href="<?php echo $steps2launch ?>" <?php if (isset($active) && $active == 'steps') echo 'class="active"'; ?>>Steps to Launch</a></li>
 
                 </ul>
