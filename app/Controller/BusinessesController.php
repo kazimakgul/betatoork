@@ -1429,13 +1429,12 @@ class BusinessesController extends AppController {
      * @return toolsNdocs Page
      * @author Kazim Akgul
      */
-    public function toolsNdocs() {
-        $this->layout = 'Business/dashboard';
-        $this->sideBar();
+    public function api() {
+        $this->layout = 'Business/api';
         $this->set('title_for_layout', 'Clone Business Dashboard');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
-        $this->render('/Businesses/dashboard/toolsNdocs');
+        $this->render('/Businesses/dashboard/api');
     }
 
 

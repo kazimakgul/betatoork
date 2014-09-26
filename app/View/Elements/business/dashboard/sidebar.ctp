@@ -1,7 +1,7 @@
 <?php
 $index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
 $profile = $this->Html->url(array('controller' => 'businesses', 'action' => 'profile'));
-$cloneapi = $this->Html->url(array('controller' => 'pages', 'action' => 'cloneapi'));
+$cloneapi = $this->Html->url(array('controller' => 'businesses', 'action' => 'api'));
 $pricing = $this->Html->url(array('controller' => 'businesses', 'action' => 'pricing'));
 $steps2launch = $this->Html->url(array('controller' => 'businesses', 'action' => 'steps2launch'));
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
