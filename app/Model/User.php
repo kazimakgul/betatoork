@@ -23,7 +23,8 @@ class User extends AppModel {
             'picture' => array(
                 'path' => ':webroot/upload/:model/:id/:basename_:style.:extension', 'styles' => array('useravatar' => '90x120')
             )
-        )
+        ),
+        'Acl' => array('type' => 'requester', 'enabled' => false)
     );
 
     public function beforeSave() {
@@ -31,6 +32,26 @@ class User extends AppModel {
             $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
         }
         return true;
+    }
+
+
+    function parentNode() {
+       if (!$this->id && empty($this->data)) {
+        return null;
+       }
+          $data = $this->data;
+       if (empty($this->data)) {
+           $data = $this->read();
+       }
+       if (!$data['User']['role_id']) {
+           return null;
+       } else {
+           return array('Group' => array('id' => $data['User']['group_id']));
+       }
+   }
+
+   public function bindNode($user) {
+    return array('model' => 'Group', 'foreign_key' => $user['User']['group_id']);
     }
 
     public function isAdmin($user_id) {

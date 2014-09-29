@@ -33,6 +33,10 @@
  * Business clone link system
  */
 //
+
+Router::connect('/aclplugin', array('plugin'=>'acl_management', 'controller' => 'users', 'action' => 'login'));
+
+
 //Router::connect('/', array('controller' => 'games', 'action' => 'index'));
 Router::connect('/dashboard', array('controller' => 'businesses', 'action' => 'dashboard'));
 Router::connect('/dashboard/search/:filter', array('controller' => 'businesses', 'action' => 'main_search'), array('pass' => array('filter'),'filter' => '/games|channels/'));

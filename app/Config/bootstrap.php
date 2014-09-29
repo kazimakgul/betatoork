@@ -117,6 +117,8 @@ CakePlugin::load('DebugKit');
  *
  */
 
+CakePlugin::load('AclManagement', array('routes'=>true));
+
 /**
 $subdomain = substr( env("HTTP_HOST"), 0, strpos(env("HTTP_HOST"), ".") );
 

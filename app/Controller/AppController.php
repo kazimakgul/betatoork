@@ -36,6 +36,7 @@ class AppController extends Controller {
     public $components = array(
         'Session',
         'Cookie',
+        'Acl',
         'DebugKit.Toolbar',
         'RequestHandler',
         'Auth' => array(
@@ -149,18 +150,14 @@ class AppController extends Controller {
         }
 
 
+        //----------Acl Config--------------
+        //Configure AuthComponent
+        $this->Auth->authorize = 'actions';
+        $this->Auth->actionPath = 'controllers/';
+        $this->Auth->unauthorizedRedirect=array('controller'=>'pages','action'=>'forbidden'); ;
+        //$this->checkAccess();
+       //-----------------------------------  
 
-
-        /*
-          if($valid==1)
-          {
-
-          }
-          else
-          {
-          echo 'this action is not valid';break;
-          }
-         */
 
         if (!$this->Auth->loggedIn() && $this->Cookie->read('remember_me')) {
             $cookie = $this->Cookie->read('remember_me');
