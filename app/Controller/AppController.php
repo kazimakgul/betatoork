@@ -154,8 +154,7 @@ class AppController extends Controller {
         //Configure AuthComponent
         $this->Auth->authorize = 'actions';
         $this->Auth->actionPath = 'controllers/';
-        $this->Auth->unauthorizedRedirect=array('controller'=>'pages','action'=>'forbidden'); ;
-        //$this->checkAccess();
+        $this->Auth->unauthorizedRedirect=array('controller'=>'pages','action'=>'forbidden');
        //-----------------------------------  
 
 
