@@ -212,6 +212,15 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                                         <?php } ?>
                                                     </select>
                                                 </div>
+                                                
+                                                 <div class="form-group">
+                                                    <label>
+                                                        Group
+                                                    </label>
+                                                    <?php echo $this->Form->input('group_id',array('label'=>'','class'=>'form-control valid','id'=>'group','value'=>$data['User']['group_id'])); ?>
+                                                </div>
+                                                
+
                                                 <div class="form-group">
                                                     <label>
                                                         Role
@@ -221,6 +230,8 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                                         <option value="2">Manager</option>
                                                     </select>
                                                 </div>
+
+
                                                 <div class="form-group">
                                                     <label>
                                                         Facebook Page

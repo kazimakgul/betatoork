@@ -32,6 +32,7 @@ class AdminsController extends AppController {
         'Category',
         'Clonebot',
         'Order',
+        'Group',
         'Activity',
         'Message',
         'Log',
@@ -311,6 +312,9 @@ class AdminsController extends AppController {
         $this->layout = 'admin';
         $this->sideBar();
 
+        $groups=$this->Group->find('list');
+        $this->set(compact('groups'));
+
         //  User Data
         $data = $this->User->find('first', array(
             'conditions' => array(
@@ -354,6 +358,7 @@ class AdminsController extends AppController {
             'birth_date' => $this->request->data['birth_date'],
             'gender' => $this->request->data['gender'],
             'country' => $this->request->data['country'],
+            'group_id' => $this->request->data['groups'],
             'role' => $this->request->data['role'],
             'fb_link' => $this->request->data['fb_link'],
             'twitter_link' => $this->request->data['twitter_link'],

@@ -63,6 +63,7 @@ $(document).ready(function() {
                 birth_date: $('#birth_date').val(),
                 gender: $('#gender').val(),
                 country: $('#country').val(),
+                groups: $('#group').val(),
                 role: $('#role').val(),
                 fb_link: $('#fb_link').val(),
                 twitter_link: $('#twitter_link').val(),
