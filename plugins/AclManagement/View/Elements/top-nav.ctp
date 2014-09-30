@@ -1,12 +1,5 @@
 <ul class="nav" data-dropdown="dropdown">
-<li class="menu">
-    <a class="menu" href="#" class="dropdown-toggle">User</a>
-    <ul class="menu-dropdown">
-        <li><a href="<?php echo $this->Html->url('/admin/users');?>">Manage Users</a></li>
-        <li class="divider"></li>
-        <li><a href="<?php echo $this->Html->url('/admin/users/add');?>">New User</a></li>
-    </ul>
-</li>
+
 <li class="menu">
     <a class="menu" href="#">Group</a>
     <ul class="menu-dropdown">
