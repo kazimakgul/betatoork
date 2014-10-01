@@ -130,7 +130,7 @@ class AppController extends Controller {
         
         //----------Acl Config--------------
         //Configure AuthComponent
-        $this->Auth->authorize = 'Actions';
+        //$this->Auth->authorize = 'Actions';
         $this->Auth->actionPath = 'controllers/';
         $this->Auth->unauthorizedRedirect=array('controller'=>'pages','action'=>'forbidden');
        //-----------------------------------  
