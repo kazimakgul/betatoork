@@ -25,6 +25,8 @@ class UsersController extends AclManagementAppController {
                 'dependent'=>true
             )
         )), false);
+
+        $this->Auth->deny('index','add','edit','view','delete');
     }
     /**
      * Temp acl init db

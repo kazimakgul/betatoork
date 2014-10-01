@@ -117,7 +117,7 @@
       </div>
 
       <footer>
-        <p><a href="mailto:oguz@toork.com">Say Hello to Developer</a> &copy; 2014</p>
+        <p><a href="http://clone.gs">Clone</a> &copy; 2014</p>
       </footer>
 
     </div> <!-- /container -->

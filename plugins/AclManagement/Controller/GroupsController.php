@@ -13,6 +13,7 @@ class GroupsController extends AclManagementAppController {
         parent::beforeFilter();
         
         $this->layout = "twitter_full";
+        $this->Auth->deny('index','add','edit','view','delete');
     }    
     /**
      * index method

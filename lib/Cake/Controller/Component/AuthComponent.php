@@ -208,7 +208,7 @@ class AuthComponent extends Component {
      * @var string
      * @link http://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#AuthComponent::$authError
      */
-    public $authError = 'You are not authorized to access that location, please login';
+    public $authError = 'You are not authorized to access that location, please login!';
 
     /**
      * Controller actions for which user validation is not required.

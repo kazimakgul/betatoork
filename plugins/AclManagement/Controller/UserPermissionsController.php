@@ -13,7 +13,9 @@ class UserPermissionsController extends AclManagementAppController {
 
     public function  beforeFilter() {
         parent::beforeFilter();
-        //$this->Auth->allow('index', 'get_children', 'edit', 'toggle', 'sync');
+
+        //denied from unauth users!
+        $this->Auth->deny('index','edit');
 
 	$this->Permission = ClassRegistry::init('Permission');
     }
