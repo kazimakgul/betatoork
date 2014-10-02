@@ -337,8 +337,7 @@ class AdminsController extends AppController {
             )
         ));
         
-        $authid = $this->Auth->user('id');
-        $mapping_data = $this->Custom_domain->find('first', array('conditions' => array('Custom_domain.user_id' => $authid, 'Custom_domain.status' => 1), 'fields' => array('Custom_domain.domain')));
+        $mapping_data = $this->Custom_domain->find('first', array('conditions' => array('Custom_domain.user_id' => $id, 'Custom_domain.status' => 1), 'fields' => array('Custom_domain.domain')));
         if ($mapping_data != NULL)
         $this->set('mapping_domain', $mapping_data['Custom_domain']['domain']);
 
