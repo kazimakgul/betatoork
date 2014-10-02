@@ -111,7 +111,7 @@ $(document).ready(function() {
                 showCloseButton: true
             });
         } else {
-            alert(link);
+            
             $.post(link, {
                 domain: domain
             }, function(data) {
@@ -136,9 +136,13 @@ $(document).ready(function() {
             }, 'json');
         }
     });
+
     
     /**
-     * Delete
+     * Delete Method
+     *
+     * @param null
+     * @return json
      */
     $('a.channels_delete').click(function(a) {
         a.preventDefault;

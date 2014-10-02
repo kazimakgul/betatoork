@@ -217,7 +217,7 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                                     <label>
                                                         Group
                                                     </label>
-                                                    <?php echo $this->Form->input('group_id',array('label'=>'','class'=>'form-control valid','id'=>'group','value'=>$data['User']['group_id'])); ?>
+                                                    <?php echo $this->Form->input('group_id',array('label'=>'','class'=>'form-control valid','id'=>'group','value'=>v)); ?>
                                                 </div>
                                                 
 
@@ -226,8 +226,9 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                                         Role
                                                     </label>
                                                     <select id="role" name="role" class="form-control">
-                                                        <option value="0">User</option>
-                                                        <option value="2">Manager</option>
+                                                        <option <?php echo ($user['User']['role'] == 0 ? 'selected="selected"' : ''); ?> value="0">User</option>
+                                                        <option <?php echo ($user['User']['role'] == 1 ? 'selected="selected"' : ''); ?> value="1">Admin</option>
+                                                        <option <?php echo ($user['User']['role'] == 2 ? 'selected="selected"' : ''); ?> value="2">Manager</option>
                                                     </select>
                                                 </div>
 

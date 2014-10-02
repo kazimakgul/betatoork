@@ -59,6 +59,9 @@
             var games_edit_post     = '<?php echo $this->Html->url(array('controller' => 'admins', 'action' => 'games_edit_post')); ?>';
             var channels_edit_post  = '<?php echo $this->Html->url(array('controller' => 'admins', 'action' => 'channels_edit_post')); ?>';
             var add_mapping         = '<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'add_mapping')); ?>';
+            var remove_mapping      = '<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'remove_mapping')); ?>';
+            
+
         </script>
         <script>
             var toorksize   =   'https://s3.amazonaws.com/betatoorkpics/brokenavatars/toork_gameavatar_default.png';
