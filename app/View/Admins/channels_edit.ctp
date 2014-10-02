@@ -217,7 +217,7 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
                                                     <label>
                                                         Group
                                                     </label>
-                                                    <?php echo $this->Form->input('group_id',array('label'=>'','class'=>'form-control valid','id'=>'group','value'=>v)); ?>
+                                                    <?php echo $this->Form->input('group_id',array('label'=>'','class'=>'form-control valid','id'=>'group','value'=>$data['User']['group_id'])); ?>
                                                 </div>
                                                 
 
