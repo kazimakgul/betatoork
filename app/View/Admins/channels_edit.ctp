@@ -223,12 +223,12 @@ $go_support = $this->Html->url(array('controller' => 'businesses', 'action' => '
 
                                                 <div class="form-group">
                                                     <label>
-                                                        Role-<?php echo $user['User']['role']; ?>
+                                                        Role-<?php echo $data['User']['role']; ?>
                                                     </label>
                                                     <select id="role" name="role" class="form-control">
-                                                        <option <?php echo ($user['User']['role'] == 0 ? 'selected="selected"' : ''); ?> value="0">User</option>
-                                                        <option <?php echo ($user['User']['role'] == 1 ? 'selected="selected"' : ''); ?> value="1">Admin</option>
-                                                        <option <?php echo ($user['User']['role'] == 2 ? 'selected="selected"' : ''); ?> value="2">Manager</option>
+                                                        <option <?php echo ($data['User']['role'] == 0 ? 'selected="selected"' : ''); ?> value="0">User</option>
+                                                        <option <?php echo ($data['User']['role'] == 1 ? 'selected="selected"' : ''); ?> value="1">Admin</option>
+                                                        <option <?php echo ($data['User']['role'] == 2 ? 'selected="selected"' : ''); ?> value="2">Manager</option>
                                                     </select>
                                                 </div>
 
