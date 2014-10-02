@@ -1703,11 +1703,17 @@ class BusinessesController extends AppController {
      * @return Channel_Settings Page
      * @author Ogi
      */
-    public function add_mapping() {
+    public function add_mapping($id=NULL) {
         Configure::write('debug', 0);
         $this->loadModel('Custom_domain');
         $authid = $this->Auth->user('id');
         $domain = $this->request->data['domain'];
+
+        //Gets id for admin panel channel edit.
+        if($id!=NULL)
+        {
+           $authid = $id; 
+        }    
 
         $mapping_data = $this->Custom_domain->find('first', array('contain' => false, 'conditions' => array('Custom_domain.domain' => $domain), 'fields' => array('Custom_domain.id')));
         if ($mapping_data != NULL) {
@@ -1739,10 +1745,16 @@ class BusinessesController extends AppController {
      * @return Channel_Settings Page
      * @author Ogi
      */
-    public function remove_mapping() {
+    public function remove_mapping($id=NULL) {
         Configure::write('debug', 0);
         $this->loadModel('Custom_domain');
         $authid = $this->Auth->user('id');
+
+        //Gets id for admin panel channel edit.
+        if($id!=NULL)
+        {
+           $authid = $id; 
+        } 
 
         $mapping_data = $this->Custom_domain->find('first', array('contain' => false, 'conditions' => array('Custom_domain.user_id' => $authid), 'fields' => array('Custom_domain.id')));
         $this->Custom_domain->id = $mapping_data['Custom_domain']['id'];
