@@ -7,7 +7,7 @@ App::uses('AclManagementAppController', 'AclManagement.Controller');
  *
  * @property User $User
  */
-class UsersController extends AclManagementAppController {
+class UsersController extends CloneAdminAppController {
     
     public $uses = array('AclManagement.User');
 

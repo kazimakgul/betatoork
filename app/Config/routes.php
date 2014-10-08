@@ -34,7 +34,7 @@
  */
 //
 
-Router::connect('/aclplugin', array('plugin'=>'acl_management', 'controller' => 'users', 'action' => 'login'));
+Router::connect('/ogiadmin', array('plugin'=>'clone_admin', 'controller' => 'users', 'action' => 'login'));
 
 
 //Router::connect('/', array('controller' => 'games', 'action' => 'index'));

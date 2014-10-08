@@ -1,6 +1,6 @@
 <?php
 
-class AclManagementAppController extends AppController {
+class CloneAdminAppController extends AppController {
     
     public function  beforeFilter() {
     parent::beforeFilter();

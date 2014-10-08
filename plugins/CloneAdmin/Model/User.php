@@ -1,127 +1,265 @@
 <?php
+
 /**
  * User Model
+ *
  */
-App::uses('AclManagementAppModel', 'AclManagement.Model');
-class User extends AclManagementAppModel {
-    public $name = 'User';
-    public $useTable = "users";
-    public $actsAs = array('Acl' => array('type' => 'requester'));
-    public $validate = array(
-//        'username' => array(
-//            'alphanumeric' => array(
-//                'rule' => 'alphaNumeric',
-//                'message' => 'Only letters and numbers allowed.'
-//            ),
-//            'minlength' => array(
-//                'rule' => array('minLength', '3'),
-//                'message' => 'Minimum length of 3 characters.'
-//            ),
-//            'maxlength' => array(
-//                'rule' => array('maxLength', '32'),
-//                'message' => 'Maximum length of 32 characters.'
-//            ),
-//            'unique' => array(
-//                'rule' => 'isUnique',
-//                'message' => 'Username already in use.'
-//            )
-//        ),
-        'name' => array(
-            'required' => true,
-            'allowEmpty' => false,
-            'rule' => 'notEmpty',
-            'message' => 'You must enter your real name.'
-        ),
-        'email' => array(
-            'email' => array(
-                'required' => true,
-                'allowEmpty' => false,
-                'rule' => 'email',
-                'message' => 'Invalid email.',
-                'last' => true
-            ),
-            'unique' => array(
-                'required' => true,
-                'allowEmpty' => false,
-                'rule' => 'isUnique',
-                'message' => 'Email already in use.'
+class User extends AppModel {
+
+    /**
+     * Display field
+     *
+     * @var string
+     */
+    public $displayField = 'Username';
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    var $actsAs = array(
+        'UploadPack.Upload' => array(
+            'picture' => array(
+                'path' => ':webroot/upload/:model/:id/:basename_:style.:extension', 'styles' => array('useravatar' => '90x120')
             )
         ),
-        'password' => array(
-            'required' => false,
-            'allowEmpty' => false,
-            'rule' => 'comparePwd',
-            'message' => 'Password mismatch or less than 6 characters.'
-        )
+        'Acl' => array('type' => 'requester', 'enabled' => false)
     );
-	
-    function parentNode() {
-        if (!$this->id && empty($this->data)) {
-            return null;
-        }
-        if (isset($this->data['User']['group_id'])) {
-            $groupId = $this->data['User']['group_id'];
-        } else {
-            $groupId = $this->field('group_id');
-        }
-        if (!$groupId) {
-            return null;
-        } else {
-            return array('Group' => array('id' => $groupId));
-        }
-    }
-    /**
-     * Group-only ACL
-     * This method will tell ACL to skip checking User Aro’s and to check only Group Aro’s.
-     * Every user has to have assigned group_id for this to work.
-     *
-     * @param <type> $user
-     * @return array
-     */
-    function bindNode($user) {
-        return array('model' => 'Group', 'foreign_key' => $user['User']['group_id']);
-    }
-
-    public function beforeValidate() {
-        if (isset($this->data['User']['id'])) {
-            $this->validate['password']['allowEmpty'] = true;
-        }
-
-        return true;
-    }
 
     public function beforeSave() {
-        App::uses('Security', 'Utility');
-        App::uses('String', 'Utility');
-
-        if (empty($this->data['User']['password'])) { # empty password -> do not update
-            unset($this->data['User']['password']);
-        } else {
-            $this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
+        if (isset($this->data[$this->alias]['password'])) {
+            $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
         }
-
-        $this->data['User']['key'] = String::uuid();
-
         return true;
-    }  
+    }
 
-    public function comparePwd($check) {
-        $check['password'] = trim($check['password']);
 
-        if (!isset($this->data['User']['id']) && strlen($check['password']) < 6) {
+    function parentNode() {
+       if (!$this->id && empty($this->data)) {
+        return null;
+       }
+          $data = $this->data;
+       if (empty($this->data)) {
+           $data = $this->read();
+       }
+       if (!$data['User']['role_id']) {
+           return null;
+       } else {
+           return array('Group' => array('id' => $data['User']['group_id']));
+       }
+   }
+
+   public function bindNode($user) {
+    return array('model' => 'Group', 'foreign_key' => $user['User']['group_id']);
+    }
+
+    public function isAdmin($user_id) {
+        $role = $this->find(
+                'first', array(
+            'conditions' => array('User.id' => $user_id),
+            'fields' => array('User.role')
+                )
+        );
+        if ($role['User']['role'] == 1)
+            return 1;
+        else
+            return 0;
+    }
+
+    public function isOwnedBy($user1, $user) {
+        if ($user1 == $user) {
+            return true;
+        } else {
             return false;
         }
-
-        if (isset($this->data['User']['id']) && empty($check['password'])) {
-            return true;
-        }
-
-        $r = ($check['password'] == $this->data['User']['password2'] && strlen($check['password']) >= 6);
-
-        if (!$r) {
-            $this->invalidate('password2', __d('user', 'Password missmatch.'));
-        }
-
-        return $r;
+        //return $this->field('id', array('id' => $user1, 'id' => $user)) === $user1;
     }
+
+    function getActivationHash() {
+        if (!isset($this->id)) {
+            return false;
+        }
+        return substr(Security::hash(Configure::read('Security.salt') . $this->field('created') . date('Ymd')), 0, 8);
+    }
+
+    function identicalFieldValues($field = array(), $compare_field = null) {
+        foreach ($field as $key => $value) {
+            $v1 = $value;
+            $v2 = $this->data[$this->name][$compare_field];
+            if ($v1 !== $v2) {
+                return FALSE;
+            } else {
+                continue;
+            }
+        }
+        return TRUE;
+    }
+
+    public $validate = array(
+        'id' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+            //'message' => 'Your custom message here',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+        'username' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+                'message' => 'Please dont leave this field empty',
+            ),
+            'login' => array(
+                'rule' => 'isUnique',
+                'message' => 'This username has already been taken.'
+            ),
+            'between' => array(
+                'rule' => array('between', 6, 20),
+                'message' => 'Username must be between 6-20 characters long',
+            ),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+        ),
+        'screenname' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+                'message' => 'Please dont leave screen name empty.',
+            ),
+            'between' => array(
+                'rule' => array('between', 4, 20),
+                'message' => 'Screen name must be between 4-20 characters long.',
+            )
+        ),
+        'email' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+                'message' => 'Please dont leave this field empty',
+            ),
+            'login' => array(
+                'rule' => 'isUnique',
+                'message' => 'This email is already registered'
+            ),
+            'email' => array(
+                'rule' => array('email', true),
+                'message' => 'Please supply a valid email address.',
+            ),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+        ),
+        'password' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+                'message' => 'Please dont leave this field empty',
+            ),
+            'identicalFieldValues' => array(
+                'rule' => array('identicalFieldValues', 'confirm_password'),
+                'message' => 'Please re-enter your password twice so that the values match'),
+            'between' => array(
+                'rule' => array('between', 6, 20),
+                'message' => 'Passwords must be between 6 and 20 characters long.',
+            ),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+        ),
+        'confirm_new_password' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+                'message' => 'Please dont leave this field empty',
+            ),
+            'identicalFieldValues' => array(
+                'rule' => array('identicalFieldValues', 'new_password'),
+                'message' => 'Please re-enter your password twice so that the values match'),
+            'between' => array(
+                'rule' => array('between', 6, 20),
+                'message' => 'Passwords must be between 6 and 20 characters long.',
+            ),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+        ),
+        'active' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
+            //'message' => 'Your custom message here',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+        'picture' => array(
+            'image' => array(
+                'rule' => array('extension', array('gif', 'jpeg', 'png', 'jpg')),
+                'message' => 'Please supply a valid image.',
+            ),
+            'minWidth' => array(
+                'rule' => array('minWidth', '0'),
+                'message' => 'Your avatar size must be 90x120'
+            ),
+            'maxWidth' => array(
+                'rule' => array('maxWidth', '100000'),
+                'message' => 'Your avatar size must be 90x120'
+            ),
+            'minHeight' => array(
+                'rule' => array('minHeight', '0'),
+                'message' => 'Your avatar size must be 90x120'
+            ),
+            'maxHeight' => array(
+                'rule' => array('maxHeight', '100000'),
+                'message' => 'Your avatar size must be 90x120'
+            )
+
+
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+        ),
+    );
+    public $hasMany = array(
+        'Game' => array(
+            'className' => 'Game',
+            'foreignKey' => 'id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        )
+    );
+    public $hasOne = array(
+        'Userstat' => array(
+            'className' => 'Userstat',
+            'foreignKey' => 'user_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'type' => 'INNER',
+        )
+    );
+    public $belongsTo = array(
+        'Country' => array(
+            'className' => 'Country',
+            'foreignKey' => 'country_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        )
+    );
+
+//uploadcount and totalrate can be use as order of channels
+#var $virtualFields = array('uploadcount' => 'SELECT COUNT(id) FROM games where games.user_id=User.id','totalrate'=>'(SELECT SUM(current) FROM rates where rates.game_id IN (SELECT id FROM games where games.user_id=User.id))','favoritenumber'=>1,'subscribe'=>1,'subscribeto'=>1,'playcount'=>1);
 }
