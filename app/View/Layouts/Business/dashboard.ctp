@@ -28,19 +28,19 @@
 	<!-- javascript -->
  		<script>
  			notifyload 		= '<?php echo $this->Html->url(array('controller'=>'activities','action'=>'togglelast10')); ?>';
-	        updateData		=	'<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'updateData')); ?>'; 
-	        newData			=	'<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'newData')); ?>';
+	        updateData		=	'<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'updatedata')); ?>'; 
+	        newData			=	'<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'newdata')); ?>';
 	        ads_management	='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'ads_management')); ?>';
 	        edit_ads		='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'edit_ads')); ?>';
 	        mygames			='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mygames')); ?>';
 	        set_channel_ads	='<?php echo $this->Html->url(array('controller'=>'users','action'=>'set_channel_ads')); ?>'; 
 	        remove_ads_field='<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_ads_field')); ?>';
-	        deletedata		= '<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deleteData')); ?>';
+	        deletedata		= '<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deletedata')); ?>';
 	        remove_background = '<?php echo $this->Html->url(array('controller'=>'users','action'=>'remove_background')); ?>';   
 			subswitcher='<?php echo $this->Html->url(array('controller'=>'subscriptions','action'=>'add_subscription')); ?>';
 	        favswitcher	='<?php echo $this->Html->url(array('controller'=>'favorites','action'=>'add')); ?>';
 	        chaingame	='<?php echo $this->Html->url(array('controller'=>'games','action'=>'clonegame')); ?>';
-	        remove_game	='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deleteData')); ?>';
+	        remove_game	='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deletedata')); ?>';
 	        delete_one_game	='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'deleteonegame')); ?>';
 	        mysite			='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'mysite')); ?>';
 	        feat_toggle_link ='<?php echo $this->Html->url(array('controller'=>'businesses','action'=>'featured_toggle')); ?>';
