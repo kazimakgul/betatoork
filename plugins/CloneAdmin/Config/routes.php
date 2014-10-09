@@ -9,7 +9,7 @@
  * @author        Ogi
  */
 
-Router::connect('/admins2/channels', array('plugin' => 'clone_admin', 'controller' => 'admins', 'action'=>'channels'));
+Router::connect('/admins/channels', array('plugin' => 'clone_admin', 'controller' => 'admins', 'action'=>'channels'));
 //Router::connect('/admins2/games', array('plugin' => 'clone_admin', 'controller' => 'admins', 'action'=>'games'));
 
 

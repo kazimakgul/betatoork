@@ -1,5 +1,5 @@
 <?php
-$index = $this->Html->url(array('controller' => 'businesses', 'action' => 'dashboard'));
+   $index = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'businesses', 'action' => 'dashboard'));
 $profile = $this->Html->url(array('controller' => 'businesses', 'action' => 'profile'));
 $cloneapi = $this->Html->url(array('controller' => 'businesses', 'action' => 'api'));
 $pricing = $this->Html->url(array('controller' => 'businesses', 'action' => 'pricing'));
@@ -8,12 +8,20 @@ $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'ch
 $activities = $this->Html->url(array('controller' => 'businesses', 'action' => 'activities'));
 $app_status = $this->Html->url(array('controller' => 'businesses', 'action' => 'app_status'));
 $logout = $this->Html->url(array("controller" => "businesses", "action" => "logout"));
-$mygames = $this->Html->url(array('controller' => 'businesses', 'action' => 'mygames'));
+   
+   $managegames = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'admins', 'action' => 'games'));
+
 $favorites = $this->Html->url(array('controller' => 'businesses', 'action' => 'favorites'));
-$exploregames = $this->Html->url(array('controller' => 'businesses', 'action' => 'exploregames'));
-$following = $this->Html->url(array('controller' => 'businesses', 'action' => 'following'));
-$followers = $this->Html->url(array('controller' => 'businesses', 'action' => 'followers'));
-$explorechannels = $this->Html->url(array('controller' => 'businesses', 'action' => 'explorechannels'));
+   
+   $reportedgames = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'businesses', 'action' => 'reportedgames'));
+   $manageusers = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'admins', 'action' => 'channels'));
+   $premiumusers = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'businesses', 'action' => 'premiumusers'));
+
+   $managegroups = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'businesses', 'action' => 'managegroups'));
+   $addgroup = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'businesses', 'action' => 'addgroup'));
+
+   $permissions = $this->Html->url(array('plugin'=>'acl_management','controller' => 'user_permissions', 'action' => 'index'));
+
 $ch_settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $notifications = $this->Html->url(array('controller' => 'businesses', 'action' => 'notifications'));
 $ads_management = $this->Html->url(array('controller' => 'businesses', 'action' => 'ads_management'));
@@ -22,15 +30,7 @@ $avatarImage = $this->requestAction(array('plugin'=>false,'controller' => 'users
 if (empty($notifycount)) {
     $notifycount = 0;
 }
-if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost") {
-    if ($this->Session->read('mapping')) {
-        $gochannel = $this->Html->url('http://' . $this->Session->read('mapping_domain'));
-    } else {
-        $gochannel = $this->Html->url('http://' . $user['User']['seo_username'] . '.' . $pure_domain);
-    }
-} else {
-    $gochannel = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
-}
+
 if ($user['User']['picture'] == null) {
     $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'avatar circular', "alt" => "clone user image"));
 } else {
@@ -96,20 +96,7 @@ if ($user['User']['picture'] == null) {
     <div class="menu-section">
         <h3>Clone Admin-General</h3>
         <ul>
-            <!-- -- <li>
-                 <a href="<?php echo $profile ?>">
-                     <i class="fa fa-user"></i> 
-                     <span>Profile</span>
-                 </a>
-             </li> -- -->
-
-            <li>
-                <a href="<?php echo $gochannel ?>">
-                    <i class="fa fa-desktop"></i> 
-                    <span>Go to Channel</span>
-                </a>
-            </li>
-
+            
             <li>
                 <a href="<?php echo $index ?>" <?php if (isset($active) && $active == 'dashboard') echo 'class="active"'; ?>>
                     <i class="ion-ios7-speedometer"></i> 
@@ -122,9 +109,8 @@ if ($user['User']['picture'] == null) {
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 <ul class="submenu" <?php if (isset($bar) && $bar == 'Games') echo 'style="display:block"'; ?>>
-                    <li><a href="<?php echo $mygames ?>" <?php if (isset($active) && $active == 'mygames') echo 'class="active"'; ?>>My Games</a></li>
-                    <li><a href="<?php echo $favorites ?>" <?php if (isset($active) && $active == 'favorites') echo 'class="active"'; ?>>Favorites</a></li>
-                    <li><a href="<?php echo $exploregames ?>" <?php if (isset($active) && $active == 'exploregames') echo 'class="active"'; ?>>Explore Games</a></li>
+                    <li><a href="<?php echo $managegames ?>" <?php if (isset($active) && $active == 'mygames') echo 'class="active"'; ?>>Manage Games</a></li>
+                    <li><a href="<?php echo $reportedgames ?>" <?php if (isset($active) && $active == 'favorites') echo 'class="active"'; ?>>Reported Games</a></li>
                 </ul>
             </li>
             <li>
@@ -133,20 +119,48 @@ if ($user['User']['picture'] == null) {
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 <ul class="submenu" <?php if (isset($bar) && $bar == 'Follow') echo 'style="display:block"'; ?>>
-                    <li><a href="<?php echo $following ?>" <?php if (isset($active) && $active == 'following') echo 'class="active"'; ?>>Following</a></li>
-                    <li><a href="<?php echo $followers ?>" <?php if (isset($active) && $active == 'followers') echo 'class="active"'; ?>>Followers</a></li>
-                    <li><a href="<?php echo $explorechannels ?>" <?php if (isset($active) && $active == 'explorechannels') echo 'class="active"'; ?>>Explore Channels</a></li>
+                    <li><a href="<?php echo $manageusers ?>" <?php if (isset($active) && $active == 'following') echo 'class="active"'; ?>>Manage Users</a></li>
+                    <li><a href="<?php echo $premiumusers ?>" <?php if (isset($active) && $active == 'followers') echo 'class="active"'; ?>>Premium Users</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#" data-toggle="sidebar">
+                    <i class="fa fa-group"></i> <span>Groups</span>
+                    <i class="fa fa-chevron-down"></i>
+                </a>
+                <ul class="submenu" <?php if (isset($bar) && $bar == 'Games') echo 'style="display:block"'; ?>>
+                    <li><a href="<?php echo $managegroups ?>" <?php if (isset($active) && $active == 'mygames') echo 'class="active"'; ?>>Manage Groups</a></li>
+                    <li><a href="<?php echo $addgroup ?>" <?php if (isset($active) && $active == 'favorites') echo 'class="active"'; ?>>Add Group</a></li>
+                </ul>
+            </li>
+
         </ul>
     </div>
     <div class="menu-section">
         <h3>Application</h3>
         <ul>
             <li>
+                <a href="<?php echo $system_settins ?>" <?php if (isset($active) && $active == 'activities') echo 'class="active"'; ?>>
+                    <i class="fa fa-gears"></i> 
+                    <span>System Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $permissions ?>" <?php if (isset($active) && $active == 'activities') echo 'class="active"'; ?>>
+                    <i class="fa fa-key"></i> 
+                    <span>Permissions</span>
+                </a>
+            </li>
+            <li>
                 <a href="<?php echo $activities ?>" <?php if (isset($active) && $active == 'activities') echo 'class="active"'; ?>>
                     <i class="fa fa-tasks"></i> 
                     <span>Latest Activity</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $error_logs ?>" <?php if (isset($active) && $active == 'activities') echo 'class="active"'; ?>>
+                    <i class="fa fa-file-text-o"></i> 
+                    <span>Error Logs</span>
                 </a>
             </li>
             <li>
