@@ -10,7 +10,7 @@
  */
 
 Router::connect('/admins/channels', array('plugin' => 'clone_admin', 'controller' => 'admins', 'action'=>'channels'));
-//Router::connect('/admins2/games', array('plugin' => 'clone_admin', 'controller' => 'admins', 'action'=>'games'));
+Router::connect('/admins/games', array('plugin' => 'clone_admin', 'controller' => 'admins', 'action'=>'games'));
 
 
 
