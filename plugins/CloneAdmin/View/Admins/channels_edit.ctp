@@ -1,6 +1,6 @@
 <?php
-$avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
-$image = $this->requestAction(array('controller' => 'users', 'action' => 'randomPicture', 62));
+$avatarImage = $this->requestAction(array('plugin'=>false,'controller' => 'users', 'action' => 'randomAvatar'));
+$image = $this->requestAction(array('plugin'=>false,'controller' => 'users', 'action' => 'randomPicture', 62));
 if ($data['User']['picture'] == null) {
     $img = $this->Html->image("/img/avatars/$avatarImage.jpg", array('class' => 'img-responsive img-circle circular1', "alt" => "clone user image"));
 } else {
