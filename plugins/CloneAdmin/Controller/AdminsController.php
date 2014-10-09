@@ -281,7 +281,7 @@ class AdminsController extends CloneAdminAppController {
         $this->channels_filter();
         $data = $this->paginate('User');
         $this->set('data', $data);
-        $this->set('title_for_layout', 'Clone Admin');
+        $this->set('title_for_layout', 'Clone Admin v 2.0.0');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
         $this->set('author_for_layout', 'Clone');
     }

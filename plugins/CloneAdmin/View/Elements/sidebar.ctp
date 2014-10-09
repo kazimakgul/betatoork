@@ -94,7 +94,7 @@ if ($user['User']['picture'] == null) {
         </ul>
     </div>-->
     <div class="menu-section">
-        <h3>General</h3>
+        <h3>Clone Admin-General</h3>
         <ul>
             <!-- -- <li>
                  <a href="<?php echo $profile ?>">
