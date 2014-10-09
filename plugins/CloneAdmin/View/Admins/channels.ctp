@@ -35,7 +35,7 @@ if (isset($query)) {
             <?php } ?>
             <input type="submit" />
         </form>
-        <?php echo $this->element('admin/header_buttons'); ?>
+        
     </div>
     <div class="content-wrapper">
         <div class="row page-controls">
