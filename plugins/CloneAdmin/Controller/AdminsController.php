@@ -232,7 +232,25 @@ class AdminsController extends CloneAdminAppController {
     */
     public function kickatest() {
         $this->layout = 'admin';
-        echo 'test area are running';
+
+        $this->sideBar();
+        $this->channels_model();
+        $this->paginate = array(
+            'User' => array(
+                'fields' => array(
+                    'User.id',
+                    'User.username',
+                    'User.picture',
+                    'User.email',
+                    'User.priority',
+                    'Custom_domain.domain'
+                ),
+                'limit' => $this->limit
+            )
+        );
+        $this->channels_filter();
+        $data = $this->paginate('User');
+        $this->set('data', $data);
 
         $this->set('title_for_layout', 'Clone Admin');
         $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');

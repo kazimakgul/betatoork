@@ -18,7 +18,7 @@ $ch_settings = $this->Html->url(array('controller' => 'businesses', 'action' => 
 $notifications = $this->Html->url(array('controller' => 'businesses', 'action' => 'notifications'));
 $ads_management = $this->Html->url(array('controller' => 'businesses', 'action' => 'ads_management'));
 $faq = $this->Html->url(array('controller' => 'businesses', 'action' => 'faq'));
-//$avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
+$avatarImage = $this->requestAction(array('plugin'=>false,'controller' => 'users', 'action' => 'randomAvatar'));
 if (empty($notifycount)) {
     $notifycount = 0;
 }

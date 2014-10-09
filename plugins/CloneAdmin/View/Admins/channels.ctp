@@ -160,7 +160,7 @@ if (isset($query)) {
                     $id = $value['User']['id'];
                     //  picture
                     if (is_null($value['User']['picture'])) {
-                        $avatarImage = $this->requestAction(array('controller' => 'users', 'action' => 'randomAvatar'));
+                        $avatarImage = $this->requestAction(array('plugin'=>false,'controller' => 'users', 'action' => 'randomAvatar'));
                         $picture = $this->Html->image('/img/avatars/' . $avatarImage . '.jpg', array('alt' => $value['User']['username']));
                     } else {
                         $picture = $this->Upload->image($value, 'User.picture', array(), array('onerror' => 'imgError(this,"avatar");', 'alt' => $value['User']['username']));

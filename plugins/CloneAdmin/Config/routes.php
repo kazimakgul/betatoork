@@ -1,26 +1,18 @@
 <?php
-//list user
-Router::connect('/admin/users', array('plugin' => 'acl_management', 'controller' => 'users', 'action'=>'index'));
-//login
-Router::connect('/users/login', array('plugin' => 'acl_management', 'controller' => 'users', 'action' => 'login'));
-Router::connect('/admin/users/login', array('admin'=>true, 'plugin' => 'acl_management', 'controller' => 'users', 'action' => 'login'));
-//logout
-Router::connect('/users/logout', array('plugin' => 'acl_management', 'controller' => 'users', 'action' => 'logout'));
-Router::connect('/admin/users/logout', array('admin'=>true, 'plugin' => 'acl_management', 'controller' => 'users', 'action' => 'logout'));
-//user action
-Router::connect('/admin/users/add', array('plugin' => 'acl_management', 'controller' => 'users', 'action'=>'add'));
-Router::connect('/admin/users/view/*', array('plugin' => 'acl_management', 'controller' => 'users', 'action'=>'view'));
-Router::connect('/admin/users/edit/*', array('plugin' => 'acl_management', 'controller' => 'users', 'action'=>'edit'));
-Router::connect('/admin/users/delete/*', array('plugin' => 'acl_management', 'controller' => 'users', 'action'=>'delete'));
-Router::connect('/admin/users/toggle/*', array('plugin' => 'acl_management', 'controller' => 'users', 'action'=>'toggle'));
+/**
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Toork Technology, Inc. (http://toork.com)
+ *
+ * @copyright     Copyright (c) Toork Technology, Inc. (http://toork.com)
+ * @link          http://clone.gs Clone Project
+ * @package       CloneAdmin
+ * @author        Ogi
+ */
 
-//list group
-Router::connect('/admin/groups', array('plugin' => 'acl_management', 'controller' => 'groups', 'action'=>'index'));
-//groups action
-Router::connect('/admin/groups/add', array('plugin' => 'acl_management', 'controller' => 'groups', 'action'=>'add'));
-Router::connect('/admin/groups/edit/*', array('plugin' => 'acl_management', 'controller' => 'groups', 'action'=>'edit'));
-Router::connect('/admin/groups/delete/*', array('plugin' => 'acl_management', 'controller' => 'groups', 'action'=>'delete'));
+Router::connect('/admins2/channels', array('plugin' => 'clone_admin', 'controller' => 'admins', 'action'=>'channels'));
+//Router::connect('/admins2/games', array('plugin' => 'clone_admin', 'controller' => 'admins', 'action'=>'games'));
 
-//list permissions
-Router::connect('/admin/user_permissions', array('plugin' => 'acl_management', 'controller' => 'user_permissions', 'action'=>'index'));
+
+
+
 ?>
