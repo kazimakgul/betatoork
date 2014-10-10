@@ -17,8 +17,8 @@ $favorites = $this->Html->url(array('controller' => 'businesses', 'action' => 'f
    $manageusers = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'admins', 'action' => 'channels'));
    $premiumusers = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'businesses', 'action' => 'premiumusers'));
 
-   $managegroups = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'businesses', 'action' => 'managegroups'));
-   $addgroup = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'businesses', 'action' => 'addgroup'));
+   $managegroups = $this->Html->url(array('plugin'=>'acl_management','controller' => 'groups', 'action' => 'index'));
+   $addgroup = $this->Html->url(array('plugin'=>'acl_management','controller' => 'groups', 'action' => 'add'));
 
    $permissions = $this->Html->url(array('plugin'=>'acl_management','controller' => 'user_permissions', 'action' => 'index'));
 
