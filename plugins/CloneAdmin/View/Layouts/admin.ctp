@@ -56,10 +56,10 @@
         ));
         ?>
         <script>
-            var games_edit_post     = '<?php echo $this->Html->url(array('controller' => 'admins', 'action' => 'games_edit_post')); ?>';
-            var channels_edit_post  = '<?php echo $this->Html->url(array('controller' => 'admins', 'action' => 'channels_edit_post')); ?>';
-            var add_mapping         = '<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'add_mapping')); ?>';
-            var remove_mapping      = '<?php echo $this->Html->url(array('controller' => 'businesses', 'action' => 'remove_mapping')); ?>';
+            var games_edit_post     = '<?php echo $this->Html->url(array('plugin'=>false,'controller' => 'admins', 'action' => 'games_edit_post')); ?>';
+            var channels_edit_post  = '<?php echo $this->Html->url(array('plugin'=>false,'controller' => 'admins', 'action' => 'channels_edit_post')); ?>';
+            var add_mapping         = '<?php echo $this->Html->url(array('plugin'=>false,'controller' => 'businesses', 'action' => 'add_mapping')); ?>';
+            var remove_mapping      = '<?php echo $this->Html->url(array('plugin'=>false,'controller' => 'businesses', 'action' => 'remove_mapping')); ?>';
             
 
         </script>
