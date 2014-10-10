@@ -277,7 +277,7 @@
 <div class="modal fade" id="gameChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
     <div class="modal-dialog" style="width:800px;">
         <div>
-            <iframe id='gameframe' src="<?php echo $this->Html->url(array('controller' => 'uploads', 'action' => 'images', 'new_game', $user['User']['id'])); ?>" style='width:800px; height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+            <iframe id='gameframe' src="<?php echo $this->Html->url(array('plugin'=>false,'controller' => 'uploads', 'action' => 'images', 'new_game', $user['User']['id'])); ?>" style='width:800px; height:450px; overflow-y: hidden;' scrolling="no"></iframe>
         </div>
     </div>
 </div>
