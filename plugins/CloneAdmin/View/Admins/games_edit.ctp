@@ -256,6 +256,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                    <input type="hidden" name="attr" id="attr" value="game_add" />
+                    <input type="hidden" name="new_data" id="new_data" value="0" />
+                    <input type="hidden" name="game_id" id="game_id" value="<?php echo $data['Game']['id']; ?>" />
+            </div>
+
             <!--
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
@@ -281,4 +288,37 @@
         </div>
     </div>
 </div>
-<!-- Game Image Change Modal ends -->  
+<!-- Game Image Change Modal ends --> 
+<!-- Game Add Modal begins -->
+<div class="modal fade" id="gameAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;'>
+    <div class="modal-dialog" style="width:800px;">
+        <div>
+            <?php
+            $url = $this->Html->url(array('plugin'=>false,'controller' => 'uploads', 'action' => 'games', 'game_upload', $user['User']['id']));
+            ?>
+            <iframe id='gameaddframe' src="<?php echo $url; ?>" style='width:800px;height:450px; overflow-y: hidden;' scrolling="no"></iframe>
+        </div>
+    </div>
+</div>
+<!-- Game Add Modal ends -->  
+<!-- Confirm Modal begins -->
+<div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Are you sure you want to delete this?
+                </h4>
+            </div>
+            <div class="modal-body">
+                Do you want to delete <b><?php echo $game['Game']['name']; ?></b> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-danger remove_game">Yes, delete it</button>
+            </div>
+        </div>
+    </div>
+</div> 
+<!-- Confirm Modal ends --> 

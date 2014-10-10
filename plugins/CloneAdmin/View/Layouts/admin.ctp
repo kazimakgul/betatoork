@@ -60,6 +60,8 @@
             var channels_edit_post  = '<?php echo $this->Html->url(array('plugin'=>false,'controller' => 'admins', 'action' => 'channels_edit_post')); ?>';
             var add_mapping         = '<?php echo $this->Html->url(array('plugin'=>false,'controller' => 'businesses', 'action' => 'add_mapping')); ?>';
             var remove_mapping      = '<?php echo $this->Html->url(array('plugin'=>false,'controller' => 'businesses', 'action' => 'remove_mapping')); ?>';
+            var remove_game      = '<?php echo $this->Html->url(array('plugin'=>false,'controller' => 'businesses', 'action' => 'deletedata')); ?>';
+            var mygames         ='<?php echo $this->Html->url(array('plugin'=>'clone_admin','controller'=>'admins','action'=>'games')); ?>';
             
 
         </script>
