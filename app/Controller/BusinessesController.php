@@ -684,7 +684,7 @@ class BusinessesController extends AppController {
               $this->redirect($this->referer(array(‘action’=>’index’), true));
             }else{
               //$this->redirect('/');   
-              $this->redirect(array('controller'=>'games'));   
+              $this->redirect(array('controller'=>'businesses','action'=>'category','puzzle'));   
             }
             
 
