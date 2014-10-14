@@ -1683,7 +1683,7 @@ $('.NewButtonGame').click(function(e){
                 installable: $installable,
                 image_name: $('#game_image').attr('data-src'),
                 game_file: $('#game_file').val(),
-                /*new_game: $new_game,*/
+                new_game: 1,
                 /*game_id: $edited_game_id*/
                 active: active
             },
