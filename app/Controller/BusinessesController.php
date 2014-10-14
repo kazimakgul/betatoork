@@ -396,7 +396,7 @@ class BusinessesController extends AppController {
                         $this->Applink->save($applinkdata2);
                     }
                     //Installable details ends
-/*
+
                     if ($image_name != 'current' && $image_name != 'empty') {//if user didnt change the game image
                         //=======Upload to aws for Game Image begins===========
                         $feedback = $this->Amazon->S3->create_object(
@@ -412,15 +412,13 @@ class BusinessesController extends AppController {
                             $this->remove_temporary($user_id, 'new_game');
                         }
                     }
-                    */
-
                     $this->gameUpload($game_file, $id, $user_id); //Check if any game upload exists
 
 
                     if ($new_game == 0) {
-                        $this->set('success', "Image Name:".$image_name."-id:".$id."-newname:".$newname."-userid:".$user_id);
+                        $this->set('success', "Game Updated");
                     } else {
-                        $this->set('success', "Image Name:".$image_name."-id:".$id."-newname:".$newname."-userid:".$user_id);
+                        $this->set('success', "Game Added");
                     }
                     $this->set('_serialize', array('success'));
                 }
