@@ -678,7 +678,16 @@ class BusinessesController extends AppController {
                 $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
             }
         } else {
-            $this->redirect(array('controller' => 'businesses', 'action' => 'mysite', $userid));
+            
+           
+            if (strpos($this->referer(),'mysite') !== false) {
+              $this->redirect($this->referer(array(‘action’=>’index’), true));
+            }else{
+              $this->redirect('/');    
+            }
+            
+
+            
         }
     }
 
