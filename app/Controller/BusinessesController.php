@@ -687,7 +687,7 @@ class BusinessesController extends AppController {
     */
     function logout_redirect()
     { 
-            if (strpos($this->referer(),'mysite') !== false) {
+            if (strpos($this->referer(),'/businesses/play/') !== false) {
               $this->redirect($this->referer(array(‘action’=>’index’), true));
             }else{
               $this->redirect('/');    
