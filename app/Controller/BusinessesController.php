@@ -679,14 +679,22 @@ class BusinessesController extends AppController {
             }
         } else {
             
-           
+            
             if (strpos($this->referer(),'mysite') !== false) {
               $this->redirect($this->referer(array(‘action’=>’index’), true));
             }else{
-              $this->redirect('/');    
+                /**
+                *Generate root domain situation
+                */
+                if($this->pure_domain)
+                { 
+                   $redirect_to='http://' . $pure_domain;
+                   $this->redirect($redirect_to);   
+                }else{
+                   $this->redirect('/');   
+                }    
             }
             
-
             
         }
     }
