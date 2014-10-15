@@ -4,6 +4,7 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
 } else {
     $gochannel = $this->Html->url(array('controller' => 'businesses', 'action' => 'mysite', $user['User']['id']));
 }
+    $dashboard = $this->Html->url(array("controller" => "businesses", "action" => "dashboard"));
 ?>
 <div class="step">
     <div class="success">
@@ -16,8 +17,8 @@ if ($_SERVER['HTTP_HOST'] != "127.0.0.1" && $_SERVER['HTTP_HOST'] != "localhost"
         <h3 class='load_message'>
             Your channel has been created successfully!
         </h3>
-        <a style="margin-top: 10px;display:none;" href="<?php echo $gochannel; ?>" class="btn btn-success gotochannel">
-            <span>Go to my channel</span>
+        <a style="margin-top: 10px;display:none;" href="<?php echo $dashboard; ?>" class="btn btn-success gotochannel">
+            <span>Go to my dashboard</span>
         </a>
     </div>
 </div>
