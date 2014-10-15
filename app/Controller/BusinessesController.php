@@ -675,28 +675,23 @@ class BusinessesController extends AppController {
                 $cdomain = Configure::read('Domain.c_root');
                 $this->redirect('http://' . $cdomain);
             } else {
-                $this->redirect('http://' . $user['User']['seo_username'] . '.' . $this->pure_domain);
+                $this->logout_redirect();
             }
         } else {
-            
-            
+              //Localhost Settings
+              $this->logout_redirect();  
+        }
+    }
+    /**
+     *Set different logout redirect urls for different referer
+    */
+    function logout_redirect()
+    { 
             if (strpos($this->referer(),'mysite') !== false) {
               $this->redirect($this->referer(array(‘action’=>’index’), true));
             }else{
-                /**
-                *Generate root domain situation
-                */
-                if($this->pure_domain)
-                { 
-                   $redirect_to='http://' . $pure_domain;
-                   $this->redirect($redirect_to);   
-                }else{
-                   $this->redirect('/');   
-                }    
+              $this->redirect('/');    
             }
-            
-            
-        }
     }
 
     public function lucky_number() {
