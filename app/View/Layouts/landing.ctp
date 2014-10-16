@@ -37,10 +37,10 @@
 
     <!-- avascript variables for login and register-->
     <script type="text/javascript">
-    remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser')); ?>';
-	remotecheck2='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkUser2')); ?>';
-	authcheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'usernameAvailable')); ?>';
-	facecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'FaceUser')); ?>';
+    remotecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkuser')); ?>';
+	remotecheck2='<?php echo $this->Html->url(array('controller'=>'users','action'=>'checkuser2')); ?>';
+	authcheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'usernameavailable')); ?>';
+	facecheck='<?php echo $this->Html->url(array('controller'=>'users','action'=>'faceuser')); ?>';
 	</script>
     <?php echo $this->Html->css(array('assets/css/toork_lander')); ?>
 

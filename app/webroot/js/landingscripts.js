@@ -218,7 +218,7 @@ $(function() {
 
                 $('#grabloader').show();
 
-                setInterval(function() {
+                setTimeout(function() {
                     autoLogin($('#reg_username').val(), $('#reg_password').val());
                 }, 2000);
 
