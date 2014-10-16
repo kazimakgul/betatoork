@@ -640,7 +640,7 @@ class AdminsController extends CloneAdminAppController {
                 $ios = $this->request->data['ios'];
                 $this->loadModel('Applink');
                 //  ANDROID
-                if (!empty($and)) {
+                if (!empty($android)) {
                     $android_data = $this->Applink->find('first', array(
                         'conditions' => array(
                             'Applink.game_id' => $id,

@@ -7,7 +7,7 @@ $steps2launch = $this->Html->url(array('controller' => 'businesses', 'action' =>
 $settings = $this->Html->url(array('controller' => 'businesses', 'action' => 'channel_settings'));
 $activities = $this->Html->url(array('controller' => 'businesses', 'action' => 'activities'));
 $app_status = $this->Html->url(array('controller' => 'businesses', 'action' => 'app_status'));
-$logout = $this->Html->url(array("controller" => "businesses", "action" => "logout"));
+$logout = $this->Html->url(array("plugin"=>false,"controller" => "businesses", "action" => "logout"));
    
    $managegames = $this->Html->url(array('plugin'=>'clone_admin','controller' => 'admins', 'action' => 'games'));
 
