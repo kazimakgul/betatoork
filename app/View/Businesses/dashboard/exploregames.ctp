@@ -160,7 +160,7 @@ if (isset($this->request->params['named']['sort']) && isset($this->request->para
             </div>
             <?php
             foreach ($games as $key => $value) {
-                $games[$key]['clonestatus'] = $this->requestAction(array('controller' => 'games', 'action' => 'checkClone'), array($userid, $value['Game']['id']));
+                $games[$key]['clonestatus'] = $this->requestAction(array('controller' => 'games', 'action' => 'checkclone'), array($userid, $value['Game']['id']));
             }
             echo $this->element('business/dashboard/exploregames/list', array('games' => $games));
             echo $this->element('business/dashboard/exploregames/grid', array('games' => $games));
