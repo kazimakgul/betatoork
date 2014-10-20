@@ -23,7 +23,7 @@ class BusinessesController extends AppController {
         }
 
         //permissons for logged in users
-        if (in_array($this->action, array('startup', 'dashboard', 'mygames', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search', 'edit_set_ads', 'remove_ads_field', 'add_mapping', 'remove_mapping','switch_publish','support'))) {
+        if (in_array($this->action, array('startup', 'dashboard', 'mygames','upgrade', 'favorites', 'exploregames', 'settings', 'channel_settings', 'following', 'followers', 'explorechannels', 'activities', 'app_status', 'steps2launch', 'ads_management', 'notifications', 'add_ads', 'game_add', 'game_edit', 'mygames_search', 'exploregames_search', 'following_search', 'followers_search', 'mygames_search', 'favorites_search', 'explorechannels_search', 'featured_toggle', 'newData', 'deleteData', 'social_management', 'faq', 'edit_ads', 'password_change', 'updateData', 'main_search', 'edit_set_ads', 'remove_ads_field', 'add_mapping', 'remove_mapping','switch_publish','support'))) {
             return true;
         }
 
@@ -174,6 +174,30 @@ class BusinessesController extends AppController {
             $this->set('_serialize', array('error'));
         }
     }
+
+    
+    /**
+     * Upgrade membership methof
+     *
+     * @param user Id or null
+     * @return void
+     */
+    public function upgrade() {
+      $this->layout = 'Business/dashboard';
+        $this->sideBar();
+
+
+
+        $userid = $this->Session->read('Auth.User.id');
+        
+        
+        
+        $this->set('title_for_layout', 'Clone Business My Games');
+        $this->set('description_for_layout', 'Discover collect and share games. Clone games and create your own game channel.');
+        $this->set('author_for_layout', 'Clone');
+        $this->render('/Businesses/dashboard/upgrade');
+    }
+
 
     /**
      * Set/Unset Featured Game Request method

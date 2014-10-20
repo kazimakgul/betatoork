@@ -140,7 +140,7 @@ if ($user['User']['picture'] == null) {
         <h3>Application</h3>
         <ul>
             <li>
-                <a href="<?php echo $system_settins ?>" <?php if (isset($active) && $active == 'activities') echo 'class="active"'; ?>>
+                <a href="#" <?php if (isset($active) && $active == 'activities') echo 'class="active"'; ?>>
                     <i class="fa fa-gears"></i> 
                     <span>System Settings</span>
                 </a>
@@ -158,7 +158,7 @@ if ($user['User']['picture'] == null) {
                 </a>
             </li>
             <li>
-                <a href="<?php echo $error_logs ?>" <?php if (isset($active) && $active == 'activities') echo 'class="active"'; ?>>
+                <a href="#" <?php if (isset($active) && $active == 'activities') echo 'class="active"'; ?>>
                     <i class="fa fa-file-text-o"></i> 
                     <span>Error Logs</span>
                 </a>
