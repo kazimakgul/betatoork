@@ -183,7 +183,7 @@ class BusinessesController extends AppController {
      * @return void
      */
     public function upgrade() {
-      $this->layout = 'Business/dashboard';
+      $this->layout = 'Business/upgrade';
         $this->sideBar();
 
 
